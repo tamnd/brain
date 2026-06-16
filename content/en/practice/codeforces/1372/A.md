@@ -1,7 +1,7 @@
 ---
 title: "CF 1372A - Omkar and Completion"
-description: "We are asked to construct arrays of a given length such that each element is positive, no greater than 1000, and no element equals the sum of any two elements in the array, including sums where the same element is counted twice."
-date: "2026-06-11T11:17:29+07:00"
+description: "We are asked to construct an integer array of length n where every element is positive, does not exceed 1000, and satisfies a global restriction on sums: if we pick any three positions (they may coincide), the sum of two chosen elements is never equal to any element of the array."
+date: "2026-06-16T12:43:35+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1372
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 655 (Div. 2)"
 rating: 800
 weight: 1372
-solve_time_s: 128
+solve_time_s: 404
 verified: false
 draft: false
 ---
@@ -18,37 +18,51 @@ draft: false
 
 **Rating:** 800  
 **Tags:** constructive algorithms, implementation  
-**Solve time:** 2m 8s  
+**Solve time:** 6m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct arrays of a given length such that each element is positive, no greater than 1000, and no element equals the sum of any two elements in the array, including sums where the same element is counted twice. In other words, for any indices x, y, z, the relation a[x] + a[y] ≠ a[z] must hold. The input gives multiple test cases, each with a single integer n, and for each test case we must output a valid array of length n.
+We are asked to construct an integer array of length `n` where every element is positive, does not exceed 1000, and satisfies a global restriction on sums: if we pick any three positions (they may coincide), the sum of two chosen elements is never equal to any element of the array.
 
-The constraints are fairly small. n can go up to 1000, and the sum of n over all test cases is also at most 1000. This means we can afford an O(n) or even O(n log n) solution per test case without risking timeouts, because the total number of operations across all test cases will remain well below 10^6.
+In more concrete terms, no value in the array is allowed to be representable as the sum of two values from the array, including the possibility of doubling a single element. So if `a[i] + a[j]` appears anywhere in the array, even at some other index `k`, the array is invalid.
 
-A subtle edge case is arrays with n = 1. In that case, any single positive integer less than or equal to 1000 works, because there is no pair of elements to sum. Another edge case is n = 1000. The naive approach of randomly selecting numbers and checking sums could fail here or exceed limits if we are not careful, so we need a deterministic approach. Finally, we need to avoid elements exceeding 1000, which rules out certain sequences like powers of two if n is large.
+The input gives multiple test cases, each providing only `n`, and for each we must output any valid array of that length.
+
+The constraints are small. The sum of all `n` across test cases is at most 1000, and each `n` is at most 1000. This immediately tells us that we are not dealing with performance pressure. Any solution up to roughly `O(n^2)` or even slightly worse per test case would pass comfortably, but the structure of the condition suggests we should avoid unnecessary pairwise checks entirely.
+
+The non-obvious failure case for naive construction is the increasing sequence. If we try `[1, 2, 3, 4, 5]`, we immediately get `1 + 2 = 3`, which violates the condition. A more subtle failed attempt is any dense set of small numbers, since small values naturally combine into other small values that are also present.
+
+A second subtle trap is trying to randomize values without structure. Even if values are within bounds, random choices will frequently create accidental sum collisions like `a[i] + a[j] = a[k]`, especially when numbers are small or repeated.
 
 ## Approaches
 
-A brute-force approach would be to try all possible arrays of length n with elements in [1, 1000], and for each candidate, check whether every sum of two elements equals any array element. This is correct but infeasible: for n = 1000, we would have 1000^1000 possibilities, and even generating all pairs to check sums takes O(n^3) time, which is far too large.
+A brute-force approach would try to build the array incrementally. For each new element, we could test all candidate values from `1` to `1000` and check whether adding it violates the condition with any previously chosen pair. This requires checking all pairs in the current prefix, so for each placement we may do up to `O(n^2)` checks, leading to `O(n^3)` total work per test case in the worst case. This is unnecessary because the condition is global and does not require maintaining exact combinational structure dynamically.
 
-The key insight comes from the structure of the condition: we only need to avoid any element being equal to the sum of two elements. One simple way is to choose an arithmetic progression with a sufficiently large common difference. For instance, if we pick consecutive odd numbers starting from 1 (1, 3, 5, 7,...), the sum of any two numbers is even, whereas all elements themselves are odd. Therefore, no element can equal the sum of any two elements. This observation lets us construct arrays of arbitrary length up to n = 1000 easily and ensures all elements are positive and below 1000. Choosing the first 1000 odd numbers works because the largest element, 1999, is beyond 1000. To fix this, we can use any sequence with a large enough step that keeps all elements ≤ 1000, for instance multiples of 1 (1, 2, 3...) works too, but we need a gap: the simplest is choosing all numbers equal to 1. Then the sum of any two elements is 2, which is different from any element. For any n, using an array of n ones works perfectly and is within bounds.
+The key observation is that we are not required to use distinct values or maximize variety. We only need to avoid sum collisions. A simple way to guarantee this is to make all elements equal to a constant value. If every element is the same number `x`, then every sum of two elements is `2x`, which is not present in the array as long as `x != 2x`. Since `x > 0`, this is always true.
+
+We also need to respect the upper bound of 1000, but choosing `x = 1` already satisfies all constraints. Then the array consists entirely of ones, and the only possible sum is `2`, which is not in the array.
+
+This makes the problem essentially a constant construction task.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(1000^3) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force incremental checking | O(n^3) | O(n) | Too slow |
+| Constant array construction | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases t.
-2. For each test case, read n, the desired length of the array.
-3. Construct an array of length n, filling every element with 1. This guarantees that each element is positive, ≤ 1000, and no sum of two elements equals any element, because 1 + 1 = 2 ≠ 1.
-4. Output the array on a single line.
+We construct the array independently for each test case.
 
-Why it works: the invariant we maintain is that all elements are equal to 1. Therefore the sum of any two elements is always 2, which can never appear in the array. This directly satisfies the complete array condition. All elements are within the allowed bounds, and we can repeat this approach for any n ≤ 1000.
+1. Read `n` for the test case. We only need to determine how many elements to output, not their structure beyond satisfying the condition.
+2. Choose a fixed value `1` for all positions. This ensures every element is positive and within the required bound of 1000.
+3. Fill the array with `n` copies of `1`. No additional checks are needed because the structure guarantees validity.
+4. Output the array.
+
+### Why it works
+
+The only possible sums formed from the array are of the form `1 + 1 = 2`. Since every array element is `1`, and `2` never appears in the array, there is no triple of indices such that `a[x] + a[y] = a[z]`. Because all elements are identical, every possible pair sum is the same, and it is guaranteed to lie outside the set of values used in the array. This invariant holds regardless of `n`.
 
 ## Python Solution
 
@@ -56,13 +70,19 @@ Why it works: the invariant we maintain is that all elements are equal to 1. The
 import sys
 input = sys.stdin.readline
 
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    print("1 " * n)
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        print(" ".join(["1"] * n))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The code reads t test cases, then for each test case reads n and prints n ones separated by spaces. We multiply the string "1 " by n to generate the output efficiently. This method avoids loops in output construction and ensures no off-by-one errors. We rely on Python handling the trailing space correctly when printing; it does not affect the output validity.
+The implementation directly mirrors the construction. The only subtlety is handling multiple test cases and ensuring fast I/O using `sys.stdin.readline`.
+
+The expression `["1"] * n` builds the required array efficiently as strings, avoiding integer-to-string conversion inside loops. Since output size is the limiting factor, this is optimal in practice.
 
 ## Worked Examples
 
@@ -71,41 +91,50 @@ The code reads t test cases, then for each test case reads n and prints n ones s
 Input:
 
 ```
-2
-5
-4
+n = 5
 ```
 
-| Step | n | Constructed array |
-| --- | --- | --- |
-| 1 | 5 | [1, 1, 1, 1, 1] |
-| 2 | 4 | [1, 1, 1, 1] |
+We construct five ones.
 
-Both arrays satisfy the invariant: the sum of any two elements is 2, which does not appear in the array.
+| Step | Action | Array |
+| --- | --- | --- |
+| 1 | Start | [] |
+| 2 | Add 1 | [1] |
+| 3 | Add 1 | [1, 1] |
+| 4 | Add 1 | [1, 1, 1] |
+| 5 | Add 1 | [1, 1, 1, 1] |
+| 6 | Add 1 | [1, 1, 1, 1, 1] |
+
+All pair sums equal 2, which is not in the array, confirming validity.
 
 ### Example 2
 
 Input:
 
 ```
-1
-1
+n = 4
 ```
 
-| Step | n | Constructed array |
+| Step | Action | Array |
 | --- | --- | --- |
-| 1 | 1 | [1] |
+| 1 | Start | [] |
+| 2 | Add 1 | [1] |
+| 3 | Add 1 | [1, 1] |
+| 4 | Add 1 | [1, 1, 1] |
+| 5 | Add 1 | [1, 1, 1, 1] |
 
-With a single element, the array trivially satisfies the condition since there is no pair to sum.
+Again, all sums are 2, which does not appear in the array, so the condition holds.
+
+These traces show that no interaction between elements ever introduces a forbidden equality.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | We generate n elements in linear time |
-| Space | O(n) per test case | We store n elements to print |
+| Time | O(n) per test case | We output exactly `n` values and do constant work per value |
+| Space | O(1) extra | Aside from output buffering, no additional data structures are used |
 
-Given the constraints n ≤ 1000 and total n across test cases ≤ 1000, this solution easily fits within the 1-second time limit and the 256 MB memory limit.
+The total output size across all test cases is at most 1000 elements, so the construction is trivially fast under the constraints.
 
 ## Test Cases
 
@@ -114,34 +143,35 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
+    input = sys.stdin.readline
+
     t = int(input())
+    out = []
     for _ in range(t):
         n = int(input())
-        print("1 " * n)
-    return output.getvalue().strip()
+        out.append(" ".join(["1"] * n))
+    return "\n".join(out)
 
-# provided samples
-assert run("2\n5\n4\n") == "1 1 1 1 1\n1 1 1 1", "sample 1"
+# provided samples (format adapted since output is not unique)
+assert run("2\n5\n4\n") == "1 1 1 1 1\n1 1 1 1", "sample-like check"
+
 # custom cases
-assert run("1\n1\n") == "1", "single element"
-assert run("1\n1000\n") == "1 " * 1000, "maximum size input"
-assert run("2\n2\n3\n") == "1 1\n1 1 1", "small arrays"
-assert run("1\n10\n") == "1 1 1 1 1 1 1 1 1 1", "moderate size"
+assert run("1\n1\n") == "1", "minimum size"
+assert run("1\n10\n") == "1 1 1 1 1 1 1 1 1 1", "uniform larger case"
+assert run("1\n1000\n") == " ".join(["1"] * 1000), "maximum n case"
+assert run("3\n2\n3\n4\n") == "1 1\n1 1 1\n1 1 1 1", "multiple small cases"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | 1 | single element edge case |
-| 1000 | 1 repeated 1000 times | maximum size array |
-| 2,3 | arrays of different small sizes | correctness across multiple test cases |
-| 10 | array of 10 ones | correctness for arbitrary small n |
+| `n=1` | `[1]` | minimal valid construction |
+| `n=1000` | 1000 ones | maximum size handling |
+| multiple test cases | repeated ones | multi-case correctness |
 
 ## Edge Cases
 
-For n = 1, the algorithm returns [1]. The sum condition is vacuously satisfied since there are no two elements to sum.
+The only meaningful edge case is when `n = 1`. The construction still outputs `[1]`. There are no pairs to form sums, so the condition is vacuously satisfied.
 
-For n = 1000, the algorithm returns an array of 1000 ones. The sum of any two elements is 2, which does not appear in the array. All elements are within the allowed range.
+For `n = 1000`, we output 1000 ones. Even though there are many pairs, every sum remains `2`, which is not present in the array, so no violation arises.
 
-This approach handles the minimum, maximum, and any intermediate n without violating any constraints.
+The case of repeated test cases does not change behavior since each test case is independent and uses the same construction logic.
