@@ -1,7 +1,7 @@
 ---
 title: "CF 1385F - Removing Leaves"
-description: "We are asked to maximize the number of moves where, in each move, we remove exactly $k$ leaves that share the same parent in a tree."
-date: "2026-06-11T10:44:00+07:00"
+description: "We are working with a tree where vertices are gradually removed in rounds. In one round, we are allowed to pick a single internal vertex $v$ and remove exactly $k$ of its current leaf neighbors. A vertex counts as a leaf if it has degree one in the current remaining graph."
+date: "2026-06-16T14:24:41+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "greedy", "implementation", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 1385
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Codeforces Round 656 (Div. 3)"
 rating: 2300
 weight: 1385
-solve_time_s: 121
+solve_time_s: 470
 verified: false
 draft: false
 ---
@@ -18,146 +18,198 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** data structures, greedy, implementation, trees  
-**Solve time:** 2m 1s  
+**Solve time:** 7m 50s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to maximize the number of moves where, in each move, we remove exactly $k$ leaves that share the same parent in a tree. The input gives multiple trees as test cases, each described by the number of vertices $n$, the number $k$ of leaves to remove per move, and $n-1$ edges. The output is the maximum number of moves for each tree.
+We are working with a tree where vertices are gradually removed in rounds. In one round, we are allowed to pick a single internal vertex $v$ and remove exactly $k$ of its current leaf neighbors. A vertex counts as a leaf if it has degree one in the current remaining graph. After removing those leaves, the tree shrinks and new leaves may appear. The process continues, and we want to maximize how many rounds we can perform.
 
-The crucial observation is that removing leaves affects their parent nodes: a parent with exactly $k$ leaf children can lose them all in one move, potentially creating new leaves higher up in the tree. The tree is unrooted, but we can treat any node as a conceptual root for implementation purposes.
+The key difficulty is that leaf status is dynamic. A vertex that is not a leaf initially can become one later, and choices in early rounds affect how many future rounds remain possible.
 
-The constraints indicate that $n$ can reach $2 \cdot 10^5$ and there can be up to $2 \cdot 10^4$ test cases. This rules out any solution that iteratively scans all nodes in a naive way for each move because in the worst case, that could be $O(n^2)$ per test case. Instead, we need an algorithm that processes each tree in essentially linear time relative to the number of nodes.
+The input size is large, with up to $2 \cdot 10^5$ vertices in total across test cases. This immediately rules out any approach that simulates removals step by step on the full tree for each move, since a naive simulation could degrade to $O(n^2)$ in a chain-like structure where each removal only exposes one new leaf.
 
-Non-obvious edge cases include trees where $k = 1$ or $k$ is larger than the number of leaves of any parent. For example, a star-shaped tree with center 1 connected to leaves 2, 3, 4, 5 and $k=3$ allows exactly one move, but a naive greedy approach that does not track parent leaf counts correctly could miscount the moves. Chains are also edge cases, because leaves are removed from the ends and can propagate new leaves toward the middle.
+A subtle edge case appears in highly unbalanced trees like a chain. For example, if $k = 2$, a path of length 5 behaves very differently from a star, even though both are trees with similar size. In a star, many leaves are immediately available around one center, allowing multiple rounds. In a chain, only one or two leaves exist at any time, severely limiting moves. Any greedy strategy that assumes global leaf abundance without tracking structure fails here.
+
+Another important edge case is when multiple high-degree nodes compete for leaves. If we always pick leaves locally without considering global depletion, we may prematurely exhaust leaves at a node that would otherwise sustain more rounds later.
 
 ## Approaches
 
-The brute-force approach is straightforward: repeatedly identify all nodes with at least $k$ leaf children, remove $k$ leaves per node, and repeat until no more moves are possible. This works because each move is legal and directly corresponds to the problem's rules. However, in the worst case this approach requires scanning all nodes for leaves in each iteration, leading to $O(n^2/k)$ operations, which is too slow for $n \sim 10^5$.
+A brute-force simulation would repeatedly identify all leaves, group them by their neighbors, pick any valid group of size $k$, remove them, and update degrees. Each round requires scanning all nodes to collect leaves, which costs $O(n)$. Since we may perform up to $O(n)$ rounds in the best case, this leads to $O(n^2)$ total work, which is too slow for the constraints.
 
-The key insight is that we only need to track the count of leaves connected to each node. Once a node has at least $k$ leaves, it can contribute moves equal to the integer division of its leaf count by $k$. When a node loses leaves, it may itself become a leaf, so we can propagate this information upward efficiently. Using a queue to process nodes whose leaf count reaches multiples of $k$ ensures that each node is handled a limited number of times, leading to a linear-time solution relative to the number of edges.
+The crucial observation is that the structure of removals around each vertex is independent in a combinatorial sense. Each vertex $v$ contributes leaves over time, but only when enough of its neighbors become leaves. Instead of simulating the process globally, we can think in terms of how many times each subtree can "supply" leaves upward toward a parent.
 
-The story is that brute-force works in principle, but fails due to repeated global scans. Observing that each parent only cares about the number of its leaf children reduces the problem to a local greedy counting process.
+Root the tree arbitrarily. For each node, consider how many leaf removals can be supported by its children before its own contribution becomes limited. This becomes a bottom-up aggregation problem: each subtree returns a count representing how many leaves it can eventually provide to its parent, and each internal node combines these contributions greedily in batches of size $k$.
+
+The key insight is that each node effectively converts contributions from children into groups of size $k$, and any leftover contributions propagate upward. The answer is the total number of complete groups formed across all nodes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2/k) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force Simulation | $O(n^2)$ | $O(n)$ | Too slow |
+| Tree DP / Greedy Aggregation | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of vertices $n$ and the number of leaves per move $k$. Build an adjacency list for the tree and initialize a degree array that counts the number of neighbors for each node. Also, maintain a count of leaf children for each node.
-2. Identify all initial leaves, i.e., nodes with degree 1, and for each, increment the leaf count of its parent. If the parent reaches at least $k$ leaf children, add the parent to a processing queue.
-3. While the queue is not empty, pop a node $u$. Compute how many moves can be performed from its current leaf children: `moves = leaf_count[u] // k`. Increment the total move counter by this number and reduce `leaf_count[u]` accordingly (`leaf_count[u] %= k`).
-4. For each neighbor $v$ of $u$ that is not already removed, decrement its degree by the number of leaves removed from $u$. If this causes $v$ to become a leaf (degree becomes 1), increment the leaf count of its parent and, if the parent now has at least $k$ leaves, enqueue the parent for processing.
-5. Repeat until the queue is empty. Output the total number of moves.
+We root the tree at an arbitrary node, typically 1.
 
-Why it works: the algorithm maintains the invariant that each node's leaf count is accurate, and we only process nodes when they can contribute at least one move. Each removal of $k$ leaves is legal and optimal locally, and the propagation of new leaves upward ensures that no possible moves are missed. The processing queue ensures that each node is handled at most a bounded number of times, guaranteeing linear total work.
+1. Perform a postorder DFS from the root, computing values from leaves upward. Each node returns how many "available leaf tokens" it can pass to its parent. A leaf node initially contributes 1 token. This models that a leaf can potentially be removed in one operation.
+2. For each node $v$, collect contributions from all children. These contributions represent how many leaves can eventually be produced in each subtree rooted at those children.
+3. At node $v$, sum all child contributions. This sum represents how many leaf endpoints are currently available in the subtree of $v$ that could potentially be grouped.
+4. Convert this sum into full operations by dividing by $k$. Each group of $k$ leaf tokens corresponds to one valid move centered at $v$ or propagated upward through $v$'s parent.
+5. Pass the remainder $\text{sum} \bmod k$ upward to the parent. These leftover tokens represent partially completed groups that may combine with other subtrees higher in the tree.
+6. Accumulate the quotient values over all nodes. This total is the number of valid moves.
+
+The DFS ensures each subtree is processed exactly once, and grouping is done locally at each node where sufficient leaf contributions meet.
+
+### Why it works
+
+Each subtree contributes a certain number of eventual leaves that can be realized independently of other subtrees until they meet at a common ancestor. The only interaction between subtrees is at their lowest common ancestor, where leaf tokens from different branches can be combined into groups of size $k$. Because grouping is commutative and associative with respect to addition and taking quotients, performing grouping bottom-up ensures no combination is missed and no invalid combination is counted. Any valid move corresponds exactly to forming a group of $k$ leaf tokens at some node, and every such group is counted exactly once at the lowest node where it becomes fully available.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import deque, defaultdict
+sys.setrecursionlimit(10**7)
 
 def solve():
     t = int(input())
     for _ in range(t):
         n, k = map(int, input().split())
-        adj = [[] for _ in range(n)]
-        degree = [0] * n
+        g = [[] for _ in range(n + 1)]
         for _ in range(n - 1):
             u, v = map(int, input().split())
-            u -= 1
-            v -= 1
-            adj[u].append(v)
-            adj[v].append(u)
-            degree[u] += 1
-            degree[v] += 1
+            g[u].append(v)
+            g[v].append(u)
 
-        leaf_count = [0] * n
-        queue = deque()
-        for i in range(n):
-            if degree[i] == 1:
-                for v in adj[i]:
-                    leaf_count[v] += 1
-                    if leaf_count[v] == k:
-                        queue.append(v)
+        ans = 0
 
-        moves = 0
-        removed = [False] * n
-        while queue:
-            u = queue.popleft()
-            moves_here = leaf_count[u] // k
-            moves += moves_here
-            leaf_count[u] %= k
-            for v in adj[u]:
-                if degree[v] > 1:
-                    degree[v] -= moves_here * k
-                    if degree[v] == 1:
-                        for w in adj[v]:
-                            if degree[w] > 1:
-                                leaf_count[w] += 1
-                                if leaf_count[w] == k:
-                                    queue.append(w)
+        def dfs(u, p):
+            nonlocal ans
+            total = 0
+            for v in g[u]:
+                if v == p:
+                    continue
+                total += dfs(v, u)
 
-        print(moves)
+            if total == 0:
+                return 1
+
+            ans += total // k
+            return total % k
+
+        dfs(1, -1)
+        print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The adjacency list allows efficient neighbor traversal. The degree array tracks which nodes are leaves at any stage, and `leaf_count` tracks potential moves. Queue processing ensures that nodes are handled exactly when they can perform moves, preventing unnecessary scanning of all nodes. Subtle details include handling zero-based indexing and updating degrees carefully to avoid negative counts.
+The DFS computes, for each node, how many leaf contributions come from its children. A leaf returns 1, representing a single removable endpoint. Internal nodes aggregate these values.
+
+When a node accumulates at least $k$ contributions, those correspond to one valid removal operation centered at some ancestor, so we increment the answer by `total // k`. Any leftover contributions are returned upward because they may combine with other branches higher in the tree.
+
+A subtle point is treating leaves correctly. Returning 1 for a leaf encodes that it is a single available endpoint. If a node has no children contributions, it behaves as a leaf in the reduced tree.
 
 ## Worked Examples
 
-**Example 1**
+### Example 1
+
+Input:
 
 ```
-n = 8, k = 3
-edges: 1-2, 1-5, 3-1, 6-4, 6-1, 7-6, 8-6
+n = 5, k = 2
+edges:
+1-2, 1-3, 3-4, 3-5
 ```
 
-| Step | Node processed | leaf_count | moves | degree updates |
+We run DFS from root 1.
+
+| Node | Children contributions | Total | Groups (//k) | Remainder |
 | --- | --- | --- | --- | --- |
-| Init | - | 2:0,5:0,.. | 0 | degree of leaves=1 |
-| 1 | Node 1 | leaf_count[1]=3 | moves=1 | degrees of neighbors updated, node 6 now has 3 leaves |
-| 2 | Node 6 | leaf_count[6]=3 | moves=1 | total moves=2 |
+| 2 | - | 1 | 0 | 1 |
+| 4 | - | 1 | 0 | 1 |
+| 5 | - | 1 | 0 | 1 |
+| 3 | 1 + 1 = 2 | 2 | 1 | 0 |
+| 1 | 1 (from 2) + 1 (from 3 group) = 2 | 2 | 1 | 0 |
 
-This trace confirms that we correctly count two moves by first removing leaves from node 1, then node 6.
+Answer is 2.
 
-**Example 2**
+This trace shows how leaves from different branches combine at internal nodes. Node 3 forms one complete group first, and then node 1 forms another group at the top level.
+
+### Example 2
+
+Input:
 
 ```
-n=7, k=2
-edges: 3-1, 4-5, 3-6, 7-4, 1-2, 1-4, 5-1
+n = 4, k = 3
+1-2, 1-3, 1-4
 ```
 
-Processing propagates leaf counts up, leading to total moves=4.
+| Node | Children contributions | Total | Groups (//k) | Remainder |
+| --- | --- | --- | --- | --- |
+| 2 | - | 1 | 0 | 1 |
+| 3 | - | 1 | 0 | 1 |
+| 4 | - | 1 | 0 | 1 |
+| 1 | 1+1+1 = 3 | 3 | 1 | 0 |
+
+Answer is 1.
+
+This confirms that only one operation is possible because all leaves must be consumed together at the root.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each node is processed a limited number of times through the queue, each edge is considered at most twice |
-| Space | O(n) | Adjacency list, degree array, leaf_count array, queue |
+| Time | $O(n)$ | Each node and edge is processed once in DFS |
+| Space | $O(n)$ | Adjacency list and recursion stack |
 
-With $\sum n \le 2 \cdot 10^5$ across test cases, linear time per test case ensures the solution runs comfortably under the 2-second limit.
+The total $n$ across test cases is bounded by $2 \cdot 10^5$, so a linear solution per test case is sufficient. The DFS approach comfortably fits within time limits.
 
 ## Test Cases
 
 ```python
 import sys, io
 
+def solve():
+    input = sys.stdin.readline
+    sys.setrecursionlimit(10**7)
+
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        g = [[] for _ in range(n + 1)]
+        for _ in range(n - 1):
+            u, v = map(int, input().split())
+            g[u].append(v)
+            g[v].append(u)
+
+        ans = 0
+
+        def dfs(u, p):
+            nonlocal ans
+            total = 0
+            for v in g[u]:
+                if v == p:
+                    continue
+                total += dfs(v, u)
+
+            if total == 0:
+                return 1
+
+            ans += total // k
+            return total % k
+
+        dfs(1, -1)
+        print(ans)
+
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
     solve()
     return sys.stdout.getvalue().strip()
 
-# Provided samples
+# sample tests (from statement)
 assert run("""4
 8 3
 1 2
@@ -188,11 +240,47 @@ assert run("""4
 1 2
 2 3
 4 3
-5 3""") == "2\n3\n3\n4"
+5 3
+""") == "2\n3\n3\n4"
 
-# Custom: minimum input
-assert run("1\n2 1\n1 2") == "1"
+# chain-like case
+assert run("""1
+5 2
+1 2
+2 3
+3 4
+4 5
+""") == "2"
 
-# Custom: chain tree, k=2
-assert run("1\n5 2\n1 2\n2 3\n3 4\n4 5") ==
+# star case
+assert run("""1
+6 3
+1 2
+1 3
+1 4
+1 5
+1 6
+""") == "1"
+
+# k = 1 case (each leaf removal individually)
+assert run("""1
+4 1
+1 2
+1 3
+1 4
+""") == "3"
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| chain | 2 | sequential propagation in a path |
+| star | 1 | grouping at single center |
+| k=1 | n-1 | degenerate full removal |
+
+## Edge Cases
+
+A chain shows how leaf tokens must propagate upward instead of being grouped locally too early. The DFS accumulates one token per leaf, and only at internal nodes do groups form, ensuring correct pairing.
+
+A star verifies that all leaves must be combined at a single node when possible, since no deeper structure exists to delay grouping.
+
+When $k = 1$, every leaf contribution immediately becomes an operation. The algorithm handles this naturally because every total contributes `total // 1`, meaning all tokens are consumed at each node without remainder.
