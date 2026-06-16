@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1570 contests, 8995 problems, 4415 verified."
+description: "Codeforces problem solutions with full editorials. 1571 contests, 8997 problems, 4417 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1570 contests, 8995 problems, 4415 verified.**
+**1571 contests, 8997 problems, 4417 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 149 contests, 688 problems, 427 verified
+## 2018 — 150 contests, 690 problems, 429 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -481,6 +481,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [919](919/) | [Codeforces Round 460 (Div. 2)](https://codeforces.com/contest/919) | 5 | 5/5 | Div. 2 | 800-2600 |
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
+| [922](922/) | [Codeforces Round 461 (Div. 2)](https://codeforces.com/contest/922) | 2 | 2/2 | Div. 2 | 1300-2400 |
 | [923](923/) | [VK Cup 2018 - Round 1](https://codeforces.com/contest/923) | 2 | 1/2 | Special | 1700-3200 |
 | [924](924/) | [VK Cup 2018 - Round 2](https://codeforces.com/contest/924) | 1 | 1/1 | Special | 1700-1700 |
 | [925](925/) | [VK Cup 2018 - Round 3](https://codeforces.com/contest/925) | 1 | 0/1 | Special | 1700-1700 |
