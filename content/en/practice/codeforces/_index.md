@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1491 contests, 8701 problems, 4215 verified."
+description: "Codeforces problem solutions with full editorials. 1492 contests, 8708 problems, 4219 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1491 contests, 8701 problems, 4215 verified.**
+**1492 contests, 8708 problems, 4219 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 70 contests, 394 problems, 227 verified
+## 2018 — 71 contests, 401 problems, 231 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1023](1023/) | [Codeforces Round 504 (rated, Div. 1 + Div. 2, based on VK Cup 2018 Final)](https://codeforces.com/contest/1023) | 7 | 4/7 | Div. 1+2 | 1000-3400 |
 | [1025](1025/) | [Codeforces Round 505 (rated, Div. 1 + Div. 2, based on VK Cup 2018 Final)](https://codeforces.com/contest/1025) | 7 | 5/7 | Div. 1+2 | 900-3200 |
 | [1027](1027/) | [Educational Codeforces Round 49 (Rated for Div. 2)](https://codeforces.com/contest/1027) | 7 | 4/7 | Div. 2 | 1000-2600 |
 | [1028](1028/) | [AIM Tech Round 5 (rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1028) | 8 | 3/8 | Div. 1+2 | 800-3000 |
