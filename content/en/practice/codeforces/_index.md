@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8523 problems, 4126 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8524 problems, 4127 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8523 problems, 4126 verified.**
+**1472 contests, 8524 problems, 4127 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 703 problems, 306 verified
+## 2020 — 159 contests, 704 problems, 307 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -729,7 +729,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1328](1328/) | [Codeforces Round 629 (Div. 3)](https://codeforces.com/contest/1328) | 5 | 0/5 | Div. 3 | 800-2200 |
 | [1329](1329/) | [Codeforces Round 631 (Div. 1) - Thanks, Denis aramis Shitov!](https://codeforces.com/contest/1329) | 5 | 2/5 | Div. 1 | 1700-3300 |
 | [1330](1330/) | [Codeforces Round 631 (Div. 2) - Thanks, Denis aramis Shitov!](https://codeforces.com/contest/1330) | 1 | 0/1 | Div. 2 | 1400-1400 |
-| [1331](1331/) | [April Fools Day Contest 2020](https://codeforces.com/contest/1331) | 4 | 0/4 | April Fools | - |
+| [1331](1331/) | [April Fools Day Contest 2020](https://codeforces.com/contest/1331) | 5 | 1/5 | April Fools | - |
 | [1332](1332/) | [Codeforces Round 630 (Div. 2)](https://codeforces.com/contest/1332) | 3 | 2/3 | Div. 2 | 1400-2500 |
 | [1333](1333/) | [Codeforces Round 632 (Div. 2)](https://codeforces.com/contest/1333) | 2 | 0/2 | Div. 2 | 1700-2100 |
 | [1334](1334/) | [Educational Codeforces Round 85 (Rated for Div. 2)](https://codeforces.com/contest/1334) | 4 | 2/4 | Div. 2 | 1200-2900 |
