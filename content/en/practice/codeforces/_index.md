@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1501 contests, 8753 problems, 4249 verified."
+description: "Codeforces problem solutions with full editorials. 1502 contests, 8760 problems, 4254 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1501 contests, 8753 problems, 4249 verified.**
+**1502 contests, 8760 problems, 4254 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 80 contests, 446 problems, 261 verified
+## 2018 — 81 contests, 453 problems, 266 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1009](1009/) | [Educational Codeforces Round 47 (Rated for Div. 2)](https://codeforces.com/contest/1009) | 7 | 5/7 | Div. 2 | 800-2400 |
 | [1010](1010/) | [Codeforces Round 499 (Div. 1)](https://codeforces.com/contest/1010) | 6 | 4/6 | Div. 1 | 1500-3400 |
 | [1011](1011/) | [Codeforces Round 499 (Div. 2)](https://codeforces.com/contest/1011) | 2 | 2/2 | Div. 2 | 900-1200 |
 | [1012](1012/) | [Codeforces Round 500 (Div. 1) [based on EJOI]](https://codeforces.com/contest/1012) | 6 | 3/6 | Div. 1 | 1500-3400 |
