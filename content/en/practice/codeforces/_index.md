@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1567 contests, 8991 problems, 4413 verified."
+description: "Codeforces problem solutions with full editorials. 1568 contests, 8992 problems, 4413 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1567 contests, 8991 problems, 4413 verified.**
+**1568 contests, 8992 problems, 4413 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 146 contests, 684 problems, 425 verified
+## 2018 — 147 contests, 685 problems, 425 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -481,6 +481,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [919](919/) | [Codeforces Round 460 (Div. 2)](https://codeforces.com/contest/919) | 5 | 5/5 | Div. 2 | 800-2600 |
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
+| [925](925/) | [VK Cup 2018 - Round 3](https://codeforces.com/contest/925) | 1 | 0/1 | Special | 1700-1700 |
 | [926](926/) | [VK Cup 2018 - Wild-card Round 1](https://codeforces.com/contest/926) | 2 | 2/2 | Special | 1300-2000 |
 | [927](927/) | [VK Cup 2018 - Wild-card Round 2](https://codeforces.com/contest/927) | 1 | 1/1 | Special | 2900-2900 |
 | [928](928/) | [VK Cup 2018 - Квалификация 1](https://codeforces.com/contest/928) | 1 | 1/1 | Special | 1200-1200 |
