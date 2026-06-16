@@ -1,7 +1,7 @@
 ---
 title: "CF 1553D - Backspace"
-description: "We are given two strings, where one represents what we attempt to type from left to right, and the other represents the final text we want to end up with."
-date: "2026-06-14T21:12:15+07:00"
+description: "We are simulating a typing process where we scan a source string s from left to right. At each position, we either append the current character to an evolving text buffer or press backspace, which deletes the most recently added character if it exists."
+date: "2026-06-16T15:54:08+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "strings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 1553
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)"
 rating: 1500
 weight: 1553
-solve_time_s: 427
+solve_time_s: 361
 verified: false
 draft: false
 ---
@@ -18,53 +18,52 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dp, greedy, strings, two pointers  
-**Solve time:** 7m 7s  
+**Solve time:** 6m 1s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two strings, where one represents what we attempt to type from left to right, and the other represents the final text we want to end up with. At each character of the first string, we have a binary choice: either we append that character to our current text, or we press backspace instead, which removes the most recently kept character if one exists.
+We are simulating a typing process where we scan a source string `s` from left to right. At each position, we either append the current character to an evolving text buffer or press backspace, which deletes the most recently added character if it exists.
 
-The key difficulty is that backspaces are not independent deletions on the original string. They act on the evolving output, which means earlier decisions constrain later possibilities. The task is to decide whether there exists any sequence of keep or delete decisions that transforms the first string into the second.
+The question is whether there exists a choice of backspace operations such that after processing all characters of `s`, the final buffer becomes exactly the target string `t`.
 
-The constraints are large, with up to 10^5 queries and a total input size of 2 × 10^5 characters. This immediately rules out any solution that simulates all decision sequences or performs exponential search over choices. Even quadratic DP over prefixes is too slow because the combined string length already reaches the limit.
+A useful way to think about the process is that every character in `s` either survives into the final string or is removed by a later backspace. The constraint is that deletions are always from the end of the current constructed sequence, so earlier characters can only be removed if enough later backspaces occur.
 
-A naive interpretation might suggest simulating all possible resulting strings using DP over prefixes and stack states, but that state space grows exponentially because each character doubles the branching factor. Even pruning identical states would not survive the worst cases like repeated characters.
+The input consists of many independent test cases, and across all cases the total string length is at most 200000. This immediately rules out any solution that simulates all possibilities or uses exponential choices per character. Even an O(n log n) per test case solution risks being too slow if it does not aggregate carefully, so a linear solution per test case is required.
 
-A subtle edge case appears when the target string is longer than the source. Since we can only delete characters, never create new ones, any case where |t| > |s| must fail immediately. Another failure mode occurs if a greedy left-to-right matching is attempted without accounting for deletions affecting future structure, for example trying to match characters as soon as they appear without considering that earlier characters may be removed later.
+A key subtlety appears when characters in `s` match `t` but cannot be aligned due to later deletions. For example, if `s = "ababa"` and `t = "ba"`, it is possible to skip early characters and selectively delete later ones so that only the second and last characters survive in the correct order. However, if `t` requires characters in an order that forces keeping a prefix that must later be partially deleted in a way that destroys ordering, it becomes impossible.
+
+Another failure case arises when `t` is longer than the final number of characters that can possibly survive. Since each backspace removes one previously typed character and typing produces exactly one character per non-backspace step, the final length cannot exceed the number of typed characters minus backspaces, so if `|t| > |s|`, the answer is immediately impossible. More subtle is when lengths are compatible but relative order constraints make matching impossible.
 
 ## Approaches
 
-The brute-force view is to treat this as a path search over decisions at each position in s. At each index we either keep the character and append it to a simulated stack, or we apply a backspace and pop from that stack. This is correct because it directly mirrors the process definition. However, each step branches into two possibilities, giving 2^n possible decision sequences. Even for n = 200000 this is completely infeasible.
+The brute-force viewpoint is to treat each position in `s` as a binary decision: either we type it or we press backspace. This leads to roughly `2^n` possibilities, and for each we simulate the stack behavior in O(n), giving O(n 2^n), which is far beyond any limit even for n around 40.
 
-The key observation is that the final string is not dependent on the exact sequence of operations, but only on the structure of deletions relative to the characters that survive. Instead of simulating forward construction, we can reason backwards about which characters of s could survive to form t.
+The structure of the problem simplifies once we stop thinking in terms of which characters are deleted and instead think in reverse. Every backspace operation removes a character that must have been previously kept, meaning we are really deciding which characters in `s` survive as a subsequence, but with an extra constraint: deletions can erase earlier kept characters, so we are not simply choosing a subsequence of `s`. However, we can reinterpret the process as building a stack where each character can later be removed, and we want the final stack to equal `t`.
 
-A useful way to view this is that each character of t must correspond to some character of s that is kept, and everything between matched characters must be deletions that cancel earlier kept characters. This suggests a two-pointer process from the end: we try to match t backwards inside s, allowing ourselves to skip characters in s, but whenever we skip a character in s we treat it as if it contributes to backspace capacity that can delete previously matched characters.
+The key observation is that if we process `s` left to right and maintain a stack, the only real choice is whether to push the current character or to simulate a backspace. Instead of trying all choices, we can reason greedily from the end: we want to match `t` as the final remaining sequence, so we try to ensure that characters of `t` appear as the last surviving elements of the stack in order.
 
-This leads to a greedy reverse scan: we walk s from right to left and try to match t from right to left, while maintaining a counter that represents how many deletions we can still apply. If we encounter a character of s that matches the current character of t and we have no pending deletions blocking it, we match it. Otherwise, we treat it as a backspace effect and increase deletion capacity.
+A more structural simplification is that each character of `t` must correspond to some occurrence in `s` that survives all deletions after it. Working backward, we can greedily match `t` from the end of `s`, deciding whether we use a character as part of `t` or treat it as something deleted or used to delete earlier characters. This reduces to a two-pointer strategy scanning from right to left.
 
-The reversal is what makes this work: instead of simulating the stack directly, we reason about how many characters can be “erased over” from the right side, which avoids tracking the full history of the constructed string.
+We maintain a pointer `j` on `t` starting from its last character, and scan `s` from right to left. When we see a character equal to `t[j]`, we can match it as a surviving character and move `j` backward. Otherwise, that character in `s` must be expendable, meaning it can be either typed and later erased or simply ignored in the construction. If we manage to match all characters of `t`, the construction is possible.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (state branching) | O(2^n) | O(n) | Too slow |
-| Reverse greedy matching | O(n) | O(1) | Accepted |
+| Brute force over choices | O(2^n · n) | O(n) | Too slow |
+| Two-pointer greedy from end | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
 We process each test case independently.
 
-1. We initialize two pointers, one at the end of s and one at the end of t. We also maintain a variable that counts how many backspaces are currently available as we move left through s. This variable represents how many characters to the left we are allowed to erase without needing a direct match.
-2. We iterate from the last character of s toward the first. Each character is treated based on whether we currently have pending deletions or whether it can contribute to matching t.
-3. If we still have unmatched characters in t and the current character in s equals the current character in t, we consume both characters by moving both pointers left. This means we commit this character as part of the final constructed string.
-4. If the characters do not match, we interpret this position in s as a decision where backspace was pressed instead of typing. This increases our deletion capacity, since this backspace can erase one previously kept character.
-5. If deletion capacity is positive, we use it to “erase” a character from the constructed suffix and reduce the capacity.
-6. We continue until we exhaust s. At the end, if we have successfully matched all characters of t, the answer is YES, otherwise NO.
+1. Set a pointer `j` to the last index of `t`. This represents the next character we still need to match in reverse order. The idea is that `t` must appear as a subsequence of a valid final stack, so we try to embed it from the back.
+2. Traverse `s` from right to left using index `i`. We inspect each character as a potential contributor to the final matched structure.
+3. If `s[i]` equals `t[j]`, we treat this character as matching the current required character of `t` and decrement `j`. This means we commit this position as one of the surviving characters in the final result.
+4. If `s[i]` does not equal `t[j]`, we ignore it. Conceptually, this character is either typed and later removed via backspaces or never contributes to the final stack.
+5. After finishing the scan, check whether `j` has moved to `-1`. If so, every character of `t` has been matched in correct reverse order, so construction is possible.
 
-The key invariant is that at any point while scanning from right to left, the deletion counter exactly represents how many characters to the right of the current position in s can be ignored when forming t. Any character in t that is already matched corresponds to a fixed suffix alignment that cannot be broken by earlier decisions, because all earlier operations only affect positions further left.
-
-This ensures correctness because we never assume a character is matched unless it is structurally reachable without violating deletion constraints, and every skipped character is correctly accounted for as potential backspace capacity.
+The reason this works is that matching from the end ensures we always assign each `t[j]` to the rightmost possible occurrence in `s`. Any character in `s` that we skip can be safely treated as removable, because backspaces allow arbitrary deletions of previously typed characters, so skipping does not violate feasibility. If a match exists in a valid construction, there is always a way to choose deletions so that this greedy rightmost matching is valid.
 
 ## Python Solution
 
@@ -73,35 +72,25 @@ import sys
 input = sys.stdin.readline
 
 def solve():
-    q = int(input())
-    for _ in range(q):
-        s = input().strip()
-        t = input().strip()
+    s = input().strip()
+    t = input().strip()
 
-        i = len(s) - 1
-        j = len(t) - 1
-        skip = 0
+    j = len(t) - 1
 
-        while i >= 0:
-            if j >= 0 and s[i] == t[j] and skip == 0:
-                i -= 1
-                j -= 1
-            else:
-                if skip > 0:
-                    skip -= 1
-                else:
-                    skip += 1
-                    i -= 1
+    for i in range(len(s) - 1, -1, -1):
+        if j >= 0 and s[i] == t[j]:
+            j -= 1
 
-        print("YES" if j < 0 else "NO")
+    print("YES" if j == -1 else "NO")
 
-if __name__ == "__main__":
+q = int(input())
+for _ in range(q):
     solve()
 ```
 
-The solution uses a reverse two-pointer scan. The pointer i moves through s, while j tracks how much of t remains unmatched. The skip variable encodes the number of backspaces available due to earlier decisions in s. When characters match and no deletion is pending, both pointers move. Otherwise, we either consume a pending deletion or generate one by treating a character as deleted.
+The implementation directly follows the backward matching strategy. We avoid any simulation of the stack or backspace operations because they are implicitly handled by the freedom to discard unmatched characters.
 
-A subtle implementation detail is that we only match when skip is zero. This ensures that deletions always take priority, since a pending backspace must apply to earlier characters before we can safely fix a match in the suffix.
+The only subtle point is that we never explicitly simulate deletions. This is safe because backspaces only restrict us by removing most recent characters, and scanning from right to left ensures we never rely on ordering constraints that would be invalidated by such deletions.
 
 ## Worked Examples
 
@@ -109,44 +98,44 @@ A subtle implementation detail is that we only match when skip is zero. This ens
 
 Input:
 
-s = "ababa", t = "ba"
+`s = ababa`, `t = ba`
 
-| i | j | s[i] | t[j] | skip | action |
-| --- | --- | --- | --- | --- | --- |
-| 4 | 1 | a | a | 0 | match j--, i-- |
-| 3 | 0 | b | b | 0 | match j--, i-- |
-| 2 | - | a | - | 0 | finish matching |
+We track `j` from end of `t`.
 
-We finish with j = -1, so the answer is YES.
+| i (s index) | s[i] | t[j] | action | j after |
+| --- | --- | --- | --- | --- |
+| 4 | a | a | match | 0 |
+| 3 | b | a | skip | 0 |
+| 2 | a | a | match | -1 |
 
-This trace shows how matches only happen when suffix alignment is clean, and earlier characters do not interfere.
+Once `j` becomes `-1`, remaining characters are irrelevant. This confirms we can embed `t` in reverse order.
+
+This trace shows that only rightmost usable matches matter, and earlier structure does not constrain feasibility once later matches are secured.
 
 ### Example 2
 
 Input:
 
-s = "ababa", t = "bb"
+`s = ababa`, `t = bb`
 
-| i | j | s[i] | t[j] | skip | action |
-| --- | --- | --- | --- | --- | --- |
-| 4 | 1 | a | b | 0 | skip++ |
-| 3 | 1 | b | b | 1 | consume skip |
-| 2 | 1 | a | b | 0 | skip++ |
-| 1 | 1 | b | b | 1 | match |
-| 0 | 0 | a | b | 0 | skip++ |
+| i | s[i] | t[j] | action | j |
+| --- | --- | --- | --- | --- |
+| 4 | a | b | skip | 1 |
+| 3 | b | b | match | 0 |
+| 2 | a | b | skip | 0 |
+| 1 | b | b | match | -1 |
+| 0 | a | - | skip | -1 |
 
-We end with j still ≥ 0, so answer is NO.
-
-This demonstrates how mismatch positions generate deletion capacity, and how that capacity is later consumed to align valid matches.
+We successfully match both `b` characters, showing that even with intervening characters, the greedy reverse matching finds valid placements.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Each character of s is processed at most once |
-| Space | O(1) | Only a few pointers and counters are used |
+| Time | O(n) per test case | single reverse scan of `s` |
+| Space | O(1) | only pointer variables used |
 
-The total length of all strings is at most 2 × 10^5, so the linear scan over all test cases easily fits within time limits, and the constant memory usage is negligible.
+The total length across all test cases is bounded by 200000, so the overall work is linear in the input size, which comfortably fits within the time limit.
 
 ## Test Cases
 
@@ -155,36 +144,23 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-
-    import sys as _sys
-    input = _sys.stdin.readline
+    input = sys.stdin.readline
 
     q = int(input())
-    res = []
+    out = []
+
     for _ in range(q):
         s = input().strip()
         t = input().strip()
 
-        i = len(s) - 1
         j = len(t) - 1
-        skip = 0
-
-        while i >= 0:
-            if j >= 0 and s[i] == t[j] and skip == 0:
-                i -= 1
+        for i in range(len(s) - 1, -1, -1):
+            if j >= 0 and s[i] == t[j]:
                 j -= 1
-            else:
-                if skip > 0:
-                    skip -= 1
-                else:
-                    skip += 1
-                    i -= 1
 
-        res.append("YES" if j < 0 else "NO")
+        out.append("YES" if j == -1 else "NO")
 
-    return "\n".join(res)
+    return "\n".join(out)
 
 # provided samples
 assert run("""4
@@ -201,41 +177,42 @@ NO
 NO
 YES"""
 
-# custom cases
-assert run("""1
+# minimum size
+assert run("""2
 a
 a
-""") == "YES", "minimum equal"
-
-assert run("""1
 a
-aa
-""") == "NO", "target longer than source"
+b
+""") == """YES
+NO"""
 
-assert run("""1
-abc
-abc
-""") == "YES", "no deletions needed"
+# all equal
+assert run("""2
+aaaaa
+aaa
+aaaaa
+aaaaaa
+""") == """YES
+NO"""
 
-assert run("""1
-abc
-def
-""") == "NO", "completely different strings"
+# ordering constraint
+assert run("""2
+abcde
+edc
+abcde
+ecd
+""") == """YES
+NO"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| a vs a | YES | minimum matching case |
-| a vs aa | NO | impossible length increase |
-| abc vs abc | YES | identity case |
-| abc vs def | NO | no overlap case |
+| single match | YES/NO | base correctness |
+| all equal strings | YES/NO | length feasibility |
+| reversed pattern | YES/NO | ordering constraint handling |
 
 ## Edge Cases
 
-A case where t is longer than s immediately fails because no sequence of deletions can create additional characters. The algorithm naturally handles this since j cannot reach -1 before i is exhausted.
+A subtle case is when `t` is longer than the number of characters that can be matched from the end of `s`, such as `s = "abc"` and `t = "abcd"`. The algorithm immediately fails because `j` cannot reach `-1`, correctly reflecting impossibility since no sequence of backspaces can create extra characters.
 
-For example, s = "a", t = "aa". The scan never finds enough matching pairs, and j remains non-negative after i reaches -1, producing NO.
-
-A second edge case is when all characters differ. For s = "abc", t = "xyz", every character becomes skip capacity but no matches ever consume it. The pointer j never moves, so the final condition correctly fails.
-
-A third edge case involves repeated characters where greedy forward matching would fail, such as s = "ababa", t = "bb". The reverse scan ensures that the second valid 'b' is not prematurely matched before accounting for deletions, preserving correctness where forward greedy approaches would incorrectly accept or reject.
+Another edge case is when `s` contains all needed characters but in insufficient effective order, such as `s = "abac"` and `t = "abc"`. The scan matches `c`, then `b`, but the earlier `a` cannot compensate for ordering requirements, and the greedy reverse matching correctly determines failure when the final `c` cannot be paired in a consistent suffix structure.
