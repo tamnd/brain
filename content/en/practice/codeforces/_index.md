@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1506 contests, 8780 problems, 4268 verified."
+description: "Codeforces problem solutions with full editorials. 1507 contests, 8786 problems, 4270 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1506 contests, 8780 problems, 4268 verified.**
+**1507 contests, 8786 problems, 4270 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 85 contests, 473 problems, 280 verified
+## 2018 — 86 contests, 479 problems, 282 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1004](1004/) | [Codeforces Round 495 (Div. 2)](https://codeforces.com/contest/1004) | 6 | 2/6 | Div. 2 | 900-2600 |
 | [1005](1005/) | [Codeforces Round 496 (Div. 3)](https://codeforces.com/contest/1005) | 7 | 5/7 | Div. 3 | 800-2400 |
 | [1006](1006/) | [Codeforces Round 498 (Div. 3)](https://codeforces.com/contest/1006) | 6 | 4/6 | Div. 3 | 800-2100 |
 | [1007](1007/) | [Codeforces Round 497 (Div. 1)](https://codeforces.com/contest/1007) | 5 | 3/5 | Div. 1 | 1300-3400 |
