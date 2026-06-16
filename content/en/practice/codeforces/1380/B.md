@@ -1,7 +1,7 @@
 ---
 title: "CF 1380B - Universal Solution"
-description: "We are asked to play a sequence of rock-paper-scissors rounds against a predictable bot. The bot has a fixed sequence of moves stored in a string of length $n$, where each character is R, P, or S. However, we do not know the bot’s starting position within the string."
-date: "2026-06-11T10:55:49+07:00"
+description: "We are given a string describing a cyclic opponent strategy in a rock-paper-scissors game. The opponent does not adapt; instead, they choose moves according to a fixed circular string. If they start at some position, they follow the string in order and wrap around forever."
+date: "2026-06-16T13:39:17+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1380
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Educational Codeforces Round 91 (Rated for Div. 2)"
 rating: 1400
 weight: 1380
-solve_time_s: 110
+solve_time_s: 304
 verified: false
 draft: false
 ---
@@ -18,37 +18,72 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** greedy  
-**Solve time:** 1m 50s  
+**Solve time:** 5m 4s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to play a sequence of rock-paper-scissors rounds against a predictable bot. The bot has a fixed sequence of moves stored in a string of length $n$, where each character is R, P, or S. However, we do not know the bot’s starting position within the string. The bot’s moves repeat cyclically if we play more than $n$ rounds. Our goal is to select our moves for $n$ rounds in such a way that the **average number of wins over all possible starting positions of the bot** is maximized.
+We are given a string describing a cyclic opponent strategy in a rock-paper-scissors game. The opponent does not adapt; instead, they choose moves according to a fixed circular string. If they start at some position, they follow the string in order and wrap around forever.
 
-The input is several test cases, each giving the bot’s string. The output is a string of our moves of equal length that maximizes our average wins. Since $n$ can be as large as $2 \cdot 10^5$ and there can be up to 1000 test cases, any approach that scales worse than $O(n)$ per test case will likely exceed the time limit.
+We must construct our own length n sequence of moves. The catch is that we do not know the opponent’s starting position. For every possible starting shift of the opponent, we play n rounds and count how many times our move beats theirs. Each shift produces a different win count, and we care about the average of these win counts over all shifts.
 
-Edge cases include strings of length 1, where the choice is trivial, and strings where all characters are the same. Another subtle case is when the bot’s moves are perfectly balanced (equal numbers of R, P, and S), where naive cyclic strategies may appear appealing but the optimal strategy is still to choose the move that beats the most frequent character.
+So the task is not to maximize performance against a single alignment. Instead, we are optimizing the total number of wins aggregated over all cyclic alignments of the opponent string.
+
+The constraint n up to 200000 across all test cases implies we need a linear or near-linear construction per test. Any approach that simulates all shifts explicitly would require O(n^2), which is too slow since that would reach about 4e10 operations in the worst case.
+
+A subtle edge case appears when the opponent string is uniform. For example, if the string is "RRRR", then any position is equivalent. A naive greedy strategy that varies our moves per position might seem reasonable, but it does not help, because every position is symmetric across all shifts, so only aggregate frequency matters.
+
+Another corner case is when the string is balanced like "RSP". Here, different choices of our move affect different shifts unevenly, but again, what matters is total contribution across all rotations, not per-shift optimization.
 
 ## Approaches
 
-The brute-force approach is straightforward. For each possible starting index, we could simulate all $n$ rounds and count wins for every possible sequence of our moves. Then we could average over starting positions and pick the sequence that maximizes this average. This works in theory, but its time complexity is $O(n^2)$ per test case, because there are $n$ starting positions and each requires $n$ comparisons. For $n = 2 \cdot 10^5$, this would result in about $4 \cdot 10^{10}$ operations, which is far too slow.
+A brute-force construction tries every possible candidate sequence of our moves. For each candidate, it simulates all n cyclic shifts of the opponent string, computes win counts, and averages them. Each simulation costs O(n), and there are exponentially many candidate sequences, making this completely infeasible.
 
-The key insight is that the bot’s starting position only shifts its string. We are asked for the sequence that maximizes **the average number of wins over all shifts**. This means that each character’s contribution is symmetric under rotation. Instead of worrying about exact positions, we can consider **frequency**: the optimal move is simply the one that beats the most frequent move in the string. This single choice repeated $n$ times maximizes our wins regardless of how the bot’s string is rotated. The problem reduces from analyzing all rotations to counting the frequency of R, P, and S.
+We can reduce this drastically by observing how each position in our sequence contributes to the global score. Fix a position i in our sequence. As the opponent shift varies, the character aligned with position i cycles through every character of the opponent string exactly once. This means that the contribution of position i depends only on how many opponent characters it can beat in the entire string, not on position-specific alignment.
+
+This decouples the problem: each position in our answer can be chosen independently, and we only need to maximize how many characters in the opponent string it defeats. Since all positions behave identically under cyclic shifts, the optimal choice is the same for every position.
+
+So the problem reduces to computing frequencies of R, S, and P in the opponent string and picking the move that beats the most frequent target.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Too slow |
-| Optimal (frequency-based) | O(n) | O(1) | Accepted |
+| Brute Force | O(2^n · n^2) | O(n) | Too slow |
+| Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For a given string $s$, count the occurrences of each character: $count_R$, $count_P$, and $count_S$. These counts represent how many times the bot would play Rock, Paper, and Scissors respectively.
-2. Determine which move beats the most frequent character. Rock beats Scissors, Paper beats Rock, and Scissors beats Paper. Compare $count_R$, $count_P$, and $count_S$ to see which gives the highest number of guaranteed wins.
-3. Construct our output string by repeating that single move $n$ times. This ensures that, no matter the bot’s starting index, we are always choosing the move that maximizes the total wins averaged over rotations.
-4. Print the result.
+### Key idea
 
-Why it works: Each rotation of the bot's string is just a cyclic shift, so the frequency of moves in the string does not change. Choosing the move that beats the most frequent bot move guarantees the maximum average number of wins, because this move wins against the largest subset of the bot’s moves regardless of the starting position.
+We choose a single move for all positions in our answer, based on which move yields the most total wins across the opponent string.
+
+### Steps
+
+1. Count how many times each character R, S, and P appears in the opponent string.
+
+The goal is to evaluate total effectiveness of each possible move against the full distribution of opponent moves.
+2. Compute the number of wins each possible move would give:
+
+If we play R, we win against S.
+
+If we play S, we win against P.
+
+If we play P, we win against R.
+
+Each of these corresponds to a specific frequency in the opponent string.
+3. Compare the three values:
+
+wins(R) = count of S in the string,
+
+wins(S) = count of P,
+
+wins(P) = count of R.
+4. Select the move with the largest win value. If there is a tie, any of the tied moves is valid.
+5. Output that move repeated n times to form the final answer.
+
+### Why it works
+
+For any fixed position in our sequence, across all cyclic shifts of the opponent string, it interacts once with every character in the opponent string. Therefore its total contribution depends only on the global frequency of opponent symbols, not their order. Since every position has identical behavior under averaging over shifts, choosing the same optimal move everywhere preserves optimality and maximizes the total sum of wins.
 
 ## Python Solution
 
@@ -56,59 +91,81 @@ Why it works: Each rotation of the bot's string is just a cyclic shift, so the f
 import sys
 input = sys.stdin.readline
 
-t = int(input())
-for _ in range(t):
+def solve():
     s = input().strip()
-    count_R = s.count('R')
-    count_P = s.count('P')
-    count_S = s.count('S')
-    
-    if count_R >= count_P and count_R >= count_S:
-        print('P' * len(s))
-    elif count_S >= count_R and count_S >= count_P:
-        print('R' * len(s))
+    n = len(s)
+
+    cntR = cntS = cntP = 0
+    for ch in s:
+        if ch == 'R':
+            cntR += 1
+        elif ch == 'S':
+            cntS += 1
+        else:
+            cntP += 1
+
+    # wins if we choose each move
+    winR = cntS
+    winS = cntP
+    winP = cntR
+
+    if winR >= winS and winR >= winP:
+        best = 'R'
+    elif winS >= winP:
+        best = 'S'
     else:
-        print('S' * len(s))
+        best = 'P'
+
+    print(best * n)
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        solve()
 ```
 
-The code first reads the number of test cases. For each test case, it counts the occurrences of each move in the bot’s string. We then choose the move that beats the most frequent bot move and repeat it $n$ times. The comparisons handle ties naturally because any of the moves that beat the highest-frequency character is valid. The `strip()` ensures we remove the newline character from the input string.
+The counting step separates the string into three accumulators, which is the only information needed from the opponent. The comparison directly evaluates the three possible strategies.
+
+The key implementation detail is that ties must be handled consistently. Any tie-break is correct, so the code simply prefers R, then S, then P by ordering of conditions.
 
 ## Worked Examples
 
-Sample 1:
+### Example 1: `RSP`
 
-| Variable | Value |
-| --- | --- |
-| s | "RRRR" |
-| count_R | 4 |
-| count_P | 0 |
-| count_S | 0 |
-| chosen move | P |
-| output | "PPPP" |
+We compute frequencies: R = 1, S = 1, P = 1.
 
-This shows that when the bot always plays Rock, choosing Paper for every round guarantees a win every time.
+| Candidate move | Beats | Total wins |
+| --- | --- | --- |
+| R | S | 1 |
+| S | P | 1 |
+| P | R | 1 |
 
-Sample 2:
+All moves are equivalent, so any uniform string is optimal. Suppose we choose "R".
 
-| Variable | Value |
-| --- | --- |
-| s | "RSP" |
-| count_R | 1 |
-| count_P | 1 |
-| count_S | 1 |
-| chosen move | P (or R or S) |
-| output | "PPP" |
+For every rotation, each position sees each opponent character exactly once, so every shift yields exactly one win per full cycle, producing uniform behavior.
 
-Here, all moves are equally frequent. Choosing Paper wins against Rock, loses to Scissors, and draws against Paper. Averaged over all rotations, this gives the maximum expected wins.
+### Example 2: `RRRR`
+
+Frequencies: R = 4, S = 0, P = 0.
+
+| Candidate move | Beats | Total wins |
+| --- | --- | --- |
+| R | S | 0 |
+| S | P | 0 |
+| P | R | 4 |
+
+Best move is P, so output is "PPPP".
+
+This confirms that even though the opponent never plays S or P, choosing P exploits the fact that P beats R in every alignment.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We scan the string once to count frequencies. |
-| Space | O(1) | Only three counters are needed regardless of string length. |
+| Time | O(n) | Each test case scans the string once to count frequencies |
+| Space | O(1) | Only three counters are used regardless of input size |
 
-Given the constraints (sum of lengths of all strings ≤ 2·10^5), this solution easily fits within 2 seconds and 256 MB memory.
+The total input size across test cases is bounded by 2e5, so a linear scan per test case is easily fast enough under the time limit.
 
 ## Test Cases
 
@@ -117,28 +174,78 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-    exec(open(__file__).read(), globals())
-    return output.getvalue().strip()
+    import sys
+    input = sys.stdin.readline
 
-# Provided samples
-assert run("3\nRRRR\nRSP\nS\n") == "PPPP\nPPP\nR", "Sample tests"
+    def solve():
+        s = input().strip()
+        cntR = cntS = cntP = 0
+        for ch in s:
+            if ch == 'R':
+                cntR += 1
+            elif ch == 'S':
+                cntS += 1
+            else:
+                cntP += 1
 
-# Custom cases
-assert run("1\nP\n") == "S", "Single P"
-assert run("1\nRS\n") == "PP", "Tie counts"
-assert run("1\nRRRRRRRRRR\n") == "PPPPPPPPPP", "All equal R"
-assert run("1\nRSPRSPRSPR\n") == "PPPPPPPPPP", "Mixed string"
+        winR = cntS
+        winS = cntP
+        winP = cntR
+
+        if winR >= winS and winR >= winP:
+            best = 'R'
+        elif winS >= winP:
+            best = 'S'
+        else:
+            best = 'P'
+
+        return best * len(s)
+
+    t = int(sys.stdin.readline())
+    out = []
+    for _ in range(t):
+        s = sys.stdin.readline().strip()
+        cntR = s.count('R')
+        cntS = s.count('S')
+        cntP = s.count('P')
+
+        winR = cntS
+        winS = cntP
+        winP = cntR
+
+        if winR >= winS and winR >= winP:
+            out.append('R' * len(s))
+        elif winS >= winP:
+            out.append('S' * len(s))
+        else:
+            out.append('P' * len(s))
+
+    return "\n".join(out) + "\n"
+
+# provided samples
+assert run("3\nRRRR\nRSP\nS\n") == "PPPP\nRSP\nR\n"
+
+# all same character
+assert run("1\nSSSSS\n") == "PPPPP\n"
+
+# skewed distribution
+assert run("1\nRRSS") == "PPPP\n"
+
+# single char
+assert run("1\nR\n") == "P\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| "1\nP\n" | "S" | Single-character string |
-| "1\nRS\n" | "PP" | Tied counts of R and S |
-| "1\nRRRRRRRRRR\n" | "PPPPPPPPPP" | All moves the same |
-| "1\nRSPRSPRSPR\n" | "PPPPPPPPPP" | Mixed moves |
+| RRRRR | PPPPP | Maximize wins against uniform opponent |
+| RSP | any optimal uniform choice | Balanced distribution handling |
+| RRSS | PPPP | Frequency bias correctness |
+| S | R | Minimal input correctness |
 
 ## Edge Cases
 
-For a single-character string such as `"S"`, the algorithm counts one Scissors, zero Rock, zero Paper. The optimal move is Rock, repeated once, yielding `"R"`. The frequency-based choice naturally handles this without special cases. For strings with equal counts of multiple characters like `"RSP"`, the algorithm picks any move that beats one of the highest-frequency characters, which maximizes the average number of wins over all rotations. The code handles ties correctly because the comparisons use `>=` to cover equality, and repeating a single move is still optimal.
+For a single-character string like "R", the opponent always plays R in every shift. The algorithm counts R = 1 and selects P because P beats R. The output becomes "P", which yields a guaranteed win in every evaluation.
+
+For uniform strings like "RRRRRR", every shift is identical. The algorithm correctly identifies that only moves beating R matter, so it selects P for all positions. Since every alignment is identical, this choice maximizes all win counts simultaneously.
+
+For highly mixed strings such as "RSPRSP", all frequencies are equal. Any of R, S, or P is optimal, and the tie-breaking rule produces a valid uniform answer.
