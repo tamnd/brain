@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1527 contests, 8863 problems, 4330 verified."
+description: "Codeforces problem solutions with full editorials. 1528 contests, 8866 problems, 4331 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1527 contests, 8863 problems, 4330 verified.**
+**1528 contests, 8866 problems, 4331 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 106 contests, 556 problems, 342 verified
+## 2018 — 107 contests, 559 problems, 343 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [983](983/) | [Codeforces Round 483 (Div. 1) [Thanks, Botan Investments and Victor Shaburov!]](https://codeforces.com/contest/983) | 3 | 1/3 | Div. 1 | 1800-2800 |
 | [984](984/) | [Codeforces Round 483 (Div. 2) [Thanks, Botan Investments and Victor Shaburov!]](https://codeforces.com/contest/984) | 1 | 1/1 | Div. 2 | 800-800 |
 | [985](985/) | [Educational Codeforces Round 44 (Rated for Div. 2)](https://codeforces.com/contest/985) | 4 | 3/4 | Div. 2 | 1100-2300 |
 | [986](986/) | [Codeforces Round 485 (Div. 1)](https://codeforces.com/contest/986) | 3 | 3/3 | Div. 1 | 1600-3300 |
