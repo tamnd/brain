@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9014 problems, 4437 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9018 problems, 4438 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9014 problems, 4437 verified.**
+**1576 contests, 9018 problems, 4438 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 909 problems, 541 verified
+## 2019 — 159 contests, 913 problems, 542 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -775,7 +775,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1264](1264/) | [Codeforces Round 604 (Div. 1)](https://codeforces.com/contest/1264) | 6 | 2/6 | Div. 1 | 1500-3500 |
 | [1265](1265/) | [Codeforces Round 604 (Div. 2)](https://codeforces.com/contest/1265) | 2 | 1/2 | Div. 2 | 1000-2100 |
 | [1266](1266/) | [Codeforces Global Round 6](https://codeforces.com/contest/1266) | 5 | 2/5 | Global | 1000-3300 |
-| [1267](1267/) | [2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1267) | 8 | 2/8 | ICPC/IOI | 900-3200 |
+| [1267](1267/) | [2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1267) | 12 | 3/12 | ICPC/IOI | 900-3500 |
 | [1268](1268/) | [Codeforces Round 609 (Div. 1)](https://codeforces.com/contest/1268) | 3 | 1/3 | Div. 1 | 2000-3400 |
 | [1269](1269/) | [Codeforces Round 609 (Div. 2)](https://codeforces.com/contest/1269) | 1 | 1/1 | Div. 2 | 1500-1500 |
 | [1270](1270/) | [Good Bye 2019](https://codeforces.com/contest/1270) | 9 | 2/9 | Special | 800-3500 |
