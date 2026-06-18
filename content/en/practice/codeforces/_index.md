@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1613 contests, 9232 problems, 4541 verified."
+description: "Codeforces problem solutions with full editorials. 1614 contests, 9241 problems, 4550 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1613 contests, 9232 problems, 4541 verified.**
+**1614 contests, 9241 problems, 4550 verified.**
 
-## Unknown — 26 contests, 98 problems, 49 verified
+## Unknown — 27 contests, 107 problems, 58 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106259](106259/) | [CUET Inter University Programming Contest 2025](https://codeforces.com/contest/106259) | 9 | 9/9 | Special | - |
 | [106262](106262/) | [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262) | 6 | 6/6 | ICPC/IOI | - |
 | [106268](106268/) | [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268) | 7 | 5/7 | Special | - |
 | [106269](106269/) | [Когнитивные технологии 2025-2026. Третий отбор](https://codeforces.com/contest/106269) | 3 | 0/3 | Special | - |
