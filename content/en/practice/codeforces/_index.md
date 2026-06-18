@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1594 contests, 9151 problems, 4506 verified."
+description: "Codeforces problem solutions with full editorials. 1595 contests, 9154 problems, 4509 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1594 contests, 9151 problems, 4506 verified.**
+**1595 contests, 9154 problems, 4509 verified.**
 
-## Unknown — 14 contests, 69 problems, 35 verified
+## Unknown — 15 contests, 72 problems, 38 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106292](106292/) | [Innopolis Open 2025-2026. Elimination Round 2](https://codeforces.com/contest/106292) | 3 | 3/3 | Special | - |
 | [106293](106293/) | [Олимпиада 1С, отборочный тур 2025-2026](https://codeforces.com/contest/106293) | 4 | 4/4 | Special | - |
 | [106296](106296/) | [The 4th Universal Cup. Extra Stage 3: Osijek (Farhod Contest)](https://codeforces.com/contest/106296) | 8 | 0/8 | Special | - |
 | [106298](106298/) | [OCPC 2024 Summer, Day 4: wuhudsm Contest](https://codeforces.com/contest/106298) | 8 | 7/8 | Special | - |
