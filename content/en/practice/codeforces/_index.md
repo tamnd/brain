@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1608 contests, 9199 problems, 4519 verified."
+description: "Codeforces problem solutions with full editorials. 1609 contests, 9206 problems, 4524 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1608 contests, 9199 problems, 4519 verified.**
+**1609 contests, 9206 problems, 4524 verified.**
 
-## Unknown — 24 contests, 85 problems, 38 verified
+## Unknown — 25 contests, 92 problems, 43 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106268](106268/) | [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268) | 7 | 5/7 | Special | - |
 | [106269](106269/) | [Когнитивные технологии 2025-2026. Третий отбор](https://codeforces.com/contest/106269) | 3 | 0/3 | Special | - |
 | [106271](106271/) | [Муниципальный этап ВсОШ по информатике (программирование), Москва, 2025](https://codeforces.com/contest/106271) | 0 | 0/0 | Special | - |
 | [106273](106273/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (1 группа регионов)](https://codeforces.com/contest/106273) | 0 | 0/0 | Special | - |
