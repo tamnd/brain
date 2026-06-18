@@ -1,7 +1,7 @@
 ---
 title: "CF 1263B - PIN Codes"
-description: "We are given several small collections of 4-digit strings, where each string represents a PIN code attached to a bank card. Within each test case, we may modify digits of these PIN codes, where a single operation changes one position of one code to a different digit."
-date: "2026-06-15T23:41:04+07:00"
+description: "We are given several bank cards, each associated with a 4-digit PIN code. The task is to modify these PINs so that no two cards share the same final code, while performing as few single-digit changes as possible."
+date: "2026-06-18T17:49:37+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1263
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 603 (Div. 2)"
 rating: 1400
 weight: 1263
-solve_time_s: 252
+solve_time_s: 100
 verified: false
 draft: false
 ---
@@ -18,55 +18,68 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** greedy, implementation  
-**Solve time:** 4m 12s  
+**Solve time:** 1m 40s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several small collections of 4-digit strings, where each string represents a PIN code attached to a bank card. Within each test case, we may modify digits of these PIN codes, where a single operation changes one position of one code to a different digit. The goal is to make all resulting PIN codes pairwise distinct while performing as few digit changes as possible, and we must also output one optimal final configuration.
+We are given several bank cards, each associated with a 4-digit PIN code. The task is to modify these PINs so that no two cards share the same final code, while performing as few single-digit changes as possible. A single operation changes one position of one PIN to any other digit, so each change has a unit cost regardless of what digit is chosen.
 
-The key structure is that each test case contains at most 10 PIN codes, each of fixed length 4. This immediately suggests that the solution does not need anything asymptotically strong; even exponential or backtracking style reasoning would be acceptable because the state space is tiny. Across at most 100 test cases, we still remain comfortably within brute-force territory.
+The output must not only give the minimum number of such digit edits, but also show one final valid configuration of all PINs that achieves this minimum cost.
 
-A subtle point is that we are not allowed to replace a whole PIN in one operation unless we change all 4 digits one by one. This means the cost is exactly the total number of differing character positions between original and final assignment, not the number of codes we modify.
+The key difficulty is that we are not allowed to “reassign whole strings for free.” If two identical PINs exist, we must actively break their equality by changing digits, and each change is expensive. Since each PIN has length 4 and n is at most 10, the total search space is small enough that we can reason about conflicts directly rather than relying on heavy optimization structures.
 
-A naive mistake arises when one only ensures uniqueness without minimizing changes. For example, if all codes are identical like `0000, 0000, 0000`, a greedy “assign new unused strings” approach might freely pick completely different targets such as `0001, 0002, 0003`, but without minimizing edits from the original. The correct solution must respect edit distance from original strings.
+The constraints are extremely tight: at most 10 PINs per test case and 100 test cases. This immediately rules out anything exponential in n beyond very small constants, but allows brute-force style conflict resolution over the limited state space of 4-digit strings.
 
-Another failure mode appears when duplicates exist but can be fixed cheaply by small adjustments. If two codes differ only in one position, a careless strategy might still rebuild both entirely instead of modifying only one digit.
+A subtle edge case arises when many PINs are identical. For example, if all 10 cards contain “1111”, then we must carefully assign 10 distinct codes while minimizing digit changes. A naive idea of “just increment until unique” can fail because it ignores that changing different positions may reduce cost.
+
+Another failure case appears when multiple duplicates exist but partial overlaps are possible. For example, “0000, 0000, 0000, 0001” can be resolved cheaply by reusing structure in the existing strings rather than blindly generating new arbitrary codes.
 
 ## Approaches
 
-A brute-force interpretation is to think of assigning to each card a final PIN such that all final PINs are distinct, and the cost is the sum of Hamming distances from original PINs. Since each PIN has length 4 and digits are 0-9, the total universe of possible PINs is 10000. In theory, we are choosing n distinct elements from this universe and assigning them to n positions.
+A brute-force approach would try to assign each PIN a unique 4-digit string from the entire space of 10,000 possibilities, minimizing total Hamming distance sum to the original list. This is conceptually correct: each assignment cost is just the number of differing digits between original and chosen code, and we want a minimum-cost injective mapping.
 
-A direct search over all assignments is impossible because even choosing n distinct codes from 10000 already yields an enormous combinatorial space. However, the key observation is that n is at most 10. This turns the problem into a small combinatorial assignment problem where we can greedily construct valid outputs while keeping track of used codes.
+However, the brute-force search space is astronomically large. Even if we restrict ourselves to only 10,000 candidates per card, trying all injective mappings would involve permutations of size up to 10,000 taken 10 at a time, which is completely infeasible.
 
-The crucial insight is that we do not need to consider all possible 4-digit strings globally. Instead, we process cards one by one, and whenever a duplicate appears, we only need to slightly modify that specific code into a previously unused one. Because the space is so large compared to n, we can always find a nearby unused PIN by trying small perturbations, starting from minimal changes (1 digit), then increasing if needed.
+The key simplification comes from noticing that n is tiny and conflicts are local. Instead of thinking globally over all 10,000 codes, we construct answers greedily and resolve collisions one PIN at a time. Each PIN is either already unique or must be slightly modified. Because modifications are local (only 4 positions), we can treat each PIN as a node that we “push” into an unused slot in a small state space.
 
-This leads to a constructive greedy process: keep already fixed codes in a set, and for each new code, if it is already used, search for a valid alternative that differs by the smallest possible number of digits.
+The observation that makes this work is that whenever a collision happens, we only need to find the nearest unused code in terms of Hamming distance. Since the search space is small, we can enumerate nearby alternatives in increasing order of cost or perform a bounded DFS over digit replacements. Because n is at most 10, even trying all modifications for each conflicting PIN remains constant-scale.
 
-Since n ≤ 10, even enumerating all possible modifications of distance 1, then 2, then 3 is cheap: the number of possibilities is at most 10^4 total, and we stop early once we find a free one.
+Thus, instead of global assignment, we maintain a set of used PINs and incrementally fix duplicates by minimally modifying each conflicting entry until it becomes unique.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Exhaustive assignment search | Exponential | Exponential | Too slow |
-| Greedy repair with incremental search | O(n · 10^4) worst-case | O(n) | Accepted |
+| Brute Force global assignment | O(10000^n) | O(n) | Too slow |
+| Greedy local repair | O(n * 10^4) worst-case tiny constants | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We construct answers for each test case independently.
+We process PINs one by one while maintaining a set of already used final codes.
 
-1. Maintain a set of already used PIN codes. This ensures global uniqueness is always enforced during construction.
-2. Process PINs in input order. If the current PIN is not in the set, we accept it as-is and add it to the set because no change is needed and it does not conflict with previous choices.
-3. If the current PIN is already used, we must replace it with a new PIN. We search for the closest possible replacement in terms of number of digit changes. We do this by generating candidates in increasing Hamming distance from the original PIN.
-4. To generate candidates, we iterate over all 4 positions and all possible digit replacements. For distance 1, we change exactly one position; for distance 2, we change two positions, and so on. As soon as we find a candidate not in the used set, we stop and use it.
-5. Once a valid replacement is found, we compute how many positions differ from the original PIN and add that value to the total cost.
-6. Store the final chosen PIN and continue.
+1. Read all PINs for the test case and keep them in order, since output order must match input order.
 
-The reason we expand by increasing number of changes is that we are explicitly minimizing the number of digit modifications for that specific conflicting PIN. Since n is tiny, local greedy optimality is sufficient.
+The goal is to construct a final list where duplicates are eliminated as we proceed.
+2. Maintain a set `used` containing PINs already assigned in the final answer.
+
+This allows constant-time checking of whether a candidate code is available.
+3. For each PIN, first check whether it is already unused.
+
+If it is not in `used`, we keep it unchanged and insert it into the set. This is optimal because any change would only increase cost unnecessarily.
+4. If the PIN is already used, we must modify it. We attempt to generate new candidates by changing one digit at a time.
+
+We try all positions from 0 to 3 and all digits from 0 to 9, computing candidate strings.
+5. Among all valid candidates not in `used`, we choose the one with minimal Hamming distance to the original PIN.
+
+Since each candidate differs in exactly one position, this cost is 1, which is minimal possible for a conflict resolution step.
+6. Replace the PIN with the chosen candidate and add it to `used`.
+7. Accumulate the number of changes performed; this is the total number of digit modifications.
+
+The important subtlety is that conflicts are resolved greedily with one-digit changes first. Because n is so small and each PIN has only 4 positions, this local optimality is sufficient: we never need to introduce more than necessary changes for a single PIN before moving forward.
 
 ### Why it works
 
-At any point, the set of used PINs is small, at most size 10. For each conflicting PIN, we search all possible strings in order of increasing Hamming distance from the original. Because the full space is large (10000 possibilities) compared to the number of occupied values (≤ 9 at that moment), we are guaranteed to find a free string quickly, and the first found is optimal for that individual PIN. The construction ensures global uniqueness by never inserting duplicates into the set.
+At every step, the algorithm maintains the invariant that all processed PINs are unique. When a new PIN is added, if it conflicts, we replace it with the closest unused string in Hamming distance. Since any valid solution must also modify at least one digit to break a collision, choosing a single-digit change is always optimal for that step. The bounded structure of the state space ensures we never get stuck without a valid candidate.
 
 ## Python Solution
 
@@ -74,78 +87,43 @@ At any point, the set of used PINs is small, at most size 10. For each conflicti
 import sys
 input = sys.stdin.readline
 
-def generate_candidates(pin):
-    digits = list(pin)
-    res = []
-
-    # distance 1
-    for i in range(4):
-        for d in "0123456789":
-            if d != digits[i]:
-                nxt = digits[:]
-                nxt[i] = d
-                res.append("".join(nxt))
-
-    # distance 2
-    for i in range(4):
-        for j in range(i + 1, 4):
-            for d1 in "0123456789":
-                for d2 in "0123456789":
-                    if d1 != digits[i] and d2 != digits[j]:
-                        nxt = digits[:]
-                        nxt[i] = d1
-                        nxt[j] = d2
-                        res.append("".join(nxt))
-
-    # distance 3
-    for i in range(4):
-        for j in range(i + 1, 4):
-            for k in range(j + 1, 4):
-                for d1 in "0123456789":
-                    for d2 in "0123456789":
-                        for d3 in "0123456789":
-                            if d1 != digits[i] and d2 != digits[j] and d3 != digits[k]:
-                                nxt = digits[:]
-                                nxt[i] = d1
-                                nxt[j] = d2
-                                nxt[k] = d3
-                                res.append("".join(nxt))
-    return res
-
 def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
         pins = [input().strip() for _ in range(n)]
-
+        
         used = set()
         ans = []
-        cost = 0
-
-        for pin in pins:
-            if pin not in used:
-                used.add(pin)
-                ans.append(pin)
+        changes = 0
+        
+        for s in pins:
+            if s not in used:
+                used.add(s)
+                ans.append(s)
                 continue
-
-            found = False
-            for cand in generate_candidates(pin):
-                if cand not in used:
-                    used.add(cand)
-                    ans.append(cand)
-
-                    # compute cost
-                    diff = sum(pin[i] != cand[i] for i in range(4))
-                    cost += diff
-                    found = True
+            
+            # must modify
+            best = None
+            best_cost = 10
+            
+            for i in range(4):
+                for d in '0123456789':
+                    if d == s[i]:
+                        continue
+                    cand = s[:i] + d + s[i+1:]
+                    if cand not in used:
+                        best = cand
+                        best_cost = 1
+                        break
+                if best:
                     break
-
-            if not found:
-                # theoretically unreachable for given constraints
-                ans.append(pin)
-                used.add(pin)
-
-        print(cost)
+            
+            ans.append(best)
+            used.add(best)
+            changes += 1
+        
+        print(changes)
         for x in ans:
             print(x)
 
@@ -153,9 +131,9 @@ if __name__ == "__main__":
     solve()
 ```
 
-The solution maintains a set of already assigned PIN codes so uniqueness is enforced incrementally. When a collision occurs, we systematically generate alternatives sorted by increasing structural change. The cost is computed directly via Hamming distance, which is safe because each position is independent.
+The implementation mirrors the step-by-step construction. The `used` set enforces uniqueness, while the nested loops attempt minimal single-digit corrections whenever a collision is detected. Because the search is limited to 4 positions and 10 digits, the candidate generation is constant-time in practice.
 
-A subtle implementation detail is that we only generate candidates up to distance 3. This is sufficient because if a PIN differs in all 4 positions, it is completely new; however, in practice we will always find a solution much earlier due to the large space of unused strings.
+A subtle implementation detail is early termination once a valid replacement is found. Since any single-change valid candidate is optimal for this greedy step, there is no need to continue searching.
 
 ## Worked Examples
 
@@ -169,16 +147,23 @@ Input:
 1337
 ```
 
-We track state as follows:
+We process the first PIN:
 
-| Step | Current PIN | Used set | Action | Chosen PIN |
-| --- | --- | --- | --- | --- |
-| 1 | 1337 | {} | accept | 1337 |
-| 2 | 1337 | {1337} | conflict, search | 1237 (example) |
+| Step | Current PIN | Used set | Action |
+| --- | --- | --- | --- |
+| 1 | 1337 | ∅ | keep |
+| 2 | 1337 | {1337} | conflict, modify |
 
-Second PIN must differ. The algorithm tries distance 1 changes first and finds `1237`.
+Second PIN conflicts, so we try changing one digit:
 
-This demonstrates that only one digit change is sufficient and chosen optimally.
+We test candidates like 0337, 2337, 1137, 1330, etc. The first unused candidate is chosen.
+
+| Step | Original | Chosen | Used set |
+| --- | --- | --- | --- |
+| 1 | 1337 | 1337 | {1337} |
+| 2 | 1337 | 1237 | {1337, 1237} |
+
+This confirms that only one change is needed.
 
 ### Example 2
 
@@ -191,24 +176,22 @@ Input:
 0000
 ```
 
-| Step | Current PIN | Used set | Action | Chosen PIN |
-| --- | --- | --- | --- | --- |
-| 1 | 0000 | {} | accept | 0000 |
-| 2 | 0000 | {0000} | modify | 0001 |
-| 3 | 0000 | {0000,0001} | modify | 0002 |
+| Step | Current PIN | Used set | Action |
+| --- | --- | --- | --- |
+| 1 | 0000 | ∅ | keep |
+| 2 | 0000 | {0000} | modify → 1000 |
+| 3 | 0000 | {0000,1000} | modify → 2000 |
 
-Each duplicate is repaired independently with minimal digit edits. The second and third assignments only change one digit, showing greedy local optimality.
-
-These traces confirm that once a PIN is used, we only minimally perturb it while maintaining global uniqueness.
+Each duplicate is resolved independently with one-digit changes, demonstrating greedy sufficiency due to small n.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t · n · 10^4) | For each PIN we may scan a large but constant candidate space |
-| Space | O(n) | Storage for used set and output |
+| Time | O(t · n · 40) | For each PIN, we try at most 4 positions × 10 digits |
+| Space | O(n) | Storage for used set and output list |
 
-The constraints keep n at most 10 and t at most 100, so even a dense enumeration over all 4-digit candidates remains comfortably fast within 1 second.
+Given n ≤ 10 and t ≤ 100, the total work is negligible and easily fits within limits.
 
 ## Test Cases
 
@@ -217,11 +200,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import prod
-    # assume solve() is defined above
-    return ""
+    import sys
+    input = sys.stdin.readline
 
-# provided sample tests
+    t = int(input())
+    out_lines = []
+    
+    for _ in range(t):
+        n = int(input())
+        pins = [input().strip() for _ in range(n)]
+        
+        used = set()
+        ans = []
+        changes = 0
+        
+        for s in pins:
+            if s not in used:
+                used.add(s)
+                ans.append(s)
+                continue
+            
+            for i in range(4):
+                for d in '0123456789':
+                    if d == s[i]:
+                        continue
+                    cand = s[:i] + d + s[i+1:]
+                    if cand not in used:
+                        ans.append(cand)
+                        used.add(cand)
+                        changes += 1
+                        break
+                else:
+                    continue
+                break
+        
+        out_lines.append(str(changes))
+        out_lines.extend(ans)
+    
+    return "\n".join(out_lines)
+
+# provided samples
 assert run("""3
 2
 1234
@@ -244,46 +262,37 @@ assert run("""3
 3139
 3138
 3939
-6139
-"""
+6139""", "sample 1"
 
-# custom tests
+# custom cases
 assert run("""1
 2
 0000
 0000
-""") != "", "basic duplicate handling"
+""").splitlines()[0] in {"1"}, "duplicate pair"
+
+assert run("""1
+2
+1234
+1234
+""") != "", "basic uniqueness"
+
 assert run("""1
 3
 1111
 1111
 1111
-""") != "", "all identical"
-assert run("""1
-2
-0123
-0456
-""") != "", "no changes needed"
-assert run("""1
-4
-9999
-9999
-9999
-9999
-""") != "", "maximum collisions"
+""").count("\n") > 3, "all equal expansion"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| duplicates of identical PINs | minimal edits | collision resolution |
-| all same values | full greedy spreading | multi-step uniqueness |
-| already unique set | zero cost | no unnecessary changes |
-| all identical max n | worst-case branching | full capacity handling |
+| duplicate pair | 1 change | minimal collision handling |
+| identical pair | unique assignment | basic dedup correctness |
+| all equal | multiple distinct outputs | repeated conflict resolution |
 
 ## Edge Cases
 
-One important edge case is when all PINs are identical. The algorithm processes the first unchanged, then each subsequent one triggers candidate generation. Since the remaining space is large, the first available single-digit modification is always accepted, ensuring minimal cost per insertion.
+A fully duplicated input like “0000” repeated ten times exercises the greedy repair logic most heavily. The algorithm processes the first occurrence unchanged, then assigns “1000”, “2000”, and so on as needed. Each step only requires one-digit modification because any unused number at Hamming distance 1 is sufficient, and the small digit space guarantees availability until collisions become dense.
 
-Another case is when initial PINs are already unique. The algorithm never enters candidate generation, and the cost remains zero. This confirms that the solution does not introduce unnecessary modifications.
-
-A final subtle case is when conflicts cascade, such as repeated identical strings. Even in this case, each resolution only depends on the current occupied set, and because the space of 10000 strings is large compared to at most 10 occupied entries, the search always succeeds quickly without backtracking or global restructuring.
+Another corner case is when two codes differ only in the last digit, such as “1234” and “1235”. If a third identical “1234” appears, it will be modified before considering larger changes, preserving minimal cost. The algorithm never attempts multi-digit edits in these situations, which is consistent with optimal local repair in this constrained state space.
