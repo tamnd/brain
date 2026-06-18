@@ -1,23 +1,23 @@
 ---
 title: "Codeforces Round 734 (Div. 3)"
-description: "7 problems from Codeforces Round 734 (Div. 3) (contest 1551), difficulty 800-2200. 4/7 solutions verified against sample I/O."
+description: "8 problems from Codeforces Round 734 (Div. 3) (contest 1551), difficulty 800-2200. 4/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming", "greedy", "math", "strings", "binary-search", "constructive-algorithms", "data-structures"]
 categories: ["algorithms"]
 contest_id: 1551
 contest_type: "Div. 3"
 rating_range: "800-2200"
-n_problems: 7
+n_problems: 8
 n_verified: 4
-total_solve_s: 2211
+total_solve_s: 2295
 contest_year: 2021
-date: "2026-06-10T15:33:27+07:00"
+date: "2026-06-10T18:42:47+07:00"
 weight: 1551
 draft: false
 ---
 
 # [Codeforces Round 734 (Div. 3)](https://codeforces.com/contest/1551)
 
-Div. 3 | 7 problems | 4/7 verified | Difficulty 800-2200 | 36m 51s
+Div. 3 | 8 problems | 4/8 verified | Difficulty 800-2200 | 38m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,5 @@ Div. 3 | 7 problems | 4/7 verified | Difficulty 800-2200 | 36m 51s
 | [C](C/) | [Interesting Story](https://codeforces.com/problemset/problem/1551/C) | 1500 | greedy, sortings, strings | 14,538 | 4m 47s | ✓ |
 | [D1](D1/) | [Domino (easy version)](https://codeforces.com/problemset/problem/1551/D1) | 1700 | constructive-algorithms, math | 7,573 | 7m 9s |  |
 | [D2](D2/) | [Domino (hard version)](https://codeforces.com/problemset/problem/1551/D2) | 2100 | constructive-algorithms, implementation, math | 2,990 | 5m 14s |  |
+| [E](E/) | [Fixed Points](https://codeforces.com/problemset/problem/1551/E) | 2000 | binary-search, brute-force, dp | 4,537 | 1m 24s |  |
 | [F](F/) | [Equidistant Vertices](https://codeforces.com/problemset/problem/1551/F) | 2200 | brute-force, combinatorics, dfs-and-similar | 2,177 | 3m 54s | ✓ |
