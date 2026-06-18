@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9005 problems, 4425 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9005 problems, 4426 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9005 problems, 4425 verified.**
+**1576 contests, 9005 problems, 4426 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 900 problems, 529 verified
+## 2019 — 159 contests, 900 problems, 530 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -637,7 +637,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1100](1100/) | [Codeforces Round 532 (Div. 2)](https://codeforces.com/contest/1100) | 6 | 4/6 | Div. 2 | 1000-2500 |
 | [1101](1101/) | [Educational Codeforces Round 58 (Rated for Div. 2)](https://codeforces.com/contest/1101) | 7 | 5/7 | Div. 2 | 1000-2400 |
 | [1102](1102/) | [Codeforces Round 531 (Div. 3)](https://codeforces.com/contest/1102) | 6 | 3/6 | Div. 3 | 800-2000 |
-| [1103](1103/) | [Codeforces Round 534 (Div. 1)](https://codeforces.com/contest/1103) | 4 | 2/4 | Div. 1 | 1400-3100 |
+| [1103](1103/) | [Codeforces Round 534 (Div. 1)](https://codeforces.com/contest/1103) | 4 | 3/4 | Div. 1 | 1400-3100 |
 | [1104](1104/) | [Codeforces Round 534 (Div. 2)](https://codeforces.com/contest/1104) | 2 | 2/2 | Div. 2 | 800-1200 |
 | [1105](1105/) | [Codeforces Round 533 (Div. 2)](https://codeforces.com/contest/1105) | 4 | 4/4 | Div. 2 | 1100-1900 |
 | [1106](1106/) | [Codeforces Round 536 (Div. 2)](https://codeforces.com/contest/1106) | 5 | 4/5 | Div. 2 | 800-2400 |
