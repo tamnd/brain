@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9022 problems, 4442 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9024 problems, 4443 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9022 problems, 4442 verified.**
+**1576 contests, 9024 problems, 4443 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -791,7 +791,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 768 problems, 335 verified
+## 2020 — 159 contests, 770 problems, 336 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -815,7 +815,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1303](1303/) | [Educational Codeforces Round 82 (Rated for Div. 2)](https://codeforces.com/contest/1303) | 6 | 2/6 | Div. 2 | 800-2800 |
 | [1304](1304/) | [Codeforces Round 620 (Div. 2)](https://codeforces.com/contest/1304) | 6 | 2/6 | Div. 2 | 1100-2400 |
 | [1305](1305/) | [Ozon Tech Challenge 2020 (Div.1 + Div.2, Rated, T-shirts + prizes!)](https://codeforces.com/contest/1305) | 8 | 3/8 | Special | 800-3500 |
-| [1307](1307/) | [Codeforces Round 621 (Div. 1 + Div. 2)](https://codeforces.com/contest/1307) | 5 | 3/5 | Div. 1+2 | 1300-3100 |
+| [1307](1307/) | [Codeforces Round 621 (Div. 1 + Div. 2)](https://codeforces.com/contest/1307) | 7 | 4/7 | Div. 1+2 | 800-3300 |
 | [1310](1310/) | [VK Cup 2019-2020 - Elimination Round (Engine)](https://codeforces.com/contest/1310) | 5 | 0/5 | Special | 1700-3400 |
 | [1311](1311/) | [Codeforces Round 624 (Div. 3)](https://codeforces.com/contest/1311) | 3 | 0/3 | Div. 3 | 800-2200 |
 | [1312](1312/) | [Educational Codeforces Round 83 (Rated for Div. 2)](https://codeforces.com/contest/1312) | 4 | 0/4 | Div. 2 | 1000-2600 |
