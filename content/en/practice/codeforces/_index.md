@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9004 problems, 4424 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9005 problems, 4425 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9004 problems, 4424 verified.**
+**1576 contests, 9005 problems, 4425 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -472,7 +472,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 150 contests, 690 problems, 429 verified
+## 2018 — 150 contests, 691 problems, 430 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -607,7 +607,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1070](1070/) | [2018-2019 ICPC, NEERC, Southern Subregional Contest (Online Mirror, ACM-ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1070) | 10 | 4/10 | ICPC/IOI | 1300-3000 |
 | [1071](1071/) | [Codeforces Round 517 (Div. 1, based on Technocup 2019 Elimination Round 2)](https://codeforces.com/contest/1071) | 1 | 0/1 | Div. 1 | 3500-3500 |
 | [1073](1073/) | [Educational Codeforces Round 53 (Rated for Div. 2)](https://codeforces.com/contest/1073) | 7 | 6/7 | Div. 2 | 1000-2600 |
-| [1075](1075/) | [Lyft Level 5 Challenge 2018 - Final Round (Open Div. 2)](https://codeforces.com/contest/1075) | 1 | 1/1 | Div. 2 | 800-800 |
+| [1075](1075/) | [Lyft Level 5 Challenge 2018 - Final Round (Open Div. 2)](https://codeforces.com/contest/1075) | 2 | 2/2 | Div. 2 | 800-1200 |
 | [1076](1076/) | [Educational Codeforces Round 54 (Rated for Div. 2)](https://codeforces.com/contest/1076) | 7 | 6/7 | Div. 2 | 1200-3000 |
 | [1077](1077/) | [Codeforces Round 521 (Div. 3)](https://codeforces.com/contest/1077) | 7 | 6/7 | Div. 3 | 800-2100 |
 | [1078](1078/) | [Codeforces Round 522 (Div. 1, based on Technocup 2019 Elimination Round 3)](https://codeforces.com/contest/1078) | 1 | 1/1 | Div. 1 | 3400-3400 |
