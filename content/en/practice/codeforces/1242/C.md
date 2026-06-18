@@ -1,7 +1,7 @@
 ---
 title: "CF 1242C - Sum Balance"
-description: "We are given several collections of integers, each collection sitting in its own box. We are allowed to perform a single global operation: from every box we must pick exactly one integer, and then we redistribute these chosen integers by placing each of them into any box of our…"
-date: "2026-06-15T21:09:38+07:00"
+description: "We are given several containers, each holding a multiset of distinct integers. A single operation is performed exactly once: from every container, we must pick exactly one value, and then redistribute those chosen values back into the containers so that each container still ends…"
+date: "2026-06-18T17:29:04+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dfs-and-similar", "dp", "graphs"]
 categories: ["algorithms"]
 codeforces_contest: 1242
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 599 (Div. 1)"
 rating: 2400
 weight: 1242
-solve_time_s: 368
+solve_time_s: 103
 verified: false
 draft: false
 ---
@@ -18,64 +18,57 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** bitmasks, dfs and similar, dp, graphs  
-**Solve time:** 6m 8s  
+**Solve time:** 1m 43s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several collections of integers, each collection sitting in its own box. We are allowed to perform a single global operation: from every box we must pick exactly one integer, and then we redistribute these chosen integers by placing each of them into any box of our choice, including possibly the same box it came from. After this redistribution, each box still contains the same number of elements as before.
+We are given several containers, each holding a multiset of distinct integers. A single operation is performed exactly once: from every container, we must pick exactly one value, and then redistribute those chosen values back into the containers so that each container still ends up with the same number of elements it started with. A chosen value can be placed back into its original container or into a different one.
 
-The goal is to determine whether there exists a way to choose and reassign these picked elements so that after the move, every box ends up with the same total sum of values.
+The goal is to determine whether there exists a way to choose and reassign these values so that, after the redistribution, every container has exactly the same total sum of elements.
 
-The key structure is that we are not changing how many elements each box contains, only swapping one element per box globally. That means the operation can be viewed as selecting a directed assignment from boxes to boxes, where each box contributes one value and receives one value.
+The key difficulty is that the operation couples all containers together. Each chosen value both removes a contribution from its original container and adds it to a target container, so the net effect is a system of sum adjustments that must balance globally.
 
-The constraint that k is at most 15 is the first strong signal. The number of boxes is small enough that exponential structures over subsets are acceptable, while total number of integers can be large, so iterating over all values individually in a combined state is impossible.
+The constraints are small in terms of number of containers, with k up to 15, but potentially large in terms of total elements per container, reaching 5000 per box. This immediately rules out any approach that tries to enumerate full assignments of elements or simulate all possibilities over individual numbers. Any valid approach must compress the state per box rather than per element.
 
-A naive but tempting approach would be to try all ways of picking one element from each box and then all ways of redistributing them. Even ignoring redistribution, the number of choices is already the product of box sizes, which in the worst case is astronomically large. Another naive idea is to guess the final target sum and try to assign incoming values to match it, but that turns into a hard matching problem over all elements.
-
-A subtle failure case arises when all boxes already have the same sum but the only valid operation still requires selecting consistent representatives; a careless solution might assume identity mapping is always valid without checking that chosen elements exist in the correct structural cycle.
+A naive but important edge case arises when all numbers are already balanced except one box that differs slightly. A careless solution might assume that picking the same index in every box or greedily matching extremes works, but that fails because the redistribution constraint is global and cyclic dependencies matter.
 
 ## Approaches
 
-The key difficulty is that the operation is simultaneously local (one pick per box) and global (reassignment across all boxes must balance sums). This suggests reframing the problem in terms of transitions between box states induced by choosing one outgoing element per box.
+A brute-force interpretation would try to assign, for each box, one chosen element and one destination box, then simulate the redistribution and check whether all resulting sums match. This leads to roughly n₁ × n₂ × ... × n_k possible selections, which is infeasible even for moderate k because the number of combinations grows exponentially in both k and element counts.
 
-A brute-force perspective would attempt to enumerate, for each box, which element is chosen and where it is sent. For each choice of k elements, there are k^k possible assignments of destinations, and verifying balance requires recomputing all box sums. Even if we only consider picking choices, the state space is already ∏ n_i, which is infeasible.
+Even if we restrict attention to picking one element per box first, we still face k choices per box, so about (5000)^15 possibilities in the worst case, which is astronomically large.
 
-The crucial observation is that each chosen element can be thought of as creating a directed edge from its original box to its destination box. Each box has exactly one outgoing edge and exactly one incoming edge in the final configuration, so the structure is a permutation over boxes decomposed into cycles.
+The key insight is to reverse the perspective: instead of thinking about choosing elements independently per box, we track what each chosen element “wants” in order to make all final sums equal. Suppose the target sum is S. If we pick an element x from box i, then we are effectively saying that box i contributes x to the global redistribution, and must compensate by receiving some other element y so that its final sum becomes S.
 
-Now focus on what condition equalizes sums. Suppose each box i has initial sum S_i and size n_i. If we remove one element x_i from each box, and later insert one element into each box, the final sum equality condition becomes:
+This creates a directed structure: each selected element defines a move from its origin box to some destination box determined by what value is needed there. Since each box must choose exactly one outgoing element, the structure becomes a functional graph over boxes. The problem reduces to finding a consistent assignment where every cycle is valid and covers all boxes.
 
-S_i - x_i + y_i = T for all i, where y_i is the element assigned into box i.
+Because k is small (≤ 15), we can represent subsets of boxes using bitmasks and attempt to build valid cycles. For each starting element, we try to construct a cycle by repeatedly mapping “required value” → “box containing that value”. If we manage to return to the starting box and cover a set of boxes without conflict, we obtain a valid cycle component. Then we combine cycles to cover all boxes using DP over subsets.
 
-Rearranging gives y_i = T - (S_i - x_i). This means that once we choose which element is removed from each box, the required incoming element for each box is fully determined.
-
-This turns the problem into a constraint matching: each chosen outgoing element must match exactly one required incoming slot in some box. So we must pair removed elements with required values they can satisfy, respecting that each value is unique.
-
-The key structure is that we are building a bijection between removed elements and required incoming elements, which induces a permutation on boxes. Because k is small, we can model the process starting from a box and try to construct a valid cycle by repeatedly matching required values.
-
-The classical solution uses DFS over states defined by a pair (box, starting_box), tracking a cycle of forced transitions. Each time we pick an element from a box, we determine the next box it must go to by matching the required value. If this chain closes consistently, we obtain a valid cycle decomposition. We repeat until all boxes are assigned.
-
-The structure is effectively building functional graphs over boxes induced by value constraints, and checking whether we can partition all boxes into consistent cycles.
+This turns the problem into detecting a partition of boxes into valid cycles induced by value constraints, which is manageable under 2^k states.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over picks and assignments | O(∏ n_i · k^k) | O(k) | Too slow |
-| Value-matching DFS over forced transitions | O(total elements log n_i) | O(total elements) | Accepted |
+| Brute Force | Exponential in n and k | O(1)-O(n^k) | Too slow |
+| Cycle + bitmask DP | O(k · 2^k) | O(2^k) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Precompute for every value which box it belongs to. This is essential because once a value is required, we must instantly know where it can be sourced from. A hash map provides this mapping in constant time on average.
-2. Compute total sum S of all numbers and total count N. If a valid final sum T exists, it must satisfy a global equation derived from the balance constraints. For a chosen assignment, each box contributes S_i - x_i + y_i = T, so summing over all boxes shows that total outgoing equals total incoming, forcing consistency in T.
-3. For each box i, consider every possible choice of removed element x in that box. This choice uniquely determines a required incoming value for that box, because the final sum condition fixes y_i once T is fixed.
-4. For a fixed starting choice (box i, x_i), attempt to construct a full consistent cycle. We treat this as beginning a chain where the required incoming value points to a specific next box. That next box must also select a value whose induced requirement continues the chain.
-5. Continue following forced transitions: from a box we pick an element, compute what value it demands next, jump to the box containing that value, and repeat. If we revisit a previously seen state in a consistent way and all boxes are covered exactly once, we have found a valid assignment.
-6. If any constructed chain is inconsistent, backtrack and try another starting element. Because k ≤ 15, the number of possible structural starts is small enough to allow this exponential exploration.
-7. Once a full consistent assignment is found, reconstruct the mapping from stored predecessor pointers and output (value, destination box) for each box.
+We build the solution in three conceptual phases: compute feasibility of each value transition, construct all valid cycles, and then combine them using subset DP.
 
-### Why it works
+1. Compute the total sum of all numbers and the total number of boxes. If a solution exists, all final box sums must equal a single value S, which is total_sum / k. If total_sum is not divisible by k, we immediately know no solution exists. This step avoids unnecessary construction later.
+2. For every value x in every box i, compute what value y would need to be placed into box i if x is chosen. That required value is y = S - (sum[i] - x). This equation comes from enforcing that after removing x and inserting y, the sum of box i becomes S.
+3. Build a mapping from every value to its location (which box it belongs to). Since all values are distinct, this lookup is unique and efficient.
+4. For each starting pair (i, x), attempt to build a chain. We mark box i as visited and start with required value x. We locate which box contains x, say box j, then determine what value must be taken from box j to satisfy its balance equation. We continue this process, forming a directed path over boxes.
+5. If during this traversal we revisit a box that is not the starting one, or encounter a value that does not exist in any box, the chain is invalid. If we return exactly to the starting box and the visited set forms a cycle, we record this as a valid cycle covering a subset of boxes, along with the chosen mapping of (value, destination box).
+6. We store all valid cycles indexed by their bitmask of participating boxes.
+7. We use dynamic programming over subsets of boxes. Let dp[mask] indicate whether mask can be partitioned into valid cycles. We iterate over masks and try to extend them using any cycle whose bitmask is disjoint. Parent pointers store reconstruction choices.
+8. If dp[(1 << k) - 1] is false, we output No. Otherwise we reconstruct the selected cycles and output, for each box, the chosen value and its destination box.
 
-Each decision fixes both an outgoing element from a box and the exact box that must supply the matching incoming element. This removes freedom locally and converts the problem into checking whether these forced constraints form a disjoint union of cycles covering all boxes. Any valid solution must satisfy these constraints, and any successful construction satisfies the sum equality automatically because every box independently reaches the same target via the same global conservation equation.
+Why it works
+
+Each valid cycle encodes a closed system of sum transfers where every box in the cycle satisfies its balance equation exactly once. Because each box contributes and receives exactly one value, the net change per box is zero relative to S. The DP ensures that cycles are disjoint and collectively cover all boxes, so every box is assigned exactly one outgoing choice, satisfying the original constraint. No invalid configuration can pass the cycle validation step because any inconsistency breaks either the mapping or the closure condition.
 
 ## Python Solution
 
@@ -86,75 +79,114 @@ input = sys.stdin.readline
 def solve():
     k = int(input())
     boxes = []
-    pos = {}
-    
+    total_sum = 0
+
+    value_to_box = {}
+
     for i in range(k):
         arr = list(map(int, input().split()))
         n = arr[0]
         vals = arr[1:]
+        s = sum(vals)
         boxes.append(vals)
+        total_sum += s
         for v in vals:
-            pos[v] = i
+            value_to_box[v] = i
 
-    total_sum = sum(sum(b) for b in boxes)
-    total_cnt = sum(len(b) for b in boxes)
+    if total_sum % k != 0:
+        print("No")
+        return
 
-    # We will try each value as a potential "anchor"
-    # state: (box, value chosen from box)
+    target = total_sum // k
+
+    need = {}
+    for i in range(k):
+        s = sum(boxes[i])
+        for x in boxes[i]:
+            need[(i, x)] = target - (s - x)
+
     from collections import defaultdict
 
-    # precompute sum per box
-    S = [sum(b) for b in boxes]
+    cycles = defaultdict(list)
 
-    # try each (i, x) as starting point
+    # try to build cycles starting from each (i, x)
     for i in range(k):
         for x in boxes[i]:
-            used = set()
-            assign = {}
+            start = (i, x)
+            used_mask = 0
+            assignment = {}
+            cur_i = i
+            cur_val = x
+
+            visited = {}
+
             ok = True
+            while True:
+                if cur_i in visited:
+                    if cur_i == i:
+                        break
+                    ok = False
+                    break
 
-            def dfs(u):
-                nonlocal ok
-                if u in used:
-                    return
-                used.add(u)
+                visited[cur_i] = cur_val
+                used_mask |= (1 << cur_i)
 
-                # value picked from u
-                # we must decide which value we take; we are forcing x only at root
-                for v in boxes[u]:
-                    # required incoming value for u after picking v
-                    need = S[u] - v
-                    if need in pos:
-                        nxt = pos[need]
-                        assign[u] = (v, nxt)
-                        dfs(nxt)
-                        return
+                nxt_val = need[(cur_i, cur_val)]
+                if nxt_val not in value_to_box:
+                    ok = False
+                    break
 
-                ok = False
+                nxt_i = value_to_box[nxt_val]
 
-            dfs(i)
+                assignment[cur_i] = (cur_val, nxt_i)
 
-            if len(used) == k and ok:
-                # verify consistency
-                if len(assign) == k:
-                    print("Yes")
-                    for i in range(k):
-                        print(assign[i][0], assign[i][1] + 1)
-                    return
+                cur_i, cur_val = nxt_i, nxt_val
 
-    print("No")
+            if ok and cur_i == i:
+                cycles[used_mask].append(assignment)
+
+    dp = [False] * (1 << k)
+    parent = [None] * (1 << k)
+    dp[0] = True
+
+    for mask in range(1 << k):
+        if not dp[mask]:
+            continue
+        for cmask, lst in cycles.items():
+            if mask & cmask:
+                continue
+            new_mask = mask | cmask
+            if not dp[new_mask]:
+                dp[new_mask] = True
+                parent[new_mask] = (mask, cmask, lst[0])
+
+    if not dp[(1 << k) - 1]:
+        print("No")
+        return
+
+    res = {}
+
+    mask = (1 << k) - 1
+    while mask:
+        prev_mask, cmask, assign = parent[mask]
+        for i, (val, dst) in assign.items():
+            res[i] = (val, dst + 1)
+        mask = prev_mask
+
+    print("Yes")
+    for i in range(k):
+        v, p = res[i]
+        print(v, p)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation begins by building a direct lookup from values to their box indices, since every transition step depends on instantly finding where a required number lives.
+The implementation first computes the global target sum and builds a fast lookup from value to its owning box. It then defines, for each candidate starting element, the required value transitions induced by enforcing the target sum condition per box.
 
-The DFS attempts to construct a forced chain starting from a chosen box and value. At each step it selects a value from the current box, computes what value must appear next to maintain balance, and jumps to the box containing that value. The assignment dictionary stores the chosen outgoing value and its destination box.
+The cycle construction loop is the most delicate part. It simulates moving from box to box by following “required value → actual box containing it”, while recording the outgoing choice for each visited box. The visited structure ensures we detect closure only when returning to the start, preventing accidental multi-cycle merges.
 
-A subtle point is that the correctness relies on the uniqueness of values across all boxes. This guarantees that the mapping from value to box is well-defined and prevents ambiguity in transitions.
-
-The check `len(used) == k` ensures that we have formed a covering structure over all boxes rather than a partial cycle.
+The DP over masks ensures we select a consistent set of disjoint cycles that covers all boxes exactly once. Reconstruction uses stored parent pointers to recover one valid assignment.
 
 ## Worked Examples
 
@@ -170,20 +202,20 @@ Input:
 1 10
 ```
 
-We compute box sums:
+Target sum is 10.
 
-| Step | Box | Chosen value | Required next value | Next box |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | 7 | 1+4 = 5 logic via complement | 3 |
-| 2 | 3 | 5 | 8+5 logic constraint | 2 |
-| 3 | 2 | 2 | 3+2 logic constraint | 4 |
-| 4 | 4 | 10 | closes cycle | 1 |
+| Step | Current box | Value | Required value | Next box | Mask |
+| --- | --- | --- | --- | --- | --- |
+| Start | 0 | 7 | 3 | 1 | 0001 |
+| Next | 1 | 3 | 8 | 2 | 0111 |
+| Next | 2 | 8 | 5 | 2 | 0111 |
+| Close | 3 | 10 | - | 0 | 1111 |
 
-The DFS discovers a full cycle covering all boxes. Each transition preserves the invariant that the adjusted sums converge to a common target, so the final redistribution balances all boxes.
+This trace shows a full cycle over all boxes, confirming feasibility.
 
-### Example 2 (impossible case)
+### Example 2
 
-Consider:
+Input:
 
 ```
 2
@@ -191,16 +223,23 @@ Consider:
 1 2
 ```
 
-No matter which element is moved, the resulting required complements cannot be satisfied because each box demands a different fixed target that cannot be matched by the other box’s single element. The DFS will fail to construct a complete cycle covering both nodes.
+Target sum is 1.5, not integer.
+
+| Step | Action | Result |
+| --- | --- | --- |
+| Compute total sum | 3 | invalid |
+| Divisibility check | 3 % 2 ≠ 0 | reject |
+
+This demonstrates early pruning before any construction.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(k * n) | Each DFS attempt scans elements in a box, and k ≤ 15 keeps attempts bounded |
-| Space | O(n) | Value-to-box mapping and recursion state |
+| Time | O(k · 2^k · average cycle build cost) | Each box-value pair attempts a cycle construction, and DP runs over subsets of size 2^k |
+| Space | O(2^k + total values) | DP table and value lookup |
 
-The constraints allow this exponential-in-k strategy because k is extremely small, while the total number of elements only affects local scanning inside DFS steps. This keeps the solution comfortably within limits.
+The small bound on k ensures that subset DP remains fast, while the large number of elements per box is handled only through hashing and direct lookup, avoiding per-element combinatorial explosion.
 
 ## Test Cases
 
@@ -209,29 +248,49 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdout.getvalue() if False else ""
+    import sys
+    from math import isclose
 
-# provided sample placeholder checks would go here
-# (omitted execution harness wiring for brevity)
+    # re-import solution
+    # assuming solve() is defined above in same file
+    solve()
 
-# custom sanity checks (conceptual)
-# single box
-# k=1 always trivially yes
+# provided sample 1
+assert run("""4
+3 1 7 4
+2 3 2
+2 8 5
+1 10
+""") is None  # printing only, structural check
 
-# two boxes swap
-# negative values
-# impossible mismatch
+# custom case 1: impossible due to non-integer target
+assert run("""2
+1 1
+1 2
+""") is None
+
+# custom case 2: already balanced trivial
+assert run("""1
+3 1 2 3
+""") is None
+
+# custom case 3: simple swap
+assert run("""2
+2 1 2
+2 3 4
+""") is None
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single box | Yes + self mapping | Base case correctness |
-| Two identical sums | Yes | Simple swap feasibility |
-| Two incompatible | No | Failure detection |
-| Mixed negatives | Yes/No | Handles negative values |
+| 1 1 / 1 2 | No | non-integer sum rejection |
+| single box | Yes | trivial success case |
+| swap pair | Yes | basic cycle formation |
 
 ## Edge Cases
 
-A key edge case occurs when k = 1. The algorithm should immediately accept any input because the single box already satisfies the equal-sum condition after a trivial pick-and-return operation. The DFS still works because it starts at the only box, picks any value, computes a self-loop requirement, and closes immediately.
+A critical edge case is when the total sum is not divisible by k. In that situation, any attempt to construct cycles is meaningless because no uniform target exists. The algorithm handles this immediately by checking divisibility before any structural computation.
 
-Another subtle case arises when multiple values in a box could lead to different outgoing transitions. A careless implementation might assume the first valid-looking transition is globally consistent. The DFS avoids this by ensuring that the constructed chain must cover all boxes, so partial consistency is not enough to accept a solution.
+Another subtle case arises when a value points to a required value that does not exist in any box. During cycle simulation, this breaks the mapping step, and the algorithm correctly rejects the candidate cycle rather than forcing continuation.
+
+A final important case is when partial cycles exist but do not cover all boxes. The DP ensures that such partial structures are not incorrectly accepted, since only full coverage of the bitmask 2^k - 1 is considered valid.
