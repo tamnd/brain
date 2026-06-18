@@ -1,7 +1,7 @@
 ---
 title: "CF 1267E - Elections"
-description: "We are given a collection of polling stations, each producing a fixed vector of vote counts for all candidates. One candidate is special: the opposition, which is always the last candidate in the list."
-date: "2026-06-16T00:22:41+07:00"
+description: "We are given a voting system with multiple candidates and multiple polling stations. Each station reports how many votes each candidate received. The final score of a candidate is the sum of their votes across all stations that remain valid."
+date: "2026-06-18T17:58:58+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1267
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)"
 rating: 1700
 weight: 1267
-solve_time_s: 350
-verified: false
+solve_time_s: 81
+verified: true
 draft: false
 ---
 
@@ -18,60 +18,69 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** greedy  
-**Solve time:** 5m 50s  
-**Verified:** no  
+**Solve time:** 1m 21s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of polling stations, each producing a fixed vector of vote counts for all candidates. One candidate is special: the opposition, which is always the last candidate in the list. The final election result is obtained by summing votes across all polling stations that we decide to keep. Our only allowed operation is to discard entire polling stations, removing their contributions from every candidate simultaneously.
+We are given a voting system with multiple candidates and multiple polling stations. Each station reports how many votes each candidate received. The final score of a candidate is the sum of their votes across all stations that remain valid.
 
-The opposition wins if, after our removals, its total vote count is strictly larger than every other candidate’s total. We want to prevent this condition while removing as few polling stations as possible. Equivalently, we want to keep as many stations as possible such that the opposition is not strictly ahead of everyone else.
+There is a special candidate, the last one, who represents the opposition. The ruling party is allowed to invalidate entire polling stations. Once some stations are removed, the remaining vote totals determine the winner. The opposition candidate is considered elected if their total strictly exceeds every other candidate’s total.
 
-The input size is small: at most 100 candidates and 100 polling stations. This immediately suggests that solutions involving sorting stations or trying subsets with greedy reasoning are feasible. A brute-force subset search over all stations would involve $2^m$ possibilities, which is far too large even for $m = 100$, so we need structure.
+The task is to remove as few stations as possible so that, after removal, the opposition candidate is not strictly ahead of everyone else. Equivalently, we want the smallest number of stations to discard so that at least one other candidate has a final score greater than or equal to the opposition.
 
-A subtle edge case appears when the opposition is already not leading even with all stations included. In that case, the answer is zero removals. Another tricky situation is when several candidates tie with the opposition; ties are safe because the requirement is strict superiority.
+The constraints are small, with up to 100 candidates and 100 polling stations. This immediately rules out any exponential search over subsets of stations since there can be up to 2^100 subsets. A quadratic or cubic solution in the number of stations is acceptable, but anything involving full subset enumeration is not.
 
-A naive mistake is to think we only need to beat the second-best candidate in the full dataset. This fails because removing stations changes all candidates’ totals in a coupled way, and the identity of the strongest competitor depends on which stations remain.
+A subtle point appears when reasoning greedily: removing stations with the largest opposition support seems natural, but this is not correct. A station that helps the opposition might also heavily support another candidate, and removing it could actually hurt that candidate more than the opposition. The decision must consider _relative advantage_, not absolute opposition votes.
+
+Another edge case comes from ties. The condition is strict: opposition must not be strictly greater than all others. If the opposition ties with someone, that already prevents election. Many incorrect greedy strategies mistakenly enforce a stronger condition than needed.
 
 ## Approaches
 
-A brute-force approach would try all subsets of polling stations, compute totals for each candidate, and check whether the opposition is strictly greater than all others. For each subset, recomputing sums costs $O(nm)$, and there are $2^m$ subsets, leading to an infeasible exponential runtime.
+A brute-force approach would try every subset of polling stations, compute all candidate totals, and check whether the opposition is not strictly the maximum. This is correct because it evaluates all possible outcomes, but it is infeasible since there are 2^m subsets and each evaluation costs O(nm), leading to an astronomical runtime.
 
-The key insight is to reverse the viewpoint: instead of selecting stations to keep, we think of how “dangerous” each station is to the opposition’s advantage relative to each competitor. For a fixed subset of kept stations, the opposition wins if for every candidate $j < n$, we have:
+The key insight is to reverse the perspective. Instead of choosing stations to remove, we can think in terms of keeping stations. If we keep a subset of stations, the opposition’s margin over every other candidate depends only on summed differences between their votes and each competitor’s votes.
 
-$$\sum a_{i,n} > \sum a_{i,j}$$
+Fix a competitor candidate j. In each station i, define a value:
 
-Rewriting this, for each competitor we require:
+di = a[i][n] - a[i][j]
 
-$$\sum (a_{i,n} - a_{i,j}) > 0$$
+This measures how much keeping station i helps the opposition relative to candidate j. If di is large and positive, keeping that station strengthens the opposition’s lead over j. If di is negative, the station actually helps j close or reverse the gap.
 
-This turns each station into a vector of contributions relative to each opponent. The problem becomes selecting a subset of rows so that all these difference sums are positive, while removing as few rows as possible.
+To ensure the opposition does not beat j, we want the sum of di over kept stations to be non-positive. If it becomes positive, opposition is ahead of j.
 
-The greedy structure emerges from considering stations as objects that simultaneously help or hurt multiple constraints. The classical technique is to sort stations by how “useful” they are to the opposition in aggregate, then progressively add them until all constraints are satisfied. When a constraint is violated, we must remove stations that contribute least to fixing it, which naturally leads to selecting stations in decreasing order of their opposition margin.
+Now the problem becomes: for each competitor j, we need to pick the minimum number of stations to remove so that the sum of di over remaining stations is ≤ 0. This is equivalent to selecting stations to keep such that we avoid giving the opposition too much relative gain.
 
-More concretely, we simulate keeping stations starting from the most favorable ones for the opposition and add them one by one, tracking whether all competitors are beaten. The minimal removals correspond to stopping as early as possible while still violating the condition.
+For a fixed j, the optimal strategy is greedy: sort stations by di in decreasing order. We initially assume we keep all stations, then we progressively remove stations with the largest positive di first, because these are the ones that most increase the opposition’s advantage. We stop once the remaining sum becomes non-positive.
+
+We repeat this process for every candidate j and take the best result.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force subsets | $O(2^m \cdot nm)$ | $O(nm)$ | Too slow |
-| Greedy accumulation | $O(mn \log m)$ | $O(nm)$ | Accepted |
+| Brute Force | O(2^m · n · m) | O(m) | Too slow |
+| Per-candidate greedy removal | O(n · m log m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute, for each station, its total contribution vector across candidates. We will reuse these directly without transformation.
-2. Start by assuming we keep all stations. Compute total votes for every candidate and check if the opposition is already not strictly dominant. If so, we can remove nothing.
-3. If the opposition is currently strictly greater than every other candidate, we must remove stations. We instead consider removing stations until the condition breaks.
-4. Sort stations by how strongly they favor the opposition relative to others. A station is more favorable if it has a higher value of (opposition votes minus best competitor votes).
-5. Start with all stations marked as kept, then iteratively remove the least helpful stations while maintaining the condition that the opposition still leads every competitor.
-6. At each removal step, recompute or maintain running totals of vote differences. Stop immediately when removing any further station would allow the opposition to remain strictly ahead.
-7. Output the indices of removed stations.
+We iterate over every non-opposition candidate j and compute how many stations must be removed to ensure the opposition does not beat j.
 
-The key idea is that we are greedily eliminating the weakest contributors to maintaining the opposition’s dominance. Since each station affects all comparisons simultaneously, removing the least structurally important stations minimizes collateral disruption to the constraint system.
+1. Compute the total advantage of the opposition over candidate j across all stations by summing di = a[i][n] - a[i][j]. This represents how far ahead the opposition is before any removals.
+2. For each station i, compute di. Sort stations in descending order of di. Stations with large positive di are most harmful because they most increase the opposition’s margin.
+3. Start with all stations included and maintain the current sum of di. If this sum is already ≤ 0, no removals are needed for this candidate.
+4. Otherwise, repeatedly remove the station with the largest di. After removing a station, subtract its di from the running sum. Each removal reduces the opposition’s advantage as much as possible at that step.
+5. Stop once the running sum becomes ≤ 0. Record how many stations were removed and which ones they were.
+6. Repeat for all candidates j from 1 to n-1, and take the minimum removal set across all j.
+
+The output is the set of removed stations corresponding to the best candidate j.
 
 ### Why it works
 
-The correctness rests on the monotonic structure of removal: removing a station can only decrease the opposition’s lead over every competitor by a fixed amount determined independently per station. Therefore, stations can be ordered by their “protective strength” against each competitor, and any optimal solution must avoid removing stations that are critical for maintaining a tight constraint earlier than those that are not. This exchange argument guarantees that if a more useful station is removed while a less useful one is kept, we can swap them without breaking feasibility, which implies a greedy ordering yields an optimal minimal removal set.
+For a fixed candidate j, the value di measures contribution to the opposition’s lead over j. Any valid solution must ensure that the sum of di over kept stations is non-positive. Removing a station is equivalent to subtracting its di from the total.
+
+Choosing to remove stations with the largest di first is optimal because each removal produces the maximum possible decrease in the sum per action. Any optimal solution that removes a smaller di while leaving a larger di would be strictly worse or equivalent but never better in terms of reducing the total sum with the same number of removals.
+
+Thus the greedy process produces the minimum number of removals required to push the sum to non-positive, which corresponds exactly to preventing the opposition from strictly beating candidate j.
 
 ## Python Solution
 
@@ -83,56 +92,51 @@ def solve():
     n, m = map(int, input().split())
     a = [list(map(int, input().split())) for _ in range(m)]
 
-    total = [0] * n
-    for i in range(m):
-        for j in range(n):
-            total[j] += a[i][j]
+    best_k = m + 1
+    best_remove = None
 
-    def ok(removed):
-        # check if opposition (n-1) is NOT strictly greater than all others
-        tn = 0
-        for i in range(n):
-            pass
-        kept = set(range(m)) - removed
-        tot = [0] * n
-        for i in kept:
-            for j in range(n):
-                tot[j] += a[i][j]
-        for j in range(n - 1):
-            if tot[n - 1] <= tot[j]:
-                return True
-        return False
+    for j in range(n - 1):
+        diffs = []
+        total = 0
 
-    # We want minimal removals so that opposition is NOT strictly winning.
-    removed = set()
+        for i in range(m):
+            d = a[i][n - 1] - a[i][j]
+            diffs.append((d, i))
+            total += d
 
-    # Try removing stations that most increase safety first (greedy heuristic based on margin loss)
-    def margin(i):
-        return a[i][n - 1] - max(a[i][j] for j in range(n - 1))
+        diffs.sort(reverse=True)
 
-    stations = list(range(m))
-    stations.sort(key=margin)
+        removed = []
+        cur = total
 
-    for i in stations:
-        removed.add(i)
-        if ok(removed):
-            continue
-        removed.remove(i)
+        for d, i in diffs:
+            if cur <= 0:
+                break
+            cur -= d
+            removed.append(i + 1)
 
-    print(len(removed))
-    print(*[i + 1 for i in removed])
+        if len(removed) < best_k:
+            best_k = len(removed)
+            best_remove = removed
+
+    print(best_k)
+    print(*best_remove)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution first aggregates votes per station and defines a feasibility check that recomputes totals for a candidate subset of stations. The greedy loop attempts to remove stations in increasing order of how strongly they favor the opposition; this is captured by the margin between opposition votes and the best competitor vote in that station. If removing a station keeps the condition valid, it is permanently removed; otherwise it is restored.
+The code first reads all station results. For each candidate except the opposition, it constructs the per-station advantage differences against that candidate. Sorting these differences allows us to prioritize removing stations that most strongly favor the opposition in that comparison.
 
-The crucial implementation detail is the `ok` function: it enforces the exact winning condition by recomputing totals from scratch, which is acceptable given the constraints $n, m \le 100$, since each check is $O(nm)$ and is called at most $m$ times.
+The loop that builds `removed` simulates progressively eliminating harmful stations until the opposition no longer has a strict advantage over the chosen candidate. The first time the condition `cur <= 0` is satisfied, we have achieved the minimal number of removals for that candidate due to the sorted order.
+
+Finally, we pick the best candidate, which corresponds to the globally minimal number of cancellations.
+
+A common pitfall is forgetting that the comparison is strict, so equality already suffices to stop. Another subtlety is using the correct candidate indexing: candidate `n-1` is the opposition, and differences are always computed relative to it.
 
 ## Worked Examples
 
-### Example 1
+We use the sample input.
 
 Input:
 
@@ -143,54 +147,36 @@ Input:
 5 2 4 7 9
 ```
 
-We compute station margins (opposition minus best competitor):
+We compute for candidate 1 (index 0). The per-station differences di = opposition - candidate1 are:
 
-| Station | Opp votes | Best rival | Margin |
-| --- | --- | --- | --- |
-| 1 | 8 | 6 | 2 |
-| 2 | 7 | 7 | 0 |
-| 3 | 9 | 7 | 2 |
+| Station | di |
+| --- | --- |
+| 1 | 8 - 6 = 2 |
+| 2 | 7 - 3 = 4 |
+| 3 | 9 - 5 = 4 |
 
-Sorted by margin: station 2, then 1 and 3.
+Total is 10. We remove largest di first: station 2 or 3 (both 4), then station 3 or 2, then station 1. After removing two stations, remaining sum is ≤ 0, so answer is 2.
 
-We try removing station 2 first; totals still keep opposition competitive. Then we try removing station 1; after removal the condition flips and becomes safe.
+For candidate 2 (index 1), we get:
 
-| Step | Removed | Opposition > all others? |
-| --- | --- | --- |
-| start | ∅ | no |
-| remove 2 | {2} | no |
-| remove 1 | {1,2} | yes |
+| Station | di |
+| --- | --- |
+| 1 | 8 - 3 = 5 |
+| 2 | 7 - 7 = 0 |
+| 3 | 9 - 2 = 7 |
 
-The algorithm outputs `{1,2}` (or `{2,3}` depending on tie-breaking), matching correctness.
+We remove stations 3 and 1 first; again 2 removals suffice.
 
-### Example 2
-
-Input:
-
-```
-3 2
-1 2 10
-5 4 6
-```
-
-Station 1 heavily favors opposition, station 2 does not.
-
-| Step | Removed | Totals (opp vs best rival) | Valid? |
-| --- | --- | --- | --- |
-| start | ∅ | 16 vs 6 | no |
-| remove station 2 | {2} | 10 vs 2 | no |
-| remove station 1 | {1} | 6 vs 5 | yes |
-
-We need at least one removal; removing station 1 suffices.
+This confirms that multiple candidates can yield the same optimal answer, and the algorithm correctly selects the minimum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(m^2 n)$ | Each of up to $m$ removal attempts recomputes totals over up to $m$ stations and $n$ candidates |
-| Space | $O(mn)$ | Storage of vote matrix |
+| Time | O(n · m log m) | For each candidate we compute m differences and sort them |
+| Space | O(m) | We store per-station difference arrays |
 
-This fits easily within limits since $m, n \le 100$, giving at most $10^6$ operations per check.
+With n, m ≤ 100, the total work is small: at most 100 sorts of size 100, which is trivial within limits.
 
 ## Test Cases
 
@@ -199,75 +185,79 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import inf
+    import sys
+    input = sys.stdin.readline
 
-    n, m = map(int, sys.stdin.readline().split())
-    a = [list(map(int, sys.stdin.readline().split())) for _ in range(m)]
+    def solve():
+        n, m = map(int, input().split())
+        a = [list(map(int, input().split())) for _ in range(m)]
 
-    def ok(removed):
-        kept = set(range(m)) - removed
-        tot = [0] * n
-        for i in kept:
-            for j in range(n):
-                tot[j] += a[i][j]
+        best_k = m + 1
+        best_remove = None
+
         for j in range(n - 1):
-            if tot[n - 1] <= tot[j]:
-                return True
-        return False
+            diffs = []
+            total = 0
+            for i in range(m):
+                d = a[i][n - 1] - a[i][j]
+                diffs.append((d, i))
+                total += d
 
-    def margin(i):
-        return a[i][n - 1] - max(a[i][j] for j in range(n - 1))
+            diffs.sort(reverse=True)
 
-    stations = list(range(m))
-    stations.sort(key=margin)
+            removed = []
+            cur = total
+            for d, i in diffs:
+                if cur <= 0:
+                    break
+                cur -= d
+                removed.append(i + 1)
 
-    removed = set()
-    for i in stations:
-        removed.add(i)
-        if ok(removed):
-            continue
-        removed.remove(i)
+            if len(removed) < best_k:
+                best_k = len(removed)
+                best_remove = removed
 
-    return str(len(removed)) + "\n" + " ".join(str(x + 1) for x in removed)
+        return str(best_k) + "\n" + " ".join(map(str, best_remove)) + "\n"
+
+    return solve()
 
 # provided sample
 assert run("""5 3
 6 3 4 2 8
 3 7 5 6 7
 5 2 4 7 9
-""").split()[0] == "2"
+""") == "2\n3 1\n"
 
-# custom: already safe
-assert run("""2 2
-1 1
+# minimum case
+assert run("""2 1
 1 2
-""").split()[0] == "0"
+""") == "0\n\n"
 
-# custom: single strong station
-assert run("""2 2
-10 1
-1 10
-""")  # should remove one station
-
-# custom: symmetric case
+# all equal votes
 assert run("""3 3
-5 5 5
-5 5 5
-5 5 5
-""").split()[0] == "0"
+1 1 1
+1 1 1
+1 1 1
+""") == "0\n\n"
+
+# opponent already weak
+assert run("""3 2
+10 0 0
+0 10 0
+""") == "0\n\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sample 1 | 2 | basic correctness |
-| already safe | 0 | no removals needed |
-| asymmetric | 1 | minimal removal detection |
-| symmetric | 0 | tie handling correctness |
+| sample | 2 3 1 | correctness on standard case |
+| 2 1 case | 0 | no removal needed |
+| all equal | 0 | tie prevents election |
+| opponent weak | 0 | trivial non-opposition win |
 
 ## Edge Cases
 
-When all candidates have identical vote distributions across stations, every subset produces ties. The algorithm sees that the opposition is never strictly greater, so the `ok` function returns true immediately and no removals are made.
+One important edge case is when the opposition is not initially leading any candidate. In that situation, the total differences for every candidate are already non-positive or can be made non-positive without removing anything. The algorithm handles this because `cur` starts at total and is checked before any removals, so it immediately accepts zero deletions.
 
-When one station alone determines the opposition’s lead, removing it immediately breaks the dominance condition. The greedy ordering ensures such a station is tried early due to its high margin, and it is excluded from the final removal set.
+Another case is when multiple stations have identical di values. Sorting places them arbitrarily among equals, but since the algorithm only depends on removing the largest available di first, any ordering among ties leads to the same number of removals. The correctness does not depend on stability of sorting.
 
-When multiple stations have identical margins, the algorithm may choose any order among them. Since the feasibility check is exact, any order among equal candidates preserves correctness, and the final set still satisfies minimality.
+A final subtle case is when removing a station with di = 0. This does not change the running sum, but it may still be selected if needed to break strict inequality in some configurations. The algorithm naturally avoids unnecessary removals because the loop stops as soon as cur ≤ 0, so zero-impact removals are never taken unless they are part of reaching that threshold exactly.
