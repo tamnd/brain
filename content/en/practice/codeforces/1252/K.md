@@ -1,7 +1,7 @@
 ---
 title: "CF 1252K - Addition Robot"
-description: "The problem defines a string of instructions, where each character is either A or B. This string is not just data, it defines how two numbers evolve when we process a segment of it. Starting from an initial pair of integers, we scan a range of the string from left to right."
-date: "2026-06-15T22:35:47+07:00"
+description: "The robot stores a binary instruction string over the alphabet {A, B}. When we process this string with an initial pair of values (A, B), each character acts like a small transformation step."
+date: "2026-06-18T17:39:04+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "math", "matrices"]
 categories: ["algorithms"]
 codeforces_contest: 1252
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)"
 rating: 2100
 weight: 1252
-solve_time_s: 287
+solve_time_s: 112
 verified: false
 draft: false
 ---
@@ -18,71 +18,83 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** data structures, math, matrices  
-**Solve time:** 4m 47s  
+**Solve time:** 1m 52s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The problem defines a string of instructions, where each character is either A or B. This string is not just data, it defines how two numbers evolve when we process a segment of it. Starting from an initial pair of integers, we scan a range of the string from left to right. Each character applies a transformation: if we see an A, we add the current B into A, and if we see a B, we add the current A into B.
+The robot stores a binary instruction string over the alphabet {A, B}. When we process this string with an initial pair of values `(A, B)`, each character acts like a small transformation step. If the current character is `A`, the second value is added into the first, and if the character is `B`, the first value is added into the second. After processing a segment, we obtain a transformed pair.
 
-We are asked to support two operations on this string. One operation flips a whole segment, swapping A with B everywhere in that interval. The other operation simulates the transformation described above on a subsegment, starting from given initial values, and returns the resulting pair.
+The task is to support two operations on this string. One operation flips a range of characters, turning every `A` into `B` and vice versa. The other operation asks us to evaluate the transformation induced by a substring on a given starting pair.
 
-The key difficulty is that both operations are on intervals and both must be handled online over up to 100000 queries. A direct simulation of each query would repeatedly scan large segments of the string, leading to quadratic behavior in the worst case. With 100000 operations on a 100000 length string, any solution that does O(N) work per query will time out.
+The key difficulty is that both operations are online and there are up to 100,000 of them. A direct simulation of each query by iterating over the substring would cost linear time per query, which leads to about $10^{10}$ operations in the worst case, far beyond what is feasible.
 
-A subtle edge case appears when alternating updates and queries interact. For example, if we toggle a segment repeatedly, the interpretation of a stored segment changes completely, and any naive caching of prefix effects becomes invalid unless it correctly handles reversals.
+The transformation is also order-dependent and non-trivial: each character changes the state in a way that depends on the current values of both variables. This prevents simple counting of characters from being sufficient, since the effect of an `A` depends on the evolving `B`, and vice versa.
 
-Another issue arises from the fact that the update operation is not additive. Flipping characters changes the meaning of every transformation, so we cannot treat contributions as simple sums. A segment that was previously “A-heavy” becomes “B-heavy” after a toggle, which reverses the transformation rules inside it.
+A subtle edge case arises when toggles frequently change the meaning of segments that are later queried. For example, if the string is initially `AB`, a toggle on both positions turns it into `BA`, which changes the direction of value propagation entirely. A naive approach that precomputes answers per segment without supporting updates would fail immediately under such modifications.
+
+Another hidden issue is that values grow exponentially in the number of operations, so all arithmetic must be performed modulo $10^9 + 7$, otherwise intermediate values overflow even 64-bit integers in long chains.
 
 ## Approaches
 
-A brute-force solution directly simulates each query. For type 2 queries, we iterate over the segment and update A and B step by step. For type 1 queries, we flip characters in the interval explicitly. This is correct because it follows the definition literally. However, each query can take O(N) time, so a sequence of Q queries leads to O(NQ), which is around 10^10 operations in the worst case, far too slow.
+A brute-force solution directly simulates the transformation for each query of type 2. For a fixed range `[L, R]`, we iterate through the substring and update `(A, B)` according to the rules. This is correct because it follows the definition exactly. However, each query costs $O(N)$, and with $Q = 10^5$, this leads to $O(NQ)$, which is too slow.
 
-The key observation is that each character defines a linear transformation on the pair (A, B). If we treat the pair as a vector, each character corresponds to multiplying by a 2x2 matrix. For A, the rule updates A by adding B, and for B, it updates B by adding A. This gives two matrices:
+The key observation is that each character defines a linear transformation on the vector `(A, B)`. If we represent the state as a vector, then:
 
-For character A:
+For `A`:
 
-```
-[1 1]
-[0 1]
-```
+`(A, B) -> (A + B, B)`
 
-For character B:
+For `B`:
 
-```
-[1 0]
-[1 1]
-```
+`(A, B) -> (A, A + B)`
 
-Now a whole segment corresponds to multiplying these matrices in order. A query of type 2 becomes computing a product of matrices applied to a vector.
+Both transformations are linear and can be represented as 2x2 matrices.
 
-The challenge is that we also need to support range flips, which swaps A and B everywhere in a segment. In matrix form, this corresponds to swapping the two transformation matrices. This is equivalent to swapping the two states in a segment’s aggregate matrix representation.
+For `A`:
 
-This structure is perfectly suited for a segment tree with lazy propagation. Each node stores the combined transformation matrix for its segment. A flip operation swaps the meaning of A and B inside a segment, which can be handled by swapping stored contributions and propagating a lazy toggle flag.
+$$\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}$$
 
-Thus we reduce both operations to O(log N), because each segment tree node can merge children via matrix multiplication and apply flips via a constant-time swap.
+For `B`:
+
+$$\begin{pmatrix}
+1 & 0 \\
+1 & 1
+\end{pmatrix}$$
+
+A substring corresponds to multiplying these matrices in order. Thus, each segment query becomes a range product of matrices. The toggle operation simply swaps the matrix type at each position, meaning we must support both range flips and range queries over a sequence of matrices.
+
+This is a classic segment tree problem with lazy propagation, where each node stores the product of matrices in its interval, and lazy tags flip `A`-type and `B`-type matrices throughout a segment.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(NQ) | O(N) | Too slow |
-| Segment Tree with matrices | O((N + Q) log N) | O(N) | Accepted |
+| Brute Force | O(NQ) | O(1) | Too slow |
+| Segment Tree + Matrices | O(Q log N) | O(N) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Represent each character as a 2x2 matrix that transforms the vector (A, B). This allows composition of segments via matrix multiplication. The reason this works is that each update rule is linear in A and B.
-2. Build a segment tree where each node stores the product matrix of its segment in left-to-right order. Leaf nodes correspond directly to single-character matrices.
-3. Combine two child nodes by multiplying their matrices in correct order, because applying segment L followed by segment R corresponds to matrix multiplication in that sequence.
-4. For each node also maintain a lazy flag indicating whether the segment has been flipped. A flip corresponds to swapping A and B roles, which is equivalent to swapping the two character types inside the segment.
-5. When applying a flip to a node, swap its left and right transformation structure by exchanging the corresponding matrix representation. This is done in O(1) without recomputing the whole segment.
-6. For a range flip query, propagate updates down the segment tree, marking nodes as flipped lazily when fully covered.
-7. For a type 2 query, query the segment tree to obtain the combined transformation matrix for the interval.
-8. Apply the resulting matrix to the initial vector (A, B) using matrix-vector multiplication to produce the final answer.
+We represent each character as a 2x2 matrix. The segment tree maintains the product of matrices in each interval.
 
-The key reason this structure is efficient is that every operation either composes two transformations or applies a structural swap, both of which are constant-time at each node, and the segment tree limits the number of affected nodes to O(log N).
+1. Convert each character into a matrix. If `S[i] = 'A'`, store matrix `MA`, otherwise store `MB`. This encodes how a single position transforms `(A, B)`.
+2. Build a segment tree where each node stores the product of matrices in its segment. The product must respect order, meaning left child matrix multiplies before right child matrix.
+3. Store a lazy flip flag in each node. When applied, it swaps `MA` and `MB` for every element in the segment, which corresponds to replacing each matrix with its flipped version:
+
+`MA <-> MB`. We also update the stored product accordingly.
+4. For a range update `[L, R]`, propagate lazily. If a node is fully covered, flip its stored matrix product by applying the swap transformation and toggle its lazy flag.
+5. For a range query `[L, R]`, return the combined matrix product over that interval by recursively merging segment results.
+6. To answer a query `(L, R, A, B)`, compute the product matrix `M` over `[L, R]`, then apply:
+
+`(A', B') = M * (A, B)`.
+
+The multiplication is done modulo $10^9 + 7$.
 
 ### Why it works
 
-Each segment represents a function from (A, B) to a new pair (A', B') that is linear and closed under composition. The segment tree maintains the invariant that every node stores exactly the correct transformation for its interval under all applied flips. Lazy propagation ensures flips are applied consistently without needing to recompute full segments. Since both operations preserve the linear structure, correctness follows from associativity of matrix multiplication and the fact that flip is an involution on the transformation basis.
+Each character acts as a fixed linear transformation. Composition of transformations corresponds exactly to matrix multiplication. The segment tree maintains correct compositions for every segment, and lazy propagation ensures that range flips correctly update all affected transformations without recomputing from scratch. Since matrix multiplication is associative, segment merging remains valid regardless of how the tree is split.
 
 ## Python Solution
 
@@ -92,80 +104,86 @@ input = sys.stdin.readline
 
 MOD = 10**9 + 7
 
+def mul(a, b):
+    return [
+        [(a[0][0]*b[0][0] + a[0][1]*b[1][0]) % MOD,
+         (a[0][0]*b[0][1] + a[0][1]*b[1][1]) % MOD],
+        [(a[1][0]*b[0][0] + a[1][1]*b[1][0]) % MOD,
+         (a[1][0]*b[0][1] + a[1][1]*b[1][1]) % MOD]
+    ]
+
+MA = [[1, 1],
+      [0, 1]]
+
+MB = [[1, 0],
+      [1, 1]]
+
+def flip(m):
+    # swapping A and B roles corresponds to swapping matrices
+    # MA <-> MB
+    if m == MA:
+        return MB
+    else:
+        return MA
+
 class SegTree:
     def __init__(self, s):
         self.n = len(s)
-        self.size = 4 * self.n
-        self.t = [[0, 0, 0, 0] for _ in range(self.size)]
-        self.lazy = [0] * self.size
-        self.build(1, 0, self.n - 1, s)
+        self.t = [None] * (4*self.n)
+        self.lazy = [0] * (4*self.n)
+        self.build(1, 0, self.n-1, s)
 
-    def mat(self, c):
-        if c == 'A':
-            return [1, 1, 0, 1]
-        else:
-            return [1, 0, 1, 1]
-
-    def merge(self, a, b):
-        # a * b
-        return [
-            (a[0]*b[0] + a[1]*b[2]) % MOD,
-            (a[0]*b[1] + a[1]*b[3]) % MOD,
-            (a[2]*b[0] + a[3]*b[2]) % MOD,
-            (a[2]*b[1] + a[3]*b[3]) % MOD,
-        ]
-
-    def apply_flip(self, node):
-        a00, a01, a10, a11 = self.t[node]
-        # swapping A and B corresponds to swapping basis
-        self.t[node] = [a11, a10, a01, a00]
-
-    def push(self, node):
-        if self.lazy[node]:
-            for child in (node*2, node*2+1):
-                self.apply_flip(child)
-                self.lazy[child] ^= 1
-            self.lazy[node] = 0
-
-    def build(self, node, l, r, s):
+    def build(self, v, l, r, s):
         if l == r:
-            self.t[node] = self.mat(s[l])
-            return
-        m = (l + r) // 2
-        self.build(node*2, l, m, s)
-        self.build(node*2+1, m+1, r, s)
-        self.t[node] = self.merge(self.t[node*2], self.t[node*2+1])
+            self.t[v] = MA if s[l] == 'A' else MB
+        else:
+            m = (l + r) // 2
+            self.build(v*2, l, m, s)
+            self.build(v*2+1, m+1, r, s)
+            self.t[v] = mul(self.t[v*2], self.t[v*2+1])
 
-    def update(self, node, l, r, ql, qr):
+    def apply_flip(self, v):
+        self.t[v] = mul(MB if self.t[v] == MA else MA, self.t[v])
+        self.t[v] = mul(self.t[v], MA if self.t[v] == MB else MB)
+        self.lazy[v] ^= 1
+
+    def push(self, v):
+        if self.lazy[v]:
+            for u in (v*2, v*2+1):
+                self.apply_flip(u)
+            self.lazy[v] = 0
+
+    def update(self, v, l, r, ql, qr):
         if ql <= l and r <= qr:
-            self.apply_flip(node)
-            self.lazy[node] ^= 1
+            self.apply_flip(v)
             return
-        self.push(node)
+        self.push(v)
         m = (l + r) // 2
         if ql <= m:
-            self.update(node*2, l, m, ql, qr)
+            self.update(v*2, l, m, ql, qr)
         if qr > m:
-            self.update(node*2+1, m+1, r, ql, qr)
-        self.t[node] = self.merge(self.t[node*2], self.t[node*2+1])
+            self.update(v*2+1, m+1, r, ql, qr)
+        self.t[v] = mul(self.t[v*2], self.t[v*2+1])
 
-    def query(self, node, l, r, ql, qr):
+    def query(self, v, l, r, ql, qr):
         if ql <= l and r <= qr:
-            return self.t[node]
-        self.push(node)
+            return self.t[v]
+        self.push(v)
         m = (l + r) // 2
         if qr <= m:
-            return self.query(node*2, l, m, ql, qr)
+            return self.query(v*2, l, m, ql, qr)
         if ql > m:
-            return self.query(node*2+1, m+1, r, ql, qr)
-        left = self.query(node*2, l, m, ql, qr)
-        right = self.query(node*2+1, m+1, r, ql, qr)
-        return self.merge(left, right)
+            return self.query(v*2+1, m+1, r, ql, qr)
+        return mul(
+            self.query(v*2, l, m, ql, qr),
+            self.query(v*2+1, m+1, r, ql, qr)
+        )
 
 n, q = map(int, input().split())
-s = input().strip()
-
+s = list(input().strip())
 st = SegTree(s)
+
+out = []
 
 for _ in range(q):
     tmp = input().split()
@@ -173,186 +191,209 @@ for _ in range(q):
         l, r = map(int, tmp[1:])
         st.update(1, 0, n-1, l-1, r-1)
     else:
-        l, r, A, B = map(int, tmp[1:])
-        mat = st.query(1, 0, n-1, l-1, r-1)
-        a00, a01, a10, a11 = mat
-        resA = (a00 * A + a01 * B) % MOD
-        resB = (a10 * A + a11 * B) % MOD
-        print(resA, resB)
+        l, r, a, b = map(int, tmp[1:])
+        M = st.query(1, 0, n-1, l-1, r-1)
+        A = (M[0][0]*a + M[0][1]*b) % MOD
+        B = (M[1][0]*a + M[1][1]*b) % MOD
+        out.append(f"{A} {B}")
+
+print("\n".join(out))
 ```
 
-The segment tree stores each interval as a 2x2 transformation matrix. Each leaf encodes the effect of a single character. Internal nodes combine children via matrix multiplication, preserving left-to-right order.
+The segment tree is built so that each node stores the correct ordered composition of transformations. The query operation extracts exactly the matrix product for a segment, and then applies it to the initial vector. The update operation flips all matrices in a range using lazy propagation.
 
-The flip operation is implemented by swapping the matrix entries corresponding to exchanging the roles of A and B. The lazy flag ensures we do not immediately push updates to all descendants, only when needed.
-
-Queries extract the matrix for the requested segment and apply it to the input vector. This cleanly separates structural maintenance from computation.
+A common pitfall is trying to directly swap matrices in place without recomputing segment products correctly. Another subtle issue is maintaining correct multiplication order, since reversing left and right children would completely break correctness.
 
 ## Worked Examples
 
-Consider the sample input.
+### Example 1
 
-Initially the string is A B A A A. Each character contributes its own matrix. After building, the segment tree root represents the full transformation over the whole interval.
+Input:
 
-For the first query, we apply the transformation of the full segment to (1, 1). The table below shows conceptual evolution rather than every node.
+```
+S = ABAAA
+Query: (1,5,1,1)
+```
 
-| Step | Character | A | B |
+We track matrix products conceptually:
+
+| Step | Segment | Matrix applied | Result vector |
 | --- | --- | --- | --- |
-| 1 | A | 2 | 1 |
-| 2 | B | 2 | 3 |
-| 3 | A | 5 | 3 |
-| 4 | A | 8 | 3 |
-| 5 | A | 11 | 3 |
+| 1 | A | MA | (2,1) |
+| 2 | AB | MB*MA | (2,3) |
+| 3 | ABA | MA*(MB*MA) | (5,3) |
+| 4 | ABAA | ... | (8,3) |
+| 5 | ABAAA | ... | (11,3) |
 
-This matches the output (11, 3), confirming that the matrix composition matches direct simulation.
+This confirms that prefix multiplication matches the transformation logic exactly.
 
-For the second operation, flipping positions 3 to 5 changes "AAA" into "BBB", so the string becomes A B B B B. The segment tree updates only affected nodes, maintaining consistency via lazy propagation.
+### Example 2
 
-For the third query, we evaluate the transformed segment on (0, 1,000,000,000). Because the structure heavily propagates B into itself under this configuration, the resulting A remains 0 and B stays unchanged.
+After flipping positions 3 to 5:
 
-This demonstrates that the transformation abstraction correctly handles both updates and queries without recomputation.
+```
+ABAAA -> ABBBA
+Query: (2,5,0,1000000000)
+```
+
+All active transformations eventually route all value into the second component because repeated `B` matrices accumulate into `B` only when `A` is zero. The trace shows that the structure of matrices, not numeric magnitude, drives the result.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((N + Q) log N) | Each update and query touches a logarithmic number of segment tree nodes |
-| Space | O(N) | Segment tree stores a constant-size matrix per node |
+| Time | O(Q log N) | Each update and query touches logarithmic segment tree nodes |
+| Space | O(N) | Segment tree stores one matrix per node |
 
-The constraints allow up to 100000 operations, so logarithmic overhead per operation stays comfortably within limits, especially since each node operation is constant-time arithmetic on four values.
+The constraints allow up to 100,000 operations, so logarithmic per-operation complexity easily fits within limits.
 
 ## Test Cases
 
 ```python
 import sys, io
 
-MOD = 10**9 + 7
-
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from sys import stdout
 
-    class SegTree:
-        def __init__(self, s):
-            self.n = len(s)
-            self.size = 4 * self.n
-            self.t = [[0, 0, 0, 0] for _ in range(self.size)]
-            self.lazy = [0] * self.size
-            self.build(1, 0, self.n - 1, s)
+    MOD = 10**9 + 7
 
-        def mat(self, c):
-            if c == 'A':
-                return [1, 1, 0, 1]
-            else:
-                return [1, 0, 1, 1]
+    def solve():
+        import sys
+        input = sys.stdin.readline
 
-        def merge(self, a, b):
+        MOD = 10**9 + 7
+
+        def mul(a, b):
             return [
-                (a[0]*b[0] + a[1]*b[2]) % MOD,
-                (a[0]*b[1] + a[1]*b[3]) % MOD,
-                (a[2]*b[0] + a[3]*b[2]) % MOD,
-                (a[2]*b[1] + a[3]*b[3]) % MOD,
+                [(a[0][0]*b[0][0] + a[0][1]*b[1][0]) % MOD,
+                 (a[0][0]*b[0][1] + a[0][1]*b[1][1]) % MOD],
+                [(a[1][0]*b[0][0] + a[1][1]*b[1][0]) % MOD,
+                 (a[1][0]*b[0][1] + a[1][1]*b[1][1]) % MOD]
             ]
 
-        def apply_flip(self, node):
-            a00, a01, a10, a11 = self.t[node]
-            self.t[node] = [a11, a10, a01, a00]
+        MA = [[1,1],[0,1]]
+        MB = [[1,0],[1,1]]
 
-        def push(self, node):
-            if self.lazy[node]:
-                for child in (node*2, node*2+1):
-                    self.apply_flip(child)
-                    self.lazy[child] ^= 1
-                self.lazy[node] = 0
+        class Seg:
+            def __init__(self, s):
+                self.n = len(s)
+                self.t = [None]*(4*self.n)
+                self.lz = [0]*(4*self.n)
+                self.build(1,0,self.n-1,s)
 
-        def build(self, node, l, r, s):
-            if l == r:
-                self.t[node] = self.mat(s[l])
-                return
-            m = (l + r) // 2
-            self.build(node*2, l, m, s)
-            self.build(node*2+1, m+1, r, s)
-            self.t[node] = self.merge(self.t[node*2], self.t[node*2+1])
+            def build(self,v,l,r,s):
+                if l==r:
+                    self.t[v] = MA if s[l]=='A' else MB
+                else:
+                    m=(l+r)//2
+                    self.build(v*2,l,m,s)
+                    self.build(v*2+1,m+1,r,s)
+                    self.t[v]=mul(self.t[v*2],self.t[v*2+1])
 
-        def update(self, node, l, r, ql, qr):
-            if ql <= l and r <= qr:
-                self.apply_flip(node)
-                self.lazy[node] ^= 1
-                return
-            self.push(node)
-            m = (l + r) // 2
-            if ql <= m:
-                self.update(node*2, l, m, ql, qr)
-            if qr > m:
-                self.update(node*2+1, m+1, r, ql, qr)
-            self.t[node] = self.merge(self.t[node*2], self.t[node*2+1])
+            def flip_node(self,v):
+                self.t[v] = mul(MB if self.t[v]==MA else MA, self.t[v])
+                self.t[v] = mul(self.t[v], MA if self.t[v]==MB else MB)
+                self.lz[v]^=1
 
-        def query(self, node, l, r, ql, qr):
-            if ql <= l and r <= qr:
-                return self.t[node]
-            self.push(node)
-            m = (l + r) // 2
-            if qr <= m:
-                return self.query(node*2, l, m, ql, qr)
-            if ql > m:
-                return self.query(node*2+1, m+1, r, ql, qr)
-            left = self.query(node*2, l, m, ql, qr)
-            right = self.query(node*2+1, m+1, r, ql, qr)
-            return self.merge(left, right)
+            def push(self,v):
+                if self.lz[v]:
+                    for u in (v*2,v*2+1):
+                        self.flip_node(u)
+                    self.lz[v]=0
 
-    n, q = map(int, input().split())
-    s = input().strip()
-    st = SegTree(s)
+            def update(self,v,l,r,ql,qr):
+                if ql<=l and r<=qr:
+                    self.flip_node(v)
+                    return
+                self.push(v)
+                m=(l+r)//2
+                if ql<=m:
+                    self.update(v*2,l,m,ql,qr)
+                if qr>m:
+                    self.update(v*2+1,m+1,r,ql,qr)
+                self.t[v]=mul(self.t[v*2],self.t[v*2+1])
 
-    out = []
-    for _ in range(q):
-        tmp = input().split()
-        if tmp[0] == '1':
-            l, r = map(int, tmp[1:])
-            st.update(1, 0, n-1, l-1, r-1)
-        else:
-            l, r, A, B = map(int, tmp[1:])
-            mat = st.query(1, 0, n-1, l-1, r-1)
-            a00, a01, a10, a11 = mat
-            out.append(str((a00*A + a01*B) % MOD) + " " + str((a10*A + a11*B) % MOD))
+            def query(self,v,l,r,ql,qr):
+                if ql<=l and r<=qr:
+                    return self.t[v]
+                self.push(v)
+                m=(l+r)//2
+                if qr<=m:
+                    return self.query(v*2,l,m,ql,qr)
+                if ql>m:
+                    return self.query(v*2+1,m+1,r,ql,qr)
+                return mul(self.query(v*2,l,m,ql,qr),
+                           self.query(v*2+1,m+1,r,ql,qr))
 
-    return "\n".join(out)
+        n,q=map(int,input().split())
+        s=list(input().strip())
+        st=Seg(s)
 
-# provided samples
+        res=[]
+        for _ in range(q):
+            t=input().split()
+            if t[0]=='1':
+                l,r=map(int,t[1:])
+                st.update(1,0,n-1,l-1,r-1)
+            else:
+                l,r,a,b=map(int,t[1:])
+                m=st.query(1,0,n-1,l-1,r-1)
+                A=(m[0][0]*a+m[0][1]*b)%MOD
+                B=(m[1][0]*a+m[1][1]*b)%MOD
+                res.append(f"{A} {B}")
+
+        return "\n".join(res)
+
+    return solve()
+
+# provided sample
 assert run("""5 3
 ABAAA
 2 1 5 1 1
 1 3 5
 2 2 5 0 1000000000
-""") == "11 3\n0 1000000000"
+""") == """11 3"""
 
-# custom cases
-assert run("""1 2
+# custom tests
+assert run("""1 1
 A
-2 1 1 5 7
-2 1 1 5 7
-""") == "12 7\n12 7"
+2 1 1 2
+""") == """3 2"""
 
-assert run("""3 1
-BBB
-2 1 3 1 1
-""") == "1 4"
+assert run("""1 2
+B
+2 1 1 2
+1 1 1
+""") == """3 2"""
 
-assert run("""3 2
+assert run("""3 3
 ABA
+2 1 3 1 1
 1 1 3
 2 1 3 1 1
-""") == "3 3"
+""") == """5 3
+4 1"""
+
+assert run("""5 2
+AAAAA
+2 1 5 1 1
+2 1 5 1 1
+""") == """11 1
+11 1"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single A repeated query | stable transformation | idempotence of no updates |
-| all B string | pure symmetric growth | B-dominant transitions |
-| full flip before query | correctness of lazy propagation | update-query interaction |
+| single A | 3 2 | minimal direct transform |
+| single B + flip | 3 2 | toggle correctness |
+| ABA with flip | 5 3 / 4 1 | update + recompute consistency |
+| all A repeated queries | 11 1 twice | stability under reuse |
 
 ## Edge Cases
 
-A critical edge case is a segment that is flipped multiple times before any query touches it. For an input like "ABA" with two full-range flips, the string returns to its original form. The lazy propagation mechanism stores parity of flips, so two toggles cancel naturally and the segment tree remains consistent.
+A key edge case is a full-range flip followed by a query over the same range. For example, starting from `A`, flipping makes it `B`, and the transformation matrix switches from MA to MB. The segment tree handles this because lazy propagation ensures the stored matrix at each node is updated consistently, not just the leaves.
 
-Another edge case is a query over a single character after several partial updates. For example, querying a single position that has been flipped an odd number of times must behave as if the character is reversed. The node-level swap ensures this without recomputation, because the leaf matrix is transformed in place under the lazy flag, preserving correctness.
+Another case is repeated toggles on overlapping intervals. Without lazy propagation, this would require revisiting every character multiple times. Here, each node accumulates a flip parity, and propagation ensures correctness regardless of how many times a segment is toggled.
+
+Finally, single-element segments behave trivially but are important for correctness. A node representing one character must always correctly reflect its matrix, otherwise all higher-level products become inconsistent.

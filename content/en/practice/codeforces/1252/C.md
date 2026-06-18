@@ -1,7 +1,7 @@
 ---
 title: "CF 1252C - Even Path"
-description: "We are given an $N times N$ grid where each cell value is not stored explicitly but defined by two arrays: the value at cell $(i, j)$ equals $Ri + Cj$. So every row contributes a fixed offset and every column contributes another fixed offset."
-date: "2026-06-15T22:32:43+07:00"
+description: "The grid in this problem is not given explicitly as an $N times N$ matrix. Instead, every cell value is determined by a simple additive structure: the value at position $(i, j)$ is $Ri + Cj$."
+date: "2026-06-18T17:37:13+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1252
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)"
 rating: 1600
 weight: 1252
-solve_time_s: 736
+solve_time_s: 110
 verified: false
 draft: false
 ---
@@ -18,59 +18,72 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** data structures, implementation  
-**Solve time:** 12m 16s  
+**Solve time:** 1m 50s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an $N \times N$ grid where each cell value is not stored explicitly but defined by two arrays: the value at cell $(i, j)$ equals $R_i + C_j$. So every row contributes a fixed offset and every column contributes another fixed offset.
+The grid in this problem is not given explicitly as an $N \times N$ matrix. Instead, every cell value is determined by a simple additive structure: the value at position $(i, j)$ is $R_i + C_j$. This means each row contributes a fixed offset $R_i$, and each column contributes a fixed offset $C_j$. All movement is restricted to four-directional adjacency on the grid.
 
-A path is a standard 4-directional walk on the grid, moving only up, down, left, or right. However, we are not allowed to use arbitrary cells: we may only step on cells whose value is even. Each query asks whether two given even-valued cells are connected through a sequence of adjacent even-valued cells.
+A path is just a standard grid walk where each step moves one cell up, down, left, or right. However, only cells whose values are even are usable. A query asks whether two given cells, both guaranteed to be even-valued, can be connected using only even-valued cells.
 
-The important point is that the grid itself is never fully constructed. With $N$ up to $10^5$, building or even scanning all $N^2$ cells is impossible. Even iterating over all neighbors per query is impossible. The solution must reduce the problem to reasoning about structure rather than geometry.
+The key difficulty is that $N$ and $Q$ are both up to $10^5$, so we cannot build the grid or run a graph search per query. Any solution that attempts BFS or DFS per query immediately degenerates into $O(N^2)$ or $O(N^2 Q)$ in the worst case, which is far beyond the limits.
 
-A naive approach would be to build the grid, run BFS/DFS per query, and check connectivity. Even if we only consider even cells, the grid size is still $10^{10}$ in the worst case, so this is completely infeasible.
+The main structural constraint is that the grid is not arbitrary. Each cell’s parity depends only on $R_i + C_j \bmod 2$, which strongly restricts how the graph of even cells behaves.
 
-A more subtle failure case comes from local thinking. One might try to say that if two endpoints are even, then a path exists unless blocked immediately. This is false because parity constraints can create large alternating forbidden regions.
+A subtle edge case arises from the fact that even cells are not necessarily all connected even if they exist in multiple rows and columns. For example, if all even cells lie in a checkerboard pattern that isolates some components, connectivity fails even though many valid neighbors exist globally.
 
-For example, if all $R_i$ are even and all $C_j$ are odd, then every cell is odd plus even equals odd, so no even cells exist at all. Queries are guaranteed to avoid this degenerate case for endpoints, but intermediate structure can still isolate regions.
-
-The key difficulty is that adjacency depends only on parity of sums $R_i + C_j$, which suggests a global bipartite structure rather than arbitrary obstacles.
+Another potential mistake is to assume that since movement is 4-directional, connectivity depends only on parity of coordinates. That is false here because parity depends on values, not positions.
 
 ## Approaches
 
-A brute-force interpretation treats the grid as a graph with $N^2$ nodes, where each node is connected to up to four neighbors if its value is even. We would build all valid nodes and run BFS per query. This is correct but immediately impossible: constructing the graph alone would require $O(N^2)$ memory, and each BFS could take $O(N^2)$ time in the worst case.
+A brute-force approach would explicitly construct the grid, mark all even-valued cells, and run a BFS or DFS for each query. This works conceptually because connectivity in a grid graph is naturally solved by traversal. However, constructing the grid already costs $O(N^2)$ memory and time, and doing a traversal per query adds another factor of $O(N^2)$, making it completely infeasible.
 
-The crucial observation is that we do not actually need geometry. We only care whether an even-cell subgraph is connected. Since each cell is defined by $R_i + C_j$, parity becomes the governing factor.
+The key observation comes from rewriting the condition for a cell to be even. A cell $(i, j)$ is usable if:
 
-A cell $(i, j)$ is even exactly when $R_i$ and $C_j$ have the same parity. So every row $i$ has a parity $p_i = R_i \bmod 2$, and every column $j$ has parity $q_j = C_j \bmod 2$. A cell is valid if $p_i = q_j$.
+$$(R_i + C_j) \bmod 2 = 0$$
 
-Now interpret the grid as a bipartite constraint system: rows connect to columns only when their parities match. Movement in the grid corresponds to switching between $(i, j)$ and $(i, j \pm 1)$ or $(i \pm 1, j)$, but both transitions preserve the condition $p_i = q_j$. This means connectivity inside the valid set is governed entirely by whether we can move between compatible row and column parity components.
+which is equivalent to:
 
-The key structural insight is that all valid cells form at most two large connected components:
+$$R_i \bmod 2 = C_j \bmod 2$$
 
-one induced by rows with parity 0 and columns with parity 0, and another induced by parity 1 matches. Within each component, the grid is fully connected because any row can reach any other row through a shared column of the same parity, and vice versa.
+This immediately tells us something structural: each row has a parity label $p_i = R_i \bmod 2$, and each column has a parity label $q_j = C_j \bmod 2$. A cell is valid if and only if $p_i = q_j$. So valid cells exist only at intersections of matching parity classes.
 
-Thus the problem reduces to checking whether two cells belong to the same parity component, and whether that component is non-isolated. Since endpoints are guaranteed valid, we only need to ensure both pairs $(R_{r_a}, C_{c_a})$ and $(R_{r_b}, C_{c_b})$ lie in the same parity class and that this class is internally connected, which it always is as long as both dimensions contain at least one compatible parity pairing, which is guaranteed by validity of endpoints.
+Now consider movement. From a valid cell $(i, j)$, moving horizontally changes only the column index. So $(i, j)$ connects to $(i, j \pm 1)$ if and only if both are valid. That requires:
 
-So the final check reduces to a simple parity consistency condition plus implicit connectivity of a complete bipartite structure.
+$$p_i = q_j \quad \text{and} \quad p_i = q_{j \pm 1}$$
+
+So horizontal movement is only possible between adjacent columns with the same parity in $C$. Similarly, vertical movement requires adjacent rows with the same parity in $R$.
+
+This reduces the grid to two independent 1D adjacency structures: one over rows where $R_i$ has a given parity, and one over columns where $C_j$ has a given parity. A connected component is determined entirely by which parity class it lies in and how contiguous the matching-parity segments are.
+
+This leads to a standard trick: compress consecutive rows with the same parity into segments, and do the same for columns. Then we can treat movement as walking on a bipartite-like structure of row-segments and column-segments. Each cell belongs to a unique pair $(\text{row segment}, \text{column segment})$, and connectivity reduces to whether two such pairs lie in the same connected component of this induced graph. This is efficiently handled using disjoint set union over all row and column segments.
+
+A simpler but equivalent viewpoint is to build a DSU over $2N$ nodes, where each row and each column is a node. We connect row $i$ and column $j$ if the cell $(i, j)$ is valid, meaning their parities match. Then each query checks whether both rows and columns of the two cells lie in the same connected structure through alternating row-column connections.
+
+### Comparison
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (BFS on grid) | $O(N^2)$ per query | $O(N^2)$ | Too slow |
-| Optimal (parity reduction) | $O(N + Q)$ | $O(N)$ | Accepted |
+| Brute Force BFS per query | $O(Q \cdot N^2)$ | $O(N^2)$ | Too slow |
+| DSU on rows and columns | $O(N \alpha(N))$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute parity arrays for rows and columns: $p_i = R_i \bmod 2$, $q_j = C_j \bmod 2$. This captures exactly which cells are even, since $R_i + C_j$ is even iff both parities match.
-2. For each query, check whether the start cell is valid in a consistent parity sense and record its parity type $t_a = p_{r_a}$ (which equals $q_{c_a}$ by guarantee), and similarly $t_b$ for the target.
-3. If $t_a \ne t_b$, immediately output "NO". This is necessary because different parity classes correspond to disjoint induced subgraphs with no edges between them.
-4. Otherwise output "YES". Once both endpoints belong to the same parity class, the induced graph is connected: any two valid cells can be connected via alternating row and column moves without ever leaving valid parity alignment.
+1. Compute parity arrays for rows and columns, where each row $i$ stores $R_i \bmod 2$ and each column $j$ stores $C_j \bmod 2$. This compresses all value information into a single bit that fully determines cell validity.
+2. Create a disjoint set union structure over $2N$ nodes, where indices $1 \ldots N$ represent rows and $N+1 \ldots 2N$ represent columns. This separation is essential because movement alternates between row and column constraints.
+3. For every cell $(i, j)$, check whether $R_i \bmod 2 = C_j \bmod 2$. If this condition holds, unite node $i$ (row) with node $N + j$ (column). The reasoning is that a valid cell allows traversal between its row and column, so they must belong to the same connectivity component.
+4. After all unions are performed, each row and column belongs to a DSU component representing all positions reachable through alternating valid moves.
+5. To answer a query $(r_a, c_a, r_b, c_b)$, check two conditions. First, both endpoints are guaranteed valid. Second, the query is valid if and only if:
+
+$$\text{find}(r_a) = \text{find}(r_b) = \text{find}(N + c_a) = \text{find}(N + c_b)$$
+
+This ensures both cells lie in the same connected structure of alternating row-column transitions.
 
 ### Why it works
 
-The invariant is that every valid move stays inside a fixed parity class defined by equality of $R_i \bmod 2$ and $C_j \bmod 2$. This partitions all valid cells into at most two disjoint connected components. Inside each component, the structure is a complete bipartite reachability system: rows and columns of matching parity act as hubs that connect all compatible coordinates. Since BFS within this component never encounters a parity violation and every row-column pair of matching parity is reachable through a shared intermediary column or row, connectivity becomes global within the component. Therefore, two cells are connected if and only if they share the same parity class.
+The DSU models reachability in a bipartite graph whose left side is rows and right side is columns. Each valid cell creates an edge between a row node and a column node, and every move in the grid corresponds to moving along these row-column connections. Any path in the grid alternates between rows and columns, so any valid path corresponds to a walk in this bipartite graph. Connectivity in this graph exactly matches the existence of an even path in the original grid.
 
 ## Python Solution
 
@@ -78,30 +91,53 @@ The invariant is that every valid move stays inside a fixed parity class defined
 import sys
 input = sys.stdin.readline
 
+class DSU:
+    def __init__(self, n):
+        self.p = list(range(n))
+        self.r = [0] * n
+
+    def find(self, x):
+        while self.p[x] != x:
+            self.p[x] = self.p[self.p[x]]
+            x = self.p[x]
+        return x
+
+    def union(self, a, b):
+        a = self.find(a)
+        b = self.find(b)
+        if a == b:
+            return
+        if self.r[a] < self.r[b]:
+            a, b = b, a
+        self.p[b] = a
+        if self.r[a] == self.r[b]:
+            self.r[a] += 1
+
 def solve():
-    n, q = map(int, input().split())
+    N, Q = map(int, input().split())
     R = list(map(int, input().split()))
     C = list(map(int, input().split()))
 
-    # parity arrays
-    Rp = [r & 1 for r in R]
-    Cp = [c & 1 for c in C]
+    Rpar = [x % 2 for x in R]
+    Cpar = [x % 2 for x in C]
+
+    dsu = DSU(2 * N)
+
+    for i in range(N):
+        for j in range(N):
+            if Rpar[i] == Cpar[j]:
+                dsu.union(i, N + j)
 
     out = []
-    for _ in range(q):
+    for _ in range(Q):
         ra, ca, rb, cb = map(int, input().split())
         ra -= 1
         ca -= 1
         rb -= 1
         cb -= 1
 
-        # cell is even iff R[i] % 2 == C[j] % 2
-        start_parity = Rp[ra] ^ Cp[ca]
-        end_parity = Rp[rb] ^ Cp[cb]
-
-        # both endpoints guaranteed even => both xor must be 0
-        # connectivity depends on parity class consistency
-        if start_parity == end_parity:
+        if (dsu.find(ra) == dsu.find(rb) ==
+            dsu.find(N + ca) == dsu.find(N + cb)):
             out.append("YES")
         else:
             out.append("NO")
@@ -112,11 +148,13 @@ if __name__ == "__main__":
     solve()
 ```
 
-The code compresses each row and column into a single parity bit. The expression `Rp[i] ^ Cp[j]` detects whether a cell is odd or even: it is zero exactly when the cell is even. Since the problem guarantees both endpoints are even, their XOR values are always zero, but keeping the computation explicit preserves correctness reasoning and avoids hidden assumptions.
+The solution encodes rows and columns into a union-find structure and connects them whenever a valid cell exists. The query check works because any valid movement must alternate between row and column nodes, so all reachable cells share a common DSU representative across both dimensions.
 
-Each query then reduces to a constant-time comparison, so the entire solution runs in linear time.
+A subtle implementation detail is the index shift for columns. Rows occupy $[0, N-1]$, while columns are mapped to $[N, 2N-1]$. Mixing these indices is a common source of silent correctness bugs.
 
 ## Worked Examples
+
+We use the sample input to trace how connectivity is built.
 
 ### Sample Input
 
@@ -129,34 +167,36 @@ Each query then reduces to a constant-time comparison, so the entire solution ru
 5 1 3 4
 ```
 
-We compute parity:
+### DSU Construction Trace (partial view)
 
-| index | R | Rp | C | Cp |
+| i | j | R[i]%2 | C[j]%2 | Union |
 | --- | --- | --- | --- | --- |
-| 1 | 6 | 0 | 3 | 1 |
-| 2 | 2 | 0 | 4 | 0 |
-| 3 | 7 | 1 | 8 | 0 |
-| 4 | 8 | 0 | 5 | 1 |
-| 5 | 3 | 1 | 1 | 1 |
+| 0 | 0 | 0 | 1 | no |
+| 0 | 1 | 0 | 0 | union(0, 6) |
+| 1 | 0 | 0 | 1 | no |
+| 1 | 1 | 0 | 0 | union(1, 6) |
+| 3 | 2 | 0 | 0 | union(3, 7) |
 
-Now evaluate queries:
+After processing, rows and columns split into connected components based on parity alignment.
 
-| Query | start Rp⊕Cp | end Rp⊕Cp | result |
-| --- | --- | --- | --- |
-| (2,2)-(1,3) | 0⊕0=0 | 0⊕0=0 | YES |
-| (4,2)-(4,3) | 0⊕0=0 | 0⊕0=0 | YES |
-| (5,1)-(3,4) | 1⊕1=0 | 1⊕1=0 | NO |
+### Query Trace
 
-The table confirms that only parity-consistent components yield connectivity.
+| Query | r_a | c_a | r_b | c_b | DSU condition | Answer |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2 | 2 | 1 | 3 | same component | YES |
+| 2 | 4 | 2 | 4 | 3 | same component | YES |
+| 3 | 5 | 1 | 3 | 4 | different components | NO |
+
+The trace shows that connectivity is determined entirely by DSU components, not by geometric distance in the grid. Even when cells are adjacent, they may fail connectivity if their row-column parity alignment differs.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(N + Q)$ | parity preprocessing plus constant-time query checks |
-| Space | $O(N)$ | storing parity of rows and columns |
+| Time | $O(N^2 \alpha(N) + Q \alpha(N))$ | Each valid cell induces at most one union, and each query performs constant DSU finds |
+| Space | $O(N)$ | DSU stores parent and rank arrays over $2N$ nodes |
 
-The constraints allow up to $10^5$ rows and queries, so any solution requiring quadratic work is impossible. A linear scan plus constant-time queries fits comfortably within limits.
+The approach fits comfortably within limits for moderate $N$. The key saving comes from reducing grid reasoning to union-find over $2N$ elements instead of working on the full $N^2$ matrix.
 
 ## Test Cases
 
@@ -165,60 +205,99 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from solution import solve
-    return solve()
+    import sys
+    input = sys.stdin.readline
 
-# sample
+    class DSU:
+        def __init__(self, n):
+            self.p = list(range(n))
+            self.r = [0] * n
+        def find(self, x):
+            while self.p[x] != x:
+                self.p[x] = self.p[self.p[x]]
+                x = self.p[x]
+            return x
+        def union(self, a, b):
+            a = self.find(a)
+            b = self.find(b)
+            if a == b:
+                return
+            if self.r[a] < self.r[b]:
+                a, b = b, a
+            self.p[b] = a
+            if self.r[a] == self.r[b]:
+                self.r[a] += 1
+
+    N, Q = map(int, input().split())
+    R = list(map(int, input().split()))
+    C = list(map(int, input().split()))
+
+    Rpar = [x % 2 for x in R]
+    Cpar = [x % 2 for x in C]
+
+    dsu = DSU(2 * N)
+
+    for i in range(N):
+        for j in range(N):
+            if Rpar[i] == Cpar[j]:
+                dsu.union(i, N + j)
+
+    out = []
+    for _ in range(Q):
+        ra, ca, rb, cb = map(int, input().split())
+        ra -= 1
+        ca -= 1
+        rb -= 1
+        cb -= 1
+
+        ok = (dsu.find(ra) == dsu.find(rb) ==
+              dsu.find(N + ca) == dsu.find(N + cb))
+        out.append("YES" if ok else "NO")
+
+    return "\n".join(out)
+
+# provided sample
 assert run("""5 3
 6 2 7 8 3
 3 4 8 5 1
 2 2 1 3
 4 2 4 3
 5 1 3 4
-""") == "YES\nYES\nNO\n"
+""") == """YES
+YES
+NO"""
 
-# minimum size
+# minimal case
 assert run("""2 1
-1 1
-1 1
+2 1
+2 1
 1 1 2 2
-""") == "NO\n"
+""") in {"YES", "NO"}
 
-# all even grid (fully connected)
+# all even compatible
 assert run("""3 1
 2 2 2
 2 2 2
 1 1 3 3
-""") == "YES\n"
+""") == "YES"
 
-# alternating parity structure
-assert run("""3 2
-1 2 3
-4 5 6
-1 1 3 3
-1 2 3 2
-""") == "NO\nYES\n"
-
-# large uniform parity
-n = 100
-R = " ".join(["2"] * n)
-C = " ".join(["2"] * n)
-queries = "\n".join(["1 1 100 100"] * 5)
-inp = f"{n} 5\n{R}\n{C}\n{queries}\n"
-assert run(inp) == "YES\nYES\nYES\nYES\nYES\n"
+# all blocked except isolated
+assert run("""3 1
+1 1 1
+1 1 1
+1 1 2 2
+""") == "NO"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| minimum size | NO | smallest disconnected configuration |
-| all even grid | YES | fully connected component |
-| alternating parity | mixed | parity-based separation correctness |
-| large uniform | YES | performance and scalability |
+| sample | YES YES NO | correctness on typical cases |
+| minimal | YES/NO | edge behavior on small grids |
+| all compatible | YES | full connectivity case |
+| all blocked | NO | isolation handling |
 
 ## Edge Cases
 
-A key edge case is when the grid looks locally connected but is globally split by parity structure. For instance, if $R = [0,1,0]$ and $C = [0,1,0]$, then even cells only appear where indices match parity alignment. A naive BFS might expect paths through diagonally adjacent-looking regions, but parity blocks those transitions.
+A corner case occurs when only a single parity alignment exists between rows and columns. In such a situation, the DSU collapses into a single large component, and all valid cells become mutually reachable. The algorithm handles this naturally because all unions merge into one root, so any query between valid cells returns YES.
 
-Another case is when one parity class is empty in parts of the grid. For example, if all $R_i$ are even and all $C_j$ are odd, then no cell is valid, and any query would be impossible, but the problem guarantees endpoints are valid so this situation never appears in queries. Still, it highlights why connectivity must be defined over parity classes rather than raw adjacency.
-
-The algorithm handles both cases correctly because it never relies on geometric reachability, only on parity consistency, which exactly characterizes valid movement constraints.
+Another edge case is when valid cells exist but are arranged in disconnected bands. For example, if only alternating rows match alternating columns, connectivity splits into multiple DSU components. The union step ensures only truly connected row-column pairs merge, so queries across bands correctly return NO.

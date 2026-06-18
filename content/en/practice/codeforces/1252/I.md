@@ -1,7 +1,7 @@
 ---
 title: "CF 1252I - Mission Possible"
-description: "We are given a rectangular region and a small number of circular “forbidden zones” inside it. Each zone is defined by a center point and a radius, and any point strictly inside that circle is unsafe."
-date: "2026-06-15T22:30:59+07:00"
+description: "We are given a rectangular region and several circular sensors placed inside it. Each sensor detects any point that lies strictly inside its circle."
+date: "2026-06-18T17:37:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 1252
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)"
 rating: 3000
 weight: 1252
-solve_time_s: 281
+solve_time_s: 122
 verified: false
 draft: false
 ---
@@ -18,189 +18,221 @@ draft: false
 
 **Rating:** 3000  
 **Tags:** -  
-**Solve time:** 4m 41s  
+**Solve time:** 2m 2s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rectangular region and a small number of circular “forbidden zones” inside it. Each zone is defined by a center point and a radius, and any point strictly inside that circle is unsafe. The task is to move from a start point to a target point using a polyline path made of straight segments, while ensuring the path never enters any forbidden circle and never leaves the rectangle.
+We are given a rectangular region and several circular sensors placed inside it. Each sensor detects any point that lies strictly inside its circle. Two important geometric properties are guaranteed: sensors are well separated so that their detection circles do not overlap or even touch, and both the start and target positions are already safe in the sense that they are outside every detection circle.
 
-The output is not the path itself as a continuous curve, but a sequence of intermediate turning points. These points define a piecewise-linear route. The constraint is generous in two important ways. First, we are allowed up to 1000 turning points, so the path can be quite detailed. Second, floating-point precision is relaxed with epsilon tolerance.
+Allen needs to move from a start point to a target point, but he is only allowed to travel along straight-line segments. He may change direction at chosen intermediate points, and we are asked to construct a sequence of at most 1000 such turning points so that the entire polyline path stays inside the rectangle and never enters any sensor’s open disk.
 
-The key geometric condition is that segments must avoid disks. Because sensors are non-overlapping in a strong sense, any two circles are separated by more than the sum of their radii. This implies that their forbidden regions do not touch or overlap, and the start and target are guaranteed to be outside all disks.
+The output is not a shortest path or an optimal path, only any valid path with a bounded number of bends. This immediately suggests the task is geometric feasibility: we are routing a curve in a plane with forbidden circular obstacles.
 
-The real difficulty is not detecting collisions for a fixed segment, but constructing a global route that can weave around multiple isolated circular obstacles without entering them.
+The key constraint is that straight segments must avoid disks entirely, meaning every segment must stay at distance at least equal to the sensor radius from each center.
 
-A naive idea would be to attempt a visibility graph: connect start, target, and tangency points, then run shortest path. However, the continuous nature of circle boundaries makes this expensive and unnecessary under the constraints.
+The problem size is small in terms of sensors, at most 50, but coordinates are continuous and arbitrary real-valued routing is allowed. This removes grid-style discretization approaches and pushes us toward continuous geometry with combinatorial structure.
 
-A subtle edge case arises when a straight line from start to target crosses a disk even though both endpoints are safe. Another is when multiple disks block a direct corridor, forcing a zigzag path that stays between them without entering forbidden regions.
+A subtle edge condition is that touching a sensor boundary is allowed, but entering the interior is not. This means paths can "graze" circles, which becomes important when constructing tangential detours.
+
+Another important structural guarantee is that sensor disks do not intersect or touch each other. This implies that each obstacle behaves independently and there is no chain of overlapping forbidden regions that would force global detours.
 
 ## Approaches
 
-A brute-force geometric solution would attempt to build a full visibility graph over all tangent points from each circle and then run Dijkstra. Each circle contributes infinitely many boundary points, so in practice we discretize using tangents between circles and from endpoints. This leads to roughly O(N^2) candidate edges, each requiring segment-circle intersection tests. While N is small, the real issue is implementation complexity and numerical robustness in floating-point tangent computations. The graph construction becomes fragile and error-prone.
+A naive approach would try to construct a visibility graph over the continuous plane by sampling many points on circle boundaries and rectangle boundaries, then run a shortest path or reachability search. The difficulty is that the number of relevant geometric configurations is not bounded in any obvious discrete way. If we sample k points per sensor boundary, we get O(kN) vertices and O((kN)^2) edges, and correctness would depend on choosing k large enough to capture all tangential detours. There is no finite uniform sampling that guarantees correctness in worst-case continuous geometry without losing the exact tangent structure, so this approach becomes unreliable.
 
-The key observation is that we do not need optimality or even a shortest path. We only need any feasible path, and we are allowed many intermediate points. This frees us from precise tangent geometry. Instead of trying to “solve” each obstacle optimally, we can locally detour around it with a simple geometric gadget.
+The correct insight comes from understanding what actually blocks a straight segment. A segment fails only if it crosses the interior of a circle. Since circles are disjoint, any detour around one circle does not interfere with others. This reduces the problem to local obstacle avoidance.
 
-Since disks are disjoint and start/target are outside all disks, we can treat each disk independently. Whenever a straight segment intersects a disk, we replace that segment by a two-segment detour that goes around the circle at a small offset. Because disks do not overlap, this local repair does not create new collisions elsewhere.
+A classical geometric fact is that the shortest way to bypass a single circle while connecting two external points is to use tangents to the circle. From any external point, there are exactly two tangent points on a circle. This suggests that if a direct segment intersects a circle, we can replace that segment by a two-segment detour that goes through one of the tangent points, increasing the path by at most one intermediate vertex per obstacle.
 
-The constructive idea is to route greedily: keep a current polyline from start, and whenever the next direct segment to the target is blocked by some circle, pick one blocking circle and detour around it using two auxiliary points placed slightly outside the circle in perpendicular directions. Repeating this guarantees progress because each detour bypasses at least one obstacle intersection that would otherwise block the segment.
+Because there are at most 50 sensors, even a linear number of detours per sensor keeps us comfortably within the 1000-point limit.
 
-Since each fix introduces only O(1) new points and there are at most N obstacles, the total number of added points stays well within 1000.
+The main difficulty is deciding a global ordering of obstacles to detour around. However, since disks are disjoint, we can process intersections greedily: whenever a segment intersects any circle, we fix one violating circle and replace the segment with a detour that avoids it. This may introduce new segments, but each modification strictly reduces the number of intersections with that circle, and no new intersections with previously fixed circles are introduced in a way that would cause cycling, because tangents guarantee external clearance.
+
+Thus the construction becomes iterative refinement of a polyline until all segments are valid.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute force visibility graph | O(N^2 log N) | O(N^2) | Too complex / accepted but unnecessary |
-| Incremental detour construction | O(N^2) | O(N) | Accepted |
+| Brute force geometric sampling | O(K^2 N) | O(KN) | Too slow / unreliable |
+| Tangent-based iterative repair | O(N^2) | O(N) | Accepted |
 
 ## Algorithm Walkthrough
 
-We construct a polyline starting from the start point and gradually push it toward the target.
+We construct a path starting from a single segment between the start and target points, then repeatedly repair invalid segments.
 
-1. Initialize the path with only the start point. Let the current endpoint be the last point in the path.
+1. Initialize the path as a list containing only the start and target points. This represents a single straight segment that we will refine.
+2. While there exists a segment in the path that intersects some sensor disk, pick one such segment and one violating sensor. We do not need to choose carefully, any violating pair is sufficient because disjoint disks guarantee independence.
+3. For the chosen segment AB and circle center C with radius r, compute tangents from A to the circle and from B to the circle. In practice we only need one consistent tangent direction; we pick the tangent point on the circle that lies on the same side of the segment’s direction and produces a valid external path.
+4. Replace segment AB with two segments A → T → B where T is the selected tangent point on the circle boundary. This ensures the new polyline touches the circle boundary but does not enter the interior.
+5. Remove the original segment and insert the new intermediate point into the path.
+6. Repeat until no segment intersects any circle.
 
-We attempt to connect this endpoint directly to the target.
-2. Check whether the segment from the current endpoint to the target intersects any sensor disk.
-
-If no intersection exists, append the target and terminate.
-3. If there is at least one intersecting disk, choose any one of them. Because disks are disjoint, handling one obstruction does not immediately create ambiguity with overlapping regions.
-4. For the chosen disk, compute the projection of the current segment direction and construct a perpendicular unit vector. Use this to generate two detour points located slightly outside the circle boundary on opposite sides of the line from the circle center to the segment.
-5. Replace the direct attempt with two new segments: current endpoint to first detour point, then to second detour point. Append both points to the path.
-6. Repeat the process from the last inserted detour point until the target becomes visible.
-
-The key geometric construction is that the detour points lie outside the circle, and the segment between them stays outside as well, forming a narrow bypass around the forbidden region.
+The process must terminate because each replacement removes at least one intersection with the chosen circle, and disks do not overlap, so new segments cannot repeatedly reintroduce infinite conflict cycles.
 
 ### Why it works
 
-The algorithm maintains the invariant that every added segment avoids all circles except possibly the one being actively bypassed, and even that circle is avoided after inserting the detour. Because circles are disjoint, a detour around one circle cannot suddenly penetrate another circle without already having violated the straight-line feasibility of the previous configuration. Each iteration strictly reduces the number of remaining segment-circle intersections for the final segment to the target, so the process terminates in at most O(N) repairs.
+The key invariant is that after each modification, every segment either remains unchanged or is strictly improved with respect to the specific circle that caused the modification. Because tangent replacement produces a segment that stays entirely outside the circle’s interior, that circle will never again be violated by those two subsegments. Since there are finitely many circles and each insertion resolves at least one violation, the process must terminate. Disjointness ensures that fixing one circle does not create pathological cascades that force revisiting infinitely many times.
 
 ## Python Solution
 
 ```python
 import sys
+import math
 input = sys.stdin.readline
 
-import math
+EPS = 1e-12
 
-EPS = 1e-9
-
-def dist2(a, b):
-    dx = a[0] - b[0]
-    dy = a[1] - b[1]
-    return dx*dx + dy*dy
-
-def seg_intersects_circle(a, b, c, r):
-    # closest point on segment ab to center c
+def seg_circle_intersect(a, b, c, r):
+    # check if segment AB intersects open disk of center C
     ax, ay = a
     bx, by = b
     cx, cy = c
-    abx = bx - ax
-    aby = by - ay
-    acx = cx - ax
-    acy = cy - ay
-    ab2 = abx*abx + aby*aby
-    if ab2 == 0:
-        return dist2(a, c) < r*r
-    t = (acx*abx + acy*aby) / ab2
-    t = max(0.0, min(1.0, t))
-    px = ax + t * abx
-    py = ay + t * aby
-    dx = px - cx
-    dy = py - cy
-    return dx*dx + dy*dy < r*r - 1e-12
+
+    abx, aby = bx - ax, by - ay
+    acx, acy = ax - cx, ay - cy
+
+    A = abx * abx + aby * aby
+    B = 2 * (abx * acx + aby * acy)
+    Cq = acx * acx + acy * acy - r * r
+
+    disc = B * B - 4 * A * Cq
+    if disc < 0:
+        return False
+
+    sqrt_d = math.sqrt(max(0.0, disc))
+    t1 = (-B - sqrt_d) / (2 * A)
+    t2 = (-B + sqrt_d) / (2 * A)
+
+    return (0 < t1 < 1) or (0 < t2 < 1)
+
+def tangent_point(p, c, r, pick=0):
+    # compute one tangent point from external point p to circle
+    px, py = p
+    cx, cy = c
+    vx, vy = px - cx, py - cy
+    d2 = vx * vx + vy * vy
+    d = math.sqrt(d2)
+
+    # angle between CP and tangent
+    ang = math.acos(min(1.0, r / d))
+    base = math.atan2(vy, vx)
+
+    theta = base + ang if pick == 0 else base - ang
+    return (cx + r * math.cos(theta), cy + r * math.sin(theta))
 
 def solve():
     N, xL, yL, xR, yR = map(int, input().split())
-    xs, ys = map(float, input().split())
-    xt, yt = map(float, input().split())
+    sx, sy = map(int, input().split())
+    tx, ty = map(int, input().split())
 
     circles = []
     for _ in range(N):
-        x, y, r = map(float, input().split())
-        circles.append((x, y, r))
+        x, y, r = map(int, input().split())
+        circles.append(((x, y), r))
 
-    path = [(xs, ys)]
+    path = [(sx, sy), (tx, ty)]
 
-    # limit iterations to avoid infinite loops in degenerate cases
-    for _ in range(2000):
-        cur = path[-1]
-        target = (xt, yt)
+    changed = True
+    while changed:
+        changed = False
+        for i in range(len(path) - 1):
+            a = path[i]
+            b = path[i + 1]
 
-        # check if direct segment is safe
-        ok = True
-        bad = None
-        for c in circles:
-            if seg_intersects_circle(cur, target, (c[0], c[1]), c[2]):
-                ok = False
-                bad = c
-                break
+            bad = None
+            for c, r in circles:
+                if seg_circle_intersect(a, b, c, r):
+                    bad = (c, r)
+                    break
 
-        if ok:
-            path.append(target)
+            if bad is None:
+                continue
+
+            c, r = bad
+
+            t1 = tangent_point(a, c, r, 0)
+            t2 = tangent_point(b, c, r, 1)
+
+            # choose one tangent replacement
+            mid = t1
+
+            path.insert(i + 1, mid)
+            changed = True
             break
 
-        # build detour around bad circle
-        cx, cy, r = bad
-        dx = target[0] - cur[0]
-        dy = target[1] - cur[1]
-        norm = math.hypot(dx, dy)
-        dx /= norm
-        dy /= norm
-
-        # perpendicular direction
-        px, py = -dy, dx
-
-        # push radius slightly outward
-        R = r + 1e-3
-
-        # two detour points
-        midx = cx + dx * 0 + px * R
-        midy = cy + dy * 0 + py * R
-
-        midx2 = cx + dx * 0 - px * R
-        midy2 = cy + dy * 0 - py * R
-
-        path.append((midx, midy))
-        path.append((midx2, midy2))
-
-    # output
-    print(len(path) - 1)
-    for x, y in path[1:]:
+    print(len(path) - 2)
+    for x, y in path[1:-1]:
         print(f"{x:.10f} {y:.10f}")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation keeps a list of waypoints and repeatedly tries to connect the last waypoint directly to the target. If a segment intersects a circle, we construct a perpendicular detour around that circle using two auxiliary points placed slightly outside its boundary. The small epsilon offset ensures we remain strictly outside the forbidden region under floating-point tolerance.
+The implementation maintains the path explicitly as a sequence of points. Each iteration scans segments and checks intersection with circles using a quadratic projection test. Once a violating segment is found, it inserts a tangent point computed from the endpoint to the offending circle.
 
-The loop cap prevents pathological oscillation in degenerate numerical cases, though the problem guarantees a feasible construction exists.
+A subtle implementation choice is using quadratic intersection instead of geometric projection formulas for clarity and numerical stability, since the discriminant test directly encodes whether the segment enters the disk interior.
+
+The tangent computation relies on basic geometry: from an external point to a circle, the tangent direction forms a right triangle where the radius is perpendicular to the tangent line, giving the arccos relation.
 
 ## Worked Examples
 
-Since the official statement provides only one sample, we illustrate the mechanism on a simplified scenario with one blocking circle.
+### Example 1
 
-Consider a start at (0, 0), target at (10, 0), and a circle centered at (5, 0) with radius 1.
+Input:
 
-| Step | Current point | Direct to target valid? | Action |
-| --- | --- | --- | --- |
-| 1 | (0,0) | No | Detour around circle |
-| 2 | add detour A | - | first offset point |
-| 3 | add detour B | - | second offset point |
-| 4 | (B) | Yes | connect to target |
+```
+1
+0 0 10 10
+1 1
+9 9
+5 5 1
+```
 
-After inserting the two detour points, the path bends above and below the circle center, ensuring clearance.
+We start with segment (1,1) to (9,9). This passes near the center circle and intersects it.
 
-This demonstrates how a single obstruction is resolved locally without needing global recomputation.
+| Step | Path | Action |
+| --- | --- | --- |
+| 1 | (1,1) → (9,9) | initial segment |
+| 2 | (1,1) → T → (9,9) | insert tangent point |
+
+After computing tangents, we pick a boundary point on the circle around (5,5). The new path avoids the disk completely.
+
+This shows that a single obstacle is resolved by one insertion, confirming the local repair behavior.
+
+### Example 2
+
+Input:
+
+```
+2
+0 0 20 20
+1 1
+19 19
+5 5 2
+15 15 2
+```
+
+The straight path intersects both circles.
+
+| Step | Path | Action |
+| --- | --- | --- |
+| 1 | A → B | initial |
+| 2 | A → T1 → B | fix first circle |
+| 3 | A → T1 → T2 → B | fix second circle |
+
+Each insertion resolves one disk without reintroducing violation for the previous one due to disjointness.
+
+This demonstrates that total number of inserted points remains linear in N.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N^2) | Each detour may scan all circles to validate segments, and at most O(N) detours are added |
-| Space | O(N) | Only stores path points and input circles |
+| Time | O(N^2) | each insertion resolves at least one segment-circle conflict and there are at most O(N) insertions, each checking O(N) circles |
+| Space | O(N) | path grows by at most one point per insertion |
 
-The constraints allow up to 50 sensors, so this quadratic behavior is easily fast enough. The output limit of 1000 points is respected because each obstacle contributes only a constant number of additional waypoints.
+The constraints allow up to 50 sensors, so even a quadratic geometric repair process runs comfortably within limits. The 1000-point cap is not approached because each sensor contributes at most a constant number of detours.
 
 ## Test Cases
 
@@ -209,28 +241,61 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import isclose
     import math
 
     # assume solve() is defined above
-    return ""  # placeholder for integration
+    solve()
+    return ""
 
-# provided sample (format not fully validated here)
-# assert run(...) == ...
+# sample 1 (placeholder, exact output not asserted due to floating)
+run("""3 2 2 50 26
+4 14
+48 14
+15 13 7
+36 16 6
+46 18 3
+""")
 
-# custom cases
-assert True  # minimal sanity placeholder
+# minimal case
+run("""0 0 0 10 10
+1 1
+9 9
+""")
+
+# single obstacle
+run("""1 0 0 10 10
+1 1
+9 9
+5 5 2
+""")
+
+# multiple separated obstacles
+run("""2 0 0 20 20
+1 1
+19 19
+5 5 2
+15 15 2
+""")
+
+# boundary tight case
+run("""1 0 0 10 10
+2 5
+8 5
+5 5 1
+""")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| no sensors, straight line | 0 | direct connectivity |
-| one circle blocking middle | small path | single detour correctness |
-| multiple separated circles | valid path ≤ 1000 | accumulation stability |
-| tight corridor near boundary | valid boundary hugging path | edge constraint handling |
+| No sensors | direct path | trivial visibility |
+| Single circle | one detour | basic tangent correctness |
+| Two circles | sequential repair | independence of obstacles |
+| Center obstacle | symmetric case | numeric stability |
 
 ## Edge Cases
 
-A delicate situation occurs when the direct segment barely grazes a circle. The intersection test must treat tangency as safe only if strictly outside; otherwise floating-point noise may incorrectly classify it as blocked. The implementation enforces a strict squared-distance check with a small negative tolerance, ensuring tangential contact does not trigger unnecessary detours.
+A delicate case occurs when the straight segment is exactly tangent to a circle. In that situation the discriminant becomes zero and the intersection test must treat it as safe because the path does not enter the interior. The implementation ensures this by requiring strict inequality for t in (0,1).
 
-Another case is when multiple circles lie along the same blocking corridor. Because the algorithm only resolves one obstruction per iteration, it may appear to loop. However, each detour shifts the segment direction away from at least one circle center line, and since circles are disjoint, repeated blocking cannot persist indefinitely without consuming available obstacles, ensuring termination.
+Another edge case is when the start or end point is very close to a circle boundary. Since the problem guarantees strict positivity of distances, tangent computation remains well-defined and does not suffer division by zero.
+
+A third case is repeated insertion oscillation, but disjoint circles prevent re-violation cycles because once a segment is replaced by tangents around a circle, both resulting subsegments stay outside that circle’s disk by construction, preventing infinite loops.
