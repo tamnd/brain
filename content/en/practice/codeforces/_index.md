@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1585 contests, 9106 problems, 4483 verified."
+description: "Codeforces problem solutions with full editorials. 1586 contests, 9108 problems, 4483 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1585 contests, 9106 problems, 4483 verified.**
+**1586 contests, 9108 problems, 4483 verified.**
 
-## Unknown — 6 contests, 28 problems, 16 verified
+## Unknown — 7 contests, 30 problems, 16 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 2 | 0/2 | Special | - |
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
 | [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 1 | 0/1 | ICPC/IOI | - |
