@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1577 contests, 9063 problems, 4461 verified."
+description: "Codeforces problem solutions with full editorials. 1578 contests, 9068 problems, 4464 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1577 contests, 9063 problems, 4461 verified.**
+**1578 contests, 9068 problems, 4464 verified.**
 
 ## Unknown — 1 contests, 5 problems, 5 verified
 
@@ -1627,7 +1627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 
-## 2026 — 38 contests, 297 problems, 60 verified
+## 2026 — 39 contests, 302 problems, 63 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1669,4 +1669,5 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2225](2225/) | [Educational Codeforces Round 189 (Rated for Div. 2)](https://codeforces.com/contest/2225) | 7 | 0/7 | Div. 2 | - |
 | [2226](2226/) | [Codeforces Round 1095 (Div. 2)](https://codeforces.com/contest/2226) | 7 | 0/7 | Div. 2 | - |
 | [2227](2227/) | [Codeforces Round 1096 (Div. 3)](https://codeforces.com/contest/2227) | 8 | 0/8 | Div. 3 | - |
+| [106513](106513/) | [2026 Spring UT CS104c Final Exam](https://codeforces.com/contest/106513) | 5 | 3/5 | Special | - |
 
