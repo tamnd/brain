@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1599 contests, 9179 problems, 4513 verified."
+description: "Codeforces problem solutions with full editorials. 1600 contests, 9182 problems, 4513 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1599 contests, 9179 problems, 4513 verified.**
+**1600 contests, 9182 problems, 4513 verified.**
 
-## Unknown — 17 contests, 79 problems, 38 verified
+## Unknown — 18 contests, 82 problems, 38 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106281](106281/) | [Муниципальный этап ВсОШ по информатике (программирование) 7-8 класс, Свердловская область, 2025](https://codeforces.com/contest/106281) | 3 | 0/3 | Special | - |
 | [106282](106282/) | [Муниципальный этап ВсОШ по информатике (программирование) 9 класс, Свердловская область, 2025](https://codeforces.com/contest/106282) | 4 | 0/4 | Special | - |
 | [106284](106284/) | [Муниципальный этап ВсОШ по информатике (программирование) 10-11 класс, Свердловская область, 2025](https://codeforces.com/contest/106284) | 3 | 0/3 | Special | - |
 | [106292](106292/) | [Innopolis Open 2025-2026. Elimination Round 2](https://codeforces.com/contest/106292) | 3 | 3/3 | Special | - |
