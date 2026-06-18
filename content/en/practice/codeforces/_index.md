@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1592 contests, 9139 problems, 4502 verified."
+description: "Codeforces problem solutions with full editorials. 1593 contests, 9147 problems, 4502 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1592 contests, 9139 problems, 4502 verified.**
+**1593 contests, 9147 problems, 4502 verified.**
 
-## Unknown — 12 contests, 57 problems, 31 verified
+## Unknown — 13 contests, 65 problems, 31 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106296](106296/) | [The 4th Universal Cup. Extra Stage 3: Osijek (Farhod Contest)](https://codeforces.com/contest/106296) | 8 | 0/8 | Special | - |
 | [106298](106298/) | [OCPC 2024 Summer, Day 4: wuhudsm Contest](https://codeforces.com/contest/106298) | 8 | 7/8 | Special | - |
 | [106299](106299/) | [Osijek Competitive Programming Camp, Winter 2025, Day 9: New World](https://codeforces.com/contest/106299) | 7 | 1/7 | Special | - |
 | [106307](106307/) | [Osijek Competitive Programming Camp, Fall 2023, Day 9: Polish Kids Contest](https://codeforces.com/contest/106307) | 6 | 6/6 | Special | - |
