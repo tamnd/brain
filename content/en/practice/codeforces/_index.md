@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9009 problems, 4431 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9011 problems, 4432 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9009 problems, 4431 verified.**
+**1576 contests, 9011 problems, 4432 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 904 problems, 535 verified
+## 2019 — 159 contests, 906 problems, 536 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -732,7 +732,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1208](1208/) | [Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1208) | 8 | 7/8 | Div. 1+2 | 900-3500 |
 | [1209](1209/) | [Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)](https://codeforces.com/contest/1209) | 10 | 6/10 | Div. 1+2 | 800-3300 |
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | 7 | 5/7 | Special | 1700-3200 |
-| [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | 7 | 5/7 | Kotlin | 1000-3100 |
+| [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | 9 | 6/9 | Kotlin | 1000-3100 |
 | [1213](1213/) | [Codeforces Round 582 (Div. 3)](https://codeforces.com/contest/1213) | 8 | 7/8 | Div. 3 | 900-2100 |
 | [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | 8 | 6/8 | Div. 1+2 | 1100-3200 |
 | [1215](1215/) | [Codeforces Round 585 (Div. 2)](https://codeforces.com/contest/1215) | 6 | 4/6 | Div. 2 | 1000-2700 |
