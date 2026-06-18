@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1589 contests, 9118 problems, 4488 verified."
+description: "Codeforces problem solutions with full editorials. 1590 contests, 9124 problems, 4494 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1589 contests, 9118 problems, 4488 verified.**
+**1590 contests, 9124 problems, 4494 verified.**
 
-## Unknown — 9 contests, 36 problems, 17 verified
+## Unknown — 10 contests, 42 problems, 23 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106307](106307/) | [Osijek Competitive Programming Camp, Fall 2023, Day 9: Polish Kids Contest](https://codeforces.com/contest/106307) | 6 | 6/6 | Special | - |
 | [106309](106309/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Пермский край, 2025](https://codeforces.com/contest/106309) | 3 | 0/3 | Special | - |
 | [106310](106310/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Пермский край, 2025](https://codeforces.com/contest/106310) | 3 | 1/3 | Special | - |
 | [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 2 | 0/2 | Special | - |
