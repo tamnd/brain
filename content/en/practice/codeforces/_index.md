@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1587 contests, 9112 problems, 4487 verified."
+description: "Codeforces problem solutions with full editorials. 1588 contests, 9115 problems, 4488 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1587 contests, 9112 problems, 4487 verified.**
+**1588 contests, 9115 problems, 4488 verified.**
 
-## Unknown — 7 contests, 30 problems, 16 verified
+## Unknown — 8 contests, 33 problems, 17 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106310](106310/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Пермский край, 2025](https://codeforces.com/contest/106310) | 3 | 1/3 | Special | - |
 | [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 2 | 0/2 | Special | - |
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
