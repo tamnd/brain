@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9054 problems, 4452 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9056 problems, 4454 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9054 problems, 4452 verified.**
+**1576 contests, 9056 problems, 4454 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -955,7 +955,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 132 contests, 826 problems, 311 verified
+## 2021 — 132 contests, 828 problems, 313 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1040,7 +1040,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1556](1556/) | [Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1556) | 8 | 3/8 | Div. 1+2 | 800-3300 |
 | [1557](1557/) | [Codeforces Round 737 (Div. 2)](https://codeforces.com/contest/1557) | 5 | 3/5 | Div. 2 | 800-2800 |
 | [1558](1558/) | [Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))](https://codeforces.com/contest/1558) | 6 | 1/6 | Div. 1 | 1300-3300 |
-| [1559](1559/) | [Codeforces Round 738 (Div. 2)](https://codeforces.com/contest/1559) | 4 | 2/4 | Div. 2 | 900-2500 |
+| [1559](1559/) | [Codeforces Round 738 (Div. 2)](https://codeforces.com/contest/1559) | 6 | 4/6 | Div. 2 | 900-2500 |
 | [1560](1560/) | [Codeforces Round 739 (Div. 3)](https://codeforces.com/contest/1560) | 7 | 2/7 | Div. 3 | 800-2100 |
 | [1561](1561/) | [Codeforces Round 740 (Div. 2, based on VK Cup 2021 - Final (Engine))](https://codeforces.com/contest/1561) | 3 | 2/3 | Div. 2 | 800-1700 |
 | [1562](1562/) | [Codeforces Round 741 (Div. 2)](https://codeforces.com/contest/1562) | 7 | 1/7 | Div. 2 | 800-2900 |
