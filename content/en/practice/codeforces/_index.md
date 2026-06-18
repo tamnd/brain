@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9049 problems, 4452 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9050 problems, 4452 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9049 problems, 4452 verified.**
+**1576 contests, 9050 problems, 4452 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -955,7 +955,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 132 contests, 821 problems, 311 verified
+## 2021 — 132 contests, 822 problems, 311 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1034,7 +1034,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1550](1550/) | [Educational Codeforces Round 111 (Rated for Div. 2)](https://codeforces.com/contest/1550) | 6 | 3/6 | Div. 2 | 800-2700 |
 | [1551](1551/) | [Codeforces Round 734 (Div. 3)](https://codeforces.com/contest/1551) | 8 | 4/8 | Div. 3 | 800-2200 |
 | [1552](1552/) | [Codeforces Global Round 15](https://codeforces.com/contest/1552) | 9 | 4/9 | Global | 800-3400 |
-| [1553](1553/) | [Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1553) | 8 | 5/8 | Div. 1+2 | 800-3400 |
+| [1553](1553/) | [Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1553) | 9 | 5/9 | Div. 1+2 | 800-3400 |
 | [1554](1554/) | [Codeforces Round 735 (Div. 2)](https://codeforces.com/contest/1554) | 5 | 3/5 | Div. 2 | 800-2600 |
 | [1555](1555/) | [Educational Codeforces Round 112 (Rated for Div. 2)](https://codeforces.com/contest/1555) | 6 | 4/6 | Div. 2 | 900-2700 |
 | [1556](1556/) | [Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1556) | 8 | 3/8 | Div. 1+2 | 800-3300 |

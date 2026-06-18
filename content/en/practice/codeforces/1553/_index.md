@@ -1,27 +1,28 @@
 ---
 title: "Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)"
-description: "8 problems from Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2) (contest 1553), difficulty 800-3400. 5/8 solutions verified against sample I/O."
-tags: ["codeforces", "competitive-programming", "math", "number-theory", "bitmasks", "brute-force", "dp", "greedy"]
+description: "9 problems from Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2) (contest 1553), difficulty 800-3400. 5/9 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "math", "number-theory", "brute-force", "dp", "hashing", "implementation"]
 categories: ["algorithms"]
 contest_id: 1553
 contest_type: "Div. 1+2"
 rating_range: "800-3400"
-n_problems: 8
+n_problems: 9
 n_verified: 5
-total_solve_s: 2139
+total_solve_s: 2233
 contest_year: 2021
-date: "2026-06-14T15:57:58+07:00"
+date: "2026-06-14T18:50:09+07:00"
 weight: 1553
 draft: false
 ---
 
 # [Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1553)
 
-Div. 1+2 | 8 problems | 5/8 verified | Difficulty 800-3400 | 35m 39s
+Div. 1+2 | 9 problems | 5/9 verified | Difficulty 800-3400 | 37m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Digits Sum](https://codeforces.com/problemset/problem/1553/A) | 800 | math, number-theory | 34,257 | 4m 41s | ✓ |
+| [B](B/) | [Reverse String](https://codeforces.com/problemset/problem/1553/B) | 1300 | brute-force, dp, hashing | 15,480 | 1m 34s |  |
 | [C](C/) | [Penalty](https://codeforces.com/problemset/problem/1553/C) | 1200 | bitmasks, brute-force, dp | 19,800 | 2m 51s | ✓ |
 | [D](D/) | [Backspace](https://codeforces.com/problemset/problem/1553/D) | 1500 | dp, greedy, strings | 15,084 | 6m 1s |  |
 | [E](E/) | [Permutation Shift](https://codeforces.com/problemset/problem/1553/E) | 2100 | brute-force, combinatorics, constructive-algorithms | 3,773 | 4m 48s | ✓ |
