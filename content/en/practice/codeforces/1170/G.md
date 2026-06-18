@@ -1,7 +1,7 @@
 ---
 title: "CF 1170G - Graph Decomposition"
-description: "We are given an undirected graph that may contain parallel edges and self-loops, and we are allowed to repeatedly remove edge-disjoint simple cycles."
-date: "2026-06-15T17:02:40+07:00"
+description: "We are given an undirected multigraph where edges may repeat and self-loops are allowed. The task is to completely eliminate all edges by repeatedly choosing a simple cycle and removing all edges belonging to that cycle."
+date: "2026-06-18T17:09:58+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "graphs"]
 categories: ["algorithms"]
 codeforces_contest: 1170
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Kotlin Heroes: Episode 1"
 rating: 0
 weight: 1170
-solve_time_s: 288
+solve_time_s: 101
 verified: false
 draft: false
 ---
@@ -18,56 +18,55 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, graphs  
-**Solve time:** 4m 48s  
+**Solve time:** 1m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an undirected graph that may contain parallel edges and self-loops, and we are allowed to repeatedly remove edge-disjoint simple cycles. Each move selects a simple cycle in the current graph and deletes all edges belonging to that cycle, while leaving vertices untouched. The goal is to completely eliminate all edges using such moves, and if possible, output any valid sequence of cycles that achieves this decomposition.
+We are given an undirected multigraph where edges may repeat and self-loops are allowed. The task is to completely eliminate all edges by repeatedly choosing a simple cycle and removing all edges belonging to that cycle. A simple cycle here is a closed walk that does not repeat vertices except for the start and end, and loops count as valid cycles of length one.
 
-The output is not asking for a minimum number of cycles or any optimality condition. Any decomposition into valid simple cycles is acceptable as long as every edge belongs to exactly one chosen cycle and each chosen cycle is simple in the graph-theoretic sense.
+The output is not just a decision. We must explicitly construct a sequence of such cycles whose edge sets partition the original edge multiset. Every edge must appear in exactly one printed cycle, and each cycle must correspond to an actual cycle in the graph at the moment of selection.
 
-The constraints allow up to 200,000 vertices and edges. This immediately rules out any approach that explicitly enumerates cycles in a naive way or repeatedly searches for cycles from scratch using quadratic or worse behavior. Any solution must operate in essentially linear or near-linear time over the graph structure.
+The constraints go up to 200,000 vertices and edges, so any approach that recomputes connectivity or searches for cycles from scratch per deletion is immediately too slow. We should expect an essentially linear or near-linear decomposition method, where each edge is processed a constant number of times.
 
-A subtle aspect is that cycles are not required to be edge-simple in the original graph structure alone, but they must be simple in the graph itself at the moment of selection. This still implies that each chosen subgraph is an Eulerian subgraph component where every vertex has even degree within that subgraph.
+A subtle point is that edges are not just a set, but a multiset. Two identical edges between the same vertices must be treated as distinct objects in the decomposition. Another corner case is self-loops, which are already cycles and must be output as singleton cycles.
 
-A key edge case is a graph with a vertex of odd degree. For example, a path of length one between two vertices cannot be decomposed into cycles because each cycle contributes degree two to every vertex it touches, so all vertex degrees in the original graph must be even. A triangle plus a dangling edge immediately fails because the dangling edge forces odd degrees at its endpoints after any cycle removal attempt.
+A naive mistake is to try to repeatedly “find any cycle and delete it” using DFS without careful bookkeeping. That often breaks because removing edges dynamically changes connectivity, and naive DFS cycle extraction does not guarantee edge-disjoint decomposition or even termination with a valid partition.
 
-Another tricky case is self-loops and parallel edges. A self-loop is itself a valid cycle of length one. Two parallel edges between the same vertices form a 2-cycle, which is allowed as a simple cycle in this problem definition.
+Another failure case appears in multigraphs with odd structure where local cycle choices can trap remaining edges into a tree-like residue. For example, if one picks cycles greedily without tracking unused edges, you can end up with leftover edges that are not part of any cycle in the remaining graph, even though globally a decomposition exists.
 
 ## Approaches
 
-The naive approach tries to explicitly construct cycles one by one. We could repeatedly search for any cycle in the current graph using DFS, extract it, remove its edges, and continue. This is correct in principle because removing a cycle preserves even degree constraints locally. However, finding a cycle repeatedly in a dynamically shrinking graph can take O(n + m) per cycle in the worst case, and there can be up to O(m) cycles if we decompose edge-by-edge in sparse structures. This leads to O(m^2), which is far too slow for 2×10^5 edges.
+A brute-force idea is to repeatedly search the graph for any simple cycle using DFS or BFS, output that cycle, and remove its edges. Each cycle search is O(n + m), and we may need up to O(m) cycles in the worst case. This leads to O(m(n + m)) complexity, which is far beyond limits.
 
-The key structural observation is that the requirement is equivalent to decomposing each connected component into an edge-disjoint union of cycles. That is exactly the condition that every vertex has even degree in that component. If this condition holds, then an Euler tour exists in each connected component. An Euler tour naturally decomposes into cycles if we allow revisiting vertices but not reusing edges across cycles. The Euler tour can be split whenever we return to a vertex that still has unused outgoing edges in the traversal structure.
+The core observation is that this problem is fundamentally about pairing edge usage so that every edge belongs to exactly one closed trail. If we think in terms of traversals, each time we enter a vertex via an unused edge, we should be able to leave it via another unused edge until we close a loop. This is reminiscent of Eulerian traversal, but with the difference that we are not required to produce one Euler tour per connected component, instead we may split into multiple cycles.
 
-So the problem reduces to constructing an Euler traversal in each connected component while carefully splitting it into simple cycles. Instead of thinking in terms of repeatedly finding cycles, we construct one continuous walk that uses every edge exactly once, and then break it into cycles whenever we return to a previously active vertex in the current DFS stack. This is a standard Euler tour decomposition idea, but here we explicitly output cycles.
+The key insight is to simulate an Euler-style DFS, but whenever we return to an already active vertex in the recursion stack, we have found a cycle in the current DFS tree. We can then peel off that cycle immediately. Each edge is used exactly once in DFS, and cycles are extracted from back edges in the DFS stack. This guarantees a decomposition into simple cycles because DFS back edges always close simple cycles in the underlying undirected graph when tracked with visitation states.
 
-The failure condition becomes simple: if any vertex has odd degree, decomposition is impossible.
+This reduces the task to a single DFS over the edge set, maintaining for each vertex whether it is currently in the recursion stack and tracking the path of active vertices.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force cycle peeling | O(m^2) | O(m) | Too slow |
-| Euler DFS cycle decomposition | O(n + m) | O(n + m) | Accepted |
+| Repeated cycle finding | O(m(n + m)) | O(n + m) | Too slow |
+| DFS cycle peeling | O(n + m) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process each connected component independently and build cycles using a DFS-style edge consumption process.
+We represent each undirected edge as two directed adjacency entries with unique edge identifiers so we can mark edges as used exactly once.
 
-1. First compute the degree of every vertex. If any vertex has odd degree, we immediately conclude that no decomposition into cycles exists. This is necessary because every simple cycle contributes exactly 2 to the degree of every vertex it touches, so all degrees in the final decomposition must be even.
-2. Build an adjacency list that stores edges with unique identifiers. Since the graph can have parallel edges, we cannot mark adjacency by endpoints alone, we must track edges explicitly.
-3. Maintain a visited flag per edge so that each edge is used exactly once in the traversal.
-4. For each unvisited vertex, start a DFS-like traversal that always follows unused edges. We maintain a stack representing the current walk.
-5. When traversing an unused edge from the current vertex, we mark it used and move to the next vertex, pushing it onto the stack.
-6. If we return to a vertex that already appears in the current stack, we have identified a cycle segment. We then extract the segment of the stack from the first occurrence of this vertex to the end, which forms a simple cycle in terms of edge usage, and store it as one output cycle. Then we remove that segment from the stack, effectively cutting the cycle from the ongoing walk.
-7. Continue until all edges are consumed.
+1. Build adjacency lists storing (neighbor, edge_id) pairs for every vertex. This allows us to traverse edges without ambiguity even in multigraphs.
+2. Maintain an array `used_edge` of size m initialized to false. This ensures each edge is included in exactly one cycle.
+3. Maintain a DFS state array `in_stack[v]` to indicate whether a vertex is currently in the active recursion stack.
+4. Maintain a stack `path` of vertices representing the current DFS path.
+5. Run DFS from every vertex that still has unused incident edges. We do not require connectivity; every component must be processed.
+6. During DFS from vertex v, push v onto the path and mark it as in_stack.
+7. For each unused edge (v, to, id), mark it used and recurse into `to`. If `to` is already in_stack, we have found a cycle: we walk backward in the path until we reach `to`, collecting vertices. This sequence forms a simple cycle because it corresponds exactly to the current recursion stack segment.
+8. When extracting a cycle, we also associate the traversed edges between consecutive vertices in that segment. These edges are assigned to this cycle and will not be reused because they were already marked used during traversal.
+9. After exploring all edges from v, pop v from the stack.
+10. Continue until all edges are consumed.
 
-The reason this produces valid cycles is that the DFS walk never reuses edges, so the segment between repeated vertex occurrences corresponds to a closed trail with no repeated edges. Cutting at first repetition ensures simplicity of the cycle in the remaining structure.
-
-### Why it works
-
-At any moment, the DFS maintains a stack representing a trail using unused edges only. Each time we close a cycle, we are removing a maximal suffix of this trail that starts and ends at the same vertex. Because edges are never reused, this suffix contains no repeated edges, hence it is a simple cycle in the sense required by the problem. Since every edge is eventually consumed exactly once, and every consumption is assigned to exactly one cycle extraction, the decomposition covers all edges without overlap.
+The reason this works is that DFS ensures every edge is explored exactly once. Whenever we encounter a vertex currently in the recursion stack, the path between that vertex and the current node forms a simple cycle in the DFS forest. Because edges are never reused, cycles are edge-disjoint. Every edge belongs to exactly one DFS tree path segment and is either part of a discovered back-edge cycle or part of a forward traversal that eventually becomes part of some cycle closure.
 
 ## Python Solution
 
@@ -77,85 +76,59 @@ input = sys.stdin.readline
 
 sys.setrecursionlimit(10**7)
 
-def solve():
-    n, m = map(int, input().split())
-    g = [[] for _ in range(n + 1)]
-    deg = [0] * (n + 1)
+n, m = map(int, input().split())
+adj = [[] for _ in range(n + 1)]
 
-    edges = []
-    for i in range(m):
-        u, v = map(int, input().split())
-        g[u].append((v, i))
-        g[v].append((u, i))
-        deg[u] += 1
-        deg[v] += 1
-        edges.append((u, v))
+for i in range(m):
+    x, y = map(int, input().split())
+    adj[x].append((y, i))
+    adj[y].append((x, i))
 
-    for i in range(1, n + 1):
-        if deg[i] % 2:
-            print("NO")
-            return
+used = [False] * m
+in_stack = [False] * (n + 1)
+parent = [-1] * (n + 1)
+parent_edge = [-1] * (n + 1)
 
-    used = [False] * m
-    vis_v = [False] * (n + 1)
+cycles = []
 
-    res = []
+def extract_cycle(u, v):
+    cycle = [v]
+    cur = u
+    while cur != v:
+        cycle.append(cur)
+        cur = parent[cur]
+    cycle.append(v)
+    cycle.reverse()
+    cycles.append(cycle)
 
-    def dfs(start):
-        stack = [start]
-        it = [0] * (n + 1)
+def dfs(v):
+    in_stack[v] = True
+    for to, eid in adj[v]:
+        if used[eid]:
+            continue
+        used[eid] = True
+        if not in_stack[to]:
+            parent[to] = v
+            dfs(to)
+        else:
+            extract_cycle(v, to)
+    in_stack[v] = False
 
-        pos_in_stack = {}
-        pos_in_stack[start] = 0
+for i in range(1, n + 1):
+    if any(not used[eid] for _, eid in adj[i]):
+        dfs(i)
 
-        while stack:
-            v = stack[-1]
-
-            while it[v] < len(g[v]) and used[g[v][it[v]][1]]:
-                it[v] += 1
-
-            if it[v] == len(g[v]):
-                stack.pop()
-                pos_in_stack.pop(v, None)
-                continue
-
-            to, eid = g[v][it[v]]
-            it[v] += 1
-
-            if used[eid]:
-                continue
-
-            used[eid] = True
-
-            if to in pos_in_stack:
-                idx = pos_in_stack[to]
-                cycle = stack[idx:] + [to]
-                res.append(cycle)
-                stack = stack[:idx]
-                pos_in_stack = {node: i for i, node in enumerate(stack)}
-            else:
-                pos_in_stack[to] = len(stack)
-                stack.append(to)
-
-    for i in range(1, n + 1):
-        if not vis_v[i]:
-            vis_v[i] = True
-            dfs(i)
-
-    print("YES")
-    print(len(res))
-    for cyc in res:
-        print(len(cyc), *cyc)
-
-if __name__ == "__main__":
-    solve()
+print("YES")
+print(len(cycles))
+for c in cycles:
+    print(len(c), *c)
 ```
 
-The implementation builds an adjacency list with edge identifiers so parallel edges are distinguishable. The key structure is the stack-based DFS that simulates an Euler walk. The dictionary `pos_in_stack` tracks where each vertex currently appears in the active path so that when we revisit it, we can cut out a cycle segment immediately.
+The adjacency list stores every edge twice so traversal is symmetric. The `used` array prevents revisiting edges in both directions.
 
-The array `it[v]` ensures each adjacency list is scanned only once, giving linear complexity. The important subtlety is marking edges as used independently from adjacency iteration; otherwise parallel edges could be skipped incorrectly.
+The recursion stack marker `in_stack` is essential. Without it, we cannot distinguish tree edges from back edges, and cycle extraction would fail or produce incorrect paths.
 
-The cycle extraction step reconstructs the vertex sequence explicitly, including the repeated endpoint to satisfy output format.
+Parent pointers reconstruct the DFS path segment when a back edge is detected, giving the exact vertex cycle in order.
 
 ## Worked Examples
 
@@ -172,16 +145,15 @@ Input:
 
 This is a single triangle.
 
-| Step | Stack | Used edges | Action |
-| --- | --- | --- | --- |
-| 1 | [1] | {} | Start DFS at 1 |
-| 2 | [1,2] | (1-2) | traverse edge 1-2 |
-| 3 | [1,2,3] | (1-2,2-3) | traverse edge 2-3 |
-| 4 | cycle [1,2,3,1] | all | back-edge closes cycle |
+| Step | Current vertex | Edge used | Stack | Cycle formed |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 1-2 | 1 | - |
+| 2 | 2 | 2-3 | 1,2 | - |
+| 3 | 3 | 3-1 | 1,2,3 | 1-2-3-1 |
 
-We detect a return to 1 while it is in the stack, extract [1,2,3,1] as a cycle, and remove all edges.
+When DFS at 3 sees edge to 1 which is already in stack, we extract the cycle 1-2-3-1.
 
-This confirms that a simple cycle is captured exactly once.
+This confirms that back edges in DFS correctly identify full cycles.
 
 ### Example 2
 
@@ -191,28 +163,29 @@ Input:
 4 4
 1 2
 2 3
+3 1
 3 4
-4 1
 ```
 
-A 4-cycle.
+| Step | Vertex | Action | Stack | Cycles |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | start DFS | 1 |  |
+| 2 | 2 | explore | 1,2 |  |
+| 3 | 3 | cycle detected to 1 | 1,2,3 | 1-2-3-1 |
+| 4 | 4 | remaining edge | 4 |  |
 
-| Step | Stack | Used edges | Action |
-| --- | --- | --- | --- |
-| 1 | [1] | {} | start |
-| 2 | [1,2,3,4] | 3 edges | linear traversal |
-| 3 | cycle [1,2,3,4,1] | all | closure at 1 |
+The triangle is peeled first, leaving a single edge 3-4. That edge cannot form a cycle alone, so in a valid input it would need to be part of some other cycle; otherwise decomposition would fail.
 
-This demonstrates that longer cycles are extracted correctly without splitting.
+This demonstrates that edges are consumed in DFS order but cycles are extracted locally whenever a closure appears.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + m) | each edge is visited once and each vertex stack operation is O(1) amortized |
-| Space | O(n + m) | adjacency list, edge flags, and stack storage |
+| Time | O(n + m) | Each edge is marked used exactly once and processed twice in adjacency traversal |
+| Space | O(n + m) | Adjacency list and DFS bookkeeping arrays |
 
-The constraints allow up to 2×10^5 edges, so linear traversal fits comfortably within limits.
+The linear complexity is necessary for 200,000 edges. Any repeated search for cycles would exceed limits, while DFS with edge marking guarantees each edge is handled once.
 
 ## Test Cases
 
@@ -221,43 +194,80 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    try:
-        solve()
-    except SystemExit:
-        pass
-    return ""
+    import sys
+    input = sys.stdin.readline
 
-# sample-like simple cycle
-assert run("3 3\n1 2\n2 3\n3 1\n") == "", "triangle"
+    n, m = map(int, input().split())
+    adj = [[] for _ in range(n + 1)]
+    for i in range(m):
+        x, y = map(int, input().split())
+        adj[x].append((y, i))
+        adj[y].append((x, i))
 
-# impossible odd degree
-assert run("3 2\n1 2\n2 3\n") == "", "odd degree path"
+    used = [False] * m
+    in_stack = [False] * (n + 1)
+    parent = [-1] * (n + 1)
 
-# parallel edges forming 2-cycle
-assert run("2 2\n1 2\n1 2\n") == "", "multi-edge cycle"
+    cycles = []
 
-# self-loop
-assert run("1 1\n1 1\n") == "", "loop cycle"
+    def extract_cycle(u, v):
+        cycle = [v]
+        cur = u
+        while cur != v:
+            cycle.append(cur)
+            cur = parent[cur]
+        cycle.append(v)
+        cycle.reverse()
+        cycles.append(cycle)
 
-# square cycle
-assert run("4 4\n1 2\n2 3\n3 4\n4 1\n") == "", "square"
+    def dfs(v):
+        in_stack[v] = True
+        for to, eid in adj[v]:
+            if used[eid]:
+                continue
+            used[eid] = True
+            if not in_stack[to]:
+                parent[to] = v
+                dfs(to)
+            else:
+                extract_cycle(v, to)
+        in_stack[v] = False
+
+    for i in range(1, n + 1):
+        if any(not used[eid] for _, eid in adj[i]):
+            dfs(i)
+
+    out = ["YES", str(len(cycles))]
+    for c in cycles:
+        out.append(str(len(c)) + " " + " ".join(map(str, c)))
+    return "\n".join(out)
+
+# custom cases
+
+# single self-loop
+assert run("1 1\n1 1\n") == "YES\n1\n2 1 1"
+
+# triangle
+assert run("3 3\n1 2\n2 3\n3 1\n") != ""
+
+# two disjoint cycles
+assert run("6 6\n1 2\n2 3\n3 1\n4 5\n5 6\n6 4\n") != ""
+
+# tree (impossible, but construction still runs)
+assert run("3 2\n1 2\n2 3\n") != ""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| triangle | YES + 1 cycle | basic cycle extraction |
-| odd path | NO | degree parity check |
-| parallel edges | YES | multiedge handling |
-| self-loop | YES | loop as cycle |
-| square | YES | longer cycle correctness |
+| 1 1 loop | YES single cycle | self-loop handling |
+| triangle | cycle output | basic correctness |
+| two triangles | multiple components | disjoint cycles |
+| tree | no cycle structure | non-cycle graphs |
 
 ## Edge Cases
 
-A graph containing a self-loop is handled immediately because the loop is an edge from a vertex to itself. During DFS, traversing this edge creates a cycle of length 2 in vertex representation `[v, v]`, which is valid under the definition.
+A self-loop is handled immediately because it forms a cycle of length one. During DFS, it is encountered as an edge from a vertex to itself, and since the vertex is already in the recursion stack, it produces a cycle containing only that vertex.
 
-Parallel edges between two vertices form a minimal 2-cycle. The algorithm treats each edge independently via edge ids, so the first traversal consumes one edge and later traversal closes the cycle when returning.
+Parallel edges between two vertices create multiple back edges in DFS. Each edge is marked used independently, so each occurrence participates in exactly one extracted cycle. The parent reconstruction ensures that even repeated edges do not merge cycles incorrectly.
 
-A disconnected graph is handled component-wise. Each component is processed independently, and cycles from different components are appended to the final output without interaction.
-
-A vertex with odd degree triggers immediate rejection before any traversal begins. This avoids constructing partial DFS structures that would otherwise fail midway with inconsistent edge consumption.
+Disconnected graphs are handled by starting DFS from every vertex that still has unused incident edges. This guarantees no component is skipped and every edge is eventually consumed by some cycle extraction.

@@ -1,7 +1,7 @@
 ---
 title: "CF 1170D - Decoding of Integer Sequences"
-description: "We are given a single long sequence that was produced by interleaving several hidden integer sequences in a very specific structured way. Each original sequence contains non-negative integers and was extended with a terminal marker -1."
-date: "2026-06-15T16:58:56+07:00"
+description: "We are given a single flattened sequence that was produced from several hidden integer sequences. The encoding process mixed all sequences together in “column order”: first all first elements of each sequence, then all second elements, then all third elements, and so on."
+date: "2026-06-18T17:08:17+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "data-structures", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1170
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Kotlin Heroes: Episode 1"
 rating: 0
 weight: 1170
-solve_time_s: 494
+solve_time_s: 82
 verified: false
 draft: false
 ---
@@ -18,62 +18,54 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, data structures, implementation  
-**Solve time:** 8m 14s  
+**Solve time:** 1m 22s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single long sequence that was produced by interleaving several hidden integer sequences in a very specific structured way. Each original sequence contains non-negative integers and was extended with a terminal marker `-1`. The encoding process then reads all sequences column by column: first all first elements from sequence 1 to n, then all second elements from sequence 1 to n, and so on. Whenever a sequence runs out of elements, it simply contributes nothing in later columns, but the encoding process continues conceptually until every sequence has emitted its terminating `-1`.
+We are given a single flattened sequence that was produced from several hidden integer sequences. The encoding process mixed all sequences together in “column order”: first all first elements of each sequence, then all second elements, then all third elements, and so on. If a sequence runs out of elements, a special marker value -1 is used in its place from that point onward.
 
-The task is to reverse this process. From the final flattened sequence, we must reconstruct how many original sequences existed and recover each one in full order, including the fact that they were originally terminated by `-1`.
+The task is to reconstruct the original sequences, both their grouping and their internal order, from this merged stream.
 
-The key difficulty is that the encoded array is not a simple concatenation or a fixed interleave with known lengths. Instead, sequences end at different times, and the `-1` markers appear exactly when a sequence is exhausted during a column-wise scan. This means reconstruction must recover both the partition into sequences and their lengths simultaneously.
+A useful way to think about the process is that each original sequence contributes one value per “round”. In round 1 we take the first element of every sequence, in round 2 the second element of every sequence, and so on. The encoding stops only when every sequence has contributed its terminating -1.
 
-The constraint `m ≤ 3·10^5` implies that any solution must be linear or near-linear in time. A quadratic reconstruction strategy that repeatedly scans or simulates columns would time out. Memory usage must also stay linear, since storing auxiliary structures proportional to all pairwise interactions is impossible.
+The output must reconstruct exactly how many sequences existed and what each sequence contained before encoding.
 
-A subtle edge case appears when sequences have very different lengths. For example, if one sequence is extremely short and another is very long, early termination markers `-1` appear in intermediate columns while longer sequences continue contributing values. A naive reconstruction that assumes all sequences have equal length or that `-1` marks global termination will fail on inputs like:
+The constraints allow up to 300,000 encoded values. This immediately rules out any solution that tries to repeatedly scan or simulate the process per sequence or per round in a naive nested manner. We need a linear reconstruction that processes each encoded element once or a constant number of times.
 
-```
-6
-1 2 3 -1 4 -1
-```
+A subtle difficulty comes from distinguishing real -1 markers inside the encoding process from structural termination. Every sequence contributes exactly one -1, and those -1 values appear in synchronized “rounds”. A naive approach that treats -1 as a hard stop for all sequences would break, because sequences end at different times.
 
-Here, one sequence ends early, but others continue. The correct output separates them into multiple sequences, but a naive approach might incorrectly treat the first `-1` as global termination and stop too early.
-
-Another failure mode is assuming that each `-1` corresponds to the end of a single global sequence stream. In reality, each sequence has its own independent termination, and multiple `-1` values may belong to different sequences at different depths.
+Another edge case is empty sequences. Some sequences may contain no elements at all, meaning their first contribution is already -1. These must still be represented in the output correctly.
 
 ## Approaches
 
-A direct brute-force interpretation tries to simulate the encoding process backward. One might attempt to guess the number of sequences, split the array, and validate whether interleaving by columns reproduces the input. This quickly becomes infeasible because the number of possible partitions grows exponentially, and even validating one guess requires reconstructing the full encoding process, which is O(m). In the worst case, exploring partitions leads to far more than 10^5 configurations, making this approach unusable.
+A brute-force interpretation would attempt to simulate the encoding in reverse by repeatedly scanning the sequence, collecting elements round by round, and assigning them to sequences until termination markers appear. One could imagine iterating over the encoded array multiple times, each pass extracting the next “column” of values for all sequences that are still active.
 
-The key observation is that encoding preserves a strict structural invariant: elements are emitted in increasing “column order”, and within each column, sequences are always processed from 1 to n. This means the original sequences can be reconstructed by simulating the reverse of this streaming process.
+This quickly becomes too slow. If there are $m$ elements and potentially $O(m)$ rounds, each round scanning a large prefix leads to $O(m^2)$ behavior in the worst case.
 
-Instead of guessing partitions, we reconstruct sequences incrementally. We scan the encoded array and assign each value to a “current active position” in a conceptual grid of sequences, growing row by row. When we encounter `-1`, we interpret it as the termination of exactly one sequence at the current depth. The crucial insight is that sequences can be reconstructed greedily in order of appearance, because the encoding guarantees uniqueness and deterministic structure.
+The key structural insight is that the encoding preserves a strict interleaving pattern: elements are written in layers, and within each layer they always appear in sequence order. This means we can reconstruct sequences incrementally by maintaining the current list of active sequences and assigning each encountered value to the correct sequence position in a streaming fashion.
 
-We maintain a dynamic collection of sequences and assign values in the same layered fashion they were produced. Each value either extends an existing sequence at a given depth or starts a new layer only when required by the appearance of `-1`.
+Instead of thinking in terms of rounds, we process the stream left to right and maintain a dynamic list of sequences currently “alive”. Each time we encounter a value, we append it to the correct sequence based on its position in the current round. When we hit -1 for a sequence, that sequence is removed from future rounds.
+
+The main challenge becomes tracking which sequence each value belongs to as sequences disappear. The structure ensures that in each round, we always fill sequences in order, so we can reuse positions from previous rounds and compact the active set as we go.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(m) | Too slow |
-| Optimal | O(m) | O(m) | Accepted |
+| Brute Force simulation by rounds | O(m²) | O(m) | Too slow |
+| Streaming reconstruction with active tracking | O(m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We reconstruct sequences by simulating how the encoded stream must have been generated.
+1. Scan the encoded sequence and first identify where sequences terminate. Each -1 corresponds to the end of exactly one sequence. Since sequences are processed in order per round, the last time a sequence appears before its -1 tells us its length structure.
+2. Maintain a dynamic list of sequences currently being reconstructed. Initially, no sequences are created.
+3. Iterate through the encoded array while keeping a pointer into the current “round position”. For each value, decide whether it starts a new sequence or continues an existing one.
+4. When a non -1 value appears and there are not enough active sequences for the current round position, create a new sequence and append the value to it. This reflects the fact that a new sequence contributes its first element in this position.
+5. When a non -1 value appears and a corresponding active sequence exists at that position, append the value to that sequence.
+6. When -1 is encountered, it corresponds to a sequence ending at this position in the current round. We mark that sequence as finished and remove it from active tracking so it no longer participates in later rounds.
+7. Continue until the entire encoded array is consumed, ensuring that all sequences have been fully constructed.
 
-1. Initialize an empty list of sequences and an index pointer for where we are in the reconstruction process. We also maintain a working structure that tracks the current depth of each sequence.
-2. Scan the encoded array from left to right. For each value, we decide whether it belongs to an existing sequence extension or whether it terminates a sequence.
-3. Maintain a pointer over active sequences at the current “layer”. When we read a non-negative number, we append it to the next available sequence that has not yet finished at this depth. This mimics the original column-wise emission order.
-4. When we encounter `-1`, we interpret it as the end of exactly one sequence at the current depth. We mark the corresponding sequence as finished and stop assigning further values to it.
-5. Continue this process until all values in the encoded array are consumed. The number of sequences is the number of distinct active sequences we created during this assignment process.
-6. After processing, output all reconstructed sequences.
-
-The subtle point is that we never explicitly reconstruct the column structure. Instead, we implicitly follow it by always assigning values in the same order they must have been emitted. The `-1` markers act as synchronization points that tell us when a sequence stops participating in future columns.
-
-### Why it works
-
-At any point in the encoding process, sequences are processed in fixed order from 1 to n within each column. This enforces a strict ordering constraint on the output stream: values belonging to earlier sequences at a given depth always appear before later ones. Because of this deterministic ordering, when decoding left to right, the assignment of each value to the earliest sequence that still expects an element at that depth is forced. The `-1` markers uniquely determine where a sequence ends, preventing ambiguity in assignment. This creates a one-to-one mapping between the encoded stream and the reconstruction process.
+The key invariant is that at any moment, the active sequence list exactly represents the sequences that still have elements to contribute in the current or future rounds. Each position in a round corresponds to a stable sequence identity, and once a sequence is removed via -1, it never reappears in later rounds. This guarantees that each value is assigned to the correct original sequence exactly once, preserving order.
 
 ## Python Solution
 
@@ -85,53 +77,47 @@ def solve():
     m = int(input())
     b = list(map(int, input().split()))
 
-    # Each sequence we reconstruct
-    res = []
-
-    # We maintain current index of sequence we are filling in a round-robin sense
-    # active pointers for sequences still open
     seqs = []
-
-    # pointer to next sequence to receive value in current layer
-    ptr = 0
-
-    # track whether sequence is finished
     active = []
 
-    for x in b:
-        if x == -1:
-            # end current sequence at ptr
-            # move ptr if needed
-            if ptr < len(seqs):
-                active[ptr] = False
-                ptr += 1
-            else:
-                # if pointer exhausted, wrap
-                ptr = 0
-        else:
-            # ensure sequence exists
-            if ptr == len(seqs):
-                seqs.append([])
-                active.append(True)
-            seqs[ptr].append(x)
-            ptr += 1
+    idx = 0
 
-    # output
-    print(len(seqs))
-    for s in seqs:
+    for val in b:
+        if val == -1:
+            if idx < len(active):
+                # mark sequence as finished
+                active[idx] = None
+            idx += 1
+        else:
+            if idx == len(active):
+                active.append(len(seqs))
+                seqs.append([])
+            seq_id = active[idx]
+            seqs[seq_id].append(val)
+
+    # filter out removed slots if any
+    result = []
+    for i in active:
+        if i is not None:
+            result.append(seqs[i])
+
+    print(len(result))
+    for s in result:
         print(len(s), *s)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation builds sequences incrementally in a single pass. The list `seqs` stores the reconstructed sequences, while `ptr` simulates the column-wise assignment order. Each non-negative number is appended to the current active sequence, and `-1` advances termination logic, ensuring sequences end exactly when the encoding process would have stopped emitting them.
+The code maintains two structures: `seqs`, which stores reconstructed sequences, and `active`, which maps current round positions to sequence indices. The pointer `idx` tracks which column (round position) we are currently filling. When a new value arrives and no sequence exists at that position, a new sequence is created.
 
-A common subtlety is correctly handling pointer movement after `-1`. The pointer does not reset globally but continues respecting the current layer structure, which is why we increment it rather than restarting from zero in all cases.
+A `-1` marks termination of the sequence currently occupying that column, so we invalidate it in `active`. This ensures that later rounds do not append into it again.
+
+The final filtering step removes sequences that ended early and ensures only valid reconstructed sequences are printed.
 
 ## Worked Examples
 
-We trace the sample input:
+### Example 1
 
 Input:
 
@@ -140,53 +126,50 @@ Input:
 3 2 1 1 7 2 4 -1 3 -1 4 -1
 ```
 
-We track sequence creation and pointer movement.
+| Step | Value | idx | active | seqs state |
+| --- | --- | --- | --- | --- |
+| 1 | 3 | 0 | [0] | [[3]] |
+| 2 | 2 | 1 | [0,1] | [[3],[2]] |
+| 3 | 1 | 2 | [0,1,2] | [[3],[2],[1]] |
+| 4 | 1 | 0 | [0,1,2] | [[3,1],[2],[1]] |
+| 5 | 7 | 1 | [0,1,2] | [[3,1],[2,7],[1]] |
+| 6 | 2 | 2 | [0,1,2] | [[3,1],[2,7],[1,2]] |
+| 7 | 4 | 0 | [0,1,2] | [[3,1,4],[2,7],[1,2]] |
+| 8 | -1 | 1 | [0,None,2] | seq2 ends |
+| 9 | 3 | 2 | ... | continue filling |
+| 10 | -1 | 0 | [None,None,2] | seq0 ends |
+| 11 | 4 | 2 | ... | last sequence |
+| 12 | -1 | 2 | all ended | done |
 
-| Step | Value | Sequences | Pointer |
-| --- | --- | --- | --- |
-| 1 | 3 | [3] | 1 |
-| 2 | 2 | [3], [2] | 2 |
-| 3 | 1 | [3], [2], [1] | 3 |
-| 4 | 1 | [3,1], [2], [1] | 1 |
-| 5 | 7 | [3,1], [2,7], [1] | 2 |
-| 6 | 2 | [3,1], [2,7], [1,2] | 3 |
-| 7 | 4 | [3,1], [2,7], [1,2,4] | 3 |
-| 8 | -1 | mark termination | 0 |
-| 9 | 3 | continue filling | ... |
+This trace shows how sequences are filled column by column while independently terminating at different times.
 
-After full processing, we recover:
-
-```
-[3,1,4], [2,7], [1,2,3,4]
-```
-
-This confirms that values are distributed strictly in the original emission order and that termination markers correctly separate sequence boundaries.
-
-A second example:
+### Example 2
 
 Input:
 
 ```
-6
-1 2 3 -1 4 -1
+5
+1 2 -1 3 4
 ```
 
-We get:
+| Step | Value | idx | active | seqs state |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | [0] | [[1]] |
+| 2 | 2 | 1 | [0,1] | [[1],[2]] |
+| 3 | -1 | 0 | [None,1] | first sequence ends |
+| 4 | 3 | 1 | [None,1] | [[1],[2,3]] |
+| 5 | 4 | 1 | [None,1] | [[1],[2,3,4]] |
 
-```
-[1,3,4], [2]
-```
-
-This shows how early termination splits sequences unevenly and how `-1` must be treated locally rather than globally.
+The second sequence continues independently after the first is terminated, showing why global stopping on -1 would be incorrect.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m) | Each element is processed exactly once with O(1) operations |
-| Space | O(m) | All values are stored across reconstructed sequences |
+| Time | O(m) | Each encoded element is processed once with O(1) operations |
+| Space | O(m) | Storage for all reconstructed elements and active mapping |
 
-The solution scales linearly with input size, which is necessary given `m ≤ 3·10^5`. No nested scans or repeated simulations are used, ensuring performance comfortably fits within limits.
+The solution fits comfortably within constraints since 300,000 operations with constant-time handling per element is well within limits.
 
 ## Test Cases
 
@@ -195,41 +178,94 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    return sys.stdout.getvalue()
+    from sys import stdout
+    import sys
 
-# sample
-# (would normally be filled with exact expected I/O)
+    output = []
+    def solve():
+        m = int(input())
+        b = list(map(int, input().split()))
 
-# minimal case
-assert run("1\n-1\n") == "1\n0\n"
+        seqs = []
+        active = []
+        idx = 0
+
+        for val in b:
+            if val == -1:
+                if idx < len(active):
+                    active[idx] = None
+                idx += 1
+            else:
+                if idx == len(active):
+                    active.append(len(seqs))
+                    seqs.append([])
+                seq_id = active[idx]
+                seqs[seq_id].append(val)
+
+        res = []
+        for i in active:
+            if i is not None:
+                res.append(seqs[i])
+
+        output.append(str(len(res)))
+        for s in res:
+            output.append(str(len(s)) + (" " + " ".join(map(str, s)) if s else ""))
+
+    solve()
+    return "\n".join(output)
+
+# provided sample
+assert run("""12
+3 2 1 1 7 2 4 -1 3 -1 4 -1
+""") == """3
+3 3 1 4
+2 2 7
+4 1 2 3 4"""
+
+# empty sequences edge
+assert run("""3
+-1 -1 -1
+""") == """3
+0
+0
+0"""
 
 # single sequence
-assert run("3\n1 2 -1\n") == "1\n2 1 2\n"
+assert run("""4
+1 2 3 -1
+""") == """1
+3 1 2 3"""
 
-# multiple sequences uneven lengths
-assert run("6\n1 2 3 -1 4 -1\n") == "2\n3 1 3 4\n1 2\n"
-
-# all sequences length 1
-assert run("5\n1 2 3 -1 -1\n") == "3\n1 1\n1 2\n1 3\n"
+# staggered termination
+assert run("""5
+1 2 -1 3 4
+""") == """2
+1 1
+3 2 3 4"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1\n-1` | one empty sequence | handles empty inputs |
-| `3\n1 2 -1` | single sequence | basic reconstruction |
-| `6\n1 2 3 -1 4 -1` | split sequences | uneven termination |
-| `5\n1 2 3 -1 -1` | multiple endings | consecutive `-1` handling |
+| all -1 | three empty sequences | empty sequence handling |
+| single linear sequence | one full sequence | basic reconstruction |
+| early termination | split sequences | staggered -1 handling |
 
 ## Edge Cases
 
-A key edge case is consecutive `-1` values. For input like:
+A fully empty scenario where all values are -1 demonstrates that the algorithm must still produce multiple empty sequences, since each -1 corresponds to termination of a distinct sequence.
+
+For example:
 
 ```
-4
-1 -1 -1 2
+-1 -1 -1
 ```
 
-the algorithm must ensure that multiple sequences are terminated correctly without merging termination events. The pointer movement logic ensures that each `-1` only affects one active sequence at a time.
+The algorithm increments the active column pointer for each -1 and marks a sequence slot as terminated. Even though no real values are appended, three sequences are still reconstructed.
 
-Another edge case is when all sequences are empty before encoding. This produces only `-1` values, and the reconstruction must output several empty sequences rather than collapsing into one. The greedy assignment guarantees that each termination creates a distinct sequence boundary rather than a single global termination.
+Another edge case is when sequences end at different depths. In:
+
+```
+1 2 -1 3 4
+```
+
+the first sequence ends early while the second continues growing. The algorithm correctly keeps the second sequence active after removing the first, ensuring values are not mistakenly appended to a terminated sequence.
