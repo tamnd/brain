@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9012 problems, 4432 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9013 problems, 4433 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9012 problems, 4432 verified.**
+**1576 contests, 9013 problems, 4433 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 907 problems, 536 verified
+## 2019 — 159 contests, 908 problems, 537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -761,7 +761,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1246](1246/) | [Codeforces Round 596 (Div. 1, based on Technocup 2020 Elimination Round 2)](https://codeforces.com/contest/1246) | 1 | 0/1 | Div. 1 | 3500-3500 |
 | [1248](1248/) | [Codeforces Round 594 (Div. 2)](https://codeforces.com/contest/1248) | 3 | 1/3 | Div. 2 | 900-2000 |
 | [1249](1249/) | [Codeforces Round 595 (Div. 3)](https://codeforces.com/contest/1249) | 9 | 5/9 | Div. 3 | 800-2200 |
-| [1250](1250/) | [2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1250) | 13 | 5/13 | ICPC/IOI | 800-3100 |
+| [1250](1250/) | [2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1250) | 14 | 6/14 | ICPC/IOI | 800-3100 |
 | [1251](1251/) | [Educational Codeforces Round 75 (Rated for Div. 2)](https://codeforces.com/contest/1251) | 7 | 1/7 | Div. 2 | 1000-2500 |
 | [1252](1252/) | [2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1252) | 11 | 4/11 | ICPC/IOI | 1000-3000 |
 | [1253](1253/) | [Codeforces Round 600 (Div. 2)](https://codeforces.com/contest/1253) | 5 | 2/5 | Div. 2 | 1400-2500 |
