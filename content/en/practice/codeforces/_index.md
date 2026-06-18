@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1595 contests, 9154 problems, 4509 verified."
+description: "Codeforces problem solutions with full editorials. 1596 contests, 9162 problems, 4513 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1595 contests, 9154 problems, 4509 verified.**
+**1596 contests, 9162 problems, 4513 verified.**
 
 ## Unknown — 15 contests, 72 problems, 38 verified
 
@@ -1517,7 +1517,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 
-## 2025 — 119 contests, 881 problems, 268 verified
+## 2025 — 120 contests, 889 problems, 272 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1640,6 +1640,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
+| [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 8 | 4/8 | Special | - |
 
 ## 2026 — 42 contests, 321 problems, 75 verified
 
