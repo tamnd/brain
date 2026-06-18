@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9027 problems, 4445 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9031 problems, 4448 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9027 problems, 4445 verified.**
+**1576 contests, 9031 problems, 4448 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -791,7 +791,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 773 problems, 338 verified
+## 2020 — 159 contests, 777 problems, 341 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -861,7 +861,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1357](1357/) | [Microsoft Q# Coding Contest - Summer 2020](https://codeforces.com/contest/1357) | 9 | 9/9 | Special | - |
 | [1358](1358/) | [Codeforces Round 645 (Div. 2)](https://codeforces.com/contest/1358) | 3 | 2/3 | Div. 2 | 1600-2400 |
 | [1359](1359/) | [Educational Codeforces Round 88 (Rated for Div. 2)](https://codeforces.com/contest/1359) | 4 | 2/4 | Div. 2 | 1000-2900 |
-| [1360](1360/) | [Codeforces Round 644 (Div. 3)](https://codeforces.com/contest/1360) | 4 | 3/4 | Div. 3 | 800-1900 |
+| [1360](1360/) | [Codeforces Round 644 (Div. 3)](https://codeforces.com/contest/1360) | 8 | 6/8 | Div. 3 | 800-2100 |
 | [1361](1361/) | [Codeforces Round 647 (Div. 1) - Thanks, Algo Muse!](https://codeforces.com/contest/1361) | 5 | 1/5 | Div. 1 | 1700-3000 |
 | [1362](1362/) | [Codeforces Round 647 (Div. 2) - Thanks, Algo Muse!](https://codeforces.com/contest/1362) | 3 | 2/3 | Div. 2 | 1000-1400 |
 | [1363](1363/) | [Codeforces Round 646 (Div. 2)](https://codeforces.com/contest/1363) | 4 | 2/4 | Div. 2 | 1200-2100 |
