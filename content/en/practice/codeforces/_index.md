@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1603 contests, 9182 problems, 4513 verified."
+description: "Codeforces problem solutions with full editorials. 1604 contests, 9182 problems, 4513 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1603 contests, 9182 problems, 4513 verified.**
+**1604 contests, 9182 problems, 4513 verified.**
 
-## Unknown — 21 contests, 82 problems, 38 verified
+## Unknown — 22 contests, 82 problems, 38 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106273](106273/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (1 группа регионов)](https://codeforces.com/contest/106273) | 0 | 0/0 | Special | - |
 | [106274](106274/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (2 группа регионов)](https://codeforces.com/contest/106274) | 0 | 0/0 | Special | - |
 | [106275](106275/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (3 группа регионов)](https://codeforces.com/contest/106275) | 0 | 0/0 | Special | - |
 | [106276](106276/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (4 группа регионов)](https://codeforces.com/contest/106276) | 0 | 0/0 | Special | - |
