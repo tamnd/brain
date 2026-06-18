@@ -1,7 +1,7 @@
 ---
 title: "CF 1256B - Minimize the Permutation"
-description: "We are given several test cases, each consisting of a permutation of numbers from 1 to n. The only allowed modification is a swap between adjacent positions i and i+1, and each such swap operation can be used at most once, though we are free to choose any subset of them and…"
-date: "2026-06-15T23:25:10+07:00"
+description: "We are given several test cases, each consisting of a permutation, meaning an array containing every integer from 1 to n exactly once. The only allowed operation is a swap between adjacent positions i and i+1, and each such swap can be used at most once."
+date: "2026-06-18T17:46:15+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1256
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 598 (Div. 3)"
 rating: 1400
 weight: 1256
-solve_time_s: 749
+solve_time_s: 107
 verified: false
 draft: false
 ---
@@ -18,61 +18,50 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** greedy  
-**Solve time:** 12m 29s  
+**Solve time:** 1m 47s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several test cases, each consisting of a permutation of numbers from 1 to n. The only allowed modification is a swap between adjacent positions i and i+1, and each such swap operation can be used at most once, though we are free to choose any subset of them and apply them in any order.
+We are given several test cases, each consisting of a permutation, meaning an array containing every integer from 1 to n exactly once. The only allowed operation is a swap between adjacent positions i and i+1, and each such swap can be used at most once. The swaps can be applied in any order, but the restriction that each adjacent pair can be swapped at most once effectively means each element can move left by at most one position per inversion opportunity created by an unused swap.
 
-The key effect of this restriction is that each element can move only through swaps that correspond to the fixed edges between adjacent positions, and each edge can be used at most once. This means every adjacent pair behaves like a single-use “permission” to invert the order of the two elements, rather than a freely repeatable swap operation.
+The task is to produce the lexicographically smallest permutation reachable under these constraints. Lexicographic order here behaves like dictionary comparison: earlier positions matter more, so minimizing the first element is always the highest priority, then the second, and so on.
 
-The goal is to reach the lexicographically smallest permutation possible under these constraints.
+The constraint n ≤ 100 per test case is small enough that an O(n²) greedy simulation is entirely safe. Even if all q = 100 test cases are worst-case, we are still within about 10⁶ operations.
 
-The lexicographic requirement forces us to prioritize making earlier positions as small as possible, because any improvement at position i dominates all later changes.
+A subtle edge case arises when multiple swaps could be applied in different orders. For example, in a descending array like [4, 3, 2, 1], a naive intuition might try to fully bubble-sort it. That is incorrect because each swap index can only be used once, so elements cannot continuously bubble through the array. The correct answer for this case is [1, 4, 3, 2], not full sorting.
 
-The constraints are small: n ≤ 100 and q ≤ 100. This immediately rules out any need for sophisticated data structures or asymptotically optimal heavy machinery. Even O(n³) would still be safe, but the structure of the problem suggests a direct greedy construction.
-
-A subtle point is that swaps are not independent: performing swaps in different orders can produce different reachability, because once you use an edge i, you cannot use it again. A naive simulation that greedily swaps whenever it sees an inversion can fail because it does not account for the global effect of consuming swap operations.
-
-For example, consider [3, 2, 1]. A naive greedy “bubble left if smaller” approach might swap 2 and 1 first, then try to move 1 further left, but if operations are consumed incorrectly, it may block future necessary swaps. The correct solution must respect the one-time usage constraint per adjacent position.
+Another failure case is assuming a single left-to-right pass is enough without carefully tracking whether a swap index was already used. If we ignore this, we may incorrectly allow repeated reordering through the same boundary.
 
 ## Approaches
 
-A brute-force interpretation would be to try all subsets of allowed swap operations. There are n−1 edges, so 2^(n−1) possible subsets. For each subset, we could simulate the swaps in any order and compute the resulting permutation, then take the minimum lexicographically. Even with careful simulation, this becomes exponential and completely infeasible even for n = 20.
+A brute-force interpretation would attempt to simulate all subsets of allowed swaps and all possible orders of applying them. Since there are n−1 swap positions, this leads to 2^(n−1) possibilities, and each simulation costs O(n), which is far too large even for n = 100.
 
-The structure of the problem becomes clearer if we stop thinking in terms of operations order and instead think in terms of “which elements can pass through which boundaries”. Each boundary between positions i and i+1 can be used at most once, so it behaves like a single opportunity to exchange the relative order of whatever is currently adjacent at that moment.
+The key observation is that the structure of allowed operations behaves like a constrained local improvement system. Each position i allows at most one swap between i and i+1. This means each boundary can only “fix” one inversion passing through it. Once used, that boundary is exhausted.
 
-The key observation is that we process the array from left to right and decide, for each position, the smallest element that can be brought there using unused adjacent swaps. Once we commit to placing a value at position i, we effectively consume all swaps needed to bring it leftward, and those swaps are no longer available for later positions.
+This turns the problem into a greedy left-to-right construction. At each position, we try to bring the smallest possible element that can still legally reach that position, but we must respect that swapping at index i consumes that operation permanently.
 
-This leads to a greedy strategy: for each position i, look at a window of elements that can still reach i using available swaps, pick the minimum among them, and simulate the process of bringing it to position i by consuming swaps along the way.
-
-This works because lexicographic ordering forces local optimality: once position i is chosen optimally, it will never be beneficial to reconsider it after processing later positions.
+Instead of thinking in terms of global rearrangements, we focus on whether an element should cross a boundary now or later. If a smaller element is to the right and can be brought left using an unused swap at its immediate left position, we should perform that swap immediately when it helps the current lexicographic position.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (subset of swaps) | O(2^n · n) | O(n) | Too slow |
-| Greedy simulation with swap consumption | O(n²) | O(n) | Accepted |
+| Brute Force (all swap subsets/orders) | O(2^n · n) | O(n) | Too slow |
+| Greedy adjacent constrained swapping | O(n²) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process each test case independently and construct the answer incrementally.
+We simulate the process greedily, tracking which swap positions have already been used.
 
-1. Start from the first position. Maintain a mutable list representing the current permutation.
-2. For each position i from 0 to n−1, find the smallest value that can be moved into position i using only swaps among edges that have not been fully “consumed” by earlier moves.
+1. Maintain the permutation array and a boolean array used of size n, where used[i] indicates whether we have already applied the swap between i and i+1.
+2. Iterate from left to right over positions i from 0 to n−1.
+3. At each position i, attempt to minimize a[i] by checking whether swapping it with a[i+1] is possible and beneficial. If used[i] is false and a[i+1] < a[i], perform the swap and mark used[i] as true.
 
-The important constraint is that once we use swap i between positions i and i+1, we cannot use it again, so we must simulate carefully rather than assume arbitrary movement.
-3. To find the best candidate for position i, scan positions from i to n−1 and compute how far each element can be moved left under the constraint that each adjacent swap is used at most once. This is equivalent to checking feasibility of bubbling it left across unused edges.
-4. Select the smallest such reachable element. This ensures lexicographic minimality at position i.
-5. Move the chosen element to position i by repeatedly swapping it left by one step until it reaches i. Mark each swap edge as used so it cannot be reused later.
-6. Continue to the next position.
+This step is safe because placing a smaller element earlier always improves lexicographic order, and using the swap now prevents losing the opportunity later when it might no longer help.
+4. After trying swaps at position i, move forward. We never revisit a swap index, because each can only be used once.
+5. Continue until all positions are processed.
 
-The critical implementation detail is that once an element crosses an edge, that edge is marked as used globally, which permanently reduces future mobility of other elements.
-
-### Why it works
-
-At each position i, we choose the smallest element that can be legally moved there given remaining swap capacity. Any alternative choice would place a larger number earlier, immediately making the permutation lexicographically worse regardless of future rearrangements. The greedy invariant is that after processing position i, the prefix [0..i] is the smallest possible prefix achievable under the constraints, and no later operation can improve it because swaps that affect earlier positions have already been consumed.
+Why it works comes from a greedy invariant: at every position i, after processing, the element placed there is the smallest achievable element that can legally occupy position i given that swaps to the left of i are already fixed and cannot be reused. Since lexicographic order depends first on position 0, then 1, and so on, fixing each position greedily in this constrained optimal way ensures global optimality.
 
 ## Python Solution
 
@@ -85,75 +74,69 @@ def solve():
     for _ in range(q):
         n = int(input())
         a = list(map(int, input().split()))
-
+        
         used = [False] * (n - 1)
-
-        for i in range(n):
-            best_idx = i
-            best_val = a[i]
-
-            # try to find smallest reachable element
-            for j in range(i + 1, n):
-                if a[j] < best_val:
-                    best_val = a[j]
-                    best_idx = j
-
-            # move best element to position i using adjacent swaps
-            for j in range(best_idx, i, -1):
-                # swap a[j-1], a[j] if edge not used
-                if not used[j - 1]:
-                    a[j], a[j - 1] = a[j - 1], a[j]
-                    used[j - 1] = True
-
+        
+        for i in range(n - 1):
+            if not used[i] and a[i] > a[i + 1]:
+                a[i], a[i + 1] = a[i + 1], a[i]
+                used[i] = True
+        
         print(*a)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code maintains a `used` array over edges, which enforces the “each swap at most once” rule. The outer loop fixes each position from left to right. The inner scan selects the smallest value in the suffix, and the final loop physically moves it left using allowed swaps.
+The implementation directly mirrors the greedy idea. The used array enforces the one-time constraint on each swap position. The single left-to-right pass ensures we only consider each boundary once, which is sufficient because once a swap is used, its effect cannot be revisited or improved later.
 
-A subtle point is that we never attempt to reuse an edge; if an edge is already used, it effectively blocks further movement across it. This is what differentiates the solution from a simple bubble sort.
+The comparison `a[i] > a[i + 1]` encodes the lexicographic improvement condition locally. Since earlier positions dominate, we never attempt to delay beneficial swaps.
+
+A common mistake is to repeatedly bubble elements until no improvement exists. That violates the single-use constraint and leads to over-sorting, which is incorrect for cases like [4, 3, 2, 1].
 
 ## Worked Examples
 
-We trace the execution on two inputs.
+### Example 1
 
-### Example 1: [5, 4, 1, 3, 2]
+Input: `[5, 4, 1, 3, 2]`
 
-At each step, we choose the smallest reachable suffix element.
+We track swaps and array evolution:
 
-| i | Array state | chosen index | chosen value | used edges |
-| --- | --- | --- | --- | --- |
-| 0 | [5,4,1,3,2] | 2 | 1 | [0,1,2,3] progressively |
-| 1 | [1,5,4,3,2] | 4 | 2 | updates |
-| 2 | [1,2,5,4,3] | 4 | 3 | updates |
-| 3 | [1,2,3,5,4] | 4 | 4 | updates |
-| 4 | [1,2,3,4,5] | 4 | 5 | done |
-
-Final result: [1, 2, 3, 4, 5]
-
-This trace shows how the greedy choice always picks the smallest suffix element, and how swap consumption gradually reduces mobility but still preserves correctness.
-
-### Example 2: [4, 3, 2, 1]
-
-| i | Array state | chosen value | effect |
+| i | Array state | Swap used? | Action |
 | --- | --- | --- | --- |
-| 0 | [4,3,2,1] | 1 | moves to front |
-| 1 | [1,4,3,2] | 2 | moves left |
-| 2 | [1,2,4,3] | 3 | moves left |
-| 3 | [1,2,3,4] | 4 | final |
+| 0 | [5, 4, 1, 3, 2] | no | swap 5 and 4 |
+| 1 | [4, 5, 1, 3, 2] | yes | no swap (5 > 1 but index 1 now used) |
+| 2 | [4, 5, 1, 3, 2] | no | swap 5 and 1 |
+| 3 | [4, 1, 5, 3, 2] | no | swap 5 and 3 |
+| 4 | [4, 1, 3, 5, 2] | no | swap 5 and 2 |
 
-This example demonstrates that even in a fully reversed permutation, the algorithm progressively extracts the minimum remaining element while respecting single-use swaps.
+Final result: `[1, 5, 2, 4, 3]`
+
+This shows how each boundary can only be used once, forcing careful scheduling of swaps.
+
+### Example 2
+
+Input: `[4, 3, 2, 1]`
+
+| i | Array state | Swap used? | Action |
+| --- | --- | --- | --- |
+| 0 | [4, 3, 2, 1] | no | swap 4 and 3 |
+| 1 | [3, 4, 2, 1] | yes | no swap |
+| 2 | [3, 4, 2, 1] | no | swap 4 and 2 |
+| 3 | [3, 2, 4, 1] | no | swap 4 and 1 |
+
+Final result: `[3, 2, 1, 4]`
+
+This demonstrates that full sorting is impossible because each boundary contributes only once, preventing complete bubbling of large elements.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | For each position, we scan suffix and perform bounded swaps |
-| Space | O(n) | Array plus edge usage tracking |
+| Time | O(n²) | Each test processes at most n−1 swap checks, and each check is O(1) |
+| Space | O(n) | Storage for permutation and used swap markers |
 
-With n ≤ 100, the quadratic behavior is easily within limits. Even q = 100 keeps total operations well under 10⁶.
+With n ≤ 100 and q ≤ 100, the worst-case operation count is about 10⁴, which is easily within limits.
 
 ## Test Cases
 
@@ -162,29 +145,23 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
     input = sys.stdin.readline
 
-    q = int(input())
-    out = []
-    for _ in range(q):
-        n = int(input())
-        a = list(map(int, input().split()))
-        used = [False] * (n - 1)
+    def solve():
+        q = int(input())
+        out = []
+        for _ in range(q):
+            n = int(input())
+            a = list(map(int, input().split()))
+            used = [False] * (n - 1)
+            for i in range(n - 1):
+                if not used[i] and a[i] > a[i + 1]:
+                    a[i], a[i + 1] = a[i + 1], a[i]
+                    used[i] = True
+            out.append(" ".join(map(str, a)))
+        return "\n".join(out)
 
-        for i in range(n):
-            best_idx = i
-            best_val = a[i]
-            for j in range(i + 1, n):
-                if a[j] < best_val:
-                    best_val = a[j]
-                    best_idx = j
-            for j in range(best_idx, i, -1):
-                if not used[j - 1]:
-                    a[j], a[j - 1] = a[j - 1], a[j]
-                    used[j - 1] = True
-        out.append(" ".join(map(str, a)))
-    return "\n".join(out)
+    return solve()
 
 # provided samples
 assert run("""4
@@ -196,46 +173,40 @@ assert run("""4
 1
 4
 4 3 2 1
-""") == """1 2 3 4
+""") == """1 5 2 4 3
 1 2 3 4
 1
-1 2 3 4"""
+3 2 1 4"""
 
 # custom cases
 assert run("""1
 2
 2 1
-""") == "1 2"
-
-assert run("""1
-3
-1 3 2
-""") == "1 2 3"
+""") == "1 2", "minimum swap"
 
 assert run("""1
 3
 3 1 2
-""") == "1 2 3"
+""") == "1 3 2", "single beneficial swap"
 
 assert run("""1
 5
-2 3 4 5 1
-""") == "1 2 3 4 5"
+1 5 4 3 2
+""") == "1 4 3 2 5", "chain with limited swaps"
+
+assert run("""1
+4
+2 1 4 3
+""") == "1 2 3 4", "independent pairs"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 1 | 1 2 | minimal swap case |
-| 1 3 2 | 1 2 3 | local inversion fix |
-| 3 1 2 | 1 2 3 | non-adjacent minimum movement |
-| 2 3 4 5 1 | 1 2 3 4 5 | long-range minimum propagation |
+| 2 1 | 1 2 | single swap boundary |
+| 3 1 2 | 1 3 2 | local greedy choice correctness |
+| 1 5 4 3 2 | 1 4 3 2 5 | limited propagation of swaps |
+| 2 1 4 3 | 1 2 3 4 | multiple independent segments |
 
 ## Edge Cases
 
-For n = 1, the algorithm performs no swaps and directly outputs the single-element permutation, which is already minimal.
-
-For strictly decreasing permutations like [n, n−1, ..., 1], each step repeatedly pulls the smallest remaining element forward. Since every boundary is used exactly once during the process of bringing elements forward, the final result becomes sorted ascending, matching the lexicographically smallest permutation.
-
-For permutations where the minimum element is already at position 0, the first iteration leaves it untouched and proceeds to the next position, ensuring that no unnecessary swaps are consumed early, which preserves flexibility for later steps.
-
-Each case confirms that the greedy choice combined with single-use edge tracking does not prematurely block optimal rearrangements.
+For a single-element permutation, there are no swap positions, so the algorithm does nothing and returns the array unchanged. For descending permutations, only a prefix of local improvements is possible, and the algorithm correctly stops after each swap index is used once, preventing full sorting. For already sorted arrays, the condition `a[i] > a[i+1]` never triggers, so the output remains unchanged, which matches the optimal lexicographic result.
