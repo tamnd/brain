@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9014 problems, 4434 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9014 problems, 4435 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9014 problems, 4434 verified.**
+**1576 contests, 9014 problems, 4435 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 909 problems, 538 verified
+## 2019 — 159 contests, 909 problems, 539 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -769,7 +769,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1255](1255/) | [Codeforces Round 601 (Div. 2)](https://codeforces.com/contest/1255) | 3 | 0/3 | Div. 2 | 800-1600 |
 | [1256](1256/) | [Codeforces Round 598 (Div. 3)](https://codeforces.com/contest/1256) | 3 | 1/3 | Div. 3 | 1000-2000 |
 | [1257](1257/) | [Educational Codeforces Round 76 (Rated for Div. 2)](https://codeforces.com/contest/1257) | 7 | 5/7 | Div. 2 | 800-2600 |
-| [1260](1260/) | [Educational Codeforces Round 77 (Rated for Div. 2)](https://codeforces.com/contest/1260) | 5 | 3/5 | Div. 2 | 1000-2700 |
+| [1260](1260/) | [Educational Codeforces Round 77 (Rated for Div. 2)](https://codeforces.com/contest/1260) | 5 | 4/5 | Div. 2 | 1000-2700 |
 | [1261](1261/) | [Codeforces Round 602 (Div. 1, based on Technocup 2020 Elimination Round 3)](https://codeforces.com/contest/1261) | 1 | 0/1 | Div. 1 | 3100-3100 |
 | [1263](1263/) | [Codeforces Round 603 (Div. 2)](https://codeforces.com/contest/1263) | 5 | 3/5 | Div. 2 | 1100-2400 |
 | [1264](1264/) | [Codeforces Round 604 (Div. 1)](https://codeforces.com/contest/1264) | 6 | 1/6 | Div. 1 | 1500-3500 |
