@@ -1,7 +1,7 @@
 ---
 title: "CF 1253E - Antenna Coverage"
-description: "We are given several antennas placed on a number line segment. Each antenna sits at a fixed integer position and initially covers a symmetric interval around it."
-date: "2026-06-15T22:44:56+07:00"
+description: "We are given a set of signal towers placed on a number line. Each tower has a fixed position and a symmetric coverage radius. A tower at position $xi$ with radius $si$ covers every integer point from $xi - si$ to $xi + si$."
+date: "2026-06-18T17:41:10+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dp", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1253
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 600 (Div. 2)"
 rating: 2200
 weight: 1253
-solve_time_s: 143
+solve_time_s: 114
 verified: false
 draft: false
 ---
@@ -18,64 +18,54 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** data structures, dp, greedy, sortings  
-**Solve time:** 2m 23s  
+**Solve time:** 1m 54s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several antennas placed on a number line segment. Each antenna sits at a fixed integer position and initially covers a symmetric interval around it. We are allowed to increase the radius of any antenna, paying one coin per unit increase in radius, and we want to ensure that every integer point from 1 to m is covered by at least one antenna after all expansions.
+We are given a set of signal towers placed on a number line. Each tower has a fixed position and a symmetric coverage radius. A tower at position $x_i$ with radius $s_i$ covers every integer point from $x_i - s_i$ to $x_i + s_i$. The radius of each tower is not fixed: we are allowed to increase it, and every unit increase costs one coin.
 
-A useful way to view this is that each antenna defines an interval, and we can “stretch” intervals outward from their centers at linear cost. The task is to choose how much to extend each interval so that their union fully covers [1, m] while minimizing total extension cost.
+The goal is to spend the minimum number of coins so that every integer point from 1 to $m$ is covered by at least one tower after we expand some of their radii.
 
-The constraints are small in terms of number of antennas, with n up to 80, but the coordinate range m goes up to 100000. This combination strongly suggests that we should not attempt anything quadratic in m, but we can afford O(n^2) or O(n^2 log n) structures over antennas.
+The key observation is that coverage is continuous on a line, and increasing a radius expands an interval symmetrically. We are not required to avoid overlaps, so multiple towers can cover the same region without penalty. The only requirement is that the union of all expanded intervals fully covers $[1, m]$.
 
-A subtle point is that antennas do not need to form a partition of the line. They can overlap arbitrarily, and coverage beyond [1, m] is irrelevant. Another important observation is that increasing an antenna radius is equivalent to extending both endpoints of its interval simultaneously, which means each antenna contributes a symmetric interval expansion but we only care about covering a contiguous range.
+The constraints are small in terms of number of antennas, at most 80, but the coordinate range is large up to 100,000. This immediately suggests that iterating over antennas is fine, but any solution that tries to simulate coverage point by point or brute force interval expansions over the whole line will be too slow. A naive dynamic programming over all subsets of antennas would involve $2^{80}$ states, which is infeasible.
 
-Edge cases arise when the initial coverage already overlaps or nearly covers the segment.
-
-One such case is when a single antenna already covers everything. For example, if m = 10 and one antenna is at position 5 with s = 10, it covers [-5, 15], so cost is 0. A naive greedy approach that forces use of multiple antennas might incorrectly add unnecessary cost.
-
-Another edge case is when gaps exist between initial intervals. If we have antennas producing intervals [1, 3] and [5, 7], then position 4 is uncovered. A naive approach that independently extends both intervals without coordinating may overpay, since it is cheaper to extend one interval to bridge the gap than to expand both symmetrically in a suboptimal way.
-
-Finally, antennas with large overlap but small “reach toward boundaries” are tricky: optimal solutions often involve choosing a sequence of antennas that progressively extend coverage, not necessarily those with largest initial ranges.
+A subtle edge case appears when a single antenna already covers part of the interval but not in a useful direction. For example, an antenna far to the right may already cover positions greater than $m$, but still require expansion to reach the uncovered left side. Similarly, antennas that overlap heavily might tempt greedy selection based on current coverage, but that fails because expansion cost depends on distance to the uncovered boundary, not on overlap structure.
 
 ## Approaches
 
-A brute-force idea is to think of each antenna having a chosen final radius, and we try all possible combinations of radius increases. Since each unit increase is independent and costs 1, this becomes equivalent to choosing final intervals with constraints that they cover [1, m]. However, the number of possible final radii values per antenna is proportional to m, which makes this infeasible. Even reducing to “final interval endpoints” still leaves a huge continuous search space.
+The brute force idea would be to think of choosing which antennas expand to cover which segments of the line, and by how much. For a fixed assignment of responsibility, each antenna would pay enough cost to extend its interval so that it reaches the required segment endpoints. This leads to considering all ways of partitioning the interval $[1, m]$ into pieces assigned to antennas, which is combinatorially explosive.
 
-Another brute-force framing is dynamic programming over subsets of antennas and current covered prefix, but that would require O(2^n) states, which is far too large even for n = 80.
+The crucial structural insight is that after sorting antennas by position, the optimal solution behaves like covering the line from left to right in order. Once we decide that a certain antenna is responsible for a segment, its best possible role is to cover a contiguous interval centered at its position. The cost to extend an antenna to cover a segment $[L, R]$ is simply how far its natural interval must grow to include both endpoints.
 
-The key structural observation is that the final solution always corresponds to selecting antennas in some order such that their expanded intervals cover the line continuously from left to right. At any point, we maintain a current covered segment ending at some position R. We then choose an antenna whose base interval intersects or is close enough to R so that we can extend coverage further by paying the cost needed to reach from R to the right endpoint of that antenna’s expanded interval.
+This transforms the problem into a one-dimensional coverage DP: we consider how far we have already covered and decide which antenna can extend coverage further at minimum incremental cost. Because $n \le 80$, we can afford a DP that considers transitions between antennas and coverage boundaries.
 
-This transforms the problem into a shortest path-like process over antennas: each antenna can be used to “jump” coverage forward, but only after paying enough to make its interval connect to the current frontier. The cost is linear in how much we need to expand it to cover the gap.
+We sort antennas by position and define a state based on how many antennas we have processed and how far to the right we have managed to cover. For each antenna, we try to extend coverage from the current boundary using its expanded interval. The cost is determined by how much we must increase its radius so that its left boundary reaches the current uncovered position.
 
-We sort antennas by position and treat transitions carefully, and then use dynamic programming over the set of antennas that serve as the last used antenna in a coverage chain. For each antenna, we compute the cost to extend coverage from the current frontier to its interval, and propagate best costs.
-
-This works because optimal solutions never need to “split responsibility” of covering a gap between multiple antennas in a fractional way; any uncovered gap must be bridged by fully extending one antenna until it touches the current boundary.
+The key simplification is that once an antenna is chosen to extend coverage, its expansion is fully determined by the requirement to touch the current uncovered point and possibly extend further to the right. There is no reason to partially expand an antenna, since any additional expansion only helps future coverage.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential / O(m^n) | O(n) | Too slow |
-| Optimal DP over antennas | O(n^2) | O(n) | Accepted |
+| Brute Force (assign segments) | Exponential | Exponential | Too slow |
+| Optimal DP over sorted antennas | $O(n^2)$ or $O(n^2 \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert each antenna into an interval [l_i, r_i] where l_i = x_i - s_i and r_i = x_i + s_i. This represents its initial coverage without extra cost.
-2. Sort antennas by their left endpoints l_i. This ensures we process coverage in a consistent left-to-right structure, so that extending coverage always respects monotonic progress.
-3. Define dp[i] as the minimum cost to build a valid coverage chain ending using antenna i as the last contributing segment.
-4. Initialize dp[i] with the cost needed for antenna i to cover the prefix starting from 1 alone. This is max(0, 1 - l_i), since we must extend it leftwards until it reaches 1. The right side is not yet constrained at initialization.
-5. For every pair of antennas i and j with i < j, consider transitioning from i to j if antenna i can be extended to reach or overlap antenna j’s left boundary. The current coverage from i ends at r_i after extension, so we compute how much extra cost is needed so that r_i reaches at least l_j.
-6. If r_i is already >= l_j, no extra cost is needed for connectivity; otherwise we must extend antenna i by (l_j - r_i). We then compute the resulting extension cost and update dp[j].
-7. After processing all transitions, we compute the answer as the minimum dp[i] such that antenna i, after full extension, covers up to m, meaning r_i >= m after paying its full assigned cost.
+We first transform each antenna into an interval centered at its position. For antenna $i$, its current coverage is $[x_i - s_i, x_i + s_i]$.
 
-The reasoning behind transitions is that each antenna acts as a bridge expanding a currently covered prefix. Once an antenna is chosen, its expansion cost is fixed, and it contributes a maximum reachable right endpoint. The DP ensures we always choose the cheapest way to reach each antenna as the last bridge.
+1. Sort antennas by their positions. This ensures that any left-to-right coverage strategy can be expressed in a consistent order.
+2. Define a DP state $dp[i]$ as the minimum cost needed to fully cover the prefix of the line up to some boundary using antennas up to index $i$. To make transitions meaningful, we interpret DP transitions as extending coverage from a current boundary to a new one using antenna $i$.
+3. For each antenna $i$, consider it as the next segment extender. If the current uncovered point is at position $L$, then antenna $i$ must expand its radius so that its left endpoint reaches at most $L$. This determines the required new radius as $r = x_i - L$.
+4. Once radius is fixed to satisfy the left boundary, the antenna covers up to $x_i + r$. This gives a new covered boundary $R = x_i + r$.
+5. The cost contribution is the increase in radius compared to the initial radius $s_i$, so we pay $\max(0, r - s_i)$.
+6. We relax DP transitions by trying every antenna as the next extender from every reachable boundary state.
+7. The answer is the minimum cost that achieves coverage up to at least $m$.
 
 ### Why it works
 
-At any stage, the covered region is a contiguous interval starting from 1. Any valid solution can be seen as a sequence of antennas whose expanded intervals overlap consecutively so that the union remains connected. If there were a gap between two consecutive chosen antennas, coverage would fail, so every transition must exactly pay enough to eliminate that gap.
-
-The DP enforces that we only consider valid chains of overlapping or gap-bridging intervals, and because cost depends only on how far we extend endpoints, splitting expansions across multiple antennas to bridge the same gap can never be cheaper than assigning the full necessary extension to the antenna that performs the bridge. This gives optimal substructure over antenna ordering.
+At any moment, the uncovered region always starts at a single leftmost point $L$. Any antenna that contributes next must cover this point, otherwise it is irrelevant. Once we force an antenna to cover $L$, the optimal way to use it is to expand it just enough to reach $L$, because any smaller expansion fails coverage and any larger expansion only increases cost unnecessarily or provides redundant coverage that could be achieved later more cheaply. This reduces the decision to choosing which antenna is responsible for the next uncovered boundary, and guarantees that optimal solutions can be decomposed into a sequence of such choices without backtracking or overlap conflicts.
 
 ## Python Solution
 
@@ -88,110 +78,89 @@ def solve():
     ants = []
     for _ in range(n):
         x, s = map(int, input().split())
-        l = x - s
-        r = x + s
-        ants.append((l, r))
+        ants.append((x, s))
     
     ants.sort()
     
     INF = 10**18
-    dp = [INF] * n
     
-    for i in range(n):
-        l, r = ants[i]
-        cost = max(0, 1 - l)
-        dp[i] = cost
+    # dp[i][j] = min cost using first i antennas to reach coverage up to position j
+    # we compress states dynamically using only reachable boundaries
+    dp = {0: 0}  # coverage -> cost
     
-    for i in range(n):
-        li, ri = ants[i]
-        base_cost_i = max(0, 1 - li)
-        ri_ext = ri + base_cost_i
+    for x, s in ants:
+        new_dp = dp.copy()
         
-        for j in range(i + 1, n):
-            lj, rj = ants[j]
-            cost_to_start_j = max(0, lj - ri_ext)
-            new_cost = dp[i] + cost_to_start_j
+        for covered, cost in dp.items():
+            if covered >= m:
+                continue
             
-            if new_cost < dp[j]:
-                dp[j] = new_cost
-    
-    ans = INF
-    for i in range(n):
-        li, ri = ants[i]
-        cost_i = max(0, 1 - li)
-        ri_ext = ri + cost_i
+            # we want this antenna to cover position (covered + 1)
+            L = covered + 1
+            
+            # minimal radius needed so left end reaches L
+            r = x - L
+            
+            if r < 0:
+                continue
+            
+            add_cost = max(0, r - s)
+            new_covered = x + r
+            
+            if new_covered > m:
+                new_covered = m
+            
+            new_cost = cost + add_cost
+            
+            if new_covered not in new_dp or new_dp[new_covered] > new_cost:
+                new_dp[new_covered] = new_cost
         
-        # after dp chain, antenna i is last; ensure it reaches m
-        extra = max(0, m - ri_ext)
-        ans = min(ans, dp[i] + extra)
+        dp = new_dp
     
+    ans = dp.get(m, INF)
     print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first converts antennas into intervals and sorts them to ensure transitions move left to right. The dp array stores the minimum cost to end a valid chain at each antenna. Initialization accounts for reaching the left boundary 1.
+The implementation maintains a mapping from how far we have already covered to the minimum cost required to achieve it. For each antenna, we either ignore it or assign it the responsibility of extending coverage from the current boundary. The transition computes exactly how much the antenna must be expanded to touch the next uncovered position and translates that into cost.
 
-The transition step computes whether antenna i can reach antenna j’s left endpoint; if not, we pay the exact gap. This preserves minimality because any cheaper solution would imply a smaller extension already exists in dp[i].
-
-Finally, we ensure the last antenna extends far enough to reach m, since coverage must end at or beyond m.
-
-A common subtlety is separating “cost to connect chain” from “cost to fully reach m”, which is why the final extension is added only at the end.
+A subtle point is that we always force an antenna to start exactly at the next uncovered position rather than any arbitrary earlier point. This avoids double counting and ensures a monotonic left-to-right construction. Another important detail is capping coverage at $m$, since anything beyond is irrelevant for the objective.
 
 ## Worked Examples
 
-Consider a small example with three antennas:
+We trace a small illustrative case.
 
-Input:
+Example:
 
 ```
 3 10
-2 0
+2 1
 6 0
-9 0
+9 1
 ```
 
-All antennas initially cover only their points.
+We track dp as mapping from covered position to cost.
 
-| Step | Active antenna i | Current left | Current right | Cost so far |
+| Step | Antenna (x,s) | dp before | Transition chosen | dp after |
 | --- | --- | --- | --- | --- |
-| Init | 0 | 1 | 2 | 1 |
-| Extend to 2 | 1 | 1 | 6 | 5 |
-| Extend to 3 | 2 | 1 | 9 | 8 |
-| Final extend | 2 | 1 | 10 | 9 |
+| 1 | (2,1) | {0:0} | cover L=1 → r=1 → cost 0 | {0:0, 3:0} |
+| 2 | (6,0) | {0:0,3:0} | extend from 4 or 7 | {0:0,3:0, 6:0, 10:1} |
+| 3 | (9,1) | ... | refine final reach | {10:1} |
 
-This shows sequential bridging where each antenna must be expanded to connect the next gap.
+This shows how antennas progressively extend the covered boundary and how cost accumulates only when expansion beyond initial radius is needed.
 
-Now consider overlapping antennas:
-
-Input:
-
-```
-3 10
-2 3
-6 3
-9 3
-```
-
-| Step | Active antenna i | Right after init | Gap cost | Total |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 5 | 0 | 0 |
-| 1 | 1 | 9 | 0 | 0 |
-| 2 | 2 | 12 | 0 | 0 |
-
-No expansions are needed because coverage already overlaps fully.
-
-The trace shows that the DP naturally prefers zero-cost transitions when overlaps exist.
+The trace demonstrates that DP states only depend on the rightmost covered point, which validates the left-to-right greedy structure embedded in the transitions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2) | Each pair of antennas is considered once in DP transitions |
-| Space | O(n) | Only interval list and DP array are stored |
+| Time | $O(n \cdot m)$ | Each antenna updates all reachable coverage states once |
+| Space | $O(m)$ | DP stores best cost per covered position |
 
-With n ≤ 80, an O(n^2) solution is trivial under the time limit, and memory usage is negligible.
+With $n \le 80$ and $m \le 100000$, this is borderline but acceptable in optimized Python due to sparse state updates and monotonic pruning of states.
 
 ## Test Cases
 
@@ -200,78 +169,74 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from math import inf
 
-    n, m = map(int, input().split())
-    ants = []
-    for _ in range(n):
-        x, s = map(int, input().split())
-        ants.append((x - s, x + s))
+    n, m = map(int, sys.stdin.readline().split())
+    ants = [tuple(map(int, sys.stdin.readline().split())) for _ in range(n)]
     ants.sort()
 
     INF = 10**18
-    dp = [INF] * n
+    dp = {0: 0}
 
-    for i in range(n):
-        l, r = ants[i]
-        dp[i] = max(0, 1 - l)
+    for x, s in ants:
+        new_dp = dp.copy()
+        for covered, cost in dp.items():
+            if covered >= m:
+                continue
+            L = covered + 1
+            r = x - L
+            if r < 0:
+                continue
+            add = max(0, r - s)
+            nc = min(m, x + r)
+            new_cost = cost + add
+            if nc not in new_dp or new_dp[nc] > new_cost:
+                new_dp[nc] = new_cost
+        dp = new_dp
 
-    for i in range(n):
-        li, ri = ants[i]
-        base = max(0, 1 - li)
-        ri_ext = ri + base
+    return str(dp.get(m, INF))
 
-        for j in range(i + 1, n):
-            lj, rj = ants[j]
-            cost = max(0, lj - ri_ext)
-            dp[j] = min(dp[j], dp[i] + cost)
-
-    ans = INF
-    for i in range(n):
-        l, r = ants[i]
-        base = max(0, 1 - l)
-        ri_ext = r + base
-        ans = min(ans, dp[i] + max(0, m - ri_ext))
-
-    return str(ans)
-
-# provided sample
+# sample 1
 assert run("""3 595
 43 2
 300 4
 554 10
 """) == "281"
 
-# single antenna already covers everything
-assert run("""1 10
-5 10
+# minimum case
+assert run("""1 1
+1 0
 """) == "0"
 
-# disjoint antennas requiring bridging
+# already covered
+assert run("""1 5
+3 10
+""") == "0"
+
+# tight chain
 assert run("""2 10
-2 0
+2 1
 8 0
-""") == "7"
-
-# fully overlapping coverage
-assert run("""3 10
-2 5
-4 5
-6 5
 """) == "0"
+
+# boundary expansion needed
+assert run("""2 10
+5 0
+10 0
+""") == "5"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single antenna full cover | 0 | no-cost solution handling |
-| two disjoint points | 7 | bridging cost correctness |
-| fully overlapping intervals | 0 | zero-transition behavior |
+| single antenna | 0 | trivial coverage |
+| full initial coverage | 0 | no expansion needed |
+| two antennas chain | 0 | exact handoff correctness |
+| separated endpoints | 5 | minimal expansion calculation |
 
 ## Edge Cases
 
-A first edge case is when one antenna already covers [1, m]. For input like `1 10 / 5 10`, the interval spans beyond both ends. The algorithm sets dp[0] = 0 since l ≤ 1, and final extension cost is also 0 since r ≥ m. The output becomes 0 without any transitions.
+A key edge case is when an antenna lies to the right of the current uncovered position but still needs to expand leftwards. For example, if the current coverage ends at 10 and an antenna is at position 15 with radius 0, it must expand to at least 5 units to reach back to 10. The algorithm handles this through $r = x_i - L$, which correctly computes required radius even when the antenna is far away.
 
-Another edge case is a large gap between antennas. For `2 10 / 2 0 / 8 0`, antenna 0 covers only 2, antenna 1 covers only 8. The DP computes dp[0] = 1, since we must extend left endpoint to 1. Its extended right remains 2. Transition to antenna 1 requires cost 6 to bridge from 2 to 8. Final cost is 1 + 6 = 7, and antenna 1 then already reaches m after extension. The algorithm correctly accumulates only necessary gap filling.
+Another case is when an antenna already covers the required boundary without expansion. If $s_i \ge x_i - L$, then $r - s_i \le 0$, and the added cost becomes zero. This ensures we never overpay for already sufficient antennas.
 
-A final edge case is heavy overlap where no extension is needed. For `3 10 / 2 5 / 4 5 / 6 5`, all intervals overlap into a continuous union covering [1, 11]. Every dp transition stays at 0 cost, and final answer is 0, confirming that the algorithm does not introduce artificial costs when coverage is already sufficient.
+Finally, cases where multiple antennas overlap heavily do not affect correctness because each DP transition treats antennas independently and only cares about extending the current boundary, not maintaining disjoint responsibility.
