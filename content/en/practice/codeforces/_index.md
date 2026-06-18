@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1578 contests, 9068 problems, 4464 verified."
+description: "Codeforces problem solutions with full editorials. 1579 contests, 9081 problems, 4472 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1578 contests, 9068 problems, 4464 verified.**
+**1579 contests, 9081 problems, 4472 verified.**
 
-## Unknown — 1 contests, 5 problems, 5 verified
+## Unknown — 2 contests, 18 problems, 13 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106511](106511/) | [Columbia University Local Contest (CULC) Spring 2026](https://codeforces.com/contest/106511) | 13 | 8/13 | Special | - |
 | [106516](106516/) | [MITIT Spring 2026 Invitationals Finals](https://codeforces.com/contest/106516) | 5 | 5/5 | Special | - |
 
 ## 2010 — 51 contests, 271 problems, 230 verified
