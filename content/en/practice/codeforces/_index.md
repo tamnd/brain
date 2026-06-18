@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1576 contests, 9006 problems, 4428 verified."
+description: "Codeforces problem solutions with full editorials. 1576 contests, 9007 problems, 4428 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1576 contests, 9006 problems, 4428 verified.**
+**1576 contests, 9007 problems, 4428 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -627,7 +627,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 901 problems, 532 verified
+## 2019 — 159 contests, 902 problems, 532 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -689,7 +689,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1163](1163/) | [Codeforces Round 558 (Div. 2)](https://codeforces.com/contest/1163) | 8 | 7/8 | Div. 2 | 900-3000 |
 | [1165](1165/) | [Codeforces Round 560 (Div. 3)](https://codeforces.com/contest/1165) | 7 | 5/7 | Div. 3 | 1000-2000 |
 | [1166](1166/) | [Codeforces Round 561 (Div. 2)](https://codeforces.com/contest/1166) | 6 | 4/6 | Div. 2 | 900-2400 |
-| [1167](1167/) | [Educational Codeforces Round 65 (Rated for Div. 2)](https://codeforces.com/contest/1167) | 6 | 3/6 | Div. 2 | 800-3100 |
+| [1167](1167/) | [Educational Codeforces Round 65 (Rated for Div. 2)](https://codeforces.com/contest/1167) | 7 | 3/7 | Div. 2 | 800-3100 |
 | [1168](1168/) | [Codeforces Round 562 (Div. 1)](https://codeforces.com/contest/1168) | 5 | 3/5 | Div. 1 | 1700-3100 |
 | [1169](1169/) | [Codeforces Round 562 (Div. 2)](https://codeforces.com/contest/1169) | 2 | 2/2 | Div. 2 | 900-1500 |
 | [1170](1170/) | [Kotlin Heroes: Episode 1](https://codeforces.com/contest/1170) | 8 | 2/8 | Kotlin | - |
