@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1636 contests, 9295 problems, 4579 verified."
+description: "Codeforces problem solutions with full editorials. 1637 contests, 9295 problems, 4579 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1636 contests, 9295 problems, 4579 verified.**
+**1637 contests, 9295 problems, 4579 verified.**
 
-## Unknown — 38 contests, 129 problems, 71 verified
+## Unknown — 39 contests, 129 problems, 71 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106247](106247/) | [Municipal stage of the All-Russian School Olympiad 2025, grades 9-11, Programming profile, Vologda and Krasnodar regions](https://codeforces.com/contest/106247) | 0 | 0/0 | Special | - |
 | [106249](106249/) | [MITIT Winter 2025-26 Advanced Individual Round](https://codeforces.com/contest/106249) | 2 | 0/2 | Special | - |
 | [106250](106250/) | [MITIT Winter 2025-26 Advanced Team Round](https://codeforces.com/contest/106250) | 3 | 3/3 | Special | - |
 | [106251](106251/) | [MITIT Winter 2025-26 Beginner Round](https://codeforces.com/contest/106251) | 3 | 3/3 | Special | - |
