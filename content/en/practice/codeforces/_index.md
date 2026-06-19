@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1653 contests, 9376 problems, 4624 verified."
+description: "Codeforces problem solutions with full editorials. 1653 contests, 9377 problems, 4625 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1653 contests, 9376 problems, 4624 verified.**
+**1653 contests, 9377 problems, 4625 verified.**
 
-## Unknown — 49 contests, 167 problems, 92 verified
+## Unknown — 49 contests, 168 problems, 93 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -51,7 +51,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106307](106307/) | [Osijek Competitive Programming Camp, Fall 2023, Day 9: Polish Kids Contest](https://codeforces.com/contest/106307) | 7 | 7/7 | Special | - |
 | [106309](106309/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Пермский край, 2025](https://codeforces.com/contest/106309) | 3 | 0/3 | Special | - |
 | [106310](106310/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Пермский край, 2025](https://codeforces.com/contest/106310) | 3 | 1/3 | Special | - |
-| [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 2 | 0/2 | Special | - |
+| [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 3 | 1/3 | Special | - |
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
 | [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 1 | 0/1 | ICPC/IOI | - |
