@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9489 problems, 4729 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9490 problems, 4729 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9489 problems, 4729 verified.**
+**1660 contests, 9490 problems, 4729 verified.**
 
 ## Unknown — 52 contests, 206 problems, 131 verified
 
@@ -1554,7 +1554,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 
-## 2025 — 136 contests, 1011 problems, 337 verified
+## 2025 — 136 contests, 1012 problems, 337 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1689,7 +1689,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106258](106258/) | [Small Imprecision Contest](https://codeforces.com/contest/106258) | 4 | 1/4 | Special | - |
 | [106260](106260/) | [2025 SiChuan University for new student](https://codeforces.com/contest/106260) | 6 | 2/6 | Special | - |
 | [106263](106263/) | [2025 华南师范大学“卓越教育杯”算法与程序设计竞赛（新生赛）](https://codeforces.com/contest/106263) | 10 | 10/10 | Special | - |
-| [106267](106267/) | [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final](https://codeforces.com/contest/106267) | 8 | 2/8 | Special | - |
+| [106267](106267/) | [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final](https://codeforces.com/contest/106267) | 9 | 2/9 | Special | - |
 | [106270](106270/) | [ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest](https://codeforces.com/contest/106270) | 6 | 6/6 | ICPC/IOI | - |
 | [106272](106272/) | [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary](https://codeforces.com/contest/106272) | 10 | 1/10 | Special | - |
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 11 | 0/11 | Special | - |
