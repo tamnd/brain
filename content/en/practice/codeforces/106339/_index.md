@@ -1,26 +1,28 @@
 ---
 title: "UTPC Contest 1-28-2026"
-description: "5 problems from UTPC Contest 1-28-2026 (contest 106339), difficulty -. 5/5 solutions verified against sample I/O."
+description: "7 problems from UTPC Contest 1-28-2026 (contest 106339), difficulty -. 7/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106339
 contest_type: "Special"
 rating_range: "-"
-n_problems: 5
-n_verified: 5
-total_solve_s: 251
+n_problems: 7
+n_verified: 7
+total_solve_s: 359
 contest_year: 2026
-date: "2026-06-19T14:51:25+07:00"
+date: "2026-06-19T17:01:20+07:00"
 weight: 106339
 draft: false
 ---
 
 # [UTPC Contest 1-28-2026](https://codeforces.com/contest/106339)
 
-Special | 5 problems | 5/5 verified | Difficulty - | 4m 11s
+Special | 7 problems | 7/7 verified | Difficulty - | 5m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Cups of Cocoa](https://codeforces.com/problemset/problem/106339/A) |  |  |  | 52s | ✓ |
+| [B](B/) | [Supply Chain](https://codeforces.com/problemset/problem/106339/B) |  |  |  | 56s | ✓ |
 | [C](C/) | [Frosted Highway](https://codeforces.com/problemset/problem/106339/C) |  |  |  | 49s | ✓ |
 | [D](D/) | [Snowball](https://codeforces.com/problemset/problem/106339/D) |  |  |  | 47s | ✓ |
 | [F](F/) | [Frosted Highway (Hard)](https://codeforces.com/problemset/problem/106339/F) |  |  |  | 51s | ✓ |
