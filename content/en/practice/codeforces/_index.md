@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1653 contests, 9391 problems, 4639 verified."
+description: "Codeforces problem solutions with full editorials. 1653 contests, 9393 problems, 4641 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1653 contests, 9391 problems, 4639 verified.**
+**1653 contests, 9393 problems, 4641 verified.**
 
 ## Unknown — 49 contests, 173 problems, 98 verified
 
@@ -1692,7 +1692,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 11 | 0/11 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 10 | 4/10 | Special | - |
 
-## 2026 — 49 contests, 350 problems, 95 verified
+## 2026 — 49 contests, 352 problems, 97 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1740,7 +1740,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106350](106350/) | [Zaglol Contest - FCDS level 1 contest 2026](https://codeforces.com/contest/106350) | 4 | 0/4 | Special | - |
 | [106351](106351/) | [Zaglol Contest - FCDS level 2 contest 2026](https://codeforces.com/contest/106351) | 4 | 0/4 | Special | - |
 | [106356](106356/) | [Replay of BUET IUPC 2026, Powered By Phitron](https://codeforces.com/contest/106356) | 7 | 7/7 | Special | - |
-| [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 1 | 0/1 | Div. 2 | - |
+| [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 3 | 2/3 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 2 | 2/2 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 2 | 2/2 | Special | - |
 | [106508](106508/) | [2026 SCUT Programming Contest（2026 华南理工大学程序设计校赛）](https://codeforces.com/contest/106508) | 12 | 5/12 | Special | - |
