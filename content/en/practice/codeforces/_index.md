@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1662 contests, 9559 problems, 4790 verified."
+description: "Codeforces problem solutions with full editorials. 1663 contests, 9562 problems, 4793 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1662 contests, 9559 problems, 4790 verified.**
+**1663 contests, 9562 problems, 4793 verified.**
 
 ## Unknown — 53 contests, 236 problems, 160 verified
 
@@ -1696,7 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 12 | 1/12 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 12 | 4/12 | Special | - |
 
-## 2026 — 54 contests, 423 problems, 161 verified
+## 2026 — 55 contests, 426 problems, 164 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1747,6 +1747,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 5 | 4/5 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 7 | 7/7 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 8 | 8/8 | Special | - |
+| [106443](106443/) | [UFPE Starters Final Try-Outs 2026](https://codeforces.com/contest/106443) | 3 | 3/3 | Special | - |
 | [106456](106456/) | [The 15th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/106456) | 4 | 3/4 | Special | - |
 | [106461](106461/) | [KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)](https://codeforces.com/contest/106461) | 16 | 16/16 | Special | - |
 | [106467](106467/) | [East China University of Science and Technology Programming Championship 2026](https://codeforces.com/contest/106467) | 9 | 5/9 | Special | - |
