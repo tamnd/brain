@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1626 contests, 9269 problems, 4565 verified."
+description: "Codeforces problem solutions with full editorials. 1627 contests, 9273 problems, 4565 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1626 contests, 9269 problems, 4565 verified.**
+**1627 contests, 9273 problems, 4565 verified.**
 
 ## Unknown — 32 contests, 117 problems, 63 verified
 
@@ -1668,7 +1668,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 10 | 0/10 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 8 | 4/8 | Special | - |
 
-## 2026 — 46 contests, 329 problems, 82 verified
+## 2026 — 47 contests, 333 problems, 82 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1712,6 +1712,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2227](2227/) | [Codeforces Round 1096 (Div. 3)](https://codeforces.com/contest/2227) | 8 | 0/8 | Div. 3 | - |
 | [106315](106315/) | [ICPC Dhaka 2025 Online Preliminary - Replay Contest](https://codeforces.com/contest/106315) | 4 | 4/4 | ICPC/IOI | - |
 | [106328](106328/) | [Baozii Cup 3](https://codeforces.com/contest/106328) | 3 | 3/3 | Special | - |
+| [106351](106351/) | [Zaglol Contest - FCDS level 2 contest 2026](https://codeforces.com/contest/106351) | 4 | 0/4 | Special | - |
 | [106356](106356/) | [Replay of BUET IUPC 2026, Powered By Phitron](https://codeforces.com/contest/106356) | 3 | 3/3 | Special | - |
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 1 | 0/1 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 2 | 2/2 | Div. 1 | - |
