@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1709 contests, 9821 problems, 5037 verified."
+description: "Codeforces problem solutions with full editorials. 1709 contests, 9822 problems, 5038 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1709 contests, 9821 problems, 5037 verified.**
+**1709 contests, 9822 problems, 5038 verified.**
 
-## Unknown — 78 contests, 364 problems, 287 verified
+## Unknown — 78 contests, 365 problems, 288 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 1 | 0/1 | Special | - |
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 1 | 0/1 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
-| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 9 | 9/9 | ICPC/IOI | - |
+| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 10 | 10/10 | ICPC/IOI | - |
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 2 | 1/2 | Special | - |
