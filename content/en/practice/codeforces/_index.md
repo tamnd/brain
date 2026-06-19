@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1631 contests, 9283 problems, 4569 verified."
+description: "Codeforces problem solutions with full editorials. 1632 contests, 9284 problems, 4570 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1631 contests, 9283 problems, 4569 verified.**
+**1632 contests, 9284 problems, 4570 verified.**
 
-## Unknown — 34 contests, 120 problems, 64 verified
+## Unknown — 35 contests, 121 problems, 65 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -41,6 +41,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
 | [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 1 | 0/1 | ICPC/IOI | - |
+| [106337](106337/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/106337) | 1 | 1/1 | Special | - |
 | [106338](106338/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/106338) | 1 | 1/1 | Special | - |
 | [106347](106347/) | [Высшая проба - 2024. Заключительный этап](https://codeforces.com/contest/106347) | 2 | 0/2 | Special | - |
 | [106352](106352/) | [Интернет-олимпиады, Сезон 2025-2026, Первая личная олимпиада](https://codeforces.com/contest/106352) | 1 | 1/1 | Special | - |
