@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1646 contests, 9324 problems, 4596 verified."
+description: "Codeforces problem solutions with full editorials. 1647 contests, 9325 problems, 4596 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1646 contests, 9324 problems, 4596 verified.**
+**1647 contests, 9325 problems, 4596 verified.**
 
-## Unknown — 44 contests, 143 problems, 78 verified
+## Unknown — 45 contests, 144 problems, 78 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
 | [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 3 | 3/3 | ICPC/IOI | - |
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
