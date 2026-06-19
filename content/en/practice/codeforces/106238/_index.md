@@ -1,23 +1,23 @@
 ---
 title: "The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group"
-description: "10 problems from The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group (contest 106238), difficulty -. 2/10 solutions verified against sample I/O."
+description: "11 problems from The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group (contest 106238), difficulty -. 2/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106238
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
+n_problems: 11
 n_verified: 2
-total_solve_s: 406
+total_solve_s: 446
 contest_year: 2025
-date: "2026-06-19T16:25:18+07:00"
+date: "2026-06-19T02:55:31+07:00"
 weight: 106238
 draft: false
 ---
 
 # [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238)
 
-Special | 10 problems | 2/10 verified | Difficulty - | 6m 46s
+Special | 11 problems | 2/11 verified | Difficulty - | 7m 26s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,6 @@ Special | 10 problems | 2/10 verified | Difficulty - | 6m 46s
 | [F](F/) | [XCPC Restart](https://codeforces.com/problemset/problem/106238/F) |  |  |  | 30s |  |
 | [G](G/) | [Gift](https://codeforces.com/problemset/problem/106238/G) |  |  |  | 31s |  |
 | [H](H/) | [Probability Theory](https://codeforces.com/problemset/problem/106238/H) |  |  |  | 32s |  |
+| [J](J/) | [Fresh Days and Lovely Days](https://codeforces.com/problemset/problem/106238/J) |  |  |  | 40s |  |
 | [K](K/) | [Bored Piglet](https://codeforces.com/problemset/problem/106238/K) |  |  |  | 31s |  |
 | [L](L/) | [Quantum Computing Programming](https://codeforces.com/problemset/problem/106238/L) |  |  |  | 1m 30s | ✓ |

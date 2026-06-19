@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1709 contests, 9822 problems, 5038 verified."
+description: "Codeforces problem solutions with full editorials. 1709 contests, 9823 problems, 5038 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1709 contests, 9822 problems, 5038 verified.**
+**1709 contests, 9823 problems, 5038 verified.**
 
 ## Unknown — 78 contests, 365 problems, 288 verified
 
@@ -1581,7 +1581,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 151 contests, 1138 problems, 446 verified
+## 2025 — 151 contests, 1139 problems, 446 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1721,7 +1721,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106194](106194/) | [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194) | 7 | 7/7 | Special | - |
 | [106208](106208/) | [Inter University Programming Contest - MU CSE Fest 2025 - MIRROR](https://codeforces.com/contest/106208) | 7 | 6/7 | Special | - |
 | [106210](106210/) | [广东工业大学新生赛(初赛)](https://codeforces.com/contest/106210) | 10 | 3/10 | Special | - |
-| [106238](106238/) | [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238) | 10 | 2/10 | Special | - |
+| [106238](106238/) | [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238) | 11 | 2/11 | Special | - |
 | [106239](106239/) | [2025广东工业大学新生赛(决赛)](https://codeforces.com/contest/106239) | 10 | 10/10 | Special | - |
 | [106241](106241/) | [2025 GUC Winter Camp](https://codeforces.com/contest/106241) | 11 | 11/11 | Special | - |
 | [106242](106242/) | [2025 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/106242) | 3 | 1/3 | Special | - |
