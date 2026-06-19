@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9532 problems, 4766 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9534 problems, 4768 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9532 problems, 4766 verified.**
+**1660 contests, 9534 problems, 4768 verified.**
 
 ## Unknown — 52 contests, 224 problems, 148 verified
 
@@ -1695,7 +1695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 12 | 1/12 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 12 | 4/12 | Special | - |
 
-## 2026 — 53 contests, 408 problems, 149 verified
+## 2026 — 53 contests, 410 problems, 151 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1746,7 +1746,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 5 | 4/5 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 7 | 7/7 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 8 | 8/8 | Special | - |
-| [106461](106461/) | [KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)](https://codeforces.com/contest/106461) | 14 | 14/14 | Special | - |
+| [106461](106461/) | [KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)](https://codeforces.com/contest/106461) | 16 | 16/16 | Special | - |
 | [106467](106467/) | [East China University of Science and Technology Programming Championship 2026](https://codeforces.com/contest/106467) | 5 | 3/5 | Special | - |
 | [106486](106486/) | [Dalian University of Technology, Software College 2025 Freshman Contest](https://codeforces.com/contest/106486) | 6 | 6/6 | Special | - |
 | [106503](106503/) | [2026 华南师范大学程序设计竞赛 (SCNUCPC 2026)](https://codeforces.com/contest/106503) | 7 | 5/7 | Special | - |
