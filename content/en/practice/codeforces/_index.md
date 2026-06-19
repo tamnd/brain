@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1684 contests, 9627 problems, 4855 verified."
+description: "Codeforces problem solutions with full editorials. 1685 contests, 9632 problems, 4860 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1684 contests, 9627 problems, 4855 verified.**
+**1685 contests, 9632 problems, 4860 verified.**
 
 ## Unknown — 66 contests, 275 problems, 199 verified
 
@@ -1568,7 +1568,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 
-## 2025 — 139 contests, 1035 problems, 354 verified
+## 2025 — 140 contests, 1040 problems, 359 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1691,6 +1691,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
+| [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 5 | 5/5 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 3 | 1/3 | Special | - |
 | [106192](106192/) | [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192) | 6 | 6/6 | Special | - |
 | [106194](106194/) | [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194) | 7 | 7/7 | Special | - |
