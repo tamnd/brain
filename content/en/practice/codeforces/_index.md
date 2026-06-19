@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1682 contests, 9619 problems, 4849 verified."
+description: "Codeforces problem solutions with full editorials. 1683 contests, 9624 problems, 4854 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1682 contests, 9619 problems, 4849 verified.**
+**1683 contests, 9624 problems, 4854 verified.**
 
-## Unknown — 65 contests, 270 problems, 194 verified
+## Unknown — 66 contests, 275 problems, 199 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 5 | 5/5 | ICPC/IOI | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 7 | 7/7 | ICPC/IOI | - |
 | [106199](106199/) | [Интернет-олимпиады, Сезон 2024-2025, Вторая личная олимпиада](https://codeforces.com/contest/106199) | 2 | 2/2 | Special | - |
 | [106200](106200/) | [Интернет-олимпиады, Сезон 2024-2025, Третья личная олимпиада](https://codeforces.com/contest/106200) | 2 | 2/2 | Special | - |
