@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1654 contests, 9409 problems, 4655 verified."
+description: "Codeforces problem solutions with full editorials. 1655 contests, 9413 problems, 4659 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1654 contests, 9409 problems, 4655 verified.**
+**1655 contests, 9413 problems, 4659 verified.**
 
-## Unknown — 49 contests, 175 problems, 100 verified
+## Unknown — 50 contests, 179 problems, 104 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -63,6 +63,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 3 | 2/3 | Special | - |
+| [106494](106494/) | [MEPhI Spring Cup 2026](https://codeforces.com/contest/106494) | 4 | 4/4 | Special | - |
 | [106507](106507/) | [TeamsCode 2026 Spring Contest](https://codeforces.com/contest/106507) | 9 | 3/9 | Special | - |
 | [106511](106511/) | [Columbia University Local Contest (CULC) Spring 2026](https://codeforces.com/contest/106511) | 13 | 8/13 | Special | - |
 | [106516](106516/) | [MITIT Spring 2026 Invitationals Finals](https://codeforces.com/contest/106516) | 5 | 5/5 | Special | - |
