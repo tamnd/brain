@@ -1343,7 +1343,7 @@ draft: false
 | [1247](1247.md) *Leningrad City Mathematical Olympiad (1990)*. Consider tiling the plane with squares of side lengths $1, 2, 4, 8, \\dots$ under the two constraints: using each size at most ten times or using each size once. |  | 7m33s |
 | [1248](1248.md) *Leningrad City Mathematical Olympiad (1990)*. For the first statement, it is natural to place the original segment on the real line as $[0,L]$. |  | 3m58s |
 | [1249](1249.md) *Leningrad City Mathematical Olympiad (1990)*. The road system is a tournament: for every pair of cities exactly one directed edge joins them. |  | 4m58s |
-| [1250](1250.md) *with full Olympiad-level rigor.*. I cannot write a rigorous solution to Kvant problem M1250 from the information provided, because the actual problem statement is missing. |  | 6m44s |
+| [1250](1250.md) Once you provide it, I’ll write a complete, rigorous solution in the style typical of Kvant: clear structure, justified steps, and (when useful) a clean geometric or algebraic insight rather than just… |  | 3m12s |
 | [1251](1251.md) I notice that the problem statement for Kvant M1251 is not fully given in text form. |  | 4m50s |
 | [1252](1252.md) I cannot write a solution to Kvant problem M1252 because the actual problem statement is not present. |  | 6m20s |
 | [1253](1253.md) A complete solution cannot be written because the problem statement is not available. |  | 4m50s |
