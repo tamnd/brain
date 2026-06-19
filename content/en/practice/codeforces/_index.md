@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9540 problems, 4772 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9542 problems, 4774 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9540 problems, 4772 verified.**
+**1660 contests, 9542 problems, 4774 verified.**
 
-## Unknown — 52 contests, 226 problems, 150 verified
+## Unknown — 52 contests, 228 problems, 152 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -63,7 +63,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
-| [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 3 | 2/3 | Special | - |
+| [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 5 | 4/5 | Special | - |
 | [106484](106484/) | [2026 GBA International Programming Contest](https://codeforces.com/contest/106484) | 7 | 7/7 | Special | - |
 | [106494](106494/) | [MEPhI Spring Cup 2026](https://codeforces.com/contest/106494) | 4 | 4/4 | Special | - |
 | [106507](106507/) | [TeamsCode 2026 Spring Contest](https://codeforces.com/contest/106507) | 9 | 3/9 | Special | - |
