@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1618 contests, 9255 problems, 4555 verified."
+description: "Codeforces problem solutions with full editorials. 1619 contests, 9257 problems, 4555 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1618 contests, 9255 problems, 4555 verified.**
+**1619 contests, 9257 problems, 4555 verified.**
 
-## Unknown — 28 contests, 111 problems, 60 verified
+## Unknown — 29 contests, 113 problems, 60 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -41,6 +41,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
 | [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 1 | 0/1 | ICPC/IOI | - |
+| [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 1 | 0/1 | Special | - |
 | [106507](106507/) | [TeamsCode 2026 Spring Contest](https://codeforces.com/contest/106507) | 9 | 3/9 | Special | - |
 | [106511](106511/) | [Columbia University Local Contest (CULC) Spring 2026](https://codeforces.com/contest/106511) | 13 | 8/13 | Special | - |
