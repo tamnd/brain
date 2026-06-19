@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1713 contests, 9873 problems, 5082 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9880 problems, 5089 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1713 contests, 9873 problems, 5082 verified.**
+**1714 contests, 9880 problems, 5089 verified.**
 
-## Unknown — 82 contests, 387 problems, 307 verified
+## Unknown — 83 contests, 394 problems, 314 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
 | [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 1 | 1/1 | ICPC/IOI | - |
