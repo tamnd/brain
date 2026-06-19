@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1709 contests, 9815 problems, 5031 verified."
+description: "Codeforces problem solutions with full editorials. 1709 contests, 9816 problems, 5032 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1709 contests, 9815 problems, 5031 verified.**
+**1709 contests, 9816 problems, 5032 verified.**
 
-## Unknown — 78 contests, 363 problems, 286 verified
+## Unknown — 78 contests, 364 problems, 287 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 8 | 8/8 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 9 | 9/9 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 6 | 6/6 | ICPC/IOI | - |
-| [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 3 | 3/3 | Special | - |
+| [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 4 | 4/4 | Special | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 6 | 6/6 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 5 | 5/5 | ICPC/IOI | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 7 | 7/7 | ICPC/IOI | - |
