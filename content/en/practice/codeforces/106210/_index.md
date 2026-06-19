@@ -1,26 +1,27 @@
 ---
 title: "广东工业大学新生赛(初赛)"
-description: "5 problems from 广东工业大学新生赛(初赛) (contest 106210), difficulty -. 1/5 solutions verified against sample I/O."
+description: "6 problems from 广东工业大学新生赛(初赛) (contest 106210), difficulty -. 1/6 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106210
 contest_type: "Special"
 rating_range: "-"
-n_problems: 5
+n_problems: 6
 n_verified: 1
-total_solve_s: 164
+total_solve_s: 252
 contest_year: 2025
-date: "2026-06-19T09:41:48+07:00"
+date: "2026-06-19T14:01:16+07:00"
 weight: 106210
 draft: false
 ---
 
 # [广东工业大学新生赛(初赛)](https://codeforces.com/contest/106210)
 
-Special | 5 problems | 1/5 verified | Difficulty - | 2m 44s
+Special | 6 problems | 1/6 verified | Difficulty - | 4m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u6700\u5927\u5b50\u4e32\u5339\u914d\u5220\u9664\u64cd\u4f5c](https://codeforces.com/problemset/problem/106210/A) |  |  |  | 1m 28s |  |
 | [B](B/) | [\u6211\u4e0d\u662f AI](https://codeforces.com/problemset/problem/106210/B) |  |  |  | 33s |  |
 | [E](E/) | [\u7a33\u5b9a\u533a\u95f4](https://codeforces.com/problemset/problem/106210/E) |  |  |  | 26s |  |
 | [F](F/) | [\u3010\u6a21\u677f\u3011Pollard-Rho](https://codeforces.com/problemset/problem/106210/F) |  |  |  | 51s | ✓ |
