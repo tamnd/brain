@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1688 contests, 9654 problems, 4882 verified."
+description: "Codeforces problem solutions with full editorials. 1689 contests, 9656 problems, 4884 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1688 contests, 9654 problems, 4882 verified.**
+**1689 contests, 9656 problems, 4884 verified.**
 
 ## Unknown — 67 contests, 281 problems, 205 verified
 
@@ -1439,7 +1439,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 125 contests, 931 problems, 325 verified
+## 2024 — 126 contests, 933 problems, 327 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1568,6 +1568,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
 ## 2025 — 142 contests, 1056 problems, 375 verified
 
