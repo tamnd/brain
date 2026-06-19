@@ -1,27 +1,28 @@
 ---
 title: "2026 华南师范大学程序设计竞赛 (SCNUCPC 2026)"
-description: "8 problems from 2026 华南师范大学程序设计竞赛 (SCNUCPC 2026) (contest 106503), difficulty -. 6/8 solutions verified against sample I/O."
+description: "9 problems from 2026 华南师范大学程序设计竞赛 (SCNUCPC 2026) (contest 106503), difficulty -. 7/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106503
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 6
-total_solve_s: 459
+n_problems: 9
+n_verified: 7
+total_solve_s: 521
 contest_year: 2026
-date: "2026-06-19T17:34:36+07:00"
+date: "2026-06-19T04:10:53+07:00"
 weight: 106503
 draft: false
 ---
 
 # [2026 华南师范大学程序设计竞赛 (SCNUCPC 2026)](https://codeforces.com/contest/106503)
 
-Special | 8 problems | 6/8 verified | Difficulty - | 7m 39s
+Special | 9 problems | 7/9 verified | Difficulty - | 8m 41s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Hello, SCNUCPC!](https://codeforces.com/problemset/problem/106503/A) |  |  |  | 51s | ✓ |
+| [B](B/) | [0100101](https://codeforces.com/problemset/problem/106503/B) |  |  |  | 1m 2s | ✓ |
 | [C](C/) | [Valentine's Day of Crime and Punishment](https://codeforces.com/problemset/problem/106503/C) |  |  |  | 1m 5s | ✓ |
 | [E](E/) | [Top Student Problem\u2160](https://codeforces.com/problemset/problem/106503/E) |  |  |  | 44s | ✓ |
 | [F](F/) | [Top Student Problem\u2161](https://codeforces.com/problemset/problem/106503/F) |  |  |  | 25s |  |
