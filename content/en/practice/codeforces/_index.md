@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1711 contests, 9871 problems, 5080 verified."
+description: "Codeforces problem solutions with full editorials. 1712 contests, 9872 problems, 5081 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1711 contests, 9871 problems, 5080 verified.**
+**1712 contests, 9872 problems, 5081 verified.**
 
-## Unknown — 80 contests, 385 problems, 305 verified
+## Unknown — 81 contests, 386 problems, 306 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -29,6 +29,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 6 | 6/6 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 4 | 4/4 | Special | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 6 | 6/6 | Special | - |
+| [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 1 | 1/1 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 5 | 5/5 | ICPC/IOI | - |
 | [106189](106189/) | [ICPC Central Russia Regional Contest, 2025](https://codeforces.com/contest/106189) | 1 | 1/1 | ICPC/IOI | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 7 | 7/7 | ICPC/IOI | - |
