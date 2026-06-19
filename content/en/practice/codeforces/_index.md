@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1669 contests, 9573 problems, 4804 verified."
+description: "Codeforces problem solutions with full editorials. 1670 contests, 9576 problems, 4807 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1669 contests, 9573 problems, 4804 verified.**
+**1670 contests, 9576 problems, 4807 verified.**
 
-## Unknown — 57 contests, 243 problems, 167 verified
+## Unknown — 58 contests, 246 problems, 170 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -62,6 +62,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 8 | 8/8 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
+| [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 3 | 3/3 | ICPC/IOI | - |
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 1 | 1/1 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 2 | 2/2 | Special | - |
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 1 | 1/1 | Special | - |
