@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9485 problems, 4725 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9487 problems, 4727 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9485 problems, 4725 verified.**
+**1660 contests, 9487 problems, 4727 verified.**
 
-## Unknown — 52 contests, 204 problems, 129 verified
+## Unknown — 52 contests, 206 problems, 131 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -32,7 +32,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106250](106250/) | [MITIT Winter 2025-26 Advanced Team Round](https://codeforces.com/contest/106250) | 6 | 6/6 | Special | - |
 | [106251](106251/) | [MITIT Winter 2025-26 Beginner Round](https://codeforces.com/contest/106251) | 6 | 6/6 | Special | - |
 | [106259](106259/) | [CUET Inter University Programming Contest 2025](https://codeforces.com/contest/106259) | 11 | 11/11 | Special | - |
-| [106262](106262/) | [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262) | 9 | 8/9 | ICPC/IOI | - |
+| [106262](106262/) | [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262) | 11 | 10/11 | ICPC/IOI | - |
 | [106268](106268/) | [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268) | 9 | 6/9 | Special | - |
 | [106269](106269/) | [Когнитивные технологии 2025-2026. Третий отбор](https://codeforces.com/contest/106269) | 3 | 0/3 | Special | - |
 | [106271](106271/) | [Муниципальный этап ВсОШ по информатике (программирование), Москва, 2025](https://codeforces.com/contest/106271) | 0 | 0/0 | Special | - |
