@@ -1247,7 +1247,7 @@ draft: false
 | [1150](1150.md) *E. G. Moiseev, 10th-grade student*. For $n=3$ the inequality becomes |  | 2m09s |
 | [1151](1151.md) I cannot write a solution to Kvant problem M1151 from the information provided, because the actual problem statement is missing. |  | 5m34s |
 | [1152](1152.md) I do not have the statement of Kvant problem M1152, and the prompt says that only the graphical version is currently available. |  | 9m36s |
-| [1153](1153.md) I can do that. |  | 3m45s |
+| [1153](1153.md) Please go ahead and provide the Kvant problem statement you want solved. |  | 2m13s |
 | [1154](1154.md) I cannot write a solution to Kvant problem M1154 because the actual problem statement is not present in your message. |  | 6m43s |
 | [1155](1155.md) A complete solution cannot be written from the information provided. |  | 5m30s |
 | [1156](1156.md) There are eight teams, each playing once against every other team, so each team plays $7$ games. |  | 7m23s |
