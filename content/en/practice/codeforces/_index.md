@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1653 contests, 9396 problems, 4644 verified."
+description: "Codeforces problem solutions with full editorials. 1653 contests, 9400 problems, 4648 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1653 contests, 9396 problems, 4644 verified.**
+**1653 contests, 9400 problems, 4648 verified.**
 
 ## Unknown — 49 contests, 173 problems, 98 verified
 
@@ -1692,7 +1692,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 11 | 0/11 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 10 | 4/10 | Special | - |
 
-## 2026 — 49 contests, 355 problems, 100 verified
+## 2026 — 49 contests, 359 problems, 104 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1742,7 +1742,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106356](106356/) | [Replay of BUET IUPC 2026, Powered By Phitron](https://codeforces.com/contest/106356) | 7 | 7/7 | Special | - |
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 3 | 2/3 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 5 | 5/5 | Div. 1 | - |
-| [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 2 | 2/2 | Special | - |
+| [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 6 | 6/6 | Special | - |
 | [106508](106508/) | [2026 SCUT Programming Contest（2026 华南理工大学程序设计校赛）](https://codeforces.com/contest/106508) | 12 | 5/12 | Special | - |
 | [106513](106513/) | [2026 Spring UT CS104c Final Exam](https://codeforces.com/contest/106513) | 5 | 3/5 | Special | - |
 
