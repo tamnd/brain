@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1653 contests, 9368 problems, 4620 verified."
+description: "Codeforces problem solutions with full editorials. 1653 contests, 9370 problems, 4620 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1653 contests, 9368 problems, 4620 verified.**
+**1653 contests, 9370 problems, 4620 verified.**
 
 ## Unknown — 49 contests, 162 problems, 89 verified
 
@@ -1551,7 +1551,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 
-## 2025 — 136 contests, 985 problems, 317 verified
+## 2025 — 136 contests, 987 problems, 317 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1690,7 +1690,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106270](106270/) | [ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest](https://codeforces.com/contest/106270) | 6 | 6/6 | ICPC/IOI | - |
 | [106272](106272/) | [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary](https://codeforces.com/contest/106272) | 10 | 1/10 | Special | - |
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 11 | 0/11 | Special | - |
-| [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 8 | 4/8 | Special | - |
+| [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 10 | 4/10 | Special | - |
 
 ## 2026 — 49 contests, 340 problems, 85 verified
 
