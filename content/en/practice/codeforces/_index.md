@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1712 contests, 9872 problems, 5081 verified."
+description: "Codeforces problem solutions with full editorials. 1713 contests, 9873 problems, 5082 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,14 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1712 contests, 9872 problems, 5081 verified.**
+**1713 contests, 9873 problems, 5082 verified.**
 
-## Unknown — 81 contests, 386 problems, 306 verified
+## Unknown — 82 contests, 387 problems, 307 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
+| [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 1 | 1/1 | ICPC/IOI | - |
 | [106124](106124/) | [2025-2026 ICPC Nordic Collegiate Programming Contest (NCPC 2025)](https://codeforces.com/contest/106124) | 6 | 6/6 | ICPC/IOI | - |
 | [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 9 | 9/9 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 9 | 9/9 | ICPC/IOI | - |
