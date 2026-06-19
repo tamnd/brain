@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1702 contests, 9743 problems, 4961 verified."
+description: "Codeforces problem solutions with full editorials. 1703 contests, 9751 problems, 4969 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1702 contests, 9743 problems, 4961 verified.**
+**1703 contests, 9751 problems, 4969 verified.**
 
-## Unknown — 74 contests, 326 problems, 249 verified
+## Unknown — 75 contests, 334 problems, 257 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 8 | 8/8 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 7 | 7/7 | ICPC/IOI | - |
 | [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 9 | 8/9 | Special | - |
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 6 | 6/6 | Special | - |
