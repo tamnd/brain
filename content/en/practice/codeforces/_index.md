@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1700 contests, 9727 problems, 4946 verified."
+description: "Codeforces problem solutions with full editorials. 1701 contests, 9736 problems, 4954 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1700 contests, 9727 problems, 4946 verified.**
+**1701 contests, 9736 problems, 4954 verified.**
 
-## Unknown — 72 contests, 310 problems, 234 verified
+## Unknown — 73 contests, 319 problems, 242 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 9 | 8/9 | Special | - |
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 6 | 6/6 | Special | - |
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 7 | 7/7 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 8 | 8/8 | ICPC/IOI | - |
