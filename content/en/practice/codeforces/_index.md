@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1707 contests, 9777 problems, 4994 verified."
+description: "Codeforces problem solutions with full editorials. 1708 contests, 9781 problems, 4998 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1707 contests, 9777 problems, 4994 verified.**
+**1708 contests, 9781 problems, 4998 verified.**
 
-## Unknown — 76 contests, 340 problems, 263 verified
+## Unknown — 77 contests, 344 problems, 267 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 4 | 4/4 | Special | - |
 | [106124](106124/) | [2025-2026 ICPC Nordic Collegiate Programming Contest (NCPC 2025)](https://codeforces.com/contest/106124) | 6 | 6/6 | ICPC/IOI | - |
 | [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 8 | 8/8 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 7 | 7/7 | ICPC/IOI | - |
