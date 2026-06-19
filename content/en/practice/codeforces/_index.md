@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1653 contests, 9385 problems, 4633 verified."
+description: "Codeforces problem solutions with full editorials. 1653 contests, 9387 problems, 4635 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1653 contests, 9385 problems, 4633 verified.**
+**1653 contests, 9387 problems, 4635 verified.**
 
-## Unknown — 49 contests, 171 problems, 96 verified
+## Unknown — 49 contests, 173 problems, 98 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -59,7 +59,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106338](106338/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/106338) | 2 | 2/2 | Special | - |
 | [106347](106347/) | [Высшая проба - 2024. Заключительный этап](https://codeforces.com/contest/106347) | 2 | 0/2 | Special | - |
 | [106352](106352/) | [Интернет-олимпиады, Сезон 2025-2026, Первая личная олимпиада](https://codeforces.com/contest/106352) | 2 | 2/2 | Special | - |
-| [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 2 | 2/2 | ICPC/IOI | - |
+| [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 4 | 4/4 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 1 | 0/1 | Special | - |
