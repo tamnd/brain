@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1649 contests, 9327 problems, 4596 verified."
+description: "Codeforces problem solutions with full editorials. 1650 contests, 9331 problems, 4596 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1649 contests, 9327 problems, 4596 verified.**
+**1650 contests, 9331 problems, 4596 verified.**
 
-## Unknown — 47 contests, 146 problems, 78 verified
+## Unknown — 48 contests, 150 problems, 78 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 4 | 0/4 | Special | - |
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 1 | 0/1 | Special | - |
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 1 | 0/1 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
