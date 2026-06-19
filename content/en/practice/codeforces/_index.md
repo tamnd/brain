@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9510 problems, 4744 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9514 problems, 4748 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9510 problems, 4744 verified.**
+**1660 contests, 9514 problems, 4748 verified.**
 
 ## Unknown — 52 contests, 217 problems, 141 verified
 
@@ -1695,7 +1695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 12 | 1/12 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 12 | 4/12 | Special | - |
 
-## 2026 — 53 contests, 393 problems, 134 verified
+## 2026 — 53 contests, 397 problems, 138 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1738,7 +1738,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2226](2226/) | [Codeforces Round 1095 (Div. 2)](https://codeforces.com/contest/2226) | 7 | 0/7 | Div. 2 | - |
 | [2227](2227/) | [Codeforces Round 1096 (Div. 3)](https://codeforces.com/contest/2227) | 8 | 0/8 | Div. 3 | - |
 | [106315](106315/) | [ICPC Dhaka 2025 Online Preliminary - Replay Contest](https://codeforces.com/contest/106315) | 7 | 7/7 | ICPC/IOI | - |
-| [106328](106328/) | [Baozii Cup 3](https://codeforces.com/contest/106328) | 6 | 6/6 | Special | - |
+| [106328](106328/) | [Baozii Cup 3](https://codeforces.com/contest/106328) | 10 | 10/10 | Special | - |
 | [106339](106339/) | [UTPC Contest 1-28-2026](https://codeforces.com/contest/106339) | 5 | 5/5 | Special | - |
 | [106350](106350/) | [Zaglol Contest - FCDS level 1 contest 2026](https://codeforces.com/contest/106350) | 4 | 0/4 | Special | - |
 | [106351](106351/) | [Zaglol Contest - FCDS level 2 contest 2026](https://codeforces.com/contest/106351) | 4 | 0/4 | Special | - |
