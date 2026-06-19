@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1643 contests, 9315 problems, 4592 verified."
+description: "Codeforces problem solutions with full editorials. 1644 contests, 9319 problems, 4593 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1643 contests, 9315 problems, 4592 verified.**
+**1644 contests, 9319 problems, 4593 verified.**
 
-## Unknown — 41 contests, 134 problems, 74 verified
+## Unknown — 42 contests, 138 problems, 75 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 2 | 1/2 | Special | - |
 | [106237](106237/) | [Algo Cup 2025 by csspace.io (Finals)](https://codeforces.com/contest/106237) | 3 | 2/3 | Special | - |
 | [106247](106247/) | [Municipal stage of the All-Russian School Olympiad 2025, grades 9-11, Programming profile, Vologda and Krasnodar regions](https://codeforces.com/contest/106247) | 0 | 0/0 | Special | - |
