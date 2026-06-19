@@ -1253,7 +1253,7 @@ draft: false
 | [1156](1156.md) There are eight teams, each playing once against every other team, so each team plays $7$ games. |  | 7m23s |
 | [1157](1157.md) Let the three triangles be $T_W,T_R,T_G$, and let $M$ be a point lying in the interior of each of them. |  | 9m57s |
 | [1158](1158.md) We are asked to minimize $(x+y)(x+z)$ under the constraint $xyz(x+y+z)=1$, with $x$, $y$, $z$ positive. |  | 7m27s |
-| [1159](1159.md) Before I can write the full six-section solution you requested, I need the **textual statement of Kvant problem M1159**, since I do not have the content of the problem from memory. |  | 6m52s |
+| [1159](1159.md) The allowed tool is a straightedge together with the ability to construct a line parallel to a given line at a fixed distance equal to the ruler width. |  | 3m39s |
 | [1160](1160.md) *S. L. Eliseev*. Consider the situation with only two kangaroos first. |  | 7m10s |
 | [1161](1161.md) *N. P. Dolbilin*. Consider first the configuration of ten identical billiard balls arranged snugly in a triangular container. |  | 7m09s |
 | [1162](1162.md) *D. V. Fomin*. Consider the Diophantine equation |  | 4m11s |
@@ -1276,7 +1276,7 @@ draft: false
 | [1179](1179.md) *B. A. Wertheim*. Consider the first recurrence, $a_{n+1} = \\frac{n}{n+1}(a_n+1)$ with $a_1 = 0$. |  | 7m53s |
 | [1180](1180.md) *All-Union Mathematical Olympiad (XXIII, 1989)*. Consider two spheres intersecting along a circle. |  | 7m41s |
 | [1181](1181.md) *All-Union Mathematical Olympiad (XXIII, 1989)*. Consider small instances of the chessboard and examine the parity of black squares occupied by pieces when each row and each column contains exactly one piece. |  | 7m55s |
-| [1182](1182.md) Before I begin, could you provide the exact text of Kvant problem M1182? I need the precise statement to produce a complete, rigorous solution in the requested format. |  | 8m26s |
+| [1182](1182.md) Label the birdhouses by their positions $P_1,\\dots,P_n$ in the plane, with all pairwise distances distinct. |  | 3m47s |
 | [1183](1183.md) I cannot write a solution to Kvant problem M1183 because the actual problem statement is not present in your message. |  | 5m49s |
 | [1184](1184.md) I do not have access to the published graphical version of Kvant M1184, and you mentioned the textual version is being prepared. |  | 10m11s |
 | [1185](1185.md) I do not yet have the full text of Kvant problem M1185. |  | 5m49s |
