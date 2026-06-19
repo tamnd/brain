@@ -1003,7 +1003,7 @@ draft: false
 | [901](901.md) Consider triangle $ABC$ with bisectors $AK$ and $BM$ intersecting at $O$. |  | 2m59s |
 | [902](902.md) *A. V. Kelarev*. Suppose the partition consists of finitely many arithmetic progressions |  | 9m23s |
 | [903](903.md) *A. A. Dorogovtsev*. A plane section of a convex polyhedron changes combinatorially only when the plane passes through a vertex. |  | 2m56s |
-| [904](904.md) I cannot write a solution because the actual problem statement is missing. |  | 1m16s |
+| [904](904.md) Let $A = a_n a_{n-1}\\ldots a_0$ in decimal. |  | 4m52s |
 | [905](905.md) Consider the equation |  | 10m22s |
 | [906](906.md) *M. V. Slavinskyi*. Consider the equation |  | 27m41s |
 | [907](907.md) *T. A. Dzhortmenadze*. Let $A=\\widehat A$, $B=\\widehat B$, $C=\\widehat C$. |  | 6m49s |
