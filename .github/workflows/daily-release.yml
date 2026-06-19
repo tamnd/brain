@@ -14,7 +14,7 @@ jobs:
     env:
       BOOKS: "linear-algebra"
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Install typst
         uses: typst-community/setup-typst@v5.1.0
