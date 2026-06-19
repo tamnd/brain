@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1709 contests, 9811 problems, 5027 verified."
+description: "Codeforces problem solutions with full editorials. 1709 contests, 9812 problems, 5028 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1709 contests, 9811 problems, 5027 verified.**
+**1709 contests, 9812 problems, 5028 verified.**
 
-## Unknown — 78 contests, 360 problems, 283 verified
+## Unknown — 78 contests, 361 problems, 284 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -24,7 +24,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 9 | 9/9 | ICPC/IOI | - |
 | [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 9 | 8/9 | Special | - |
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 8 | 8/8 | Special | - |
-| [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 7 | 7/7 | Special | - |
+| [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 8 | 8/8 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 8 | 8/8 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 5 | 5/5 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 3 | 3/3 | Special | - |
