@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1660 contests, 9469 problems, 4709 verified."
+description: "Codeforces problem solutions with full editorials. 1660 contests, 9473 problems, 4713 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1660 contests, 9469 problems, 4709 verified.**
+**1660 contests, 9473 problems, 4713 verified.**
 
 ## Unknown — 52 contests, 200 problems, 125 verified
 
@@ -1554,7 +1554,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 
-## 2025 — 136 contests, 997 problems, 323 verified
+## 2025 — 136 contests, 1001 problems, 327 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1680,7 +1680,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106208](106208/) | [Inter University Programming Contest - MU CSE Fest 2025 - MIRROR](https://codeforces.com/contest/106208) | 7 | 6/7 | Special | - |
 | [106210](106210/) | [广东工业大学新生赛(初赛)](https://codeforces.com/contest/106210) | 10 | 3/10 | Special | - |
 | [106238](106238/) | [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238) | 10 | 2/10 | Special | - |
-| [106239](106239/) | [2025广东工业大学新生赛(决赛)](https://codeforces.com/contest/106239) | 6 | 6/6 | Special | - |
+| [106239](106239/) | [2025广东工业大学新生赛(决赛)](https://codeforces.com/contest/106239) | 10 | 10/10 | Special | - |
 | [106241](106241/) | [2025 GUC Winter Camp](https://codeforces.com/contest/106241) | 7 | 7/7 | Special | - |
 | [106242](106242/) | [2025 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/106242) | 3 | 1/3 | Special | - |
 | [106252](106252/) | [The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang)](https://codeforces.com/contest/106252) | 5 | 5/5 | ICPC/IOI | - |
