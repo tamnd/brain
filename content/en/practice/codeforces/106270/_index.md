@@ -1,23 +1,23 @@
 ---
 title: "ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest"
-description: "8 problems from ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest (contest 106270), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest (contest 106270), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106270
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 508
+n_problems: 9
+n_verified: 9
+total_solve_s: 564
 contest_year: 2025
-date: "2026-06-18T16:41:44+07:00"
+date: "2026-06-18T03:07:05+07:00"
 weight: 106270
 draft: false
 ---
 
 # [ICPC Asia Dhaka Regional Onsite 2025 — Replay Contest](https://codeforces.com/contest/106270)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 8m 28s
+ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 9m 24s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 8m 28s
 | [G](G/) | [Nonogram](https://codeforces.com/problemset/problem/106270/G) |  |  |  | 1m 25s | ✓ |
 | [H](H/) | [Optimal Balancing Strategy](https://codeforces.com/problemset/problem/106270/H) |  |  |  | 57s | ✓ |
 | [I](I/) | [Two Strings Attached](https://codeforces.com/problemset/problem/106270/I) |  |  |  | 52s | ✓ |
+| [J](J/) | [C-Style String Length](https://codeforces.com/problemset/problem/106270/J) |  |  |  | 56s | ✓ |
