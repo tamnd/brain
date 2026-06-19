@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1619 contests, 9257 problems, 4555 verified."
+description: "Codeforces problem solutions with full editorials. 1620 contests, 9259 problems, 4557 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1619 contests, 9257 problems, 4555 verified.**
+**1620 contests, 9259 problems, 4557 verified.**
 
 ## Unknown — 29 contests, 113 problems, 60 verified
 
@@ -1665,7 +1665,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 10 | 0/10 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 8 | 4/8 | Special | - |
 
-## 2026 — 42 contests, 321 problems, 75 verified
+## 2026 — 43 contests, 323 problems, 77 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1709,6 +1709,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2227](2227/) | [Codeforces Round 1096 (Div. 3)](https://codeforces.com/contest/2227) | 8 | 0/8 | Div. 3 | - |
 | [106315](106315/) | [ICPC Dhaka 2025 Online Preliminary - Replay Contest](https://codeforces.com/contest/106315) | 4 | 4/4 | ICPC/IOI | - |
 | [106328](106328/) | [Baozii Cup 3](https://codeforces.com/contest/106328) | 3 | 3/3 | Special | - |
+| [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 2 | 2/2 | Special | - |
 | [106508](106508/) | [2026 SCUT Programming Contest（2026 华南理工大学程序设计校赛）](https://codeforces.com/contest/106508) | 12 | 5/12 | Special | - |
 | [106513](106513/) | [2026 Spring UT CS104c Final Exam](https://codeforces.com/contest/106513) | 5 | 3/5 | Special | - |
 
