@@ -1,25 +1,26 @@
 ---
 title: "2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)"
-description: "9 problems from 2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals) (contest 106193), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from 2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals) (contest 106193), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106193
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 520
-date: "2026-06-19T11:57:54+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 574
+date: "2026-06-20T22:23:54+07:00"
 weight: 106193
 draft: false
 ---
 
 # [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193)
 
-ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 8m 40s
+ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 34s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Asynchronous Processor](https://codeforces.com/problemset/problem/106193/A) |  |  |  | 54s | ✓ |
 | [B](B/) | [Bounding Boxes](https://codeforces.com/problemset/problem/106193/B) |  |  |  | 48s | ✓ |
 | [C](C/) | [Compact Encoding](https://codeforces.com/problemset/problem/106193/C) |  |  |  | 47s | ✓ |
 | [D](D/) | [Defense Distance](https://codeforces.com/problemset/problem/106193/D) |  |  |  | 53s | ✓ |
