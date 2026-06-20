@@ -1,22 +1,22 @@
 ---
 title: "Moscow team school olympiad (MKOSHP) 2025"
-description: "9 problems from Moscow team school olympiad (MKOSHP) 2025 (contest 106141), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from Moscow team school olympiad (MKOSHP) 2025 (contest 106141), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106141
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 556
-date: "2026-06-20T08:38:04+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 625
+date: "2026-06-20T22:06:24+07:00"
 weight: 106141
 draft: false
 ---
 
 # [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 9m 16s
+Special | 10 problems | 10/10 verified | Difficulty - | 10m 25s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,5 +27,6 @@ Special | 9 problems | 9/9 verified | Difficulty - | 9m 16s
 | [F](F/) | [Arsen and Toy Soldiers](https://codeforces.com/problemset/problem/106141/F) |  |  |  | 52s | ✓ |
 | [G](G/) | [Geometry!](https://codeforces.com/problemset/problem/106141/G) |  |  |  | 1m 13s | ✓ |
 | [I](I/) | [Rick's Grades](https://codeforces.com/problemset/problem/106141/I) |  |  |  | 53s | ✓ |
+| [J](J/) | [Exercise for Dania](https://codeforces.com/problemset/problem/106141/J) |  |  |  | 1m 9s | ✓ |
 | [K](K/) | [Squirrel and Steps](https://codeforces.com/problemset/problem/106141/K) |  |  |  | 50s | ✓ |
 | [L](L/) | [Vector Magic](https://codeforces.com/problemset/problem/106141/L) |  |  |  | 55s | ✓ |
