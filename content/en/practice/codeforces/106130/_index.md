@@ -1,25 +1,26 @@
 ---
 title: "GDUT 2025 Monthly competition"
-description: "12 problems from GDUT 2025 Monthly competition (contest 106130), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from GDUT 2025 Monthly competition (contest 106130), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106130
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 840
-date: "2026-06-19T08:22:47+07:00"
+n_problems: 13
+n_verified: 12
+total_solve_s: 880
+date: "2026-06-20T22:02:58+07:00"
 weight: 106130
 draft: false
 ---
 
 # [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130)
 
-Special | 12 problems | 11/12 verified | Difficulty - | 14m
+Special | 13 problems | 12/13 verified | Difficulty - | 14m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\\%\\%\\%\u81ea\u52a8\u673a](https://codeforces.com/problemset/problem/106130/A) |  |  |  | 40s | ✓ |
 | [B](B/) | [k-\u51b2\u7a81\u6570\u5bf9](https://codeforces.com/problemset/problem/106130/B) |  |  |  | 4m 6s |  |
 | [C](C/) | [\u5e8f\u5217\u91cd\u6784\uff08\u7b80\u5355\u7248\uff09](https://codeforces.com/problemset/problem/106130/C) |  |  |  | 44s | ✓ |
 | [D](D/) | [\u5e8f\u5217\u91cd\u6784\uff08\u56f0\u96be\u7248\uff09](https://codeforces.com/problemset/problem/106130/D) |  |  |  | 54s | ✓ |
