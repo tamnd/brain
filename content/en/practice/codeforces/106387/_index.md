@@ -1,27 +1,28 @@
 ---
 title: "UTPC Contest 2-25-26 (Beginner)"
-description: "5 problems from UTPC Contest 2-25-26 (Beginner) (contest 106387), difficulty -. 5/5 solutions verified against sample I/O."
+description: "6 problems from UTPC Contest 2-25-26 (Beginner) (contest 106387), difficulty -. 5/6 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106387
 contest_type: "Special"
 rating_range: "-"
-n_problems: 5
+n_problems: 6
 n_verified: 5
-total_solve_s: 282
+total_solve_s: 323
 contest_year: 2026
-date: "2026-06-19T12:32:30+07:00"
+date: "2026-06-19T23:05:02+07:00"
 weight: 106387
 draft: false
 ---
 
 # [UTPC Contest 2-25-26 (Beginner)](https://codeforces.com/contest/106387)
 
-Special | 5 problems | 5/5 verified | Difficulty - | 4m 42s
+Special | 6 problems | 5/6 verified | Difficulty - | 5m 23s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Opening Ceremony](https://codeforces.com/problemset/problem/106387/A) |  |  |  | 51s | ✓ |
+| [B](B/) | [Ski Buddy](https://codeforces.com/problemset/problem/106387/B) |  |  |  | 41s |  |
 | [D](D/) | [Revenge of the (C/K)or(e)ys](https://codeforces.com/problemset/problem/106387/D) |  |  |  | 1m 13s | ✓ |
 | [E](E/) | [Feed the Beast](https://codeforces.com/problemset/problem/106387/E) |  |  |  | 48s | ✓ |
 | [F](F/) | [Racing Game](https://codeforces.com/problemset/problem/106387/F) |  |  |  | 54s | ✓ |
