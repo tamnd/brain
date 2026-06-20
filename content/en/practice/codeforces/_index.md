@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9899 problems, 5108 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9901 problems, 5110 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9899 problems, 5108 verified.**
+**1714 contests, 9901 problems, 5110 verified.**
 
-## Unknown — 83 contests, 406 problems, 326 verified
+## Unknown — 83 contests, 407 problems, 327 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
 | [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 1 | 1/1 | ICPC/IOI | - |
 | [106124](106124/) | [2025-2026 ICPC Nordic Collegiate Programming Contest (NCPC 2025)](https://codeforces.com/contest/106124) | 11 | 11/11 | ICPC/IOI | - |
-| [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 11 | 11/11 | Special | - |
+| [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 12 | 12/12 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 12 | 12/12 | ICPC/IOI | - |
 | [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 11 | 10/11 | Special | - |
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 8 | 8/8 | Special | - |
@@ -1586,7 +1586,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 151 contests, 1150 problems, 457 verified
+## 2025 — 151 contests, 1151 problems, 458 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1712,7 +1712,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 10 | 10/10 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
-| [106132](106132/) | [National Yang Ming Chiao Tung University 2025 Individual Programming Contest](https://codeforces.com/contest/106132) | 5 | 5/5 | Special | - |
+| [106132](106132/) | [National Yang Ming Chiao Tung University 2025 Individual Programming Contest](https://codeforces.com/contest/106132) | 6 | 6/6 | Special | - |
 | [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 11 | 11/11 | Special | - |
 | [106139](106139/) | [The 21st Hunan Provincial Collegiate Programming Contest](https://codeforces.com/contest/106139) | 11 | 2/11 | Special | - |
 | [106153](106153/) | [HNNU Freshman Competition Round 2](https://codeforces.com/contest/106153) | 5 | 5/5 | Special | - |
