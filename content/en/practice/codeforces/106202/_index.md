@@ -1,26 +1,27 @@
 ---
 title: "Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада"
-description: "8 problems from Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада (contest 106202), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада (contest 106202), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106202
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 520
-date: "2026-06-19T12:04:16+07:00"
+n_problems: 9
+n_verified: 9
+total_solve_s: 576
+date: "2026-06-19T22:28:42+07:00"
 weight: 106202
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада](https://codeforces.com/contest/106202)
 
-Special | 8 problems | 8/8 verified | Difficulty - | 8m 40s
+Special | 9 problems | 9/9 verified | Difficulty - | 9m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u041d\u043e\u0432\u0430\u044f \u0438\u0433\u0440\u0430](https://codeforces.com/problemset/problem/106202/A) |  |  |  | 1m 2s | ✓ |
+| [B](B/) | [\u0422\u043e\u0440\u0433\u043e\u0432\u0446\u044b](https://codeforces.com/problemset/problem/106202/B) |  |  |  | 56s | ✓ |
 | [C](C/) | [\u0411\u0438\u0442\u0432\u044b \u0441 \u0431\u043e\u0441\u0441\u0430\u043c\u0438](https://codeforces.com/problemset/problem/106202/C) |  |  |  | 1m 19s | ✓ |
 | [D](D/) | [\u0421\u043a\u0435\u043b\u0435\u0442\u044b, \u043a\u043e\u0441\u0442\u0438, \u043a\u043b\u0430\u0434\u0431\u0438\u0449\u0435, \u0447\u0435\u0440\u0435\u043f\u0430](https://codeforces.com/problemset/problem/106202/D) |  |  |  | 1m 3s | ✓ |
 | [E](E/) | [\u041f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435 \u043f\u043e \u0434\u0435\u0440\u0435\u0432\u0443](https://codeforces.com/problemset/problem/106202/E) |  |  |  | 59s | ✓ |

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10097 problems, 5277 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10098 problems, 5278 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10097 problems, 5277 verified.**
+**1726 contests, 10098 problems, 5278 verified.**
 
-## Unknown — 88 contests, 497 problems, 407 verified
+## Unknown — 88 contests, 498 problems, 408 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -43,7 +43,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106199](106199/) | [Интернет-олимпиады, Сезон 2024-2025, Вторая личная олимпиада](https://codeforces.com/contest/106199) | 4 | 4/4 | Special | - |
 | [106200](106200/) | [Интернет-олимпиады, Сезон 2024-2025, Третья личная олимпиада](https://codeforces.com/contest/106200) | 4 | 4/4 | Special | - |
 | [106201](106201/) | [Индивидуальная олимпиада школьников по информатике и программированию 2025](https://codeforces.com/contest/106201) | 6 | 6/6 | Special | - |
-| [106202](106202/) | [Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада](https://codeforces.com/contest/106202) | 8 | 8/8 | Special | - |
+| [106202](106202/) | [Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада](https://codeforces.com/contest/106202) | 9 | 9/9 | Special | - |
 | [106203](106203/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая командная олимпиада](https://codeforces.com/contest/106203) | 11 | 11/11 | Special | - |
 | [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 4 | 0/4 | Special | - |
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 1 | 0/1 | Special | - |
