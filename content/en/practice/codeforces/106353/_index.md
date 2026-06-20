@@ -1,22 +1,22 @@
 ---
 title: "2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)"
-description: "10 problems from 2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025) (contest 106353), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025) (contest 106353), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106353
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 722
-date: "2026-06-19T09:31:58+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 768
+date: "2026-06-19T12:23:08+07:00"
 weight: 106353
 draft: false
 ---
 
 # [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 12m 2s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 12m 48s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,4 +29,5 @@ ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 12m 2s
 | [G](G/) | [Group Photo](https://codeforces.com/problemset/problem/106353/G) |  |  |  | 57s | ✓ |
 | [H](H/) | [Hasty Haul](https://codeforces.com/problemset/problem/106353/H) |  |  |  | 1m 8s | ✓ |
 | [J](J/) | [Juggling Keys](https://codeforces.com/problemset/problem/106353/J) |  |  |  | 3m 4s | ✓ |
+| [K](K/) | [KIT Finding](https://codeforces.com/problemset/problem/106353/K) |  |  |  | 46s | ✓ |
 | [L](L/) | [Last Christmas](https://codeforces.com/problemset/problem/106353/L) |  |  |  | 52s | ✓ |
