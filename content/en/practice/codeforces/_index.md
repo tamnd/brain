@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10131 problems, 5304 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10132 problems, 5305 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10131 problems, 5304 verified.**
+**1726 contests, 10132 problems, 5305 verified.**
 
-## Unknown — 88 contests, 515 problems, 423 verified
+## Unknown — 88 contests, 516 problems, 424 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -90,7 +90,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 8 | 2/8 | Special | - |
-| [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 3 | 3/3 | Special | - |
+| [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 4 | 4/4 | Special | - |
 | [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 6 | 6/6 | Special | - |
 | [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 7 | 7/7 | ICPC/IOI | - |
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 3 | 3/3 | Special | - |
