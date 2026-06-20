@@ -1,22 +1,22 @@
 ---
 title: "2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)"
-description: "8 problems from 2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals) (contest 106193), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from 2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals) (contest 106193), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106193
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 463
-date: "2026-06-19T08:56:49+07:00"
+n_problems: 9
+n_verified: 9
+total_solve_s: 520
+date: "2026-06-19T11:57:54+07:00"
 weight: 106193
 draft: false
 ---
 
 # [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 7m 43s
+ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 8m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,5 +26,6 @@ ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 7m 43s
 | [E](E/) | [Eight-Connected Figures](https://codeforces.com/problemset/problem/106193/E) |  |  |  | 1m 2s | ✓ |
 | [F](F/) | [Faulty Fraction](https://codeforces.com/problemset/problem/106193/F) |  |  |  | 50s | ✓ |
 | [H](H/) | [High Score](https://codeforces.com/problemset/problem/106193/H) |  |  |  | 1m 19s | ✓ |
+| [I](I/) | [Infection Investigation](https://codeforces.com/problemset/problem/106193/I) |  |  |  | 57s | ✓ |
 | [J](J/) | [Judging Problem](https://codeforces.com/problemset/problem/106193/J) |  |  |  | 53s | ✓ |
 | [L](L/) | [Lucky Number Theory](https://codeforces.com/problemset/problem/106193/L) |  |  |  | 1m 11s | ✓ |
