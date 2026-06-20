@@ -1,23 +1,23 @@
 ---
 title: "Inter University Programming Contest - MU CSE Fest 2025 - MIRROR"
-description: "8 problems from Inter University Programming Contest - MU CSE Fest 2025 - MIRROR (contest 106208), difficulty -. 7/8 solutions verified against sample I/O."
+description: "9 problems from Inter University Programming Contest - MU CSE Fest 2025 - MIRROR (contest 106208), difficulty -. 8/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106208
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 7
-total_solve_s: 593
+n_problems: 9
+n_verified: 8
+total_solve_s: 644
 contest_year: 2025
-date: "2026-06-19T09:04:08+07:00"
+date: "2026-06-19T12:05:48+07:00"
 weight: 106208
 draft: false
 ---
 
 # [Inter University Programming Contest - MU CSE Fest 2025 - MIRROR](https://codeforces.com/contest/106208)
 
-Special | 8 problems | 7/8 verified | Difficulty - | 9m 53s
+Special | 9 problems | 8/9 verified | Difficulty - | 10m 44s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ Special | 8 problems | 7/8 verified | Difficulty - | 9m 53s
 | [G](G/) | [Awkward Nodes](https://codeforces.com/problemset/problem/106208/G) |  |  |  | 52s | ✓ |
 | [H](H/) | [Guess the Number](https://codeforces.com/problemset/problem/106208/H) |  |  |  | 1m 19s | ✓ |
 | [I](I/) | [Fruit Ninja](https://codeforces.com/problemset/problem/106208/I) |  |  |  | 57s | ✓ |
+| [J](J/) | [Insert Force](https://codeforces.com/problemset/problem/106208/J) |  |  |  | 51s | ✓ |
