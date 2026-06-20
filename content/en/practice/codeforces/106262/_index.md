@@ -1,22 +1,22 @@
 ---
 title: "2025 ICPC Asia Manila Regional"
-description: "12 problems from 2025 ICPC Asia Manila Regional (contest 106262), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from 2025 ICPC Asia Manila Regional (contest 106262), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106262
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 1191
-date: "2026-06-18T03:04:24+07:00"
+n_problems: 13
+n_verified: 12
+total_solve_s: 1236
+date: "2026-06-18T22:38:19+07:00"
 weight: 106262
 draft: false
 ---
 
 # [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262)
 
-ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 19m 51s
+ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 20m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,4 +31,5 @@ ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 19m 51s
 | [I](I/) | [Stone Steps](https://codeforces.com/problemset/problem/106262/I) |  |  |  | 1m 5s | ✓ |
 | [J](J/) | [Tic-Tac-Toe on a Graph](https://codeforces.com/problemset/problem/106262/J) |  |  |  | 1m 14s | ✓ |
 | [K](K/) | [Toxic Culinarity](https://codeforces.com/problemset/problem/106262/K) |  |  |  | 55s | ✓ |
+| [L](L/) | [Trace of Product of Sparse Square Matrices](https://codeforces.com/problemset/problem/106262/L) |  |  |  | 45s | ✓ |
 | [M](M/) | [Web Delivery](https://codeforces.com/problemset/problem/106262/M) |  |  |  | 51s | ✓ |
