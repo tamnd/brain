@@ -1,26 +1,27 @@
 ---
 title: "The 2025 Asia Yokohama Regional Contest"
-description: "11 problems from The 2025 Asia Yokohama Regional Contest (contest 106268), difficulty -. 8/11 solutions verified against sample I/O."
+description: "12 problems from The 2025 Asia Yokohama Regional Contest (contest 106268), difficulty -. 9/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106268
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 8
-total_solve_s: 811
-date: "2026-06-18T16:40:36+07:00"
+n_problems: 12
+n_verified: 9
+total_solve_s: 866
+date: "2026-06-18T22:40:04+07:00"
 weight: 106268
 draft: false
 ---
 
 # [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268)
 
-Special | 11 problems | 8/11 verified | Difficulty - | 13m 31s
+Special | 12 problems | 9/12 verified | Difficulty - | 14m 26s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Tatami Renovation](https://codeforces.com/problemset/problem/106268/A) |  |  |  | 50s | ✓ |
+| [B](B/) | [Minimizing Wildlife Damage](https://codeforces.com/problemset/problem/106268/B) |  |  |  | 55s | ✓ |
 | [C](C/) | [Seagull Population](https://codeforces.com/problemset/problem/106268/C) |  |  |  | 1m 2s | ✓ |
 | [D](D/) | [Decompose and Concatenate](https://codeforces.com/problemset/problem/106268/D) |  |  |  | 47s | ✓ |
 | [E](E/) | [Cutting Tofu](https://codeforces.com/problemset/problem/106268/E) |  |  |  | 35s | ✓ |
