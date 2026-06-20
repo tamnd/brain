@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10067 problems, 5250 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10070 problems, 5251 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10067 problems, 5250 verified.**
+**1726 contests, 10070 problems, 5251 verified.**
 
-## Unknown — 88 contests, 481 problems, 393 verified
+## Unknown — 88 contests, 484 problems, 394 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 9 | 9/9 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 6 | 6/6 | Special | - |
 | [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 6 | 6/6 | ICPC/IOI | - |
-| [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 4 | 0/4 | Special | - |
+| [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 7 | 1/7 | Special | - |
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
