@@ -1,22 +1,22 @@
 ---
 title: "2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)"
-description: "12 problems from 2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025) (contest 106129), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from 2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025) (contest 106129), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106129
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 741
-date: "2026-06-19T07:31:33+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 796
+date: "2026-06-19T22:02:06+07:00"
 weight: 106129
 draft: false
 ---
 
 # [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129)
 
-ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 21s
+ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 13m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,5 +30,6 @@ ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 21s
 | [H](H/) | [Happy Hookup](https://codeforces.com/problemset/problem/106129/H) |  |  |  | 42s | ✓ |
 | [I](I/) | [Island Urbanism](https://codeforces.com/problemset/problem/106129/I) |  |  |  | 1m 17s | ✓ |
 | [J](J/) | [Jumbled Packets](https://codeforces.com/problemset/problem/106129/J) |  |  |  | 1m 44s | ✓ |
+| [K](K/) | [Karlsruhe Skyline](https://codeforces.com/problemset/problem/106129/K) |  |  |  | 55s | ✓ |
 | [L](L/) | [Labour Laws](https://codeforces.com/problemset/problem/106129/L) |  |  |  | 49s | ✓ |
 | [M](M/) | [Mex Hex](https://codeforces.com/problemset/problem/106129/M) |  |  |  | 51s | ✓ |

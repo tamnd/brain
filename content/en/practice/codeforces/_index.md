@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10072 problems, 5253 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10073 problems, 5254 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10072 problems, 5253 verified.**
+**1726 contests, 10073 problems, 5254 verified.**
 
-## Unknown — 88 contests, 484 problems, 394 verified
+## Unknown — 88 contests, 485 problems, 395 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 1 | 1/1 | ICPC/IOI | - |
 | [106124](106124/) | [2025-2026 ICPC Nordic Collegiate Programming Contest (NCPC 2025)](https://codeforces.com/contest/106124) | 11 | 11/11 | ICPC/IOI | - |
 | [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 12 | 12/12 | Special | - |
-| [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 12 | 12/12 | ICPC/IOI | - |
+| [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 13 | 13/13 | ICPC/IOI | - |
 | [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 12 | 11/12 | Special | - |
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 9 | 9/9 | Special | - |
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 9 | 9/9 | Special | - |
