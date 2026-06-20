@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9967 problems, 5165 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9968 problems, 5166 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9967 problems, 5165 verified.**
+**1714 contests, 9968 problems, 5166 verified.**
 
-## Unknown — 83 contests, 438 problems, 354 verified
+## Unknown — 83 contests, 439 problems, 355 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -90,7 +90,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 7 | 7/7 | ICPC/IOI | - |
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 3 | 3/3 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 6 | 6/6 | Special | - |
-| [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 2 | 2/2 | Special | - |
+| [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 3 | 3/3 | Special | - |
 | [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 5 | 5/5 | Special | - |
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 6 | 5/6 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
