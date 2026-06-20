@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9982 problems, 5179 verified."
+description: "Codeforces problem solutions with full editorials. 1715 contests, 9985 problems, 5182 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9982 problems, 5179 verified.**
+**1715 contests, 9985 problems, 5182 verified.**
 
 ## Unknown — 83 contests, 445 problems, 361 verified
 
@@ -1586,7 +1586,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 151 contests, 1175 problems, 480 verified
+## 2025 — 152 contests, 1178 problems, 483 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1709,6 +1709,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
+| [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 3 | 3/3 | ICPC/IOI | - |
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 10 | 10/10 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
