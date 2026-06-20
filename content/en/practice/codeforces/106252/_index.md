@@ -1,23 +1,23 @@
 ---
 title: "The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang)"
-description: "10 problems from The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang) (contest 106252), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang) (contest 106252), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106252
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 705
+n_problems: 11
+n_verified: 11
+total_solve_s: 783
 contest_year: 2025
-date: "2026-06-19T03:02:36+07:00"
+date: "2026-06-19T09:10:10+07:00"
 weight: 106252
 draft: false
 ---
 
 # [The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang)](https://codeforces.com/contest/106252)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 11m 45s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 13m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 11m 45s
 | [I](I/) | [Volunteer Simulator](https://codeforces.com/problemset/problem/106252/I) |  |  |  | 52s | ✓ |
 | [J](J/) | [The Echoes of Chronos](https://codeforces.com/problemset/problem/106252/J) |  |  |  | 1m 33s | ✓ |
 | [K](K/) | [Relay Jump](https://codeforces.com/problemset/problem/106252/K) |  |  |  | 1m 15s | ✓ |
+| [L](L/) | [Leo](https://codeforces.com/problemset/problem/106252/L) |  |  |  | 1m 18s | ✓ |
