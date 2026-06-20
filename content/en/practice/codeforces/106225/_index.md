@@ -1,22 +1,22 @@
 ---
 title: "2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)"
-description: "10 problems from 2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025) (contest 106225), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025) (contest 106225), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106225
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 585
-date: "2026-06-19T02:54:31+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 654
+date: "2026-06-19T12:07:11+07:00"
 weight: 106225
 draft: false
 ---
 
 # [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 45s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 45s
 | [I](I/) | [Isaac's Queries](https://codeforces.com/problemset/problem/106225/I) |  |  |  | 1m 4s | ✓ |
 | [J](J/) | [Jewels Building](https://codeforces.com/problemset/problem/106225/J) |  |  |  | 55s | ✓ |
 | [K](K/) | [Keygen 3](https://codeforces.com/problemset/problem/106225/K) |  |  |  | 1m 9s | ✓ |
+| [L](L/) | [LFS](https://codeforces.com/problemset/problem/106225/L) |  |  |  | 1m 9s | ✓ |

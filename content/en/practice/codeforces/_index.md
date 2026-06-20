@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9944 problems, 5145 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9945 problems, 5146 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9944 problems, 5145 verified.**
+**1714 contests, 9945 problems, 5146 verified.**
 
-## Unknown — 83 contests, 425 problems, 343 verified
+## Unknown — 83 contests, 426 problems, 344 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -44,7 +44,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 1 | 0/1 | Special | - |
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 1 | 0/1 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
-| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 10 | 10/10 | ICPC/IOI | - |
+| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 11 | 11/11 | ICPC/IOI | - |
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 2 | 1/2 | Special | - |
