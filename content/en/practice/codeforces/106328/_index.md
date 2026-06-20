@@ -1,23 +1,23 @@
 ---
 title: "Baozii Cup 3"
-description: "12 problems from Baozii Cup 3 (contest 106328), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from Baozii Cup 3 (contest 106328), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106328
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 709
+n_problems: 13
+n_verified: 13
+total_solve_s: 746
 contest_year: 2026
-date: "2026-06-19T12:19:37+07:00"
+date: "2026-06-19T22:48:42+07:00"
 weight: 106328
 draft: false
 ---
 
 # [Baozii Cup 3](https://codeforces.com/contest/106328)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 49s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 26s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,6 +25,7 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 49s
 | [B](B/) | [Odd Cycle](https://codeforces.com/problemset/problem/106328/B) |  |  |  | 58s | ✓ |
 | [C](C/) | [Count Cubes](https://codeforces.com/problemset/problem/106328/C) |  |  |  | 1m 14s | ✓ |
 | [D](D/) | [Xor And Mul](https://codeforces.com/problemset/problem/106328/D) |  |  |  | 48s | ✓ |
+| [E](E/) | [MiniC](https://codeforces.com/problemset/problem/106328/E) |  |  |  | 37s | ✓ |
 | [F](F/) | [Random Walk](https://codeforces.com/problemset/problem/106328/F) |  |  |  | 48s | ✓ |
 | [G](G/) | [HDZ's Legendary Problem](https://codeforces.com/problemset/problem/106328/G) |  |  |  | 1m 12s | ✓ |
 | [H](H/) | [Distinct Substrings](https://codeforces.com/problemset/problem/106328/H) |  |  |  | 56s | ✓ |
