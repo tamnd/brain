@@ -1,27 +1,28 @@
 ---
 title: "The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final"
-description: "9 problems from The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final (contest 106267), difficulty -. 2/9 solutions verified against sample I/O."
+description: "10 problems from The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final (contest 106267), difficulty -. 2/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106267
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 2
-total_solve_s: 352
+total_solve_s: 378
 contest_year: 2025
-date: "2026-06-18T16:39:09+07:00"
+date: "2026-06-18T22:38:57+07:00"
 weight: 106267
 draft: false
 ---
 
 # [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Final](https://codeforces.com/contest/106267)
 
-Special | 9 problems | 2/9 verified | Difficulty - | 5m 52s
+Special | 10 problems | 2/10 verified | Difficulty - | 6m 18s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u7b7e\u5230](https://codeforces.com/problemset/problem/106267/A) |  |  |  | 34s |  |
+| [B](B/) | [\u6392\u5217\u4e4b\u5dee](https://codeforces.com/problemset/problem/106267/B) |  |  |  | 26s |  |
 | [C](C/) | [Music In My Mind](https://codeforces.com/problemset/problem/106267/C) |  |  |  | 37s |  |
 | [D](D/) | [\u5e73\u8861\u77e9\u9635](https://codeforces.com/problemset/problem/106267/D) |  |  |  | 37s |  |
 | [E](E/) | [MAX --- MIN](https://codeforces.com/problemset/problem/106267/E) |  |  |  | 30s |  |
