@@ -1,23 +1,23 @@
 ---
 title: "KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)"
-description: "16 problems from KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto) (contest 106461), difficulty -. 16/16 solutions verified against sample I/O."
+description: "17 problems from KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto) (contest 106461), difficulty -. 17/17 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106461
 contest_type: "Special"
 rating_range: "-"
-n_problems: 16
-n_verified: 16
-total_solve_s: 891
+n_problems: 17
+n_verified: 17
+total_solve_s: 935
 contest_year: 2026
-date: "2026-06-19T17:15:19+07:00"
+date: "2026-06-19T12:53:23+07:00"
 weight: 106461
 draft: false
 ---
 
 # [KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)](https://codeforces.com/contest/106461)
 
-Special | 16 problems | 16/16 verified | Difficulty - | 14m 51s
+Special | 17 problems | 17/17 verified | Difficulty - | 15m 35s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@ Special | 16 problems | 16/16 verified | Difficulty - | 14m 51s
 | [D](D/) | [Campaign Speech](https://codeforces.com/problemset/problem/106461/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [Ball Dumping Golf](https://codeforces.com/problemset/problem/106461/E) |  |  |  | 58s | ✓ |
 | [F](F/) | [1e16 Cities](https://codeforces.com/problemset/problem/106461/F) |  |  |  | 48s | ✓ |
+| [H](H/) | [How to Validate Such a Program](https://codeforces.com/problemset/problem/106461/H) |  |  |  | 44s | ✓ |
 | [I](I/) | [Xor Magic Square](https://codeforces.com/problemset/problem/106461/I) |  |  |  | 48s | ✓ |
 | [J](J/) | [Sum of max of iai](https://codeforces.com/problemset/problem/106461/J) |  |  |  | 50s | ✓ |
 | [K](K/) | [Square Resistance Value](https://codeforces.com/problemset/problem/106461/K) |  |  |  | 49s | ✓ |
