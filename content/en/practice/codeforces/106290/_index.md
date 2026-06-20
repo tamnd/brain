@@ -1,29 +1,30 @@
 ---
 title: "2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛"
-description: "12 problems from 2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛 (contest 106290), difficulty -. 4/12 solutions verified against sample I/O."
+description: "13 problems from 2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛 (contest 106290), difficulty -. 4/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106290
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 4
-total_solve_s: 564
+total_solve_s: 588
 contest_year: 2025
-date: "2026-06-18T16:46:50+07:00"
+date: "2026-06-18T22:41:22+07:00"
 weight: 106290
 draft: false
 ---
 
 # [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290)
 
-Special | 12 problems | 4/12 verified | Difficulty - | 9m 24s
+Special | 13 problems | 4/13 verified | Difficulty - | 9m 48s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Hello, Harbin Institute of Technology!](https://codeforces.com/problemset/problem/106290/A) |  |  |  | 42s | ✓ |
 | [B](B/) | [Bingo!](https://codeforces.com/problemset/problem/106290/B) |  |  |  | 37s |  |
 | [C](C/) | [\u7ea6\u6570\u6e38\u620f](https://codeforces.com/problemset/problem/106290/C) |  |  |  | 53s | ✓ |
+| [D](D/) | [\u5c0f\u4e11\u724c](https://codeforces.com/problemset/problem/106290/D) |  |  |  | 24s |  |
 | [E](E/) | [\u4e0d\u662f\u5c0f\u4e11\u724c](https://codeforces.com/problemset/problem/106290/E) |  |  |  | 29s |  |
 | [F](F/) | [\u4e8c\u7ef4\u7801\u751f\u6210\u5668](https://codeforces.com/problemset/problem/106290/F) |  |  |  | 28s |  |
 | [G](G/) | [\u56de\u6587\u4e32\u9b54\u6cd5](https://codeforces.com/problemset/problem/106290/G) |  |  |  | 34s |  |
