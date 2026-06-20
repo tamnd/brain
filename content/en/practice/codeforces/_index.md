@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10133 problems, 5306 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10134 problems, 5307 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10133 problems, 5306 verified.**
+**1726 contests, 10134 problems, 5307 verified.**
 
-## Unknown — 88 contests, 516 problems, 424 verified
+## Unknown — 88 contests, 517 problems, 425 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -91,7 +91,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 8 | 2/8 | Special | - |
 | [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 4 | 4/4 | Special | - |
-| [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 6 | 6/6 | Special | - |
+| [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 7 | 7/7 | Special | - |
 | [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 7 | 7/7 | ICPC/IOI | - |
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 3 | 3/3 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 6 | 6/6 | Special | - |
