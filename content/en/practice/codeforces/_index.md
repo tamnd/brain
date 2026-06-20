@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9941 problems, 5142 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9942 problems, 5143 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9941 problems, 5142 verified.**
+**1714 contests, 9942 problems, 5143 verified.**
 
-## Unknown — 83 contests, 423 problems, 341 verified
+## Unknown — 83 contests, 424 problems, 342 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -37,7 +37,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 9 | 9/9 | ICPC/IOI | - |
 | [106199](106199/) | [Интернет-олимпиады, Сезон 2024-2025, Вторая личная олимпиада](https://codeforces.com/contest/106199) | 3 | 3/3 | Special | - |
 | [106200](106200/) | [Интернет-олимпиады, Сезон 2024-2025, Третья личная олимпиада](https://codeforces.com/contest/106200) | 3 | 3/3 | Special | - |
-| [106201](106201/) | [Индивидуальная олимпиада школьников по информатике и программированию 2025](https://codeforces.com/contest/106201) | 4 | 4/4 | Special | - |
+| [106201](106201/) | [Индивидуальная олимпиада школьников по информатике и программированию 2025](https://codeforces.com/contest/106201) | 5 | 5/5 | Special | - |
 | [106202](106202/) | [Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада](https://codeforces.com/contest/106202) | 7 | 7/7 | Special | - |
 | [106203](106203/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая командная олимпиада](https://codeforces.com/contest/106203) | 11 | 11/11 | Special | - |
 | [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 4 | 0/4 | Special | - |
