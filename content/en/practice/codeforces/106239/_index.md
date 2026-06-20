@@ -1,23 +1,23 @@
 ---
 title: "2025广东工业大学新生赛(决赛)"
-description: "13 problems from 2025广东工业大学新生赛(决赛) (contest 106239), difficulty -. 13/13 solutions verified against sample I/O."
+description: "14 problems from 2025广东工业大学新生赛(决赛) (contest 106239), difficulty -. 14/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106239
 contest_type: "Special"
 rating_range: "-"
-n_problems: 13
-n_verified: 13
-total_solve_s: 705
+n_problems: 14
+n_verified: 14
+total_solve_s: 748
 contest_year: 2025
-date: "2026-06-19T12:08:37+07:00"
+date: "2026-06-19T22:33:03+07:00"
 weight: 106239
 draft: false
 ---
 
 # [2025广东工业大学新生赛(决赛)](https://codeforces.com/contest/106239)
 
-Special | 13 problems | 13/13 verified | Difficulty - | 11m 45s
+Special | 14 problems | 14/14 verified | Difficulty - | 12m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -34,3 +34,4 @@ Special | 13 problems | 13/13 verified | Difficulty - | 11m 45s
 | [K](K/) | [\u7ebf\u6bb5\u8986\u76d6](https://codeforces.com/problemset/problem/106239/K) |  |  |  | 46s | ✓ |
 | [L](L/) | [\u6c14\u7403\u91c7\u8d2d](https://codeforces.com/problemset/problem/106239/L) |  |  |  | 49s | ✓ |
 | [M](M/) | [\u654c\u4eba\u7684\u654c\u4eba](https://codeforces.com/problemset/problem/106239/M) |  |  |  | 51s | ✓ |
+| [N](N/) | [\u6700\u5927\u5316\u4eff\u5c04\u53d8\u6362](https://codeforces.com/problemset/problem/106239/N) |  |  |  | 43s | ✓ |
