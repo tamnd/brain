@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9907 problems, 5116 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9908 problems, 5117 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9907 problems, 5116 verified.**
+**1714 contests, 9908 problems, 5117 verified.**
 
 ## Unknown — 83 contests, 412 problems, 332 verified
 
@@ -1586,7 +1586,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 151 contests, 1152 problems, 459 verified
+## 2025 — 151 contests, 1153 problems, 460 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1716,7 +1716,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 12 | 12/12 | Special | - |
 | [106139](106139/) | [The 21st Hunan Provincial Collegiate Programming Contest](https://codeforces.com/contest/106139) | 11 | 2/11 | Special | - |
 | [106153](106153/) | [HNNU Freshman Competition Round 2](https://codeforces.com/contest/106153) | 5 | 5/5 | Special | - |
-| [106159](106159/) | [XIII UnB Contest Mirror](https://codeforces.com/contest/106159) | 11 | 11/11 | Special | - |
+| [106159](106159/) | [XIII UnB Contest Mirror](https://codeforces.com/contest/106159) | 12 | 12/12 | Special | - |
 | [106161](106161/) | [The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu)](https://codeforces.com/contest/106161) | 9 | 8/9 | ICPC/IOI | - |
 | [106164](106164/) | [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164) | 8 | 8/8 | ICPC/IOI | - |
 | [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 8 | 8/8 | ICPC/IOI | - |

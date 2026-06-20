@@ -1,23 +1,23 @@
 ---
 title: "XIII UnB Contest Mirror"
-description: "11 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106159
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 592
+n_problems: 12
+n_verified: 12
+total_solve_s: 644
 contest_year: 2025
-date: "2026-06-19T02:29:55+07:00"
+date: "2026-06-19T08:43:54+07:00"
 weight: 106159
 draft: false
 ---
 
 # [XIII UnB Contest Mirror](https://codeforces.com/contest/106159)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 9m 52s
+Special | 12 problems | 12/12 verified | Difficulty - | 10m 44s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,3 +32,4 @@ Special | 11 problems | 11/11 verified | Difficulty - | 9m 52s
 | [K](K/) | [Kronos](https://codeforces.com/problemset/problem/106159/K) |  |  |  | 50s | ✓ |
 | [L](L/) | [Leveling Diamonds](https://codeforces.com/problemset/problem/106159/L) |  |  |  | 45s | ✓ |
 | [M](M/) | [Mapping Tactics](https://codeforces.com/problemset/problem/106159/M) |  |  |  | 1m 8s | ✓ |
+| [N](N/) | [Nautic Issue](https://codeforces.com/problemset/problem/106159/N) |  |  |  | 52s | ✓ |
