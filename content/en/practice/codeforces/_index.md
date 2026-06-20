@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1715 contests, 9985 problems, 5182 verified."
+description: "Codeforces problem solutions with full editorials. 1716 contests, 9989 problems, 5182 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1715 contests, 9985 problems, 5182 verified.**
+**1716 contests, 9989 problems, 5182 verified.**
 
-## Unknown — 83 contests, 445 problems, 361 verified
+## Unknown — 84 contests, 449 problems, 361 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 4 | 0/4 | Special | - |
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
