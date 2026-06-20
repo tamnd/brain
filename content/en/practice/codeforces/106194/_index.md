@@ -1,27 +1,28 @@
 ---
 title: "2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest"
-description: "10 problems from 2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest (contest 106194), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest (contest 106194), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106194
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 617
+n_problems: 11
+n_verified: 11
+total_solve_s: 665
 contest_year: 2025
-date: "2026-06-19T11:59:09+07:00"
+date: "2026-06-19T22:24:50+07:00"
 weight: 106194
 draft: false
 ---
 
 # [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 10m 17s
+Special | 11 problems | 11/11 verified | Difficulty - | 11m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [A + B Problem](https://codeforces.com/problemset/problem/106194/A) |  |  |  | 55s | ✓ |
+| [B](B/) | [\u5171\u9e23\u62a4\u7b26](https://codeforces.com/problemset/problem/106194/B) |  |  |  | 48s | ✓ |
 | [C](C/) | [\u4e03\u5343\u56db\u767e\u53f7\u7684\u56de\u54cd](https://codeforces.com/problemset/problem/106194/C) |  |  |  | 1m 12s | ✓ |
 | [D](D/) | [\u5bfb\u627e\u54c8\u57fa\u7c73](https://codeforces.com/problemset/problem/106194/D) |  |  |  | 52s | ✓ |
 | [E](E/) | [\u4e0d\u754f\u82e6\u6697](https://codeforces.com/problemset/problem/106194/E) |  |  |  | 1m 2s | ✓ |
