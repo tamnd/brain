@@ -1,22 +1,22 @@
 ---
 title: "2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)"
-description: "9 problems from 2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап) (contest 106142), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from 2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап) (contest 106142), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106142
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 522
-date: "2026-06-19T08:39:13+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 573
+date: "2026-06-19T22:07:23+07:00"
 weight: 106142
 draft: false
 ---
 
 # [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 8m 42s
+Special | 10 problems | 10/10 verified | Difficulty - | 9m 33s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -24,6 +24,7 @@ Special | 9 problems | 9/9 verified | Difficulty - | 8m 42s
 | [B](B/) | [\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u043f\u0435\u0440\u0435\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438](https://codeforces.com/problemset/problem/106142/B) |  |  |  | 1m 14s | ✓ |
 | [C](C/) | [\u041f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u043f\u043e\u0440\u0442\u0430\u043b\u043e\u0432](https://codeforces.com/problemset/problem/106142/C) |  |  |  | 1m 7s | ✓ |
 | [E](E/) | [\u041c\u0430\u0441\u0441\u0438\u0432 \u041c\u043e\u043d\u043e\u043a\u0430\u0440\u043f\u0430](https://codeforces.com/problemset/problem/106142/E) |  |  |  | 59s | ✓ |
+| [F](F/) | [\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u043c](https://codeforces.com/problemset/problem/106142/F) |  |  |  | 51s | ✓ |
 | [G](G/) | [\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0440\u0430\u0441\u043a\u0440\u0430\u0441\u043e\u043a](https://codeforces.com/problemset/problem/106142/G) |  |  |  | 1m 21s | ✓ |
 | [H](H/) | [\u0420\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0447\u0430\u0441\u0442\u0438](https://codeforces.com/problemset/problem/106142/H) |  |  |  | 49s | ✓ |
 | [I](I/) | [\u0421\u0432\u0435\u0442\u043e\u0444\u043e\u0440](https://codeforces.com/problemset/problem/106142/I) |  |  |  | 41s | ✓ |
