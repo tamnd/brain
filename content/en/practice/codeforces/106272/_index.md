@@ -1,23 +1,23 @@
 ---
 title: "The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary"
-description: "12 problems from The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary (contest 106272), difficulty -. 1/12 solutions verified against sample I/O."
+description: "13 problems from The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary (contest 106272), difficulty -. 1/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106272
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 1
-total_solve_s: 508
+total_solve_s: 533
 contest_year: 2025
-date: "2026-06-18T16:42:42+07:00"
+date: "2026-06-18T22:40:42+07:00"
 weight: 106272
 draft: false
 ---
 
 # [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary](https://codeforces.com/contest/106272)
 
-Special | 12 problems | 1/12 verified | Difficulty - | 8m 28s
+Special | 13 problems | 1/13 verified | Difficulty - | 8m 53s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@ Special | 12 problems | 1/12 verified | Difficulty - | 8m 28s
 | [F](F/) | [\u86c7\u7403](https://codeforces.com/problemset/problem/106272/F) |  |  |  | 35s |  |
 | [G](G/) | [Astral Quantization](https://codeforces.com/problemset/problem/106272/G) |  |  |  | 31s |  |
 | [H](H/) | [\u94f8\u5251](https://codeforces.com/problemset/problem/106272/H) |  |  |  | 48s |  |
+| [I](I/) | [Euler](https://codeforces.com/problemset/problem/106272/I) |  |  |  | 25s |  |
 | [J](J/) | [GGEZ](https://codeforces.com/problemset/problem/106272/J) |  |  |  | 36s |  |
 | [K](K/) | [Forgotten](https://codeforces.com/problemset/problem/106272/K) |  |  |  | 37s |  |
 | [L](L/) | [Serval \u4e0e Toxel \u4e0e popcount](https://codeforces.com/problemset/problem/106272/L) |  |  |  | 31s |  |
