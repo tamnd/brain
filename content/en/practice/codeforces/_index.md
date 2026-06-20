@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9961 problems, 5159 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9963 problems, 5161 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9961 problems, 5159 verified.**
+**1714 contests, 9963 problems, 5161 verified.**
 
-## Unknown — 83 contests, 433 problems, 349 verified
+## Unknown — 83 contests, 435 problems, 351 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -87,7 +87,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 7 | 1/7 | Special | - |
 | [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 3 | 3/3 | Special | - |
 | [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 6 | 6/6 | Special | - |
-| [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 5 | 5/5 | ICPC/IOI | - |
+| [106416](106416/) | [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416) | 7 | 7/7 | ICPC/IOI | - |
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 2 | 2/2 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 4 | 4/4 | Special | - |
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 2 | 2/2 | Special | - |
