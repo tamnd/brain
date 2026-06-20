@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10115 problems, 5290 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10116 problems, 5290 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10115 problems, 5290 verified.**
+**1726 contests, 10116 problems, 5290 verified.**
 
-## Unknown — 88 contests, 507 problems, 416 verified
+## Unknown — 88 contests, 508 problems, 416 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -74,7 +74,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106293](106293/) | [Олимпиада 1С, отборочный тур 2025-2026](https://codeforces.com/contest/106293) | 8 | 8/8 | Special | - |
 | [106296](106296/) | [The 4th Universal Cup. Extra Stage 3: Osijek (Farhod Contest)](https://codeforces.com/contest/106296) | 8 | 0/8 | Special | - |
 | [106298](106298/) | [OCPC 2024 Summer, Day 4: wuhudsm Contest](https://codeforces.com/contest/106298) | 13 | 10/13 | Special | - |
-| [106299](106299/) | [Osijek Competitive Programming Camp, Winter 2025, Day 9: New World](https://codeforces.com/contest/106299) | 9 | 1/9 | Special | - |
+| [106299](106299/) | [Osijek Competitive Programming Camp, Winter 2025, Day 9: New World](https://codeforces.com/contest/106299) | 10 | 1/10 | Special | - |
 | [106307](106307/) | [Osijek Competitive Programming Camp, Fall 2023, Day 9: Polish Kids Contest](https://codeforces.com/contest/106307) | 9 | 9/9 | Special | - |
 | [106309](106309/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Пермский край, 2025](https://codeforces.com/contest/106309) | 3 | 0/3 | Special | - |
 | [106310](106310/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Пермский край, 2025](https://codeforces.com/contest/106310) | 3 | 1/3 | Special | - |
