@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10100 problems, 5280 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10101 problems, 5281 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10100 problems, 5280 verified.**
+**1726 contests, 10101 problems, 5281 verified.**
 
-## Unknown — 88 contests, 499 problems, 409 verified
+## Unknown — 88 contests, 500 problems, 410 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -49,7 +49,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 1 | 0/1 | Special | - |
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 1 | 0/1 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
-| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 11 | 11/11 | ICPC/IOI | - |
+| [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 12 | 12/12 | ICPC/IOI | - |
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 2 | 1/2 | Special | - |

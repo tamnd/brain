@@ -1,26 +1,27 @@
 ---
 title: "2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)"
-description: "11 problems from 2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025) (contest 106225), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from 2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025) (contest 106225), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106225
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 654
-date: "2026-06-19T12:07:11+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 702
+date: "2026-06-19T22:31:32+07:00"
 weight: 106225
 draft: false
 ---
 
 # [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 54s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 11m 42s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Adjusting Drones](https://codeforces.com/problemset/problem/106225/A) |  |  |  | 1m 2s | ✓ |
+| [B](B/) | [Billion Players Game](https://codeforces.com/problemset/problem/106225/B) |  |  |  | 48s | ✓ |
 | [C](C/) | [Chamber of Secrets 2](https://codeforces.com/problemset/problem/106225/C) |  |  |  | 48s | ✓ |
 | [D](D/) | [Dungeon Equilibrium](https://codeforces.com/problemset/problem/106225/D) |  |  |  | 59s | ✓ |
 | [E](E/) | [Expansion Plan 2](https://codeforces.com/problemset/problem/106225/E) |  |  |  | 59s | ✓ |
