@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9973 problems, 5171 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9975 problems, 5173 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9973 problems, 5171 verified.**
+**1714 contests, 9975 problems, 5173 verified.**
 
-## Unknown — 83 contests, 441 problems, 357 verified
+## Unknown — 83 contests, 443 problems, 359 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 6 | 6/6 | Special | - |
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 3 | 3/3 | Special | - |
 | [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 7 | 7/7 | Special | - |
-| [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 6 | 5/6 | Special | - |
+| [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 8 | 7/8 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 5 | 4/5 | Special | - |
 | [106484](106484/) | [2026 GBA International Programming Contest](https://codeforces.com/contest/106484) | 11 | 11/11 | Special | - |
