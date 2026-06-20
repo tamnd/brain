@@ -1,28 +1,29 @@
 ---
 title: "XIII UnB Contest Mirror"
-description: "12 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106159
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 644
+n_problems: 13
+n_verified: 13
+total_solve_s: 685
 contest_year: 2025
-date: "2026-06-19T08:43:54+07:00"
+date: "2026-06-19T22:12:24+07:00"
 weight: 106159
 draft: false
 ---
 
 # [XIII UnB Contest Mirror](https://codeforces.com/contest/106159)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 10m 44s
+Special | 13 problems | 13/13 verified | Difficulty - | 11m 25s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Analyzing the Race](https://codeforces.com/problemset/problem/106159/A) |  |  |  | 56s | ✓ |
 | [B](B/) | [Bauru](https://codeforces.com/problemset/problem/106159/B) |  |  |  | 48s | ✓ |
+| [C](C/) | [Creating a Playlist](https://codeforces.com/problemset/problem/106159/C) |  |  |  | 41s | ✓ |
 | [D](D/) | [Djqifs Tijgu](https://codeforces.com/problemset/problem/106159/D) |  |  |  | 46s | ✓ |
 | [E](E/) | [Elementary Data Structure Problem](https://codeforces.com/problemset/problem/106159/E) |  |  |  | 46s | ✓ |
 | [F](F/) | [Falatro](https://codeforces.com/problemset/problem/106159/F) |  |  |  | 51s | ✓ |
