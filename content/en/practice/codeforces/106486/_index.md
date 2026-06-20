@@ -1,23 +1,23 @@
 ---
 title: "Dalian University of Technology, Software College 2025 Freshman Contest"
-description: "10 problems from Dalian University of Technology, Software College 2025 Freshman Contest (contest 106486), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from Dalian University of Technology, Software College 2025 Freshman Contest (contest 106486), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106486
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 565
+n_problems: 11
+n_verified: 11
+total_solve_s: 613
 contest_year: 2026
-date: "2026-06-19T17:31:57+07:00"
+date: "2026-06-19T12:55:57+07:00"
 weight: 106486
 draft: false
 ---
 
 # [Dalian University of Technology, Software College 2025 Freshman Contest](https://codeforces.com/contest/106486)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 9m 25s
+Special | 11 problems | 11/11 verified | Difficulty - | 10m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ Special | 10 problems | 10/10 verified | Difficulty - | 9m 25s
 | [C](C/) | [\u8ddf\u6211\u7684\u6f2b\u6e38\u8005\u8bf4\u53bb\u5427](https://codeforces.com/problemset/problem/106486/C) |  |  |  | 49s | ✓ |
 | [D](D/) | [\u65e0\u4eba\u80fd\u8bc1\u7684\u731c\u60f3](https://codeforces.com/problemset/problem/106486/D) |  |  |  | 42s | ✓ |
 | [E](E/) | [Excel \u7684\u5217\u7f16\u53f7](https://codeforces.com/problemset/problem/106486/E) |  |  |  | 43s | ✓ |
+| [F](F/) | [\u9001\u718f\u8089](https://codeforces.com/problemset/problem/106486/F) |  |  |  | 48s | ✓ |
 | [G](G/) | [\u8fdc\u4ea4\u8fd1\u653b](https://codeforces.com/problemset/problem/106486/G) |  |  |  | 1m 2s | ✓ |
 | [H](H/) | [Silly Tree](https://codeforces.com/problemset/problem/106486/H) |  |  |  | 1m 15s | ✓ |
 | [I](I/) | [\u5976\u9f99\u5854](https://codeforces.com/problemset/problem/106486/I) |  |  |  | 48s | ✓ |
