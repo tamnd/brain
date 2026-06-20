@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9927 problems, 5134 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9928 problems, 5135 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9927 problems, 5134 verified.**
+**1714 contests, 9928 problems, 5135 verified.**
 
-## Unknown — 83 contests, 416 problems, 336 verified
+## Unknown — 83 contests, 417 problems, 337 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -81,7 +81,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106338](106338/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/106338) | 3 | 3/3 | Special | - |
 | [106347](106347/) | [Высшая проба - 2024. Заключительный этап](https://codeforces.com/contest/106347) | 2 | 0/2 | Special | - |
 | [106352](106352/) | [Интернет-олимпиады, Сезон 2025-2026, Первая личная олимпиада](https://codeforces.com/contest/106352) | 3 | 3/3 | Special | - |
-| [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 9 | 9/9 | ICPC/IOI | - |
+| [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 10 | 10/10 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 1 | 0/1 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 2 | 0/2 | Special | - |
 | [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 3 | 1/3 | Special | - |
