@@ -1,25 +1,26 @@
 ---
 title: "Swiss Subregional 2025-2026"
-description: "6 problems from Swiss Subregional 2025-2026 (contest 106170), difficulty -. 6/6 solutions verified against sample I/O."
+description: "7 problems from Swiss Subregional 2025-2026 (contest 106170), difficulty -. 7/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106170
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
-n_verified: 6
-total_solve_s: 377
-date: "2026-06-19T18:58:38+07:00"
+n_problems: 7
+n_verified: 7
+total_solve_s: 430
+date: "2026-06-20T08:50:45+07:00"
 weight: 106170
 draft: false
 ---
 
 # [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170)
 
-Special | 6 problems | 6/6 verified | Difficulty - | 6m 17s
+Special | 7 problems | 7/7 verified | Difficulty - | 7m 10s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Rainbow](https://codeforces.com/problemset/problem/106170/A) |  |  |  | 53s | ✓ |
 | [B](B/) | [Daily Reorganisation](https://codeforces.com/problemset/problem/106170/B) |  |  |  | 1m 2s | ✓ |
 | [C](C/) | [The Forgetful Magician](https://codeforces.com/problemset/problem/106170/C) |  |  |  | 52s | ✓ |
 | [E](E/) | [Counting VIP Guests](https://codeforces.com/problemset/problem/106170/E) |  |  |  | 40s | ✓ |
