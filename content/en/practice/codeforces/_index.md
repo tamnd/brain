@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1724 contests, 10014 problems, 5207 verified."
+description: "Codeforces problem solutions with full editorials. 1725 contests, 10017 problems, 5210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1724 contests, 10014 problems, 5207 verified.**
+**1725 contests, 10017 problems, 5210 verified.**
 
-## Unknown — 87 contests, 459 problems, 371 verified
+## Unknown — 88 contests, 462 problems, 374 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 3 | 3/3 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 3 | 3/3 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 4 | 4/4 | Special | - |
 | [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 3 | 3/3 | ICPC/IOI | - |
