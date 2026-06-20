@@ -1,23 +1,23 @@
 ---
 title: "East China University of Science and Technology Programming Contest 2025"
-description: "11 problems from East China University of Science and Technology Programming Contest 2025 (contest 106136), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from East China University of Science and Technology Programming Contest 2025 (contest 106136), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106136
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 668
+n_problems: 12
+n_verified: 12
+total_solve_s: 727
 contest_year: 2025
-date: "2026-06-20T02:15:11+07:00"
+date: "2026-06-20T08:36:54+07:00"
 weight: 106136
 draft: false
 ---
 
 # [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 8s
+Special | 12 problems | 12/12 verified | Difficulty - | 12m 7s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@ Special | 11 problems | 11/11 verified | Difficulty - | 11m 8s
 | [D](D/) | [Mosaic Garden](https://codeforces.com/problemset/problem/106136/D) |  |  |  | 55s | ✓ |
 | [E](E/) | [Fortress Fall](https://codeforces.com/problemset/problem/106136/E) |  |  |  | 1m 11s | ✓ |
 | [F](F/) | [The Tower(XVI)](https://codeforces.com/problemset/problem/106136/F) |  |  |  | 52s | ✓ |
+| [H](H/) | [Square the Circle](https://codeforces.com/problemset/problem/106136/H) |  |  |  | 59s | ✓ |
 | [I](I/) | [Chromatic Complex](https://codeforces.com/problemset/problem/106136/I) |  |  |  | 1m 8s | ✓ |
 | [J](J/) | [Attack from clone](https://codeforces.com/problemset/problem/106136/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Clockwork](https://codeforces.com/problemset/problem/106136/K) |  |  |  | 1m 9s | ✓ |

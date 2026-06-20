@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1714 contests, 9902 problems, 5111 verified."
+description: "Codeforces problem solutions with full editorials. 1714 contests, 9903 problems, 5112 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1714 contests, 9902 problems, 5111 verified.**
+**1714 contests, 9903 problems, 5112 verified.**
 
 ## Unknown — 83 contests, 408 problems, 328 verified
 
@@ -1586,7 +1586,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 151 contests, 1151 problems, 458 verified
+## 2025 — 151 contests, 1152 problems, 459 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1713,7 +1713,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 10 | 10/10 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
 | [106132](106132/) | [National Yang Ming Chiao Tung University 2025 Individual Programming Contest](https://codeforces.com/contest/106132) | 6 | 6/6 | Special | - |
-| [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 11 | 11/11 | Special | - |
+| [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 12 | 12/12 | Special | - |
 | [106139](106139/) | [The 21st Hunan Provincial Collegiate Programming Contest](https://codeforces.com/contest/106139) | 11 | 2/11 | Special | - |
 | [106153](106153/) | [HNNU Freshman Competition Round 2](https://codeforces.com/contest/106153) | 5 | 5/5 | Special | - |
 | [106159](106159/) | [XIII UnB Contest Mirror](https://codeforces.com/contest/106159) | 11 | 11/11 | Special | - |
