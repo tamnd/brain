@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10053 problems, 5236 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10055 problems, 5238 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,15 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10053 problems, 5236 verified.**
+**1726 contests, 10055 problems, 5238 verified.**
 
-## Unknown — 88 contests, 476 problems, 388 verified
+## Unknown — 88 contests, 478 problems, 390 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 11 | 11/11 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 9 | 9/9 | Special | - |
-| [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 4 | 4/4 | Special | - |
+| [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 6 | 6/6 | Special | - |
 | [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 3 | 3/3 | ICPC/IOI | - |
 | [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 4 | 0/4 | Special | - |
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
