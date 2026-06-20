@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10117 problems, 5291 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10118 problems, 5292 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10117 problems, 5291 verified.**
+**1726 contests, 10118 problems, 5292 verified.**
 
 ## Unknown — 88 contests, 509 problems, 417 verified
 
@@ -1754,7 +1754,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 13 | 1/13 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
 
-## 2026 — 60 contests, 479 problems, 207 verified
+## 2026 — 60 contests, 480 problems, 208 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1796,7 +1796,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2225](2225/) | [Educational Codeforces Round 189 (Rated for Div. 2)](https://codeforces.com/contest/2225) | 7 | 0/7 | Div. 2 | - |
 | [2226](2226/) | [Codeforces Round 1095 (Div. 2)](https://codeforces.com/contest/2226) | 7 | 0/7 | Div. 2 | - |
 | [2227](2227/) | [Codeforces Round 1096 (Div. 3)](https://codeforces.com/contest/2227) | 8 | 0/8 | Div. 3 | - |
-| [106315](106315/) | [ICPC Dhaka 2025 Online Preliminary - Replay Contest](https://codeforces.com/contest/106315) | 7 | 7/7 | ICPC/IOI | - |
+| [106315](106315/) | [ICPC Dhaka 2025 Online Preliminary - Replay Contest](https://codeforces.com/contest/106315) | 8 | 8/8 | ICPC/IOI | - |
 | [106328](106328/) | [Baozii Cup 3](https://codeforces.com/contest/106328) | 12 | 12/12 | Special | - |
 | [106339](106339/) | [UTPC Contest 1-28-2026](https://codeforces.com/contest/106339) | 8 | 8/8 | Special | - |
 | [106350](106350/) | [Zaglol Contest - FCDS level 1 contest 2026](https://codeforces.com/contest/106350) | 4 | 0/4 | Special | - |
