@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1718 contests, 9995 problems, 5188 verified."
+description: "Codeforces problem solutions with full editorials. 1719 contests, 9998 problems, 5191 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1718 contests, 9995 problems, 5188 verified.**
+**1719 contests, 9998 problems, 5191 verified.**
 
 ## Unknown — 85 contests, 452 problems, 364 verified
 
@@ -1588,7 +1588,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 153 contests, 1181 problems, 486 verified
+## 2025 — 154 contests, 1184 problems, 489 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1711,6 +1711,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
+| [106068](106068/) | [2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)](https://codeforces.com/contest/106068) | 3 | 3/3 | Special | - |
 | [106072](106072/) | [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072) | 3 | 3/3 | ICPC/IOI | - |
 | [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 3 | 3/3 | ICPC/IOI | - |
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
