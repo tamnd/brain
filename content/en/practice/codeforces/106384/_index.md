@@ -1,26 +1,27 @@
 ---
 title: "CYCPC Round 2"
-description: "9 problems from CYCPC Round 2 (contest 106384), difficulty -. 2/9 solutions verified against sample I/O."
+description: "10 problems from CYCPC Round 2 (contest 106384), difficulty -. 2/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106384
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 2
-total_solve_s: 445
+total_solve_s: 484
 contest_year: 2026
-date: "2026-06-20T09:40:31+07:00"
+date: "2026-06-20T12:31:10+07:00"
 weight: 106384
 draft: false
 ---
 
 # [CYCPC Round 2](https://codeforces.com/contest/106384)
 
-Special | 9 problems | 2/9 verified | Difficulty - | 7m 25s
+Special | 10 problems | 2/10 verified | Difficulty - | 8m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u79d8\u6e90\u673a\u5175\u7edf\u5fa1\u68b0 - \u75be\u653b](https://codeforces.com/problemset/problem/106384/A) |  |  |  | 39s |  |
 | [B](B/) | [\u4e8b\u5df2\u81f3\u6b64\u5c31\u8d4c\u4e0a\u6027\u547d\u6765\u731c\u8ff7\u5427](https://codeforces.com/problemset/problem/106384/B) |  |  |  | 54s |  |
 | [C](C/) | [\u6784\u9020\u9898](https://codeforces.com/problemset/problem/106384/C) |  |  |  | 35s |  |
 | [D](D/) | [\u7e41\u661f\u5760\u6d77](https://codeforces.com/problemset/problem/106384/D) |  |  |  | 42s |  |
