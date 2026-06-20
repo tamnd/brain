@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1726 contests, 10057 problems, 5240 verified."
+description: "Codeforces problem solutions with full editorials. 1726 contests, 10060 problems, 5243 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1726 contests, 10057 problems, 5240 verified.**
+**1726 contests, 10060 problems, 5243 verified.**
 
 ## Unknown — 88 contests, 478 problems, 390 verified
 
@@ -1591,7 +1591,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 2 | 2/2 | Special | - |
 
-## 2025 — 158 contests, 1217 problems, 512 verified
+## 2025 — 158 contests, 1220 problems, 515 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1717,7 +1717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 12 | 2/12 | Special | - |
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
 | [106057](106057/) | [CoU CSE Fest 2025 - Inter University Programming Contest (Divisional)](https://codeforces.com/contest/106057) | 5 | 5/5 | Special | - |
-| [106059](106059/) | [National Yang Ming Chiao Tung University 2025 Team Selection Programming Contest](https://codeforces.com/contest/106059) | 3 | 3/3 | Special | - |
+| [106059](106059/) | [National Yang Ming Chiao Tung University 2025 Team Selection Programming Contest](https://codeforces.com/contest/106059) | 6 | 6/6 | Special | - |
 | [106068](106068/) | [2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)](https://codeforces.com/contest/106068) | 3 | 3/3 | Special | - |
 | [106072](106072/) | [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072) | 3 | 3/3 | ICPC/IOI | - |
 | [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 3 | 3/3 | ICPC/IOI | - |
