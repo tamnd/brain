@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1751 contests, 10454 problems, 5587 verified."
+description: "Codeforces problem solutions with full editorials. 1751 contests, 10457 problems, 5590 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1751 contests, 10454 problems, 5587 verified.**
+**1751 contests, 10457 problems, 5590 verified.**
 
-## Unknown — 96 contests, 647 problems, 527 verified
+## Unknown — 96 contests, 650 problems, 530 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
 | [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 11 | 11/11 | Special | - |
-| [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 8 | 8/8 | Special | - |
+| [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 11 | 11/11 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 9 | 9/9 | Special | - |
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 11 | 11/11 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 13 | 13/13 | Special | - |
