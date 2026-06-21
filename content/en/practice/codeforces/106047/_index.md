@@ -1,22 +1,22 @@
 ---
 title: "The 1st Universal Cup. Stage 21: Shandong"
-description: "12 problems from The 1st Universal Cup. Stage 21: Shandong (contest 106047), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from The 1st Universal Cup. Stage 21: Shandong (contest 106047), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106047
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 679
-date: "2026-06-20T07:19:32+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 723
+date: "2026-06-20T07:41:56+07:00"
 weight: 106047
 draft: false
 ---
 
 # [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 19s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 19s
 | [G](G/) | [Gem Island 2](https://codeforces.com/problemset/problem/106047/G) |  |  |  | 1m 28s | ✓ |
 | [H](H/) | [Not Another Path Query Problem](https://codeforces.com/problemset/problem/106047/H) |  |  |  | 56s | ✓ |
 | [I](I/) | [Heap](https://codeforces.com/problemset/problem/106047/I) |  |  |  | 55s | ✓ |
+| [J](J/) | [Triangle City](https://codeforces.com/problemset/problem/106047/J) |  |  |  | 44s | ✓ |
 | [K](K/) | [Are you a bot?](https://codeforces.com/problemset/problem/106047/K) |  |  |  | 53s | ✓ |
 | [L](L/) | [Difficult Constructive Problem](https://codeforces.com/problemset/problem/106047/L) |  |  |  | 53s | ✓ |
 | [M](M/) | [Trie](https://codeforces.com/problemset/problem/106047/M) |  |  |  | 49s | ✓ |
