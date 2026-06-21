@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1801 contests, 10793 problems, 5891 verified."
+description: "Codeforces problem solutions with full editorials. 1802 contests, 10800 problems, 5898 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1801 contests, 10793 problems, 5891 verified.**
+**1802 contests, 10800 problems, 5898 verified.**
 
-## Unknown — 125 contests, 842 problems, 709 verified
+## Unknown — 126 contests, 849 problems, 716 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 7 | 7/7 | Special | - |
 | [105633](105633/) | [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633) | 7 | 7/7 | ICPC/IOI | - |
 | [105638](105638/) | [GPC 2024](https://codeforces.com/contest/105638) | 7 | 7/7 | Special | - |
 | [105646](105646/) | [Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra)](https://codeforces.com/contest/105646) | 11 | 11/11 | Special | - |
