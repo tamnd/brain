@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1750 contests, 10445 problems, 5578 verified."
+description: "Codeforces problem solutions with full editorials. 1751 contests, 10450 problems, 5583 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1750 contests, 10445 problems, 5578 verified.**
+**1751 contests, 10450 problems, 5583 verified.**
 
-## Unknown — 96 contests, 642 problems, 522 verified
+## Unknown — 96 contests, 643 problems, 523 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
-| [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 11 | 11/11 | Special | - |
+| [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 7 | 7/7 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 8 | 8/8 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 9 | 9/9 | Special | - |
@@ -1600,7 +1600,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 9 | 1/9 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 173 contests, 1405 problems, 692 verified
+## 2025 — 174 contests, 1409 problems, 696 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1737,6 +1737,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 8 | 8/8 | Special | - |
 | [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 7 | 7/7 | Special | - |
 | [105986](105986/) | [2025 Wuhan University of Technology Programming Contest](https://codeforces.com/contest/105986) | 8 | 7/8 | Special | - |
+| [106016](106016/) | [The 2025 Homs Collegiate programming contest](https://codeforces.com/contest/106016) | 4 | 4/4 | Special | - |
 | [106026](106026/) | [CCF CAT NAEC 2025 (Final)](https://codeforces.com/contest/106026) | 5 | 5/5 | Special | - |
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 13 | 3/13 | Special | - |
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
