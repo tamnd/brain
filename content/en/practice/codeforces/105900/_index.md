@@ -1,23 +1,23 @@
 ---
 title: "VI UnBalloon Contest Mirror"
-description: "13 problems from VI UnBalloon Contest Mirror (contest 105900), difficulty -. 13/13 solutions verified against sample I/O."
+description: "14 problems from VI UnBalloon Contest Mirror (contest 105900), difficulty -. 14/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105900
 contest_type: "Special"
 rating_range: "-"
-n_problems: 13
-n_verified: 13
-total_solve_s: 680
+n_problems: 14
+n_verified: 14
+total_solve_s: 735
 contest_year: 2025
-date: "2026-06-21T20:54:17+07:00"
+date: "2026-06-21T02:49:46+07:00"
 weight: 105900
 draft: false
 ---
 
 # [VI UnBalloon Contest Mirror](https://codeforces.com/contest/105900)
 
-Special | 13 problems | 13/13 verified | Difficulty - | 11m 20s
+Special | 14 problems | 14/14 verified | Difficulty - | 12m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,7 @@ Special | 13 problems | 13/13 verified | Difficulty - | 11m 20s
 | [G](G/) | [Graph of Love](https://codeforces.com/problemset/problem/105900/G) |  |  |  | 1m 2s | ✓ |
 | [H](H/) | [High-Speed Collision](https://codeforces.com/problemset/problem/105900/H) |  |  |  | 53s | ✓ |
 | [I](I/) | [Inventing Names](https://codeforces.com/problemset/problem/105900/I) |  |  |  | 49s | ✓ |
+| [J](J/) | [Joining Xegos](https://codeforces.com/problemset/problem/105900/J) |  |  |  | 55s | ✓ |
 | [K](K/) | [Koga needs you](https://codeforces.com/problemset/problem/105900/K) |  |  |  | 44s | ✓ |
 | [L](L/) | [Lagrange's Legacy](https://codeforces.com/problemset/problem/105900/L) |  |  |  | 57s | ✓ |
 | [M](M/) | [Minimum Path](https://codeforces.com/problemset/problem/105900/M) |  |  |  | 51s | ✓ |
