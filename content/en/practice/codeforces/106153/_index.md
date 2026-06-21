@@ -1,26 +1,27 @@
 ---
 title: "HNNU Freshman Competition Round 2"
-description: "6 problems from HNNU Freshman Competition Round 2 (contest 106153), difficulty -. 6/6 solutions verified against sample I/O."
+description: "7 problems from HNNU Freshman Competition Round 2 (contest 106153), difficulty -. 7/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106153
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
-n_verified: 6
-total_solve_s: 332
+n_problems: 7
+n_verified: 7
+total_solve_s: 365
 contest_year: 2025
-date: "2026-06-19T22:10:35+07:00"
+date: "2026-06-21T09:38:05+07:00"
 weight: 106153
 draft: false
 ---
 
 # [HNNU Freshman Competition Round 2](https://codeforces.com/contest/106153)
 
-Special | 6 problems | 6/6 verified | Difficulty - | 5m 32s
+Special | 7 problems | 7/7 verified | Difficulty - | 6m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u742a\u9732\u8bfa\u7684\u7b97\u6cd5\u8bfe\u5802](https://codeforces.com/problemset/problem/106153/A) |  |  |  | 33s | ✓ |
 | [B](B/) | [\u742a\u9732\u8bfa\u6570 Ciallo](https://codeforces.com/problemset/problem/106153/B) |  |  |  | 49s | ✓ |
 | [C](C/) | [\u742a\u9732\u8bfa\u653e\u51b0\u5757](https://codeforces.com/problemset/problem/106153/C) |  |  |  | 54s | ✓ |
 | [D](D/) | [\u742a\u9732\u8bfa\u7684\u65e0\u9650\u5faa\u73af\u5c0f\u6570](https://codeforces.com/problemset/problem/106153/D) |  |  |  | 47s | ✓ |
