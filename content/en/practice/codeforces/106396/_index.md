@@ -1,29 +1,31 @@
 ---
 title: "Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror)"
-description: "10 problems from Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror) (contest 106396), difficulty -. 10/10 solutions verified against sample I/O."
+description: "12 problems from Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror) (contest 106396), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106396
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 556
+n_problems: 12
+n_verified: 12
+total_solve_s: 675
 contest_year: 2026
-date: "2026-06-20T09:59:00+07:00"
+date: "2026-06-20T16:17:23+07:00"
 weight: 106396
 draft: false
 ---
 
 # [Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror)](https://codeforces.com/contest/106396)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 16s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 11m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u72fc](https://codeforces.com/problemset/problem/106396/A) |  |  |  | 45s | ✓ |
 | [B](B/) | [\u732b](https://codeforces.com/problemset/problem/106396/B) |  |  |  | 57s | ✓ |
 | [C](C/) | [\u5f71\u5b50\u620f](https://codeforces.com/problemset/problem/106396/C) |  |  |  | 1m 18s | ✓ |
+| [D](D/) | [\u6076\u4e0e\u997f](https://codeforces.com/problemset/problem/106396/D) |  |  |  | 1m 6s | ✓ |
+| [E](E/) | [\u68a6\u60f3](https://codeforces.com/problemset/problem/106396/E) |  |  |  | 53s | ✓ |
 | [F](F/) | [\u6597\u95ef\u5c06](https://codeforces.com/problemset/problem/106396/F) |  |  |  | 39s | ✓ |
 | [G](G/) | [\u72fc\u4e0e\u826f](https://codeforces.com/problemset/problem/106396/G) |  |  |  | 55s | ✓ |
 | [H](H/) | [\u70df\u706b\u62fe\u7a57](https://codeforces.com/problemset/problem/106396/H) |  |  |  | 51s | ✓ |
