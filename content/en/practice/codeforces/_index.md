@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1768 contests, 10517 problems, 5648 verified."
+description: "Codeforces problem solutions with full editorials. 1769 contests, 10518 problems, 5649 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1768 contests, 10517 problems, 5648 verified.**
+**1769 contests, 10518 problems, 5649 verified.**
 
 ## Unknown — 102 contests, 674 problems, 552 verified
 
@@ -1606,7 +1606,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 9 | 1/9 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 185 contests, 1441 problems, 728 verified
+## 2025 — 186 contests, 1442 problems, 729 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1732,6 +1732,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105791](105791/) | [UFPE Starters Final Try-Outs 2025](https://codeforces.com/contest/105791) | 13 | 13/13 | Special | - |
 | [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 1 | 1/1 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
+| [105870](105870/) | [MITIT Spring 2025 Finals Round](https://codeforces.com/contest/105870) | 1 | 1/1 | Special | - |
 | [105895](105895/) | [The 21st Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105895) | 14 | 13/14 | Special | - |
 | [105900](105900/) | [VI UnBalloon Contest Mirror](https://codeforces.com/contest/105900) | 13 | 13/13 | Special | - |
 | [105901](105901/) | [2025 ICPC Wuhan Invitational Contest (The 3rd Universal Cup. Stage 37: Wuhan)](https://codeforces.com/contest/105901) | 10 | 10/10 | ICPC/IOI | - |
