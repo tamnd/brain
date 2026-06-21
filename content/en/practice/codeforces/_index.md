@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1751 contests, 10467 problems, 5600 verified."
+description: "Codeforces problem solutions with full editorials. 1751 contests, 10469 problems, 5602 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1751 contests, 10467 problems, 5600 verified.**
+**1751 contests, 10469 problems, 5602 verified.**
 
-## Unknown — 96 contests, 655 problems, 535 verified
+## Unknown — 96 contests, 657 problems, 537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
 | [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |
-| [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 11 | 11/11 | Special | - |
+| [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 11 | 11/11 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 9 | 9/9 | Special | - |
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 11 | 11/11 | Special | - |
@@ -104,7 +104,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 5 | 5/5 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 10 | 10/10 | Special | - |
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 5 | 5/5 | Special | - |
-| [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 11 | 11/11 | Special | - |
+| [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 12 | 12/12 | Special | - |
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 10 | 9/10 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 5 | 4/5 | Special | - |
