@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1754 contests, 10483 problems, 5616 verified."
+description: "Codeforces problem solutions with full editorials. 1755 contests, 10484 problems, 5617 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1754 contests, 10483 problems, 5616 verified.**
+**1755 contests, 10484 problems, 5617 verified.**
 
 ## Unknown — 97 contests, 662 problems, 542 verified
 
@@ -1601,7 +1601,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 9 | 1/9 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 176 contests, 1419 problems, 706 verified
+## 2025 — 177 contests, 1420 problems, 707 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1737,6 +1737,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 8 | 8/8 | Special | - |
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 8 | 8/8 | Special | - |
 | [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 7 | 7/7 | Special | - |
+| [105981](105981/) | [The 2025 Hunan University Programming Contest](https://codeforces.com/contest/105981) | 1 | 1/1 | Special | - |
 | [105986](105986/) | [2025 Wuhan University of Technology Programming Contest](https://codeforces.com/contest/105986) | 8 | 7/8 | Special | - |
 | [105992](105992/) | [The 2025 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/105992) | 3 | 3/3 | Special | - |
 | [106015](106015/) | [Game of Coders 4 - Over the Garden Wall](https://codeforces.com/contest/106015) | 2 | 2/2 | Special | - |
