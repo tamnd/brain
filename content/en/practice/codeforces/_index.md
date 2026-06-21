@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1772 contests, 10525 problems, 5656 verified."
+description: "Codeforces problem solutions with full editorials. 1773 contests, 10528 problems, 5656 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1772 contests, 10525 problems, 5656 verified.**
+**1773 contests, 10528 problems, 5656 verified.**
 
 ## Unknown — 104 contests, 678 problems, 556 verified
 
@@ -1608,7 +1608,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 9 | 1/9 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 187 contests, 1445 problems, 732 verified
+## 2025 — 188 contests, 1448 problems, 732 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1734,6 +1734,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105791](105791/) | [UFPE Starters Final Try-Outs 2025](https://codeforces.com/contest/105791) | 13 | 13/13 | Special | - |
 | [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 1 | 1/1 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
+| [105851](105851/) | [2025年北京市大学生程序设计竞赛暨“小米杯”全国邀请赛](https://codeforces.com/contest/105851) | 3 | 0/3 | Special | - |
 | [105864](105864/) | [Командный турнир для школьников по программированию](https://codeforces.com/contest/105864) | 3 | 3/3 | Special | - |
 | [105870](105870/) | [MITIT Spring 2025 Finals Round](https://codeforces.com/contest/105870) | 1 | 1/1 | Special | - |
 | [105895](105895/) | [The 21st Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105895) | 14 | 13/14 | Special | - |
