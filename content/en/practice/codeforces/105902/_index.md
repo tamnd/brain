@@ -1,29 +1,31 @@
 ---
 title: "2025 Fujian Normal University Programming Contest"
-description: "9 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 9/9 solutions verified against sample I/O."
+description: "11 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105902
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 500
+n_problems: 11
+n_verified: 11
+total_solve_s: 606
 contest_year: 2025
-date: "2026-06-21T20:59:47+07:00"
+date: "2026-06-21T03:02:35+07:00"
 weight: 105902
 draft: false
 ---
 
 # [2025 Fujian Normal University Programming Contest](https://codeforces.com/contest/105902)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 8m 20s
+Special | 11 problems | 11/11 verified | Difficulty - | 10m 6s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [One Must Imagine Time Tight,](https://codeforces.com/problemset/problem/105902/A) |  |  |  | 47s | ✓ |
 | [B](B/) | [Uchiage Hanabi](https://codeforces.com/problemset/problem/105902/B) |  |  |  | 56s | ✓ |
 | [C](C/) | [Sequential Sequence](https://codeforces.com/problemset/problem/105902/C) |  |  |  | 51s | ✓ |
+| [D](D/) | [Where's My Money?](https://codeforces.com/problemset/problem/105902/D) |  |  |  | 49s | ✓ |
+| [E](E/) | [Binary Banter: Counting Combinatorial Bits](https://codeforces.com/problemset/problem/105902/E) |  |  |  | 57s | ✓ |
 | [F](F/) | [Imbalanced Bracket](https://codeforces.com/problemset/problem/105902/F) |  |  |  | 49s | ✓ |
 | [G](G/) | [Still No Money?](https://codeforces.com/problemset/problem/105902/G) |  |  |  | 45s | ✓ |
 | [H](H/) | [Yet Another Tree Problem](https://codeforces.com/problemset/problem/105902/H) |  |  |  | 1m 25s | ✓ |
