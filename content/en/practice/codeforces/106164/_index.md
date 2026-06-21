@@ -1,23 +1,23 @@
 ---
 title: "ICPC Asia Bangkok Regional Contest 2025"
-description: "12 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106164
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 726
+n_problems: 13
+n_verified: 13
+total_solve_s: 773
 contest_year: 2025
-date: "2026-06-20T09:42:50+07:00"
+date: "2026-06-20T16:07:42+07:00"
 weight: 106164
 draft: false
 ---
 
 # [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164)
 
-ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 6s
+ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 12m 53s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@ ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 6s
 | [G](G/) | [Galactic Adventure Agency](https://codeforces.com/problemset/problem/106164/G) |  |  |  | 1m 10s | ✓ |
 | [H](H/) | [Home Workout Playlist](https://codeforces.com/problemset/problem/106164/H) |  |  |  | 1m 4s | ✓ |
 | [I](I/) | [ICPC Extractor](https://codeforces.com/problemset/problem/106164/I) |  |  |  | 1m | ✓ |
+| [J](J/) | [Joyeuse](https://codeforces.com/problemset/problem/106164/J) |  |  |  | 47s | ✓ |
 | [K](K/) | [Kickshot Tournament](https://codeforces.com/problemset/problem/106164/K) |  |  |  | 56s | ✓ |
 | [L](L/) | [Laser](https://codeforces.com/problemset/problem/106164/L) |  |  |  | 56s | ✓ |
 | [M](M/) | [Merticulous Manipulation](https://codeforces.com/problemset/problem/106164/M) |  |  |  | 45s | ✓ |
