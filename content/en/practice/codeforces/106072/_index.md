@@ -1,26 +1,27 @@
 ---
 title: "The 2025 ICPC Asia EC Regionals Online Contest (II)"
-description: "10 problems from The 2025 ICPC Asia EC Regionals Online Contest (II) (contest 106072), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from The 2025 ICPC Asia EC Regionals Online Contest (II) (contest 106072), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106072
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 592
+n_problems: 11
+n_verified: 11
+total_solve_s: 651
 contest_year: 2025
-date: "2026-06-20T15:59:38+07:00"
+date: "2026-06-22T04:02:49+07:00"
 weight: 106072
 draft: false
 ---
 
 # [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 52s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 51s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Angry Birds](https://codeforces.com/problemset/problem/106072/A) |  |  |  | 59s | ✓ |
 | [B](B/) | [Rectangular Wooden Block](https://codeforces.com/problemset/problem/106072/B) |  |  |  | 58s | ✓ |
 | [C](C/) | [Jiaxun!](https://codeforces.com/problemset/problem/106072/C) |  |  |  | 53s | ✓ |
 | [D](D/) | [Arcane Behemoths](https://codeforces.com/problemset/problem/106072/D) |  |  |  | 48s | ✓ |
