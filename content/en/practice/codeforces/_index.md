@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1781 contests, 10655 problems, 5760 verified."
+description: "Codeforces problem solutions with full editorials. 1782 contests, 10658 problems, 5763 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1781 contests, 10655 problems, 5760 verified.**
+**1782 contests, 10658 problems, 5763 verified.**
 
-## Unknown — 109 contests, 731 problems, 603 verified
+## Unknown — 110 contests, 734 problems, 606 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 3 | 3/3 | Special | - |
 | [105748](105748/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 2](https://codeforces.com/contest/105748) | 2 | 2/2 | Special | - |
 | [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 6 | 2/6 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
