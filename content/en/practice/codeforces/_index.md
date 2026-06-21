@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1809 contests, 10834 problems, 5919 verified."
+description: "Codeforces problem solutions with full editorials. 1810 contests, 10838 problems, 5923 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1809 contests, 10834 problems, 5919 verified.**
+**1810 contests, 10838 problems, 5923 verified.**
 
-## Unknown — 129 contests, 857 problems, 724 verified
+## Unknown — 130 contests, 861 problems, 728 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105586](105586/) | [“华为杯” 2024 年广东工业大学 ACM 新生程序设计竞赛（决赛）](https://codeforces.com/contest/105586) | 4 | 4/4 | Special | - |
 | [105591](105591/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Нижегородская область, 2024](https://codeforces.com/contest/105591) | 2 | 2/2 | Special | - |
 | [105592](105592/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Нижегородская область, 2024](https://codeforces.com/contest/105592) | 3 | 3/3 | Special | - |
 | [105608](105608/) | [Олимпиада 1С, отборочный тур 2024-2025](https://codeforces.com/contest/105608) | 3 | 3/3 | Special | - |
