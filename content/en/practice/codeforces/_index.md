@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1794 contests, 10743 problems, 5843 verified."
+description: "Codeforces problem solutions with full editorials. 1795 contests, 10748 problems, 5848 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1794 contests, 10743 problems, 5843 verified.**
+**1795 contests, 10748 problems, 5848 verified.**
 
-## Unknown — 119 contests, 794 problems, 661 verified
+## Unknown — 120 contests, 799 problems, 666 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105667](105667/) | [MITIT Winter 2025 Advanced Round 2](https://codeforces.com/contest/105667) | 5 | 5/5 | Special | - |
 | [105668](105668/) | [MITIT Winter 2025 Beginner Round](https://codeforces.com/contest/105668) | 8 | 8/8 | Special | - |
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
 | [105683](105683/) | [Олимпиада НЕЙМАРК 2024-25, Первый отбор](https://codeforces.com/contest/105683) | 6 | 6/6 | Special | - |
