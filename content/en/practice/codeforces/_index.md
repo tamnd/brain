@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1732 contests, 10224 problems, 5381 verified."
+description: "Codeforces problem solutions with full editorials. 1733 contests, 10227 problems, 5384 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1732 contests, 10224 problems, 5381 verified.**
+**1733 contests, 10227 problems, 5384 verified.**
 
 ## Unknown — 90 contests, 569 problems, 463 verified
 
@@ -1593,7 +1593,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 162 contests, 1276 problems, 565 verified
+## 2025 — 163 contests, 1279 problems, 568 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1717,6 +1717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
+| [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 3 | 3/3 | Special | - |
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 3 | 3/3 | Special | - |
 | [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 1 | 1/1 | Special | - |
 | [105986](105986/) | [2025 Wuhan University of Technology Programming Contest](https://codeforces.com/contest/105986) | 1 | 0/1 | Special | - |
