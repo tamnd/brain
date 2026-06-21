@@ -1,23 +1,23 @@
 ---
 title: "ICPC Asia Bangkok Regional Contest 2025"
-description: "11 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106164
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 656
+n_problems: 12
+n_verified: 12
+total_solve_s: 726
 contest_year: 2025
-date: "2026-06-20T22:16:18+07:00"
+date: "2026-06-20T09:42:50+07:00"
 weight: 106164
 draft: false
 ---
 
 # [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 56s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 6s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 56s
 | [C](C/) | [Challenge to the Reader](https://codeforces.com/problemset/problem/106164/C) |  |  |  | 55s | ✓ |
 | [E](E/) | [Elena and Travel Pass](https://codeforces.com/problemset/problem/106164/E) |  |  |  | 1m | ✓ |
 | [F](F/) | [Festival Stroll](https://codeforces.com/problemset/problem/106164/F) |  |  |  | 1m 38s | ✓ |
+| [G](G/) | [Galactic Adventure Agency](https://codeforces.com/problemset/problem/106164/G) |  |  |  | 1m 10s | ✓ |
 | [H](H/) | [Home Workout Playlist](https://codeforces.com/problemset/problem/106164/H) |  |  |  | 1m 4s | ✓ |
 | [I](I/) | [ICPC Extractor](https://codeforces.com/problemset/problem/106164/I) |  |  |  | 1m | ✓ |
 | [K](K/) | [Kickshot Tournament](https://codeforces.com/problemset/problem/106164/K) |  |  |  | 56s | ✓ |
