@@ -1,23 +1,23 @@
 ---
 title: "UTPC Contest 2-25-26 (Beginner)"
-description: "7 problems from UTPC Contest 2-25-26 (Beginner) (contest 106387), difficulty -. 6/7 solutions verified against sample I/O."
+description: "8 problems from UTPC Contest 2-25-26 (Beginner) (contest 106387), difficulty -. 7/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106387
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
-n_verified: 6
-total_solve_s: 366
+n_problems: 8
+n_verified: 7
+total_solve_s: 415
 contest_year: 2026
-date: "2026-06-19T09:58:10+07:00"
+date: "2026-06-19T19:15:14+07:00"
 weight: 106387
 draft: false
 ---
 
 # [UTPC Contest 2-25-26 (Beginner)](https://codeforces.com/contest/106387)
 
-Special | 7 problems | 6/7 verified | Difficulty - | 6m 6s
+Special | 8 problems | 7/8 verified | Difficulty - | 6m 55s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,5 @@ Special | 7 problems | 6/7 verified | Difficulty - | 6m 6s
 | [D](D/) | [Revenge of the (C/K)or(e)ys](https://codeforces.com/problemset/problem/106387/D) |  |  |  | 1m 13s | ✓ |
 | [E](E/) | [Feed the Beast](https://codeforces.com/problemset/problem/106387/E) |  |  |  | 48s | ✓ |
 | [F](F/) | [Racing Game](https://codeforces.com/problemset/problem/106387/F) |  |  |  | 54s | ✓ |
+| [G](G/) | [The Veneto Relay](https://codeforces.com/problemset/problem/106387/G) |  |  |  | 49s | ✓ |
 | [H](H/) | [Ultimate Figure Skating](https://codeforces.com/problemset/problem/106387/H) |  |  |  | 56s | ✓ |
