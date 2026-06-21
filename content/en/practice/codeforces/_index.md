@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1748 contests, 10381 problems, 5523 verified."
+description: "Codeforces problem solutions with full editorials. 1748 contests, 10387 problems, 5529 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1748 contests, 10381 problems, 5523 verified.**
+**1748 contests, 10387 problems, 5529 verified.**
 
 ## Unknown — 96 contests, 630 problems, 511 verified
 
@@ -1599,7 +1599,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 172 contests, 1372 problems, 659 verified
+## 2025 — 172 contests, 1378 problems, 665 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1734,7 +1734,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105922](105922/) | [The 18th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/105922) | 8 | 8/8 | Special | - |
 | [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 8 | 8/8 | Special | - |
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 8 | 8/8 | Special | - |
-| [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 1 | 1/1 | Special | - |
+| [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 7 | 7/7 | Special | - |
 | [105986](105986/) | [2025 Wuhan University of Technology Programming Contest](https://codeforces.com/contest/105986) | 1 | 0/1 | Special | - |
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 13 | 3/13 | Special | - |
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
