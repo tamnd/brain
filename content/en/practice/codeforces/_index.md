@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1786 contests, 10680 problems, 5780 verified."
+description: "Codeforces problem solutions with full editorials. 1787 contests, 10693 problems, 5793 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1786 contests, 10680 problems, 5780 verified.**
+**1787 contests, 10693 problems, 5793 verified.**
 
-## Unknown — 113 contests, 745 problems, 612 verified
+## Unknown — 114 contests, 758 problems, 625 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105699](105699/) | [OCPC 2024 Winter, Day 8: Borys Minaiev Contest 1 (The 3rd Universal Cup. Stage 27: London)](https://codeforces.com/contest/105699) | 13 | 13/13 | Special | - |
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
