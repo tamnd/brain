@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1819 contests, 10864 problems, 5948 verified."
+description: "Codeforces problem solutions with full editorials. 1820 contests, 10865 problems, 5949 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1819 contests, 10864 problems, 5948 verified.**
+**1820 contests, 10865 problems, 5949 verified.**
 
 ## Unknown — 131 contests, 865 problems, 732 verified
 
@@ -1503,7 +1503,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 141 contests, 1008 problems, 377 verified
+## 2024 — 142 contests, 1009 problems, 378 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1632,6 +1632,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 1 | 1/1 | Special | - |
 | [105570](105570/) | [2024 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/105570) | 3 | 2/3 | Special | - |
 | [105575](105575/) | [Southeast University 6th Programming Competition Competition (Winter, Novice Group) 东南大学第六届程序设计竞赛冬季赛（新手组）](https://codeforces.com/contest/105575) | 3 | 3/3 | Special | - |
 | [105578](105578/) | [The 2024 ICPC Asia Shenyang Regional Contest (The 3rd Universal Cup. Stage 19: Shenyang)](https://codeforces.com/contest/105578) | 3 | 3/3 | ICPC/IOI | - |
