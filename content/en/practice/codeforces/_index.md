@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1777 contests, 10620 problems, 5732 verified."
+description: "Codeforces problem solutions with full editorials. 1777 contests, 10622 problems, 5734 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1777 contests, 10620 problems, 5732 verified.**
+**1777 contests, 10622 problems, 5734 verified.**
 
 ## Unknown — 106 contests, 717 problems, 594 verified
 
@@ -1610,7 +1610,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 9 | 1/9 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 190 contests, 1501 problems, 770 verified
+## 2025 — 190 contests, 1503 problems, 772 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1746,7 +1746,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105901](105901/) | [2025 ICPC Wuhan Invitational Contest (The 3rd Universal Cup. Stage 37: Wuhan)](https://codeforces.com/contest/105901) | 13 | 13/13 | ICPC/IOI | - |
 | [105902](105902/) | [2025 Fujian Normal University Programming Contest](https://codeforces.com/contest/105902) | 11 | 11/11 | Special | - |
 | [105911](105911/) | [2025 ICPC Nanchang Invitational and Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105911) | 12 | 11/12 | ICPC/IOI | - |
-| [105920](105920/) | [Soy Cup #1: Firefly](https://codeforces.com/contest/105920) | 9 | 9/9 | Special | - |
+| [105920](105920/) | [Soy Cup #1: Firefly](https://codeforces.com/contest/105920) | 11 | 11/11 | Special | - |
 | [105922](105922/) | [The 18th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/105922) | 8 | 8/8 | Special | - |
 | [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 8 | 8/8 | Special | - |
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 8 | 8/8 | Special | - |
