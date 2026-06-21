@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1785 contests, 10676 problems, 5779 verified."
+description: "Codeforces problem solutions with full editorials. 1786 contests, 10680 problems, 5780 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1785 contests, 10676 problems, 5779 verified.**
+**1786 contests, 10680 problems, 5780 verified.**
 
-## Unknown — 112 contests, 741 problems, 611 verified
+## Unknown — 113 contests, 745 problems, 612 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
 | [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 3 | 3/3 | Special | - |
