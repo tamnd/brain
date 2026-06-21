@@ -1,22 +1,22 @@
 ---
 title: "“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛"
-description: "9 problems from “规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛 (contest 106440), difficulty -. 9/9 solutions verified against sample I/O."
+description: "11 problems from “规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛 (contest 106440), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106440
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 560
-date: "2026-06-19T10:31:01+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 709
+date: "2026-06-19T16:23:00+07:00"
 weight: 106440
 draft: false
 ---
 
 # [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 9m 20s
+Special | 11 problems | 11/11 verified | Difficulty - | 11m 49s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,7 +25,9 @@ Special | 9 problems | 9/9 verified | Difficulty - | 9m 20s
 | [D](D/) | [\u6536\u7eb3\u6536\u7eb3\u888b](https://codeforces.com/problemset/problem/106440/D) |  |  |  | 1m 5s | ✓ |
 | [E](E/) | [\u5468\u957f](https://codeforces.com/problemset/problem/106440/E) |  |  |  | 53s | ✓ |
 | [F](F/) | [\u77ad\u671b\u5854](https://codeforces.com/problemset/problem/106440/F) |  |  |  | 53s | ✓ |
+| [G](G/) | [fufu \u8d2d\u4e70\u8ba1\u5212](https://codeforces.com/problemset/problem/106440/G) |  |  |  | 1m 15s | ✓ |
 | [H](H/) | [\u6b7b\u4ea1\u53d8\u901f](https://codeforces.com/problemset/problem/106440/H) |  |  |  | 54s | ✓ |
+| [I](I/) | [\u51f9\u5305](https://codeforces.com/problemset/problem/106440/I) |  |  |  | 1m 14s | ✓ |
 | [J](J/) | [\u6700\u8fdc\u7684\u5f7c\u6b64](https://codeforces.com/problemset/problem/106440/J) |  |  |  | 1m 21s | ✓ |
 | [K](K/) | [\u5171\u4eab\u5355\u8f66](https://codeforces.com/problemset/problem/106440/K) |  |  |  | 50s | ✓ |
 | [M](M/) | [\u5fae\u8f6f\u5927\u6218\u4ee3\u7801](https://codeforces.com/problemset/problem/106440/M) |  |  |  | 1m 2s | ✓ |
