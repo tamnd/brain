@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1735 contests, 10233 problems, 5390 verified."
+description: "Codeforces problem solutions with full editorials. 1736 contests, 10236 problems, 5393 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1735 contests, 10233 problems, 5390 verified.**
+**1736 contests, 10236 problems, 5393 verified.**
 
 ## Unknown — 90 contests, 569 problems, 463 verified
 
@@ -1593,7 +1593,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 165 contests, 1285 problems, 574 verified
+## 2025 — 166 contests, 1288 problems, 577 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1717,6 +1717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
+| [105911](105911/) | [2025 ICPC Nanchang Invitational and Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105911) | 3 | 3/3 | ICPC/IOI | - |
 | [105920](105920/) | [Soy Cup #1: Firefly](https://codeforces.com/contest/105920) | 3 | 3/3 | Special | - |
 | [105922](105922/) | [The 18th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/105922) | 3 | 3/3 | Special | - |
 | [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 3 | 3/3 | Special | - |
