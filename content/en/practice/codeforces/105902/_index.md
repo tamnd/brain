@@ -1,23 +1,23 @@
 ---
 title: "2025 Fujian Normal University Programming Contest"
-description: "8 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105902
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 426
+n_problems: 9
+n_verified: 9
+total_solve_s: 500
 contest_year: 2025
-date: "2026-06-21T15:25:07+07:00"
+date: "2026-06-21T20:59:47+07:00"
 weight: 105902
 draft: false
 ---
 
 # [2025 Fujian Normal University Programming Contest](https://codeforces.com/contest/105902)
 
-Special | 8 problems | 8/8 verified | Difficulty - | 7m 6s
+Special | 9 problems | 9/9 verified | Difficulty - | 8m 20s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,5 +27,6 @@ Special | 8 problems | 8/8 verified | Difficulty - | 7m 6s
 | [F](F/) | [Imbalanced Bracket](https://codeforces.com/problemset/problem/105902/F) |  |  |  | 49s | ✓ |
 | [G](G/) | [Still No Money?](https://codeforces.com/problemset/problem/105902/G) |  |  |  | 45s | ✓ |
 | [H](H/) | [Yet Another Tree Problem](https://codeforces.com/problemset/problem/105902/H) |  |  |  | 1m 25s | ✓ |
+| [I](I/) | [DJ Mr. Spin](https://codeforces.com/problemset/problem/105902/I) |  |  |  | 1m 14s | ✓ |
 | [J](J/) | [Spirit of Cola.](https://codeforces.com/problemset/problem/105902/J) |  |  |  | 52s | ✓ |
 | [L](L/) | [We Luv Stamina](https://codeforces.com/problemset/problem/105902/L) |  |  |  | 41s | ✓ |
