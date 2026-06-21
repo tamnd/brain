@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1776 contests, 10536 problems, 5660 verified."
+description: "Codeforces problem solutions with full editorials. 1777 contests, 10547 problems, 5671 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1776 contests, 10536 problems, 5660 verified.**
+**1777 contests, 10547 problems, 5671 verified.**
 
-## Unknown — 105 contests, 679 problems, 557 verified
+## Unknown — 106 contests, 690 problems, 568 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
