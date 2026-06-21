@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1728 contests, 10204 problems, 5365 verified."
+description: "Codeforces problem solutions with full editorials. 1728 contests, 10205 problems, 5365 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1728 contests, 10204 problems, 5365 verified.**
+**1728 contests, 10205 problems, 5365 verified.**
 
 ## Unknown — 89 contests, 559 problems, 455 verified
 
@@ -1756,7 +1756,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 13 | 1/13 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
 
-## 2026 — 60 contests, 489 problems, 216 verified
+## 2026 — 60 contests, 490 problems, 216 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1807,7 +1807,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 7 | 6/7 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 7 | 7/7 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 9 | 9/9 | Special | - |
-| [106384](106384/) | [CYCPC Round 2](https://codeforces.com/contest/106384) | 11 | 3/11 | Special | - |
+| [106384](106384/) | [CYCPC Round 2](https://codeforces.com/contest/106384) | 12 | 3/12 | Special | - |
 | [106387](106387/) | [UTPC Contest 2-25-26 (Beginner)](https://codeforces.com/contest/106387) | 6 | 5/6 | Special | - |
 | [106396](106396/) | [Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror)](https://codeforces.com/contest/106396) | 9 | 9/9 | ICPC/IOI | - |
 | [106420](106420/) | [UTPC Contest 3-11-26 (Beginner)](https://codeforces.com/contest/106420) | 8 | 8/8 | Special | - |
