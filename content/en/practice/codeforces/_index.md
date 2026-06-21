@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1778 contests, 10641 problems, 5750 verified."
+description: "Codeforces problem solutions with full editorials. 1779 contests, 10647 problems, 5752 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1778 contests, 10641 problems, 5750 verified.**
+**1779 contests, 10647 problems, 5752 verified.**
 
-## Unknown — 107 contests, 723 problems, 599 verified
+## Unknown — 108 contests, 729 problems, 601 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 6 | 2/6 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
