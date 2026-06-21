@@ -1,23 +1,23 @@
 ---
 title: "XIII UnB Contest Mirror"
-description: "13 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 13/13 solutions verified against sample I/O."
+description: "14 problems from XIII UnB Contest Mirror (contest 106159), difficulty -. 14/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106159
 contest_type: "Special"
 rating_range: "-"
-n_problems: 13
-n_verified: 13
-total_solve_s: 685
+n_problems: 14
+n_verified: 14
+total_solve_s: 725
 contest_year: 2025
-date: "2026-06-19T22:12:24+07:00"
+date: "2026-06-19T09:38:54+07:00"
 weight: 106159
 draft: false
 ---
 
 # [XIII UnB Contest Mirror](https://codeforces.com/contest/106159)
 
-Special | 13 problems | 13/13 verified | Difficulty - | 11m 25s
+Special | 14 problems | 14/14 verified | Difficulty - | 12m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@ Special | 13 problems | 13/13 verified | Difficulty - | 11m 25s
 | [F](F/) | [Falatro](https://codeforces.com/problemset/problem/106159/F) |  |  |  | 51s | ✓ |
 | [G](G/) | [Gelatos from Goi\u00e1s](https://codeforces.com/problemset/problem/106159/G) |  |  |  | 1m 7s | ✓ |
 | [H](H/) | [Hardcore Aura Farming](https://codeforces.com/problemset/problem/106159/H) |  |  |  | 1m 14s | ✓ |
+| [I](I/) | [Ivo saw the UVa](https://codeforces.com/problemset/problem/106159/I) |  |  |  | 40s | ✓ |
 | [J](J/) | [Jolly Game Night](https://codeforces.com/problemset/problem/106159/J) |  |  |  | 41s | ✓ |
 | [K](K/) | [Kronos](https://codeforces.com/problemset/problem/106159/K) |  |  |  | 50s | ✓ |
 | [L](L/) | [Leveling Diamonds](https://codeforces.com/problemset/problem/106159/L) |  |  |  | 45s | ✓ |
