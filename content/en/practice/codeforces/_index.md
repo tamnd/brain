@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1748 contests, 10303 problems, 5447 verified."
+description: "Codeforces problem solutions with full editorials. 1748 contests, 10307 problems, 5451 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1748 contests, 10303 problems, 5447 verified.**
+**1748 contests, 10307 problems, 5451 verified.**
 
-## Unknown — 96 contests, 609 problems, 490 verified
+## Unknown — 96 contests, 613 problems, 494 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
-| [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 7 | 7/7 | Special | - |
+| [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 11 | 11/11 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 1 | 1/1 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 3 | 3/3 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 3 | 3/3 | Special | - |
