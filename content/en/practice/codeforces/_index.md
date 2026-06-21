@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1728 contests, 10196 problems, 5357 verified."
+description: "Codeforces problem solutions with full editorials. 1728 contests, 10197 problems, 5358 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1728 contests, 10196 problems, 5357 verified.**
+**1728 contests, 10197 problems, 5358 verified.**
 
-## Unknown — 89 contests, 554 problems, 450 verified
+## Unknown — 89 contests, 555 problems, 451 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -36,7 +36,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 12 | 12/12 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 5 | 5/5 | Special | - |
-| [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 8 | 8/8 | Special | - |
+| [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 9 | 9/9 | Special | - |
 | [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 1 | 1/1 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 8 | 8/8 | ICPC/IOI | - |
 | [106189](106189/) | [ICPC Central Russia Regional Contest, 2025](https://codeforces.com/contest/106189) | 1 | 1/1 | ICPC/IOI | - |
