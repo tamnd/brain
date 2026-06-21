@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1813 contests, 10845 problems, 5930 verified."
+description: "Codeforces problem solutions with full editorials. 1814 contests, 10848 problems, 5933 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1813 contests, 10845 problems, 5930 verified.**
+**1814 contests, 10848 problems, 5933 verified.**
 
 ## Unknown — 130 contests, 861 problems, 728 verified
 
@@ -1502,7 +1502,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 136 contests, 993 problems, 363 verified
+## 2024 — 137 contests, 996 problems, 366 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1631,6 +1631,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105580](105580/) | [Open Udmurtia High School Programming Contest 2015](https://codeforces.com/contest/105580) | 3 | 3/3 | Special | - |
 | [105581](105581/) | [Open Udmurtia Junior Programming Contest 2018](https://codeforces.com/contest/105581) | 3 | 3/3 | Special | - |
 | [105582](105582/) | [Ural Championship 2017](https://codeforces.com/contest/105582) | 3 | 3/3 | Special | - |
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 1 | 1/1 | Special | - |
