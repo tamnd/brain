@@ -1,22 +1,22 @@
 ---
 title: "The 2026 ICPC Latin America Championship"
-description: "10 problems from The 2026 ICPC Latin America Championship (contest 106416), difficulty -. 9/10 solutions verified against sample I/O."
+description: "11 problems from The 2026 ICPC Latin America Championship (contest 106416), difficulty -. 10/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106416
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 9
-total_solve_s: 1023
-date: "2026-06-20T10:13:39+07:00"
+n_problems: 11
+n_verified: 10
+total_solve_s: 1079
+date: "2026-06-20T16:19:01+07:00"
 weight: 106416
 draft: false
 ---
 
 # [The 2026 ICPC Latin America Championship](https://codeforces.com/contest/106416)
 
-ICPC/IOI | 10 problems | 9/10 verified | Difficulty - | 17m 3s
+ICPC/IOI | 11 problems | 10/11 verified | Difficulty - | 17m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ ICPC/IOI | 10 problems | 9/10 verified | Difficulty - | 17m 3s
 | [D](D/) | [Dropshipping](https://codeforces.com/problemset/problem/106416/D) |  |  |  | 52s | ✓ |
 | [E](E/) | [Eye Exam](https://codeforces.com/problemset/problem/106416/E) |  |  |  | 8m 25s |  |
 | [F](F/) | [Fun with Balls](https://codeforces.com/problemset/problem/106416/F) |  |  |  | 58s | ✓ |
+| [G](G/) | [GATA-CAT](https://codeforces.com/problemset/problem/106416/G) |  |  |  | 56s | ✓ |
 | [H](H/) | [Holes and Tunnels](https://codeforces.com/problemset/problem/106416/H) |  |  |  | 1m 16s | ✓ |
 | [I](I/) | [Inversion Game](https://codeforces.com/problemset/problem/106416/I) |  |  |  | 49s | ✓ |
 | [J](J/) | [Jaime's Palace](https://codeforces.com/problemset/problem/106416/J) |  |  |  | 43s | ✓ |
