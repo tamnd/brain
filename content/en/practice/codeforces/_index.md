@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1728 contests, 10186 problems, 5347 verified."
+description: "Codeforces problem solutions with full editorials. 1728 contests, 10187 problems, 5348 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1728 contests, 10186 problems, 5347 verified.**
+**1728 contests, 10187 problems, 5348 verified.**
 
-## Unknown — 89 contests, 550 problems, 446 verified
+## Unknown — 89 contests, 551 problems, 447 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -31,7 +31,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 12 | 12/12 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 13 | 13/13 | ICPC/IOI | - |
 | [106130](106130/) | [GDUT 2025 Monthly competition](https://codeforces.com/contest/106130) | 14 | 13/14 | Special | - |
-| [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 10 | 10/10 | Special | - |
+| [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 11 | 11/11 | Special | - |
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 10 | 10/10 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 11 | 11/11 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 8 | 8/8 | ICPC/IOI | - |
