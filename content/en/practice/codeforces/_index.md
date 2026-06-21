@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1766 contests, 10512 problems, 5643 verified."
+description: "Codeforces problem solutions with full editorials. 1767 contests, 10514 problems, 5645 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1766 contests, 10512 problems, 5643 verified.**
+**1767 contests, 10514 problems, 5645 verified.**
 
-## Unknown — 100 contests, 669 problems, 547 verified
+## Unknown — 101 contests, 671 problems, 549 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,6 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 13 | 13/13 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 9 | 9/9 | Special | - |
+| [105931](105931/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2024](https://codeforces.com/contest/105931) | 2 | 2/2 | Special | - |
 | [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 3 | 1/3 | Special | - |
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 2 | 2/2 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 2 | 2/2 | Special | - |
