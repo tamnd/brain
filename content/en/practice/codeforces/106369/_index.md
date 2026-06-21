@@ -1,22 +1,22 @@
 ---
 title: "2023 UCF Local Programming Contest"
-description: "9 problems from 2023 UCF Local Programming Contest (contest 106369), difficulty -. 3/9 solutions verified against sample I/O."
+description: "10 problems from 2023 UCF Local Programming Contest (contest 106369), difficulty -. 3/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106369
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 3
-total_solve_s: 326
-date: "2026-06-20T09:52:35+07:00"
+total_solve_s: 358
+date: "2026-06-20T04:12:11+07:00"
 weight: 106369
 draft: false
 ---
 
 # [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369)
 
-Special | 9 problems | 3/9 verified | Difficulty - | 5m 26s
+Special | 10 problems | 3/10 verified | Difficulty - | 5m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ Special | 9 problems | 3/9 verified | Difficulty - | 5m 26s
 | [G](G/) | [Not So Close](https://codeforces.com/problemset/problem/106369/G) |  |  |  | 34s |  |
 | [I](I/) | [Drake Robbing](https://codeforces.com/problemset/problem/106369/I) |  |  |  | 33s |  |
 | [J](J/) | [Grow Measure Cut Repeat](https://codeforces.com/problemset/problem/106369/J) |  |  |  | 27s |  |
+| [K](K/) | [Bad Bunny](https://codeforces.com/problemset/problem/106369/K) |  |  |  | 32s |  |
