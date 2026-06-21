@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1742 contests, 10253 problems, 5410 verified."
+description: "Codeforces problem solutions with full editorials. 1743 contests, 10260 problems, 5417 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1742 contests, 10253 problems, 5410 verified.**
+**1743 contests, 10260 problems, 5417 verified.**
 
-## Unknown — 92 contests, 573 problems, 467 verified
+## Unknown — 93 contests, 580 problems, 474 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
+| [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 7 | 7/7 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 1 | 1/1 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 3 | 3/3 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 3 | 3/3 | Special | - |
