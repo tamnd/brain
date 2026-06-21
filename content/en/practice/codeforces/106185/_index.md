@@ -1,22 +1,22 @@
 ---
 title: "The 2025 ICPC Japan Online First Round Contest"
-description: "8 problems from The 2025 ICPC Japan Online First Round Contest (contest 106185), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from The 2025 ICPC Japan Online First Round Contest (contest 106185), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106185
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 431
-date: "2026-06-20T22:21:40+07:00"
+n_problems: 9
+n_verified: 9
+total_solve_s: 490
+date: "2026-06-20T09:47:43+07:00"
 weight: 106185
 draft: false
 ---
 
 # [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 7m 11s
+ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 8m 10s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,5 +26,6 @@ ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 7m 11s
 | [D](D/) | [Ancient Game Board](https://codeforces.com/problemset/problem/106185/D) |  |  |  | 51s | ✓ |
 | [E](E/) | [To Be Discontinued](https://codeforces.com/problemset/problem/106185/E) |  |  |  | 1m 1s | ✓ |
 | [F](F/) | [Dog Tricks](https://codeforces.com/problemset/problem/106185/F) |  |  |  | 55s | ✓ |
+| [G](G/) | [Number of Faces](https://codeforces.com/problemset/problem/106185/G) |  |  |  | 59s | ✓ |
 | [H](H/) | [Parentheses](https://codeforces.com/problemset/problem/106185/H) |  |  |  | 59s | ✓ |
 | [I](I/) | [Preparing the Lunch](https://codeforces.com/problemset/problem/106185/I) |  |  |  | 1m 7s | ✓ |
