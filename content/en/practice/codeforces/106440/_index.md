@@ -1,22 +1,22 @@
 ---
 title: "“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛"
-description: "11 problems from “规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛 (contest 106440), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from “规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛 (contest 106440), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106440
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 709
-date: "2026-06-19T16:23:00+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 758
+date: "2026-06-19T19:23:15+07:00"
 weight: 106440
 draft: false
 ---
 
 # [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 49s
+Special | 12 problems | 12/12 verified | Difficulty - | 12m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,5 @@ Special | 11 problems | 11/11 verified | Difficulty - | 11m 49s
 | [I](I/) | [\u51f9\u5305](https://codeforces.com/problemset/problem/106440/I) |  |  |  | 1m 14s | ✓ |
 | [J](J/) | [\u6700\u8fdc\u7684\u5f7c\u6b64](https://codeforces.com/problemset/problem/106440/J) |  |  |  | 1m 21s | ✓ |
 | [K](K/) | [\u5171\u4eab\u5355\u8f66](https://codeforces.com/problemset/problem/106440/K) |  |  |  | 50s | ✓ |
+| [L](L/) | [PPIIIGG](https://codeforces.com/problemset/problem/106440/L) |  |  |  | 49s | ✓ |
 | [M](M/) | [\u5fae\u8f6f\u5927\u6218\u4ee3\u7801](https://codeforces.com/problemset/problem/106440/M) |  |  |  | 1m 2s | ✓ |
