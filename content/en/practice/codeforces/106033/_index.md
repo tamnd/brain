@@ -1,23 +1,23 @@
 ---
 title: "National Taiwan University Class Preliminary 2025"
-description: "12 problems from National Taiwan University Class Preliminary 2025 (contest 106033), difficulty -. 2/12 solutions verified against sample I/O."
+description: "13 problems from National Taiwan University Class Preliminary 2025 (contest 106033), difficulty -. 3/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106033
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 2
-total_solve_s: 392
+n_problems: 13
+n_verified: 3
+total_solve_s: 544
 contest_year: 2025
-date: "2026-06-20T20:00:58+07:00"
+date: "2026-06-20T07:18:30+07:00"
 weight: 106033
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033)
 
-Special | 12 problems | 2/12 verified | Difficulty - | 6m 32s
+Special | 13 problems | 3/13 verified | Difficulty - | 9m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -33,3 +33,4 @@ Special | 12 problems | 2/12 verified | Difficulty - | 6m 32s
 | [J](J/) | [Journey](https://codeforces.com/problemset/problem/106033/J) |  |  |  | 30s |  |
 | [K](K/) | [Kindergarten Problem](https://codeforces.com/problemset/problem/106033/K) |  |  |  | 38s |  |
 | [L](L/) | [Limited Rooks](https://codeforces.com/problemset/problem/106033/L) |  |  |  | 28s |  |
+| [M](M/) | [Minimax Spanning Tree](https://codeforces.com/problemset/problem/106033/M) |  |  |  | 2m 32s | ✓ |
