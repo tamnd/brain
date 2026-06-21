@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1816 contests, 10854 problems, 5939 verified."
+description: "Codeforces problem solutions with full editorials. 1817 contests, 10857 problems, 5942 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1816 contests, 10854 problems, 5939 verified.**
+**1817 contests, 10857 problems, 5942 verified.**
 
 ## Unknown — 130 contests, 861 problems, 728 verified
 
@@ -1502,7 +1502,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 139 contests, 1002 problems, 372 verified
+## 2024 — 140 contests, 1005 problems, 375 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1631,6 +1631,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105575](105575/) | [Southeast University 6th Programming Competition Competition (Winter, Novice Group) 东南大学第六届程序设计竞赛冬季赛（新手组）](https://codeforces.com/contest/105575) | 3 | 3/3 | Special | - |
 | [105578](105578/) | [The 2024 ICPC Asia Shenyang Regional Contest (The 3rd Universal Cup. Stage 19: Shenyang)](https://codeforces.com/contest/105578) | 3 | 3/3 | ICPC/IOI | - |
 | [105579](105579/) | [Udmurtia High School Programming Contest (Qualification for VKOSHP 2012)](https://codeforces.com/contest/105579) | 3 | 3/3 | Special | - |
 | [105580](105580/) | [Open Udmurtia High School Programming Contest 2015](https://codeforces.com/contest/105580) | 3 | 3/3 | Special | - |
