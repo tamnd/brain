@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1787 contests, 10693 problems, 5793 verified."
+description: "Codeforces problem solutions with full editorials. 1788 contests, 10705 problems, 5805 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1787 contests, 10693 problems, 5793 verified.**
+**1788 contests, 10705 problems, 5805 verified.**
 
-## Unknown — 114 contests, 758 problems, 625 verified
+## Unknown — 115 contests, 770 problems, 637 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105698](105698/) | [OCPC 2024 Summer, Day 5: OCPC Potluck Contest 2](https://codeforces.com/contest/105698) | 12 | 12/12 | Special | - |
 | [105699](105699/) | [OCPC 2024 Winter, Day 8: Borys Minaiev Contest 1 (The 3rd Universal Cup. Stage 27: London)](https://codeforces.com/contest/105699) | 13 | 13/13 | Special | - |
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
