@@ -1,27 +1,28 @@
 ---
 title: "2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite"
-description: "9 problems from 2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite (contest 106030), difficulty -. 1/9 solutions verified against sample I/O."
+description: "10 problems from 2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite (contest 106030), difficulty -. 1/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106030
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 1
-total_solve_s: 379
+total_solve_s: 419
 contest_year: 2024
-date: "2026-06-21T16:36:11+07:00"
+date: "2026-06-21T03:58:22+07:00"
 weight: 106030
 draft: false
 ---
 
 # [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030)
 
-Special | 9 problems | 1/9 verified | Difficulty - | 6m 19s
+Special | 10 problems | 1/10 verified | Difficulty - | 6m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u4e58\u79ef\uff0c\u6b27\u62c9\u51fd\u6570\uff0c\u6c42\u548c](https://codeforces.com/problemset/problem/106030/A) |  |  |  | 48s |  |
+| [B](B/) | [osu!mania](https://codeforces.com/problemset/problem/106030/B) |  |  |  | 40s |  |
 | [C](C/) | [\u8fde\u65b9](https://codeforces.com/problemset/problem/106030/C) |  |  |  | 35s |  |
 | [E](E/) | [\u5408\u6210\u5927\u897f\u74dc](https://codeforces.com/problemset/problem/106030/E) |  |  |  | 28s |  |
 | [F](F/) | [Pico Park](https://codeforces.com/problemset/problem/106030/F) |  |  |  | 31s |  |
