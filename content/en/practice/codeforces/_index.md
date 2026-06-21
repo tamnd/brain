@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1777 contests, 10629 problems, 5740 verified."
+description: "Codeforces problem solutions with full editorials. 1777 contests, 10630 problems, 5741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1777 contests, 10629 problems, 5740 verified.**
+**1777 contests, 10630 problems, 5741 verified.**
 
-## Unknown — 106 contests, 717 problems, 594 verified
+## Unknown — 106 contests, 718 problems, 595 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -38,7 +38,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 11 | 11/11 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 13 | 13/13 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 14 | 14/14 | Special | - |
-| [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 11 | 11/11 | ICPC/IOI | - |
+| [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 12 | 12/12 | ICPC/IOI | - |
 | [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 10 | 3/10 | Special | - |
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |

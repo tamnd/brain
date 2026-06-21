@@ -1,25 +1,26 @@
 ---
 title: "The 2025 ICPC South America - Brazil First Phase"
-description: "11 problems from The 2025 ICPC South America - Brazil First Phase (contest 106073), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from The 2025 ICPC South America - Brazil First Phase (contest 106073), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106073
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 610
-date: "2026-06-20T16:01:30+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 663
+date: "2026-06-22T04:03:51+07:00"
 weight: 106073
 draft: false
 ---
 
 # [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 10s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 11m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [A healthy menu](https://codeforces.com/problemset/problem/106073/A) |  |  |  | 53s | ✓ |
 | [B](B/) | [Baralho Alho](https://codeforces.com/problemset/problem/106073/B) |  |  |  | 52s | ✓ |
 | [C](C/) | [Collatz polynomial](https://codeforces.com/problemset/problem/106073/C) |  |  |  | 55s | ✓ |
 | [D](D/) | [Dominoes](https://codeforces.com/problemset/problem/106073/D) |  |  |  | 55s | ✓ |
