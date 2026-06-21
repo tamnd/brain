@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1777 contests, 10630 problems, 5741 verified."
+description: "Codeforces problem solutions with full editorials. 1777 contests, 10631 problems, 5742 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1777 contests, 10630 problems, 5741 verified.**
+**1777 contests, 10631 problems, 5742 verified.**
 
 ## Unknown — 106 contests, 718 problems, 595 verified
 
@@ -1610,7 +1610,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 10 | 1/10 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 190 contests, 1509 problems, 778 verified
+## 2025 — 190 contests, 1510 problems, 779 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1771,7 +1771,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106059](106059/) | [National Yang Ming Chiao Tung University 2025 Team Selection Programming Contest](https://codeforces.com/contest/106059) | 11 | 11/11 | Special | - |
 | [106068](106068/) | [2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)](https://codeforces.com/contest/106068) | 11 | 11/11 | Special | - |
 | [106072](106072/) | [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072) | 11 | 11/11 | ICPC/IOI | - |
-| [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 10 | 10/10 | ICPC/IOI | - |
+| [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 11 | 11/11 | ICPC/IOI | - |
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 10 | 10/10 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
