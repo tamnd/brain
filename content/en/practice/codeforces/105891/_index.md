@@ -1,28 +1,30 @@
 ---
 title: "The 13th Shaanxi Provincial Collegiate Programming Contest"
-description: "11 problems from The 13th Shaanxi Provincial Collegiate Programming Contest (contest 105891), difficulty -. 11/11 solutions verified against sample I/O."
+description: "13 problems from The 13th Shaanxi Provincial Collegiate Programming Contest (contest 105891), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105891
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 691
-date: "2026-06-21T17:57:38+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 799
+date: "2026-06-21T20:24:16+07:00"
 weight: 105891
 draft: false
 ---
 
 # [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 31s
+Special | 13 problems | 13/13 verified | Difficulty - | 13m 19s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Color](https://codeforces.com/problemset/problem/105891/A) |  |  |  | 52s | ✓ |
 | [B](B/) | [Light](https://codeforces.com/problemset/problem/105891/B) |  |  |  | 1m 14s | ✓ |
+| [C](C/) | [gcd](https://codeforces.com/problemset/problem/105891/C) |  |  |  | 52s | ✓ |
 | [D](D/) | [Stock](https://codeforces.com/problemset/problem/105891/D) |  |  |  | 1m 2s | ✓ |
+| [E](E/) | [Printer](https://codeforces.com/problemset/problem/105891/E) |  |  |  | 56s | ✓ |
 | [F](F/) | [LOCK S](https://codeforces.com/problemset/problem/105891/F) |  |  |  | 57s | ✓ |
 | [G](G/) | [student](https://codeforces.com/problemset/problem/105891/G) |  |  |  | 1m 12s | ✓ |
 | [H](H/) | [candy](https://codeforces.com/problemset/problem/105891/H) |  |  |  | 1m 9s | ✓ |
