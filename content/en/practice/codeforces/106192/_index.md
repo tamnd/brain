@@ -1,23 +1,23 @@
 ---
 title: "Пермская региональная олимпиада школьников по программированию 2025"
-description: "9 problems from Пермская региональная олимпиада школьников по программированию 2025 (contest 106192), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from Пермская региональная олимпиада школьников по программированию 2025 (contest 106192), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106192
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 473
+n_problems: 10
+n_verified: 10
+total_solve_s: 520
 contest_year: 2025
-date: "2026-06-20T22:22:48+07:00"
+date: "2026-06-20T09:48:39+07:00"
 weight: 106192
 draft: false
 ---
 
 # [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 7m 53s
+Special | 10 problems | 10/10 verified | Difficulty - | 8m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,4 +29,5 @@ Special | 9 problems | 9/9 verified | Difficulty - | 7m 53s
 | [F](F/) | [\u0410\u043b\u0445\u0438\u043c\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0447\u0443\u0434\u043e](https://codeforces.com/problemset/problem/106192/F) |  |  |  | 45s | ✓ |
 | [G](G/) | [\u041f\u043e\u0434\u0430\u0440\u043e\u043a \u043d\u0430 \u044e\u0431\u0438\u043b\u0435\u0439](https://codeforces.com/problemset/problem/106192/G) |  |  |  | 48s | ✓ |
 | [H](H/) | [\u0418\u0437 \u043f\u0443\u0448\u043a\u0438 \u043f\u043e \u043a\u043e\u043c\u0430\u0440\u0430\u043c](https://codeforces.com/problemset/problem/106192/H) |  |  |  | 51s | ✓ |
+| [I](I/) | [\u041d\u0430\u0448\u0435\u0441\u0442\u0432\u0438\u0435 \u0436\u0443\u043a\u043e\u0432](https://codeforces.com/problemset/problem/106192/I) |  |  |  | 47s | ✓ |
 | [J](J/) | [\u0422\u0440\u0435\u0443\u0433\u043e\u043b\u044c\u043d\u044b\u0439 \u043b\u0443\u0447](https://codeforces.com/problemset/problem/106192/J) |  |  |  | 53s | ✓ |
