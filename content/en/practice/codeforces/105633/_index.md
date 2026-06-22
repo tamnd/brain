@@ -1,28 +1,29 @@
 ---
 title: "The 2024 ICPC Asia Yokohama Regional Contest"
-description: "11 problems from The 2024 ICPC Asia Yokohama Regional Contest (contest 105633), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from The 2024 ICPC Asia Yokohama Regional Contest (contest 105633), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105633
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 676
-date: "2026-06-22T18:07:11+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 734
+date: "2026-06-22T23:09:57+07:00"
 weight: 105633
 draft: false
 ---
 
 # [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 11m 16s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 14s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Ribbon on the Christmas Present](https://codeforces.com/problemset/problem/105633/A) |  |  |  | 55s | ✓ |
 | [B](B/) | [The Sparsest Number in Between](https://codeforces.com/problemset/problem/105633/B) |  |  |  | 57s | ✓ |
 | [C](C/) | [Omnes Viae Yokohamam Ducunt?](https://codeforces.com/problemset/problem/105633/C) |  |  |  | 54s | ✓ |
+| [D](D/) | [Tree Generators](https://codeforces.com/problemset/problem/105633/D) |  |  |  | 58s | ✓ |
 | [E](E/) | [E-Circuit Is Now on Sale!](https://codeforces.com/problemset/problem/105633/E) |  |  |  | 54s | ✓ |
 | [F](F/) | [The Farthest Point](https://codeforces.com/problemset/problem/105633/F) |  |  |  | 1m 8s | ✓ |
 | [G](G/) | [Beyond the Former Explorer](https://codeforces.com/problemset/problem/105633/G) |  |  |  | 1m 19s | ✓ |
