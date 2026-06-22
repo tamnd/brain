@@ -1,23 +1,23 @@
 ---
 title: "The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary"
-description: "13 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary (contest 105615), difficulty -. 2/13 solutions verified against sample I/O."
+description: "14 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary (contest 105615), difficulty -. 2/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105615
 contest_type: "Special"
 rating_range: "-"
-n_problems: 13
+n_problems: 14
 n_verified: 2
-total_solve_s: 464
+total_solve_s: 500
 contest_year: 2024
-date: "2026-06-22T14:54:12+07:00"
+date: "2026-06-22T18:00:56+07:00"
 weight: 105615
 draft: false
 ---
 
 # [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615)
 
-Special | 13 problems | 2/13 verified | Difficulty - | 7m 44s
+Special | 14 problems | 2/14 verified | Difficulty - | 8m 20s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -33,4 +33,5 @@ Special | 13 problems | 2/13 verified | Difficulty - | 7m 44s
 | [K](K/) | [\u4f3c\u82b1\u8fd8\u4f3c\u975e\u82b1](https://codeforces.com/problemset/problem/105615/K) |  |  |  | 24s |  |
 | [L](L/) | [\u57fa\u4e8e Lambda \u6f14\u7b97\u7684\u5173\u4e8e p-\u8fdb\u8303\u6570\u4e0b\u52a8\u529b\u7cfb\u7edf\u7a33\u5b9a\u6027\u7684\u63a2\u7a76\u4e0e\u5e94\u7528](https://codeforces.com/problemset/problem/105615/L) |  |  |  | 44s | ✓ |
 | [M](M/) | [Oops](https://codeforces.com/problemset/problem/105615/M) |  |  |  | 29s |  |
+| [N](N/) | [Pentiment - Mark of Submission -](https://codeforces.com/problemset/problem/105615/N) |  |  |  | 36s |  |
 | [O](O/) | [Toxel \u4e0e Toxtricity](https://codeforces.com/problemset/problem/105615/O) |  |  |  | 1m 24s | ✓ |
