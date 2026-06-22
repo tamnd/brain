@@ -1,29 +1,30 @@
 ---
 title: "ICPC Asia Bangkok Regional Contest 2025"
-description: "13 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 13/13 solutions verified against sample I/O."
+description: "14 problems from ICPC Asia Bangkok Regional Contest 2025 (contest 106164), difficulty -. 14/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106164
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 13
-n_verified: 13
-total_solve_s: 773
+n_problems: 14
+n_verified: 14
+total_solve_s: 863
 contest_year: 2025
-date: "2026-06-20T16:07:42+07:00"
+date: "2026-06-20T19:04:56+07:00"
 weight: 106164
 draft: false
 ---
 
 # [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164)
 
-ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 12m 53s
+ICPC/IOI | 14 problems | 14/14 verified | Difficulty - | 14m 23s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Among Us](https://codeforces.com/problemset/problem/106164/A) |  |  |  | 1m 4s | ✓ |
 | [B](B/) | [Bring It To Back](https://codeforces.com/problemset/problem/106164/B) |  |  |  | 55s | ✓ |
 | [C](C/) | [Challenge to the Reader](https://codeforces.com/problemset/problem/106164/C) |  |  |  | 55s | ✓ |
+| [D](D/) | [Dungeons and Dragons](https://codeforces.com/problemset/problem/106164/D) |  |  |  | 1m 30s | ✓ |
 | [E](E/) | [Elena and Travel Pass](https://codeforces.com/problemset/problem/106164/E) |  |  |  | 1m | ✓ |
 | [F](F/) | [Festival Stroll](https://codeforces.com/problemset/problem/106164/F) |  |  |  | 1m 38s | ✓ |
 | [G](G/) | [Galactic Adventure Agency](https://codeforces.com/problemset/problem/106164/G) |  |  |  | 1m 10s | ✓ |
