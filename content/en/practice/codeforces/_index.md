@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1848 contests, 11394 problems, 6419 verified."
+description: "Codeforces problem solutions with full editorials. 1849 contests, 11396 problems, 6419 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1848 contests, 11394 problems, 6419 verified.**
+**1849 contests, 11396 problems, 6419 verified.**
 
-## Unknown — 149 contests, 1069 problems, 897 verified
+## Unknown — 150 contests, 1071 problems, 897 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
+| [105471](105471/) | [The 2023 ICPC Asia Xian Regional Contest (The 3rd Universal Cup. Stage 9: Xian)](https://codeforces.com/contest/105471) | 2 | 0/2 | ICPC/IOI | - |
 | [105472](105472/) | [2019-2020 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2019)](https://codeforces.com/contest/105472) | 6 | 6/6 | ICPC/IOI | - |
 | [105475](105475/) | [XXII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105475) | 2 | 2/2 | Special | - |
 | [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 3 | 1/3 | Special | - |
