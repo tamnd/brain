@@ -1,22 +1,22 @@
 ---
 title: "The 2025 ICPC South America - Brazil First Phase"
-description: "12 problems from The 2025 ICPC South America - Brazil First Phase (contest 106073), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from The 2025 ICPC South America - Brazil First Phase (contest 106073), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106073
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 663
-date: "2026-06-22T04:03:51+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 722
+date: "2026-06-22T18:49:49+07:00"
 weight: 106073
 draft: false
 ---
 
 # [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073)
 
-ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 11m 3s
+ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 12m 2s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,7 @@ ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 11m 3s
 | [F](F/) | [Frangolino ali na mesa](https://codeforces.com/problemset/problem/106073/F) |  |  |  | 1m 16s | ✓ |
 | [G](G/) | [Generating patterns](https://codeforces.com/problemset/problem/106073/G) |  |  |  | 1m 16s | ✓ |
 | [H](H/) | [How many teams?](https://codeforces.com/problemset/problem/106073/H) |  |  |  | 49s | ✓ |
+| [I](I/) | [Investigating Quadrad\u00f4meda](https://codeforces.com/problemset/problem/106073/I) |  |  |  | 59s | ✓ |
 | [J](J/) | [Jo\u00e3o Jo\u00e3o](https://codeforces.com/problemset/problem/106073/J) |  |  |  | 41s | ✓ |
 | [K](K/) | [Knockout, swiss and other kinds of tournaments](https://codeforces.com/problemset/problem/106073/K) |  |  |  | 51s | ✓ |
 | [L](L/) | [LLMs](https://codeforces.com/problemset/problem/106073/L) |  |  |  | 45s | ✓ |
