@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1880 contests, 11592 problems, 6533 verified."
+description: "Codeforces problem solutions with full editorials. 1881 contests, 11594 problems, 6533 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1880 contests, 11592 problems, 6533 verified.**
+**1881 contests, 11594 problems, 6533 verified.**
 
 ## Unknown — 171 contests, 1203 problems, 983 verified
 
@@ -1543,7 +1543,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 162 contests, 1226 problems, 550 verified
+## 2024 — 163 contests, 1228 problems, 550 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1675,6 +1675,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
 | [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 6 | 5/6 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 6 | 4/6 | Special | - |
+| [105390](105390/) | [TheForces Round #35 (LOL-Forces)](https://codeforces.com/contest/105390) | 2 | 0/2 | Special | - |
 | [105416](105416/) | [UTPC Contest 10-11-24 Div. 2 (Beginner)](https://codeforces.com/contest/105416) | 4 | 1/4 | Div. 2 | - |
 | [105417](105417/) | [UTPC Contest 10-11-24 Div. 1 (Advanced)](https://codeforces.com/contest/105417) | 4 | 1/4 | Div. 1 | - |
 | [105418](105418/) | [Algorithmia IIITN 2024 - Round 1](https://codeforces.com/contest/105418) | 7 | 2/7 | Special | - |
