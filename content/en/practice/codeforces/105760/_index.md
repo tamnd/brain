@@ -1,27 +1,28 @@
 ---
 title: "2020 UCF Local Programming Contest"
-description: "8 problems from 2020 UCF Local Programming Contest (contest 105760), difficulty -. 4/8 solutions verified against sample I/O."
+description: "9 problems from 2020 UCF Local Programming Contest (contest 105760), difficulty -. 4/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105760
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
+n_problems: 9
 n_verified: 4
-total_solve_s: 380
-date: "2026-06-22T15:11:11+07:00"
+total_solve_s: 410
+date: "2026-06-22T22:39:44+07:00"
 weight: 105760
 draft: false
 ---
 
 # [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760)
 
-Special | 8 problems | 4/8 verified | Difficulty - | 6m 20s
+Special | 9 problems | 4/9 verified | Difficulty - | 6m 50s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Corona Virus Testing](https://codeforces.com/problemset/problem/105760/A) |  |  |  | 50s | ✓ |
 | [B](B/) | [Presidential Election](https://codeforces.com/problemset/problem/105760/B) |  |  |  | 56s | ✓ |
+| [C](C/) | [Microwave Mishap](https://codeforces.com/problemset/problem/105760/C) |  |  |  | 30s |  |
 | [D](D/) | [Food Display Arrangement](https://codeforces.com/problemset/problem/105760/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [Making Connections](https://codeforces.com/problemset/problem/105760/E) |  |  |  | 32s |  |
 | [F](F/) | [Boxing Books](https://codeforces.com/problemset/problem/105760/F) |  |  |  | 48s |  |
