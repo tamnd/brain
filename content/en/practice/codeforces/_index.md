@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11095 problems, 6155 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11106 problems, 6156 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11095 problems, 6155 verified.**
+**1828 contests, 11106 problems, 6156 verified.**
 
-## Unknown — 136 contests, 935 problems, 786 verified
+## Unknown — 136 contests, 946 problems, 787 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -61,7 +61,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105904](105904/) | [I SBC São Paulo Programming Marathon](https://codeforces.com/contest/105904) | 2 | 2/2 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 13 | 13/13 | Special | - |
 | [105931](105931/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2024](https://codeforces.com/contest/105931) | 6 | 6/6 | Special | - |
-| [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 3 | 1/3 | Special | - |
+| [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 14 | 2/14 | Special | - |
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 2 | 2/2 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 2 | 2/2 | Special | - |
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 3 | 3/3 | Special | - |
