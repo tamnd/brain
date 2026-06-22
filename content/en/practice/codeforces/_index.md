@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11002 problems, 6063 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11003 problems, 6063 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11002 problems, 6063 verified.**
+**1828 contests, 11003 problems, 6063 verified.**
 
 ## Unknown — 136 contests, 924 problems, 775 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 10 | 1/10 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1530 problems, 799 verified
+## 2025 — 193 contests, 1531 problems, 799 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1789,7 +1789,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
 | [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 1/12 | Special | - |
 | [105838](105838/) | [The 14th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/105838) | 13 | 13/13 | Special | - |
-| [105851](105851/) | [2025年北京市大学生程序设计竞赛暨“小米杯”全国邀请赛](https://codeforces.com/contest/105851) | 10 | 3/10 | Special | - |
+| [105851](105851/) | [2025年北京市大学生程序设计竞赛暨“小米杯”全国邀请赛](https://codeforces.com/contest/105851) | 11 | 3/11 | Special | - |
 | [105864](105864/) | [Командный турнир для школьников по программированию](https://codeforces.com/contest/105864) | 13 | 13/13 | Special | - |
 | [105870](105870/) | [MITIT Spring 2025 Finals Round](https://codeforces.com/contest/105870) | 5 | 5/5 | Special | - |
 | [105895](105895/) | [The 21st Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105895) | 14 | 13/14 | Special | - |
