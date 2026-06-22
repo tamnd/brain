@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11200 problems, 6240 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11204 problems, 6244 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11200 problems, 6240 verified.**
+**1828 contests, 11204 problems, 6244 verified.**
 
 ## Unknown — 136 contests, 974 problems, 815 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 10 | 1/10 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1678 problems, 936 verified
+## 2025 — 193 contests, 1682 problems, 940 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1815,7 +1815,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105992](105992/) | [The 2025 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/105992) | 13 | 13/13 | Special | - |
 | [106015](106015/) | [Game of Coders 4 - Over the Garden Wall](https://codeforces.com/contest/106015) | 15 | 15/15 | Special | - |
 | [106016](106016/) | [The 2025 Homs Collegiate programming contest](https://codeforces.com/contest/106016) | 13 | 13/13 | Special | - |
-| [106026](106026/) | [CCF CAT NAEC 2025 (Final)](https://codeforces.com/contest/106026) | 6 | 6/6 | Special | - |
+| [106026](106026/) | [CCF CAT NAEC 2025 (Final)](https://codeforces.com/contest/106026) | 10 | 10/10 | Special | - |
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 13 | 3/13 | Special | - |
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
 | [106057](106057/) | [CoU CSE Fest 2025 - Inter University Programming Contest (Divisional)](https://codeforces.com/contest/106057) | 10 | 10/10 | Special | - |
