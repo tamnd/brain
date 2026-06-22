@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 10925 problems, 5989 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 10929 problems, 5993 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 10925 problems, 5989 verified.**
+**1828 contests, 10929 problems, 5993 verified.**
 
-## Unknown — 136 contests, 897 problems, 748 verified
+## Unknown — 136 contests, 901 problems, 752 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 8 | 5/8 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 1 | 0/1 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 7 | 0/7 | Special | - |
-| [105562](105562/) | [2024-2025 ICPC Northwestern European Regional Programming Contest (NWERC 2024)](https://codeforces.com/contest/105562) | 6 | 6/6 | ICPC/IOI | - |
+| [105562](105562/) | [2024-2025 ICPC Northwestern European Regional Programming Contest (NWERC 2024)](https://codeforces.com/contest/105562) | 10 | 10/10 | ICPC/IOI | - |
 | [105586](105586/) | [“华为杯” 2024 年广东工业大学 ACM 新生程序设计竞赛（决赛）](https://codeforces.com/contest/105586) | 4 | 4/4 | Special | - |
 | [105591](105591/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Нижегородская область, 2024](https://codeforces.com/contest/105591) | 2 | 2/2 | Special | - |
 | [105592](105592/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Нижегородская область, 2024](https://codeforces.com/contest/105592) | 3 | 3/3 | Special | - |
