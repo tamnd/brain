@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1903 contests, 11662 problems, 6586 verified."
+description: "Codeforces problem solutions with full editorials. 1904 contests, 11664 problems, 6587 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1903 contests, 11662 problems, 6586 verified.**
+**1904 contests, 11664 problems, 6587 verified.**
 
-## Unknown — 181 contests, 1235 problems, 1006 verified
+## Unknown — 182 contests, 1237 problems, 1007 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105309](105309/) | [CerealCodes III Novice Division](https://codeforces.com/contest/105309) | 2 | 1/2 | Special | - |
 | [105310](105310/) | [CerealCodes III Advanced Division](https://codeforces.com/contest/105310) | 2 | 0/2 | Special | - |
 | [105314](105314/) | [Robbing Balloons 2.0 Qualifications](https://codeforces.com/contest/105314) | 3 | 3/3 | Special | - |
 | [105315](105315/) | [JPC 4.0](https://codeforces.com/contest/105315) | 3 | 3/3 | Special | - |
