@@ -1,22 +1,22 @@
 ---
 title: "Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra)"
-description: "12 problems from Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra) (contest 105646), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra) (contest 105646), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105646
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 740
-date: "2026-06-22T15:07:52+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 794
+date: "2026-06-22T23:13:25+07:00"
 weight: 105646
 draft: false
 ---
 
 # [Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra)](https://codeforces.com/contest/105646)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 12m 20s
+Special | 13 problems | 13/13 verified | Difficulty - | 13m 14s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,3 +32,4 @@ Special | 12 problems | 12/12 verified | Difficulty - | 12m 20s
 | [J](J/) | [Polygon II](https://codeforces.com/problemset/problem/105646/J) |  |  |  | 2m 38s | ✓ |
 | [K](K/) | [Power Divisions](https://codeforces.com/problemset/problem/105646/K) |  |  |  | 1m 7s | ✓ |
 | [L](L/) | [Chords](https://codeforces.com/problemset/problem/105646/L) |  |  |  | 47s | ✓ |
+| [M](M/) | [Balance of Permutation](https://codeforces.com/problemset/problem/105646/M) |  |  |  | 54s | ✓ |
