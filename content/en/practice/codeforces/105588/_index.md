@@ -1,27 +1,28 @@
 ---
 title: "The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)"
-description: "11 problems from The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming) (contest 105588), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming) (contest 105588), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105588
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 687
+n_problems: 12
+n_verified: 12
+total_solve_s: 782
 contest_year: 2024
-date: "2026-06-22T17:56:46+07:00"
+date: "2026-06-22T22:33:23+07:00"
 weight: 105588
 draft: false
 ---
 
 # [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 11m 27s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 13m 2s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Antivirus](https://codeforces.com/problemset/problem/105588/A) |  |  |  | 53s | ✓ |
+| [B](B/) | [Brackets](https://codeforces.com/problemset/problem/105588/B) |  |  |  | 1m 35s | ✓ |
 | [C](C/) | [Coin](https://codeforces.com/problemset/problem/105588/C) |  |  |  | 50s | ✓ |
 | [D](D/) | [Dolls](https://codeforces.com/problemset/problem/105588/D) |  |  |  | 59s | ✓ |
 | [E](E/) | [Extracting Weights](https://codeforces.com/problemset/problem/105588/E) |  |  |  | 1m 20s | ✓ |
