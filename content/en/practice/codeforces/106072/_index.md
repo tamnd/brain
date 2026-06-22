@@ -1,23 +1,23 @@
 ---
 title: "The 2025 ICPC Asia EC Regionals Online Contest (II)"
-description: "11 problems from The 2025 ICPC Asia EC Regionals Online Contest (II) (contest 106072), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from The 2025 ICPC Asia EC Regionals Online Contest (II) (contest 106072), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106072
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 651
+n_problems: 12
+n_verified: 12
+total_solve_s: 726
 contest_year: 2025
-date: "2026-06-22T04:02:49+07:00"
+date: "2026-06-22T18:48:38+07:00"
 weight: 106072
 draft: false
 ---
 
 # [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072)
 
-ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 51s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 6s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@ ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 10m 51s
 | [F](F/) | [Square Permutation I](https://codeforces.com/problemset/problem/106072/F) |  |  |  | 56s | ✓ |
 | [G](G/) | [Square Permutation II](https://codeforces.com/problemset/problem/106072/G) |  |  |  | 53s | ✓ |
 | [H](H/) | [Tree Shuffling](https://codeforces.com/problemset/problem/106072/H) |  |  |  | 1m 8s | ✓ |
+| [I](I/) | [DAG Query](https://codeforces.com/problemset/problem/106072/I) |  |  |  | 1m 15s | ✓ |
 | [J](J/) | [Reconstruct the tree](https://codeforces.com/problemset/problem/106072/J) |  |  |  | 1m 7s | ✓ |
 | [K](K/) | [The Only Heart](https://codeforces.com/problemset/problem/106072/K) |  |  |  | 1m 16s | ✓ |
 | [L](L/) | [Xor Mirror](https://codeforces.com/problemset/problem/106072/L) |  |  |  | 48s | ✓ |
