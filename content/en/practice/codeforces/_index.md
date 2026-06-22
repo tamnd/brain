@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11047 problems, 6107 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11057 problems, 6117 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11047 problems, 6107 verified.**
+**1828 contests, 11057 problems, 6117 verified.**
 
 ## Unknown — 136 contests, 935 problems, 786 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 10 | 1/10 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1564 problems, 832 verified
+## 2025 — 193 contests, 1574 problems, 842 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1803,7 +1803,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 12 | 12/12 | Special | - |
 | [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 13 | 13/13 | Special | - |
 | [105937](105937/) | [2025 Xian Jiaotong University Programming Contest](https://codeforces.com/contest/105937) | 15 | 15/15 | Special | - |
-| [105941](105941/) | [2025 National Invitational of CCPC (Zhengzhou), 2025 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105941) | 3 | 3/3 | Special | - |
+| [105941](105941/) | [2025 National Invitational of CCPC (Zhengzhou), 2025 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105941) | 13 | 13/13 | Special | - |
 | [105945](105945/) | [The 2025 Jiangsu Collegiate Programming Contest, The 2025 Guangdong Provincial Collegiate Programming Contest](https://codeforces.com/contest/105945) | 3 | 3/3 | Special | - |
 | [105946](105946/) | [2025 UP ACM Algolympics Final Round](https://codeforces.com/contest/105946) | 2 | 2/2 | Special | - |
 | [105948](105948/) | [CCF CAT NAEC 2025 (Provincial)](https://codeforces.com/contest/105948) | 2 | 2/2 | Special | - |
