@@ -1,23 +1,23 @@
 ---
 title: "Ural Championship 2017"
-description: "12 problems from Ural Championship 2017 (contest 105582), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from Ural Championship 2017 (contest 105582), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105582
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 701
+n_problems: 13
+n_verified: 13
+total_solve_s: 772
 contest_year: 2024
-date: "2026-06-22T21:27:58+07:00"
+date: "2026-06-22T21:55:24+07:00"
 weight: 105582
 draft: false
 ---
 
 # [Ural Championship 2017](https://codeforces.com/contest/105582)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 41s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 52s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,7 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 41s
 | [G](G/) | [Glasses of Solutions](https://codeforces.com/problemset/problem/105582/G) |  |  |  | 1m 5s | ✓ |
 | [H](H/) | [Hamburgers](https://codeforces.com/problemset/problem/105582/H) |  |  |  | 1m 3s | ✓ |
 | [I](I/) | [Intricate Path](https://codeforces.com/problemset/problem/105582/I) |  |  |  | 52s | ✓ |
+| [J](J/) | [Jumping Through Hyperspace](https://codeforces.com/problemset/problem/105582/J) |  |  |  | 1m 11s | ✓ |
 | [K](K/) | [King's Island](https://codeforces.com/problemset/problem/105582/K) |  |  |  | 44s | ✓ |
 | [L](L/) | [Lexica](https://codeforces.com/problemset/problem/105582/L) |  |  |  | 50s | ✓ |
 | [M](M/) | [Maximum Paths](https://codeforces.com/problemset/problem/105582/M) |  |  |  | 1m 2s | ✓ |
