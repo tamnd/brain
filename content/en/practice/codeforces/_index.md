@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11017 problems, 6077 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11021 problems, 6081 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11017 problems, 6077 verified.**
+**1828 contests, 11021 problems, 6081 verified.**
 
-## Unknown — 136 contests, 927 problems, 778 verified
+## Unknown — 136 contests, 931 problems, 782 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -59,7 +59,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 13 | 13/13 | Special | - |
 | [105904](105904/) | [I SBC São Paulo Programming Marathon](https://codeforces.com/contest/105904) | 2 | 2/2 | Special | - |
-| [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 9 | 9/9 | Special | - |
+| [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 13 | 13/13 | Special | - |
 | [105931](105931/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2024](https://codeforces.com/contest/105931) | 2 | 2/2 | Special | - |
 | [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 3 | 1/3 | Special | - |
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 2 | 2/2 | Special | - |
