@@ -1,23 +1,23 @@
 ---
 title: "SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final"
-description: "12 problems from SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final (contest 105631), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final (contest 105631), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105631
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 717
+n_problems: 13
+n_verified: 13
+total_solve_s: 791
 contest_year: 2024
-date: "2026-06-22T18:03:47+07:00"
+date: "2026-06-22T23:07:42+07:00"
 weight: 105631
 draft: false
 ---
 
 # [SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final](https://codeforces.com/contest/105631)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 57s
+Special | 13 problems | 13/13 verified | Difficulty - | 13m 11s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,7 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 57s
 | [E](E/) | [Erasing Numbers](https://codeforces.com/problemset/problem/105631/E) |  |  |  | 57s | ✓ |
 | [F](F/) | [Finding Maxi-strings](https://codeforces.com/problemset/problem/105631/F) |  |  |  | 51s | ✓ |
 | [G](G/) | [General Checksum Calculation](https://codeforces.com/problemset/problem/105631/G) |  |  |  | 52s | ✓ |
+| [H](H/) | [Hoppers and Doors](https://codeforces.com/problemset/problem/105631/H) |  |  |  | 1m 14s | ✓ |
 | [I](I/) | [Isla Loves Christmas](https://codeforces.com/problemset/problem/105631/I) |  |  |  | 50s | ✓ |
 | [J](J/) | [Jazz Music from the Er-th](https://codeforces.com/problemset/problem/105631/J) |  |  |  | 54s | ✓ |
 | [K](K/) | [King of Card Games](https://codeforces.com/problemset/problem/105631/K) |  |  |  | 1m 4s | ✓ |
