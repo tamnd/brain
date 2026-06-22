@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 10947 problems, 6011 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 10951 problems, 6015 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 10947 problems, 6011 verified.**
+**1828 contests, 10951 problems, 6015 verified.**
 
 ## Unknown — 136 contests, 901 problems, 752 verified
 
@@ -1508,7 +1508,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 145 contests, 1055 problems, 420 verified
+## 2024 — 145 contests, 1059 problems, 424 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1646,7 +1646,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105578](105578/) | [The 2024 ICPC Asia Shenyang Regional Contest (The 3rd Universal Cup. Stage 19: Shenyang)](https://codeforces.com/contest/105578) | 8 | 8/8 | ICPC/IOI | - |
 | [105579](105579/) | [Udmurtia High School Programming Contest (Qualification for VKOSHP 2012)](https://codeforces.com/contest/105579) | 7 | 7/7 | Special | - |
 | [105580](105580/) | [Open Udmurtia High School Programming Contest 2015](https://codeforces.com/contest/105580) | 7 | 7/7 | Special | - |
-| [105581](105581/) | [Open Udmurtia Junior Programming Contest 2018](https://codeforces.com/contest/105581) | 3 | 3/3 | Special | - |
+| [105581](105581/) | [Open Udmurtia Junior Programming Contest 2018](https://codeforces.com/contest/105581) | 7 | 7/7 | Special | - |
 | [105582](105582/) | [Ural Championship 2017](https://codeforces.com/contest/105582) | 3 | 3/3 | Special | - |
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 1 | 1/1 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 3 | 3/3 | ICPC/IOI | - |
