@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1882 contests, 11600 problems, 6539 verified."
+description: "Codeforces problem solutions with full editorials. 1883 contests, 11606 problems, 6540 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1882 contests, 11600 problems, 6539 verified.**
+**1883 contests, 11606 problems, 6540 verified.**
 
-## Unknown — 172 contests, 1209 problems, 989 verified
+## Unknown — 173 contests, 1215 problems, 990 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,6 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 5 | 0/5 | Special | - |
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
+| [105387](105387/) | [ICPC Central Russia Regional Contest, 2023](https://codeforces.com/contest/105387) | 6 | 1/6 | ICPC/IOI | - |
 | [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 6 | 6/6 | Special | - |
 | [105394](105394/) | [2024-2025 ICPC German Collegiate Programming Contest (GCPC 2024)](https://codeforces.com/contest/105394) | 7 | 7/7 | ICPC/IOI | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
