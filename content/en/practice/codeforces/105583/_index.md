@@ -1,23 +1,23 @@
 ---
 title: "Ural Championship 2014"
-description: "11 problems from Ural Championship 2014 (contest 105583), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from Ural Championship 2014 (contest 105583), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105583
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 719
+n_problems: 12
+n_verified: 12
+total_solve_s: 777
 contest_year: 2024
-date: "2026-06-22T22:21:23+07:00"
+date: "2026-06-22T23:02:53+07:00"
 weight: 105583
 draft: false
 ---
 
 # [Ural Championship 2014](https://codeforces.com/contest/105583)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 59s
+Special | 12 problems | 12/12 verified | Difficulty - | 12m 57s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,4 +31,5 @@ Special | 11 problems | 11/11 verified | Difficulty - | 11m 59s
 | [H](H/) | [Harvest](https://codeforces.com/problemset/problem/105583/H) |  |  |  | 1m 8s | ✓ |
 | [I](I/) | [Innovative String Conversion](https://codeforces.com/problemset/problem/105583/I) |  |  |  | 1m 6s | ✓ |
 | [J](J/) | [Jeerman](https://codeforces.com/problemset/problem/105583/J) |  |  |  | 53s | ✓ |
+| [K](K/) | [Keen Coal Extraction](https://codeforces.com/problemset/problem/105583/K) |  |  |  | 58s | ✓ |
 | [L](L/) | [Lightbulbs](https://codeforces.com/problemset/problem/105583/L) |  |  |  | 1m 26s | ✓ |

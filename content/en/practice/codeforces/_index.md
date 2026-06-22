@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1829 contests, 11312 problems, 6344 verified."
+description: "Codeforces problem solutions with full editorials. 1829 contests, 11314 problems, 6345 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1829 contests, 11312 problems, 6344 verified.**
+**1829 contests, 11314 problems, 6345 verified.**
 
-## Unknown — 137 contests, 1021 problems, 856 verified
+## Unknown — 137 contests, 1022 problems, 856 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -46,7 +46,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
 | [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 3 | 3/3 | Special | - |
 | [105748](105748/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 2](https://codeforces.com/contest/105748) | 2 | 2/2 | Special | - |
-| [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 8 | 4/8 | Special | - |
+| [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 9 | 4/9 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
@@ -1509,7 +1509,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 145 contests, 1129 problems, 489 verified
+## 2024 — 145 contests, 1130 problems, 490 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1649,7 +1649,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105580](105580/) | [Open Udmurtia High School Programming Contest 2015](https://codeforces.com/contest/105580) | 11 | 11/11 | Special | - |
 | [105581](105581/) | [Open Udmurtia Junior Programming Contest 2018](https://codeforces.com/contest/105581) | 11 | 11/11 | Special | - |
 | [105582](105582/) | [Ural Championship 2017](https://codeforces.com/contest/105582) | 13 | 13/13 | Special | - |
-| [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 11 | 11/11 | Special | - |
+| [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 12 | 12/12 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 12 | 12/12 | ICPC/IOI | - |
 | [105615](105615/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615) | 14 | 2/14 | Special | - |
 | [105629](105629/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final](https://codeforces.com/contest/105629) | 9 | 4/9 | Special | - |
