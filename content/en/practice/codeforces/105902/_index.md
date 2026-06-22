@@ -1,23 +1,23 @@
 ---
 title: "2025 Fujian Normal University Programming Contest"
-description: "11 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from 2025 Fujian Normal University Programming Contest (contest 105902), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105902
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 606
+n_problems: 12
+n_verified: 12
+total_solve_s: 668
 contest_year: 2025
-date: "2026-06-21T03:02:35+07:00"
+date: "2026-06-21T15:26:13+07:00"
 weight: 105902
 draft: false
 ---
 
 # [2025 Fujian Normal University Programming Contest](https://codeforces.com/contest/105902)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 10m 6s
+Special | 12 problems | 12/12 verified | Difficulty - | 11m 8s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,3 +32,4 @@ Special | 11 problems | 11/11 verified | Difficulty - | 10m 6s
 | [I](I/) | [DJ Mr. Spin](https://codeforces.com/problemset/problem/105902/I) |  |  |  | 1m 14s | ✓ |
 | [J](J/) | [Spirit of Cola.](https://codeforces.com/problemset/problem/105902/J) |  |  |  | 52s | ✓ |
 | [L](L/) | [We Luv Stamina](https://codeforces.com/problemset/problem/105902/L) |  |  |  | 41s | ✓ |
+| [M](M/) | [The Journey Onwards...](https://codeforces.com/problemset/problem/105902/M) |  |  |  | 1m 2s | ✓ |
