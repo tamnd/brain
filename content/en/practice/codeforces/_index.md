@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 10924 problems, 5989 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 10925 problems, 5989 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 10924 problems, 5989 verified.**
+**1828 contests, 10925 problems, 5989 verified.**
 
 ## Unknown — 136 contests, 897 problems, 748 verified
 
@@ -1508,7 +1508,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 145 contests, 1036 problems, 402 verified
+## 2024 — 145 contests, 1037 problems, 402 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1640,7 +1640,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 11 | 11/11 | Special | - |
 | [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 5 | 4/5 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 5 | 3/5 | Special | - |
-| [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 2 | 2/2 | Special | - |
+| [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 3 | 2/3 | Special | - |
 | [105570](105570/) | [2024 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/105570) | 5 | 4/5 | Special | - |
 | [105575](105575/) | [Southeast University 6th Programming Competition Competition (Winter, Novice Group) 东南大学第六届程序设计竞赛冬季赛（新手组）](https://codeforces.com/contest/105575) | 6 | 6/6 | Special | - |
 | [105578](105578/) | [The 2024 ICPC Asia Shenyang Regional Contest (The 3rd Universal Cup. Stage 19: Shenyang)](https://codeforces.com/contest/105578) | 3 | 3/3 | ICPC/IOI | - |
