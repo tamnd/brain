@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11273 problems, 6306 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11274 problems, 6307 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11273 problems, 6306 verified.**
+**1828 contests, 11274 problems, 6307 verified.**
 
 ## Unknown — 136 contests, 1004 problems, 840 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1695 problems, 953 verified
+## 2025 — 193 contests, 1696 problems, 954 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1837,7 +1837,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 9 | 9/9 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 4 | 1/4 | Special | - |
 | [106192](106192/) | [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192) | 11 | 11/11 | Special | - |
-| [106194](106194/) | [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194) | 12 | 12/12 | Special | - |
+| [106194](106194/) | [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194) | 13 | 13/13 | Special | - |
 | [106208](106208/) | [Inter University Programming Contest - MU CSE Fest 2025 - MIRROR](https://codeforces.com/contest/106208) | 10 | 9/10 | Special | - |
 | [106210](106210/) | [广东工业大学新生赛(初赛)](https://codeforces.com/contest/106210) | 10 | 3/10 | Special | - |
 | [106238](106238/) | [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238) | 12 | 2/12 | Special | - |

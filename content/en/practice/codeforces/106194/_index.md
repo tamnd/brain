@@ -1,23 +1,23 @@
 ---
 title: "2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest"
-description: "12 problems from 2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest (contest 106194), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from 2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest (contest 106194), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106194
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 707
+n_problems: 13
+n_verified: 13
+total_solve_s: 769
 contest_year: 2025
-date: "2026-06-19T09:50:28+07:00"
+date: "2026-06-19T19:12:41+07:00"
 weight: 106194
 draft: false
 ---
 
 # [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 47s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 49s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,5 +31,6 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 47s
 | [H](H/) | [\u9b54\u5973\u4e4b\u65c5](https://codeforces.com/problemset/problem/106194/H) |  |  |  | 1m 11s | ✓ |
 | [I](I/) | [\u9694\u5899\u82b1\u5f71\u65e7\u76f8\u77e5](https://codeforces.com/problemset/problem/106194/I) |  |  |  | 42s | ✓ |
 | [J](J/) | [\u4f0a\u6ce2\u6069\u00b7\u5f17\u5854\u6839\u7684\u6284\u672c](https://codeforces.com/problemset/problem/106194/J) |  |  |  | 1m 10s | ✓ |
+| [K](K/) | [\u9ec4\u91d1\u9b54\u5973\u7684\u8c1c\u9898](https://codeforces.com/problemset/problem/106194/K) |  |  |  | 1m 2s | ✓ |
 | [L](L/) | [Ep13.\u6ca1\u6709\u7231\u5c31\u770b\u4e0d\u89c1](https://codeforces.com/problemset/problem/106194/L) |  |  |  | 49s | ✓ |
 | [M](M/) | [\u5982\u679c\u662f\u52c7\u8005\u8f9b\u7f8e\u5c14\u7684\u8bdd](https://codeforces.com/problemset/problem/106194/M) |  |  |  | 53s | ✓ |
