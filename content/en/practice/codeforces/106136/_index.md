@@ -1,23 +1,23 @@
 ---
 title: "East China University of Science and Technology Programming Contest 2025"
-description: "14 problems from East China University of Science and Technology Programming Contest 2025 (contest 106136), difficulty -. 14/14 solutions verified against sample I/O."
+description: "15 problems from East China University of Science and Technology Programming Contest 2025 (contest 106136), difficulty -. 15/15 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106136
 contest_type: "Special"
 rating_range: "-"
-n_problems: 14
-n_verified: 14
-total_solve_s: 858
+n_problems: 15
+n_verified: 15
+total_solve_s: 931
 contest_year: 2025
-date: "2026-06-20T09:33:04+07:00"
+date: "2026-06-20T18:58:44+07:00"
 weight: 106136
 draft: false
 ---
 
 # [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136)
 
-Special | 14 problems | 14/14 verified | Difficulty - | 14m 18s
+Special | 15 problems | 15/15 verified | Difficulty - | 15m 31s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,6 +32,7 @@ Special | 14 problems | 14/14 verified | Difficulty - | 14m 18s
 | [I](I/) | [Chromatic Complex](https://codeforces.com/problemset/problem/106136/I) |  |  |  | 1m 8s | ✓ |
 | [J](J/) | [Attack from clone](https://codeforces.com/problemset/problem/106136/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Clockwork](https://codeforces.com/problemset/problem/106136/K) |  |  |  | 1m 9s | ✓ |
+| [L](L/) | [Forest Path](https://codeforces.com/problemset/problem/106136/L) |  |  |  | 1m 13s | ✓ |
 | [M](M/) | [FLOATING POINT](https://codeforces.com/problemset/problem/106136/M) |  |  |  | 50s | ✓ |
 | [N](N/) | [In Filtration](https://codeforces.com/problemset/problem/106136/N) |  |  |  | 55s | ✓ |
 | [O](O/) | [Nelumbo](https://codeforces.com/problemset/problem/106136/O) |  |  |  | 1m 15s | ✓ |
