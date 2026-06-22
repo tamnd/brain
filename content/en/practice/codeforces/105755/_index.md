@@ -1,23 +1,23 @@
 ---
 title: "Bay Area Programming Contest 2025"
-description: "9 problems from Bay Area Programming Contest 2025 (contest 105755), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from Bay Area Programming Contest 2025 (contest 105755), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105755
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 632
+n_problems: 10
+n_verified: 10
+total_solve_s: 731
 contest_year: 2025
-date: "2026-06-22T18:12:58+07:00"
+date: "2026-06-22T22:39:05+07:00"
 weight: 105755
 draft: false
 ---
 
 # [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 10m 32s
+Special | 10 problems | 10/10 verified | Difficulty - | 12m 11s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 9 problems | 9/9 verified | Difficulty - | 10m 32s
 | [G](G/) | [Grids of Grids](https://codeforces.com/problemset/problem/105755/G) |  |  |  | 52s | ✓ |
 | [I](I/) | [In the News](https://codeforces.com/problemset/problem/105755/I) |  |  |  | 1m 25s | ✓ |
 | [J](J/) | [Joystick Jumping](https://codeforces.com/problemset/problem/105755/J) |  |  |  | 52s | ✓ |
+| [K](K/) | [Killer Cows](https://codeforces.com/problemset/problem/105755/K) |  |  |  | 1m 39s | ✓ |
