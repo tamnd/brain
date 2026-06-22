@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1905 contests, 11666 problems, 6587 verified."
+description: "Codeforces problem solutions with full editorials. 1906 contests, 11669 problems, 6590 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1905 contests, 11666 problems, 6587 verified.**
+**1906 contests, 11669 problems, 6590 verified.**
 
 ## Unknown — 182 contests, 1237 problems, 1007 verified
 
@@ -1554,7 +1554,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 176 contests, 1266 problems, 580 verified
+## 2024 — 177 contests, 1269 problems, 583 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1683,6 +1683,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105297](105297/) | [2024 USP Try-outs](https://codeforces.com/contest/105297) | 3 | 3/3 | Special | - |
 | [105307](105307/) | [ICPC 2024 Thailand - Chulalongkorn University Internal Round](https://codeforces.com/contest/105307) | 2 | 0/2 | ICPC/IOI | - |
 | [105316](105316/) | [2024 Aleppo Collegiate Programming Contest](https://codeforces.com/contest/105316) | 3 | 3/3 | Special | - |
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
