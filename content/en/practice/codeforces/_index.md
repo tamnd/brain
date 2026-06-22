@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 10889 problems, 5969 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 10892 problems, 5971 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 10889 problems, 5969 verified.**
+**1828 contests, 10892 problems, 5971 verified.**
 
-## Unknown — 136 contests, 876 problems, 739 verified
+## Unknown — 136 contests, 879 problems, 741 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [105321](105321/) | [2024 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/105321) | 5 | 5/5 | Special | - |
+| [105321](105321/) | [2024 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/105321) | 8 | 7/8 | Special | - |
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 1 | 0/1 | Special | - |
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 3 | 2/3 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 1 | 0/1 | Special | - |
