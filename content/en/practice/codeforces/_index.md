@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1840 contests, 11364 problems, 6393 verified."
+description: "Codeforces problem solutions with full editorials. 1841 contests, 11367 problems, 6396 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1840 contests, 11364 problems, 6393 verified.**
+**1841 contests, 11367 problems, 6396 verified.**
 
 ## Unknown — 144 contests, 1054 problems, 886 verified
 
@@ -1516,7 +1516,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 149 contests, 1147 problems, 507 verified
+## 2024 — 150 contests, 1150 problems, 510 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1648,6 +1648,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
 | [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 6 | 5/6 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 6 | 4/6 | Special | - |
+| [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 3 | 3/3 | ICPC/IOI | - |
 | [105498](105498/) | [Khulna Regional Inter University Programming Contest (KRIUPC) MIRROR](https://codeforces.com/contest/105498) | 2 | 2/2 | Special | - |
 | [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 2 | 2/2 | Special | - |
 | [105535](105535/) | [2024 ICPC Belarus Regional Contest](https://codeforces.com/contest/105535) | 7 | 7/7 | ICPC/IOI | - |
