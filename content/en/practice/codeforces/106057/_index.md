@@ -1,26 +1,27 @@
 ---
 title: "CoU CSE Fest 2025 - Inter University Programming Contest (Divisional)"
-description: "10 problems from CoU CSE Fest 2025 - Inter University Programming Contest (Divisional) (contest 106057), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from CoU CSE Fest 2025 - Inter University Programming Contest (Divisional) (contest 106057), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106057
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 462
+n_problems: 11
+n_verified: 11
+total_solve_s: 509
 contest_year: 2025
-date: "2026-06-20T15:54:22+07:00"
+date: "2026-06-22T18:41:08+07:00"
 weight: 106057
 draft: false
 ---
 
 # [CoU CSE Fest 2025 - Inter University Programming Contest (Divisional)](https://codeforces.com/contest/106057)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 7m 42s
+Special | 11 problems | 11/11 verified | Difficulty - | 8m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Decreasing Trees](https://codeforces.com/problemset/problem/106057/A) |  |  |  | 47s | ✓ |
 | [B](B/) | [Dartboard](https://codeforces.com/problemset/problem/106057/B) |  |  |  | 1m 4s | ✓ |
 | [C](C/) | [Prime Dominion](https://codeforces.com/problemset/problem/106057/C) |  |  |  | 50s | ✓ |
 | [D](D/) | [Zero is not an option!](https://codeforces.com/problemset/problem/106057/D) |  |  |  | 41s | ✓ |
