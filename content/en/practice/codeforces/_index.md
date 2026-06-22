@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11254 problems, 6288 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11255 problems, 6289 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11254 problems, 6288 verified.**
+**1828 contests, 11255 problems, 6289 verified.**
 
 ## Unknown — 136 contests, 997 problems, 834 verified
 
@@ -1508,7 +1508,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 145 contests, 1110 problems, 470 verified
+## 2024 — 145 contests, 1111 problems, 471 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1655,7 +1655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105631](105631/) | [SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final](https://codeforces.com/contest/105631) | 12 | 12/12 | Special | - |
 | [105636](105636/) | [NOIP 2024](https://codeforces.com/contest/105636) | 2 | 0/2 | Special | - |
 | [105677](105677/) | [2024-2025 ICPC Southwestern European Regional Contest (SWERC 2024)](https://codeforces.com/contest/105677) | 13 | 13/13 | ICPC/IOI | - |
-| [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 12 | 2/12 | Special | - |
+| [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
 ## 2025 — 193 contests, 1684 problems, 942 verified
