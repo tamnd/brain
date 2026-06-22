@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11013 problems, 6073 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11017 problems, 6077 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11013 problems, 6073 verified.**
+**1828 contests, 11017 problems, 6077 verified.**
 
 ## Unknown — 136 contests, 927 problems, 778 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 10 | 1/10 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1538 problems, 806 verified
+## 2025 — 193 contests, 1542 problems, 810 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1799,7 +1799,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105911](105911/) | [2025 ICPC Nanchang Invitational and Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105911) | 13 | 12/13 | ICPC/IOI | - |
 | [105920](105920/) | [Soy Cup #1: Firefly](https://codeforces.com/contest/105920) | 13 | 13/13 | Special | - |
 | [105922](105922/) | [The 18th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/105922) | 12 | 12/12 | Special | - |
-| [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 8 | 8/8 | Special | - |
+| [105924](105924/) | [The 2025 CCPC National Invitational Contest (Northeast), The 19th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105924) | 12 | 12/12 | Special | - |
 | [105928](105928/) | [Soy Cup #2: Vivian](https://codeforces.com/contest/105928) | 8 | 8/8 | Special | - |
 | [105930](105930/) | [The 15th Shandong CCPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/105930) | 7 | 7/7 | Special | - |
 | [105937](105937/) | [2025 Xian Jiaotong University Programming Contest](https://codeforces.com/contest/105937) | 3 | 3/3 | Special | - |
