@@ -1,26 +1,27 @@
 ---
 title: "OCPC 2025 Winter, Day 1: Limas Sultan Agung"
-description: "11 problems from OCPC 2025 Winter, Day 1: Limas Sultan Agung (contest 106444), difficulty -. 10/11 solutions verified against sample I/O."
+description: "12 problems from OCPC 2025 Winter, Day 1: Limas Sultan Agung (contest 106444), difficulty -. 11/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106444
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 10
-total_solve_s: 594
-date: "2026-06-21T04:19:25+07:00"
+n_problems: 12
+n_verified: 11
+total_solve_s: 651
+date: "2026-06-21T19:18:13+07:00"
 weight: 106444
 draft: false
 ---
 
 # [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444)
 
-Special | 11 problems | 10/11 verified | Difficulty - | 9m 54s
+Special | 12 problems | 11/12 verified | Difficulty - | 10m 51s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Abadi Pikosom](https://codeforces.com/problemset/problem/106444/A) |  |  |  | 1m 6s | ✓ |
+| [B](B/) | [Emang Harusnya Bet Merah](https://codeforces.com/problemset/problem/106444/B) |  |  |  | 57s | ✓ |
 | [C](C/) | [Gegege](https://codeforces.com/problemset/problem/106444/C) |  |  |  | 1m 12s | ✓ |
 | [D](D/) | [Ikam Bokam](https://codeforces.com/problemset/problem/106444/D) |  |  |  | 36s |  |
 | [E](E/) | [Jsteyki](https://codeforces.com/problemset/problem/106444/E) |  |  |  | 49s | ✓ |
