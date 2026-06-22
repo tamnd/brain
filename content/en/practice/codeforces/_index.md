@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11269 problems, 6302 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11270 problems, 6303 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11269 problems, 6302 verified.**
+**1828 contests, 11270 problems, 6303 verified.**
 
 ## Unknown — 136 contests, 1002 problems, 838 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1693 problems, 951 verified
+## 2025 — 193 contests, 1694 problems, 952 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1833,7 +1833,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106159](106159/) | [XIII UnB Contest Mirror](https://codeforces.com/contest/106159) | 14 | 14/14 | Special | - |
 | [106161](106161/) | [The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu)](https://codeforces.com/contest/106161) | 13 | 12/13 | ICPC/IOI | - |
 | [106164](106164/) | [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164) | 14 | 14/14 | ICPC/IOI | - |
-| [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 13 | 13/13 | ICPC/IOI | - |
+| [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 14 | 14/14 | ICPC/IOI | - |
 | [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 9 | 9/9 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 4 | 1/4 | Special | - |
 | [106192](106192/) | [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192) | 10 | 10/10 | Special | - |

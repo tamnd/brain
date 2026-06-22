@@ -1,23 +1,23 @@
 ---
 title: "2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)"
-description: "13 problems from 2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021) (contest 106167), difficulty -. 13/13 solutions verified against sample I/O."
+description: "14 problems from 2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021) (contest 106167), difficulty -. 14/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106167
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 13
-n_verified: 13
-total_solve_s: 793
+n_problems: 14
+n_verified: 14
+total_solve_s: 849
 contest_year: 2025
-date: "2026-06-19T16:09:02+07:00"
+date: "2026-06-19T19:06:05+07:00"
 weight: 106167
 draft: false
 ---
 
 # [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167)
 
-ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 13m 13s
+ICPC/IOI | 14 problems | 14/14 verified | Difficulty - | 14m 9s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@ ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 13m 13s
 | [D](D/) | [Decrypting Zodiac](https://codeforces.com/problemset/problem/106167/D) |  |  |  | 1m 8s | ✓ |
 | [E](E/) | [Excursion to Porvoo](https://codeforces.com/problemset/problem/106167/E) |  |  |  | 1m | ✓ |
 | [F](F/) | [Flappy Bird](https://codeforces.com/problemset/problem/106167/F) |  |  |  | 1m 12s | ✓ |
+| [G](G/) | [Grid Delivery](https://codeforces.com/problemset/problem/106167/G) |  |  |  | 56s | ✓ |
 | [H](H/) | [Hectic Harbour II](https://codeforces.com/problemset/problem/106167/H) |  |  |  | 1m 11s | ✓ |
 | [I](I/) | [Index Case](https://codeforces.com/problemset/problem/106167/I) |  |  |  | 57s | ✓ |
 | [J](J/) | [Joined Sessions](https://codeforces.com/problemset/problem/106167/J) |  |  |  | 1m 5s | ✓ |
