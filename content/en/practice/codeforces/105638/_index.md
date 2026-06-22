@@ -1,27 +1,28 @@
 ---
 title: "GPC 2024"
-description: "11 problems from GPC 2024 (contest 105638), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from GPC 2024 (contest 105638), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105638
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 602
-date: "2026-06-22T15:05:03+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 654
+date: "2026-06-22T18:10:30+07:00"
 weight: 105638
 draft: false
 ---
 
 # [GPC 2024](https://codeforces.com/contest/105638)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 10m 2s
+Special | 12 problems | 12/12 verified | Difficulty - | 10m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Reborn and HearthStone](https://codeforces.com/problemset/problem/105638/A) |  |  |  | 51s | ✓ |
 | [B](B/) | [Hile and Fx](https://codeforces.com/problemset/problem/105638/B) |  |  |  | 56s | ✓ |
+| [C](C/) | [Reborn and SegmentTree](https://codeforces.com/problemset/problem/105638/C) |  |  |  | 52s | ✓ |
 | [D](D/) | [Piza Removes the Letters](https://codeforces.com/problemset/problem/105638/D) |  |  |  | 1m | ✓ |
 | [E](E/) | [Piza Removes Nothing](https://codeforces.com/problemset/problem/105638/E) |  |  |  | 53s | ✓ |
 | [F](F/) | [Reborn and TFT](https://codeforces.com/problemset/problem/105638/F) |  |  |  | 59s | ✓ |
