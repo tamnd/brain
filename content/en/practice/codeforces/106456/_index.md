@@ -1,23 +1,23 @@
 ---
 title: "The 15th Huazhong Agricultural University Programming Contest"
-description: "12 problems from The 15th Huazhong Agricultural University Programming Contest (contest 106456), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from The 15th Huazhong Agricultural University Programming Contest (contest 106456), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106456
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 684
+n_problems: 13
+n_verified: 12
+total_solve_s: 746
 contest_year: 2026
-date: "2026-06-20T04:20:48+07:00"
+date: "2026-06-20T19:19:26+07:00"
 weight: 106456
 draft: false
 ---
 
 # [The 15th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/106456)
 
-Special | 12 problems | 11/12 verified | Difficulty - | 11m 24s
+Special | 13 problems | 12/13 verified | Difficulty - | 12m 26s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@ Special | 12 problems | 11/12 verified | Difficulty - | 11m 24s
 | [D](D/) | [Taffy's LCM](https://codeforces.com/problemset/problem/106456/D) |  |  |  | 47s | ✓ |
 | [E](E/) | [Simple Math](https://codeforces.com/problemset/problem/106456/E) |  |  |  | 51s | ✓ |
 | [F](F/) | [Fanfan's Bracket Sequence](https://codeforces.com/problemset/problem/106456/F) |  |  |  | 50s | ✓ |
+| [G](G/) | [Taffy vs Goblins](https://codeforces.com/problemset/problem/106456/G) |  |  |  | 1m 2s | ✓ |
 | [H](H/) | [Little t's Recurrence](https://codeforces.com/problemset/problem/106456/H) |  |  |  | 25s |  |
 | [I](I/) | [Milk Tea](https://codeforces.com/problemset/problem/106456/I) |  |  |  | 44s | ✓ |
 | [J](J/) | [Tree](https://codeforces.com/problemset/problem/106456/J) |  |  |  | 1m 12s | ✓ |
