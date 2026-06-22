@@ -1,23 +1,23 @@
 ---
 title: "The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final"
-description: "8 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final (contest 105629), difficulty -. 3/8 solutions verified against sample I/O."
+description: "9 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final (contest 105629), difficulty -. 4/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105629
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 3
-total_solve_s: 314
+n_problems: 9
+n_verified: 4
+total_solve_s: 408
 contest_year: 2024
-date: "2026-06-22T14:55:32+07:00"
+date: "2026-06-22T18:02:41+07:00"
 weight: 105629
 draft: false
 ---
 
 # [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final](https://codeforces.com/contest/105629)
 
-Special | 8 problems | 3/8 verified | Difficulty - | 5m 14s
+Special | 9 problems | 4/9 verified | Difficulty - | 6m 48s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ Special | 8 problems | 3/8 verified | Difficulty - | 5m 14s
 | [F](F/) | [\u6570\u6570](https://codeforces.com/problemset/problem/105629/F) |  |  |  | 1m 3s | ✓ |
 | [G](G/) | [\u56de\u6587\u4e32](https://codeforces.com/problemset/problem/105629/G) |  |  |  | 31s |  |
 | [H](H/) | [\u6025\u6b7b\u5730](https://codeforces.com/problemset/problem/105629/H) |  |  |  | 29s |  |
+| [I](I/) | [\u5012\u53cd\u5929\u7f61](https://codeforces.com/problemset/problem/105629/I) |  |  |  | 1m 34s | ✓ |
