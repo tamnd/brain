@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1862 contests, 11456 problems, 6439 verified."
+description: "Codeforces problem solutions with full editorials. 1863 contests, 11469 problems, 6452 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1862 contests, 11456 problems, 6439 verified.**
+**1863 contests, 11469 problems, 6452 verified.**
 
-## Unknown — 158 contests, 1100 problems, 911 verified
+## Unknown — 159 contests, 1113 problems, 924 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
+| [105444](105444/) | [2020-2021 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2020)](https://codeforces.com/contest/105444) | 13 | 13/13 | ICPC/IOI | - |
 | [105446](105446/) | [2024 United Kingdom and Ireland Programming Contest (UKIEPC 2024)](https://codeforces.com/contest/105446) | 12 | 0/12 | Special | - |
 | [105453](105453/) | [2024 ICPC Greece Regional Collegiate Programming Contest (GRCPC 2024)](https://codeforces.com/contest/105453) | 2 | 2/2 | ICPC/IOI | - |
 | [105455](105455/) | [XXIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105455) | 2 | 2/2 | Special | - |
