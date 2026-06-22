@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1822 contests, 10867 problems, 5949 verified."
+description: "Codeforces problem solutions with full editorials. 1823 contests, 10870 problems, 5951 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1822 contests, 10867 problems, 5949 verified.**
+**1823 contests, 10870 problems, 5951 verified.**
 
-## Unknown — 133 contests, 867 problems, 732 verified
+## Unknown — 134 contests, 870 problems, 734 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 3 | 2/3 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 1 | 0/1 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 1 | 0/1 | Special | - |
 | [105562](105562/) | [2024-2025 ICPC Northwestern European Regional Programming Contest (NWERC 2024)](https://codeforces.com/contest/105562) | 4 | 4/4 | ICPC/IOI | - |
