@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1910 contests, 11677 problems, 6592 verified."
+description: "Codeforces problem solutions with full editorials. 1911 contests, 11679 problems, 6592 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1910 contests, 11677 problems, 6592 verified.**
+**1911 contests, 11679 problems, 6592 verified.**
 
 ## Unknown — 182 contests, 1237 problems, 1007 verified
 
@@ -1554,7 +1554,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 181 contests, 1277 problems, 585 verified
+## 2024 — 182 contests, 1279 problems, 585 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1683,6 +1683,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105278](105278/) | [2024 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/105278) | 2 | 0/2 | ICPC/IOI | - |
 | [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 2 | 0/2 | Special | - |
 | [105284](105284/) | [TeamsCode Summer 2024 Advanced Division](https://codeforces.com/contest/105284) | 2 | 1/2 | Special | - |
 | [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 3 | 1/3 | Special | - |
