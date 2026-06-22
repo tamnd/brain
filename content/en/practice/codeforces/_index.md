@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1838 contests, 11358 problems, 6387 verified."
+description: "Codeforces problem solutions with full editorials. 1839 contests, 11361 problems, 6390 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1838 contests, 11358 problems, 6387 verified.**
+**1839 contests, 11361 problems, 6390 verified.**
 
-## Unknown — 142 contests, 1048 problems, 880 verified
+## Unknown — 143 contests, 1051 problems, 883 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
+| [105492](105492/) | [2024 Benelux Algorithm Programming Contest (BAPC 24)](https://codeforces.com/contest/105492) | 3 | 3/3 | Special | - |
 | [105493](105493/) | [2024-2025 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/105493) | 2 | 2/2 | ICPC/IOI | - |
 | [105494](105494/) | [2024-2025 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/105494) | 2 | 2/2 | ICPC/IOI | - |
 | [105505](105505/) | [2024-2025 ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/105505) | 3 | 3/3 | ICPC/IOI | - |
