@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1901 contests, 11657 problems, 6583 verified."
+description: "Codeforces problem solutions with full editorials. 1902 contests, 11660 problems, 6586 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1901 contests, 11657 problems, 6583 verified.**
+**1902 contests, 11660 problems, 6586 verified.**
 
-## Unknown — 179 contests, 1230 problems, 1003 verified
+## Unknown — 180 contests, 1233 problems, 1006 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105314](105314/) | [Robbing Balloons 2.0 Qualifications](https://codeforces.com/contest/105314) | 3 | 3/3 | Special | - |
 | [105315](105315/) | [JPC 4.0](https://codeforces.com/contest/105315) | 3 | 3/3 | Special | - |
 | [105317](105317/) | [JPC 1.0](https://codeforces.com/contest/105317) | 2 | 2/2 | Special | - |
 | [105321](105321/) | [2024 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/105321) | 14 | 13/14 | Special | - |
