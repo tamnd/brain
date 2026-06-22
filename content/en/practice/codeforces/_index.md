@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1861 contests, 11449 problems, 6439 verified."
+description: "Codeforces problem solutions with full editorials. 1862 contests, 11456 problems, 6439 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1861 contests, 11449 problems, 6439 verified.**
+**1862 contests, 11456 problems, 6439 verified.**
 
 ## Unknown — 158 contests, 1100 problems, 911 verified
 
@@ -1530,7 +1530,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 156 contests, 1186 problems, 528 verified
+## 2024 — 157 contests, 1193 problems, 528 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1662,6 +1662,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
 | [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 6 | 5/6 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 6 | 4/6 | Special | - |
+| [105445](105445/) | [TheForces Round #36 (Starters-Forces)](https://codeforces.com/contest/105445) | 7 | 0/7 | Special | - |
 | [105449](105449/) | [Moscow team school olympiad (MKOSHP) 2024](https://codeforces.com/contest/105449) | 11 | 1/11 | Special | - |
 | [105450](105450/) | [UTPC x WiCS Contest 10-25-24 (UT Internal)](https://codeforces.com/contest/105450) | 4 | 0/4 | Special | - |
 | [105454](105454/) | [Пермская региональная олимпиада школьников по программированию 2024](https://codeforces.com/contest/105454) | 5 | 1/5 | Special | - |
