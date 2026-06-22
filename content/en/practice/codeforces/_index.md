@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1891 contests, 11638 problems, 6572 verified."
+description: "Codeforces problem solutions with full editorials. 1892 contests, 11640 problems, 6574 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1891 contests, 11638 problems, 6572 verified.**
+**1892 contests, 11640 problems, 6574 verified.**
 
 ## Unknown — 176 contests, 1223 problems, 998 verified
 
@@ -1548,7 +1548,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 168 contests, 1252 problems, 574 verified
+## 2024 — 169 contests, 1254 problems, 576 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1680,6 +1680,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
 | [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 6 | 5/6 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 6 | 4/6 | Special | - |
+| [105358](105358/) | [The 2024 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/105358) | 2 | 2/2 | ICPC/IOI | - |
 | [105380](105380/) | [TSEC Round 1 (Div. 4)](https://codeforces.com/contest/105380) | 1 | 1/1 | Div. 4 | - |
 | [105381](105381/) | [National Yang Ming Chiao Tung University 2024 Team Selection Programming Contest](https://codeforces.com/contest/105381) | 3 | 3/3 | Special | - |
 | [105383](105383/) | [2024 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/105383) | 5 | 5/5 | ICPC/IOI | - |
