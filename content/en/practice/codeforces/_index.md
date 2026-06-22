@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1913 contests, 11684 problems, 6595 verified."
+description: "Codeforces problem solutions with full editorials. 1914 contests, 11687 problems, 6598 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1913 contests, 11684 problems, 6595 verified.**
+**1914 contests, 11687 problems, 6598 verified.**
 
-## Unknown — 184 contests, 1242 problems, 1010 verified
+## Unknown — 185 contests, 1245 problems, 1013 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105271](105271/) | [Almaty Code Cup 2024](https://codeforces.com/contest/105271) | 3 | 3/3 | Special | - |
 | [105272](105272/) | [IX MaratonUSP Freshman Contest](https://codeforces.com/contest/105272) | 3 | 3/3 | Special | - |
 | [105276](105276/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2023](https://codeforces.com/contest/105276) | 2 | 0/2 | Special | - |
 | [105309](105309/) | [CerealCodes III Novice Division](https://codeforces.com/contest/105309) | 2 | 1/2 | Special | - |
