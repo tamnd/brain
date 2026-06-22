@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1911 contests, 11679 problems, 6592 verified."
+description: "Codeforces problem solutions with full editorials. 1912 contests, 11681 problems, 6592 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1911 contests, 11679 problems, 6592 verified.**
+**1912 contests, 11681 problems, 6592 verified.**
 
-## Unknown — 182 contests, 1237 problems, 1007 verified
+## Unknown — 183 contests, 1239 problems, 1007 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105276](105276/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2023](https://codeforces.com/contest/105276) | 2 | 0/2 | Special | - |
 | [105309](105309/) | [CerealCodes III Novice Division](https://codeforces.com/contest/105309) | 2 | 1/2 | Special | - |
 | [105310](105310/) | [CerealCodes III Advanced Division](https://codeforces.com/contest/105310) | 2 | 0/2 | Special | - |
 | [105314](105314/) | [Robbing Balloons 2.0 Qualifications](https://codeforces.com/contest/105314) | 3 | 3/3 | Special | - |
