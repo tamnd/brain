@@ -1,23 +1,23 @@
 ---
 title: "The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu)"
-description: "12 problems from The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu) (contest 106161), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu) (contest 106161), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106161
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 810
+n_problems: 13
+n_verified: 12
+total_solve_s: 869
 contest_year: 2025
-date: "2026-06-20T09:40:19+07:00"
+date: "2026-06-20T19:03:16+07:00"
 weight: 106161
 draft: false
 ---
 
 # [The 2025 ICPC Asia Chengdu Regional Contest (The 4rd Universal Cup. Stage 4: Grand Prix of Chengdu)](https://codeforces.com/contest/106161)
 
-ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 13m 30s
+ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 14m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,5 +31,6 @@ ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 13m 30s
 | [H](H/) | [Heuristic Knapsack](https://codeforces.com/problemset/problem/106161/H) |  |  |  | 1m 12s | ✓ |
 | [I](I/) | [Inside Triangle](https://codeforces.com/problemset/problem/106161/I) |  |  |  | 1m 10s | ✓ |
 | [J](J/) | [Judging Papers](https://codeforces.com/problemset/problem/106161/J) |  |  |  | 1m 18s | ✓ |
+| [K](K/) | [K-Coverage](https://codeforces.com/problemset/problem/106161/K) |  |  |  | 59s | ✓ |
 | [L](L/) | [Label Matching](https://codeforces.com/problemset/problem/106161/L) |  |  |  | 58s | ✓ |
 | [M](M/) | [Meeting for Meals](https://codeforces.com/problemset/problem/106161/M) |  |  |  | 29s |  |
