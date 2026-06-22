@@ -1,23 +1,23 @@
 ---
 title: "2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)"
-description: "11 problems from 2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025) (contest 106068), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from 2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025) (contest 106068), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106068
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 540
+n_problems: 12
+n_verified: 12
+total_solve_s: 598
 contest_year: 2025
-date: "2026-06-21T04:01:38+07:00"
+date: "2026-06-21T18:47:13+07:00"
 weight: 106068
 draft: false
 ---
 
 # [2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)](https://codeforces.com/contest/106068)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 9m
+Special | 12 problems | 12/12 verified | Difficulty - | 9m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,6 +25,7 @@ Special | 11 problems | 11/11 verified | Difficulty - | 9m
 | [B](B/) | [SCPC is Typing...](https://codeforces.com/problemset/problem/106068/B) |  |  |  | 44s | ✓ |
 | [C](C/) | [Stones Game](https://codeforces.com/problemset/problem/106068/C) |  |  |  | 48s | ✓ |
 | [D](D/) | [Ba3d Khamsa](https://codeforces.com/problemset/problem/106068/D) |  |  |  | 1m 8s | ✓ |
+| [E](E/) | [Sasha and palindrome](https://codeforces.com/problemset/problem/106068/E) |  |  |  | 58s | ✓ |
 | [F](F/) | [Good Luck Syria](https://codeforces.com/problemset/problem/106068/F) |  |  |  | 42s | ✓ |
 | [G](G/) | [Fire Coverage](https://codeforces.com/problemset/problem/106068/G) |  |  |  | 51s | ✓ |
 | [H](H/) | [Wanna win? Solve](https://codeforces.com/problemset/problem/106068/H) |  |  |  | 1m 5s | ✓ |
