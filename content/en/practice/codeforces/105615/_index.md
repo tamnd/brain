@@ -1,23 +1,23 @@
 ---
 title: "The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary"
-description: "14 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary (contest 105615), difficulty -. 2/14 solutions verified against sample I/O."
+description: "15 problems from The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary (contest 105615), difficulty -. 3/15 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105615
 contest_type: "Special"
 rating_range: "-"
-n_problems: 14
-n_verified: 2
-total_solve_s: 500
+n_problems: 15
+n_verified: 3
+total_solve_s: 551
 contest_year: 2024
-date: "2026-06-22T18:00:56+07:00"
+date: "2026-06-22T23:06:15+07:00"
 weight: 105615
 draft: false
 ---
 
 # [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615)
 
-Special | 14 problems | 2/14 verified | Difficulty - | 8m 20s
+Special | 15 problems | 3/15 verified | Difficulty - | 9m 11s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ Special | 14 problems | 2/14 verified | Difficulty - | 8m 20s
 | [C](C/) | [I Am the Captain of USTA](https://codeforces.com/problemset/problem/105615/C) |  |  |  | 30s |  |
 | [D](D/) | [\u8fd9\u4e2a\u9898\u7b80\u5355\uff0c\u5148\u505a\u8fd9\u4e2a\uff01](https://codeforces.com/problemset/problem/105615/D) |  |  |  | 29s |  |
 | [E](E/) | [\u6e38\u620f\u9ad8\u624b](https://codeforces.com/problemset/problem/105615/E) |  |  |  | 35s |  |
+| [F](F/) | [\u6a21\u56db\u8bc6\u522b](https://codeforces.com/problemset/problem/105615/F) |  |  |  | 51s | ✓ |
 | [G](G/) | [\u4e24\u53e5\u8bdd\u9898\u9762](https://codeforces.com/problemset/problem/105615/G) |  |  |  | 28s |  |
 | [H](H/) | [Good Digits](https://codeforces.com/problemset/problem/105615/H) |  |  |  | 33s |  |
 | [I](I/) | [\u6676\u4f53\u5316](https://codeforces.com/problemset/problem/105615/I) |  |  |  | 33s |  |
