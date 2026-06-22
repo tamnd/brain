@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1900 contests, 11654 problems, 6580 verified."
+description: "Codeforces problem solutions with full editorials. 1901 contests, 11657 problems, 6583 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1900 contests, 11654 problems, 6580 verified.**
+**1901 contests, 11657 problems, 6583 verified.**
 
-## Unknown — 178 contests, 1227 problems, 1000 verified
+## Unknown — 179 contests, 1230 problems, 1003 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105315](105315/) | [JPC 4.0](https://codeforces.com/contest/105315) | 3 | 3/3 | Special | - |
 | [105317](105317/) | [JPC 1.0](https://codeforces.com/contest/105317) | 2 | 2/2 | Special | - |
 | [105321](105321/) | [2024 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/105321) | 14 | 13/14 | Special | - |
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 5 | 0/5 | Special | - |
