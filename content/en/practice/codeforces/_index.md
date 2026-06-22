@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11000 problems, 6061 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11002 problems, 6063 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11000 problems, 6061 verified.**
+**1828 contests, 11002 problems, 6063 verified.**
 
-## Unknown — 136 contests, 922 problems, 773 verified
+## Unknown — 136 contests, 924 problems, 775 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -45,7 +45,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
 | [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 3 | 3/3 | Special | - |
 | [105748](105748/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 2](https://codeforces.com/contest/105748) | 2 | 2/2 | Special | - |
-| [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 6 | 2/6 | Special | - |
+| [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 8 | 4/8 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
