@@ -1,23 +1,23 @@
 ---
 title: "Open Udmurtia High School Programming Contest 2015"
-description: "9 problems from Open Udmurtia High School Programming Contest 2015 (contest 105580), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from Open Udmurtia High School Programming Contest 2015 (contest 105580), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105580
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 496
+n_problems: 10
+n_verified: 10
+total_solve_s: 583
 contest_year: 2024
-date: "2026-06-22T17:48:29+07:00"
+date: "2026-06-22T21:23:47+07:00"
 weight: 105580
 draft: false
 ---
 
 # [Open Udmurtia High School Programming Contest 2015](https://codeforces.com/contest/105580)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 8m 16s
+Special | 10 problems | 10/10 verified | Difficulty - | 9m 43s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 9 problems | 9/9 verified | Difficulty - | 8m 16s
 | [G](G/) | [Metro](https://codeforces.com/problemset/problem/105580/G) |  |  |  | 1m 11s | ✓ |
 | [H](H/) | [Domino](https://codeforces.com/problemset/problem/105580/H) |  |  |  | 53s | ✓ |
 | [I](I/) | [Satelite Internet](https://codeforces.com/problemset/problem/105580/I) |  |  |  | 48s | ✓ |
+| [K](K/) | [Knights](https://codeforces.com/problemset/problem/105580/K) |  |  |  | 1m 27s | ✓ |
