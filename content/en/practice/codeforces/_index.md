@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1825 contests, 10873 problems, 5953 verified."
+description: "Codeforces problem solutions with full editorials. 1826 contests, 10875 problems, 5955 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1825 contests, 10873 problems, 5953 verified.**
+**1826 contests, 10875 problems, 5955 verified.**
 
 ## Unknown — 135 contests, 871 problems, 734 verified
 
@@ -1507,7 +1507,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 143 contests, 1011 problems, 380 verified
+## 2024 — 144 contests, 1013 problems, 382 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1636,6 +1636,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105322](105322/) | [2024 Xiangtan University Summer Camp-Div.1](https://codeforces.com/contest/105322) | 2 | 2/2 | Special | - |
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 2 | 2/2 | Special | - |
 | [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 1 | 1/1 | Special | - |
 | [105570](105570/) | [2024 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/105570) | 3 | 2/3 | Special | - |
