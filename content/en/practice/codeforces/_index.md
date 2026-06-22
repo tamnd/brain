@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1845 contests, 11383 problems, 6410 verified."
+description: "Codeforces problem solutions with full editorials. 1846 contests, 11386 problems, 6411 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1845 contests, 11383 problems, 6410 verified.**
+**1846 contests, 11386 problems, 6411 verified.**
 
-## Unknown — 146 contests, 1058 problems, 888 verified
+## Unknown — 147 contests, 1061 problems, 889 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
+| [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 3 | 1/3 | Special | - |
 | [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 2 | 1/2 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 2 | 1/2 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 3 | 3/3 | Special | - |
