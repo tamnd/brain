@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1871 contests, 11544 problems, 6507 verified."
+description: "Codeforces problem solutions with full editorials. 1872 contests, 11555 problems, 6518 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1871 contests, 11544 problems, 6507 verified.**
+**1872 contests, 11555 problems, 6518 verified.**
 
-## Unknown — 165 contests, 1170 problems, 961 verified
+## Unknown — 166 contests, 1181 problems, 972 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
+| [105423](105423/) | [2024湖南省赛](https://codeforces.com/contest/105423) | 11 | 11/11 | Special | - |
 | [105424](105424/) | [2023-2024 Квалификационный тур Уральского четвертьфинала ICPC](https://codeforces.com/contest/105424) | 4 | 1/4 | ICPC/IOI | - |
 | [105427](105427/) | [2023-2024 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2023)](https://codeforces.com/contest/105427) | 11 | 11/11 | ICPC/IOI | - |
 | [105430](105430/) | [OMORI CONTEST](https://codeforces.com/contest/105430) | 7 | 1/7 | Special | - |
