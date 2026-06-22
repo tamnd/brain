@@ -1,28 +1,29 @@
 ---
 title: "Baozii Cup 2"
-description: "12 problems from Baozii Cup 2 (contest 105883), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from Baozii Cup 2 (contest 105883), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105883
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 665
-date: "2026-06-22T02:46:47+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 719
+date: "2026-06-22T15:25:01+07:00"
 weight: 105883
 draft: false
 ---
 
 # [Baozii Cup 2](https://codeforces.com/contest/105883)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 5s
+Special | 13 problems | 13/13 verified | Difficulty - | 11m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Beautiful Substrings](https://codeforces.com/problemset/problem/105883/A) |  |  |  | 1m 10s | ✓ |
 | [B](B/) | [Firefly's Favourite Problem](https://codeforces.com/problemset/problem/105883/B) |  |  |  | 53s | ✓ |
 | [C](C/) | [Large Graph](https://codeforces.com/problemset/problem/105883/C) |  |  |  | 1m 2s | ✓ |
+| [D](D/) | [Why Does Every Baozii Cup Have a GCD Problem](https://codeforces.com/problemset/problem/105883/D) |  |  |  | 54s | ✓ |
 | [E](E/) | [Another GCD](https://codeforces.com/problemset/problem/105883/E) |  |  |  | 46s | ✓ |
 | [F](F/) | [WTF Another GCD?](https://codeforces.com/problemset/problem/105883/F) |  |  |  | 1m 3s | ✓ |
 | [G](G/) | [Fatalerror: Implementation Failed](https://codeforces.com/problemset/problem/105883/G) |  |  |  | 49s | ✓ |

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1828 contests, 11004 problems, 6064 verified."
+description: "Codeforces problem solutions with full editorials. 1828 contests, 11005 problems, 6065 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1828 contests, 11004 problems, 6064 verified.**
+**1828 contests, 11005 problems, 6065 verified.**
 
-## Unknown — 136 contests, 925 problems, 776 verified
+## Unknown — 136 contests, 926 problems, 777 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -55,7 +55,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105837](105837/) | [MITIT Spring 2025 Qualification Round 2](https://codeforces.com/contest/105837) | 4 | 4/4 | Special | - |
 | [105863](105863/) | [PPSC 2025](https://codeforces.com/contest/105863) | 8 | 7/8 | Special | - |
 | [105869](105869/) | [OCPC Fall 2024 Day 2 Jagiellonian Contest (The 3rd Universal Cup. Stage 35: Kraków)](https://codeforces.com/contest/105869) | 12 | 12/12 | Special | - |
-| [105883](105883/) | [Baozii Cup 2](https://codeforces.com/contest/105883) | 12 | 12/12 | Special | - |
+| [105883](105883/) | [Baozii Cup 2](https://codeforces.com/contest/105883) | 13 | 13/13 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 13 | 13/13 | Special | - |
 | [105904](105904/) | [I SBC São Paulo Programming Marathon](https://codeforces.com/contest/105904) | 1 | 1/1 | Special | - |
