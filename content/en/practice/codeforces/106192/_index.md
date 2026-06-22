@@ -1,23 +1,23 @@
 ---
 title: "Пермская региональная олимпиада школьников по программированию 2025"
-description: "10 problems from Пермская региональная олимпиада школьников по программированию 2025 (contest 106192), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from Пермская региональная олимпиада школьников по программированию 2025 (contest 106192), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106192
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 520
+n_problems: 11
+n_verified: 11
+total_solve_s: 570
 contest_year: 2025
-date: "2026-06-20T09:48:39+07:00"
+date: "2026-06-20T19:10:10+07:00"
 weight: 106192
 draft: false
 ---
 
 # [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 8m 40s
+Special | 11 problems | 11/11 verified | Difficulty - | 9m 30s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ Special | 10 problems | 10/10 verified | Difficulty - | 8m 40s
 | [H](H/) | [\u0418\u0437 \u043f\u0443\u0448\u043a\u0438 \u043f\u043e \u043a\u043e\u043c\u0430\u0440\u0430\u043c](https://codeforces.com/problemset/problem/106192/H) |  |  |  | 51s | ✓ |
 | [I](I/) | [\u041d\u0430\u0448\u0435\u0441\u0442\u0432\u0438\u0435 \u0436\u0443\u043a\u043e\u0432](https://codeforces.com/problemset/problem/106192/I) |  |  |  | 47s | ✓ |
 | [J](J/) | [\u0422\u0440\u0435\u0443\u0433\u043e\u043b\u044c\u043d\u044b\u0439 \u043b\u0443\u0447](https://codeforces.com/problemset/problem/106192/J) |  |  |  | 53s | ✓ |
+| [K](K/) | [\u0417\u0430\u043b\u0438\u0432\u043a\u0430](https://codeforces.com/problemset/problem/106192/K) |  |  |  | 50s | ✓ |
