@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11754 problems, 6625 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11764 problems, 6631 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,16 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11754 problems, 6625 verified.**
+**1921 contests, 11764 problems, 6631 verified.**
 
-## Unknown — 186 contests, 1265 problems, 1028 verified
+## Unknown — 186 contests, 1275 problems, 1034 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
 | [105271](105271/) | [Almaty Code Cup 2024](https://codeforces.com/contest/105271) | 11 | 11/11 | Special | - |
 | [105272](105272/) | [IX MaratonUSP Freshman Contest](https://codeforces.com/contest/105272) | 10 | 10/10 | Special | - |
-| [105276](105276/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2023](https://codeforces.com/contest/105276) | 2 | 0/2 | Special | - |
+| [105276](105276/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2023](https://codeforces.com/contest/105276) | 12 | 6/12 | Special | - |
 | [105309](105309/) | [CerealCodes III Novice Division](https://codeforces.com/contest/105309) | 2 | 1/2 | Special | - |
 | [105310](105310/) | [CerealCodes III Advanced Division](https://codeforces.com/contest/105310) | 2 | 0/2 | Special | - |
 | [105314](105314/) | [Robbing Balloons 2.0 Qualifications](https://codeforces.com/contest/105314) | 3 | 3/3 | Special | - |
