@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1927 contests, 12238 problems, 6944 verified."
+description: "Codeforces problem solutions with full editorials. 1928 contests, 12251 problems, 6957 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1927 contests, 12238 problems, 6944 verified.**
+**1928 contests, 12251 problems, 6957 verified.**
 
 ## Unknown — 190 contests, 1508 problems, 1200 verified
 
@@ -1562,7 +1562,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 190 contests, 1567 problems, 744 verified
+## 2024 — 191 contests, 1580 problems, 757 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1696,6 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 5 | 4/5 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105262](105262/) | [Game of Coders 3.0](https://codeforces.com/contest/105262) | 13 | 13/13 | Special | - |
 | [105266](105266/) | [2024 XTU Summer Camp Selection Competition](https://codeforces.com/contest/105266) | 6 | 6/6 | Special | - |
 | [105267](105267/) | [CCF CAT 2024](https://codeforces.com/contest/105267) | 10 | 10/10 | Special | - |
 | [105270](105270/) | [TheForces Round #32 (2^5-Forces, TheForces Rated, Prizes!)](https://codeforces.com/contest/105270) | 5 | 0/5 | Special | - |
