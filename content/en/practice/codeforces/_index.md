@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12149 problems, 6861 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12156 problems, 6868 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12149 problems, 6861 verified.**
+**1921 contests, 12156 problems, 6868 verified.**
 
-## Unknown — 186 contests, 1454 problems, 1152 verified
+## Unknown — 186 contests, 1461 problems, 1159 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -66,7 +66,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 3 | 1/3 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 13 | 13/13 | Special | - |
 | [105492](105492/) | [2024 Benelux Algorithm Programming Contest (BAPC 24)](https://codeforces.com/contest/105492) | 13 | 13/13 | Special | - |
-| [105493](105493/) | [2024-2025 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/105493) | 2 | 2/2 | ICPC/IOI | - |
+| [105493](105493/) | [2024-2025 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/105493) | 9 | 9/9 | ICPC/IOI | - |
 | [105494](105494/) | [2024-2025 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/105494) | 2 | 2/2 | ICPC/IOI | - |
 | [105505](105505/) | [2024-2025 ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/105505) | 3 | 3/3 | ICPC/IOI | - |
 | [105507](105507/) | [2024-2025 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 24, Саратовский отборочный этап)](https://codeforces.com/contest/105507) | 1 | 1/1 | Special | - |
