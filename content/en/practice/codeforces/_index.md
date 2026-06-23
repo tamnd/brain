@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12031 problems, 6766 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12032 problems, 6767 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12031 problems, 6766 verified.**
+**1921 contests, 12032 problems, 6767 verified.**
 
 ## Unknown — 186 contests, 1384 problems, 1093 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1484 problems, 673 verified
+## 2024 — 188 contests, 1485 problems, 674 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1718,7 +1718,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105390](105390/) | [TheForces Round #35 (LOL-Forces)](https://codeforces.com/contest/105390) | 5 | 0/5 | Special | - |
 | [105416](105416/) | [UTPC Contest 10-11-24 Div. 2 (Beginner)](https://codeforces.com/contest/105416) | 8 | 3/8 | Div. 2 | - |
 | [105417](105417/) | [UTPC Contest 10-11-24 Div. 1 (Advanced)](https://codeforces.com/contest/105417) | 8 | 2/8 | Div. 1 | - |
-| [105418](105418/) | [Algorithmia IIITN 2024 - Round 1](https://codeforces.com/contest/105418) | 7 | 2/7 | Special | - |
+| [105418](105418/) | [Algorithmia IIITN 2024 - Round 1](https://codeforces.com/contest/105418) | 8 | 3/8 | Special | - |
 | [105434](105434/) | [2024年“核桃杯”武汉地区ACM萌新赛](https://codeforces.com/contest/105434) | 14 | 14/14 | Special | - |
 | [105435](105435/) | [TSEC Round 2 (Div. 3)](https://codeforces.com/contest/105435) | 4 | 4/4 | Div. 3 | - |
 | [105445](105445/) | [TheForces Round #36 (Starters-Forces)](https://codeforces.com/contest/105445) | 7 | 0/7 | Special | - |
