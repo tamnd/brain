@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11987 problems, 6743 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11993 problems, 6748 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11987 problems, 6743 verified.**
+**1921 contests, 11993 problems, 6748 verified.**
 
-## Unknown — 186 contests, 1353 problems, 1074 verified
+## Unknown — 186 contests, 1358 problems, 1079 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
 | [105384](105384/) | [Anton Trygub Contest 2 (The 3rd Universal Cup, Stage 3: Ukraine)](https://codeforces.com/contest/105384) | 12 | 12/12 | Special | - |
 | [105387](105387/) | [ICPC Central Russia Regional Contest, 2023](https://codeforces.com/contest/105387) | 14 | 3/14 | ICPC/IOI | - |
-| [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 6 | 6/6 | Special | - |
+| [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 11 | 11/11 | Special | - |
 | [105394](105394/) | [2024-2025 ICPC German Collegiate Programming Contest (GCPC 2024)](https://codeforces.com/contest/105394) | 7 | 7/7 | ICPC/IOI | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
 | [105401](105401/) | [2024 KAIST 14th ICPC Mock Competition](https://codeforces.com/contest/105401) | 5 | 0/5 | ICPC/IOI | - |
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1471 problems, 669 verified
+## 2024 — 188 contests, 1472 problems, 669 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1696,7 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105278](105278/) | [2024 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/105278) | 13 | 1/13 | ICPC/IOI | - |
 | [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 11 | 0/11 | Special | - |
 | [105284](105284/) | [TeamsCode Summer 2024 Advanced Division](https://codeforces.com/contest/105284) | 11 | 1/11 | Special | - |
-| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 11 | 1/11 | Special | - |
+| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 12 | 1/12 | Special | - |
 | [105293](105293/) | [TheForces Round #33(Wow-Forces)](https://codeforces.com/contest/105293) | 6 | 0/6 | Special | - |
 | [105297](105297/) | [2024 USP Try-outs](https://codeforces.com/contest/105297) | 12 | 12/12 | Special | - |
 | [105307](105307/) | [ICPC 2024 Thailand - Chulalongkorn University Internal Round](https://codeforces.com/contest/105307) | 11 | 1/11 | ICPC/IOI | - |
