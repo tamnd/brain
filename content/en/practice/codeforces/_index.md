@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12061 problems, 6781 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12070 problems, 6790 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12061 problems, 6781 verified.**
+**1921 contests, 12070 problems, 6790 verified.**
 
 ## Unknown — 186 contests, 1400 problems, 1106 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1498 problems, 675 verified
+## 2024 — 188 contests, 1507 problems, 684 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1725,7 +1725,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105449](105449/) | [Moscow team school olympiad (MKOSHP) 2024](https://codeforces.com/contest/105449) | 11 | 1/11 | Special | - |
 | [105450](105450/) | [UTPC x WiCS Contest 10-25-24 (UT Internal)](https://codeforces.com/contest/105450) | 10 | 0/10 | Special | - |
 | [105454](105454/) | [Пермская региональная олимпиада школьников по программированию 2024](https://codeforces.com/contest/105454) | 12 | 2/12 | Special | - |
-| [105459](105459/) | [2024 China Collegiate Programming Contest (CCPC) Harbin Onsite (The 3rd Universal Cup. Stage 14: Harbin)](https://codeforces.com/contest/105459) | 4 | 4/4 | Special | - |
+| [105459](105459/) | [2024 China Collegiate Programming Contest (CCPC) Harbin Onsite (The 3rd Universal Cup. Stage 14: Harbin)](https://codeforces.com/contest/105459) | 13 | 13/13 | Special | - |
 | [105481](105481/) | [2024 CCPC Liaoning Provincial Contest](https://codeforces.com/contest/105481) | 6 | 6/6 | Special | - |
 | [105485](105485/) | [2024 China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/105485) | 6 | 6/6 | Special | - |
 | [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 3 | 3/3 | ICPC/IOI | - |
