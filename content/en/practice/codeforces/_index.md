@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1924 contests, 12212 problems, 6923 verified."
+description: "Codeforces problem solutions with full editorials. 1924 contests, 12213 problems, 6924 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1924 contests, 12212 problems, 6923 verified.**
+**1924 contests, 12213 problems, 6924 verified.**
 
 ## Unknown — 188 contests, 1490 problems, 1187 verified
 
@@ -1560,7 +1560,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 189 contests, 1559 problems, 736 verified
+## 2024 — 189 contests, 1560 problems, 737 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1733,7 +1733,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105485](105485/) | [2024 China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/105485) | 14 | 14/14 | Special | - |
 | [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 13 | 13/13 | ICPC/IOI | - |
 | [105498](105498/) | [Khulna Regional Inter University Programming Contest (KRIUPC) MIRROR](https://codeforces.com/contest/105498) | 8 | 8/8 | Special | - |
-| [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 8 | 8/8 | Special | - |
+| [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 9 | 9/9 | Special | - |
 | [105535](105535/) | [2024 ICPC Belarus Regional Contest](https://codeforces.com/contest/105535) | 11 | 11/11 | ICPC/IOI | - |
 | [105536](105536/) | [Когнитивные технологии 2024-2025. Первый отбор](https://codeforces.com/contest/105536) | 3 | 3/3 | Special | - |
 | [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 4 | 3/4 | Special | - |
