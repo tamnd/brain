@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11995 problems, 6750 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11998 problems, 6750 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11995 problems, 6750 verified.**
+**1921 contests, 11998 problems, 6750 verified.**
 
 ## Unknown — 186 contests, 1359 problems, 1080 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1473 problems, 670 verified
+## 2024 — 188 contests, 1476 problems, 670 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1715,7 +1715,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105383](105383/) | [2024 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/105383) | 12 | 12/12 | ICPC/IOI | - |
 | [105385](105385/) | [The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest](https://codeforces.com/contest/105385) | 13 | 13/13 | Special | - |
 | [105386](105386/) | [The 2024 ICPC Kunming Invitational Contest](https://codeforces.com/contest/105386) | 13 | 13/13 | ICPC/IOI | - |
-| [105390](105390/) | [TheForces Round #35 (LOL-Forces)](https://codeforces.com/contest/105390) | 2 | 0/2 | Special | - |
+| [105390](105390/) | [TheForces Round #35 (LOL-Forces)](https://codeforces.com/contest/105390) | 5 | 0/5 | Special | - |
 | [105416](105416/) | [UTPC Contest 10-11-24 Div. 2 (Beginner)](https://codeforces.com/contest/105416) | 4 | 1/4 | Div. 2 | - |
 | [105417](105417/) | [UTPC Contest 10-11-24 Div. 1 (Advanced)](https://codeforces.com/contest/105417) | 4 | 1/4 | Div. 1 | - |
 | [105418](105418/) | [Algorithmia IIITN 2024 - Round 1](https://codeforces.com/contest/105418) | 7 | 2/7 | Special | - |
