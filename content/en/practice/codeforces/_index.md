@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11955 problems, 6717 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11962 problems, 6724 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11955 problems, 6717 verified.**
+**1921 contests, 11962 problems, 6724 verified.**
 
 ## Unknown — 186 contests, 1339 problems, 1066 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1453 problems, 651 verified
+## 2024 — 188 contests, 1460 problems, 658 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1712,7 +1712,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105358](105358/) | [The 2024 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/105358) | 12 | 12/12 | ICPC/IOI | - |
 | [105380](105380/) | [TSEC Round 1 (Div. 4)](https://codeforces.com/contest/105380) | 5 | 4/5 | Div. 4 | - |
 | [105381](105381/) | [National Yang Ming Chiao Tung University 2024 Team Selection Programming Contest](https://codeforces.com/contest/105381) | 13 | 13/13 | Special | - |
-| [105383](105383/) | [2024 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/105383) | 5 | 5/5 | ICPC/IOI | - |
+| [105383](105383/) | [2024 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/105383) | 12 | 12/12 | ICPC/IOI | - |
 | [105385](105385/) | [The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest](https://codeforces.com/contest/105385) | 8 | 8/8 | Special | - |
 | [105386](105386/) | [The 2024 ICPC Kunming Invitational Contest](https://codeforces.com/contest/105386) | 7 | 7/7 | ICPC/IOI | - |
 | [105390](105390/) | [TheForces Round #35 (LOL-Forces)](https://codeforces.com/contest/105390) | 2 | 0/2 | Special | - |
