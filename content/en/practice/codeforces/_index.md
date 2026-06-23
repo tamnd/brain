@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12128 problems, 6840 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12129 problems, 6841 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12128 problems, 6840 verified.**
+**1921 contests, 12129 problems, 6841 verified.**
 
 ## Unknown — 186 contests, 1434 problems, 1132 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1531 problems, 708 verified
+## 2024 — 188 contests, 1532 problems, 709 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1728,7 +1728,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105459](105459/) | [2024 China Collegiate Programming Contest (CCPC) Harbin Onsite (The 3rd Universal Cup. Stage 14: Harbin)](https://codeforces.com/contest/105459) | 13 | 13/13 | Special | - |
 | [105481](105481/) | [2024 CCPC Liaoning Provincial Contest](https://codeforces.com/contest/105481) | 13 | 13/13 | Special | - |
 | [105485](105485/) | [2024 China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/105485) | 14 | 14/14 | Special | - |
-| [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 12 | 12/12 | ICPC/IOI | - |
+| [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 13 | 13/13 | ICPC/IOI | - |
 | [105498](105498/) | [Khulna Regional Inter University Programming Contest (KRIUPC) MIRROR](https://codeforces.com/contest/105498) | 2 | 2/2 | Special | - |
 | [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 2 | 2/2 | Special | - |
 | [105535](105535/) | [2024 ICPC Belarus Regional Contest](https://codeforces.com/contest/105535) | 7 | 7/7 | ICPC/IOI | - |
