@@ -41,7 +41,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 30/30 solved.
 | [21](21.md) |  [**] |  | solved | 8m10s |
 | [22](22.md) |  [**] |  | solved | 6m14s |
 | [23](23.md) |  [**] |  | solved | 6m59s |
-| [24](24.md) |  [**] |  | verified | 59s |
+| [24](24.md) |  [**] |  | solved | 6m53s |
 | [25](25.md) |  [**] |  | solved | 4m08s |
 | [26](26.md) |  [**] |  | solved | 6m38s |
 | [27](27.md) |  [**] |  | solved | 6m03s |

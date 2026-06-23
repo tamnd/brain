@@ -18,17 +18,17 @@ Exercises from [TAOCP Volume 1](../) Section 2.2.1: 14/14 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*06*] | simple | solved | - |
-| [2](02.md) |  [*15*] | simple | verified | 32s |
-| [3](03.md) |  [*25*] | medium | solved | - |
-| [4](04.md) |  [*M34*] | math-hard | solved | - |
-| [5](05.md) |  [*M28*] | math-hard | solved | - |
-| [6](06.md) |  [*00*] | immediate | solved | - |
-| [7](07.md) |  [*25*] | medium | solved | - |
-| [8](08.md) |  [*22*] | medium | solved | - |
-| [9](09.md) |  [*M20*] | math-medium | solved | - |
-| [10](10.md) |  [*M25*] | math-medium | solved | - |
-| [11](11.md) |  [*M40*] | math-project | verified | 1m12s |
-| [12](12.md) |  [*HM34*] | hm-hard | solved | - |
-| [13](13.md) |  [*M48*] | math-research | solved | - |
-| [14](14.md) |  [*26*] | hard | solved | - |
+| [1](01.md) |  [*06*] | simple | verified | 1m12s |
+| [2](02.md) |  [*15*] | simple | verified | 1m13s |
+| [3](03.md) |  [*25*] | medium | verified | 1m12s |
+| [4](04.md) |  [*M34*] | math-hard | verified | 1m10s |
+| [5](05.md) |  [*M28*] | math-hard | solved | 3m59s |
+| [6](06.md) |  [*00*] | immediate | verified | 1m06s |
+| [7](07.md) |  [*25*] | medium | verified | 1m41s |
+| [8](08.md) |  [*22*] | medium | solved | 4m29s |
+| [9](09.md) |  [*M20*] | math-medium | verified | 1m09s |
+| [10](10.md) |  [*M25*] | math-medium | verified | 1m19s |
+| [11](11.md) |  [*M40*] | math-project | solved | 2m08s |
+| [12](12.md) |  [*HM34*] | hm-hard | verified | 1m07s |
+| [13](13.md) |  [*M48*] | math-research | verified | 3m36s |
+| [14](14.md) |  [*26*] | hard | verified | 1m16s |

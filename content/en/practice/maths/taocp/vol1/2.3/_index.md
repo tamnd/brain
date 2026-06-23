@@ -20,8 +20,8 @@ Exercises from [TAOCP Volume 1](../) Section 2.3: 22/22 solved.
 |---|--------|----------|--------|------|
 | [1](01.md) |  [**] |  | solved | 31s |
 | [2](02.md) |  [**] |  | solved | 29s |
-| [3](03.md) |  [**] |  | solved | 29s |
-| [4](04.md) |  [**] |  | solved | 35s |
+| [3](03.md) |  [**] |  | verified | 40s |
+| [4](04.md) |  [**] |  | verified | 41s |
 | [5](05.md) |  [**] |  | solved | 31s |
 | [6](06.md) | &#9654; [**] |  | solved | 36s |
 | [7](07.md) |  [**] |  | solved | 33s |

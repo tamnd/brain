@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 42 solved, 22 verified, 80 total."
+description: "Volume 3: Sorting and Searching. 255 solved, 103 verified, 269 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,15 +9,30 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 42 solved, 22 verified, 80 total.
+Exercise solutions for [TAOCP](../) Volume 3. 255 solved, 103 verified, 269 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [5](5/) | Introduction to Sorting | 1 | 0 | 5 |
+| [5.1](5.1/) | Combinatorial Properties of Permutations | 1 | 1 | 4 |
 | [5.2](5.2/) | Internal Sorting | 5 | 1 | 5 |
-| [5.1.3](5.1.3/) | Runs | 4 | 2 | 14 |
-| [5.1.4](5.1.4/) | Tableaux and Involutions | 8 | 3 | 12 |
-| [5.2.1](5.2.1/) | Sorting by Insertion | 6 | 3 | 14 |
-| [5.2.2](5.2.2/) | Sorting by Exchanging | 5 | 3 | 7 |
-| [5.2.3](5.2.3/) | Sorting by Selection | 11 | 9 | 15 |
-| [5.2.4](5.2.4/) | Sorting by Merging | 2 | 1 | 8 |
+| [5.5](5.5/) | Summary, History, and Bibliography | 5 | 4 | 5 |
+| [5.1.3](5.1.3/) | Runs | 7 | 3 | 14 |
+| [5.1.4](5.1.4/) | Tableaux and Involutions | 12 | 6 | 12 |
+| [5.2.1](5.2.1/) | Sorting by Insertion | 14 | 8 | 14 |
+| [5.2.2](5.2.2/) | Sorting by Exchanging | 7 | 4 | 7 |
+| [5.2.3](5.2.3/) | Sorting by Selection | 15 | 13 | 15 |
+| [5.2.4](5.2.4/) | Sorting by Merging | 8 | 5 | 8 |
+| [5.2.5](5.2.5/) | Sorting by Distribution | 9 | 6 | 9 |
+| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 8 | 5 | 8 |
+| [5.3.2](5.3.2/) | Minimum-Comparison Merging | 20 | 10 | 20 |
+| [5.3.3](5.3.3/) | Minimum-Comparison Selection | 16 | 4 | 16 |
+| [5.3.4](5.3.4/) | Networks for Sorting | 6 | 2 | 6 |
+| [5.4.1](5.4.1/) | Multiway Merging and Replacement Selection | 27 | 11 | 27 |
+| [5.4.2](5.4.2/) | The Polyphase Merge | 30 | 6 | 30 |
+| [5.4.3](5.4.3/) | The Cascade Merge | 11 | 3 | 11 |
+| [5.4.5](5.4.5/) | The Oscillating Sort | 2 | 0 | 2 |
+| [5.4.6](5.4.6/) | Practical Considerations for Tape Merging | 14 | 3 | 14 |
+| [5.4.7](5.4.7/) | External Radix Sorting | 6 | 1 | 6 |
+| [5.4.8](5.4.8/) | Two-Tape Sorting | 8 | 3 | 8 |
+| [5.4.9](5.4.9/) | Disks and Drums | 23 | 4 | 23 |

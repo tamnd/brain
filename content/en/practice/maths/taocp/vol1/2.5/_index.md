@@ -30,7 +30,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.5: 44/44 solved.
 | [10](10.md) |  [**] |  | solved | 4m58s |
 | [11](11.md) |  [**] |  | solved | 5m16s |
 | [12](12.md) |  [**] |  | solved | 6m16s |
-| [13](13.md) |  [**] |  | solved | 4m34s |
+| [13](13.md) |  [**] |  | solved | 3m55s |
 | [14](14.md) |  [**] |  | solved | 6m04s |
 | [15](15.md) |  [**] |  | solved | 6m14s |
 | [16](16.md) |  [**] |  | solved | 4m35s |
@@ -38,8 +38,8 @@ Exercises from [TAOCP Volume 1](../) Section 2.5: 44/44 solved.
 | [18](18.md) |  [**] |  | solved | 4m37s |
 | [19](19.md) |  [**] |  | solved | 5m36s |
 | [20](20.md) |  [**] |  | solved | 6m06s |
-| [21](21.md) |  [**] |  | verified | 2m45s |
-| [22](22.md) |  [**] |  | verified | 4m11s |
+| [21](21.md) |  [**] |  | solved | 5m17s |
+| [22](22.md) |  [**] |  | solved | 4m22s |
 | [23](23.md) |  [**] |  | solved | 8m19s |
 | [24](24.md) |  [**] |  | solved | 5m38s |
 | [25](25.md) |  [**] |  | solved | 3m14s |
