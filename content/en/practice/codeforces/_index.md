@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12058 problems, 6779 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12061 problems, 6781 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12058 problems, 6779 verified.**
+**1921 contests, 12061 problems, 6781 verified.**
 
-## Unknown — 186 contests, 1397 problems, 1104 verified
+## Unknown — 186 contests, 1400 problems, 1106 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -55,7 +55,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105455](105455/) | [XXIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105455) | 4 | 3/4 | Special | - |
 | [105456](105456/) | [XXIII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105456) | 4 | 3/4 | Special | - |
 | [105457](105457/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105457) | 4 | 2/4 | Special | - |
-| [105458](105458/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105458) | 1 | 0/1 | Special | - |
+| [105458](105458/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105458) | 4 | 2/4 | Special | - |
 | [105461](105461/) | [2024-2025 ICPC, Swiss Subregional](https://codeforces.com/contest/105461) | 5 | 5/5 | ICPC/IOI | - |
 | [105465](105465/) | [2023 ICPC Southeastern Europe Regional Contest (The 2nd Universal Cup, Stage 14: Southeastern Europe)](https://codeforces.com/contest/105465) | 4 | 4/4 | ICPC/IOI | - |
 | [105471](105471/) | [The 2023 ICPC Asia Xian Regional Contest (The 3rd Universal Cup. Stage 9: Xian)](https://codeforces.com/contest/105471) | 2 | 0/2 | ICPC/IOI | - |
