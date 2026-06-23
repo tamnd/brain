@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12012 problems, 6757 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12015 problems, 6759 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12012 problems, 6757 verified.**
+**1921 contests, 12015 problems, 6759 verified.**
 
-## Unknown — 186 contests, 1373 problems, 1087 verified
+## Unknown — 186 contests, 1376 problems, 1089 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -39,7 +39,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105394](105394/) | [2024-2025 ICPC German Collegiate Programming Contest (GCPC 2024)](https://codeforces.com/contest/105394) | 13 | 13/13 | ICPC/IOI | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
 | [105401](105401/) | [2024 KAIST 14th ICPC Mock Competition](https://codeforces.com/contest/105401) | 13 | 1/13 | ICPC/IOI | - |
-| [105403](105403/) | [XXIV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105403) | 2 | 1/2 | Special | - |
+| [105403](105403/) | [XXIV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105403) | 5 | 3/5 | Special | - |
 | [105404](105404/) | [XXIV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105404) | 3 | 2/3 | Special | - |
 | [105408](105408/) | [2024 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/105408) | 5 | 1/5 | ICPC/IOI | - |
 | [105423](105423/) | [2024湖南省赛](https://codeforces.com/contest/105423) | 11 | 11/11 | Special | - |
