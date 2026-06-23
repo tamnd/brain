@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11904 problems, 6691 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11910 problems, 6691 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11904 problems, 6691 verified.**
+**1921 contests, 11910 problems, 6691 verified.**
 
 ## Unknown — 186 contests, 1329 problems, 1063 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1412 problems, 628 verified
+## 2024 — 188 contests, 1418 problems, 628 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1706,7 +1706,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105323](105323/) | [2024 Xiangtan University Summer Camp-Div.2](https://codeforces.com/contest/105323) | 6 | 4/6 | Special | - |
 | [105336](105336/) | [The 2024 CCPC Online Contest](https://codeforces.com/contest/105336) | 12 | 12/12 | Special | - |
 | [105345](105345/) | [UTPC Contest 09-13-24 Div. 1 (Advanced)](https://codeforces.com/contest/105345) | 8 | 0/8 | Div. 1 | - |
-| [105346](105346/) | [UTPC Contest 09-13-24 Div. 2 (Beginner)](https://codeforces.com/contest/105346) | 2 | 0/2 | Div. 2 | - |
+| [105346](105346/) | [UTPC Contest 09-13-24 Div. 2 (Beginner)](https://codeforces.com/contest/105346) | 8 | 0/8 | Div. 2 | - |
 | [105348](105348/) | [Coding Challenge Alpha VII - by Algorave](https://codeforces.com/contest/105348) | 1 | 0/1 | Special | - |
 | [105350](105350/) | [Theforces Round #34 (ABC-Forces)](https://codeforces.com/contest/105350) | 1 | 0/1 | Special | - |
 | [105358](105358/) | [The 2024 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/105358) | 2 | 2/2 | ICPC/IOI | - |
