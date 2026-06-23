@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.4.4: Input and Output"
-description: "Section 1.4.4 exercises: 19/19 solved."
+description: "Section 1.4.4 exercises: 19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.4"
@@ -14,26 +14,8 @@ draft: false
 
 # Section 1.4.4. Input and Output
 
-Exercises from [TAOCP Volume 1](../) Section 1.4.4: 19/19 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.4.4: 19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*05*] | simple | solved | 6m22s |
-| [2](02.md) |  [*10*] | simple | solved | 10m48s |
-| [3](03.md) |  [*22*] | medium | solved | 3m37s |
-| [4](04.md) |  [*M20*] | math-medium | solved | 4m09s |
-| [5](05.md) |  [*M21*] | math-medium | solved | 5m58s |
-| [6](06.md) |  [*12*] | simple | solved | 10m34s |
-| [7](07.md) |  [*22*] | medium | solved | 4m32s |
-| [8](08.md) |  [*11*] | simple | solved | 6m33s |
-| [9](09.md) |  [*21*] | medium | solved | 5m23s |
-| [10](10.md) |  [*21*] | medium | solved | 6m02s |
-| [11](11.md) |  [*21*] | medium | solved | 4m41s |
-| [12](12.md) |  [*24*] | medium | solved | 4m50s |
-| [13](13.md) |  [*20*] | medium | solved | 4m20s |
-| [14](14.md) |  [*20*] | medium | solved | 4m04s |
-| [15](15.md) |  [*22*] | medium | solved | 3m52s |
-| [16](16.md) |  [*29*] | hard | solved | 11m23s |
-| [17](17.md) |  [*40*] | project | solved | 4m57s |
-| [18](18.md) |  [*30*] | hard | solved | 5m26s |
-| [19](19.md) |  [*M28*] | math-hard | solved | 5m39s |
+
