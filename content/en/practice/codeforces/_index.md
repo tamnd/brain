@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1925 contests, 12220 problems, 6931 verified."
+description: "Codeforces problem solutions with full editorials. 1926 contests, 12233 problems, 6944 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1925 contests, 12220 problems, 6931 verified.**
+**1926 contests, 12233 problems, 6944 verified.**
 
-## Unknown — 188 contests, 1490 problems, 1187 verified
+## Unknown — 189 contests, 1503 problems, 1200 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105264](105264/) | [The 2024 Syrian Virtual University Collegiate Programming Contest](https://codeforces.com/contest/105264) | 13 | 13/13 | Special | - |
 | [105271](105271/) | [Almaty Code Cup 2024](https://codeforces.com/contest/105271) | 11 | 11/11 | Special | - |
 | [105272](105272/) | [IX MaratonUSP Freshman Contest](https://codeforces.com/contest/105272) | 10 | 10/10 | Special | - |
 | [105276](105276/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2023](https://codeforces.com/contest/105276) | 12 | 6/12 | Special | - |
