@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11994 problems, 6749 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11995 problems, 6750 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11994 problems, 6749 verified.**
+**1921 contests, 11995 problems, 6750 verified.**
 
-## Unknown — 186 contests, 1358 problems, 1079 verified
+## Unknown — 186 contests, 1359 problems, 1080 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
 | [105384](105384/) | [Anton Trygub Contest 2 (The 3rd Universal Cup, Stage 3: Ukraine)](https://codeforces.com/contest/105384) | 12 | 12/12 | Special | - |
 | [105387](105387/) | [ICPC Central Russia Regional Contest, 2023](https://codeforces.com/contest/105387) | 14 | 3/14 | ICPC/IOI | - |
-| [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 11 | 11/11 | Special | - |
+| [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 12 | 12/12 | Special | - |
 | [105394](105394/) | [2024-2025 ICPC German Collegiate Programming Contest (GCPC 2024)](https://codeforces.com/contest/105394) | 7 | 7/7 | ICPC/IOI | - |
 | [105400](105400/) | [Fall 2024 Cupertino Informatics Tournament](https://codeforces.com/contest/105400) | 11 | 3/11 | Special | - |
 | [105401](105401/) | [2024 KAIST 14th ICPC Mock Competition](https://codeforces.com/contest/105401) | 5 | 0/5 | ICPC/IOI | - |
