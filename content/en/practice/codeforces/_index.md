@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1926 contests, 12233 problems, 6944 verified."
+description: "Codeforces problem solutions with full editorials. 1927 contests, 12238 problems, 6944 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1926 contests, 12233 problems, 6944 verified.**
+**1927 contests, 12238 problems, 6944 verified.**
 
-## Unknown — 189 contests, 1503 problems, 1200 verified
+## Unknown — 190 contests, 1508 problems, 1200 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105263](105263/) | [XXIV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105263) | 5 | 0/5 | Special | - |
 | [105264](105264/) | [The 2024 Syrian Virtual University Collegiate Programming Contest](https://codeforces.com/contest/105264) | 13 | 13/13 | Special | - |
 | [105271](105271/) | [Almaty Code Cup 2024](https://codeforces.com/contest/105271) | 11 | 11/11 | Special | - |
 | [105272](105272/) | [IX MaratonUSP Freshman Contest](https://codeforces.com/contest/105272) | 10 | 10/10 | Special | - |
