@@ -1,27 +1,28 @@
 ---
 title: "ICPC-de-Tryst 2024"
-description: "10 problems from ICPC-de-Tryst 2024 (contest 105064), difficulty -. 0/10 solutions verified against sample I/O."
+description: "11 problems from ICPC-de-Tryst 2024 (contest 105064), difficulty -. 0/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105064
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
+n_problems: 11
 n_verified: 0
-total_solve_s: 840
+total_solve_s: 951
 contest_year: 2024
-date: "2026-06-23T10:29:15+07:00"
+date: "2026-06-23T12:26:32+07:00"
 weight: 105064
 draft: false
 ---
 
 # [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064)
 
-ICPC/IOI | 10 problems | 0/10 verified | Difficulty - | 14m
+ICPC/IOI | 11 problems | 0/11 verified | Difficulty - | 15m 51s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [A Highly Constrained Problem...](https://codeforces.com/problemset/problem/105064/A) |  |  |  | 1m 22s |  |
+| [B](B/) | [SGPA Calculation](https://codeforces.com/problemset/problem/105064/B) |  |  |  | 1m 51s |  |
 | [C](C/) | [You and Assignments](https://codeforces.com/problemset/problem/105064/C) |  |  |  | 1m 19s |  |
 | [D](D/) | [Snakes Among Us](https://codeforces.com/problemset/problem/105064/D) |  |  |  | 1m 25s |  |
 | [E](E/) | [Color Conundrum](https://codeforces.com/problemset/problem/105064/E) |  |  |  | 1m 23s |  |
