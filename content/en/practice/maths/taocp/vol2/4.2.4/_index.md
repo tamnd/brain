@@ -20,12 +20,12 @@ Exercises from [TAOCP Volume 1](../) Section 4.2.4: 17/20 solved.
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*13*] | simple | verified | 2m16s |
 | [2](02.md) |  [*22*] | medium | solved | 3m55s |
-| [3](03.md) |  [*15*] | simple | verified | 1m49s |
-| [4](04.md) |  [*M18*] | math-medium | verified | 1m42s |
-| [5](05.md) | &#9654; [*M20*] | math-medium | solved | 7m53s |
-| [6](06.md) |  [*25*] | medium | solved | 9m53s |
+| [3](03.md) |  [*15*] | simple | verified | 3m43s |
+| [4](04.md) |  [*M18*] | math-medium | verified | 1m09s |
+| [5](05.md) | &#9654; [*M20*] | math-medium | verified | 56s |
+| [6](06.md) |  [*25*] | medium | verified | 1m25s |
 | [7](07.md) |  [*HM28*] | hm-hard | verified | 4m07s |
-| [8](08.md) |  [*HM23*] | hm-medium | solved | 3m45s |
+| [8](08.md) |  [*HM23*] | hm-medium | verified | 2m57s |
 | [9](09.md) |  [*HM25*] | hm-medium | verified | 2m05s |
 | [10](10.md) | &#9654; [*HM28*] | hm-hard | verified | 3m58s |
 | [11](11.md) |  [*M15*] | math-simple | verified | 3m09s |

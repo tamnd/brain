@@ -25,8 +25,8 @@ Exercises from [TAOCP Volume 1](../) Section 2.4: 15/15 solved.
 | [5](05.md) |  [**] |  | solved | 10m19s |
 | [6](06.md) |  [**] |  | solved | 4m |
 | [7](07.md) |  [**] |  | solved | 5m57s |
-| [8](08.md) |  [**] |  | solved | 31s |
-| [9](09.md) |  [**] |  | solved | 1m14s |
+| [8](08.md) |  [**] |  | solved | 4m44s |
+| [9](09.md) |  [**] |  | solved | 5m13s |
 | [10](10.md) |  [**] |  | solved | 3m29s |
 | [11](11.md) |  [**] |  | solved | 3m53s |
 | [12](12.md) |  [**] |  | solved | 4m06s |

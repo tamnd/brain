@@ -1,0 +1,24 @@
+---
+title: "TAOCP 5.1: Combinatorial Properties of Permutations"
+description: "Section 5.1 exercises: 1/4 solved."
+tags: ["taocp", "mathematics", "algorithms"]
+categories: ["mathematics"]
+section: "5.1"
+section_title: "Combinatorial Properties of Permutations"
+chapter: 5
+chapter_title: "Sorting"
+volume: 3
+weight: 501
+draft: false
+---
+
+# Section 5.1. Combinatorial Properties of Permutations
+
+Exercises from [TAOCP Volume 3](../) Section 5.1: 1/4 solved.
+
+| # | Rating | Category | Status | Time |
+|---|--------|----------|--------|------|
+| 1 |  [**] |  | - | - |
+| [2](02.md) |  [**] |  | verified | 4m32s |
+| 3 |  [**] |  | - | - |
+| 4 |  [**] |  | - | - |

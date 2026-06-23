@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 881 solved, 501 verified, 884 total."
+description: "Volume 2: Seminumerical Algorithms. 881 solved, 504 verified, 884 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 501 verified, 884 total.
+Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 504 verified, 884 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -31,7 +31,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 501 verified, 884 tota
 | [4.2.1](4.2.1/) | Single-Precision Calculations | 19 | 13 | 19 |
 | [4.2.2](4.2.2/) | Accuracy of Floating Point Arithmetic | 32 | 22 | 32 |
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 6 | 3 | 6 |
-| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 17 | 11 | 20 |
+| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 17 | 14 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 43 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 19 | 6 | 19 |

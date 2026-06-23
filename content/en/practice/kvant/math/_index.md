@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1557 solved, 66 verified), 1970–1996."
+description: "Kvant mathematics problem solutions (1566 solved, 66 verified), 1970–1996."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1557
+kvant_total: 1566
 kvant_verified: 66
 kvant_year_start: 1970
 kvant_year_end: 1996
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1557 mathematics problems** from the magazine's problem section, covering the years 1970 to 1996. 66 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1566 mathematics problems** from the magazine's problem section, covering the years 1970 to 1996. 66 solutions have been independently verified.
 
 ## 1970
 
@@ -456,7 +456,7 @@ draft: false
 | [334](334.md) *All-Union School Mathematics Olympiad (1975, 9th grade)*. Consider small polynomials such as $P(x) = x$, $P(x) = x+1$, or $P(x) = x^2$. |  | 4m41s |
 | [335](335.md) *All-Union Mathematical Olympiad for School Students (1975, grades 8–10)*. Represent the marked cell centers by a $0$-$1$ matrix. |  | 10m27s |
 | [336](336.md) *All-Union Mathematical Olympiad for School Students (1974, Grade 10)*. For two polygons the statement is immediate. |  | 1m39s |
-| [337](337.md) Please provide the textual version of Kvant problem M337. |  | 4m04s |
+| [337](337.md) Let |  | 2m59s |
 | [338](338.md) *All-Union Mathematical Olympiad for School Students (1975, Grades 8 and 10)*. Consider the operation on a small set of digits. |  | 1m27s |
 | [339](339.md) *All-Union Mathematical Olympiad for School Students (1975, Grades 8–9)*. For each of the given lines, orient it upward. |  | 3m59s |
 | [340](340.md) *All-Union Mathematical Olympiad for School Students (1974, Grade 10)*. Consider first a $2 \\times 2$ table: |  | 3m16s |
@@ -473,11 +473,13 @@ draft: false
 | [351](351.md) *M. M. Imerishvili, 9th-grade student (Tbilisi)*. Let the unknown triangle be $ABC$, and suppose that $H$ is the foot of the altitude from $A$ onto $BC$. |  | 10m16s |
 | [352](352.md) *D. K. Faddeev*. Write |  | 6m05s |
 | [353](353.md) Before proceeding, I need the precise textual statement of Kvant problem M353. |  | 5m51s |
+| [354](354.md) The problem statement for M354 is not included in your message, and I also do not have the scanned page containing it. |  | 1m01s |
 | [355](355.md) I cannot write a solution to Kvant problem M355 because the actual problem statement is not present in your message. |  | 2m48s |
+| [356](356.md) No page or problem statement for M356 has been provided, so a solution cannot be constructed. |  | 52s |
 | [357](357.md) Let |  | 2m56s |
 | [358](358.md) I can produce a complete, rigorous Kvant-style solution, but I need the text of problem M358 to proceed. |  | 6m09s |
 | [360](360.md) *V. P. Golubyatnikov*. Let |  | 7m19s |
-| [361](361.md) A move consists of choosing a horizontal row or a vertical column that still contains at least one uncrossed cell, and crossing out every uncrossed cell in that row or column. |  | 2m35s |
+| [361](361.md) Please provide the full text of Kvant problem M361 so I can write the complete, rigorous solution in the requested six-section format. |  | 4m29s |
 | [362](362.md) The statement is affine in nature. |  | 3m39s |
 | [364](364.md) The requirement that every training session consists of 4 disjoint crews of 4 cosmonauts means that each session partitions the 16 cosmonauts into 4-element subsets. |  | 1m45s |
 | [365](365.md) Consider first a simple case of two numbers summing to $1$. |  | 6m31s |
@@ -488,8 +490,7 @@ draft: false
 | [371](371.md) *S. V. Fomin*. Consider the problem on a $2\\times 2$ chessboard first. |  | 2m45s |
 | [372](372.md) Consider the triangle $ABC$ and the inequality $/AP/ + /BP/ + /CP/ \\ge /AC/ + /BC/$ for an arbitrary point $P$ in the plane. |  | 7m43s |
 | [373](373.md) An infinite decimal expansion determines an infinite sequence of digits, hence an infinite word over the alphabet ${0,1,\\dots,9}$. |  | 7m06s |
-| [374](374.md) The expression contains two square roots that both include the factor $c$, suggesting a factorization by $\\sqrt{c}$. |  | 3m05s |
-| [375](375.md) The problem concerns a convex polyhedron $P$ of volume $1$ containing $3(2^n-1)$ marked points. |  | 3m25s |
+| [375](375.md) I cannot write a solution to Kvant problem M375 from the information provided, because the actual problem statement is missing. |  | 5m09s |
 | [376](376.md) Let the black piece start at cell $1$ and the white piece at cell $N$. |  | 6m47s |
 | [377](377.md) The required condition is |  | 12m03s |
 | [379](379.md) I can proceed with this framework, but I need the text of Kvant problem M379 in order to produce a rigorous solution. |  | 4m28s |
@@ -1003,7 +1004,7 @@ draft: false
 | [901](901.md) Consider triangle $ABC$ with bisectors $AK$ and $BM$ intersecting at $O$. |  | 2m59s |
 | [902](902.md) *A. V. Kelarev*. Suppose the partition consists of finitely many arithmetic progressions |  | 9m23s |
 | [903](903.md) *A. A. Dorogovtsev*. A plane section of a convex polyhedron changes combinatorially only when the plane passes through a vertex. |  | 2m56s |
-| [904](904.md) Let $A = a_n a_{n-1}\\ldots a_0$ in decimal. |  | 4m52s |
+| [904](904.md) I cannot write a solution because the actual problem statement is missing. |  | 1m16s |
 | [905](905.md) Consider the equation |  | 10m22s |
 | [906](906.md) *M. V. Slavinskyi*. Consider the equation |  | 27m41s |
 | [907](907.md) *T. A. Dzhortmenadze*. Let $A=\\widehat A$, $B=\\widehat B$, $C=\\widehat C$. |  | 6m49s |
@@ -1059,7 +1060,7 @@ draft: false
 | [957](957.md) *International Mathematical Olympiad (XXVI) for School Students*. Each allowed integer has the form |  | 9m14s |
 | [958](958.md) *International Mathematical Olympiad (XXVI)*. Let |  | 3m21s |
 | [959](959.md) *A. A. Razborov*. Consider first small examples. |  | 7m47s |
-| [960](960.md) Something went wrong. |  | 29m02s |
+| [960](960.md) Let consecutive natural numbers be $k$ and $k+1$. |  | 1m24s |
 | [961](961.md) *A. P. Savin, N. A. Paravyan*. Let the side length of the square be $6$. |  | 7m12s |
 | [962](962.md) Let $P(x)\\in\\mathbb{Z}[x]$ and suppose there exist distinct integers $x_1,\\dots,x_n$ with $n\\ge 3$ such that |  | 2m05s |
 | [963](963.md) Let the hexagon be $A B C D E F$ in cyclic order. |  | 3m50s |
@@ -1247,13 +1248,13 @@ draft: false
 | [1150](1150.md) *E. G. Moiseev, 10th-grade student*. For $n=3$ the inequality becomes |  | 2m09s |
 | [1151](1151.md) I cannot write a solution to Kvant problem M1151 from the information provided, because the actual problem statement is missing. |  | 5m34s |
 | [1152](1152.md) I do not have the statement of Kvant problem M1152, and the prompt says that only the graphical version is currently available. |  | 9m36s |
-| [1153](1153.md) Please go ahead and provide the Kvant problem statement you want solved. |  | 2m13s |
+| [1153](1153.md) I can do that. |  | 3m45s |
 | [1154](1154.md) I cannot write a solution to Kvant problem M1154 because the actual problem statement is not present in your message. |  | 6m43s |
 | [1155](1155.md) A complete solution cannot be written from the information provided. |  | 5m30s |
 | [1156](1156.md) There are eight teams, each playing once against every other team, so each team plays $7$ games. |  | 7m23s |
 | [1157](1157.md) Let the three triangles be $T_W,T_R,T_G$, and let $M$ be a point lying in the interior of each of them. |  | 9m57s |
 | [1158](1158.md) We are asked to minimize $(x+y)(x+z)$ under the constraint $xyz(x+y+z)=1$, with $x$, $y$, $z$ positive. |  | 7m27s |
-| [1159](1159.md) The allowed tool is a straightedge together with the ability to construct a line parallel to a given line at a fixed distance equal to the ruler width. |  | 3m39s |
+| [1159](1159.md) Before I can write the full six-section solution you requested, I need the **textual statement of Kvant problem M1159**, since I do not have the content of the problem from memory. |  | 6m52s |
 | [1160](1160.md) *S. L. Eliseev*. Consider the situation with only two kangaroos first. |  | 7m10s |
 | [1161](1161.md) *N. P. Dolbilin*. Consider first the configuration of ten identical billiard balls arranged snugly in a triangular container. |  | 7m09s |
 | [1162](1162.md) *D. V. Fomin*. Consider the Diophantine equation |  | 4m11s |
@@ -1276,7 +1277,7 @@ draft: false
 | [1179](1179.md) *B. A. Wertheim*. Consider the first recurrence, $a_{n+1} = \\frac{n}{n+1}(a_n+1)$ with $a_1 = 0$. |  | 7m53s |
 | [1180](1180.md) *All-Union Mathematical Olympiad (XXIII, 1989)*. Consider two spheres intersecting along a circle. |  | 7m41s |
 | [1181](1181.md) *All-Union Mathematical Olympiad (XXIII, 1989)*. Consider small instances of the chessboard and examine the parity of black squares occupied by pieces when each row and each column contains exactly one piece. |  | 7m55s |
-| [1182](1182.md) Label the birdhouses by their positions $P_1,\\dots,P_n$ in the plane, with all pairwise distances distinct. |  | 3m47s |
+| [1182](1182.md) Before I begin, could you provide the exact text of Kvant problem M1182? I need the precise statement to produce a complete, rigorous solution in the requested format. |  | 8m26s |
 | [1183](1183.md) I cannot write a solution to Kvant problem M1183 because the actual problem statement is not present in your message. |  | 5m49s |
 | [1184](1184.md) I do not have access to the published graphical version of Kvant M1184, and you mentioned the textual version is being prepared. |  | 10m11s |
 | [1185](1185.md) I do not yet have the full text of Kvant problem M1185. |  | 5m49s |
@@ -1343,7 +1344,7 @@ draft: false
 | [1247](1247.md) *Leningrad City Mathematical Olympiad (1990)*. Consider tiling the plane with squares of side lengths $1, 2, 4, 8, \\dots$ under the two constraints: using each size at most ten times or using each size once. |  | 7m33s |
 | [1248](1248.md) *Leningrad City Mathematical Olympiad (1990)*. For the first statement, it is natural to place the original segment on the real line as $[0,L]$. |  | 3m58s |
 | [1249](1249.md) *Leningrad City Mathematical Olympiad (1990)*. The road system is a tournament: for every pair of cities exactly one directed edge joins them. |  | 4m58s |
-| [1250](1250.md) Once you provide it, I’ll write a complete, rigorous solution in the style typical of Kvant: clear structure, justified steps, and (when useful) a clean geometric or algebraic insight rather than just… |  | 3m12s |
+| [1250](1250.md) *with full Olympiad-level rigor.*. I cannot write a rigorous solution to Kvant problem M1250 from the information provided, because the actual problem statement is missing. |  | 6m44s |
 | [1251](1251.md) I notice that the problem statement for Kvant M1251 is not fully given in text form. |  | 4m50s |
 | [1252](1252.md) I cannot write a solution to Kvant problem M1252 because the actual problem statement is not present. |  | 6m20s |
 | [1253](1253.md) A complete solution cannot be written because the problem statement is not available. |  | 4m50s |
@@ -1539,15 +1540,21 @@ draft: false
 | [1447](1447.md) No mathematical exploration is possible because the statement of Kvant problem M1447 is not provided. |  | 7m11s |
 | [1451](1451.md) *Russian Mathematical Olympiad (XX)*. Let $d=\\gcd(a,b)$ and write $a=dx$, $b=dy$ with $\\gcd(x,y)=1$. |  | 9m15s |
 | [1453](1453.md) *Russian Mathematical Olympiad (XX)*. Let $n_k$ be the repunit of length $k$, so |  | 7m51s |
+| [1458](1458.md) I cannot produce a correct solution to M1458 from the text alone, because the problem explicitly depends on the geometry of the pulley arrangement shown in the figure. |  | 2m05s |
+| [1459](1459.md) The vessel rotates steadily about a vertical axis. |  | 2m59s |
 | [1460](1460.md) *Russian Mathematical Olympiad (XX)*. Let $A$ and $B$ be the two figures. | ✓ | 15m00s |
 | [1461](1461.md) Represent the $n$ definitions by vertices $1,\\dots,n$. | ✓ | 20m43s |
+| [1462](1462.md) Let |  | 3m30s |
+| [1463](1463.md) Part (a): let |  | 4m44s |
 | [1466](1466.md) *V. K. Kovaldzhi*. Two artists play a sequential map-coloring game. |  | 30m17s |
 | [1467](1467.md) *International Mathematical Olympiad for School Students (XXXV)*. Let |  | 9m49s |
 | [1468](1468.md) *International Mathematical Olympiad for School Students (XXXV)*. Place the isosceles triangle in coordinates as |  | 38m52s |
 | [1469](1469.md) *International Mathematical Olympiad for School Students (XXXV)*. Each integer $n$ with exactly three ones in binary has the form |  | 9m52s |
 | [1470](1470.md) *International Mathematical Olympiad for School Students (XXXV)*. We need a set $A$ of positive integers such that every infinite set $S$ of primes contains, among the squarefree numbers formed from distinct primes of $S$, two numbers with the same number $k\\ge2$ of… |  | 9m45s |
+| [1473](1473.md) Let |  | 3m28s |
 | [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
+| [1477](1477.md) The phrase “cut off a similar one” is interpreted in the standard geometric sense used in olympiad problems: from a convex polygon one performs cuts along straight lines intersecting adjacent sides, p… |  | 3m51s |
 | [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
 | [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
 | [1482](1482.md) Let | ✓ | 7m58s |
@@ -1558,6 +1565,8 @@ draft: false
 | [1488](1488.md) Let the squares in the sequence be |  | 38m09s |
 | [1489](1489.md) *A. I. Galochkin*. Work over the vector space $\\mathbb F_2^{mn}$ of all $0$-$1$ configurations on the $m\\times n$ rectangle. | ✓ | 14m54s |
 | [1490](1490.md) *V. A. Ufnarovsky*. The statement as written can only be meaningful if the second triangle has side lengths $\\sin x$, $\\sin y$, $\\sin z$. | ✓ | 26m37s |
+| [1497](1497.md) A toroidal $15\\times 15$ chessboard can be identified with the group $\\mathbb Z_{15}\\times\\mathbb Z_{15}$, where coordinates are taken modulo $15$. |  | 9m25s |
+| [1499](1499.md) We seek infinitely many rational solutions of |  | 2m58s |
 | [1500](1500.md) *City Tournament (Spring, 1995)*. Represent the group by a simple graph $G$ with $50$ vertices. | ✓ | 29m05s |
 | [1501](1501.md) *V. A. Senderov*. For small $x$, the functions admit linear approximations $\\sin(kx)\\sim kx$ and $\\sin x\\sim x$. |  | 9m09s |
 | [1502](1502.md) *V. V. Proizvolov*. Let the regular $2n$-gon have vertices labeled $A=A_0, A_1, \\dots, A_{2n-1}$ in cyclic order. |  | 41m25s |
