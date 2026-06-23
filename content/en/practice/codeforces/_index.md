@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12032 problems, 6767 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12038 problems, 6767 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12032 problems, 6767 verified.**
+**1921 contests, 12038 problems, 6767 verified.**
 
 ## Unknown — 186 contests, 1384 problems, 1093 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1485 problems, 674 verified
+## 2024 — 188 contests, 1491 problems, 674 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1723,7 +1723,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105435](105435/) | [TSEC Round 2 (Div. 3)](https://codeforces.com/contest/105435) | 4 | 4/4 | Div. 3 | - |
 | [105445](105445/) | [TheForces Round #36 (Starters-Forces)](https://codeforces.com/contest/105445) | 7 | 0/7 | Special | - |
 | [105449](105449/) | [Moscow team school olympiad (MKOSHP) 2024](https://codeforces.com/contest/105449) | 11 | 1/11 | Special | - |
-| [105450](105450/) | [UTPC x WiCS Contest 10-25-24 (UT Internal)](https://codeforces.com/contest/105450) | 4 | 0/4 | Special | - |
+| [105450](105450/) | [UTPC x WiCS Contest 10-25-24 (UT Internal)](https://codeforces.com/contest/105450) | 10 | 0/10 | Special | - |
 | [105454](105454/) | [Пермская региональная олимпиада школьников по программированию 2024](https://codeforces.com/contest/105454) | 5 | 1/5 | Special | - |
 | [105459](105459/) | [2024 China Collegiate Programming Contest (CCPC) Harbin Onsite (The 3rd Universal Cup. Stage 14: Harbin)](https://codeforces.com/contest/105459) | 4 | 4/4 | Special | - |
 | [105481](105481/) | [2024 CCPC Liaoning Provincial Contest](https://codeforces.com/contest/105481) | 6 | 6/6 | Special | - |
