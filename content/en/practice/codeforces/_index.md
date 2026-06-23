@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1929 contests, 12255 problems, 6958 verified."
+description: "Codeforces problem solutions with full editorials. 1930 contests, 12268 problems, 6971 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1929 contests, 12255 problems, 6958 verified.**
+**1930 contests, 12268 problems, 6971 verified.**
 
 ## Unknown — 190 contests, 1508 problems, 1200 verified
 
@@ -1562,7 +1562,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 192 contests, 1584 problems, 758 verified
+## 2024 — 193 contests, 1597 problems, 771 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1696,6 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 5 | 4/5 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105257](105257/) | [2024 ICPC ShaanXi Provincial Contest](https://codeforces.com/contest/105257) | 13 | 13/13 | ICPC/IOI | - |
 | [105259](105259/) | [Western European Olympiad in Informatics 2024 Mirror](https://codeforces.com/contest/105259) | 4 | 1/4 | Special | - |
 | [105262](105262/) | [Game of Coders 3.0](https://codeforces.com/contest/105262) | 13 | 13/13 | Special | - |
 | [105266](105266/) | [2024 XTU Summer Camp Selection Competition](https://codeforces.com/contest/105266) | 6 | 6/6 | Special | - |
