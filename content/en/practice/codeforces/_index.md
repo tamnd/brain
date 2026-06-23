@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11775 problems, 6632 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11784 problems, 6632 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11775 problems, 6632 verified.**
+**1921 contests, 11784 problems, 6632 verified.**
 
 ## Unknown — 186 contests, 1275 problems, 1034 verified
 
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1337 problems, 598 verified
+## 2024 — 188 contests, 1346 problems, 598 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1694,7 +1694,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
 | [105270](105270/) | [TheForces Round #32 (2^5-Forces, TheForces Rated, Prizes!)](https://codeforces.com/contest/105270) | 5 | 0/5 | Special | - |
 | [105278](105278/) | [2024 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/105278) | 13 | 1/13 | ICPC/IOI | - |
-| [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 2 | 0/2 | Special | - |
+| [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 11 | 0/11 | Special | - |
 | [105284](105284/) | [TeamsCode Summer 2024 Advanced Division](https://codeforces.com/contest/105284) | 2 | 1/2 | Special | - |
 | [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 3 | 1/3 | Special | - |
 | [105293](105293/) | [TheForces Round #33(Wow-Forces)](https://codeforces.com/contest/105293) | 1 | 0/1 | Special | - |
