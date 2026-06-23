@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 11962 problems, 6724 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 11968 problems, 6730 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 11962 problems, 6724 verified.**
+**1921 contests, 11968 problems, 6730 verified.**
 
-## Unknown — 186 contests, 1339 problems, 1066 verified
+## Unknown — 186 contests, 1345 problems, 1072 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -33,7 +33,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 0/13 | ICPC/IOI | - |
 | [105363](105363/) | [XXV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105363) | 6 | 3/6 | Special | - |
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
-| [105384](105384/) | [Anton Trygub Contest 2 (The 3rd Universal Cup, Stage 3: Ukraine)](https://codeforces.com/contest/105384) | 6 | 6/6 | Special | - |
+| [105384](105384/) | [Anton Trygub Contest 2 (The 3rd Universal Cup, Stage 3: Ukraine)](https://codeforces.com/contest/105384) | 12 | 12/12 | Special | - |
 | [105387](105387/) | [ICPC Central Russia Regional Contest, 2023](https://codeforces.com/contest/105387) | 6 | 1/6 | ICPC/IOI | - |
 | [105388](105388/) | [OCPC Potluck Contest 1 (The 3rd Universal Cup. Stage 6: Osijek)](https://codeforces.com/contest/105388) | 6 | 6/6 | Special | - |
 | [105394](105394/) | [2024-2025 ICPC German Collegiate Programming Contest (GCPC 2024)](https://codeforces.com/contest/105394) | 7 | 7/7 | ICPC/IOI | - |
