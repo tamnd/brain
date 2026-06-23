@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12118 problems, 6830 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12128 problems, 6840 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12118 problems, 6830 verified.**
+**1921 contests, 12128 problems, 6840 verified.**
 
-## Unknown — 186 contests, 1433 problems, 1131 verified
+## Unknown — 186 contests, 1434 problems, 1132 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -62,7 +62,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105472](105472/) | [2019-2020 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2019)](https://codeforces.com/contest/105472) | 11 | 10/11 | ICPC/IOI | - |
 | [105475](105475/) | [XXII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105475) | 5 | 3/5 | Special | - |
 | [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 5 | 3/5 | Special | - |
-| [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 3 | 2/3 | Special | - |
+| [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 4 | 3/4 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 3 | 1/3 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 3 | 3/3 | Special | - |
 | [105492](105492/) | [2024 Benelux Algorithm Programming Contest (BAPC 24)](https://codeforces.com/contest/105492) | 3 | 3/3 | Special | - |
@@ -1558,7 +1558,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 188 contests, 1522 problems, 699 verified
+## 2024 — 188 contests, 1531 problems, 708 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1728,7 +1728,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105459](105459/) | [2024 China Collegiate Programming Contest (CCPC) Harbin Onsite (The 3rd Universal Cup. Stage 14: Harbin)](https://codeforces.com/contest/105459) | 13 | 13/13 | Special | - |
 | [105481](105481/) | [2024 CCPC Liaoning Provincial Contest](https://codeforces.com/contest/105481) | 13 | 13/13 | Special | - |
 | [105485](105485/) | [2024 China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/105485) | 14 | 14/14 | Special | - |
-| [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 3 | 3/3 | ICPC/IOI | - |
+| [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 12 | 12/12 | ICPC/IOI | - |
 | [105498](105498/) | [Khulna Regional Inter University Programming Contest (KRIUPC) MIRROR](https://codeforces.com/contest/105498) | 2 | 2/2 | Special | - |
 | [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 2 | 2/2 | Special | - |
 | [105535](105535/) | [2024 ICPC Belarus Regional Contest](https://codeforces.com/contest/105535) | 7 | 7/7 | ICPC/IOI | - |
