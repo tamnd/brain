@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12099 problems, 6812 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12101 problems, 6814 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12099 problems, 6812 verified.**
+**1921 contests, 12101 problems, 6814 verified.**
 
-## Unknown — 186 contests, 1429 problems, 1128 verified
+## Unknown — 186 contests, 1431 problems, 1130 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -61,7 +61,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105471](105471/) | [The 2023 ICPC Asia Xian Regional Contest (The 3rd Universal Cup. Stage 9: Xian)](https://codeforces.com/contest/105471) | 7 | 1/7 | ICPC/IOI | - |
 | [105472](105472/) | [2019-2020 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2019)](https://codeforces.com/contest/105472) | 11 | 10/11 | ICPC/IOI | - |
 | [105475](105475/) | [XXII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105475) | 5 | 3/5 | Special | - |
-| [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 3 | 1/3 | Special | - |
+| [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 5 | 3/5 | Special | - |
 | [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 2 | 1/2 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 2 | 1/2 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 3 | 3/3 | Special | - |
