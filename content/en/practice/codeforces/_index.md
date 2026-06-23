@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1921 contests, 12051 problems, 6774 verified."
+description: "Codeforces problem solutions with full editorials. 1921 contests, 12053 problems, 6775 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1921 contests, 12051 problems, 6774 verified.**
+**1921 contests, 12053 problems, 6775 verified.**
 
-## Unknown — 186 contests, 1390 problems, 1099 verified
+## Unknown — 186 contests, 1392 problems, 1100 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -52,7 +52,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105444](105444/) | [2020-2021 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2020)](https://codeforces.com/contest/105444) | 13 | 13/13 | ICPC/IOI | - |
 | [105446](105446/) | [2024 United Kingdom and Ireland Programming Contest (UKIEPC 2024)](https://codeforces.com/contest/105446) | 12 | 0/12 | Special | - |
 | [105453](105453/) | [2024 ICPC Greece Regional Collegiate Programming Contest (GRCPC 2024)](https://codeforces.com/contest/105453) | 8 | 8/8 | ICPC/IOI | - |
-| [105455](105455/) | [XXIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105455) | 2 | 2/2 | Special | - |
+| [105455](105455/) | [XXIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105455) | 4 | 3/4 | Special | - |
 | [105456](105456/) | [XXIII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105456) | 2 | 1/2 | Special | - |
 | [105457](105457/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105457) | 1 | 0/1 | Special | - |
 | [105458](105458/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105458) | 1 | 0/1 | Special | - |
