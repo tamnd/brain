@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1922 contests, 12197 problems, 6909 verified."
+description: "Codeforces problem solutions with full editorials. 1923 contests, 12198 problems, 6909 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1922 contests, 12197 problems, 6909 verified.**
+**1923 contests, 12198 problems, 6909 verified.**
 
-## Unknown — 187 contests, 1486 problems, 1184 verified
+## Unknown — 188 contests, 1487 problems, 1184 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -31,6 +31,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 2 | 1/2 | Special | - |
 | [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 0/13 | ICPC/IOI | - |
+| [105351](105351/) | [COMP4128 Ancient Berland Roads](https://codeforces.com/contest/105351) | 1 | 0/1 | Special | - |
 | [105363](105363/) | [XXV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105363) | 6 | 3/6 | Special | - |
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
 | [105384](105384/) | [Anton Trygub Contest 2 (The 3rd Universal Cup, Stage 3: Ukraine)](https://codeforces.com/contest/105384) | 12 | 12/12 | Special | - |
