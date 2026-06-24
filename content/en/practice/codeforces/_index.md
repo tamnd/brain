@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1945 contests, 12413 problems, 7067 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12425 problems, 7079 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1945 contests, 12413 problems, 7067 verified.**
+**1946 contests, 12425 problems, 7079 verified.**
 
-## Unknown — 197 contests, 1572 problems, 1232 verified
+## Unknown — 198 contests, 1583 problems, 1243 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105214](105214/) | [OCPC Fall 2023 - Day 1: Jeroen Op de Beek Contest](https://codeforces.com/contest/105214) | 11 | 11/11 | Special | - |
 | [105216](105216/) | [2024 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/105216) | 13 | 0/13 | ICPC/IOI | - |
 | [105223](105223/) | [HIAST Collegiate Programming Contest 2024](https://codeforces.com/contest/105223) | 14 | 10/14 | Special | - |
 | [105224](105224/) | [MOI2024](https://codeforces.com/contest/105224) | 3 | 1/3 | Special | - |
@@ -1569,7 +1570,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 201 contests, 1678 problems, 835 verified
+## 2024 — 201 contests, 1679 problems, 836 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1700,7 +1701,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [105056](105056/) | [International Odoo Programming Contest 2024](https://codeforces.com/contest/105056) | 8 | 0/8 | Special | - |
 | [105059](105059/) | [IU Programming Challenge 2024](https://codeforces.com/contest/105059) | 6 | 6/6 | Special | - |
-| [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 5 | 4/5 | Special | - |
+| [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
 | [105222](105222/) | [The 2024 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105222) | 12 | 9/12 | Special | - |
