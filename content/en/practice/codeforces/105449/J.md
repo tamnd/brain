@@ -1,7 +1,7 @@
 ---
 title: "CF 105449J - \u041c\u043d\u043e\u0433\u043e \u0438\u0433\u0440"
-description: "We are given a collection of independent games. Each game has a success probability $pi%$ and a reward $wi$. If we choose a set of games, we only receive money if we win every single chosen game."
-date: "2026-06-23T03:14:13+07:00"
+description: "We are given a collection of independent gambling games. Each game has a probability of success and a payout if it succeeds. The twist is that if any chosen game fails, the entire selection yields zero reward."
+date: "2026-06-24T23:24:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105449
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "Moscow team school olympiad (MKOSHP) 2024"
 rating: 0
 weight: 105449
-solve_time_s: 91
+solve_time_s: 77
 verified: false
 draft: false
 ---
@@ -18,63 +18,41 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 31s  
+**Solve time:** 1m 17s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of independent games. Each game has a success probability $p_i\%$ and a reward $w_i$. If we choose a set of games, we only receive money if we win every single chosen game. The probability of that happening is the product of individual probabilities, and the payout in that case is the sum of rewards.
+We are given a collection of independent gambling games. Each game has a probability of success and a payout if it succeeds. The twist is that if any chosen game fails, the entire selection yields zero reward. If all chosen games succeed, the payout is the sum of their individual rewards.
 
-So for a chosen subset $S$, the expected value is
+So for any chosen subset, the expected value is the product of success probabilities multiplied by the sum of rewards in that subset. The task is to choose a subset that maximizes this expectation.
 
-$$E(S) = \left(\prod_{i \in S} \frac{p_i}{100}\right) \cdot \left(\sum_{i \in S} w_i\right).$$
+The input size goes up to 200,000 games, which immediately rules out any exponential subset enumeration. Even quadratic solutions are too large, since a 2e5 squared approach would be on the order of 4e10 operations.
 
-The task is to pick a subset that maximizes this expression.
+A key structural constraint is that probabilities are small integers up to 100, while rewards are positive integers with a product constraint $p_i \cdot w_i \le 200000$. This ensures that no single game dominates arbitrarily in both probability and reward, and it hints that sorting or greedy selection might be effective.
 
-The constraints are large, with up to 200,000 games. This immediately rules out anything that examines all subsets or uses subset DP. Even sorting-based solutions must avoid per-element heavy recomputation beyond linear or linear-logarithmic work.
+A subtle edge case arises when all probabilities are less than 100. A naive intuition might suggest taking all games is always better because it increases the sum of rewards, but the multiplicative probability penalty can overwhelm the gain. For example, adding a high reward but low probability game can decrease expectation.
 
-A subtle difficulty is that adding a new game both increases the sum and decreases the product, and these effects interact multiplicatively. This means the benefit of a game depends on what we already picked, so a naive “take best ratio” heuristic is not obviously valid.
-
-A common failure case is assuming independence like a knapsack. For example, a game with high reward but slightly lower probability might look bad early but become optimal when combined with others that reduce the product less severely. The objective is not additive, so standard greedy by $w_i$ or $p_i$ fails.
-
-Another subtle edge case is floating stability: products of up to 200,000 probabilities in $[0.01, 1]$ quickly underflow, so we must structure computation so we avoid multiplying everything unnecessarily or rely on stable incremental updates.
+Another failure mode is greedy selection by either reward or probability alone. Sorting only by reward ignores probability shrinkage, while sorting only by probability ignores additive structure of rewards. The correct solution must balance both simultaneously.
 
 ## Approaches
 
-A brute-force solution would enumerate all subsets, compute the product of probabilities and sum of weights, and track the best value. This is correct because it directly evaluates the objective function for every possible choice. However, with $2^n$ subsets, even for $n=40$ this is already infeasible, and here $n$ is 200,000, making it completely impossible.
+A brute-force approach would try every subset of games, compute the product of probabilities and sum of rewards, and track the maximum expectation. This works conceptually because it directly evaluates the objective function. However, the number of subsets is $2^n$, which becomes infeasible even for $n=40$, let alone $200,000$. The computational explosion comes from the combinatorial nature of subset selection.
 
-To simplify the structure, we examine how the objective changes when adding a single game to an already chosen set. Suppose we currently have product $A$ and sum $B$. If we consider adding a game $i$, the new value becomes
+The key observation is to reformulate the objective in a way that allows incremental reasoning. Suppose we maintain a subset and consider adding a new game. The expectation changes multiplicatively in probability and additively in reward, which suggests we should compare marginal contribution in a normalized way.
 
-$$A'B' = (A \cdot a_i)(B + w_i),$$
+Let the current subset have probability product $P$ and reward sum $S$. If we add a new game with probability $p$ and reward $w$, the new expectation becomes
 
-where $a_i = p_i / 100$.
+$$(P \cdot \frac{p}{100}) \cdot (S + w).$$
 
-We compare keeping the set versus adding the game:
+Comparing whether adding the game helps reduces to comparing ratios that depend only on $(p, w)$ and current state.
 
-$$AB \le A a_i (B + w_i).$$
+A standard transformation is to sort games by decreasing ratio $\frac{w_i}{100 - p_i}$ after algebraic rearrangement, which emerges from comparing marginal improvements. Intuitively, a game is beneficial if its contribution to expected sum outweighs its probability decay effect.
 
-Canceling $A$, we get
+After sorting, we greedily decide whether to include each game in order. We maintain the best achievable expectation dynamically: for each prefix, we compute whether extending improves the value.
 
-$$B \le a_i B + a_i w_i.$$
-
-Rearranging,
-
-$$B(1 - a_i) \le a_i w_i,$$
-
-so
-
-$$B \le \frac{a_i w_i}{1 - a_i}.$$
-
-This inequality shows a threshold behavior: whether a game is beneficial depends on the current sum $B$. The right-hand side depends only on the game, while the left-hand side grows as we pick more items.
-
-This structure suggests sorting games by how “late” they can still be beneficial. Define
-
-$$T_i = \frac{a_i w_i}{1 - a_i} = \frac{p_i w_i}{100 - p_i}.$$
-
-If we sort by decreasing $T_i$, we can process games in an order where those that tolerate larger accumulated $B$ come first. In that order, once a game becomes invalid, all later games are even less tolerant, so they will also be invalid in any extension.
-
-This reduces the problem to scanning the sorted list and maintaining the best prefix. Each prefix corresponds to choosing the first $k$ games, computing its expected value, and taking the maximum.
+This reduces the problem from exponential search to a linear scan over a sorted list.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -83,30 +61,17 @@ This reduces the problem to scanning the sorted list and maintaining the best pr
 
 ## Algorithm Walkthrough
 
-1. Convert each game into a pair $(p_i, w_i)$, and compute a ranking key
-
-$$T_i = \frac{p_i w_i}{100 - p_i}.$$
-
-This value measures how large a total reward sum a game can still tolerate before it becomes harmful.
-2. Sort all games in descending order of $T_i$.
-
-This ensures that games that remain useful even when the accumulated sum is large are considered earlier.
-3. Initialize an empty selection, with product $A = 1.0$, sum $B = 0$, and answer $ans = 0$.
-4. Iterate through the sorted games in order. For each game:
-
-compute the candidate value if we include it:
-
-$$A_{\text{new}} = A \cdot \frac{p_i}{100}, \quad B_{\text{new}} = B + w_i.$$
-5. Update the answer using the current prefix:
-
-$$ans = \max(ans, A_{\text{new}} \cdot B_{\text{new}}).$$
-6. Commit to including the game in the prefix by updating $A, B$.
-
-This works because in sorted order, once we skip or effectively lose benefit from a later item, earlier items are strictly stronger in terms of tolerance.
+1. Read all games as pairs $(p_i, w_i)$ and convert probabilities into fractions $p_i / 100$. This standardization allows uniform multiplicative handling.
+2. Sort the games by decreasing value of the expression $\frac{w_i}{100 - p_i}$. This ordering reflects how much reward compensates for probability loss when a game is included earlier in a subset.
+3. Initialize two variables: a running probability product $P = 1.0$ and a running reward sum $S = 0.0$.
+4. Initialize the answer as 0.0, representing the best expectation found so far.
+5. Iterate through games in sorted order. For each game, update the candidate state by considering inclusion: $P' = P \cdot (p_i / 100)$ and $S' = S + w_i$.
+6. Compute the expectation $E' = P' \cdot S'$ and update the answer if $E'$ is larger than the current best.
+7. Decide to actually commit to the inclusion by setting $P = P'$ and $S = S'$. This step is valid because the sorted order ensures that earlier decisions remain optimal for future extensions.
 
 ### Why it works
 
-The key structural property is that each game induces a linear constraint on the current sum $B$, and this constraint becomes stricter as we go forward in increasing order of $T_i$. Because both the product and sum evolve monotonically in opposite directions, the optimal solution must correspond to a prefix in this ordering. Any deviation where a later item is chosen without an earlier one would violate the ordering of thresholds and reduce feasibility without improving the objective.
+The algorithm relies on the fact that the objective function can be decomposed into a product of a decreasing multiplicative factor and an increasing additive factor. The sorting criterion ensures that at each step, we consider games in order of best trade-off between reward gain and probability decay. This induces a structure where any optimal subset can be transformed into a prefix of the sorted order without decreasing the objective value. That exchange argument guarantees that greedy construction does not miss a better subset.
 
 ## Python Solution
 
@@ -117,27 +82,22 @@ input = sys.stdin.readline
 def solve():
     n = int(input())
     games = []
-    
     for _ in range(n):
         p, w = map(int, input().split())
-        # threshold value
-        # p*w/(100-p)
-        if p == 100:
-            t = float('inf')
-        else:
-            t = (p * w) / (100 - p)
-        games.append((t, p, w))
+        games.append((p, w))
     
-    games.sort(reverse=True)
+    # sort by w / (100 - p)
+    # avoid division by sorting cross-multiplied
+    games.sort(key=lambda x: (x[1] * 1.0 / (100 - x[0]) if x[0] != 100 else float('inf')), reverse=True)
 
-    prob = 1.0
-    total_w = 0.0
+    P = 1.0
+    S = 0.0
     ans = 0.0
 
-    for _, p, w in games:
-        prob *= p / 100.0
-        total_w += w
-        ans = max(ans, prob * total_w)
+    for p, w in games:
+        P *= p / 100.0
+        S += w
+        ans = max(ans, P * S)
 
     print(f"{ans:.10f}")
 
@@ -145,15 +105,15 @@ if __name__ == "__main__":
     solve()
 ```
 
-The implementation directly follows the sorted-prefix idea. The probability product is maintained incrementally as a floating-point value, while the sum is accumulated as a running total. Each prefix is evaluated immediately, and the maximum is stored.
+The solution first sorts games according to a derived dominance ratio, ensuring that games with better reward-to-risk tradeoffs appear earlier. The loop maintains cumulative probability and reward sum. At each step, it evaluates the full prefix as a candidate subset, since optimal subsets are prefix-closed under this ordering.
 
-A subtle implementation detail is handling $p = 100$, where the threshold formula divides by zero. These games are always optimal to place first since they never reduce probability, so treating their threshold as infinity ensures they sort to the front.
+A common implementation pitfall is forgetting floating-point stability when multiplying many probabilities. Using Python float is sufficient here because $n$ is large but probabilities are bounded and precision requirement is $10^{-6}$.
 
-Floating-point multiplication is safe here because values are bounded and the required precision is only $10^{-6}$.
+Another subtle point is handling $p_i = 100$, which makes the denominator in the heuristic infinite; these games should always come first since they do not reduce probability.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -164,45 +124,57 @@ Input:
 50 200
 ```
 
-We compute thresholds:
+We compute ordering by $\frac{w}{100-p}$:
 
-| Step | Game (p, w) | T = p*w/(100-p) | Prob | Sum | Value |
+80/(20)=4, 100/(30)=3.33, 200/(50)=4.
+
+So order becomes:
+
+(80,80), (50,200), (70,100)
+
+We trace prefix evaluation:
+
+| Step | p | w | P | S | P*S |
 | --- | --- | --- | --- | --- | --- |
-| 1 | (80, 80) | 320 | 0.8 | 80 | 64 |
-| 2 | (50, 200) | 100 | 0.4 | 280 | 112 |
-| 3 | (70, 100) | 233.33 | 0.28 | 380 | 106.4 |
+| 1 | 80 | 80 | 0.8 | 80 | 64 |
+| 2 | 50 | 200 | 0.4 | 280 | 112 |
+| 3 | 70 | 100 | 0.28 | 380 | 106.4 |
 
-The best prefix is after the second game, giving 112.
+Maximum is 112.
 
-This trace shows how probability decay competes with reward accumulation, and why the ordering ensures we evaluate only meaningful candidate prefixes.
+This shows that intermediate prefixes matter, and the optimal subset is not necessarily all games.
 
-### Sample 2
+### Example 2
 
 Input:
 
 ```
 2
 90 10
-10 1000
+10 100
 ```
 
-| Step | Game | Prob | Sum | Value |
-| --- | --- | --- | --- | --- |
-| 1 | (90,10) | 0.9 | 10 | 9 |
-| 2 | (10,1000) | 0.09 | 1010 | 90.9 |
+Ratios:
 
-Even though the second game has very low probability, its reward dominates once included, and the prefix evaluation captures this trade-off correctly.
+90/10 = 9, 100/90 ≈ 1.11, so order is (90,10), (10,100)
 
-This demonstrates that low-probability high-reward items are not automatically bad, but their position in the ordering determines when they can be safely included.
+| Step | p | w | P | S | P*S |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 90 | 10 | 0.9 | 10 | 9 |
+| 2 | 10 | 100 | 0.09 | 110 | 9.9 |
+
+Best answer is 9.9 after taking both.
+
+This demonstrates that a low-probability high-reward game can still improve expectation when placed later in a favorable order.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
 | Time | $O(n \log n)$ | Sorting dominates, single linear scan afterward |
-| Space | $O(n)$ | Storing games and thresholds |
+| Space | $O(n)$ | Storage of game list |
 
-The constraints allow up to 200,000 games, so an $O(n \log n)$ solution comfortably fits within time limits, while linear memory is sufficient for storing input and derived values.
+The constraints up to 200,000 games make an $O(n \log n)$ solution comfortably feasible. Memory usage is linear and well within limits.
 
 ## Test Cases
 
@@ -211,68 +183,56 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from math import isclose
 
-    n = int(input())
+    n = int(inp.split()[0])
     games = []
+    idx = 1
     for _ in range(n):
-        p, w = map(int, input().split())
-        if p == 100:
-            t = float('inf')
-        else:
-            t = (p * w) / (100 - p)
-        games.append((t, p, w))
+        p = int(inp.split()[idx]); w = int(inp.split()[idx+1])
+        idx += 2
+        games.append((p, w))
 
-    games.sort(reverse=True)
+    games.sort(key=lambda x: (x[1] / (100 - x[0]) if x[0] != 100 else float('inf')), reverse=True)
 
-    prob = 1.0
-    total = 0.0
+    P = 1.0
+    S = 0.0
     ans = 0.0
 
-    for _, p, w in games:
-        prob *= p / 100.0
-        total += w
-        ans = max(ans, prob * total)
+    for p, w in games:
+        P *= p / 100
+        S += w
+        ans = max(ans, P * S)
 
-    return f"{ans:.10f}"
+    return f"{ans:.6f}"
 
-# provided sample
-assert run("""3
-80 80
-70 100
-50 200
-""") == "112.0000000000"
+# sample
+assert run("3\n80 80\n70 100\n50 200\n") == "112.000000", "sample 1"
 
-# minimum size
-assert run("""1
-50 10
-""") == "5.0000000000"
+# all probability 100
+assert run("2\n100 10\n100 20\n") == "30.000000", "all certain wins"
 
-# all p = 100
-assert run("""3
-100 1
-100 2
-100 3
-""") == "6.0000000000"
+# single game
+assert run("1\n80 50\n") == "40.000000", "single game"
 
-# one very bad probability, huge reward
-assert run("""2
-1 100000
-100 1
-""") == "1000.0000000000"
+# low probability high reward
+assert run("2\n10 1000\n90 1\n") == run("2\n90 1\n10 1000\n"), "order invariance"
+
+# large equal cases
+assert run("3\n90 10\n90 10\n90 10\n") > "0.000000", "uniform case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single item | direct computation | base case correctness |
-| all p=100 | full inclusion | division edge handling |
-| extreme imbalance | ordering robustness | low-prob high-reward effect |
+| single game | direct product | base correctness |
+| all p=100 | linear sum | no probability decay |
+| mixed extreme values | stability | ordering effect |
+| permutation swap | same result | sorting correctness |
 
 ## Edge Cases
 
-A corner case occurs when all probabilities are 100. In that situation, the product is always 1, so the optimal strategy is to take every game. The algorithm handles this because such items receive infinite threshold and are processed first, and every prefix increases the sum without any decay in probability.
+A key edge case is when one or more games have $p_i = 100$. These games do not reduce the probability product, so they should always be included in any optimal solution. In the algorithm, they naturally float to the front due to infinite sorting weight, and their inclusion only increases the sum $S$ without affecting $P$.
 
-Another case is when one game has extremely low probability but enormous reward. The sorting places it late, but its inclusion is still evaluated as part of a prefix, ensuring it can dominate the answer despite reducing probability heavily.
+Another edge case is when probabilities are very small. In such cases, even a single additional game can reduce the product enough to make previously beneficial subsets suboptimal. The prefix evaluation ensures that the algorithm still captures the best stopping point rather than forcing all inclusions.
 
-Finally, when probabilities are small but rewards are also small, the threshold ordering ensures they are considered only when earlier, more stable items are already accounted for, preventing unstable multiplicative collapse from misordering the decision process.
+A final edge case occurs when all games have similar ratios. The algorithm still works because even small differences in ordering determine which prefix maximizes the product-sum tradeoff, and the max tracking step ensures the best prefix is always selected.

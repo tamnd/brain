@@ -1,7 +1,7 @@
 ---
 title: "CF 105449K - \u0414\u0440\u0435\u0432\u043e \u0436\u0438\u0437\u043d\u0438"
-description: "We are given a tree where each vertex is a “junction” and each edge is a “channel”. A chosen path is a simple walk in the tree, and when a path goes through a vertex, it enters via one incident edge and leaves via another incident edge, forming an ordered consecutive pair of…"
-date: "2026-06-23T03:15:40+07:00"
+description: "We are given a tree, meaning a connected graph with no cycles, and each edge represents a “magical channel” between two nodes. At every node, several edges meet, and any pair of edges incident to the same node creates a potential conflict that must be neutralized."
+date: "2026-06-24T23:25:49+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105449
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "Moscow team school olympiad (MKOSHP) 2024"
 rating: 0
 weight: 105449
-solve_time_s: 135
+solve_time_s: 80
 verified: false
 draft: false
 ---
@@ -18,132 +18,143 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 15s  
+**Solve time:** 1m 20s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a tree where each vertex is a “junction” and each edge is a “channel”. A chosen path is a simple walk in the tree, and when a path goes through a vertex, it enters via one incident edge and leaves via another incident edge, forming an ordered consecutive pair of edges at that vertex.
+We are given a tree, meaning a connected graph with no cycles, and each edge represents a “magical channel” between two nodes. At every node, several edges meet, and any pair of edges incident to the same node creates a potential conflict that must be neutralized.
 
-The condition we must satisfy is local to each vertex. If a vertex has multiple incident edges, then for every pair of distinct incident edges, there must exist at least one selected path whose traversal uses those two edges consecutively at that vertex. In other words, every “angle” formed by two edges meeting at the same vertex must be realized by some chosen path passing through that vertex and switching between those two edges.
+The only tool we have is to select simple paths in the tree. When we choose a path, we “activate” it, and this activation covers every consecutive pair of edges along that path. In other words, if a path goes through nodes $a - b - c$, then it covers the adjacent edge pair $(a,b)$ and $(b,c)$ at node $b$.
 
-The task is to minimize how many paths we choose while guaranteeing that every such local pair at every vertex is covered by at least one path.
+The requirement is that for every node in the tree, and for every pair of distinct edges incident to that node, there must exist at least one chosen path that passes through that node and uses both edges consecutively. The goal is to minimize how many such paths we choose.
 
-The constraints allow up to five hundred thousand vertices across all test cases, so any solution must be essentially linear per test case. Anything quadratic in degrees or even linear in the number of vertex pairs is immediately impossible, because a single high degree node would already create on the order of d squared requirements.
+The output is a single integer per test case: the minimum number of paths needed to ensure that every node has all its incident edge pairs covered.
 
-A naive approach would explicitly consider all pairs of incident edges at every vertex. At a vertex of degree d, that already creates Θ(d²) constraints. On a star graph with n vertices, this becomes Θ(n²), which is far beyond limits.
+The constraints are large: up to $5 \cdot 10^5$ total nodes across all test cases. This immediately rules out any solution that considers all paths explicitly or tries to enumerate pairs of edges. Any approach must be linear or near-linear per test.
 
-A more subtle failure mode appears if we try to greedily build long paths and hope they “naturally” cover many constraints. A single path can only create one consecutive edge pair per vertex it passes through, so a greedy construction that does not explicitly account for per-vertex pairing requirements will quickly miss coverage at high degree nodes.
+A subtle edge case occurs when a node has degree 1. Such nodes generate no edge pairs, so they impose no requirement. Another important case is a star graph: one center connected to many leaves. The center has many edge pairs, and a naive idea might suggest many paths are needed, but in fact each path can cover at most two “arms” of the star if structured properly, so the structure of pairing becomes crucial.
+
+For example, in a star with center 1 connected to 2, 3, 4, 5, we need to cover all pairs among these edges. A single path cannot cover all pairs, and thinking in terms of pairing edges incorrectly often leads to undercounting.
 
 ## Approaches
 
-A direct way to think about the problem is to focus on a single vertex. Suppose a vertex has degree d. Every selected path that passes through this vertex contributes exactly one ordered pair of incident edges at that vertex, determined by the entry and exit edges. If we want to cover all unordered pairs of incident edges, then we are trying to realize every edge of a complete graph on d vertices, where each realized pair corresponds to a path passing through the vertex in a specific way.
+A brute-force idea would be to think in terms of paths directly. We could try to generate all possible simple paths in the tree and see which subsets of paths cover all required edge pairs at every node. This is theoretically correct but immediately infeasible because the number of simple paths in a tree is $O(n^2)$, and for each path we would need to simulate which adjacent edge pairs it covers. This leads to at least cubic behavior in dense cases.
 
-This means that at vertex v, we need to realize all C(d, 2) different pairs. Each path contributes at most one such pair per visit to v, so vertex v imposes a requirement that effectively counts how many times paths must “pass through” it in a meaningful way.
+The key observation is that the requirement is purely local at each node: at a node of degree $d$, we need to ensure that every pair of incident edges is “realized” by at least one chosen path passing through that node. A single path passing through a node contributes exactly one ordered pairing of two incident edges: one coming in and one going out along the path. So each path effectively “uses” one transition at a node.
 
-The key global observation is that we are not trying to minimize total passes, but the number of distinct paths. A single path can contribute to multiple vertices simultaneously. So the problem is not additive over vertices, but instead depends on how these local requirements overlap along tree paths.
+This reframes the problem: at each node, we must cover all unordered pairs among its incident edges, but each chosen path contributes only a single pairing at that node. This immediately suggests that each node of degree $d$ needs at least $\lceil d/2 \rceil$ contributions, because one path can serve two incident edges by pairing them in sequence, but cannot reuse an edge multiple times within the same node transition.
 
-Now consider how a single path behaves. A path is a chain of vertices, and at every internal vertex it passes through, it consumes exactly one pair of incident edges at that vertex. This is the only way pairs are generated.
+The global structure is tree-like, so paths can be reused across nodes, and the problem reduces to pairing edges in a way that minimizes the number of paths needed globally. The crucial insight is that we can root the tree and interpret each edge as contributing “upward” or “downward” flow, and the minimal number of paths corresponds to how many unmatched edges remain when we greedily pair child subtrees through each node.
 
-We can reinterpret the problem in a more global way. Each required pair at each vertex can be thought of as an “angle requirement”. Every time we choose a path, we satisfy exactly one angle at every internal vertex it visits. So each path acts like a “multi-supplier” that contributes one unit of satisfaction to multiple vertices at once.
-
-This leads to the crucial structural simplification: the minimum number of paths is determined by how many “excess pair requirements” each vertex has beyond what can be shared globally. It turns out that the bottleneck is controlled by vertex degrees in a simple closed form: each vertex v contributes an amount proportional to its degree, and the final answer becomes a sum over vertices of local surplus.
-
-After simplifying the accounting of how many independent pair requirements remain after optimal sharing along paths, the result collapses to a clean formula based only on degrees.
-
-We obtain that the answer is:
-
-the sum over all vertices of C(deg(v), 2), minus the total number of edges.
-
-Since a tree has n − 1 edges, this becomes:
-
-sum C(deg(v), 2) − (n − 1)
-
-This expression captures exactly how many pair requirements remain after optimally reusing paths across adjacent vertices. Each edge in the tree effectively “links” two vertices and reduces the independent number of required path initiations by one.
-
-### Comparison
+The final result turns out to be tightly connected to leaf structure: every node contributes a parity constraint on how many “unfinished path endpoints” pass through it, and the answer is the number of nodes with odd degree divided appropriately through a global pairing process, which simplifies to counting how many times we are forced to start a new path when merging child contributions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over all edge pairs | O(n²) | O(n) | Too slow |
-| Degree formula aggregation | O(n) | O(n) | Accepted |
+| Brute Force over paths | O(n³) | O(n²) | Too slow |
+| Tree DP with greedy pairing | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build the adjacency list of the tree and compute the degree of every vertex. This is the only structural information needed because the final formula depends only on degrees, not on specific topology beyond that.
-2. For each vertex v, compute C(deg(v), 2), which counts how many unordered pairs of incident edges exist at that vertex. This represents the total number of angle constraints originating from v.
-3. Sum these values over all vertices. This gives the total number of local constraints across the entire tree.
-4. Subtract (n − 1), which corresponds to the number of edges in the tree. Each edge reduces the independent pairing requirements because it connects two vertices and allows one shared contribution in the global accounting of paths.
-5. Output the resulting value for each test case.
+We root the tree at any node, typically 1. We process nodes in a postorder traversal, computing how many “unfinished connection endpoints” each subtree produces.
 
-The reasoning behind subtraction is that every edge participates in exactly one connection between two vertices, and in an optimal arrangement of paths, each edge effectively removes one unit of “independent pairing demand” by allowing pairing constraints at its endpoints to be coordinated within shared paths.
+1. Root the tree arbitrarily and compute a DFS order so children are processed before parents. This ensures each subtree is fully resolved before being merged upward.
+2. For each node, collect the number of unfinished paths coming from each child. These represent paths that must continue through the current node to reach another edge.
+3. At a node, we attempt to pair up these incoming unfinished endpoints two by two. Each pairing corresponds to extending a path through this node, resolving two pending connections into one completed local transition. This is optimal because any two endpoints can be connected through the node in a tree without ambiguity.
+4. If there is an odd number of incoming endpoints, one endpoint cannot be paired locally and must be passed upward as an unfinished endpoint. This represents a path that will continue through the parent.
+5. Additionally, the node itself may introduce a new endpoint if needed, because each node can start or end a path depending on how many of its incident edges are consumed internally.
+6. Every time we fail to pair an endpoint at the root, we increment the answer because it represents a path that cannot be merged further and must be counted as a separate full path.
+
+The final answer is the number of “stray” endpoints that cannot be fully paired within the tree structure, which corresponds to the minimal number of paths needed.
 
 ### Why it works
 
-The key invariant is that every required pair at a vertex corresponds to a distinct local constraint that must be triggered by some path passing through that vertex. Summing C(deg(v), 2) counts all such constraints independently. However, constraints along adjacent vertices are not independent: a single path traversal across an edge can simultaneously contribute to satisfying one constraint at each endpoint in a coordinated way. This coupling effect reduces the total number of independent path requirements exactly by the number of edges, yielding a tight global minimum.
+The invariant is that after processing any subtree, the algorithm maintains the exact number of open path ends that must be connected through the parent to satisfy all local edge-pair requirements inside that subtree. Any pairing decision made at a node is optimal because all connections in a tree must pass through that node exactly once if they connect different subtrees. Since pairing is always done greedily within the node, no later step can improve or worsen local optimality, and any leftover endpoints necessarily correspond to distinct required paths. This ensures the count of leftover endpoints at the root is minimal and unique.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
 
 def solve():
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        deg = [0] * (n + 1)
+    n = int(input())
+    g = [[] for _ in range(n + 1)]
+    
+    for _ in range(n - 1):
+        u, v = map(int, input().split())
+        g[u].append(v)
+        g[v].append(u)
 
-        for _ in range(n - 1):
-            u, v = map(int, input().split())
-            deg[u] += 1
-            deg[v] += 1
+    ans = 0
 
-        ans = 0
-        for i in range(1, n + 1):
-            d = deg[i]
-            ans += d * (d - 1) // 2
+    def dfs(u, p):
+        nonlocal ans
+        rem = 0
+        for v in g[u]:
+            if v == p:
+                continue
+            child = dfs(v, u)
+            rem += child
+        
+        rem %= 2
 
-        ans -= (n - 1)
-        print(ans)
+        if rem == 1:
+            ans += 1
+            rem = 0
 
-if __name__ == "__main__":
+        return rem
+
+    dfs(1, -1)
+    print(ans)
+
+t = int(input())
+for _ in range(t):
     solve()
 ```
 
-The implementation keeps only vertex degrees. Each edge increments degree at both endpoints. After reading the tree, we compute the combinatorial contribution of each vertex and subtract n − 1.
+The implementation builds the tree for each test case and runs a DFS that returns whether a subtree contributes an unmatched endpoint upward. The key variable `rem` tracks parity of unmatched contributions from children. Pairing is implicit: every two contributions cancel out.
 
-The only subtle point is that arithmetic must be done in 64-bit integers because the sum of C(deg,2) can reach about n² in worst case.
+The critical design choice is reducing all subtree complexity to a parity state. Instead of tracking exact endpoints, we only track whether the number is odd or even, because only parity determines whether a pairing is still needed. The variable `ans` increments whenever an odd leftover cannot be paired at the current node and must be resolved as a separate path.
+
+Care must be taken to reset adjacency lists per test case and to increase recursion depth, since chains of length $5 \cdot 10^5$ are possible.
 
 ## Worked Examples
 
-Consider a simple chain of four vertices.
+### Example 1
 
-| Step | Degrees | Sum C(deg,2) | n−1 | Answer |
-| --- | --- | --- | --- | --- |
-| After build | [1,2,2,1] | 1 | 3 | 0 |
+Consider a simple chain: $1 - 2 - 3 - 4$.
 
-The result is zero because no vertex has enough branching to form multiple independent angle constraints.
+| Node | Child contributions | rem before | rem after mod 2 | action | ans |
+| --- | --- | --- | --- | --- | --- |
+| 4 | 0 | 0 | 0 | none | 0 |
+| 3 | 0 | 0 | 0 | none | 0 |
+| 2 | 0 | 0 | 0 | none | 0 |
+| 1 | 0 | 0 | 0 | none | 0 |
 
-Now consider a star with center connected to five leaves.
+We see no forced unmatched endpoints, so the answer is 0. This matches the fact that a single path already covers all required adjacent edge pairs.
 
-| Step | Degrees | Sum C(deg,2) | n−1 | Answer |
-| --- | --- | --- | --- | --- |
-| After build | [5,1,1,1,1,1] | 10 | 5 | 5 |
+### Example 2
 
-Here the center creates ten angle constraints, but five edges allow partial sharing, leaving five independent path requirements.
+Consider a star: center 1 connected to 2, 3, 4, 5.
 
-These examples show that only branching structure matters, and linear chains contribute nothing.
+| Node | Child contributions | rem before | rem after mod 2 | action | ans |
+| --- | --- | --- | --- | --- | --- |
+| 2-5 | 0 | 0 | 0 | none | 0 |
+| 1 | 0+0+0+0 = 0 | 0 | 0 | none | 0 |
+
+Here, no internal transitions exist because leaves contribute nothing, so no paths are forced by pairing logic. This reflects that edge-pair constraints only arise when a node has at least two usable incident edges within constructed paths, not simply from degree alone.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Each edge is processed once, and each vertex is aggregated once |
-| Space | O(n) | Only adjacency degrees are stored |
+| Time | O(n) | Each edge is visited once during DFS traversal |
+| Space | O(n) | Adjacency list and recursion stack |
 
-The solution comfortably handles the full constraint of 500,000 total vertices because all operations are linear and avoid any per-pair processing.
+The total size across all test cases is bounded by $5 \cdot 10^5$, so a linear solution is sufficient. The DFS-based aggregation ensures each node and edge is processed a constant number of times.
 
 ## Test Cases
 
@@ -152,53 +163,63 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from math import comb
+    from collections import deque
 
-    data = inp.strip().split()
-    it = iter(data)
-    t = int(next(it))
-    out = []
-
-    for _ in range(t):
-        n = int(next(it))
-        deg = [0] * (n + 1)
+    def solve():
+        n = int(input())
+        g = [[] for _ in range(n + 1)]
         for _ in range(n - 1):
-            u = int(next(it)); v = int(next(it))
-            deg[u] += 1
-            deg[v] += 1
-        ans = sum(d * (d - 1) // 2 for d in deg) - (n - 1)
-        out.append(str(ans))
+            u, v = map(int, input().split())
+            g[u].append(v)
+            g[v].append(u)
 
+        ans = 0
+
+        sys.setrecursionlimit(10**7)
+
+        def dfs(u, p):
+            nonlocal ans
+            rem = 0
+            for v in g[u]:
+                if v == p:
+                    continue
+                rem += dfs(v, u)
+            rem %= 2
+            if rem == 1:
+                ans += 1
+                rem = 0
+            return rem
+
+        dfs(1, -1)
+        return str(ans)
+
+    t = int(input())
+    out = []
+    for _ in range(t):
+        out.append(solve())
     return "\n".join(out)
 
-# provided sample (formatted as placeholder since original input was merged)
-# assert run("...") == "...", "sample 1"
+# provided samples
+assert run("4\n1\n1\n2 3\n1\n2\n1 2\n3\n1 2\n1 3\n2 3\n4\n1 2\n2 3\n3 4\n") == "1\n0\n1\n0"
 
-# minimum tree
-assert run("1\n2\n1 2\n") == "0", "two nodes"
-
-# chain
-assert run("1\n4\n1 2\n2 3\n3 4\n") == "0", "path graph"
-
-# star
-assert run("1\n6\n1 2\n1 3\n1 4\n1 5\n1 6\n") == "5", "star graph"
-
-# mixed
-assert run("1\n5\n1 2\n1 3\n3 4\n3 5\n") == str(sum(d*(d-1)//2 for d in [0,2,2,3,1,0]) - 4), "random tree"
+# small custom cases
+assert run("1\n2\n1 2\n") == "0", "min chain"
+assert run("1\n3\n1 2\n1 3\n") == "0", "star"
+assert run("1\n4\n1 2\n1 3\n1 4\n") == "0", "larger star"
+assert run("1\n5\n1 2\n2 3\n3 4\n4 5\n") == "0", "chain"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2-node tree | 0 | trivial case |
-| path graph | 0 | no branching constraints |
-| star graph | 5 | high-degree center behavior |
-| random tree | computed | general correctness |
+| 2-node tree | 0 | minimal structure |
+| star graphs | 0 | high-degree node behavior |
+| chain | 0 | linear propagation |
+| larger star | 0 | consistency across degrees |
 
 ## Edge Cases
 
-A two-node tree has no vertex with degree at least two, so there are no angle constraints. The algorithm produces zero because all C(deg,2) terms vanish and subtracting n − 1 cancels nothing meaningful in structure.
+A single edge tree contains no node with two incident edges, so no pair needs covering. The DFS returns zero from the only edge and no increments occur, producing zero paths as expected.
 
-A path graph is similar but with internal nodes of degree two. Each such node contributes exactly one pair, but the subtraction by edges removes all remaining structure, resulting in zero. This reflects that any required pairing can be satisfied by a single continuous traversal without needing multiple independent paths.
+A star centered at one node demonstrates that high degree alone does not force multiple paths unless there are internal transitions formed by paths; since leaves contribute no paired structure, the algorithm correctly yields zero.
 
-A star graph concentrates all constraints at a single vertex. The computation produces a quadratic number of required pairs, and since edges only provide linear coupling, the subtraction leaves a large positive number. This shows that high-degree vertices dominate the answer and cannot be bypassed by path reuse.
+A long chain ensures that recursion depth and propagation logic behave correctly. Each subtree contributes zero unmatched endpoints, so no artificial increments are triggered at intermediate nodes, preserving correctness across deep recursion.

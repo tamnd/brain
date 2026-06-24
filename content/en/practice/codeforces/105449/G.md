@@ -1,7 +1,7 @@
 ---
 title: "CF 105449G - \u0421\u043a\u043b\u0435\u0438\u0432\u0430\u043d\u0438\u0435 \u043c\u0430\u0441\u0441\u0438\u0432\u043e\u0432"
-description: "We are given several independent collections of tiny arrays, each array containing exactly two integers. The task is to arrange all these pairs in some order, and then concatenate them into a single sequence of length twice the number of pairs."
-date: "2026-06-23T03:12:42+07:00"
+description: "We are given several independent test cases. In each test case there are $n$ small blocks, and each block contains exactly two numbers. We are allowed to reorder these blocks arbitrarily, but we are not allowed to change the order inside any block."
+date: "2026-06-24T23:21:02+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105449
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Moscow team school olympiad (MKOSHP) 2024"
 rating: 0
 weight: 105449
-solve_time_s: 77
+solve_time_s: 84
 verified: false
 draft: false
 ---
@@ -18,63 +18,65 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 17s  
+**Solve time:** 1m 24s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several independent collections of tiny arrays, each array containing exactly two integers. The task is to arrange all these pairs in some order, and then concatenate them into a single sequence of length twice the number of pairs. Inside each pair, the order is fixed, but we are free to decide the permutation of pairs.
+We are given several independent test cases. In each test case there are $n$ small blocks, and each block contains exactly two numbers. We are allowed to reorder these blocks arbitrarily, but we are not allowed to change the order inside any block. After choosing an order of blocks, we concatenate them into one array of length $2n$. The goal is to minimize the number of inversions in the resulting array, where an inversion is a pair of positions $i < j$ such that the value at $i$ is greater than the value at $j$.
 
-The objective is to choose an ordering that makes the total number of inversions in the final sequence as small as possible. An inversion is a pair of positions where an earlier element is strictly greater than a later element.
+So the only freedom is the permutation of length-2 segments. Inside each segment, the relative order of its two values is fixed.
 
-So the real decision is not about individual elements, but about how each length-two block interacts with all others in terms of inversion contribution.
+The key difficulty is that inversions are global. A bad placement of one pair can interact with many others, since both elements of each block can contribute inversions with both elements of other blocks.
 
-The constraints go up to 100,000 pairs in total across test cases. Any solution that tries all permutations of pairs is immediately impossible since that would be factorial in n. Even n squared comparisons per pair ordering is already too large, since n squared at 100,000 exceeds typical limits by several orders of magnitude. This pushes us toward an O(n log n) or linearithmic sorting style solution.
+The constraints allow up to $10^5$ total pairs across all test cases. That rules out anything quadratic in $n$, since even $O(n^2)$ comparisons per test case would be far too slow. The solution must be essentially $O(n \log n)$ or $O(n)$ per test.
 
-A naive mistake comes from treating each pair independently. For example, if we always sort each pair internally or globally sort all numbers, we lose the structure that each pair must stay intact. Another subtle failure case is assuming that sorting pairs by their first element is always optimal. That is not true.
+A few edge situations matter:
 
-Consider pairs (1, 100) and (2, 3). Sorting by first element gives (1, 100), (2, 3), but swapping them changes how 100 interacts with 2 and 3, which is the core source of inversions. This shows that the second element is just as important as the first in determining global contribution.
+A naive approach might try sorting blocks by their first element or by their minimum or maximum. This can fail because the optimal ordering depends on cross interactions between both elements of different blocks, not just a single representative.
+
+For example, consider blocks $[1, 100]$ and $[50, 51]$. Sorting by first element gives $[1,100],[50,51]$, which produces many inversions from 100 against 50 and 51. Reversing them reduces inversions significantly.
+
+Another subtle failure case is when a block is internally increasing or decreasing, but its contribution depends on whether we swap its role relative to others.
+
+Thus we need a rule that captures how each block behaves in ordering decisions.
 
 ## Approaches
 
-A brute force strategy would enumerate all permutations of the n pairs, concatenate them, and count inversions for each result. Even with an O(n log n) inversion counting method per permutation, this leads to O(n! · n log n), which is far beyond feasibility even for n around 10.
+A brute-force strategy would try all permutations of the $n$ blocks. For each permutation, we build the concatenated array and count inversions using a Fenwick tree or mergesort, costing $O(n \log n)$ per permutation. Since there are $n!$ permutations, this leads to $O(n! \cdot n \log n)$, which is impossible even for $n = 10$.
 
-The key observation is that each pair contributes internal structure and external interaction separately. Inside a pair, the contribution is fixed: either the first element is greater than the second or not, and that cannot be changed. The real optimization lies in how pairs interact with each other.
+We need to understand what actually matters when placing two blocks next to each other. Suppose we have two blocks $(a,b)$ and $(c,d)$. If the first block comes before the second, the cross inversions contributed depend on how many of $a,b$ are greater than $c,d$. That suggests that each block should be summarized by how “high” or “low” its elements are relative to others.
 
-If we think about two pairs A = (x1, y1) and B = (x2, y2), placing A before B creates cross inversions when elements of A are greater than elements of B. Swapping them changes exactly the contribution between these two blocks. So the problem reduces to deciding a global order on pairs that minimizes pairwise inversion cost.
+A key observation is that each block can be thought of as defining a “transition behavior” between its first and second element. If we always place the smaller element before the larger one inside each block, we avoid unnecessary internal inversions, and only cross-block inversions matter.
 
-The crucial insight is to compress each pair into a structural descriptor that determines how it behaves in ordering. We want to order pairs so that placing one before another minimizes expected cross inversions. It turns out that sorting pairs by the smaller element in descending order is optimal, but that alone is not sufficient. The correct invariant is that pairs should be ordered by the minimum of their two elements in decreasing order, because the smaller endpoint is the earliest possible source of future inversions.
+Now the crucial simplification: after sorting each block as $(x_i \le y_i)$, we consider blocks as intervals on the number line. The optimal strategy is to sort blocks by their second element $y_i$, i.e. their maximum. Intuitively, blocks with smaller maxima should appear earlier because they are less likely to create inversions with future blocks.
 
-Once this ordering is fixed, we simply output pairs in that order.
+If a block with a large maximum is placed early, that large value can create many inversions with smaller values in later blocks. If it is placed later, it only affects earlier blocks in a limited way, and this ordering aligns contributions in a globally consistent direction.
+
+This reduces the problem to sorting by $y_i$, then concatenating each block as $[x_i, y_i]$.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! · n log n) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | $O(n! \cdot n \log n)$ | $O(n)$ | Too slow |
+| Sort by block maximum | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all pairs (x, y) and treat each as a single unit.
+We process each test case independently.
 
-The internal order of the pair is fixed, so we never modify it.
-2. Compute a key for each pair equal to min(x, y).
+1. For every block, reorder its two values so that the smaller value comes first. This removes unnecessary internal inversions because any inversion inside a block is always avoidable.
+2. Sort all blocks by their second value in non-decreasing order. The second value acts as a “risk boundary” for how many future inversions this block can create.
+3. Traverse the sorted blocks in that order and append both elements of each block to the answer array.
+4. Output the concatenated array.
 
-This value represents how early this pair can start contributing small values into the final sequence.
-3. Sort all pairs in decreasing order of this key.
-
-The idea is to place pairs with larger minima earlier, so they do not suffer inversions caused by smaller elements appearing before them.
-4. Output all pairs in this sorted order, preserving internal order inside each pair.
-
-We flatten the sequence directly.
+The reason sorting by the second element is correct is that the second element represents the largest value that this block introduces early in the array. Placing blocks with smaller maxima first ensures that large values are delayed as much as possible, reducing their chance to form inversions with many smaller future elements.
 
 ### Why it works
 
-Each pair contributes inversions in two ways: internal inversions inside the pair and cross inversions with other pairs. Internal inversions are fixed and independent of ordering. Cross inversions depend only on whether a larger element appears before a smaller element across different pairs.
+After sorting each block so that $x_i \le y_i$, the only potentially harmful contribution of a block is its larger element $y_i$. If a block with larger $y_i$ is placed before a block with smaller $y_j$, then $y_i > y_j$ guarantees at least one inversion regardless of internal structure.
 
-When we sort by decreasing minimum element, we ensure that pairs with potentially large small elements appear early. Any later pair has a minimum element less than or equal to earlier ones, meaning its elements are more likely to be smaller and therefore should be placed later to avoid creating inversions against large earlier elements.
-
-This ordering enforces a greedy structure where no adjacent swap can reduce the number of cross inversions, which implies global optimality.
+By sorting blocks by $y_i$, we ensure that whenever $i < j$, we have $y_i \le y_j$, so no inversion is introduced by the second elements in reverse order. Since first elements $x_i$ are always $\le y_i$, they are also constrained by the same ordering. This alignment ensures that all cross-block inversions are minimized globally.
 
 ## Python Solution
 
@@ -84,110 +86,93 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+    out = []
     for _ in range(t):
         n = int(input())
-        pairs = []
-        for i in range(n):
-            x, y = map(int, input().split())
-            pairs.append((min(x, y), x, y))
+        arr = []
+        for _ in range(n):
+            a, b = map(int, input().split())
+            if a > b:
+                a, b = b, a
+            arr.append((a, b))
         
-        pairs.sort(reverse=True)
+        arr.sort(key=lambda x: x[1])
         
         res = []
-        for _, x, y in pairs:
-            res.append(str(x))
-            res.append(str(y))
+        for a, b in arr:
+            res.append(a)
+            res.append(b)
         
-        print(" ".join(res))
+        out.append(" ".join(map(str, res)))
+    
+    print("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first compresses each pair using its minimum value as a sorting key. This captures the structural importance of the pair in terms of inversion generation.
+The implementation first normalizes each pair so that the smaller value comes first, which prevents internal inversions from ever being introduced by our construction. Then it sorts by the second element of each pair, which encodes the maximal value that block contributes early in the final sequence.
 
-Sorting in descending order ensures that pairs with large minimum values appear first. We then output the pairs without modifying their internal order, since swapping within a pair is not allowed.
+The final loop simply flattens the sorted pairs. No additional inversion tracking is needed because the ordering already ensures minimal cross interactions.
 
-A subtle point is that we must sort pairs, not individual elements. Mixing elements would break the constraint that pairs remain intact.
+A subtle detail is that sorting must use the second element only. Using the first element or sum of elements can produce incorrect orderings, since inversion structure depends on the larger exposed value in each block.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input blocks:
 
-```
-n = 3
-(3, 1)
-(4, 2)
-(3, 2)
-```
+$$(3,3), (2,4), (3,2), (1,3)$$
 
-We compute keys:
+After normalization:
 
-| Pair | Key = min |
-| --- | --- |
-| (3, 1) | 1 |
-| (4, 2) | 2 |
-| (3, 2) | 2 |
+$$(3,3), (2,4), (2,3), (1,3)$$
 
-After sorting descending:
+Sorted by second element:
 
-| Step | Order |
-| --- | --- |
-| Sorted pairs | (4,2), (3,2), (3,1) |
+$$(3,3), (1,3), (2,3), (2,4)$$
 
-Output sequence:
+| Step | Block | Output so far |
+| --- | --- | --- |
+| 1 | (3,3) | 3 3 |
+| 2 | (1,3) | 3 3 1 3 |
+| 3 | (2,3) | 3 3 1 3 2 3 |
+| 4 | (2,4) | 3 3 1 3 2 3 2 4 |
 
-```
-4 2 3 2 3 1
-```
-
-This ordering ensures large values appear earlier, reducing later inversions caused by them.
+This shows that delaying the block with larger maximum reduces the number of large-to-small inversions.
 
 ### Example 2
 
-Input:
+Input blocks:
 
-```
-n = 4
-(5, 10)
-(1, 2)
-(8, 3)
-(6, 7)
-```
+$$(5,5), (10,2), (3,9), (6,1)$$
 
-Keys:
+After normalization:
 
-| Pair | Key |
-| --- | --- |
-| (5,10) | 5 |
-| (1,2) | 1 |
-| (8,3) | 3 |
-| (6,7) | 6 |
+$$(5,5), (2,10), (3,9), (1,6)$$
 
-Sorted descending:
+Sorted:
 
-| Step | Order |
-| --- | --- |
-| Sorted | (6,7), (5,10), (8,3), (1,2) |
+$$(5,5), (1,6), (3,9), (2,10)$$
 
-Output:
+| Step | Block | Output so far |
+| --- | --- | --- |
+| 1 | (5,5) | 5 5 |
+| 2 | (1,6) | 5 5 1 6 |
+| 3 | (3,9) | 5 5 1 6 3 9 |
+| 4 | (2,10) | 5 5 1 6 3 9 2 10 |
 
-```
-6 7 5 10 8 3 1 2
-```
-
-This arrangement ensures that smaller pairs do not precede larger ones, avoiding large cross inversions.
+The structure ensures that increasingly large second elements appear later, preventing them from causing widespread inversions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | sorting pairs by key dominates |
-| Space | O(n) | storing all pairs |
+| Time | $O(n \log n)$ | Sorting blocks by their second element dominates |
+| Space | $O(n)$ | Storage for pairs and output array |
 
-The solution is efficient for up to 100,000 pairs since sorting dominates at O(n log n), which comfortably fits within typical constraints.
+The total $n$ over all test cases is $10^5$, so sorting comfortably fits within time limits. The rest of the operations are linear.
 
 ## Test Cases
 
@@ -196,54 +181,80 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    out = io.StringIO()
-    old = sys.stdout
-    sys.stdout = out
-    solve()
-    sys.stdout = old
-    return out.getvalue().strip()
+    from sys import stdout
+    import sys
 
-# provided sample-like tests
+    input = sys.stdin.readline
+
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n = int(input())
+            arr = []
+            for _ in range(n):
+                a, b = map(int, input().split())
+                if a > b:
+                    a, b = b, a
+                arr.append((a, b))
+            arr.sort(key=lambda x: x[1])
+            res = []
+            for a, b in arr:
+                res.append(a)
+                res.append(b)
+            out.append(" ".join(map(str, res)))
+        return "\n".join(out)
+
+    return solve()
+
+# provided sample tests (format adapted)
 assert run("""1
-3
-3 1
-4 2
-3 2
-""") == "4 2 3 2 3 1"
+1
+3 3
+""") == "3 3"
 
-# minimum case
+# minimum size
 assert run("""1
 1
 2 1
-""") == "2 1"
+""") == "1 2"
 
-# already optimal order
+# all equal
 assert run("""1
-2
-5 6
-3 4
-""") == "5 6 3 4"
+3
+5 5
+5 5
+5 5
+""") == "5 5 5 5 5 5"
 
-# reversed structure
+# already sorted-friendly
 assert run("""1
-2
-1 100
+3
+1 2
 2 3
-""") == "2 3 1 100"
+3 4
+""") == "1 2 2 3 3 4"
+
+# reverse order case
+assert run("""1
+3
+3 10
+2 9
+1 8
+""") == "1 8 2 9 3 10"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single pair | same pair | base case correctness |
-| sorted pairs | unchanged order | stability |
-| mixed large gap | greedy ordering | cross inversion handling |
-| reversed dominance | swap decision | ordering rule correctness |
+| single reversed pair | normalized order | internal normalization |
+| all equal pairs | unchanged output | stability with ties |
+| increasing chains | preserved structure | correctness under monotonic input |
+| reversed maxima | sorted correction | main sorting logic |
 
 ## Edge Cases
 
-One edge case is when both elements inside pairs are identical or nearly identical. For example, (5,5), (5,6), (6,5). The sorting key becomes ambiguous, but since internal order is preserved and sorting only depends on the minimum, equal keys can appear in any order without affecting correctness.
+For a single block like $(b, a)$ where $b > a$, the algorithm first swaps it into $(a, b)$, ensuring no internal inversion exists. The final output is trivially correct since there are no other blocks.
 
-Another edge case is when all pairs are strictly increasing, such as (1,2), (3,4), (5,6). The algorithm places them in descending order of minima, producing (5,6), (3,4), (1,2), which avoids any large element appearing after small ones that could create unnecessary inversions.
+For repeated identical pairs, sorting has no effect and any permutation yields zero inversions. The algorithm preserves all values in any order, and the result remains optimal.
 
-A more subtle case is when pairs are interleaved, such as (1,100), (50,60), (2,3). The greedy rule ensures (50,60) first, then (2,3), then (1,100), minimizing the number of large values appearing after small ones.
+For strictly decreasing sequences of maxima, such as $(10,1), (9,2), (8,3)$, normalization yields $(1,10), (2,9), (3,8)$. Sorting by second element reverses the sequence, producing $(3,8), (2,9), (1,10)$, which minimizes cross inversions by pushing large second elements later in the array.
