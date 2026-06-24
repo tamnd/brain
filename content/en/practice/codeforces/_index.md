@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12456 problems, 7097 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12458 problems, 7099 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12456 problems, 7097 verified.**
+**1946 contests, 12458 problems, 7099 verified.**
 
-## Unknown — 198 contests, 1613 problems, 1253 verified
+## Unknown — 198 contests, 1615 problems, 1255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -75,7 +75,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 5 | 3/5 | Special | - |
 | [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 4 | 3/4 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 4 | 2/4 | Special | - |
-| [105482](105482/) | [Интернет-олимпиады, Сезон 2024-2025, Первая командная олимпиада](https://codeforces.com/contest/105482) | 10 | 1/10 | Special | - |
+| [105482](105482/) | [Интернет-олимпиады, Сезон 2024-2025, Первая командная олимпиада](https://codeforces.com/contest/105482) | 12 | 3/12 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 13 | 13/13 | Special | - |
 | [105492](105492/) | [2024 Benelux Algorithm Programming Contest (BAPC 24)](https://codeforces.com/contest/105492) | 13 | 13/13 | Special | - |
 | [105493](105493/) | [2024-2025 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/105493) | 9 | 9/9 | ICPC/IOI | - |
