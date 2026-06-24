@@ -1,7 +1,7 @@
 ---
 title: "CF 105335M - Marriage Proposals"
-description: "I can’t reliably reconstruct the actual problem from the title alone. “Marriage Proposals” could refer to several completely different competitive programming tasks (from greedy matching variants to binary search + ordering simulations, even stable matching-like setups), and the…"
-date: "2026-06-24T23:02:35+07:00"
+description: "I can’t reliably write a correct editorial without the actual problem statement. Right now the prompt only includes metadata and an empty input/output section, so there’s no description of what “Marriage Proposals” is asking us to compute."
+date: "2026-06-25T01:22:31+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 21
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,16 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 21s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably reconstruct the actual problem from the title alone.
+I can’t reliably write a correct editorial without the actual problem statement.
 
-“Marriage Proposals” could refer to several completely different competitive programming tasks (from greedy matching variants to binary search + ordering simulations, even stable matching-like setups), and the solution depends entirely on the exact rules of how proposals are made and accepted.
+Right now the prompt only includes metadata and an empty input/output section, so there’s no description of what “Marriage Proposals” is asking us to compute. Any attempt to reconstruct the task would be guesswork and would likely produce a wrong solution and misleading editorial.
 
-To write a correct Codeforces-style editorial with proof, walkthrough, and implementation, I need at least the full problem statement or a clear summary of:
+Paste one of the following and I’ll produce the full Codeforces-style editorial in the format you specified:
 
-what the input describes, what decisions are being simulated or optimized, and what exactly must be output.
+- the full problem statement text, or
+- a link plus the key constraints (if copying is inconvenient), or
+- at minimum: input format, output format, and a few samples
 
-Paste the statement (or even just the core rules and constraints), and I’ll produce the full structured editorial in the format you requested.
+Once I have that, I’ll write the complete step-by-step editorial, including algorithm, proof sketch, Python solution, and edge case analysis.
