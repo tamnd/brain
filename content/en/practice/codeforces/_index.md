@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1944 contests, 12400 problems, 7067 verified."
+description: "Codeforces problem solutions with full editorials. 1945 contests, 12413 problems, 7067 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1944 contests, 12400 problems, 7067 verified.**
+**1945 contests, 12413 problems, 7067 verified.**
 
-## Unknown — 196 contests, 1559 problems, 1232 verified
+## Unknown — 197 contests, 1572 problems, 1232 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105216](105216/) | [2024 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/105216) | 13 | 0/13 | ICPC/IOI | - |
 | [105223](105223/) | [HIAST Collegiate Programming Contest 2024](https://codeforces.com/contest/105223) | 14 | 10/14 | Special | - |
 | [105224](105224/) | [MOI2024](https://codeforces.com/contest/105224) | 3 | 1/3 | Special | - |
 | [105228](105228/) | [SanSi Cup 2023](https://codeforces.com/contest/105228) | 7 | 1/7 | Special | - |
