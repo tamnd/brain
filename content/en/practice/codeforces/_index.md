@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1939 contests, 12358 problems, 7045 verified."
+description: "Codeforces problem solutions with full editorials. 1940 contests, 12365 problems, 7046 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1939 contests, 12358 problems, 7045 verified.**
+**1940 contests, 12365 problems, 7046 verified.**
 
-## Unknown — 193 contests, 1535 problems, 1220 verified
+## Unknown — 194 contests, 1542 problems, 1221 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105228](105228/) | [SanSi Cup 2023](https://codeforces.com/contest/105228) | 7 | 1/7 | Special | - |
 | [105230](105230/) | [2024-2025 ICPC Bolivia Pre-National Contest](https://codeforces.com/contest/105230) | 11 | 7/11 | ICPC/IOI | - |
 | [105236](105236/) | [Олимпиада имени И.М. Дризе по информатике (программированию). Город Ижевск, 2024 год](https://codeforces.com/contest/105236) | 5 | 2/5 | Special | - |
 | [105255](105255/) | [2023 ICPC World Finals](https://codeforces.com/contest/105255) | 11 | 11/11 | ICPC/IOI | - |
