@@ -1,7 +1,7 @@
 ---
 title: "CF 105833F - Fair Forgery"
-description: "I’m missing the actual problem content for Codeforces 105833F - Fair Forgery. Right now the statement in your prompt is effectively empty (“F”), so there’s nothing concrete to derive the solution from."
-date: "2026-06-21T23:55:49+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now the prompt only contains: with empty Input/Output sections, so there is no information about what “Fair Forgery” is asking, what structures are involved, or what needs to be…"
+date: "2026-06-25T06:29:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 27
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem content for **Codeforces 105833F - Fair Forgery**. Right now the statement in your prompt is effectively empty (“F”), so there’s nothing concrete to derive the solution from.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-An editorial at the level you’re asking for depends heavily on the exact rules of the process being described (what “forgery” means, what operations are allowed, constraints, and what needs to be optimized or counted). Without that, any attempt would be guessing and would produce a misleading solution.
+Right now the prompt only contains:
 
-If you paste the full statement (or even just the key parts: input format, rules, and constraints), I can write the complete Codeforces-style editorial exactly in the format you specified.
+```
+F
+```
+
+with empty Input/Output sections, so there is no information about what “Fair Forgery” is asking, what structures are involved, or what needs to be computed. Any attempt to proceed would require guessing the problem, which would almost certainly produce a wrong solution and a misleading editorial.
+
+If you paste the full Codeforces statement (or even a screenshot / rough description), I’ll write the complete editorial in the exact format you specified, including a proper derivation, algorithm walkthrough, complexity analysis, and tests.

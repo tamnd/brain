@@ -1,7 +1,7 @@
 ---
 title: "CF 105833A - Anti-Diagonal Game"
-description: "I can’t write a correct editorial from this input because the actual problem content is missing. Right now the statement is just: Without the full description (rules of the “Anti-Diagonal Game”, input format, constraints, etc."
-date: "2026-06-21T22:43:31+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see: with empty input/output sections, which isn’t enough to reconstruct the game rules, constraints, or even what “Anti-Diagonal Game” refers to in this specific CF…"
+date: "2026-06-25T06:29:04+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 34
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,18 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial from this input because the actual problem content is missing.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-Right now the statement is just:
+Right now I only see:
 
 ```
 A
 ```
 
-Without the full description (rules of the “Anti-Diagonal Game”, input format, constraints, etc.), any solution or reasoning would be guesswork, and that would defeat the point of a Codeforces editorial.
+with empty input/output sections, which isn’t enough to reconstruct the game rules, constraints, or even what “Anti-Diagonal Game” refers to in this specific CF problem instance. Any attempt to proceed would be guessing, and that would produce a misleading editorial.
 
-If you paste the full problem statement, I’ll produce the complete editorial in the exact format you requested, including the reasoning, algorithm derivation, complexity analysis, and test cases.
+If you paste the full statement (or even a screenshot / rough description), I can immediately produce a full Codeforces-style editorial in the exact format you requested, including the derivation, proof, and implementation details.
+
+Send the statement and I’ll take it from there.

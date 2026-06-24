@@ -1,7 +1,7 @@
 ---
 title: "CF 105833J - Job Interview"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see: with empty input/output sections. That’s not enough to reconstruct what Codeforces 105833J (“Job Interview”) asks, so any solution would be guesswork."
-date: "2026-06-21T23:57:12+07:00"
+description: "The statement you provided is essentially empty, so there is no way to reconstruct a correct editorial for Codeforces 105833J. Right now I only see the problem label “J” without any description of inputs, outputs, or constraints."
+date: "2026-06-25T06:30:54+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 27
+solve_time_s: 36
 verified: false
 draft: false
 ---
@@ -18,18 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 36s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The statement you provided is essentially empty, so there is no way to reconstruct a correct editorial for Codeforces 105833J.
 
-Right now I only see:
+Right now I only see the problem label “J” without any description of inputs, outputs, or constraints. Without that, any attempt to write a solution would be guessing, which would defeat the purpose of a Codeforces editorial and very likely produce a wrong algorithm.
 
-```
-J
-```
-
-with empty input/output sections. That’s not enough to reconstruct what Codeforces 105833J (“Job Interview”) asks, so any solution would be guesswork.
-
-Please paste the full problem statement (or a screenshot/text of it), and I’ll produce the complete editorial in the exact format you requested.
+If you paste the full problem statement (or even a screenshot or raw text), I can produce the complete structured editorial in the exact format you specified, including the reasoning, optimal approach, walkthrough, code, and tests.
