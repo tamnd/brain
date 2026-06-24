@@ -1,7 +1,7 @@
 ---
 title: "CF 105950M - Movieguessr"
-description: "The problem statement for Codeforces 105950M - Movieguessr is not included in your message (the input and output sections are empty), so there is no way to reconstruct the actual task, constraints, or required algorithm."
-date: "2026-06-21T21:59:40+07:00"
+description: "I’m missing the actual problem statement for 105950M - Movieguessr. The input/output section is empty, so there’s no way to reconstruct what the task is (logic, constraints, or even what is being computed)."
+date: "2026-06-25T06:40:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105950
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "UDESC Selection Contest 2025-1"
 rating: 0
 weight: 105950
-solve_time_s: 34
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,12 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 105950M - Movieguessr** is not included in your message (the input and output sections are empty), so there is no way to reconstruct the actual task, constraints, or required algorithm.
+I’m missing the actual problem statement for **105950M - Movieguessr**. The input/output section is empty, so there’s no way to reconstruct what the task is (logic, constraints, or even what is being computed).
 
-An editorial depends entirely on the mechanics of the problem, for example whether it involves strings, graphs, queries, or interactive guessing, and without that information any “solution” would be guesswork rather than a faithful derivation.
+To write a proper Codeforces-style editorial, I need at least one of the following:
 
-If you paste the full statement (even just the raw CF text), I can immediately produce the complete editorial in the exact style you requested, including reasoning, optimal approach, proof sketch, Python solution, and test cases.
+- full statement text, or
+- a link / screenshot, or
+- a summary of what the problem asks (inputs, outputs, constraints)
+
+Once you provide that, I’ll produce the full structured editorial exactly in the format you specified, including brute force → optimization reasoning, walkthrough, proof sketch, code, and tests.

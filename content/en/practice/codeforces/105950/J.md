@@ -1,7 +1,7 @@
 ---
 title: "CF 105950J - John Wick"
-description: "I can’t write a correct Codeforces-style editorial for “105950J - John Wick” because the actual problem statement is missing from your message. Right now I only see the title, but no description of the input, output, constraints, or operations."
-date: "2026-06-22T16:13:38+07:00"
+description: "I don’t have the actual problem statement for Codeforces 105950J - John Wick in your message. Right now only the title is present, so there’s no way to reliably reconstruct the task, constraints, or required output."
+date: "2026-06-25T06:40:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105950
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "UDESC Selection Contest 2025-1"
 rating: 0
 weight: 105950
-solve_time_s: 35
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces-style editorial for “105950J - John Wick” because the actual problem statement is missing from your message.
+I don’t have the actual problem statement for **Codeforces 105950J - John Wick** in your message. Right now only the title is present, so there’s no way to reliably reconstruct the task, constraints, or required output.
 
-Right now I only see the title, but no description of the input, output, constraints, or operations. Any attempt to proceed would require guessing the task, which would defeat the purpose of a reliable editorial.
+For a Codeforces editorial, the exact rules of the problem drive everything: the data structures, the intended observation, and even whether it’s graph, DP, greedy, or something else. Without that, any “solution” would just be guesswork and would likely be wrong.
 
-If you paste the full statement (even a screenshot or raw text), I’ll produce a complete, structured editorial in the exact format you requested, including intuition, optimal solution derivation, code, and edge-case analysis.
+Paste the full problem statement (input, output, constraints, and any samples), and I’ll write the complete editorial in the exact style you requested.

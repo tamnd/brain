@@ -1,7 +1,7 @@
 ---
 title: "CF 105950O - The Martian"
-description: "The material you provided does not include the actual statement for Codeforces 105950O - The Martian. What is shown in the prompt is a bundle of other problems (A to F from a contest labeled UDESC 2025), but the section for problem O is effectively missing: there is no…"
-date: "2026-06-22T16:14:27+07:00"
+description: "The statement for Codeforces 105950O - The Martian (Problema F: Frodo & Sam) is not actually included in the input you provided. Only the header and empty I/O section are present, so there is no definition of the task, constraints, or required computation."
+date: "2026-06-25T06:40:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105950
@@ -9,7 +9,7 @@ codeforces_index: "O"
 codeforces_contest_name: "UDESC Selection Contest 2025-1"
 rating: 0
 weight: 105950
-solve_time_s: 38
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 38s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-The material you provided does not include the actual statement for **Codeforces 105950O - The Martian**.
+The statement for **Codeforces 105950O - The Martian (Problema F: Frodo & Sam)** is not actually included in the input you provided. Only the header and empty I/O section are present, so there is no definition of the task, constraints, or required computation.
 
-What is shown in the prompt is a bundle of other problems (A to F from a contest labeled UDESC 2025), but the section for problem O is effectively missing: there is no description of the task, no input/output specification, and no constraints for “The Martian”.
+Without that, it’s not possible to write a correct editorial because there is no way to determine what algorithmic problem we are solving.
 
-Because of that, it is not possible to derive a correct algorithm, let alone write a meaningful editorial. Any attempt to “guess” the problem would likely produce a solution to the wrong task.
-
-If you can paste the full statement of **Problem O - The Martian**, I can immediately produce a complete Codeforces-style editorial following your formatting and style requirements.
+If you paste the full problem statement (or even just the core description and constraints), I can produce the complete Codeforces-style editorial in the format you specified.
