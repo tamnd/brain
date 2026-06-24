@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12496 problems, 7124 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12497 problems, 7124 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12496 problems, 7124 verified.**
+**1946 contests, 12497 problems, 7124 verified.**
 
-## Unknown — 198 contests, 1637 problems, 1267 verified
+## Unknown — 198 contests, 1638 problems, 1267 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -127,7 +127,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 11 | 11/11 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 11 | 11/11 | Special | - |
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 13 | 13/13 | Special | - |
-| [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 11 | 11/11 | Special | - |
+| [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 12 | 11/12 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 13 | 13/13 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 14 | 14/14 | Special | - |
 | [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 13 | 13/13 | ICPC/IOI | - |
