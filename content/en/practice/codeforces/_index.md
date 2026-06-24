@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12531 problems, 7143 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12532 problems, 7145 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12531 problems, 7143 verified.**
+**1946 contests, 12532 problems, 7145 verified.**
 
-## Unknown — 198 contests, 1669 problems, 1285 verified
+## Unknown — 198 contests, 1670 problems, 1287 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -157,7 +157,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106203](106203/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая командная олимпиада](https://codeforces.com/contest/106203) | 12 | 12/12 | Special | - |
 | [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 11 | 5/11 | Special | - |
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 2 | 1/2 | Special | - |
-| [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 1 | 0/1 | Special | - |
+| [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 2 | 2/2 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 1 | 0/1 | Special | - |
 | [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 12 | 12/12 | ICPC/IOI | - |
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
