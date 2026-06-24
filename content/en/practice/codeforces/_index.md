@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12473 problems, 7106 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12475 problems, 7106 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12473 problems, 7106 verified.**
+**1946 contests, 12475 problems, 7106 verified.**
 
-## Unknown — 198 contests, 1618 problems, 1255 verified
+## Unknown — 198 contests, 1620 problems, 1255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -105,7 +105,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
-| [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 3 | 3/3 | Special | - |
+| [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 5 | 3/5 | Special | - |
 | [105748](105748/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 2](https://codeforces.com/contest/105748) | 2 | 2/2 | Special | - |
 | [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 10 | 4/10 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
