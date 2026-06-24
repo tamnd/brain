@@ -1,7 +1,7 @@
 ---
 title: "CF 105335C - Cattering"
-description: "I can’t write a correct Codeforces editorial for this yet because the actual problem content is missing. Right now I only see: - Problem: 105335C - Cattering - Statement: “C” (incomplete) There’s no description of the input, output, or rules, so any solution would be guesswork…"
-date: "2026-06-25T01:48:45+07:00"
+description: "The statement you provided is incomplete. Right now it only shows the title “C” without any description of the input, output, or rules of the problem, which makes it impossible to reconstruct the task or derive a correct solution."
+date: "2026-06-25T05:52:06+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 56
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,26 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 56s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial for this yet because the actual problem content is missing.
+The statement you provided is incomplete. Right now it only shows the title “C” without any description of the input, output, or rules of the problem, which makes it impossible to reconstruct the task or derive a correct solution.
 
-Right now I only see:
+For a Codeforces editorial, the core of everything comes from the actual transformation being performed on the input, and here that part is missing entirely. Without knowing what “Cattering” asks us to compute, any attempt to write an algorithm, prove correctness, or analyze complexity would be speculation rather than a valid solution.
 
-- Problem: 105335C - Cattering
-- Statement: “C” (incomplete)
-
-There’s no description of the input, output, or rules, so any solution would be guesswork, and that would almost certainly be wrong.
-
-If you paste the full problem statement (or even a screenshot / raw text), I’ll produce the complete editorial in the exact format you specified, including:
-
-- clean restatement
-- brute force → optimization story
-- full algorithm derivation
-- code
-- walkthroughs
-- tests and edge cases
-
-Just send the statement and I’ll continue from there.
+If you paste the full problem statement (or even a screenshot or link text), I can produce the complete editorial in the exact format you requested, including the full reasoning, walkthrough, implementation, and edge case analysis.

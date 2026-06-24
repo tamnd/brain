@@ -1,7 +1,7 @@
 ---
 title: "CF 105335E - Executive's Holidays"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see the placeholder “E” with empty input and output sections, so there is no information about what structure is given, what needs to be computed, or what constraints…"
-date: "2026-06-25T01:19:57+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now the “Problem Statement” section only contains a placeholder (“E”), and there is no description of the input, output, constraints, or rules of the problem."
+date: "2026-06-25T05:52:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 29
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+I can’t write a correct editorial for this yet because the actual problem content is missing.
 
-Right now I only see the placeholder “E” with empty input and output sections, so there is no information about what structure is given, what needs to be computed, or what constraints apply. Without that, any solution would be guesswork and would very likely be wrong for Codeforces 105335E.
+Right now the “Problem Statement” section only contains a placeholder (“E”), and there is no description of the input, output, constraints, or rules of the problem. Without that, any solution, algorithm, or complexity discussion would be purely speculative and very likely wrong.
 
-If you paste the full statement (or even a screenshot or raw text), I’ll produce the complete editorial in the exact format you requested, including intuition, algorithm walkthrough, complexity, tests, and edge cases.
+To produce the kind of editorial you’re asking for, I need at least the full statement describing what “Executive’s Holidays” is asking for, including how the input is structured and what must be computed.
+
+If you paste the full problem text (or even a screenshot or raw copy), I’ll rewrite it into a complete Codeforces-style editorial following all your formatting and style constraints.

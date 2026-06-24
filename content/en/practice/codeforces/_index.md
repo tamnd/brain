@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12456 problems, 7096 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12456 problems, 7097 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12456 problems, 7096 verified.**
+**1946 contests, 12456 problems, 7097 verified.**
 
-## Unknown — 198 contests, 1613 problems, 1252 verified
+## Unknown — 198 contests, 1613 problems, 1253 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 5 | 0/5 | Special | - |
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 7 | 2/7 | Special | - |
-| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 3/13 | ICPC/IOI | - |
+| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 4/13 | ICPC/IOI | - |
 | [105351](105351/) | [COMP4128 Ancient Berland Roads](https://codeforces.com/contest/105351) | 1 | 0/1 | Special | - |
 | [105363](105363/) | [XXV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105363) | 6 | 3/6 | Special | - |
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |

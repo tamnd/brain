@@ -1,7 +1,7 @@
 ---
 title: "CF 105335D - Disinfection Patch"
-description: "I don’t actually have the content of the problem beyond the title “105335D - Disinfection Patch”. The input and output sections are empty, so there’s nothing concrete to reconstruct the task, constraints, or required algorithm."
-date: "2026-06-25T01:19:27+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now, all that’s provided is the title “105335D - Disinfection Patch” and empty input/output sections."
+date: "2026-06-25T05:52:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 29
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I don’t actually have the content of the problem beyond the title “105335D - Disinfection Patch”. The input and output sections are empty, so there’s nothing concrete to reconstruct the task, constraints, or required algorithm.
+I can’t write a correct editorial for this yet because the actual problem content is missing.
 
-A Codeforces editorial depends entirely on the exact rules of the process (what “disinfection patch” does, what structure is given, what needs to be optimized or counted). Without that, any solution would be guesswork and very likely incorrect.
+Right now, all that’s provided is the title “105335D - Disinfection Patch” and empty input/output sections. Without the real statement, any solution would be guesswork, and for a Codeforces-style editorial that would be unreliable and potentially wrong.
 
-If you paste the full problem statement (or even a screenshot/text dump), I can write the complete senior-level editorial in the format you specified, including brute force reasoning, optimal transformation, proofs, code, and edge-case analysis.
+If you paste the full problem (or even just the core description and constraints), I’ll produce the complete editorial in the exact format you specified, including:
+
+- clean re-derivation of the idea
+- brute force → optimization progression
+- full algorithm walkthrough
+- Python solution
+- worked traces and edge cases
+
+Send the statement and I’ll take it from there.
