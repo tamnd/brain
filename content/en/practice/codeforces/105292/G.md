@@ -1,7 +1,7 @@
 ---
 title: "CF 105292G - Graph Problem"
-description: "I can’t produce a correct editorial from this because the actual problem content is missing. Right now the statement is only shown as “G”, with no description of the graph structure, input format, or required output."
-date: "2026-06-25T01:01:07+07:00"
+description: "I can’t produce a correct Codeforces editorial from this as-is because the actual problem content is missing. Right now the “Problem Statement” only contains a single letter: There is no description of the graph structure, no input format, no required output, and no constraints."
+date: "2026-06-25T05:30:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2024"
 rating: 0
 weight: 105292
-solve_time_s: 44
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 44s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t produce a correct editorial from this because the actual problem content is missing.
+I can’t produce a correct Codeforces editorial from this as-is because the actual problem content is missing.
 
-Right now the statement is only shown as “G”, with no description of the graph structure, input format, or required output. Without those, any solution would be guesswork and would likely be wrong for the real Codeforces problem.
+Right now the “Problem Statement” only contains a single letter:
 
-If you paste the full problem statement (or even just the input/output description and constraints), I can write the complete editorial in the exact style you requested, including the full algorithm, proof, implementation, and test cases.
+```
+G
+```
+
+There is no description of the graph structure, no input format, no required output, and no constraints. Without those, any attempt to derive an algorithm would be guessing, and that would defeat the purpose of a serious editorial.
+
+If you paste the full statement (or even just the key parts like input format + what needs to be computed), I’ll write the complete step-by-step Codeforces-style editorial in the exact format you requested.
+
+If you want, you can also just send a screenshot or the original PDF text and I’ll reconstruct it cleanly.

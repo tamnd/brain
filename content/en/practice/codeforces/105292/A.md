@@ -1,7 +1,7 @@
 ---
 title: "CF 105292A - Akari"
-description: "I’m missing the actual problem statement here. Right now the prompt only contains “A” under the statement section, so there’s no information about what inputs mean, what needs to be computed, or what constraints apply."
-date: "2026-06-25T01:18:02+07:00"
+description: "The problem content you provided is incomplete: it only contains the title “A” for Codeforces 105292A - Akari, with no actual statement, input/output description, or constraints."
+date: "2026-06-25T05:51:22+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -22,16 +22,22 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement here.
+The problem content you provided is incomplete: it only contains the title “A” for Codeforces 105292A - Akari, with no actual statement, input/output description, or constraints.
 
-Right now the prompt only contains “A” under the statement section, so there’s no information about what inputs mean, what needs to be computed, or what constraints apply. For a Codeforces editorial, that structure matters completely, since the solution technique depends on the exact mechanics (grid rules, operations, queries, etc.).
+An editorial at the level you requested depends entirely on the core rules of the problem (what is being computed, over what structure, and under what constraints). Without that, any “solution” would be guesswork and very likely incorrect.
 
-If you paste the full statement of Codeforces 105292A - Akari (or even a link + the text), I can immediately write the complete editorial in the requested format, including:
+If you paste the full problem statement (or even a screenshot or raw text), I can immediately produce a complete Codeforces-style editorial with:
 
-- clean restatement in my own words
-- brute force vs optimal reasoning
-- full algorithm derivation
-- Python implementation
-- worked traces and edge cases tailored to the real rules
+a clear problem restatement,
 
-Send the statement and I’ll produce the full write-up.
+brute force and optimized approaches,
+
+full algorithm walkthrough,
+
+correct Python implementation,
+
+worked traces,
+
+and edge-case analysis.
+
+Send the full statement and I’ll continue from there.
