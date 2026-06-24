@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12470 problems, 7104 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12473 problems, 7106 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12470 problems, 7104 verified.**
+**1946 contests, 12473 problems, 7106 verified.**
 
 ## Unknown — 198 contests, 1618 problems, 1255 verified
 
@@ -1776,7 +1776,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1698 problems, 956 verified
+## 2025 — 193 contests, 1701 problems, 958 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1899,7 +1899,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
-| [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 1 | 1/1 | Special | - |
+| [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
 | [105791](105791/) | [UFPE Starters Final Try-Outs 2025](https://codeforces.com/contest/105791) | 13 | 13/13 | Special | - |
