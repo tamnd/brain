@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12507 problems, 7128 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12511 problems, 7130 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12507 problems, 7128 verified.**
+**1946 contests, 12511 problems, 7130 verified.**
 
-## Unknown — 198 contests, 1645 problems, 1270 verified
+## Unknown — 198 contests, 1649 problems, 1272 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -146,7 +146,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 5 | 5/5 | Special | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 11 | 11/11 | Special | - |
-| [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 1 | 1/1 | Special | - |
+| [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 5 | 3/5 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 9 | 9/9 | ICPC/IOI | - |
 | [106189](106189/) | [ICPC Central Russia Regional Contest, 2025](https://codeforces.com/contest/106189) | 1 | 1/1 | ICPC/IOI | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 12 | 12/12 | ICPC/IOI | - |
