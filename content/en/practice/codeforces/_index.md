@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1938 contests, 12345 problems, 7033 verified."
+description: "Codeforces problem solutions with full editorials. 1939 contests, 12358 problems, 7045 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1938 contests, 12345 problems, 7033 verified.**
+**1939 contests, 12358 problems, 7045 verified.**
 
 ## Unknown — 193 contests, 1535 problems, 1220 verified
 
@@ -1565,7 +1565,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 198 contests, 1647 problems, 813 verified
+## 2024 — 199 contests, 1660 problems, 825 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1699,6 +1699,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 5 | 4/5 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105229](105229/) | [The 2024 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/105229) | 13 | 12/13 | Special | - |
 | [105231](105231/) | [2024 (ICPC) Jiangxi Provincial Contest -- Official Contest](https://codeforces.com/contest/105231) | 12 | 11/12 | ICPC/IOI | - |
 | [105239](105239/) | [Dynamic Programming, SPbSU 2024, Training 1](https://codeforces.com/contest/105239) | 9 | 9/9 | Special | - |
 | [105242](105242/) | [The 2024 Damascus University Collegiate Programming Contest (DCPC 2024)](https://codeforces.com/contest/105242) | 13 | 13/13 | Special | - |
