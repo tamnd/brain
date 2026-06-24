@@ -1,7 +1,7 @@
 ---
 title: "CF 105292H - HW0.514"
-description: "I can’t write a correct editorial yet because the actual problem content is missing. Right now the statement only shows the title “H” with empty input and output sections, so there is no way to know what structures are involved, what is being computed, or what constraints shape…"
-date: "2026-06-24T22:41:51+07:00"
+description: "I’m missing the actual problem content. Right now the statement is just “H”, so there’s no way to reconstruct what HW0.514 is asking, what the input format is, or what needs to be computed."
+date: "2026-06-25T01:01:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -22,10 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem content is missing.
+I’m missing the actual problem content.
 
-Right now the statement only shows the title “H” with empty input and output sections, so there is no way to know what structures are involved, what is being computed, or what constraints shape the solution. Without that, any “solution” would be guesswork and would very likely be wrong.
+Right now the statement is just “H”, so there’s no way to reconstruct what HW0.514 is asking, what the input format is, or what needs to be computed. Writing a correct Codeforces editorial without that would require inventing a problem, which would defeat the purpose.
 
-If you paste the full Codeforces problem statement (or even just the input format, output format, and constraints), I’ll produce the complete editorial in the exact style you requested, including the algorithm walkthrough, proofs, code, and test coverage.
-
-Send the full text and I’ll take it from there.
+Paste the full statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you specified.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105292B - Beautiful Strings"
-description: "The statement you provided is incomplete, so there is no way to reconstruct the intended task or derive a correct algorithm for it."
-date: "2026-06-24T22:40:50+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now, “Codeforces 105292B - Beautiful Strings” is shown, but the statement content is effectively empty (“B C” with no description, and no input/output specification)."
+date: "2026-06-25T01:18:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2024"
 rating: 0
 weight: 105292
-solve_time_s: 38
+solve_time_s: 41
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 38s  
+**Solve time:** 41s  
 **Verified:** no  
 
 ## Solution
-The statement you provided is incomplete, so there is no way to reconstruct the intended task or derive a correct algorithm for it.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-Right now the only visible content is essentially placeholder text, which does not define what a “beautiful string” is, what the input format contains, or what transformation or computation is required. Without those details, any editorial would be guesswork rather than a meaningful explanation of the solution.
+Right now, “Codeforces 105292B - Beautiful Strings” is shown, but the statement content is effectively empty (“B C” with no description, and no input/output specification). Without knowing what the problem is asking, any solution, complexity discussion, or examples would be pure guesswork and would almost certainly be wrong.
 
-Please paste the full problem statement (including input format, constraints, and output requirements). Once you do, I’ll write a complete Codeforces-style editorial in the format you specified, including the intuition, optimal approach, walkthrough, code, and edge case analysis.
+If you paste the full problem statement (or even just describe what a “beautiful string” means in this context and what operations/queries are involved), I can produce the complete Codeforces-style editorial exactly in the format you requested.

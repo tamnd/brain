@@ -1,7 +1,7 @@
 ---
 title: "CF 105292G - Graph Problem"
-description: "The problem statement you provided is effectively empty (“G”), so there is no information about what the graph problem actually asks, what the input describes, or what needs to be computed."
-date: "2026-06-24T22:41:21+07:00"
+description: "I can’t produce a correct editorial from this because the actual problem content is missing. Right now the statement is only shown as “G”, with no description of the graph structure, input format, or required output."
+date: "2026-06-25T01:01:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2024"
 rating: 0
 weight: 105292
-solve_time_s: 31
+solve_time_s: 44
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 44s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is effectively empty (“G”), so there is no information about what the graph problem actually asks, what the input describes, or what needs to be computed.
+I can’t produce a correct editorial from this because the actual problem content is missing.
 
-Without that, it is not possible to reconstruct a correct algorithm, let alone write a meaningful Codeforces-style editorial. Any attempt would require guessing the task, which would almost certainly produce a wrong or irrelevant solution.
+Right now the statement is only shown as “G”, with no description of the graph structure, input format, or required output. Without those, any solution would be guesswork and would likely be wrong for the real Codeforces problem.
 
-If you paste the full statement (or even just the input/output description and constraints), I can produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proof idea, Python implementation, and edge case analysis.
+If you paste the full problem statement (or even just the input/output description and constraints), I can write the complete editorial in the exact style you requested, including the full algorithm, proof, implementation, and test cases.

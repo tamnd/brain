@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12439 problems, 7089 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12446 problems, 7092 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12439 problems, 7089 verified.**
+**1946 contests, 12446 problems, 7092 verified.**
 
-## Unknown — 198 contests, 1596 problems, 1248 verified
+## Unknown — 198 contests, 1603 problems, 1251 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -69,7 +69,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105458](105458/) | [XXIII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105458) | 4 | 2/4 | Special | - |
 | [105461](105461/) | [2024-2025 ICPC, Swiss Subregional](https://codeforces.com/contest/105461) | 12 | 12/12 | ICPC/IOI | - |
 | [105465](105465/) | [2023 ICPC Southeastern Europe Regional Contest (The 2nd Universal Cup, Stage 14: Southeastern Europe)](https://codeforces.com/contest/105465) | 13 | 13/13 | ICPC/IOI | - |
-| [105471](105471/) | [The 2023 ICPC Asia Xian Regional Contest (The 3rd Universal Cup. Stage 9: Xian)](https://codeforces.com/contest/105471) | 7 | 1/7 | ICPC/IOI | - |
+| [105471](105471/) | [The 2023 ICPC Asia Xian Regional Contest (The 3rd Universal Cup. Stage 9: Xian)](https://codeforces.com/contest/105471) | 14 | 4/14 | ICPC/IOI | - |
 | [105472](105472/) | [2019-2020 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2019)](https://codeforces.com/contest/105472) | 11 | 10/11 | ICPC/IOI | - |
 | [105475](105475/) | [XXII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105475) | 5 | 3/5 | Special | - |
 | [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 5 | 3/5 | Special | - |
