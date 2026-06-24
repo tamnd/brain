@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12430 problems, 7088 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12431 problems, 7088 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12430 problems, 7088 verified.**
+**1946 contests, 12431 problems, 7088 verified.**
 
-## Unknown — 198 contests, 1588 problems, 1247 verified
+## Unknown — 198 contests, 1589 problems, 1247 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -52,7 +52,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105401](105401/) | [2024 KAIST 14th ICPC Mock Competition](https://codeforces.com/contest/105401) | 13 | 1/13 | ICPC/IOI | - |
 | [105403](105403/) | [XXIV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105403) | 5 | 3/5 | Special | - |
 | [105404](105404/) | [XXIV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105404) | 6 | 5/6 | Special | - |
-| [105408](105408/) | [2024 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/105408) | 10 | 2/10 | ICPC/IOI | - |
+| [105408](105408/) | [2024 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/105408) | 11 | 2/11 | ICPC/IOI | - |
 | [105423](105423/) | [2024湖南省赛](https://codeforces.com/contest/105423) | 11 | 11/11 | Special | - |
 | [105424](105424/) | [2023-2024 Квалификационный тур Уральского четвертьфинала ICPC](https://codeforces.com/contest/105424) | 4 | 1/4 | ICPC/IOI | - |
 | [105427](105427/) | [2023-2024 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2023)](https://codeforces.com/contest/105427) | 11 | 11/11 | ICPC/IOI | - |
