@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12477 problems, 7110 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12481 problems, 7111 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12477 problems, 7110 verified.**
+**1946 contests, 12481 problems, 7111 verified.**
 
 ## Unknown — 198 contests, 1622 problems, 1259 verified
 
@@ -1776,7 +1776,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1701 problems, 958 verified
+## 2025 — 193 contests, 1705 problems, 959 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1903,7 +1903,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
 | [105791](105791/) | [UFPE Starters Final Try-Outs 2025](https://codeforces.com/contest/105791) | 13 | 13/13 | Special | - |
-| [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 1 | 1/1 | Special | - |
+| [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 5 | 2/5 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
 | [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 1/12 | Special | - |
 | [105838](105838/) | [The 14th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/105838) | 13 | 13/13 | Special | - |
