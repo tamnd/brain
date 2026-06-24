@@ -1,6 +1,6 @@
 ---
 title: "IMO 2003"
-description: "IMO 2003 — 0/6 solved."
+description: "IMO 2003 — 3/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 2003
@@ -10,28 +10,30 @@ draft: false
 
 # IMO 2003
 
-[Official IMO 2003 problems](https://www.imo-official.org/year_info.aspx?year=2003) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 2003 problems](https://www.imo-official.org/year_info.aspx?year=2003) &nbsp;·&nbsp; 3/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
-| 2 | — | — |
-| 3 | — | — |
+| [1](1.md) | solved | 13m40s |
+| [2](2.md) | solved | 13m49s |
+| [3](3.md) | solved | 14m15s |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 13m40s · [Solution →](1.md)
 
 $S$ is the set $\{1, 2, 3, \dots ,1000000\}$. Show that for any subset $A$ of $S$ with $101$ elements we can find $100$ distinct elements $x_i$ of $S$, such that the sets $\{a + x_i \mid a \in A\}$ are all pairwise disjoint.
 
-**Problem 2**
+**Problem 2** &nbsp; *solved* · 13m49s · [Solution →](2.md)
 
-Determine all pairs of positive integers $(a,b)$ such that $$
+Determine all pairs of positive integers $(a,b)$ such that
+$$
 \frac{a^2}{2ab^2-b^3+1}
-$$ is a positive integer.
+$$
+is a positive integer.
 
-**Problem 3**
+**Problem 3** &nbsp; *solved* · 14m15s · [Solution →](3.md)
 
 Each pair of opposite sides of convex hexagon has the property that the distance between their midpoints is $\frac{\sqrt{3}}{2}$ times the sum of their lengths. Prove that the hexagon is equiangular.
 
