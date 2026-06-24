@@ -1,7 +1,7 @@
 ---
 title: "CF 105335D - Disinfection Patch"
-description: "I can’t reliably write a correct editorial for this yet because the actual problem statement is missing. Right now all that’s provided is the label “D” and the title “Disinfection Patch”, but there’s no description of the grid/array, operations, constraints, or what needs to be…"
-date: "2026-06-23T15:15:38+07:00"
+description: "I can’t write a correct editorial for this yet because the problem statement for Codeforces 105335D - Disinfection Patch is missing from your prompt."
+date: "2026-06-24T23:00:18+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 34
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this yet because the actual problem statement is missing.
+I can’t write a correct editorial for this yet because the problem statement for **Codeforces 105335D - Disinfection Patch** is missing from your prompt.
 
-Right now all that’s provided is the label “D” and the title “Disinfection Patch”, but there’s no description of the grid/array, operations, constraints, or what needs to be computed. Without that, any “solution” would be guesswork, and for a Codeforces editorial that would very likely drift into an incorrect model of the problem.
+Right now I only see the header (“D”) without any description of the grid/array/operations, so any attempt to derive a solution would be guesswork, and that would defeat the purpose of a serious competitive programming editorial.
 
-If you paste the full statement (even just the core parts: input format, what a patch does, and what needs to be output), I’ll produce a complete editorial in the exact style you requested, including the derivation, optimal idea, walkthrough, implementation, and edge-case analysis.
-
-Send the statement and I’ll take it from there.
+If you paste the full statement (or even just describe what operations are allowed and what needs to be optimized), I can produce the complete senior-level walkthrough in the exact format you requested, including the algorithm derivation, proof sketch, implementation, and edge-case analysis.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105335N - [N]ew YoRHa Security"
-description: "The problem statement you provided is incomplete (it only contains “N” without any description of the task, input format, or required output behavior). Without that, any editorial would be pure speculation and would not be meaningful or correct."
-date: "2026-06-23T15:18:12+07:00"
+description: "I can’t write a correct editorial for this as-is because the actual problem content is missing. Right now, the statement only shows the title and an input/output placeholder with just “N”, but there is no description of what the problem is asking, what N represents, what…"
+date: "2026-06-24T23:02:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "N"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 28
+solve_time_s: 20
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 20s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is incomplete (it only contains “N” without any description of the task, input format, or required output behavior). Without that, any editorial would be pure speculation and would not be meaningful or correct.
+I can’t write a correct editorial for this as-is because the actual problem content is missing.
 
-To write a proper Codeforces-style editorial, I need at least:
+Right now, the statement only shows the title and an input/output placeholder with just “N”, but there is no description of what the problem is asking, what N represents, what transformations or computations are required, or any constraints. Without that, any solution or reasoning would be purely speculative and very likely wrong.
 
-the full statement describing what “N” represents, what operations or constraints are involved, and what must be computed or output.
-
-If you paste the full problem text, I’ll produce the complete structured editorial in the exact format you requested.
+If you paste the full Codeforces statement (or even just the core description and constraints), I can produce the full senior-level editorial in the exact format you requested, including the derivation, walkthrough, and proof of correctness.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105335E - Executive's Holidays"
-description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now the prompt only shows “E” with empty Input/Output sections, so there’s no way to know what structure we’re solving, what the operations are, or what the constraints and edge…"
-date: "2026-06-23T15:16:07+07:00"
+description: "You are right to expect a full editorial here, but in this case the issue is upstream: the problem statement you provided is incomplete, and that makes it impossible to reconstruct a correct solution or a meaningful explanation without guessing."
+date: "2026-06-24T23:00:20+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 30
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem content is missing.
+You are right to expect a full editorial here, but in this case the issue is upstream: the problem statement you provided is incomplete, and that makes it impossible to reconstruct a correct solution or a meaningful explanation without guessing.
 
-Right now the prompt only shows “E” with empty Input/Output sections, so there’s no way to know what structure we’re solving, what the operations are, or what the constraints and edge cases should be. Anything I write beyond this point would be invented and would not match Codeforces 105335E.
+After checking the problem identifier, “105335E - Executive's Holidays”, the statement content is not present in the prompt you gave, and what is available publicly is a different Gym problem with unrelated structure. The core definition of the task, input format, and required computation are missing, so any attempt to write an editorial would inevitably hallucinate the actual problem.
 
-If you paste the full problem statement (or even just the core description and constraints), I’ll produce the complete editorial in the exact style you specified, including a proper derivation, optimal solution, Python implementation, and full walkthroughs.
+To write a proper Codeforces-style editorial, I need at least one of the following:
+
+Either the full statement text (preferred), or a link to the problem page, or a clear restatement of what the problem asks (even informal is fine).
+
+Once you provide that, I can produce exactly the kind of structured editorial you requested, including derivation of the solution, proof of correctness, and full implementation.
+
+If you want, you can also just paste the statement directly and I’ll take it from there.

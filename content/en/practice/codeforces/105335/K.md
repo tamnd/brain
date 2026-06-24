@@ -1,7 +1,7 @@
 ---
 title: "CF 105335K - Kid Rally"
-description: "I can’t responsibly write a correct editorial for this as-is because the actual problem statement is missing. Right now the “Problem Statement” section only contains the single letter K, and there are no inputs, outputs, constraints, or rules."
-date: "2026-06-23T15:17:32+07:00"
+description: "The problem statement you provided is effectively empty (it only shows the title “K” without any description, input, or output format). That makes it impossible to reconstruct the task, constraints, or required algorithm reliably."
+date: "2026-06-24T23:02:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 37
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I can’t responsibly write a correct editorial for this as-is because the actual problem statement is missing.
+The problem statement you provided is effectively empty (it only shows the title “K” without any description, input, or output format). That makes it impossible to reconstruct the task, constraints, or required algorithm reliably.
 
-Right now the “Problem Statement” section only contains the single letter `K`, and there are no inputs, outputs, constraints, or rules. Without that, any solution would be pure guesswork, and for a Codeforces editorial that would defeat the purpose of the exercise.
+A Codeforces editorial depends heavily on the exact mechanics of the problem, even small details like whether it is about graphs, arrays, greedy simulation, or number theory completely change the solution.
 
-If you paste the full statement (or even just the input/output description and constraints), I’ll write the complete senior-level editorial in the exact format you requested, including the algorithm walkthrough, proofs, complexity, and test suite.
+If you paste the full statement (or even a screenshot / link text), I can produce a complete Codeforces-style editorial in the exact format you requested, including:
+
+- clean restatement of the problem
+- brute force vs optimal progression
+- full proof sketch of correctness
+- Python implementation
+- worked traces and edge cases
+
+Send the full problem text and I will write the full senior-level editorial.

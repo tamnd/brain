@@ -1,7 +1,7 @@
 ---
 title: "CF 105335L - Lulu and Friends"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now the only content provided is: That gives no information about the task, inputs, outputs, or constraints, so any attempt to derive a solution would be guessing, and that…"
-date: "2026-06-23T15:17:43+07:00"
+description: "I can’t reliably write a correct editorial for this problem yet because the statement content is missing. Right now the prompt only shows “L” with no description of the task, inputs, or outputs, which makes it impossible to reconstruct what algorithmic problem 105335L is…"
+date: "2026-06-24T23:02:21+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 34
+solve_time_s: 18
 verified: false
 draft: false
 ---
@@ -18,18 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 18s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+I can’t reliably write a correct editorial for this problem yet because the statement content is missing.
 
-Right now the only content provided is:
+Right now the prompt only shows “L” with no description of the task, inputs, or outputs, which makes it impossible to reconstruct what algorithmic problem 105335L is actually asking.
 
-```
-L
-```
-
-That gives no information about the task, inputs, outputs, or constraints, so any attempt to derive a solution would be guessing, and that would almost certainly produce a wrong editorial.
-
-Please paste the full statement for **Codeforces 105335L - Lulu and Friends** (including input/output format and constraints). Once you send it, I’ll write the complete editorial in the exact style you requested, including the algorithm walkthrough, proof sketch, code, and test cases.
+If you paste the full problem statement (or even a screenshot/text dump), I’ll produce the complete Codeforces-style editorial in the format you requested, including intuition, optimal solution, walkthrough, code, and tests.
