@@ -1,7 +1,7 @@
 ---
 title: "CF 105790L - Lango Mocos"
-description: "The statement you provided is effectively empty, so there is no usable description of what “Lango Mocos” is supposed to compute. Without the actual rules, inputs, and outputs, any editorial would be fabrication rather than explanation."
-date: "2026-06-21T13:52:00+07:00"
+description: "The problem content you provided is empty, so there is no definition of the task, no constraints, and no input/output specification to reason from."
+date: "2026-06-25T06:23:05+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 25
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-The statement you provided is effectively empty, so there is no usable description of what “Lango Mocos” is supposed to compute. Without the actual rules, inputs, and outputs, any editorial would be fabrication rather than explanation.
+The problem content you provided is empty, so there is no definition of the task, no constraints, and no input/output specification to reason from. A Codeforces editorial depends entirely on those details, because every step of the solution comes from the structure of the operations allowed on the input.
 
-Right now we only know the problem name and that it’s from Codeforces, but there is no information about what structures are involved (arrays, strings, graphs, games), what transformations are allowed, or what needs to be optimized or counted. Even the input and output formats are missing, which makes it impossible to reason about constraints, edge cases, or an algorithm.
+Right now, the only thing visible is the title “Lango Mocos”, but without the statement there is no way to determine whether this is a graph problem, a string transformation, a combinatorics task, or something else entirely. Any attempt to write an editorial would be pure fabrication and would not be useful for understanding or re-deriving a solution.
 
-If you paste the full problem statement (or even a screenshot / CF link text), I can produce the complete editorial in the exact style you requested, including full derivation, walkthrough, complexity analysis, and test suite.
-
-Send the statement and I’ll take it from there.
+If you paste the full problem statement (including input format, output format, constraints, and samples), I can produce a complete editorial in the exact style you requested, including a full algorithm derivation, correctness argument, implementation details, and complexity analysis.

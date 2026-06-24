@@ -1,7 +1,7 @@
 ---
 title: "CF 105790F - Frogs or Toads?"
-description: "The problem content you provided is essentially empty, so there’s no way to reconstruct the actual task or derive a correct solution."
-date: "2026-06-21T13:13:30+07:00"
+description: "The problem statement is essentially missing in the prompt: both the “Input” and “Output” sections are empty, and there is no description of what frogs, toads, or any operations are supposed to represent."
+date: "2026-06-25T06:22:04+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 46
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,20 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 46s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-The problem content you provided is essentially empty, so there’s no way to reconstruct the actual task or derive a correct solution.
+The problem statement is essentially missing in the prompt: both the “Input” and “Output” sections are empty, and there is no description of what frogs, toads, or any operations are supposed to represent.
 
-For Codeforces editorials, the solution depends entirely on details like what frogs/toads do, what the input describes, and what needs to be optimized or computed. None of that is present here, so any attempt to write a full editorial would be guesswork and would likely be wrong.
+A Codeforces editorial depends entirely on the rules of the process being analyzed. Without knowing what the input describes, what transformations are allowed, or what needs to be computed, any attempt to write a solution would be fabrication rather than explanation.
 
-If you paste the full statement (or even a screenshot / raw text including constraints and samples), I can produce the complete editorial in the exact format you requested, including:
-
-- a proper restatement of the task
-- derivation from brute force to optimal
-- correctness argument
-- full Python solution
-- walkthrough traces and edge cases
-
-Send the full problem text and I’ll continue from there.
+If you paste the full problem statement (or even just the core rules and constraints), I can immediately produce a complete editorial in the exact format you specified, including a full derivation, optimal algorithm, proof sketch, implementation, and edge case analysis.

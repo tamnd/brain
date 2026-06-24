@@ -1,7 +1,7 @@
 ---
 title: "CF 105790I - Itwise Bor"
-description: "The problem statement is effectively missing here: there is no description of inputs, outputs, constraints, or even what “Itwise Bor” is supposed to do."
-date: "2026-06-21T14:20:58+07:00"
+description: "I can’t write a correct Codeforces editorial for 105790I - Itwise Bor because the actual problem statement is missing from your prompt. Right now I only see the title, input/output placeholders, and no description of what operations or structures are involved."
+date: "2026-06-25T06:22:31+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 43
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,16 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 43s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-The problem statement is effectively missing here: there is no description of inputs, outputs, constraints, or even what “Itwise Bor” is supposed to do. Without that, any “full Codeforces editorial with correct algorithm, proofs, and code” would be pure invention and very likely wrong.
+I can’t write a correct Codeforces editorial for **105790I - Itwise Bor** because the actual problem statement is missing from your prompt.
 
-What I need to produce a proper editorial is at least one of the following:
+Right now I only see the title, input/output placeholders, and no description of what operations or structures are involved. Without that, any “solution” would be guesswork, and that would defeat the purpose of a proper editorial.
 
-- the full problem statement text,
-- or a link / screenshot content,
-- or a summary of what the task asks (inputs, outputs, constraints).
+If you paste the full statement (or even a screenshot/text dump), I can immediately produce a complete, Codeforces-style editorial in the exact format you requested, including:
 
-If you paste the statement, I’ll write the complete Codeforces-style editorial exactly in the format you requested, including the algorithm walkthrough, proofs, Python solution, and test suite.
+- clean restatement of the problem
+- brute force → optimized transition
+- full algorithm walkthrough
+- correct Python solution
+- worked examples and edge case analysis
+
+Send the statement and I’ll take it from there.

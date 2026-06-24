@@ -1,7 +1,7 @@
 ---
 title: "CF 105790D - Course Deviation"
-description: "I can’t write a correct editorial for this yet because the actual problem statement for Codeforces 105790D - Course Deviation is missing from your prompt (the input/output section is empty and there’s no description of the task, constraints, or rules)."
-date: "2026-06-21T13:13:18+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 105790D - Course Deviation from what you provided, because the problem statement (input/output description and constraints) is missing."
+date: "2026-06-25T06:21:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 36
+solve_time_s: 45
 verified: false
 draft: false
 ---
@@ -18,21 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 36s  
+**Solve time:** 45s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement for **Codeforces 105790D - Course Deviation** is missing from your prompt (the input/output section is empty and there’s no description of the task, constraints, or rules).
+I can’t reliably write a correct editorial for **Codeforces 105790D - Course Deviation** from what you provided, because the problem statement (input/output description and constraints) is missing.
 
-Right now there’s nothing concrete to derive:
+Right now I only see the title and no actual definition of what “Course Deviation” asks you to compute. Any attempt to reconstruct it would be guesswork, and that would defeat the purpose of a Codeforces-quality editorial.
 
-- what “deviation” means,
-- what the input structure is,
-- what needs to be computed,
-- or what constraints guide the solution.
+If you paste the full statement (or even just the key parts: what the input is, what must be computed, and constraints), I’ll produce the complete senior-level editorial in the exact format you requested, including:
 
-If you paste the full statement (or even a screenshot / raw text), I’ll produce a complete Codeforces-style editorial in the exact format you requested, including:
+A clear re-derivation of the model, brute force reasoning, the optimization insight, a full correctness argument, and a tested Python implementation.
 
-a full derivation of the solution, brute force to optimal transition, algorithm walkthrough, Python implementation, worked traces, and edge case analysis.
-
-Send the full problem text and I’ll continue from there.
+Send the statement and I’ll take it from there.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105790N - Shield Navigation"
-description: "I can’t write a correct editorial for this yet because the actual problem statement for “Codeforces 105790N - Shield Navigation” is missing from your prompt (both input and output sections are empty)."
-date: "2026-06-21T13:14:52+07:00"
+description: "Got it. Please paste the Codeforces problem statement (or at least the full text / link + constraints). Once you do, I’ll write a complete competitive programming editorial, typically including: - Problem summary (clean restatement) - Key observations / intuition - Full solution…"
+date: "2026-06-25T06:24:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "N"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 34
+solve_time_s: 117
 verified: false
 draft: false
 ---
@@ -18,22 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 1m 57s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement for “Codeforces 105790N - Shield Navigation” is missing from your prompt (both input and output sections are empty).
+Got it. Please paste the Codeforces problem statement (or at least the full text / link + constraints).
 
-Right now there is no information about:
+Once you do, I’ll write a **complete competitive programming editorial**, typically including:
 
-what the shield navigation system is,
+- Problem summary (clean restatement)
+- Key observations / intuition
+- Full solution idea (step-by-step)
+- Proof of correctness
+- Complexity analysis
+- Edge cases
+- Reference implementation (C++/Python if you want)
+- Common mistakes / pitfalls (optional but useful)
 
-what operations or constraints exist,
-
-what the input represents,
-
-or what we are supposed to compute.
-
-Without those, any “solution” or algorithm would be fabricated and would almost certainly be wrong.
-
-If you paste the full statement (or even just the key parts: description, input format, output format, constraints, and samples), I’ll write the complete editorial in the exact style you requested, including brute force reasoning, optimal derivation, walkthrough, code, and edge case analysis.
+Send the problem when ready.

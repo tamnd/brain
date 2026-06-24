@@ -1,7 +1,7 @@
 ---
 title: "CF 105790B - Bit Tennis 2"
-description: "I don’t have enough information to write a correct editorial for this problem yet. Right now the statement is effectively missing: there is no description of the input, output, or the rules of “Bit Tennis 2”, so any attempt to derive a solution would be guesswork and very likely…"
-date: "2026-06-21T13:12:44+07:00"
+description: "I can’t reliably write a correct Codeforces editorial for 105790B - Bit Tennis 2 without the actual problem statement."
+date: "2026-06-25T06:21:22+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 34
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,14 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I don’t have enough information to write a correct editorial for this problem yet.
+I can’t reliably write a correct Codeforces editorial for **105790B - Bit Tennis 2** without the actual problem statement.
 
-Right now the statement is effectively missing: there is no description of the input, output, or the rules of “Bit Tennis 2”, so any attempt to derive a solution would be guesswork and very likely incorrect.
+Right now the prompt only contains the title and empty input/output sections, so any attempt to “reconstruct” the task would be guessing, and that would produce a misleading solution and incorrect reasoning.
 
-If you paste the full problem statement (or even just the core rules and constraints), I can produce the complete Codeforces-style editorial you requested, including the full reasoning, optimal approach, proof sketch, and implementation.
+If you paste the full statement (or even just the core rules and constraints), I’ll produce the complete editorial in the exact format you requested, including:
 
-Send the statement and I’ll continue from there.
+- a clean restatement of the game/structure,
+- the brute-force reasoning and why it fails,
+- the optimal insight,
+- a full step-by-step algorithm,
+- Python implementation,
+- traces, complexity, and edge-case handling.
+
+Send the statement and I’ll take it from there.

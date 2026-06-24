@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12476 problems, 7108 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12477 problems, 7110 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12476 problems, 7108 verified.**
+**1946 contests, 12477 problems, 7110 verified.**
 
-## Unknown — 198 contests, 1621 problems, 1257 verified
+## Unknown — 198 contests, 1622 problems, 1259 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -110,7 +110,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 10 | 6/10 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
-| [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 13 | 1/13 | Special | - |
+| [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 14 | 3/14 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
 | [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |

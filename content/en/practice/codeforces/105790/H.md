@@ -1,7 +1,7 @@
 ---
 title: "CF 105790H - Higgs"
-description: "The statement for “Codeforces 105790H - Higgs” is effectively empty in the prompt you provided. There is no description of the input, output, or the task being asked, so there is nothing concrete to analyze, reduce, or implement."
-date: "2026-06-21T13:13:48+07:00"
+description: "I can’t responsibly write a Codeforces editorial for this yet because the actual problem content is missing. Right now I only see the title “Higgs” with empty input/output sections."
+date: "2026-06-25T06:22:21+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 30
+solve_time_s: 22
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 22s  
 **Verified:** no  
 
 ## Solution
-The statement for “Codeforces 105790H - Higgs” is effectively empty in the prompt you provided. There is no description of the input, output, or the task being asked, so there is nothing concrete to analyze, reduce, or implement.
+I can’t responsibly write a Codeforces editorial for this yet because the actual problem content is missing.
 
-A proper editorial depends on knowing at least what structure we are working with (arrays, graphs, strings, queries, etc.), what transformation or query is required, and what constraints drive the complexity choice. Without that, any “solution” would be guesswork rather than a derivation, which defeats the purpose of a Codeforces-style editorial.
+Right now I only see the title “Higgs” with empty input/output sections. An editorial depends entirely on the structure of the task, what is being computed, and the constraints. Without that, any “solution” would be invented rather than derived, which defeats the purpose of a competitive programming editorial.
 
-If you paste the full problem statement, even just the input/output description and constraints, I can write the complete editorial in the format you specified, including the full reasoning, algorithm walkthrough, implementation, and edge-case analysis.
+If you paste the full statement (or even a screenshot/text dump), I’ll produce the complete senior-level walkthrough you asked for: from brute force intuition through optimization, correctness argument, code, and edge-case analysis.
+
+Send the statement and I’ll take it from there.
