@@ -1,7 +1,7 @@
 ---
 title: "CF 106222B - Secret"
-description: "The problem statement is missing from your prompt, so I can’t reconstruct what “Codeforces 106222B - Secret” is actually asking."
-date: "2026-06-19T09:35:44+07:00"
+description: "I can write the full editorial in that format, but I’m missing the actual problem details for Codeforces 106222B - Secret. The statement fields in the prompt are empty, and I could not reliably identify the problem from the ID alone."
+date: "2026-06-25T06:58:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106222
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "ZCO 2025"
 rating: 0
 weight: 106222
-solve_time_s: 32
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,16 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your prompt, so I can’t reconstruct what “Codeforces 106222B - Secret” is actually asking.
+I can write the full editorial in that format, but I’m missing the actual problem details for **Codeforces 106222B - Secret**. The statement fields in the prompt are empty, and I could not reliably identify the problem from the ID alone.
 
-To write a correct editorial (especially with constraints, edge cases, and a valid solution), I need at least one of the following:
-
-- Full problem statement
-- Or input/output description plus constraints
-- Or a link / pasted text from Codeforces
-
-Once you provide that, I’ll produce the complete editorial in the exact format you specified, including the algorithm walkthrough, proof, code, tests, and edge-case analysis.
+Please paste the problem statement (or provide the link/contest URL), and I’ll produce the complete editorial with the requested sections, algorithm explanation, Python solution, examples, tests, and edge cases.
