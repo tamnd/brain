@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1935 contests, 12311 problems, 7007 verified."
+description: "Codeforces problem solutions with full editorials. 1936 contests, 12316 problems, 7009 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1935 contests, 12311 problems, 7007 verified.**
+**1936 contests, 12316 problems, 7009 verified.**
 
-## Unknown — 191 contests, 1519 problems, 1211 verified
+## Unknown — 192 contests, 1524 problems, 1213 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105236](105236/) | [Олимпиада имени И.М. Дризе по информатике (программированию). Город Ижевск, 2024 год](https://codeforces.com/contest/105236) | 5 | 2/5 | Special | - |
 | [105255](105255/) | [2023 ICPC World Finals](https://codeforces.com/contest/105255) | 11 | 11/11 | ICPC/IOI | - |
 | [105263](105263/) | [XXIV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105263) | 5 | 0/5 | Special | - |
 | [105264](105264/) | [The 2024 Syrian Virtual University Collegiate Programming Contest](https://codeforces.com/contest/105264) | 13 | 13/13 | Special | - |
