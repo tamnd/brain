@@ -1,6 +1,6 @@
 ---
 title: "IMO 2005"
-description: "IMO 2005 — 0/6 solved."
+description: "IMO 2005 — 2/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 2005
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 2005
 
-[Official IMO 2005 problems](https://www.imo-official.org/year_info.aspx?year=2005) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 2005 problems](https://www.imo-official.org/year_info.aspx?year=2005) &nbsp;·&nbsp; 2/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 14m57s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
-| 6 | — | — |
+| [6](6.md) | solved | 21m13s |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 14m57s · [Solution →](1.md)
 
 Six points are chosen on the sides of an equilateral triangle $ABC$: $A_1, A_2$ on $BC$, $B_1$, $B_2$ on $CA$ and $C_1$, $C_2$ on $AB$, such that they are the vertices of a convex hexagon $A_1A_2B_1B_2C_1C_2$ with equal side lengths. Prove that the lines $A_1B_2, B_1C_2$ and $C_1A_2$ are concurrent.
 
@@ -45,6 +45,6 @@ $$
 
 Let $ABCD$ be a fixed convex quadrilateral with $BC = DA$ and $BC \nparallel DA$. Let two variable points $E$ and $F$ lie of the sides $BC$ and $DA$, respectively, and satisfy $BE = DF$. The lines $AC$ and $BD$ meet at $P$, the lines $BD$ and $EF$ meet at $Q$, the lines $EF$ and $AC$ meet at $R$. Prove that the circumcircles of the triangles $PQR$, as $E$ and $F$ vary, have a common point other than $P$.
 
-**Problem 6**
+**Problem 6** &nbsp; *solved* · 21m13s · [Solution →](6.md)
 
 In a mathematical competition, in which 6 problems were posed to the participants, every two of these problems were solved by more than 2/5 of the contestants. Moreover, no contestant solved all the 6 problems. Show that there are at least 2 contestants who solved exactly 5 problems each.
