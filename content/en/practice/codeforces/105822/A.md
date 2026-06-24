@@ -1,7 +1,7 @@
 ---
 title: "CF 105822A - Nice Perfect Squares"
-description: "I can’t reliably write a correct editorial for this because the actual problem statement is missing. Right now the prompt only shows “A” with empty Input/Output sections, so there’s no way to know what the task is (what the input represents, what needs to be computed, or what…"
-date: "2026-06-21T13:06:38+07:00"
+description: "The problem statement is effectively missing here (it only shows “A”), so there isn’t enough information to derive a correct solution or write a meaningful editorial."
+date: "2026-06-25T06:28:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105822
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "MITIT Spring 2025 Qualification Round 1"
 rating: 0
 weight: 105822
-solve_time_s: 37
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this because the actual problem statement is missing.
+The problem statement is effectively missing here (it only shows “A”), so there isn’t enough information to derive a correct solution or write a meaningful editorial.
 
-Right now the prompt only shows “A” with empty Input/Output sections, so there’s no way to know what the task is (what the input represents, what needs to be computed, or what constraints define the algorithmic approach). Any attempt to infer it would just be guessing, and that would defeat the purpose of a Codeforces-style editorial.
+For Codeforces editorials, the core logic, constraints, and even the definition of the input/output completely determine the algorithm. Without that, anything I write would be guesswork, and that would defeat the purpose of a correct, re-derivable explanation.
 
-If you paste the full statement (or even just the key parts: input format, output format, and constraints), I’ll write the complete senior-level editorial in the exact style you requested, including the full algorithm walkthrough, proof sketch, code, and tests.
+If you paste the full statement (or even a screenshot / raw text), I can immediately produce the complete editorial in the exact format you specified, including brute force reasoning, optimal derivation, walkthrough, code, and edge-case analysis.

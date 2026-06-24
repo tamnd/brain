@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12481 problems, 7111 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12482 problems, 7111 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12481 problems, 7111 verified.**
+**1946 contests, 12482 problems, 7111 verified.**
 
-## Unknown — 198 contests, 1622 problems, 1259 verified
+## Unknown — 198 contests, 1623 problems, 1259 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -112,7 +112,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 14 | 3/14 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
-| [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 4 | 3/4 | Special | - |
+| [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 5 | 3/5 | Special | - |
 | [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |
 | [105837](105837/) | [MITIT Spring 2025 Qualification Round 2](https://codeforces.com/contest/105837) | 4 | 4/4 | Special | - |
 | [105863](105863/) | [PPSC 2025](https://codeforces.com/contest/105863) | 8 | 7/8 | Special | - |
