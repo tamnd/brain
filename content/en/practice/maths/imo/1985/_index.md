@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985"
-description: "IMO 1985 — 0/6 solved."
+description: "IMO 1985 — 3/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1985
@@ -10,16 +10,16 @@ draft: false
 
 # IMO 1985
 
-[Official IMO 1985 problems](https://www.imo-official.org/year_info.aspx?year=1985) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1985 problems](https://www.imo-official.org/year_info.aspx?year=1985) &nbsp;·&nbsp; 3/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
 | 1 | — | — |
 | 2 | — | — |
 | 3 | — | — |
-| 4 | — | — |
-| 5 | — | — |
-| 6 | — | — |
+| [4](4.md) | solved | 9m00s |
+| [5](5.md) | solved | 5m24s |
+| [6](6.md) | solved | 12m28s |
 
 **Problem 1**
 
@@ -41,15 +41,15 @@ For any polynomial $P(x) = a_0 + a_1 x + \cdots + a_k x^k$ with integer coeffici
 
 $w(Q_{i_1} + Q_{i_2} + \cdots + Q_{i_n}) \ge w(Q_{i_1})$.
 
-**Problem 4**
+**Problem 4** &nbsp; *solved* · 9m00s · [Solution →](4.md)
 
 Given a set $M$ of $1985$ distinct positive integers, none of which has a prime divisor greater than $23$, prove that $M$ contains a subset of $4$ elements whose product is the $4$th power of an integer.
 
-**Problem 5**
+**Problem 5** &nbsp; *solved* · 5m24s · [Solution →](5.md)
 
 A circle with center $O$ passes through the vertices $A$ and $C$ of the triangle $ABC$ and intersects the segments $AB$ and $BC$ again at distinct points $K$ and $N$ respectively. Let $M$ be the point of intersection of the circumcircles of triangles $ABC$ and $KBN$ (apart from $B$). Prove that $\angle OMB = 90^{\circ}$.
 
-**Problem 6**
+**Problem 6** &nbsp; *solved* · 12m28s · [Solution →](6.md)
 
 For every real number $x_1$, construct the sequence $x_1,x_2,\ldots$ by setting:
 
