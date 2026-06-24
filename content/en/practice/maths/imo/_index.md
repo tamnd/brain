@@ -9,7 +9,7 @@ draft: false
 
 # International Mathematical Olympiad
 
-Problems from the [International Mathematical Olympiad](https://imo-official.org), the world's premier mathematics competition for high-school students, held annually since 1959. This index covers all 65 competitions (185 problems solved, 56 verified).
+Problems from the [International Mathematical Olympiad](https://imo-official.org), the world's premier mathematics competition for high-school students, held annually since 1959. This index covers all 65 competitions (190 problems solved, 56 verified).
 
 | Year | Solved | Verified |
 |------|--------|----------|
@@ -47,7 +47,7 @@ Problems from the [International Mathematical Olympiad](https://imo-official.org
 | [1993](1993/) | 0/6 | 0/0 |
 | [1992](1992/) | 0/6 | 0/0 |
 | [1991](1991/) | 4/6 | 0/4 |
-| [1990](1990/) | 1/6 | 0/1 |
+| [1990](1990/) | 6/6 | 0/6 |
 | [1989](1989/) | 5/6 | 0/5 |
 | [1988](1988/) | 6/6 | 0/6 |
 | [1987](1987/) | 6/6 | 1/6 |
