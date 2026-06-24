@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12459 problems, 7099 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12460 problems, 7099 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12459 problems, 7099 verified.**
+**1946 contests, 12460 problems, 7099 verified.**
 
-## Unknown — 198 contests, 1615 problems, 1255 verified
+## Unknown — 198 contests, 1616 problems, 1255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -82,7 +82,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105494](105494/) | [2024-2025 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/105494) | 9 | 9/9 | ICPC/IOI | - |
 | [105505](105505/) | [2024-2025 ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/105505) | 12 | 12/12 | ICPC/IOI | - |
 | [105507](105507/) | [2024-2025 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 24, Саратовский отборочный этап)](https://codeforces.com/contest/105507) | 12 | 12/12 | Special | - |
-| [105544](105544/) | [The 2023 ICPC Asia Taoyuan Regional Programming Contest](https://codeforces.com/contest/105544) | 12 | 11/12 | ICPC/IOI | - |
+| [105544](105544/) | [The 2023 ICPC Asia Taoyuan Regional Programming Contest](https://codeforces.com/contest/105544) | 13 | 11/13 | ICPC/IOI | - |
 | [105545](105545/) | [Уральская командная олимпиада по программированию 2024](https://codeforces.com/contest/105545) | 12 | 12/12 | Special | - |
 | [105562](105562/) | [2024-2025 ICPC Northwestern European Regional Programming Contest (NWERC 2024)](https://codeforces.com/contest/105562) | 13 | 13/13 | ICPC/IOI | - |
 | [105586](105586/) | [“华为杯” 2024 年广东工业大学 ACM 新生程序设计竞赛（决赛）](https://codeforces.com/contest/105586) | 14 | 14/14 | Special | - |

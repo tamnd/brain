@@ -1,30 +1,31 @@
 ---
 title: "The 2023 ICPC Asia Taoyuan Regional Programming Contest"
-description: "12 problems from The 2023 ICPC Asia Taoyuan Regional Programming Contest (contest 105544), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from The 2023 ICPC Asia Taoyuan Regional Programming Contest (contest 105544), difficulty -. 11/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105544
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 11
-total_solve_s: 729
-date: "2026-06-22T00:30:43+07:00"
+total_solve_s: 761
+date: "2026-06-22T06:05:44+07:00"
 weight: 105544
 draft: false
 ---
 
 # [The 2023 ICPC Asia Taoyuan Regional Programming Contest](https://codeforces.com/contest/105544)
 
-ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 12m 9s
+ICPC/IOI | 13 problems | 11/13 verified | Difficulty - | 12m 41s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Counterfeit Money](https://codeforces.com/problemset/problem/105544/A) |  |  |  | 54s | ✓ |
 | [B](B/) | [Recurring Decimal to Fractions](https://codeforces.com/problemset/problem/105544/B) |  |  |  | 58s | ✓ |
-| [C](C/) | [Where the Lantern Lights are Dimming](https://codeforces.com/problemset/problem/105544/C) |  |  |  | 29s |  |
+| [C](C/) | [Where the Lantern Lights are Dimming](https://codeforces.com/problemset/problem/105544/C) |  |  |  | 33s |  |
 | [D](D/) | [Quarantine Policy](https://codeforces.com/problemset/problem/105544/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [Slabstones Rearrangement](https://codeforces.com/problemset/problem/105544/E) |  |  |  | 1m 3s | ✓ |
+| [F](F/) | [Baker's Dilemma](https://codeforces.com/problemset/problem/105544/F) |  |  |  | 28s |  |
 | [G](G/) | [A Packing Problem](https://codeforces.com/problemset/problem/105544/G) |  |  |  | 1m 1s | ✓ |
 | [H](H/) | [Bank Deposit Challenge](https://codeforces.com/problemset/problem/105544/H) |  |  |  | 49s | ✓ |
 | [I](I/) | [The Pentagon Conjecture](https://codeforces.com/problemset/problem/105544/I) |  |  |  | 1m 24s | ✓ |

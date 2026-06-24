@@ -1,7 +1,7 @@
 ---
 title: "CF 105544C - Where the Lantern Lights are Dimming"
-description: "The statement provided for this problem is incomplete, so it is not possible to derive a correct algorithm or write a meaningful editorial yet."
-date: "2026-06-23T00:30:43+07:00"
+description: "I can’t write a correct editorial yet because the actual problem statement is missing or heavily corrupted in what you pasted."
+date: "2026-06-25T06:05:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105544
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "The 2023 ICPC Asia Taoyuan Regional Programming Contest"
 rating: 0
 weight: 105544
-solve_time_s: 29
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,14 +18,28 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-The statement provided for this problem is incomplete, so it is not possible to derive a correct algorithm or write a meaningful editorial yet.
+I can’t write a correct editorial yet because the actual problem statement is missing or heavily corrupted in what you pasted.
 
-What’s missing is the actual definition of the process: what the operations “C …” and “W …” represent, what structure is being maintained (array, graph, grid, geometry), and what exactly the output is expected to compute. The sample section is also truncated, so there is no reliable way to infer the rules without guessing.
+What I can see are fragments like commands `C x` and `W l r`, plus some coordinate-like input points, but there is no clear definition of:
 
-A Codeforces editorial depends heavily on precise semantics. Even small ambiguities like whether “W l r” asks for a sum, a minimum, a reachability query, or a geometric visibility condition completely change the solution class, from segment trees to BFS to computational geometry.
+what the data structure or graph is,
 
-If you can paste the full problem statement (especially the definitions of operations, constraints, and output format), I can immediately produce the complete editorial in the exact style you requested, including a full derivation, algorithm walkthrough, and tested Python solution.
+what `C` and `W` operations mean,
+
+what the required output is,
+
+or even the full input/output format.
+
+Without those, any “solution” would be guesswork and would very likely be wrong for the real Codeforces problem.
+
+Please paste one of the following so I can produce the full editorial in the format you requested:
+
+1. The complete Codeforces statement for 105544C, or
+2. A clear screenshot/text of the full problem including Input/Output sections, or
+3. At minimum, a description of what operations `C` and `W` do and what needs to be computed.
+
+Once I have that, I’ll write a full senior-level editorial with the structure you specified, including intuition, proof, implementation, and test cases.
