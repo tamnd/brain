@@ -1,7 +1,7 @@
 ---
 title: "CF 105760I - Paragliders and Aircraft"
-description: "I can’t write a correct editorial for this problem yet because the actual problem statement content is missing. Right now, “Paragliders and Aircraft” shows up without any description of the input, output, or rules, so there’s no way to determine what structure or algorithm is…"
-date: "2026-06-23T00:31:30+07:00"
+description: "Sure-please paste the full Codeforces problem statement (or at least the link + key details). Once I have it, I’ll write a proper competitive programming editorial with: - intuition / idea development - step-by-step solution - proofs or correctness argument - complexity analysis…"
+date: "2026-06-25T06:14:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105760
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2020 UCF Local Programming Contest"
 rating: 0
 weight: 105760
-solve_time_s: 31
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this problem yet because the actual problem statement content is missing.
+Sure-please paste the full Codeforces problem statement (or at least the link + key details).
 
-Right now, “Paragliders and Aircraft” shows up without any description of the input, output, or rules, so there’s no way to determine what structure or algorithm is intended. Anything I wrote at this point would be guesswork, and that would defeat the purpose of a Codeforces-style editorial.
+Once I have it, I’ll write a proper competitive programming editorial with:
 
-If you paste the full statement (even just the Input/Output + description section), I’ll produce the complete editorial in the exact format you specified, including the algorithm derivation, proof idea, and implementation.
+- intuition / idea development
+- step-by-step solution
+- proofs or correctness argument
+- complexity analysis
+- edge cases
+- reference implementation (if you want)
+
+Send the problem whenever ready.
