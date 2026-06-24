@@ -1,7 +1,7 @@
 ---
 title: "CF 105292I - Image Matching"
-description: "I can’t responsibly write a full editorial yet because the actual problem statement for “Codeforces 105292I - Image Matching” is missing from your prompt."
-date: "2026-06-23T14:35:17+07:00"
+description: "The problem statement you provided is effectively empty (it only shows “I”), so there isn’t enough information to reconstruct what Codeforces 105292I - Image Matching is actually asking."
+date: "2026-06-24T22:42:22+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2024"
 rating: 0
 weight: 105292
-solve_time_s: 33
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,27 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can’t responsibly write a full editorial yet because the actual **problem statement for “Codeforces 105292I - Image Matching” is missing from your prompt**.
+The problem statement you provided is effectively empty (it only shows “I”), so there isn’t enough information to reconstruct what Codeforces 105292I - Image Matching is actually asking.
 
-Right now I only see:
+To write a correct editorial in the style you requested, I need at least one of the following:
 
-- Title: _Image Matching_
-- No formal description, input format, constraints, or task definition in your message.
+The full problem statement, or
 
-Without those details, any “editorial” would inevitably guess the problem (distance metric? template matching? hashing? convolution?), and that would almost certainly be wrong or misleading.
+A link / pasted content including input format, output format, and constraints, or
 
-I did find that the problem appears to be from an NTU ICPC gym where “image matching” is typically about computing similarity between an image and a template, often using something like SSD (sum of squared differences), but I should not assume that is the exact version you are referring to unless you confirm it.
+A brief description of what “image matching” means in this context (arrays, strings, grids, hashing, etc.)
 
-If you paste the full statement (or even a screenshot / PDF text), I’ll produce the complete Codeforces-style editorial in the exact format you requested, including:
-
-- brute force → optimized derivation
-- full algorithm walkthrough
-- correctness invariant
-- Python solution
-- worked traces and edge cases
-
-Send the statement and I’ll take it from there.
+Once you send that, I’ll produce the full structured editorial with explanation, algorithm, code, examples, complexity, and test cases exactly in the format you specified.

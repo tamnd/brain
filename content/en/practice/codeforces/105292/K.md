@@ -1,7 +1,7 @@
 ---
 title: "CF 105292K - King Game"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now the only content available is “K”, which doesn’t describe the rules, input format, or required computation."
-date: "2026-06-23T14:35:28+07:00"
+description: "The problem statement you provided is effectively empty (“K” with no description, input, or output details). Without the actual rules of the game, constraints, or what is being asked, it’s not possible to reconstruct a correct solution or write a meaningful editorial."
+date: "2026-06-24T22:42:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105292
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2024"
 rating: 0
 weight: 105292
-solve_time_s: 33
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem statement you provided is effectively empty (“K” with no description, input, or output details). Without the actual rules of the game, constraints, or what is being asked, it’s not possible to reconstruct a correct solution or write a meaningful editorial.
 
-Right now the only content available is “K”, which doesn’t describe the rules, input format, or required computation. Without that, any solution would be guesswork, and that would defeat the purpose of a Codeforces editorial.
+To produce the kind of step-by-step Codeforces editorial you requested, I need at least:
 
-Paste the full statement (or at least a clear paraphrase with constraints and samples), and I’ll produce the complete structured editorial in the exact format you requested.
+the full statement describing the “King Game”, including what operations are allowed or what must be computed, and the input/output format with constraints.
+
+If you paste the complete problem text (even a screenshot or raw CF statement), I’ll write the full editorial in the exact style you specified.
