@@ -1,22 +1,22 @@
 ---
 title: "Уральская командная олимпиада по программированию 2024"
-description: "12 problems from Уральская командная олимпиада по программированию 2024 (contest 105545), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from Уральская командная олимпиада по программированию 2024 (contest 105545), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105545
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 12
-total_solve_s: 690
-date: "2026-06-22T20:36:05+07:00"
+total_solve_s: 720
+date: "2026-06-22T06:06:23+07:00"
 weight: 105545
 draft: false
 ---
 
 # [Уральская командная олимпиада по программированию 2024](https://codeforces.com/contest/105545)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 30s
+Special | 13 problems | 12/13 verified | Difficulty - | 12m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,7 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 30s
 | [F](F/) | [\u0425\u043e\u0440\u043e\u0448\u0435\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435](https://codeforces.com/problemset/problem/105545/F) |  |  |  | 52s | ✓ |
 | [G](G/) | [\u041b\u044e\u0431\u0438\u043c\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0424\u043b\u0438\u043d\u0442\u0430](https://codeforces.com/problemset/problem/105545/G) |  |  |  | 58s | ✓ |
 | [H](H/) | [\u041f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435 \u043a \u043a\u043b\u0430\u0434\u0443](https://codeforces.com/problemset/problem/105545/H) |  |  |  | 55s | ✓ |
+| [I](I/) | [Hands Up!](https://codeforces.com/problemset/problem/105545/I) |  |  |  | 30s |  |
 | [J](J/) | [\u041e\u043d\u0438 \u0437\u0430\u0440\u044f\u0436\u0430\u044e\u0442 \u043f\u0443\u0448\u043a\u0443... \u0417\u0410\u0427\u0415\u041c?!](https://codeforces.com/problemset/problem/105545/J) |  |  |  | 59s | ✓ |
 | [K](K/) | [\u041d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435 \u0437\u043e\u043b\u043e\u0442\u0430](https://codeforces.com/problemset/problem/105545/K) |  |  |  | 57s | ✓ |
 | [L](L/) | [\u041c\u043d\u0435 \u043d\u0435 \u043d\u0440\u0430\u0432\u044f\u0442\u0441\u044f \u044d\u0442\u0438 \u043c\u0430\u0442\u0440\u043e\u0441\u044b!](https://codeforces.com/problemset/problem/105545/L) |  |  |  | 59s | ✓ |
