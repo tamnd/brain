@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1941 contests, 12371 problems, 7047 verified."
+description: "Codeforces problem solutions with full editorials. 1942 contests, 12374 problems, 7048 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1941 contests, 12371 problems, 7047 verified.**
+**1942 contests, 12374 problems, 7048 verified.**
 
-## Unknown — 194 contests, 1542 problems, 1221 verified
+## Unknown — 195 contests, 1545 problems, 1222 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105224](105224/) | [MOI2024](https://codeforces.com/contest/105224) | 3 | 1/3 | Special | - |
 | [105228](105228/) | [SanSi Cup 2023](https://codeforces.com/contest/105228) | 7 | 1/7 | Special | - |
 | [105230](105230/) | [2024-2025 ICPC Bolivia Pre-National Contest](https://codeforces.com/contest/105230) | 11 | 7/11 | ICPC/IOI | - |
 | [105236](105236/) | [Олимпиада имени И.М. Дризе по информатике (программированию). Город Ижевск, 2024 год](https://codeforces.com/contest/105236) | 5 | 2/5 | Special | - |
