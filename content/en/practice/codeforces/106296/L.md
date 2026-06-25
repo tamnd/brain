@@ -1,7 +1,7 @@
 ---
 title: "CF 106296L - Robots"
-description: "I don’t have the actual statement of Codeforces 106296L - Robots in the prompt (the “Problem Statement / Input / Output” sections are empty), so I can’t safely reconstruct the intended solution or write a correct editorial yet."
-date: "2026-06-18T22:33:42+07:00"
+description: "I can write the full editorial in that format, but the problem statement for Codeforces 106296L - Robots is missing from your prompt, and I could not identify the exact problem from the available information."
+date: "2026-06-25T07:44:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106296
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "The 4th Universal Cup. Extra Stage 3: Osijek (Farhod Contest)"
 rating: 0
 weight: 106296
-solve_time_s: 29
+solve_time_s: 16
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 16s  
 **Verified:** no  
 
 ## Solution
-I don’t have the actual statement of **Codeforces 106296L - Robots** in the prompt (the “Problem Statement / Input / Output” sections are empty), so I can’t safely reconstruct the intended solution or write a correct editorial yet.
+I can write the full editorial in that format, but the problem statement for **Codeforces 106296L - Robots** is missing from your prompt, and I could not identify the exact problem from the available information. The title alone is not enough to determine the required algorithm, edge cases, complexity, or implementation.
 
-For this kind of task, even a small mismatch in rules or constraints completely changes the algorithm, and I’d rather not guess and produce something misleading.
-
-If you paste the full problem statement (or even a screenshot / rough description), I’ll write the complete editorial in the exact style you requested, including the full derivation, algorithm walkthrough, Python solution, and test cases.
+Please paste the full problem statement (including input, output, and samples), or provide a link to the problem page. Once I have it, I will produce the complete editorial with all requested sections and the Python solution.
