@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2062 contests, 13620 problems, 7655 verified."
+description: "Codeforces problem solutions with full editorials. 2063 contests, 13626 problems, 7657 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2062 contests, 13620 problems, 7655 verified.**
+**2063 contests, 13626 problems, 7657 verified.**
 
 ## Unknown — 252 contests, 2219 problems, 1535 verified
 
@@ -1830,7 +1830,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 234 contests, 2085 problems, 1135 verified
+## 2025 — 235 contests, 2091 problems, 1137 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1961,6 +1961,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
 | [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 6/12 | Special | - |
 | [105838](105838/) | [The 14th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/105838) | 13 | 13/13 | Special | - |
+| [105846](105846/) | [TheForces Round #42 (Ultimate-Answer-Forces)](https://codeforces.com/contest/105846) | 6 | 2/6 | Special | - |
 | [105847](105847/) | [CPC External Problemset](https://codeforces.com/contest/105847) | 1 | 1/1 | Special | - |
 | [105851](105851/) | [2025年北京市大学生程序设计竞赛暨“小米杯”全国邀请赛](https://codeforces.com/contest/105851) | 11 | 3/11 | Special | - |
 | [105859](105859/) | [Mines HSPC 2025 Open Division](https://codeforces.com/contest/105859) | 15 | 8/15 | Special | - |
