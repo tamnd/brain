@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1957 contests, 12699 problems, 7248 verified."
+description: "Codeforces problem solutions with full editorials. 1958 contests, 12705 problems, 7251 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1957 contests, 12699 problems, 7248 verified.**
+**1958 contests, 12705 problems, 7251 verified.**
 
-## Unknown — 205 contests, 1799 problems, 1366 verified
+## Unknown — 206 contests, 1805 problems, 1369 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -208,6 +208,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 5 | 5/5 | Special | - |
 | [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 13 | 13/13 | Special | - |
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 12 | 11/12 | Special | - |
+| [106462](106462/) | [Первенство Свердловской области по программированию среди начинающих 2026](https://codeforces.com/contest/106462) | 6 | 3/6 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 6 | 6/6 | Special | - |
 | [106475](106475/) | [Финал ВКОШП.Junior 2026](https://codeforces.com/contest/106475) | 10 | 3/10 | Special | - |
