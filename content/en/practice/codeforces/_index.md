@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2076 contests, 13731 problems, 7708 verified."
+description: "Codeforces problem solutions with full editorials. 2077 contests, 13742 problems, 7708 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2076 contests, 13731 problems, 7708 verified.**
+**2077 contests, 13742 problems, 7708 verified.**
 
 ## Unknown — 260 contests, 2275 problems, 1564 verified
 
@@ -1838,7 +1838,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 240 contests, 2140 problems, 1159 verified
+## 2025 — 241 contests, 2151 problems, 1159 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1965,6 +1965,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
 | [105791](105791/) | [UFPE Starters Final Try-Outs 2025](https://codeforces.com/contest/105791) | 13 | 13/13 | Special | - |
+| [105798](105798/) | [Cognitive Technologies 2024-2025. Final](https://codeforces.com/contest/105798) | 11 | 0/11 | Special | - |
 | [105803](105803/) | [XXIX Spain Olympiad in Informatics, Day 1 (Mirror)](https://codeforces.com/contest/105803) | 5 | 1/5 | Special | - |
 | [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 5 | 2/5 | Special | - |
 | [105805](105805/) | [TheForces Round #41 (Magical-Forces)](https://codeforces.com/contest/105805) | 5 | 3/5 | Special | - |
