@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2031 contests, 13348 problems, 7557 verified."
+description: "Codeforces problem solutions with full editorials. 2032 contests, 13359 problems, 7562 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2031 contests, 13348 problems, 7557 verified.**
+**2032 contests, 13359 problems, 7562 verified.**
 
-## Unknown — 234 contests, 2061 problems, 1476 verified
+## Unknown — 235 contests, 2072 problems, 1481 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -127,6 +127,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 11 | 11/11 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 11 | 11/11 | Special | - |
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 13 | 13/13 | Special | - |
+| [106034](106034/) | [ICPC Central Russia Regional Qualification Round, 2024](https://codeforces.com/contest/106034) | 11 | 5/11 | ICPC/IOI | - |
 | [106035](106035/) | [ICPC Central Russia Regional Contest, 2024](https://codeforces.com/contest/106035) | 14 | 5/14 | ICPC/IOI | - |
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 12 | 11/12 | Special | - |
 | [106042](106042/) | [Teamscode Summer 2025 Novice Division](https://codeforces.com/contest/106042) | 12 | 3/12 | Special | - |
