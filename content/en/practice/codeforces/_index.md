@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1949 contests, 12665 problems, 7239 verified."
+description: "Codeforces problem solutions with full editorials. 1950 contests, 12668 problems, 7240 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1949 contests, 12665 problems, 7239 verified.**
+**1950 contests, 12668 problems, 7240 verified.**
 
-## Unknown — 201 contests, 1776 problems, 1360 verified
+## Unknown — 202 contests, 1779 problems, 1361 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -211,6 +211,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 6 | 6/6 | Special | - |
 | [106484](106484/) | [2026 GBA International Programming Contest](https://codeforces.com/contest/106484) | 12 | 12/12 | Special | - |
+| [106491](106491/) | [Небольшой отчетный контест](https://codeforces.com/contest/106491) | 3 | 1/3 | Special | - |
 | [106494](106494/) | [MEPhI Spring Cup 2026](https://codeforces.com/contest/106494) | 7 | 7/7 | Special | - |
 | [106495](106495/) | [2026 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/106495) | 12 | 5/12 | ICPC/IOI | - |
 | [106500](106500/) | [XXVIII Interregional Programming Olympiad, Vologda SU, 2026](https://codeforces.com/contest/106500) | 10 | 7/10 | Special | - |
