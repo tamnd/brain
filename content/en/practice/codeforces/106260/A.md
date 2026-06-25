@@ -1,7 +1,7 @@
 ---
 title: "CF 106260A - \u6811\uff0c\u6392\u5217\uff0c\u671f\u671b"
-description: "The problem statement for Codeforces 106260A - 树，排列，期望 is not included in your prompt, and without it there is no reliable way to reconstruct the intended model, constraints, or required computation."
-date: "2026-06-18T23:36:48+07:00"
+description: "Sure - send me the Codeforces problem statement (or link, if you have it), and I’ll write a detailed editorial in a competitive programming style."
+date: "2026-06-25T07:23:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106260
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "2025 SiChuan University for new student"
 rating: 0
 weight: 106260
-solve_time_s: 51
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 51s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 106260A - 树，排列，期望** is not included in your prompt, and without it there is no reliable way to reconstruct the intended model, constraints, or required computation.
+Sure - send me the Codeforces problem statement (or link, if you have it), and I’ll write a detailed editorial in a competitive programming style.
 
-This particular title (“tree, permutation, expectation”) is too broad to safely infer a single canonical task. Problems with that description can range from expected distance sums over random permutations on trees, to expectation over DFS orderings, to combinatorial linearity tricks on tree paths. Each variant leads to a completely different solution structure, and guessing would likely produce a misleading editorial.
+I can structure it like:
 
-If you paste the full statement (or even a screenshot / raw text), I can produce the complete Codeforces-style editorial in the exact format you requested, including derivation, proof, implementation, and edge-case analysis.
+- **Problem restatement / intuition**
+- **Key observations**
+- **Derivation of the algorithm**
+- **Proof of correctness**
+- **Complexity analysis**
+- **Implementation details**
+- **Reference C++17 solution** (if desired)
+
+I’ll aim for the style of an official Codeforces editorial: explaining _why_ the solution works, not just describing the code.
