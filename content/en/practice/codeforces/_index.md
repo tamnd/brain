@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1953 contests, 12680 problems, 7243 verified."
+description: "Codeforces problem solutions with full editorials. 1954 contests, 12685 problems, 7244 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1953 contests, 12680 problems, 7243 verified.**
+**1954 contests, 12685 problems, 7244 verified.**
 
-## Unknown — 203 contests, 1784 problems, 1362 verified
+## Unknown — 204 contests, 1789 problems, 1363 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -210,6 +210,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 12 | 11/12 | Special | - |
 | [106463](106463/) | [MITIT Spring 2026 Invitationals Qualification Round 2](https://codeforces.com/contest/106463) | 5 | 5/5 | Special | - |
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 6 | 6/6 | Special | - |
+| [106479](106479/) | [Первенство Свердловской области по программированию среди начинающих 2026. Отборочный тур](https://codeforces.com/contest/106479) | 5 | 1/5 | Special | - |
 | [106484](106484/) | [2026 GBA International Programming Contest](https://codeforces.com/contest/106484) | 12 | 12/12 | Special | - |
 | [106488](106488/) | [XXX Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/106488) | 5 | 1/5 | Special | - |
 | [106491](106491/) | [Небольшой отчетный контест](https://codeforces.com/contest/106491) | 3 | 1/3 | Special | - |
