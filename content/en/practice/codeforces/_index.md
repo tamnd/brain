@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2053 contests, 13534 problems, 7623 verified."
+description: "Codeforces problem solutions with full editorials. 2054 contests, 13541 problems, 7626 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2053 contests, 13534 problems, 7623 verified.**
+**2054 contests, 13541 problems, 7626 verified.**
 
-## Unknown — 247 contests, 2169 problems, 1518 verified
+## Unknown — 248 contests, 2176 problems, 1521 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -121,6 +121,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
 | [105891](105891/) | [The 13th Shaanxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/105891) | 13 | 13/13 | Special | - |
 | [105904](105904/) | [I SBC São Paulo Programming Marathon](https://codeforces.com/contest/105904) | 14 | 7/14 | Special | - |
+| [105905](105905/) | [Ural championship 2025](https://codeforces.com/contest/105905) | 7 | 3/7 | Special | - |
 | [105910](105910/) | [The 23rd Sichuan University Programming Contest](https://codeforces.com/contest/105910) | 13 | 7/13 | Special | - |
 | [105925](105925/) | [SBC Brazilian Phase Zero 2025](https://codeforces.com/contest/105925) | 13 | 13/13 | Special | - |
 | [105931](105931/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2024](https://codeforces.com/contest/105931) | 6 | 6/6 | Special | - |
