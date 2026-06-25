@@ -1,26 +1,27 @@
 ---
 title: "2026 USACO.Guide Informatics Tournament"
-description: "10 problems from 2026 USACO.Guide Informatics Tournament (contest 106430), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2026 USACO.Guide Informatics Tournament (contest 106430), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 106430
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 611
-date: "2026-06-21T19:20:14+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 654
+date: "2026-06-21T08:27:12+07:00"
 weight: 106430
 draft: false
 ---
 
 # [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 10m 11s
+Special | 11 problems | 11/11 verified | Difficulty - | 10m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Bessie and Trap](https://codeforces.com/problemset/problem/106430/A) |  |  |  | 43s | ✓ |
+| [B](B/) | [Bessie And Rounding](https://codeforces.com/problemset/problem/106430/B) |  |  |  | 43s | ✓ |
 | [C](C/) | [Bessie and Array](https://codeforces.com/problemset/problem/106430/C) |  |  |  | 56s | ✓ |
 | [D](D/) | [Bessie and Infinite Dungeon](https://codeforces.com/problemset/problem/106430/D) |  |  |  | 54s | ✓ |
 | [E](E/) | [Bessie and Groups](https://codeforces.com/problemset/problem/106430/E) |  |  |  | 49s | ✓ |
