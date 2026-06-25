@@ -1,7 +1,7 @@
 ---
 title: "CF 105811G - Music Festival"
-description: "I’m missing the actual problem statement for Codeforces 105811G - Music Festival in your prompt, and without it I can’t reliably reconstruct the intended model, constraints, or solution."
-date: "2026-06-25T15:19:01+07:00"
+description: "The problem statement for Codeforces 105811G - Music Festival is missing from your prompt, so there’s not enough information to construct a correct editorial. Right now, I don’t know what the input represents, what constraints we’re working with, or what the required output is."
+date: "2026-06-25T23:42:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105811
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "UT Open 2025"
 rating: 0
 weight: 105811
-solve_time_s: 18
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 18s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement for **Codeforces 105811G - Music Festival** in your prompt, and without it I can’t reliably reconstruct the intended model, constraints, or solution.
+The problem statement for Codeforces 105811G - Music Festival is missing from your prompt, so there’s not enough information to construct a correct editorial.
 
-Given how Codeforces problems are usually structured, guessing would very likely produce a completely wrong editorial (and that would defeat the purpose of a learning-grade writeup).
+Right now, I don’t know what the input represents, what constraints we’re working with, or what the required output is. Any attempt to write a solution would be guesswork, and for a competitive programming editorial that would be misleading.
 
-If you paste the full statement (or even just the key parts: what the input describes, what needs to be optimized, and constraints), I can immediately produce the full senior-level editorial in the exact format you requested, including derivation, walkthrough, complexity, and code.
-
-Send it over and I’ll take it from there.
+If you paste the full problem statement (or even just the key parts: input format, output format, and constraints), I’ll produce the complete editorial in the exact style you requested, including the algorithm derivation, walkthrough, Python solution, and edge-case analysis.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105811B - Card Counting"
-description: "I can write the full editorial in the format you want, but I don’t have the actual statement of Codeforces 105811B - Card Counting available in your prompt, and I can’t reliably reconstruct it from the ID alone without risking inventing details."
-date: "2026-06-25T15:18:03+07:00"
+description: "I don’t have the statement of Codeforces 105811B - Card Counting available in context, and this problem ID doesn’t map to a commonly indexed Codeforces archive problem I can reliably reconstruct from memory."
+date: "2026-06-25T23:39:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105811
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "UT Open 2025"
 rating: 0
 weight: 105811
-solve_time_s: 26
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,16 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can write the full editorial in the format you want, but I don’t have the actual statement of **Codeforces 105811B - Card Counting** available in your prompt, and I can’t reliably reconstruct it from the ID alone without risking inventing details.
+I don’t have the statement of **Codeforces 105811B - Card Counting** available in context, and this problem ID doesn’t map to a commonly indexed Codeforces archive problem I can reliably reconstruct from memory.
 
-To produce a correct editorial (especially with a proof, edge cases, and code), I need at least one of the following:
+Since your formatting requirements are strict (full editorial with correct algorithm, walkthroughs, and tests), guessing would risk producing a completely incorrect solution and misleading explanation.
 
-- the full problem statement, or
-- a link + confirmation I should use it, or
-- a brief description of the rules and required output
-
-Once you paste it, I’ll turn it into the full Codeforces-style editorial in the exact structure you specified.
+If you paste the problem statement (or even just the input/output description and constraints), I’ll write the full senior-level editorial in exactly the style you specified, including derivation, proof sketch, Python solution, and edge-case analysis.

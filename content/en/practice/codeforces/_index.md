@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13852 problems, 7741 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13854 problems, 7741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13852 problems, 7741 verified.**
+**2089 contests, 13854 problems, 7741 verified.**
 
 ## Unknown — 266 contests, 2338 problems, 1585 verified
 
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 247 contests, 2197 problems, 1168 verified
+## 2025 — 247 contests, 2199 problems, 1168 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1982,7 +1982,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105804](105804/) | [XXIX Spain Olympiad in Informatics, Day 2 (Mirror)](https://codeforces.com/contest/105804) | 5 | 2/5 | Special | - |
 | [105805](105805/) | [TheForces Round #41 (Magical-Forces)](https://codeforces.com/contest/105805) | 5 | 3/5 | Special | - |
 | [105809](105809/) | [Code Rush 2025](https://codeforces.com/contest/105809) | 15 | 7/15 | Special | - |
-| [105811](105811/) | [UT Open 2025](https://codeforces.com/contest/105811) | 11 | 5/11 | Special | - |
+| [105811](105811/) | [UT Open 2025](https://codeforces.com/contest/105811) | 13 | 5/13 | Special | - |
 | [105813](105813/) | [Rutgers University Programming Contest Spring 2025](https://codeforces.com/contest/105813) | 13 | 6/13 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
 | [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 6/12 | Special | - |
