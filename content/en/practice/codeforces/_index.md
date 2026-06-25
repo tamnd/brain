@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12554 problems, 7155 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12560 problems, 7158 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12554 problems, 7155 verified.**
+**1946 contests, 12560 problems, 7158 verified.**
 
 ## Unknown — 198 contests, 1692 problems, 1297 verified
 
@@ -1776,7 +1776,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 193 contests, 1708 problems, 965 verified
+## 2025 — 193 contests, 1714 problems, 968 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1961,7 +1961,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106238](106238/) | [The 7th FanRuan Cup Southeast University Programming Contest (Winter) Professional Group](https://codeforces.com/contest/106238) | 12 | 2/12 | Special | - |
 | [106239](106239/) | [2025广东工业大学新生赛(决赛)](https://codeforces.com/contest/106239) | 14 | 14/14 | Special | - |
 | [106241](106241/) | [2025 GUC Winter Camp](https://codeforces.com/contest/106241) | 15 | 15/15 | Special | - |
-| [106242](106242/) | [2025 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/106242) | 3 | 1/3 | Special | - |
+| [106242](106242/) | [2025 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/106242) | 9 | 4/9 | Special | - |
 | [106252](106252/) | [The 2025 ICPC Asia Shenyang Regional Contest (The 4th Universal Cup. Stage 6: Grand Prix of Shenyang)](https://codeforces.com/contest/106252) | 13 | 13/13 | ICPC/IOI | - |
 | [106253](106253/) | [Муниципальный этап ВсОШ по информатике в Липецкой области 2025 (9-11 классы)](https://codeforces.com/contest/106253) | 0 | 0/0 | Special | - |
 | [106254](106254/) | [UT 104c Final Exam](https://codeforces.com/contest/106254) | 5 | 1/5 | Special | - |
