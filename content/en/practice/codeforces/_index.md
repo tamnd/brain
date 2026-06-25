@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1980 contests, 12893 problems, 7341 verified."
+description: "Codeforces problem solutions with full editorials. 1981 contests, 12901 problems, 7345 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1980 contests, 12893 problems, 7341 verified.**
+**1981 contests, 12901 problems, 7345 verified.**
 
 ## Unknown — 213 contests, 1869 problems, 1392 verified
 
@@ -1990,7 +1990,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
 | [106483](106483/) | [Midnight Code Cup MCC 2025 Qualification (Upsolving)](https://codeforces.com/contest/106483) | 2 | 0/2 | Special | - |
 
-## 2026 — 78 contests, 663 problems, 325 verified
+## 2026 — 79 contests, 671 problems, 329 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2042,6 +2042,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 8 | 8/8 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 9 | 9/9 | Special | - |
 | [106384](106384/) | [CYCPC Round 2](https://codeforces.com/contest/106384) | 13 | 4/13 | Special | - |
+| [106386](106386/) | [UTPC Contest 2-25-26 (Advanced)](https://codeforces.com/contest/106386) | 8 | 4/8 | Special | - |
 | [106387](106387/) | [UTPC Contest 2-25-26 (Beginner)](https://codeforces.com/contest/106387) | 8 | 7/8 | Special | - |
 | [106390](106390/) | [Purdue Spring 2026 In-House Contest #2](https://codeforces.com/contest/106390) | 4 | 3/4 | Special | - |
 | [106391](106391/) | [Purdue Spring 2026 In-House Contest #1](https://codeforces.com/contest/106391) | 4 | 2/4 | Special | - |
