@@ -1,7 +1,7 @@
 ---
 title: "CF 105790H - Higgs"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now, the only available information is the title “Higgs”, with empty input/output sections."
-date: "2026-06-25T23:32:26+07:00"
+description: "The problem statement you provided is essentially empty (only the title and blank input/output sections), so there is no defined task to solve."
+date: "2026-06-26T03:50:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 33
+solve_time_s: 39
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 39s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem statement you provided is essentially empty (only the title and blank input/output sections), so there is no defined task to solve.
 
-Right now, the only available information is the title “Higgs”, with empty input/output sections. Without knowing what the problem is asking, any solution outline, algorithm choice, or complexity discussion would be speculative and very likely wrong.
+For a Codeforces editorial, I need at least one of the following to proceed correctly:
 
-Please paste the full statement (or at least the input format, output format, and constraints). Once you provide that, I’ll write the complete Codeforces-style editorial exactly in the format you requested.
+- full statement text, or
+- input/output description and constraints, or
+- a link or pasted original problem content.
+
+Right now, anything I write would be invented, which would defeat the purpose of a correct editorial.
+
+Paste the full “Higgs” statement (or even a screenshot/text dump), and I’ll produce a complete Codeforces-style editorial in the format you specified.
