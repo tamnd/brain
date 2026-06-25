@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1962 contests, 12736 problems, 7265 verified."
+description: "Codeforces problem solutions with full editorials. 1963 contests, 12749 problems, 7269 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1962 contests, 12736 problems, 7265 verified.**
+**1963 contests, 12749 problems, 7269 verified.**
 
 ## Unknown — 209 contests, 1823 problems, 1375 verified
 
@@ -1986,7 +1986,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
 | [106483](106483/) | [Midnight Code Cup MCC 2025 Qualification (Upsolving)](https://codeforces.com/contest/106483) | 2 | 0/2 | Special | - |
 
-## 2026 — 64 contests, 552 problems, 266 verified
+## 2026 — 65 contests, 565 problems, 270 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2043,6 +2043,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106420](106420/) | [UTPC Contest 3-11-26 (Beginner)](https://codeforces.com/contest/106420) | 8 | 8/8 | Special | - |
 | [106435](106435/) | [2025-2026 Финал региональной олимпиады Машина Тьюринга](https://codeforces.com/contest/106435) | 6 | 6/6 | Special | - |
 | [106443](106443/) | [UFPE Starters Final Try-Outs 2026](https://codeforces.com/contest/106443) | 13 | 13/13 | Special | - |
+| [106452](106452/) | [UTPC April Fools Contest 2026](https://codeforces.com/contest/106452) | 13 | 4/13 | April Fools | - |
 | [106456](106456/) | [The 15th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/106456) | 13 | 12/13 | Special | - |
 | [106457](106457/) | [UTPC Spring 2026 Open Contest](https://codeforces.com/contest/106457) | 13 | 8/13 | Special | - |
 | [106461](106461/) | [KUPC 2025 (The 4th Universal Cup. Stage 22: GP of Kyoto)](https://codeforces.com/contest/106461) | 18 | 18/18 | Special | - |
