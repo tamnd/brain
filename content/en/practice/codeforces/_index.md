@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2006 contests, 13102 problems, 7444 verified."
+description: "Codeforces problem solutions with full editorials. 2007 contests, 13110 problems, 7446 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2006 contests, 13102 problems, 7444 verified.**
+**2007 contests, 13110 problems, 7446 verified.**
 
 ## Unknown — 223 contests, 1937 problems, 1422 verified
 
@@ -1801,7 +1801,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 207 contests, 1849 problems, 1037 verified
+## 2025 — 208 contests, 1857 problems, 1039 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1969,6 +1969,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 13 | 11/13 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
+| [106122](106122/) | [UTPC Contest 10-15-25 Div. 2 (Beginner)](https://codeforces.com/contest/106122) | 8 | 2/8 | Div. 2 | - |
 | [106123](106123/) | [UTPC Contest 10-15-25 Div. 1 (Advanced)](https://codeforces.com/contest/106123) | 8 | 2/8 | Div. 1 | - |
 | [106132](106132/) | [National Yang Ming Chiao Tung University 2025 Individual Programming Contest](https://codeforces.com/contest/106132) | 8 | 8/8 | Special | - |
 | [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 15 | 15/15 | Special | - |
