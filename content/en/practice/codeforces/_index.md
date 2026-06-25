@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1999 contests, 13053 problems, 7421 verified."
+description: "Codeforces problem solutions with full editorials. 2000 contests, 13066 problems, 7428 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1999 contests, 13053 problems, 7421 verified.**
+**2000 contests, 13066 problems, 7428 verified.**
 
-## Unknown — 220 contests, 1918 problems, 1414 verified
+## Unknown — 221 contests, 1931 problems, 1421 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -144,6 +144,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 12 | 12/12 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 13 | 13/13 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
+| [106157](106157/) | [2025 United Kingdom and Ireland Programming Contest (UKIEPC 2025)](https://codeforces.com/contest/106157) | 13 | 7/13 | Special | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 5 | 5/5 | Special | - |
 | [106169](106169/) | [2025-2026 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/106169) | 10 | 6/10 | ICPC/IOI | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 11 | 11/11 | Special | - |
