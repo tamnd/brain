@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1984 contests, 12931 problems, 7357 verified."
+description: "Codeforces problem solutions with full editorials. 1985 contests, 12932 problems, 7358 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1984 contests, 12931 problems, 7357 verified.**
+**1985 contests, 12932 problems, 7358 verified.**
 
 ## Unknown — 214 contests, 1881 problems, 1396 verified
 
@@ -1992,7 +1992,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106380](106380/) | [The 6th Liaoning Provincial Collegiate Programming Contest](https://codeforces.com/contest/106380) | 13 | 6/13 | Special | - |
 | [106483](106483/) | [Midnight Code Cup MCC 2025 Qualification (Upsolving)](https://codeforces.com/contest/106483) | 2 | 0/2 | Special | - |
 
-## 2026 — 80 contests, 676 problems, 331 verified
+## 2026 — 81 contests, 677 problems, 332 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2043,6 +2043,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106362](106362/) | [UTPC Contest 2-11-2026 Div. 2 (Beginner)](https://codeforces.com/contest/106362) | 8 | 7/8 | Div. 2 | - |
 | [106363](106363/) | [UTPC Contest 2-11-2026 Div. 1 (Advanced)](https://codeforces.com/contest/106363) | 8 | 8/8 | Div. 1 | - |
 | [106367](106367/) | [Whalica Cup (Round 2)](https://codeforces.com/contest/106367) | 9 | 9/9 | Special | - |
+| [106370](106370/) | [AOA Practice Contest 2026_01_17](https://codeforces.com/contest/106370) | 1 | 1/1 | Special | - |
 | [106383](106383/) | [2026 Spring UT CS104c Midterm #1](https://codeforces.com/contest/106383) | 5 | 2/5 | Special | - |
 | [106384](106384/) | [CYCPC Round 2](https://codeforces.com/contest/106384) | 13 | 4/13 | Special | - |
 | [106386](106386/) | [UTPC Contest 2-25-26 (Advanced)](https://codeforces.com/contest/106386) | 8 | 4/8 | Special | - |
