@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12549 problems, 7154 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12554 problems, 7155 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12549 problems, 7154 verified.**
+**1946 contests, 12554 problems, 7155 verified.**
 
-## Unknown — 198 contests, 1687 problems, 1296 verified
+## Unknown — 198 contests, 1692 problems, 1297 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -163,7 +163,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 5 | 1/5 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 12 | 6/12 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 6 | 3/6 | Special | - |
-| [106237](106237/) | [Algo Cup 2025 by csspace.io (Finals)](https://codeforces.com/contest/106237) | 3 | 2/3 | Special | - |
+| [106237](106237/) | [Algo Cup 2025 by csspace.io (Finals)](https://codeforces.com/contest/106237) | 8 | 3/8 | Special | - |
 | [106247](106247/) | [Municipal stage of the All-Russian School Olympiad 2025, grades 9-11, Programming profile, Vologda and Krasnodar regions](https://codeforces.com/contest/106247) | 0 | 0/0 | Special | - |
 | [106249](106249/) | [MITIT Winter 2025-26 Advanced Individual Round](https://codeforces.com/contest/106249) | 2 | 0/2 | Special | - |
 | [106250](106250/) | [MITIT Winter 2025-26 Advanced Team Round](https://codeforces.com/contest/106250) | 8 | 8/8 | Special | - |
