@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1992 contests, 12992 problems, 7385 verified."
+description: "Codeforces problem solutions with full editorials. 1993 contests, 13005 problems, 7391 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1992 contests, 12992 problems, 7385 verified.**
+**1993 contests, 13005 problems, 7391 verified.**
 
 ## Unknown — 217 contests, 1902 problems, 1404 verified
 
@@ -1795,7 +1795,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 199 contests, 1774 problems, 996 verified
+## 2025 — 200 contests, 1787 problems, 1002 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1972,6 +1972,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106164](106164/) | [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164) | 14 | 14/14 | ICPC/IOI | - |
 | [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 14 | 14/14 | ICPC/IOI | - |
 | [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 9 | 9/9 | Special | - |
+| [106182](106182/) | [Petrozavodsk Summer Camp 2025. Day 6. Xeppelin Contest The 4rd Universal Cup. Stage 2: Grand Prix of Paris)](https://codeforces.com/contest/106182) | 13 | 6/13 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 4 | 1/4 | Special | - |
 | [106186](106186/) | [NWU IUPC 2025 powered by CPS Academy](https://codeforces.com/contest/106186) | 7 | 5/7 | Special | - |
 | [106188](106188/) | [UTPC x WiCS Contest 11-12-2025](https://codeforces.com/contest/106188) | 8 | 6/8 | Special | - |
