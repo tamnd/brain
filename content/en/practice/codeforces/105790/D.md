@@ -1,7 +1,7 @@
 ---
 title: "CF 105790D - Course Deviation"
-description: "I can’t reliably write a correct editorial for Codeforces 105790D - Course Deviation from what you provided, because the problem statement (input/output description and constraints) is missing."
-date: "2026-06-25T06:21:41+07:00"
+description: "I can’t reliably write a correct Codeforces editorial from what you’ve provided because the actual problem statement is missing."
+date: "2026-06-25T23:31:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 45
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,16 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 45s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for **Codeforces 105790D - Course Deviation** from what you provided, because the problem statement (input/output description and constraints) is missing.
+I can’t reliably write a correct Codeforces editorial from what you’ve provided because the actual problem statement is missing.
 
-Right now I only see the title and no actual definition of what “Course Deviation” asks you to compute. Any attempt to reconstruct it would be guesswork, and that would defeat the purpose of a Codeforces-quality editorial.
+Right now the “Problem Statement” section is empty, so there is no information about what the input represents, what transformations are required, or what constraints drive the solution. Any attempt to produce a full editorial would necessarily involve guessing the task, which would defeat the purpose of a learning-focused explanation.
 
-If you paste the full statement (or even just the key parts: what the input is, what must be computed, and constraints), I’ll produce the complete senior-level editorial in the exact format you requested, including:
-
-A clear re-derivation of the model, brute force reasoning, the optimization insight, a full correctness argument, and a tested Python implementation.
-
-Send the statement and I’ll take it from there.
+If you paste the full statement (or even just the input/output description plus constraints and a sample), I can write the complete senior-level editorial in the exact format you requested, including the derivation, edge cases, and a clean Python solution.

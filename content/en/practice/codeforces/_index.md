@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13852 problems, 7738 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13852 problems, 7741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13852 problems, 7738 verified.**
+**2089 contests, 13852 problems, 7741 verified.**
 
-## Unknown — 266 contests, 2338 problems, 1582 verified
+## Unknown — 266 contests, 2338 problems, 1585 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -114,7 +114,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105786](105786/) | [2025 USACO.Guide Informatics Tournament](https://codeforces.com/contest/105786) | 12 | 1/12 | Special | - |
 | [105788](105788/) | [2024-2025 Qualifying stage of the regional Olympiad Turing Machine](https://codeforces.com/contest/105788) | 9 | 0/9 | Special | - |
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
-| [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 14 | 3/14 | Special | - |
+| [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 14 | 6/14 | Special | - |
 | [105792](105792/) | [2024-2025 Regional Olympiad Final Turing Machine](https://codeforces.com/contest/105792) | 7 | 0/7 | Special | - |
 | [105796](105796/) | [UNICAMP Selection Contest 2024](https://codeforces.com/contest/105796) | 9 | 3/9 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |

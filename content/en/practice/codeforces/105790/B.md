@@ -1,7 +1,7 @@
 ---
 title: "CF 105790B - Bit Tennis 2"
-description: "I can’t reliably write a correct Codeforces editorial for 105790B - Bit Tennis 2 without the actual problem statement."
-date: "2026-06-25T06:21:22+07:00"
+description: "The input section of the problem is empty, so there isn’t enough information to reconstruct what “Bit Tennis 2” is actually asking."
+date: "2026-06-25T23:31:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 26
+solve_time_s: 42
 verified: false
 draft: false
 ---
@@ -18,21 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 42s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct Codeforces editorial for **105790B - Bit Tennis 2** without the actual problem statement.
+The input section of the problem is empty, so there isn’t enough information to reconstruct what “Bit Tennis 2” is actually asking.
 
-Right now the prompt only contains the title and empty input/output sections, so any attempt to “reconstruct” the task would be guessing, and that would produce a misleading solution and incorrect reasoning.
+Right now I don’t know:
 
-If you paste the full statement (or even just the core rules and constraints), I’ll produce the complete editorial in the exact format you requested, including:
+what the operations are, what the input represents, what needs to be computed, or even whether it’s a single test or multiple tests. Without that, writing a correct editorial would be guesswork.
 
-- a clean restatement of the game/structure,
-- the brute-force reasoning and why it fails,
-- the optimal insight,
-- a full step-by-step algorithm,
-- Python implementation,
-- traces, complexity, and edge-case handling.
-
-Send the statement and I’ll take it from there.
+Send the full problem statement (or a screenshot / copied text), and I’ll produce a complete Codeforces-style editorial in the format you specified.
