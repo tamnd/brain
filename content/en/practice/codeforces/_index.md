@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12577 problems, 7171 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12579 problems, 7176 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12577 problems, 7171 verified.**
+**1946 contests, 12579 problems, 7176 verified.**
 
-## Unknown — 198 contests, 1703 problems, 1307 verified
+## Unknown — 198 contests, 1705 problems, 1312 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -179,7 +179,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106276](106276/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (4 группа регионов)](https://codeforces.com/contest/106276) | 0 | 0/0 | Special | - |
 | [106281](106281/) | [Муниципальный этап ВсОШ по информатике (программирование) 7-8 класс, Свердловская область, 2025](https://codeforces.com/contest/106281) | 5 | 2/5 | Special | - |
 | [106282](106282/) | [Муниципальный этап ВсОШ по информатике (программирование) 9 класс, Свердловская область, 2025](https://codeforces.com/contest/106282) | 5 | 2/5 | Special | - |
-| [106284](106284/) | [Муниципальный этап ВсОШ по информатике (программирование) 10-11 класс, Свердловская область, 2025](https://codeforces.com/contest/106284) | 3 | 0/3 | Special | - |
+| [106284](106284/) | [Муниципальный этап ВсОШ по информатике (программирование) 10-11 класс, Свердловская область, 2025](https://codeforces.com/contest/106284) | 5 | 5/5 | Special | - |
 | [106292](106292/) | [Innopolis Open 2025-2026. Elimination Round 2](https://codeforces.com/contest/106292) | 5 | 5/5 | Special | - |
 | [106293](106293/) | [Олимпиада 1С, отборочный тур 2025-2026](https://codeforces.com/contest/106293) | 8 | 8/8 | Special | - |
 | [106296](106296/) | [The 4th Universal Cup. Extra Stage 3: Osijek (Farhod Contest)](https://codeforces.com/contest/106296) | 8 | 0/8 | Special | - |
