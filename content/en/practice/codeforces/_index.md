@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1989 contests, 12972 problems, 7371 verified."
+description: "Codeforces problem solutions with full editorials. 1990 contests, 12977 problems, 7374 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1989 contests, 12972 problems, 7371 verified.**
+**1990 contests, 12977 problems, 7374 verified.**
 
-## Unknown — 216 contests, 1897 problems, 1401 verified
+## Unknown — 217 contests, 1902 problems, 1404 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -149,6 +149,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 5 | 3/5 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 9 | 9/9 | ICPC/IOI | - |
 | [106189](106189/) | [ICPC Central Russia Regional Contest, 2025](https://codeforces.com/contest/106189) | 13 | 8/13 | ICPC/IOI | - |
+| [106190](106190/) | [Когнитивные технологии 2025-2026. Первый отбор](https://codeforces.com/contest/106190) | 5 | 3/5 | Special | - |
 | [106191](106191/) | [MEPhI Аutumn Cup 2025](https://codeforces.com/contest/106191) | 7 | 3/7 | Special | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 12 | 12/12 | ICPC/IOI | - |
 | [106196](106196/) | [Уральская командная олимпиада по программированию 2025](https://codeforces.com/contest/106196) | 9 | 2/9 | Special | - |
