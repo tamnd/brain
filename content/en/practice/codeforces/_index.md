@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13851 problems, 7734 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13852 problems, 7737 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13851 problems, 7734 verified.**
+**2089 contests, 13852 problems, 7737 verified.**
 
-## Unknown — 266 contests, 2337 problems, 1578 verified
+## Unknown — 266 contests, 2338 problems, 1581 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -107,7 +107,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
 | [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 5 | 3/5 | Special | - |
 | [105748](105748/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 2](https://codeforces.com/contest/105748) | 3 | 2/3 | Special | - |
-| [105757](105757/) | [Insomnia 2025](https://codeforces.com/contest/105757) | 13 | 3/13 | Special | - |
+| [105757](105757/) | [Insomnia 2025](https://codeforces.com/contest/105757) | 14 | 6/14 | Special | - |
 | [105760](105760/) | [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760) | 10 | 6/10 | Special | - |
 | [105761](105761/) | [2021 UCF Local Programming Contest](https://codeforces.com/contest/105761) | 11 | 11/11 | Special | - |
 | [105775](105775/) | [Winter Cup 7.0 Online Mirror Contest](https://codeforces.com/contest/105775) | 12 | 2/12 | Special | - |

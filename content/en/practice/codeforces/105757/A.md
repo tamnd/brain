@@ -1,7 +1,7 @@
 ---
 title: "CF 105757A - XO-OR"
-description: "I can’t write a correct editorial yet because the actual problem statement for “Codeforces 105757A - XO-OR” is not present in your prompt, and I don’t have reliable access to it."
-date: "2026-06-25T16:00:08+07:00"
+description: "I can’t safely write a correct editorial here because the actual statement for Codeforces 105757A (“XO-OR”) is missing, and this problem ID isn’t in the standard public Codeforces archive in a way that lets me reliably reconstruct it."
+date: "2026-06-25T23:21:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105757
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Insomnia 2025"
 rating: 0
 weight: 105757
-solve_time_s: 32
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem statement for “Codeforces 105757A - XO-OR” is not present in your prompt, and I don’t have reliable access to it.
+I can’t safely write a correct editorial here because the actual statement for Codeforces 105757A (“XO-OR”) is missing, and this problem ID isn’t in the standard public Codeforces archive in a way that lets me reliably reconstruct it.
 
-The only thing I can safely infer is that the title suggests bitwise XOR/OR structure, but Codeforces problem IDs are not globally unique in a way that lets me reconstruct the task. Any attempt to guess would likely produce a completely wrong solution and misleading editorial.
+If I guess, there’s a high risk of inventing the wrong rules (these gym problems often vary a lot: XOR/OR transforms, string operations, bit DP variants, etc.), and the whole editorial would become misleading.
 
-If you paste the full statement (or even just input/output + constraints + sample tests), I’ll immediately produce the full senior-level editorial in the exact format you requested, including derivation, invariant proof, and implementation details.
+Paste the full problem statement (or even just the input/output description and constraints), and I’ll produce the complete Codeforces-style editorial in the exact format you requested.

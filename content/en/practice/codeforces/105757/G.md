@@ -1,7 +1,7 @@
 ---
 title: "CF 105757G - Divine Powers"
-description: "Sure. Please provide the Codeforces problem statement (or a link, problem name, and constraints), and I’ll write a competitive programming editorial covering: - Problem intuition - Key observations - Derivation of the algorithm - Proof of correctness - Complexity analysis -…"
-date: "2026-06-25T16:00:59+07:00"
+description: "I’m missing the actual problem statement for Codeforces 105757G - Divine Powers, so I can’t responsibly reconstruct the task or derive a correct solution."
+date: "2026-06-25T23:22:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105757
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Insomnia 2025"
 rating: 0
 weight: 105757
-solve_time_s: 28
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,18 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-Sure. Please provide the Codeforces problem statement (or a link, problem name, and constraints), and I’ll write a competitive programming editorial covering:
+I’m missing the actual problem statement for **Codeforces 105757G - Divine Powers**, so I can’t responsibly reconstruct the task or derive a correct solution.
 
-- **Problem intuition**
-- **Key observations**
-- **Derivation of the algorithm**
-- **Proof of correctness**
-- **Complexity analysis**
-- **Implementation details**
-- **Reference C++17 solution**
+If you paste the statement (or even just the key parts: input format, constraints, and what is being asked), I’ll write the full editorial in exactly the structure you requested, including the algorithm walkthrough, proofs, Python solution, and tests.
 
-I’ll format it like an official Codeforces editorial, with emphasis on the reasoning that leads to the solution rather than just the final technique.
+Right now anything I wrote would be guesswork, and for a Codeforces editorial that would very likely be wrong.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105757N - Maximize Minimum Mex"
-description: "I can’t write a correct editorial for this yet because the actual problem statement (what the array/operations/queries are) is missing. “Maximize Minimum Mex” alone isn’t enough to reconstruct the task reliably, and guessing would almost certainly produce a wrong solution."
-date: "2026-06-25T16:02:12+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. “Maximize Minimum Mex” is too underspecified on its own."
+date: "2026-06-25T23:23:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105757
@@ -9,7 +9,7 @@ codeforces_index: "N"
 codeforces_contest_name: "Insomnia 2025"
 rating: 0
 weight: 105757
-solve_time_s: 30
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement (what the array/operations/queries are) is missing.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-“Maximize Minimum Mex” alone isn’t enough to reconstruct the task reliably, and guessing would almost certainly produce a wrong solution.
+“Maximize Minimum Mex” is too underspecified on its own. The solution changes completely depending on details like whether you are splitting into segments, assigning elements to groups, deleting elements, or constructing arrays, and what exactly is being maximized.
 
-Please paste the full statement (input, output, constraints, and any operations). Once you send it, I’ll produce the complete Codeforces-style editorial in the format you specified.
+Please paste the full statement (or at least input, output, and constraints). Once you send it, I’ll produce the complete Codeforces-style editorial in the format you requested, including the full derivation, algorithm walkthrough, proof, and implementation.
