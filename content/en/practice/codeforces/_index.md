@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2008 contests, 13121 problems, 7452 verified."
+description: "Codeforces problem solutions with full editorials. 2009 contests, 13122 problems, 7453 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2008 contests, 13121 problems, 7452 verified.**
+**2009 contests, 13122 problems, 7453 verified.**
 
 ## Unknown — 224 contests, 1948 problems, 1428 verified
 
@@ -1802,7 +1802,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 208 contests, 1857 problems, 1039 verified
+## 2025 — 209 contests, 1858 problems, 1040 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1968,6 +1968,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106072](106072/) | [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072) | 12 | 12/12 | ICPC/IOI | - |
 | [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 12 | 12/12 | ICPC/IOI | - |
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
+| [106111](106111/) | [SPbSU TechArena 2025](https://codeforces.com/contest/106111) | 1 | 1/1 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 13 | 11/13 | Special | - |
 | [106118](106118/) | [2025 ICPC, Chula Selection Contest](https://codeforces.com/contest/106118) | 14 | 13/14 | ICPC/IOI | - |
 | [106122](106122/) | [UTPC Contest 10-15-25 Div. 2 (Beginner)](https://codeforces.com/contest/106122) | 8 | 2/8 | Div. 2 | - |
