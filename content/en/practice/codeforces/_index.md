@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2003 contests, 13077 problems, 7432 verified."
+description: "Codeforces problem solutions with full editorials. 2004 contests, 13085 problems, 7437 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2003 contests, 13077 problems, 7432 verified.**
+**2004 contests, 13085 problems, 7437 verified.**
 
 ## Unknown — 223 contests, 1937 problems, 1422 verified
 
@@ -1801,7 +1801,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 204 contests, 1824 problems, 1025 verified
+## 2025 — 205 contests, 1832 problems, 1030 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1972,6 +1972,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106132](106132/) | [National Yang Ming Chiao Tung University 2025 Individual Programming Contest](https://codeforces.com/contest/106132) | 8 | 8/8 | Special | - |
 | [106136](106136/) | [East China University of Science and Technology Programming Contest 2025](https://codeforces.com/contest/106136) | 15 | 15/15 | Special | - |
 | [106139](106139/) | [The 21st Hunan Provincial Collegiate Programming Contest](https://codeforces.com/contest/106139) | 11 | 2/11 | Special | - |
+| [106145](106145/) | [UTPC Contest 10-29-25](https://codeforces.com/contest/106145) | 8 | 5/8 | Special | - |
 | [106152](106152/) | [UT 104c Midterm #2](https://codeforces.com/contest/106152) | 5 | 3/5 | Special | - |
 | [106153](106153/) | [HNNU Freshman Competition Round 2](https://codeforces.com/contest/106153) | 7 | 7/7 | Special | - |
 | [106159](106159/) | [XIII UnB Contest Mirror](https://codeforces.com/contest/106159) | 14 | 14/14 | Special | - |
