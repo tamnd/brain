@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2010 contests, 13131 problems, 7457 verified."
+description: "Codeforces problem solutions with full editorials. 2011 contests, 13135 problems, 7458 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2010 contests, 13131 problems, 7457 verified.**
+**2011 contests, 13135 problems, 7458 verified.**
 
 ## Unknown — 225 contests, 1957 problems, 1432 verified
 
@@ -1803,7 +1803,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 209 contests, 1858 problems, 1040 verified
+## 2025 — 210 contests, 1862 problems, 1041 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1968,6 +1968,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106068](106068/) | [2025 Aleppo and Idlib Private Universities Collegiate Programming Contest (APUCPC 2025)](https://codeforces.com/contest/106068) | 12 | 12/12 | Special | - |
 | [106072](106072/) | [The 2025 ICPC Asia EC Regionals Online Contest (II)](https://codeforces.com/contest/106072) | 12 | 12/12 | ICPC/IOI | - |
 | [106084](106084/) | [2025 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/106084) | 12 | 12/12 | ICPC/IOI | - |
+| [106104](106104/) | [UT 104c Midterm #1](https://codeforces.com/contest/106104) | 4 | 1/4 | Special | - |
 | [106107](106107/) | [SCPC Teens 2025](https://codeforces.com/contest/106107) | 13 | 13/13 | Special | - |
 | [106111](106111/) | [SPbSU TechArena 2025](https://codeforces.com/contest/106111) | 1 | 1/1 | Special | - |
 | [106114](106114/) | [2025 Sun Yat-sen University Collegiate Programming Contest, Final](https://codeforces.com/contest/106114) | 13 | 11/13 | Special | - |
