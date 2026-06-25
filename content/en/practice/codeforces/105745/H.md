@@ -1,7 +1,7 @@
 ---
 title: "CF 105745H - National Arena"
-description: "I can’t reliably write a correct editorial for this problem yet because the statement is missing from your prompt. “Codeforces 105745H - National Arena” alone isn’t enough to reconstruct the task, and guessing would very likely produce a wrong solution and misleading explanation."
-date: "2026-06-25T21:09:18+07:00"
+description: "I can’t write a correct editorial for “Codeforces 105745H - National Arena” because the actual problem statement is missing. Right now I don’t know what the input represents, what needs to be computed, or what constraints define the algorithmic difficulty."
+date: "2026-06-25T23:11:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -22,10 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this problem yet because the statement is missing from your prompt.
+I can’t write a correct editorial for “Codeforces 105745H - National Arena” because the actual problem statement is missing.
 
-“Codeforces 105745H - National Arena” alone isn’t enough to reconstruct the task, and guessing would very likely produce a wrong solution and misleading explanation.
+Right now I don’t know what the input represents, what needs to be computed, or what constraints define the algorithmic difficulty. Without that, anything I write would be fabrication rather than a meaningful solution walkthrough.
 
-If you paste the full problem statement (or even just input/output description plus constraints), I’ll produce the complete Codeforces-style editorial in the exact format you requested, including the derivation, edge cases, proof sketch, and full implementation.
-
-You can also paste a link or a screenshot, and I’ll work from that.
+If you paste the full problem statement (or even just the core description plus constraints), I’ll produce the complete Codeforces-style editorial exactly in the structure you requested, including intuition, optimal approach, walkthrough, Python solution, and test cases.

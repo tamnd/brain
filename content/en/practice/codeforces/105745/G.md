@@ -1,7 +1,7 @@
 ---
 title: "CF 105745G - Gatekeeping"
-description: "I can’t reliably locate the statement for Codeforces 105745G - Gatekeeping from available archives or public contest data, and I don’t want to guess and end up writing a completely incorrect editorial."
-date: "2026-06-25T21:08:51+07:00"
+description: "I can write the full editorial in exactly that format, but I’m missing the actual problem content. “Codeforces 105745G - Gatekeeping” isn’t available in the message, and I can’t reconstruct the statement from the title alone without risking inventing details."
+date: "2026-06-25T23:10:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "AGM 2025 Qualification Round"
 rating: 0
 weight: 105745
-solve_time_s: 21
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,19 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 21s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably locate the statement for **Codeforces 105745G - Gatekeeping** from available archives or public contest data, and I don’t want to guess and end up writing a completely incorrect editorial.
+I can write the full editorial in exactly that format, but I’m missing the actual problem content.
 
-If you paste the problem statement (or even a screenshot / paraphrased version), I’ll immediately turn it into a full Codeforces-style editorial in the format you specified, including:
+“Codeforces 105745G - Gatekeeping” isn’t available in the message, and I can’t reconstruct the statement from the title alone without risking inventing details.
 
-- clean restatement of the problem
-- derivation from brute force to optimal idea
-- formal algorithm walkthrough
-- correctness intuition
-- full Python solution
-- worked traces and edge cases
-
-Just send the statement and I’ll take it
+Please paste the full problem statement (or even just input/output description and constraints). Once you do, I’ll produce the complete editorial with all sections, walkthroughs, proofs, and code exactly in the style you specified.

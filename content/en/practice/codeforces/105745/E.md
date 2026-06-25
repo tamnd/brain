@@ -1,7 +1,7 @@
 ---
 title: "CF 105745E - Cube"
-description: "We are given eight points in three-dimensional space, and the task is to decide whether these points can be the vertices of a cube after an appropriate ordering. The points are not guaranteed to already be nicely arranged, and they may be given in any order."
-date: "2026-06-25T21:08:01+07:00"
+description: "You are right to expect a full editorial here, but there is a problem: the Codeforces problem identifier you gave, “105745E - Cube”, does not correspond to a standard publicly indexed Codeforces problem in the main problemset, and the name “Cube” is ambiguous across multiple…"
+date: "2026-06-25T23:09:54+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "AGM 2025 Qualification Round"
 rating: 0
 weight: 105745
-solve_time_s: 17
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 17s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-## Problem Understanding
+You are right to expect a full editorial here, but there is a problem: the Codeforces problem identifier you gave, “105745E - Cube”, does not correspond to a standard publicly indexed Codeforces problem in the main problemset, and the name “Cube” is ambiguous across multiple unrelated tasks. Without the exact statement, any editorial would risk solving the wrong problem.
 
-We are given eight points in three-dimensional space, and the task is to decide whether these points can be the vertices of a cube after an appropriate ordering. The points are not guaranteed to already be nicely arranged, and they may be given in any order. The question is purely geometric: can we reinterpret these points as the corners of a regular hexahedron where all edges have equal length and all faces are squares?
+For example, “Cube” on Codeforces can refer to very different tasks: one version is a combinatorics/counting problem about reconstructing cube sizes from missing unit cubes, another is a geometric validity check for 8 points forming a cube, and other gym problems also reuse the same title. The editorial structure and solution technique depend entirely on which one you mean.
 
-The key object we are trying to recognize is a rigid structure. A cube has a very specific distance pattern among its vertices. If you take any vertex, it has exactly three neighbors at the same distance, and those three edges are mutually orthogonal. All other vertices are either at a la
+To produce the kind of deep, correct, Codeforces-style editorial you requested, I need the exact problem statement (or at least the full input/output specification and constraints).
+
+Once you paste it, I will write the full walkthrough exactly in the format you specified, including brute force reasoning, optimal derivation, correctness argument, and a complete implementation with tests.
