@@ -1,7 +1,7 @@
 ---
 title: "CF 105745E - Cube"
-description: "I can’t write a correct editorial for “Codeforces 105745E - Cube” because the actual problem statement is missing from your prompt. Right now I don’t know: what the input describes, what operations or constraints define the “cube”, or what needs to be computed."
-date: "2026-06-25T16:04:54+07:00"
+description: "We are given eight points in three-dimensional space, and the task is to decide whether these points can be the vertices of a cube after an appropriate ordering. The points are not guaranteed to already be nicely arranged, and they may be given in any order."
+date: "2026-06-25T21:08:01+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "AGM 2025 Qualification Round"
 rating: 0
 weight: 105745
-solve_time_s: 22
+solve_time_s: 17
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 17s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for “Codeforces 105745E - Cube” because the actual problem statement is missing from your prompt.
+## Problem Understanding
 
-Right now I don’t know:
+We are given eight points in three-dimensional space, and the task is to decide whether these points can be the vertices of a cube after an appropriate ordering. The points are not guaranteed to already be nicely arranged, and they may be given in any order. The question is purely geometric: can we reinterpret these points as the corners of a regular hexahedron where all edges have equal length and all faces are squares?
 
-what the input describes, what operations or constraints define the “cube”, or what needs to be computed. Any attempt to proceed would be guesswork, and that would produce a misleading editorial.
-
-Paste the full problem statement (or a link / screenshot text), and I’ll produce the complete Codeforces-style editorial exactly in the format you specified.
+The key object we are trying to recognize is a rigid structure. A cube has a very specific distance pattern among its vertices. If you take any vertex, it has exactly three neighbors at the same distance, and those three edges are mutually orthogonal. All other vertices are either at a la

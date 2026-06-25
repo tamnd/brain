@@ -1,7 +1,7 @@
 ---
 title: "CF 105745D - Circle"
-description: "The problem statement for Codeforces 105745D - Circle is missing from your prompt, so I don’t have enough information to write a correct editorial."
-date: "2026-06-25T16:04:31+07:00"
+description: "I don’t have the actual statement of Codeforces 105745D “Circle” available from context, and this contest ID isn’t something I can reliably reconstruct from memory without risking inventing details. Since t"
+date: "2026-06-25T21:07:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "AGM 2025 Qualification Round"
 rating: 0
 weight: 105745
-solve_time_s: 22
+solve_time_s: 18
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 18s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 105745D - Circle** is missing from your prompt, so I don’t have enough information to write a correct editorial.
+I don’t have the actual statement of Codeforces 105745D “Circle” available from context, and this contest ID isn’t something I can reliably reconstruct from memory without risking inventing details.
 
-For Codeforces editorials, even a small ambiguity in the statement completely changes the solution approach, so I can’t safely infer it.
-
-Please paste the full problem statement (or at least the input/output description and constraints). Once you send it, I’ll produce the complete editorial in the exact format you specified.
+Since t

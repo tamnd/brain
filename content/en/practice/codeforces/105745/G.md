@@ -1,7 +1,7 @@
 ---
 title: "CF 105745G - Gatekeeping"
-description: "The problem statement for “Codeforces 105745G - Gatekeeping” is not included in your prompt, so I can’t reliably reconstruct the intended solution or write a correct editorial."
-date: "2026-06-25T16:05:47+07:00"
+description: "I can’t reliably locate the statement for Codeforces 105745G - Gatekeeping from available archives or public contest data, and I don’t want to guess and end up writing a completely incorrect editorial."
+date: "2026-06-25T21:08:51+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105745
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "AGM 2025 Qualification Round"
 rating: 0
 weight: 105745
-solve_time_s: 28
+solve_time_s: 21
 verified: false
 draft: false
 ---
@@ -18,10 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 21s  
 **Verified:** no  
 
 ## Solution
-The problem statement for “Codeforces 105745G - Gatekeeping” is not included in your prompt, so I can’t reliably reconstruct the intended solution or write a correct editorial.
+I can’t reliably locate the statement for **Codeforces 105745G - Gatekeeping** from available archives or public contest data, and I don’t want to guess and end up writing a completely incorrect editorial.
 
-If you paste the full statement (or even just the key rules, constraints, and what needs to be computed), I’ll write the complete editorial in the exact format you requested, including algorithm derivation, proof sketch, code, and test cases.
+If you paste the problem statement (or even a screenshot / paraphrased version), I’ll immediately turn it into a full Codeforces-style editorial in the format you specified, including:
+
+- clean restatement of the problem
+- derivation from brute force to optimal idea
+- formal algorithm walkthrough
+- correctness intuition
+- full Python solution
+- worked traces and edge cases
+
+Just send the statement and I’ll take it
