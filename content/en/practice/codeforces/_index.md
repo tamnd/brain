@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2040 contests, 13423 problems, 7586 verified."
+description: "Codeforces problem solutions with full editorials. 2041 contests, 13436 problems, 7591 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2040 contests, 13423 problems, 7586 verified.**
+**2041 contests, 13436 problems, 7591 verified.**
 
-## Unknown — 240 contests, 2106 problems, 1496 verified
+## Unknown — 241 contests, 2119 problems, 1501 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -126,6 +126,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 15 | 5/15 | Special | - |
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 11 | 11/11 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 11 | 11/11 | Special | - |
+| [105993](105993/) | [Latakia and Tartus Collegiate Programming Contest 2025](https://codeforces.com/contest/105993) | 13 | 5/13 | Special | - |
 | [105999](105999/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2024](https://codeforces.com/contest/105999) | 12 | 3/12 | Special | - |
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 13 | 13/13 | Special | - |
 | [106009](106009/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2025](https://codeforces.com/contest/106009) | 6 | 3/6 | Special | - |
