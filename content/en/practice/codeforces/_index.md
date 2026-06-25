@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13855 problems, 7755 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13856 problems, 7757 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13855 problems, 7755 verified.**
+**2089 contests, 13856 problems, 7757 verified.**
 
 ## Unknown — 266 contests, 2338 problems, 1593 verified
 
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 247 contests, 2200 problems, 1174 verified
+## 2025 — 247 contests, 2201 problems, 1176 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2032,7 +2032,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
 | [106045](106045/) | [IUT Intra University Programming Contest 2025](https://codeforces.com/contest/106045) | 11 | 3/11 | Special | - |
 | [106049](106049/) | [TheForces Round #44 (DIV3.5-Forces)](https://codeforces.com/contest/106049) | 8 | 5/8 | Special | - |
-| [106050](106050/) | [Cataratas do Pinhão 2025](https://codeforces.com/contest/106050) | 13 | 5/13 | Special | - |
+| [106050](106050/) | [Cataratas do Pinhão 2025](https://codeforces.com/contest/106050) | 14 | 7/14 | Special | - |
 | [106057](106057/) | [CoU CSE Fest 2025 - Inter University Programming Contest (Divisional)](https://codeforces.com/contest/106057) | 11 | 11/11 | Special | - |
 | [106059](106059/) | [National Yang Ming Chiao Tung University 2025 Team Selection Programming Contest](https://codeforces.com/contest/106059) | 13 | 13/13 | Special | - |
 | [106062](106062/) | [2025 XVII Donald Knuth Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/106062) | 13 | 5/13 | Special | - |
