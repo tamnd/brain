@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2063 contests, 13626 problems, 7657 verified."
+description: "Codeforces problem solutions with full editorials. 2064 contests, 13636 problems, 7660 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2063 contests, 13626 problems, 7657 verified.**
+**2064 contests, 13636 problems, 7660 verified.**
 
-## Unknown — 252 contests, 2219 problems, 1535 verified
+## Unknown — 253 contests, 2229 problems, 1538 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -115,6 +115,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 5 | 3/5 | Special | - |
 | [105828](105828/) | [Финал ВКОШП.Junior 2025](https://codeforces.com/contest/105828) | 12 | 12/12 | Special | - |
 | [105837](105837/) | [MITIT Spring 2025 Qualification Round 2](https://codeforces.com/contest/105837) | 5 | 4/5 | Special | - |
+| [105845](105845/) | [CodEMI 2025](https://codeforces.com/contest/105845) | 10 | 3/10 | Special | - |
 | [105858](105858/) | [2025 Winter ESCOM Training Camp, Final Contest](https://codeforces.com/contest/105858) | 12 | 3/12 | Special | - |
 | [105863](105863/) | [PPSC 2025](https://codeforces.com/contest/105863) | 8 | 7/8 | Special | - |
 | [105869](105869/) | [OCPC Fall 2024 Day 2 Jagiellonian Contest (The 3rd Universal Cup. Stage 35: Kraków)](https://codeforces.com/contest/105869) | 12 | 12/12 | Special | - |
