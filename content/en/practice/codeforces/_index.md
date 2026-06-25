@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12534 problems, 7146 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12537 problems, 7147 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12534 problems, 7146 verified.**
+**1946 contests, 12537 problems, 7147 verified.**
 
-## Unknown — 198 contests, 1672 problems, 1288 verified
+## Unknown — 198 contests, 1675 problems, 1289 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -160,7 +160,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 2 | 2/2 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 3 | 1/3 | Special | - |
 | [106225](106225/) | [2025-2026 ICPC Southwestern European Regional Contest (SWERC 2025)](https://codeforces.com/contest/106225) | 12 | 12/12 | ICPC/IOI | - |
-| [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 2 | 0/2 | Special | - |
+| [106230](106230/) | [Когнитивные технологии 2025-2026. Второй отбор](https://codeforces.com/contest/106230) | 5 | 1/5 | Special | - |
 | [106233](106233/) | [Интернет-олимпиады, Сезон 2025-2026, Четвертая командная олимпиада](https://codeforces.com/contest/106233) | 4 | 1/4 | Special | - |
 | [106235](106235/) | [Algo Cup 2025 by csspace.io (Qualification Round)](https://codeforces.com/contest/106235) | 2 | 1/2 | Special | - |
 | [106237](106237/) | [Algo Cup 2025 by csspace.io (Finals)](https://codeforces.com/contest/106237) | 3 | 2/3 | Special | - |
