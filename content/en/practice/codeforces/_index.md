@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1960 contests, 12717 problems, 7254 verified."
+description: "Codeforces problem solutions with full editorials. 1961 contests, 12723 problems, 7257 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1960 contests, 12717 problems, 7254 verified.**
+**1961 contests, 12723 problems, 7257 verified.**
 
-## Unknown — 208 contests, 1817 problems, 1372 verified
+## Unknown — 209 contests, 1823 problems, 1375 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -208,6 +208,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 5 | 5/5 | Special | - |
 | [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 13 | 13/13 | Special | - |
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 12 | 11/12 | Special | - |
+| [106458](106458/) | [Когнитивные технологии 2023-2024. Первый отбор](https://codeforces.com/contest/106458) | 6 | 3/6 | Special | - |
 | [106459](106459/) | [Когнитивные технологии 2023-2024. Второй отбор](https://codeforces.com/contest/106459) | 6 | 1/6 | Special | - |
 | [106460](106460/) | [Когнитивные технологии 2023-2024. Третий отбор](https://codeforces.com/contest/106460) | 6 | 2/6 | Special | - |
 | [106462](106462/) | [Первенство Свердловской области по программированию среди начинающих 2026](https://codeforces.com/contest/106462) | 6 | 3/6 | Special | - |
