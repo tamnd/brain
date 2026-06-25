@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1947 contests, 12643 problems, 7227 verified."
+description: "Codeforces problem solutions with full editorials. 1948 contests, 12653 problems, 7234 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1947 contests, 12643 problems, 7227 verified.**
+**1948 contests, 12653 problems, 7234 verified.**
 
-## Unknown — 199 contests, 1754 problems, 1348 verified
+## Unknown — 200 contests, 1764 problems, 1355 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -212,6 +212,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106473](106473/) | [Индивидуальная олимпиада школьников по информатике и программированию 2026](https://codeforces.com/contest/106473) | 6 | 6/6 | Special | - |
 | [106484](106484/) | [2026 GBA International Programming Contest](https://codeforces.com/contest/106484) | 12 | 12/12 | Special | - |
 | [106494](106494/) | [MEPhI Spring Cup 2026](https://codeforces.com/contest/106494) | 7 | 7/7 | Special | - |
+| [106500](106500/) | [XXVIII Interregional Programming Olympiad, Vologda SU, 2026](https://codeforces.com/contest/106500) | 10 | 7/10 | Special | - |
 | [106501](106501/) | [IPL 2026](https://codeforces.com/contest/106501) | 16 | 9/16 | Special | - |
 | [106507](106507/) | [TeamsCode 2026 Spring Contest](https://codeforces.com/contest/106507) | 17 | 7/17 | Special | - |
 | [106511](106511/) | [Columbia University Local Contest (CULC) Spring 2026](https://codeforces.com/contest/106511) | 13 | 8/13 | Special | - |
