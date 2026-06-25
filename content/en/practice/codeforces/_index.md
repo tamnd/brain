@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2012 contests, 13146 problems, 7462 verified."
+description: "Codeforces problem solutions with full editorials. 2013 contests, 13158 problems, 7465 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2012 contests, 13146 problems, 7462 verified.**
+**2013 contests, 13158 problems, 7465 verified.**
 
-## Unknown — 226 contests, 1968 problems, 1436 verified
+## Unknown — 227 contests, 1980 problems, 1439 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -135,6 +135,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
+| [106102](106102/) | [AGM 2025, Final Round, Day 1](https://codeforces.com/contest/106102) | 12 | 3/12 | Special | - |
 | [106103](106103/) | [AGM 2025, Final Round, Day 2](https://codeforces.com/contest/106103) | 11 | 4/11 | Special | - |
 | [106106](106106/) | [Уральская командная олимпиада по программированию Юниоры 2024](https://codeforces.com/contest/106106) | 9 | 4/9 | Special | - |
 | [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 8 | 4/8 | ICPC/IOI | - |
