@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2002 contests, 13074 problems, 7431 verified."
+description: "Codeforces problem solutions with full editorials. 2003 contests, 13077 problems, 7432 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2002 contests, 13074 problems, 7431 verified.**
+**2003 contests, 13077 problems, 7432 verified.**
 
-## Unknown — 222 contests, 1934 problems, 1421 verified
+## Unknown — 223 contests, 1937 problems, 1422 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -143,6 +143,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106141](106141/) | [Moscow team school olympiad (MKOSHP) 2025](https://codeforces.com/contest/106141) | 12 | 12/12 | Special | - |
 | [106142](106142/) | [2025-2026 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 25, Саратовский отборочный этап)](https://codeforces.com/contest/106142) | 12 | 12/12 | Special | - |
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 13 | 13/13 | ICPC/IOI | - |
+| [106147](106147/) | [Junior Balkan Olympiad in Informatics 2025. Day 1](https://codeforces.com/contest/106147) | 3 | 1/3 | Special | - |
 | [106148](106148/) | [Junior Balkan Olympiad in Informatics 2025. Day 2](https://codeforces.com/contest/106148) | 3 | 0/3 | Special | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
 | [106157](106157/) | [2025 United Kingdom and Ireland Programming Contest (UKIEPC 2025)](https://codeforces.com/contest/106157) | 13 | 7/13 | Special | - |
