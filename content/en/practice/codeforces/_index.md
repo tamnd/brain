@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1996 contests, 13031 problems, 7406 verified."
+description: "Codeforces problem solutions with full editorials. 1997 contests, 13031 problems, 7406 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1996 contests, 13031 problems, 7406 verified.**
+**1997 contests, 13031 problems, 7406 verified.**
 
-## Unknown — 218 contests, 1908 problems, 1408 verified
+## Unknown — 219 contests, 1908 problems, 1408 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -146,6 +146,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 5 | 5/5 | Special | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 11 | 11/11 | Special | - |
+| [106174](106174/) | [Final round of the X Vologda Regional Informatics Olympiad for the Governors Prize 2025, grades 9-10](https://codeforces.com/contest/106174) | 0 | 0/0 | Special | - |
 | [106179](106179/) | [ICPC India Online Prelims (2025 - 2026)](https://codeforces.com/contest/106179) | 6 | 4/6 | ICPC/IOI | - |
 | [106180](106180/) | [Высшая проба - 2025. Заключительный этап](https://codeforces.com/contest/106180) | 5 | 3/5 | Special | - |
 | [106185](106185/) | [The 2025 ICPC Japan Online First Round Contest](https://codeforces.com/contest/106185) | 9 | 9/9 | ICPC/IOI | - |
