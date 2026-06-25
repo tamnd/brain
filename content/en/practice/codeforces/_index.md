@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2044 contests, 13466 problems, 7598 verified."
+description: "Codeforces problem solutions with full editorials. 2045 contests, 13479 problems, 7603 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2044 contests, 13466 problems, 7598 verified.**
+**2045 contests, 13479 problems, 7603 verified.**
 
 ## Unknown — 243 contests, 2136 problems, 1506 verified
 
@@ -1821,7 +1821,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 225 contests, 2014 problems, 1107 verified
+## 2025 — 226 contests, 2027 problems, 1112 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1972,6 +1972,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105948](105948/) | [CCF CAT NAEC 2025 (Provincial)](https://codeforces.com/contest/105948) | 10 | 10/10 | Special | - |
 | [105949](105949/) | [The 2025 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105949) | 12 | 12/12 | Special | - |
 | [105968](105968/) | [IME++ Starters Try-Outs 2025](https://codeforces.com/contest/105968) | 12 | 12/12 | Special | - |
+| [105971](105971/) | [BSUIR Open XIII: Student final](https://codeforces.com/contest/105971) | 13 | 5/13 | Special | - |
 | [105972](105972/) | [BSUIR Open XIII: School final](https://codeforces.com/contest/105972) | 13 | 2/13 | Special | - |
 | [105977](105977/) | [2025 National Invitational of CCPC (Fujian), The 12th Fujian Collegiate Programming Contest](https://codeforces.com/contest/105977) | 13 | 13/13 | Special | - |
 | [105981](105981/) | [The 2025 Hunan University Programming Contest](https://codeforces.com/contest/105981) | 12 | 2/12 | Special | - |
