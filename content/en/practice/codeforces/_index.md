@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2032 contests, 13359 problems, 7562 verified."
+description: "Codeforces problem solutions with full editorials. 2033 contests, 13372 problems, 7565 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2032 contests, 13359 problems, 7562 verified.**
+**2033 contests, 13372 problems, 7565 verified.**
 
 ## Unknown — 235 contests, 2072 problems, 1481 verified
 
@@ -1813,7 +1813,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 221 contests, 1971 problems, 1096 verified
+## 2025 — 222 contests, 1984 problems, 1099 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1971,6 +1971,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106015](106015/) | [Game of Coders 4 - Over the Garden Wall](https://codeforces.com/contest/106015) | 15 | 15/15 | Special | - |
 | [106016](106016/) | [The 2025 Homs Collegiate programming contest](https://codeforces.com/contest/106016) | 13 | 13/13 | Special | - |
 | [106026](106026/) | [CCF CAT NAEC 2025 (Final)](https://codeforces.com/contest/106026) | 10 | 10/10 | Special | - |
+| [106032](106032/) | [The 2025 ICPC Syrian Private Universities Collegiate Programming Contest](https://codeforces.com/contest/106032) | 13 | 3/13 | ICPC/IOI | - |
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 13 | 3/13 | Special | - |
 | [106039](106039/) | [2025 USP Try-outs](https://codeforces.com/contest/106039) | 13 | 13/13 | Special | - |
 | [106045](106045/) | [IUT Intra University Programming Contest 2025](https://codeforces.com/contest/106045) | 11 | 3/11 | Special | - |
