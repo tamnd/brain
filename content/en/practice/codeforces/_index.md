@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1997 contests, 13031 problems, 7406 verified."
+description: "Codeforces problem solutions with full editorials. 1998 contests, 13041 problems, 7412 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1997 contests, 13031 problems, 7406 verified.**
+**1998 contests, 13041 problems, 7412 verified.**
 
-## Unknown — 219 contests, 1908 problems, 1408 verified
+## Unknown — 220 contests, 1918 problems, 1414 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -145,6 +145,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106144](106144/) | [2025-2026 ICPC, NERC, Southern and Volga Russian Regional Contest](https://codeforces.com/contest/106144) | 13 | 13/13 | ICPC/IOI | - |
 | [106151](106151/) | [2025 ICPC Greek Collegiate Programming Contest (GRCPC 2025)](https://codeforces.com/contest/106151) | 9 | 9/9 | ICPC/IOI | - |
 | [106158](106158/) | [Innopolis Open 2025-2026. Elimination Round 1](https://codeforces.com/contest/106158) | 5 | 5/5 | Special | - |
+| [106169](106169/) | [2025-2026 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/106169) | 10 | 6/10 | ICPC/IOI | - |
 | [106170](106170/) | [Swiss Subregional 2025-2026](https://codeforces.com/contest/106170) | 11 | 11/11 | Special | - |
 | [106174](106174/) | [Final round of the X Vologda Regional Informatics Olympiad for the Governors Prize 2025, grades 9-10](https://codeforces.com/contest/106174) | 0 | 0/0 | Special | - |
 | [106179](106179/) | [ICPC India Online Prelims (2025 - 2026)](https://codeforces.com/contest/106179) | 6 | 4/6 | ICPC/IOI | - |
