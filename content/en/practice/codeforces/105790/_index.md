@@ -8,26 +8,26 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 14
 n_verified: 11
-total_solve_s: 597
-date: "2026-06-26T03:51:46+07:00"
+total_solve_s: 605
+date: "2026-06-26T05:11:00+07:00"
 weight: 105790
 draft: false
 ---
 
 # [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790)
 
-Special | 14 problems | 11/14 verified | Difficulty - | 9m 57s
+Special | 14 problems | 11/14 verified | Difficulty - | 10m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Stellar Year](https://codeforces.com/problemset/problem/105790/A) |  |  |  | 34s |  |
+| [A](A/) | [Stellar Year](https://codeforces.com/problemset/problem/105790/A) |  |  |  | 35s |  |
 | [B](B/) | [Bit Tennis 2](https://codeforces.com/problemset/problem/105790/B) |  |  |  | 50s | ✓ |
 | [C](C/) | [Song](https://codeforces.com/problemset/problem/105790/C) |  |  |  | 46s | ✓ |
 | [D](D/) | [Course Deviation](https://codeforces.com/problemset/problem/105790/D) |  |  |  | 34s | ✓ |
 | [E](E/) | [El Caf\u00e9](https://codeforces.com/problemset/problem/105790/E) |  |  |  | 35s | ✓ |
 | [F](F/) | [Frogs or Toads?](https://codeforces.com/problemset/problem/105790/F) |  |  |  | 44s | ✓ |
 | [G](G/) | [Gargantua](https://codeforces.com/problemset/problem/105790/G) |  |  |  | 44s | ✓ |
-| [H](H/) | [Higgs](https://codeforces.com/problemset/problem/105790/H) |  |  |  | 39s |  |
+| [H](H/) | [Higgs](https://codeforces.com/problemset/problem/105790/H) |  |  |  | 46s |  |
 | [I](I/) | [Itwise Bor](https://codeforces.com/problemset/problem/105790/I) |  |  |  | 43s | ✓ |
 | [J](J/) | [Jugando Fuerte](https://codeforces.com/problemset/problem/105790/J) |  |  |  | 46s | ✓ |
 | [K](K/) | [Kosmos](https://codeforces.com/problemset/problem/105790/K) |  |  |  | 48s | ✓ |
