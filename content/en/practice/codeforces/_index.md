@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1982 contests, 12906 problems, 7347 verified."
+description: "Codeforces problem solutions with full editorials. 1983 contests, 12919 problems, 7353 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1982 contests, 12906 problems, 7347 verified.**
+**1983 contests, 12919 problems, 7353 verified.**
 
 ## Unknown — 213 contests, 1869 problems, 1392 verified
 
@@ -1791,7 +1791,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 194 contests, 1722 problems, 971 verified
+## 2025 — 195 contests, 1735 problems, 977 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1988,6 +1988,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106272](106272/) | [The 20-th Beihang University Collegiate Programming Contest (BCPC 2025) - Preliminary](https://codeforces.com/contest/106272) | 13 | 1/13 | Special | - |
 | [106289](106289/) | [The 2025 Hunan University Freshman Contest](https://codeforces.com/contest/106289) | 13 | 1/13 | Special | - |
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
+| [106380](106380/) | [The 6th Liaoning Provincial Collegiate Programming Contest](https://codeforces.com/contest/106380) | 13 | 6/13 | Special | - |
 | [106483](106483/) | [Midnight Code Cup MCC 2025 Qualification (Upsolving)](https://codeforces.com/contest/106483) | 2 | 0/2 | Special | - |
 
 ## 2026 — 80 contests, 676 problems, 331 verified
