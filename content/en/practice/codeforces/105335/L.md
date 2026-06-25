@@ -1,7 +1,7 @@
 ---
 title: "CF 105335L - Lulu and Friends"
-description: "I can’t write a correct Codeforces-style editorial for this yet because the actual problem content is missing. Right now, the statement section only shows “L”, and both input and output are empty."
-date: "2026-06-25T20:38:22+07:00"
+description: "I can’t write a correct editorial yet because the actual problem statement is missing. Right now the prompt only contains the title “Lulu and Friends” and an isolated “L”, but no description of the task, input format, or required output."
+date: "2026-06-25T22:45:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -22,8 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces-style editorial for this yet because the actual problem content is missing.
+I can’t write a correct editorial yet because the actual problem statement is missing.
 
-Right now, the statement section only shows “L”, and both input and output are empty. With that, there’s no way to reconstruct what is being asked, what operations are involved, or what constraints drive the solution.
+Right now the prompt only contains the title “Lulu and Friends” and an isolated “L”, but no description of the task, input format, or required output. Without that, any solution would be guesswork and very likely wrong.
 
-If you paste the full problem statement (or even just a screenshot/text dump), I’ll turn it into a complete editorial in the exact format you requested, including the algorithm derivation, walkthrough, complexity analysis, and test suite.
+If you paste the full statement (or even a screenshot/text dump), I’ll produce the complete Codeforces-style editorial in the format you specified, including the derivation, algorithm walkthrough, code, proofs, and test cases.

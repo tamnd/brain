@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13849 problems, 7731 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13849 problems, 7734 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13849 problems, 7731 verified.**
+**2089 contests, 13849 problems, 7734 verified.**
 
-## Unknown — 266 contests, 2337 problems, 1576 verified
+## Unknown — 266 contests, 2337 problems, 1578 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 5 | 0/5 | Special | - |
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 7 | 2/7 | Special | - |
-| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 7/13 | ICPC/IOI | - |
+| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 9/13 | ICPC/IOI | - |
 | [105351](105351/) | [COMP4128 Ancient Berland Roads](https://codeforces.com/contest/105351) | 1 | 0/1 | Special | - |
 | [105363](105363/) | [XXV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105363) | 6 | 3/6 | Special | - |
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 247 contests, 2195 problems, 1167 verified
+## 2025 — 247 contests, 2195 problems, 1168 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1969,7 +1969,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
-| [105745](105745/) | [AGM 2025 Qualification Round](https://codeforces.com/contest/105745) | 8 | 0/8 | Special | - |
+| [105745](105745/) | [AGM 2025 Qualification Round](https://codeforces.com/contest/105745) | 8 | 1/8 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
 | [105756](105756/) | [AlgoChief Sprint Round 4](https://codeforces.com/contest/105756) | 3 | 0/3 | Special | - |
 | [105767](105767/) | [TheForces Round #40 (Maths-Forces)](https://codeforces.com/contest/105767) | 7 | 2/7 | Special | - |

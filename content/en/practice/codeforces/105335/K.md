@@ -1,7 +1,7 @@
 ---
 title: "CF 105335K - Kid Rally"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see “K” under the statement section, which isn’t enough to reconstruct what the problem is asking, what the inputs/outputs are, or what constraints drive the solution."
-date: "2026-06-25T20:37:57+07:00"
+description: "I can’t produce a correct editorial from this as-is because the actual problem statement is missing. Right now the only content provided is a placeholder (“K”), which doesn’t describe any rules, inputs, or required output."
+date: "2026-06-25T22:45:18+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 40
+solve_time_s: 60
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 40s  
+**Solve time:** 1m  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+I can’t produce a correct editorial from this as-is because the actual problem statement is missing.
 
-Right now I only see “K” under the statement section, which isn’t enough to reconstruct what the problem is asking, what the inputs/outputs are, or what constraints drive the solution. Anything I write from here would be guesswork, and that would defeat the purpose of a Codeforces-style editorial.
+Right now the only content provided is a placeholder (“K”), which doesn’t describe any rules, inputs, or required output. Any attempt to reconstruct Codeforces 105335K would be guesswork, and that would defeat the purpose of a serious editorial.
 
-Paste the full statement (or even just the input/output description plus constraints), and I’ll produce the complete editorial in the exact format you specified.
+If you paste the full statement (or even a screenshot / raw text), I’ll write the complete solution walkthrough in the exact format you requested, including brute-force reasoning, optimal insight, proof sketch, implementation details, and test cases.
+
+Send the statement and I’ll take it from there.
