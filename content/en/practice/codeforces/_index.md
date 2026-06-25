@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2070 contests, 13670 problems, 7680 verified."
+description: "Codeforces problem solutions with full editorials. 2071 contests, 13682 problems, 7686 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2070 contests, 13670 problems, 7680 verified.**
+**2071 contests, 13682 problems, 7686 verified.**
 
-## Unknown — 259 contests, 2263 problems, 1558 verified
+## Unknown — 260 contests, 2275 problems, 1564 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -112,6 +112,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105789](105789/) | [The 2025 ICPC Latin America Championship](https://codeforces.com/contest/105789) | 12 | 12/12 | ICPC/IOI | - |
 | [105790](105790/) | [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790) | 14 | 3/14 | Special | - |
 | [105806](105806/) | [“华为杯”2025 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/105806) | 13 | 1/13 | Special | - |
+| [105818](105818/) | [TeamsCode Spring 2025 Advanced Division](https://codeforces.com/contest/105818) | 12 | 6/12 | Special | - |
 | [105819](105819/) | [TeamsCode Spring 2025 Novice Division](https://codeforces.com/contest/105819) | 12 | 9/12 | Special | - |
 | [105820](105820/) | [antontrygubO_o UOI problems](https://codeforces.com/contest/105820) | 0 | 0/0 | Special | - |
 | [105822](105822/) | [MITIT Spring 2025 Qualification Round 1](https://codeforces.com/contest/105822) | 5 | 3/5 | Special | - |
