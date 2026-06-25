@@ -1,7 +1,7 @@
 ---
 title: "CF 105335E - Executive's Holidays"
-description: "The problem content you provided is incomplete. Only the title and empty “Input/Output” sections are present, so there is no actual description of what is being computed."
-date: "2026-06-25T23:08:08+07:00"
+description: "I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. It only contains the title (\"Codeforces 105335E - Executive's Holidays\") and empty sections for the statement, input, and output."
+date: "2026-06-26T03:35:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 31
+solve_time_s: 22
 verified: false
 draft: false
 ---
@@ -18,16 +18,39 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 22s  
 **Verified:** no  
 
 ## Solution
-The problem content you provided is incomplete. Only the title and empty “Input/Output” sections are present, so there is no actual description of what is being computed.
+I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. It only contains the title ("Codeforces 105335E - Executive's Holidays") and empty sections for the statement, input, and output.
 
-A Codeforces editorial requires the full statement because the solution depends entirely on the rules governing the input structure, constraints, and required output. Without that, any attempt to derive an algorithm would be guesswork.
+A complete editorial requires the missing information, including:
 
-Please paste the full problem statement for **105335E - Executive's Holidays**, including:
+- What the task asks us to compute.
+- The exact input format.
+- The required output.
+- Any constraints.
+- Sample inputs and outputs, if available.
 
-the narrative description, input format, output format, and constraints.
+Without those details, I would have to invent the algorithm, complexity, implementation, examples, and test cases, which would almost certainly be incorrect.
 
-Once you provide that, I can write the complete editorial in the style you requested, including the reasoning, walkthrough, code, and complexity analysis.
+Please provide one of the following:
+
+1. The full problem statement, or
+2. A link or PDF containing the statement, or
+3. The input/output specification and constraints.
+
+Once I have the actual problem, I'll produce a complete competitive programming editorial with all of the requested sections:
+
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough
+- Correctness proof
+- Complete Python 3 solution
+- Code explanation
+- Worked examples
+- Complexity Analysis
+- Assert-based test cases
+- Edge case discussion
+
+following the exact formatting and writing style you requested.
