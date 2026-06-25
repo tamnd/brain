@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2088 contests, 13840 problems, 7725 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13848 problems, 7728 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2088 contests, 13840 problems, 7725 verified.**
+**2089 contests, 13848 problems, 7728 verified.**
 
 ## Unknown — 266 contests, 2337 problems, 1573 verified
 
@@ -1638,7 +1638,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 201 contests, 1689 problems, 849 verified
+## 2024 — 201 contests, 1689 problems, 852 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1789,7 +1789,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105278](105278/) | [2024 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/105278) | 13 | 1/13 | ICPC/IOI | - |
 | [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 11 | 0/11 | Special | - |
 | [105284](105284/) | [TeamsCode Summer 2024 Advanced Division](https://codeforces.com/contest/105284) | 11 | 1/11 | Special | - |
-| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 12 | 9/12 | Special | - |
+| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 12 | 12/12 | Special | - |
 | [105293](105293/) | [TheForces Round #33(Wow-Forces)](https://codeforces.com/contest/105293) | 6 | 0/6 | Special | - |
 | [105297](105297/) | [2024 USP Try-outs](https://codeforces.com/contest/105297) | 12 | 12/12 | Special | - |
 | [105307](105307/) | [ICPC 2024 Thailand - Chulalongkorn University Internal Round](https://codeforces.com/contest/105307) | 11 | 1/11 | ICPC/IOI | - |
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 246 contests, 2187 problems, 1167 verified
+## 2025 — 247 contests, 2195 problems, 1167 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1969,6 +1969,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
+| [105745](105745/) | [AGM 2025 Qualification Round](https://codeforces.com/contest/105745) | 8 | 0/8 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
 | [105756](105756/) | [AlgoChief Sprint Round 4](https://codeforces.com/contest/105756) | 3 | 0/3 | Special | - |
 | [105767](105767/) | [TheForces Round #40 (Maths-Forces)](https://codeforces.com/contest/105767) | 7 | 2/7 | Special | - |
