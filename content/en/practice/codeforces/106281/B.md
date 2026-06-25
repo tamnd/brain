@@ -1,7 +1,7 @@
 ---
 title: "CF 106281B - \u0427\u0438\u0441\u043b\u043e\u0432\u044b\u0435 \u0448\u0435\u0441\u0442\u0435\u0440\u0451\u043d\u043a\u0438"
-description: "The problem statement is missing, so there’s no way to reconstruct a correct editorial without guessing. Codeforces “106281B - Числовые шестерёнки” could refer to multiple variants, and the solution structure depends entirely on the actual mechanics (what the gears do, what is…"
-date: "2026-06-18T22:51:16+07:00"
+description: "I can’t see the actual statement of Codeforces 106281B (“Числовые шестерёнки”) in the material you provided, and it also doesn’t appear in the standard problemset index I can reliably reconstruct from memory alone."
+date: "2026-06-25T07:38:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106281
@@ -22,8 +22,15 @@ draft: false
 **Verified:** no  
 
 ## Solution
-The problem statement is missing, so there’s no way to reconstruct a correct editorial without guessing.
+I can’t see the actual statement of Codeforces 106281B (“Числовые шестерёнки”) in the material you provided, and it also doesn’t appear in the standard problemset index I can reliably reconstruct from memory alone. That means I would have to guess the problem details, which would make the editorial meaningless or actively misleading.
 
-Codeforces “106281B - Числовые шестерёнки” could refer to multiple variants, and the solution structure depends entirely on the actual mechanics (what the gears do, what is being asked, constraints, etc.). Any attempt to write a full editorial here would risk inventing a different problem.
+If you paste the full statement (or even just the core rules + input/output description), I can write the complete editorial exactly in the format you requested, including:
 
-Send the full statement (or a link / screenshot text), and I’ll produce the complete editorial in the exact format you specified, including algorithm derivation, edge cases, proofs, and code.
+- a clean restatement of the “gear” model in my own words
+- the key structural observation that reduces the problem
+- a full optimal solution derivation
+- correctness argument via invariants
+- Python implementation
+- worked traces and edge cases
+
+Just send the statement text and I’ll turn it into a full Codeforces-style editorial.

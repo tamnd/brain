@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12574 problems, 7167 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12576 problems, 7169 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12574 problems, 7167 verified.**
+**1946 contests, 12576 problems, 7169 verified.**
 
-## Unknown — 198 contests, 1700 problems, 1303 verified
+## Unknown — 198 contests, 1702 problems, 1305 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -177,7 +177,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106274](106274/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (2 группа регионов)](https://codeforces.com/contest/106274) | 0 | 0/0 | Special | - |
 | [106275](106275/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (3 группа регионов)](https://codeforces.com/contest/106275) | 0 | 0/0 | Special | - |
 | [106276](106276/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (4 группа регионов)](https://codeforces.com/contest/106276) | 0 | 0/0 | Special | - |
-| [106281](106281/) | [Муниципальный этап ВсОШ по информатике (программирование) 7-8 класс, Свердловская область, 2025](https://codeforces.com/contest/106281) | 3 | 0/3 | Special | - |
+| [106281](106281/) | [Муниципальный этап ВсОШ по информатике (программирование) 7-8 класс, Свердловская область, 2025](https://codeforces.com/contest/106281) | 5 | 2/5 | Special | - |
 | [106282](106282/) | [Муниципальный этап ВсОШ по информатике (программирование) 9 класс, Свердловская область, 2025](https://codeforces.com/contest/106282) | 4 | 0/4 | Special | - |
 | [106284](106284/) | [Муниципальный этап ВсОШ по информатике (программирование) 10-11 класс, Свердловская область, 2025](https://codeforces.com/contest/106284) | 3 | 0/3 | Special | - |
 | [106292](106292/) | [Innopolis Open 2025-2026. Elimination Round 2](https://codeforces.com/contest/106292) | 5 | 5/5 | Special | - |
