@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2007 contests, 13110 problems, 7446 verified."
+description: "Codeforces problem solutions with full editorials. 2008 contests, 13121 problems, 7452 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2007 contests, 13110 problems, 7446 verified.**
+**2008 contests, 13121 problems, 7452 verified.**
 
-## Unknown — 223 contests, 1937 problems, 1422 verified
+## Unknown — 224 contests, 1948 problems, 1428 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -136,6 +136,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106088](106088/) | [Вузовско-академическая олимпиада по информатике 2025, второй отборочный тур](https://codeforces.com/contest/106088) | 7 | 7/7 | Special | - |
 | [106089](106089/) | [Вузовско-академическая олимпиада по информатике 2025, финал](https://codeforces.com/contest/106089) | 8 | 8/8 | Special | - |
 | [106110](106110/) | [2025-2026 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/106110) | 8 | 4/8 | ICPC/IOI | - |
+| [106113](106113/) | [Coding Cup TecNM 2025](https://codeforces.com/contest/106113) | 11 | 6/11 | Special | - |
 | [106124](106124/) | [2025-2026 ICPC Nordic Collegiate Programming Contest (NCPC 2025)](https://codeforces.com/contest/106124) | 11 | 11/11 | ICPC/IOI | - |
 | [106125](106125/) | [Delft Algorithm Programming Contest 2025 (DAPC 2025)](https://codeforces.com/contest/106125) | 12 | 12/12 | Special | - |
 | [106129](106129/) | [2025-2026 ICPC German Collegiate Programming Contest (GCPC 2025)](https://codeforces.com/contest/106129) | 13 | 13/13 | ICPC/IOI | - |
