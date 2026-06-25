@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2056 contests, 13559 problems, 7631 verified."
+description: "Codeforces problem solutions with full editorials. 2057 contests, 13568 problems, 7633 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2056 contests, 13559 problems, 7631 verified.**
+**2057 contests, 13568 problems, 7633 verified.**
 
-## Unknown — 249 contests, 2186 problems, 1525 verified
+## Unknown — 250 contests, 2195 problems, 1527 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -117,6 +117,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105837](105837/) | [MITIT Spring 2025 Qualification Round 2](https://codeforces.com/contest/105837) | 5 | 4/5 | Special | - |
 | [105863](105863/) | [PPSC 2025](https://codeforces.com/contest/105863) | 8 | 7/8 | Special | - |
 | [105869](105869/) | [OCPC Fall 2024 Day 2 Jagiellonian Contest (The 3rd Universal Cup. Stage 35: Kraków)](https://codeforces.com/contest/105869) | 12 | 12/12 | Special | - |
+| [105874](105874/) | [Spring Lyceum Second school olympiad in informatics 2025](https://codeforces.com/contest/105874) | 9 | 2/9 | Special | - |
 | [105883](105883/) | [Baozii Cup 2](https://codeforces.com/contest/105883) | 13 | 13/13 | Special | - |
 | [105884](105884/) | [Betopia Group Presents DUET Inter University Programming Contest 2025](https://codeforces.com/contest/105884) | 10 | 4/10 | Special | - |
 | [105887](105887/) | [第十三届重庆市大学生程序设计竞赛](https://codeforces.com/contest/105887) | 12 | 12/12 | Special | - |
