@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12572 problems, 7167 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12574 problems, 7167 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12572 problems, 7167 verified.**
+**1946 contests, 12574 problems, 7167 verified.**
 
-## Unknown — 198 contests, 1698 problems, 1303 verified
+## Unknown — 198 contests, 1700 problems, 1303 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -171,7 +171,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106259](106259/) | [CUET Inter University Programming Contest 2025](https://codeforces.com/contest/106259) | 11 | 11/11 | Special | - |
 | [106262](106262/) | [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262) | 13 | 12/13 | ICPC/IOI | - |
 | [106268](106268/) | [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268) | 12 | 9/12 | Special | - |
-| [106269](106269/) | [Когнитивные технологии 2025-2026. Третий отбор](https://codeforces.com/contest/106269) | 3 | 0/3 | Special | - |
+| [106269](106269/) | [Когнитивные технологии 2025-2026. Третий отбор](https://codeforces.com/contest/106269) | 5 | 0/5 | Special | - |
 | [106271](106271/) | [Муниципальный этап ВсОШ по информатике (программирование), Москва, 2025](https://codeforces.com/contest/106271) | 0 | 0/0 | Special | - |
 | [106273](106273/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (1 группа регионов)](https://codeforces.com/contest/106273) | 0 | 0/0 | Special | - |
 | [106274](106274/) | [Школьный этап ВcОШ по информатике (программирование) 9-11 класс 2025 (2 группа регионов)](https://codeforces.com/contest/106274) | 0 | 0/0 | Special | - |
