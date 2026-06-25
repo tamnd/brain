@@ -1,7 +1,7 @@
 ---
 title: "CF 105335J - Jewel Collection"
-description: "I can’t write a correct editorial from what you provided because the actual problem statement is missing. Right now I only see: That’s not enough to reconstruct the task, constraints, or required algorithm for Codeforces 105335J - Jewel Collection."
-date: "2026-06-25T05:53:11+07:00"
+description: "The problem statement is not actually provided here beyond the title “Jewel Collection” and an empty input/output section. Without the actual rules of the task, there is no way to correctly derive an algorithm, complexity, or even define what is being computed."
+date: "2026-06-25T20:37:16+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 29
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,32 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial from what you provided because the actual problem statement is missing.
+The problem statement is not actually provided here beyond the title “Jewel Collection” and an empty input/output section. Without the actual rules of the task, there is no way to correctly derive an algorithm, complexity, or even define what is being computed.
 
-Right now I only see:
+Writing a Codeforces editorial depends entirely on the precise mechanics of the problem: what the grid or array looks like, what “collecting jewels” means, what operations are allowed, and what is being optimized or counted. Any attempt to proceed without that would inevitably invent details that are not guaranteed to match the original problem.
 
-```
-J
-```
-
-That’s not enough to reconstruct the task, constraints, or required algorithm for Codeforces 105335J - Jewel Collection. Anything I write beyond this would be guesswork, and that would defeat the purpose of a rigorous editorial.
-
-If you paste the full statement (or even a screenshot / raw text), I’ll produce the complete editorial in the exact style you requested, including:
-
-the correct problem restatement,
-
-constraint-driven reasoning,
-
-brute force vs optimized solution,
-
-full proof sketch,
-
-implementation details,
-
-and test coverage.
-
-Send the full statement and I’ll continue from there.
+If you paste the full statement (or even a screenshot / raw text), I can produce the complete editorial in the exact format you requested, including brute force reasoning, optimal solution derivation, proofs, code, and edge-case analysis.

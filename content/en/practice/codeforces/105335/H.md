@@ -1,7 +1,7 @@
 ---
 title: "CF 105335H - Heavenly Sequence"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see: with empty input/output sections."
-date: "2026-06-25T05:53:09+07:00"
+description: "The statement you provided only contains the placeholder “H” with empty input and output sections, so there is no actual problem description to work from."
+date: "2026-06-25T20:36:49+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 30
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,18 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The statement you provided only contains the placeholder “H” with empty input and output sections, so there is no actual problem description to work from.
 
-Right now I only see:
+A Codeforces editorial requires the full definition of the task: what structure is given, what needs to be computed, constraints, and any special rules. Without that, any solution would be pure guessing, and I would risk inventing a completely different problem.
 
-```
-H
-```
-
-with empty input/output sections. For a Codeforces editorial, I need at least the full description of what the sequence/problem is asking, including constraints and samples if possible. Without that, anything I write would be guesswork and would very likely be wrong.
-
-Paste the full statement (or a link / screenshot text), and I’ll produce the complete structured editorial in the format you specified.
+Please paste the full statement of Codeforces 105335H (Heavenly Sequence), and I will write the complete editorial in the exact style you requested.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105335M - Marriage Proposals"
-description: "I can’t write a correct editorial from what you provided because the actual problem statement is missing. Right now the only content available is the title page (“Marriage Proposals”) and empty input/output sections, so there is no way to know the rules of the problem, what is…"
-date: "2026-06-25T05:54:03+07:00"
+description: "The problem content you provided is incomplete: both the input and output sections are empty, and there is no description of the task (only a title and a slide header)."
+date: "2026-06-25T20:38:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 25
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial from what you provided because the actual problem statement is missing.
+The problem content you provided is incomplete: both the input and output sections are empty, and there is no description of the task (only a title and a slide header). Without the actual statement, there is no way to reconstruct what “Marriage Proposals” is asking, nor to derive a correct algorithm, examples, or constraints.
 
-Right now the only content available is the title page (“Marriage Proposals”) and empty input/output sections, so there is no way to know the rules of the problem, what is being computed, or what the constraints are. Any attempt to proceed would just be guessing, and that would break the requirement that the editorial be fully correct and re-derivable.
+A Codeforces editorial depends entirely on the precise mapping between input structure and required output. Even small ambiguities like whether we are matching preferences, processing a graph, or simulating a process completely change the solution technique. Writing a full solution here would require guessing the problem, which would very likely produce a wrong editorial.
 
-If you paste the full statement (or even a screenshot / PDF text from the ICPC slide), I can produce the complete Codeforces-style editorial in the format you requested, including the naive approach, optimal solution, correctness argument, and full implementation.
-
-Send the full problem text and I’ll continue from there.
+If you paste the full problem statement (or even a screenshot / PDF text of the ICPC slide content), I can produce the complete editorial in the exact format you requested, including derivation, complexity analysis, implementation, and test cases.
