@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12587 problems, 7186 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12592 problems, 7187 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12587 problems, 7186 verified.**
+**1946 contests, 12592 problems, 7187 verified.**
 
-## Unknown — 198 contests, 1713 problems, 1322 verified
+## Unknown — 198 contests, 1718 problems, 1323 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -191,7 +191,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106318](106318/) | [Республиканская олимпиада школьников Путь к Олимпу 2026](https://codeforces.com/contest/106318) | 5 | 3/5 | Special | - |
 | [106329](106329/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 1](https://codeforces.com/contest/106329) | 0 | 0/0 | Special | - |
 | [106330](106330/) | [Нижегородская региональная олимпиада по информатике 2026, 7-8 классы, день 2](https://codeforces.com/contest/106330) | 0 | 0/0 | Special | - |
-| [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 1 | 0/1 | ICPC/IOI | - |
+| [106331](106331/) | [Brazilian ICPC Summer School 2026 problems](https://codeforces.com/contest/106331) | 6 | 1/6 | ICPC/IOI | - |
 | [106337](106337/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/106337) | 4 | 4/4 | Special | - |
 | [106338](106338/) | [2025-2026 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/106338) | 4 | 4/4 | Special | - |
 | [106347](106347/) | [Высшая проба - 2024. Заключительный этап](https://codeforces.com/contest/106347) | 2 | 0/2 | Special | - |
