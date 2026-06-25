@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2024 contests, 13270 problems, 7528 verified."
+description: "Codeforces problem solutions with full editorials. 2025 contests, 13278 problems, 7532 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2024 contests, 13270 problems, 7528 verified.**
+**2025 contests, 13278 problems, 7532 verified.**
 
-## Unknown — 230 contests, 2015 problems, 1460 verified
+## Unknown — 231 contests, 2023 problems, 1464 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -129,6 +129,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 13 | 13/13 | Special | - |
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 12 | 11/12 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 13 | 13/13 | Special | - |
+| [106052](106052/) | [Lexington Informatics Tournament 2025](https://codeforces.com/contest/106052) | 8 | 4/8 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 14 | 14/14 | Special | - |
 | [106056](106056/) | [The 1st Universal Cup. Stage 18: Shenzhen](https://codeforces.com/contest/106056) | 13 | 9/13 | Special | - |
 | [106063](106063/) | [2025 ICPC Gran Premio de Mexico 3ra Fecha](https://codeforces.com/contest/106063) | 12 | 7/12 | ICPC/IOI | - |
