@@ -1,7 +1,7 @@
 ---
 title: "CF 105760H - Lots of Towers of Hanoi"
-description: "I can't write a correct editorial or provide a correct implementation for this problem from the title alone. The retrieved statement explains the task and limits, but it does not include the intended construction or any accepted algorithm."
-date: "2026-06-26T03:36:42+07:00"
+description: "I can’t write a correct editorial for this problem yet because the actual problem statement is missing. Right now we only have the title “Lots of Towers of Hanoi” and no information about what the input looks like, what is being asked, or what constraints apply."
+date: "2026-06-26T04:39:30+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105760
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "2020 UCF Local Programming Contest"
 rating: 0
 weight: 105760
-solve_time_s: 19
+solve_time_s: 54
 verified: false
 draft: false
 ---
@@ -18,31 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 19s  
+**Solve time:** 54s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial or provide a correct implementation for this problem from the title alone.
+I can’t write a correct editorial for this problem yet because the actual problem statement is missing.
 
-The retrieved statement explains the task and limits, but it does not include the intended construction or any accepted algorithm. This is a constructive problem where many valid solutions exist, and deriving a correct construction from the statement alone is non-trivial. Inventing an algorithm would likely produce an incorrect editorial and wrong code.
+Right now we only have the title “Lots of Towers of Hanoi” and no information about what the input looks like, what is being asked, or what constraints apply. Any attempt to produce a full solution would require guessing the rules, and that would very likely be wrong and unhelpful.
 
-If you provide either:
-
-1. the full PDF statement (especially if there are missing pages),
-2. the official editorial,
-3. an accepted solution in any language, or
-4. the complete problem statement including any omitted notes,
-
-I can then produce the complete editorial in exactly the format you requested, including:
-
-- Problem Understanding
-- Approaches
-- Algorithm Walkthrough
-- Correctness proof
-- Full Python implementation
-- Worked examples
-- Complexity analysis
-- Assert-based test suite
-- Edge case discussion
-
-without omitting any section.
+If you paste the full statement (or even a screenshot / partial text), I can immediately produce a complete Codeforces-style editorial in the format you requested, including the optimal derivation, proof sketch, and implementation details.
