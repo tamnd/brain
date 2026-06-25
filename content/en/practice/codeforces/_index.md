@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2042 contests, 13448 problems, 7593 verified."
+description: "Codeforces problem solutions with full editorials. 2043 contests, 13453 problems, 7596 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2042 contests, 13448 problems, 7593 verified.**
+**2043 contests, 13453 problems, 7596 verified.**
 
-## Unknown — 242 contests, 2131 problems, 1503 verified
+## Unknown — 243 contests, 2136 problems, 1506 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -126,6 +126,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105950](105950/) | [UDESC Selection Contest 2025-1](https://codeforces.com/contest/105950) | 15 | 5/15 | Special | - |
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 11 | 11/11 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 11 | 11/11 | Special | - |
+| [105974](105974/) | [Introductory Problems: XOR Basis](https://codeforces.com/contest/105974) | 5 | 3/5 | Special | - |
 | [105979](105979/) | [2025 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/105979) | 12 | 2/12 | ICPC/IOI | - |
 | [105993](105993/) | [Latakia and Tartus Collegiate Programming Contest 2025](https://codeforces.com/contest/105993) | 13 | 5/13 | Special | - |
 | [105999](105999/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2024](https://codeforces.com/contest/105999) | 12 | 3/12 | Special | - |
