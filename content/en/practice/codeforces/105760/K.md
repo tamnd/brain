@@ -1,7 +1,7 @@
 ---
 title: "CF 105760K - Safe Logging"
-description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now we only have the title “Safe Logging” and no statement, no input/output format, and no constraints."
-date: "2026-06-25T06:14:57+07:00"
+description: "I can’t reliably write a correct Codeforces editorial for “105760K - Safe Logging” because the actual problem statement is missing from your prompt. Right now there’s no description of what the inputs represent, what constraints exist, or what needs to be computed."
+date: "2026-06-25T23:24:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105760
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2020 UCF Local Programming Contest"
 rating: 0
 weight: 105760
-solve_time_s: 21
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 21s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem content is missing.
+I can’t reliably write a correct Codeforces editorial for “105760K - Safe Logging” because the actual problem statement is missing from your prompt.
 
-Right now we only have the title “Safe Logging” and no statement, no input/output format, and no constraints. Without that, any solution I write would be guessing the underlying task (graph, strings, DP, etc.), which would make the editorial meaningless or wrong.
+Right now there’s no description of what the inputs represent, what constraints exist, or what needs to be computed. Without that, any “solution” would be invented rather than derived, and that would defeat the purpose of a real editorial.
 
-If you paste the full problem statement (or even just the key parts: input format, output requirement, constraints, and any examples), I’ll produce a complete Codeforces-style editorial in the exact format you requested, including derivation, algorithm, proof sketch, implementation, and tests.
+If you paste the full statement (or even a screenshot/text dump), I’ll produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proofs, code, and edge case analysis.
