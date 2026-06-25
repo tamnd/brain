@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2087 contests, 13837 problems, 7725 verified."
+description: "Codeforces problem solutions with full editorials. 2088 contests, 13840 problems, 7725 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2087 contests, 13837 problems, 7725 verified.**
+**2088 contests, 13840 problems, 7725 verified.**
 
 ## Unknown — 266 contests, 2337 problems, 1573 verified
 
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 245 contests, 2184 problems, 1167 verified
+## 2025 — 246 contests, 2187 problems, 1167 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1970,6 +1970,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
 | [105755](105755/) | [Bay Area Programming Contest 2025](https://codeforces.com/contest/105755) | 11 | 11/11 | Special | - |
+| [105756](105756/) | [AlgoChief Sprint Round 4](https://codeforces.com/contest/105756) | 3 | 0/3 | Special | - |
 | [105767](105767/) | [TheForces Round #40 (Maths-Forces)](https://codeforces.com/contest/105767) | 7 | 2/7 | Special | - |
 | [105780](105780/) | [UTPC x WiCS Contest 3-12-25 (UT Internal)](https://codeforces.com/contest/105780) | 10 | 2/10 | Special | - |
 | [105782](105782/) | [UTPC x WiCS Contest 3-12-25 (Unofficial)](https://codeforces.com/contest/105782) | 10 | 2/10 | Special | - |
