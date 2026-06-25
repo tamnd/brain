@@ -1,7 +1,7 @@
 ---
 title: "CF 106357A - Dynamic get_path"
-description: "I can’t write a correct editorial for Codeforces 106357A - Dynamic getpath without the actual problem statement. Right now the prompt only contains formatting instructions, so there’s no information about: - what the structure (tree/graph/array) is - what “getpath” means…"
-date: "2026-06-19T08:32:53+07:00"
+description: "Sure. Please provide the Codeforces problem statement (or link, title, and constraints), and I’ll write a detailed editorial in a competitive programming style."
+date: "2026-06-25T08:11:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106357
@@ -22,13 +22,17 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for **Codeforces 106357A - Dynamic get_path** without the actual problem statement.
+Sure. Please provide the Codeforces problem statement (or link, title, and constraints), and I’ll write a detailed editorial in a competitive programming style.
 
-Right now the prompt only contains formatting instructions, so there’s no information about:
+I can structure it like:
 
-- what the structure (tree/graph/array) is
-- what “get_path” means dynamically
-- what operations or queries exist
-- constraints or input format
+- **Problem Restatement**
+- **Key Observations**
+- **Intuition / Derivation**
+- **Algorithm**
+- **Correctness Proof**
+- **Complexity Analysis**
+- **Implementation Details**
+- **Reference Solution (C++17)**
 
-If you paste the full statement (or even just the operations + constraints), I’ll produce the complete editorial in the exact style you specified.
+If you want a specific style (Codeforces Round editorial tone, educational explanation, or terse contest notes), mention that too.
