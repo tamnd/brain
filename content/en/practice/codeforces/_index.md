@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2035 contests, 13387 problems, 7574 verified."
+description: "Codeforces problem solutions with full editorials. 2036 contests, 13399 problems, 7578 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2035 contests, 13387 problems, 7574 verified.**
+**2036 contests, 13399 problems, 7578 verified.**
 
 ## Unknown — 237 contests, 2087 problems, 1490 verified
 
@@ -1815,7 +1815,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 222 contests, 1984 problems, 1099 verified
+## 2025 — 223 contests, 1996 problems, 1103 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1972,6 +1972,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105992](105992/) | [The 2025 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/105992) | 13 | 13/13 | Special | - |
 | [106015](106015/) | [Game of Coders 4 - Over the Garden Wall](https://codeforces.com/contest/106015) | 15 | 15/15 | Special | - |
 | [106016](106016/) | [The 2025 Homs Collegiate programming contest](https://codeforces.com/contest/106016) | 13 | 13/13 | Special | - |
+| [106017](106017/) | [2025 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/106017) | 12 | 4/12 | ICPC/IOI | - |
 | [106026](106026/) | [CCF CAT NAEC 2025 (Final)](https://codeforces.com/contest/106026) | 10 | 10/10 | Special | - |
 | [106032](106032/) | [The 2025 ICPC Syrian Private Universities Collegiate Programming Contest](https://codeforces.com/contest/106032) | 13 | 3/13 | ICPC/IOI | - |
 | [106033](106033/) | [National Taiwan University Class Preliminary 2025](https://codeforces.com/contest/106033) | 13 | 3/13 | Special | - |
