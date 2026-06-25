@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1965 contests, 12765 problems, 7273 verified."
+description: "Codeforces problem solutions with full editorials. 1966 contests, 12780 problems, 7278 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1965 contests, 12765 problems, 7273 verified.**
+**1966 contests, 12780 problems, 7278 verified.**
 
-## Unknown — 210 contests, 1834 problems, 1376 verified
+## Unknown — 211 contests, 1849 problems, 1381 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -206,6 +206,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106429](106429/) | [MITIT Spring 2026 Invitationals Qualification Round 1](https://codeforces.com/contest/106429) | 5 | 5/5 | Special | - |
 | [106430](106430/) | [2026 USACO.Guide Informatics Tournament](https://codeforces.com/contest/106430) | 11 | 11/11 | Special | - |
 | [106434](106434/) | [Олимпиада 1С 2026, предметный тур](https://codeforces.com/contest/106434) | 5 | 5/5 | Special | - |
+| [106439](106439/) | [Insomnia-26](https://codeforces.com/contest/106439) | 15 | 5/15 | Special | - |
 | [106440](106440/) | [“规律未来杯”2026 年广东工业大学 ACM 程序设计竞赛](https://codeforces.com/contest/106440) | 13 | 13/13 | Special | - |
 | [106444](106444/) | [OCPC 2025 Winter, Day 1: Limas Sultan Agung](https://codeforces.com/contest/106444) | 12 | 11/12 | Special | - |
 | [106447](106447/) | [Когнитивные технологии 2025-2026. Финал](https://codeforces.com/contest/106447) | 11 | 1/11 | Special | - |
