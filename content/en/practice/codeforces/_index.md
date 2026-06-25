@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13855 problems, 7753 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13855 problems, 7755 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13855 problems, 7753 verified.**
+**2089 contests, 13855 problems, 7755 verified.**
 
 ## Unknown — 266 contests, 2338 problems, 1593 verified
 
@@ -1844,7 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 247 contests, 2200 problems, 1172 verified
+## 2025 — 247 contests, 2200 problems, 1174 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1985,7 +1985,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105811](105811/) | [UT Open 2025](https://codeforces.com/contest/105811) | 13 | 5/13 | Special | - |
 | [105813](105813/) | [Rutgers University Programming Contest Spring 2025](https://codeforces.com/contest/105813) | 14 | 10/14 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
-| [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 6/12 | Special | - |
+| [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 8/12 | Special | - |
 | [105838](105838/) | [The 14th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/105838) | 13 | 13/13 | Special | - |
 | [105846](105846/) | [TheForces Round #42 (Ultimate-Answer-Forces)](https://codeforces.com/contest/105846) | 6 | 2/6 | Special | - |
 | [105847](105847/) | [CPC External Problemset](https://codeforces.com/contest/105847) | 1 | 1/1 | Special | - |
