@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2046 contests, 13479 problems, 7603 verified."
+description: "Codeforces problem solutions with full editorials. 2047 contests, 13479 problems, 7603 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2046 contests, 13479 problems, 7603 verified.**
+**2047 contests, 13479 problems, 7603 verified.**
 
 ## Unknown — 243 contests, 2136 problems, 1506 verified
 
@@ -1821,7 +1821,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 227 contests, 2027 problems, 1112 verified
+## 2025 — 228 contests, 2027 problems, 1112 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1971,6 +1971,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105946](105946/) | [2025 UP ACM Algolympics Final Round](https://codeforces.com/contest/105946) | 13 | 13/13 | Special | - |
 | [105948](105948/) | [CCF CAT NAEC 2025 (Provincial)](https://codeforces.com/contest/105948) | 10 | 10/10 | Special | - |
 | [105949](105949/) | [The 2025 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105949) | 12 | 12/12 | Special | - |
+| [105961](105961/) | [Vitebsk Open 2025, день 1](https://codeforces.com/contest/105961) | 0 | 0/0 | Special | - |
 | [105963](105963/) | [Vitebsk Open 2025, день 2](https://codeforces.com/contest/105963) | 0 | 0/0 | Special | - |
 | [105968](105968/) | [IME++ Starters Try-Outs 2025](https://codeforces.com/contest/105968) | 12 | 12/12 | Special | - |
 | [105971](105971/) | [BSUIR Open XIII: Student final](https://codeforces.com/contest/105971) | 13 | 5/13 | Special | - |
