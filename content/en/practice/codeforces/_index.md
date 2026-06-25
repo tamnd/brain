@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1991 contests, 12985 problems, 7380 verified."
+description: "Codeforces problem solutions with full editorials. 1992 contests, 12992 problems, 7385 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1991 contests, 12985 problems, 7380 verified.**
+**1992 contests, 12992 problems, 7385 verified.**
 
 ## Unknown — 217 contests, 1902 problems, 1404 verified
 
@@ -1795,7 +1795,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 198 contests, 1767 problems, 991 verified
+## 2025 — 199 contests, 1774 problems, 996 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1973,6 +1973,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 14 | 14/14 | ICPC/IOI | - |
 | [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 9 | 9/9 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 4 | 1/4 | Special | - |
+| [106186](106186/) | [NWU IUPC 2025 powered by CPS Academy](https://codeforces.com/contest/106186) | 7 | 5/7 | Special | - |
 | [106188](106188/) | [UTPC x WiCS Contest 11-12-2025](https://codeforces.com/contest/106188) | 8 | 6/8 | Special | - |
 | [106192](106192/) | [Пермская региональная олимпиада школьников по программированию 2025](https://codeforces.com/contest/106192) | 11 | 11/11 | Special | - |
 | [106194](106194/) | [2025 Winter China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/106194) | 13 | 13/13 | Special | - |
