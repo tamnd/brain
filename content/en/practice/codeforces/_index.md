@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13856 problems, 7759 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13857 problems, 7759 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13856 problems, 7759 verified.**
+**2089 contests, 13857 problems, 7759 verified.**
 
-## Unknown — 266 contests, 2338 problems, 1594 verified
+## Unknown — 266 contests, 2339 problems, 1594 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -201,7 +201,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106190](106190/) | [Когнитивные технологии 2025-2026. Первый отбор](https://codeforces.com/contest/106190) | 5 | 3/5 | Special | - |
 | [106191](106191/) | [MEPhI Аutumn Cup 2025](https://codeforces.com/contest/106191) | 7 | 3/7 | Special | - |
 | [106193](106193/) | [2025-2026 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/106193) | 12 | 12/12 | ICPC/IOI | - |
-| [106196](106196/) | [Уральская командная олимпиада по программированию 2025](https://codeforces.com/contest/106196) | 9 | 2/9 | Special | - |
+| [106196](106196/) | [Уральская командная олимпиада по программированию 2025](https://codeforces.com/contest/106196) | 10 | 2/10 | Special | - |
 | [106199](106199/) | [Интернет-олимпиады, Сезон 2024-2025, Вторая личная олимпиада](https://codeforces.com/contest/106199) | 4 | 4/4 | Special | - |
 | [106200](106200/) | [Интернет-олимпиады, Сезон 2024-2025, Третья личная олимпиада](https://codeforces.com/contest/106200) | 4 | 4/4 | Special | - |
 | [106201](106201/) | [Индивидуальная олимпиада школьников по информатике и программированию 2025](https://codeforces.com/contest/106201) | 6 | 6/6 | Special | - |
