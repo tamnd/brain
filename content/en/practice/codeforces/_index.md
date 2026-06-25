@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1946 contests, 12564 problems, 7162 verified."
+description: "Codeforces problem solutions with full editorials. 1946 contests, 12566 problems, 7164 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1946 contests, 12564 problems, 7162 verified.**
+**1946 contests, 12566 problems, 7164 verified.**
 
-## Unknown — 198 contests, 1696 problems, 1301 verified
+## Unknown — 198 contests, 1698 problems, 1303 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -167,7 +167,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106247](106247/) | [Municipal stage of the All-Russian School Olympiad 2025, grades 9-11, Programming profile, Vologda and Krasnodar regions](https://codeforces.com/contest/106247) | 0 | 0/0 | Special | - |
 | [106249](106249/) | [MITIT Winter 2025-26 Advanced Individual Round](https://codeforces.com/contest/106249) | 5 | 3/5 | Special | - |
 | [106250](106250/) | [MITIT Winter 2025-26 Advanced Team Round](https://codeforces.com/contest/106250) | 9 | 9/9 | Special | - |
-| [106251](106251/) | [MITIT Winter 2025-26 Beginner Round](https://codeforces.com/contest/106251) | 7 | 7/7 | Special | - |
+| [106251](106251/) | [MITIT Winter 2025-26 Beginner Round](https://codeforces.com/contest/106251) | 9 | 9/9 | Special | - |
 | [106259](106259/) | [CUET Inter University Programming Contest 2025](https://codeforces.com/contest/106259) | 11 | 11/11 | Special | - |
 | [106262](106262/) | [2025 ICPC Asia Manila Regional](https://codeforces.com/contest/106262) | 13 | 12/13 | ICPC/IOI | - |
 | [106268](106268/) | [The 2025 Asia Yokohama Regional Contest](https://codeforces.com/contest/106268) | 12 | 9/12 | Special | - |
