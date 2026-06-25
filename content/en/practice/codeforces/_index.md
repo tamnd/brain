@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1995 contests, 13023 problems, 7402 verified."
+description: "Codeforces problem solutions with full editorials. 1996 contests, 13031 problems, 7406 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1995 contests, 13023 problems, 7402 verified.**
+**1996 contests, 13031 problems, 7406 verified.**
 
 ## Unknown — 218 contests, 1908 problems, 1408 verified
 
@@ -1796,7 +1796,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 201 contests, 1799 problems, 1009 verified
+## 2025 — 202 contests, 1807 problems, 1013 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1973,6 +1973,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106164](106164/) | [ICPC Asia Bangkok Regional Contest 2025](https://codeforces.com/contest/106164) | 14 | 14/14 | ICPC/IOI | - |
 | [106167](106167/) | [2021-2022 ICPC German Collegiate Programming Contest (GCPC 2021)](https://codeforces.com/contest/106167) | 14 | 14/14 | ICPC/IOI | - |
 | [106175](106175/) | [2004-2005 Northwestern European Regional Contest (NWERC 2004)](https://codeforces.com/contest/106175) | 9 | 9/9 | Special | - |
+| [106177](106177/) | [TheForces Round #45 (DIV3-Forces2)](https://codeforces.com/contest/106177) | 8 | 4/8 | Special | - |
 | [106178](106178/) | [2025-2026 ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/106178) | 12 | 7/12 | ICPC/IOI | - |
 | [106182](106182/) | [Petrozavodsk Summer Camp 2025. Day 6. Xeppelin Contest The 4rd Universal Cup. Stage 2: Grand Prix of Paris)](https://codeforces.com/contest/106182) | 13 | 6/13 | Special | - |
 | [106184](106184/) | [The 2025 China Collegiate Programming Contest (CCPC) Harbin Onsite Warmup](https://codeforces.com/contest/106184) | 4 | 1/4 | Special | - |
