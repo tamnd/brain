@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1969 contests, 12799 problems, 7288 verified."
+description: "Codeforces problem solutions with full editorials. 1970 contests, 12807 problems, 7292 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1969 contests, 12799 problems, 7288 verified.**
+**1970 contests, 12807 problems, 7292 verified.**
 
 ## Unknown — 211 contests, 1849 problems, 1381 verified
 
@@ -1988,7 +1988,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106290](106290/) | [2025年第一届哈尔滨工业大学程序设计竞赛一校三区联合校赛](https://codeforces.com/contest/106290) | 13 | 4/13 | Special | - |
 | [106483](106483/) | [Midnight Code Cup MCC 2025 Qualification (Upsolving)](https://codeforces.com/contest/106483) | 2 | 0/2 | Special | - |
 
-## 2026 — 69 contests, 589 problems, 283 verified
+## 2026 — 70 contests, 597 problems, 287 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2043,6 +2043,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106387](106387/) | [UTPC Contest 2-25-26 (Beginner)](https://codeforces.com/contest/106387) | 8 | 7/8 | Special | - |
 | [106396](106396/) | [Tiangong University 2025 ICPC Team Selection Contest II (Online Mirror)](https://codeforces.com/contest/106396) | 13 | 13/13 | ICPC/IOI | - |
 | [106420](106420/) | [UTPC Contest 3-11-26 (Beginner)](https://codeforces.com/contest/106420) | 8 | 8/8 | Special | - |
+| [106421](106421/) | [UTPC Contest 3-11-2026 Div. 2 (Advanced)](https://codeforces.com/contest/106421) | 8 | 4/8 | Div. 2 | - |
 | [106431](106431/) | [Entrenamiento OIE Nivel Experto - Semana 12](https://codeforces.com/contest/106431) | 5 | 4/5 | Special | - |
 | [106433](106433/) | [XXX Spain Olympiad in Informatics, online qualifier](https://codeforces.com/contest/106433) | 6 | 4/6 | Special | - |
 | [106435](106435/) | [2025-2026 Финал региональной олимпиады Машина Тьюринга](https://codeforces.com/contest/106435) | 6 | 6/6 | Special | - |
