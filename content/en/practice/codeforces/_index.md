@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2038 contests, 13405 problems, 7580 verified."
+description: "Codeforces problem solutions with full editorials. 2039 contests, 13411 problems, 7583 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2038 contests, 13405 problems, 7580 verified.**
+**2039 contests, 13411 problems, 7583 verified.**
 
-## Unknown — 238 contests, 2088 problems, 1490 verified
+## Unknown — 239 contests, 2094 problems, 1493 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -127,6 +127,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105962](105962/) | [UNICAMP Freshman Contest 2025](https://codeforces.com/contest/105962) | 11 | 11/11 | Special | - |
 | [105973](105973/) | [Uttara University Inter-University Programming Contest 2025](https://codeforces.com/contest/105973) | 11 | 11/11 | Special | - |
 | [106007](106007/) | [The 2025 Aleppo Collegiate programming contest](https://codeforces.com/contest/106007) | 13 | 13/13 | Special | - |
+| [106009](106009/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2025](https://codeforces.com/contest/106009) | 6 | 3/6 | Special | - |
 | [106012](106012/) | [COMP4128 Oil Skimming](https://codeforces.com/contest/106012) | 1 | 0/1 | Special | - |
 | [106020](106020/) | [The 2025 Damascus University Collegiate Programming Contest](https://codeforces.com/contest/106020) | 14 | 8/14 | Special | - |
 | [106027](106027/) | [COMP4128 Large Triangle](https://codeforces.com/contest/106027) | 1 | 1/1 | Special | - |
