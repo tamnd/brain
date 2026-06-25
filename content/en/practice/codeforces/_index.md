@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2021 contests, 13232 problems, 7507 verified."
+description: "Codeforces problem solutions with full editorials. 2022 contests, 13244 problems, 7514 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2021 contests, 13232 problems, 7507 verified.**
+**2022 contests, 13244 problems, 7514 verified.**
 
-## Unknown — 228 contests, 1990 problems, 1444 verified
+## Unknown — 229 contests, 2002 problems, 1451 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -130,6 +130,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106038](106038/) | [UNICAMP Selection Contest 2025](https://codeforces.com/contest/106038) | 12 | 11/12 | Special | - |
 | [106047](106047/) | [The 1st Universal Cup. Stage 21: Shandong](https://codeforces.com/contest/106047) | 13 | 13/13 | Special | - |
 | [106054](106054/) | [2025 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/106054) | 14 | 14/14 | Special | - |
+| [106063](106063/) | [2025 ICPC Gran Premio de Mexico 3ra Fecha](https://codeforces.com/contest/106063) | 12 | 7/12 | ICPC/IOI | - |
 | [106073](106073/) | [The 2025 ICPC South America - Brazil First Phase](https://codeforces.com/contest/106073) | 13 | 13/13 | ICPC/IOI | - |
 | [106082](106082/) | [2022 UCF Local Programming Contest](https://codeforces.com/contest/106082) | 11 | 3/11 | Special | - |
 | [106087](106087/) | [Вузовско-академическая олимпиада по информатике 2025, первый отборочный тур](https://codeforces.com/contest/106087) | 7 | 7/7 | Special | - |
