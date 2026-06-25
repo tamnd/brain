@@ -1,7 +1,7 @@
 ---
 title: "CF 106350C - Kero ! Kero ! El3ab ya Kero !"
-description: "The prompt is missing the actual problem statement, so there isn’t enough information to produce a correct editorial. Right now, “Codeforces 106350C - Kero ! Kero ! El3ab ya Kero !"
-date: "2026-06-19T08:47:09+07:00"
+description: "I’m missing the actual full statement for this problem, and the snippet that came through is inconsistent (it even merges parts of multiple different Codeforces problems)."
+date: "2026-06-25T08:06:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106350
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Zaglol Contest - FCDS level 1 contest 2026"
 rating: 0
 weight: 106350
-solve_time_s: 29
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-The prompt is missing the actual problem statement, so there isn’t enough information to produce a correct editorial.
+I’m missing the actual full statement for this problem, and the snippet that came through is inconsistent (it even merges parts of multiple different Codeforces problems). Because of that, I can’t safely reconstruct the intended task or derive a correct solution without risking inventing the wrong rules.
 
-Right now, “Codeforces 106350C - Kero ! Kero ! El3ab ya Kero !” is only a title, but the structure, constraints, and task definition are what determine everything from the core idea to the complexity analysis and edge cases. Without those, any solution would be guesswork, and for competitive programming that would very likely produce a wrong algorithm.
+From what I can see, the core part involves:
 
-Please paste the full problem statement (input format, output format, constraints, and samples). Once you provide it, I can write the complete editorial in the exact style you requested, including a full derivation, walkthrough, code, and test suite.
+An array `a`, a value `K`, replacing each element by `a[i] % K`, and two players alternating picking elements to maximize their own total score. But the exact objective (whether we output Mohamed’s score, the difference, a win condition, or something else) is not fully specified in the text I received.
+
+If you paste the clean original statement (or even just clarify the exact “Output” section and scoring rule), I can write the full Codeforces-style editorial exactly in the format you requested.
