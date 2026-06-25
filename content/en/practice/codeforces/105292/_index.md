@@ -1,23 +1,23 @@
 ---
 title: "National Taiwan University Class Preliminary 2024"
-description: "12 problems from National Taiwan University Class Preliminary 2024 (contest 105292), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from National Taiwan University Class Preliminary 2024 (contest 105292), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105292
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 12
-total_solve_s: 711
+total_solve_s: 737
 contest_year: 2024
-date: "2026-06-25T19:48:45+07:00"
+date: "2026-06-25T20:27:46+07:00"
 weight: 105292
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 51s
+Special | 13 problems | 12/13 verified | Difficulty - | 12m 17s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -33,3 +33,4 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 51s
 | [J](J/) | [Just Do it!](https://codeforces.com/problemset/problem/105292/J) |  |  |  | 55s | ✓ |
 | [K](K/) | [King Game](https://codeforces.com/problemset/problem/105292/K) |  |  |  | 1m 30s | ✓ |
 | [L](L/) | [Ltf's Board Game](https://codeforces.com/problemset/problem/105292/L) |  |  |  | 51s | ✓ |
+| [M](M/) | [Melting](https://codeforces.com/problemset/problem/105292/M) |  |  |  | 26s |  |

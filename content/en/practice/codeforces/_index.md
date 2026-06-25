@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13848 problems, 7728 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13849 problems, 7728 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13848 problems, 7728 verified.**
+**2089 contests, 13849 problems, 7728 verified.**
 
 ## Unknown — 266 contests, 2337 problems, 1573 verified
 
@@ -1638,7 +1638,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 201 contests, 1689 problems, 852 verified
+## 2024 — 201 contests, 1690 problems, 852 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1789,7 +1789,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105278](105278/) | [2024 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/105278) | 13 | 1/13 | ICPC/IOI | - |
 | [105283](105283/) | [TeamsCode Summer 2024 Novice Division](https://codeforces.com/contest/105283) | 11 | 0/11 | Special | - |
 | [105284](105284/) | [TeamsCode Summer 2024 Advanced Division](https://codeforces.com/contest/105284) | 11 | 1/11 | Special | - |
-| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 12 | 12/12 | Special | - |
+| [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 13 | 12/13 | Special | - |
 | [105293](105293/) | [TheForces Round #33(Wow-Forces)](https://codeforces.com/contest/105293) | 6 | 0/6 | Special | - |
 | [105297](105297/) | [2024 USP Try-outs](https://codeforces.com/contest/105297) | 12 | 12/12 | Special | - |
 | [105307](105307/) | [ICPC 2024 Thailand - Chulalongkorn University Internal Round](https://codeforces.com/contest/105307) | 11 | 1/11 | ICPC/IOI | - |
