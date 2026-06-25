@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2089 contests, 13857 problems, 7759 verified."
+description: "Codeforces problem solutions with full editorials. 2089 contests, 13858 problems, 7759 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2089 contests, 13857 problems, 7759 verified.**
+**2089 contests, 13858 problems, 7759 verified.**
 
-## Unknown — 266 contests, 2339 problems, 1594 verified
+## Unknown — 266 contests, 2340 problems, 1594 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -207,7 +207,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106201](106201/) | [Индивидуальная олимпиада школьников по информатике и программированию 2025](https://codeforces.com/contest/106201) | 6 | 6/6 | Special | - |
 | [106202](106202/) | [Интернет-олимпиады, Сезон 2025-2026, Первая командная олимпиада](https://codeforces.com/contest/106202) | 10 | 10/10 | Special | - |
 | [106203](106203/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая командная олимпиада](https://codeforces.com/contest/106203) | 12 | 12/12 | Special | - |
-| [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 11 | 5/11 | Special | - |
+| [106215](106215/) | [2025-2026 Whitney Young Practice Contest 1](https://codeforces.com/contest/106215) | 12 | 5/12 | Special | - |
 | [106222](106222/) | [ZCO 2025](https://codeforces.com/contest/106222) | 2 | 1/2 | Special | - |
 | [106223](106223/) | [ZCO 2024](https://codeforces.com/contest/106223) | 2 | 2/2 | Special | - |
 | [106224](106224/) | [INOI 2024](https://codeforces.com/contest/106224) | 3 | 1/3 | Special | - |
