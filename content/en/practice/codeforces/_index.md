@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2142 contests, 14223 problems, 7882 verified."
+description: "Codeforces problem solutions with full editorials. 2143 contests, 14228 problems, 7882 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2142 contests, 14223 problems, 7882 verified.**
+**2143 contests, 14228 problems, 7882 verified.**
 
-## Unknown — 295 contests, 2491 problems, 1651 verified
+## Unknown — 296 contests, 2496 problems, 1651 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -84,6 +84,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105507](105507/) | [2024-2025 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 24, Саратовский отборочный этап)](https://codeforces.com/contest/105507) | 12 | 12/12 | Special | - |
 | [105544](105544/) | [The 2023 ICPC Asia Taoyuan Regional Programming Contest](https://codeforces.com/contest/105544) | 13 | 11/13 | ICPC/IOI | - |
 | [105545](105545/) | [Уральская командная олимпиада по программированию 2024](https://codeforces.com/contest/105545) | 13 | 12/13 | Special | - |
+| [105561](105561/) | [Innopolis Open 2024-2025. Elimination Round 1](https://codeforces.com/contest/105561) | 5 | 0/5 | Special | - |
 | [105562](105562/) | [2024-2025 ICPC Northwestern European Regional Programming Contest (NWERC 2024)](https://codeforces.com/contest/105562) | 13 | 13/13 | ICPC/IOI | - |
 | [105572](105572/) | [Муниципальный этап ВсОШ по информатике для 9-11 классов, Оренбургская область, 2023](https://codeforces.com/contest/105572) | 5 | 1/5 | Special | - |
 | [105584](105584/) | [The 2024 ICPC Asia Japan Online First-Round Contest](https://codeforces.com/contest/105584) | 9 | 1/9 | ICPC/IOI | - |
