@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2188 contests, 14502 problems, 7931 verified."
+description: "Codeforces problem solutions with full editorials. 2189 contests, 14505 problems, 7933 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2188 contests, 14502 problems, 7931 verified.**
+**2189 contests, 14505 problems, 7933 verified.**
 
-## Unknown — 325 contests, 2619 problems, 1667 verified
+## Unknown — 326 contests, 2622 problems, 1669 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105187](105187/) | [Uzbekistan IOI 2024 Team Selection Test. Day 2.](https://codeforces.com/contest/105187) | 3 | 2/3 | ICPC/IOI | - |
 | [105193](105193/) | [Пригласительный этап ВсОШ по информатике, 2024](https://codeforces.com/contest/105193) | 0 | 0/0 | Special | - |
 | [105194](105194/) | [Муниципальный этап ВсОШ по информатике, Москва, 2021](https://codeforces.com/contest/105194) | 0 | 0/0 | Special | - |
 | [105195](105195/) | [Муниципальный этап ВсОШ по информатике, Москва, 2020](https://codeforces.com/contest/105195) | 0 | 0/0 | Special | - |
