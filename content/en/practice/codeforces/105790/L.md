@@ -1,7 +1,7 @@
 ---
 title: "CF 105790L - Lango Mocos"
-description: "I can’t write a correct editorial for this problem yet because the actual problem content is missing. Right now, all that’s provided is the title “Lango Mocos” with empty input and output sections."
-date: "2026-06-26T05:10:46+07:00"
+description: "There isn’t enough information in the prompt to write a real Codeforces-style editorial yet. What you’ve provided only includes the problem title and empty input/output sections, but no actual definition of the task, no constraints, and no description of what “Lango Mocos” is…"
+date: "2026-06-26T07:31:49+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105790
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "UDESC Selection Contest 2024-1"
 rating: 0
 weight: 105790
-solve_time_s: 32
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,14 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this problem yet because the actual problem content is missing.
+There isn’t enough information in the prompt to write a real Codeforces-style editorial yet.
 
-Right now, all that’s provided is the title “Lango Mocos” with empty input and output sections. There is no description of what the problem is asking, what the input represents, or what constraints apply. Without that, any attempt to derive a solution would be guesswork, and for Codeforces-style problems that almost always leads to an incorrect editorial.
+What you’ve provided only includes the problem title and empty input/output sections, but no actual definition of the task, no constraints, and no description of what “Lango Mocos” is asking us to compute. Without that, any solution would be invented rather than derived, which defeats the purpose of a correct editorial.
 
-If you paste the full statement, even a screenshot or raw text, I’ll turn it into a complete, structured editorial in the exact format you specified, including intuition, optimal solution, proof sketch, implementation, and tests.
+To produce the kind of walkthrough you’re asking for, I need at least one of the following:
 
-Send the full problem and I’ll continue from there.
+The full problem statement describing the operations or structure involved, or
+
+A sample input/output with explanation, or
+
+The contest link or full text of the problem.
+
+Once you provide that, I can write a complete editorial in the exact style you specified, including brute force reasoning, the key insight, formal algorithm walkthrough, proof sketch, implementation details, and test cases.

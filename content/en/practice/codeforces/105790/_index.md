@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 14
 n_verified: 11
-total_solve_s: 605
-date: "2026-06-26T05:11:00+07:00"
+total_solve_s: 601
+date: "2026-06-26T07:31:49+07:00"
 weight: 105790
 draft: false
 ---
 
 # [UDESC Selection Contest 2024-1](https://codeforces.com/contest/105790)
 
-Special | 14 problems | 11/14 verified | Difficulty - | 10m 5s
+Special | 14 problems | 11/14 verified | Difficulty - | 10m 1s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,6 +31,6 @@ Special | 14 problems | 11/14 verified | Difficulty - | 10m 5s
 | [I](I/) | [Itwise Bor](https://codeforces.com/problemset/problem/105790/I) |  |  |  | 43s | ✓ |
 | [J](J/) | [Jugando Fuerte](https://codeforces.com/problemset/problem/105790/J) |  |  |  | 46s | ✓ |
 | [K](K/) | [Kosmos](https://codeforces.com/problemset/problem/105790/K) |  |  |  | 48s | ✓ |
-| [L](L/) | [Lango Mocos](https://codeforces.com/problemset/problem/105790/L) |  |  |  | 32s |  |
+| [L](L/) | [Lango Mocos](https://codeforces.com/problemset/problem/105790/L) |  |  |  | 28s |  |
 | [M](M/) | [Giant Worms](https://codeforces.com/problemset/problem/105790/M) |  |  |  | 51s | ✓ |
 | [N](N/) | [Shield Navigation](https://codeforces.com/problemset/problem/105790/N) |  |  |  | 51s | ✓ |
