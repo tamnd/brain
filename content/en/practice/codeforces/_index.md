@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2111 contests, 14004 problems, 7808 verified."
+description: "Codeforces problem solutions with full editorials. 2112 contests, 14008 problems, 7810 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2111 contests, 14004 problems, 7808 verified.**
+**2112 contests, 14008 problems, 7810 verified.**
 
 ## Unknown — 276 contests, 2385 problems, 1611 verified
 
@@ -1854,7 +1854,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 259 contests, 2302 problems, 1209 verified
+## 2025 — 260 contests, 2306 problems, 1211 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1977,6 +1977,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2180](2180/) | [Codeforces Global Round 31 (Div. 1 + Div. 2)](https://codeforces.com/contest/2180) | 10 | 3/10 | Div. 1+2 | 800-3500 |
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
+| [105672](105672/) | [TheForces Round #39 (1000-Forces)](https://codeforces.com/contest/105672) | 4 | 2/4 | Special | - |
 | [105673](105673/) | [AlgoChief Sprint Round 1](https://codeforces.com/contest/105673) | 4 | 1/4 | Special | - |
 | [105679](105679/) | [IOI 2024 International Study Camp Mini Competition](https://codeforces.com/contest/105679) | 8 | 2/8 | ICPC/IOI | - |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
