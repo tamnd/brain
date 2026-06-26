@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2112 contests, 14008 problems, 7810 verified."
+description: "Codeforces problem solutions with full editorials. 2113 contests, 14013 problems, 7811 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2112 contests, 14008 problems, 7810 verified.**
+**2113 contests, 14013 problems, 7811 verified.**
 
-## Unknown — 276 contests, 2385 problems, 1611 verified
+## Unknown — 277 contests, 2390 problems, 1612 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -97,6 +97,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105666](105666/) | [MITIT Winter 2025 Advanced Round 1](https://codeforces.com/contest/105666) | 5 | 5/5 | Special | - |
 | [105667](105667/) | [MITIT Winter 2025 Advanced Round 2](https://codeforces.com/contest/105667) | 5 | 5/5 | Special | - |
 | [105668](105668/) | [MITIT Winter 2025 Beginner Round](https://codeforces.com/contest/105668) | 9 | 8/9 | Special | - |
+| [105669](105669/) | [Combinatorics Contest - Brazilian ICPC Summer School 2025](https://codeforces.com/contest/105669) | 5 | 1/5 | ICPC/IOI | - |
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
 | [105675](105675/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/105675) | 0 | 0/0 | Special | - |
 | [105681](105681/) | [Qualification stage of Open Olympiad 2024-2025](https://codeforces.com/contest/105681) | 8 | 1/8 | Special | - |
