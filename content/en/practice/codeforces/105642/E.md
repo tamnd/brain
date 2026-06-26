@@ -1,7 +1,7 @@
 ---
 title: "CF 105642E - El Gift from Ronaldo"
-description: "The problem statement is missing from your message, so there isn’t enough information to reconstruct what “El Gift from Ronaldo” is actually asking."
-date: "2026-06-26T16:07:10+07:00"
+description: "I can absolutely write that kind of Codeforces-style deep editorial, but I’m missing the actual problem content. “105642E - El Gift from Ronaldo” isn’t something I can reliably reconstruct from the title alone, and I don’t want to hallucinate a solution or invent constraints."
+date: "2026-06-26T17:41:05+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105642
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "SanSi Cup 2024"
 rating: 0
 weight: 105642
-solve_time_s: 22
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,20 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your message, so there isn’t enough information to reconstruct what “El Gift from Ronaldo” is actually asking.
+I can absolutely write that kind of Codeforces-style deep editorial, but I’m missing the actual problem content.
 
-To write a correct Codeforces-style editorial, I need at least the full statement or a clear description of:
+“105642E - El Gift from Ronaldo” isn’t something I can reliably reconstruct from the title alone, and I don’t want to hallucinate a solution or invent constraints.
 
-What the input represents
+Please paste one of the following so I can produce a correct, full editorial:
 
-What must be computed
+The full problem statement, or
 
-Any constraints
+A link + statement text, or
 
-Any sample input/output (if available)
+At minimum: input/output format + constraints + sample tests.
 
-Once you paste that, I’ll produce the full editorial in the exact format you specified, including algorithm derivation, walkthrough, complexity, and tests.
+Once you send it, I’ll write the complete walkthrough in the exact structure you requested, including brute force reasoning, optimal insight, proof sketch, implementation, and test cases.
