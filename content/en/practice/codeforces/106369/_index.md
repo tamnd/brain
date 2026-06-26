@@ -8,26 +8,26 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 8
-total_solve_s: 439
-date: "2026-06-20T09:02:23+07:00"
+total_solve_s: 459
+date: "2026-06-20T09:39:09+07:00"
 weight: 106369
 draft: false
 ---
 
 # [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369)
 
-Special | 11 problems | 8/11 verified | Difficulty - | 7m 19s
+Special | 11 problems | 8/11 verified | Difficulty - | 7m 39s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Lucky 7](https://codeforces.com/problemset/problem/106369/A) |  |  |  | 45s | ✓ |
 | [B](B/) | [We Want You Happy!](https://codeforces.com/problemset/problem/106369/B) |  |  |  | 44s | ✓ |
-| [C](C/) | [Snailography](https://codeforces.com/problemset/problem/106369/C) |  |  |  | 31s |  |
+| [C](C/) | [Snailography](https://codeforces.com/problemset/problem/106369/C) |  |  |  | 30s |  |
 | [D](D/) | [Good Goalie](https://codeforces.com/problemset/problem/106369/D) |  |  |  | 46s | ✓ |
 | [E](E/) | [Most Valuable Pez](https://codeforces.com/problemset/problem/106369/E) |  |  |  | 38s | ✓ |
 | [F](F/) | [Land Division](https://codeforces.com/problemset/problem/106369/F) |  |  |  | 48s | ✓ |
 | [G](G/) | [Not So Close](https://codeforces.com/problemset/problem/106369/G) |  |  |  | 37s | ✓ |
 | [H](H/) | [The Duel of Smokin' Joe](https://codeforces.com/problemset/problem/106369/H) |  |  |  | 50s | ✓ |
 | [I](I/) | [Drake Robbing](https://codeforces.com/problemset/problem/106369/I) |  |  |  | 45s | ✓ |
-| [J](J/) | [Grow Measure Cut Repeat](https://codeforces.com/problemset/problem/106369/J) |  |  |  | 26s |  |
-| [K](K/) | [Bad Bunny](https://codeforces.com/problemset/problem/106369/K) |  |  |  | 29s |  |
+| [J](J/) | [Grow Measure Cut Repeat](https://codeforces.com/problemset/problem/106369/J) |  |  |  | 53s |  |
+| [K](K/) | [Bad Bunny](https://codeforces.com/problemset/problem/106369/K) |  |  |  | 23s |  |
