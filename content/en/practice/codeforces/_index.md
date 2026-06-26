@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2187 contests, 14491 problems, 7923 verified."
+description: "Codeforces problem solutions with full editorials. 2188 contests, 14502 problems, 7931 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2187 contests, 14491 problems, 7923 verified.**
+**2188 contests, 14502 problems, 7931 verified.**
 
 ## Unknown — 325 contests, 2619 problems, 1667 verified
 
@@ -1700,7 +1700,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 224 contests, 1903 problems, 895 verified
+## 2024 — 225 contests, 1914 problems, 903 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1834,6 +1834,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105190](105190/) | [Al-Baath Collegiate Programming Contest 2024](https://codeforces.com/contest/105190) | 11 | 8/11 | Special | - |
 | [105192](105192/) | [Cupertino Informatics Tournament Online Mirror](https://codeforces.com/contest/105192) | 8 | 4/8 | Special | - |
 | [105198](105198/) | [ShellBeeHaken Presents Intra SUST Programming Contest 2024 - Replay](https://codeforces.com/contest/105198) | 13 | 4/13 | Special | - |
 | [105200](105200/) | [IME++ Starters Try-outs 2024](https://codeforces.com/contest/105200) | 10 | 6/10 | Special | - |
