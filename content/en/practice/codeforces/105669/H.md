@@ -1,7 +1,7 @@
 ---
 title: "CF 105669H - Roulette"
-description: "I don’t have the actual statement of Codeforces 105669H - Roulette in your prompt, so I can’t reliably reconstruct the problem or write a correct editorial. If I try to guess, I’d risk inventing the wrong rules, which would make the entire solution and proof useless."
-date: "2026-06-26T09:55:58+07:00"
+description: "I’m missing the actual problem statement for Codeforces 105669H - Roulette (your input section is empty), so I can’t reconstruct the model, constraints, or intended solution reliably."
+date: "2026-06-26T11:31:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105669
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Combinatorics Contest - Brazilian ICPC Summer School 2025"
 rating: 0
 weight: 105669
-solve_time_s: 30
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I don’t have the actual statement of **Codeforces 105669H - Roulette** in your prompt, so I can’t reliably reconstruct the problem or write a correct editorial.
+I’m missing the actual problem statement for **Codeforces 105669H - Roulette** (your input section is empty), so I can’t reconstruct the model, constraints, or intended solution reliably.
 
-If I try to guess, I’d risk inventing the wrong rules, which would make the entire solution and proof useless.
+For this kind of editorial, even small details like how the “roulette” behaves, what operations are allowed, and what needs to be computed completely change the approach (DP vs probability vs simulation vs combinatorics).
 
-Paste the full problem statement (or even just the key rules and input/output format), and I’ll produce the complete editorial in the exact style you requested.
+Please paste the full statement (or even a screenshot/text dump), and I’ll write the complete editorial in the exact style you requested.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2114 contests, 14024 problems, 7811 verified."
+description: "Codeforces problem solutions with full editorials. 2115 contests, 14039 problems, 7820 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2114 contests, 14024 problems, 7811 verified.**
+**2115 contests, 14039 problems, 7820 verified.**
 
-## Unknown — 277 contests, 2390 problems, 1612 verified
+## Unknown — 277 contests, 2392 problems, 1615 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -97,7 +97,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105666](105666/) | [MITIT Winter 2025 Advanced Round 1](https://codeforces.com/contest/105666) | 5 | 5/5 | Special | - |
 | [105667](105667/) | [MITIT Winter 2025 Advanced Round 2](https://codeforces.com/contest/105667) | 5 | 5/5 | Special | - |
 | [105668](105668/) | [MITIT Winter 2025 Beginner Round](https://codeforces.com/contest/105668) | 9 | 8/9 | Special | - |
-| [105669](105669/) | [Combinatorics Contest - Brazilian ICPC Summer School 2025](https://codeforces.com/contest/105669) | 5 | 1/5 | ICPC/IOI | - |
+| [105669](105669/) | [Combinatorics Contest - Brazilian ICPC Summer School 2025](https://codeforces.com/contest/105669) | 7 | 4/7 | ICPC/IOI | - |
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
 | [105675](105675/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/105675) | 0 | 0/0 | Special | - |
 | [105681](105681/) | [Qualification stage of Open Olympiad 2024-2025](https://codeforces.com/contest/105681) | 8 | 1/8 | Special | - |
@@ -1512,7 +1512,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 132 contests, 901 problems, 358 verified
+## 2023 — 133 contests, 913 problems, 361 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1648,8 +1648,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 202 contests, 1701 problems, 852 verified
+## 2024 — 202 contests, 1702 problems, 855 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1851,7 +1852,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105629](105629/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final](https://codeforces.com/contest/105629) | 9 | 4/9 | Special | - |
 | [105631](105631/) | [SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final](https://codeforces.com/contest/105631) | 13 | 13/13 | Special | - |
 | [105636](105636/) | [NOIP 2024](https://codeforces.com/contest/105636) | 4 | 3/4 | Special | - |
-| [105665](105665/) | [AGM 2024 Qualification Round](https://codeforces.com/contest/105665) | 11 | 0/11 | Special | - |
+| [105665](105665/) | [AGM 2024 Qualification Round](https://codeforces.com/contest/105665) | 12 | 3/12 | Special | - |
 | [105677](105677/) | [2024-2025 ICPC Southwestern European Regional Contest (SWERC 2024)](https://codeforces.com/contest/105677) | 13 | 13/13 | ICPC/IOI | - |
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |

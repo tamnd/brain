@@ -1,7 +1,7 @@
 ---
 title: "CF 105669E - Introverted Dinner"
-description: "Got it - I’ll write a full Codeforces-style editorial (intuition, key observations, proof, complexity, implementation notes, etc.). Please paste the problem statement (or at least the link / key parts like constraints and sample)."
-date: "2026-06-26T09:55:20+07:00"
+description: "I can’t write a correct editorial yet because the actual problem statement for “Codeforces 105669E - Introverted Dinner” is missing from your prompt."
+date: "2026-06-26T11:30:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105669
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Combinatorics Contest - Brazilian ICPC Summer School 2025"
 rating: 0
 weight: 105669
-solve_time_s: 27
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,10 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-Got it - I’ll write a full Codeforces-style editorial (intuition, key observations, proof, complexity, implementation notes, etc.).
+I can’t write a correct editorial yet because the actual problem statement for “Codeforces 105669E - Introverted Dinner” is missing from your prompt.
 
-Please paste the problem statement (or at least the link / key parts like constraints and sample).
+Right now I have no information about:
+
+what the input represents, what needs to be optimized or computed, constraints, or even the task type (graph, DP, greedy, combinatorics, etc.). Without that, any “editorial” would be fabricated and would not match the real problem.
+
+Paste the full statement (or even just the core description and constraints), and I’ll produce the complete Codeforces-style editorial in the exact format you requested.
