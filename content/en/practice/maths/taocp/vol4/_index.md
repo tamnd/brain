@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 4: Combinatorial Algorithms"
-description: "Volume 4: Combinatorial Algorithms. 378 solved, 155 verified, 2383 total."
+description: "Volume 4: Combinatorial Algorithms. 379 solved, 156 verified, 2383 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 40
@@ -9,13 +9,13 @@ draft: false
 
 # Volume 4: Combinatorial Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 4. 378 solved, 155 verified, 2383 total.
+Exercise solutions for [TAOCP](../) Volume 4. 379 solved, 156 verified, 2383 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [7.1.1](7.1.1/) | Boolean Basics | 128 | 62 | 132 |
 | [7.1.2](7.1.2/) | Boolean Evaluation | 80 | 31 | 85 |
-| [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 45 | 13 | 219 |
+| [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 46 | 14 | 219 |
 | [7.1.4](7.1.4/) | Binary Decision Diagrams | 1 | 1 | 267 |
 | 7.2.1.1 |  | — | — | 112 |
 | 7.2.1.2 |  | — | — | 113 |
