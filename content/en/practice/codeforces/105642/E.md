@@ -1,7 +1,7 @@
 ---
 title: "CF 105642E - El Gift from Ronaldo"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now the prompt only contains the title and metadata, but no description of what “El Gift from Ronaldo” is asking to compute."
-date: "2026-06-26T15:31:07+07:00"
+description: "The problem statement is missing from your message, so there isn’t enough information to reconstruct what “El Gift from Ronaldo” is actually asking."
+date: "2026-06-26T16:07:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105642
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "SanSi Cup 2024"
 rating: 0
 weight: 105642
-solve_time_s: 48
+solve_time_s: 22
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 48s  
+**Solve time:** 22s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem statement is missing from your message, so there isn’t enough information to reconstruct what “El Gift from Ronaldo” is actually asking.
 
-Right now the prompt only contains the title and metadata, but no description of what “El Gift from Ronaldo” is asking to compute. Without that, any solution would be pure guessing, and that would defeat the purpose of a Codeforces-style editorial.
+To write a correct Codeforces-style editorial, I need at least the full statement or a clear description of:
 
-Paste the full statement (or even a screenshot/text dump), and I’ll turn it into a complete, structured editorial in the exact format you specified, including brute force reasoning, optimal solution derivation, walkthrough, and tests.
+What the input represents
+
+What must be computed
+
+Any constraints
+
+Any sample input/output (if available)
+
+Once you paste that, I’ll produce the full editorial in the exact format you specified, including algorithm derivation, walkthrough, complexity, and tests.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105642G - Global warming"
-description: "I can't write a correct editorial from the information provided because the actual problem statement is missing. The prompt only contains the title, \"Codeforces 105642G - Global warming\", while the sections for the statement, input, and output are empty."
-date: "2026-06-26T15:31:20+07:00"
+description: "I don’t have the actual statement of Codeforces 105642G (“Global warming”) available from what you provided, and without it I’d be forced to guess the problem structure, which would make the editorial unreliable."
+date: "2026-06-26T16:02:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105642
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "SanSi Cup 2024"
 rating: 0
 weight: 105642
-solve_time_s: 43
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,28 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 43s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial from the information provided because the actual problem statement is missing.
+I don’t have the actual statement of Codeforces 105642G (“Global warming”) available from what you provided, and without it I’d be forced to guess the problem structure, which would make the editorial unreliable.
 
-The prompt only contains the title, "Codeforces 105642G - Global warming", while the sections for the statement, input, and output are empty. A complete editorial requires the exact task definition, constraints, and input/output format. Without those, I would have to invent the algorithm, examples, code, and complexity analysis, which would almost certainly be incorrect.
+If you paste the full statement (or even just the input/output description plus constraints and samples), I’ll write the complete Codeforces-style editorial exactly in the format you requested, including:
 
-If you provide either:
+- clean restatement of the problem
+- brute force → optimization narrative
+- full algorithm walkthrough with invariants
+- tested Python solution
+- worked examples and edge cases
 
-1. the full problem statement, or
-2. a link or PDF containing the statement,
-
-I can produce a complete editorial following your requested structure, including:
-
-- Problem Understanding
-- Approaches
-- Algorithm Walkthrough
-- Python Solution
-- Worked Examples
-- Complexity Analysis
-- Assert-based Test Cases
-- Edge Cases
-
-written in the exact style and formatting you specified.
+Just send the statement and I’ll take it from there.

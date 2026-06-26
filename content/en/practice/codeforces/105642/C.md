@@ -1,7 +1,7 @@
 ---
 title: "CF 105642C - Christ of Discord"
-description: "Got it. Please paste the full Codeforces problem statement (or at least the problem link / name + constraints), and I’ll write a complete competitive programming editorial with: - Intuition / key insight - Step-by-step reasoning - Correct algorithm - Proof of correctness -…"
-date: "2026-06-26T13:22:32+07:00"
+description: "I can’t produce a correct editorial yet because the problem statement for Codeforces 105642C - “Christ of Discord” is missing from your prompt."
+date: "2026-06-26T16:01:57+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105642
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "SanSi Cup 2024"
 rating: 0
 weight: 105642
-solve_time_s: 28
+solve_time_s: 35
 verified: false
 draft: false
 ---
@@ -18,17 +18,25 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 35s  
 **Verified:** no  
 
 ## Solution
-Got it. Please paste the full Codeforces problem statement (or at least the problem link / name + constraints), and I’ll write a complete competitive programming editorial with:
+I can’t produce a correct editorial yet because the problem statement for **Codeforces 105642C - “Christ of Discord”** is missing from your prompt.
 
-- Intuition / key insight
-- Step-by-step reasoning
-- Correct algorithm
-- Proof of correctness
-- Complexity analysis
-- Reference implementation (C++ / Python if you want)
+Right now there’s no information about:
+- what the input actually represents
+- what transformation or query is required
+- constraints
+- sample cases
 
-If you already have a specific difficulty level or style (short vs very detailed, beginner vs advanced), tell me that too.
+Without that, any “solution” would be guesswork, and for Codeforces-style editorials that would almost certainly become incorrect.
+
+If you paste the full statement (or even just the key parts: input format, required output, and constraints), I’ll write the complete editorial in the exact style you requested, including:
+- a clean re-derivation of the idea
+- brute force → optimization transition
+- full algorithm walkthrough
+- Python implementation
+- worked examples and edge cases
+
+Send the statement and I’ll take it from there.
