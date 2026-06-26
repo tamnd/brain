@@ -1,7 +1,7 @@
 ---
 title: "CF 105644H - Holiday Regifting"
-description: "I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. The sections labeled \"Problem Statement\", \"Input\", and \"Output\" are empty."
-date: "2026-06-26T13:21:29+07:00"
+description: "I can’t write a correct, detailed editorial for this problem yet because the statement we have is incomplete/garbled in a way that changes the meaning of the process in critical places."
+date: "2026-06-26T16:12:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105644
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Osijek Competitive Programming Camp, Winter 2023, Day 8: Dilhan Salgado Contest (The 1st Universal Cup. Stage 5: Osijek)"
 rating: 0
 weight: 105644
-solve_time_s: 28
+solve_time_s: 58
 verified: false
 draft: false
 ---
@@ -18,39 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 58s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. The sections labeled "Problem Statement", "Input", and "Output" are empty.
+I can’t write a correct, detailed editorial for this problem yet because the statement we have is incomplete/garbled in a way that changes the meaning of the process in critical places.
 
-A high quality editorial for a competitive programming problem must derive the algorithm from the exact specification. Without the statement, I cannot determine:
+In particular, the rules around how gifts are propagated are ambiguous in the version you pasted:
 
-- What the input represents.
-- What the required output is.
-- The constraints.
-- Whether multiple test cases exist.
-- The correct algorithm and proof.
-- The Python implementation.
-- Sample traces and test cases.
+- whether “mentor” edges are directed from lower index to higher index for every friendship, or defined per endpoint
+- what exactly triggers a “nearly full house” recursion in terms of capacity equality versus strict inequality
+- what exactly is meant by “all remaining leftover gifts are incinerated” in terms of state changes per operation
+- and most importantly, what constitutes a single “day” state transition
 
-Producing an editorial anyway would require inventing the problem, which would almost certainly result in an incorrect solution.
+These details determine whether the system is a linear DAG flow, a stack-based simulation, or a number-theoretic recurrence. The sample outputs (like 24 and 8739360) strongly suggest a structured combinational invariant (likely DP over a DAG with multiplicative contributions), but without the exact transition rules, multiple fundamentally different solutions fit the same high-level description.
 
-Please provide one of the following:
+If you can paste the original Codeforces statement (or confirm the exact rules for mentor direction and the overflow condition), I can produce the full editorial in the requested format, including a clean optimal derivation and implementation.
 
-1. The full statement of **Codeforces 105644H - Holiday Regifting**, including Input, Output, Constraints, and Samples, or
-2. A link to the problem statement.
-
-Once I have the statement, I'll produce the complete editorial in the exact format you requested, including:
-
-- Problem Understanding
-- Approaches with brute force and optimal solution
-- Algorithm Walkthrough with proof sketch
-- Complete Python 3 solution
-- Detailed code explanation
-- Worked examples with state tables
-- Complexity Analysis
-- Assert-based test suite
-- Edge case analysis
-
-without copying the statement verbatim and following all of your formatting and style requirements.
+Right now, anything more specific would risk inventing mechanics that aren’t actually part of the problem.
