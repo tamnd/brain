@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2099 contests, 13940 problems, 7779 verified."
+description: "Codeforces problem solutions with full editorials. 2100 contests, 13943 problems, 7781 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2099 contests, 13940 problems, 7779 verified.**
+**2100 contests, 13943 problems, 7781 verified.**
 
-## Unknown — 270 contests, 2367 problems, 1603 verified
+## Unknown — 271 contests, 2370 problems, 1605 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -104,6 +104,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105699](105699/) | [OCPC 2024 Winter, Day 8: Borys Minaiev Contest 1 (The 3rd Universal Cup. Stage 27: London)](https://codeforces.com/contest/105699) | 13 | 13/13 | Special | - |
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
+| [105706](105706/) | [INOI 2025](https://codeforces.com/contest/105706) | 3 | 2/3 | Special | - |
 | [105712](105712/) | [Rutgers University Programming Contest Fall 2024](https://codeforces.com/contest/105712) | 13 | 3/13 | Special | - |
 | [105715](105715/) | [Интернет-олимпиады, Сезон 2024-2025, Первая личная олимпиада](https://codeforces.com/contest/105715) | 4 | 3/4 | Special | - |
 | [105719](105719/) | [Innopolis Open 2024-2025. Final round](https://codeforces.com/contest/105719) | 5 | 1/5 | Special | - |
