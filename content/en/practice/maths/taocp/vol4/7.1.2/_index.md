@@ -84,7 +84,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.2: 80/85 solved.
 | [64](64.md) |  [*25*] | medium | verified | 2m49s |
 | [65](65.md) | &#9654; [*35*] | hard | verified | 1m15s |
 | [66](66.md) |  [*20*] | medium | verified | 1m31s |
-| [67](67.md) | &#9654; [*40*] | project | solved | 4m |
+| [67](67.md) | &#9654; [*40*] | project | solved | 4m51s |
 | [68](68.md) |  [*M25*] | math-medium | verified | 2m30s |
 | [69](69.md) |  [*M24*] | math-medium | solved | 4m51s |
 | [70](70.md) | &#9654; [*M27*] | math-hard | solved | 2m48s |
