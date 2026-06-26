@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2104 contests, 13958 problems, 7787 verified."
+description: "Codeforces problem solutions with full editorials. 2105 contests, 13961 problems, 7789 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2104 contests, 13958 problems, 7787 verified.**
+**2105 contests, 13961 problems, 7789 verified.**
 
-## Unknown — 273 contests, 2370 problems, 1605 verified
+## Unknown — 274 contests, 2373 problems, 1607 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105325](105325/) | [XXIV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105325) | 5 | 0/5 | Special | - |
 | [105327](105327/) | [2024-2025 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/105327) | 12 | 6/12 | ICPC/IOI | - |
 | [105329](105329/) | [Первенство Свердловской области по программированию среди начинающих 2024](https://codeforces.com/contest/105329) | 7 | 2/7 | Special | - |
-| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 13 | 11/13 | ICPC/IOI | - |
+| [105335](105335/) | [ICPC Thailand National Competition 2024](https://codeforces.com/contest/105335) | 14 | 12/14 | ICPC/IOI | - |
 | [105351](105351/) | [COMP4128 Ancient Berland Roads](https://codeforces.com/contest/105351) | 1 | 0/1 | Special | - |
 | [105363](105363/) | [XXV Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105363) | 6 | 3/6 | Special | - |
 | [105364](105364/) | [XXV Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105364) | 6 | 2/6 | Special | - |
@@ -100,6 +100,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
 | [105683](105683/) | [Олимпиада НЕЙМАРК 2024-25, Первый отбор](https://codeforces.com/contest/105683) | 6 | 6/6 | Special | - |
 | [105684](105684/) | [Олимпиада НЕЙМАРК 2024-25, Второй отбор](https://codeforces.com/contest/105684) | 6 | 6/6 | Special | - |
+| [105691](105691/) | [MOI25 Training camp](https://codeforces.com/contest/105691) | 2 | 1/2 | Special | - |
 | [105696](105696/) | [Нижегородская региональная олимпиада по информатике 2025, 7-8 классы, день 1](https://codeforces.com/contest/105696) | 0 | 0/0 | Special | - |
 | [105697](105697/) | [Нижегородская региональная олимпиада по информатике 2025, 7-8 классы, день 2](https://codeforces.com/contest/105697) | 0 | 0/0 | Special | - |
 | [105698](105698/) | [OCPC 2024 Summer, Day 5: OCPC Potluck Contest 2](https://codeforces.com/contest/105698) | 12 | 12/12 | Special | - |
