@@ -1,7 +1,7 @@
 ---
 title: "CF 105644F - Five Letter Warning"
-description: "Got it-but I’ll need the actual problem first. Please paste the Codeforces problem statement (or at least the link + relevant details like constraints and samples)."
-date: "2026-06-26T13:21:27+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement (input/output definition and constraints) is missing."
+date: "2026-06-26T15:32:17+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105644
@@ -22,15 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-Got it-but I’ll need the actual problem first.
+I can’t write a correct editorial for this yet because the actual problem statement (input/output definition and constraints) is missing.
 
-Please paste the Codeforces problem statement (or at least the link + relevant details like constraints and samples). Once I have that, I’ll write a full competitive programming editorial with:
+“Codeforces 105644F - Five Letter Warning” alone isn’t enough to reliably reconstruct the task, and guessing would very likely produce a wrong solution and misleading algorithm discussion.
 
-- intuition and key observations  
-- step-by-step derivation  
-- algorithm explanation  
-- complexity analysis  
-- implementation notes / pitfalls  
-- (optionally) alternative approaches  
-
-Send it over.
+Please paste the full problem statement (or at least input format, output format, and constraints). Once you do, I’ll produce the full editorial in the exact format you specified, including algorithm walkthrough, proof sketch, Python solution, and test cases.
