@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 10
-total_solve_s: 515
+total_solve_s: 513
 contest_year: 2025
-date: "2026-06-26T11:41:00+07:00"
+date: "2026-06-26T12:32:37+07:00"
 weight: 105833
 draft: false
 ---
 
 # [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833)
 
-Special | 12 problems | 10/12 verified | Difficulty - | 8m 35s
+Special | 12 problems | 10/12 verified | Difficulty - | 8m 33s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,4 +32,4 @@ Special | 12 problems | 10/12 verified | Difficulty - | 8m 35s
 | [I](I/) | [Independent Inversions](https://codeforces.com/problemset/problem/105833/I) |  |  |  | 43s | ✓ |
 | [J](J/) | [Job Interview](https://codeforces.com/problemset/problem/105833/J) |  |  |  | 21s |  |
 | [K](K/) | [Kanto To Johto](https://codeforces.com/problemset/problem/105833/K) |  |  |  | 47s | ✓ |
-| [L](L/) | [Last Goal](https://codeforces.com/problemset/problem/105833/L) |  |  |  | 23s |  |
+| [L](L/) | [Last Goal](https://codeforces.com/problemset/problem/105833/L) |  |  |  | 21s |  |
