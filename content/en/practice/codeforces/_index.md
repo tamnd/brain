@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2107 contests, 13984 problems, 7804 verified."
+description: "Codeforces problem solutions with full editorials. 2108 contests, 13992 problems, 7805 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2107 contests, 13984 problems, 7804 verified.**
+**2108 contests, 13992 problems, 7805 verified.**
 
-## Unknown — 274 contests, 2377 problems, 1610 verified
+## Unknown — 275 contests, 2385 problems, 1611 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -98,6 +98,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105667](105667/) | [MITIT Winter 2025 Advanced Round 2](https://codeforces.com/contest/105667) | 5 | 5/5 | Special | - |
 | [105668](105668/) | [MITIT Winter 2025 Beginner Round](https://codeforces.com/contest/105668) | 9 | 8/9 | Special | - |
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
+| [105681](105681/) | [Qualification stage of Open Olympiad 2024-2025](https://codeforces.com/contest/105681) | 8 | 1/8 | Special | - |
 | [105683](105683/) | [Олимпиада НЕЙМАРК 2024-25, Первый отбор](https://codeforces.com/contest/105683) | 6 | 6/6 | Special | - |
 | [105684](105684/) | [Олимпиада НЕЙМАРК 2024-25, Второй отбор](https://codeforces.com/contest/105684) | 6 | 6/6 | Special | - |
 | [105691](105691/) | [MOI25 Training camp](https://codeforces.com/contest/105691) | 3 | 1/3 | Special | - |
