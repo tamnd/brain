@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2167 contests, 14334 problems, 7893 verified."
+description: "Codeforces problem solutions with full editorials. 2168 contests, 14341 problems, 7894 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2167 contests, 14334 problems, 7893 verified.**
+**2168 contests, 14341 problems, 7894 verified.**
 
 ## Unknown — 314 contests, 2545 problems, 1656 verified
 
@@ -1689,7 +1689,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 215 contests, 1820 problems, 876 verified
+## 2024 — 216 contests, 1827 problems, 877 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1873,6 +1873,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105481](105481/) | [2024 CCPC Liaoning Provincial Contest](https://codeforces.com/contest/105481) | 13 | 13/13 | Special | - |
 | [105485](105485/) | [2024 China Unversity of Geosciences (Wuhan) Freshman Contest](https://codeforces.com/contest/105485) | 14 | 14/14 | Special | - |
 | [105486](105486/) | [2024 ICPC Asia Chengdu Regional Contest (The 3rd Universal Cup. Stage 15: Chengdu)](https://codeforces.com/contest/105486) | 13 | 13/13 | ICPC/IOI | - |
+| [105491](105491/) | [TheForces Round #37 (Brute-Forces1)](https://codeforces.com/contest/105491) | 7 | 1/7 | Special | - |
 | [105498](105498/) | [Khulna Regional Inter University Programming Contest (KRIUPC) MIRROR](https://codeforces.com/contest/105498) | 8 | 8/8 | Special | - |
 | [105500](105500/) | [UTPC Contest 11-08-24 Div. 1 (Advanced)](https://codeforces.com/contest/105500) | 8 | 1/8 | Div. 1 | - |
 | [105501](105501/) | [UTPC Contest 11-08-24 Div. 2 (Beginner)](https://codeforces.com/contest/105501) | 8 | 0/8 | Div. 2 | - |
