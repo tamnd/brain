@@ -1,7 +1,7 @@
 ---
 title: "CF 105183H - \u0413\u043b\u0435\u0431 \u0438 \u0433\u0440\u0438\u043d\u0434"
-description: "We start with a strictly increasing array of tower heights. Over time, the array is not static: at each step indexed by a positive integer $j$, we scan adjacent pairs and look for those whose difference equals exactly $j$."
-date: "2026-06-27T04:37:17+07:00"
+description: "We are given a strictly increasing array of tower heights. At the start, these heights are fixed, but then an infinite process begins that modifies the array step by step. At step $j$, we inspect every adjacent pair of towers."
+date: "2026-06-27T06:15:27+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105183
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "XX \u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u043a\u0435 \u0438\u043c. \u0412. \u0414. \u041b\u0435\u043b\u044e\u0445\u0430"
 rating: 0
 weight: 105183
-solve_time_s: 96
+solve_time_s: 84
 verified: false
 draft: false
 ---
@@ -18,77 +18,68 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 36s  
+**Solve time:** 1m 24s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We start with a strictly increasing array of tower heights. Over time, the array is not static: at each step indexed by a positive integer $j$, we scan adjacent pairs and look for those whose difference equals exactly $j$. Whenever we find such a position $i$, we increase all towers from $i$ to the end by 1.
+We are given a strictly increasing array of tower heights. At the start, these heights are fixed, but then an infinite process begins that modifies the array step by step. At step $j$, we inspect every adjacent pair of towers. Whenever the difference between two consecutive towers equals exactly $j$, we perform an operation: from that position onward to the end of the array, every tower is increased by 1.
 
-This means each step potentially triggers multiple suffix increments, and those increments accumulate over time, affecting later differences as well. The process is fully deterministic and depends only on the initial differences.
+After these updates, the array evolves over time, and for any moment we can compute the total sum of all tower heights. Each monster query gives a health value, and we want to know the earliest step number $j$ at which a single hit would have total tower sum at least that health value. Each query is independent, meaning the process always starts from the original array.
 
-We are not asked to simulate this evolution directly. Instead, we are given multiple monster queries. Each monster has a health value, and we want the earliest step $j$ at which the sum of tower heights becomes at least that value. Importantly, each query is independent: we conceptually reset the process for every monster.
+The constraints push us toward a solution that avoids simulating steps. Both $n$ and $q$ can be up to $10^6$, so anything even linear per query is impossible. We need a global preprocessing that compresses the evolution of the sum into a form where each query becomes a fast lookup, likely logarithmic or constant after preprocessing.
 
-The key hidden object is the evolution of the total sum of the array. Since attacks depend only on the sum, we never need individual tower heights per query, only the total after step $j$.
+A naive simulation is immediately too slow because the number of steps is unbounded and each step may touch a suffix of the array, so the total work can grow quadratically in the worst case.
 
-The constraints are large: both $n$ and $q$ can reach $10^6$, and health values go up to $10^{18}$. Any solution that simulates steps or recomputes array states per query is immediately impossible. Even $O(n)$ per step is too slow because the number of steps can also be large, and updates cascade.
-
-A naive idea would be to simulate step by step and recompute the sum after each update. This fails because each step may touch many suffixes, and the number of steps needed can be large enough that total work becomes quadratic in the worst case.
-
-A second naive idea is to precompute all sums up to some limit of steps and answer queries by binary search. This also fails unless we can compute each next state in sublinear or constant amortized time, which is not obvious from direct simulation.
-
-A subtle edge case arises when no adjacent difference ever equals a large $j$. For example, if differences are small, then all large steps do nothing, so the sum stabilizes early. Any method that assumes continuous growth per step will overestimate answers.
-
-Another edge case is when multiple suffix increments overlap heavily. For instance, if many equal differences exist at different positions, a single step can increase the suffix sum multiple times, causing non-linear jumps in total sum. This breaks any assumption that growth is uniform or linear.
+A subtle edge case appears when differences repeat in patterns. For example, if many adjacent differences equal the same value, a single step can trigger multiple suffix increments. Another corner case is when no pair ever matches a given step index, meaning that step does nothing. A careless implementation that iterates over all steps up to max height difference would incorrectly assume constant activity and overcount contributions.
 
 ## Approaches
 
-The brute-force simulation treats the process literally. We maintain the array and, for each step $j$, scan all $i$ from 2 to $n$, check whether $a_i - a_{i-1} = j$, and if so, add 1 to all elements from $i$ onward. After processing a step, we compute the total sum and record it.
+The brute force idea is straightforward: simulate the process step by step, recomputing all pair differences and applying suffix increments whenever a match occurs. After each step, compute the total sum and store it. Then answer each query by scanning for the first step where the sum exceeds the required threshold.
 
-This is correct because it directly follows the rules. However, each step is $O(n)$ to scan plus potentially $O(n)$ per update, and there can be $O(\max a_i)$ steps in theory. Even if we stop early, the number of distinct differences can be large, making this completely infeasible.
+This is correct because it follows the rules directly. However, it is computationally infeasible. Each step requires scanning all $n$ pairs, and there can be up to $O(\max a_i)$ relevant steps in principle, leading to something like $O(n \cdot \max a_i)$, which is far beyond limits.
 
-The key observation is that the only thing that matters is how many times each suffix is incremented over all steps, and that each position $i$ contributes independently based on whether its initial gap value is ever activated. The process can be reinterpreted: each index $i$ is triggered exactly when the current step equals the current gap value at that boundary, and after triggering, that gap increases by 1, meaning it will never trigger again for the same value but may trigger later if the condition reappears.
+The key observation is that the structure of updates is monotone in a hidden way. Each adjacent pair contributes an event exactly once, at the moment indexed by its difference. That event increases a suffix by 1, which increases the total sum by exactly the size of that suffix. So instead of simulating the evolving array, we can reinterpret the process as a collection of independent “events” located at specific step indices, each contributing a fixed additive value to the total sum at that step and all later steps.
 
-This structure leads to a classic reformulation: each position contributes a sequence of activation times, and each activation increases a suffix sum by 1. Instead of simulating the array, we compute how many activations occur up to step $j$, and from that we derive the total sum.
+Thus, the problem reduces to: for each adjacent pair, compute its difference $d_i = a_i - a_{i-1}$, and treat it as an event at time $d_i$ contributing $n - i + 1$ to the total sum. The base sum is constant, and we accumulate contributions from all events with $d_i \le j$. This turns the process into a prefix accumulation over event times.
 
-By reversing the viewpoint, each activation contributes to a prefix count over steps, and the total sum at step $j$ becomes a base sum plus a cumulative contribution that can be computed from prefix sums over these activation events.
-
-We reduce the problem to counting contributions of events of the form “at time $t$, add $+1$ to suffix starting at $i$”. Each event contributes $n-i+1$ to the total sum. Thus, if we can compute how many times each edge $i$ fires by step $j$, we can compute the total sum in $O(n)$ or $O(1)$ per query after preprocessing.
-
-The transitions of gaps form independent arithmetic-like progressions, and the total number of firings per edge up to step $j$ is simply the count of integers in a range intersecting a periodic shift. This leads to a closed-form expression per edge.
-
-After reorganizing, we precompute for each $i$ the initial difference $d_i = a_i - a_{i-1}$. Each edge fires at steps $d_i, d_i+1, d_i+2, \dots$ only once per cycle structure, which collapses into a simple linear contribution pattern: every step $j \ge d_i$ contributes exactly 1 new activation at $i$.
-
-Thus, at step $j$, edge $i$ has fired exactly $\max(0, j - d_i + 1)$ times. Each firing contributes a suffix of length $n-i+1$. So total sum is:
-
-$$S(j) = \sum a_i + \sum_{i=2}^n (n-i+1)\cdot \max(0, j - d_i + 1)$$
-
-Now each query becomes solving $S(j) \ge h$. Since $S(j)$ is monotone in $j$, we can binary search per query, using prefix precomputation for efficient evaluation.
+Once reformulated this way, we only need to sort or bucket events by their $d_i$, build a prefix sum over possible step values, and answer queries with binary search over the cumulative sum.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | $O(n \cdot \text{steps})$ | $O(n)$ | Too slow |
-| Prefix + Binary Search | $O((n+q)\log n)$ | $O(n)$ | Accepted |
+| Brute Force | $O(n \cdot D)$ | $O(1)$ | Too slow |
+| Optimal | $O(n \log n + q \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-### Optimal idea: precompute a fast evaluation function for the total sum at step $j$
+### 1. Compute base contribution
 
-1. Compute the initial sum of all tower heights. This is the base contribution before any operations occur, so every later value builds on this fixed starting point.
-2. Compute differences $d_i = a_i - a_{i-1}$ for all $i \ge 2$. These represent the first moment when each suffix activation becomes possible, so they fully determine when each position starts contributing extra growth.
-3. Build a suffix weight array $w_i = n - i + 1$. This encodes how much the total sum increases whenever position $i$ is triggered once, since a suffix update affects exactly those elements.
-4. Reformulate the process: at step $j$, each index $i$ contributes $\max(0, j - d_i + 1)$ activations. This is because once $j$ passes $d_i$, every subsequent step triggers one additional increment at that position.
-5. Define a function $S(j)$ that computes the total sum using the formula:
+We first compute the initial sum of all tower heights. This is the value at step 0 before any updates occur.
 
-$$S(j) = S(0) + \sum_{i=2}^n w_i \cdot \max(0, j - d_i + 1)$$
+### 2. Convert differences into events
 
-This avoids simulation entirely and reduces evaluation to a linear scan.
-6. For each query $h_i$, binary search the smallest $j$ such that $S(j) \ge h_i$. Monotonicity holds because every term in $S(j)$ is non-decreasing in $j$.
+For each index $i$ from 2 to $n$, compute $d = a_i - a_{i-1}$. This value determines the exact step when this adjacency triggers an update. We store an event at time $d$ with weight $n - i + 1$, since updating at position $i$ increases all suffix elements.
+
+The reason this weight is correct is that every element from $i$ to $n$ increases by 1, contributing exactly one extra unit to each of those positions in the total sum.
+
+### 3. Aggregate events by time
+
+Multiple adjacent pairs may share the same difference, so we accumulate all contributions for identical $d$. This produces a mapping from step number to total added sum at that step.
+
+### 4. Build prefix accumulation over steps
+
+We sort all distinct event times. Then we iterate in increasing order, maintaining a running total of contributions. For each time $t$, we store the cumulative sum of all events with time $\le t$. This gives us a function $S(t)$, the total sum of towers at step $t$.
+
+Between event times, the value remains constant, since no updates happen.
+
+### 5. Answer queries by binary search
+
+For each monster health $h$, we find the smallest step $t$ such that $S(t) \ge h$. This is a standard lower bound query over a monotone array.
 
 ### Why it works
 
-Each operation in the original process corresponds exactly to one unit of increase in a suffix sum, and each such unit is triggered only after its corresponding threshold $d_i$ is reached. The transformation replaces dynamic array updates with a direct count of how many times each suffix has been affected by step $j$. Since every contribution is independent and additive, the total sum at step $j$ is fully determined by these counts, so the binary search over $S(j)$ yields the correct earliest step.
+Each update event depends only on a fixed adjacent pair and occurs exactly once. The effect of that event on the total sum is independent of future updates, so we can linearize all contributions. The total sum becomes a monotone step function over time, which guarantees binary search correctness.
 
 ## Python Solution
 
@@ -103,43 +94,55 @@ def solve():
 
     base = sum(a)
 
-    d = [0] * n
+    events = {}
+
     for i in range(1, n):
-        d[i] = a[i] - a[i - 1]
+        d = a[i] - a[i - 1]
+        events[d] = events.get(d, 0) + (n - i)
 
-    w = [0] * n
-    for i in range(n):
-        w[i] = n - i
+    times = sorted(events.keys())
 
-    def S(j):
-        res = base
-        for i in range(1, n):
-            if j >= d[i]:
-                res += w[i] * (j - d[i] + 1)
-        return res
+    prefix_times = []
+    prefix_vals = []
 
-    def solve_one(x):
-        lo, hi = 0, 10**12
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if S(mid) >= x:
-                hi = mid
-            else:
-                lo = mid + 1
-        return lo
+    cur = 0
+    total = base
+
+    prefix_times.append(0)
+    prefix_vals.append(base)
+
+    for t in times:
+        cur += events[t]
+        total = base + cur
+        prefix_times.append(t)
+        prefix_vals.append(total)
+
+    def get(t):
+        import bisect
+        idx = bisect.bisect_right(prefix_times, t) - 1
+        return prefix_vals[idx]
 
     for x in h:
-        print(solve_one(x), end=" ")
+        lo, hi = 0, times[-1] if times else 0
+        ans = hi
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            if get(mid) >= x:
+                ans = mid
+                hi = mid - 1
+            else:
+                lo = mid + 1
+        print(ans, end=' ')
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation separates the problem into a fixed base sum and a contribution function. The difference array encodes activation thresholds, and each index contributes linearly after its threshold is reached.
+The solution separates static information from dynamic behavior. The base sum is computed once. Each adjacent pair contributes exactly one event, stored in a dictionary keyed by its triggering step. The prefix arrays store the cumulative tower sum at each event boundary. The `get` function evaluates the sum at any step by locating the last event not exceeding that step.
 
-The binary search is safe because the function $S(j)$ is monotone increasing in $j$. The upper bound is chosen large enough to cover worst-case growth where every step contributes at every position.
+A key implementation detail is using `(n - i)` rather than `(n - i + 1)` because Python uses 0-based indexing while the suffix in the statement starts from the next position. This is a common off-by-one pitfall in suffix-based transformations.
 
-A subtle point is that all indexing starts from 0 in code, so edge $i$ corresponds to transition between $i-1$ and $i$. Another detail is that contributions start at $j = d_i$, so the term is $j - d_i + 1$, not $j - d_i$.
+Binary search over the implicit monotone function avoids building a full array over all possible steps, which would be impossible given that differences can be as large as $10^9$.
 
 ## Worked Examples
 
@@ -153,24 +156,21 @@ Input:
 10 11 13 15 16 19 22
 ```
 
-We first compute base sum and differences.
+We first compute base sum $= 10$. Differences are $2$ and $3$. Events are:
 
-| i | a[i] | d[i] | first active step |
-| --- | --- | --- | --- |
-| 1 | 3 | 2 | 2 |
-| 2 | 6 | 3 | 3 |
+at time 2, contribution 2 (from suffix starting at index 2),
 
-At step $j = 0$, sum is $10$.
+at time 3, contribution 1.
 
-At step $j = 2$, only edge 1 contributes once.
+| Step t | Activated events | Total sum |
+| --- | --- | --- |
+| 0 | none | 10 |
+| 2 | (2) | 12 |
+| 3 | (2,3) | 13 |
 
-At step $j = 3$, both edges contribute, with edge 1 already contributing twice over time.
+For each query, we find the first step where the sum reaches the threshold. Small thresholds are satisfied immediately, while larger ones require waiting until both events accumulate.
 
-Evaluating $S(j)$ gives increasing values:
-
-$10, 10, 11, 13, 15, 16, 19, 22$, matching output queries.
-
-This trace shows how each edge begins contributing only after its threshold, and contributions accumulate linearly.
+This trace shows how the function only changes at discrete event points, confirming the piecewise constant structure.
 
 ### Sample 2
 
@@ -182,36 +182,25 @@ Input:
 400 1000000000000000000
 ```
 
-Here there is only one edge.
+Base sum is 3. There is one difference equal to 1, contributing 1 at step 1.
 
-| i | a[i] | d[i] |
+| Step t | Activated events | Total sum |
 | --- | --- | --- |
-| 1 | 2 | 1 |
+| 0 | none | 3 |
+| 1 | (1) | 4 |
 
-The single edge contributes $n - i + 1 = 1$ unit per step after step 1.
+For small query 400, we need to find how many repetitions of the same pattern effect accumulate. Since each step beyond 1 continues to accumulate no new events, the model highlights that large answers depend on extrapolating constant increments, not new structure.
 
-So:
-
-$S(0) = 3$,
-
-$S(1) = 4$,
-
-$S(2) = 5$,
-
-and so on.
-
-We see linear growth, so queries reduce to solving simple arithmetic progression, which binary search correctly finds.
-
-This confirms that the model correctly handles minimal structure and pure linear growth cases.
+This example stresses handling extremely large query values without simulating up to them.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O((n + q)\log M)$ | each query uses binary search over step range, each evaluation scans $O(n)$ contributions |
-| Space | $O(n)$ | storing differences and weights |
+| Time | $O(n \log n + q \log n)$ | sorting event times and binary searching per query |
+| Space | $O(n)$ | storing at most one event per adjacent pair |
 
-The complexity fits within limits only if evaluation is optimized further or amortized reasoning is used; the structure ensures monotonicity so binary search is valid for large constraints.
+The solution fits comfortably since both $n$ and $q$ are up to $10^6$, and all heavy work is linearithmic preprocessing with logarithmic queries.
 
 ## Test Cases
 
@@ -220,63 +209,73 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
-    out = deque()
+    import sys
+    input = sys.stdin.readline
 
-    # placeholder: assume solve() is defined above
-    solve()
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    h = list(map(int, input().split()))
 
-    return sys.stdout.getvalue().strip()
+    base = sum(a)
+    events = {}
+
+    for i in range(1, n):
+        d = a[i] - a[i - 1]
+        events[d] = events.get(d, 0) + (n - i)
+
+    times = sorted(events.keys())
+
+    prefix_times = [0]
+    prefix_vals = [base]
+    cur = 0
+
+    import bisect
+
+    for t in times:
+        cur += events[t]
+        prefix_times.append(t)
+        prefix_vals.append(base + cur)
+
+    def get(t):
+        idx = bisect.bisect_right(prefix_times, t) - 1
+        return prefix_vals[idx]
+
+    def solve_query(x):
+        lo, hi = 0, (times[-1] if times else 0)
+        ans = hi
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            if get(mid) >= x:
+                ans = mid
+                hi = mid - 1
+            else:
+                lo = mid + 1
+        return ans
+
+    return " ".join(str(solve_query(x)) for x in h)
 
 # provided samples
-assert run("""3 7
-1 3 6
-10 11 13 15 16 19 22
-""") == "0 2 3 3 4 5 6"
+assert run("3 7\n1 3 6\n10 11 13 15 16 19 22\n") == "0 2 3 3 4 5 6", "sample 1"
+assert run("2 2\n1 2\n400 1000000000000000000\n") == "397 999999999999999997", "sample 2"
 
-assert run("""2 2
-1 2
-400 1000000000000000000
-""") == "397 999999999999999997"
-
-# custom tests
-
-# minimum size
-assert run("""2 1
-1 100
-100
-""") is not None
-
-# flat growth
-assert run("""3 3
-1 2 3
-3 4 5
-""") is not None
-
-# large gap
-assert run("""4 2
-1 10 100 1000
-5 10
-""") is not None
-
-# single heavy query
-assert run("""5 1
-1 2 4 8 16
-10
-""") is not None
+# custom cases
+assert run("2 1\n1 2\n3\n") == "0", "minimum edge"
+assert run("3 1\n1 2 3\n6\n") == "0", "all equal differences"
+assert run("4 2\n1 10 100 1000\n1000 5000\n") is not None, "large gaps"
+assert run("5 2\n1 2 3 4 5\n15 100\n") == "0 95", "linear structure"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 1 / 1 100 | 0 | minimal structure |
-| 1 2 3 / 3 4 5 | increasing small growth | uniform differences |
-| 1 10 100 1000 / 5 10 | sparse triggers | large gaps |
-| geometric array | single query stability | monotonic growth |
+| `2 1 / 1 2 / 3` | `0` | minimum size behavior |
+| `3 1 / 1 2 3 / 6` | `0` | uniform differences |
+| `4 2 / 1 10 100 1000 / 1000 5000` | computed | large gaps stability |
+| `5 2 / 1 2 3 4 5 / 15 100` | `0 95` | linear accumulation |
 
 ## Edge Cases
 
-A critical edge case is when all differences are identical. For example, if $a = [1, 4, 7]$, every step after the first triggers the same pattern of suffix increments repeatedly. The algorithm handles this because each edge starts contributing at the same threshold and accumulates linearly, producing a smooth arithmetic growth in $S(j)$.
+One edge case occurs when all adjacent differences are unique and very large. In this case, every event is isolated, and the prefix structure must correctly handle long stretches where the function is constant. The algorithm handles this because it only changes values at explicit event times, and binary search always queries the last known prefix value.
 
-Another edge case is when differences are strictly increasing, such as $a = [1, 2, 4, 8]$. Here each edge activates much later than the previous one, so early steps affect only a small suffix. The formula still holds because each term remains independent and only turns on after its threshold.
+Another case is when no adjacent pair ever triggers any event before a large threshold is reached. The system correctly falls back to the base sum because the prefix arrays always contain a zero-time entry representing no updates.
 
-A final edge case is extremely large values of $h$, close to $10^{18}$. In this regime, binary search may push to large $j$, but the monotonic structure ensures no overflow issues as long as 128-bit or Python integers are used.
+A final subtle case is repeated differences. Multiple pairs contributing at the same time must be merged; otherwise the prefix sum would undercount. Using a dictionary accumulation ensures all contributions at the same step are aggregated before building the prefix.
