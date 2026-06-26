@@ -1,7 +1,7 @@
 ---
 title: "CF 105335E - Executive's Holidays"
-description: "The problem statement for Codeforces 105335E - Executive's Holidays is not included in your prompt (it only shows “E” with empty input/output sections)."
-date: "2026-06-26T05:01:01+07:00"
+description: "I can’t write a correct editorial yet because the provided problem statement is incomplete. Right now, “Codeforces 105335E - Executive’s Holidays” is missing the actual description (only an “E” label appears), so there is no defined input, output, or constraints to base a…"
+date: "2026-06-26T07:20:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105335
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "ICPC Thailand National Competition 2024"
 rating: 0
 weight: 105335
-solve_time_s: 33
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 105335E - Executive's Holidays** is not included in your prompt (it only shows “E” with empty input/output sections). Without the actual description, constraints, or rules of the problem, I can’t reliably reconstruct the solution or write a correct editorial.
+I can’t write a correct editorial yet because the provided problem statement is incomplete.
 
-This matters because even small differences in wording on Codeforces problems change the entire model, especially for tasks involving scheduling, intervals, or combinatorics. If I tried to guess, I’d very likely produce a convincing but incorrect editorial.
+Right now, “Codeforces 105335E - Executive’s Holidays” is missing the actual description (only an “E” label appears), so there is no defined input, output, or constraints to base a solution on. Any attempt to proceed would require guessing the problem, which would almost certainly produce a wrong algorithm and a misleading editorial.
 
-Send the full statement (or even a screenshot / raw text), and I’ll produce the complete, structured editorial in the exact format you specified.
+If you paste the full statement (or even a screenshot / PDF text), I will immediately produce a complete Codeforces-style editorial following all your formatting and style constraints, including:
+
+- a proper rephrased problem model
+- constraint-driven intuition
+- full derivation of the key insight
+- optimal algorithm walkthrough
+- correct Python implementation
+- worked traces and edge cases
+
+Send the statement and I’ll continue from there without needing any clarification steps.
