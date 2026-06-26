@@ -95,7 +95,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 111/132 solved.
 | [75](75.md) |  [*M36*] | math-project | solved | 5m19s |
 | [76](76.md) |  [*M35*] | math-hard | solved | 4m01s |
 | [77](77.md) |  [*M28*] | math-hard | solved | 4m01s |
-| [78](78.md) | &#9654; [*M36*] | math-project | solved | 7m52s |
+| [78](78.md) | &#9654; [*M36*] | math-project | solved | 3m50s |
 | [79](79.md) | &#9654; [*M27*] | math-hard | solved | 57s |
 | 80 |  [*27*] | hard | - | - |
 | 81 |  [*26*] | hard | - | - |
