@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2106 contests, 13976 problems, 7802 verified."
+description: "Codeforces problem solutions with full editorials. 2107 contests, 13984 problems, 7804 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2106 contests, 13976 problems, 7802 verified.**
+**2107 contests, 13984 problems, 7804 verified.**
 
 ## Unknown — 274 contests, 2377 problems, 1610 verified
 
@@ -1852,7 +1852,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 256 contests, 2282 problems, 1204 verified
+## 2025 — 257 contests, 2290 problems, 1206 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1976,6 +1976,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
+| [105689](105689/) | [UTPC Contest 1-29-25 Div. 2 (Beginner)](https://codeforces.com/contest/105689) | 8 | 2/8 | Div. 2 | - |
 | [105690](105690/) | [UTPC Contest 1-29-25 Div. 1 (Advanced)](https://codeforces.com/contest/105690) | 8 | 7/8 | Div. 1 | - |
 | [105692](105692/) | [Baozii Cup 1](https://codeforces.com/contest/105692) | 13 | 5/13 | Special | - |
 | [105705](105705/) | [AlgoChief Sprint Round 3](https://codeforces.com/contest/105705) | 4 | 2/4 | Special | - |
