@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2184 contests, 14483 problems, 7919 verified."
+description: "Codeforces problem solutions with full editorials. 2185 contests, 14483 problems, 7919 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2184 contests, 14483 problems, 7919 verified.**
+**2185 contests, 14483 problems, 7919 verified.**
 
-## Unknown — 323 contests, 2619 problems, 1667 verified
+## Unknown — 324 contests, 2619 problems, 1667 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105194](105194/) | [Муниципальный этап ВсОШ по информатике, Москва, 2021](https://codeforces.com/contest/105194) | 0 | 0/0 | Special | - |
 | [105195](105195/) | [Муниципальный этап ВсОШ по информатике, Москва, 2020](https://codeforces.com/contest/105195) | 0 | 0/0 | Special | - |
 | [105204](105204/) | [ВКОШП.Junior 2024](https://codeforces.com/contest/105204) | 13 | 7/13 | Special | - |
 | [105206](105206/) | [VitebskOpen Junior](https://codeforces.com/contest/105206) | 6 | 2/6 | Special | - |
