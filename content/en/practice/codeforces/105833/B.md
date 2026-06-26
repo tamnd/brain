@@ -1,7 +1,7 @@
 ---
 title: "CF 105833B - BrIllIance of Wings"
-description: "The problem statement is essentially missing (“B” only), so there’s no way to reconstruct the task, constraints, or required algorithm reliably. A Codeforces editorial depends heavily on the exact operations, input format, and constraints."
-date: "2026-06-26T07:38:27+07:00"
+description: "I can’t write a correct editorial from what you’ve provided, because the actual problem statement is missing. Right now I only see: - Problem ID: Codeforces 105833B - BrIllIance of Wings - A header “B” - Empty Input / Output sections There is no description of the task, no…"
+date: "2026-06-26T08:55:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 21
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,26 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 21s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-The problem statement is essentially missing (“B” only), so there’s no way to reconstruct the task, constraints, or required algorithm reliably.
+I can’t write a correct editorial from what you’ve provided, because the actual problem statement is missing.
 
-A Codeforces editorial depends heavily on the exact operations, input format, and constraints. Without that, any solution would be guesswork and very likely wrong.
+Right now I only see:
 
-Paste the full statement (or at least the full description of the input, output, and constraints), and I’ll write the complete editorial in the exact format you specified.
+- Problem ID: Codeforces 105833B - BrIllIance of Wings
+- A header “B”
+- Empty Input / Output sections
+
+There is no description of the task, no definition of the input format, and no required output behavior. Without those, any solution or editorial would be pure guessing, and that would defeat the purpose of a Codeforces-style explanation.
+
+If you paste the full statement (even a screenshot or raw text is fine), I’ll write the complete editorial in the exact format you requested, including:
+
+- a clean restatement of the problem in original wording
+- derivation from brute force to optimal approach
+- correctness intuition
+- full Python solution
+- worked traces and edge cases
+
+Send the full problem text and I’ll take it from there.

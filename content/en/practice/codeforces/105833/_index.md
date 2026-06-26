@@ -8,21 +8,21 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 9
-total_solve_s: 508
+total_solve_s: 544
 contest_year: 2025
-date: "2026-06-26T07:38:27+07:00"
+date: "2026-06-26T08:56:10+07:00"
 weight: 105833
 draft: false
 ---
 
 # [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833)
 
-Special | 12 problems | 9/12 verified | Difficulty - | 8m 28s
+Special | 12 problems | 9/12 verified | Difficulty - | 9m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Anti-Diagonal Game](https://codeforces.com/problemset/problem/105833/A) |  |  |  | 52s | ✓ |
-| [B](B/) | [BrIllIance of Wings](https://codeforces.com/problemset/problem/105833/B) |  |  |  | 21s |  |
+| [B](B/) | [BrIllIance of Wings](https://codeforces.com/problemset/problem/105833/B) |  |  |  | 25s |  |
 | [C](C/) | [Chimchar Defense](https://codeforces.com/problemset/problem/105833/C) |  |  |  | 1m 2s | ✓ |
 | [D](D/) | [Double String](https://codeforces.com/problemset/problem/105833/D) |  |  |  | 57s | ✓ |
 | [E](E/) | [Energy Extraction](https://codeforces.com/problemset/problem/105833/E) |  |  |  | 45s | ✓ |
@@ -30,6 +30,6 @@ Special | 12 problems | 9/12 verified | Difficulty - | 8m 28s
 | [G](G/) | [Game of Two Choices](https://codeforces.com/problemset/problem/105833/G) |  |  |  | 42s | ✓ |
 | [H](H/) | [Help Eevee Pls Eh](https://codeforces.com/problemset/problem/105833/H) |  |  |  | 33s | ✓ |
 | [I](I/) | [Independent Inversions](https://codeforces.com/problemset/problem/105833/I) |  |  |  | 43s | ✓ |
-| [J](J/) | [Job Interview](https://codeforces.com/problemset/problem/105833/J) |  |  |  | 23s |  |
+| [J](J/) | [Job Interview](https://codeforces.com/problemset/problem/105833/J) |  |  |  | 1m 1s |  |
 | [K](K/) | [Kanto To Johto](https://codeforces.com/problemset/problem/105833/K) |  |  |  | 47s | ✓ |
-| [L](L/) | [Last Goal](https://codeforces.com/problemset/problem/105833/L) |  |  |  | 37s |  |
+| [L](L/) | [Last Goal](https://codeforces.com/problemset/problem/105833/L) |  |  |  | 31s |  |

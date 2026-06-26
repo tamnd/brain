@@ -1,7 +1,7 @@
 ---
 title: "CF 105833L - Last Goal"
-description: "The statement you provided is incomplete: There is no actual description of the problem, inputs, outputs, or constraints. Without that, it is impossible to reconstruct what “Last Goal” asks, and any editorial would be pure fabrication rather than a meaningful explanation."
-date: "2026-06-26T07:37:05+07:00"
+description: "The statement for Codeforces 105833L is not actually present in your prompt, only the placeholder “L”. Without the actual problem description (input format, output format, and what needs to be computed), it is impossible to reconstruct a correct solution or write a meaningful…"
+date: "2026-06-26T08:55:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 37
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,16 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The statement you provided is incomplete:
+The statement for Codeforces 105833L is not actually present in your prompt, only the placeholder “L”. Without the actual problem description (input format, output format, and what needs to be computed), it is impossible to reconstruct a correct solution or write a meaningful editorial.
 
-```
-L
-```
-
-There is no actual description of the problem, inputs, outputs, or constraints. Without that, it is impossible to reconstruct what “Last Goal” asks, and any editorial would be pure fabrication rather than a meaningful explanation.
-
-If you paste the full problem statement (or even just the input/output description and constraints), I can write the complete Codeforces-style editorial in the format you specified.
+If you paste the full problem statement, I can immediately produce a complete Codeforces-style editorial following all your formatting constraints, including intuition, optimal solution, proof sketch, code, and edge-case analysis.
