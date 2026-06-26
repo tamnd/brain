@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2117 contests, 14065 problems, 7824 verified."
+description: "Codeforces problem solutions with full editorials. 2117 contests, 14066 problems, 7825 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2117 contests, 14065 problems, 7824 verified.**
+**2117 contests, 14066 problems, 7825 verified.**
 
-## Unknown — 278 contests, 2406 problems, 1616 verified
+## Unknown — 278 contests, 2406 problems, 1617 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -263,7 +263,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 12 | 12/12 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 3 | 1/3 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 6 | 2/6 | Special | - |
-| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 11 | 8/11 | Special | - |
+| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 11 | 9/11 | Special | - |
 | [106373](106373/) | [2024-2025 Московская олимпиада школьников по информатике, 10-11 класс](https://codeforces.com/contest/106373) | 12 | 4/12 | Special | - |
 | [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 4 | 4/4 | Special | - |
 | [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 10 | 9/10 | Special | - |
@@ -1859,7 +1859,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 260 contests, 2306 problems, 1211 verified
+## 2025 — 260 contests, 2307 problems, 1211 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2013,7 +2013,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105811](105811/) | [UT Open 2025](https://codeforces.com/contest/105811) | 13 | 5/13 | Special | - |
 | [105813](105813/) | [Rutgers University Programming Contest Spring 2025](https://codeforces.com/contest/105813) | 14 | 10/14 | Special | - |
 | [105831](105831/) | [4inazezContest](https://codeforces.com/contest/105831) | 4 | 4/4 | Special | - |
-| [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 12 | 10/12 | Special | - |
+| [105833](105833/) | [NUS CS3233 Final Team Contest 2025](https://codeforces.com/contest/105833) | 13 | 10/13 | Special | - |
 | [105838](105838/) | [The 14th Huazhong Agricultural University Programming Contest](https://codeforces.com/contest/105838) | 13 | 13/13 | Special | - |
 | [105846](105846/) | [TheForces Round #42 (Ultimate-Answer-Forces)](https://codeforces.com/contest/105846) | 6 | 2/6 | Special | - |
 | [105847](105847/) | [CPC External Problemset](https://codeforces.com/contest/105847) | 1 | 1/1 | Special | - |
