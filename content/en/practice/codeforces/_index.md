@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2176 contests, 14420 problems, 7899 verified."
+description: "Codeforces problem solutions with full editorials. 2177 contests, 14424 problems, 7899 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2176 contests, 14420 problems, 7899 verified.**
+**2177 contests, 14424 problems, 7899 verified.**
 
 ## Unknown — 320 contests, 2600 problems, 1658 verified
 
@@ -1695,7 +1695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 218 contests, 1851 problems, 880 verified
+## 2024 — 219 contests, 1855 problems, 880 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1829,6 +1829,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105213](105213/) | [Vitebsk Open 2024 day 2](https://codeforces.com/contest/105213) | 4 | 0/4 | Special | - |
 | [105222](105222/) | [The 2024 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105222) | 12 | 9/12 | Special | - |
 | [105227](105227/) | [CPG Training Contest - 1](https://codeforces.com/contest/105227) | 6 | 1/6 | Special | - |
 | [105229](105229/) | [The 2024 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/105229) | 13 | 12/13 | Special | - |
