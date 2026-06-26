@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2094 contests, 13903 problems, 7766 verified."
+description: "Codeforces problem solutions with full editorials. 2095 contests, 13908 problems, 7767 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2094 contests, 13903 problems, 7766 verified.**
+**2095 contests, 13908 problems, 7767 verified.**
 
-## Unknown — 267 contests, 2345 problems, 1596 verified
+## Unknown — 268 contests, 2350 problems, 1597 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -104,6 +104,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105699](105699/) | [OCPC 2024 Winter, Day 8: Borys Minaiev Contest 1 (The 3rd Universal Cup. Stage 27: London)](https://codeforces.com/contest/105699) | 13 | 13/13 | Special | - |
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
+| [105719](105719/) | [Innopolis Open 2024-2025. Final round](https://codeforces.com/contest/105719) | 5 | 1/5 | Special | - |
 | [105739](105739/) | [Олимпиада 1С 2025, предметный тур](https://codeforces.com/contest/105739) | 5 | 0/5 | Special | - |
 | [105746](105746/) | [Bangladesh Olympiad in Informatics 2025 National Round Day 1](https://codeforces.com/contest/105746) | 3 | 3/3 | Special | - |
 | [105747](105747/) | [Bangladesh Olympiad in Informatics 2025 Preliminary Round](https://codeforces.com/contest/105747) | 5 | 3/5 | Special | - |
