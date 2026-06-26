@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2135 contests, 14186 problems, 7876 verified."
+description: "Codeforces problem solutions with full editorials. 2136 contests, 14186 problems, 7876 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2135 contests, 14186 problems, 7876 verified.**
+**2136 contests, 14186 problems, 7876 verified.**
 
-## Unknown — 290 contests, 2477 problems, 1649 verified
+## Unknown — 291 contests, 2477 problems, 1649 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -88,6 +88,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105586](105586/) | [“华为杯” 2024 年广东工业大学 ACM 新生程序设计竞赛（决赛）](https://codeforces.com/contest/105586) | 14 | 14/14 | Special | - |
 | [105591](105591/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Нижегородская область, 2024](https://codeforces.com/contest/105591) | 5 | 5/5 | Special | - |
 | [105592](105592/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Нижегородская область, 2024](https://codeforces.com/contest/105592) | 5 | 5/5 | Special | - |
+| [105597](105597/) | [Школьный этап ВcОШ по информатике 9-11 класс 2024 (3 группа регионов)](https://codeforces.com/contest/105597) | 0 | 0/0 | Special | - |
 | [105599](105599/) | [Школьный этап ВcОШ по информатике 9-11 класс 2024 (4 группа регионов)](https://codeforces.com/contest/105599) | 0 | 0/0 | Special | - |
 | [105600](105600/) | [Municipal stage of ROI 2024, grades 9-11, Vologda and Krasnodar regions](https://codeforces.com/contest/105600) | 5 | 3/5 | Special | - |
 | [105602](105602/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Пермский край, 2024](https://codeforces.com/contest/105602) | 5 | 2/5 | Special | - |
