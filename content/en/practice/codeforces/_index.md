@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2131 contests, 14170 problems, 7867 verified."
+description: "Codeforces problem solutions with full editorials. 2132 contests, 14175 problems, 7869 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2131 contests, 14170 problems, 7867 verified.**
+**2132 contests, 14175 problems, 7869 verified.**
 
-## Unknown — 286 contests, 2461 problems, 1640 verified
+## Unknown — 287 contests, 2466 problems, 1642 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -88,6 +88,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105586](105586/) | [“华为杯” 2024 年广东工业大学 ACM 新生程序设计竞赛（决赛）](https://codeforces.com/contest/105586) | 14 | 14/14 | Special | - |
 | [105591](105591/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Нижегородская область, 2024](https://codeforces.com/contest/105591) | 5 | 5/5 | Special | - |
 | [105592](105592/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Нижегородская область, 2024](https://codeforces.com/contest/105592) | 5 | 5/5 | Special | - |
+| [105603](105603/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Пермский край, 2024](https://codeforces.com/contest/105603) | 5 | 2/5 | Special | - |
 | [105608](105608/) | [Олимпиада 1С, отборочный тур 2024-2025](https://codeforces.com/contest/105608) | 5 | 5/5 | Special | - |
 | [105613](105613/) | [Qualifying round of the IX regional Olympiad for the Governors Prize 2024, grades 9-10, Vologda region](https://codeforces.com/contest/105613) | 5 | 2/5 | Special | - |
 | [105614](105614/) | [Final round of the IX regional Olympiad for the Governors Prize 2024, grades 9-10, Vologda region](https://codeforces.com/contest/105614) | 5 | 1/5 | Special | - |
