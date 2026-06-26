@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2180 contests, 14447 problems, 7908 verified."
+description: "Codeforces problem solutions with full editorials. 2181 contests, 14460 problems, 7909 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2180 contests, 14447 problems, 7908 verified.**
+**2181 contests, 14460 problems, 7909 verified.**
 
 ## Unknown — 322 contests, 2619 problems, 1667 verified
 
@@ -1697,7 +1697,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 220 contests, 1859 problems, 880 verified
+## 2024 — 221 contests, 1872 problems, 881 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1831,6 +1831,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105201](105201/) | [IME++ Open Contest 2024](https://codeforces.com/contest/105201) | 13 | 1/13 | Special | - |
 | [105212](105212/) | [Vitebsk Open 2024 day 1](https://codeforces.com/contest/105212) | 4 | 0/4 | Special | - |
 | [105213](105213/) | [Vitebsk Open 2024 day 2](https://codeforces.com/contest/105213) | 4 | 0/4 | Special | - |
 | [105222](105222/) | [The 2024 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105222) | 12 | 9/12 | Special | - |
