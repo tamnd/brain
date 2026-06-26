@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2139 contests, 14203 problems, 7880 verified."
+description: "Codeforces problem solutions with full editorials. 2140 contests, 14209 problems, 7880 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2139 contests, 14203 problems, 7880 verified.**
+**2140 contests, 14209 problems, 7880 verified.**
 
 ## Unknown — 293 contests, 2477 problems, 1649 verified
 
@@ -1668,7 +1668,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 208 contests, 1757 problems, 870 verified
+## 2024 — 209 contests, 1763 problems, 870 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1865,6 +1865,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105581](105581/) | [Open Udmurtia Junior Programming Contest 2018](https://codeforces.com/contest/105581) | 11 | 11/11 | Special | - |
 | [105582](105582/) | [Ural Championship 2017](https://codeforces.com/contest/105582) | 13 | 13/13 | Special | - |
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 12 | 12/12 | Special | - |
+| [105585](105585/) | [Когнитивные технологии 2024-2025. Второй отбор](https://codeforces.com/contest/105585) | 6 | 0/6 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 13 | 13/13 | ICPC/IOI | - |
 | [105593](105593/) | [CAMA 2024](https://codeforces.com/contest/105593) | 17 | 4/17 | Special | - |
 | [105605](105605/) | [Муниципальный этап ВсОШ по информатике в Липецкой области 2024 (9-11 классы)](https://codeforces.com/contest/105605) | 0 | 0/0 | Special | - |
