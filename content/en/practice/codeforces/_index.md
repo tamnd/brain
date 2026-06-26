@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2128 contests, 14160 problems, 7864 verified."
+description: "Codeforces problem solutions with full editorials. 2129 contests, 14165 problems, 7865 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2128 contests, 14160 problems, 7864 verified.**
+**2129 contests, 14165 problems, 7865 verified.**
 
-## Unknown — 284 contests, 2451 problems, 1637 verified
+## Unknown — 285 contests, 2456 problems, 1638 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -89,6 +89,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105591](105591/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Нижегородская область, 2024](https://codeforces.com/contest/105591) | 5 | 5/5 | Special | - |
 | [105592](105592/) | [Муниципальный этап ВсОШ по информатике, 9-11 классы, Нижегородская область, 2024](https://codeforces.com/contest/105592) | 5 | 5/5 | Special | - |
 | [105608](105608/) | [Олимпиада 1С, отборочный тур 2024-2025](https://codeforces.com/contest/105608) | 5 | 5/5 | Special | - |
+| [105614](105614/) | [Final round of the IX regional Olympiad for the Governors Prize 2024, grades 9-10, Vologda region](https://codeforces.com/contest/105614) | 5 | 1/5 | Special | - |
 | [105617](105617/) | [2024-2025 Russia Team Open, High School Programming Contest (VKOSHP XXV)](https://codeforces.com/contest/105617) | 12 | 9/12 | Special | - |
 | [105624](105624/) | [Интернет-олимпиады, Сезон 2024-2025, Третья командная олимпиада](https://codeforces.com/contest/105624) | 11 | 5/11 | Special | - |
 | [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 13 | 13/13 | Special | - |
