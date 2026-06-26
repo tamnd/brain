@@ -8,7 +8,7 @@ section_title: "Combinatorial Properties of Permutations"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 501
+weight: 5010000
 draft: false
 ---
 
@@ -19,6 +19,6 @@ Exercises from [TAOCP Volume 3](../) Section 5.1: 1/4 solved.
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | 1 |  [**] |  | - | - |
-| [2](02.md) |  [**] |  | verified | 4m32s |
+| [2](02.md) |  [**] |  | verified | 5m30s |
 | 3 |  [**] |  | - | - |
 | 4 |  [**] |  | - | - |

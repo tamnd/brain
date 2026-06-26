@@ -8,7 +8,7 @@ section_title: "Sorting by Selection"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50203
+weight: 5020300
 draft: false
 ---
 
@@ -18,13 +18,13 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.3: 15/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 1m16s |
-| [2](02.md) |  [**] |  | verified | 1m27s |
-| [3](03.md) |  [**] |  | solved | 7m38s |
-| [4](04.md) |  [**] |  | verified | 2m56s |
-| [5](05.md) |  [**] |  | solved | 6m05s |
-| [6](06.md) |  [**] |  | verified | 3m39s |
-| [7](07.md) |  [**] |  | verified | 1m42s |
+| [1](01.md) |  [**] |  | verified | 1m01s |
+| [2](02.md) |  [**] |  | solved | 24s |
+| [3](03.md) |  [**] |  | solved | 2m45s |
+| [4](04.md) |  [**] |  | solved | 3m18s |
+| [5](05.md) |  [**] |  | solved | 3m25s |
+| [6](06.md) |  [**] |  | verified | 1m54s |
+| [7](07.md) |  [**] |  | solved | 1m25s |
 | [8](08.md) |  [**] |  | verified | 4m45s |
 | [9](09.md) |  [**] |  | verified | 2m26s |
 | [10](10.md) |  [*20*] | medium | verified | 2m10s |
