@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2154 contests, 14290 problems, 7891 verified."
+description: "Codeforces problem solutions with full editorials. 2155 contests, 14294 problems, 7891 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2154 contests, 14290 problems, 7891 verified.**
+**2155 contests, 14294 problems, 7891 verified.**
 
-## Unknown — 303 contests, 2517 problems, 1655 verified
+## Unknown — 304 contests, 2521 problems, 1655 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -82,6 +82,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105494](105494/) | [2024-2025 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/105494) | 9 | 9/9 | ICPC/IOI | - |
 | [105505](105505/) | [2024-2025 ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/105505) | 12 | 12/12 | ICPC/IOI | - |
 | [105507](105507/) | [2024-2025 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 24, Саратовский отборочный этап)](https://codeforces.com/contest/105507) | 12 | 12/12 | Special | - |
+| [105522](105522/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Московская область, 2022](https://codeforces.com/contest/105522) | 4 | 0/4 | Special | - |
 | [105523](105523/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Московская область, 2021](https://codeforces.com/contest/105523) | 4 | 0/4 | Special | - |
 | [105524](105524/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Московская область, 2020](https://codeforces.com/contest/105524) | 4 | 1/4 | Special | - |
 | [105525](105525/) | [Муниципальный этап ВсОШ по информатике, 7-8 классы, Московская область, 2018](https://codeforces.com/contest/105525) | 0 | 0/0 | Special | - |
