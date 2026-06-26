@@ -1,7 +1,7 @@
 ---
 title: "CF 105692J - Pseudo Merge Sort"
-description: "Sure-please paste the Codeforces problem (statement, constraints, and any examples). Once you do, I’ll write a full competitive programming editorial including: - Key observations / intuition - Step-by-step derivation of the solution - Correct algorithm explanation - Edge cases…"
-date: "2026-06-26T08:09:30+07:00"
+description: "I can’t reliably write a correct Codeforces editorial for 105692J - Pseudo Merge Sort without the actual problem statement."
+date: "2026-06-26T08:49:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105692
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "Baozii Cup 1"
 rating: 0
 weight: 105692
-solve_time_s: 23
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,20 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 23s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-Sure-please paste the Codeforces problem (statement, constraints, and any examples).
+I can’t reliably write a correct Codeforces editorial for **105692J - Pseudo Merge Sort** without the actual problem statement.
 
-Once you do, I’ll write a full competitive programming editorial including:
+This is one of those cases where guessing would almost certainly invent the wrong operations or constraints, and then the entire solution, reasoning, and complexity analysis would be misleading.
 
-- Key observations / intuition
-- Step-by-step derivation of the solution
-- Correct algorithm explanation
-- Edge cases
-- Time & space complexity
-- (If useful) alternative approaches
-- Clean pseudocode or implementation outline
-
-If you also want a specific style (short CF blog, very detailed tutorial, or Div1-level deep dive), tell me.
+If you paste the full statement (or even just the key parts: what the array operation is, what “pseudo merge sort” does, and what needs to be computed), I can produce the full senior-level editorial in the exact format you requested, including the derivation, correctness argument, code, and edge-case analysis.

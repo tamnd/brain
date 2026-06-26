@@ -1,7 +1,7 @@
 ---
 title: "CF 105692I - Expected Value"
-description: "I can’t write a correct Codeforces editorial for “105692I - Expected Value” because the actual problem statement is missing. Right now there’s no description of: what the process is, what randomness is involved, what needs to be computed, or what the constraints are."
-date: "2026-06-26T08:09:33+07:00"
+description: "I can’t produce a correct editorial yet because the actual problem content is missing. Right now I only have the title “Codeforces 105692I - Expected Value”, but no definition of the random process, input format, or what exactly is being computed."
+date: "2026-06-26T08:49:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105692
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "Baozii Cup 1"
 rating: 0
 weight: 105692
-solve_time_s: 27
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,16 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial for “105692I - Expected Value” because the actual problem statement is missing.
+I can’t produce a correct editorial yet because the actual problem content is missing.
 
-Right now there’s no description of:
+Right now I only have the title “Codeforces 105692I - Expected Value”, but no definition of the random process, input format, or what exactly is being computed. For expected value problems, those details completely determine the solution technique, whether it is linearity of expectation, DP over states, probability convolution, or something else entirely.
 
-what the process is, what randomness is involved, what needs to be computed, or what the constraints are. Without that, any solution would be guesswork, and for expected value problems especially, small misunderstandings completely change the intended DP or combinatorics.
-
-If you paste the full statement (even raw text or screenshots), I’ll produce a complete editorial in exactly the style you requested: full derivation, brute force to optimal transition, correctness argument, worked traces, and code.
-
-Send it over and I’ll continue from there.
+If you paste the full statement (or even just the core description of the process and constraints), I’ll write the full editorial in the exact style you requested, including derivation, optimal solution, walkthrough, and proofs.
