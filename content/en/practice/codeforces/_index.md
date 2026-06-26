@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2134 contests, 14185 problems, 7874 verified."
+description: "Codeforces problem solutions with full editorials. 2134 contests, 14186 problems, 7875 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2134 contests, 14185 problems, 7874 verified.**
+**2134 contests, 14186 problems, 7875 verified.**
 
-## Unknown — 289 contests, 2476 problems, 1647 verified
+## Unknown — 289 contests, 2477 problems, 1648 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -95,7 +95,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105613](105613/) | [Qualifying round of the IX regional Olympiad for the Governors Prize 2024, grades 9-10, Vologda region](https://codeforces.com/contest/105613) | 5 | 2/5 | Special | - |
 | [105614](105614/) | [Final round of the IX regional Olympiad for the Governors Prize 2024, grades 9-10, Vologda region](https://codeforces.com/contest/105614) | 5 | 1/5 | Special | - |
 | [105617](105617/) | [2024-2025 Russia Team Open, High School Programming Contest (VKOSHP XXV)](https://codeforces.com/contest/105617) | 12 | 9/12 | Special | - |
-| [105624](105624/) | [Интернет-олимпиады, Сезон 2024-2025, Третья командная олимпиада](https://codeforces.com/contest/105624) | 11 | 5/11 | Special | - |
+| [105624](105624/) | [Интернет-олимпиады, Сезон 2024-2025, Третья командная олимпиада](https://codeforces.com/contest/105624) | 12 | 6/12 | Special | - |
 | [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 13 | 13/13 | Special | - |
 | [105633](105633/) | [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633) | 12 | 12/12 | ICPC/IOI | - |
 | [105638](105638/) | [GPC 2024](https://codeforces.com/contest/105638) | 13 | 13/13 | Special | - |

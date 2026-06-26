@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 9
-total_solve_s: 468
-date: "2026-06-20T18:04:22+07:00"
+total_solve_s: 456
+date: "2026-06-20T20:35:51+07:00"
 weight: 106369
 draft: false
 ---
 
 # [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369)
 
-Special | 11 problems | 9/11 verified | Difficulty - | 7m 48s
+Special | 11 problems | 9/11 verified | Difficulty - | 7m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,5 @@ Special | 11 problems | 9/11 verified | Difficulty - | 7m 48s
 | [G](G/) | [Not So Close](https://codeforces.com/problemset/problem/106369/G) |  |  |  | 37s | ✓ |
 | [H](H/) | [The Duel of Smokin' Joe](https://codeforces.com/problemset/problem/106369/H) |  |  |  | 50s | ✓ |
 | [I](I/) | [Drake Robbing](https://codeforces.com/problemset/problem/106369/I) |  |  |  | 45s | ✓ |
-| [J](J/) | [Grow Measure Cut Repeat](https://codeforces.com/problemset/problem/106369/J) |  |  |  | 30s |  |
-| [K](K/) | [Bad Bunny](https://codeforces.com/problemset/problem/106369/K) |  |  |  | 29s |  |
+| [J](J/) | [Grow Measure Cut Repeat](https://codeforces.com/problemset/problem/106369/J) |  |  |  | 17s |  |
+| [K](K/) | [Bad Bunny](https://codeforces.com/problemset/problem/106369/K) |  |  |  | 30s |  |

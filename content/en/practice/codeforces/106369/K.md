@@ -1,7 +1,7 @@
 ---
 title: "CF 106369K - Bad Bunny"
-description: "I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. It only contains the title, \"Bad Bunny\", and the word \"rope\", while the input format, output format, constraints, and required task are missing."
-date: "2026-06-26T18:04:22+07:00"
+description: "Sure - please paste the full problem statement (or link / screenshot text), and if possible also include: - constraints - input/output format - any samples - whether you want the editorial in a specific Codeforces style (short / beginner-friendly / very detailed with proofs)…"
+date: "2026-06-26T20:10:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106369
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2023 UCF Local Programming Contest"
 rating: 0
 weight: 106369
-solve_time_s: 29
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,39 +18,15 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial for this problem because the prompt does not include the actual problem statement. It only contains the title, "Bad Bunny", and the word "rope", while the input format, output format, constraints, and required task are missing.
+Sure - please paste the full problem statement (or link / screenshot text), and if possible also include:
 
-A complete editorial requires knowing at least:
+- constraints
+- input/output format
+- any samples
+- whether you want the editorial in a specific Codeforces style (short / beginner-friendly / very detailed with proofs)
 
-- The exact problem description.
-- The input format.
-- The output format.
-- The constraints.
-- Any sample inputs and outputs.
-
-Without those, I would have to invent the algorithm, complexity, examples, and even the Python solution, which would almost certainly be incorrect.
-
-If you provide any of the following, I can produce the complete editorial in the exact format you requested:
-
-1. The full Codeforces problem statement.
-2. A PDF or screenshot of the statement.
-3. The contest link.
-4. The samples and constraints.
-
-Once I have the statement, I'll write a full editorial containing:
-
-- Problem Understanding
-- Approaches (brute force and optimal)
-- Algorithm Walkthrough with proof sketch
-- Complete Python 3 solution
-- Line-by-line implementation explanation
-- Worked examples with trace tables
-- Complexity Analysis
-- Assert-based test cases
-- Detailed discussion of edge cases
-
-all following your requested writing style and formatting.
+Once I have that, I’ll write a proper competitive programming editorial with intuition, solution, complexity, and implementation notes.
