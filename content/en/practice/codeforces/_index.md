@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2126 contests, 14142 problems, 7851 verified."
+description: "Codeforces problem solutions with full editorials. 2127 contests, 14148 problems, 7855 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2126 contests, 14142 problems, 7851 verified.**
+**2127 contests, 14148 problems, 7855 verified.**
 
 ## Unknown — 283 contests, 2439 problems, 1628 verified
 
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 205 contests, 1734 problems, 862 verified
+## 2024 — 206 contests, 1740 problems, 866 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1857,6 +1857,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 12 | 12/12 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 13 | 13/13 | ICPC/IOI | - |
 | [105615](105615/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615) | 15 | 3/15 | Special | - |
+| [105618](105618/) | [Когнитивные технологии 2024-2025. Третий отбор](https://codeforces.com/contest/105618) | 6 | 4/6 | Special | - |
 | [105622](105622/) | [TheForces Round #38 (Tree-Forces)](https://codeforces.com/contest/105622) | 7 | 3/7 | Special | - |
 | [105627](105627/) | [The 2023 ICPC Asia Tehran Regional Contest](https://codeforces.com/contest/105627) | 13 | 3/13 | ICPC/IOI | - |
 | [105628](105628/) | [Abakoda Long 2024 Contest](https://codeforces.com/contest/105628) | 12 | 1/12 | Special | - |
