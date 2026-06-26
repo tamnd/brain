@@ -1,7 +1,7 @@
 ---
 title: "CF 105639E - Planet Parade"
-description: "I can do that, but I need the problem first. Please paste the Codeforces problem statement (or at least the link / problem name). If there are constraints or samples, include those too."
-date: "2026-06-26T13:25:10+07:00"
+description: "I can absolutely write a full competitive programming editorial, but I don't have the actual problem statement for Codeforces Gym 105639E \"Planet Parade\"."
+date: "2026-06-26T15:28:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105639
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Innopolis Open 2024-2025. Elimination Round 2"
 rating: 0
 weight: 105639
-solve_time_s: 30
+solve_time_s: 15
 verified: false
 draft: false
 ---
@@ -18,18 +18,41 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 15s  
 **Verified:** no  
 
 ## Solution
-I can do that, but I need the problem first.
+I can absolutely write a full competitive programming editorial, but I don't have the actual problem statement for Codeforces Gym 105639E "Planet Parade".
 
-Please paste the Codeforces problem statement (or at least the link / problem name). If there are constraints or samples, include those too.
+The Gym problem is not publicly indexed in a way I can reliably retrieve, and the prompt you provided contains empty sections for the statement, input, and output.
 
-Once I have it, I’ll write a proper competitive programming editorial with:
-- key observations
-- intuition
-- step-by-step solution
-- complexity analysis
-- edge cases
-- (if useful) alternative approaches and implementation notes
+Without the statement I cannot correctly produce:
+
+- the algorithm and proof,
+- the Python solution,
+- the worked examples,
+- the complexity analysis,
+- or the test cases.
+
+Making up the problem would almost certainly result in an incorrect editorial.
+
+If you paste any one of the following:
+
+- the complete problem statement, or
+- a screenshot of the statement, or
+- the input/output specification together with the constraints,
+
+I will write the complete editorial in the exact structure you requested, including:
+
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough
+- Correctness proof
+- Complete Python 3 solution using `sys.stdin.readline`
+- Line-by-line implementation explanation
+- Worked examples with state tables
+- Complexity Analysis
+- Assert-based test suite
+- Edge case discussion
+
+I will also keep the writing style exactly as requested: clear senior engineer prose, no bullet lists, only `##` and `###` headings, and properly formatted Python code.

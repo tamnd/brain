@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2121 contests, 14079 problems, 7828 verified."
+description: "Codeforces problem solutions with full editorials. 2122 contests, 14092 problems, 7837 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2121 contests, 14079 problems, 7828 verified.**
+**2122 contests, 14092 problems, 7837 verified.**
 
-## Unknown — 282 contests, 2419 problems, 1620 verified
+## Unknown — 282 contests, 2421 problems, 1621 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 13 | 13/13 | Special | - |
 | [105633](105633/) | [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633) | 12 | 12/12 | ICPC/IOI | - |
 | [105638](105638/) | [GPC 2024](https://codeforces.com/contest/105638) | 13 | 13/13 | Special | - |
-| [105639](105639/) | [Innopolis Open 2024-2025. Elimination Round 2](https://codeforces.com/contest/105639) | 3 | 1/3 | Special | - |
+| [105639](105639/) | [Innopolis Open 2024-2025. Elimination Round 2](https://codeforces.com/contest/105639) | 5 | 2/5 | Special | - |
 | [105641](105641/) | [Муниципальный этап ВсОШ по информатике, Москва, 2024](https://codeforces.com/contest/105641) | 0 | 0/0 | Special | - |
 | [105642](105642/) | [SanSi Cup 2024](https://codeforces.com/contest/105642) | 3 | 0/3 | Special | - |
 | [105644](105644/) | [Osijek Competitive Programming Camp, Winter 2023, Day 8: Dilhan Salgado Contest (The 1st Universal Cup. Stage 5: Osijek)](https://codeforces.com/contest/105644) | 7 | 2/7 | Special | - |
@@ -1517,7 +1517,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 134 contests, 925 problems, 364 verified
+## 2023 — 135 contests, 936 problems, 372 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1653,6 +1653,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [105637](105637/) | [The 2022 ICPC Asia Tehran Regional Contest](https://codeforces.com/contest/105637) | 11 | 8/11 | ICPC/IOI | - |
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
