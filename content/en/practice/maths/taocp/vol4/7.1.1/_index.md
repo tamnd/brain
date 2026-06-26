@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.1: Boolean Basics"
-description: "Section 7.1.1 exercises: 114/132 solved."
+description: "Section 7.1.1 exercises: 116/132 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.1. Boolean Basics
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.1: 114/132 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.1: 116/132 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -61,7 +61,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 114/132 solved.
 | [41](41.md) |  [*20*] | medium | verified | 1m12s |
 | [42](42.md) |  [*20*] | medium | verified | 1m01s |
 | [43](43.md) |  [*20*] | medium | solved | 5m21s |
-| [44](44.md) |  [*M23*] | math-medium | solved | 4m42s |
+| [44](44.md) |  [*M23*] | math-medium | solved | 3m30s |
 | [45](45.md) |  [*M20*] | math-medium | solved | 6m04s |
 | [46](46.md) |  [*20*] | medium | verified | 2m51s |
 | [47](47.md) |  [*20*] | medium | verified | 1m34s |
@@ -101,12 +101,12 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 114/132 solved.
 | [81](81.md) |  [*26*] | hard | verified | 2m21s |
 | [82](82.md) |  [*25*] | medium | solved | 4m20s |
 | 83 | &#9654; [*38*] | project | - | - |
-| 84 |  [*30*] | hard | - | - |
+| [84](84.md) |  [*30*] | hard | solved | 4m36s |
 | 85 | &#9654; [*M25*] | math-medium | - | - |
 | 86 |  [*45*] | project | - | - |
 | 87 |  [*24*] | medium | - | - |
 | 88 |  [*M21*] | math-medium | - | - |
-| 89 |  [*24*] | medium | - | - |
+| [89](89.md) |  [*24*] | medium | verified | 1m07s |
 | 90 |  [*21*] | medium | - | - |
 | 91 |  [*46*] | research | - | - |
 | 92 |  [*46*] | research | - | - |
@@ -119,7 +119,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 114/132 solved.
 | 99 | &#9654; [*20*] | medium | - | - |
 | [100](100.md) |  [*20*] | medium | verified | 2m |
 | [101](101.md) |  [*M25*] | math-medium | verified | 7m52s |
-| [102](102.md) |  [*M31*] | math-hard | solved | 7m58s |
+| [102](102.md) |  [*M31*] | math-hard | solved | 4m34s |
 | [103](103.md) |  [*HM25*] | hm-medium | solved | 7m12s |
 | [104](104.md) |  [*25*] | medium | solved | 8m17s |
 | [105](105.md) |  [*M25*] | math-medium | solved | 8m47s |
@@ -139,7 +139,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 114/132 solved.
 | [120](120.md) |  [*23*] | medium | solved | 7m06s |
 | [121](121.md) | &#9654; [*M23*] | math-medium | verified | 4m03s |
 | [122](122.md) |  [*M25*] | math-medium | solved | 6m12s |
-| [123](123.md) |  [*46*] | research | solved | 6m59s |
+| [123](123.md) |  [*46*] | research | solved | 4m33s |
 | [124](124.md) |  [*29*] | hard | solved | 5m17s |
 | [125](125.md) |  [*18*] | medium | verified | 1m33s |
 | [126](126.md) |  [*23*] | medium | verified | 7m33s |
