@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2178 contests, 14428 problems, 7899 verified."
+description: "Codeforces problem solutions with full editorials. 2179 contests, 14434 problems, 7901 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2178 contests, 14428 problems, 7899 verified.**
+**2179 contests, 14434 problems, 7901 verified.**
 
-## Unknown — 320 contests, 2600 problems, 1658 verified
+## Unknown — 321 contests, 2606 problems, 1660 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105206](105206/) | [VitebskOpen Junior](https://codeforces.com/contest/105206) | 6 | 2/6 | Special | - |
 | [105214](105214/) | [OCPC Fall 2023 - Day 1: Jeroen Op de Beek Contest](https://codeforces.com/contest/105214) | 11 | 11/11 | Special | - |
 | [105216](105216/) | [2024 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/105216) | 13 | 0/13 | ICPC/IOI | - |
 | [105223](105223/) | [HIAST Collegiate Programming Contest 2024](https://codeforces.com/contest/105223) | 14 | 10/14 | Special | - |
