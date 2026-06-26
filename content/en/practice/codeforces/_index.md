@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2179 contests, 14434 problems, 7901 verified."
+description: "Codeforces problem solutions with full editorials. 2180 contests, 14447 problems, 7908 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2179 contests, 14434 problems, 7901 verified.**
+**2180 contests, 14447 problems, 7908 verified.**
 
-## Unknown — 321 contests, 2606 problems, 1660 verified
+## Unknown — 322 contests, 2619 problems, 1667 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105204](105204/) | [ВКОШП.Junior 2024](https://codeforces.com/contest/105204) | 13 | 7/13 | Special | - |
 | [105206](105206/) | [VitebskOpen Junior](https://codeforces.com/contest/105206) | 6 | 2/6 | Special | - |
 | [105214](105214/) | [OCPC Fall 2023 - Day 1: Jeroen Op de Beek Contest](https://codeforces.com/contest/105214) | 11 | 11/11 | Special | - |
 | [105216](105216/) | [2024 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/105216) | 13 | 0/13 | ICPC/IOI | - |
