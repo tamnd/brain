@@ -1,7 +1,7 @@
 ---
 title: "CF 105712E - Combination Lock"
-description: "We are given two strings of equal length representing a combination lock with digit dials. The first string is the current configuration of the lock, and the second string is the target configuration we want to reach."
-date: "2026-06-26T07:56:12+07:00"
+description: "The problem statement is missing, so there isn’t enough information to derive the actual task, constraints, or required algorithm."
+date: "2026-06-26T08:52:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105712
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Rutgers University Programming Contest Fall 2024"
 rating: 0
 weight: 105712
-solve_time_s: 22
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-## Problem Understanding
+The problem statement is missing, so there isn’t enough information to derive the actual task, constraints, or required algorithm.
 
-We are given two strings of equal length representing a combination lock with digit dials. The first string is the current configuration of the lock, and the second string is the target configuration we want to reach.
+Right now only the title “Combination Lock” is provided, but that could correspond to many different Codeforces problems with completely different mechanics (rotation cycles, digit transitions, graph states, modular arithmetic, BFS on configurations, etc.). Without the actual rules, any editorial would be speculation and would not satisfy the requirement of being a correct re-derivation of the solution.
 
-Each position is an independent dial that can be rotated forward or backward in a circular manner, meaning digit 9 wraps around to 0 and 0 wraps around to 9. In one move, we choose a single dial and rotate it any number of steps in either direction until it reaches a desired digit. The cost of adjusting a dial is the minimum number of single-step rotations needed to transform its current digit into the target digit.
-
-The task is to compute the minimum total number of such unit rotations across all positions to transform the initial configuration into the tar
+Please provide the full problem statement (or at least the input/output specification and constraints), and I’ll write the complete editorial in the exact format you requested.

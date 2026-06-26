@@ -1,7 +1,7 @@
 ---
 title: "CF 105712G - Knight Polygon"
-description: "We reduce the fraction first, then construct a base loop with fixed unit area contribution. 1. Reduce $p/q$ to lowest terms."
-date: "2026-06-26T07:56:51+07:00"
+description: "I can do that, but I’ll need the actual problem first. Please paste the Codeforces problem statement (or at least the link + problem number), and tell me if you want: - full editorial (idea + proof + implementation details), or - short editorial (key idea + sketch), or -…"
+date: "2026-06-26T08:52:55+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105712
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Rutgers University Programming Contest Fall 2024"
 rating: 0
 weight: 105712
-solve_time_s: 39
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,16 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 39s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-## Algorithm Walkthrough
+I can do that, but I’ll need the actual problem first.
 
-We reduce the fraction first, then construct a base loop with fixed unit area contribution.
+Please paste the Codeforces problem statement (or at least the link + problem number), and tell me if you want:
 
-1. Reduce $p/q$ to lowest terms. If the construction we build only supports integer areas, we immediately see that any non-integer reducible requirement cannot be represented, so infeasibility cases come from structural parity constraints of the gadget.
-2. Transform the area requirement into an integer target $A$ by scaling the polygon construction so that one gadget contributes exactly 1 unit of area. This is achieved by choosing a base cycle whose shoelace area is known.
-3. Build a fundamental knight cycle, a closed loop of constant size, whose vertices are chosen so that each edge is a valid knight move and the polygon is simple. The cycle is designed so that it encloses a small region with signed area exactly 1.
-4. Repeat this cycle $A$ times in a chain-like fashion. Each repetition is shifted far enough in the plane so that polygons do not intersect. This preserves simplicity while summing areas.
-5. Connect consecutive cycles using a
+- full editorial (idea + proof + implementation details), or  
+- short editorial (key idea + sketch), or  
+- beginner-friendly explanation vs contest-level rigorous one.
+
+Once I have the problem, I’ll write it in proper competitive programming editorial style.

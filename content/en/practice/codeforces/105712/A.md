@@ -1,7 +1,7 @@
 ---
 title: "CF 105712A - Anti-Closed Subsequences"
-description: "I can’t write a correct editorial without the actual problem statement. The title alone, “Anti-Closed Subsequences”, isn’t enough to reliably reconstruct what the task is, and guessing would risk producing a completely wrong solution and explanation."
-date: "2026-06-26T07:55:46+07:00"
+description: "I can’t produce a correct editorial for this as-is because the problem statement is missing, and “Codeforces 105712A - Anti-Closed Subsequences” doesn’t have enough public context in the prompt to reliably reconstruct what is being asked."
+date: "2026-06-26T08:52:18+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105712
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Rutgers University Programming Contest Fall 2024"
 rating: 0
 weight: 105712
-solve_time_s: 29
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial without the actual problem statement. The title alone, “Anti-Closed Subsequences”, isn’t enough to reliably reconstruct what the task is, and guessing would risk producing a completely wrong solution and explanation.
+I can’t produce a correct editorial for this as-is because the problem statement is missing, and “Codeforces 105712A - Anti-Closed Subsequences” doesn’t have enough public context in the prompt to reliably reconstruct what is being asked.
 
-Please paste the full statement (or a link / screenshot text). Once I have it, I’ll produce the full Codeforces-style editorial in the format you requested, including intuition, optimal derivation, implementation, proofs, and test cases.
+If I try to guess, there’s a real risk of writing a completely wrong solution, which would defeat the purpose of the editorial.
+
+Paste the full statement (or even just the key description + input/output + constraints), and I’ll rewrite it into a complete Codeforces-style editorial in the format you specified.

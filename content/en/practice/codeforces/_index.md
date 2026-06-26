@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2105 contests, 13965 problems, 7791 verified."
+description: "Codeforces problem solutions with full editorials. 2105 contests, 13966 problems, 7792 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2105 contests, 13965 problems, 7791 verified.**
+**2105 contests, 13966 problems, 7792 verified.**
 
-## Unknown — 274 contests, 2374 problems, 1607 verified
+## Unknown — 274 contests, 2375 problems, 1608 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -108,7 +108,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105700](105700/) | [2020-2021 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105700) | 4 | 1/4 | Special | - |
 | [105701](105701/) | [2020-2021 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105701) | 4 | 2/4 | Special | - |
 | [105706](105706/) | [INOI 2025](https://codeforces.com/contest/105706) | 3 | 2/3 | Special | - |
-| [105712](105712/) | [Rutgers University Programming Contest Fall 2024](https://codeforces.com/contest/105712) | 13 | 3/13 | Special | - |
+| [105712](105712/) | [Rutgers University Programming Contest Fall 2024](https://codeforces.com/contest/105712) | 14 | 4/14 | Special | - |
 | [105715](105715/) | [Интернет-олимпиады, Сезон 2024-2025, Первая личная олимпиада](https://codeforces.com/contest/105715) | 4 | 3/4 | Special | - |
 | [105719](105719/) | [Innopolis Open 2024-2025. Final round](https://codeforces.com/contest/105719) | 5 | 1/5 | Special | - |
 | [105739](105739/) | [Олимпиада 1С 2025, предметный тур](https://codeforces.com/contest/105739) | 5 | 0/5 | Special | - |
