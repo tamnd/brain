@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2168 contests, 14341 problems, 7894 verified."
+description: "Codeforces problem solutions with full editorials. 2169 contests, 14352 problems, 7896 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2168 contests, 14341 problems, 7894 verified.**
+**2169 contests, 14352 problems, 7896 verified.**
 
-## Unknown — 314 contests, 2545 problems, 1656 verified
+## Unknown — 315 contests, 2556 problems, 1658 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -77,6 +77,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 4 | 2/4 | Special | - |
 | [105482](105482/) | [Интернет-олимпиады, Сезон 2024-2025, Первая командная олимпиада](https://codeforces.com/contest/105482) | 12 | 3/12 | Special | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 13 | 13/13 | Special | - |
+| [105490](105490/) | [Когнитивные технологии. Финал 2024](https://codeforces.com/contest/105490) | 11 | 2/11 | Special | - |
 | [105492](105492/) | [2024 Benelux Algorithm Programming Contest (BAPC 24)](https://codeforces.com/contest/105492) | 13 | 13/13 | Special | - |
 | [105493](105493/) | [2024-2025 ICPC NERC, Kyrgyzstan Regional Contest](https://codeforces.com/contest/105493) | 9 | 9/9 | ICPC/IOI | - |
 | [105494](105494/) | [2024-2025 ICPC NERC, Kyrgyzstan Qualification Contest](https://codeforces.com/contest/105494) | 9 | 9/9 | ICPC/IOI | - |
