@@ -1,7 +1,7 @@
 ---
 title: "CF 105665F - Financial Crisis"
-description: "I can’t write a correct editorial for this yet because the problem statement is missing. “Codeforces 105665F - Financial Crisis” doesn’t include any readable description in your prompt, so I don’t know what the input represents, what operation is required, or what constraints…"
-date: "2026-06-26T10:02:00+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement for CF 105665F - Financial Crisis is missing from your prompt. Right now there’s no description of: what entities are given (graph, array, transactions, etc."
+date: "2026-06-26T11:02:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105665
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "AGM 2024 Qualification Round"
 rating: 0
 weight: 105665
-solve_time_s: 32
+solve_time_s: 38
 verified: false
 draft: false
 ---
@@ -18,12 +18,32 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 38s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the problem statement is missing.
+I can’t write a correct editorial for this yet because the actual problem statement for **CF 105665F - Financial Crisis** is missing from your prompt.
 
-“Codeforces 105665F - Financial Crisis” doesn’t include any readable description in your prompt, so I don’t know what the input represents, what operation is required, or what constraints we’re optimizing for. Without that, any solution would be guesswork and very likely wrong.
+Right now there’s no description of:
 
-Paste the full problem statement (or even a screenshot/text dump), and I’ll produce a complete Codeforces-style editorial in the exact format you requested, including algorithm derivation, walkthrough, Python solution, and edge-case analysis.
+what entities are given (graph, array, transactions, etc.),
+
+what operation or process is happening,
+
+or what needs to be computed.
+
+Without that, any “solution” would be guesswork and would very likely be wrong.
+
+Paste the full statement (or even a screenshot/text dump), and I’ll turn it into a complete Codeforces-style editorial in the exact format you requested, including:
+
+a clear re-interpretation of the problem,
+
+brute force to optimal transition,
+
+full algorithm proof intuition,
+
+Python implementation,
+
+worked traces,
+
+and edge-case analysis.

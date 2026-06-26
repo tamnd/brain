@@ -1,7 +1,7 @@
 ---
 title: "CF 105665H - Piles Game"
-description: "The problem statement section is empty in what you provided, so there’s no way to reliably reconstruct the rules of the game, input format, or what needs to be computed."
-date: "2026-06-26T10:01:59+07:00"
+description: "The problem statement is missing from your prompt, so I can’t reliably reconstruct the rules, constraints, or required output for “Codeforces 105665H - Piles Game”."
+date: "2026-06-26T11:02:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105665
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "AGM 2024 Qualification Round"
 rating: 0
 weight: 105665
-solve_time_s: 24
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The problem statement section is empty in what you provided, so there’s no way to reliably reconstruct the rules of the game, input format, or what needs to be computed. For a Codeforces editorial, those details completely determine the solution technique, and guessing would almost certainly produce a wrong or misleading write-up.
+The problem statement is missing from your prompt, so I can’t reliably reconstruct the rules, constraints, or required output for “Codeforces 105665H - Piles Game”.
 
-If you paste the full statement (or even a screenshot / text of the rules and constraints), I can produce the complete editorial in the exact style you requested, including the algorithm derivation, proof, code, and test cases.
+For a competitive programming editorial, even small details like allowed moves, win conditions, and constraints completely change the solution class (it could be a Nim variant, greedy merging, DP on piles, segment structure, etc.). Without that, any full solution would be guesswork and very likely wrong.
+
+Paste the full statement (or even just the rules + constraints), and I’ll write the complete editorial in the exact format you requested.

@@ -1,7 +1,7 @@
 ---
 title: "CF 105665I - Practice"
-description: "I can absolutely write a full editorial, but I don't have the actual problem statement. The contest page you referenced, Codeforces 105665I - Practice, is a Gym problem, and the statement is not publicly available through the search results I can access."
-date: "2026-06-26T10:02:39+07:00"
+description: "I can’t reliably find a public statement for Codeforces 105665I - Practice in the usual archives, which strongly suggests one of two things: either the problem is from a private gym/educational archive with restricted access, or the ID refers to a localized mirror where the…"
+date: "2026-06-26T11:02:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105665
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "AGM 2024 Qualification Round"
 rating: 0
 weight: 105665
-solve_time_s: 22
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,47 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can absolutely write a full editorial, but I don't have the actual problem statement.
+I can’t reliably find a public statement for **Codeforces 105665I - Practice** in the usual archives, which strongly suggests one of two things: either the problem is from a private gym/educational archive with restricted access, or the ID refers to a localized mirror where the statement isn’t publicly indexed. Without the actual statement, writing a correct editorial would be guesswork, and in competitive programming that almost always leads to a completely wrong solution.
 
-The contest page you referenced, **Codeforces 105665I - Practice**, is a Gym problem, and the statement is not publicly available through the search results I can access.
+If you paste the full problem statement (or even a screenshot or rough paraphrase), I can produce the full editorial in exactly the style you requested.
 
-Right now your prompt only contains:
+Right now, anything beyond that would be fabrication rather than explanation, and it would defeat the purpose of a Codeforces-style walkthrough.
 
-- Problem: Codeforces 105665I - Practice
-- Empty "Problem Statement"
-- Empty "Input"
-- Empty "Output"
-
-Without the statement, it is impossible to produce a correct editorial, because I don't know:
-
-- what the task asks,
-- the input format,
-- the constraints,
-- the required algorithm,
-- the edge cases,
-- or the correct implementation.
-
-Please provide one of the following:
-
-1. The full problem statement, or
-2. A link to the Gym problem if it is publicly accessible, or
-3. Your accepted solution.
-
-Once I have the problem, I'll produce the complete editorial in exactly the structure you requested, including:
-
-- Problem Understanding
-- Approaches
-- Algorithm Walkthrough
-- Correctness proof
-- Complete Python solution
-- Detailed implementation explanation
-- Worked examples with trace tables
-- Complexity analysis
-- Assert-based test cases
-- Edge case discussion
-
-while following all of your formatting and style requirements.
+Send the statement and I’ll break it down end-to-end.

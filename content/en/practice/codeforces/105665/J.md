@@ -1,7 +1,7 @@
 ---
 title: "CF 105665J - Ski Trip"
-description: "I can’t produce a correct editorial for Codeforces 105665J - Ski Trip because the actual problem statement is missing from your prompt. Right now I don’t know what the input represents, what needs to be computed, or what constraints apply."
-date: "2026-06-26T10:05:41+07:00"
+description: "I can’t write a correct editorial for this because the actual problem statement is missing. Right now I don’t know what “Ski Trip” asks for, what the input represents, or what constraints drive the solution."
+date: "2026-06-26T11:03:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105665
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "AGM 2024 Qualification Round"
 rating: 0
 weight: 105665
-solve_time_s: 25
+solve_time_s: 37
 verified: false
 draft: false
 ---
@@ -18,20 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
+**Solve time:** 37s  
 **Verified:** no  
 
 ## Solution
-I can’t produce a correct editorial for **Codeforces 105665J - Ski Trip** because the actual problem statement is missing from your prompt.
+I can’t write a correct editorial for this because the actual problem statement is missing.
 
-Right now I don’t know what the input represents, what needs to be computed, or what constraints apply. Without those, any “solution” would be guesswork and very likely wrong, which defeats the purpose of a Codeforces-style editorial.
+Right now I don’t know what “Ski Trip” asks for, what the input represents, or what constraints drive the solution. Without that, any solution or algorithm would be guesswork, and for a Codeforces editorial that would just produce something misleading.
 
-If you paste the full problem statement (or even just the key parts: description, input format, constraints, and sample I/O), I’ll write the complete editorial in the exact style you requested, including:
-
-- a clean restatement in my own words
-- brute force → optimization progression
-- full algorithm walkthrough with invariants
-- Python solution
-- worked examples, complexity analysis, and edge cases
-
-Just send the statement and I’ll take it from there.
+If you paste the full statement (or even just the key parts: input format, required output, and constraints), I’ll produce a complete editorial in the exact style you specified, including the full derivation, algorithm walkthrough, complexity, and tests.

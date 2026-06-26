@@ -1,7 +1,7 @@
 ---
 title: "CF 105665C - Bees and Flowers"
-description: "I can’t write a correct editorial for this yet because the actual problem statement for Codeforces 105665C - Bees and Flowers is missing from your prompt."
-date: "2026-06-26T10:01:17+07:00"
+description: "I can’t write a correct editorial for “Codeforces 105665C - Bees and Flowers” because the actual problem statement is missing from your message."
+date: "2026-06-26T11:00:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105665
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "AGM 2024 Qualification Round"
 rating: 0
 weight: 105665
-solve_time_s: 35
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement for **Codeforces 105665C - Bees and Flowers** is missing from your prompt.
+I can’t write a correct editorial for “Codeforces 105665C - Bees and Flowers” because the actual problem statement is missing from your message.
 
-Right now I only see the title, but not the rules of the problem (what the bees/flowers represent, what operations are allowed, what needs to be computed, or any constraints). Without that, any “solution” would be guesswork and would likely be wrong.
+Right now there’s no information about what the bees, flowers, input format, or required output actually are, so any solution or reasoning would be guesswork and very likely wrong.
 
-Paste the full statement (or even just the core description + input/output + constraints), and I’ll produce the complete Codeforces-style editorial exactly in the format you specified.
+Paste the full problem statement (or even a screenshot/text dump), and I’ll produce a complete Codeforces-style editorial in the format you requested, including the full algorithm derivation, walkthrough, code, and edge-case analysis.
