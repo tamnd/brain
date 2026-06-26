@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2170 contests, 14356 problems, 7896 verified."
+description: "Codeforces problem solutions with full editorials. 2171 contests, 14369 problems, 7896 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2170 contests, 14356 problems, 7896 verified.**
+**2171 contests, 14369 problems, 7896 verified.**
 
-## Unknown — 316 contests, 2560 problems, 1658 verified
+## Unknown — 317 contests, 2573 problems, 1658 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -76,6 +76,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 4 | 3/4 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 4 | 2/4 | Special | - |
 | [105482](105482/) | [Интернет-олимпиады, Сезон 2024-2025, Первая командная олимпиада](https://codeforces.com/contest/105482) | 12 | 3/12 | Special | - |
+| [105484](105484/) | [The 2024 ICPC Asia Nanjing Regional Contest (The 3rd Universal Cup. Stage 16: Nanjing)](https://codeforces.com/contest/105484) | 13 | 0/13 | ICPC/IOI | - |
 | [105487](105487/) | [2024 China Collegiate Programming Contest (CCPC) Female Onsite (2024年中国大学生程序设计竞赛女生专场)](https://codeforces.com/contest/105487) | 13 | 13/13 | Special | - |
 | [105488](105488/) | [2023-2024 Всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/105488) | 4 | 0/4 | Special | - |
 | [105490](105490/) | [Когнитивные технологии. Финал 2024](https://codeforces.com/contest/105490) | 11 | 2/11 | Special | - |
