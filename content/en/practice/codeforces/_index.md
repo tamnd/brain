@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2103 contests, 13946 problems, 7783 verified."
+description: "Codeforces problem solutions with full editorials. 2104 contests, 13958 problems, 7787 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2103 contests, 13946 problems, 7783 verified.**
+**2104 contests, 13958 problems, 7787 verified.**
 
 ## Unknown — 273 contests, 2370 problems, 1605 verified
 
@@ -1851,7 +1851,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 254 contests, 2259 problems, 1190 verified
+## 2025 — 255 contests, 2271 problems, 1194 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1975,6 +1975,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2181](2181/) | [2025-2026 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2181) | 13 | 4/13 | ICPC/IOI | 1200-3500 |
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
+| [105692](105692/) | [Baozii Cup 1](https://codeforces.com/contest/105692) | 12 | 4/12 | Special | - |
 | [105705](105705/) | [AlgoChief Sprint Round 3](https://codeforces.com/contest/105705) | 3 | 2/3 | Special | - |
 | [105709](105709/) | [UTPC Contest 2-12-25 Div. 2 (Beginner)](https://codeforces.com/contest/105709) | 7 | 3/7 | Div. 2 | - |
 | [105710](105710/) | [UTPC Contest 2-12-25 Div. 1 (Advanced)](https://codeforces.com/contest/105710) | 8 | 3/8 | Div. 1 | - |
