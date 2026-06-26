@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2190 contests, 14508 problems, 7933 verified."
+description: "Codeforces problem solutions with full editorials. 2191 contests, 14519 problems, 7938 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2190 contests, 14508 problems, 7933 verified.**
+**2191 contests, 14519 problems, 7938 verified.**
 
 ## Unknown — 327 contests, 2625 problems, 1669 verified
 
@@ -1562,7 +1562,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 135 contests, 936 problems, 372 verified
+## 2023 — 136 contests, 947 problems, 377 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1698,6 +1698,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [105184](105184/) | [The 8th Hebei Collegiate Programming Contest](https://codeforces.com/contest/105184) | 11 | 5/11 | Special | - |
 | [105637](105637/) | [The 2022 ICPC Asia Tehran Regional Contest](https://codeforces.com/contest/105637) | 11 | 8/11 | ICPC/IOI | - |
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
