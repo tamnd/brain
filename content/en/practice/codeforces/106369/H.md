@@ -1,7 +1,7 @@
 ---
 title: "CF 106369H - The Duel of Smokin' Joe"
-description: "The problem statement is missing, so I can’t reliably reconstruct the task or write a correct editorial. Codeforces problems, especially contest or gym ones like “106369H - The Duel of Smokin’ Joe”, are too identifier-heavy to infer safely from the name alone."
-date: "2026-06-25T08:20:06+07:00"
+description: "I can’t produce a correct editorial for this yet because the actual problem statement is missing. Right now we only have the title, but no description of what Smokin’ Joe’s duel involves, what the input represents, or what is being optimized or computed."
+date: "2026-06-26T05:20:22+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 106369
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "2023 UCF Local Programming Contest"
 rating: 0
 weight: 106369
-solve_time_s: 22
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing, so I can’t reliably reconstruct the task or write a correct editorial.
+I can’t produce a correct editorial for this yet because the actual problem statement is missing.
 
-Codeforces problems, especially contest or gym ones like “106369H - The Duel of Smokin’ Joe”, are too identifier-heavy to infer safely from the name alone. Any attempt to guess would likely produce a completely wrong solution structure.
+Right now we only have the title, but no description of what Smokin’ Joe’s duel involves, what the input represents, or what is being optimized or computed. Without that, any “solution” would be guesswork and would very likely be wrong.
 
-Send the full problem statement (or even just the input/output description and constraints), and I’ll write the full editorial in the format you requested, including the derivation, algorithm walkthrough, proof sketch, implementation, and tests.
+If you paste the full statement (or even just the core rules and constraints), I’ll write the complete Codeforces-style editorial exactly in the format you requested, including the full reasoning, algorithm derivation, proofs, and test cases.
