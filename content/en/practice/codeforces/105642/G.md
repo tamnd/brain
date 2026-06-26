@@ -1,7 +1,7 @@
 ---
 title: "CF 105642G - Global warming"
-description: "The problem statement is missing from your prompt, so I can’t reconstruct the task or derive a correct solution. Right now I only see the title “Global warming” with empty Input/Output sections, which is not enough to determine: the operations on the data structure, what is…"
-date: "2026-06-26T13:23:02+07:00"
+description: "I can't write a correct editorial from the information provided because the actual problem statement is missing. The prompt only contains the title, \"Codeforces 105642G - Global warming\", while the sections for the statement, input, and output are empty."
+date: "2026-06-26T15:31:20+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105642
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "SanSi Cup 2024"
 rating: 0
 weight: 105642
-solve_time_s: 26
+solve_time_s: 43
 verified: false
 draft: false
 ---
@@ -18,18 +18,28 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 43s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your prompt, so I can’t reconstruct the task or derive a correct solution.
+I can't write a correct editorial from the information provided because the actual problem statement is missing.
 
-Right now I only see the title “Global warming” with empty Input/Output sections, which is not enough to determine:
+The prompt only contains the title, "Codeforces 105642G - Global warming", while the sections for the statement, input, and output are empty. A complete editorial requires the exact task definition, constraints, and input/output format. Without those, I would have to invent the algorithm, examples, code, and complexity analysis, which would almost certainly be incorrect.
 
-the operations on the data structure, what is being computed, or even the type of problem (graph, DP, sorting, geometry, etc.). Any attempt to write a full editorial from this would be guessing, and that would very likely produce a completely incorrect solution.
+If you provide either:
 
-If you paste the full statement (or even just the input format + what needs to be computed), I’ll immediately write the complete Codeforces-style editorial in the format you requested, including:
+1. the full problem statement, or
+2. a link or PDF containing the statement,
 
-a clean problem restatement, brute-force reasoning, optimal insight, full proof sketch, implementation, and test cases.
+I can produce a complete editorial following your requested structure, including:
 
-Send the statement and I’ll take it from there.
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough
+- Python Solution
+- Worked Examples
+- Complexity Analysis
+- Assert-based Test Cases
+- Edge Cases
+
+written in the exact style and formatting you specified.
