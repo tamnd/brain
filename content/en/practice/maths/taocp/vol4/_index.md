@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 4: Combinatorial Algorithms"
-description: "Volume 4: Combinatorial Algorithms. 312 solved, 130 verified, 2410 total."
+description: "Volume 4: Combinatorial Algorithms. 345 solved, 142 verified, 2383 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 40
@@ -9,20 +9,20 @@ draft: false
 
 # Volume 4: Combinatorial Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 4. 312 solved, 130 verified, 2410 total.
+Exercise solutions for [TAOCP](../) Volume 4. 345 solved, 142 verified, 2383 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [7.1.1](7.1.1/) | Boolean Basics | 108 | 51 | 132 |
 | [7.1.2](7.1.2/) | Boolean Evaluation | 80 | 31 | 85 |
-| 7.1.3 |  | — | — | 219 |
-| 7.1.4 |  | — | — | 267 |
+| [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 32 | 11 | 219 |
+| [7.1.4](7.1.4/) | Binary Decision Diagrams | 1 | 1 | 267 |
 | 7.2.1.1 |  | — | — | 112 |
 | 7.2.1.2 |  | — | — | 113 |
 | 7.2.1.3 |  | — | — | 111 |
 | 7.2.1.4 |  | — | — | 73 |
 | 7.2.1.5 |  | — | — | 69 |
 | 7.2.1.6 |  | — | — | 123 |
-| [7.2.2](7.2.2/) | Backtracking | 39 | 24 | 121 |
-| [7.2.2.1](7.2.2.1/) | Dancing Links | 85 | 24 | 454 |
-| 7.2.2.2 |  | — | — | 531 |
+| [7.2.2](7.2.2/) | Backtracking | 39 | 24 | 101 |
+| [7.2.2.1](7.2.2.1/) | Dancing Links | 85 | 24 | 450 |
+| 7.2.2.2 |  | — | — | 528 |
