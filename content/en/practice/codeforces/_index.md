@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2092 contests, 13879 problems, 7761 verified."
+description: "Codeforces problem solutions with full editorials. 2093 contests, 13887 problems, 7762 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2092 contests, 13879 problems, 7761 verified.**
+**2093 contests, 13887 problems, 7762 verified.**
 
 ## Unknown — 267 contests, 2345 problems, 1596 verified
 
@@ -1845,7 +1845,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 249 contests, 2217 problems, 1177 verified
+## 2025 — 250 contests, 2225 problems, 1178 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1970,6 +1970,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2182](2182/) | [Educational Codeforces Round 186 (Rated for Div. 2)](https://codeforces.com/contest/2182) | 8 | 6/8 | Div. 2 | 800-2800 |
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
+| [105733](105733/) | [Bach Khoa Code Challenge #1](https://codeforces.com/contest/105733) | 8 | 1/8 | Special | - |
 | [105740](105740/) | [UTPC Contest 2-26-25 Div. 2 (Beginner)](https://codeforces.com/contest/105740) | 8 | 0/8 | Div. 2 | - |
 | [105741](105741/) | [UTPC Contest 2-26-25 Div. 1 (Advanced)](https://codeforces.com/contest/105741) | 8 | 0/8 | Div. 1 | - |
 | [105745](105745/) | [AGM 2025 Qualification Round](https://codeforces.com/contest/105745) | 10 | 1/10 | Special | - |
