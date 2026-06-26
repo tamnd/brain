@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.1: Boolean Basics"
-description: "Section 7.1.1 exercises: 111/132 solved."
+description: "Section 7.1.1 exercises: 112/132 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.1. Boolean Basics
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.1: 111/132 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.1: 112/132 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -97,7 +97,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 111/132 solved.
 | [77](77.md) |  [*M28*] | math-hard | solved | 4m01s |
 | [78](78.md) | &#9654; [*M36*] | math-project | solved | 3m50s |
 | [79](79.md) | &#9654; [*M27*] | math-hard | solved | 4m32s |
-| 80 |  [*27*] | hard | - | - |
+| [80](80.md) |  [*27*] | hard | verified | 4m19s |
 | 81 |  [*26*] | hard | - | - |
 | 82 |  [*25*] | medium | - | - |
 | 83 | &#9654; [*38*] | project | - | - |
