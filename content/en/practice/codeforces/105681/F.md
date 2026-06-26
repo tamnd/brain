@@ -1,7 +1,7 @@
 ---
 title: "CF 105681F - Alien Homophones"
-description: "Got it. Please paste the Codeforces problem statement (or link + problem text), and tell me if you want: - a full editorial (idea + proof + implementation) - or just solution outline - or hints-only progression (Step 1 → Step 2 → full solution) Once I have the problem, I’ll…"
-date: "2026-06-26T09:49:00+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 105681F - Alien Homophones without the actual problem statement."
+date: "2026-06-26T11:40:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105681
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Qualification stage of Open Olympiad 2024-2025"
 rating: 0
 weight: 105681
-solve_time_s: 113
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 53s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-Got it. Please paste the Codeforces problem statement (or link + problem text), and tell me if you want:
+I can’t reliably write a correct editorial for **Codeforces 105681F - Alien Homophones** without the actual problem statement.
 
-- a **full editorial (idea + proof + implementation)**
-- or just **solution outline**
-- or **hints-only progression (Step 1 → Step 2 → full solution)**
+Right now I’m missing the core pieces that determine everything: what the input represents, what needs to be computed, and what constraints drive the algorithm choice. If I tried to infer it, there’s a high risk of inventing a completely different problem and producing a misleading solution.
 
-Once I have the problem, I’ll write a proper competitive programming editorial with intuition, reasoning, edge cases, and complexity analysis.
+Please paste the full problem statement (or even a screenshot/text dump). Once you send it, I’ll produce the complete editorial in the exact style you requested, including the algorithm walkthrough, proofs, Python solution, and edge-case analysis.

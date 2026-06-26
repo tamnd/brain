@@ -1,7 +1,7 @@
 ---
 title: "CF 105681C - Road Lighting"
-description: "I can write this editorial, but I need one clarification first: the problem statement you pasted is empty, while “Codeforces 105681C - Road Lighting” has a full dynamic-tree problem statement with edge toggles and maximum matchings on reachable components."
-date: "2026-06-26T09:46:54+07:00"
+description: "I can absolutely write a full editorial of that form, but I can't do it correctly from the problem title alone. The problem Codeforces Gym 105681C - Road Lighting is a difficult dynamic tree problem involving toggling blocked edges and answering maximum matching queries on…"
+date: "2026-06-26T11:39:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105681
@@ -22,14 +22,25 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can write this editorial, but I need one clarification first: the problem statement you pasted is empty, while “Codeforces 105681C - Road Lighting” has a full dynamic-tree problem statement with edge toggles and maximum matchings on reachable components.
+I can absolutely write a full editorial of that form, but I can't do it correctly from the problem title alone.
 
-The required editorial format also asks for a complete Python implementation and test harness. For this particular problem, the accepted solution requires a dynamic tree data structure (a top tree or an equivalent link-cut-tree based dynamic tree DP), and a correct Python implementation is non-trivial. I do not want to invent a simplified algorithm that would fail the stated constraints.
+The problem **Codeforces Gym 105681C - Road Lighting** is a difficult dynamic tree problem involving toggling blocked edges and answering maximum matching queries on connected components. The complete solution requires reconstructing a fairly sophisticated algorithm, and the official statement does **not** include the editorial or intended solution. citeturn incorrect.
 
-If you want the full editorial, please confirm that the intended problem is the one with:
+If you provide either:
 
-- a tree of `n` cities,
-- `q` queries that toggle snowstorms on edges,
-- type `2 x` queries asking for the maximum number of non-adjacent edges in the connected component of `x`,
+1. the official editorial,
+2. an accepted C++ solution,
+3. or even your own solution,
 
-and I will provide the complete editorial with the correct data structure and implementation details.
+I can transform it into exactly the editorial format you requested, including:
+
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough with proof sketch
+- Complete Python implementation
+- Worked Examples
+- Complexity Analysis
+- Assert-based test cases
+- Edge case discussion
+
+written in the clear senior-engineer style you specified, without AI filler and following all of your formatting rules.

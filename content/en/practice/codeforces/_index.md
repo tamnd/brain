@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2115 contests, 14039 problems, 7820 verified."
+description: "Codeforces problem solutions with full editorials. 2115 contests, 14040 problems, 7821 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2115 contests, 14039 problems, 7820 verified.**
+**2115 contests, 14040 problems, 7821 verified.**
 
-## Unknown — 277 contests, 2392 problems, 1615 verified
+## Unknown — 277 contests, 2393 problems, 1616 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -100,7 +100,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105669](105669/) | [Combinatorics Contest - Brazilian ICPC Summer School 2025](https://codeforces.com/contest/105669) | 7 | 4/7 | ICPC/IOI | - |
 | [105674](105674/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/105674) | 4 | 4/4 | Special | - |
 | [105675](105675/) | [2024-2025 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/105675) | 0 | 0/0 | Special | - |
-| [105681](105681/) | [Qualification stage of Open Olympiad 2024-2025](https://codeforces.com/contest/105681) | 8 | 1/8 | Special | - |
+| [105681](105681/) | [Qualification stage of Open Olympiad 2024-2025](https://codeforces.com/contest/105681) | 9 | 2/9 | Special | - |
 | [105683](105683/) | [Олимпиада НЕЙМАРК 2024-25, Первый отбор](https://codeforces.com/contest/105683) | 6 | 6/6 | Special | - |
 | [105684](105684/) | [Олимпиада НЕЙМАРК 2024-25, Второй отбор](https://codeforces.com/contest/105684) | 6 | 6/6 | Special | - |
 | [105691](105691/) | [MOI25 Training camp](https://codeforces.com/contest/105691) | 3 | 1/3 | Special | - |
