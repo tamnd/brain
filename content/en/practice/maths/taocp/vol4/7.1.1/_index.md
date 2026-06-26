@@ -106,7 +106,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 120/132 solved.
 | [86](86.md) |  [*45*] | project | verified | 4m11s |
 | [87](87.md) |  [*24*] | medium | solved | 3m28s |
 | [88](88.md) |  [*M21*] | math-medium | verified | 1m10s |
-| [89](89.md) |  [*24*] | medium | verified | 1m07s |
+| [89](89.md) |  [*24*] | medium | verified | 1m09s |
 | 90 |  [*21*] | medium | - | - |
 | 91 |  [*46*] | research | - | - |
 | 92 |  [*46*] | research | - | - |
