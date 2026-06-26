@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2145 contests, 14244 problems, 7883 verified."
+description: "Codeforces problem solutions with full editorials. 2146 contests, 14257 problems, 7886 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2145 contests, 14244 problems, 7883 verified.**
+**2146 contests, 14257 problems, 7886 verified.**
 
 ## Unknown — 296 contests, 2496 problems, 1651 verified
 
@@ -1671,7 +1671,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 211 contests, 1779 problems, 871 verified
+## 2024 — 212 contests, 1792 problems, 874 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1859,6 +1859,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105530](105530/) | [Metropolitan University Inter University Programming Contest - Sylhet Division 2024](https://codeforces.com/contest/105530) | 9 | 9/9 | Special | - |
 | [105535](105535/) | [2024 ICPC Belarus Regional Contest](https://codeforces.com/contest/105535) | 12 | 12/12 | ICPC/IOI | - |
 | [105536](105536/) | [Когнитивные технологии 2024-2025. Первый отбор](https://codeforces.com/contest/105536) | 4 | 3/4 | Special | - |
+| [105540](105540/) | [2024 China Collegiate Programming Contest (CCPC) Jinan Site (The 3rd Universal Cup. Stage 17: Jinan)](https://codeforces.com/contest/105540) | 13 | 3/13 | Special | - |
 | [105552](105552/) | [UTPC Contest 11-20-24 Div. 2 (Beginner)](https://codeforces.com/contest/105552) | 8 | 1/8 | Div. 2 | - |
 | [105553](105553/) | [UTPC Contest 11-20-24 Div. 1 (Advanced)](https://codeforces.com/contest/105553) | 8 | 0/8 | Div. 1 | - |
 | [105556](105556/) | [The 6th FanRuan Cup Southeast University Programming Contest (Winter)](https://codeforces.com/contest/105556) | 11 | 6/11 | Special | - |
