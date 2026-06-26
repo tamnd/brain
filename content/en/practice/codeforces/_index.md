@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2122 contests, 14099 problems, 7839 verified."
+description: "Codeforces problem solutions with full editorials. 2123 contests, 14111 problems, 7840 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2122 contests, 14099 problems, 7839 verified.**
+**2123 contests, 14111 problems, 7840 verified.**
 
 ## Unknown — 282 contests, 2428 problems, 1623 verified
 
@@ -1657,7 +1657,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 202 contests, 1702 problems, 855 verified
+## 2024 — 203 contests, 1714 problems, 856 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1856,6 +1856,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 12 | 12/12 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 13 | 13/13 | ICPC/IOI | - |
 | [105615](105615/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615) | 15 | 3/15 | Special | - |
+| [105628](105628/) | [Abakoda Long 2024 Contest](https://codeforces.com/contest/105628) | 12 | 1/12 | Special | - |
 | [105629](105629/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final](https://codeforces.com/contest/105629) | 9 | 4/9 | Special | - |
 | [105631](105631/) | [SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final](https://codeforces.com/contest/105631) | 13 | 13/13 | Special | - |
 | [105636](105636/) | [NOIP 2024](https://codeforces.com/contest/105636) | 4 | 3/4 | Special | - |
