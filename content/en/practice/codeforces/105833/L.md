@@ -1,7 +1,7 @@
 ---
 title: "CF 105833L - Last Goal"
-description: "The statement for Codeforces 105833L is not actually present in your prompt, only the placeholder “L”. Without the actual problem description (input format, output format, and what needs to be computed), it is impossible to reconstruct a correct solution or write a meaningful…"
-date: "2026-06-26T08:55:41+07:00"
+description: "I can’t write a correct editorial for this problem as-is because the actual problem statement is missing. Right now the only content provided is the title “105833L - Last Goal”, but there is no description of the game/process, no input format, and no output specification."
+date: "2026-06-26T09:32:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105833
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "NUS CS3233 Final Team Contest 2025"
 rating: 0
 weight: 105833
-solve_time_s: 31
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-The statement for Codeforces 105833L is not actually present in your prompt, only the placeholder “L”. Without the actual problem description (input format, output format, and what needs to be computed), it is impossible to reconstruct a correct solution or write a meaningful editorial.
+I can’t write a correct editorial for this problem as-is because the actual problem statement is missing.
 
-If you paste the full problem statement, I can immediately produce a complete Codeforces-style editorial following all your formatting constraints, including intuition, optimal solution, proof sketch, code, and edge-case analysis.
+Right now the only content provided is the title “105833L - Last Goal”, but there is no description of the game/process, no input format, and no output specification. Without that, any solution or algorithm would be pure guessing, and an editorial would be meaningless or incorrect.
+
+If you paste the full statement (even just the core rules and input/output), I can produce the complete Codeforces-style editorial in the exact format you requested, including the reasoning, algorithm derivation, implementation, and edge-case analysis.
