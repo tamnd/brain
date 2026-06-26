@@ -1,22 +1,22 @@
 ---
 title: "2020 UCF Local Programming Contest"
-description: "10 problems from 2020 UCF Local Programming Contest (contest 105760), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2020 UCF Local Programming Contest (contest 105760), difficulty -. 10/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105760
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
+n_problems: 11
 n_verified: 10
-total_solve_s: 652
-date: "2026-06-22T07:29:29+07:00"
+total_solve_s: 672
+date: "2026-06-22T08:54:04+07:00"
 weight: 105760
 draft: false
 ---
 
 # [2020 UCF Local Programming Contest](https://codeforces.com/contest/105760)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 10m 52s
+Special | 11 problems | 10/11 verified | Difficulty - | 11m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 10 problems | 10/10 verified | Difficulty - | 10m 52s
 | [H](H/) | [Lots of Towers of Hanoi](https://codeforces.com/problemset/problem/105760/H) |  |  |  | 49s | ✓ |
 | [I](I/) | [Paragliders and Aircraft](https://codeforces.com/problemset/problem/105760/I) |  |  |  | 44s | ✓ |
 | [K](K/) | [Safe Logging](https://codeforces.com/problemset/problem/105760/K) |  |  |  | 1m 12s | ✓ |
+| [L](L/) | [Village Transportation](https://codeforces.com/problemset/problem/105760/L) |  |  |  | 20s |  |
