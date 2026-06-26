@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2105 contests, 13964 problems, 7790 verified."
+description: "Codeforces problem solutions with full editorials. 2105 contests, 13965 problems, 7791 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2105 contests, 13964 problems, 7790 verified.**
+**2105 contests, 13965 problems, 7791 verified.**
 
 ## Unknown — 274 contests, 2374 problems, 1607 verified
 
@@ -1852,7 +1852,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
 
-## 2025 — 255 contests, 2273 problems, 1195 verified
+## 2025 — 255 contests, 2274 problems, 1196 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1978,7 +1978,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105687](105687/) | [AlgoChief Sprint Round 2](https://codeforces.com/contest/105687) | 4 | 3/4 | Special | - |
 | [105692](105692/) | [Baozii Cup 1](https://codeforces.com/contest/105692) | 13 | 5/13 | Special | - |
 | [105705](105705/) | [AlgoChief Sprint Round 3](https://codeforces.com/contest/105705) | 4 | 2/4 | Special | - |
-| [105709](105709/) | [UTPC Contest 2-12-25 Div. 2 (Beginner)](https://codeforces.com/contest/105709) | 7 | 3/7 | Div. 2 | - |
+| [105709](105709/) | [UTPC Contest 2-12-25 Div. 2 (Beginner)](https://codeforces.com/contest/105709) | 8 | 4/8 | Div. 2 | - |
 | [105710](105710/) | [UTPC Contest 2-12-25 Div. 1 (Advanced)](https://codeforces.com/contest/105710) | 8 | 3/8 | Div. 1 | - |
 | [105723](105723/) | [MTB Presents AUST Inter University Programming Contest 2025](https://codeforces.com/contest/105723) | 11 | 11/11 | Special | - |
 | [105728](105728/) | [EPT Solving Cup 5.0 공식 경연대회](https://codeforces.com/contest/105728) | 16 | 4/16 | Special | - |
