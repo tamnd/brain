@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2172 contests, 14381 problems, 7896 verified."
+description: "Codeforces problem solutions with full editorials. 2173 contests, 14385 problems, 7896 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2172 contests, 14381 problems, 7896 verified.**
+**2173 contests, 14385 problems, 7896 verified.**
 
-## Unknown — 318 contests, 2585 problems, 1658 verified
+## Unknown — 319 contests, 2589 problems, 1658 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -75,6 +75,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105476](105476/) | [XXII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105476) | 5 | 3/5 | Special | - |
 | [105477](105477/) | [XXII Spain Olympiad in Informatics, Online Qualifier 1](https://codeforces.com/contest/105477) | 4 | 3/4 | Special | - |
 | [105478](105478/) | [XXII Spain Olympiad in Informatics, Online Qualifier 2](https://codeforces.com/contest/105478) | 4 | 2/4 | Special | - |
+| [105479](105479/) | [2023-2024 Всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/105479) | 4 | 0/4 | Special | - |
 | [105482](105482/) | [Интернет-олимпиады, Сезон 2024-2025, Первая командная олимпиада](https://codeforces.com/contest/105482) | 12 | 3/12 | Special | - |
 | [105483](105483/) | [Интернет-олимпиады, Сезон 2024-2025, Вторая командная олимпиада](https://codeforces.com/contest/105483) | 12 | 0/12 | Special | - |
 | [105484](105484/) | [The 2024 ICPC Asia Nanjing Regional Contest (The 3rd Universal Cup. Stage 16: Nanjing)](https://codeforces.com/contest/105484) | 13 | 0/13 | ICPC/IOI | - |
