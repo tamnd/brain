@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2130 contests, 14170 problems, 7867 verified."
+description: "Codeforces problem solutions with full editorials. 2131 contests, 14170 problems, 7867 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2130 contests, 14170 problems, 7867 verified.**
+**2131 contests, 14170 problems, 7867 verified.**
 
 ## Unknown — 286 contests, 2461 problems, 1640 verified
 
@@ -1661,7 +1661,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 206 contests, 1740 problems, 866 verified
+## 2024 — 207 contests, 1740 problems, 866 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1859,6 +1859,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105582](105582/) | [Ural Championship 2017](https://codeforces.com/contest/105582) | 13 | 13/13 | Special | - |
 | [105583](105583/) | [Ural Championship 2014](https://codeforces.com/contest/105583) | 12 | 12/12 | Special | - |
 | [105588](105588/) | [The 2024 ICPC Asia Kunming Regional Contest (The 3rd Universal Cup. Stage 20: Kunming)](https://codeforces.com/contest/105588) | 13 | 13/13 | ICPC/IOI | - |
+| [105605](105605/) | [Муниципальный этап ВсОШ по информатике в Липецкой области 2024 (9-11 классы)](https://codeforces.com/contest/105605) | 0 | 0/0 | Special | - |
 | [105615](105615/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Preliminary](https://codeforces.com/contest/105615) | 15 | 3/15 | Special | - |
 | [105618](105618/) | [Когнитивные технологии 2024-2025. Третий отбор](https://codeforces.com/contest/105618) | 6 | 4/6 | Special | - |
 | [105622](105622/) | [TheForces Round #38 (Tree-Forces)](https://codeforces.com/contest/105622) | 7 | 3/7 | Special | - |
