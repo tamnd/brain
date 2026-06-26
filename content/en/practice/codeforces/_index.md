@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2118 contests, 14073 problems, 7827 verified."
+description: "Codeforces problem solutions with full editorials. 2119 contests, 14076 problems, 7827 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2118 contests, 14073 problems, 7827 verified.**
+**2119 contests, 14076 problems, 7827 verified.**
 
-## Unknown — 279 contests, 2413 problems, 1619 verified
+## Unknown — 280 contests, 2416 problems, 1619 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -92,6 +92,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 13 | 13/13 | Special | - |
 | [105633](105633/) | [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633) | 12 | 12/12 | ICPC/IOI | - |
 | [105638](105638/) | [GPC 2024](https://codeforces.com/contest/105638) | 13 | 13/13 | Special | - |
+| [105642](105642/) | [SanSi Cup 2024](https://codeforces.com/contest/105642) | 3 | 0/3 | Special | - |
 | [105644](105644/) | [Osijek Competitive Programming Camp, Winter 2023, Day 8: Dilhan Salgado Contest (The 1st Universal Cup. Stage 5: Osijek)](https://codeforces.com/contest/105644) | 7 | 2/7 | Special | - |
 | [105645](105645/) | [Osijek Competitive Programming Camp, Winter 2023, Day 6: Yuhao Du Contest 11 (The 1st Universal Cup. Stage 10: Zhejiang)](https://codeforces.com/contest/105645) | 13 | 0/13 | Special | - |
 | [105646](105646/) | [Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra)](https://codeforces.com/contest/105646) | 13 | 13/13 | Special | - |
