@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2173 contests, 14385 problems, 7896 verified."
+description: "Codeforces problem solutions with full editorials. 2174 contests, 14397 problems, 7898 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2173 contests, 14385 problems, 7896 verified.**
+**2174 contests, 14397 problems, 7898 verified.**
 
 ## Unknown — 319 contests, 2589 problems, 1658 verified
 
@@ -1694,7 +1694,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 216 contests, 1827 problems, 877 verified
+## 2024 — 217 contests, 1839 problems, 879 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1848,6 +1848,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105292](105292/) | [National Taiwan University Class Preliminary 2024](https://codeforces.com/contest/105292) | 13 | 12/13 | Special | - |
 | [105293](105293/) | [TheForces Round #33(Wow-Forces)](https://codeforces.com/contest/105293) | 6 | 0/6 | Special | - |
 | [105297](105297/) | [2024 USP Try-outs](https://codeforces.com/contest/105297) | 12 | 12/12 | Special | - |
+| [105300](105300/) | [AGM 2024, Final Round, Day 2](https://codeforces.com/contest/105300) | 12 | 2/12 | Special | - |
 | [105307](105307/) | [ICPC 2024 Thailand - Chulalongkorn University Internal Round](https://codeforces.com/contest/105307) | 11 | 1/11 | ICPC/IOI | - |
 | [105316](105316/) | [2024 Aleppo Collegiate Programming Contest](https://codeforces.com/contest/105316) | 13 | 13/13 | Special | - |
 | [105319](105319/) | [Tishreen Collegiate Programming Contest 2024](https://codeforces.com/contest/105319) | 12 | 12/12 | Special | - |
