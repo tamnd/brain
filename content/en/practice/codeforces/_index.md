@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2116 contests, 14052 problems, 7824 verified."
+description: "Codeforces problem solutions with full editorials. 2117 contests, 14065 problems, 7824 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2116 contests, 14052 problems, 7824 verified.**
+**2117 contests, 14065 problems, 7824 verified.**
 
-## Unknown — 277 contests, 2393 problems, 1616 verified
+## Unknown — 278 contests, 2406 problems, 1616 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -92,6 +92,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105632](105632/) | [2024 China Collegiate Programming Contest (CCPC) Zhengzhou Onsite (The 3rd Universal Cup. Stage 22: Zhengzhou)](https://codeforces.com/contest/105632) | 13 | 13/13 | Special | - |
 | [105633](105633/) | [The 2024 ICPC Asia Yokohama Regional Contest](https://codeforces.com/contest/105633) | 12 | 12/12 | ICPC/IOI | - |
 | [105638](105638/) | [GPC 2024](https://codeforces.com/contest/105638) | 13 | 13/13 | Special | - |
+| [105645](105645/) | [Osijek Competitive Programming Camp, Winter 2023, Day 6: Yuhao Du Contest 11 (The 1st Universal Cup. Stage 10: Zhejiang)](https://codeforces.com/contest/105645) | 13 | 0/13 | Special | - |
 | [105646](105646/) | [Osijek Competitive Programming Camp, Winter 2024, Day 6: Potyczki Algorytmiczne Contest (The 3rd Universal Cup. Stage 2: Zielona Góra)](https://codeforces.com/contest/105646) | 13 | 13/13 | Special | - |
 | [105657](105657/) | [The 2024 ICPC Asia Hangzhou Regional Contest (The 3rd Universal Cup. Stage 25: Hangzhou)](https://codeforces.com/contest/105657) | 13 | 13/13 | ICPC/IOI | - |
 | [105666](105666/) | [MITIT Winter 2025 Advanced Round 1](https://codeforces.com/contest/105666) | 5 | 5/5 | Special | - |
