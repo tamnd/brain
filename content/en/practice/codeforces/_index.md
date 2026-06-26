@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2113 contests, 14013 problems, 7811 verified."
+description: "Codeforces problem solutions with full editorials. 2114 contests, 14024 problems, 7811 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2113 contests, 14013 problems, 7811 verified.**
+**2114 contests, 14024 problems, 7811 verified.**
 
 ## Unknown — 277 contests, 2390 problems, 1612 verified
 
@@ -1649,7 +1649,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 
-## 2024 — 201 contests, 1690 problems, 852 verified
+## 2024 — 202 contests, 1701 problems, 852 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1851,6 +1851,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105629](105629/) | [The 19-th Beihang University Collegiate Programming Contest (BCPC 2024) - Final](https://codeforces.com/contest/105629) | 9 | 4/9 | Special | - |
 | [105631](105631/) | [SYSU Collegiate Programming Contest 2024 (SYSUCPC 2024), Final](https://codeforces.com/contest/105631) | 13 | 13/13 | Special | - |
 | [105636](105636/) | [NOIP 2024](https://codeforces.com/contest/105636) | 4 | 3/4 | Special | - |
+| [105665](105665/) | [AGM 2024 Qualification Round](https://codeforces.com/contest/105665) | 11 | 0/11 | Special | - |
 | [105677](105677/) | [2024-2025 ICPC Southwestern European Regional Contest (SWERC 2024)](https://codeforces.com/contest/105677) | 13 | 13/13 | ICPC/IOI | - |
 | [106030](106030/) | [2024 China Collegiate Programming Contest (CCPC) Chongqing Onsite](https://codeforces.com/contest/106030) | 13 | 3/13 | Special | - |
 | [106163](106163/) | [BdOI 2024 National](https://codeforces.com/contest/106163) | 4 | 4/4 | Special | - |
