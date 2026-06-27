@@ -18,17 +18,17 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) | &#9654; [*15*] | simple | solved | 2m02s |
-| [2](02.md) |  [*16*] | medium | solved | 2m23s |
-| [3](03.md) |  [*M20*] | math-medium | solved | 5m55s |
-| [4](04.md) | &#9654; [*M16*] | math-medium | verified | 39s |
-| [5](05.md) |  [*M21*] | math-medium | verified | 2m44s |
-| [6](06.md) |  [*M22*] | math-medium | solved | 3m11s |
-| [7](07.md) |  [*M22*] | math-medium | solved | 4m59s |
-| [8](08.md) | &#9654; [*M22*] | math-medium | verified | 41s |
-| [9](09.md) |  [*M26*] | math-hard | verified | 43s |
-| [10](10.md) |  [*HM40*] | hm-project | solved | 3m21s |
-| [11](11.md) | &#9654; [*M26*] | math-hard | solved | 50s |
+| [1](01.md) | &#9654; [*15*] | simple | verified | 1m45s |
+| [2](02.md) |  [*16*] | medium | solved | 6m10s |
+| [3](03.md) |  [*M20*] | math-medium | solved | 3m28s |
+| [4](04.md) | &#9654; [*M16*] | math-medium | verified | 1m37s |
+| [5](05.md) |  [*M21*] | math-medium | verified | 1m39s |
+| [6](06.md) |  [*M22*] | math-medium | solved | 5m27s |
+| [7](07.md) |  [*M22*] | math-medium | solved | 6m25s |
+| [8](08.md) | &#9654; [*M22*] | math-medium | verified | 4m16s |
+| [9](09.md) |  [*M26*] | math-hard | verified | 4m46s |
+| [10](10.md) |  [*HM40*] | hm-project | solved | 7m54s |
+| [11](11.md) | &#9654; [*M26*] | math-hard | verified | 5m |
 | [12](12.md) |  [*M26*] | math-hard | solved | 1m51s |
 | [13](13.md) |  [*M32*] | math-hard | solved | 43s |
 | [14](14.md) |  [*M30*] | math-hard | solved | 4m29s |
@@ -134,7 +134,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
 | [114](114.md) |  [*16*] | medium | solved | 4m34s |
 | [115](115.md) | &#9654; [*24*] | medium | verified | 5m |
 | [116](116.md) |  [*HM30*] | hm-hard | solved | 4m39s |
-| [117](117.md) |  [*HM46*] | hm-research | verified | 3m08s |
+| [117](117.md) |  [*HM46*] | hm-research | solved | 3m42s |
 | [118](118.md) |  [*30*] | hard | solved | 3m44s |
 | [119](119.md) |  [*20*] | medium | solved | 6m03s |
 | [120](120.md) | &#9654; [*M25*] | math-medium | solved | 4m34s |
