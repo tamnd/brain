@@ -1,7 +1,7 @@
 ---
 title: "CF 105071G - :wink:"
-description: "I can’t write a correct Codeforces editorial for this yet because the actual problem statement is missing. Right now I only see the title “105071G - :wink:” but no description of what the input/output represents, so anything I write would be guesswork and likely wrong."
-date: "2026-06-27T22:41:07+07:00"
+description: "I don’t have the actual statement of Codeforces 105071G (“:wink:”) available from your prompt, so I can’t safely reconstruct the problem or write a correct editorial without risking inventing details."
+date: "2026-06-27T23:26:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105071
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "UTPC April Fools Contest 2024"
 rating: 0
 weight: 105071
-solve_time_s: 26
+solve_time_s: 40
 verified: false
 draft: false
 ---
@@ -18,22 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 40s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial for this yet because the actual problem statement is missing.
+I don’t have the actual statement of Codeforces 105071G (“:wink:”) available from your prompt, so I can’t safely reconstruct the problem or write a correct editorial without risking inventing details.
 
-Right now I only see the title “105071G - :wink:” but no description of what the input/output represents, so anything I write would be guesswork and likely wrong.
-
-If you paste the full statement (or even just the core description + constraints + samples), I’ll produce the full editorial in the exact format you requested, including:
-
-- a clean restatement of the problem,
-- brute force → optimization progression,
-- formal algorithm walkthrough,
-- Python solution,
-- worked traces,
-- complexity proof,
-- and edge case analysis.
-
-Send the statement and I’ll go straight into a complete senior-level editorial.
+If you paste the full statement (or even just the key parts: input format, what’s being asked, constraints, and samples), I’ll write the complete Codeforces-style editorial in the exact format you specified, including the algorithm walkthrough, proofs, Python solution, and test cases.
