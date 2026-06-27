@@ -210,7 +210,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 128/219 solved.
 | [190](190.md) |  [*23*] | medium | solved | 4m15s |
 | [191](191.md) |  [*M30*] | math-hard | solved | 4m23s |
 | [192](192.md) |  [*HM38*] | hm-project | solved | 4m27s |
-| [193](193.md) | &#9654; [*M21*] | math-medium | solved | 3m13s |
+| [193](193.md) | &#9654; [*M21*] | math-medium | solved | 4m05s |
 | [194](194.md) |  [*M24*] | math-medium | solved | 2m54s |
 | [195](195.md) | &#9654; [*HM25*] | hm-medium | verified | 1m15s |
 | [196](196.md) |  [*21*] | medium | solved | 3m03s |
