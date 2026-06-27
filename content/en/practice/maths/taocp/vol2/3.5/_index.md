@@ -43,7 +43,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.5: 44/44 solved.
 | [23](23.md) |  [*M32*] | math-hard | solved | 3m43s |
 | [24](24.md) | &#9654; [*M35*] | math-hard | verified | 2m35s |
 | [25](25.md) |  [*HM20*] | hm-medium | verified | 8m45s |
-| [26](26.md) |  [*HM34*] | hm-hard | solved | 13m39s |
+| [26](26.md) |  [*HM34*] | hm-hard | solved | 5m10s |
 | [27](27.md) |  [**] |  | solved | 9m49s |
 | [28](28.md) | &#9654; [*HM21*] | hm-medium | solved | 6m26s |
 | [29](29.md) |  [*HM34*] | hm-hard | solved | 2m29s |

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.2: Boolean Evaluation"
-description: "Section 7.1.2 exercises: 84/85 solved."
+description: "Section 7.1.2 exercises: 85/85 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.2. Boolean Evaluation
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.2: 84/85 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.2: 85/85 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -45,7 +45,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.2: 84/85 solved.
 | [25](25.md) | &#9654; [*17*] | medium | verified | 2m18s |
 | [26](26.md) |  [*25*] | medium | solved | 4m33s |
 | [27](27.md) | &#9654; [*23*] | medium | solved | 5m52s |
-| 28 |  [*26*] | hard | - | - |
+| [28](28.md) |  [*26*] | hard | solved | 3m46s |
 | [29](29.md) |  [*M28*] | math-hard | solved | 10m54s |
 | [30](30.md) |  [*M25*] | math-medium | solved | 3m20s |
 | [31](31.md) |  [*21*] | medium | solved | 4m06s |
