@@ -1,7 +1,7 @@
 ---
 title: "CF 104992G - \u041c\u0435\u0434\u0432\u0435\u0434\u044c \u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0435 \u043f\u0438\u0442\u0430\u043d\u0438\u0435"
-description: "A bear arrives at a storage room where each food item has a limited availability window and a calorie value. Every item can be eaten in one hour, and the bear can eat at most one item per hour."
-date: "2026-06-28T03:36:22+07:00"
+description: "We are given a collection of food items, each described by how soon it disappears from a warehouse and how many calories it provides. Time moves in discrete hours starting from the moment the bear arrives."
+date: "2026-06-28T04:28:51+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104992
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "qual VKOSHP Junior 24"
 rating: 0
 weight: 104992
-solve_time_s: 70
+solve_time_s: 73
 verified: false
 draft: false
 ---
@@ -18,86 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 10s  
+**Solve time:** 1m 13s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-A bear arrives at a storage room where each food item has a limited availability window and a calorie value. Every item can be eaten in one hour, and the bear can eat at most one item per hour. However, each item disappears after a certain number of hours counted from the moment the bear arrives, so it is only available within its own deadline window.
+We are given a collection of food items, each described by how soon it disappears from a warehouse and how many calories it provides. Time moves in discrete hours starting from the moment the bear arrives. In each hour, the bear can eat at most one item, and once an item’s deadline passes it is gone forever.
 
-The task is to choose which items the bear should eat so that no time overlaps are violated and the total calories consumed is as large as possible. Each item is independent except for sharing the same time resource and having its own expiry time.
+Each item behaves like a job that must be executed in a one-hour slot before its deadline. The goal is to choose and schedule a subset of these jobs so that no two occupy the same hour and no chosen job is scheduled after its deadline, while maximizing total calorie gain.
 
-The input gives a list of pairs where each pair describes how many hours remain before an item is removed and how many calories it provides. The output is a single number representing the maximum total calories achievable under the constraint that in any hour only one item can be consumed and an item must be consumed before it disappears.
+The input gives, for each item, a deadline in hours and a value. The deadline means the last hour index by which the item can be consumed if we index hours from zero. The output is the maximum possible sum of values among all items that can be feasibly scheduled under these constraints.
 
-The constraints go up to two hundred thousand items, which rules out any approach that tries all subsets or simulates all schedules explicitly. Any method that is quadratic in the number of items would already be too slow, since it would require on the order of tens of billions of operations in the worst case.
+The constraints are large, with up to 200,000 items. Any approach that tries to simulate each hour or repeatedly search for the best item per time slot will fail because it would degrade toward quadratic behavior. The only viable solutions must run in roughly O(n log n).
 
-A naive greedy strategy such as always taking the highest calorie available item without considering deadlines fails. A high-calorie item might appear late but expire too soon to be scheduled if earlier slots are already filled by less valuable items.
-
-A second subtle failure comes from sorting only by deadlines and always picking the first available item. That can also miss better combinations because early deadlines might force suboptimal choices unless value is considered globally.
-
-A small concrete failure case for naive greedy-by-value:
-
-Input:
-
-```
-3
-1 100
-1 1
-2 50
-```
-
-If we always pick the highest calorie item first, we take 100 at time 1, leaving only time 2 for 50, which is fine here. But swapping structures across more complex cases shows that greedy-by-value alone does not respect future constraints in general.
-
-A failure case for greedy-by-deadline-only:
-
-Input:
-
-```
-3
-1 10
-2 100
-2 90
-```
-
-Taking earliest deadline first picks 10 at time 1, then 100 and 90 cannot both fit optimally if scheduling is not handled carefully.
-
-The core difficulty is balancing two competing objectives: respecting deadlines and maximizing total value.
+A subtle failure case for naive reasoning appears when picking items greedily by value without respecting deadlines. For example, if one high-value item has a very early deadline and several smaller items have later deadlines, choosing incorrectly can block a schedule that allows more total value. Another failure case arises when sorting by deadline and always taking available items without tracking which earlier choices should be replaced by better ones.
 
 ## Approaches
 
-The brute-force interpretation is to simulate all possible ways of assigning items to time slots. For each hour, we decide which available item to eat, recursively branching over all valid choices. This correctly explores every schedule, but the branching factor is large: at each step there can be up to n choices, and there are up to n steps, leading to exponential explosion. Even pruning by availability does not prevent worst-case behavior from becoming factorial in nature.
+The brute-force view is to consider every possible subset of items, and for each subset try to assign them to time slots before their deadlines. Even if we fix a subset, scheduling it requires checking whether it can be placed in increasing order of time without violating deadlines. This leads to exponential subsets, and even verifying each subset takes linear time, producing an infeasible 2^n scale explosion.
 
-The key structural observation is that this is a classic scheduling problem with unit-length jobs and deadlines, where each job contributes a profit and must be completed before its deadline. The constraint “one item per hour” turns time into discrete slots, and deadlines define feasibility windows.
+A more structured attempt is to process time hour by hour, and at each hour pick the best available item. This fails because “available” changes dynamically with deadlines, and maintaining a global best without revisiting past decisions leads to wrong choices. The missing idea is that we do not actually care about the exact time each item is eaten, only whether we can fit a set of size k within deadlines, and which k items are best.
 
-Instead of constructing schedules directly, we process items in order of increasing deadlines. At any moment, we maintain the best set of items that can fit into the time elapsed so far. When a new item arrives in deadline order, we tentatively include it. If we exceed the number of slots available up to that deadline, we discard the least valuable item among those chosen so far. This ensures we always keep the most profitable feasible subset.
+The key observation is that this is a classic scheduling-with-deadlines maximization problem. If we sort items by increasing deadline, then when we have considered all items up to some deadline value d, we are allowed to pick at most d items among them. Among all ways to pick d items, the optimal choice is always the d highest calorie items seen so far. If we ever exceed the allowed count, we should discard the least valuable item because it contributes least to the objective while occupying a scarce slot.
 
-The reason this works is that when we have selected more items than can fit before a given deadline, only the smallest-calorie item can ever be safely removed without reducing the potential for future optimality.
+This leads directly to maintaining a set of chosen items using a structure that can remove the smallest value efficiently.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(n) | Too slow |
-| Optimal (greedy + heap) | O(n log n) | O(n) | Accepted |
+| Brute force subsets | O(2^n · n) | O(n) | Too slow |
+| Greedy with heap | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We convert each item into a pair of deadline and value, then process them in increasing order of deadline.
+We sort all items by their deadline in non-decreasing order. We then scan them one by one, maintaining a structure of chosen calorie values.
 
-1. Sort all items by their deadline in ascending order. This ensures that when we process an item, all earlier items have deadlines no later than it, so feasibility is checked incrementally.
-2. Maintain a min-heap of selected calorie values. The heap represents the current set of chosen items that we plan to schedule within the processed time window.
-3. Iterate over the sorted items. For each item, insert its calorie value into the heap. This assumes we tentatively schedule it.
-4. After inserting, check whether the number of selected items exceeds the current deadline. If it does, remove the smallest calorie item from the heap. This step is crucial because exceeding the deadline means we cannot schedule all chosen items in time, and removing the least valuable one preserves maximum total gain.
-5. After processing all items, the heap contains the optimal set of items that can be scheduled within constraints. Sum all values in the heap to obtain the answer.
+1. Sort items by increasing deadline. This ensures that when we process an item, we already know the tightest constraint that applies to the current prefix of items.
+2. Maintain a min-heap of selected calorie values. This heap represents the current chosen set of items we intend to schedule.
+3. For each item in sorted order, insert its calorie value into the heap. This corresponds to tentatively taking this item into our schedule.
+4. After insertion, check whether the heap size exceeds the current item’s deadline. If it does, remove the smallest calorie item from the heap. This step enforces that among all items with deadline d, we keep only the best d items, because any feasible schedule can use at most d items in d time slots.
+5. After processing all items, sum the heap. This sum is the maximum achievable calorie total.
 
 ### Why it works
 
-At every deadline point, we maintain the invariant that among all items seen so far, the heap stores the maximum possible total calorie subset that fits within the number of available time slots up to that deadline. Any time we exceed capacity, removing the smallest calorie item is optimal because it reduces total gain as little as possible while restoring feasibility. Since future items are always processed with potentially larger deadlines, earlier decisions remain valid and never need revision.
+At any prefix of items sorted by deadline, suppose the current deadline is d. Any valid schedule can include at most d items from this prefix because only d time slots exist before or at that deadline boundary. The algorithm always maintains exactly the best possible set of size at most d by discarding the smallest calorie item whenever the limit is exceeded. This invariant ensures that after processing each prefix, the heap contains an optimal selection for that prefix, and thus for the full set as well.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+
+import heapq
 
 def solve():
     n = int(input())
@@ -108,7 +80,6 @@ def solve():
 
     items.sort()
 
-    import heapq
     heap = []
     total = 0
 
@@ -126,62 +97,44 @@ if __name__ == "__main__":
     solve()
 ```
 
-The sorting step ensures deadlines are processed in increasing order, which allows the heap to represent a valid candidate schedule prefix at each stage. The heap stores chosen calorie values, and the running sum avoids recomputing totals repeatedly. When the heap size exceeds the current deadline, we discard the smallest value to maintain feasibility with minimal loss.
+The implementation directly follows the heap-based greedy strategy. Sorting by deadline is crucial because it transforms time feasibility into a prefix constraint. The heap always stores the currently chosen items. Keeping a running sum avoids recomputing the heap sum at the end.
 
-A subtle implementation detail is that we compare heap size directly with the deadline. This works because after sorting, at the moment we process all items with deadline d, we have exactly d time slots available for scheduling among all items seen so far.
+The only subtle implementation detail is the condition `len(heap) > t`. This uses the fact that after processing all items with deadline up to t, we enforce that no more than t items are selected. The heap removal always targets the smallest value, since that is the least damaging choice for maintaining feasibility.
 
 ## Worked Examples
 
-Consider the following input:
+Consider a small input with items (deadline, value): (1, 5), (1, 2), (2, 6), (2, 3).
 
-```
-5
-1 5
-1 6
-2 3
-2 2
-2 4
-```
+After sorting, the order is unchanged. We track the heap:
 
-After sorting by deadline, we process items step by step.
+| Step | Item | Heap after insertion | Action | Sum |
+| --- | --- | --- | --- | --- |
+| 1 | (1,5) | [5] | ok | 5 |
+| 2 | (1,2) | [2,5] | exceeds 1, remove 2 | 5 |
+| 3 | (2,6) | [5,6] | ok | 11 |
+| 4 | (2,3) | [3,5,6] | exceeds 2, remove 3 | 11 |
 
-| Item (t, k) | Heap after insertion | Action | Total |
-| --- | --- | --- | --- |
-| (1,5) | [5] | keep | 5 |
-| (1,6) | [5,6] | size>1 remove 5 | 6 |
-| (2,3) | [3,6] | keep | 9 |
-| (2,2) | [2,3,6] | size>2 remove 2 | 9 |
-| (2,4) | [3,4,6] | remove 3 | 10 |
+The final selection corresponds to taking items with values 5 and 6, which is optimal because at most two items can be scheduled within time 2, and these are the highest values compatible with deadlines.
 
-This trace shows how early low-value choices are replaced when better combinations appear while still respecting deadlines.
+Now consider (deadline, value): (1,10), (2,1), (2,1), (2,1).
 
-Now consider a second case:
+| Step | Item | Heap after insertion | Action | Sum |
+| --- | --- | --- | --- | --- |
+| 1 | (1,10) | [10] | ok | 10 |
+| 2 | (2,1) | [1,10] | ok | 11 |
+| 3 | (2,1) | [1,1,10] | remove 1 | 10 |
+| 4 | (2,1) | [1,1,10] | remove 1 | 9 |
 
-```
-4
-1 100
-2 1
-2 2
-2 3
-```
-
-| Item (t, k) | Heap after insertion | Action | Total |
-| --- | --- | --- | --- |
-| (1,100) | [100] | keep | 100 |
-| (2,1) | [1,100] | keep | 101 |
-| (2,2) | [1,100,2] | remove 1 | 102 |
-| (2,3) | [2,100,3] | remove 2 | 103 |
-
-The process confirms that the algorithm does not lock into early low-value decisions and continuously maintains an optimal feasible set.
+This shows that even though many items exist, only two can be taken effectively, and the algorithm ensures the highest-value subset is retained.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | sorting plus heap insert and delete operations |
-| Space | O(n) | heap stores selected items in worst case |
+| Time | O(n log n) | Sorting dominates with O(n log n), each heap operation is log n over n items |
+| Space | O(n) | Heap stores at most all items in worst case |
 
-The constraints allow up to two hundred thousand items, so an n log n approach is comfortably fast. Heap operations remain efficient because each item is inserted and possibly removed once.
+The constraints up to 200,000 items fit comfortably within this complexity since logarithmic factors remain small.
 
 ## Test Cases
 
@@ -190,57 +143,36 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    sys.stdout = io.StringIO()
-    solve()
-    return sys.stdout.getvalue().strip()
+    from contextlib import redirect_stdout
+    import io as _io
 
-# sample (as provided, formatted minimally)
-assert run("1\n5 5\n") == "5"
+    out = _io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-# minimum size
-assert run("1\n1 10\n") == "10"
+# sample-like small case
+assert run("3\n1 5\n1 2\n2 6\n") == "11"
 
-# all same deadline
-assert run("3\n2 1\n2 5\n2 3\n") == "8"
+# all same deadlines
+assert run("4\n2 1\n2 2\n2 3\n2 4\n") == "7"
 
-# greedy trap case
-assert run("3\n1 10\n2 100\n2 90\n") == "190"
+# strictly increasing deadlines
+assert run("3\n1 10\n2 20\n3 30\n") == "60"
 
-# increasing deadlines
-assert run("4\n1 5\n2 6\n3 7\n3 1\n") == "18"
+# tight constraint forcing drops
+assert run("5\n1 100\n2 1\n2 1\n2 1\n2 1\n") == "101"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single item | k | base case |
-| same deadline items | best subset selection | heap pruning correctness |
-| mixed values | avoids greedy failure | global optimality |
-| increasing deadlines | scheduling feasibility | deadline handling |
+| small mixed deadlines | 11 | correctness of heap replacement |
+| all same deadlines | 7 | selecting best k items |
+| increasing deadlines | 60 | no removals needed |
+| one dominant item | 101 | greedy retention of high value |
 
 ## Edge Cases
 
-One important edge case is when many items share the same deadline. For example:
+A critical edge case is when a very high-value item has a very early deadline. For input (1,100), (2,1), (2,1), (2,1), (2,1), the algorithm first takes 100, then temporarily accepts smaller items, but repeatedly discards them because the heap must respect size limits. The final heap keeps 100 and one additional best item, producing 101, which matches the optimal schedule where the best item occupies the first hour and one small item fills another slot.
 
-```
-3
-2 1
-2 100
-2 50
-```
-
-The algorithm inserts all three values and then trims to at most two items. The heap ensures that the smallest value is removed, leaving 100 and 50, which matches the optimal schedule.
-
-Another edge case is when deadlines are strictly increasing but values are decreasing:
-
-```
-4
-1 100
-2 90
-3 80
-4 70
-```
-
-The heap never exceeds capacity, so no removals happen, and all items are taken. The algorithm naturally respects feasibility since each item arrives exactly when capacity allows it.
-
-A final case is when a high-value item appears late but has a tight deadline. Because we always process by deadline order, that item is considered exactly when its feasibility window is active, and it replaces weaker earlier choices if needed.
+Another edge case is when all deadlines are identical. In this situation, the algorithm effectively reduces to selecting the top d values among all items, where d is that shared deadline. The heap naturally enforces this without needing explicit handling.
