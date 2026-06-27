@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2263 contests, 15221 problems, 8321 verified."
+description: "Codeforces problem solutions with full editorials. 2264 contests, 15228 problems, 8322 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2263 contests, 15221 problems, 8321 verified.**
+**2264 contests, 15228 problems, 8322 verified.**
 
 ## Unknown — 360 contests, 2908 problems, 1824 verified
 
@@ -1739,7 +1739,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 261 contests, 2296 problems, 1115 verified
+## 2024 — 262 contests, 2303 problems, 1116 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1868,6 +1868,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [104969](104969/) | [UTPC Contest 02-09-24 Div. 1 (Advanced)](https://codeforces.com/contest/104969) | 7 | 1/7 | Div. 1 | - |
 | [104974](104974/) | [Codentines Day](https://codeforces.com/contest/104974) | 15 | 3/15 | Special | - |
 | [105003](105003/) | [XXVIII Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/105003) | 6 | 0/6 | Special | - |
 | [105006](105006/) | [UTPC Contest 03-01-24 Div. 1 (Advanced)](https://codeforces.com/contest/105006) | 7 | 2/7 | Div. 1 | - |
