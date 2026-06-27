@@ -233,7 +233,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 154/219 solved.
 | [213](213.md) | &#9654; [*HM26*] | hm-hard | solved | 2m10s |
 | [214](214.md) | &#9654; [*HM28*] | hm-hard | solved | 3m24s |
 | [215](215.md) | &#9654; [*21*] | medium | solved | 5m17s |
-| [216](216.md) | &#9654; [*M26*] | math-hard | verified | 3m06s |
+| [216](216.md) | &#9654; [*M26*] | math-hard | solved | 1m34s |
 | [217](217.md) |  [*40*] | project | verified | 1m25s |
 | [218](218.md) | &#9654; [*M30*] | math-hard | solved | 1m21s |
 | [219](219.md) | &#9654; [*20*] | medium | verified | 3m12s |
