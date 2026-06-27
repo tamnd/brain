@@ -1,23 +1,23 @@
 ---
 title: "2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest"
-description: "12 problems from 2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest (contest 105158), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from 2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest (contest 105158), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105158
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 564
+n_problems: 13
+n_verified: 13
+total_solve_s: 618
 contest_year: 2024
-date: "2026-06-27T13:41:06+07:00"
+date: "2026-06-27T16:43:03+07:00"
 weight: 105158
 draft: false
 ---
 
 # [2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105158)
 
-Special | 12 problems | 11/12 verified | Difficulty - | 9m 24s
+Special | 13 problems | 13/13 verified | Difficulty - | 10m 18s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,9 +27,10 @@ Special | 12 problems | 11/12 verified | Difficulty - | 9m 24s
 | [D](D/) | [\u8ddd\u79bb\u4e4b\u6bd4](https://codeforces.com/problemset/problem/105158/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [\u4fdd\u536b\u57ce\u90a6](https://codeforces.com/problemset/problem/105158/E) |  |  |  | 46s | ✓ |
 | [F](F/) | [\u4f18\u79c0\u5b57\u7b26\u4e32](https://codeforces.com/problemset/problem/105158/F) |  |  |  | 44s | ✓ |
-| [G](G/) | [\u626b\u96f7 2](https://codeforces.com/problemset/problem/105158/G) |  |  |  | 42s |  |
+| [G](G/) | [\u626b\u96f7 2](https://codeforces.com/problemset/problem/105158/G) |  |  |  | 51s | ✓ |
 | [H](H/) | [\u968f\u673a\u6808](https://codeforces.com/problemset/problem/105158/H) |  |  |  | 44s | ✓ |
 | [I](I/) | [378QAQ \u548c\u5b57\u7b26\u4e32](https://codeforces.com/problemset/problem/105158/I) |  |  |  | 48s | ✓ |
 | [J](J/) | [\u6392\u5217\u4e0e\u5408\u6570](https://codeforces.com/problemset/problem/105158/J) |  |  |  | 33s | ✓ |
+| [K](K/) | [\u6811\u4e0a\u95ee\u9898](https://codeforces.com/problemset/problem/105158/K) |  |  |  | 45s | ✓ |
 | [L](L/) | [Toxel \u4e0e PCPC II](https://codeforces.com/problemset/problem/105158/L) |  |  |  | 43s | ✓ |
 | [M](M/) | [\u6709\u6548\u7b97\u6cd5](https://codeforces.com/problemset/problem/105158/M) |  |  |  | 47s | ✓ |
