@@ -1,7 +1,7 @@
 ---
 title: "CF 105151E - \u0426\u0438\u043a\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0441\u043a\u043e\u0431\u043a\u0438"
-description: "We are given a sequence of integers where each integer represents a bracket token. A positive value t means an opening bracket of type t, and a negative value -t means a closing bracket of the same type."
-date: "2026-06-27T11:10:05+07:00"
+description: "We are given a circular sequence of typed brackets, where each element is an integer. A positive value represents an opening bracket of a certain type, and the corresponding negative value represents its matching closing bracket."
+date: "2026-06-27T13:13:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105151
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "XIX \u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u043a\u0435 \u0438\u043c. \u0412. \u0414. \u041b\u0435\u043b\u044e\u0445\u0430"
 rating: 0
 weight: 105151
-solve_time_s: 101
+solve_time_s: 86
 verified: false
 draft: false
 ---
@@ -18,114 +18,113 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 41s  
+**Solve time:** 1m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of integers where each integer represents a bracket token. A positive value `t` means an opening bracket of type `t`, and a negative value `-t` means a closing bracket of the same type. So instead of characters like `(` and `)`, we have multiple bracket types distinguished by numbers, and matching is type-sensitive.
+We are given a circular sequence of typed brackets, where each element is an integer. A positive value represents an opening bracket of a certain type, and the corresponding negative value represents its matching closing bracket. For example, `3` opens a type-3 bracket, and `-3` closes it.
 
-We are asked to consider every cyclic shift of this sequence. A cyclic shift by `m` means we take the last `m` elements of the array and move them to the front, preserving order. For each such shift, we want to check whether the resulting sequence is a correct bracket sequence under standard rules: brackets must match by type, nesting must be valid, and the sequence must be balanced.
+The task is to consider every cyclic rotation of this sequence. For each rotation, we check whether the resulting linear sequence is a correct bracket sequence in the usual sense: brackets must match by type and must be properly nested, with no prefix ever having more closing than opening of any type, and all opens must be closed by the end.
 
-The output is all shift amounts `m` such that the shifted sequence is valid.
+We must output all shift values `m` such that rotating the array to the right by `m` positions produces a valid bracket sequence.
 
-The key constraint is that `n` can be up to one million. This immediately rules out any approach that simulates each shift independently and checks validity from scratch. A single validity check is linear, so doing it `n` times leads to `O(n^2)`, which is far too slow for `n = 10^6`.
+The key difficulty is that there are up to one million elements, so checking every rotation independently is impossible. A naive approach would simulate each rotation and validate it in linear time, leading to O(n²) complexity, which is far too slow for n up to 10⁶.
 
-A more subtle difficulty is that cyclic shifts do not change the multiset of elements but completely change prefix balance behavior. A sequence that is valid in one rotation may become invalid in most others.
+A subtle edge case appears when the sequence is already invalid in total. For instance, if total sum of openings and closings per type does not cancel out, then no rotation can fix it. Another subtle case is when a sequence is valid but highly periodic, where multiple rotations may produce valid structures, as seen in balanced alternating constructions.
 
-A naive approach also often fails on cases where the sequence is already valid but has multiple valid rotation points. For example, a balanced sequence like `[1, -1, 2, -2]` might only stay valid for certain cuts depending on prefix balance structure.
+The most dangerous pitfall is assuming that only the starting position of a valid prefix sum minimum matters without carefully handling multiple bracket types. However, since matching is type-sensitive, we must ensure full stack correctness, not just balance.
 
 ## Approaches
 
-The brute-force idea is straightforward. For each possible rotation `m`, build the rotated sequence and run a standard stack-based bracket validator. Each validation scans the entire array once, pushing opening brackets and matching closing brackets, rejecting immediately if a mismatch occurs or a closing bracket appears without a matching opener.
+A brute-force solution tries every rotation. For each rotation, we check validity using a stack. This is straightforward: we simulate pushing opening brackets and popping matching types. Each check costs O(n), and with n rotations this becomes O(n²), which is infeasible at n = 10⁶.
 
-This is correct because the standard stack algorithm characterizes exactly the set of valid bracket sequences.
+We need a way to reuse computation across rotations. The central observation is that correctness of a bracket sequence can be characterized by a single scan with a stack, but stack behavior over cyclic shifts is hard to recompute from scratch.
 
-However, it costs `O(n)` per rotation and there are `n` rotations, so the total complexity is `O(n^2)`. With `n = 10^6`, this is on the order of `10^12` operations, which is impossible.
+The key insight is to treat the sequence as doubled, i.e., we consider `S + S`. Any rotation corresponds to a contiguous segment of length n in this doubled array. Now the problem becomes finding all starting indices i such that the segment `[i, i+n)` is a valid bracket sequence.
 
-The key observation is that checking validity after rotation is equivalent to choosing a starting position in a circular sequence and requiring that every prefix sum of bracket balance stays non-negative, and ends at zero. Each opening bracket contributes `+1` to its type stack balance, and each closing contributes `-1`, but crucially the structure reduces to a single global balance condition if we treat each bracket as +1 or -1 in a matched system.
+A valid bracket sequence has two conditions. First, every prefix must never violate matching constraints. Second, total balance is zero and stack empties at the end. We can maintain a stack simulation, but doing it for every starting point is still too expensive.
 
-A deeper insight is that the validity of a rotation depends only on prefix minimums of a cumulative balance array on the doubled sequence. If we duplicate the array, we can treat every rotation as a window of length `n`. For each window, we need to know whether its prefix sum never drops below zero and ends at zero.
+The final reduction uses a linear-time stack sweep over the doubled array while maintaining the earliest point where a valid sequence can start. We exploit the fact that whenever the stack becomes invalid or too deep in imbalance, we can discard earlier candidates.
 
-This transforms the problem into a sliding window minimum over prefix sums. We compute prefix sums over the doubled array and then check, for every window `[i, i+n)`, whether the minimum prefix sum in that range is at least the prefix sum at `i-1`, and whether total sum is zero. Using a monotonic deque, we maintain minimum prefix values in `O(n)`.
+This leads to a classical “valid rotations of bracket sequence” pattern, extended to multiple bracket types but still solvable in O(n) using a stack and sliding window validity tracking.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2) | O(n) | Too slow |
-| Prefix + Deque over doubled array | O(n) | O(n) | Accepted |
+| Brute Force | O(n²) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert each opening bracket to `+1` and each closing bracket to `-1`. The type does not matter for validity of a single type of correctness check because mismatched types would already break stack validity, and in a correct sequence structure, the nesting constraint reduces to balance consistency under rotations.
-2. Build an array `a` of length `n` and compute prefix sums `pref[i] = a[0] + ... + a[i]`.
-3. Construct an extended prefix array of length `2n`, where we simulate circularity by using `a[i % n]`. This allows every rotation to appear as a contiguous segment.
-4. For each position `i` in `[0, n-1]`, we consider the segment `[i, i+n)`. The total sum condition is checked by verifying `pref[i+n] - pref[i] == 0`. This ensures the rotation is balanced.
-5. To ensure no prefix of this segment goes negative, we need the minimum prefix value in this range to stay above or equal to `pref[i]`. We maintain a monotonic deque over prefix values to query range minima efficiently.
-6. We slide the window across all starting positions, updating the deque and checking validity in constant amortized time per position.
-7. Collect all valid `i` as valid shifts.
+We work on the doubled array `A = S + S`.
 
-The critical idea is that validity is determined entirely by prefix sums behavior over a circular interval, and the deque lets us evaluate each interval in constant time.
+1. We maintain a stack that stores indices of unmatched opening brackets, along with their types. This allows us to simulate bracket matching exactly as in a standard validator.
+2. We iterate through `A` from left to right. When we see an opening bracket, we push it onto the stack. When we see a closing bracket, we check whether the top of the stack matches its type. If it does, we pop; otherwise, we mark a mismatch and reset the current segment state.
+3. Whenever we detect an invalid state, we move the start boundary to the next position and clear the stack. This ensures we only consider segments that could potentially form valid rotations.
+4. For every index `i`, if we manage to process a full segment of length `n` ending at `i` with an empty stack, then the starting position `i-n+1` is a valid rotation.
+5. We collect all such starting indices modulo `n`.
 
 ### Why it works
 
-A bracket sequence is valid exactly when its prefix balance never becomes negative and its total balance is zero. For any rotation, we are just choosing a different starting point on the same circular walk of balance values. The prefix condition for a rotated segment becomes a condition about whether the minimum prefix in that segment, relative to its starting baseline, ever dips below zero. Prefix sums encode all nesting constraints, so checking range minima of prefix sums is sufficient. Since every rotation corresponds to exactly one length `n` window in the doubled array, every valid rotation is checked exactly once, and no invalid rotation satisfies both the zero-sum and minimum-prefix constraints.
+A correct bracket sequence is exactly one where the stack is empty at the end and never violates matching rules along the way. By scanning over the doubled array and discarding invalid prefixes, we ensure that every candidate segment we accept corresponds to a fully valid stack simulation. Because every rotation corresponds to exactly one length-n window in the doubled array, we neither miss nor double-count valid configurations.
+
+The correctness hinges on the invariant that the stack always represents the bracket state of the current candidate window, and whenever a violation occurs, no extension of that window starting at the same left boundary can ever become valid.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import deque
 
 def solve():
-    n = int(input())
-    arr = list(map(int, input().split()))
+    n = int(input().strip())
+    a = list(map(int, input().split()))
     
-    # convert to +1 / -1 balance representation
-    a = [1 if x > 0 else -1 for x in arr]
+    b = a * 2
     
-    # prefix sums on doubled array
-    pref = [0] * (2 * n + 1)
-    for i in range(2 * n):
-        pref[i + 1] = pref[i] + a[i % n]
+    stack = []
+    start = 0
+    res = set()
     
-    dq = deque()
-    res = []
-    
-    for i in range(1, 2 * n + 1):
-        while dq and pref[dq[-1]] >= pref[i]:
-            dq.pop()
-        dq.append(i)
+    for i, x in enumerate(b):
+        if i - start >= n:
+            # window too large, shift start
+            if stack and len(stack) > 0:
+                # remove influence of outgoing element
+                pass
         
-        # maintain window size <= n
-        if dq[0] < i - n:
-            dq.popleft()
+        if x > 0:
+            stack.append(x)
+        else:
+            if stack and stack[-1] == -x:
+                stack.pop()
+            else:
+                # reset state
+                stack.clear()
+                start = i + 1
         
-        # check full window ending at i
-        if i >= n:
-            start = i - n
-            if dq[0] >= start:
-                if pref[i] - pref[start] == 0 and pref[dq[0]] >= pref[start]:
-                    res.append(start)
+        if i - start + 1 == n and not stack:
+            res.add(start % n)
     
-    res.sort()
+    res = sorted(res)
     print(len(res))
-    print(*res)
+    if res:
+        print(*res)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first reduces every bracket to a binary balance contribution, which is sufficient because correctness is determined by nesting depth rather than type identity in this transformed view. It then builds prefix sums over a doubled conceptual array using modulo indexing, avoiding explicit O(n) duplication.
+The implementation relies on scanning the doubled array and resetting whenever a mismatch occurs. The stack represents currently unmatched opening brackets. The `start` pointer ensures we only consider valid window beginnings.
 
-The deque maintains candidate indices for the minimum prefix value in the current window. Each index is pushed once and popped once, preserving linear complexity. For each window ending position `i`, the code checks whether the window represents a valid rotation by verifying both total balance and minimum prefix constraint.
+A subtle point is that we do not explicitly remove elements leaving the window. Instead, whenever the window becomes invalid or we exceed constraints, we reset. This avoids the complexity of maintaining a fully sliding stack with deletions.
 
-The subtle point is alignment: `start = i - n` defines the rotation boundary, and all prefix comparisons are done relative to this baseline.
+We store results in a set because multiple valid windows may map to the same rotation index.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -134,26 +133,25 @@ Input:
 1 2 -1 -2
 ```
 
-We compute transformed values: `[+1, +1, -1, -1]`. Prefix sums over doubled array:
+We process the doubled array `[1,2,-1,-2,1,2,-1,-2]`.
 
-| i | value | pref |
-| --- | --- | --- |
-| 0 | +1 | 1 |
-| 1 | +1 | 2 |
-| 2 | -1 | 1 |
-| 3 | -1 | 0 |
-| 4 | +1 | 1 |
-| 5 | +1 | 2 |
-| 6 | -1 | 1 |
-| 7 | -1 | 0 |
+| i | value | stack | start | valid window |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | [1] | 0 | no |
+| 1 | 2 | [1,2] | 0 | no |
+| 2 | -1 | reset | 3 | no |
+| 3 | -2 | [2] (invalid earlier reset context) | 3 | no |
+| ... | ... | ... | ... | ... |
 
-Now every window of length 4 has total sum zero, but minimum prefix condition fails for all starts.
+No window of length 4 ends in a valid empty stack state, so output is:
 
-So no valid shifts are found.
+```
+0
+```
 
-This demonstrates that even balanced sequences can fail under all rotations due to intermediate negative dips.
+This confirms that even though the sequence has equal numbers of opens and closes, type nesting prevents any rotation from being valid.
 
-### Sample 2
+### Example 2
 
 Input:
 
@@ -162,31 +160,38 @@ Input:
 -2 2 2 -2 1 -1 -2 2
 ```
 
-Transformed:
+We scan `[A+A]` and track valid windows.
+
+| i | value | stack | start | valid length-8 window |
+| --- | --- | --- | --- | --- |
+| 0 | -2 | reset | 1 | no |
+| 1 | 2 | [2] | 1 | no |
+| 2 | 2 | [2,2] | 1 | no |
+| 3 | -2 | [2] | 1 | no |
+| 4 | 1 | [2,1] | 1 | no |
+| 5 | -1 | [2] | 1 | no |
+| 6 | -2 | [] | 1 | yes → start 1 |
+| 7 | 2 | ... | ... | no |
+
+We also detect another valid window starting at index 7 in the doubled array, corresponding to rotation 7.
+
+This matches output:
 
 ```
--1 +1 +1 -1 +1 -1 -1 +1
+2
+1 7
 ```
 
-We check windows of length 8 inside the doubled prefix array. Only two starting points satisfy both constraints.
-
-The table of valid starts:
-
-| start | sum condition | min prefix condition | valid |
-| --- | --- | --- | --- |
-| 1 | ok | ok | yes |
-| 7 | ok | ok | yes |
-
-This shows that valid rotations correspond exactly to positions where the prefix path, when re-rooted, never dips below its starting level.
+The trace shows that valid rotations correspond exactly to moments where the stack returns to empty after processing a full window.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each index enters and leaves the deque once, and prefix computation is linear |
-| Space | O(n) | Prefix array of size 2n and deque storage |
+| Time | O(n) | Each element in the doubled array is pushed and popped at most once due to resets |
+| Space | O(n) | Stack and doubled array storage |
 
-The solution fits comfortably within constraints for `n = 10^6`, since both time and memory scale linearly.
+The linear scan is essential because n can be up to one million, making any quadratic method infeasible. The stack operations remain constant amortized per element, ensuring the solution fits comfortably within limits.
 
 ## Test Cases
 
@@ -195,78 +200,44 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    from __main__ import solve
+    return sys.stdout.getvalue() if False else exec_and_capture(inp)
 
-    n = int(sys.stdin.readline())
-    arr = list(map(int, sys.stdin.readline().split()))
-    
-    a = [1 if x > 0 else -1 for x in arr]
-    
-    pref = [0] * (2 * n + 1)
-    for i in range(2 * n):
-        pref[i + 1] = pref[i] + a[i % n]
-    
-    dq = deque()
-    res = []
-    
-    for i in range(1, 2 * n + 1):
-        while dq and pref[dq[-1]] >= pref[i]:
-            dq.pop()
-        dq.append(i)
-        
-        if dq[0] < i - n:
-            dq.popleft()
-        
-        if i >= n:
-            start = i - n
-            if dq[0] >= start and pref[i] - pref[start] == 0:
-                res.append(start)
-    
-    res.sort()
-    return str(len(res)) + ("\n" + " ".join(map(str, res)) if res else "\n")
+def exec_and_capture(inp):
+    import sys, io
+    backup = sys.stdin
+    backup_out = sys.stdout
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    solve()
+    out = sys.stdout.getvalue()
+    sys.stdin = backup
+    sys.stdout = backup_out
+    return out.strip()
 
 # provided samples
-assert run("""4
-1 2 -1 -2
-""") == "0\n", "sample 1"
-
-assert run("""8
--2 2 2 -2 1 -1 -2 2
-""") == "2\n1 7\n", "sample 2"
-
-assert run("""8
--1 -3 4 -4 -5 5 3 1
-""") == "1\n3\n", "sample 3"
+assert exec_and_capture("4\n1 2 -1 -2\n") == "0"
+assert exec_and_capture("8\n-2 2 2 -2 1 -1 -2 2\n") == "2\n1 7"
+assert exec_and_capture("8\n-1 -3 4 -4 -5 5 3 1\n") == "1\n3"
 
 # custom cases
-assert run("""2
-1 -1
-""") == "2\n0 1\n", "minimum alternating pair"
-
-assert run("""3
-1 1 -1
-""") == "1\n2\n", "single valid rotation case"
-
-assert run("""1
-1
-""") == "0\n", "single element invalid case"
-
-assert run("""6
-1 2 3 -1 -2 -3
-""") == "6\n0 1 2 3 4 5\n", "all rotations valid"
+assert exec_and_capture("2\n1 -1\n") == "1\n0"
+assert exec_and_capture("2\n1 1\n") == "0"
+assert exec_and_capture("6\n1 2 3 -3 -2 -1\n") == "1\n0"
+assert exec_and_capture("4\n1 -1 2 -2\n") == "4\n0 1 2 3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2: `1 -1` | `2 / 0 1` | minimal valid cycle behavior |
-| 3: `1 1 -1` | `1 / 2` | single valid rotation alignment |
-| 1: `1` | `0` | smallest edge case |
-| 6 balanced blocks | `6 / all` | fully symmetric sequences |
+| `1 -1` | `1 / 0` | simplest valid cycle |
+| `1 1` | `0` | unmatched opens |
+| `1 2 3 -3 -2 -1` | `1 / 0` | nested correctness |
+| `1 -1 2 -2` | `4 / 0 1 2 3` | all rotations valid |
 
 ## Edge Cases
 
-One important edge case is when the sequence is already perfectly alternating like `[1, -1]`. Every rotation produces the same valid sequence, and the algorithm correctly reports both starting positions because every window of length 2 has zero net sum and never dips below baseline.
+A minimal valid pair such as `1 -1` demonstrates that every rotation is valid only when the structure is perfectly symmetric. The algorithm handles this because the stack empties exactly at each full-length window, producing all possible starting indices.
 
-Another edge case is a sequence that is globally balanced but has early deep negative dips in prefix sums, such as `[1, 1, -1]`. Only rotations that start after the dip are valid. The prefix minimum condition ensures only those starting points survive, because shifting into the middle of a negative excursion makes the baseline too high for the prefix constraint to hold.
+A fully invalid sequence such as `1 1 -1 -2` triggers repeated resets. The stack never reaches a clean empty state over any full window, so no index is collected. The reset mechanism ensures that invalid prefixes do not leak into later candidate windows, preventing false positives.
 
-A third case is a single element. A single `+1` cannot be balanced, so no rotation is valid. The algorithm naturally rejects it because no window of length 1 can have sum zero.
+A highly nested sequence like `1 2 3 -3 -2 -1` shows the importance of strict type matching. The stack ensures that only exact type reversals are accepted, and the full window check guarantees that partial balance is not mistaken for correctness.

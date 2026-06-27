@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [9](09.md) |  [*M26*] | math-hard | verified | 4m46s |
 | [10](10.md) |  [*HM40*] | hm-project | solved | 7m54s |
 | [11](11.md) | &#9654; [*M26*] | math-hard | verified | 5m |
-| [12](12.md) |  [*M26*] | math-hard | solved | 1m51s |
+| [12](12.md) |  [*M26*] | math-hard | solved | 4m10s |
 | [13](13.md) |  [*M32*] | math-hard | solved | 43s |
 | [14](14.md) |  [*M30*] | math-hard | solved | 4m29s |
 | [15](15.md) | &#9654; [*M30*] | math-hard | solved | 4m24s |
@@ -133,16 +133,16 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [113](113.md) |  [*23*] | medium | verified | 3m07s |
 | [114](114.md) |  [*16*] | medium | solved | 4m34s |
 | [115](115.md) | &#9654; [*24*] | medium | solved | 2m30s |
-| [116](116.md) |  [*HM30*] | hm-hard | solved | 4m39s |
+| [116](116.md) |  [*HM30*] | hm-hard | solved | 2m44s |
 | [117](117.md) |  [*HM46*] | hm-research | solved | 3m42s |
-| [118](118.md) |  [*30*] | hard | solved | 3m44s |
-| [119](119.md) |  [*20*] | medium | solved | 6m03s |
-| [120](120.md) | &#9654; [*M25*] | math-medium | solved | 4m34s |
-| [121](121.md) | &#9654; [*M25*] | math-medium | verified | 4m53s |
-| [122](122.md) |  [*M22*] | math-medium | solved | 3m10s |
-| [123](123.md) |  [*M23*] | math-medium | solved | 4m10s |
-| [124](124.md) |  [*M38*] | math-project | solved | 4m28s |
-| [125](125.md) |  [*M33*] | math-hard | verified | 1m25s |
+| [118](118.md) |  [*30*] | hard | solved | 5m |
+| [119](119.md) |  [*20*] | medium | verified | 2m23s |
+| [120](120.md) | &#9654; [*M25*] | math-medium | verified | 2m41s |
+| [121](121.md) | &#9654; [*M25*] | math-medium | solved | 4m43s |
+| [122](122.md) |  [*M22*] | math-medium | verified | 1m56s |
+| [123](123.md) |  [*M23*] | math-medium | solved | 3m56s |
+| [124](124.md) |  [*M38*] | math-project | solved | 4m06s |
+| [125](125.md) |  [*M33*] | math-hard | verified | 1m14s |
 | [126](126.md) |  [*M46*] | math-research | solved | 4m53s |
 | [127](127.md) |  [*HM40*] | hm-project | solved | 3m25s |
 | [128](128.md) |  [*M46*] | math-research | solved | 4m36s |
