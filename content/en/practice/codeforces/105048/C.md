@@ -1,7 +1,7 @@
 ---
 title: "CF 105048C - Wordy Painting"
-description: "We are given a grid of size $N times N$. Each cell of this grid behaves like a vertical stack of letters. Initially, all stacks are empty."
-date: "2026-06-28T01:21:38+07:00"
+description: "We are maintaining a grid of stacks. Each cell in an $N times N$ board stores a vertical stack of letters, where each update either pushes a letter onto the stack, pops the top letter, or asks whether the current stack has a “dominant” letter."
+date: "2026-06-28T05:41:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105048
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "UTPC Contest 03-22-24 Div. 2 (Beginner)"
 rating: 0
 weight: 105048
-solve_time_s: 97
+solve_time_s: 104
 verified: false
 draft: false
 ---
@@ -18,57 +18,75 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 37s  
+**Solve time:** 1m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a grid of size $N \times N$. Each cell of this grid behaves like a vertical stack of letters. Initially, all stacks are empty. Over time, we perform operations that either push a letter onto a specific cell’s stack, remove the top letter from a stack, or ask a question about whether a stack is “beautiful” with respect to a chosen letter.
+We are maintaining a grid of stacks. Each cell in an $N \times N$ board stores a vertical stack of letters, where each update either pushes a letter onto the stack, pops the top letter, or asks whether the current stack has a “dominant” letter.
 
-A stack is considered beautiful for a letter $c$ if, among all letters currently inside that stack, the occurrences of $c$ are strictly more than half of the total elements in that stack. In other words, if the stack has size $k$, then $c$ must appear at least $\lfloor k/2 \rfloor + 1$ times.
+A stack is considered beautiful under a query if the queried letter appears strictly more than half of the elements currently in that stack.
 
-The key point is that each cell is independent, so every operation affects only one stack, but queries depend on the full history of pushes and pops applied to that cell.
+So each operation is localized to a single cell, but the key difficulty is that the sequence is dynamic: pushes and pops change the stack height over time, and queries must reflect the current multiset of letters in that stack.
 
-The input size is large, with up to $2 \cdot 10^5$ operations. This immediately rules out any solution that scans a full stack per query or recomputes frequencies from scratch. Any approach that touches all elements per operation would degrade to $O(Q^2)$ in the worst case, which is too slow.
+The constraints are the real signal. The grid is small ($N \le 100$), so there are at most 10,000 independent stacks. However, the number of operations can reach $2 \cdot 10^5$. This rules out any per-query scan of a stack, since a single stack could grow linearly with operations. In the worst case, repeatedly pushing to one cell creates a stack of size $2 \cdot 10^5$, and scanning it per query would immediately exceed time limits.
 
-A subtle issue arises with remove operations. If we attempt to remove from an empty stack, nothing happens. This means we must carefully track whether a stack is empty before popping.
+A naive approach that counts frequencies in the stack for every query would cost $O(k)$ per query, where $k$ is stack height, leading to $O(Q^2)$ in the worst case.
 
-Another important edge case is that queries depend only on the current state of the stack, not on historical validity. For example, a stack might be empty, and we are still asked whether a given letter is a majority. In that case, the answer must be “no” because there is no majority in an empty structure.
+A subtle edge case comes from deletions on empty stacks. A remove operation on an untouched cell does nothing, but a careless implementation that assumes the stack exists may raise errors or incorrectly decrement counts below zero.
+
+Another tricky scenario is interleaving operations on the same cell:
+
+Input:
+
+```
+0 a 0 0
+0 b 0 0
+2 a 0 0
+1 0 0
+2 a 0 0
+```
+
+The correct behavior requires tracking exact order: after pushing `a`, then `b`, the stack is `[a, b]`, so neither letter is a majority; after popping, the stack is `[a]`, so `a` becomes dominant.
 
 ## Approaches
 
-A direct simulation approach stores each stack as a list of characters. For every query, we scan the entire stack and count occurrences of the queried letter. For every push and pop, we update the list accordingly.
+The brute-force solution is straightforward: for each cell, maintain a list representing its stack. A push appends, a pop removes the last element if present, and a query counts occurrences of the target letter in the entire stack and checks whether it exceeds half the stack size.
 
-This is correct because it directly mirrors the definition of the problem. However, the cost becomes problematic. In the worst case, we may have a stack of size $O(Q)$, and up to $Q$ queries. Each query then costs $O(Q)$, producing a worst-case complexity of $O(Q^2)$, which is around $4 \cdot 10^{10}$ operations and far beyond the time limit.
+This is correct because it directly simulates the definition. The issue is performance. Each query requires scanning up to the stack size, and in adversarial cases the stack size grows to $O(Q)$. With up to $2 \cdot 10^5$ operations, this becomes $O(Q^2)$, which is too slow.
 
-The key observation is that we do not actually need to recompute anything during queries. A query only asks whether a specific letter dominates the stack. If we maintain, for each cell, two pieces of information, the total stack size and the frequency of each letter, then every query becomes a constant-time comparison.
+The key observation is that we do not need full frequency information for all letters, only for the queried candidate letter at that moment. However, even maintaining counts alone is insufficient if we want to verify majority dynamically under deletions, because removing arbitrary letters from a stack changes the balance over time.
 
-To support removals efficiently, we also store the actual stack content so we know which letter is being removed from the top. Every update then adjusts both the stack and a frequency array of size 26.
+The structure becomes simpler if we maintain, for each cell, a frequency map of letters in the current stack. Then each push increments one count, each pop decrements the count of the removed top letter, and we also maintain the current stack size. This makes each operation $O(1)$ on average, and each query is also $O(1)$: we only check whether `freq[l] > size/2`.
 
-This reduces every operation to $O(1)$, since push increments a counter, pop decrements a counter, and query performs a single arithmetic comparison.
+The only missing piece is knowing what letter to decrement during a pop, which requires storing the actual stack content, not just counts.
+
+This leads to the optimal design: each cell stores both a stack (for order) and a frequency dictionary (for counts).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(Q \cdot N)$ worst case | $O(N^2 + Q)$ | Too slow |
-| Optimal | $O(Q)$ | $O(N^2 + Q)$ | Accepted |
+| Brute Force (scan stack per query) | $O(Q^2)$ | $O(Q)$ | Too slow |
+| Stack + frequency map per cell | $O(Q)$ | $O(N^2 + Q)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-### ## Algorithm Walkthrough
+1. Initialize a grid of size $N \times N$, where each cell contains an empty stack and an empty frequency map.
 
-1. Maintain for each cell a stack of characters representing the current vertical sequence. This allows us to support last-in-first-out removals, since only the top element can be removed.
-2. Alongside each stack, maintain an array of size 26 storing frequency counts of each letter currently in that stack. This avoids recomputing counts during queries.
-3. Also maintain the current size of each stack. This is needed to determine the majority threshold, which is strictly more than half of the stack size.
-4. When processing a type 0 operation, push the given character onto the stack, increment its frequency, and increase the stack size.
-5. When processing a type 1 operation, first check if the stack is non-empty. If it is empty, do nothing. Otherwise, pop the top character, decrement its frequency, and reduce the size.
-6. When processing a type 2 query, check the frequency of the queried character. If it is strictly greater than half of the current stack size, output “yes”, otherwise output “no”. If the stack is empty, the answer is always “no”.
+This allows us to isolate operations per coordinate so that no global recomputation is required.
+2. For a paint operation at $(x, y)$, push the letter onto the stack at that cell and increment its frequency counter.
+
+The stack ensures we can undo this correctly later, and the counter keeps aggregate information in constant time.
+3. For a remove operation at $(x, y)$, check whether the stack is non-empty. If it is empty, do nothing.
+
+If not empty, pop the top element and decrement its frequency. This guarantees consistency between order and counts.
+4. For a query at $(x, y)$ with letter $l$, compute the current stack size. If it is zero, output “no”.
+
+Otherwise check whether `frequency[l] * 2 > size`. This directly encodes strict majority without floating-point operations.
 
 ### Why it works
 
-The correctness comes from maintaining exact counts at all times. Every push and pop operation updates both the explicit stack and the frequency table, so the frequency array always reflects the true state of the stack. Since the majority condition depends only on total size and a single character’s frequency, having these two values preserved as invariants guarantees that each query is answered exactly according to the definition.
-
-No operation depends on future events, so local updates are sufficient to preserve global correctness.
+At every moment, each cell’s stack is exactly represented by its stored list, and the frequency map exactly matches the multiset of letters in that stack. Push and pop operations preserve this invariant because every insertion or deletion updates both structures consistently. Therefore, when answering a query, the frequency map provides the exact count of the queried letter in the current stack, and comparing it against half the stack size correctly determines whether it forms a strict majority.
 
 ## Python Solution
 
@@ -78,104 +96,98 @@ input = sys.stdin.readline
 
 def solve():
     N, Q = map(int, input().split())
-
-    # each cell has a stack and frequency array
-    stacks = [[[] for _ in range(N)] for _ in range(N)]
-    freq = [[[0] * 26 for _ in range(N)] for _ in range(N)]
-    size = [[0] * N for _ in range(N)]
-
+    
+    grid = [[[] for _ in range(N)] for _ in range(N)]
+    freq = [[dict() for _ in range(N)] for _ in range(N)]
+    size = [[0 for _ in range(N)] for _ in range(N)]
+    
     out = []
-
+    
     for _ in range(Q):
         parts = input().split()
-        t = int(parts[0])
-
-        if t == 0:
-            c = parts[1]
+        s = int(parts[0])
+        
+        if s == 0:
+            l = parts[1]
             x = int(parts[2])
             y = int(parts[3])
-
-            idx = ord(c) - 97
-            stacks[x][y].append(idx)
-            freq[x][y][idx] += 1
+            
+            grid[x][y].append(l)
             size[x][y] += 1
-
-        elif t == 1:
+            freq[x][y][l] = freq[x][y].get(l, 0) + 1
+        
+        elif s == 1:
             x = int(parts[1])
             y = int(parts[2])
-
-            if size[x][y] > 0:
-                idx = stacks[x][y].pop()
-                freq[x][y][idx] -= 1
-                size[x][y] -= 1
-
+            
+            if size[x][y] == 0:
+                continue
+            
+            ch = grid[x][y].pop()
+            size[x][y] -= 1
+            freq[x][y][ch] -= 1
+            if freq[x][y][ch] == 0:
+                del freq[x][y][ch]
+        
         else:
-            c = parts[1]
+            l = parts[1]
             x = int(parts[2])
             y = int(parts[3])
-
-            idx = ord(c) - 97
-            s = size[x][y]
-
-            if s > 0 and freq[x][y][idx] > s // 2:
-                out.append("yes")
-            else:
+            
+            if size[x][y] == 0:
                 out.append("no")
-
+            else:
+                if freq[x][y].get(l, 0) * 2 > size[x][y]:
+                    out.append("yes")
+                else:
+                    out.append("no")
+    
     sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution keeps three synchronized structures per cell. The stack stores the exact order of letters so that removals are correct. The frequency table stores counts so queries are constant time. The size array ensures we never need to recompute lengths.
+The solution keeps a per-cell stack to maintain order and support correct popping behavior. The frequency dictionary is updated in lockstep with stack changes, ensuring constant-time majority checks during queries. The separate `size` array avoids recomputing lengths repeatedly.
 
-A common implementation mistake is forgetting to handle empty pops. Another is computing majority using floating-point division instead of integer comparison with `s // 2`, which can introduce precision issues or off-by-one errors.
+One subtle implementation detail is deleting dictionary entries when their count drops to zero. This is not required for correctness, but it keeps memory bounded and avoids misleading keys during `.get()` checks.
 
 ## Worked Examples
 
-Consider a single cell $(0,0)$ and a sequence of operations:
+### Example 1
 
-Input:
+Consider a single cell $(0,0)$:
 
-```
-0 a 0 0
-0 b 0 0
-0 a 0 0
-2 a 0 0
-1 0 0
-2 a 0 0
-```
-
-| Step | Operation | Stack | Frequencies (a,b) | Size | Query result |
+| Step | Operation | Stack | Frequency | Size | Query result |
 | --- | --- | --- | --- | --- | --- |
-| 1 | push a | a | (1,0) | 1 | - |
-| 2 | push b | a b | (1,1) | 2 | - |
-| 3 | push a | a b a | (2,1) | 3 | - |
-| 4 | query a | a b a | (2,1) | 3 | yes |
-| 5 | pop | a b | (1,1) | 2 | - |
-| 6 | query a | a b | (1,1) | 2 | no |
+| 1 | push a | [a] | {a:1} | 1 | - |
+| 2 | push b | [a,b] | {a:1,b:1} | 2 | - |
+| 3 | query a | [a,b] | {a:1,b:1} | 2 | no |
+| 4 | pop | [a] | {a:1} | 1 | - |
+| 5 | query a | [a] | {a:1} | 1 | yes |
 
-The first query returns yes because a appears twice out of three elements. After a pop, both letters are equal, so no letter is strictly dominant anymore.
+This shows that majority depends on current stack state, not historical dominance.
 
-Now consider an empty-stack query:
+### Example 2
 
-Input:
+Single cell with repeated pushes:
 
-```
-2 a 0 0
-```
+| Step | Operation | Stack | Frequency | Size | Query l='a' |
+| --- | --- | --- | --- | --- | --- |
+| 1 | push a | [a] | {a:1} | 1 | yes |
+| 2 | push b | [a,b] | {a:1,b:1} | 2 | no |
+| 3 | push a | [a,b,a] | {a:2,b:1} | 3 | yes |
 
-The stack is empty, so the answer is immediately no regardless of the letter.
+This demonstrates that the frequency structure correctly tracks evolving majority.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(Q)$ | Each operation updates or checks constant-sized structures |
-| Space | $O(N^2 + Q)$ | Grid storage plus stacks storing all pushed elements |
+| Time | $O(Q)$ | Each operation updates or queries constant-time structures per cell |
+| Space | $O(N^2 + Q)$ | Grid storage plus total pushed elements across all stacks |
 
-The constraints allow up to 200,000 operations, so a linear-time simulation is sufficient. Each operation performs only a few array accesses, which fits comfortably within time limits.
+The constraints allow up to $2 \cdot 10^5$ operations, so linear time with hash map updates is sufficient within limits.
 
 ## Test Cases
 
@@ -186,45 +198,52 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     from __main__ import solve
     solve()
-    return ""  # output is printed; in real testing capture stdout
+    return sys.stdout.getvalue().strip()
 
-# Note: These asserts are illustrative due to stdout capture setup
+# minimal single cell behavior
+assert run("""1 5
+0 a 0 0
+0 b 0 0
+2 a 0 0
+1 0 0
+2 a 0 0
+""") == "no\nyes"
 
-# custom sanity checks (conceptual inputs)
+# all same letter always majority
+assert run("""2 4
+0 a 0 0
+0 a 0 0
+2 a 0 0
+2 b 0 0
+""") == "yes\nno"
+
 # empty stack query
-# single push majority
-# pop from empty should not crash
+assert run("""2 1
+2 a 0 0
+""") == "no"
+
+# push-pop stability
+assert run("""1 6
+0 a 0 0
+0 b 0 0
+0 a 0 0
+1 0 0
+1 0 0
+2 a 0 0
+""") == "yes"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1\n2 a 0 0` | `no` | empty stack query |
-| `1 3\n0 a 0 0\n2 a 0 0\n1 0 0\n` | `yes\nno` | basic push/query/pop |
-| `2 5\n0 a 0 0\n0 a 0 0\n2 a 0 0\n1 0 0\n2 a 0 0` | `yes\nyes` | majority threshold behavior |
+| empty query | no | handles empty stacks safely |
+| alternating pushes | yes/no | correctness of majority updates |
+| repeated letters | yes | strict majority condition |
+| push-pop cycles | yes | consistency of stack + frequency sync |
 
 ## Edge Cases
 
-One edge case is repeatedly popping from an empty stack. For example:
+A critical edge case is querying an empty stack. The implementation explicitly checks size before accessing the frequency map. Without this guard, a naive division or lookup could incorrectly treat missing keys as zero and still proceed, which is correct only if the size is handled carefully.
 
-```
-1 3
-1 0 0
-1 0 0
-2 a 0 0
-```
+Another case is repeated pop operations on empty stacks. Since the operation must be a no-op, the implementation avoids underflow by checking `size[x][y] == 0` before popping. This ensures that stack and frequency map never diverge.
 
-The first two operations do nothing since the stack is empty. The query correctly returns no because there are no elements to form a majority. The algorithm handles this by checking `size[x][y] > 0` before attempting a pop.
-
-Another edge case is a stack that oscillates around the majority threshold:
-
-```
-1 6
-0 a 0 0
-0 b 0 0
-0 a 0 0
-2 a 0 0
-1 0 0
-2 a 0 0
-```
-
-After three pushes, a is dominant. After a pop, dominance disappears. The frequency array ensures both states are tracked exactly, and no recomputation is needed.
+A final subtle case is when a letter disappears completely from a stack. Removing dictionary entries when count reaches zero prevents stale keys from misleading future logic that assumes key presence implies positivity.
