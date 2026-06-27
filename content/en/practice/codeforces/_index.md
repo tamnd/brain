@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2208 contests, 14709 problems, 8050 verified."
+description: "Codeforces problem solutions with full editorials. 2209 contests, 14719 problems, 8060 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2208 contests, 14709 problems, 8050 verified.**
+**2209 contests, 14719 problems, 8060 verified.**
 
 ## Unknown — 333 contests, 2679 problems, 1693 verified
 
@@ -1710,7 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 235 contests, 2037 problems, 987 verified
+## 2024 — 236 contests, 2047 problems, 997 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1844,6 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105143](105143/) | [2024 ICPC National Invitational Collegiate Programming Contest, Wuhan Site](https://codeforces.com/contest/105143) | 10 | 10/10 | ICPC/IOI | - |
 | [105158](105158/) | [2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105158) | 13 | 13/13 | Special | - |
 | [105160](105160/) | [2024 University of Shanghai for Science and Technology(USST) Freshman Challenge Contest](https://codeforces.com/contest/105160) | 13 | 11/13 | Special | - |
 | [105161](105161/) | [2024 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/105161) | 11 | 7/11 | Special | - |
