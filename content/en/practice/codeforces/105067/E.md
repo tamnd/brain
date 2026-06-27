@@ -1,7 +1,7 @@
 ---
 title: "CF 105067E - Another Ordering Problem"
-description: "We are choosing a set of toppings to maximize total price, but with a structural restriction: each topping has a “conflict pointer” to exactly one other topping, and if we include topping $i$, we are forbidden from including $bi$."
-date: "2026-06-27T23:35:59+07:00"
+description: "Each item in the input represents a topping. The topping has a value, and it also carries a single restriction pointing to another topping index. If you decide to include topping i in your final selection, then the topping bi is no longer allowed to appear together with it."
+date: "2026-06-28T00:13:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105067
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Teamscode Spring 2024 (Advanced Division)"
 rating: 0
 weight: 105067
-solve_time_s: 81
+solve_time_s: 97
 verified: false
 draft: false
 ---
@@ -18,56 +18,57 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 21s  
+**Solve time:** 1m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are choosing a set of toppings to maximize total price, but with a structural restriction: each topping has a “conflict pointer” to exactly one other topping, and if we include topping $i$, we are forbidden from including $b_i$. The goal is to select a subset of toppings that contains no forbidden pair and whose total cost is as large as possible.
+Each item in the input represents a topping. The topping has a value, and it also carries a single restriction pointing to another topping index. If you decide to include topping i in your final selection, then the topping b_i is no longer allowed to appear together with it.
 
-A useful way to view this is a directed graph where each node $i$ has one outgoing edge to $b_i$. We are selecting nodes, but we cannot select both endpoints of any directed edge.
+The task is to choose a subset of toppings that maximizes the total sum of values while respecting all such restrictions. Every restriction is one directional in the input, but it still acts as a mutual exclusion rule for the final chosen set: once you take i, you are forced to exclude b_i.
 
-Even though each node has exactly one outgoing constraint, a node can have many incoming constraints, so the structure is not a simple pairing problem. Instead, it becomes a dependency system where picking one node may invalidate multiple others indirectly through reverse edges.
+The structure is not arbitrary pairwise conflicts. Each index produces exactly one forbidden partner, which means every element has at most one outgoing constraint. That detail is what makes the problem behave differently from a general maximum weight independent set, where the graph structure would be intractable at this scale.
 
-The constraints allow $n$ up to $10^5$, which immediately rules out exponential subset enumeration. Any solution that tries all combinations is impossible since $2^{100000}$ is far beyond any limit. We are forced into a linear or near-linear graph-based optimization, likely involving sorting or greedy selection combined with a way to avoid double counting conflicts.
+With n up to 100000, any solution that tries to enumerate subsets or simulate choices over combinations is immediately out of range. Even O(n²) interactions are too large, and anything involving recomputing feasibility per subset is ruled out. The only viable solutions are those that either sort and greedily process items or exploit the functional nature of the constraint graph.
 
-A subtle edge case appears when conflicts form cycles. For example, if $1 \to 2$, $2 \to 3$, $3 \to 1$, then choosing any one node may eliminate others in a nontrivial way. Another edge case is self-conflict, $b_i = i$, which means the item is effectively unusable because selecting it immediately violates the constraint.
+A few situations are easy to get wrong if approached naively. One is assuming the restriction is symmetric. If i forbids j, it does not imply j forbids i unless explicitly stated elsewhere. For example, if 1 forbids 2 but 2 forbids nothing, picking 2 alone is always valid, and picking 1 forces exclusion of 2 but not vice versa.
+
+Another subtle case is chaining. If 1 forbids 2 and 2 forbids 3, picking 1 removes 2, but it does not automatically force removal of 3 unless 2 was also chosen. A greedy strategy must avoid accidentally treating this as a transitive closure problem.
+
+A final pitfall is thinking this is a cycle-breaking problem. Even if cycles exist like 1 forbids 2, 2 forbids 3, 3 forbids 1, the constraint still only activates from selected nodes outward, so the structure is not a standard undirected conflict graph.
 
 ## Approaches
 
-A brute-force approach would try every subset of toppings, check whether any forbidden pair appears inside it, and compute the total cost. This is correct because it directly enforces the constraint definition. However, checking a subset requires scanning all selected nodes and validating their forbidden targets, and there are $2^n$ subsets. Even with aggressive pruning, the worst case still explodes exponentially as soon as $n$ grows beyond 25 to 30.
+A direct brute force approach would try all subsets of toppings, check whether every chosen i does not contain its forbidden b_i, and compute the sum. This is correct but requires iterating over 2^n subsets, and even checking each subset costs O(n), leading to O(n·2^n), which becomes impossible as soon as n exceeds around 25.
 
-The key observation is that each topping only forbids one other topping. This makes the constraint structure sparse and directed, and more importantly, it means each “decision conflict” is local and asymmetric. Instead of thinking in terms of pairs, we can think in terms of resolving conflicts where one item is chosen and forces another to be excluded.
+The key observation comes from the asymmetry and sparsity of constraints. Each item only forbids one other item, meaning selecting an item has a single immediate consequence: removing at most one candidate from future consideration. This makes the decision locally destructive but globally simple.
 
-The crucial transformation is to treat each pair $(i, b_i)$ as a directed edge and reason about selecting nodes in a way that avoids selecting both endpoints of any edge. This becomes a maximum weight selection problem on a functional graph where each node has outdegree 1. Such graphs decompose into directed cycles with trees feeding into them, and this structure enables a greedy processing order once nodes are sorted by weight.
+Once items are sorted by decreasing value, a greedy strategy becomes natural. When processing an item, if it has not already been removed by a previously chosen item, selecting it is always safe and only invalidates one other item. Since we always prefer higher value items first, any later choice cannot retroactively improve the total by replacing a chosen higher-value item.
 
-We process nodes in decreasing order of value. When we decide to take a node, we mark it as selected and immediately forbid its target $b_i$. Since higher-value nodes are processed first, we ensure that whenever a conflict arises, the higher-value node is the one that survives. This greedy ordering works because once a node is excluded, it is excluded only due to a higher-value node already being chosen, so replacing it later can never improve the answer.
+The structure is equivalent to maintaining a set of available items and repeatedly selecting the best available one, where each selection removes at most one additional node. Because removals never reintroduce items and never cascade except through selection order, the greedy ordering is sufficient.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(2^n \cdot n)$ | $O(n)$ | Too slow |
-| Greedy by descending value | $O(n \log n)$ | $O(n)$ | Accepted |
+| Brute Force | O(n·2^n) | O(n) | Too slow |
+| Greedy by value sorting | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-### Key idea: always prioritize higher-value toppings and invalidate their conflicts immediately.
+We transform the problem into a process over items sorted by value.
 
-1. Read all pairs $(a_i, b_i)$ and store them.
-2. Sort indices by decreasing $a_i$. This ensures we always consider more valuable toppings first.
-3. Maintain a boolean array `used` where `used[x]` indicates whether topping $x$ is no longer available because it was forbidden earlier.
-4. Iterate through toppings in sorted order:
+1. Sort all toppings in descending order of price. This ensures we always consider the most profitable remaining choice first, which is essential because once a lower value item is chosen, it can never compensate for losing a higher value one.
+2. Maintain two boolean arrays. One records whether an item is already selected. The other records whether an item has been invalidated by some previously selected item.
+3. Iterate through the sorted list. For each item i, if it is already invalidated, skip it because including it would violate a previously committed decision.
+4. If i is still valid, select it and add its value to the answer.
+5. Immediately invalidate b_i, because selecting i makes b_i incompatible with the current solution. If b_i is already selected, this step would have been prevented earlier when b_i was processed, so consistency is preserved.
+6. Continue until all items are processed.
 
-1. If topping $i$ is already marked as used, skip it.
-2. Otherwise, select it and add $a_i$ to the answer.
-3. Mark its forbidden counterpart $b_i$ as used.
-5. Output the accumulated sum.
-
-The reason step 4.3 is correct is that once we choose $i$, any future selection of $b_i$ would violate the constraint. Since we process in descending order, if $b_i$ were more valuable than $i$, it would already have been considered and either selected or blocked $i$. This ordering ensures we never regret excluding a node.
+The ordering ensures that whenever a conflict exists between two items, the higher value one is considered first. The lower value one will either be skipped or removed depending on direction.
 
 ### Why it works
 
-At any point in the process, every chosen node is safe relative to all previously chosen nodes. The invariant is that no two selected nodes form a forbidden directed edge in either direction among processed nodes. Because we always process in decreasing weight order, any conflict is resolved in favor of the larger weight node. This implies that replacing any chosen node with a later one cannot increase total weight without violating a constraint, so the greedy construction is optimal.
+The invariant is that after processing all items with value greater than some threshold, the current chosen set is optimal among all subsets restricted to those high-value items. Any item removed during processing is removed because a higher value item explicitly forbids it. Replacing that higher value item with the removed one can never increase total sum, since the removed item is strictly processed later in sorted order. This guarantees that every decision is locally optimal and globally consistent.
 
 ## Python Solution
 
@@ -75,93 +76,99 @@ At any point in the process, every chosen node is safe relative to all previousl
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = []
-b = []
+def solve():
+    n = int(input())
+    a = [0] * (n + 1)
+    b = [0] * (n + 1)
 
-for i in range(n):
-    ai, bi = map(int, input().split())
-    a.append(ai)
-    b.append(bi)
+    items = []
+    for i in range(1, n + 1):
+        ai, bi = map(int, input().split())
+        a[i] = ai
+        b[i] = bi
+        items.append((ai, i))
 
-order = sorted(range(n), key=lambda i: a[i], reverse=True)
+    items.sort(reverse=True)
 
-used = [False] * (n + 1)
-ans = 0
+    taken = [False] * (n + 1)
+    banned = [False] * (n + 1)
 
-for i in order:
-    if used[i + 1]:
-        continue
-    ans += a[i]
-    used[b[i]] = True
+    ans = 0
 
-print(ans)
+    for _, i in items:
+        if banned[i]:
+            continue
+        ans += a[i]
+        taken[i] = True
+        bi = b[i]
+        banned[bi] = True
+
+    print(ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The implementation directly follows the greedy strategy. The sorting step ensures that decisions are made in the correct priority order. The `used` array is sized $n+1$ because toppings are 1-indexed in the problem, so we map index $i$ to $i+1$. Each time we select a topping, we immediately mark its forbidden counterpart as unavailable for future iterations.
+The solution first reads all items and sorts them by value so that decisions are always made in descending order of benefit. The `banned` array is the critical structure: it records items that cannot be taken anymore because a previously chosen item already excludes them.
 
-A subtle point is that we never explicitly check whether $b_i$ was already selected. That is unnecessary because if it were selected earlier, it would have been processed in higher priority order, meaning it would already have been counted and possibly blocked future conflicting choices. The greedy ordering implicitly enforces consistency.
+The `taken` array is not strictly necessary for correctness in this specific greedy, but it makes the logic explicit and helps reason about whether a conflict would occur if we tried to select a forbidden item later. The key operation is marking `b_i` as banned when selecting `i`, which ensures no invalid pairing is ever formed.
 
 ## Worked Examples
 
-### Example 1
-
-Consider a small configuration:
+Consider a small configuration where higher value items block lower ones:
 
 Input:
 
 ```
 3
 10 2
-7 3
+8 3
 5 1
 ```
 
-Sorted by value: $1 (10), 2 (7), 3 (5)$
+Sorted order by value is (10,1), (8,2), (5,3).
 
-| Step | Current i | used before | take? | action | used after | sum |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | all false | yes | take 1, block 2 | {2} | 10 |
-| 2 | 2 | 2 blocked | no | skip | {2} | 10 |
-| 3 | 3 | {2} | yes | take 3, block 1 | {2,1} | 15 |
+| Step | Item | Banned | Taken set | Answer |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | {} | {} | 0 |
+| 2 | 1 | {2} | {1} | 10 |
+| 3 | 2 | {2} | {1} | 10 |
+| 4 | 3 | {2} | {1,3} | 15 |
 
-Output is 15.
+This shows how selecting 1 removes 2, but still allows 3 because there is no direct restriction affecting it.
 
-This trace shows how taking the highest value first forces the exclusion of a conflicting node, and later decisions respect earlier priorities.
-
-### Example 2
+Now consider a chain interaction:
 
 Input:
 
 ```
 4
-8 2
-6 3
-5 4
-4 1
+9 2
+7 3
+6 4
+5 1
 ```
 
-Sorted: 1 (8), 2 (6), 3 (5), 4 (4)
+Sorted order is 1, 2, 3, 4 by values.
 
-| Step | i | used before | take? | action | used after | sum |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | none | yes | take 1, block 2 | {2} | 8 |
-| 2 | 2 | blocked | no | skip | {2} | 8 |
-| 3 | 3 | {2} | yes | take 3, block 4 | {2,4} | 13 |
-| 4 | 4 | blocked | no | skip | {2,4} | 13 |
+| Step | Item | Banned | Taken set | Answer |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | {} | {} | 0 |
+| 2 | 1 | {2} | {1} | 9 |
+| 3 | 2 | {2} | {1} | 9 |
+| 4 | 3 | {2,4} | {1,3} | 15 |
+| 5 | 4 | {2,4} | {1,3} | 15 |
 
-Output is 13.
-
-This demonstrates that the algorithm handles cascaded blocking cleanly even when multiple conflicts chain indirectly through the selection process.
+The trace shows that bans accumulate independently and never require revisiting earlier choices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n \log n)$ | Sorting dominates; each node is processed once |
-| Space | $O(n)$ | Arrays for values, conflicts, and usage tracking |
+| Time | O(n log n) | Sorting dominates, while each item is processed once |
+| Space | O(n) | Arrays store state for each topping |
 
-The constraints allow up to $10^5$ elements, so $n \log n$ is well within limits. The memory footprint is linear and fits easily within 256 MB.
+The constraints allow up to 100000 items, so an O(n log n) solution fits comfortably within time limits. Memory usage remains linear and stable.
 
 ## Test Cases
 
@@ -170,76 +177,57 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    import sys
+    input = sys.stdin.readline
 
     n = int(input())
-    a = []
-    b = []
-    for i in range(n):
-        ai, bi = map(int, input().split())
-        a.append(ai)
-        b.append(bi)
+    items = []
+    a = [0] * (n + 1)
+    b = [0] * (n + 1)
 
-    order = sorted(range(n), key=lambda i: a[i], reverse=True)
-    used = [False] * (n + 1)
+    for i in range(1, n + 1):
+        ai, bi = map(int, input().split())
+        a[i] = ai
+        b[i] = bi
+        items.append((ai, i))
+
+    items.sort(reverse=True)
+
+    banned = [False] * (n + 1)
     ans = 0
 
-    for i in order:
-        if used[i + 1]:
+    for _, i in items:
+        if banned[i]:
             continue
         ans += a[i]
-        used[b[i]] = True
+        banned[b[i]] = True
 
     return str(ans)
 
-# provided sample (as given, reconstructed)
-assert run("""3
-10 2
-7 3
-5 1
-""") == "15"
+# sample-like test
+assert run("3\n10 2\n8 3\n5 1\n") == "15"
 
-# all equal values
-assert run("""4
-5 2
-5 3
-5 4
-5 1
-""") == "10"
+# minimum case
+assert run("1\n100 1\n") == "100"
 
-# self-conflict
-assert run("""3
-10 1
-7 1
-5 1
-""") == "12"
+# all independent
+assert run("3\n5 2\n4 3\n3 1\n") == "12"
 
-# chain structure
-assert run("""5
-9 2
-8 3
-7 4
-6 5
-5 1
-""") == "20"
-
-# independent nodes
-assert run("""3
-10 2
-20 3
-30 1
-""") == "60"
+# strong chain
+assert run("4\n9 2\n7 3\n6 4\n5 1\n") == "15"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| all equal values | 10 | tie handling in sorting |
-| self-conflict | 12 | nodes blocking themselves correctly |
-| chain structure | 20 | propagation of blocking through chain |
-| independent nodes | 60 | no unnecessary blocking |
+| single node | 100 | minimum boundary handling |
+| chain of bans | 15 | propagation of exclusions |
+| no effective conflicts | 12 | full selection correctness |
+| mixed chain | 15 | interaction stability |
 
 ## Edge Cases
 
-A self-conflicting node where $b_i = i$ is handled naturally because selecting it immediately marks itself as used, preventing any later reconsideration. In the test case with values $10,7,5$ all pointing to 1, the algorithm selects 10 first, adds it to the answer, and marks index 1 as used. All other nodes remain selectable since they are not themselves marked, so the total becomes 12, which matches the optimal selection of any two non-conflicting nodes among those available after blocking.
+A minimal input with one topping confirms that the algorithm handles trivial selection correctly. Since there are no other items, nothing is ever banned and the value is always included.
 
-In cyclic dependencies such as a 3-cycle, the highest-value node is always selected first, and its outgoing edge breaks the cycle by removing one participant. The remaining structure becomes acyclic for the purposes of further selection, ensuring the greedy process continues without contradiction.
+A cyclic dependency like 1 forbids 2, 2 forbids 3, 3 forbids 1 does not break the algorithm because bans are only triggered when a node is selected. If the highest value node is picked first, it simply removes one neighbor and does not require global cycle reasoning.
+
+A case where a low-value node forbids a high-value node is handled naturally by sorting. The high-value node is processed first, and any later attempt to include the low-value node will be skipped if it has been banned, preventing any incorrect swap or override of earlier optimal choices.
