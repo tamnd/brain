@@ -37,7 +37,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 130/219 solved.
 | [17](17.md) |  [*HM36*] | hm-project | solved | 1m07s |
 | [18](18.md) |  [*M25*] | math-medium | verified | 1m16s |
 | [19](19.md) | &#9654; [*M37*] | math-project | solved | 4m49s |
-| [20](20.md) | &#9654; [*21*] | medium | verified | 2m50s |
+| [20](20.md) | &#9654; [*21*] | medium | verified | 2m29s |
 | 21 |  [*22*] | medium | - | - |
 | 22 |  [*21*] | medium | - | - |
 | 23 | &#9654; [*27*] | hard | - | - |
@@ -214,10 +214,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 130/219 solved.
 | [194](194.md) |  [*M24*] | math-medium | solved | 2m54s |
 | [195](195.md) | &#9654; [*HM25*] | hm-medium | verified | 1m16s |
 | [196](196.md) |  [*21*] | medium | solved | 4m31s |
-| [197](197.md) |  [*22*] | medium | solved | 5m32s |
-| [198](198.md) | &#9654; [*21*] | medium | solved | 5m03s |
-| [199](199.md) | &#9654; [*23*] | medium | verified | 2m53s |
-| [200](200.md) |  [*20*] | medium | verified | 53s |
+| [197](197.md) |  [*22*] | medium | solved | 1m05s |
+| [198](198.md) | &#9654; [*21*] | medium | solved | 1m40s |
+| [199](199.md) | &#9654; [*23*] | medium | verified | 3m |
+| [200](200.md) |  [*20*] | medium | verified | 55s |
 | [201](201.md) |  [*20*] | medium | solved | 3m12s |
 | [202](202.md) |  [*20*] | medium | solved | 4m27s |
 | [203](203.md) |  [*22*] | medium | solved | 4m47s |
