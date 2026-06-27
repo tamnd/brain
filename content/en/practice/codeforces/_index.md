@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2252 contests, 15116 problems, 8290 verified."
+description: "Codeforces problem solutions with full editorials. 2253 contests, 15124 problems, 8291 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2252 contests, 15116 problems, 8290 verified.**
+**2253 contests, 15124 problems, 8291 verified.**
 
 ## Unknown — 354 contests, 2862 problems, 1807 verified
 
@@ -1732,7 +1732,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 257 contests, 2252 problems, 1106 verified
+## 2024 — 258 contests, 2260 problems, 1107 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1861,6 +1861,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105007](105007/) | [UTPC Contest 03-01-24 Div. 2 (Beginner)](https://codeforces.com/contest/105007) | 8 | 1/8 | Div. 2 | - |
 | [105009](105009/) | [2024 USACO.Guide Informatics Tournament](https://codeforces.com/contest/105009) | 12 | 2/12 | Special | - |
 | [105010](105010/) | [Winter Cup 6.0 Online Mirror Contest](https://codeforces.com/contest/105010) | 9 | 1/9 | Special | - |
 | [105012](105012/) | [Bay Area Programming Contest 2024](https://codeforces.com/contest/105012) | 13 | 13/13 | Special | - |
