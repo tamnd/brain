@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2205 contests, 14687 problems, 8038 verified."
+description: "Codeforces problem solutions with full editorials. 2206 contests, 14694 problems, 8041 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2205 contests, 14687 problems, 8038 verified.**
+**2206 contests, 14694 problems, 8041 verified.**
 
-## Unknown — 330 contests, 2658 problems, 1684 verified
+## Unknown — 331 contests, 2665 problems, 1687 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105151](105151/) | [XIX Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/105151) | 7 | 3/7 | Special | - |
 | [105164](105164/) | [2024 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/105164) | 12 | 1/12 | ICPC/IOI | - |
 | [105174](105174/) | [The 22nd Sichuan University Programming Contest](https://codeforces.com/contest/105174) | 13 | 9/13 | Special | - |
 | [105183](105183/) | [XX Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/105183) | 8 | 4/8 | Special | - |
