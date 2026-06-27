@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2199 contests, 14615 problems, 8000 verified."
+description: "Codeforces problem solutions with full editorials. 2200 contests, 14627 problems, 8001 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2199 contests, 14615 problems, 8000 verified.**
+**2200 contests, 14627 problems, 8001 verified.**
 
 ## Unknown — 329 contests, 2646 problems, 1682 verified
 
@@ -1706,7 +1706,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 230 contests, 1976 problems, 948 verified
+## 2024 — 231 contests, 1988 problems, 949 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1840,6 +1840,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105167](105167/) | [ETH Zurich Competitive Programming Contest Spring 2024](https://codeforces.com/contest/105167) | 12 | 1/12 | Special | - |
 | [105168](105168/) | [2024 Fujian Normal University Programming Contest](https://codeforces.com/contest/105168) | 12 | 12/12 | Special | - |
 | [105170](105170/) | [The 2024 CCPC National Invitational Contest (Changchun) , The 17th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/105170) | 12 | 12/12 | Special | - |
 | [105172](105172/) | [The 20th Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105172) | 12 | 5/12 | Special | - |
