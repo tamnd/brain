@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2249 contests, 15091 problems, 8287 verified."
+description: "Codeforces problem solutions with full editorials. 2250 contests, 15095 problems, 8287 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2249 contests, 15091 problems, 8287 verified.**
+**2250 contests, 15095 problems, 8287 verified.**
 
-## Unknown — 353 contests, 2858 problems, 1807 verified
+## Unknown — 354 contests, 2862 problems, 1807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105011](105011/) | [Интернет-олимпиады, Сезон 2023-2024, Третья личная олимпиада](https://codeforces.com/contest/105011) | 4 | 0/4 | Special | - |
 | [105017](105017/) | [Winter Cup 4.0 Online Mirror Contest](https://codeforces.com/contest/105017) | 12 | 9/12 | Special | - |
 | [105018](105018/) | [Winter Cup 5.0 Online Mirror Contest](https://codeforces.com/contest/105018) | 14 | 12/14 | Special | - |
 | [105020](105020/) | [TCPC Tunisian Collegiate Programming Contest 2022](https://codeforces.com/contest/105020) | 14 | 2/14 | Special | - |
