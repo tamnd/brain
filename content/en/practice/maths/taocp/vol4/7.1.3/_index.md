@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 101/219 solved."
+description: "Section 7.1.3 exercises: 109/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,7 +35,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
 | [15](15.md) | &#9654; [*M30*] | math-hard | solved | 4m24s |
 | [16](16.md) |  [*M31*] | math-hard | solved | 4m14s |
 | [17](17.md) |  [*HM36*] | hm-project | verified | 1m14s |
-| 18 |  [*M25*] | math-medium | - | - |
+| [18](18.md) |  [*M25*] | math-medium | verified | 1m16s |
 | 19 | &#9654; [*M37*] | math-project | - | - |
 | 20 | &#9654; [*21*] | medium | - | - |
 | 21 |  [*22*] | medium | - | - |
@@ -195,13 +195,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
 | [175](175.md) |  [*15*] | simple | solved | 4m26s |
 | [176](176.md) |  [*M24*] | math-medium | solved | 3m52s |
 | [177](177.md) |  [*M22*] | math-medium | solved | 48s |
-| 178 |  [*20*] | medium | - | - |
-| 179 | &#9654; [*34*] | hard | - | - |
-| 180 | &#9654; [*M24*] | math-medium | - | - |
-| 181 |  [*HM20*] | hm-medium | - | - |
-| 182 |  [*M31*] | math-hard | - | - |
-| 183 | &#9654; [*M29*] | math-hard | - | - |
-| 184 | &#9654; [*M22*] | math-medium | - | - |
+| [178](178.md) |  [*20*] | medium | solved | 39s |
+| [179](179.md) | &#9654; [*34*] | hard | solved | 1m07s |
+| [180](180.md) | &#9654; [*M24*] | math-medium | solved | 1m54s |
+| [181](181.md) |  [*HM20*] | hm-medium | solved | 55s |
+| [182](182.md) |  [*M31*] | math-hard | solved | 59s |
+| [183](183.md) | &#9654; [*M29*] | math-hard | verified | 1m21s |
+| [184](184.md) | &#9654; [*M22*] | math-medium | solved | 1m34s |
 | 185 | &#9654; [*23*] | medium | - | - |
 | 186 |  [*HM22*] | hm-medium | - | - |
 | 187 |  [*M29*] | math-hard | - | - |
