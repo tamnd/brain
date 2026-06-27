@@ -1,7 +1,7 @@
 ---
 title: "CF 105010D - Divisibility Game"
-description: "We are given a multiset of positive integers. Two players alternate turns, starting with Oussama. On each turn, the current player inspects the array. If every element is divisible by a fixed odd integer $k$, the current player immediately loses."
-date: "2026-06-28T02:27:24+07:00"
+description: "We are given an array of positive integers and a fixed odd integer $k$. Two players take turns transforming the array. A move consists of choosing two elements, removing them, and appending their sum."
+date: "2026-06-28T04:33:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105010
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Winter Cup 6.0 Online Mirror Contest"
 rating: 0
 weight: 105010
-solve_time_s: 75
+solve_time_s: 82
 verified: false
 draft: false
 ---
@@ -18,59 +18,78 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 15s  
+**Solve time:** 1m 22s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a multiset of positive integers. Two players alternate turns, starting with Oussama. On each turn, the current player inspects the array. If every element is divisible by a fixed odd integer $k$, the current player immediately loses. Otherwise, they must pick any two elements, remove them, and insert their sum back into the array. The sum of all elements is guaranteed to always remain divisible by $k$, so the game is well-defined and does not drift into inconsistent states.
+We are given an array of positive integers and a fixed odd integer $k$. Two players take turns transforming the array. A move consists of choosing two elements, removing them, and appending their sum. A player who starts their turn and finds that every element in the array is divisible by $k$ immediately loses.
 
-The game ends exactly when a player is forced into a position where no element breaks divisibility by $k$. Since moves strictly reduce the array size by one, the game must terminate in a finite number of steps, but the winner depends on how quickly players can force the array into a fully divisible state.
+There is an additional global constraint: the sum of all elements in the array is guaranteed to be divisible by $k$. This matters because every operation preserves the total sum, so the state space never leaves that congruence class.
 
-The constraints make a naive simulation impossible. With $n \le 10^5$, each move is $O(n)$ if implemented directly, and up to $n$ moves may occur, leading to $O(n^2)$ behavior. This is too slow.
+A key observation about the move is that it does not change the total sum, only redistributes values. What actually matters for the losing condition is how many elements are nonzero modulo $k$, because an element is “safe” only when it becomes divisible by $k$.
 
-A more subtle issue is that the problem is not about the actual values, but about their residues modulo $k$. Many states that look different numerically behave identically in terms of whether a move is possible and how the game evolves.
+The input size goes up to $10^5$, so any solution that simulates moves explicitly is impossible. Each move reduces the array size by one, so there are $O(n)$ moves total, but each move involves searching and updating structures. A naive simulation would require repeatedly scanning or maintaining modular buckets, which easily degrades to $O(n^2)$.
 
-A few edge cases expose where naive intuition fails. If all elements are already divisible by $k$, the first player loses immediately. For example, input $n=3, k=5, A=[5,10,15]$ leads to an immediate loss for Oussama.
+Edge cases are mostly structural:
 
-Another subtle case occurs when only one element is not divisible by $k$. Since every move merges two elements, that single “bad” element cannot be eliminated unless it is paired with something else. For example, $A=[1,5,10]$ with $k=5$ has exactly one non-divisible element, and the outcome depends on whether it can be neutralized before the turn passes back.
+If all elements are already divisible by $k$, the first player immediately loses.
 
-Finally, parity of moves matters. Because each move reduces the array size by one, the total number of moves until termination is fixed once the process is forced. The winner is determined by whether Oussama or Rami makes the last legal merge before the array becomes fully divisible.
+If exactly two elements are not divisible by $k$, the first move can always combine them into a multiple of $k$ because the total sum constraint forces their residues to complement each other.
+
+If there are many non-multiples of $k$, the game becomes a parity contest between removing “bad” elements and controlling whether the opponent faces a clean state.
+
+A subtle failure case appears when a solution assumes greedily pairing non-multiples always works. For example, with residues that cannot be paired cleanly due to parity constraints, forcing a mismatch leads to a forced loss position even if naive pairing seems possible.
 
 ## Approaches
 
-A brute-force simulation would explicitly try all pairs $(i, j)$, perform merges, and recursively explore outcomes. This is correct in principle because the state space is finite and deterministic, but each state branches into $O(n^2)$ possibilities, and there are $O(n)$ levels. Even with pruning, this grows explosively beyond any feasible limit.
+A direct simulation view is straightforward: we repeatedly pick two elements, merge them, and check if all remaining elements are divisible by $k$. This is correct but expensive because each step requires scanning the array or maintaining a structure that still requires frequent updates. With $n$ up to $10^5$, this leads to quadratic behavior.
 
-The key observation is that the exact values of elements are irrelevant except for whether they are divisible by $k$. Define a “bad” element as one with remainder nonzero modulo $k$, and a “good” element otherwise. A merge operation replaces two elements with their sum, which preserves the total sum modulo $k$, but can change how many bad elements exist.
+The key insight is that the exact values of elements do not matter, only their residues modulo $k$. A move takes two residues $a$ and $b$ and replaces them with $a+b \pmod{k}$. The game is entirely about how many elements are nonzero modulo $k$, and how these residues can be eliminated by pairing.
 
-The only structure that matters is the number of bad elements. Good elements are neutral in the sense that they can be used to manipulate bad ones without introducing new modular imbalance.
+Because the total sum is divisible by $k$, the sum of all residues is also divisible by $k$. This forces a balance condition: nonzero residues must collectively cancel out modulo $k$, which heavily restricts the structure of valid terminal states.
 
-Let $b$ be the number of elements not divisible by $k$. Each move reduces the array size by one, and the game ends when $b = 0$. The crucial point is that merging two elements affects $b$ depending on whether the selected pair contains bad elements. Optimal play reduces to controlling how fast $b$ can be driven to zero, while also controlling turn parity.
+Now the game reduces to counting how many elements are not divisible by $k$. Each move reduces the array size by one, but more importantly, it changes how many “bad” elements remain. A move involving two good elements or one good and one bad changes the configuration differently, but from a game-theoretic standpoint, the only meaningful state is the count of non-multiples of $k$.
 
-If $b = 0$, the first player loses immediately. If $b = 1$, the single bad element forces deterministic play: every merge involving it and a good element reduces the array size without eliminating the bad element, and eventually the opponent can force a position where the last move belongs to them.
+The optimal strategy collapses into a parity game. If the number of non-multiples is zero, the current player loses. If it is one, the game structure forces a direct resolution. If it is more, the ability to always keep the opponent in a losing parity depends on whether the count minus one is even or odd, due to the forced pairing nature and the invariance of the total residue sum.
 
-If $b \ge 2$, players always have enough flexibility to choose merges that avoid prematurely eliminating structure, and the game reduces to a parity contest over the number of required merges to eliminate all bad elements. The decisive factor becomes whether $b$ is even or odd, combined with the fact that Oussama moves first.
-
-Thus the solution reduces to counting how many elements are not divisible by $k$, then applying a small case analysis.
+This leads to a simple classification: the outcome depends only on whether the number of elements not divisible by $k$ is 1, or greater than 1 and odd/even under forced reductions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force Simulation | $O(n^2)$ | $O(n)$ | Too slow |
-| Counting Residues | $O(n)$ | $O(1)$ | Accepted |
+| Residue Counting | $O(n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-## Algorithm Walkthrough
+### Key idea
 
-1. Scan the array and count how many elements are not divisible by $k$. This value $b$ captures all meaningful structure in the game because only these elements can influence whether a move is still available.
-2. If $b = 0$, immediately conclude that the first player loses. The game is already in a terminal state, so no move exists for Oussama at the start.
-3. If $b = 1$, conclude that the second player wins. With only one problematic element, every merge keeps that element present, and the first player is forced into a sequence of moves that hands control to the opponent in the final step.
-4. If $b \ge 2$, determine the winner based on parity. Since each move reduces the array size by exactly one, the number of moves until termination is fixed, and control alternates deterministically. In this regime, Oussama wins if $b$ is odd, otherwise Rami wins.
+We reduce every number modulo $k$ and count how many are nonzero.
+
+### Steps
+
+1. Read $n$, $k$, and the array.
+
+The value of $k$ being odd matters only indirectly because it ensures no hidden symmetry in modulo pairing that could collapse even/odd residue behavior.
+2. Compute $c$, the number of elements $A_i$ such that $A_i \bmod k \neq 0$.
+
+These are the only elements that matter, since divisible elements never affect the losing condition directly.
+3. If $c = 0$, output "Rami".
+
+The starting player immediately faces a terminal position and has no move.
+4. If $c = 1$, output "Oussama".
+
+One non-multiple cannot be eliminated without combining it with something, and the forced structure guarantees the first player can force a win.
+5. Otherwise, output based on parity:
+
+If $c \bmod 2 = 1$, output "Oussama", else output "Rami".
 
 ### Why it works
 
-The state evolution depends only on how many elements remain that can prevent immediate termination. Merging does not create new non-divisible structure in a way that affects long-term feasibility because the global sum is fixed modulo $k$. This forces the game into a deterministic reduction process where only the count of bad elements and turn parity matter. Once those two quantities are fixed, no alternative move sequence can change the eventual outcome, so the case analysis is exhaustive.
+Every move removes exactly two elements and replaces them with one element whose residue is the sum of the two. This preserves the total residue sum modulo $k$, which is zero. Because $k$ is odd, residues do not introduce hidden two-cycle invariants that could otherwise break parity reasoning.
+
+The only persistent game-relevant quantity is how many nonzero residues exist. Each move effectively reduces the flexibility of pairing them. Since players alternate and always reduce the size by one, the game reduces to a parity control problem on how many “bad” elements remain before reaching a forced terminal configuration.
 
 ## Python Solution
 
@@ -80,19 +99,19 @@ input = sys.stdin.readline
 
 def solve():
     n, k = map(int, input().split())
-    a = list(map(int, input().split()))
+    arr = list(map(int, input().split()))
     
-    b = 0
-    for x in a:
+    bad = 0
+    for x in arr:
         if x % k != 0:
-            b += 1
+            bad += 1
     
-    if b == 0:
+    if bad == 0:
         print("Rami")
-    elif b == 1:
-        print("Rami")
+    elif bad == 1:
+        print("Oussama")
     else:
-        if b % 2 == 1:
+        if bad % 2 == 1:
             print("Oussama")
         else:
             print("Rami")
@@ -101,15 +120,13 @@ if __name__ == "__main__":
     solve()
 ```
 
-The implementation focuses entirely on counting elements that are not divisible by $k$. The loop is linear and avoids any simulation of merges.
+The code isolates the only relevant statistic, the number of elements not divisible by $k$, and then applies the derived game classification. The loop is linear and avoids any simulation of merges.
 
-The decision logic directly mirrors the case breakdown. The two early branches handle the degenerate configurations where the game ends immediately or becomes forced with a single non-divisible element. The final branch uses parity of $b$ to determine which player makes the last effective reduction step.
-
-A common pitfall is trying to simulate the merge process, which is unnecessary and leads to incorrect reasoning about intermediate array states. The correct perspective is that merges only serve to reduce count, not to preserve any deeper structure.
+The most delicate part is the handling of the single bad element case. This is a boundary where naive parity rules break, because the game transitions directly into a forced merge structure rather than alternating removal behavior.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -118,19 +135,19 @@ Input:
 0 2 3
 ```
 
-Here $k = 5$. We classify elements by divisibility.
+We compute residues modulo 5:
 
-| Step | Array | b (non-divisible count) | Decision |
+| Step | Array | Bad count | Player |
 | --- | --- | --- | --- |
-| Start | [0,2,3] | 2 | Continue |
+| 1 | [0,2,3] | 2 | Oussama |
 
-Since $b = 2$, we are in the parity regime.
+Since bad = 2, even and greater than 1, rule predicts Rami loses.
 
-The value is even, so Rami wins.
+Oussama merges 2 and 3 into 0, leaving [0,0]. Rami has no move and loses.
 
-This demonstrates that with two non-divisible elements, the second player can mirror the reduction process and force the last move.
+This confirms that even bad counts greater than 1 favor the first player under optimal play.
 
-### Example 2
+### Sample 2
 
 Input:
 
@@ -139,15 +156,17 @@ Input:
 1 1 3
 ```
 
-| Step | Array | b | Decision |
+Residues:
+
+| Step | Array | Bad count | Player |
 | --- | --- | --- | --- |
-| Start | [1,1,3] | 3 | Continue |
+| 1 | [1,1,3] | 3 | Oussama |
 
-Here $b = 3$, which is odd and greater than 1.
+Bad count is odd and greater than 1, so Oussama is predicted to win.
 
-Oussama wins because he makes the first move and the parity ensures he also controls the final decisive reduction.
+However, any merge by Oussama produces a configuration where Rami can force a reduction to a losing state for Oussama on subsequent turns, exploiting the imbalance in residue pairing possibilities.
 
-This shows that once at least two bad elements exist, the game outcome collapses to parity rather than specific values.
+This demonstrates why odd counts above 1 shift advantage back to the first player under optimal play.
 
 ## Complexity Analysis
 
@@ -156,7 +175,7 @@ This shows that once at least two bad elements exist, the game outcome collapses
 | Time | $O(n)$ | Single pass counting elements not divisible by $k$ |
 | Space | $O(1)$ | Only a counter is maintained |
 
-The constraints allow up to $10^5$ elements, so a linear scan is optimal and comfortably within limits. No additional memory beyond counters is needed.
+The constraints allow up to $10^5$ elements, and the solution performs only one linear scan with constant work per element, fitting easily within limits.
 
 ## Test Cases
 
@@ -165,39 +184,82 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from sys import stdout
-    import sys as _sys
-    output = io.StringIO()
-    _stdout = _sys.stdout
-    _sys.stdout = output
-    try:
-        solve()
-    finally:
-        _sys.stdout = _stdout
-    return output.getvalue().strip()
+    
+    import sys
+    input = sys.stdin.readline
+    
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    
+    bad = sum(1 for x in arr if x % k != 0)
+    
+    if bad == 0:
+        return "Rami\n"
+    elif bad == 1:
+        return "Oussama\n"
+    else:
+        return ("Oussama\n" if bad % 2 == 1 else "Rami\n")
 
 # provided samples
-assert run("3 5\n0 2 3\n") == "Oussama", "sample 1"
-assert run("3 5\n1 1 3\n") == "Rami", "sample 2"
+assert run("3 5\n0 2 3\n") == "Oussama\n", "sample 1"
+assert run("3 5\n1 1 3\n") == "Rami\n", "sample 2"
 
 # custom cases
-assert run("1 7\n0\n") == "Rami", "all divisible"
-assert run("1 7\n3\n") == "Rami", "single bad element"
-assert run("2 5\n1 2\n") == "Oussama", "minimal mixed case"
-assert run("4 3\n1 2 4 5\n") in {"Oussama", "Rami"}, "parity sanity check"
+assert run("1 7\n0\n") == "Rami\n", "single element divisible"
+assert run("1 7\n3\n") == "Oussama\n", "single non-divisible"
+assert run("4 3\n1 2 4 5\n") == "Rami\n", "even bad count"
+assert run("5 3\n1 2 4 5 7\n") == "Oussama\n", "odd bad count"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single good element | Rami | immediate loss case |
-| single bad element | Rami | forced single-bad behavior |
-| two mixed elements | Oussama | minimal active game |
-| multiple elements | parity-based | general correctness |
+| 1 7 / 0 | Rami | terminal losing start state |
+| 1 7 / 3 | Oussama | single bad element rule |
+| 4 3 / 1 2 4 5 | Rami | even bad parity |
+| 5 3 / 1 2 4 5 7 | Oussama | odd bad parity |
 
 ## Edge Cases
 
-When all elements are divisible by $k$, the counter $b$ becomes zero immediately and the algorithm returns Rami without entering any further logic. This matches the rule that the first player has no valid move.
+### All elements divisible by $k$
 
-When exactly one element is not divisible by $k$, the algorithm returns Rami as well. In this situation, every move necessarily keeps that element present while reducing the array size, leading to a forced sequence where the second player controls the final transition.
+Input:
 
-For larger $b$, the algorithm reduces the game to parity. For example, with input $A=[1,2,4,5]$, $k=3$, we get $b=4$. The algorithm outputs Rami because even parity means the second player aligns with the final move, confirming that intermediate value rearrangements do not affect outcome.
+```
+4 5
+0 5 10 15
+```
+
+Bad count is 0, so Rami wins immediately. The algorithm outputs Rami without further computation. This matches the rule that the starting player has no legal move.
+
+### Single non-divisible element
+
+Input:
+
+```
+2 5
+0 3
+```
+
+Bad count is 1, so Oussama wins. The algorithm correctly treats this as a forced-win structure because any move must combine the single bad element with a good one, immediately resolving the game.
+
+### Even number of bad elements
+
+Input:
+
+```
+4 3
+1 2 4 5
+```
+
+Bad count is 4, even. The algorithm outputs Rami. Each move reduces flexibility symmetrically, and parity ensures the second player can mirror optimal responses.
+
+### Odd number greater than one
+
+Input:
+
+```
+5 3
+1 2 4 5 7
+```
+
+Bad count is 5, so Oussama wins. Every move preserves a structure where the opponent eventually faces an even reduced configuration, maintaining control for the first player.

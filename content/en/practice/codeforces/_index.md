@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2258 contests, 15169 problems, 8302 verified."
+description: "Codeforces problem solutions with full editorials. 2258 contests, 15173 problems, 8303 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2258 contests, 15169 problems, 8302 verified.**
+**2258 contests, 15173 problems, 8303 verified.**
 
 ## Unknown — 357 contests, 2894 problems, 1816 verified
 
@@ -1735,7 +1735,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 260 contests, 2273 problems, 1109 verified
+## 2024 — 260 contests, 2277 problems, 1110 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1868,7 +1868,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105006](105006/) | [UTPC Contest 03-01-24 Div. 1 (Advanced)](https://codeforces.com/contest/105006) | 7 | 2/7 | Div. 1 | - |
 | [105007](105007/) | [UTPC Contest 03-01-24 Div. 2 (Beginner)](https://codeforces.com/contest/105007) | 8 | 1/8 | Div. 2 | - |
 | [105009](105009/) | [2024 USACO.Guide Informatics Tournament](https://codeforces.com/contest/105009) | 12 | 2/12 | Special | - |
-| [105010](105010/) | [Winter Cup 6.0 Online Mirror Contest](https://codeforces.com/contest/105010) | 9 | 1/9 | Special | - |
+| [105010](105010/) | [Winter Cup 6.0 Online Mirror Contest](https://codeforces.com/contest/105010) | 13 | 2/13 | Special | - |
 | [105012](105012/) | [Bay Area Programming Contest 2024](https://codeforces.com/contest/105012) | 13 | 13/13 | Special | - |
 | [105025](105025/) | [Отборочный этап региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/105025) | 9 | 9/9 | Special | - |
 | [105028](105028/) | [TheForces Round #28 (Epic-Forces)](https://codeforces.com/contest/105028) | 6 | 0/6 | Special | - |
