@@ -218,7 +218,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 131/219 solved.
 | [198](198.md) | &#9654; [*21*] | medium | solved | 1m40s |
 | [199](199.md) | &#9654; [*23*] | medium | verified | 3m |
 | [200](200.md) |  [*20*] | medium | verified | 55s |
-| [201](201.md) |  [*20*] | medium | solved | 3m12s |
+| [201](201.md) |  [*20*] | medium | solved | 1m57s |
 | [202](202.md) |  [*20*] | medium | solved | 4m27s |
 | [203](203.md) |  [*22*] | medium | solved | 4m47s |
 | [204](204.md) | &#9654; [*22*] | medium | solved | 2m28s |
