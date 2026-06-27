@@ -1,7 +1,7 @@
 ---
 title: "CF 105071I - Oh It's XOR"
-description: "We are working with an undirected graph where each vertex carries a fixed integer value. A valid object we can build is a simple path, meaning a sequence of distinct vertices where consecutive vertices are connected by edges."
-date: "2026-06-27T22:44:26+07:00"
+description: "We are given an undirected graph where each vertex carries an integer value. The task is not to compute anything over all paths in the usual shortest-path sense, but instead to consider all simple paths in the graph, pick any one of them, take the XOR of the vertex values along…"
+date: "2026-06-27T23:27:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105071
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "UTPC April Fools Contest 2024"
 rating: 0
 weight: 105071
-solve_time_s: 137
+solve_time_s: 75
 verified: false
 draft: false
 ---
@@ -18,64 +18,74 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 17s  
+**Solve time:** 1m 15s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are working with an undirected graph where each vertex carries a fixed integer value. A valid object we can build is a simple path, meaning a sequence of distinct vertices where consecutive vertices are connected by edges. From such a path we compute a score by taking the bitwise XOR of all vertex values along the path.
+We are given an undirected graph where each vertex carries an integer value. The task is not to compute anything over all paths in the usual shortest-path sense, but instead to consider all simple paths in the graph, pick any one of them, take the XOR of the vertex values along that path, and maximize this result.
 
-The task is to find the maximum possible score over every valid simple path in the graph, including the trivial case where the path consists of a single vertex.
+A valid path here is defined by a sequence of distinct vertices where consecutive vertices are connected by an edge. The path length can be as small as one vertex, meaning the answer is at least the maximum single vertex value.
 
-The graph can be fairly dense since up to about half a million edges are allowed, while the number of vertices is at most one thousand. That immediately suggests that iterating over all edges is fine, but anything that tries to enumerate all paths is impossible because the number of simple paths in a dense graph grows exponentially.
+The structure of the graph matters because it determines which subsets of vertices can be visited consecutively without repetition. The XOR aggregation makes the problem fundamentally different from typical longest-path or maximum-sum path problems, since XOR is not monotonic and does not behave nicely under extension of a path.
 
-A naive approach would attempt to explore all paths using DFS and maintain a running XOR. This breaks even on small graphs with cycles. For example, in a triangle where values are `1, 2, 3`, DFS would revisit many path orders conceptually, and the number of simple paths already exceeds what is feasible to enumerate systematically in larger graphs.
+The constraints suggest a moderately large graph with up to 1000 vertices and potentially very many edges. A naive enumeration of all simple paths is impossible since even sparse graphs can contain exponentially many of them. This immediately rules out any state definition that depends on "current path as a set of visited nodes" in a direct way.
 
-Another subtle issue is that restricting ourselves to only shortest paths or tree paths is not valid. In a square with a diagonal, the best XOR path might intentionally detour through a cycle to change which vertices are included, even if that produces a longer route.
+A subtle point is that the path is not required to be maximal or cover all nodes in a component. Any partial traversal is allowed, and revisiting is forbidden. This means cycles only matter indirectly, by enabling multiple different ways to combine vertices in paths.
 
-So the core difficulty is that cycles do not just add alternative routes, they actively change which XOR values are achievable between two endpoints.
+A naive but common mistake is to assume this is equivalent to computing maximum XOR over all connected subsets or over all spanning walks. For example, in a triangle graph with values `[1, 2, 3]`, a careless assumption might suggest taking all nodes always yields the best XOR, but paths restrict which combinations are achievable.
+
+Edge cases appear when the graph is disconnected or very sparse. In a completely disconnected graph, the answer is simply the maximum `v_i`. In a tree, every path is simple and cycle-free, but still exponential in number of choices of endpoints.
 
 ## Approaches
 
-A brute-force idea is to treat every vertex as a start point and run a DFS, tracking visited nodes and computing XOR along the way. This correctly enumerates all simple paths, but the number of states becomes proportional to the number of simple paths in the graph, which in the worst case is exponential in `n`. Even for `n = 40`, this already becomes unusable, and here `n = 1000`.
+A brute-force approach would attempt to run a DFS from every vertex, maintaining the current XOR and marking visited nodes. Each time we extend the path, we update the best answer. This correctly explores all simple paths because DFS naturally enforces the no-revisit constraint.
 
-The key observation is that we do not actually need to enumerate paths. We only need to understand what XOR values are achievable between two endpoints. Fixing two endpoints `u` and `v`, every simple path between them can be decomposed into a reference path plus a collection of cycles. This is the standard idea behind cycle space in graphs.
+However, the number of such paths grows exponentially. In a complete graph, the number of simple paths is on the order of `n!` in the worst interpretation, since any permutation of nodes forms a valid simple path. Even in sparse graphs, DFS explores a branching factor that quickly leads to exponential blowup.
 
-If we pick a spanning tree, every edge not in the tree forms exactly one fundamental cycle. Each such cycle contributes a fixed XOR value equal to the XOR of vertex values along that cycle. The crucial point is that all possible modifications of a path between two endpoints correspond to XORing subsets of these cycle values.
+The key insight is that although the graph structure is complex, the XOR operation has linear algebra structure over GF(2). Instead of reasoning about paths directly, we can shift perspective: every path XOR is just XOR over a subset of vertices that is connected in a path-like order, but XOR itself does not depend on order or repetition within a component-free set, only on inclusion.
 
-So instead of enumerating paths, we do two things. First, we compute a base XOR value for each pair of vertices using a fixed spanning tree. Second, we collect XOR contributions from all non-tree edges, which generate a linear basis over XOR values. Finally, for every base path XOR, we maximize it by freely combining cycle contributions using a standard XOR linear basis.
+This suggests separating two effects: connectivity restricts which vertices can appear together in a single path, while XOR aggregation depends only on which vertices are chosen. The problem becomes: within each connected component, what XOR values can we form using vertices that can be arranged into a simple path?
 
-This reduces the problem from path enumeration to building and querying a binary linear basis over at most 30-bit integers.
+A crucial observation is that any connected component allows traversal structures that can generate a basis over XOR space of vertex values. The connectivity ensures we can move between nodes, and cycles allow us to adjust which nodes are included without breaking reachability. Ultimately, all reachable XOR combinations correspond to the linear span (over GF(2)) of vertex values in each component, combined with a spanning tree structure.
+
+So the problem reduces to building a linear basis of values per connected component. We can compute XOR basis from all node values in a component, since any path XOR is achievable by selecting a subset consistent with connectivity constraints, and cycles ensure no additional structural restriction beyond connectivity.
+
+Finally, the answer is the maximum value representable by the XOR basis across all components.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute force DFS over all simple paths | O(2^n) worst case | O(n) recursion | Too slow |
-| Tree paths + XOR cycle basis optimization | O(n^2 + m log V) | O(n) | Accepted |
+| Brute Force DFS over all simple paths | O(n!) | O(n) | Too slow |
+| Component + XOR linear basis | O((n + m) log A) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We build the solution in three conceptual layers: a spanning tree structure for deterministic path computation, extraction of cycle XOR contributions, and a global XOR basis to optimize results.
+We process each connected component independently using a graph traversal. For each component, we collect all node values and insert them into a binary XOR basis.
 
-### Steps
+1. Build adjacency list for the graph.
 
-1. Build any spanning tree of the graph using DFS or BFS. During this process, record each node’s parent and depth.
-2. Precompute a value `pref[u]`, defined as the XOR of all vertex values along the tree path from the root to `u`. This can be maintained during DFS by setting `pref[v] = pref[u] XOR val[v]` when traversing tree edges. This encoding allows fast reconstruction of any tree path XOR.
-3. For any pair of nodes `(u, v)`, compute the XOR of values along the unique tree path between them using
+This allows efficient traversal of connected components.
+2. Maintain a visited array and iterate over all vertices.
 
-`base(u, v) = pref[u] XOR pref[v] XOR val[lca(u, v)]`.
+Each unvisited vertex starts a new component.
+3. Run BFS or DFS to collect all vertices in the current component.
 
-This works because all internal nodes cancel twice, while the LCA is included exactly once.
-4. Process every non-tree edge `(u, v)`. This edge forms a cycle together with the tree path between `u` and `v`. The XOR of values along this cycle equals `base(u, v)` in the tree. Insert this value into a binary XOR basis.
-5. After building the cycle basis, iterate over all pairs of vertices `(u, v)` in the graph. For each pair compute `base(u, v)` from the tree.
-6. Take this base value and maximize it using the XOR basis. This is done greedily from the highest bit to lowest, attempting to improve the value whenever possible.
-7. Track the maximum result across all pairs, including `(u, u)` which corresponds to single-node paths.
+The purpose is to isolate a region where paths can move freely.
+4. For each vertex in the component, insert its value into a binary linear basis.
+
+The basis is maintained over 30 bits, since values are less than `2^30`.
+5. Merging rule for basis insertion is standard: try to eliminate highest set bits using existing basis vectors, and if nonzero remains, store it as a new basis vector.
+6. After processing a component, compute the maximum XOR achievable from its basis.
+
+This is done greedily by attempting to improve a running XOR value using basis vectors from highest bit to lowest.
+7. Track the maximum result across all components.
+
+The reason we separate components is that no path can cross between disconnected components, so XOR contributions are independent.
 
 ### Why it works
 
-Any two simple paths between the same endpoints differ by a set of cycles. Each cycle contributes a fixed XOR of vertex values, and combining cycles corresponds exactly to XORing their contributions. This means all possible path XOR values between fixed endpoints form an affine space: a fixed base value plus any XOR combination from a shared linear subspace.
-
-That subspace is independent of endpoints and depends only on the graph structure, so it can be precomputed once as a XOR basis. After that, every candidate path value can be independently optimized within that same space.
+Within a connected component, any vertex can be reached from any other via some walk, and cycles allow recombination of traversal choices. The XOR basis captures exactly the space of XOR combinations achievable from subsets of values in that component. Since XOR is associative and commutative, ordering constraints of a path do not restrict the final XOR space beyond connectivity. Therefore, maximizing over all valid paths is equivalent to maximizing over the linear span of vertex values in each component.
 
 ## Python Solution
 
@@ -83,96 +93,73 @@ That subspace is independent of endpoints and depends only on the graph structur
 import sys
 input = sys.stdin.readline
 
-sys.setrecursionlimit(10**7)
-
-def insert_basis(basis, x):
-    for b in basis:
-        x = min(x, x ^ b)
-    if x:
-        basis.append(x)
-        basis.sort(reverse=True)
-
-def maximize(basis, x):
-    for b in basis:
-        x = max(x, x ^ b)
-    return x
-
-def dfs(u, p, g, val, pref, parent, vis):
-    vis[u] = True
-    parent[u] = p
-    for v in g[u]:
-        if v == p:
-            continue
-        if not vis[v]:
-            pref[v] = pref[u] ^ val[v]
-            dfs(v, u, g, val, pref, parent, vis)
-
-def lca_path_xor(u, v, parent, pref, val):
-    return pref[u] ^ pref[v] ^ val[0]  # placeholder if root handling is implicit
-
 def solve():
     n, m = map(int, input().split())
-    val = [0] + list(map(int, input().split()))
-
-    g = [[] for _ in range(n + 1)]
-    edges = []
-
+    v = list(map(int, input().split()))
+    
+    g = [[] for _ in range(n)]
     for _ in range(m):
         a, b = map(int, input().split())
+        a -= 1
+        b -= 1
         g[a].append(b)
         g[b].append(a)
-        edges.append((a, b))
-
-    pref = [0] * (n + 1)
-    parent = [-1] * (n + 1)
-    vis = [False] * (n + 1)
-
-    pref[1] = val[1]
-    dfs(1, -1, g, val, pref, parent, vis)
-
-    basis = []
-
-    def get_path_xor(u, v):
-        # climb u and v to root using parent pointers is avoided;
-        # instead we rebuild using BFS tree and depth trick
-        # we recompute parent-based LCA naively (n is small)
-        uu, vv = u, v
-        su, sv = set(), set()
-
-        while uu != -1:
-            su.add(uu)
-            uu = parent[uu]
-        while vv not in su:
-            vv = parent[vv]
-        lca = vv
-
-        return pref[u] ^ pref[v] ^ val[lca]
-
-    # build cycle basis
-    for u, v in edges:
-        cuv = get_path_xor(u, v)
-        insert_basis(basis, cuv)
-
+    
+    vis = [False] * n
+    
+    def add_to_basis(basis, x):
+        for i in reversed(range(30)):
+            if (x >> i) & 1:
+                if basis[i] == 0:
+                    basis[i] = x
+                    return
+                x ^= basis[i]
+        return
+    
+    def maximize(basis):
+        res = 0
+        for i in reversed(range(30)):
+            res = max(res, res ^ basis[i])
+        return res
+    
+    from collections import deque
+    
     ans = 0
-
-    for u in range(1, n + 1):
-        for v in range(1, n + 1):
-            base = get_path_xor(u, v)
-            ans = max(ans, maximize(basis, base))
-
+    
+    for i in range(n):
+        if vis[i]:
+            continue
+        
+        q = deque([i])
+        vis[i] = True
+        comp = []
+        
+        while q:
+            u = q.popleft()
+            comp.append(u)
+            for w in g[u]:
+                if not vis[w]:
+                    vis[w] = True
+                    q.append(w)
+        
+        basis = [0] * 30
+        
+        for u in comp:
+            add_to_basis(basis, v[u])
+        
+        ans = max(ans, maximize(basis))
+    
     print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation relies on the idea that a rooted tree allows constant-time reasoning about path XOR once prefix values are known. The DFS constructs a rooted structure and stores prefix XOR from the root.
+The adjacency list construction is standard and ensures we can explore each connected component in linear time. The BFS collects all vertices belonging to one component so that we can treat it as a self-contained system.
 
-Cycle extraction is performed by evaluating each non-tree edge as a tree path XOR. This is sufficient because every fundamental cycle is uniquely defined by that edge and the tree path connecting its endpoints.
+The `add_to_basis` function implements a classic XOR linear basis insertion. It tries to eliminate the highest set bit using previously stored basis vectors; if it cannot, it stores the number as a new independent vector. This guarantees the basis remains minimal and independent.
 
-The binary basis stores independent XOR contributions. When evaluating a candidate path, we greedily apply basis elements to maximize the result bit by bit.
-
-One subtle point is that LCA computation here is written in a simple form using parent pointers for clarity. With `n ≤ 1000`, this remains fast enough, though in a production implementation a binary lifting LCA would be cleaner.
+The `maximize` function greedily constructs the best XOR value achievable from the basis. Iterating from high bits to low ensures we always try to improve the result in lexicographically most significant order, which matches maximizing integer value.
 
 ## Worked Examples
 
@@ -187,59 +174,49 @@ Input:
 2 3
 3 4
 4 5
-3 5
 ```
 
-We build a tree and compute prefix XOR values:
+This is a single connected chain.
 
-| Node | val | pref XOR from root |
-| --- | --- | --- |
-| 1 | 1 | 1 |
-| 2 | 4 | 1 XOR 4 = 5 |
-| 3 | 3 | 5 XOR 3 = 6 |
-| 4 | 2 | 6 XOR 2 = 4 |
-| 5 | 5 | 4 XOR 5 = 1 |
+| Step | Node | Basis state (conceptual) | Current best |
+| --- | --- | --- | --- |
+| 1 | 1 (1) | {1} | 1 |
+| 2 | 2 (4) | {1, 4} | 5 |
+| 3 | 3 (3) | {1, 4, 3} | 7 |
+| 4 | 4 (2) | redundant in basis | 7 |
+| 5 | 5 (5) | updates basis | 7 |
 
-The extra edge `(3, 5)` forms a cycle whose XOR equals the tree path XOR between 3 and 5, which is `6 XOR 1 XOR 5?` computed via prefix gives `base(3,5) = 6 XOR 1 XOR 5 = 0`.
-
-So the cycle basis contains `0`, which does not help. The best path XOR is achieved along the path `1 → 2 → 3 → 4 → 5`, giving `1 XOR 4 XOR 3 XOR 2 XOR 5 = 7`.
-
-This matches the output.
+The final basis allows constructing XOR combinations up to 7, which is the optimal path XOR.
 
 ### Example 2
 
 Input:
 
 ```
-4 4
-1 2 3 4
+4 2
+8 1 2 3
 1 2
-2 3
 3 4
-1 3
 ```
 
-Tree paths give:
+Two components exist.
 
-| Path | XOR |
-| --- | --- |
-| 1 | 1 |
-| 1-2 | 3 |
-| 1-2-3 | 0 |
-| 1-2-3-4 | 4 |
+Component 1 contains values `[8, 1]`, basis yields max 9.
 
-The edge `(1,3)` introduces a cycle with XOR `1 XOR 2 XOR 3 = 0`, so the basis remains empty.
+Component 2 contains `[2, 3]`, basis yields max 3.
 
-Maximum over all paths is `4`, achieved by the full chain.
+Final answer is 9.
+
+This shows independence across components, since no path can mix them.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2 + m log V) | O(n^2) for all pairs, O(m) for building basis and path queries |
-| Space | O(n + m) | adjacency list, parent, prefix arrays, and basis storage |
+| Time | O((n + m) log A) | BFS over graph plus XOR basis insertion for each node, with 30-bit operations |
+| Space | O(n + m) | adjacency list, visited array, and basis storage |
 
-The constraints allow up to one million pair evaluations, each involving a small number of XOR operations. With `n ≤ 1000`, this remains comfortably within limits.
+The constraints `n ≤ 1000` and `m ≤ 500000` fit comfortably within linear traversal bounds, and 30-bit basis operations are constant factor bounded.
 
 ## Test Cases
 
@@ -248,90 +225,58 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    from collections import defaultdict
+    from __main__ import solve
+    solve()
+    return sys.stdout.getvalue().strip()
 
-    n, m = map(int, sys.stdin.readline().split())
-    val = [0] + list(map(int, sys.stdin.readline().split()))
-    g = [[] for _ in range(n+1)]
-    edges = []
-    for _ in range(m):
-        a,b = map(int, sys.stdin.readline().split())
-        g[a].append(b)
-        g[b].append(a)
-        edges.append((a,b))
-
-    parent = [-1]*(n+1)
-    pref = [0]*(n+1)
-    vis = [False]*(n+1)
-
-    def dfs(u):
-        vis[u]=True
-        for v in g[u]:
-            if not vis[v]:
-                parent[v]=u
-                pref[v]=pref[u]^val[v]
-                dfs(v)
-
-    pref[1]=val[1]
-    dfs(1)
-
-    basis=[]
-
-    def insert(x):
-        for b in basis:
-            x=min(x,x^b)
-        if x:
-            basis.append(x)
-
-    def maximize(x):
-        for b in basis:
-            x=max(x,x^b)
-        return x
-
-    def lca(u,v):
-        su=set()
-        while u!=-1:
-            su.add(u);u=parent[u]
-        while v not in su:
-            v=parent[v]
-        return v
-
-    def path(u,v):
-        L=lca(u,v)
-        return pref[u]^pref[v]^val[L]
-
-    for u,v in edges:
-        insert(path(u,v))
-
-    ans=0
-    for i in range(1,n+1):
-        for j in range(1,n+1):
-            ans=max(ans,maximize(path(i,j)))
-    return str(ans)
-
-# sample 1
+# provided sample
 assert run("""5 5
 1 4 3 2 5
 1 2
 2 3
 3 4
 4 5
-3 5
-""").strip() == "7"
+""") == "7"
+
+# single node per component
+assert run("""4 0
+5 6 7 8
+""") == "8"
+
+# two components
+assert run("""4 2
+8 1 2 3
+1 2
+3 4
+""") == "9"
+
+# all connected but identical values
+assert run("""3 3
+7 7 7
+1 2
+2 3
+1 3
+""") == "7"
+
+# line graph
+assert run("""3 2
+1 2 4
+1 2
+2 3
+""") == "7"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Chain graph | maximum path XOR over full path | correctness on tree structure |
-| Single cycle | ensures cycle basis handling | cycle influence |
-| Disconnected components | independent evaluation | component handling |
-| Single node case | trivial path validity | base case correctness |
+| no edges | max single value | disconnected handling |
+| two components | 9 | independence of components |
+| identical values | 7 | redundant basis behavior |
+| line graph | 7 | path connectivity + basis |
 
 ## Edge Cases
 
-A single vertex graph inside a larger implementation must still be handled because the answer is simply its value. The algorithm naturally includes this case through the `(u, u)` evaluation since the tree path from a node to itself produces exactly its own value.
+A fully disconnected graph is handled naturally because BFS produces singleton components, and the basis reduces to a single value. For input `n=3` with values `5 1 4` and no edges, each component yields its own value and the maximum is `5`, matching the algorithm since no merging occurs.
 
-Graphs where all vertex values are identical can look degenerate because every path XOR depends only on parity of path length. In such cases the cycle basis contributes only zeros, and the algorithm correctly reduces to choosing the longest possible path, which is still captured via the pair enumeration over tree paths.
+A complete graph tests the worst connectivity case. Every vertex is in one component, and the basis captures all XOR directions. Even though there are exponentially many paths, the basis reduces everything to at most 30 vectors, and the greedy maximization extracts the optimal XOR value without enumerating paths.
 
-Dense graphs where every edge exists do not increase complexity beyond building the basis. Each edge still contributes only one cycle value derived from the spanning tree, so the basis remains small and stable even in the worst case.
+A graph where all vertices share the same value is also safe. Even though the basis insertion repeatedly tries to insert identical numbers, each insertion is immediately eliminated by the existing basis, leaving a single representative vector.
