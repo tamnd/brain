@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2247 contests, 15069 problems, 8267 verified."
+description: "Codeforces problem solutions with full editorials. 2248 contests, 15078 problems, 8274 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2247 contests, 15069 problems, 8267 verified.**
+**2248 contests, 15078 problems, 8274 verified.**
 
 ## Unknown — 353 contests, 2858 problems, 1807 verified
 
@@ -1588,7 +1588,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 137 contests, 960 problems, 381 verified
+## 2023 — 138 contests, 969 problems, 388 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1724,6 +1724,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [105013](105013/) | [The 19th Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105013) | 9 | 7/9 | Special | - |
 | [105173](105173/) | [The 2024 CCPC National Invitational Contest (Northeast), The 18th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105173) | 13 | 4/13 | Special | - |
 | [105184](105184/) | [The 8th Hebei Collegiate Programming Contest](https://codeforces.com/contest/105184) | 11 | 5/11 | Special | - |
 | [105637](105637/) | [The 2022 ICPC Asia Tehran Regional Contest](https://codeforces.com/contest/105637) | 11 | 8/11 | ICPC/IOI | - |
