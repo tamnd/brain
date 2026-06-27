@@ -197,19 +197,19 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 124/219 solved.
 | [177](177.md) |  [*M22*] | math-medium | solved | 48s |
 | [178](178.md) |  [*20*] | medium | solved | 1m14s |
 | [179](179.md) | &#9654; [*34*] | hard | solved | 1m07s |
-| [180](180.md) | &#9654; [*M24*] | math-medium | solved | 1m54s |
-| [181](181.md) |  [*HM20*] | hm-medium | solved | 55s |
-| [182](182.md) |  [*M31*] | math-hard | solved | 59s |
-| [183](183.md) | &#9654; [*M29*] | math-hard | verified | 1m21s |
-| [184](184.md) | &#9654; [*M22*] | math-medium | solved | 1m34s |
-| [185](185.md) | &#9654; [*23*] | medium | verified | 4m15s |
-| [186](186.md) |  [*HM22*] | hm-medium | verified | 2m35s |
-| [187](187.md) |  [*M29*] | math-hard | solved | 2m48s |
-| [188](188.md) | &#9654; [*25*] | medium | solved | 3m02s |
-| [189](189.md) |  [*25*] | medium | solved | 1m58s |
-| [190](190.md) |  [*23*] | medium | solved | 3m15s |
-| [191](191.md) |  [*M30*] | math-hard | solved | 4m20s |
-| [192](192.md) |  [*HM38*] | hm-project | solved | 4m46s |
+| [180](180.md) | &#9654; [*M24*] | math-medium | verified | 2m20s |
+| [181](181.md) |  [*HM20*] | hm-medium | verified | 2m34s |
+| [182](182.md) |  [*M31*] | math-hard | solved | 2m43s |
+| [183](183.md) | &#9654; [*M29*] | math-hard | verified | 3m11s |
+| [184](184.md) | &#9654; [*M22*] | math-medium | verified | 1m07s |
+| [185](185.md) | &#9654; [*23*] | medium | verified | 1m11s |
+| [186](186.md) |  [*HM22*] | hm-medium | verified | 1m16s |
+| [187](187.md) |  [*M29*] | math-hard | solved | 4m23s |
+| [188](188.md) | &#9654; [*25*] | medium | solved | 4m29s |
+| [189](189.md) |  [*25*] | medium | solved | 1m14s |
+| [190](190.md) |  [*23*] | medium | solved | 4m15s |
+| [191](191.md) |  [*M30*] | math-hard | solved | 4m23s |
+| [192](192.md) |  [*HM38*] | hm-project | solved | 4m27s |
 | [193](193.md) | &#9654; [*M21*] | math-medium | solved | 3m13s |
 | [194](194.md) |  [*M24*] | math-medium | solved | 2m54s |
 | [195](195.md) | &#9654; [*HM25*] | hm-medium | verified | 1m15s |

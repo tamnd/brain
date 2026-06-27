@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2224 contests, 14854 problems, 8146 verified."
+description: "Codeforces problem solutions with full editorials. 2228 contests, 14884 problems, 8170 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2224 contests, 14854 problems, 8146 verified.**
+**2228 contests, 14884 problems, 8170 verified.**
 
-## Unknown — 341 contests, 2732 problems, 1723 verified
+## Unknown — 344 contests, 2756 problems, 1745 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105085](105085/) | [AdaByron Regional Madrid 2024](https://codeforces.com/contest/105085) | 11 | 11/11 | Special | - |
+| [105093](105093/) | [2024 UP ACM Algolympics Final Round](https://codeforces.com/contest/105093) | 13 | 11/13 | Special | - |
+| [105101](105101/) | [ТИИМ 2023-2024, Заключительный этап (8-9 классы)](https://codeforces.com/contest/105101) | 0 | 0/0 | Special | - |
 | [105102](105102/) | [ТИИМ 2023-2024, Заключительный этап (10-11 классы)](https://codeforces.com/contest/105102) | 0 | 0/0 | Special | - |
 | [105112](105112/) | [2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)](https://codeforces.com/contest/105112) | 12 | 12/12 | ICPC/IOI | - |
 | [105116](105116/) | [Олимпиада 1С 2024, предметный тур](https://codeforces.com/contest/105116) | 4 | 4/4 | Special | - |
@@ -1718,7 +1721,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 243 contests, 2129 problems, 1053 verified
+## 2024 — 244 contests, 2135 problems, 1055 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1852,6 +1855,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105079](105079/) | [UTPC x WiCS Contest 04-05-23 (UT Internal)](https://codeforces.com/contest/105079) | 6 | 2/6 | Special | - |
 | [105104](105104/) | [2024 HNMU@XTU](https://codeforces.com/contest/105104) | 11 | 11/11 | Special | - |
 | [105109](105109/) | [UTPC Spring 2024 Open Contest](https://codeforces.com/contest/105109) | 12 | 1/12 | Special | - |
 | [105114](105114/) | [NUS CS3233 Final Team Contest 2024](https://codeforces.com/contest/105114) | 13 | 5/13 | Special | - |
