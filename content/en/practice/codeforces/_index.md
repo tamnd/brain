@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2213 contests, 14757 problems, 8090 verified."
+description: "Codeforces problem solutions with full editorials. 2213 contests, 14760 problems, 8093 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2213 contests, 14757 problems, 8090 verified.**
+**2213 contests, 14760 problems, 8093 verified.**
 
 ## Unknown — 334 contests, 2687 problems, 1700 verified
 
@@ -1711,7 +1711,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 239 contests, 2077 problems, 1020 verified
+## 2024 — 239 contests, 2080 problems, 1023 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1848,7 +1848,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105137](105137/) | [TheForces Round #30 (Good-Forces)](https://codeforces.com/contest/105137) | 7 | 0/7 | Special | - |
 | [105139](105139/) | [The 2024 International Collegiate Programming Contest in Hubei Province, China](https://codeforces.com/contest/105139) | 12 | 12/12 | Special | - |
 | [105141](105141/) | [BSUIR Open XII: Student Final](https://codeforces.com/contest/105141) | 11 | 11/11 | Special | - |
-| [105143](105143/) | [2024 ICPC National Invitational Collegiate Programming Contest, Wuhan Site](https://codeforces.com/contest/105143) | 10 | 10/10 | ICPC/IOI | - |
+| [105143](105143/) | [2024 ICPC National Invitational Collegiate Programming Contest, Wuhan Site](https://codeforces.com/contest/105143) | 13 | 13/13 | ICPC/IOI | - |
 | [105158](105158/) | [2024 National Invitational of CCPC (Zhengzhou), 2024 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/105158) | 13 | 13/13 | Special | - |
 | [105160](105160/) | [2024 University of Shanghai for Science and Technology(USST) Freshman Challenge Contest](https://codeforces.com/contest/105160) | 13 | 11/13 | Special | - |
 | [105161](105161/) | [2024 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/105161) | 11 | 7/11 | Special | - |
