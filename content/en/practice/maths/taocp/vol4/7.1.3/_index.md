@@ -58,13 +58,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 167/219 solved.
 | [38](38.md) |  [*17*] | medium | solved | 4m15s |
 | [39](39.md) | &#9654; [*20*] | medium | solved | 1m11s |
 | [40](40.md) | &#9654; [*21*] | medium | verified | 1m04s |
-| [41](41.md) |  [*M22*] | math-medium | solved | 1m02s |
-| [42](42.md) |  [*M21*] | math-medium | verified | 1m14s |
-| [43](43.md) | &#9654; [*20*] | medium | solved | 1m19s |
-| [44](44.md) | &#9654; [*23*] | medium | verified | 1m13s |
-| [45](45.md) | &#9654; [*20*] | medium | verified | 3m46s |
-| 46 |  [*22*] | medium | - | - |
-| 47 |  [*10*] | simple | - | - |
+| [41](41.md) |  [*M22*] | math-medium | solved | 2m06s |
+| 42 |  [*M21*] | math-medium | - | - |
+| 43 | &#9654; [*20*] | medium | - | - |
+| 44 | &#9654; [*23*] | medium | - | - |
+| [45](45.md) | &#9654; [*20*] | medium | solved | 3m44s |
+| [46](46.md) |  [*22*] | medium | verified | 1m17s |
+| [47](47.md) |  [*10*] | simple | verified | 1m06s |
 | 48 |  [*M21*] | math-medium | - | - |
 | 49 | &#9654; [*M30*] | math-hard | - | - |
 | 50 |  [*M37*] | math-project | - | - |
