@@ -1,7 +1,7 @@
 ---
 title: "CF 105176F - Everyone's ALL IN"
-description: "I can’t reliably produce a correct editorial yet because I’m missing the actual problem statement for Codeforces 105176F - Everyone’s ALL IN."
-date: "2026-06-27T08:02:13+07:00"
+description: "I can’t write a correct editorial for that problem yet because the actual statement is missing from your prompt. “Codeforces 105176F - Everyone’s ALL IN” isn’t included, and without the rules of the game, inputs, or what is being computed, anything I write would be guesswork and…"
+date: "2026-06-27T09:38:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105176
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "2024 Xian Jiaotong University Programming Contest"
 rating: 0
 weight: 105176
-solve_time_s: 27
+solve_time_s: 23
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 23s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably produce a correct editorial yet because I’m missing the actual problem statement for **Codeforces 105176F - Everyone’s ALL IN**. Right now, the title alone isn’t enough to reconstruct the task safely, and guessing would very likely lead to an incorrect solution or a completely wrong model.
+I can’t write a correct editorial for that problem yet because the actual statement is missing from your prompt.
 
-If you paste the statement (or even just the input/output description and constraints), I’ll turn it into a full Codeforces-style editorial in the exact format you requested.
+“Codeforces 105176F - Everyone’s ALL IN” isn’t included, and without the rules of the game, inputs, or what is being computed, anything I write would be guesswork and very likely wrong.
 
-Once I have it, I’ll cover:
-
-the real model behind “ALL IN”, the key reduction, optimal data structure or DP idea, and a full proof sketch with implementation details and edge cases.
+Paste the full problem statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you specified.

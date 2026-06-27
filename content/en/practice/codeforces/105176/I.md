@@ -1,7 +1,7 @@
 ---
 title: "CF 105176I - \u547d\u4ee4\u884c"
-description: "The problem statement you provided is incomplete. It only contains the title “命令行” and no description of the input, output, or task, so there is no way to derive the algorithm or write a correct editorial without inventing details."
-date: "2026-06-27T08:02:36+07:00"
+description: "The problem statement is effectively missing here. All we have is the title “命令行” and empty input/output sections, which is not enough to reconstruct the task."
+date: "2026-06-27T09:38:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105176
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2024 Xian Jiaotong University Programming Contest"
 rating: 0
 weight: 105176
-solve_time_s: 22
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,16 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 22s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is incomplete. It only contains the title “命令行” and no description of the input, output, or task, so there is no way to derive the algorithm or write a correct editorial without inventing details.
+The problem statement is effectively missing here. All we have is the title “命令行” and empty input/output sections, which is not enough to reconstruct the task.
 
-To produce the full Codeforces-style editorial you requested, I need at least one of the following:
+A Codeforces editorial depends entirely on the actual mechanics of the problem: what operations are allowed, what the input describes, and what must be computed. Without that, any “solution” would be guesswork rather than a correct derivation.
 
-- Full problem statement (preferred)
-- Or input/output specification plus a short description of the task
-- Or a link / pasted content of the original CF problem
-
-Once you provide that, I’ll write the complete editorial in the exact format you specified, including the reasoning, walkthrough, Python solution, and tests.
+If you paste the full statement (or even a screenshot or raw text), I can produce the complete editorial in the exact style you requested, including the algorithm derivation, correctness argument, implementation, and edge-case analysis.

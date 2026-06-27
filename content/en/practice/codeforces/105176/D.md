@@ -1,7 +1,7 @@
 ---
 title: "CF 105176D - \u745f\u8389\u59c6\u7684\u5bb4\u4f1a"
-description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now the statement section only contains the title “瑟莉姆的宴会” with no description of the task, input, output, or constraints."
-date: "2026-06-27T08:01:18+07:00"
+description: "I don’t have the actual problem statement content for Codeforces 105176D - 瑟莉姆的宴会 from what you provided - only the title. Without the rules, input format, and task description, I can’t reliably reconstruct the solution or write a correct editorial."
+date: "2026-06-27T09:37:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105176
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2024 Xian Jiaotong University Programming Contest"
 rating: 0
 weight: 105176
-solve_time_s: 28
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem content is missing.
+I don’t have the actual problem statement content for **Codeforces 105176D - 瑟莉姆的宴会** from what you provided - only the title.
 
-Right now the statement section only contains the title “瑟莉姆的宴会” with no description of the task, input, output, or constraints. Without that, any solution would be guesswork and would very likely be wrong.
+Without the rules, input format, and task description, I can’t reliably reconstruct the solution or write a correct editorial. Anything I write now would be guesswork, and that would likely be wrong.
 
-Please paste the full Codeforces problem statement (or a link + the relevant text). Once I have it, I’ll produce the complete editorial in the exact style you requested.
+Paste the full problem statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you specified, including:
+
+- full re-derivation of the idea
+- brute force → optimization transition
+- correctness reasoning
+- Python implementation
+- full traces, test cases, and edge case analysis
+
+Once you send it, I’ll take it from there.
