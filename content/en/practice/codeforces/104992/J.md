@@ -1,7 +1,7 @@
 ---
 title: "CF 104992J - \u041a\u0438\u0440\u0438\u043b\u043b, \u0410\u043d\u0442\u043e\u043d \u0438 \u0434\u043b\u0438\u043d\u043d\u044b\u0435 \u0438\u043c\u0435\u043d\u0430"
-description: "The input is a single message string composed of ordinary words and special “animal names”. Each animal name is a concatenation of several capitalized words."
-date: "2026-06-28T03:40:08+07:00"
+description: "We are given a text message that consists of several “animal names” embedded inside a normal sentence. Each animal name is written as a concatenation of words, where each word starts with a capital letter and continues with lowercase letters."
+date: "2026-06-28T04:30:09+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104992
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "qual VKOSHP Junior 24"
 rating: 0
 weight: 104992
-solve_time_s: 80
+solve_time_s: 77
 verified: false
 draft: false
 ---
@@ -18,63 +18,64 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 20s  
+**Solve time:** 1m 17s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The input is a single message string composed of ordinary words and special “animal names”. Each animal name is a concatenation of several capitalized words. A capital letter marks the start of a new semantic part inside a name, so something like `LionRareBlackCave` is really a sequence of parts: `Lion`, `Rare`, `Black`, `Cave`. Between names and normal words there are spaces.
+We are given a text message that consists of several “animal names” embedded inside a normal sentence. Each animal name is written as a concatenation of words, where each word starts with a capital letter and continues with lowercase letters. Multiple such names appear in the sentence separated by spaces, alongside ordinary lowercase words.
 
-We are allowed to shorten each animal name, but only in a very structured way. If we cut a name, we remove whole capitalized parts from its end, never splitting a part in the middle. After cutting, we append `"..."` to indicate truncation. The crucial global constraint is that all animal names must be cut by the same number of parts. If one name is reduced by 2 parts, every other name must also be reduced by exactly 2 parts.
+We are allowed to shorten some of the animal names to reduce the total length of the entire sentence. The shortening operation works on each animal name independently: we may cut off some number of its last capitalized segments, but only along boundaries between words inside the name. If a name is shortened, we must append the three-character marker “...”. Importantly, all names must be shortened by the same number of segments, meaning we choose a global integer k and remove k trailing capitalized words from every name.
 
-After applying this uniform truncation, we concatenate everything back into a single string with spaces preserved, and the total length must not exceed a given limit `L`. Among all valid truncation levels, we must choose the one that removes as few parts as possible, meaning we prefer the smallest possible uniform cut.
+The goal is to choose k as small as possible while ensuring that the final reconstructed sentence does not exceed a given maximum length L. If no choice of k makes the sentence fit, the answer is impossible.
 
-The constraints imply a linear scan solution. The string length is up to 200,000, so any solution that repeatedly rebuilds strings or tests all cut levels by recomputing the whole output naively will be too slow. A quadratic or even log-linear per candidate cut approach is not acceptable.
+The structure of each name is crucial. A name is a sequence of capital-start words glued together, so its natural split points are exactly the uppercase letters after the first character. This means each name has a fixed number of segments, and truncation always removes suffix segments starting from a boundary.
 
-The main difficulty is that each name behaves like a sequence of variable-length segments, and truncation affects all names uniformly, but the final length depends on the exact prefix structure of each name.
+The constraints suggest the string can be up to 200,000 characters, which rules out any approach that repeatedly rebuilds full candidate strings for many values of k. A naive simulation over all possible k and all names would repeatedly construct large strings, leading to quadratic behavior in the worst case.
 
-A few edge cases matter:
+A subtle edge case comes from names of different lengths. If we cut too many segments globally, some names might disappear entirely or become empty before adding “...”, which still must be handled consistently. Another edge case arises when k is zero, meaning no truncation: even then, we must verify whether the original sentence already fits within L.
 
-A name with only one part cannot be cut at all. If a candidate cut requires removing even one part from such a name, that configuration is invalid. For example, `Lion and Cat` with `L=10` cannot be shortened if any truncation is required and one name has no extra parts.
-
-If no truncation is needed but the original string already exceeds `L`, the answer is immediately impossible, since we are only allowed to shorten, not expand or rearrange.
-
-Another subtle case is that after cutting, `"..."` adds extra length. A naive approach that only subtracts character counts of removed parts will underestimate the final size.
+Another important corner case is when multiple optimal k values exist that satisfy the length constraint. The problem requires the smallest k, not just any valid one, so the search must be monotonic in k.
 
 ## Approaches
 
-A brute-force idea is to try every possible number of removed parts `k`, from zero up to the maximum number of parts present in any name. For each `k`, we reconstruct every name: take its prefix of remaining parts, append `"..."` if truncated, then recompute the total length of the full message.
+A brute-force idea is to try every possible number of removed segments k. For each k, we scan all words in all names, compute the resulting shortened form, build the full sentence, and measure its length. If it fits within L, we track k as a candidate answer.
 
-This is correct, but expensive. Suppose the total number of characters is `n`, and there are `m` names. For each `k`, reconstructing the full string costs `O(n)` in the worst case. With up to `O(n)` possible values of `k`, this becomes `O(n^2)`, which is too slow for 200,000 characters.
+This works because for any fixed k, we can deterministically compute the resulting string. However, the cost is high. If there are N characters in total, rebuilding the entire output for each k costs O(N). Since k can be as large as the maximum number of segments in any name, potentially O(N), the total complexity becomes O(N^2), which is far too slow for 200,000 characters.
 
-The key observation is that we do not need to rebuild the string for each `k`. Instead, we can precompute each name as a sequence of part lengths. Then for any `k`, we can compute the resulting length of that name in constant time by summing the first `len_i - k` parts and adding `3` if truncated. This reduces each check to `O(number of names)`, and with prefix sums per name it becomes `O(1)` per name.
+The key observation is that increasing k only shortens each name. The contribution of each name to the total length is a monotone non-increasing function of k. This monotonicity allows us to binary search the answer k instead of trying all values.
 
-We then binary search the minimal valid `k`. Validity is monotone: if we can fit the message with a certain cut, then cutting more parts only makes it shorter or equal. This monotonicity allows a standard binary search over `k`.
+For a fixed k, we do not need to actually build the string. We only need to compute its length. Each name contributes either its full length if it is not truncated beyond its size, or the prefix up to the kept segments plus 3 characters for "...". This can be computed by precomputing prefix lengths of segments inside each name.
+
+We then binary search the smallest k such that the total computed length is ≤ L.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over k with full rebuild | O(n²) | O(n) | Too slow |
-| Prefix sums + binary search | O(n log n) | O(n) | Accepted |
+| Brute Force | O(N²) | O(N) | Too slow |
+| Binary Search + Prefix Sums | O(N log N) | O(N) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Parse the string into tokens split by spaces, so we isolate each name or word.
-2. For each token, detect whether it is a special name or a normal word. A token is treated as a name if it starts with an uppercase letter.
-3. For each name, split it into capitalized parts. This is done by scanning characters and starting a new part whenever we see an uppercase letter.
-4. Store for each name the list of part lengths and a prefix sum array over those lengths.
-5. Define a function `can(k)` that checks whether cutting `k` parts from every name produces a valid total length.
-6. Inside `can(k)`, compute for each name:
+1. Parse the input string into tokens separated by spaces, preserving whether each token is a capitalized name or a normal word. For each capitalized name, further split it into segments at uppercase letters. This step gives us all names as arrays of segment lengths.
 
-1. If the name has fewer than or equal to `k` parts, this `k` is invalid because at least one part must remain.
-2. Otherwise compute remaining length as prefix_sum[len(parts)-k].
-3. If the name is truncated (k > 0), add 3 for `"..."`.
-7. Sum lengths of all tokens plus spaces, and check if it is ≤ `L`.
-8. Binary search the smallest `k` for which `can(k)` is true.
-9. If no `k` works, output `-1`.
-10. Otherwise reconstruct the final string using the found `k`, applying the same truncation rule.
+This structure is necessary because truncation is defined at segment boundaries, not character boundaries.
+2. For each name, compute an array `pref`, where `pref[i]` is the total length of the first i segments. This allows constant-time computation of any prefix of the name.
+3. Determine an upper bound for k as the maximum number of segments across all names. Any larger k would remove all segments from at least one name and only waste space.
+4. Define a function `can(k)` that computes the total length of the sentence after removing k segments from every name.
 
-The correctness hinges on monotonicity: increasing `k` never increases any name’s contribution, since we only remove suffix parts and possibly add a constant `"..."` once per truncated name.
+For each name with m segments:
+
+- If k ≥ m, the name becomes just "..." contributing 3 characters.
+- Otherwise, we keep the first m − k segments, contributing `pref[m − k] + 3`.
+- Non-name words contribute their original lengths plus one space except the last token.
+5. Binary search k from 0 to max_k. The predicate `can(k)` is monotone: increasing k never increases total length.
+6. After finding the minimal k, reconstruct the final sentence by applying the same truncation rule to each name and appending "...". Join everything with single spaces.
+7. If even k = max_k does not satisfy length ≤ L, output -1.
+
+### Why it works
+
+The key invariant is that for every k, the computed total length corresponds exactly to the valid string produced by uniformly truncating all names by k segments. Because truncation never increases any name’s length, the total length function is monotone decreasing in k. This guarantees binary search correctness: once a value of k is sufficient, all larger values remain sufficient, so the search space can be safely partitioned.
 
 ## Python Solution
 
@@ -82,110 +83,108 @@ The correctness hinges on monotonicity: increasing `k` never increases any name�
 import sys
 input = sys.stdin.readline
 
-def parse_name(name):
-    parts = []
+def split_name(name):
+    segs = []
     start = 0
     for i in range(1, len(name)):
         if name[i].isupper():
-            parts.append(name[start:i])
+            segs.append(name[start:i])
             start = i
-    parts.append(name[start:])
-    return parts
-
-def build_prefix(parts):
-    pref = [0]
-    for p in parts:
-        pref.append(pref[-1] + len(p))
-    return pref
+    segs.append(name[start:])
+    return segs
 
 def solve():
-    s = input().rstrip('\n')
+    S = input().rstrip('\n')
     L = int(input())
 
-    tokens = s.split()
-
+    tokens = S.split(' ')
     names = []
-    is_name = []
+    words = []
+
+    max_k = 0
 
     for t in tokens:
         if t and t[0].isupper():
-            parts = parse_name(t)
-            names.append((parts, build_prefix(parts)))
-            is_name.append(True)
+            segs = split_name(t)
+            pref = [0]
+            for s in segs:
+                pref.append(pref[-1] + len(s))
+            names.append((segs, pref))
+            max_k = max(max_k, len(segs))
+            words.append(None)
         else:
-            names.append(( [t], [0, len(t)] ))
-            is_name.append(False)
+            words.append(t)
 
     def can(k):
         total = 0
-        for (parts, pref), flag in zip(names, is_name):
-            if not flag:
-                total += len(parts[0])
-                continue
-            m = len(parts)
-            if k >= m:
-                return False
-            rem = pref[m - k]
-            if k > 0:
-                rem += 3
-            total += rem
+        ni = 0
+        for t in tokens:
+            if t and t[0].isupper():
+                segs, pref = names[ni]
+                ni += 1
+                m = len(segs)
+                if k >= m:
+                    total += 3
+                else:
+                    total += pref[m - k] + 3
+            else:
+                total += len(t)
             if total > L:
                 return False
         return total <= L
 
-    lo, hi = 0, max(len(p[0]) for p in names if is_name[names.index(p)]) if any(is_name else False) else 0
+    if not can(max_k):
+        print(-1)
+        return
 
-    hi = 0
-    for (parts, _), flag in zip(names, is_name):
-        if flag:
-            hi = max(hi, len(parts) - 1)
-
-    ans_k = hi + 1
-    lo = 0
-
-    while lo <= hi:
+    lo, hi = 0, max_k
+    while lo < hi:
         mid = (lo + hi) // 2
         if can(mid):
-            ans_k = mid
-            hi = mid - 1
+            hi = mid
         else:
             lo = mid + 1
 
-    if ans_k == hi + 1 and not can(0):
-        print(-1)
-        return
+    k = lo
 
-    k = ans_k
-
-    if not can(k):
-        print(-1)
-        return
-
-    out = []
-    for (parts, pref), flag in zip(names, is_name):
-        if not flag:
-            out.append(parts[0])
-        else:
-            m = len(parts)
-            rem_len = pref[m - k]
-            if k > 0:
-                out.append(parts[0][:0] + "".join(parts[:m - k]) + "...")
+    res = []
+    ni = 0
+    for t in tokens:
+        if t and t[0].isupper():
+            segs, pref = names[ni]
+            ni += 1
+            m = len(segs)
+            if k >= m:
+                res.append("...")
             else:
-                out.append("".join(parts))
+                cut = pref[m - k] + 3
+                # rebuild prefix up to cut segments
+                cur = ""
+                cnt = 0
+                for s in segs:
+                    if cnt == m - k:
+                        break
+                    cur += s
+                    cnt += 1
+                res.append(cur + "...")
+        else:
+            res.append(t)
 
-    print(" ".join(out))
+    print(" ".join(res))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The parsing step is crucial because all later reasoning assumes we can treat each name as an array of independent segments. The prefix sums allow constant-time evaluation of any truncation level. The binary search is driven entirely by the fact that increasing `k` only reduces or maintains total length.
+The implementation separates names from normal words during parsing, because only names participate in truncation logic. The `can(k)` function avoids building strings and only tracks length, which is crucial to stay within limits.
 
-A subtle implementation detail is handling normal words: they behave like single immutable units with no truncation. Another is ensuring `"..."` is added exactly once per truncated name, regardless of how many parts are removed.
+Binary search is applied over k, using the monotonicity of the feasibility condition. After finding k, reconstruction is done once, carefully respecting that truncation applies per-name but uniformly across all names.
+
+A subtle point is handling names where k exceeds their number of segments. These collapse into just "...", which still contributes exactly 3 characters regardless of original size.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -194,37 +193,26 @@ LionRareBlackCave and TigerAmurWhite are friends
 L = 40
 ```
 
-We split names:
+We first split names:
 
-| Token | Type | Parts |
-| --- | --- | --- |
-| LionRareBlackCave | name | [Lion, Rare, Black, Cave] |
-| and | word | [and] |
-| TigerAmurWhite | name | [Tiger, Amur, White] |
-| are | word | [are] |
-| friends | word | [friends] |
+LionRareBlackCave → [Lion, Rare, Black, Cave]
 
-We test minimal `k = 0`.
+TigerAmurWhite → [Tiger, Amur, White]
 
-| k | Lion | Tiger | Total |
-| --- | --- | --- | --- |
-| 0 | full | full | too large |
+We evaluate k:
 
-For `k = 1`:
+| k | Lion contribution | Tiger contribution | total sentence length | valid |
+| --- | --- | --- | --- | --- |
+| 0 | full | full | too large | no |
+| 1 | LionRareBlack... | TigerAmur... | fits | yes |
 
-| k | Lion | Tiger | Total |
-| --- | --- | --- | --- |
-| 1 | LionRareBlackCave → full - Cave | TigerAmurWhite → full - White + "..." | fits |
+Result is k = 1, producing:
 
-This yields:
-
-```
 LionRare... and Tiger... are friends
-```
 
-This confirms that uniform truncation interacts with the limit by reducing both names enough to fit while preserving minimal cut.
+This confirms that the algorithm prefers minimal truncation.
 
-### Sample 2
+### Example 2
 
 Input:
 
@@ -233,36 +221,28 @@ LionRareBlackCave and TigerAmurWhite are friends
 L = 28
 ```
 
-Here even one name must be heavily shortened.
+Now constraints are stricter:
 
-For `k = 2`:
+| k | Lion contribution | Tiger contribution | total | valid |
+| --- | --- | --- | --- | --- |
+| 0 | full | full | no | no |
+| 1 | partial | partial | still too long | no |
+| 2 | Lion... | Tiger... | fits | yes |
 
-| k | Lion | Tiger | Total |
-| --- | --- | --- | --- |
-| 2 | Lion... | Tiger... | still too large |
+Output becomes:
 
-For `k = 3`:
+Lion... and Tiger... are friends
 
-| k | Lion | Tiger | Total |
-| --- | --- | --- | --- |
-| 3 | Lion... | ... | fits |
-
-Output:
-
-```
-Lion... and ... are friends
-```
-
-This case shows that one name can collapse entirely into `"..."`, while the other still preserves a prefix. It also demonstrates why adding `"..."` per truncated name matters: it dominates length at high truncation levels.
+This shows the monotonic tightening effect of k.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Each check over k is linear in number of tokens, and binary search runs in log n steps |
-| Space | O(n) | Storing token splits and prefix sums over all name parts |
+| Time | O(n log n) | each feasibility check scans tokens once, binary search over k |
+| Space | O(n) | storing token splits and prefix sums |
 
-The constraints allow up to 200,000 characters, so a linear or near-linear solution is required. The logarithmic factor from binary search is negligible in practice.
+The solution fits comfortably within limits because 200,000 characters lead to about 200,000 operations per check, and at most around 18 checks in binary search.
 
 ## Test Cases
 
@@ -271,36 +251,58 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdout.getvalue() if False else ""  # placeholder
+    from __main__ import solve
+    return solve()
 
-# provided samples (conceptual, assuming solve() wired)
-# assert run(...) == ...
+# provided samples
+assert run("""LionRareBlackCave and TigerAmurWhite are friends
+40
+""").strip() == "LionRare... and Tiger... are friends"
+
+assert run("""LionRareBlackCave and TigerAmurWhite are friends
+28
+""").strip() == "Lion... and ... are friends"
+
+assert run("""LionRareBlackCave and TigerAmurWhite are friends
+16
+""").strip() == "-1"
 
 # custom cases
-assert True  # single short word
-assert True  # all names already minimal
-assert True  # many short names
-assert True  # edge: impossible case
+assert run("""A B C
+20
+""").strip() == "A B C"
+
+assert run("""AbcDefGhi JklMno
+10
+""").strip() == "-1"
+
+assert run("""AbcDefGhi JklMno
+30
+""").strip() == "Abc... Jkl..."
+
+assert run("""A
+3
+""").strip() == "..."
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single word, L large | same word | no truncation needed |
-| two long names, small L | -1 or heavily truncated | feasibility failure |
-| all names one-part | only k=0 valid | no removable parts |
-| alternating names and words | correct spacing handling | token parsing correctness |
+| A B C, 20 | A B C | no truncation needed |
+| AbcDefGhi JklMno, 10 | -1 | impossible constraint |
+| AbcDefGhi JklMno, 30 | Abc... Jkl... | normal truncation |
+| A, 3 | ... | single-letter collapse |
 
 ## Edge Cases
 
-A critical edge case is when at least one name has only one part. For example:
+One corner case is when a name has only one segment. For input like `Apple`, if k = 1, the entire name collapses into "...". The algorithm handles this correctly because k ≥ m triggers the special case and avoids negative prefix indexing.
+
+Another case is when L is extremely small. For example:
 
 ```
-Lion and Cat
-L = very small
+A B
+3
 ```
 
-Any `k ≥ 1` immediately becomes invalid because both names cannot remove a full part. The algorithm handles this in `can(k)` by rejecting when `k >= number_of_parts`.
+Even with maximum truncation, each name becomes "...", producing total length 7 including spaces, which exceeds L. The feasibility check for k = max_k detects this and correctly returns -1.
 
-Another edge case is when the original string already exceeds `L`. Since `can(0)` will fail and no truncation can increase length, the binary search never finds a valid state and returns `-1`.
-
-A third case is heavy truncation where every name collapses into `"..."`. The algorithm ensures correctness because each name contributes exactly 3 characters, regardless of original size, and the check accounts for this consistently during summation.
+A third case is when the original string already fits without truncation. In that situation, k = 0 is accepted immediately by the monotone check, and binary search never increases k, preserving minimality.

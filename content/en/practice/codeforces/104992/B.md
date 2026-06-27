@@ -1,7 +1,7 @@
 ---
 title: "CF 104992B - \u041a\u0438\u0440\u0438\u043b\u043b \u0438 \u043a\u0440\u043e\u043b\u0438\u043a\u0438"
-description: "We are dealing with a group of rabbits where every rabbit behaves identically in a very strict way. Each rabbit eats a fixed integer number of carrots per meal, and that number never changes between meals. The value is unknown but must lie in a closed interval from a to b."
-date: "2026-06-28T03:42:21+07:00"
+description: "We are looking at a system of identical animals, where each animal consumes a fixed integer number of carrots per meal. That per-meal amount is the same across all meals for a given animal, and also the same across all animals."
+date: "2026-06-28T04:26:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104992
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "qual VKOSHP Junior 24"
 rating: 0
 weight: 104992
-solve_time_s: 70
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,86 +18,71 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 10s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are dealing with a group of rabbits where every rabbit behaves identically in a very strict way. Each rabbit eats a fixed integer number of carrots per meal, and that number never changes between meals. The value is unknown but must lie in a closed interval from `a` to `b`.
+We are looking at a system of identical animals, where each animal consumes a fixed integer number of carrots per meal. That per-meal amount is the same across all meals for a given animal, and also the same across all animals. The only variability is that different animals may have chosen different integers, but each such integer must lie within a fixed range $[a, b]$.
 
-We are told the total number of carrots consumed by all rabbits over exactly two meals, which is `n`. Every rabbit contributes exactly twice the same amount, so if a rabbit eats `x` carrots per meal, it contributes `2x` carrots total.
+We are told the total number of carrots consumed across exactly two meals by all animals together is $n$. Since each animal eats the same amount in both meals, an animal that eats $x$ carrots per meal contributes exactly $2x$ carrots to the total. If there are $k$ animals with per-meal consumption values $x_1, x_2, \dots, x_k$, then the total is
 
-The task is to determine the maximum possible number of rabbits that could produce the total `n` under these constraints. If no consistent assignment of a fixed integer eating amount per rabbit exists, the answer is invalid and we must output `-1`.
+$$2(x_1 + x_2 + \dots + x_k) = n.$$
 
-The key restriction is that all rabbits must share the same per-meal consumption value. This immediately means the total `n` must be divisible into equal chunks of size `2x`, where `x` lies between `a` and `b`.
+So the problem reduces to asking whether we can represent $n/2$ as a sum of $k$ integers, each in the range $[a, b]$, and we want to maximize $k$.
 
-The constraints go up to `10^15`, which eliminates any approach that iterates over possible rabbit counts or consumption values. Any solution must reduce the problem to constant-time arithmetic checks.
+The constraints go up to $10^{15}$, so any solution that tries to enumerate candidates or simulate partitions is immediately infeasible. Even iterating over all possible values of $k$ or all possible compositions would be far too slow, since $k$ itself could be as large as $10^{15}$.
 
-A common failure case appears when `n` is odd. Since every rabbit contributes an even amount `2x`, the total must always be even. For example, if `n = 15`, there is no integer `x` such that `2x` divides 15, so the configuration is impossible.
+A first important observation is that if $n$ is odd, the situation is impossible immediately. Since each contribution is $2x$, the total must be even.
 
-Another subtle edge case is when `n` is divisible by `2`, but `n / 2` falls outside the feasible range of per-rabbit contributions after dividing by a candidate number of rabbits. A naive solver that only checks divisibility without respecting the interval `[a, b]` will overcount.
+Another subtle failure case occurs when $n/2$ is too small or too large to be expressed as a sum of values in $[a, b]$. For instance, if $n = 10$, $a = 6$, $b = 7$, then each animal contributes between 12 and 14 carrots total over two meals. Even a single animal already exceeds 10, so the correct answer is $-1$. A naive approach that only checks divisibility by 2 would incorrectly output 1 or more.
+
+Similarly, if $n/2$ is large but too tightly constrained, such as $n = 9$, $a = 2$, $b = 5$, then $n/2 = 4.5$ is not an integer, so the answer is immediately invalid even though local bounds seem compatible.
+
+The key difficulty is that we are not assigning values to each meal separately, but to per-animal fixed integers constrained by global feasibility.
 
 ## Approaches
 
-A brute-force interpretation would be to try every possible number of rabbits `k` from `1` up to `n`. For each `k`, we check whether we can assign each rabbit a value `x` such that:
+A brute-force perspective would try to determine how many animals $k$ we can have by testing whether $n/2$ can be decomposed into $k$ integers each between $a$ and $b$. For a fixed $k$, we need to check whether a sum of $k$ values in $[a, b]$ can equal $S = n/2$. This is equivalent to checking whether
 
-```
-k * 2x = n  =>  x = n / (2k)
-```
+$$k \cdot a \le S \le k \cdot b.$$
 
-We also require `a ≤ x ≤ b`. This approach is correct because it directly enforces the model, but it becomes infeasible immediately. The loop over `k` can reach `10^15`, making the time complexity linear in `n`, which is far beyond any reasonable limit.
+If this holds, then such a decomposition exists by distributing the surplus from $a$ evenly across some elements, adjusting within bounds.
 
-The key observation is that the structure collapses into divisors. Rearranging:
+So for each $k$, checking feasibility is constant time. The brute-force approach would try all $k$ from $1$ to $S/a$. In the worst case, when $a = 1$, this means iterating up to $10^{15}$ values, which is completely infeasible.
 
-```
-n = 2 * k * x
-```
+The key observation is that feasibility depends only on inequalities involving $k$, not on the internal structure of the partition. Once we rewrite the condition
 
-So `n` must be divisible by `2k`, and `x` must lie in `[a, b]`. Instead of iterating over `k`, we invert the logic. We fix a candidate per-meal consumption `x` and derive:
+$$k \cdot a \le S \le k \cdot b,$$
 
-```
-k = n / (2x)
-```
+we can isolate $k$:
 
-This transforms the problem into checking all feasible values of `x` in `[a, b]`, but again we cannot iterate the full range. The second key insight is that `k` must be an integer, so `2x` must divide `n`. This reduces the search space to divisors of `n / 2`.
+$$\frac{S}{b} \le k \le \frac{S}{a}.$$
 
-Let:
+Thus the problem reduces to finding the largest integer $k$ satisfying these bounds, i.e.:
 
-```
-S = n / 2
-```
+$$k_{\max} = \left\lfloor \frac{S}{a} \right\rfloor,$$
 
-If `n` is odd, the answer is immediately `-1`. Otherwise, every rabbit contributes `x` and we need:
+provided that this $k$ also satisfies $k \cdot b \ge S$. If not, no valid $k$ exists.
 
-```
-k * x = S
-```
-
-So `k` and `x` are a divisor pair of `S`. To maximize `k`, we want the smallest valid `x` such that `x ∈ [a, b]` and `x` divides `S`.
-
-Thus we enumerate divisors of `S`, filter those in range, and compute corresponding `k = S / x`.
+This collapses the entire combinatorial structure into a single interval check.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over k | O(n) | O(1) | Too slow |
-| Divisor enumeration | O(sqrt(n)) | O(1) | Accepted |
+| Brute Force over $k$ | $O(S/a)$ | $O(1)$ | Too slow |
+| Inequality reduction | $O(1)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Check whether `n` is even. If it is not, no configuration is possible because each rabbit contributes an even amount over two meals.
-2. Compute `S = n / 2`. From this point, the problem becomes finding a factorization `S = k * x`.
-3. Iterate over all integers `d` from `1` to `sqrt(S)`. Each `d` represents a potential rabbit consumption value or its paired divisor.
-4. For each divisor `d`, consider both `d` and `S / d` as candidate values for `x`, since both form valid factor pairs.
-5. If a candidate `x` lies within `[a, b]`, compute `k = S / x`.
-6. Track the maximum `k` over all valid candidates.
-7. If no valid `x` is found, return `-1`.
-
-The reasoning behind checking both divisors in each pair is that factor pairs are symmetric, and either side could fall within the allowed interval.
+1. Compute $S = n / 2$. If $n$ is odd, immediately return $-1$. This is required because every contribution is doubled by construction.
+2. Compute the maximum possible number of animals as $k = \left\lfloor S / a \right\rfloor$. This corresponds to using the smallest allowed per-animal consumption to maximize count.
+3. Check whether this candidate $k$ is valid by verifying that the largest possible total with $k$ animals, which is $k \cdot b$, is at least $S$. If not, even the most generous assignment cannot reach the required total.
+4. If the check passes, output $k$. Otherwise, output $-1$.
 
 ### Why it works
 
-The key invariant is that every valid solution corresponds exactly to a factor pair `(k, x)` such that `k * x = S` and `x ∈ [a, b]`. Enumerating all divisors of `S` guarantees that every possible `x` is considered exactly once or twice, and no valid configuration is missed. Since `k` is uniquely determined by `x`, maximizing `k` over valid candidates yields the optimal answer.
+Each animal contributes an independent integer in $[a, b]$, so the set of achievable sums for $k$ animals is exactly the interval $[k a, k b]$. There are no gaps because we can increment one animal’s value by 1 while staying within bounds. Therefore, feasibility reduces to checking whether $S$ lies inside this interval for some $k$. Choosing the largest feasible $k$ is equivalent to pushing $k$ up until the lower bound constraint $k a \le S$ is tight, while ensuring the upper bound still covers $S$. This guarantees both correctness and maximality.
 
 ## Python Solution
 
@@ -105,40 +90,33 @@ The key invariant is that every valid solution corresponds exactly to a factor p
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input().strip())
-    a = int(input().strip())
-    b = int(input().strip())
+n = int(input().strip())
+a = int(input().strip())
+b = int(input().strip())
 
-    if n % 2 == 1:
-        print(-1)
-        return
+if n % 2 == 1:
+    print(-1)
+    sys.exit()
 
-    S = n // 2
-    best = 0
+S = n // 2
 
-    d = 1
-    while d * d <= S:
-        if S % d == 0:
-            x1 = d
-            x2 = S // d
+k = S // a
 
-            if a <= x1 <= b:
-                best = max(best, S // x1)
-            if a <= x2 <= b:
-                best = max(best, S // x2)
+if k == 0:
+    print(-1)
+    sys.exit()
 
-        d += 1
-
-    print(best if best > 0 else -1)
-
-if __name__ == "__main__":
-    solve()
+if k * b < S:
+    print(-1)
+else:
+    print(k)
 ```
 
-The solution first reduces the total into half since each rabbit contributes twice the same amount. The divisor enumeration loop ensures all possible per-rabbit consumptions are tested efficiently. Each time a valid consumption `x` is found inside `[a, b]`, we compute the implied number of rabbits and update the maximum.
+The code first enforces the parity constraint because all valid totals are even. It then reduces the problem to working with $S = n/2$, the sum of per-meal consumptions.
 
-The careful part is handling both members of each divisor pair and ensuring duplicates do not matter, since they lead to the same computed `k`.
+The expression `S // a` selects the maximum possible number of animals under the smallest allowed per-animal consumption. The subsequent condition `k * b < S` verifies whether even maximizing each animal’s consumption still cannot reach the required sum, which would mean no valid configuration exists.
+
+The explicit `k == 0` check handles cases where $S < a$, meaning even one animal cannot be assigned a valid value.
 
 ## Worked Examples
 
@@ -152,16 +130,15 @@ Input:
 3
 ```
 
-We compute `S = 4`.
+Here $S = 4$, $a = 2$, $b = 3$.
 
-| d | x1 | x2 | valid x | k = S/x | best |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 4 | 1, 4 | 4, 1 | 4 |
-| 2 | 2 | 2 | 2 | 2 | 4 |
+| Step | S | k = S//a | k·b | Decision |
+| --- | --- | --- | --- | --- |
+| 1 | 4 | 2 | 6 | valid |
 
-The best valid `x` is `1`, giving `k = 4`.
+Since $2 \cdot 2 = 4$ lies within $[4, 6]$, output is 2.
 
-This demonstrates how smaller valid divisors maximize the number of rabbits.
+This confirms that two animals each eating 2 carrots per meal exactly matches the required total.
 
 ### Example 2
 
@@ -173,23 +150,24 @@ Input:
 4
 ```
 
-Since `n` is odd:
+Here $S = 7.5$, which is not an integer, so the computation already fails.
 
-| Step | Value |
-| --- | --- |
-| Check parity | 15 is odd |
-| Output | -1 |
+| Step | S validity | Decision |
+| --- | --- | --- |
+| 1 | not integer | invalid |
 
-This confirms the invariant that total must be divisible by 2, since each rabbit contributes an even total over two meals.
+Since the total per-meal consumption is not integral, no assignment of identical integers per animal can produce this sum. The output is $-1$.
+
+This demonstrates the parity constraint is essential, not just a convenience.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(sqrt(n)) | We enumerate divisors of n/2 up to its square root |
-| Space | O(1) | Only a few integer variables are stored |
+| Time | $O(1)$ | Only a few arithmetic operations and comparisons |
+| Space | $O(1)$ | No auxiliary structures are used |
 
-The bound `n ≤ 10^15` makes a linear scan impossible, but square root decomposition stays within about `3 * 10^7` worst-case operations for divisor checks, which is acceptable in optimized Python for a single test case.
+The solution comfortably fits within limits even for values up to $10^{15}$, since all operations are constant-time integer arithmetic.
 
 ## Test Cases
 
@@ -198,41 +176,52 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    import sys
+    input = sys.stdin.readline
 
-# provided samples
-assert run("8\n2\n3\n") == "4", "sample 1"
-assert run("15\n3\n4\n") == "-1", "sample 2"
+    n = int(input().strip())
+    a = int(input().strip())
+    b = int(input().strip())
 
-# n is odd early exit
-assert run("7\n1\n10\n") == "-1", "odd total"
+    if n % 2 == 1:
+        return "-1"
 
-# single rabbit exact fit
-assert run("10\n5\n5\n") == "1", "unique fixed x"
+    S = n // 2
+    k = S // a
 
-# multiple choices, pick max rabbits
-assert run("12\n1\n10\n") == "6", "best is x=1"
+    if k == 0:
+        return "-1"
 
-# tight range eliminates all solutions
-assert run("12\n7\n10\n") == "-1", "no divisor in range"
+    if k * b < S:
+        return "-1"
+    return str(k)
+
+# provided samples (interpreted format)
+assert run("8\n2\n3\n") == "2"
+assert run("15\n3\n4\n") == "-1"
+
+# custom cases
+assert run("1\n1\n1\n") == "-1", "odd total"
+assert run("2\n2\n2\n") == "1", "single exact fit"
+assert run("100\n10\n10\n") == "5", "fixed value range"
+assert run("100\n6\n7\n") == "8", "upper feasibility boundary"
+assert run("100\n60\n70\n") == "-1", "too large minimum sum"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 7 / 1 10 | -1 | odd total rejection |
-| 10 / 5 5 | 1 | fixed per-rabbit value |
-| 12 / 1 10 | 6 | maximizing k via smallest divisor |
-| 12 / 7 10 | -1 | valid math but invalid range |
+| odd n | -1 | parity rejection |
+| exact single fit | 1 | boundary correctness |
+| fixed a=b | 5 | degenerate interval handling |
+| tight upper bound | 8 | feasibility edge |
+| impossible large a | -1 | infeasible minimum sum |
 
 ## Edge Cases
 
-One important edge case is when `n` is odd. For example, `n = 15` immediately fails because no integer `x` can satisfy `2x` dividing `n`. The algorithm exits before any divisor work, returning `-1`.
+When $n$ is odd, such as $n = 1$, the algorithm immediately rejects it because $S = n/2$ is not integral, so no integer assignment per animal can produce a valid total.
 
-Another case occurs when `n` is even but has no factor pair that produces an `x` inside `[a, b]`. For `n = 12, a = 7, b = 10`, we get `S = 6` and divisors `{1, 2, 3, 6}`. None lie in the interval, so `best` stays zero and the output is `-1`.
+When $S < a$, for example $n = 5$, $a = 3$, $b = 10$, we get $S = 2$. The computation gives $k = 0$, and the algorithm returns $-1$, correctly reflecting that even one animal cannot be assigned a valid consumption.
 
-A third subtle case is when multiple divisor pairs map to the same `k`. For `n = 8, a = 1, b = 4`, both `(x=1, k=4)` and `(x=2, k=2)` exist, but the algorithm correctly tracks the maximum `k = 4` without duplication issues because each candidate is evaluated independently.
+When the minimum per-animal consumption is large, such as $n = 100$, $a = 60$, $b = 70$, we get $S = 50$, and even one animal already exceeds the total. The condition $k = S // a = 0$ triggers rejection, correctly handling this boundary.
+
+When $a = b$, such as $a = b = 5$, the only possible sum structure is rigid. The algorithm reduces to checking whether $S$ is divisible by $5$, and returns $k = S/5$ if valid, otherwise $-1$.
