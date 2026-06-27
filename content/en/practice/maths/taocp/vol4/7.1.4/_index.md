@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 28/267 solved."
+description: "Section 7.1.4 exercises: 36/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 36/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -25,9 +25,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 | 5 |  [*20*] | medium | - | - |
 | 6 |  [*10*] | simple | - | - |
 | 7 |  [*21*] | medium | - | - |
-| 8 |  [*22*] | medium | - | - |
-| 9 |  [*16*] | medium | - | - |
-| 10 | &#9654; [*21*] | medium | - | - |
+| [8](08.md) |  [*22*] | medium | solved | 1m04s |
+| [9](09.md) |  [*16*] | medium | verified | 1m05s |
+| [10](10.md) | &#9654; [*21*] | medium | solved | 1m04s |
 | 11 |  [*20*] | medium | - | - |
 | 12 | &#9654; [*M21*] | math-medium | - | - |
 | 13 |  [*M15*] | math-simple | - | - |
@@ -40,7 +40,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 | 20 |  [*15*] | simple | - | - |
 | 21 |  [*05*] | simple | - | - |
 | 22 | &#9654; [*M21*] | math-medium | - | - |
-| 23 | &#9654; [*M20*] | math-medium | - | - |
+| [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
 | 24 |  [*M22*] | math-medium | - | - |
 | 25 |  [*M20*] | math-medium | - | - |
 | 26 |  [*M20*] | math-medium | - | - |
@@ -117,7 +117,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 | 97 |  [*M20*] | math-medium | - | - |
 | 98 | &#9654; [*22*] | medium | - | - |
 | 99 |  [*20*] | medium | - | - |
-| 100 | &#9654; [*24*] | medium | - | - |
+| [100](100.md) | &#9654; [*24*] | medium | solved | 1m37s |
 | 101 |  [*20*] | medium | - | - |
 | 102 |  [*23*] | medium | - | - |
 | 103 | &#9654; [*20*] | medium | - | - |
@@ -161,7 +161,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 | 141 |  [*30*] | hard | - | - |
 | 142 | &#9654; [*HM32*] | hm-hard | - | - |
 | 143 |  [*24*] | medium | - | - |
-| 144 |  [*16*] | medium | - | - |
+| [144](144.md) |  [*16*] | medium | solved | 1m02s |
 | 145 |  [*24*] | medium | - | - |
 | 146 | &#9654; [*M22*] | math-medium | - | - |
 | 147 | &#9654; [*27*] | hard | - | - |
@@ -246,8 +246,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 | 226 | &#9654; [*20*] | medium | - | - |
 | 227 |  [*20*] | medium | - | - |
 | 228 |  [*21*] | medium | - | - |
-| 229 |  [*15*] | simple | - | - |
-| 230 |  [*25*] | medium | - | - |
+| [229](229.md) |  [*15*] | simple | solved | 57s |
+| [230](230.md) |  [*25*] | medium | solved | 1m51s |
 | 231 |  [*23*] | medium | - | - |
 | 232 | &#9654; [*23*] | medium | - | - |
 | 233 | &#9654; [*25*] | medium | - | - |
