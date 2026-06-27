@@ -25,7 +25,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.3: 15/15 solved.
 | [5](05.md) |  [**] |  | solved | 3m25s |
 | [6](06.md) |  [**] |  | verified | 1m54s |
 | [7](07.md) |  [**] |  | solved | 1m25s |
-| [8](08.md) |  [**] |  | verified | 4m45s |
+| [8](08.md) |  [**] |  | solved | 3m41s |
 | [9](09.md) |  [**] |  | solved | 1m20s |
 | [10](10.md) |  [*20*] | medium | solved | 4m07s |
 | [11](11.md) |  [*10*] | simple | verified | 1m29s |
