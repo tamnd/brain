@@ -190,8 +190,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 114/219 solved.
 | [170](170.md) | &#9654; [*21*] | medium | solved | 4m27s |
 | [171](171.md) |  [*24*] | medium | solved | 4m02s |
 | [172](172.md) |  [*M29*] | math-hard | solved | 4m28s |
-| [173](173.md) | &#9654; [*M30*] | math-hard | solved | 3m28s |
-| [174](174.md) |  [*M46*] | math-research | verified | 3m01s |
+| [173](173.md) | &#9654; [*M30*] | math-hard | solved | 3m37s |
+| [174](174.md) |  [*M46*] | math-research | verified | 4m08s |
 | [175](175.md) |  [*15*] | simple | solved | 4m26s |
 | [176](176.md) |  [*M24*] | math-medium | solved | 3m52s |
 | [177](177.md) |  [*M22*] | math-medium | solved | 48s |
