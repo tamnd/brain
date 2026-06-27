@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 29/219 solved."
+description: "Section 7.1.3 exercises: 32/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,21 +14,21 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 29/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 32/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) | &#9654; [*15*] | simple | solved | 2m02s |
-| [2](02.md) |  [*16*] | medium | solved | 2m23s |
-| [3](03.md) |  [*M20*] | math-medium | solved | 5m55s |
-| [4](04.md) | &#9654; [*M16*] | math-medium | verified | 39s |
-| [5](05.md) |  [*M21*] | math-medium | verified | 2m44s |
-| [6](06.md) |  [*M22*] | math-medium | solved | 3m11s |
-| [7](07.md) |  [*M22*] | math-medium | solved | 4m59s |
-| [8](08.md) | &#9654; [*M22*] | math-medium | verified | 41s |
-| [9](09.md) |  [*M26*] | math-hard | verified | 43s |
-| [10](10.md) |  [*HM40*] | hm-project | solved | 3m21s |
-| [11](11.md) | &#9654; [*M26*] | math-hard | solved | 50s |
+| [1](01.md) | &#9654; [*15*] | simple | verified | 1m45s |
+| [2](02.md) |  [*16*] | medium | solved | 6m10s |
+| [3](03.md) |  [*M20*] | math-medium | solved | 3m28s |
+| [4](04.md) | &#9654; [*M16*] | math-medium | verified | 1m37s |
+| [5](05.md) |  [*M21*] | math-medium | verified | 1m39s |
+| [6](06.md) |  [*M22*] | math-medium | solved | 5m27s |
+| [7](07.md) |  [*M22*] | math-medium | solved | 6m25s |
+| [8](08.md) | &#9654; [*M22*] | math-medium | verified | 4m16s |
+| [9](09.md) |  [*M26*] | math-hard | verified | 4m46s |
+| [10](10.md) |  [*HM40*] | hm-project | solved | 7m54s |
+| [11](11.md) | &#9654; [*M26*] | math-hard | verified | 5m |
 | [12](12.md) |  [*M26*] | math-hard | solved | 1m51s |
 | 13 |  [*M32*] | math-hard | - | - |
 | 14 |  [*M30*] | math-hard | - | - |
@@ -117,24 +117,24 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 29/219 solved.
 | 97 |  [*23*] | medium | - | - |
 | 98 |  [*20*] | medium | - | - |
 | 99 | &#9654; [*28*] | hard | - | - |
-| [100](100.md) |  [*25*] | medium | solved | 4m22s |
-| [101](101.md) | &#9654; [*22*] | medium | verified | 57s |
-| [102](102.md) |  [*25*] | medium | solved | 2m38s |
-| [103](103.md) | &#9654; [*22*] | medium | verified | 2m45s |
-| [104](104.md) |  [*22*] | medium | solved | 3m10s |
-| [105](105.md) |  [*30*] | hard | solved | 5m09s |
-| [106](106.md) |  [**] |  | solved | 3m43s |
-| [107](107.md) | &#9654; [*22*] | medium | solved | 4m17s |
-| [108](108.md) |  [*26*] | hard | solved | 2m38s |
-| [109](109.md) |  [*20*] | medium | solved | 2m33s |
-| [110](110.md) | &#9654; [*30*] | hard | solved | 3m50s |
-| [111](111.md) |  [*23*] | medium | verified | 1m25s |
-| 112 |  [*46*] | research | - | - |
-| 113 |  [*23*] | medium | - | - |
-| 114 |  [*16*] | medium | - | - |
-| [115](115.md) | &#9654; [*24*] | medium | verified | 5m |
+| [100](100.md) |  [*25*] | medium | verified | 4m44s |
+| [101](101.md) | &#9654; [*22*] | medium | verified | 2m23s |
+| [102](102.md) |  [*25*] | medium | solved | 8m23s |
+| [103](103.md) | &#9654; [*22*] | medium | verified | 5m20s |
+| [104](104.md) |  [*22*] | medium | verified | 5m44s |
+| [105](105.md) |  [*30*] | hard | solved | 2m08s |
+| [106](106.md) |  [**] |  | verified | 1m48s |
+| [107](107.md) | &#9654; [*22*] | medium | verified | 3m53s |
+| [108](108.md) |  [*26*] | hard | solved | 7m26s |
+| [109](109.md) |  [*20*] | medium | solved | 3m50s |
+| [110](110.md) | &#9654; [*30*] | hard | solved | 5m13s |
+| [111](111.md) |  [*23*] | medium | verified | 2m46s |
+| [112](112.md) |  [*46*] | research | verified | 58s |
+| [113](113.md) |  [*23*] | medium | solved | 2m24s |
+| [114](114.md) |  [*16*] | medium | solved | 5m25s |
+| [115](115.md) | &#9654; [*24*] | medium | solved | 2m30s |
 | [116](116.md) |  [*HM30*] | hm-hard | solved | 4m39s |
-| [117](117.md) |  [*HM46*] | hm-research | verified | 3m08s |
+| [117](117.md) |  [*HM46*] | hm-research | solved | 3m42s |
 | [118](118.md) |  [*30*] | hard | solved | 3m44s |
 | 119 |  [*20*] | medium | - | - |
 | 120 | &#9654; [*M25*] | math-medium | - | - |

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.2: Boolean Evaluation"
-description: "Section 7.1.2 exercises: 80/85 solved."
+description: "Section 7.1.2 exercises: 84/85 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.2. Boolean Evaluation
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.2: 80/85 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.2: 84/85 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,7 +37,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.2: 80/85 solved.
 | [17](17.md) | &#9654; [*25*] | medium | solved | 8m04s |
 | [18](18.md) | &#9654; [*35*] | hard | solved | 2m46s |
 | [19](19.md) |  [*M22*] | math-medium | solved | 3m55s |
-| 20 | &#9654; [*40*] | project | - | - |
+| [20](20.md) | &#9654; [*40*] | project | solved | 1m49s |
 | [21](21.md) |  [*46*] | research | verified | 4m59s |
 | [22](22.md) |  [*21*] | medium | verified | 3m18s |
 | [23](23.md) | &#9654; [*23*] | medium | solved | 6m04s |
@@ -92,8 +92,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.2: 80/85 solved.
 | [72](72.md) |  [*M24*] | math-medium | verified | 4m52s |
 | [73](73.md) | &#9654; [*20*] | medium | solved | 5m39s |
 | [74](74.md) |  [*25*] | medium | solved | 2m10s |
-| 75 |  [*20*] | medium | - | - |
-| 76 | &#9654; [*M26*] | math-hard | - | - |
+| [75](75.md) |  [*20*] | medium | verified | 1m10s |
+| [76](76.md) | &#9654; [*M26*] | math-hard | solved | 2m45s |
 | [77](77.md) | &#9654; [*35*] | hard | solved | 4m27s |
 | [78](78.md) |  [*26*] | hard | solved | 4m50s |
 | [79](79.md) |  [*32*] | hard | solved | 4m09s |
@@ -102,4 +102,4 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.2: 80/85 solved.
 | [82](82.md) | &#9654; [*M32*] | math-hard | verified | 4m53s |
 | [83](83.md) |  [*21*] | medium | solved | 6m16s |
 | [84](84.md) |  [*M30*] | math-hard | verified | 3m41s |
-| 85 | &#9654; [*M28*] | math-hard | - | - |
+| [85](85.md) | &#9654; [*M28*] | math-hard | solved | 9m26s |

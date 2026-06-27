@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.1: Boolean Basics"
-description: "Section 7.1.1 exercises: 108/132 solved."
+description: "Section 7.1.1 exercises: 130/132 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.1. Boolean Basics
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.1: 108/132 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.1: 130/132 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -46,7 +46,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 108/132 solved.
 | [26](26.md) |  [*M25*] | math-medium | solved | 6m23s |
 | [27](27.md) |  [*M31*] | math-hard | solved | 5m45s |
 | [28](28.md) |  [**] |  | verified | 4m |
-| 29 |  [*22*] | medium | - | - |
+| [29](29.md) |  [*22*] | medium | solved | 28s |
 | [30](30.md) | &#9654; [*27*] | hard | solved | 4m30s |
 | [31](31.md) | &#9654; [*28*] | hard | solved | 4m29s |
 | [32](32.md) | &#9654; [*M29*] | math-hard | solved | 4m04s |
@@ -86,7 +86,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 108/132 solved.
 | [66](66.md) |  [*M25*] | math-medium | solved | 5m20s |
 | [67](67.md) | &#9654; [*HM40*] | hm-project | solved | 2m38s |
 | [68](68.md) |  [*46*] | research | solved | 4m12s |
-| 69 | &#9654; [*M36*] | math-project | - | - |
+| [69](69.md) | &#9654; [*M36*] | math-project | solved | 4m11s |
 | [70](70.md) | &#9654; [*M39*] | math-project | solved | 4m56s |
 | [71](71.md) | &#9654; [*M21*] | math-medium | solved | 4m22s |
 | [72](72.md) |  [*M22*] | math-medium | verified | 1m23s |
@@ -94,29 +94,29 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 108/132 solved.
 | [74](74.md) |  [*M21*] | math-medium | solved | 3m35s |
 | [75](75.md) |  [*M36*] | math-project | solved | 5m19s |
 | 76 |  [*M35*] | math-hard | - | - |
-| 77 |  [*M28*] | math-hard | - | - |
+| [77](77.md) |  [*M28*] | math-hard | solved | 3m41s |
 | [78](78.md) | &#9654; [*M36*] | math-project | solved | 7m52s |
 | [79](79.md) | &#9654; [*M27*] | math-hard | solved | 57s |
 | 80 |  [*27*] | hard | - | - |
-| 81 |  [*26*] | hard | - | - |
-| 82 |  [*25*] | medium | - | - |
-| 83 | &#9654; [*38*] | project | - | - |
-| 84 |  [*30*] | hard | - | - |
-| 85 | &#9654; [*M25*] | math-medium | - | - |
-| 86 |  [*45*] | project | - | - |
-| 87 |  [*24*] | medium | - | - |
-| 88 |  [*M21*] | math-medium | - | - |
-| 89 |  [*24*] | medium | - | - |
-| 90 |  [*21*] | medium | - | - |
-| 91 |  [*46*] | research | - | - |
-| 92 |  [*46*] | research | - | - |
-| 93 |  [*M20*] | math-medium | - | - |
-| 94 |  [*M21*] | math-medium | - | - |
-| 95 |  [*M25*] | math-medium | - | - |
-| 96 |  [*HM25*] | hm-medium | - | - |
-| 97 |  [*10*] | simple | - | - |
-| 98 |  [*M25*] | math-medium | - | - |
-| 99 | &#9654; [*20*] | medium | - | - |
+| [81](81.md) |  [*26*] | hard | verified | 2m14s |
+| [82](82.md) |  [*25*] | medium | solved | 3m37s |
+| [83](83.md) | &#9654; [*38*] | project | verified | 4m08s |
+| [84](84.md) |  [*30*] | hard | solved | 4m49s |
+| [85](85.md) | &#9654; [*M25*] | math-medium | verified | 3m20s |
+| [86](86.md) |  [*45*] | project | verified | 4m |
+| [87](87.md) |  [*24*] | medium | solved | 51s |
+| [88](88.md) |  [*M21*] | math-medium | solved | 3m38s |
+| [89](89.md) |  [*24*] | medium | verified | 1m03s |
+| [90](90.md) |  [*21*] | medium | solved | 51s |
+| [91](91.md) |  [*46*] | research | solved | 3m47s |
+| [92](92.md) |  [*46*] | research | solved | 4m22s |
+| [93](93.md) |  [*M20*] | math-medium | verified | 1m02s |
+| [94](94.md) |  [*M21*] | math-medium | verified | 2m42s |
+| [95](95.md) |  [*M25*] | math-medium | verified | 2m28s |
+| [96](96.md) |  [*HM25*] | hm-medium | verified | 1m06s |
+| [97](97.md) |  [*10*] | simple | solved | 2m02s |
+| [98](98.md) |  [*M25*] | math-medium | solved | 4m09s |
+| [99](99.md) | &#9654; [*20*] | medium | solved | 3m43s |
 | [100](100.md) |  [*20*] | medium | verified | 2m |
 | [101](101.md) |  [*M25*] | math-medium | verified | 7m52s |
 | [102](102.md) |  [*M31*] | math-hard | solved | 7m58s |
