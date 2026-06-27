@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2216 contests, 14786 problems, 8108 verified."
+description: "Codeforces problem solutions with full editorials. 2217 contests, 14798 problems, 8113 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2216 contests, 14786 problems, 8108 verified.**
+**2217 contests, 14798 problems, 8113 verified.**
 
-## Unknown — 336 contests, 2700 problems, 1702 verified
+## Unknown — 337 contests, 2712 problems, 1707 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105122](105122/) | [XXVI Interregional Programming Olympiad, Vologda SU, 2024](https://codeforces.com/contest/105122) | 12 | 5/12 | Special | - |
 | [105123](105123/) | [BioCode 2024](https://codeforces.com/contest/105123) | 8 | 2/8 | Special | - |
 | [105125](105125/) | [MITIT 2024 Spring Invitational Qualification](https://codeforces.com/contest/105125) | 5 | 0/5 | Special | - |
 | [105136](105136/) | [III Олимпиада классов при механико-математическом факультете МГУ имени М.В.Ломоносова по программированию 2024](https://codeforces.com/contest/105136) | 8 | 7/8 | Special | - |
