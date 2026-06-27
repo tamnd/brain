@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2241 contests, 14996 problems, 8229 verified."
+description: "Codeforces problem solutions with full editorials. 2242 contests, 15005 problems, 8238 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2241 contests, 14996 problems, 8229 verified.**
+**2242 contests, 15005 problems, 8238 verified.**
 
 ## Unknown — 348 contests, 2794 problems, 1778 verified
 
@@ -1725,7 +1725,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 253 contests, 2209 problems, 1081 verified
+## 2024 — 254 contests, 2218 problems, 1090 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1854,6 +1854,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105025](105025/) | [Отборочный этап региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/105025) | 9 | 9/9 | Special | - |
 | [105028](105028/) | [TheForces Round #28 (Epic-Forces)](https://codeforces.com/contest/105028) | 6 | 0/6 | Special | - |
 | [105043](105043/) | [Финал олимпиады НТО: информационная безопасность. Секция - информатика](https://codeforces.com/contest/105043) | 5 | 1/5 | Special | - |
 | [105046](105046/) | [XXVIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105046) | 5 | 3/5 | Special | - |
