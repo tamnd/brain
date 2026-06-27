@@ -1,22 +1,22 @@
 ---
 title: "TCPC Tunisian Collegiate Programming Contest 2022"
-description: "12 problems from TCPC Tunisian Collegiate Programming Contest 2022 (contest 105020), difficulty -. 1/12 solutions verified against sample I/O."
+description: "14 problems from TCPC Tunisian Collegiate Programming Contest 2022 (contest 105020), difficulty -. 2/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105020
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 1
-total_solve_s: 980
-date: "2026-06-28T02:01:08+07:00"
+n_problems: 14
+n_verified: 2
+total_solve_s: 1141
+date: "2026-06-28T02:02:33+07:00"
 weight: 105020
 draft: false
 ---
 
 # [TCPC Tunisian Collegiate Programming Contest 2022](https://codeforces.com/contest/105020)
 
-Special | 12 problems | 1/12 verified | Difficulty - | 16m 20s
+Special | 14 problems | 2/14 verified | Difficulty - | 19m 1s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,3 +32,5 @@ Special | 12 problems | 1/12 verified | Difficulty - | 16m 20s
 | [J](J/) | [Hide and Seek](https://codeforces.com/problemset/problem/105020/J) |  |  |  | 1m 12s |  |
 | [K](K/) | [Wrong digits](https://codeforces.com/problemset/problem/105020/K) |  |  |  | 1m 34s |  |
 | [L](L/) | [Black and White Tree](https://codeforces.com/problemset/problem/105020/L) |  |  |  | 1m 28s |  |
+| [M](M/) | [Delivery](https://codeforces.com/problemset/problem/105020/M) |  |  |  | 1m 24s | ✓ |
+| [N](N/) | [How many rectangles?](https://codeforces.com/problemset/problem/105020/N) |  |  |  | 1m 17s |  |
