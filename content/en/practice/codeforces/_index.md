@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2226 contests, 14867 problems, 8157 verified."
+description: "Codeforces problem solutions with full editorials. 2227 contests, 14878 problems, 8168 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2226 contests, 14867 problems, 8157 verified.**
+**2227 contests, 14878 problems, 8168 verified.**
 
-## Unknown — 343 contests, 2745 problems, 1734 verified
+## Unknown — 344 contests, 2756 problems, 1745 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105085](105085/) | [AdaByron Regional Madrid 2024](https://codeforces.com/contest/105085) | 11 | 11/11 | Special | - |
 | [105093](105093/) | [2024 UP ACM Algolympics Final Round](https://codeforces.com/contest/105093) | 13 | 11/13 | Special | - |
 | [105101](105101/) | [ТИИМ 2023-2024, Заключительный этап (8-9 классы)](https://codeforces.com/contest/105101) | 0 | 0/0 | Special | - |
 | [105102](105102/) | [ТИИМ 2023-2024, Заключительный этап (10-11 классы)](https://codeforces.com/contest/105102) | 0 | 0/0 | Special | - |
