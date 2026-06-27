@@ -168,7 +168,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [148](148.md) |  [*M21*] | math-medium | solved | 3m39s |
 | [149](149.md) | &#9654; [*23*] | medium | verified | 3m57s |
 | [150](150.md) | &#9654; [*25*] | medium | solved | 2m18s |
-| [151](151.md) |  [*22*] | medium | verified | 59s |
+| [151](151.md) |  [*22*] | medium | verified | 4m12s |
 | [152](152.md) |  [*M21*] | math-medium | solved | 2m54s |
 | [153](153.md) | &#9654; [*M20*] | math-medium | verified | 3m04s |
 | [154](154.md) |  [*20*] | medium | solved | 32s |
