@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 128/446 solved."
+description: "Section 7.2.2.1 exercises: 130/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 128/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 130/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -225,8 +225,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 128/446 solved.
 | [205](205.md) |  [**] |  | verified | 2m12s |
 | [206](206.md) |  [*29*] | hard | solved | 3m20s |
 | [207](207.md) |  [*35*] | hard | solved | 3m21s |
-| 208 | &#9654; [*21*] | medium | - | - |
-| 209 |  [*29*] | hard | - | - |
+| [208](208.md) | &#9654; [*21*] | medium | verified | 1m09s |
+| [209](209.md) |  [*29*] | hard | verified | 1m28s |
 | 210 |  [*21*] | medium | - | - |
 | 211 |  [*29*] | hard | - | - |
 | 212 | &#9654; [*M21*] | math-medium | - | - |
