@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2211 contests, 14737 problems, 8077 verified."
+description: "Codeforces problem solutions with full editorials. 2212 contests, 14740 problems, 8077 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2211 contests, 14737 problems, 8077 verified.**
+**2212 contests, 14740 problems, 8077 verified.**
 
 ## Unknown — 333 contests, 2679 problems, 1693 verified
 
@@ -1710,7 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 238 contests, 2065 problems, 1014 verified
+## 2024 — 239 contests, 2068 problems, 1014 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1844,6 +1844,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105137](105137/) | [TheForces Round #30 (Good-Forces)](https://codeforces.com/contest/105137) | 3 | 0/3 | Special | - |
 | [105139](105139/) | [The 2024 International Collegiate Programming Contest in Hubei Province, China](https://codeforces.com/contest/105139) | 10 | 9/10 | Special | - |
 | [105141](105141/) | [BSUIR Open XII: Student Final](https://codeforces.com/contest/105141) | 8 | 8/8 | Special | - |
 | [105143](105143/) | [2024 ICPC National Invitational Collegiate Programming Contest, Wuhan Site](https://codeforces.com/contest/105143) | 10 | 10/10 | ICPC/IOI | - |
