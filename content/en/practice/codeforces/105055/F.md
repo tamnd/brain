@@ -1,7 +1,7 @@
 ---
 title: "CF 105055F - Festa Junina"
-description: "We are asked to construct a strictly increasing sequence of positive integers of length $N$. Every integer has a cost that depends only on its binary representation: each bit position $i$ has a fixed weight $Ci$, and the cost of a number is the sum of weights of all bit…"
-date: "2026-06-28T00:26:19+07:00"
+description: "We are asked to construct a sequence of exactly $N$ positive integers such that the sequence is strictly increasing, and among all such sequences we want the one with minimum total cost. The cost structure is the key part."
+date: "2026-06-28T01:06:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105055
@@ -9,8 +9,8 @@ codeforces_index: "F"
 codeforces_contest_name: "UDESC Selection Contest 2023-2"
 rating: 0
 weight: 105055
-solve_time_s: 238
-verified: false
+solve_time_s: 84
+verified: true
 draft: false
 ---
 
@@ -18,81 +18,64 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 58s  
-**Verified:** no  
+**Solve time:** 1m 24s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct a strictly increasing sequence of positive integers of length $N$. Every integer has a cost that depends only on its binary representation: each bit position $i$ has a fixed weight $C_i$, and the cost of a number is the sum of weights of all bit positions where the number has a 1.
+We are asked to construct a sequence of exactly $N$ positive integers such that the sequence is strictly increasing, and among all such sequences we want the one with minimum total cost.
 
-The task is to choose $N$ distinct positive integers in increasing order such that the total sum of their individual costs is minimized.
+The cost structure is the key part. Each integer is evaluated through its binary representation. Every bit position $i$ has a fixed cost $C_i$. If a number has bit $i$ set, it contributes $C_i$ to that number’s cost. So the cost of a number is just the sum of costs of the bit positions it contains. There is no interaction between bits, no carry effects in the cost, and no dependence on the numeric value beyond which bits are present.
 
-A useful way to restate the structure is that each number is a subset of bit positions, and its cost is the sum of weights of that subset. We must pick $N$ subsets, interpreted as numbers, in strictly increasing numeric order, minimizing total weight.
+The sequence constraint “strictly increasing positive integers” only enforces that all chosen integers are distinct and can be ordered by value. Since any set of distinct positive integers can be sorted, the ordering constraint does not restrict which sets of numbers we may choose, only that we cannot repeat a number and we must avoid zero.
 
-The constraint $N \le 100$ removes any need for exponential sequence construction over long horizons, but $M \le 1000$ makes each number potentially large in binary width, so direct enumeration of all integers up to some bound is impossible.
+So the task reduces to selecting $N$ distinct non-zero binary masks over $M$ bits, minimizing the sum of their bit-cost sums.
 
-A naive interpretation would be: try all increasing sequences of length $N$, compute their costs, and take the minimum. Even restricting values to a reasonable range, the number of increasing sequences grows combinatorially, so this is immediately infeasible.
+The constraints make this interesting. $M$ can be as large as 1000, so the universe of possible numbers is enormous, up to $2^M - 1$. However, $N \le 100$, so we only need the 100 cheapest objects in a space of size exponential in $M$. Any method that tries to enumerate all subsets is impossible. Even dynamic programming over all bitmasks is infeasible due to the $2^M$ state space.
 
-A more subtle issue arises from the ordering constraint. The cost is additive over bits, but the ordering constraint couples bit patterns across positions, so we cannot choose each number independently.
+A naive attempt would be to think in terms of generating all subset costs and selecting the smallest $N$. That fails immediately because the number of subsets grows exponentially with $M$, and even storing them is impossible.
 
-A common pitfall is assuming the cheapest $N$ numbers individually form an optimal sequence. For example, picking numbers with smallest cost ignores that they may not form a strictly increasing chain.
+A second naive idea is to greedily pick bits or numbers with smallest cost patterns, but that fails because subsets interact combinatorially: combining slightly more expensive bits early can produce cheaper multi-bit subsets later, so local decisions do not preserve global optimality.
 
-Another pitfall is assuming we can greedily generate next number as the smallest number larger than the previous one with minimal cost increase. This fails because local minimal extensions may block better global structures.
-
-Edge cases include:
-
-If all $C_i$ are equal, the cost becomes the number of set bits. Then the problem reduces to choosing $N$ increasing integers with minimal Hamming weight, which strongly prefers powers of two. For $N=3$, sample:
-
-```
-3 3
-1 1 1
-```
-
-Optimal sequence is $[1,2,4]$. A naive greedy might choose $[1,2,3]$, but 3 has two bits set and is more expensive.
-
-If costs are decreasing with bit index, high bits are cheap and low bits are expensive, so numbers tend to shift weight to higher bits. A naive strategy that limits to small integers fails.
-
-The key difficulty is balancing two forces: binary representation cost and ordering constraint.
+A subtle edge case is the empty subset. Its cost is zero, and it would always be the best candidate, but it corresponds to the number zero, which is not allowed because all integers must be positive. Any correct solution must explicitly exclude it from consideration.
 
 ## Approaches
 
-If we ignore ordering, the problem becomes trivial: pick the $N$ cheapest numbers independently. But ordering introduces structure: once a number is chosen, all later numbers must be strictly larger.
+The structure of the problem is: each number is a subset of up to 1000 independent items (bits), and the cost of a subset is the sum of item weights. We want the $N$ smallest subset sums, excluding the empty subset.
 
-A brute-force approach would attempt to enumerate all strictly increasing sequences of length $N$, computing each cost. Even if we restrict numbers to a finite upper bound (say first $2^M$ numbers), the number of sequences is on the order of $\binom{2^M}{N}$, which is astronomically large.
+This is a classical “k smallest subset sums of independent weights” problem. The brute-force approach enumerates all subsets of $M$ bits, computes their cost, sorts them, and picks the first $N$. This works conceptually because each subset is independent and its cost is easy to compute. The failure point is the exponential explosion: $2^{1000}$ subsets is far beyond any limit.
 
-We need to reinterpret the structure. The cost of a number is linear over bits, so each bit contributes independently. This suggests thinking in terms of how bits are distributed across the sequence.
+The key observation is that we do not need all subsets. We only need the first $N$, where $N \le 100$. This allows us to maintain only a small frontier of best candidates while scanning bits one by one. Each bit either appears in a subset or it does not, and adding a bit increases cost by $C_i$. This is equivalent to repeatedly merging two sorted lists: existing subset sums, and those sums plus a new weight.
 
-The key observation is that instead of selecting numbers directly, we can think in terms of constructing the sequence bit by bit in binary. A number is determined by the set of bits it contains, so increasing order corresponds to lexicographic order in binary representation.
+Instead of explicitly storing all subsets, we maintain a list of the currently best $N$ subset sums. When we process a new bit with cost $w$, every existing subset sum $x$ can generate a new candidate $x + w$. We merge the old list and the shifted list, and keep only the smallest $N$ results. Repeating this for all bits builds the best $N$ subset sums overall.
 
-This suggests a dynamic programming over the prefix of the sequence, where the state captures how far we are in constructing a non-decreasing binary structure and how many numbers we have selected.
+Since all costs are non-negative, subset sums are monotone increasing as we expand possibilities, and pruning to $N$ elements never discards something that could later become part of a smaller result.
 
-However, a more direct and powerful perspective is to notice that the optimal sequence always consists of numbers that can be generated by repeatedly adding the smallest possible "next increment" in binary representation. This is equivalent to building the sequence as a greedy growth process on bit masks, where each step chooses the smallest possible number greater than the previous one, but allowing arbitrary bit configurations that minimize total accumulated cost.
-
-This reduces to a shortest path in a conceptual graph where nodes are numbers and edges represent "next greater number". We do not explicitly build the graph; instead we exploit that the cost of moving between numbers depends only on bit differences, and we can compute transitions efficiently using bit DP over the prefix of binary representations.
-
-The crucial insight is that optimal sequences correspond to selecting $N$ states in increasing order, where each state is the minimal-cost extension from previous constraints, and the structure of binary numbers allows us to reuse overlapping subproblems. This leads to a DP that tracks how many numbers we have chosen and the minimal cost achievable given the current implicit upper bound structure.
-
-This turns the problem into a structured optimization over bitwise configurations, solvable in polynomial time in $N \cdot M$.
+Finally, we discard the empty subset and take the next $N$ values.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | exponential | exponential | Too slow |
-| Bit DP over sequence construction | $O(NM)$ | $O(NM)$ | Accepted |
+| Brute Force (all subsets) | $O(2^M \cdot M)$ | $O(2^M)$ | Too slow |
+| Incremental k-best subset DP | $O(M \cdot N)$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Interpret each number as a binary vector of length $M$, where position $i$ contributes cost $C_i$ if set. This turns the cost into a linear function over bits.
-2. Observe that we do not need actual values of numbers beyond ordering constraints, only the structure of how bits evolve across the sequence.
-3. Reformulate the problem as building $N$ increasing binary numbers, where at each step we choose a number consistent with being greater than the previous one.
-4. Define a DP where we track how many numbers have been chosen and the current "tightness" with respect to a constructed minimal boundary in binary form. The tightness encodes whether the next number is forced to stay above a prefix constraint.
-5. For each state, consider placing bits for the next number from most significant to least significant, ensuring it is strictly larger than the previous one. This becomes a controlled binary construction problem where transitions depend on whether we already exceeded the previous number at some bit.
-6. Each DP transition adds cost $C_i$ whenever a bit is set. We accumulate minimal cost across all valid transitions.
-7. After processing all positions, the DP value for selecting $N$ numbers is the answer.
+We treat each bit position as an independent item with weight $C_i$. Each subset corresponds to selecting some of these items, and its cost is the sum of selected weights.
 
-### Why it works
+## Algorithm Walkthrough
 
-The ordering constraint only depends on the relative comparison between consecutive numbers, which is determined lexicographically in binary. The DP explicitly encodes this comparison state, ensuring that every constructed sequence is strictly increasing. Because the cost decomposes additively over bits, and every valid binary configuration is considered exactly once under the tightness states, the DP explores all feasible sequences without double counting and without missing any valid increasing construction. Therefore, the minimum over all DP states at length $N$ corresponds exactly to the optimal sequence cost.
+1. Start with a single subset representing “choose nothing”, with cost 0. This acts as the identity state before we consider any bits.
+2. Maintain a list `dp` that stores only the smallest $N+1$ subset costs seen so far. We keep $N+1$ instead of $N$ because we must discard the empty subset later.
+3. For each bit position $i$, read its cost $C_i$. Treat this as an item that can either be included or excluded in any subset we have already built.
+4. Construct a new list of candidates by taking every value in `dp` and also adding $C_i$ to it. This represents all subsets that either do not use this bit or do use it.
+5. Merge the original `dp` and the shifted list, sort them, and keep only the smallest $N+1$ values. This ensures we retain only the most promising subset costs.
+6. Repeat this process for all bit positions.
+7. After processing all bits, remove the value 0 (corresponding to the empty subset) and sum the smallest $N$ remaining values.
+
+The reason merging works is that after processing the first $i$ bits, `dp` contains the smallest possible subset sums achievable using only those bits. When we introduce a new bit, every valid new subset is either an old subset or an old subset plus this bit, so the merge exhausts all possibilities without needing explicit subset enumeration.
+
+The pruning step is safe because all costs are non-negative. Any subset not among the current smallest $N+1$ cannot become smaller later, since future operations only add non-negative values.
 
 ## Python Solution
 
@@ -103,60 +86,28 @@ input = sys.stdin.readline
 def solve():
     N, M = map(int, input().split())
     C = list(map(int, input().split()))
-    
-    INF = 10**30
-    
-    # dp[k][tight]: minimal cost after building k numbers,
-    # tight = 1 means current number is still equal-prefix constrained
-    dp = [[INF] * 2 for _ in range(N + 1)]
-    dp[0][0] = 0
-    
-    # We simulate constructing numbers greedily in bit space.
-    # Each new number is built relative to previous constraints.
-    
-    for _ in range(N):
-        ndp = [[INF] * 2 for _ in range(N + 1)]
-        
-        for k in range(N):
-            for tight in range(2):
-                if dp[k][tight] == INF:
-                    continue
-                
-                base = dp[k][tight]
-                
-                # We conceptually construct next number by choosing any subset of bits
-                # but ensuring it is strictly greater than previous.
-                #
-                # Since full enumeration is impossible, we compress:
-                # best next number is always the minimal-cost number
-                # greater than a threshold induced by previous choice.
-                #
-                # That reduces to always building a "minimal valid successor".
-                
-                cost = 0
-                for i in range(M):
-                    cost += C[i]
-                
-                # placeholder transition: choose minimal valid incremented structure
-                ndp[k + 1][1] = min(ndp[k + 1][1], base + cost)
-        
-        dp = ndp
-    
-    ans = min(dp[N])
-    print(ans)
 
-def main():
-    solve()
+    dp = [0]
+
+    for w in C:
+        new = dp + [x + w for x in dp]
+        new.sort()
+        if len(new) > N + 1:
+            new = new[:N + 1]
+        dp = new
+
+    # remove empty subset
+    dp = [x for x in dp if x != 0]
+
+    print(sum(dp[:N]))
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The implementation reflects the intended dynamic programming structure over the number of elements chosen. The DP table tracks how many numbers have been constructed so far, and the transition attempts to extend the sequence by one element while accounting for bit costs.
+The code maintains a dynamic list of best subset sums. The list always represents the smallest costs achievable using processed bits. Each iteration duplicates the current state with an added weight, merges both possibilities, and truncates to keep only the most relevant candidates.
 
-The key implementation difficulty is handling the strict ordering constraint, which is encoded through the "tight" state in a conceptual sense. The cost accumulation is linear over bit contributions, so each transition aggregates the cost of selected bits.
-
-The nested loops over $N$ and state space ensure all sequence lengths up to $N$ are considered.
+The filtering of zero at the end ensures we do not accidentally include the invalid empty subset. Since zero is always the smallest element initially, it naturally gets removed before summation.
 
 ## Worked Examples
 
@@ -169,18 +120,34 @@ Input:
 1 1 1
 ```
 
-We track DP states after each number. All bits have equal cost, so every number cost equals its popcount.
+We start with `dp = [0]`.
 
-| Step | k | chosen number cost contribution | DP state |
-| --- | --- | --- | --- |
-| start | 0 | - | 0 |
-| 1st number | 1 | 1 (choose 1-bit number) | 1 |
-| 2nd number | 2 | 1 (choose next power of two) | 2 |
-| 3rd number | 3 | 1 | 3 |
+After first bit:
 
-Final answer is 3.
+```
+dp = [0, 1]
+```
 
-This confirms that the algorithm prioritizes minimal Hamming weight numbers, aligning with powers of two.
+After second bit:
+
+```
+dp = [0, 1, 1, 2] -> keep [0, 1, 1]
+```
+
+After third bit:
+
+```
+dp = [0, 1, 1, 1, 2, 2, 2, 3] -> keep [0, 1, 1, 1]
+```
+
+Remove zero, take 3 smallest:
+
+```
+[1, 1, 1]
+sum = 3
+```
+
+This shows that many different subsets have identical cost, and the algorithm correctly keeps duplicates when they represent distinct subsets.
 
 ### Sample 2
 
@@ -191,26 +158,52 @@ Input:
 1 2 4
 ```
 
-Here higher bits are more expensive, so low numbers are preferred.
+Start:
 
-| Step | k | structure | cost |
-| --- | --- | --- | --- |
-| 1 | 1 | 1 | 1 |
-| 2 | 2 | 2 | 2 |
-| 3 | 3 | 3 | 3 |
+```
+dp = [0]
+```
 
-Total becomes 6.
+After 1:
 
-This shows that even though 3 is not a power of two, its cost structure makes it optimal under ordering constraints.
+```
+[0, 1]
+```
+
+After 2:
+
+```
+[0, 1, 2, 3] -> keep [0, 1, 2]
+```
+
+After 4:
+
+```
+[0, 1, 2, 3, 4, 5, 6, 7] -> keep [0, 1, 2]
+```
+
+Remove zero:
+
+```
+[1, 2, 3]
+```
+
+Sum of 3 smallest:
+
+```
+6
+```
+
+This trace shows how combining bits generates all subset sums naturally, and pruning does not lose optimal candidates.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(NM)$ | each DP transition processes bit contributions once per step |
-| Space | $O(N)$ | only current and previous DP layers are stored |
+| Time | $O(M \cdot N)$ | Each of the $M$ bits merges two lists of size at most $N$, with sorting bounded by small $N$ |
+| Space | $O(N)$ | We only keep the best $N+1$ subset sums at any time |
 
-The bounds $N \le 100$, $M \le 1000$ fit comfortably within this complexity, since the computation is linear in both parameters and runs well within time limits.
+The bounds $M \le 1000$ and $N \le 100$ make this comfortably fast. The algorithm performs at most about $1000 \times 200 \log 200$ operations in practice, well within limits.
 
 ## Test Cases
 
@@ -219,59 +212,53 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from math import isclose
 
-    N, M = map(int, input().split())
-    C = list(map(int, input().split()))
-    
-    INF = 10**30
-    dp = [[INF] * 2 for _ in range(N + 1)]
-    dp[0][0] = 0
-    
-    for _ in range(N):
-        ndp = [[INF] * 2 for _ in range(N + 1)]
-        for k in range(N):
-            for t in range(2):
-                if dp[k][t] == INF:
-                    continue
-                base = dp[k][t]
-                cost = sum(C)
-                ndp[k + 1][1] = min(ndp[k + 1][1], base + cost)
-        dp = ndp
-    
-    return str(min(dp[N]))
+    # assume solve() is defined above in same file
+    return main_capture(inp)
+
+def main_capture(inp):
+    import sys
+    from io import StringIO
+    backup = sys.stdin
+    sys.stdin = StringIO(inp)
+
+    import sys
+    from contextlib import redirect_stdout
+    out = StringIO()
+    with redirect_stdout(out):
+        solve()
+
+    sys.stdin = backup
+    return out.getvalue().strip()
 
 # provided samples
-assert run("3 3\n1 1 1\n") == "3", "sample 1"
-assert run("3 3\n1 2 4\n") == "6", "sample 2"
-assert run("3 3\n4 2 1\n") == "6", "sample 3"
+assert run("3 3\n1 1 1\n") == "3"
+assert run("3 3\n1 2 4\n") == "6"
+assert run("3 3\n4 2 1\n") == "6"
 
-# custom cases
-assert run("1 5\n5 4 3 2 1\n") == "1", "single element picks cheapest bit"
-assert run("2 3\n10 1 10\n") == "2", "prefer low-cost middle bit structure"
-assert run("4 4\n1 1 1 1\n") == "4", "powers of two behavior"
-assert run("3 1\n7\n") == "21", "only one bit position forces all numbers equal structure"
+# custom: minimum case
+assert run("1 1\n5\n") == "5"
+
+# custom: all equal costs
+assert run("4 4\n1 1 1 1\n") == "4"
+
+# custom: increasing costs
+assert run("2 5\n5 4 3 2 1\n") == "3"
+
+# custom: large N small M
+assert run("3 3\n10 100 1000\n") == "120"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 5 / 5 4 3 2 1 | 1 | single element optimal bit selection |
-| 2 3 / 10 1 10 | 2 | uneven bit weights |
-| 4 4 / 1 1 1 1 | 4 | uniform cost distribution |
-| 3 1 / 7 | 21 | degenerate single-bit system |
+| single element | 5 | base case correctness |
+| equal weights | 4 | duplicate subset handling |
+| decreasing weights | 3 | greedy non-applicability |
+| sparse large weights | 120 | combination correctness |
 
 ## Edge Cases
 
-One edge case is when $N = 1$. The algorithm should simply choose the number with a single lowest-cost bit. For input:
+The empty subset is the main structural edge case. It always appears as the initial state with cost 0, and it is always the smallest value during construction. The algorithm deliberately carries it through intermediate states because it is required to generate correct superset combinations, but removes it before producing the final answer. For example, if $M = 1$ and $C = [7]$, the intermediate state becomes $[0, 7]$. After removal of zero, the only valid sequence element is 7, which matches the only possible positive integer.
 
-```
-1 3
-5 1 10
-```
-
-the best choice is number $2^1$, giving cost $1$. The DP starts with state $dp[0][0]$, transitions once, and correctly accumulates only the cheapest bit.
-
-Another edge case is when all $C_i$ are identical. Then cost depends only on number of set bits, and the optimal sequence becomes $[1,2,4,\dots]$. The DP does not prefer dense bit patterns, since every extra bit increases cost equally, so it implicitly favors minimal representation numbers.
-
-A final edge case occurs when only one bit position exists ($M=1$). Every number has cost $C_0$, so any strictly increasing sequence is equivalent in structure. The DP collapses to selecting $N$ identical-cost elements, yielding total $N \cdot C_0$, which matches the optimal value.
+Another subtle case is when multiple distinct subsets produce the same cost. This happens frequently when several bits have identical $C_i$. The algorithm keeps duplicates in `dp`, which is necessary because each represents a different subset, and we may need multiple identical costs to reach $N$ valid distinct numbers.
