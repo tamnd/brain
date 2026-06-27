@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2262 contests, 15216 problems, 8317 verified."
+description: "Codeforces problem solutions with full editorials. 2263 contests, 15221 problems, 8321 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2262 contests, 15216 problems, 8317 verified.**
+**2263 contests, 15221 problems, 8321 verified.**
 
-## Unknown — 359 contests, 2903 problems, 1820 verified
+## Unknown — 360 contests, 2908 problems, 1824 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104973](104973/) | [BdOI Preliminary 2024](https://codeforces.com/contest/104973) | 5 | 4/5 | Special | - |
 | [104984](104984/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая личная олимпиада](https://codeforces.com/contest/104984) | 4 | 0/4 | Special | - |
 | [104985](104985/) | [Innopolis Open 2024. Final round](https://codeforces.com/contest/104985) | 5 | 4/5 | Special | - |
 | [104990](104990/) | [First Masters Championship LATAM 2024](https://codeforces.com/contest/104990) | 9 | 2/9 | Special | - |
