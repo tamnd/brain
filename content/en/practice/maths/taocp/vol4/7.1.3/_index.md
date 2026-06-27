@@ -227,9 +227,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 145/219 solved.
 | [207](207.md) |  [*22*] | medium | solved | 1m21s |
 | [208](208.md) | &#9654; [*23*] | medium | verified | 2m55s |
 | [209](209.md) | &#9654; [*21*] | medium | solved | 2m22s |
-| [210](210.md) |  [*22*] | medium | solved | 5m04s |
-| [211](211.md) | &#9654; [*M25*] | math-medium | verified | 2m05s |
-| [212](212.md) |  [*M32*] | math-hard | verified | 1m05s |
+| [210](210.md) |  [*22*] | medium | solved | 2m06s |
+| [211](211.md) | &#9654; [*M25*] | math-medium | verified | 1m15s |
+| [212](212.md) |  [*M32*] | math-hard | verified | 1m16s |
 | [213](213.md) | &#9654; [*HM26*] | hm-hard | solved | 2m10s |
 | [214](214.md) | &#9654; [*HM28*] | hm-hard | solved | 2m42s |
 | [215](215.md) | &#9654; [*21*] | medium | verified | 1m14s |
