@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 169/219 solved."
+description: "Section 7.1.3 exercises: 182/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 169/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 182/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -70,14 +70,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 169/219 solved.
 | [50](50.md) |  [*M37*] | math-project | solved | 3m40s |
 | [51](51.md) |  [*23*] | medium | solved | 1m15s |
 | [52](52.md) |  [*22*] | medium | verified | 2m44s |
-| 53 | &#9654; [*M25*] | math-medium | - | - |
-| 54 |  [*22*] | medium | - | - |
-| 55 | &#9654; [*26*] | hard | - | - |
-| 56 |  [*24*] | medium | - | - |
-| 57 |  [*22*] | medium | - | - |
-| 58 | &#9654; [*M32*] | math-hard | - | - |
-| 59 |  [*M30*] | math-hard | - | - |
-| 60 |  [*HM28*] | hm-hard | - | - |
+| [53](53.md) | &#9654; [*M25*] | math-medium | solved | 1m14s |
+| [54](54.md) |  [*22*] | medium | solved | 58s |
+| [55](55.md) | &#9654; [*26*] | hard | solved | 1m26s |
+| [56](56.md) |  [*24*] | medium | solved | 4m07s |
+| [57](57.md) |  [*22*] | medium | solved | 2m22s |
+| [58](58.md) | &#9654; [*M32*] | math-hard | solved | 2m47s |
+| [59](59.md) |  [*M30*] | math-hard | solved | 4m30s |
+| [60](60.md) |  [*HM28*] | hm-hard | solved | 2m43s |
 | 61 |  [*46*] | research | - | - |
 | 62 | &#9654; [*22*] | medium | - | - |
 | 63 |  [*19*] | medium | - | - |
