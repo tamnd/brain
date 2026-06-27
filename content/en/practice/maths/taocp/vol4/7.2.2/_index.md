@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2: Backtracking"
-description: "Section 7.2.2 exercises: 71/79 solved."
+description: "Section 7.2.2 exercises: 72/79 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2. Backtracking
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2: 71/79 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2: 72/79 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -72,7 +72,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 71/79 solved.
 | [52](52.md) | &#9654; [*HM25*] | hm-medium | solved | 2m52s |
 | [53](53.md) | &#9654; [*M30*] | math-hard | solved | 1m02s |
 | [54](54.md) |  [*M21*] | math-medium | solved | 2m09s |
-| 55 |  [*M30*] | math-hard | - | - |
+| [55](55.md) |  [*M30*] | math-hard | verified | 1m25s |
 | [56](56.md) | &#9654; [*M25*] | math-medium | verified | 2m37s |
 | [57](57.md) |  [*HM21*] | hm-medium | verified | 2m17s |
 | [58](58.md) |  [*27*] | hard | verified | 1m36s |
