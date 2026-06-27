@@ -31,7 +31,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [11](11.md) | &#9654; [*M26*] | math-hard | verified | 5m |
 | [12](12.md) |  [*M26*] | math-hard | solved | 4m10s |
 | [13](13.md) |  [*M32*] | math-hard | solved | 5m14s |
-| [14](14.md) |  [*M30*] | math-hard | solved | 4m29s |
+| [14](14.md) |  [*M30*] | math-hard | verified | 4m45s |
 | [15](15.md) | &#9654; [*M30*] | math-hard | solved | 4m24s |
 | [16](16.md) |  [*M31*] | math-hard | solved | 4m14s |
 | [17](17.md) |  [*HM36*] | hm-project | verified | 1m14s |
@@ -157,7 +157,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [137](137.md) |  [*21*] | medium | verified | 3m58s |
 | [138](138.md) |  [*24*] | medium | solved | 3m54s |
 | [139](139.md) |  [*25*] | medium | verified | 1m30s |
-| [140](140.md) |  [*27*] | hard | solved | 2m14s |
+| [140](140.md) |  [*27*] | hard | verified | 1m18s |
 | [141](141.md) | &#9654; [*30*] | hard | verified | 2m14s |
 | [142](142.md) | &#9654; [*33*] | hard | verified | 2m07s |
 | [143](143.md) |  [*20*] | medium | verified | 59s |
