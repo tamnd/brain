@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2232 contests, 14939 problems, 8196 verified."
+description: "Codeforces problem solutions with full editorials. 2233 contests, 14947 problems, 8204 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2232 contests, 14939 problems, 8196 verified.**
+**2233 contests, 14947 problems, 8204 verified.**
 
-## Unknown — 345 contests, 2770 problems, 1752 verified
+## Unknown — 346 contests, 2778 problems, 1760 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105053](105053/) | [The 2024 ICPC Latin America Championship](https://codeforces.com/contest/105053) | 8 | 8/8 | ICPC/IOI | - |
 | [105055](105055/) | [UDESC Selection Contest 2023-2](https://codeforces.com/contest/105055) | 13 | 6/13 | Special | - |
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
 | [105085](105085/) | [AdaByron Regional Madrid 2024](https://codeforces.com/contest/105085) | 12 | 12/12 | Special | - |
