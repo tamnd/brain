@@ -197,9 +197,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 123/219 solved.
 | [177](177.md) |  [*M22*] | math-medium | solved | 48s |
 | [178](178.md) |  [*20*] | medium | solved | 1m14s |
 | [179](179.md) | &#9654; [*34*] | hard | solved | 1m07s |
-| [180](180.md) | &#9654; [*M24*] | math-medium | solved | 1m54s |
-| [181](181.md) |  [*HM20*] | hm-medium | solved | 55s |
-| [182](182.md) |  [*M31*] | math-hard | solved | 59s |
+| [180](180.md) | &#9654; [*M24*] | math-medium | verified | 2m20s |
+| [181](181.md) |  [*HM20*] | hm-medium | verified | 2m34s |
+| [182](182.md) |  [*M31*] | math-hard | solved | 2m43s |
 | [183](183.md) | &#9654; [*M29*] | math-hard | verified | 1m21s |
 | [184](184.md) | &#9654; [*M22*] | math-medium | solved | 1m34s |
 | [185](185.md) | &#9654; [*23*] | medium | verified | 4m15s |
