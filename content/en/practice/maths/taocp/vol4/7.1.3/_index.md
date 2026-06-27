@@ -51,9 +51,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 164/219 solved.
 | [31](31.md) | &#9654; [*20*] | medium | verified | 1m11s |
 | [32](32.md) |  [*20*] | medium | verified | 1m15s |
 | [33](33.md) | &#9654; [*26*] | hard | solved | 57s |
-| [34](34.md) |  [*M23*] | math-medium | verified | 1m21s |
-| [35](35.md) | &#9654; [*M26*] | math-hard | solved | 4m28s |
-| [36](36.md) |  [*20*] | medium | verified | 1m30s |
+| [34](34.md) |  [*M23*] | math-medium | verified | 4m30s |
+| [35](35.md) | &#9654; [*M26*] | math-hard | solved | 4m12s |
+| [36](36.md) |  [*20*] | medium | verified | 1m10s |
 | [37](37.md) |  [*16*] | medium | verified | 1m05s |
 | [38](38.md) |  [*17*] | medium | verified | 1m07s |
 | [39](39.md) | &#9654; [*20*] | medium | verified | 1m06s |
