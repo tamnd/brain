@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2229 contests, 14896 problems, 8175 verified."
+description: "Codeforces problem solutions with full editorials. 2230 contests, 14911 problems, 8186 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2229 contests, 14896 problems, 8175 verified.**
+**2230 contests, 14911 problems, 8186 verified.**
 
 ## Unknown — 344 contests, 2757 problems, 1746 verified
 
@@ -1721,7 +1721,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 245 contests, 2146 problems, 1059 verified
+## 2024 — 246 contests, 2161 problems, 1070 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1855,6 +1855,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105069](105069/) | [The 5th FanRuan Cup Southeast University Programming Contest （Winter）](https://codeforces.com/contest/105069) | 15 | 11/15 | Special | - |
 | [105071](105071/) | [UTPC April Fools Contest 2024](https://codeforces.com/contest/105071) | 8 | 4/8 | April Fools | - |
 | [105079](105079/) | [UTPC x WiCS Contest 04-05-23 (UT Internal)](https://codeforces.com/contest/105079) | 9 | 2/9 | Special | - |
 | [105104](105104/) | [2024 HNMU@XTU](https://codeforces.com/contest/105104) | 11 | 11/11 | Special | - |
