@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2222 contests, 14843 problems, 8135 verified."
+description: "Codeforces problem solutions with full editorials. 2223 contests, 14854 problems, 8146 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2222 contests, 14843 problems, 8135 verified.**
+**2223 contests, 14854 problems, 8146 verified.**
 
 ## Unknown — 340 contests, 2732 problems, 1723 verified
 
@@ -1717,7 +1717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 242 contests, 2118 problems, 1042 verified
+## 2024 — 243 contests, 2129 problems, 1053 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1851,6 +1851,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105104](105104/) | [2024 HNMU@XTU](https://codeforces.com/contest/105104) | 11 | 11/11 | Special | - |
 | [105109](105109/) | [UTPC Spring 2024 Open Contest](https://codeforces.com/contest/105109) | 12 | 1/12 | Special | - |
 | [105114](105114/) | [NUS CS3233 Final Team Contest 2024](https://codeforces.com/contest/105114) | 13 | 5/13 | Special | - |
 | [105129](105129/) | [Shorouk Academy 2024 Collegiate Programming Contest](https://codeforces.com/contest/105129) | 13 | 13/13 | Special | - |
