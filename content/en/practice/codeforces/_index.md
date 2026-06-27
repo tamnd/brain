@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2257 contests, 15159 problems, 8299 verified."
+description: "Codeforces problem solutions with full editorials. 2258 contests, 15168 problems, 8301 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2257 contests, 15159 problems, 8299 verified.**
+**2258 contests, 15168 problems, 8301 verified.**
 
-## Unknown — 356 contests, 2884 problems, 1813 verified
+## Unknown — 357 contests, 2893 problems, 1815 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104990](104990/) | [First Masters Championship LATAM 2024](https://codeforces.com/contest/104990) | 9 | 2/9 | Special | - |
 | [104992](104992/) | [qual VKOSHP Junior 24](https://codeforces.com/contest/104992) | 9 | 0/9 | Special | - |
 | [105002](105002/) | [vkoshp.letovo 2022](https://codeforces.com/contest/105002) | 13 | 6/13 | Special | - |
 | [105011](105011/) | [Интернет-олимпиады, Сезон 2023-2024, Третья личная олимпиада](https://codeforces.com/contest/105011) | 4 | 0/4 | Special | - |

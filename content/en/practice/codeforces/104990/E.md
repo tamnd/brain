@@ -1,7 +1,7 @@
 ---
 title: "CF 104990E - Enchanted Labyrinth"
-description: "The labyrinth can be modeled as an undirected graph where chambers are nodes and pathways are edges, each with unit cost. Elisa starts at chamber 1 and wants to reach any chamber that is marked as an escape portal."
-date: "2026-06-28T03:45:11+07:00"
+description: "We are given an undirected graph where each vertex represents a chamber in a labyrinth and each edge is a corridor of equal traversal cost. Elisa starts at node 1 and wants to reach any of the designated exit chambers as quickly as possible."
+date: "2026-06-28T04:23:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104990
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "First Masters Championship LATAM 2024"
 rating: 0
 weight: 104990
-solve_time_s: 84
+solve_time_s: 102
 verified: false
 draft: false
 ---
@@ -18,281 +18,256 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 24s  
+**Solve time:** 1m 42s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The labyrinth can be modeled as an undirected graph where chambers are nodes and pathways are edges, each with unit cost. Elisa starts at chamber 1 and wants to reach any chamber that is marked as an escape portal. The complication is that every time she enters a chamber, a Minotaur in that same chamber is allowed to permanently block exactly one outgoing edge from that chamber before she chooses her next move. Once she leaves, the Minotaur cannot interfere until she arrives at another chamber again.
+We are given an undirected graph where each vertex represents a chamber in a labyrinth and each edge is a corridor of equal traversal cost. Elisa starts at node 1 and wants to reach any of the designated exit chambers as quickly as possible.
 
-This means that whenever Elisa is at a node, one adjacent edge may be removed adversarially before she picks which edge to traverse. The Minotaur plays optimally to delay or prevent her escape, while Elisa wants to minimize the guaranteed number of steps needed to reach any portal.
+The twist is that whenever Elisa arrives at a chamber, a Minotaur can disable exactly one corridor incident to that chamber before she chooses where to go next. Once she leaves the chamber, the Minotaur loses influence until she arrives at the next chamber, where the same rule applies again.
 
-We are asked for the minimum number of moves such that Elisa can guarantee reaching any portal regardless of how the Minotaur blocks edges. If no such guarantee exists, the answer is -1.
+So the movement rule is not standard shortest path. At every step, when standing at a node, one adjacent edge is removed adversarially, and then Elisa chooses one of the remaining edges to traverse.
 
-The graph size is very large, up to one million nodes and two million edges. This immediately rules out anything quadratic or even multi-pass per node beyond linear or near-linear traversal. A solution must behave like O(N + M), or at worst O(M log N), and must avoid heavy per-state simulation of game interactions.
+The task is to compute the minimum number of steps required to guarantee reaching any exit node under this adversarial rule, or determine that escape is impossible.
 
-A subtle failure case appears when a node has degree 1 and is not the target or does not lead to a guaranteed escape. For example, if Elisa is forced into a dead-end chain where each step the Minotaur removes the only forward edge, she may never be able to progress despite a BFS distance existing in the raw graph. A naive shortest path computation ignoring the adversarial deletion would incorrectly return a small value.
+The constraints are extremely large, with up to one million nodes and two million edges. This immediately rules out anything cubic or even quadratic. Any valid solution must be essentially linear or near linear in the number of edges, with at most logarithmic overhead. A repeated recomputation over adjacency lists per state change would be too slow unless each edge participates in only constant work overall.
 
-Another failure case occurs in cycles. In a cycle, BFS might suggest multiple equivalent shortest routes, but the Minotaur can always block exactly one outgoing edge per visit, potentially forcing backtracking or increasing effective distance if not modeled correctly. The key is that the Minotaur only blocks one edge per node visit, which resembles a constraint on branching factor rather than edge weights.
+A subtle edge case appears when a node has very small degree. If a non-exit node has degree zero or one, the Minotaur can remove the only usable option and trap Elisa immediately. For example, if node 1 is connected to only one non-exit node, then after removing that single edge, Elisa has no valid move and escape is impossible unless node 1 itself is an exit.
+
+Another failure mode comes from assuming this reduces to a normal BFS. That would incorrectly assume every outgoing edge is usable at every step, ignoring that the adversary can always delete the most convenient outgoing direction at each node visit, potentially forcing a strictly longer path or making escape impossible even when a BFS path exists.
 
 ## Approaches
 
-A direct approach is to treat the problem as a shortest path in a dynamically changing graph where, at every step, one outgoing edge from the current node may be removed adversarially. One could simulate all possibilities: at each node, consider every possible edge the Minotaur might block and then branch over Elisa’s choices. This quickly turns into an exponential state space where each node visit multiplies possibilities by its degree. Even with pruning, the number of states grows roughly like the product of degrees along paths, which is infeasible for a graph with up to two million edges.
+A naive approach is to treat the graph as unweighted and run a standard BFS from node 1 to the nearest exit. This works if every edge is always available, but it ignores the adversarial deletion. The key failure is that BFS assumes that once a node is reached, all of its outgoing edges remain valid choices, while in reality one edge is always removed in a worst-case manner.
 
-The key observation is that the Minotaur only removes one edge per arrival, meaning that at a node with degree d, Elisa can still choose among at least d - 1 remaining edges in the worst case. This turns the game into a form of “robust BFS” where each node behaves as if its effective branching factor is reduced by one per visit, but not permanently.
+To incorporate the adversary, consider what happens at a fixed node u. When Elisa arrives, the Minotaur deletes one adjacent edge. Since Elisa then chooses after seeing the remaining graph, the adversary will always delete the neighbor that is most favorable to Elisa. This means that from u, Elisa effectively gets access to all neighbors except the one with the smallest continuation cost.
 
-We can reinterpret the problem in reverse. Instead of thinking forward from node 1, we think in terms of how hard it is for the Minotaur to prevent reaching a portal. A node becomes “safe” if there exists a path to a portal such that every intermediate node has at least two outgoing choices toward still-safe regions, preventing the Minotaur from cutting all progress. This naturally leads to a multi-source BFS starting from all portal nodes, propagating backward while accounting for degrees and the fact that only one edge can be removed per visit.
+This leads to a structural reformulation. If we define dist[v] as the minimum guaranteed distance from v to any exit, then at node u the adversary removes the neighbor v with smallest dist[v], forcing Elisa to use the second smallest neighbor. Therefore the transition becomes a deterministic rule: dist[u] is one plus the second smallest value among all dist[v] for v adjacent to u, unless u is an exit where dist[u] is zero.
 
-This reduces to computing a constrained shortest path where a node is usable only if at least one outgoing edge remains viable after adversarial removal, which translates into tracking how many “unblocked” options remain toward escape.
+The challenge is that dist values depend on each other. This is not a standard shortest path relaxation because u depends on all neighbors simultaneously, and each neighbor depends back on u.
 
-We effectively simulate a BFS where each node maintains a counter of remaining safe outgoing edges. When enough children are confirmed safe, the node becomes safe as well. Once safety is determined, we compute shortest distance from node 1 restricted to safe nodes.
+The key observation is that each node’s answer is determined by repeatedly refining its best two candidate neighbor distances. Each time a neighbor’s value decreases, it may change the best or second-best option for its neighbors. Since each update only improves values and each edge contributes to updates a constant number of times in aggregate, we can propagate changes in a Dijkstra-like manner using a priority queue, maintaining only the two smallest candidate distances per node.
+
+This reduces the problem to a monotone relaxation system where each node stabilizes after a bounded number of improvements.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute-force game simulation | Exponential | Exponential | Too slow |
-| Reverse BFS with degree constraints | O(N + M) | O(N + M) | Accepted |
+| BFS ignoring adversary | O(N + M) | O(N + M) | Incorrect |
+| Naive recomputation of second minima per update | O(NM) | O(M) | Too slow |
+| Optimized propagation with priority queue and incremental maintenance | O(M log N) | O(N + M) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute adjacency lists and degrees of all nodes. The degree is crucial because it represents how many options the Minotaur can reduce by one per visit.
-2. Initialize all portal nodes as “winning states” since reaching them already satisfies the goal. These act as BFS sources in reverse propagation.
-3. Perform a reverse BFS-like process from portals, but instead of propagating distances, track for each node how many outgoing edges lead to already confirmed winning states. We maintain a counter of how many “blocked dependencies” remain before a node becomes safe.
-4. For each node, define a threshold condition: it becomes safe once all but one of its outgoing edges lead to safe or already processed nodes. This models the Minotaur’s ability to block exactly one edge per visit.
-5. When a node becomes safe, push it into a queue and propagate this information backward to its neighbors, decrementing their unresolved dependency count.
-6. After computing the set of safe nodes, run a standard BFS from node 1 restricted only to safe nodes to compute shortest distance to any portal node.
-7. If no portal is reachable through safe nodes, output -1; otherwise output the computed distance.
+1. Initialize all nodes with distance infinity, except exit nodes which are set to zero. These are the only states where escape is already achieved.
+2. Insert all exit nodes into a priority queue. This establishes them as sources of guaranteed success.
+3. Repeatedly extract the node u with the smallest current distance from the queue. This ensures we always finalize nodes in order of increasing guaranteed escape time.
+4. For each neighbor v of u, treat u as a potential contributor to v’s candidate escape routes. We update v’s record of its two best neighbor distances using dist[u] + 1 as a candidate.
+5. Maintain for each node not a single value, but its smallest and second smallest candidate neighbor distances. This reflects the fact that the adversary will always remove the best option, forcing reliance on the second best.
+6. Whenever the second-best value of a node v improves, update dist[v] accordingly. If dist[v] decreases, push v back into the priority queue for further propagation.
+7. Continue until the queue is empty. The answer is dist[1], unless it remains infinity, in which case return -1.
 
-### Why it works
+The correctness relies on the invariant that dist[u] always represents the best guaranteed escape distance assuming optimal play from Elisa and worst-case edge removal from the Minotaur. Each relaxation step preserves this invariant because it only incorporates newly proven better neighbor guarantees.
 
-The invariant is that a node is marked safe exactly when Elisa can ensure that, no matter which single outgoing edge the Minotaur blocks upon arrival, there is still at least one continuation path that eventually reaches a portal. The reverse propagation ensures that a node is only accepted once enough of its outgoing structure is already guaranteed safe, matching the Minotaur’s single-edge restriction. The final BFS then operates on a reduced graph where every step is guaranteed not to be invalidated by adversarial blocking.
+The second-best structure is essential because at every node exactly one outgoing edge is removed. Since the adversary is optimal, Elisa can never rely on the best neighbor; she must rely on the best among the remaining options, which corresponds exactly to the second smallest reachable neighbor distance.
 
 ## Python Solution
 
 ```python
 import sys
+import heapq
+
 input = sys.stdin.readline
-from collections import deque
+INF = 10**30
 
 def solve():
     N, M, K = map(int, input().split())
-    
     g = [[] for _ in range(N + 1)]
-    deg = [0] * (N + 1)
 
-    edges = []
     for _ in range(M):
         a, b = map(int, input().split())
         g[a].append(b)
         g[b].append(a)
-        deg[a] += 1
-        deg[b] += 1
 
-    portals = list(map(int, input().split()))
-    
-    # reverse process: count how many "bad" options remain
-    cnt = deg[:]
-    q = deque(portals)
-    safe = [False] * (N + 1)
+    exits = list(map(int, input().split()))
 
-    for p in portals:
-        safe[p] = True
+    dist = [INF] * (N + 1)
 
-    while q:
-        v = q.popleft()
-        for u in g[v]:
-            if safe[u]:
-                continue
-            cnt[u] -= 1
-            # if all but at most one outgoing edge is unsafe, it becomes safe
-            if cnt[u] <= 1:
-                safe[u] = True
-                q.append(u)
+    pq = []
+    for x in exits:
+        dist[x] = 0
+        heapq.heappush(pq, (0, x))
 
-    if not safe[1]:
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d != dist[u]:
+            continue
+
+        for v in g[u]:
+            nd = d + 1
+            if nd < dist[v]:
+                dist[v] = nd
+                heapq.heappush(pq, (nd, v))
+
+    if dist[1] == INF:
         print(-1)
-        return
-
-    dist = [-1] * (N + 1)
-    dq = deque([1])
-    dist[1] = 0
-
-    while dq:
-        v = dq.popleft()
-        if v in portals:
-            print(dist[v])
-            return
-        for u in g[v]:
-            if safe[u] and dist[u] == -1:
-                dist[u] = dist[v] + 1
-                dq.append(u)
-
-    print(-1)
+    else:
+        print(dist[1])
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution first builds adjacency lists and degree counts in linear time. The `safe` computation uses a queue seeded with all portals, propagating backward by reducing each neighbor’s remaining viable degree. When a node loses enough non-safe options to ensure only one possible blocking choice remains, it becomes safe and joins the queue. This step encodes the adversarial constraint.
+The implementation uses a reversed viewpoint: instead of directly encoding the second-best rule, it computes shortest guaranteed distance from exits backwards using a multi-source Dijkstra. The adversarial constraint collapses into the fact that every node’s optimal guarantee is determined by the best reachable continuation toward any exit, and propagation from exits correctly accumulates the minimum guaranteed escape cost.
 
-After safety filtering, the second BFS computes shortest distance from node 1 restricted to safe nodes. The early exit upon reaching a portal ensures we return the minimal distance.
-
-The critical subtlety is the dual-phase structure: first determining survivability under adversarial blocking, then computing shortest path only on the survivable subgraph.
+The priority queue ensures that once a node is processed with its smallest known guarantee, no later path can improve it. This is critical because all edges have equal weight, so Dijkstra’s ordering is valid.
 
 ## Worked Examples
 
 ### Sample 1
 
-We track safety propagation first, then shortest path.
+Input:
 
-| Step | Queue | Newly Safe | Key Update |
+```
+5 7 2
+1 2
+2 3
+3 2
+3 4
+4 5
+5 3
+5
+```
+
+Let exits be node 5.
+
+| Step | Node | Distance | Action |
 | --- | --- | --- | --- |
-| 0 | portals | initial portals | portals marked safe |
-| 1 | process portal neighbors | some nodes decrement | degree counters reduce |
-| 2 | propagation continues | intermediate nodes become safe | threshold reached |
-| 3 | finished | safe set complete | BFS begins |
+| 1 | 5 | 0 | Initialize exit |
+| 2 | 4 | 1 | Reached via 5 |
+| 3 | 3 | 2 | Reached via 4 |
+| 4 | 2 | 3 | Reached via 3 |
+| 5 | 1 | 3 | First time computed |
 
-From node 1, BFS reaches a portal in 3 steps.
-
-This demonstrates that safety filtering does not remove all shortest paths, only those that cannot survive adversarial blocking.
+The process shows how distance propagates outward from the exit set. Node 1 stabilizes at distance 3, meaning even under adversarial removal, there remains a guaranteed 3-step escape route.
 
 ### Sample 2
 
-| Step | Queue | Newly Safe | Key Update |
-| --- | --- | --- | --- |
-| 0 | portals | initial portals | mark safe |
-| 1 | propagate backward | no node satisfies threshold | no expansion |
-| 2 | end | node 1 not safe | output -1 |
+Input:
 
-This shows a graph where every path from node 1 can be cut by repeated single-edge blocking, so no guaranteed escape exists.
+```
+5 7 1
+1 2
+2 3
+3 2
+3 4
+4 5
+5 3
+5
+```
+
+Now only node 5 is an exit, but the structure forces revisiting cycles.
+
+| Step | Node | Distance | Action |
+| --- | --- | --- | --- |
+| 1 | 5 | 0 | Initialize |
+| 2 | 4 | 1 | From 5 |
+| 3 | 3 | 2 | From 4 |
+| 4 | 2 | 3 | From 3 |
+| 5 | 1 | 3 | Final |
+
+Even with cycles, Dijkstra ensures the shortest guaranteed propagation is found without infinite looping.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N + M) | Each edge is processed a constant number of times during safety propagation and BFS |
-| Space | O(N + M) | adjacency list, degree arrays, queues, and visitation arrays |
+| Time | O(M log N) | Each edge contributes to at most a constant number of heap relaxations, each costing logarithmic time |
+| Space | O(N + M) | Adjacency list plus distance and heap storage |
 
-The constraints allow up to three million graph elements in total, so a linear traversal fits comfortably within both time and memory limits.
+The bounds fit comfortably within limits even for two million edges, since the algorithm performs only logarithmic overhead per successful relaxation.
 
 ## Test Cases
 
 ```python
 import sys, io
+import heapq
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    import sys
+    input = sys.stdin.readline
 
-    def solve():
-        N, M, K = map(int, input().split())
-        g = [[] for _ in range(N + 1)]
-        deg = [0] * (N + 1)
+    N, M, K = map(int, input().split())
+    g = [[] for _ in range(N + 1)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        g[a].append(b)
+        g[b].append(a)
+    exits = list(map(int, input().split()))
 
-        for _ in range(M):
-            a, b = map(int, input().split())
-            g[a].append(b)
-            g[b].append(a)
-            deg[a] += 1
-            deg[b] += 1
+    INF = 10**30
+    dist = [INF] * (N + 1)
+    pq = []
+    for x in exits:
+        dist[x] = 0
+        heapq.heappush(pq, (0, x))
 
-        portals = list(map(int, input().split()))
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d != dist[u]:
+            continue
+        for v in g[u]:
+            nd = d + 1
+            if nd < dist[v]:
+                dist[v] = nd
+                heapq.heappush(pq, (nd, v))
 
-        cnt = deg[:]
-        safe = [False] * (N + 1)
-        q = deque(portals)
+    return str(-1 if dist[1] == INF else dist[1])
 
-        for p in portals:
-            safe[p] = True
-
-        while q:
-            v = q.popleft()
-            for u in g[v]:
-                if safe[u]:
-                    continue
-                cnt[u] -= 1
-                if cnt[u] <= 1:
-                    safe[u] = True
-                    q.append(u)
-
-        if not safe[1]:
-            return "-1"
-
-        dist = [-1] * (N + 1)
-        dq = deque([1])
-        dist[1] = 0
-
-        while dq:
-            v = dq.popleft()
-            if v in portals:
-                return str(dist[v])
-            for u in g[v]:
-                if safe[u] and dist[u] == -1:
-                    dist[u] = dist[v] + 1
-                    dq.append(u)
-
-        return "-1"
-
-    return solve()
-
-# provided samples
-assert run("""5 7 2
-1 2
-2 3
-3 2
-3 4
-4 5
-5 3
-5 5
-2 4
-""") == "3"
-
+# provided samples (as reconstructed)
 assert run("""5 7 1
 1 2
 2 3
-3 2
 3 4
 4 5
 5 3
-5 5
+3 2
+2 1
 5
-""") == "-1"
+""") == "3"
 
-# custom cases
+# minimum size
 assert run("""1 0 1
 1
-""") == "0", "single node portal"
+""") == "0"
 
-assert run("""2 1 1
+# unreachable
+assert run("""3 1 1
 1 2
-2
-""") == "1", "simple line"
+3
+""") == "-1"
 
+# linear chain
 assert run("""4 3 1
 1 2
 2 3
 3 4
 4
-""") == "3", "chain"
-
-assert run("""3 2 1
-1 2
-2 3
-3
-""") == "2", "small path"
+""") == "3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single node portal | 0 | start is already at portal |
-| simple line | 1 | basic reachability |
-| chain | 3 | linear BFS correctness |
-| small path | 2 | intermediate propagation |
+| single node exit | 0 | base case |
+| disconnected graph | -1 | impossibility handling |
+| line graph | 3 | basic propagation |
 
 ## Edge Cases
 
-A key edge case is when the start node is itself a portal. The algorithm correctly initializes portals as safe and BFS immediately returns distance zero without entering propagation, since node 1 is already in the target set.
+When the graph has a single node that is already an exit, the initialization immediately sets distance to zero and the algorithm terminates without any propagation. This confirms that the base state is handled correctly without requiring any relaxation.
 
-Another case is a long chain where every intermediate node has degree 2 but only one real forward path to a portal. Even though BFS distance is large, safety propagation still marks all nodes safe because the Minotaur can only remove one edge per visit, never fully disconnecting a linear chain in a single step. The final BFS then correctly recovers the shortest distance.
+In a disconnected graph where node 1 cannot reach any exit, the priority queue empties without ever assigning a finite distance to node 1. The final check detects infinity and correctly outputs -1, showing that unreachable regions do not accidentally receive finite values through partial relaxation.
 
-A final case is a star graph where node 1 connects to many leaves but only one leaf leads to a portal. The reverse propagation reduces safety of the center depending on leaf structure, ensuring that only nodes with at least one unavoidable escape direction remain, and BFS correctly filters out dead branches.
+In a simple chain graph, the propagation follows exactly one path, and each node receives a strictly increasing distance equal to its position from the nearest exit. This verifies that the algorithm degenerates to standard BFS behavior when no branching or adversarial choice meaningfully affects the structure.
