@@ -180,10 +180,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 114/219 solved.
 | [160](160.md) |  [*M29*] | math-hard | solved | 3m44s |
 | [161](161.md) |  [*20*] | medium | solved | 2m10s |
 | [162](162.md) | &#9654; [*HM37*] | hm-project | solved | 5m19s |
-| [163](163.md) |  [*HM41*] | hm-project | solved | 3m05s |
-| [164](164.md) |  [*23*] | medium | verified | 1m56s |
-| [165](165.md) |  [*21*] | medium | verified | 45s |
-| [166](166.md) |  [*M23*] | math-medium | solved | 3m08s |
+| [163](163.md) |  [*HM41*] | hm-project | verified | 2m32s |
+| [164](164.md) |  [*23*] | medium | verified | 2m26s |
+| [165](165.md) |  [*21*] | medium | verified | 1m07s |
+| [166](166.md) |  [*M23*] | math-medium | solved | 3m11s |
 | [167](167.md) |  [*24*] | medium | solved | 4m20s |
 | [168](168.md) | &#9654; [*23*] | medium | solved | 3m16s |
 | [169](169.md) |  [*22*] | medium | solved | 3m |
