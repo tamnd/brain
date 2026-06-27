@@ -1,23 +1,23 @@
 ---
 title: "UTPC x WiCS Contest 04-05-23 (UT Internal)"
-description: "8 problems from UTPC x WiCS Contest 04-05-23 (UT Internal) (contest 105079), difficulty -. 2/8 solutions verified against sample I/O."
+description: "9 problems from UTPC x WiCS Contest 04-05-23 (UT Internal) (contest 105079), difficulty -. 2/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105079
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
+n_problems: 9
 n_verified: 2
-total_solve_s: 636
+total_solve_s: 718
 contest_year: 2024
-date: "2026-06-27T22:50:04+07:00"
+date: "2026-06-27T22:50:44+07:00"
 weight: 105079
 draft: false
 ---
 
 # [UTPC x WiCS Contest 04-05-23 (UT Internal)](https://codeforces.com/contest/105079)
 
-Special | 8 problems | 2/8 verified | Difficulty - | 10m 36s
+Special | 9 problems | 2/9 verified | Difficulty - | 11m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ Special | 8 problems | 2/8 verified | Difficulty - | 10m 36s
 | [F](F/) | [Cupcake Circle](https://codeforces.com/problemset/problem/105079/F) |  |  |  | 1m 14s |  |
 | [G](G/) | [Sneaking Sprinkles](https://codeforces.com/problemset/problem/105079/G) |  |  |  | 1m 29s |  |
 | [H](H/) | [Packing Cupcakes](https://codeforces.com/problemset/problem/105079/H) |  |  |  | 1m 28s |  |
+| [I](I/) | [Cupcake Factory](https://codeforces.com/problemset/problem/105079/I) |  |  |  | 1m 22s |  |
