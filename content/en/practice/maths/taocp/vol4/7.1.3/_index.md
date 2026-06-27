@@ -64,9 +64,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 189/219 solved.
 | [44](44.md) | &#9654; [*23*] | medium | verified | 1m13s |
 | [45](45.md) | &#9654; [*20*] | medium | verified | 3m46s |
 | [46](46.md) |  [*22*] | medium | solved | 1m43s |
-| [47](47.md) |  [*10*] | simple | verified | 1m06s |
-| [48](48.md) |  [*M21*] | math-medium | solved | 3m14s |
-| [49](49.md) | &#9654; [*M30*] | math-hard | solved | 1m12s |
+| [47](47.md) |  [*10*] | simple | verified | 1m |
+| [48](48.md) |  [*M21*] | math-medium | solved | 3m34s |
+| [49](49.md) | &#9654; [*M30*] | math-hard | solved | 2m07s |
 | [50](50.md) |  [*M37*] | math-project | solved | 3m40s |
 | [51](51.md) |  [*23*] | medium | solved | 1m15s |
 | [52](52.md) |  [*22*] | medium | verified | 2m44s |
