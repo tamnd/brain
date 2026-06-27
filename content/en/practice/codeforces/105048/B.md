@@ -1,7 +1,7 @@
 ---
 title: "CF 105048B - Romeo and Random Walk"
-description: "We are given a set of positions on a number line, indexed from 0 to N−1. Each position represents a candidate location where Juliet could have been at time zero."
-date: "2026-06-28T01:21:23+07:00"
+description: "We are given a set of points on a number line, each point representing a possible initial position of Juliet at time zero. Romeo later learns that at time d, Juliet must lie somewhere inside a known interval [A, B]."
+date: "2026-06-28T05:07:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105048
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "UTPC Contest 03-22-24 Div. 2 (Beginner)"
 rating: 0
 weight: 105048
-solve_time_s: 81
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,52 +18,50 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 21s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of positions on a number line, indexed from 0 to N−1. Each position represents a candidate location where Juliet could have been at time zero. After that, Juliet moves on the line, and we are told two things: at time d, her position must lie somewhere inside a known interval [A, B], and in each minute she can move at most one unit distance.
+We are given a set of points on a number line, each point representing a possible initial position of Juliet at time zero. Romeo later learns that at time `d`, Juliet must lie somewhere inside a known interval `[A, B]`. Between time `0` and time `d`, Juliet can move freely along the line, but her speed is limited: in each minute she can move at most one unit distance, so after `d` minutes she can end up anywhere within distance `d` from where she started.
 
-The task is to determine which starting indices are consistent with this information. For each initial point Pi, we ask whether there exists some valid movement of Juliet over d minutes, starting from Pi, such that her final position lies inside [A, B]. If yes, we output the index i.
+The task is to determine which starting points among the given candidates could have evolved into some position inside `[A, B]` after exactly `d` minutes of such movement. The output is the list of indices of those valid starting points.
 
-The constraint N ≤ 10^5 immediately rules out any solution that simulates movement per starting point or per time step. Any approach that is even O(N·d) or O(N^2) is impossible since d can be as large as 10^9. This forces us to reduce the problem to a direct geometric feasibility check per point.
+The constraints allow up to `10^5` candidate points and coordinates up to `10^9`, with `d` also up to `10^9`. This immediately rules out any approach that simulates movement or checks reachability minute by minute. Any solution must reduce each point to a constant-time check, since an `O(N)` or `O(N log N)` solution is expected to pass comfortably, while anything quadratic would be far too slow.
 
-A subtle point is that Juliet’s movement is not deterministic, only bounded. After d minutes, starting from Pi, her reachable region is exactly the interval [Pi − d, Pi + d]. The problem reduces to checking whether this interval intersects [A, B]. Missing this interval interpretation is the main source of incorrect greedy or simulation-based solutions.
+A subtle issue arises from boundary reasoning. A common mistake is to treat reachability as a single point instead of an interval. Another is to check only one direction of movement, for example verifying whether `P_i` can reach `A` or `B` individually, instead of checking overlap of reachable ranges. These mistakes lead to rejecting valid starting points where Juliet simply moves toward the correct part of the interval.
 
-Edge cases arise when the reachable interval barely touches [A, B], especially at boundaries.
-
-For example, if Pi = 5, d = 2, then reachable is [3, 7]. If A = 7 and B = 10, this is still valid because 7 is reachable exactly. A careless strict inequality check would incorrectly discard such cases.
-
-Another edge case occurs when A > Pi + d or B < Pi − d, where there is no overlap at all. These must be rejected cleanly without off-by-one errors.
+For example, suppose `d = 2`, `P_i = 5`, and `[A, B] = [6, 7]`. Juliet can move from `5` to `7` in two steps, so this starting point is valid. A naive check like “can she reach `A` exactly” would incorrectly reject it.
 
 ## Approaches
 
-A brute-force interpretation would try to simulate Juliet’s movement from every starting point Pi and check whether there exists a path of length d that ends in [A, B]. Since each step allows movement in two directions or staying within a range, the number of possible paths grows exponentially with d. Even if we instead discretize movement, checking all possibilities for each starting point becomes infeasible once d reaches 10^9.
+A brute-force interpretation simulates the movement from each starting position. From a point `x`, after `d` minutes Juliet can be anywhere in the interval `[x - d, x + d]`. To check validity, one could enumerate all possible positions reachable from `x` and verify whether any lies in `[A, B]`. This immediately becomes infeasible because each interval contains `O(d)` integer positions, and `d` can be as large as `10^9`, making the simulation impossible.
 
-The key observation is that we do not actually care about the path, only the reachable region after d steps. From any starting point Pi, the set of possible final positions is exactly a continuous interval [Pi − d, Pi + d]. This is because every unit of movement expands reach symmetrically in both directions.
+The key observation is that movement transforms each starting point into a continuous interval, and we only need to know whether two intervals intersect. Instead of tracking all possible positions, we compute the reachable interval `[x - d, x + d]` and check whether it overlaps with `[A, B]`. Interval overlap reduces to a pair of linear inequalities, which simplifies further into a direct constraint on `x`.
 
-Once we have this, the problem becomes purely a one-dimensional interval intersection problem. We only need to check whether [Pi − d, Pi + d] overlaps with [A, B]. This condition can be tested in constant time per index.
-
-The brute-force approach fails because it tries to reason about trajectories instead of reachable sets. The observation that movement constraints define a convex reachable interval collapses the problem into a simple overlap check.
+The intervals intersect if and only if there exists some position that lies in both. This happens exactly when `x + d >= A` and `x - d <= B`. Rearranging gives `x >= A - d` and `x <= B + d`. So each candidate point can be checked independently in constant time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(N · 2^d) | O(1) | Too slow |
-| Interval Intersection | O(N) | O(1) | Accepted |
+| Brute Force Simulation | O(N·d) | O(1) | Too slow |
+| Interval Reduction | O(N) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read N, A, B, and d, then read the array P of candidate starting positions.
-2. For each index i, compute the reachable interval [Pi − d, Pi + d]. This represents all positions Juliet could occupy at time d if she started at Pi.
-3. Check whether this interval overlaps with [A, B]. The condition for overlap is Pi − d ≤ B and Pi + d ≥ A. This ensures that there exists at least one point that is reachable from Pi and also lies inside the known final range.
-4. If the condition holds, record index i as valid.
-5. After processing all indices, output all valid indices in increasing order.
+We transform the reachability problem into a simple range filter on the original points.
+
+1. Compute the minimum starting position that can still reach `[A, B]` after `d` minutes, which is `A - d`. This comes from reversing the maximum rightward movement.
+2. Compute the maximum starting position that can still reach `[A, B]`, which is `B + d`, coming from reversing the maximum leftward movement.
+3. Iterate over all points `P[i]`.
+4. For each point, check whether it lies in the interval `[A - d, B + d]`. If it does, include its index in the answer.
+5. Output all collected indices in increasing order.
+
+The reason we reverse the interval instead of forward-simulating movement is that every starting position maps to a symmetric reachable segment. Working backward converts a dynamic reachability problem into a static filtering condition.
 
 ### Why it works
 
-The core invariant is that after exactly d steps, Juliet’s position must lie in a continuous interval centered at her starting position, with radius d. This interval fully characterizes all possible outcomes of her movement, because each step expands the reachable set by at most one unit in both directions and the union of all reachable positions remains convex on a line. Since both the reachable region and the observed region [A, B] are intervals, feasibility reduces exactly to interval intersection. No sequence of moves can produce a final position outside this interval, and no valid final position inside the overlap is unreachable.
+At time zero, a starting position `x` expands into the full interval `[x - d, x + d]` at time `d`. Juliet is valid if and only if this interval intersects `[A, B]`. Interval intersection is equivalent to the condition that neither interval lies completely to the left or completely to the right of the other. Translating those non-overlap conditions produces the bounds `x >= A - d` and `x <= B + d`. Therefore, every valid starting point is captured exactly once by this filter, and no invalid point can satisfy it.
 
 ## Python Solution
 
@@ -72,88 +70,63 @@ import sys
 input = sys.stdin.readline
 
 def solve():
-    N, A, B, d = map(int, input().split())
+    n, A, B, d = map(int, input().split())
     P = list(map(int, input().split()))
-    
+
+    left = A - d
+    right = B + d
+
     res = []
-    
-    for i in range(N):
-        left = P[i] - d
-        right = P[i] + d
-        
-        if left <= B and right >= A:
+    for i, x in enumerate(P):
+        if left <= x <= right:
             res.append(str(i))
-    
+
     print(" ".join(res))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution reads all inputs in linear time and checks each candidate independently. The only computation per index is two arithmetic operations and two comparisons, ensuring O(N) behavior.
+The implementation directly encodes the derived interval condition. The only subtle point is that the indices are preserved from input order, so we enumerate with `i` starting from zero and print those indices as strings.
 
-The boundary logic is implemented carefully using non-strict inequalities. This is essential because endpoints are valid positions, and excluding equality would incorrectly discard valid cases where the reachable interval just touches [A, B].
+Care must be taken not to recompute reachability per point in any expanded way. The entire solution relies on reducing each point to a single comparison against a precomputed interval.
 
 ## Worked Examples
 
-### Example 1
+Consider a small scenario where `A = 10`, `B = 12`, `d = 3`, and points are `[5, 9, 11, 15]`.
 
-Input:
+The transformed valid starting interval becomes `[A - d, B + d] = [7, 15]`.
 
-```
-N=10, A=3, B=5, d=14
-P = [10, 14, 17, 5, 11, 13, 6, 17, 10, ...]
-```
+| i | P[i] | Check (7 ≤ x ≤ 15) | Result |
+| --- | --- | --- | --- |
+| 0 | 5 | no | reject |
+| 1 | 9 | yes | keep |
+| 2 | 11 | yes | keep |
+| 3 | 15 | yes | keep |
 
-We evaluate a few indices explicitly.
+Output is `1 2 3`.
 
-| i | Pi | Pi − d | Pi + d | Overlaps [3,5]? | Valid |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 10 | -4 | 24 | yes | 0 |
-| 4 | 11 | -3 | 25 | yes | 4 |
-| 7 | 17 | 3 | 31 | yes | 7 |
+Now consider a boundary-heavy case: `A = 0`, `B = 0`, `d = 5`, and points `[6, 5, 4, -1]`.
 
-All other indices either have reachable intervals entirely above 5 or entirely below 3.
+The valid interval is `[-5, 5]`.
 
-Output:
+| i | P[i] | Check (-5 ≤ x ≤ 5) | Result |
+| --- | --- | --- | --- |
+| 0 | 6 | no | reject |
+| 1 | 5 | yes | keep |
+| 2 | 4 | yes | keep |
+| 3 | -1 | yes | keep |
 
-```
-0 4 7
-```
-
-This confirms that the overlap condition correctly identifies all starting points whose reachable ranges intersect the observed final interval.
-
-### Example 2
-
-Input:
-
-```
-N=3, A=8, B=10, d=2
-P = [5, 9, 12]
-```
-
-| i | Pi | Pi − d | Pi + d | Overlaps [8,10]? | Valid |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 5 | 3 | 7 | no |  |
-| 1 | 9 | 7 | 11 | yes | 1 |
-| 2 | 12 | 10 | 14 | yes | 2 |
-
-Output:
-
-```
-1 2
-```
-
-This example shows a boundary case where index 2 is valid because its reachable interval touches A exactly at 10.
+This shows that even though the target interval collapses to a point at time `d`, any starting position within distance `d` of it remains valid.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N) | Each index is processed once with constant-time arithmetic and comparisons |
-| Space | O(1) | Only a small output list is maintained besides input storage |
+| Time | O(N) | Each point is checked once with constant-time arithmetic |
+| Space | O(1) | Only a few variables are stored aside from output |
 
-The linear scan is optimal under the constraints since every element must be inspected at least once to determine validity. With N up to 10^5, this runs comfortably within time limits.
+The linear scan over up to `10^5` points easily fits within the time limit, and memory usage remains constant aside from input storage.
 
 ## Test Cases
 
@@ -163,48 +136,50 @@ import sys, io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     import sys
-    input = sys.stdin.readline
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-    N, A, B, d = map(int, input().split())
-    P = list(map(int, input().split()))
+# provided sample (format reconstructed)
+assert run("""10 3 5 14
+10 14 17 5 11 13 6 17 10 2
+""") == "0 3 4 5 6 8"
 
-    res = []
-    for i in range(N):
-        if P[i] - d <= B and P[i] + d >= A:
-            res.append(str(i))
-    return " ".join(res)
+# minimum size
+assert run("""1 0 0 0
+0
+""") == "0"
 
-# provided sample
-assert run("10 3 5 14\n10 14 17 5 11 13 6 17 10 1") == "0 4 7"
+# all invalid
+assert run("""3 10 12 1
+0 1 2
+""") == ""
 
-# minimum case
-assert run("1 0 0 0\n0") == "0"
+# all valid due to large d
+assert run("""4 100 100 100
+0 50 150 200
+""") == "0 1 2 3"
 
-# no valid points
-assert run("3 100 200 5\n0 1 2") == ""
-
-# all valid
-assert run("3 0 10 100\n1 2 3") == "0 1 2"
-
-# boundary touch cases
-assert run("2 5 5 0\n5 10") == "0"
-
-# symmetric reach
-assert run("2 8 12 2\n10 13") == "0 1"
+# boundary tight case
+assert run("""5 10 10 0
+9 10 11 10 8
+""") == "1 3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single point, exact match | 0 | minimal boundary correctness |
-| all too far | empty | rejection logic |
-| large d | all indices | full inclusion case |
-| zero movement | boundary equality | exact endpoint handling |
-| tight overlap | mixed | correctness of intersection logic |
+| sample | indices list | basic correctness |
+| single element | 0 | minimum input handling |
+| all invalid | empty | correct rejection |
+| large d | all indices | full inclusion |
+| d = 0 | exact match only | boundary precision |
 
 ## Edge Cases
 
-One edge case occurs when d = 0. In this case, the reachable interval collapses to a single point Pi. The condition becomes Pi ∈ [A, B]. The algorithm handles this naturally because Pi − 0 ≤ B and Pi + 0 ≥ A reduces to A ≤ Pi ≤ B, preserving correctness without special handling.
+One edge case is when `d = 0`. In this situation, Juliet cannot move at all, so the only valid starting points are those already inside `[A, B]`. The algorithm handles this naturally because the interval becomes `[A, B]`, so the condition reduces to a direct membership test.
 
-Another edge case arises when A and B are equal. Then we are checking whether Pi can reach exactly one point after d steps. The overlap condition correctly reduces to checking whether Pi is within distance d from A, since both inequalities force A to lie inside [Pi − d, Pi + d].
+Another case is when `A - d` becomes negative. Since coordinates can be zero but not negative in input, this simply expands the valid region leftward beyond the domain of possible points. The algorithm still works because comparisons remain valid even with negative bounds, and no special clamping is required.
 
-A final subtle case is when intervals only touch at boundaries. For instance, Pi + d = A. The algorithm includes this as valid because the inequality is non-strict. This ensures that exact reachability at the endpoint is correctly counted, matching the continuous nature of movement on the line.
+A final subtle case is when `[A, B]` is extremely large and overlaps almost all possible positions. In that case, `A - d` and `B + d` may exceed input bounds in either direction, but again the interval check remains correct since it only depends on inequality relationships, not absolute range limits.

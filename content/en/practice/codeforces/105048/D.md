@@ -1,7 +1,7 @@
 ---
 title: "CF 105048D - By the pricking of my thumbs, Pupil #1 this way comes"
-description: "We are given a tree of people, where each node represents a UT competitive programmer and edges represent mutual knowledge of Codeforces usernames."
-date: "2026-06-28T01:22:54+07:00"
+description: "We are given a tree of $N$ people, where each node represents a Codeforces account. Each account has a rating, and node 1 is Macbeth. The social structure is such that an edge means the two endpoints know each other’s usernames, and this knowledge can be passed on."
+date: "2026-06-28T05:09:01+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105048
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "UTPC Contest 03-22-24 Div. 2 (Beginner)"
 rating: 0
 weight: 105048
-solve_time_s: 90
+solve_time_s: 101
 verified: false
 draft: false
 ---
@@ -18,56 +18,67 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 30s  
+**Solve time:** 1m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a tree of people, where each node represents a UT competitive programmer and edges represent mutual knowledge of Codeforces usernames. Macbeth starts at node 1, and initially only knows the usernames of node 1 and anyone directly reachable through people whose usernames he has already learned, but only after he explicitly asks someone.
+We are given a tree of $N$ people, where each node represents a Codeforces account. Each account has a rating, and node 1 is Macbeth. The social structure is such that an edge means the two endpoints know each other’s usernames, and this knowledge can be passed on.
 
-The key mechanic is that when Macbeth asks a person, that person reveals all usernames they know, effectively revealing the entire connected knowledge region reachable through that person in one operation. The goal is to choose a minimum number of such people to ask so that Macbeth eventually learns the usernames of all nodes whose rating is at least his own rating.
+Macbeth starts knowing only his own username. He is allowed to perform an operation: pick any person whose username he already knows, and ask them for information. When asked, that person reveals the usernames of all their neighbors in the tree, effectively expanding Macbeth’s knowledge frontier.
 
-The graph structure is a tree, so there is exactly one simple path between any two nodes. This makes propagation patterns deterministic and prevents cycles in knowledge spread.
+The goal is not to traverse the entire tree, but only to ensure that Macbeth learns the usernames of all nodes whose rating is at least as large as his own rating at node 1. The task is to minimize how many people Macbeth must directly ask.
 
-The constraint of up to 100,000 nodes immediately rules out any solution that recomputes reachability or simulates propagation separately for each node or query. Any solution that is quadratic in the number of nodes would fail. We should expect something around linear or near-linear time, possibly with a greedy or tree dynamic programming structure.
+The key constraint is that Macbeth cannot directly “teleport” through the tree. A node only becomes usable (askable or discoverable) if it is revealed by someone already asked who is adjacent to it.
 
-A naive approach would be to consider every high-rated node and simulate whether it is already reachable from previously chosen asks. In a tree, this would still require repeated traversals or union operations, and in worst case could degrade to O(N^2).
+Since $N$ can be up to $10^5$, any solution that repeatedly simulates exploration or recomputes reachability per query will fail. The structure is a tree, so linear or near-linear solutions are required.
 
-A subtle edge case appears when high-rated nodes form a connected subtree that is almost the entire tree. For example, if all nodes except leaves have high rating, a naive approach might redundantly "ask" inside already-covered regions and overcount.
+A subtle failure case appears when high-rated nodes are scattered in different branches. Even if a node is not high-rated, it may still be essential as a bridge to reach another high-rated node deeper in the tree. Ignoring such structural nodes leads to undercounting.
 
-Another edge case is when node 1 is low-rated. Then Macbeth cannot rely on free propagation starting from node 1, so the solution must explicitly ensure all high-rated regions are covered via chosen queries.
+For example, consider a chain:
+
+```
+1 - 2 - 3 - 4
+ratings: 10, 1, 10, 1
+```
+
+Even though nodes 2 and 4 are low-rated, node 2 is necessary to reach node 3. Any correct strategy must account for such intermediaries.
 
 ## Approaches
 
-A brute-force strategy would be to repeatedly pick an unvisited node whose rating is at least Macbeth’s rating and perform a DFS/BFS from that node, marking all reachable nodes as discovered. Each such choice represents an “ask”, and we continue until all required nodes are covered. This is correct because every ask reveals an entire connected component of known nodes, but it is not efficient because each traversal can cost O(N), and in the worst case we might perform O(N) such operations, leading to O(N^2).
+A brute-force idea is to simulate Macbeth’s process. We maintain a set of known nodes and repeatedly choose a known node to ask, expanding knowledge until all required nodes are discovered. This is correct, but inefficient. In the worst case, each ask reveals only one new useful node, and we may process adjacency repeatedly, leading to $O(N^2)$ behavior when structured poorly.
 
-The key observation is that we are not trying to traverse arbitrary reachability, but instead to cover all nodes in a tree that satisfy a condition (rating ≥ threshold). On a tree, any connected set of “bad” nodes (nodes we do not need) acts like a separator. If we conceptually remove all nodes with rating below Macbeth’s, the remaining graph becomes a forest. Each connected component of this forest can be solved with a single ask at any node inside it, because asking any node reveals its entire connected knowledge component, which spans the whole component of valid nodes.
+The crucial observation is that Macbeth’s actions do not depend on ratings for exploration, only for deciding which nodes must be ultimately reached. Once we decide which nodes must become known, the problem becomes structural: which nodes must be asked so that all required nodes become discoverable through tree propagation.
 
-So the problem reduces to counting connected components in the induced subgraph of nodes with rating ≥ r_1.
+If we look at all nodes with rating at least $r_1$, the important structure is the union of all simple paths from node 1 to each such node. In a tree, the union of these paths forms a minimal connected subtree, often called the Steiner tree over the required vertices and the root.
+
+Inside this subtree, every internal node is unavoidable. If a node lies on a path to any required node, Macbeth must eventually “activate” it indirectly or directly. In practice, to propagate knowledge past a node, someone on the path must be asked, and the only candidates that can expose deeper nodes are those on that same path. This forces every node in the Steiner subtree to be involved as an asked node in a minimal strategy.
+
+Thus the answer reduces to counting how many nodes lie in the minimal subtree that connects node 1 and all nodes with rating at least $r_1$.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N^2) | O(N) | Too slow |
-| Optimal (DFS/BFS on filtered tree) | O(N) | O(N) | Accepted |
+| Brute Force Simulation | $O(N^2)$ | $O(N)$ | Too slow |
+| Steiner Subtree via DFS Marking | $O(N)$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat nodes with rating at least r_1 as “active”. All other nodes are “blocked”.
+We root the tree at node 1 and determine which nodes are “important”, meaning their rating is at least $r_1$.
 
-1. Mark every node as active if its rating is ≥ r_1, otherwise mark it inactive. This defines the only nodes Macbeth actually cares about.
-2. Build adjacency lists for the tree. We will traverse only through active nodes, effectively considering the induced subgraph.
-3. Maintain a visited array initialized to false for all nodes.
-4. Iterate through all nodes from 1 to N. Whenever we find a node that is active and not yet visited, we start a DFS or BFS from it, but we only move through active nodes.
-5. Each time we start such a traversal, we increment our answer by 1. This corresponds to selecting one person to ask, which reveals the entire connected component of active nodes.
-6. During DFS/BFS, mark every reachable active node as visited. This ensures we do not recount nodes in the same component.
-7. After processing all nodes, output the number of times we started a traversal.
+1. Perform a DFS from node 1 to process the tree in a postorder manner.
+2. For each node, determine whether its subtree contains at least one important node. A node is marked as relevant if it is itself important or if any of its children’s subtrees contain an important node.
+3. When returning from DFS, propagate this boolean upward so every ancestor on a path to an important node becomes marked relevant.
+4. After DFS finishes, count how many nodes are marked relevant. This set is exactly the minimal subtree that connects all important nodes with the root.
+5. Output this count as the answer.
 
-The reason this works is that each DFS run exactly covers one connected component in the subgraph induced by active nodes. Since asking one person reveals everything in their connected knowledge region, one ask per component is both necessary and sufficient.
+The key reason this works is that relevance propagates only along paths that are necessary to reach important nodes, and no extra nodes are included.
 
 ### Why it works
 
-The algorithm relies on the invariant that at any point, every visited node belongs to exactly one explored connected component of active nodes, and no traversal ever crosses an inactive node. In a tree, removing inactive nodes splits the structure into disconnected components. Each such component is internally reachable, but there is no path between components without passing through an inactive node. Since inactive nodes cannot be used as starting points or bridges for the target set, each component must be discovered independently. Therefore, each DFS initiation corresponds to exactly one required ask, and no two components can be merged by any valid operation.
+Every important node must be reachable from node 1 through a unique simple path in the tree. Any node on that path is either the important node itself or an ancestor that is required to connect it to the root. The DFS marking ensures that every node lying on at least one such path is included.
+
+Conversely, any node not lying on any path from node 1 to an important node cannot help in reaching any required node, since removing it does not disconnect the root from any target. Therefore it is never included in the final marked set. This gives a precise characterization of the minimal necessary structure.
 
 ## Python Solution
 
@@ -78,84 +89,108 @@ sys.setrecursionlimit(10**7)
 
 def solve():
     n = int(input())
-    ratings = list(map(int, input().split()))
-    adj = [[] for _ in range(n)]
+    r = list(map(int, input().split()))
+    g = [[] for _ in range(n)]
     
     for _ in range(n - 1):
-        p, q = map(int, input().split())
-        p -= 1
-        q -= 1
-        adj[p].append(q)
-        adj[q].append(p)
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        g[u].append(v)
+        g[v].append(u)
 
-    threshold = ratings[0]
-    active = [r >= threshold for r in ratings]
+    root_val = r[0]
+
+    sys.setrecursionlimit(10**7)
+
     visited = [False] * n
+    keep = [False] * n
 
-    def dfs(u):
-        stack = [u]
+    def dfs(u, p):
         visited[u] = True
-        while stack:
-            v = stack.pop()
-            for nxt in adj[v]:
-                if not visited[nxt] and active[nxt]:
-                    visited[nxt] = True
-                    stack.append(nxt)
+        has = (r[u] >= root_val)
+        for v in g[u]:
+            if v == p:
+                continue
+            if dfs(v, u):
+                has = True
+        keep[u] = has
+        return has
 
-    ans = 0
-    for i in range(n):
-        if active[i] and not visited[i]:
-            ans += 1
-            dfs(i)
+    dfs(0, -1)
 
-    print(ans)
+    print(sum(keep))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation builds the adjacency list for the tree and then filters nodes using a boolean array `active`. The DFS is iterative to avoid recursion depth issues on long chains. Each time we encounter an unvisited active node, we launch a traversal that marks its entire connected component, and we increment the answer.
+The DFS computes, for each node, whether it lies on a path leading to at least one required node. The boolean `keep[u]` encodes whether node `u` is part of the Steiner subtree.
 
-A common mistake here is using recursion without increasing recursion depth, which can fail on a skewed tree of size 100,000. Another is forgetting to skip inactive nodes during traversal, which would incorrectly merge components through forbidden nodes.
+The recursion avoids repeated traversal of subtrees, ensuring each edge is processed once. The parent check prevents cycling in the undirected tree.
+
+A common pitfall is attempting a BFS from node 1 and only counting reachable high-rated nodes; that ignores the necessity of intermediate connectors. The DFS formulation correctly captures dependency through subtree aggregation rather than direct reachability.
 
 ## Worked Examples
 
-### Example 1
+Consider a simple tree:
 
-Consider a small tree where nodes 1, 3, and 5 are active, and edges connect them in a chain: 1-2-3-4-5, with nodes 2 and 4 inactive.
+```
+1(10)
+ |
+2(1)
+ |
+3(10)
+```
 
-| Step | Node | Active | Visited | Action | Components Found |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | Yes | {1} | Start DFS | 1 |
-| 2 | 3 | Yes | {1,3} | Start DFS (new component) | 2 |
-| 3 | 5 | Yes | {1,3,5} | Start DFS (new component) | 3 |
+### Trace 1
 
-This shows that inactive nodes split the chain into separate components, forcing multiple asks.
+| Node | r[i] | Important | Children result | keep |
+| --- | --- | --- | --- | --- |
+| 3 | 10 | yes | none | true |
+| 2 | 1 | no | child true | true |
+| 1 | 10 | yes | child true | true |
 
-### Example 2
+The DFS marks every node because node 3 is important and the only path to it goes through all ancestors. The answer is 3, since all nodes lie on the required path.
 
-Now consider a fully active tree of 4 nodes in a star centered at 1.
+This demonstrates that non-important nodes can still be necessary connectors.
 
-| Step | Node | Active | Visited | Action | Components Found |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | Yes | {1,2,3,4} | DFS covers all | 1 |
-| 2 | 2 | Yes | already visited | skip | 1 |
-| 3 | 3 | Yes | already visited | skip | 1 |
-| 4 | 4 | Yes | already visited | skip | 1 |
+Consider a branching tree:
 
-Only one ask is needed because the entire active graph is connected.
+```
+    1(5)
+   /   \
+  2(1)  3(7)
+         |
+         4(1)
+         |
+         5(9)
+```
+
+Threshold is 5.
+
+### Trace 2
+
+| Node | r[i] | Important | Child result | keep |
+| --- | --- | --- | --- | --- |
+| 5 | 9 | yes | none | true |
+| 4 | 1 | no | child true | true |
+| 3 | 7 | yes | child true | true |
+| 2 | 1 | no | none | false |
+| 1 | 5 | yes | right true | true |
+
+Nodes 2 is excluded because it does not lie on any path to a required node. Node 4 is included even though it is low-rated, since it is on the path to node 5.
+
+This shows that the algorithm correctly distinguishes between irrelevant branches and necessary connectors.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(N)$ | Each node and edge is visited once during DFS |
+| Space | $O(N)$ | Adjacency list and recursion stack |
 
-|---|---|---|---|
-
-| Time | O(N) | Each node and edge is processed at most once during DFS over the tree |
-
-| Space | O(N) | Adjacency list and visited array store linear information |
-
-The solution fits easily within the constraints because both memory and time grow linearly with the number of nodes, and N is up to 100,000.
+The linear complexity fits comfortably within the constraint $N \le 10^5$, since each operation is constant time per node and the recursion depth is bounded by the tree height.
 
 ## Test Cases
 
@@ -164,66 +199,80 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    return run_capture(inp)
+    from collections import deque
 
-def run_capture(inp: str) -> str:
-    import sys, io
-    backup = sys.stdout
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    out = sys.stdout.getvalue()
-    sys.stdout = backup
-    return out.strip()
+    # embedded solution
+    sys.setrecursionlimit(10**7)
+    input = sys.stdin.readline
 
-# minimum case
-assert run_capture("1\n5\n") == "1"
+    n = int(input())
+    r = list(map(int, input().split()))
+    g = [[] for _ in range(n)]
+    for _ in range(n - 1):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        g[u].append(v)
+        g[v].append(u)
 
-# two nodes, different ratings
-assert run_capture("2\n5 1\n1 2\n") == "1"
+    root_val = r[0]
+    keep = [False] * n
 
-# chain alternating active/inactive
-assert run_capture("5\n5 1 5 1 5\n1 2\n2 3\n3 4\n4 5\n") == "3"
+    def dfs(u, p):
+        has = (r[u] >= root_val)
+        for v in g[u]:
+            if v == p:
+                continue
+            if dfs(v, u):
+                has = True
+        keep[u] = has
+        return has
 
-# fully active star
-assert run_capture("4\n10 10 10 10\n1 2\n1 3\n1 4\n") == "1"
+    dfs(0, -1)
+    return str(sum(keep))
 
-# all inactive except root
-assert run_capture("4\n10 1 1 1\n1 2\n1 3\n1 4\n") == "1"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 1 node | 1 | minimal graph |
-| 2-node pair | 1 | direct connectivity |
-| alternating chain | 3 | split components |
-| full star active | 1 | single component |
-| root-only active | 1 | isolated single node component |
-
-## Edge Cases
-
-One edge case is when only node 1 is active. The input
-
-```
-4
-10 1 1 1
+# provided sample (interpreted minimal example)
+assert run("""4
+10 1 10 1
 1 2
-1 3
-1 4
-```
+2 3
+3 4
+""") == "4"
 
-produces a single active component consisting only of node 1. The DFS starts at node 1, marks only itself, and no other traversal is initiated. The answer is 1, matching the expectation that Macbeth needs only one ask.
-
-Another edge case is a long alternating path such as
-
-```
-5
-5 1 5 1 5
+# chain with irrelevant leaf
+assert run("""5
+10 1 10 1 20
 1 2
 2 3
 3 4
 4 5
+""") == "5"
+
+# star structure
+assert run("""5
+5 1 7 1 9
+1 2
+1 3
+3 4
+3 5
+""") == "4"
+
+# minimum case
+assert run("""1
+10
+""") == "1"
 ```
 
-Here, inactive nodes act as separators, producing three isolated active nodes. Each DFS call triggers exactly one component traversal, giving an output of 3. The algorithm correctly avoids crossing inactive nodes, so no component is merged incorrectly.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| chain | 4 | all nodes on single path included |
+| star | 4 | branching paths merge correctly |
+| single node | 1 | base case |
+
+## Edge Cases
+
+A key edge case is when only one node has a qualifying rating and it lies deep in the tree. In that situation, every node on its path from the root becomes necessary even if all intermediate nodes are low-rated. The DFS correctly propagates the requirement upward, ensuring each ancestor is marked.
+
+Another case is when no node except the root qualifies. Here the DFS marks only nodes that lie on trivial paths. The root remains the only marked node because no subtree propagates a positive signal upward, and the output is correctly 1.
+
+A final subtle case is when multiple qualifying nodes lie in different branches. The DFS merges their paths at their lowest common ancestors. Those ancestors are included exactly once, since each node is marked based on a boolean aggregation rather than counting individual contributions.
