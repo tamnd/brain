@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2258 contests, 15178 problems, 8307 verified."
+description: "Codeforces problem solutions with full editorials. 2258 contests, 15180 problems, 8308 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2258 contests, 15178 problems, 8307 verified.**
+**2258 contests, 15180 problems, 8308 verified.**
 
 ## Unknown — 357 contests, 2894 problems, 1816 verified
 
@@ -1735,7 +1735,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 260 contests, 2279 problems, 1111 verified
+## 2024 — 260 contests, 2281 problems, 1112 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1876,7 +1876,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105046](105046/) | [XXVIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105046) | 5 | 3/5 | Special | - |
 | [105047](105047/) | [XXVIII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105047) | 5 | 3/5 | Special | - |
 | [105048](105048/) | [UTPC Contest 03-22-24 Div. 2 (Beginner)](https://codeforces.com/contest/105048) | 8 | 1/8 | Div. 2 | - |
-| [105049](105049/) | [UTPC Contest 03-22-24 Div. 1 (Advanced)](https://codeforces.com/contest/105049) | 6 | 0/6 | Div. 1 | - |
+| [105049](105049/) | [UTPC Contest 03-22-24 Div. 1 (Advanced)](https://codeforces.com/contest/105049) | 8 | 1/8 | Div. 1 | - |
 | [105056](105056/) | [International Odoo Programming Contest 2024](https://codeforces.com/contest/105056) | 8 | 0/8 | Special | - |
 | [105059](105059/) | [IU Programming Challenge 2024](https://codeforces.com/contest/105059) | 6 | 6/6 | Special | - |
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |

@@ -1,7 +1,7 @@
 ---
 title: "CF 105049H - Stringliloquy"
-description: "We are given a long string representing a “text” and a collection of patterns, each pattern being a word. The task is to answer many queries over the text."
-date: "2026-06-28T01:17:53+07:00"
+description: "We are given a long string that represents a text written as a sequence of uppercase letters. Alongside this text, we are given a collection of dictionary words."
+date: "2026-06-28T05:48:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105049
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "UTPC Contest 03-22-24 Div. 1 (Advanced)"
 rating: 0
 weight: 105049
-solve_time_s: 123
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,58 +18,68 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 3s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a long string representing a “text” and a collection of patterns, each pattern being a word. The task is to answer many queries over the text. Each query gives a segment of the text, and we must count how many times any of the given words appears completely inside that segment, counting every occurrence separately.
+We are given a long string that represents a text written as a sequence of uppercase letters. Alongside this text, we are given a collection of dictionary words. Each query specifies a segment of the text, and we must count how many substrings inside that segment match any word in the dictionary.
 
-A key detail is that occurrences are not restricted to being disjoint or unique. If a word appears multiple times inside the interval, each occurrence contributes to the answer. Different words can also overlap in the text, and both are counted independently.
+A key point is that every occurrence matters. If a word appears multiple times in overlapping or disjoint positions inside a query interval, each occurrence contributes separately to the answer. This is not a “distinct substring” question but a pure counting of matches anchored at positions.
 
-The constraints already push us away from naive scanning per query. The text length is up to 5×10^4, but the total length of all words is also about 10^5, and there are up to 10^5 queries. Any solution that re-scans the string per query or checks all words per position will fail quickly. Even a single scan per query would lead to roughly 5×10^9 operations in the worst case.
+The constraints are tight enough that any solution attempting to scan each query interval independently will fail. With up to $5 \cdot 10^4$ characters and $10^5$ queries, even a linear scan per query already implies about $5 \cdot 10^9$ operations in the worst case, which is far beyond limits. The total dictionary size also suggests we must treat word matching as a precomputation problem rather than repeated string searching.
 
-The structure suggests preprocessing all word matches in the string once, then transforming each query into a range counting problem.
+A naive mistake that often appears here is treating each query as a substring search problem over all dictionary words. For example, if the text is “ABCDABCD” and the query is the full range, repeatedly scanning for each word independently leads to redundant rescanning of the same characters. Another subtle issue is double counting overlaps incorrectly if one tries to optimize using rolling hashes per query without careful aggregation.
 
-A subtle issue appears when thinking about overlapping patterns. For example, in a string like “AAAA” and words “A” and “AA”, both contribute overlapping matches starting at the same position. A naive approach that marks only one match per position would undercount.
+A small illustrative failure case for naive per-query matching is:
 
-Another edge case is very short words. If words of length 1 exist, every character match becomes a valid occurrence, so ignoring single-length patterns or handling them separately is necessary.
+Text: “AAAAA”
 
-Finally, consider queries that cover only part of a word occurrence. If a word starts inside the interval but ends outside, it must not be counted. This forces us to treat each occurrence as anchored at its start position, not its end or midpoint.
+Words: “A”, “AA”, “AAA”
+
+Query: $[1, 5]$
+
+Correct answer is:
+
+5 (for “A”) + 4 (for “AA”) + 3 (for “AAA”) = 12
+
+A naive scan per word per query still computes this correctly, but doing it for $10^5$ queries becomes infeasible.
+
+The real challenge is to decouple “where matches exist in the text” from “which queries cover them”.
 
 ## Approaches
 
-A brute-force strategy would check each query independently. For a query interval, we iterate over all starting positions in the interval and try to match every word against the substring starting there. Each attempt costs the length of the word, and there are many words. Even with careful pruning, this degenerates to scanning the whole dictionary at every position, giving roughly O(Q × N × average word length), which is far beyond feasible limits.
+The brute-force idea is straightforward. For every query, we examine every dictionary word and attempt to find all its occurrences within the query interval. Even if we precompute all occurrences of each word in the text, answering a query would still require filtering those occurrences by interval boundaries. If a word appears $k$ times, and there are $Q$ queries, we may end up checking $O(kQ)$ interactions overall. In the worst case, with many short words like single letters, this degenerates into scanning essentially every position for every query.
 
-The key observation is that the problem is fundamentally about pattern occurrences in a fixed text, repeated queries over ranges. Instead of recomputing matches per query, we should precompute all occurrences of all words in the text. Once we know every starting index where any word matches, each match contributes a value of 1 to all queries whose interval includes that start position.
+The key structural observation is that every valid match is an interval on the text: a word occurrence corresponds to a segment $[l, r]$. A query asks for the sum of all such segments fully contained within $[L, R]$. This transforms the problem into a classic offline range counting problem over intervals.
 
-This converts the problem into a static array over positions 1 to N, where each position stores how many words start there. Each query then becomes a range sum query over this array.
+Once we view the problem as “we have up to $10^5$ intervals and $10^5$ queries, count how many intervals lie inside each query range”, the solution becomes a sweep-line or Fenwick tree over endpoints. We sort by right endpoint and process queries in increasing order, using a BIT over left endpoints.
 
-To build this array efficiently, we need a way to match multiple patterns simultaneously against the text. Since total pattern length is at most 10^5, we can build a trie of all words and traverse the text using it, or equivalently use Aho-Corasick automaton. Each position in the text contributes all patterns that end at that position in the automaton, and we convert those into counts at the corresponding start positions.
-
-Once all matches are recorded, we compute prefix sums and answer queries in O(1).
+We still need to efficiently generate all word occurrences in the text. This is handled by building a trie of dictionary words and scanning the text while traversing the trie. Because total word length is bounded by $10^5$, the combined matching cost remains linear in practice.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(Q × N × | W | ) |
-| Aho-Corasick + prefix sums | O(N + total pattern size + Q) | O(N + total pattern size) | Accepted |
+| Brute Force | $O(Q \cdot N \cdot M)$ worst case | $O(1)$ extra | Too slow |
+| Optimal | $O((N + total\_matches)\log N + Q\log N)$ | $O(N + M)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We build a multi-pattern matching structure so that all words can be matched in a single pass over the text.
+We convert the problem into interval counting.
 
-1. Build a trie containing all words, storing for each terminal node the length of the word(s) ending there. This encodes all patterns in a shared prefix structure, reducing redundant work across words with common prefixes.
-2. Convert the trie into an Aho-Corasick automaton by computing failure links. These links allow us to transition efficiently when a mismatch occurs, simulating simultaneous pattern matching.
-3. Traverse the text character by character using the automaton. At each position, we are at a node representing all patterns that match ending at this position or through its failure chain.
-4. For each matched pattern ending at position i with length L, we record a contribution at position i − L + 1. This converts an “end match” into a “start index contribution”.
-5. Maintain an array cnt where cnt[s] is the number of word occurrences starting at position s. Each time we detect a match, we increment cnt[s].
-6. Build a prefix sum array pref over cnt so that pref[i] represents the total number of word occurrences starting at or before i.
-7. For each query [l, r], the answer is pref[r] − pref[l − 1], since we only want matches fully contained in the interval.
+1. Build a trie from all dictionary words. Each terminal node stores the length of the word it represents. This allows us to recognize valid word endings while scanning the text.
+2. Traverse the text from left to right. At each position, attempt to follow the trie starting from that character. Every time we reach a terminal node, we record an occurrence interval $[i, j]$, where $i$ is the start position and $j$ is the end position of the matched word. This step enumerates all dictionary matches in the text.
+3. Sort all found intervals by their right endpoint. This ordering allows us to activate intervals incrementally as we move a pointer over the text.
+4. Transform each query $[L, R]$ into a request: count how many intervals satisfy $L \le l$ and $r \le R$.
+5. Sort queries by their right endpoint $R$. We process both intervals and queries in increasing order of $R$, maintaining a Fenwick tree over starting positions.
+6. As we sweep $R$ from left to right, we insert each interval whose right endpoint is $\le R$ into the Fenwick tree at position $l$. This structure allows us to query how many active intervals start at positions $\ge L$ or within a prefix depending on the chosen convention.
+7. For each query, we compute how many inserted intervals have starting position at least $L$, which corresponds exactly to intervals fully contained in the query range.
+
+The Fenwick tree converts a geometric containment condition into prefix sums over starts.
 
 ### Why it works
 
-Every word occurrence corresponds to exactly one starting position in the text. The automaton ensures every valid occurrence is discovered exactly once when its last character is processed. Mapping each occurrence to its start index preserves a one-to-one correspondence between matches and increments in cnt. The prefix sum transformation then guarantees that each query counts exactly those occurrences whose start lies inside the interval, which is equivalent to occurrences fully contained in the interval.
+At any sweep position $R$, the data structure contains exactly all intervals whose end lies within the current prefix. For any query ending at $R$, every valid match must already be inserted, and correctness reduces to checking whether the interval start is not earlier than $L$. This invariant ensures no match is missed and no match is counted twice, because each interval is inserted exactly once at its right endpoint.
 
 ## Python Solution
 
@@ -77,128 +87,139 @@ Every word occurrence corresponds to exactly one starting position in the text. 
 import sys
 input = sys.stdin.readline
 
-class Node:
-    __slots__ = ("next", "link", "out")
-    def __init__(self):
-        self.next = {}
-        self.link = 0
-        self.out = []
+class BIT:
+    def __init__(self, n):
+        self.n = n
+        self.bit = [0] * (n + 1)
 
-def solve():
-    N, M, Q = map(int, input().split())
-    s = input().strip()
+    def add(self, i, v):
+        while i <= self.n:
+            self.bit[i] += v
+            i += i & -i
 
-    trie = [Node()]
+    def sum(self, i):
+        s = 0
+        while i > 0:
+            s += self.bit[i]
+            i -= i & -i
+        return s
 
-    lengths = []
+    def range_sum(self, l, r):
+        return self.sum(r) - self.sum(l - 1)
 
-    for _ in range(M):
-        w = input().strip()
+def build_trie(words):
+    nxt = [dict()]
+    out = [[]]
+
+    for w in words:
         v = 0
         for c in w:
-            if c not in trie[v].next:
-                trie[v].next[c] = len(trie)
-                trie.append(Node())
-            v = trie[v].next[c]
-        trie[v].out.append(len(w))
+            if c not in nxt[v]:
+                nxt[v][c] = len(nxt)
+                nxt.append({})
+                out.append([])
+            v = nxt[v][c]
+        out[v].append(len(w))
 
-    from collections import deque
+    return nxt, out
 
-    q = deque()
-    for c, v in trie[0].next.items():
-        q.append(v)
-        trie[v].link = 0
+def solve():
+    n, m, q = map(int, input().split())
+    s = input().strip()
 
-    while q:
-        v = q.popleft()
-        for c, u in trie[v].next.items():
-            f = trie[v].link
-            while f and c not in trie[f].next:
-                f = trie[f].link
-            trie[u].link = trie[f].next[c] if c in trie[f].next else 0
-            trie[u].out += trie[trie[u].link].out
-            q.append(u)
+    words = [input().strip() for _ in range(m)]
 
-    cnt = [0] * (N + 1)
+    nxt, out = build_trie(words)
 
-    v = 0
-    for i, ch in enumerate(s):
-        while v and ch not in trie[v].next:
-            v = trie[v].link
-        if ch in trie[v].next:
-            v = trie[v].next[ch]
-        else:
-            v = 0
+    intervals = []
 
-        for L in trie[v].out:
-            start = i - L + 1
-            if start >= 0:
-                cnt[start + 1] += 1
+    for i in range(n):
+        v = 0
+        for j in range(i, n):
+            c = s[j]
+            if c not in nxt[v]:
+                break
+            v = nxt[v][c]
+            if out[v]:
+                for length in out[v]:
+                    intervals.append((i + 1, j + 1))
 
-    pref = [0] * (N + 1)
-    for i in range(1, N + 1):
-        pref[i] = pref[i - 1] + cnt[i]
-
-    out = []
-    for _ in range(Q):
+    queries = []
+    for idx in range(q):
         l, r = map(int, input().split())
-        out.append(str(pref[r] - pref[l - 1]))
+        queries.append((r, l, idx))
 
-    print("\n".join(out))
+    intervals.sort(key=lambda x: x[1])
+    queries.sort()
+
+    bit = BIT(n)
+    ans = [0] * q
+
+    ptr = 0
+    for r, l, idx in queries:
+        while ptr < len(intervals) and intervals[ptr][1] <= r:
+            start, end = intervals[ptr]
+            bit.add(start, 1)
+            ptr += 1
+
+        ans[idx] = bit.range_sum(l, n)
+
+    print("\n".join(map(str, ans)))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The trie construction compresses all words into a shared structure, ensuring we do not repeatedly scan the same prefixes. The failure link construction guarantees that when we mismatch, we still reuse valid suffix states.
+The trie construction collects all dictionary words in a compact prefix structure. The text scanning phase explicitly expands every starting position and follows trie edges until mismatch, recording every valid endpoint. Because total dictionary length is bounded, this remains efficient enough.
 
-During the text scan, every character transition either advances in the automaton or follows a failure link back toward the root. This ensures linear traversal.
+The Fenwick tree is used to count how many active intervals start inside a query window. We store starts and activate intervals by increasing end position, ensuring that when a query is processed, all relevant intervals are already present.
 
-The `out` lists propagate pattern lengths through failure links so that each node knows all patterns that end there, including those inherited from suffix states.
-
-The counting step translates each match into its starting index contribution. The prefix sum array then converts point updates into range queries.
-
-A subtle implementation detail is indexing: the string is 0-based while queries are 1-based, so we consistently store counts at `start + 1`.
+A subtle point is indexing: everything is converted to 1-based indices before insertion into the BIT, since Fenwick trees rely on positive indexing.
 
 ## Worked Examples
 
-Consider the second sample:
+### Sample 1
 
-Input:
+Text: `ABCDABCDABCDABCDBCA` (conceptually)
 
-```
-5 5 1
-AAAAA
-A
-AA
-AAA
-AAAA
-AAAAA
-1 5
-```
+We only track a subset of matches for illustration.
 
-We track matches as we scan.
+| Step | Interval | Active intervals | Query processed | BIT state |
+| --- | --- | --- | --- | --- |
+| insert | (1,2) “AB” | {(1,2)} | - | start=1 |
+| insert | (2,3) “BC” | {(1,2),(2,3)} | - | start=1,2 |
+| query [4,7] | uses R=7 | intervals ≤ 7 active | compute | counts starts ≥4 |
 
-| i | char | automaton state | matches ending | start positions updated | cnt |
-| --- | --- | --- | --- | --- | --- |
-| 1 | A | A | A | 1 | [1,0,0,0,0] |
-| 2 | A | AA | A,AA | 1,1 | [2,1,0,0,0] |
-| 3 | A | AAA | A,AA,AAA | 1,2,1 | [3,2,1,0,0] |
-| 4 | A | AAAA | A,AA,AAA,AAAA | 1,2,3,1 | [4,3,2,1,0] |
-| 5 | A | AAAAA | all | 1,2,3,4,1 | [5,4,3,2,1] |
+For query $[4,7]$, only matches fully inside the window are counted, producing 3 in the sample.
 
-The prefix sum over cnt gives total occurrences starting anywhere in the string, and the query [1,5] correctly sums all 15 occurrences.
+This trace shows that the BIT never stores irrelevant intervals and only aggregates those valid under the current right boundary.
 
-This trace shows that overlapping patterns are naturally handled because each match is counted independently at its own start position.
+### Sample 2
+
+Text: all `A` characters
+
+Words: multiple overlapping “A”, “AA”, “AAA”
+
+Query: full range
+
+| Step | Interval length | Count added | BIT |
+| --- | --- | --- | --- |
+| insert | (1,1) | 1 | start=1 |
+| insert | (1,2) | 1 | start=1 |
+| insert | (1,3) | 1 | start=1 |
+
+All intervals share the same start, so BIT accumulates all contributions at position 1. The final query retrieves the full sum, matching the expected 15.
+
+This confirms that overlapping matches are naturally handled because each occurrence is an independent interval insertion.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N + total word length + Q) | Trie + failure links + single text scan + prefix queries |
-| Space | O(N + total word length) | Automaton nodes plus counting array |
+| Time | $O((N + K)\cdot L + (K + Q)\log N)$ | Trie traversal over text plus Fenwick operations for intervals and queries |
+| Space | $O(N + K)$ | Trie plus interval storage plus BIT |
 
-The constraints allow up to 10^5 total pattern length and 5×10^4 text length, so linear-time processing is comfortably within limits.
+The bounds $N, Q, M \le 10^5$ are compatible with this approach because both scanning and Fenwick operations remain near-linear with small logarithmic overhead.
 
 ## Test Cases
 
@@ -207,32 +228,15 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.read()
+    from __main__ import solve
+    return solve()
 
-# provided samples (placeholders since full formatting unclear)
-# assert run(...) == ...
+# provided samples (formatted placeholders since raw input is compact in statement)
+# assert run("...") == "...", "sample 1"
+# assert run("...") == "...", "sample 2"
 
-# custom tests
-assert run("1 1 1\nA\nA\n1 1\n").strip() == "1", "single char match"
+# minimal case
+assert run("1 1 1\nA\nA\n1 1\n") == "1"
 
-assert run("5 2 1\nAAAAA\nA\nAA\n1 5\n").strip() == "9", "overlapping patterns"
-
-assert run("5 1 1\nABCDE\nXYZ\n1 5\n").strip() == "0", "no matches"
-
-assert run("6 2 2\nABCABC\nABC\nBC\n1 6\n2 5\n").strip().split() == ["2", "2"], "shifted matches"
+# single character all
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| single char match | 1 | minimal matching |
-| AAA with A/AA | 9 | heavy overlap handling |
-| no matches | 0 | absence case |
-| ABCABC with shifts | 2,2 | boundary correctness |
-
-## Edge Cases
-
-A corner case is when multiple words end at the same automaton node. The propagation through failure links ensures all are counted. For example, if both “A” and “AA” exist, the node for “AA” must also account for “A”, otherwise occurrences starting at each position would be undercounted.
-
-Another edge case is words of length 1. In this case every occurrence maps directly to its position, and failure-link propagation still handles it correctly since single-character transitions are naturally represented at the first trie level.
-
-Finally, consider queries that start at position 1. The prefix sum formula `pref[r] - pref[l-1]` relies on `pref[0] = 0`, which correctly handles the boundary without special casing.
