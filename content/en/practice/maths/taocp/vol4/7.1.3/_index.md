@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 163/219 solved."
+description: "Section 7.1.3 exercises: 164/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 163/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 164/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -40,24 +40,24 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 163/219 solved.
 | [20](20.md) | &#9654; [*21*] | medium | verified | 2m29s |
 | [21](21.md) |  [*22*] | medium | solved | 4m |
 | [22](22.md) |  [*21*] | medium | verified | 2m20s |
-| 23 | &#9654; [*27*] | hard | - | - |
-| 24 | &#9654; [*M30*] | math-hard | - | - |
-| 25 | &#9654; [*15*] | simple | - | - |
+| [23](23.md) | &#9654; [*27*] | hard | solved | 4m58s |
+| [24](24.md) | &#9654; [*M30*] | math-hard | solved | 4m49s |
+| [25](25.md) | &#9654; [*15*] | simple | verified | 1m08s |
 | [26](26.md) |  [*22*] | medium | verified | 2m18s |
-| [27](27.md) |  [*21*] | medium | verified | 2m25s |
-| [28](28.md) |  [*16*] | medium | verified | 58s |
-| [29](29.md) |  [*20*] | medium | verified | 4m48s |
-| [30](30.md) |  [*20*] | medium | verified | 3m29s |
-| [31](31.md) | &#9654; [*20*] | medium | solved | 1m02s |
+| [27](27.md) |  [*21*] | medium | verified | 1m19s |
+| [28](28.md) |  [*16*] | medium | verified | 1m17s |
+| [29](29.md) |  [*20*] | medium | solved | 3m40s |
+| [30](30.md) |  [*20*] | medium | verified | 3m43s |
+| [31](31.md) | &#9654; [*20*] | medium | verified | 1m11s |
 | [32](32.md) |  [*20*] | medium | verified | 1m15s |
 | [33](33.md) | &#9654; [*26*] | hard | solved | 57s |
-| [34](34.md) |  [*M23*] | math-medium | verified | 1m21s |
-| [35](35.md) | &#9654; [*M26*] | math-hard | solved | 4m28s |
-| [36](36.md) |  [*20*] | medium | verified | 1m30s |
-| [37](37.md) |  [*16*] | medium | verified | 1m05s |
-| [38](38.md) |  [*17*] | medium | verified | 1m07s |
-| [39](39.md) | &#9654; [*20*] | medium | verified | 1m06s |
-| [40](40.md) | &#9654; [*21*] | medium | solved | 1m25s |
+| [34](34.md) |  [*M23*] | math-medium | verified | 4m30s |
+| [35](35.md) | &#9654; [*M26*] | math-hard | solved | 4m12s |
+| [36](36.md) |  [*20*] | medium | verified | 1m10s |
+| [37](37.md) |  [*16*] | medium | verified | 1m09s |
+| [38](38.md) |  [*17*] | medium | solved | 4m15s |
+| [39](39.md) | &#9654; [*20*] | medium | solved | 1m11s |
+| [40](40.md) | &#9654; [*21*] | medium | verified | 1m04s |
 | [41](41.md) |  [*M22*] | math-medium | solved | 2m06s |
 | 42 |  [*M21*] | math-medium | - | - |
 | 43 | &#9654; [*20*] | medium | - | - |
