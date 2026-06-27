@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 881 solved, 504 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 881 solved, 506 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 504 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 506 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -25,7 +25,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 881 solved, 504 verified, 890 tota
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 14 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 10 | 19 |
-| [3.5](3.5/) | What Is a Random Sequence? | 44 | 19 | 46 |
+| [3.5](3.5/) | What Is a Random Sequence? | 44 | 21 | 46 |
 | [3.6](3.6/) | Summary | 15 | 10 | 15 |
 | [4.1](4.1/) | Positional Number Systems | 34 | 16 | 34 |
 | [4.2.1](4.2.1/) | Single-Precision Calculations | 19 | 13 | 19 |

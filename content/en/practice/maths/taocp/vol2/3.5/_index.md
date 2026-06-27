@@ -44,13 +44,13 @@ Exercises from [TAOCP Volume 1](../) Section 3.5: 44/44 solved.
 | [24](24.md) | &#9654; [*M35*] | math-hard | verified | 2m35s |
 | [25](25.md) |  [*HM20*] | hm-medium | verified | 8m45s |
 | [26](26.md) |  [*HM34*] | hm-hard | solved | 5m10s |
-| [27](27.md) |  [**] |  | solved | 9m49s |
-| [28](28.md) | &#9654; [*HM21*] | hm-medium | solved | 6m26s |
-| [29](29.md) |  [*HM34*] | hm-hard | solved | 2m29s |
-| [30](30.md) | &#9654; [*M39*] | math-project | solved | 5m23s |
-| [31](31.md) |  [*M30*] | math-hard | solved | 6m53s |
-| [32](32.md) |  [*M24*] | math-medium | solved | 14m06s |
-| [33](33.md) |  [*HM22*] | hm-medium | verified | 2m37s |
+| [27](27.md) |  [**] |  | solved | 4m35s |
+| [28](28.md) | &#9654; [*HM21*] | hm-medium | solved | 5m46s |
+| [29](29.md) |  [*HM34*] | hm-hard | verified | 1m14s |
+| [30](30.md) | &#9654; [*M39*] | math-project | solved | 5m06s |
+| [31](31.md) |  [*M30*] | math-hard | solved | 4m44s |
+| [32](32.md) |  [*M24*] | math-medium | verified | 1m21s |
+| [33](33.md) |  [*HM22*] | hm-medium | verified | 2m11s |
 | [34](34.md) | &#9654; [*M25*] | math-medium | verified | 2m |
 | [35](35.md) | &#9654; [*HM35*] | hm-hard | solved | 4m43s |
 | [36](36.md) |  [*HM30*] | hm-hard | solved | 18m |
