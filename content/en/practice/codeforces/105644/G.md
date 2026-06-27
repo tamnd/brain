@@ -1,7 +1,7 @@
 ---
 title: "CF 105644G - Gridlandia"
-description: "I don't have enough information to write a correct editorial for this problem because the prompt does not include the actual problem statement, and the sections shown are empty."
-date: "2026-06-26T15:32:16+07:00"
+description: "Absolutely. Please provide the Codeforces problem (either by pasting the statement, giving the problem link, or specifying the contest and problem ID, such as \"Codeforces Round 1000 Problem C\"). A strong competitive programming editorial typically includes: 1."
+date: "2026-06-26T18:02:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105644
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Osijek Competitive Programming Camp, Winter 2023, Day 8: Dilhan Salgado Contest (The 1st Universal Cup. Stage 5: Osijek)"
 rating: 0
 weight: 105644
-solve_time_s: 24
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,31 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I don't have enough information to write a correct editorial for this problem because the prompt does not include the actual problem statement, and the sections shown are empty.
+Absolutely. Please provide the **Codeforces problem** (either by pasting the statement, giving the problem link, or specifying the contest and problem ID, such as "Codeforces Round 1000 Problem C").
 
-I looked up the problem, and Codeforces 105644G, "Gridlandia", is a constructive output problem about placing walls on grid cells so that no two walls touch, even at endpoints. citeturn0search0turn0search12
+A strong competitive programming editorial typically includes:
 
-However, a complete editorial requires deriving and proving the construction, providing a correct implementation, worked examples, edge-case analysis, and test cases. I can't reliably invent those without first deriving the intended solution, and I won't fabricate an algorithm that may be incorrect.
+1. **Problem Restatement** - A concise summary of what needs to be computed.
+2. **Key Observations** - The insights that lead to the solution.
+3. **Algorithm Derivation** - Step-by-step reasoning from the observations to the algorithm.
+4. **Correctness Proof** - A formal proof (often by induction or invariants) that the algorithm always produces the correct answer.
+5. **Complexity Analysis** - Time and space complexity.
+6. **Reference Implementation** - Usually in C++17, written in a clean competitive programming style.
+7. **Common Pitfalls** - Edge cases and implementation details that frequently cause wrong answers.
 
-If you provide either:
-
-1. the full problem statement, or
-2. the original PDF or contest page,
-
-I can produce the complete editorial in the exact structure you requested, including:
-
-- Problem Understanding
-- Approaches
-- Algorithm Walkthrough with proof sketch
-- Complete Python 3 solution
-- Code explanation
-- Worked Examples
-- Complexity Analysis
-- Assert-based test cases
-- Edge case discussion
-
-using the requested writing style and formatting.
+Once you provide the problem, I'll write a detailed editorial in the style commonly seen in high-quality Codeforces editorials.
