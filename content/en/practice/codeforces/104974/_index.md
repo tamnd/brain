@@ -1,28 +1,29 @@
 ---
 title: "Codentines Day"
-description: "14 problems from Codentines Day (contest 104974), difficulty -. 3/14 solutions verified against sample I/O."
+description: "15 problems from Codentines Day (contest 104974), difficulty -. 3/15 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104974
 contest_type: "Special"
 rating_range: "-"
-n_problems: 14
+n_problems: 15
 n_verified: 3
-total_solve_s: 1198
+total_solve_s: 1339
 contest_year: 2024
-date: "2026-06-28T06:18:12+07:00"
+date: "2026-06-28T06:34:20+07:00"
 weight: 104974
 draft: false
 ---
 
 # [Codentines Day](https://codeforces.com/contest/104974)
 
-Special | 14 problems | 3/14 verified | Difficulty - | 19m 58s
+Special | 15 problems | 3/15 verified | Difficulty - | 22m 19s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Happy Valentine's Day](https://codeforces.com/problemset/problem/104974/A) |  |  |  | 1m 12s |  |
 | [B](B/) | [Arcade Game](https://codeforces.com/problemset/problem/104974/B) |  |  |  | 1m 23s |  |
+| [C](C/) | [Museum Visit](https://codeforces.com/problemset/problem/104974/C) |  |  |  | 2m 21s |  |
 | [D](D/) | [Traffic Lights](https://codeforces.com/problemset/problem/104974/D) |  |  |  | 1m 9s |  |
 | [E](E/) | [Intern Florist](https://codeforces.com/problemset/problem/104974/E) |  |  |  | 49s | ✓ |
 | [F](F/) | [Painting a Picture](https://codeforces.com/problemset/problem/104974/F) |  |  |  | 1m 46s |  |
