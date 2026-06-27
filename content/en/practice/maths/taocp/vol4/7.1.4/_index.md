@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 1/267 solved."
+description: "Section 7.1.4 exercises: 28/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 1/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 28/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -34,8 +34,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 1/267 solved.
 | 14 |  [*M24*] | math-medium | - | - |
 | 15 |  [*M23*] | math-medium | - | - |
 | 16 | &#9654; [*22*] | medium | - | - |
-| 17 |  [*32*] | hard | - | - |
-| 18 |  [*13*] | simple | - | - |
+| [17](17.md) |  [*32*] | hard | solved | 2m16s |
+| [18](18.md) |  [*13*] | simple | solved | 3m30s |
 | 19 |  [*20*] | medium | - | - |
 | 20 |  [*15*] | simple | - | - |
 | 21 |  [*05*] | simple | - | - |
@@ -177,31 +177,31 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 1/267 solved.
 | 157 |  [*M24*] | math-medium | - | - |
 | 158 |  [*M24*] | math-medium | - | - |
 | 159 |  [*20*] | medium | - | - |
-| 160 | &#9654; [*24*] | medium | - | - |
-| 161 |  [*28*] | hard | - | - |
-| 162 | &#9654; [*30*] | hard | - | - |
-| 163 |  [*23*] | medium | - | - |
-| 164 | &#9654; [*M27*] | math-hard | - | - |
-| 165 |  [*M21*] | math-medium | - | - |
-| 166 |  [*M29*] | math-hard | - | - |
-| 167 |  [*21*] | medium | - | - |
-| 168 | &#9654; [*HM40*] | hm-project | - | - |
-| 169 |  [*M46*] | math-research | - | - |
-| 170 | &#9654; [*M25*] | math-medium | - | - |
-| 171 |  [*M26*] | math-hard | - | - |
-| 172 |  [*M28*] | math-hard | - | - |
-| 173 | &#9654; [*HM33*] | hm-hard | - | - |
-| 174 | &#9654; [*M39*] | math-project | - | - |
-| 175 |  [*M30*] | math-hard | - | - |
-| 176 |  [*M35*] | math-hard | - | - |
-| 177 |  [*M22*] | math-medium | - | - |
-| 178 |  [*M24*] | math-medium | - | - |
-| 179 |  [*M47*] | math-research | - | - |
-| 180 |  [*M27*] | math-hard | - | - |
-| 181 |  [*M21*] | math-medium | - | - |
-| 182 |  [*M38*] | math-project | - | - |
-| 183 | &#9654; [*M25*] | math-medium | - | - |
-| 184 |  [*M23*] | math-medium | - | - |
+| [160](160.md) | &#9654; [*24*] | medium | solved | 4m48s |
+| [161](161.md) |  [*28*] | hard | solved | 4m07s |
+| [162](162.md) | &#9654; [*30*] | hard | solved | 4m33s |
+| [163](163.md) |  [*23*] | medium | solved | 4m24s |
+| [164](164.md) | &#9654; [*M27*] | math-hard | solved | 4m24s |
+| [165](165.md) |  [*M21*] | math-medium | solved | 4m21s |
+| [166](166.md) |  [*M29*] | math-hard | verified | 3m59s |
+| [167](167.md) |  [*21*] | medium | solved | 4m23s |
+| [168](168.md) | &#9654; [*HM40*] | hm-project | solved | 3m15s |
+| [169](169.md) |  [*M46*] | math-research | solved | 2m15s |
+| [170](170.md) | &#9654; [*M25*] | math-medium | solved | 6m35s |
+| [171](171.md) |  [*M26*] | math-hard | solved | 5m18s |
+| [172](172.md) |  [*M28*] | math-hard | solved | 5m43s |
+| [173](173.md) | &#9654; [*HM33*] | hm-hard | solved | 4m19s |
+| [174](174.md) | &#9654; [*M39*] | math-project | solved | 4m17s |
+| [175](175.md) |  [*M30*] | math-hard | verified | 1m18s |
+| [176](176.md) |  [*M35*] | math-hard | solved | 4m26s |
+| [177](177.md) |  [*M22*] | math-medium | verified | 2m27s |
+| [178](178.md) |  [*M24*] | math-medium | solved | 3m54s |
+| [179](179.md) |  [*M47*] | math-research | solved | 4m41s |
+| [180](180.md) |  [*M27*] | math-hard | verified | 3m30s |
+| [181](181.md) |  [*M21*] | math-medium | verified | 2m13s |
+| [182](182.md) |  [*M38*] | math-project | verified | 2m33s |
+| [183](183.md) | &#9654; [*M25*] | math-medium | solved | 4m15s |
+| [184](184.md) |  [*M23*] | math-medium | solved | 3m31s |
 | 185 |  [*M25*] | math-medium | - | - |
 | 186 |  [*10*] | simple | - | - |
 | 187 | &#9654; [*20*] | medium | - | - |
