@@ -140,9 +140,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 101/219 solved.
 | [120](120.md) | &#9654; [*M25*] | math-medium | verified | 2m41s |
 | [121](121.md) | &#9654; [*M25*] | math-medium | solved | 4m43s |
 | [122](122.md) |  [*M22*] | math-medium | verified | 1m56s |
-| [123](123.md) |  [*M23*] | math-medium | solved | 4m10s |
-| [124](124.md) |  [*M38*] | math-project | solved | 4m28s |
-| [125](125.md) |  [*M33*] | math-hard | verified | 1m25s |
+| [123](123.md) |  [*M23*] | math-medium | solved | 3m56s |
+| [124](124.md) |  [*M38*] | math-project | solved | 4m06s |
+| [125](125.md) |  [*M33*] | math-hard | verified | 1m14s |
 | [126](126.md) |  [*M46*] | math-research | solved | 4m53s |
 | [127](127.md) |  [*HM40*] | hm-project | solved | 3m25s |
 | [128](128.md) |  [*M46*] | math-research | solved | 4m36s |

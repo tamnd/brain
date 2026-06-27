@@ -51,8 +51,8 @@ Exercises from [TAOCP Volume 1](../) Section 3.5: 44/44 solved.
 | [31](31.md) |  [*M30*] | math-hard | solved | 4m44s |
 | [32](32.md) |  [*M24*] | math-medium | verified | 1m21s |
 | [33](33.md) |  [*HM22*] | hm-medium | verified | 2m11s |
-| [34](34.md) | &#9654; [*M25*] | math-medium | verified | 2m |
-| [35](35.md) | &#9654; [*HM35*] | hm-hard | solved | 4m43s |
+| [34](34.md) | &#9654; [*M25*] | math-medium | solved | 4m16s |
+| [35](35.md) | &#9654; [*HM35*] | hm-hard | verified | 3m30s |
 | [36](36.md) |  [*HM30*] | hm-hard | solved | 18m |
 | [37](37.md) |  [*M37*] | math-project | solved | 5m28s |
 | [38](38.md) |  [*M49*] | math-research | solved | 9m06s |
