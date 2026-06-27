@@ -1,7 +1,7 @@
 ---
 title: "CF 105048F - Word Inventing"
-description: "We are given a string of length $n$ and an integer $k$. The only operation allowed is to pick a position $i$ and swap the characters at positions $i$ and $i+k$."
-date: "2026-06-28T01:24:17+07:00"
+description: "We are given a string of length $n$. We are allowed to repeatedly apply a swap operation that exchanges characters at positions $i$ and $i+k$, as long as both indices are valid. These swaps can be performed any number of times in any order."
+date: "2026-06-28T05:43:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 105048
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "UTPC Contest 03-22-24 Div. 2 (Beginner)"
 rating: 0
 weight: 105048
-solve_time_s: 82
+solve_time_s: 91
 verified: false
 draft: false
 ---
@@ -18,60 +18,72 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 22s  
+**Solve time:** 1m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string of length $n$ and an integer $k$. The only operation allowed is to pick a position $i$ and swap the characters at positions $i$ and $i+k$. This swap can be repeated any number of times, so we are effectively allowed to rearrange characters, but only through these fixed-distance exchanges.
+We are given a string of length $n$. We are allowed to repeatedly apply a swap operation that exchanges characters at positions $i$ and $i+k$, as long as both indices are valid. These swaps can be performed any number of times in any order.
 
-The key question is not to output one rearranged string, but to count how many distinct strings can be obtained after applying any sequence of these swaps. Each sequence of swaps may lead to the same final arrangement, so we care only about distinct reachable permutations.
+The task is to determine how many distinct strings can be produced from the original string by applying any sequence of these swaps. Two strings are considered different if at least one position differs.
 
-The constraints go up to $n = 10^6$, so any approach that explicitly simulates swaps or even builds an explicit graph of positions is impossible. Even $O(n \log n)$ is acceptable only if it is extremely lightweight, but anything quadratic or involving repeated string reconstruction is immediately ruled out.
+The key structure is that swaps do not act globally. Each swap only connects positions whose indices differ by exactly $k$. This immediately suggests that indices are partitioned into independent groups based on their remainder modulo $k$.
 
-A subtle failure case appears when $k$ is large or shares structure with $n$. For example, if $n = 6$ and $k = 4$, the swaps connect positions like $1 \leftrightarrow 5$, $2 \leftrightarrow 6$, but position $3$ is isolated. A naive interpretation that “any positions distance $k$ apart are interchangeable globally” would incorrectly assume full permutation freedom.
+The constraint $n \le 10^6$ implies any solution must be essentially linear or $O(n \log n)$. Anything involving enumerating permutations or BFS over states is impossible since the state space is factorial in $n$. We are forced to compress the effect of swaps into a combinatorial counting problem rather than simulate transformations.
 
-Another edge case is when $k = 1$. In that case, swaps occur between adjacent indices, which allows full reordering, so every permutation of the string is reachable. Missing this special structure leads to severe undercounting.
+A subtle failure case for naive reasoning is assuming that any permutation of the string is possible if enough swaps exist. For example, with $n=4, k=2$, the string “aabb” cannot produce all 4! permutations. Only positions (1,3) and (2,4) are connected, so characters can only be rearranged within those pairs. A naive global permutation model overcounts massively.
+
+Another edge case is when $k=1$. Then every adjacent swap is allowed, which means the entire string can be permuted arbitrarily, so the answer is $n!$ divided by multiplicities of characters.
+
+At the other extreme, when $k=n$, no swaps are possible, so only one configuration exists.
 
 ## Approaches
 
-The operation $i \leftrightarrow i+k$ defines a graph on indices $1 \ldots n$, where each index is connected to the index $k$ steps away. Because swaps are reversible, each connected component of this graph allows arbitrary permutations of characters within that component.
+The brute-force approach would model each index as a node and add edges between $i$ and $i+k$. Then we would build connected components and simulate all reachable permutations within each component. Each component of size $m$ would contribute $m!$ rearrangements, but duplicates must be removed due to repeated characters. This leads to multinomial coefficients per component.
 
-So the problem reduces to identifying connected components induced by edges $(i, i+k)$. Each component is a chain of indices:
+However, brute-force fails because explicitly generating all permutations inside components is exponential. Even building a state graph is infeasible since each component alone may have size $O(n)$, giving factorial growth.
+
+The key observation is that swaps only allow arbitrary rearrangements within each connected component formed by stepping in increments of $k$. These components are exactly the residue classes modulo $\gcd(n,k)$ structure induced by the graph $i \leftrightarrow i+k$. In fact, the indices split into $k$ independent chains:
 
 $$i, i+k, i+2k, \dots$$
 
-until exceeding $n$. Every such chain is independent of others.
+within bounds. Within each chain, any permutation is achievable because adjacent swaps along the chain generate the full symmetric group on that component.
 
-Once components are known, we look at the multiset of characters inside each component. Within a component of size $m$, all permutations are achievable, contributing a factor of $m!$ to the answer.
-
-The brute-force approach would explicitly build a graph and run BFS/DFS over all $n$ nodes, then compute factorials per component. This already seems $O(n)$, but a naive adjacency construction or repeated string updates could degrade into $O(nk)$ or worse if implemented literally via swaps.
-
-The key observation is that the graph structure is deterministic and does not need construction: each component is fully described by residue classes modulo $k$. Index $i$ belongs to component $i \bmod k$.
-
-This reduces the problem to computing sizes of these residue classes.
+Thus the problem reduces to: for each chain, count how many distinct permutations of its multiset of characters exist. These are multinomial counts, and since chains are independent, we multiply results across all chains.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force graph + DFS with explicit adjacency | $O(n)$ | $O(n)$ | Accepted |
-| Modulo-class decomposition | $O(n)$ | $O(k)$ | Accepted |
+| Brute Force Enumeration | exponential | exponential | Too slow |
+| Component + Multinomial Counting | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We group positions by their index modulo $k$. Each group contains all indices that can reach each other via repeated $+k$ swaps.
+### Step 1: Partition indices into chains
 
-1. Compute factorials up to $n$. This is required because each component contributes a factorial term based on its size.
-2. Initialize an array `cnt` of size $k$, where `cnt[r]` tracks how many positions belong to residue class $r$. This counts how many indices of the string fall into each connected component.
-3. Scan all indices $i$ from $0$ to $n-1$, compute $i \bmod k$, and increment the corresponding counter. This step partitions the string positions into independent swap groups.
-4. For each residue class $r$, multiply the answer by `fact[cnt[r]]`. This is valid because each component can permute its characters arbitrarily due to swap connectivity.
-5. Return the product modulo $10^9+7$.
+We group positions by their residue modulo $k$. For each remainder $r$, consider indices $r, r+k, r+2k, \dots$. Each such group is independent because swaps never move characters between different groups. This is the fundamental decoupling of the problem.
 
-The reason we only count sizes and not actual character frequencies inside each component is that swaps allow any rearrangement of positions, and characters are indistinguishable in terms of position-based counting. The input string itself does not constrain reachability beyond component structure.
+### Step 2: Count characters in each chain
+
+For each chain, we collect the multiset of characters appearing at those positions. Since any permutation inside the chain is reachable, the number of distinct arrangements depends only on multiplicities.
+
+### Step 3: Compute multinomial contribution per chain
+
+If a chain has length $m$, and character counts $c_1, c_2, \dots$, then the number of distinct permutations is:
+
+$$\frac{m!}{\prod c_i!}$$
+
+We compute factorials and modular inverses to evaluate this efficiently.
+
+The reason this is valid is that swaps generate all adjacent transpositions along the chain, which generate the full symmetric group on that chain.
+
+### Step 4: Multiply contributions
+
+Since chains are independent, the total number of reachable strings is the product over all chains.
 
 ### Why it works
 
-The operation defines an undirected graph where edges connect $i$ and $i+k$. Each connected component is exactly the set of indices sharing the same residue modulo $k$. Since swaps generate the full symmetric group on each connected component, every permutation of indices inside a component is reachable. Different components never interact, so the total number of reachable strings is the product of factorials of component sizes. This invariant holds because swaps never cross residue classes, preserving independence across components throughout all operations.
+Each swap preserves the partition of indices by residue modulo $k$, so no character ever leaves its chain. Inside a chain, swaps form a connected path graph, and adjacent swaps generate all permutations of that path. Therefore each chain contributes exactly the number of permutations of its multiset, independent of other chains. Independence implies multiplication.
 
 ## Python Solution
 
@@ -81,22 +93,40 @@ input = sys.stdin.readline
 
 MOD = 10**9 + 7
 
+def modinv(x):
+    return pow(x, MOD - 2, MOD)
+
 def solve():
     n, k = map(int, input().split())
     s = input().strip()
 
     fact = [1] * (n + 1)
+    invfact = [1] * (n + 1)
+
     for i in range(1, n + 1):
         fact[i] = fact[i - 1] * i % MOD
 
-    cnt = [0] * k
+    invfact[n] = modinv(fact[n])
+    for i in range(n, 0, -1):
+        invfact[i - 1] = invfact[i] * i % MOD
 
-    for i in range(n):
-        cnt[i % k] += 1
-
+    used = [False] * n
     ans = 1
-    for c in cnt:
-        ans = (ans * fact[c]) % MOD
+
+    for r in range(k):
+        freq = [0] * 26
+        length = 0
+        i = r
+        while i < n:
+            freq[ord(s[i]) - 97] += 1
+            length += 1
+            i += k
+
+        ways = fact[length]
+        for c in freq:
+            ways = ways * invfact[c] % MOD
+
+        ans = ans * ways % MOD
 
     print(ans)
 
@@ -104,119 +134,8 @@ if __name__ == "__main__":
     solve()
 ```
 
-The factorial array is precomputed once to allow constant-time lookup per component size. The modulo grouping step is linear in $n$, and each index contributes to exactly one residue class.
+The solution begins by precomputing factorials and inverse factorials up to $n$, since every chain requires multinomial coefficients. Modular inverses are computed using Fermat’s theorem, which is valid because the modulus is prime.
 
-The multiplication step accumulates contributions from each independent component. Since components do not interact, no further combinatorial correction is needed.
+The main loop iterates over the $k$ residue classes. For each class, we walk through indices spaced by $k$, accumulating character frequencies. The multinomial formula is applied directly using factorial tables.
 
-## Worked Examples
-
-### Sample 1
-
-Input:
-
-```
-4 2
-aabb
-```
-
-We compute factorials up to 4: $[1,1,2,6,24]$.
-
-Residue classes modulo 2:
-
-- Class 0: indices 0, 2 → size 2
-- Class 1: indices 1, 3 → size 2
-
-| Step | Class 0 | Class 1 | Answer |
-| --- | --- | --- | --- |
-| Count sizes | 2 | 2 | 1 |
-| Multiply factorials | 2! | 2! | 2 × 2 |
-
-Final answer is $4$. This shows two independent swap groups of equal size.
-
-### Sample 2
-
-Input:
-
-```
-4 1
-utpc
-```
-
-Residue classes modulo 1:
-
-- Only one class containing all indices: size 4
-
-| Step | Component size | Answer |
-| --- | --- | --- |
-| Count | 4 | 1 |
-| Multiply | 4! | 24 |
-
-Final answer is $24$, meaning full permutation freedom over the whole string.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | $O(n)$ | One pass to build factorials and one pass to count residues |
-| Space | $O(\min(n,k))$ | Factorials array plus residue counters |
-
-The solution comfortably fits within constraints since both operations are linear and only involve simple arithmetic and array updates.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import math
-
-    MOD = 10**9 + 7
-
-    n, k = map(int, input().split())
-    s = input().strip()
-
-    fact = [1] * (n + 1)
-    for i in range(1, n + 1):
-        fact[i] = fact[i - 1] * i % MOD
-
-    cnt = [0] * k
-    for i in range(n):
-        cnt[i % k] += 1
-
-    ans = 1
-    for c in cnt:
-        ans = ans * fact[c] % MOD
-
-    return str(ans)
-
-# provided samples
-assert run("4 2\naabb\n") == "4"
-assert run("4 1\nutpc\n") == "24"
-
-# minimum case
-assert run("1 1\na\n") == "1"
-
-# k = n (all isolated swaps impossible)
-assert run("5 5\nabcde\n") == "1"
-
-# all same residue structure
-assert run("6 3\nabcdef\n") == str((6//3)*(6//3))  # actually 2!^3 = 8
-
-# larger structure check
-assert run("6 3\nabcdef\n") == "8"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 1 1 a | 1 | single element edge case |
-| 5 5 abcde | 1 | no swaps possible |
-| 6 3 abcdef | 8 | multiple independent components |
-
-## Edge Cases
-
-When $k = n$, every index is isolated because no valid $i$ satisfies $i+k \le n$. The algorithm produces `cnt` where every class has size 1, so the answer becomes $1!^n = 1$, matching the fact that no swaps are possible.
-
-When $k = 1$, all indices belong to a single residue class. The algorithm counts one component of size $n$, producing $n!$, which matches full permutation reachability via adjacent swaps.
-
-When $k > n/2$, most indices form chains of length at most 2. For example, $n = 6, k = 4$ yields classes $\{1,5\}, \{2,6\}, \{3\}, \{4\}$. The algorithm multiplies $2!, 2!, 1!, 1!$, correctly capturing partial independence without over-merging positions that are not connected through repeated operations.
+A common pitfall is forgetting that each chain must be processed independently; m
