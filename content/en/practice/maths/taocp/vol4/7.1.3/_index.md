@@ -155,8 +155,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [135](135.md) |  [*22*] | medium | solved | 4m41s |
 | [136](136.md) |  [*29*] | hard | solved | 6m36s |
 | [137](137.md) |  [*21*] | medium | verified | 3m58s |
-| [138](138.md) |  [*24*] | medium | solved | 3m58s |
-| [139](139.md) |  [*25*] | medium | verified | 4m17s |
+| [138](138.md) |  [*24*] | medium | solved | 3m54s |
+| [139](139.md) |  [*25*] | medium | verified | 1m30s |
 | [140](140.md) |  [*27*] | hard | solved | 2m14s |
 | [141](141.md) | &#9654; [*30*] | hard | verified | 2m14s |
 | [142](142.md) | &#9654; [*33*] | hard | verified | 2m07s |
