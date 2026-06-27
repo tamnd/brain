@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 160/219 solved.
 | [19](19.md) | &#9654; [*M37*] | math-project | solved | 4m49s |
 | [20](20.md) | &#9654; [*21*] | medium | verified | 2m29s |
 | [21](21.md) |  [*22*] | medium | solved | 4m |
-| [22](22.md) |  [*21*] | medium | solved | 1m05s |
+| [22](22.md) |  [*21*] | medium | verified | 2m20s |
 | 23 | &#9654; [*27*] | hard | - | - |
 | 24 | &#9654; [*M30*] | math-hard | - | - |
 | 25 | &#9654; [*15*] | simple | - | - |
@@ -236,4 +236,4 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 160/219 solved.
 | [216](216.md) | &#9654; [*M26*] | math-hard | solved | 1m34s |
 | [217](217.md) |  [*40*] | project | verified | 1m25s |
 | [218](218.md) | &#9654; [*M30*] | math-hard | verified | 1m18s |
-| [219](219.md) | &#9654; [*20*] | medium | verified | 3m12s |
+| [219](219.md) | &#9654; [*20*] | medium | solved | 5m17s |
