@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2220 contests, 14819 problems, 8122 verified."
+description: "Codeforces problem solutions with full editorials. 2221 contests, 14831 problems, 8134 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2220 contests, 14819 problems, 8122 verified.**
+**2221 contests, 14831 problems, 8134 verified.**
 
-## Unknown — 339 contests, 2720 problems, 1711 verified
+## Unknown — 340 contests, 2732 problems, 1723 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105112](105112/) | [2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)](https://codeforces.com/contest/105112) | 12 | 12/12 | ICPC/IOI | - |
 | [105116](105116/) | [Олимпиада 1С 2024, предметный тур](https://codeforces.com/contest/105116) | 4 | 4/4 | Special | - |
 | [105118](105118/) | [Подмосковная олимпиада школьников – 2024, Заключительный этап](https://codeforces.com/contest/105118) | 4 | 0/4 | Special | - |
 | [105122](105122/) | [XXVI Interregional Programming Olympiad, Vologda SU, 2024](https://codeforces.com/contest/105122) | 12 | 5/12 | Special | - |

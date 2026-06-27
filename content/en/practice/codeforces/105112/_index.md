@@ -1,22 +1,22 @@
 ---
 title: "2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)"
-description: "9 problems from 2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023) (contest 105112), difficulty -. 9/9 solutions verified against sample I/O."
+description: "12 problems from 2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023) (contest 105112), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105112
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 538
-date: "2026-06-27T19:58:38+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 775
+date: "2026-06-27T20:00:37+07:00"
 weight: 105112
 draft: false
 ---
 
 # [2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)](https://codeforces.com/contest/105112)
 
-ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 8m 58s
+ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 12m 55s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,6 @@ ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 8m 58s
 | [G](G/) | [Galaxy Quest](https://codeforces.com/problemset/problem/105112/G) |  |  |  | 58s | ✓ |
 | [H](H/) | [Higher Arithmetic](https://codeforces.com/problemset/problem/105112/H) |  |  |  | 55s | ✓ |
 | [I](I/) | [Isolated Island](https://codeforces.com/problemset/problem/105112/I) |  |  |  | 53s | ✓ |
+| [J](J/) | [Jogging Tour](https://codeforces.com/problemset/problem/105112/J) |  |  |  | 1m 3s | ✓ |
+| [K](K/) | [Klompendans](https://codeforces.com/problemset/problem/105112/K) |  |  |  | 56s | ✓ |
+| [L](L/) | [Lateral Damage](https://codeforces.com/problemset/problem/105112/L) |  |  |  | 1m 58s | ✓ |
