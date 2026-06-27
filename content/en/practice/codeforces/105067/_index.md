@@ -1,23 +1,23 @@
 ---
 title: "Teamscode Spring 2024 (Advanced Division)"
-description: "6 problems from Teamscode Spring 2024 (Advanced Division) (contest 105067), difficulty -. 1/6 solutions verified against sample I/O."
+description: "8 problems from Teamscode Spring 2024 (Advanced Division) (contest 105067), difficulty -. 1/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105067
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
+n_problems: 8
 n_verified: 1
-total_solve_s: 677
+total_solve_s: 905
 contest_year: 2024
-date: "2026-06-27T23:39:59+07:00"
+date: "2026-06-27T23:44:31+07:00"
 weight: 105067
 draft: false
 ---
 
 # [Teamscode Spring 2024 (Advanced Division)](https://codeforces.com/contest/105067)
 
-Special | 6 problems | 1/6 verified | Difficulty - | 11m 17s
+Special | 8 problems | 1/8 verified | Difficulty - | 15m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,5 @@ Special | 6 problems | 1/6 verified | Difficulty - | 11m 17s
 | [H](H/) | [Gaslighting](https://codeforces.com/problemset/problem/105067/H) |  |  |  | 2m 26s |  |
 | [I](I/) | [Fire Fighters](https://codeforces.com/problemset/problem/105067/I) |  |  |  | 1m 51s |  |
 | [J](J/) | [Arknights Chips](https://codeforces.com/problemset/problem/105067/J) |  |  |  | 1m 33s |  |
+| [K](K/) | [ANDtreew](https://codeforces.com/problemset/problem/105067/K) |  |  |  | 1m 54s |  |
+| [L](L/) | [Everyone Loves Threes Magic (Hard Version)](https://codeforces.com/problemset/problem/105067/L) |  |  |  | 1m 54s |  |
