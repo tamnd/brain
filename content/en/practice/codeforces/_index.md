@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2255 contests, 15137 problems, 8293 verified."
+description: "Codeforces problem solutions with full editorials. 2257 contests, 15159 problems, 8299 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2255 contests, 15137 problems, 8293 verified.**
+**2257 contests, 15159 problems, 8299 verified.**
 
-## Unknown — 354 contests, 2862 problems, 1807 verified
+## Unknown — 356 contests, 2884 problems, 1813 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104992](104992/) | [qual VKOSHP Junior 24](https://codeforces.com/contest/104992) | 9 | 0/9 | Special | - |
+| [105002](105002/) | [vkoshp.letovo 2022](https://codeforces.com/contest/105002) | 13 | 6/13 | Special | - |
 | [105011](105011/) | [Интернет-олимпиады, Сезон 2023-2024, Третья личная олимпиада](https://codeforces.com/contest/105011) | 4 | 0/4 | Special | - |
 | [105017](105017/) | [Winter Cup 4.0 Online Mirror Contest](https://codeforces.com/contest/105017) | 12 | 9/12 | Special | - |
 | [105018](105018/) | [Winter Cup 5.0 Online Mirror Contest](https://codeforces.com/contest/105018) | 14 | 12/14 | Special | - |

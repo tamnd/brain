@@ -1,22 +1,22 @@
 ---
 title: "vkoshp.letovo 2022"
-description: "11 problems from vkoshp.letovo 2022 (contest 105002), difficulty -. 6/11 solutions verified against sample I/O."
+description: "13 problems from vkoshp.letovo 2022 (contest 105002), difficulty -. 6/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 105002
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
+n_problems: 13
 n_verified: 6
-total_solve_s: 770
-date: "2026-06-28T03:21:25+07:00"
+total_solve_s: 950
+date: "2026-06-28T03:29:49+07:00"
 weight: 105002
 draft: false
 ---
 
 # [vkoshp.letovo 2022](https://codeforces.com/contest/105002)
 
-Special | 11 problems | 6/11 verified | Difficulty - | 12m 50s
+Special | 13 problems | 6/13 verified | Difficulty - | 15m 50s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,6 @@ Special | 11 problems | 6/11 verified | Difficulty - | 12m 50s
 | [H](H/) | [Table Football](https://codeforces.com/problemset/problem/105002/H) |  |  |  | 1m 9s |  |
 | [I](I/) | [\u041f\u0440\u0438\u0434\u0443\u043c\u0430\u0439 \u0437\u0430\u0434\u0430\u043d\u0438\u0435](https://codeforces.com/problemset/problem/105002/I) |  |  |  | 1m 45s |  |
 | [J](J/) | [\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0445](https://codeforces.com/problemset/problem/105002/J) |  |  |  | 1m 22s |  |
+| [K](K/) | [\u041f\u0438\u0440\u0430\u0442\u0441\u043a\u0438\u0435 \u0441\u0443\u043d\u0434\u0443\u043a\u0438](https://codeforces.com/problemset/problem/105002/K) |  |  |  | 1m 43s |  |
 | [L](L/) | [\u041c\u043e\u043d\u0441\u0442\u0440\u044b](https://codeforces.com/problemset/problem/105002/L) |  |  |  | 23s |  |
+| [M](M/) | [\u041d\u043e\u0434\u043d\u044b\u0435 \u043e\u0431\u043c\u0435\u043d\u044b](https://codeforces.com/problemset/problem/105002/M) |  |  |  | 1m 17s |  |
