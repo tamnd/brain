@@ -177,9 +177,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 114/219 solved.
 | [157](157.md) |  [*M21*] | math-medium | solved | 1m35s |
 | [158](158.md) |  [*M26*] | math-hard | solved | 2m50s |
 | [159](159.md) |  [*M34*] | math-hard | verified | 3m56s |
-| [160](160.md) |  [*M29*] | math-hard | solved | 3m01s |
-| [161](161.md) |  [*20*] | medium | verified | 3m10s |
-| [162](162.md) | &#9654; [*HM37*] | hm-project | verified | 2m01s |
+| [160](160.md) |  [*M29*] | math-hard | solved | 3m44s |
+| [161](161.md) |  [*20*] | medium | solved | 2m10s |
+| [162](162.md) | &#9654; [*HM37*] | hm-project | solved | 5m19s |
 | [163](163.md) |  [*HM41*] | hm-project | solved | 3m05s |
 | [164](164.md) |  [*23*] | medium | verified | 1m56s |
 | [165](165.md) |  [*21*] | medium | verified | 45s |
