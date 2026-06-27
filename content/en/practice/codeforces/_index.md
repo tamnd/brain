@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2224 contests, 14854 problems, 8146 verified."
+description: "Codeforces problem solutions with full editorials. 2225 contests, 14854 problems, 8146 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2224 contests, 14854 problems, 8146 verified.**
+**2225 contests, 14854 problems, 8146 verified.**
 
-## Unknown — 341 contests, 2732 problems, 1723 verified
+## Unknown — 342 contests, 2732 problems, 1723 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105101](105101/) | [ТИИМ 2023-2024, Заключительный этап (8-9 классы)](https://codeforces.com/contest/105101) | 0 | 0/0 | Special | - |
 | [105102](105102/) | [ТИИМ 2023-2024, Заключительный этап (10-11 классы)](https://codeforces.com/contest/105102) | 0 | 0/0 | Special | - |
 | [105112](105112/) | [2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)](https://codeforces.com/contest/105112) | 12 | 12/12 | ICPC/IOI | - |
 | [105116](105116/) | [Олимпиада 1С 2024, предметный тур](https://codeforces.com/contest/105116) | 4 | 4/4 | Special | - |
