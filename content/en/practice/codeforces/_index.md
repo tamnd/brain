@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2200 contests, 14627 problems, 8002 verified."
+description: "Codeforces problem solutions with full editorials. 2201 contests, 14639 problems, 8003 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2200 contests, 14627 problems, 8002 verified.**
+**2201 contests, 14639 problems, 8003 verified.**
 
-## Unknown — 329 contests, 2646 problems, 1683 verified
+## Unknown — 330 contests, 2658 problems, 1684 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105164](105164/) | [2024 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/105164) | 12 | 1/12 | ICPC/IOI | - |
 | [105174](105174/) | [The 22nd Sichuan University Programming Contest](https://codeforces.com/contest/105174) | 13 | 9/13 | Special | - |
 | [105183](105183/) | [XX Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/105183) | 8 | 4/8 | Special | - |
 | [105186](105186/) | [Uzbekistan IOI 2024 Team Selection Test. Day 1.](https://codeforces.com/contest/105186) | 3 | 0/3 | ICPC/IOI | - |
