@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.1: Boolean Basics"
-description: "Section 7.1.1 exercises: 128/132 solved."
+description: "Section 7.1.1 exercises: 132/132 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.1. Boolean Basics
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.1: 128/132 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.1: 132/132 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -93,14 +93,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 128/132 solved.
 | [73](73.md) |  [*M22*] | math-medium | solved | 5m40s |
 | [74](74.md) |  [*M21*] | math-medium | solved | 3m35s |
 | [75](75.md) |  [*M36*] | math-project | solved | 5m19s |
-| [76](76.md) |  [*M35*] | math-hard | solved | 4m01s |
+| [76](76.md) |  [*M35*] | math-hard | solved | 1m |
 | [77](77.md) |  [*M28*] | math-hard | solved | 4m01s |
 | [78](78.md) | &#9654; [*M36*] | math-project | solved | 3m50s |
 | [79](79.md) | &#9654; [*M27*] | math-hard | solved | 4m32s |
-| [80](80.md) |  [*27*] | hard | verified | 4m19s |
+| [80](80.md) |  [*27*] | hard | verified | 2m16s |
 | [81](81.md) |  [*26*] | hard | verified | 2m21s |
 | [82](82.md) |  [*25*] | medium | solved | 4m20s |
-| 83 | &#9654; [*38*] | project | - | - |
+| [83](83.md) | &#9654; [*38*] | project | verified | 4m08s |
 | [84](84.md) |  [*30*] | hard | solved | 4m36s |
 | [85](85.md) | &#9654; [*M25*] | math-medium | solved | 3m48s |
 | [86](86.md) |  [*45*] | project | verified | 4m11s |
@@ -115,8 +115,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 128/132 solved.
 | [95](95.md) |  [*M25*] | math-medium | verified | 2m30s |
 | [96](96.md) |  [*HM25*] | hm-medium | verified | 3m52s |
 | [97](97.md) |  [*10*] | simple | verified | 1m05s |
-| 98 |  [*M25*] | math-medium | - | - |
-| 99 | &#9654; [*20*] | medium | - | - |
+| [98](98.md) |  [*M25*] | math-medium | solved | 4m09s |
+| [99](99.md) | &#9654; [*20*] | medium | solved | 3m43s |
 | [100](100.md) |  [*20*] | medium | verified | 2m |
 | [101](101.md) |  [*M25*] | math-medium | verified | 7m52s |
 | [102](102.md) |  [*M31*] | math-hard | solved | 4m34s |
