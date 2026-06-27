@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2234 contests, 14959 problems, 8220 verified."
+description: "Codeforces problem solutions with full editorials. 2255 contests, 15137 problems, 8293 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,19 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2234 contests, 14959 problems, 8220 verified.**
+**2255 contests, 15137 problems, 8293 verified.**
 
-## Unknown — 347 contests, 2790 problems, 1776 verified
+## Unknown — 354 contests, 2862 problems, 1807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [105011](105011/) | [Интернет-олимпиады, Сезон 2023-2024, Третья личная олимпиада](https://codeforces.com/contest/105011) | 4 | 0/4 | Special | - |
+| [105017](105017/) | [Winter Cup 4.0 Online Mirror Contest](https://codeforces.com/contest/105017) | 12 | 9/12 | Special | - |
+| [105018](105018/) | [Winter Cup 5.0 Online Mirror Contest](https://codeforces.com/contest/105018) | 14 | 12/14 | Special | - |
+| [105020](105020/) | [TCPC Tunisian Collegiate Programming Contest 2022](https://codeforces.com/contest/105020) | 14 | 2/14 | Special | - |
+| [105022](105022/) | [HPI 2024 Advanced](https://codeforces.com/contest/105022) | 12 | 2/12 | Special | - |
+| [105023](105023/) | [HPI 2024 Novice](https://codeforces.com/contest/105023) | 12 | 4/12 | Special | - |
+| [105030](105030/) | [Интернет-олимпиады, Сезон 2023-2024, Четвертая личная олимпиада](https://codeforces.com/contest/105030) | 4 | 2/4 | Special | - |
 | [105051](105051/) | [2023-2024 Финал региональной олимпиады «Машина Тьюринга»](https://codeforces.com/contest/105051) | 6 | 6/6 | Special | - |
 | [105053](105053/) | [The 2024 ICPC Latin America Championship](https://codeforces.com/contest/105053) | 12 | 12/12 | ICPC/IOI | - |
 | [105055](105055/) | [UDESC Selection Contest 2023-2](https://codeforces.com/contest/105055) | 15 | 12/15 | Special | - |
@@ -1582,7 +1589,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 137 contests, 960 problems, 381 verified
+## 2023 — 138 contests, 969 problems, 388 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1718,13 +1725,14 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [105013](105013/) | [The 19th Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105013) | 9 | 7/9 | Special | - |
 | [105173](105173/) | [The 2024 CCPC National Invitational Contest (Northeast), The 18th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105173) | 13 | 4/13 | Special | - |
 | [105184](105184/) | [The 8th Hebei Collegiate Programming Contest](https://codeforces.com/contest/105184) | 11 | 5/11 | Special | - |
 | [105637](105637/) | [The 2022 ICPC Asia Tehran Regional Contest](https://codeforces.com/contest/105637) | 11 | 8/11 | ICPC/IOI | - |
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 247 contests, 2176 problems, 1074 verified
+## 2024 — 260 contests, 2273 problems, 1109 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1853,6 +1861,19 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105003](105003/) | [XXVIII Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/105003) | 6 | 0/6 | Special | - |
+| [105006](105006/) | [UTPC Contest 03-01-24 Div. 1 (Advanced)](https://codeforces.com/contest/105006) | 7 | 2/7 | Div. 1 | - |
+| [105007](105007/) | [UTPC Contest 03-01-24 Div. 2 (Beginner)](https://codeforces.com/contest/105007) | 8 | 1/8 | Div. 2 | - |
+| [105009](105009/) | [2024 USACO.Guide Informatics Tournament](https://codeforces.com/contest/105009) | 12 | 2/12 | Special | - |
+| [105010](105010/) | [Winter Cup 6.0 Online Mirror Contest](https://codeforces.com/contest/105010) | 9 | 1/9 | Special | - |
+| [105012](105012/) | [Bay Area Programming Contest 2024](https://codeforces.com/contest/105012) | 13 | 13/13 | Special | - |
+| [105025](105025/) | [Отборочный этап региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/105025) | 9 | 9/9 | Special | - |
+| [105028](105028/) | [TheForces Round #28 (Epic-Forces)](https://codeforces.com/contest/105028) | 6 | 0/6 | Special | - |
+| [105043](105043/) | [Финал олимпиады НТО: информационная безопасность. Секция - информатика](https://codeforces.com/contest/105043) | 5 | 1/5 | Special | - |
+| [105046](105046/) | [XXVIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105046) | 5 | 3/5 | Special | - |
+| [105047](105047/) | [XXVIII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105047) | 5 | 3/5 | Special | - |
+| [105048](105048/) | [UTPC Contest 03-22-24 Div. 2 (Beginner)](https://codeforces.com/contest/105048) | 6 | 0/6 | Div. 2 | - |
+| [105049](105049/) | [UTPC Contest 03-22-24 Div. 1 (Advanced)](https://codeforces.com/contest/105049) | 6 | 0/6 | Div. 1 | - |
 | [105056](105056/) | [International Odoo Programming Contest 2024](https://codeforces.com/contest/105056) | 8 | 0/8 | Special | - |
 | [105059](105059/) | [IU Programming Challenge 2024](https://codeforces.com/contest/105059) | 6 | 6/6 | Special | - |
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |

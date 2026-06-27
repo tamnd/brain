@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 181/446 solved."
+description: "Section 7.2.2.1 exercises: 192/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 181/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 192/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -43,8 +43,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 181/446 solved.
 | [23](23.md) |  [*38*] | project | solved | 3m57s |
 | [24](24.md) |  [*20*] | medium | solved | 2m10s |
 | [25](25.md) |  [*20*] | medium | solved | 1m13s |
-| 26 |  [*21*] | medium | - | - |
-| 27 |  [*22*] | medium | - | - |
+| [26](26.md) |  [*21*] | medium | solved | 1m19s |
+| [27](27.md) |  [*22*] | medium | verified | 1m12s |
 | 28 |  [*M23*] | math-medium | - | - |
 | 29 |  [*26*] | hard | - | - |
 | 30 |  [*23*] | medium | - | - |
@@ -277,18 +277,18 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 181/446 solved.
 | [257](257.md) | &#9654; [*20*] | medium | solved | 3m07s |
 | [258](258.md) |  [*HM21*] | hm-medium | solved | 4m27s |
 | [259](259.md) |  [*M25*] | math-medium | solved | 2m52s |
-| 260 |  [*M31*] | math-hard | - | - |
-| 261 | &#9654; [*23*] | medium | - | - |
+| [260](260.md) |  [*M31*] | math-hard | solved | 1m06s |
+| [261](261.md) | &#9654; [*23*] | medium | solved | 1m50s |
 | 262 | &#9654; [*M27*] | math-hard | - | - |
 | 263 |  [*24*] | medium | - | - |
-| 264 |  [*M21*] | math-medium | - | - |
-| 267 |  [*18*] | medium | - | - |
-| 268 | &#9654; [*21*] | medium | - | - |
-| 269 |  [*21*] | medium | - | - |
-| 270 |  [*22*] | medium | - | - |
-| 271 |  [*20*] | medium | - | - |
+| [264](264.md) |  [*M21*] | math-medium | verified | 1m14s |
+| [267](267.md) |  [*18*] | medium | verified | 2m22s |
+| [268](268.md) | &#9654; [*21*] | medium | verified | 3m35s |
+| [269](269.md) |  [*21*] | medium | solved | 4m36s |
+| [270](270.md) |  [*22*] | medium | solved | 4m18s |
+| [271](271.md) |  [*20*] | medium | solved | 1m19s |
 | 272 |  [*23*] | medium | - | - |
-| 273 |  [*25*] | medium | - | - |
+| [273](273.md) |  [*25*] | medium | solved | 2m35s |
 | 274 |  [*21*] | medium | - | - |
 | 275 |  [*21*] | medium | - | - |
 | 276 |  [*18*] | medium | - | - |
