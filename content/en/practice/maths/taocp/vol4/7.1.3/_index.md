@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 124/219 solved."
+description: "Section 7.1.3 exercises: 128/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 124/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 128/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,7 +37,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 124/219 solved.
 | [17](17.md) |  [*HM36*] | hm-project | solved | 1m07s |
 | [18](18.md) |  [*M25*] | math-medium | verified | 1m16s |
 | [19](19.md) | &#9654; [*M37*] | math-project | solved | 4m49s |
-| 20 | &#9654; [*21*] | medium | - | - |
+| [20](20.md) | &#9654; [*21*] | medium | verified | 2m50s |
 | 21 |  [*22*] | medium | - | - |
 | 22 |  [*21*] | medium | - | - |
 | 23 | &#9654; [*27*] | hard | - | - |
@@ -216,9 +216,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 124/219 solved.
 | [196](196.md) |  [*21*] | medium | solved | 3m03s |
 | [197](197.md) |  [*22*] | medium | solved | 5m32s |
 | [198](198.md) | &#9654; [*21*] | medium | solved | 5m03s |
-| 199 | &#9654; [*23*] | medium | - | - |
-| 200 |  [*20*] | medium | - | - |
-| 201 |  [*20*] | medium | - | - |
+| [199](199.md) | &#9654; [*23*] | medium | verified | 2m53s |
+| [200](200.md) |  [*20*] | medium | verified | 53s |
+| [201](201.md) |  [*20*] | medium | solved | 3m12s |
 | 202 |  [*20*] | medium | - | - |
 | 203 |  [*22*] | medium | - | - |
 | 204 | &#9654; [*22*] | medium | - | - |
