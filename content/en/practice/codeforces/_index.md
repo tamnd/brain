@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2219 contests, 14806 problems, 8117 verified."
+description: "Codeforces problem solutions with full editorials. 2222 contests, 14843 problems, 8135 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2219 contests, 14806 problems, 8117 verified.**
+**2222 contests, 14843 problems, 8135 verified.**
 
-## Unknown — 339 contests, 2720 problems, 1711 verified
+## Unknown — 340 contests, 2732 problems, 1723 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [105058](105058/) | [Индивидуальная олимпиада школьников по информатике и программированию 2024](https://codeforces.com/contest/105058) | 5 | 0/5 | Special | - |
+| [105112](105112/) | [2023-2024 ICPC Northwestern European Regional Programming Contest (NWERC 2023)](https://codeforces.com/contest/105112) | 12 | 12/12 | ICPC/IOI | - |
 | [105116](105116/) | [Олимпиада 1С 2024, предметный тур](https://codeforces.com/contest/105116) | 4 | 4/4 | Special | - |
 | [105118](105118/) | [Подмосковная олимпиада школьников – 2024, Заключительный этап](https://codeforces.com/contest/105118) | 4 | 0/4 | Special | - |
 | [105122](105122/) | [XXVI Interregional Programming Olympiad, Vologda SU, 2024](https://codeforces.com/contest/105122) | 12 | 5/12 | Special | - |
@@ -1716,7 +1717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 240 contests, 2093 problems, 1036 verified
+## 2024 — 242 contests, 2118 problems, 1042 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1850,6 +1851,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105062](105062/) | [TheForces Round #29 (Clown-Forces)](https://codeforces.com/contest/105062) | 6 | 5/6 | Special | - |
 | [105064](105064/) | [ICPC-de-Tryst 2024](https://codeforces.com/contest/105064) | 11 | 0/11 | ICPC/IOI | - |
 | [105066](105066/) | [Teamscode Spring 2024 (Novice Division)](https://codeforces.com/contest/105066) | 12 | 2/12 | Special | - |
+| [105109](105109/) | [UTPC Spring 2024 Open Contest](https://codeforces.com/contest/105109) | 12 | 1/12 | Special | - |
+| [105114](105114/) | [NUS CS3233 Final Team Contest 2024](https://codeforces.com/contest/105114) | 13 | 5/13 | Special | - |
 | [105129](105129/) | [Shorouk Academy 2024 Collegiate Programming Contest](https://codeforces.com/contest/105129) | 13 | 13/13 | Special | - |
 | [105137](105137/) | [TheForces Round #30 (Good-Forces)](https://codeforces.com/contest/105137) | 7 | 0/7 | Special | - |
 | [105139](105139/) | [The 2024 International Collegiate Programming Contest in Hubei Province, China](https://codeforces.com/contest/105139) | 12 | 12/12 | Special | - |
