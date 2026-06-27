@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2237 contests, 14976 problems, 8223 verified."
+description: "Codeforces problem solutions with full editorials. 2238 contests, 14981 problems, 8226 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2237 contests, 14976 problems, 8223 verified.**
+**2238 contests, 14981 problems, 8226 verified.**
 
 ## Unknown — 347 contests, 2790 problems, 1776 verified
 
@@ -1724,7 +1724,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 250 contests, 2193 problems, 1077 verified
+## 2024 — 251 contests, 2198 problems, 1080 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1853,6 +1853,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [105046](105046/) | [XXVIII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/105046) | 5 | 3/5 | Special | - |
 | [105047](105047/) | [XXVIII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/105047) | 5 | 3/5 | Special | - |
 | [105048](105048/) | [UTPC Contest 03-22-24 Div. 2 (Beginner)](https://codeforces.com/contest/105048) | 6 | 0/6 | Div. 2 | - |
 | [105049](105049/) | [UTPC Contest 03-22-24 Div. 1 (Advanced)](https://codeforces.com/contest/105049) | 6 | 0/6 | Div. 1 | - |
