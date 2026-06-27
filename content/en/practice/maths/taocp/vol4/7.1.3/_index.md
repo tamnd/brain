@@ -159,13 +159,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 109/219 solved.
 | [139](139.md) |  [*25*] | medium | verified | 1m30s |
 | [140](140.md) |  [*27*] | hard | verified | 1m18s |
 | [141](141.md) | &#9654; [*30*] | hard | verified | 4m34s |
-| [142](142.md) | &#9654; [*33*] | hard | verified | 2m07s |
-| [143](143.md) |  [*20*] | medium | verified | 59s |
-| [144](144.md) |  [*16*] | medium | verified | 1m05s |
-| [145](145.md) |  [*17*] | medium | verified | 54s |
-| [146](146.md) | &#9654; [*M20*] | math-medium | verified | 56s |
-| [147](147.md) | &#9654; [*M20*] | math-medium | verified | 1m53s |
-| [148](148.md) |  [*M21*] | math-medium | verified | 47s |
+| [142](142.md) | &#9654; [*33*] | hard | verified | 4m06s |
+| [143](143.md) |  [*20*] | medium | verified | 1m16s |
+| [144](144.md) |  [*16*] | medium | verified | 1m03s |
+| [145](145.md) |  [*17*] | medium | verified | 1m08s |
+| [146](146.md) | &#9654; [*M20*] | math-medium | solved | 3m25s |
+| [147](147.md) | &#9654; [*M20*] | math-medium | solved | 3m |
+| [148](148.md) |  [*M21*] | math-medium | solved | 3m39s |
 | [149](149.md) | &#9654; [*23*] | medium | verified | 53s |
 | [150](150.md) | &#9654; [*25*] | medium | verified | 2m12s |
 | [151](151.md) |  [*22*] | medium | verified | 59s |
