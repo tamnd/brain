@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15948 problems, 8748 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15949 problems, 8748 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15948 problems, 8748 verified.**
+**2353 contests, 15949 problems, 8748 verified.**
 
-## Unknown — 420 contests, 3370 problems, 2095 verified
+## Unknown — 420 contests, 3371 problems, 2095 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -68,7 +68,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104922](104922/) | [Qualification stage of Open Olympiad 2023-2024](https://codeforces.com/contest/104922) | 9 | 0/9 | Special | - |
 | [104925](104925/) | [Osijek Competitive Programming Camp, Fall 2023. Day 6: Estonian Contest (The 2nd Universal Cup. Stage 19: Estonia)](https://codeforces.com/contest/104925) | 10 | 8/10 | Special | - |
 | [104935](104935/) | [MITIT 2024 Combined Round](https://codeforces.com/contest/104935) | 6 | 0/6 | Special | - |
-| [104936](104936/) | [MITIT 2024 Beginner Round](https://codeforces.com/contest/104936) | 5 | 0/5 | Special | - |
+| [104936](104936/) | [MITIT 2024 Beginner Round](https://codeforces.com/contest/104936) | 6 | 0/6 | Special | - |
 | [104937](104937/) | [MITIT 2024 Advanced Round](https://codeforces.com/contest/104937) | 5 | 1/5 | Special | - |
 | [104945](104945/) | [2023-2024 ICPC Southwestern European Regional Contest (SWERC 2023)](https://codeforces.com/contest/104945) | 13 | 3/13 | ICPC/IOI | - |
 | [104949](104949/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104949) | 0 | 0/0 | Special | - |
