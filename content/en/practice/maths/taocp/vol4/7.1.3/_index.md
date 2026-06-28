@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.3: Bitwise Tricks and Techniques"
-description: "Section 7.1.3 exercises: 196/219 solved."
+description: "Section 7.1.3 exercises: 197/219 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.3. Bitwise Tricks and Techniques
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.3: 196/219 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.3: 197/219 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -92,7 +92,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 196/219 solved.
 | [72](72.md) |  [*25*] | medium | solved | 44s |
 | [73](73.md) |  [*22*] | medium | solved | 1m03s |
 | [74](74.md) |  [*22*] | medium | solved | 1m10s |
-| 75 | &#9654; [*32*] | hard | - | - |
+| [75](75.md) | &#9654; [*32*] | hard | solved | 5m16s |
 | 76 |  [*27*] | hard | - | - |
 | 77 |  [*26*] | hard | - | - |
 | 78 |  [*M27*] | math-hard | - | - |
