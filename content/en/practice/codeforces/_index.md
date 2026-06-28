@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2368 contests, 16116 problems, 8859 verified."
+description: "Codeforces problem solutions with full editorials. 2368 contests, 16118 problems, 8862 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,17 +11,17 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2368 contests, 16116 problems, 8859 verified.**
+**2368 contests, 16118 problems, 8862 verified.**
 
-## Unknown — 426 contests, 3440 problems, 2142 verified
+## Unknown — 426 contests, 3442 problems, 2145 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [104736](104736/) | [2023-2024 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104736) | 13 | 13/13 | ICPC/IOI | - |
 | [104745](104745/) | [CAMA 2023](https://codeforces.com/contest/104745) | 16 | 16/16 | Special | - |
 | [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 12 | 8/12 | Special | - |
-| [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
-| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 8 | 5/8 | ICPC/IOI | - |
+| [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 9 | 3/9 | ICPC/IOI | - |
+| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 9 | 7/9 | ICPC/IOI | - |
 | [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 8 | 1/8 | ICPC/IOI | - |
 | [104772](104772/) | [2023-2024 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104772) | 13 | 5/13 | ICPC/IOI | - |
 | [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
