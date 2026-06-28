@@ -1,7 +1,7 @@
 ---
 title: "CF 104802B - Snowy Bus"
-description: "We are given a bus with a fixed empty weight and a group of passengers, each described by two values: their weight contribution if they stay inside the bus, and their pushing strength if they step outside."
-date: "2026-06-28T13:36:52+07:00"
+description: "Each passenger has two attributes. Their mass contributes to the weight of the bus if they stay inside, while their pushing force contributes only if they get out and push. Suppose we choose some passengers as pushers."
+date: "2026-06-28T16:44:18+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104802
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "TheForces Round #26 (Readall-Forces)"
 rating: 0
 weight: 104802
-solve_time_s: 82
+solve_time_s: 101
 verified: false
 draft: false
 ---
@@ -18,66 +18,123 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 22s  
+**Solve time:** 1m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a bus with a fixed empty weight and a group of passengers, each described by two values: their weight contribution if they stay inside the bus, and their pushing strength if they step outside.
+Each passenger has two attributes. Their mass contributes to the weight of the bus if they stay inside, while their pushing force contributes only if they get out and push.
 
-For any choice of which passengers become pushers, the remaining passengers still inside increase the bus weight, while the pushers contribute total force. The configuration is valid if the sum of pushing forces is at least the total weight of the bus plus all passengers who stayed inside.
+Suppose we choose some passengers as pushers. Their total pushing force must be at least the weight that remains on the bus. The remaining weight consists of the empty bus plus the masses of every passenger who did not get out.
 
-The task is to choose a subset of passengers to step outside such that the number of chosen pushers is as small as possible, while still making the system valid. If no subset can satisfy the condition, the answer is -1.
+The task is to choose as few pushers as possible while satisfying this condition. If no choice of passengers can move the bus, the answer is `-1`.
 
-The constraints are large: up to 200,000 passengers total across all test cases, and up to 10,000 test cases. This forces a solution that is roughly linear or log-linear per test case. Any approach that tries to enumerate subsets or simulate all choices per passenger will fail immediately because even O(n^2) per test case would already exceed limits.
+The total number of passengers over all test cases is at most `2 × 10^5`. This immediately rules out trying every subset, since even `2^40` is already impossible, while `2^200000` is far beyond any practical computation. An `O(n^2)` algorithm is also too expensive because the worst case would require about `4 × 10^10` operations. An `O(n log n)` solution is easily fast enough for these limits.
 
-A subtle difficulty comes from the coupling between choices. A passenger contributes positively as a pusher through their force, but removing them also reduces the weight inside the bus, which makes the constraint easier to satisfy. This dual role means we cannot treat selection greedily based only on force or only on weight.
+Several edge cases deserve attention.
 
-A few edge cases expose incorrect greedy reasoning. If all passengers have very small force compared to their mass plus bus weight contribution, even selecting all of them will not help. For example, if w = 10, n = 2, m = [100, 100], f = [1, 1], then even if both push, total force is 2 while total weight is at least 10 plus remaining passengers, so it fails and answer is -1. Any greedy approach that assumes more pushers always help would fail if it does not check feasibility.
+Consider a passenger whose force is much larger than everyone else's.
 
-Another tricky case is when a single strong passenger exists but has large mass. For example, w = 5, m = [100, 1], f = [200, 1]. The optimal answer is 1, choosing only the strong passenger, because removing them reduces weight significantly and their force is enough alone. A naive approach might try to include small-force passengers first, increasing required pushers unnecessarily.
+```
+1
+3 5
+2 2 2
+10 1 1
+```
+
+The correct answer is `1`. A strategy that simply removes the heaviest passengers first would incorrectly choose two people, even though the strongest passenger alone already succeeds.
+
+Another important case is when moving the bus is impossible even if everyone gets out.
+
+```
+1
+2 100
+1 1
+30 40
+```
+
+Even with every passenger pushing, the total force is only `70`, while the bus alone weighs `100`. The correct answer is `-1`.
+
+A more subtle situation appears when two passengers have the same force but different masses.
+
+```
+1
+2 5
+100 1
+10 10
+```
+
+Choosing the heavier passenger is always at least as good as choosing the lighter one because both contribute the same force, but removing the heavier passenger also removes more weight from the bus. A solution that ignores passenger mass while breaking ties can miss the optimal answer.
 
 ## Approaches
 
-A brute-force idea is to try every subset of passengers as pushers, compute remaining weight and pushing force, and check validity. This is correct because it directly evaluates the condition for every possible configuration. However, this requires checking 2^n subsets, and each check takes O(n), leading to O(n 2^n) per test case, which is infeasible even for n = 30, let alone 200,000.
+The most direct solution is to enumerate every subset of passengers. For each subset, compute the total pushing force and the remaining weight, then keep the smallest subset that satisfies the condition. This is correct because every possible choice is examined. Unfortunately, it requires `O(2^n · n)` time, which is completely infeasible.
 
-The key observation is that the decision depends only on how many passengers we pick and which ones are best to pick for each possible size. If we fix that exactly k passengers become pushers, we want to choose the best k candidates that maximize feasibility. The structure suggests sorting candidates by some notion of usefulness and then building solutions incrementally.
+The inequality describing a valid choice is
 
-Rewriting the condition helps. Let total mass of all passengers be S. If we choose a set P as pushers, remaining passengers contribute S minus sum of masses of P. The condition becomes:
+```
+sum(force of chosen)
+≥
+w + sum(mass of unchosen)
+```
 
-sum(f in P) ≥ w + S − sum(m in P)
+Let `M` be the total mass of all passengers.
 
-Rearranging gives:
+Since
 
-sum(f + m for P) ≥ w + S
+```
+sum(mass of unchosen)
+=
+M - sum(mass of chosen),
+```
 
-This transformation is crucial because it turns each passenger into a single value g_i = f_i + m_i for scoring selection, while the constraint depends only on the sum of selected g_i values and a fixed threshold.
+the condition becomes
 
-Now the problem becomes: pick as few items as possible such that the sum of their g_i values reaches at least w + S. To minimize the count, we should always pick the largest g_i first, since each picked passenger contributes independently toward reaching the threshold. This reduces the problem to sorting g_i in descending order and taking a prefix until the threshold is reached.
+```
+sum(force) + sum(mass) ≥ w + M.
+```
 
-This greedy works because all items have equal “cost” in terms of count, and differing “value” g_i. This is the classic minimum-size subset to reach a target sum, which is solved optimally by taking largest values first.
+Now every chosen passenger contributes independently by adding
+
+```
+force + mass
+```
+
+toward a fixed target
+
+```
+w + M.
+```
+
+This transformation removes the interaction between chosen and unchosen passengers. Each passenger simply has a value
+
+```
+value = force + mass.
+```
+
+To minimize the number of selected passengers while reaching a target sum, the greedy strategy is obvious. Always take the largest available value first. If a solution using `k` passengers exists, then the `k` largest values achieve at least as much total contribution as any other `k` passengers.
+
+After sorting these values in descending order, we keep taking passengers until the accumulated contribution reaches the target. If even all passengers together are insufficient, the answer is `-1`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | `O(2^n · n)` | `O(n)` | Too slow |
+| Optimal | `O(n log n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-We process each test case independently and transform the problem into a selection over derived weights.
-
-1. Compute total passenger mass S by summing all m_i. This captures the full system weight baseline before choosing pushers. The bus constraint depends on how much mass we remove, so we need this global reference.
-2. For each passenger compute g_i = f_i + m_i. This value measures how much “progress toward feasibility” that passenger contributes if chosen as a pusher. It combines the benefit of adding force and the benefit of removing weight.
-3. Sort all passengers in descending order of g_i. We want to pick passengers that reduce the required effort most efficiently, since every chosen passenger costs exactly one slot.
-4. Iterate over the sorted list, maintaining a running sum of selected g_i values and a counter of how many we picked. After each addition, check whether the accumulated sum is at least w + S.
-5. The first time the condition is satisfied, output the number of selected passengers. If we finish the list without reaching the threshold, output -1.
-
-The key idea is that once a prefix of size k is insufficient, any other subset of size k cannot do better because replacing any selected element with a smaller g_i can only reduce the sum. This makes the greedy prefix optimal for each k.
+1. Read the masses and forces of all passengers.
+2. Compute the total passenger mass `M`. The required contribution is `target = w + M`.
+3. For every passenger, compute `value = mass + force`. This measures how much selecting that passenger helps. Their force increases the left side of the inequality, while removing their mass decreases the required weight by exactly the same amount.
+4. Sort all values in descending order. Since we want the fewest passengers, every chosen passenger should provide as much contribution as possible.
+5. Traverse the sorted values from largest to smallest, maintaining the accumulated contribution.
+6. As soon as the accumulated contribution becomes at least `target`, output how many passengers have been taken. No smaller answer is possible because any other set with the same number of passengers has contribution no larger than the largest values already chosen.
+7. If the entire list is processed without reaching the target, output `-1`.
 
 ### Why it works
 
-The transformation reduces feasibility to reaching a fixed target sum using items with equal cost and positive value. For any fixed number of selected passengers, the best achievable sum is obtained by choosing the k largest g_i values. Therefore, if any subset of size k works, the greedy prefix of size k also works. This monotonicity ensures that the first k that reaches the threshold is the minimum possible number of pushers.
+The transformed inequality depends only on the sum of `mass + force` over the chosen passengers. Among all subsets containing exactly `k` passengers, the largest possible contribution is obtained by taking the `k` largest values. If these largest values fail to reach the target, then no other subset of size `k` can succeed. Conversely, once they do reach the target, a valid subset of size `k` exists. The first successful prefix of the sorted list is exactly the minimum number of required pushers.
 
 ## Python Solution
 
@@ -87,156 +144,210 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+    out = []
+
     for _ in range(t):
         n, w = map(int, input().split())
-        m = list(map(int, input().split()))
-        f = list(map(int, input().split()))
+        masses = list(map(int, input().split()))
+        forces = list(map(int, input().split()))
 
-        total_mass = sum(m)
-        target = w + total_mass
-
-        vals = [m[i] + f[i] for i in range(n)]
-        vals.sort(reverse=True)
+        target = w + sum(masses)
+        values = [m + f for m, f in zip(masses, forces)]
+        values.sort(reverse=True)
 
         cur = 0
         ans = -1
-
-        for i, v in enumerate(vals):
+        for i, v in enumerate(values, 1):
             cur += v
             if cur >= target:
-                ans = i + 1
+                ans = i
                 break
 
-        print(ans)
+        out.append(str(ans))
+
+    sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation follows directly from the transformation. The most important step is computing m_i + f_i, which encodes both the reduction in remaining weight and the increase in available force.
+The first part computes the target contribution, which is the empty bus weight plus the total passenger mass.
 
-Sorting in descending order is essential because we are effectively solving a minimum-cardinality knapsack with uniform cost. The prefix scan ensures we stop at the smallest feasible count.
+Each passenger is converted into a single value equal to their mass plus their force. This comes directly from the algebraic transformation of the original inequality.
 
-A common mistake is trying to greedily select passengers based on f_i alone or based on ratio f_i / m_i. Those approaches fail because the correct objective is not independent contributions but combined effect under a global threshold.
+Sorting these values in descending order lets the algorithm examine the best possible subset of every size. The running sum represents the maximum contribution achievable using the current number of passengers.
+
+The first prefix whose sum reaches the target immediately gives the optimal answer. If the full prefix still falls short, then even selecting everyone cannot move the bus.
+
+Python integers automatically handle the largest possible sums, so no overflow precautions are needed.
 
 ## Worked Examples
 
-Consider the sample test cases.
+Consider the following test case.
 
-### Example 1
+```
+1
+3 4
+1 1 1
+6 3 3
+```
 
-Input:
+The total passenger mass is `3`, so the target is `7`.
 
-n = 3, w = 4
+The passenger values are `[7, 4, 4]`.
 
-m = [1, 1, 1]
-
-f = [6, 6, 3]
-
-We compute g = [7, 7, 4], and S = 3, so target = 7.
-
-| Step | Chosen g values | Running sum | Target | k |
+| Step | Value Chosen | Running Sum | Target | Answer |
 | --- | --- | --- | --- | --- |
 | 1 | 7 | 7 | 7 | 1 |
 
-The first element already reaches the threshold, so answer is 1.
+The target is reached after selecting the first passenger, so only one pusher is needed.
 
-This shows that a single strong passenger can dominate even if others exist.
+Now consider an impossible example.
 
-### Example 2
+```
+1
+2 100
+1 1
+30 40
+```
 
-Input:
+The total passenger mass is `2`, so the target is `102`.
 
-n = 4, w = 6
+The values are `[41, 31]`.
 
-m = [1, 1, 1, 1]
-
-f = [1, 1, 1, 1]
-
-g = [2, 2, 2, 2], S = 4, target = 10
-
-| Step | Chosen g values | Running sum | Target | k |
+| Step | Value Chosen | Running Sum | Target | Answer |
 | --- | --- | --- | --- | --- |
-| 1 | 2 | 2 | 10 | 1 |
-| 2 | 2, 2 | 4 | 10 | 2 |
-| 3 | 2, 2, 2 | 6 | 10 | 3 |
-| 4 | 2, 2, 2, 2 | 8 | 10 | 4 |
+| 1 | 41 | 41 | 102 | Not reached |
+| 2 | 31 | 72 | 102 | Not reached |
 
-Even selecting all passengers is insufficient, so the answer is -1.
+Even after selecting everyone, the contribution is only `72`, so the answer is `-1`.
 
-This confirms the correctness of the feasibility check when no subset can satisfy the constraint.
+The first trace demonstrates that a single strong passenger may be sufficient. The second confirms that the algorithm correctly detects when no feasible subset exists.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting g_i dominates per test case |
-| Space | O(n) | Storage for m, f, and derived array |
+| Time | `O(n log n)` | Sorting dominates the running time. |
+| Space | `O(n)` | Stores the transformed values. |
 
-The total n across test cases is bounded by 2 · 10^5, so sorting across all cases remains efficient within time limits. Memory usage stays linear in the active test case.
+Since the total number of passengers across all test cases is at most `2 × 10^5`, sorting each test case easily fits within the time limit, and the memory usage remains well below the allowed limit.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys
+def solve():
     input = sys.stdin.readline
-
     t = int(input())
     out = []
     for _ in range(t):
         n, w = map(int, input().split())
         m = list(map(int, input().split()))
         f = list(map(int, input().split()))
-
-        total_mass = sum(m)
-        target = w + total_mass
-
-        vals = [m[i] + f[i] for i in range(n)]
-        vals.sort(reverse=True)
-
-        cur = 0
+        target = w + sum(m)
+        vals = sorted((a + b for a, b in zip(m, f)), reverse=True)
+        s = 0
         ans = -1
-        for i, v in enumerate(vals):
-            cur += v
-            if cur >= target:
-                ans = i + 1
+        for i, v in enumerate(vals, 1):
+            s += v
+            if s >= target:
+                ans = i
                 break
-
         out.append(str(ans))
+    print("\n".join(out))
 
-    return "\n".join(out)
+def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    solve()
+    res = sys.stdout.getvalue().strip()
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+    return res
 
-# provided samples
-assert run("4\n3 4\n1 1 1\n6 6 3\n3 4\n1 1 1\n3 3 3\n3 100\n1 1 1\n1 1 1\n6 5\n1 4 2 8 3 1\n2 7 5 1 4 2") == "1\n2\n-1\n3"
+assert run("""4
+3 4
+1 1 1
+6 6 6
+3 4
+1 1 1
+3 3 3
+1 1000
+100
+100
+6 10
+7 5 1 4 2 8
+3 1 2 7 5 9
+""") == "1\n2\n-1\n3", "sample"
 
-# minimum case
-assert run("1\n1 1\n1\n10") == "1"
+assert run("""1
+1 1
+1
+2
+""") == "1", "minimum feasible"
 
-# impossible case
-assert run("1\n2 100\n10 10\n1 1") == "-1"
+assert run("""1
+1 10
+1
+1
+""") == "-1", "minimum impossible"
 
-# all equal strong enough
-assert run("1\n4 1\n1 1 1 1\n5 5 5 5") == "1"
+assert run("""1
+4 4
+2 2 2 2
+2 2 2 2
+""") == "3", "all equal"
 
-# boundary large values
-assert run("1\n3 10\n100 100 100\n1 1 1") == "3"
+assert run("""1
+2 5
+100 1
+10 10
+""") == "1", "tie on force but different masses"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 passenger strong | 1 | minimal selection |
-| too weak overall | -1 | impossibility detection |
-| uniform strong | 1 | greedy early stopping |
-| all needed | 3 | worst-case accumulation |
+| Single passenger that succeeds | `1` | Minimum feasible instance |
+| Single passenger that fails | `-1` | Impossible instance |
+| Four identical passengers | `3` | Correct prefix counting |
+| Equal forces, different masses | `1` | Correct use of `mass + force` |
 
 ## Edge Cases
 
-A key edge case is when the optimal answer is -1 even though individual passengers seem useful. The transformed condition makes this explicit because even the full sum of g_i values does not reach the required target. The algorithm handles this naturally by exhausting the sorted list without triggering success.
+Consider the case where one passenger is overwhelmingly stronger than the others.
 
-Another edge case is when exactly one passenger is sufficient. Since we sort by g_i, the largest single value is checked first, and if it already exceeds the target, the algorithm stops immediately. This prevents unnecessary processing and confirms that prefix optimality extends to k = 1.
+```
+1
+3 5
+2 2 2
+10 1 1
+```
 
-A third edge case occurs when many small contributors collectively are required. Because the algorithm always accumulates in descending order, it ensures that if a solution exists at size k, it will be found exactly when reaching k, never later or earlier, preserving correctness even in dense distributions of values.
+The target is `11`. The transformed values are `[12, 3, 3]`. After selecting the first value, the accumulated contribution is already `12`, so the algorithm immediately returns `1`. Choosing passengers by mass alone would miss this solution.
+
+Now consider an impossible instance.
+
+```
+1
+2 100
+1 1
+30 40
+```
+
+The target equals `102`, while the total contribution of every passenger is only `72`. The running sum never reaches the target, so the algorithm correctly returns `-1`.
+
+Finally, examine passengers with equal force but different masses.
+
+```
+1
+2 5
+100 1
+10 10
+```
+
+The transformed values are `[110, 11]`, and the target is `106`. The first value alone already reaches the target, so the answer is `1`. This demonstrates why both mass and force must be combined into a single contribution value rather than considering force alone.

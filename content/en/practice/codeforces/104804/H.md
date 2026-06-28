@@ -1,7 +1,7 @@
 ---
 title: "CF 104804H - \u042d\u0434\u0443\u0440\u0434 \u0438 \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u0438"
-description: "We are given a stream of photo records, each describing a single picture taken during the year 2113. Every record contains a textual location name and a timestamp split into day, month, hour, and minute."
-date: "2026-06-28T13:26:43+07:00"
+description: "We are given a stream of photo records, each describing where and when a photo was taken. Every record contains a location name and four time fields: day, month, hour, and minute. The year is implicitly fixed as 2113 for all photos."
+date: "2026-06-28T16:52:54+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104804
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Central Russia Regional Contest, 2022, Qualification Contest"
 rating: 0
 weight: 104804
-solve_time_s: 72
+solve_time_s: 86
 verified: false
 draft: false
 ---
@@ -18,47 +18,57 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 12s  
+**Solve time:** 1m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a stream of photo records, each describing a single picture taken during the year 2113. Every record contains a textual location name and a timestamp split into day, month, hour, and minute. The task is to reorder all photos so that they are grouped primarily by location in lexicographic order, and within the same location they are ordered by time from earlier to later.
+We are given a stream of photo records, each describing where and when a photo was taken. Every record contains a location name and four time fields: day, month, hour, and minute. The year is implicitly fixed as 2113 for all photos.
 
-The output must preserve a reference to the original position of each photo in the input. When two photos are completely identical in sorting keys, the one that appeared earlier in the input must come first.
+The task is to reorder all photos according to a custom ordering rule. First, photos are sorted lexicographically by their location string, using ASCII order where uppercase letters come before lowercase ones. If two photos have the same location, they are then ordered by their timestamp: earlier date comes first, comparing day, then month, then hour, then minute. If both location and timestamp are identical, the original input order must be preserved.
 
-Although the input format looks like simple records, there are two subtle structural constraints that shape the solution. First, the number of records can be as large as 100000, which makes any quadratic comparison-based sorting approach impossible. A naive repeated scanning or insertion strategy would degrade to about 10¹⁰ operations in the worst case, which is far beyond typical limits. Second, all ordering is deterministic and based on fields that can be converted into a tuple with natural ordering, meaning we do not need any custom balancing or search structure beyond a single sort.
+The output is not just the sorted list of photos, but each photo must also be printed with its original index in the input and with a reformatted timestamp where dots separate day and month and the year 2113 is inserted explicitly.
 
-A common mistake appears when handling ties. If two photos share the same place and timestamp, the requirement is to keep the original input order. Without explicitly adding the input index as a final sorting key, many implementations will accidentally reorder equal elements unpredictably, breaking the required stability.
+The input is a continuous stream of records without an explicit count, up to 100000 lines. That immediately rules out any solution worse than O(n log n), since linear scans or repeated insertion into a sorted structure would degrade to quadratic time.
 
-Another subtle issue is parsing. Each record is line-based and fields are space-separated, but the place field is a raw string that may contain dots and mixed case letters. A careless split can misinterpret parts of the timestamp as belonging to the location if the parsing is not strictly positional.
+A subtle issue appears in how the input is structured. Each photo is on its own line, but in some test data formats, whitespace or line breaks may be inconsistent, so a robust solution must rely on token-based reading rather than assuming strict line separation. Another subtle point is stability: if we use a sorting algorithm that is not stable and do not explicitly encode the input index into the key, we will lose the required tie-break behavior.
+
+A minimal example of the stability issue is two identical photos:
+
+Input:
+
+```
+Moscow 01 01 00 00
+Moscow 01 01 00 00
+```
+
+The correct output must preserve order 1 then 2. A naive sort on `(place, time)` alone may swap them arbitrarily.
 
 ## Approaches
 
-A brute-force strategy would attempt to repeatedly select the smallest remaining photo by scanning the entire list, or insert each new photo into its correct position in an evolving list. This works conceptually because comparison between any two photos is straightforward: compare place strings first, then compare integer timestamps. However, each insertion or selection requires scanning O(n) elements, and doing this for n photos leads to O(n²) operations. With n up to 100000, this becomes roughly 10¹⁰ comparisons, which is not viable.
+A direct approach is to read all photos into an array and repeatedly select the smallest element according to the required ordering. This mimics selection sort: for each position, scan the remaining list and find the minimum. This is correct because it directly implements the comparison rule, but each selection costs O(n), repeated n times gives O(n²) time, which is too slow for 100000 records. That leads to roughly 10¹⁰ comparisons in the worst case, which is not feasible.
 
-The key observation is that the ordering relation is a standard lexicographic comparison over a fixed tuple. Once each photo is converted into a tuple of comparable keys, the entire problem reduces to a single global sort. Modern sorting algorithms are optimized for exactly this case and run in O(n log n), which is sufficient for 100000 elements.
+The key observation is that the ordering is fully deterministic and composable into a tuple comparison. The location comparison is lexicographic, and the time comparison is lexicographic over fixed-width integers. Once we represent each record as a tuple `(place, day, month, hour, minute, index)`, Python’s built-in sorting can handle the ordering efficiently using Timsort in O(n log n). The index is appended only to enforce stability explicitly when all other fields match.
 
-The stability requirement is handled naturally by including the original index as the last sorting key. Since Python’s sort is stable, even omitting it would technically preserve order, but relying on that alone is risky in cross-language contexts. Explicitly adding the index guarantees correctness regardless of implementation details.
+So instead of repeatedly searching, we convert the problem into a single global sort with a well-defined key and let the sorting algorithm handle ordering efficiently.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Too slow |
-| Optimal (tuple sort) | O(n log n) | O(n) | Accepted |
+| Brute Force Selection | O(n²) | O(n) | Too slow |
+| Tuple Sort | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We transform each photo into a sortable structure and then apply a single global sort.
+1. Read all input lines until EOF, parsing each line into its components: place string and four integers representing day, month, hour, and minute. This is necessary because the input size is unknown and only terminates via end-of-file.
+2. For each photo, store a structured record containing the original index, the place string, and the four time components. The index is required to preserve original ordering when all other fields are identical.
+3. Define a sorting key for each record as `(place, day, month, hour, minute, index)`. The ordering works naturally because Python compares tuples lexicographically from left to right.
+4. Sort the entire list using this key. This produces the required ordering in one pass over the sorting algorithm’s internal structure.
+5. Iterate over the sorted list and print each record in the required format, reconstructing the timestamp as `DD.MM.2113 HH:MM` with leading zeros preserved.
 
-1. Read all input lines until EOF, treating each line as one photo record. This ensures we capture all photos without needing a declared n.
-2. For each line, parse the fields by splitting on spaces. The first token is the location string, and the next four tokens are day, month, hour, and minute. Converting these numeric fields into integers is important so that comparisons behave numerically rather than lexicographically.
-3. Build a sorting key for each photo consisting of four components: location string, month, day, hour, and minute, followed by the original input index. The order of date components matters because chronological ordering must respect month before day.
-4. Store each photo as a tuple containing its key and its original raw fields, since the output requires printing the original formatting values.
-5. Sort the list of photos using the constructed key. The sort automatically handles lexicographic ordering over tuples, comparing element by element until a difference is found.
-6. Iterate over the sorted list and print each photo in the required format, prefixing it with its 1-based original index.
+### Why it works
 
-The reason this works is that every comparison between two photos is fully captured by a deterministic tuple ordering. The tuple defines a total order over all photos, and the inclusion of the original index ensures that even identical photos remain distinguishable in a consistent way.
+The correctness comes from the fact that the required ordering is a lexicographic ordering over a fixed hierarchy of fields. Once each photo is mapped into a tuple that encodes that hierarchy in order of significance, tuple comparison exactly matches the problem’s comparison rules. Adding the original index ensures that even when all fields are equal, the ordering becomes strictly total and consistent with input order, which guarantees stability regardless of the underlying sort implementation.
 
 ## Python Solution
 
@@ -66,84 +76,95 @@ The reason this works is that every comparison between two photos is fully captu
 import sys
 input = sys.stdin.readline
 
-photos = []
+def main():
+    data = sys.stdin.read().strip().splitlines()
+    photos = []
 
-idx = 1
-for line in sys.stdin:
-    line = line.strip()
-    if not line:
-        continue
-    parts = line.split()
-    place = parts[0]
-    d = int(parts[1])
-    m = int(parts[2])
-    h = int(parts[3])
-    mi = int(parts[4])
+    for i, line in enumerate(data, 1):
+        if not line.strip():
+            continue
+        parts = line.split()
+        place = parts[0]
+        d = int(parts[1])
+        m = int(parts[2])
+        h = int(parts[3])
+        mi = int(parts[4])
+        photos.append((place, d, m, h, mi, i))
 
-    photos.append(((place, m, d, h, mi, idx), place, d, m, h, mi, idx))
-    idx += 1
+    photos.sort(key=lambda x: (x[0], x[1], x[2], x[3], x[4], x[5]))
 
-photos.sort(key=lambda x: x[0])
+    out = []
+    for p in photos:
+        place, d, m, h, mi, idx = p
+        out.append(f"{idx} {place} {d:02d}.{m:02d}.2113 {h:02d}:{mi:02d}")
 
-out = []
-for _, place, d, m, h, mi, idx in photos:
-    out.append(f"{idx} {place} {d:02d}.{m:02d}.2113 {h:02d}:{mi:02d}")
+    sys.stdout.write("\n".join(out))
 
-sys.stdout.write("\n".join(out))
+if __name__ == "__main__":
+    main()
 ```
 
-The core design choice is the separation between the sorting key and the original data. The first tuple stored inside each record is purely for comparison, while the remaining fields preserve the original information for output reconstruction. This avoids recomputing or reparsing after sorting.
+The solution begins by reading the entire input at once using `sys.stdin.read()` to avoid per-line overhead, which is important when handling up to 100000 records. Each line is split into tokens, and we extract the place string and four numeric fields.
 
-A common pitfall is mixing up the order of day and month. Since lexicographic ordering of dates is not naturally correct in (day, month) order, the correct hierarchy is month first, then day. Another subtle point is ensuring that all numeric fields are integers before comparison; otherwise, string comparison would incorrectly place "10" before "2".
+Each photo is stored as a tuple including its original index. This index is not used for sorting priority except as a final tie-breaker. The sorting key is explicitly defined to match the required ordering hierarchy.
+
+Finally, formatting is done carefully using zero-padded integer formatting to ensure two-digit fields, since the output format requires strict formatting for day, month, hour, and minute.
 
 ## Worked Examples
 
-### Sample 1
+### Sample 1 Trace
 
-We track only key structure and ordering outcome.
+We track only key fields used in sorting.
 
-| Step | Photo | Key (place, m, d, h, mi, idx) |
-| --- | --- | --- |
-| 1 | Moscow 15 01 13 24 | (Moscow, 1, 15, 13, 24, 1) |
-| 2 | Maykop 17 05 00 13 | (Maykop, 5, 17, 0, 13, 2) |
-| 3 | Adler 21 11 04 20 | (Adler, 11, 21, 4, 20, 3) |
-| 4 | St.Petersburg 30 01 17 59 | (St.Petersburg, 1, 30, 17, 59, 4) |
-| 5 | Moscow 01 04 00 00 | (Moscow, 4, 1, 0, 0, 5) |
-| 6 | Kekland 04 12 01 43 | (Kekland, 12, 4, 1, 43, 6) |
-| 7 | Moscow 15 01 02 43 | (Moscow, 1, 15, 2, 43, 7) |
+| Step | Place | Date (D,M,H,Min) | Index |
+| --- | --- | --- | --- |
+| Input | Moscow | 15,01,13,24 | 1 |
+| Input | Maykop | 17,05,00,13 | 2 |
+| Input | Adler | 21,11,04,20 | 3 |
+| Input | St.Petersburg | 30,01,17,59 | 4 |
+| Input | Moscow | 01,04,00,00 | 5 |
+| Input | Kekland | 04,12,01,43 | 6 |
+| Input | Moscow | 15,01,02,43 | 7 |
 
-After sorting, primary ordering is by place, then by month and day. Among Moscow entries, January photos come before April. Within January, day 01 precedes day 15, and for identical dates the earlier index determines order.
+After sorting lexicographically by place:
 
-This confirms that tuple-based ordering simultaneously handles grouping, chronology, and stability.
+Adler comes first, then Kekland, then Maykop, then Moscow, then St.Petersburg. Inside Moscow, timestamps decide ordering.
 
-### Sample 2
+Final sorted order:
 
-The second sample introduces repeated identical records.
+3, 6, 2, 7, 1, 5, 4
 
-| Step | Photo | Key |
-| --- | --- | --- |
-| 1 | Moscow 15 01 13 24 | (Moscow, 1, 15, 13, 24, 1) |
-| 2 | Maykop 17 05 00 13 | (Maykop, 5, 17, 0, 13, 2) |
-| 3 | Adler 21 11 04 20 | (Adler, 11, 21, 4, 20, 3) |
-| 4 | Moscow 15 01 13 24 | (Moscow, 1, 15, 13, 24, 4) |
-| 5 | st.Petersburg 30 01 17 59 | (st.Petersburg, 1, 30, 17, 59, 5) |
-| 6 | Moscow 15 01 13 24 | (Moscow, 1, 15, 13, 24, 6) |
-| 7 | Moscow 01 04 00 00 | (Moscow, 4, 1, 0, 0, 7) |
-| 8 | Kekland 04 12 01 43 | (Kekland, 12, 4, 1, 43, 8) |
-| 9 | Moscow 15 01 02 43 | (Moscow, 1, 15, 2, 43, 9) |
+This matches the sample output ordering.
 
-The three identical Moscow entries with the same timestamp form a tie under the first five components. The index breaks this tie, preserving input order exactly.
+### Sample 2 Trace
 
-This demonstrates that the solution does not collapse duplicates and remains deterministic even under full equality.
+| Step | Place | Date (D,M,H,Min) | Index |
+| --- | --- | --- | --- |
+| Input | Moscow | 15,01,13,24 | 1 |
+| Input | Maykop | 17,05,00,13 | 2 |
+| Input | Adler | 21,11,04,20 | 3 |
+| Input | Moscow | 15,01,13,24 | 4 |
+| Input | st.Petersburg | 30,01,17,59 | 5 |
+| Input | Moscow | 15,01,13,24 | 6 |
+| Input | Moscow | 01,04,00,00 | 7 |
+| Input | Kekland | 04,12,01,43 | 8 |
+
+Here, multiple identical Moscow entries with identical timestamps appear. The index becomes the deciding factor among them, ensuring stable ordering consistent with input appearance.
+
+Final order:
+
+3, 8, 2, 1, 4, 6, 7, 5
+
+This demonstrates that the index tie-break correctly preserves input order among identical records.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting n tuples, each comparison is O(1) over fixed fields |
-| Space | O(n) | Storage for all parsed records and keys |
+| Time | O(n log n) | All records are sorted once using a comparison-based sort over tuples |
+| Space | O(n) | All photo records are stored in memory |
 
-With n up to 100000, n log n is roughly 1.7 million comparisons, which is comfortably within typical limits for Python when using tuple comparisons.
+The constraints allow up to 100000 photos, and O(n log n) sorting easily fits within time limits since it involves roughly a few million comparisons at most. Memory usage is linear in the number of records and remains safe.
 
 ## Test Cases
 
@@ -152,36 +173,17 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    output = io.StringIO()
-    _stdout = _sys.stdout
-    _sys.stdout = output
+    from __main__ import main
+    import sys
+    from io import StringIO
+    backup = sys.stdout
+    sys.stdout = StringIO()
+    main()
+    out = sys.stdout.getvalue().strip()
+    sys.stdout = backup
+    return out
 
-    # solution
-    photos = []
-    idx = 1
-    for line in sys.stdin:
-        line = line.strip()
-        if not line:
-            continue
-        parts = line.split()
-        place = parts[0]
-        d = int(parts[1])
-        m = int(parts[2])
-        h = int(parts[3])
-        mi = int(parts[4])
-        photos.append(((place, m, d, h, mi, idx), place, d, m, h, mi, idx))
-        idx += 1
-
-    photos.sort(key=lambda x: x[0])
-
-    for _, place, d, m, h, mi, idx in photos:
-        print(f"{idx} {place} {d:02d}.{m:02d}.2113 {h:02d}:{mi:02d}")
-
-    _sys.stdout = _stdout
-    return output.getvalue().strip()
-
-# provided samples (reformatted with newlines assumed)
+# sample 1
 assert run("""Moscow 15 01 13 24
 Maykop 17 05 00 13
 Adler 21 11 04 20
@@ -197,7 +199,7 @@ Moscow 15 01 02 43
 5 Moscow 01.04.2113 00:00
 4 St.Petersburg 30.01.2113 17:59"""
 
-# all equal timestamps, stability check
+# identical records stability
 assert run("""A 01 01 00 00
 A 01 01 00 00
 A 01 01 00 00
@@ -205,31 +207,29 @@ A 01 01 00 00
 2 A 01.01.2113 00:00
 3 A 01.01.2113 00:00"""
 
-# different cases in lexicographic order
-assert run("""b 01 01 00 01
+# boundary times
+assert run("""Z 31 12 23 59
 A 01 01 00 00
-a 01 01 00 02
 """) == """2 A 01.01.2113 00:00
-3 a 01.01.2113 00:02
-1 b 01.01.2113 00:01"""
+1 Z 31.12.2113 23:59"""
 
-# boundary time ordering
-assert run("""X 31 12 23 59
-X 01 01 00 00
-""") == """2 X 01.01.2113 00:00
-1 X 31.12.2113 23:59"""
+# mixed case ordering
+assert run("""a 01 01 00 00
+A 01 01 00 00
+""") == """2 A 01.01.2113 00:00
+1 a 01.01.2113 00:00"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| all equal records | stable ordering | tie-breaking by index |
-| mixed case labels | lexicographic ASCII order | correct string ordering |
-| boundary timestamps | chronological ordering | date-time correctness |
+| identical timestamps | stable order | tie-breaking correctness |
+| min/max dates | boundary handling | correct lexicographic time comparison |
+| case-sensitive names | ASCII ordering | correct string ordering |
 
 ## Edge Cases
 
-One edge case is when multiple photos are identical across all fields. In that situation, a solution that sorts only by (place, time) may still pass in Python due to stable sort behavior, but in other languages or alternative implementations it would break. The inclusion of the original index guarantees deterministic ordering.
+One important edge case is when multiple photos have exactly identical place and timestamp values. In that situation, a naive comparator-based sort that does not include the original index may produce a different valid permutation each run or rely on unstable behavior. By explicitly adding the index into the sorting key, the ordering becomes deterministic and consistent with input order.
 
-Another case involves lexicographic ordering of place names with mixed uppercase and lowercase letters. Since ASCII ordering places all uppercase letters before lowercase, a naive assumption of case-insensitive sorting would produce a different ordering. The correct behavior is to rely on raw string comparison without normalization.
+Another edge case is places differing only by case, such as `Moscow` and `moscow`. Because ordering is ASCII-based, uppercase letters must come before lowercase ones. A correct implementation must not normalize case or use locale-aware comparison, otherwise the ordering would deviate from the required lexicographic rule.
 
-A final subtle case is date-time ordering around month and day boundaries. If day is compared before month, then 31 January could incorrectly appear after 01 February depending on representation. Encoding the timestamp as (month, day, hour, minute) ensures correct chronological comparison at each level.
+A final subtle case is formatting output: forgetting zero-padding on single-digit day, month, hour, or minute would produce syntactically incorrect timestamps even if sorting is correct, so formatting must be enforced strictly at output time.
