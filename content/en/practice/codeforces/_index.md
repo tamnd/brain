@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2310 contests, 15559 problems, 8487 verified."
+description: "Codeforces problem solutions with full editorials. 2313 contests, 15578 problems, 8502 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2310 contests, 15559 problems, 8487 verified.**
+**2313 contests, 15578 problems, 8502 verified.**
 
-## Unknown — 394 contests, 3138 problems, 1932 verified
+## Unknown — 397 contests, 3157 problems, 1947 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104845](104845/) | [Муниципальный этап ВсОШ по информатике в Московской области 2023-2024 (9-11 классы)](https://codeforces.com/contest/104845) | 4 | 1/4 | Special | - |
+| [104846](104846/) | [Муниципальный этап ВсОШ по информатике в Московской области 2023-2024 (7-8 классы)](https://codeforces.com/contest/104846) | 4 | 3/4 | Special | - |
+| [104847](104847/) | [2019-2020 ICPC, Moscow Subregional](https://codeforces.com/contest/104847) | 11 | 11/11 | ICPC/IOI | - |
 | [104848](104848/) | [2021-2022 ICPC, Moscow Subregional](https://codeforces.com/contest/104848) | 15 | 11/15 | ICPC/IOI | - |
 | [104849](104849/) | [2022-2023 ICPC, Asia Yokohama Regional Contest 2022](https://codeforces.com/contest/104849) | 11 | 1/11 | ICPC/IOI | - |
 | [104851](104851/) | [Municipal stage of the All-Russian School Olympiad in Informatics in the Vologda Region 2023, grades 7-8](https://codeforces.com/contest/104851) | 0 | 0/0 | Special | - |
