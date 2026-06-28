@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 269/446 solved."
+description: "Section 7.2.2.1 exercises: 277/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 269/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 277/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -52,7 +52,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 269/446 solved.
 | [32](32.md) |  [**] |  | solved | 4m31s |
 | [33](33.md) |  [*M16*] | math-medium | solved | 1m12s |
 | 34 |  [*M25*] | math-medium | - | - |
-| 35 |  [*M21*] | math-medium | - | - |
+| [35](35.md) |  [*M21*] | math-medium | solved | 4m18s |
 | 36 | &#9654; [*25*] | medium | - | - |
 | 37 |  [*M46*] | math-research | - | - |
 | 38 |  [*M25*] | math-medium | - | - |
@@ -361,14 +361,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 269/446 solved.
 | [343](343.md) |  [*10*] | simple | solved | 2m35s |
 | [344](344.md) |  [*10*] | simple | solved | 1m18s |
 | [345](345.md) |  [*20*] | medium | verified | 2m18s |
-| 346 |  [*M30*] | math-hard | - | - |
-| 347 | &#9654; [*M21*] | math-medium | - | - |
+| [346](346.md) |  [*M30*] | math-hard | solved | 4m04s |
+| [347](347.md) | &#9654; [*M21*] | math-medium | solved | 1m46s |
 | 348 |  [*M41*] | math-project | - | - |
-| 349 | &#9654; [*M27*] | math-hard | - | - |
-| 350 |  [*22*] | medium | - | - |
-| 351 |  [*M46*] | math-research | - | - |
-| 352 |  [*21*] | medium | - | - |
-| 353 |  [*39*] | project | - | - |
+| [349](349.md) | &#9654; [*M27*] | math-hard | solved | 4m35s |
+| [350](350.md) |  [*22*] | medium | solved | 4m29s |
+| [351](351.md) |  [*M46*] | math-research | solved | 3m18s |
+| [352](352.md) |  [*21*] | medium | solved | 3m35s |
+| [353](353.md) |  [*39*] | project | solved | 1m13s |
 | 354 | &#9654; [*M30*] | math-hard | - | - |
 | 355 |  [*25*] | medium | - | - |
 | 356 |  [*27*] | hard | - | - |
