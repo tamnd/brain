@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 155/267 solved."
+description: "Section 7.1.4 exercises: 164/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 155/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 164/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -41,7 +41,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 155/267 solved.
 | [21](21.md) |  [*05*] | simple | verified | 1m05s |
 | [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m51s |
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
-| 24 |  [*M22*] | math-medium | - | - |
+| [24](24.md) |  [*M22*] | math-medium | solved | 59s |
 | 25 |  [*M20*] | math-medium | - | - |
 | 26 |  [*M20*] | math-medium | - | - |
 | 27 | &#9654; [*M26*] | math-hard | - | - |
@@ -252,14 +252,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 155/267 solved.
 | [232](232.md) | &#9654; [*23*] | medium | solved | 4m43s |
 | [233](233.md) | &#9654; [*25*] | medium | solved | 2m04s |
 | [234](234.md) |  [*22*] | medium | solved | 1m31s |
-| 235 |  [*22*] | medium | - | - |
-| 236 | &#9654; [*M25*] | math-medium | - | - |
-| 237 |  [*25*] | medium | - | - |
-| 238 | &#9654; [*22*] | medium | - | - |
-| 239 | &#9654; [*21*] | medium | - | - |
-| 240 | &#9654; [*22*] | medium | - | - |
-| 241 | &#9654; [*28*] | hard | - | - |
-| 242 |  [*24*] | medium | - | - |
+| [235](235.md) |  [*22*] | medium | solved | 5m02s |
+| [236](236.md) | &#9654; [*M25*] | math-medium | solved | 4m36s |
+| [237](237.md) |  [*25*] | medium | solved | 4m29s |
+| [238](238.md) | &#9654; [*22*] | medium | solved | 1m30s |
+| [239](239.md) | &#9654; [*21*] | medium | verified | 1m15s |
+| [240](240.md) | &#9654; [*22*] | medium | solved | 2m12s |
+| [241](241.md) | &#9654; [*28*] | hard | solved | 4m08s |
+| [242](242.md) |  [*24*] | medium | solved | 3m48s |
 | 243 |  [*M23*] | math-medium | - | - |
 | 244 |  [*25*] | medium | - | - |
 | 245 | &#9654; [*M22*] | math-medium | - | - |
