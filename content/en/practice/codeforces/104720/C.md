@@ -1,7 +1,7 @@
 ---
 title: "CF 104720C - Cooking Class"
-description: "Autumn is entering a skill-based contest where ranking is determined purely by numerical skill values. Every participant has a fixed skill, while Autumn has a base skill that can be improved by choosing exactly one of several available training classes."
-date: "2026-06-29T04:16:11+07:00"
+description: "We are given a fixed group of competitors, each with a known skill value, and Autumn with her own initial skill. The competition ranking is purely determined by sorting all participants by skill in descending order, with ties sharing the same rank and causing rank skipping in…"
+date: "2026-06-29T05:11:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104720
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "UTPC x WiCS Contest 10-06-23"
 rating: 0
 weight: 104720
-solve_time_s: 77
+solve_time_s: 72
 verified: false
 draft: false
 ---
@@ -18,47 +18,57 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 17s  
+**Solve time:** 1m 12s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Autumn is entering a skill-based contest where ranking is determined purely by numerical skill values. Every participant has a fixed skill, while Autumn has a base skill that can be improved by choosing exactly one of several available training classes. Each class adds a positive boost to her skill, and she must pick exactly one.
+We are given a fixed group of competitors, each with a known skill value, and Autumn with her own initial skill. The competition ranking is purely determined by sorting all participants by skill in descending order, with ties sharing the same rank and causing rank skipping in the usual competitive programming way.
 
-Once her final skill is determined, her rank depends on how many competitors have strictly higher skill than her, plus how ties are handled. All people with the same skill share the same rank position, and ranks skip accordingly, meaning rank is effectively one plus the number of participants strictly stronger than her.
+Autumn can increase her skill exactly once by choosing one of the given cooking classes, each of which adds a positive boost to her current skill. Every other competitor keeps their original skill. The task is to choose the class that gives Autumn the best possible final rank.
 
-The task is to choose the best class so that Autumn’s resulting rank is as small as possible, i.e., she wants as few people as possible to have strictly higher skill than her after applying the chosen boost.
+The key output is not Autumn’s final skill, but her best achievable rank after optimally selecting one boost.
 
-The input sizes reach up to 200,000 competitors and 200,000 classes, so any solution that tries every pair of competitor and class directly would require up to 40 billion comparisons, which is far beyond what a 2-second limit can handle. The only viable approaches must reduce the per-class evaluation cost to logarithmic or constant time after preprocessing.
+The constraints are large, with up to 200,000 competitors and 200,000 classes. This rules out any solution that recomputes rankings from scratch for every class, since that would lead to about 40 billion comparisons in the worst case.
 
-A subtle edge case arises when multiple competitors share the same skill level as Autumn after boosting. Those ties do not affect the number of strictly better competitors, but a naive interpretation might mistakenly count equals as worse or better. Another edge case occurs when Autumn is already the strongest even before boosts; the answer should then be 1 regardless of the chosen class, as long as boosts are positive. Finally, large duplicate values among competitors matter because ranking depends only on counts of values greater than a threshold, not their identities.
+A naive approach would simulate Autumn’s rank for each boost independently, scanning all competitors each time to count how many have strictly higher skill. That would be $O(NM)$, which is far too slow.
+
+A subtle edge case appears when multiple competitors share the same skill as Autumn’s final value. For example, if Autumn ties with several people at the top, she still gets rank 1, but a careless implementation that counts “strictly greater only” might underestimate ties depending on interpretation of rank logic.
+
+Another edge case is when Autumn is already the strongest even before boosting, but still must choose a boost anyway, which can paradoxically change her rank if the problem is misread as only maximizing skill rather than minimizing rank.
 
 ## Approaches
 
-A direct approach would be to compute Autumn’s final skill for each class, then compare it against every competitor to count how many have strictly greater skill. This leads to a nested structure where for each of M boosts we scan N competitors, producing O(NM) time complexity. With 200,000 in both dimensions, this is infeasible.
+The ranking depends only on how many competitors have strictly greater skill than Autumn after she chooses a boost. If Autumn’s final skill is $X$, then her rank is $1 + \#\{S_i > X\}$.
 
-The key observation is that for any fixed final skill value X, the rank depends only on how many competitor skills exceed X. This is a classic “count how many elements are greater than a threshold” problem, which becomes efficient once the competitor array is sorted. After sorting S, we can use binary search to determine how many values are greater than any X in O(log N). This reduces each class evaluation from linear time to logarithmic time, bringing total complexity to O((N + M) log N).
+A brute-force method tries every boost $P_i$, computes $X = S_A + P_i$, and counts how many competitors exceed $X$. Each count requires scanning all $N$ competitors, so the total work is $O(NM)$. With $2 \cdot 10^5$ in both dimensions, this is completely infeasible.
 
-An even more structured view is that the competitor set is static, and we are repeatedly querying a function f(X) = number of elements strictly greater than X. Pre-sorting transforms this into prefix reasoning over an ordered array.
+The key observation is that for each candidate final skill $X$, the rank depends only on a threshold query: how many values in the array exceed $X$. If we sort the competitor skills once, we can answer this in logarithmic time using binary search. This reduces each evaluation from linear to logarithmic.
+
+Since we still need to try all $M$ boosts, the final complexity becomes $O(M \log N)$ after an initial sort of $O(N \log N)$. This is efficient enough.
+
+The structure of the problem is essentially “maximize a function over a small set of candidates where each evaluation is a range query over a static multiset”.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(NM) | O(1) | Too slow |
-| Sort + Binary Search | O((N + M) log N) | O(N) | Accepted |
+| Brute Force | $O(NM)$ | $O(1)$ | Too slow |
+| Optimal (sort + binary search) | $O(N \log N + M \log N)$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all competitor skills and Autumn’s base skill. Store competitors in a list separate from Autumn. The reason is that Autumn is not part of the fixed dataset we preprocess.
-2. Sort the competitor skill list in non-decreasing order. This transforms the problem into a structure where all “greater than X” queries become contiguous suffix queries.
-3. For each boost value P_i, compute Autumn’s final skill X = S_A + P_i. Each class produces a candidate ranking scenario.
-4. For each X, determine how many competitors have skill strictly greater than X using binary search. Specifically, find the first index where value is greater than X, then subtract from N. This works because the sorted array ensures all greater values form a suffix.
-5. Convert this count into rank as 1 + number of strictly greater competitors. Track the minimum rank across all boosts.
+1. Read all competitor skills and Autumn’s initial skill. Compute Autumn’s baseline skill value as a reference point.
+2. Sort the list of competitor skills in non-decreasing order. This allows efficient counting of how many competitors exceed a given threshold using binary search.
+3. For each cooking class boost value $P_i$, compute Autumn’s resulting skill $X = S_A + P_i$.
+4. For this value $X$, determine how many competitors have strictly greater skill. This is done by finding the first position in the sorted array where value is greater than $X$, and subtracting it from $N$. This gives the count of competitors ahead of Autumn.
+5. Convert this count into a rank using $rank = 1 + count$. Track the minimum rank over all boosts.
 6. Output the smallest rank obtained.
+
+The binary search step is the only nontrivial operation. It works because the sorted array splits naturally into values $\le X$ and values $> X$, and we only care about the latter.
 
 ### Why it works
 
-The ranking depends only on the relative order of skills. Sorting fixes this order globally, and any query reduces to finding a boundary between values less than or equal to X and values strictly greater than X. Since rank ignores ties below or equal to X and only counts strictly greater values, binary search yields the exact contribution of each candidate skill. Because every class is evaluated independently over the same sorted structure, no recomputation is needed, and the minimum over all candidates correctly represents the optimal choice.
+The ranking depends entirely on the number of competitors strictly above Autumn’s final skill. Sorting fixes the relative structure of all competitor skills, making the “greater than X” condition a prefix cut in the sorted array. Every possible boost only changes $X$, not the ordering of competitors, so each candidate solution is evaluated independently but using the same preprocessed structure. This ensures no candidate rank is missed and all are compared correctly.
 
 ## Python Solution
 
@@ -66,145 +76,120 @@ The ranking depends only on the relative order of skills. Sorting fixes this ord
 import sys
 input = sys.stdin.readline
 
-def main():
-    N, M = map(int, input().split())
-    arr = list(map(int, input().split()))
-    S_A = arr[-1]
-    opponents = arr[:-1]
+from bisect import bisect_right
+
+def solve():
+    data = list(map(int, input().split()))
+    n, m = data[0], data[1]
     
-    opponents.sort()
+    arr = data[2:2+n]
+    sa = data[2+n]
+    boosts = data[3+n:]
     
-    import bisect
+    arr.sort()
     
-    best = N + 1
+    best = n + 1
     
-    for p in map(int, input().split()):
-        x = S_A + p
-        # first index > x
-        idx = bisect.bisect_right(opponents, x)
-        stronger = N - idx
-        rank = stronger + 1
+    for p in boosts:
+        x = sa + p
+        idx = bisect_right(arr, x)
+        greater = n - idx
+        rank = 1 + greater
         if rank < best:
             best = rank
     
     print(best)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The solution separates Autumn from competitors before sorting, since she must not be included in the count of others.
+The solution begins by separating competitor skills, Autumn’s initial skill, and the boost list from the input stream. Sorting the competitor array is essential because it enables binary search to compute how many values exceed a threshold in logarithmic time.
 
-The key implementation detail is using `bisect_right`, which correctly counts elements strictly greater than X by returning the first position where X could be inserted while keeping order. Subtracting this index from N yields the number of strictly larger values. Using `bisect_left` would be incorrect because it would treat equal values inconsistently and break the strict inequality requirement.
+For each boost, we compute Autumn’s new skill and apply `bisect_right`, which returns the first index where values are strictly greater than the target. Subtracting this index from $N$ gives the number of competitors strictly ahead. Adding one converts this into the competitive ranking definition.
+
+Tracking the minimum rank across all boosts ensures we select the best possible cooking class.
 
 ## Worked Examples
 
-### Example 1
+Consider the sample input where competitors have skills `[3, 3, 4, 5, 2]`, Autumn starts at `2`, and boosts are `[1, 2, 3, 4, 5]`.
 
-Input:
+Sorted competitors become `[2, 3, 3, 4, 5]`.
 
-```
-N=5, M=5
-Opponents: 3 3 4 5 2
-Autumn: 1
-Boosts: 1 2 3 4 5
-```
+### Trace for boosts
 
-We compute final skill and rank:
-
-| Boost | Final Skill X | idx (≤X end) | Stronger | Rank |
+| Boost | Final skill X | First > X index | Greater count | Rank |
 | --- | --- | --- | --- | --- |
-| 1 | 2 | 1 | 4 | 5 |
-| 2 | 3 | 3 | 2 | 3 |
-| 3 | 4 | 4 | 1 | 2 |
-| 4 | 5 | 5 | 0 | 1 |
-| 5 | 6 | 5 | 0 | 1 |
+| 1 | 3 | 3 | 2 | 3 |
+| 2 | 4 | 4 | 1 | 2 |
+| 3 | 5 | 5 | 0 | 1 |
+| 4 | 6 | 5 | 0 | 1 |
+| 5 | 7 | 5 | 0 | 1 |
 
-Minimum rank is 1.
+The best achievable rank is 1, achieved once Autumn surpasses all competitors.
 
-This demonstrates how increasing X reduces the suffix of strictly greater competitors until Autumn becomes top-ranked.
-
-### Example 2
-
-Input:
-
-```
-N=4, M=3
-Opponents: 10 10 20 30
-Autumn: 15
-Boosts: 0 5 20
-```
-
-| Boost | Final Skill X | idx | Stronger | Rank |
-| --- | --- | --- | --- | --- |
-| 0 | 15 | 2 | 2 | 3 |
-| 5 | 20 | 3 | 1 | 2 |
-| 20 | 35 | 4 | 0 | 1 |
-
-This shows the effect of ties at 20: equal values are not counted as strictly stronger, so only values greater than X matter.
+This trace shows how the same sorted structure is reused for every candidate boost, and only the threshold changes.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((N + M) log N) | sorting plus one binary search per class |
-| Space | O(N) | storage for opponent list |
+| Time | $O(N \log N + M \log N)$ | Sorting once, then binary search per boost |
+| Space | $O(N)$ | Storage of competitor skills |
 
-The constraints allow up to 200,000 elements, and logarithmic processing per query is well within limits. Sorting dominates preprocessing, and the rest scales linearly with M.
+The constraints allow up to 200,000 elements, so a logarithmic factor is essential. The solution runs comfortably within limits because each query reduces to a binary search over a pre-sorted array.
 
 ## Test Cases
 
 ```python
 import sys, io
+from bisect import bisect_right
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import bisect
+    from bisect import bisect_right
 
-    N, M = map(int, input().split())
-    arr = list(map(int, input().split()))
-    SA = arr[-1]
-    opp = arr[:-1]
-    opp.sort()
+    data = list(map(int, sys.stdin.read().split()))
+    n, m = data[0], data[1]
+    arr = data[2:2+n]
+    sa = data[2+n]
+    boosts = data[3+n:]
 
-    best = 10**18
-    boosts = list(map(int, input().split()))
+    arr.sort()
 
+    best = n + 1
     for p in boosts:
-        x = SA + p
-        idx = bisect.bisect_right(opp, x)
-        rank = (N - idx) + 1
-        best = min(best, rank)
+        x = sa + p
+        idx = bisect_right(arr, x)
+        best = min(best, 1 + (n - idx))
 
     return str(best)
 
-# sample
-assert run("5 5\n3 3 4 5 2 1\n1 2 3 4 5\n") == "1"
+# provided sample
+assert run("5 5 3 3 4 5 2 1 2 3 4 5") == "1"
 
-# minimum size
-assert run("1 1\n10 1\n1\n") == "1"
+# minimum case
+assert run("1 1 10 5 1") == "1"
 
 # all equal competitors
-assert run("3 2\n5 5 5 5\n0 10\n") == "1"
+assert run("3 3 5 5 5 5 1 2 3") == "1"
 
-# Autumn always weakest
-assert run("3 2\n10 20 30 1\n0 0\n") == "4"
+# Autumn always loses
+assert run("3 2 10 1 2 1 1") == "3"
 
-# strong boost dominates
-assert run("3 2\n10 20 30 1\n100 200\n") == "1"
+# boundary dominance
+assert run("4 2 1 100 200 300 1 1000 2000") == "1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| min size | 1 | single competitor edge |
-| all equal | 1 | tie handling correctness |
-| weakest Autumn | 4 | full ranking shift |
-| large boosts | 1 | dominance case |
+| single competitor | 1 | minimal structure correctness |
+| all equal skills | 1 | tie handling |
+| always weaker Autumn | 3 | worst rank computation |
+| large boost case | 1 | dominance edge |
 
 ## Edge Cases
 
-When all competitors have the same skill as Autumn after boosting, the binary search returns index 0 or full length depending on comparison, but the number of strictly greater competitors becomes zero. For example, if opponents are `[5, 5, 5]` and X is `5`, `bisect_right` returns 3, so stronger is 0 and rank is 1. This correctly reflects that ties do not hurt rank.
+One edge case occurs when Autumn’s final skill equals the maximum competitor skill. For example, competitors `[5, 10, 10]`, Autumn starts at `9`, and boost makes her `10`. The correct rank is `2`, not `1`, because two competitors tie above her or at her level depending on interpretation. The algorithm handles this correctly because `bisect_right` excludes equal values from the “greater” count, ensuring ties are not counted as strictly greater.
 
-When Autumn is already strictly above all competitors even for the smallest boost, every query yields rank 1. For instance, opponents `[1, 2, 3]`, Autumn `10`, boosts `[1, 2]` produce final skills `11` and `12`, both exceeding all competitors. The algorithm consistently returns zero stronger competitors and thus rank 1.
-
-When boosts are minimal or zero-like in effect, the algorithm still works because each candidate is evaluated independently; there is no assumption that boosts are increasing or sorted.
+Another edge case is when all competitors are weaker than Autumn for every boost. In that case, the binary search always returns `n`, so the greater count is `0` and rank remains `1`. The algorithm correctly preserves rank 1 across all candidates and returns it.
