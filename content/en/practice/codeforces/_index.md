@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2373 contests, 16173 problems, 8885 verified."
+description: "Codeforces problem solutions with full editorials. 2373 contests, 16176 problems, 8885 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2373 contests, 16173 problems, 8885 verified.**
+**2373 contests, 16176 problems, 8885 verified.**
 
 ## Unknown — 428 contests, 3463 problems, 2147 verified
 
@@ -1663,7 +1663,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 176 contests, 1339 problems, 623 verified
+## 2023 — 176 contests, 1342 problems, 623 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1801,7 +1801,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 | [104725](104725/) | [2023年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/104725) | 12 | 12/12 | Special | - |
 | [104728](104728/) | [Huazhong University of Science of Technology Freshmen Cup 2023](https://codeforces.com/contest/104728) | 14 | 8/14 | Special | - |
-| [104730](104730/) | [Moscow team school olympiad (MKOSHP) 2023](https://codeforces.com/contest/104730) | 7 | 1/7 | Special | - |
+| [104730](104730/) | [Moscow team school olympiad (MKOSHP) 2023](https://codeforces.com/contest/104730) | 10 | 1/10 | Special | - |
 | [104741](104741/) | [The 10th Jimei University Programming Contest](https://codeforces.com/contest/104741) | 12 | 12/12 | Special | - |
 | [104743](104743/) | [TheForces Round #25(5^2-Forces)](https://codeforces.com/contest/104743) | 5 | 0/5 | Special | - |
 | [104755](104755/) | [LU ICPC Selection Contest 2023](https://codeforces.com/contest/104755) | 13 | 13/13 | ICPC/IOI | - |
