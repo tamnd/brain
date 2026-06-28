@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 249/446 solved."
+description: "Section 7.2.2.1 exercises: 263/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 249/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 263/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -50,7 +50,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 249/446 solved.
 | [30](30.md) |  [*23*] | medium | solved | 1m01s |
 | [31](31.md) |  [*M21*] | math-medium | verified | 1m05s |
 | [32](32.md) |  [**] |  | solved | 4m31s |
-| 33 |  [*M16*] | math-medium | - | - |
+| [33](33.md) |  [*M16*] | math-medium | solved | 1m12s |
 | 34 |  [*M25*] | math-medium | - | - |
 | 35 |  [*M21*] | math-medium | - | - |
 | 36 | &#9654; [*25*] | medium | - | - |
@@ -342,19 +342,19 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 249/446 solved.
 | [324](324.md) | &#9654; [*30*] | hard | verified | 2m34s |
 | [325](325.md) |  [*27*] | hard | solved | 2m44s |
 | [326](326.md) | &#9654; [*M25*] | math-medium | solved | 3m32s |
-| 327 |  [*24*] | medium | - | - |
-| 328 | &#9654; [*M23*] | math-medium | - | - |
-| 329 |  [*22*] | medium | - | - |
-| 330 |  [*25*] | medium | - | - |
-| 331 |  [*M40*] | math-project | - | - |
-| 332 |  [*30*] | hard | - | - |
-| 333 |  [*21*] | medium | - | - |
-| 334 | &#9654; [*M32*] | math-hard | - | - |
-| 335 |  [*30*] | hard | - | - |
-| 336 |  [*21*] | medium | - | - |
-| 337 |  [*29*] | hard | - | - |
-| 338 |  [*22*] | medium | - | - |
-| 339 |  [*25*] | medium | - | - |
+| [327](327.md) |  [*24*] | medium | solved | 2m58s |
+| [328](328.md) | &#9654; [*M23*] | math-medium | solved | 1m10s |
+| [329](329.md) |  [*22*] | medium | solved | 1m09s |
+| [330](330.md) |  [*25*] | medium | verified | 2m44s |
+| [331](331.md) |  [*M40*] | math-project | solved | 2m27s |
+| [332](332.md) |  [*30*] | hard | solved | 3m23s |
+| [333](333.md) |  [*21*] | medium | solved | 3m28s |
+| [334](334.md) | &#9654; [*M32*] | math-hard | solved | 3m53s |
+| [335](335.md) |  [*30*] | hard | solved | 3m48s |
+| [336](336.md) |  [*21*] | medium | solved | 1m07s |
+| [337](337.md) |  [*29*] | hard | solved | 2m56s |
+| [338](338.md) |  [*22*] | medium | solved | 57s |
+| [339](339.md) |  [*25*] | medium | solved | 1m |
 | 340 |  [*30*] | hard | - | - |
 | 341 | &#9654; [*25*] | medium | - | - |
 | 342 |  [*25*] | medium | - | - |
