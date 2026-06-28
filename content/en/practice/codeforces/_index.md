@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2273 contests, 15273 problems, 8334 verified."
+description: "Codeforces problem solutions with full editorials. 2277 contests, 15297 problems, 8336 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2273 contests, 15273 problems, 8334 verified.**
+**2277 contests, 15297 problems, 8336 verified.**
 
-## Unknown — 367 contests, 2937 problems, 1832 verified
+## Unknown — 370 contests, 2953 problems, 1833 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104935](104935/) | [MITIT 2024 Combined Round](https://codeforces.com/contest/104935) | 6 | 0/6 | Special | - |
+| [104936](104936/) | [MITIT 2024 Beginner Round](https://codeforces.com/contest/104936) | 5 | 0/5 | Special | - |
+| [104937](104937/) | [MITIT 2024 Advanced Round](https://codeforces.com/contest/104937) | 5 | 1/5 | Special | - |
 | [104945](104945/) | [2023-2024 ICPC Southwestern European Regional Contest (SWERC 2023)](https://codeforces.com/contest/104945) | 13 | 3/13 | ICPC/IOI | - |
 | [104949](104949/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104949) | 0 | 0/0 | Special | - |
 | [104950](104950/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104950) | 0 | 0/0 | Special | - |
@@ -1746,7 +1749,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 264 contests, 2319 problems, 1120 verified
+## 2024 — 265 contests, 2327 problems, 1121 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1875,6 +1878,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2051](2051/) | [Codeforces Round 995 (Div. 3)](https://codeforces.com/contest/2051) | 7 | 4/7 | Div. 3 | 800-2100 |
 | [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | 13 | 6/13 | ICPC/IOI | 1600-3500 |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
+| [104931](104931/) | [UTPC Contest 01-26-24 Div. 1 (Advanced)](https://codeforces.com/contest/104931) | 8 | 1/8 | Div. 1 | - |
 | [104941](104941/) | [SLPC 2024 Open Division](https://codeforces.com/contest/104941) | 8 | 1/8 | Special | - |
 | [104968](104968/) | [UTPC Contest 02-09-24 Div. 2 (Beginner)](https://codeforces.com/contest/104968) | 8 | 3/8 | Div. 2 | - |
 | [104969](104969/) | [UTPC Contest 02-09-24 Div. 1 (Advanced)](https://codeforces.com/contest/104969) | 7 | 1/7 | Div. 1 | - |
