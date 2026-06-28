@@ -1,7 +1,7 @@
 ---
 title: "CF 104761C - \u0414\u0435\u043b\u0438\u043c\u043e\u0441\u0442\u044c \u043d\u0430 2023"
-description: "We are given two distinct digits, call them $A$ and $B$. From these digits we are allowed to construct any positive integer by concatenating them arbitrarily many times, with repetition allowed."
-date: "2026-06-28T21:53:53+07:00"
+description: "We are given two distinct digits, call them $A$ and $B$, each between 0 and 9. From only these two digits, we are allowed to construct any positive integer by concatenating them in any order and any length, as long as we do not use any other digit."
+date: "2026-06-29T02:23:51+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104761
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest"
 rating: 0
 weight: 104761
-solve_time_s: 86
+solve_time_s: 66
 verified: false
 draft: false
 ---
@@ -18,192 +18,115 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 26s  
+**Solve time:** 1m 6s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two distinct digits, call them $A$ and $B$. From these digits we are allowed to construct any positive integer by concatenating them arbitrarily many times, with repetition allowed. The restriction is purely on the digit set: every position in the number must be either $A$ or $B$, and the number cannot start with zero.
+We are given two distinct digits, call them $A$ and $B$, each between 0 and 9. From only these two digits, we are allowed to construct any positive integer by concatenating them in any order and any length, as long as we do not use any other digit. The task is to output any such number that is divisible by 2023, and it must also satisfy a size constraint of being at most 100 digits and must not start with zero.
 
-The task is to construct at least one such number that is divisible by 2023. The number itself may be extremely large, up to about $10^{100}$, so we are not expected to work with it as a standard integer type, only as a sequence of digits.
+The core difficulty is not building numbers from digits, but finding one that hits a specific divisibility condition under a very large search space. Even if we fix a length, there are $2^n$ possible strings, so brute force over all strings is impossible beyond very small lengths.
 
-The key structural difficulty is that divisibility by 2023 is a global constraint across the entire number, while the construction constraint is purely local per digit. This immediately suggests that any solution must track remainders incrementally rather than evaluate full numbers.
+The important structural constraint is that the target modulus is fixed and small: 2023. This immediately suggests that we should think in terms of remainders modulo 2023, since any number longer than 2023+1 digits must eventually repeat a remainder pattern.
 
-The constraint on size tells us we cannot enumerate all valid digit strings. Even if we limit ourselves to length 100, there are $2^{100}$ candidates in the worst case. That is far beyond any brute-force search.
-
-A subtle edge case is when one of the digits is zero. Then leading zero must be avoided, so strings like “0ABBA” are invalid if they start with 0, even though they are syntactically allowed sequences. Another issue is that a greedy construction can easily fail: picking digits that locally reduce remainder does not guarantee reaching zero modulo 2023.
-
-The correct solution must exploit modular arithmetic over a finite state space of size 2023.
+A naive edge case that can easily mislead implementation is when one of the digits is 0. For example, if $A = 0$ and $B = 7$, a careless construction might try to start with 0, producing invalid leading zeros like 0077..., which is disallowed even though numerically valid. Another subtle case is when one digit is 0 and the other is small; greedy constructions like repeating the nonzero digit may fail to ever hit a multiple of 2023 even though a valid mixed pattern exists.
 
 ## Approaches
 
-A brute-force strategy would try all digit strings over the alphabet $\{A, B\}$, increasing length gradually, and test each one for divisibility by 2023. For a fixed length $L$, there are $2^L$ candidates, and checking divisibility requires $O(L)$ work. Even at $L = 30$, this already becomes about a billion candidates, which is infeasible.
+A brute-force idea is to generate all strings over the alphabet $\{A, B\}$ in increasing length and test each one for divisibility by 2023. For each generated string, we compute its value modulo 2023 and check whether it is zero. This is correct because it exhausts all candidates.
 
-The failure of brute-force comes from its ignorance of structure: it treats each candidate independently, even though many prefixes share identical modular behavior. The key observation is that what matters for divisibility by 2023 is only the remainder of the number modulo 2023. When we append a digit $d$, the new remainder is completely determined from the previous remainder.
+However, the number of candidates grows exponentially with length. For length 50, we already have $2^{50}$ possibilities, which is far beyond any feasible computation. Even computing modulo incrementally does not help if we still enumerate all strings.
 
-This reduces the problem into a graph problem with only 2023 states. Each state is a remainder, and each transition corresponds to appending either digit $A$ or digit $B$. We are looking for any path from an initial state (constructed from a valid starting digit) to remainder 0. This is a standard reachability problem, solvable with BFS, and we can reconstruct the path to obtain the required number.
+The key observation is that we do not care about the actual number, only its remainder modulo 2023. Every time we append a digit, the new remainder depends only on the previous remainder and the appended digit. This transforms the problem into a graph problem over states $0 \ldots 2022$, where each state represents a remainder, and transitions correspond to appending either digit $A$ or digit $B$.
+
+This gives a directed graph with at most 2023 nodes, each having two outgoing edges. We want to find any path starting from a valid initial digit (nonzero leading digit) that reaches remainder 0. Since the graph is finite, a BFS guarantees we will either find a solution or exhaust all states. Because a solution is guaranteed to exist in the intended construction space, BFS will find one efficiently.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force enumeration | $O(2^L \cdot L)$ | $O(L)$ | Too slow |
+| Brute Force | $O(2^n)$ | $O(n)$ | Too slow |
 | BFS on remainders | $O(2023)$ | $O(2023)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We interpret the construction process as building numbers digit by digit while tracking remainders modulo 2023.
+We model each state as a pair consisting of a remainder modulo 2023 and the string constructed so far. Instead of storing full strings for every state, we store parent pointers to reconstruct the answer at the end.
 
-1. Compute transitions for appending digits. For any remainder $r$, appending digit $d$ transforms it into $(10r + d) \bmod 2023$. This is the fundamental state transition rule.
-2. Initialize BFS from all valid starting digits. If $A \neq 0$, the string consisting of only $A$ is a valid starting node. Similarly for $B$. We do not allow starting with zero, so any digit equal to 0 is ignored as a starting point.
-3. Each BFS node represents a remainder $r$. We store how we reached it: which previous remainder and which digit was appended. This is necessary for reconstruction.
-4. Run BFS over the 2023-state graph until we either reach remainder 0 or exhaust all states. Because the graph is finite and each edge is deterministic, BFS guarantees the shortest constructed length, though any valid solution is acceptable.
-5. Once remainder 0 is reached, reconstruct the number by walking backwards from state 0 to a starting node using the stored parent pointers, collecting digits in reverse order.
-6. Reverse the collected digits to produce the final number.
+1. We initialize a BFS queue with all valid starting digits. If a digit is zero, it cannot be used as the first character, so we only start from nonzero digits. Each starting digit contributes an initial remainder equal to that digit modulo 2023. This ensures we never produce invalid leading zeros.
+2. For each state in the queue, we consider appending digit $A$ and digit $B$. If the current remainder is $r$, then the new remainder after appending digit $d$ is $(10r + d) \bmod 2023$. This recurrence captures exactly how decimal numbers grow.
+3. If we reach remainder 0 at any point, we stop immediately. The path from the start state to this state defines a valid number divisible by 2023.
+4. To reconstruct the number, we follow stored parent pointers backward from the zero state until we reach the start. We then reverse the sequence of digits.
+5. We output the reconstructed string.
 
-Why this works is based on a key invariant: every BFS state corresponds to at least one valid number formed using only digits $A$ and $B$, and its stored remainder is exactly the value of that number modulo 2023. BFS ensures we explore all reachable remainders under valid digit transitions, so if remainder 0 is reachable at all, we will find it. Since the state space is finite, reachability is guaranteed within bounded exploration.
+The key design choice is storing only predecessors instead of full strings, which keeps memory bounded and allows efficient reconstruction.
+
+### Why it works
+
+Each BFS state represents exactly one reachable remainder with a specific digit sequence. Every extension step preserves correctness of the remainder computation because decimal concatenation is faithfully modeled by $10r + d$. BFS explores states in increasing number of digits, so the first time we reach remainder 0 corresponds to a valid construction. Since there are only 2023 possible remainders, if a solution exists within the allowed digit alphabet, BFS will encounter it without needing to explore exponential-length strings explicitly.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
 from collections import deque
+
+input = sys.stdin.readline
+
+MOD = 2023
 
 def solve():
     A, B = map(int, input().split())
-    
-    # transitions: from remainder r, append digit d
-    def nxt(r, d):
-        return (r * 10 + d) % 2023
-    
-    # dist / parent tracking
-    dist = [-1] * 2023
-    parent = [-1] * 2023
-    parent_digit = [-1] * 2023
-    
+    digits = [A, B]
+
+    # store visited remainders
+    prev = [-1] * MOD
+    prev_digit = [-1] * MOD
+    visited = [False] * MOD
+
     q = deque()
-    
-    # initialize with valid starting digits
-    for d in [A, B]:
+
+    # initialize with valid starting digits (no leading zero)
+    for d in digits:
         if d == 0:
             continue
-        r = d % 2023
-        if dist[r] == -1:
-            dist[r] = 1
-            parent[r] = -1
-            parent_digit[r] = d
+        r = d % MOD
+        if not visited[r]:
+            visited[r] = True
+            prev[r] = -2  # start marker
+            prev_digit[r] = d
             q.append(r)
-    
-    # BFS
+
+    # BFS over remainder states
     while q:
         r = q.popleft()
+
         if r == 0:
             break
-        for d in [A, B]:
-            nr = nxt(r, d)
-            if dist[nr] == -1:
-                dist[nr] = dist[r] + 1
-                parent[nr] = r
-                parent_digit[nr] = d
+
+        for d in digits:
+            nr = (r * 10 + d) % MOD
+            if not visited[nr]:
+                visited[nr] = True
+                prev[nr] = r
+                prev_digit[nr] = d
                 q.append(nr)
-    
+
+    if not visited[0]:
+        return ""
+
     # reconstruct answer
-    if dist[0] == -1:
-        return "0"
-    
     res = []
     cur = 0
-    while cur != -1:
-        res.append(str(parent_digit[cur]))
-        cur = parent[cur]
-    
-    res.reverse()
-    return "".join(res)
+    while prev[cur] != -2:
+        res.append(str(prev_digit[cur]))
+        cur = prev[cur]
+
+    res.append(str(prev_digit[cur]))
+    return "".join(reversed(res))
 
 if __name__ == "__main__":
     print(solve())
 ```
 
-The BFS state is the remainder, not the number itself, which avoids exponential blowup. The transition function encodes digit concatenation exactly as arithmetic on base-10 numbers. Parent pointers store the exact digit used to reach each state, which is what makes reconstruction possible.
+The BFS is implemented purely on remainders, which keeps the state space small. The arrays `prev` and `prev_digit` allow reconstruction without storing full strings. The marker `-2` distinguishes root states from intermediate ones.
 
-A subtle point is initialization: we explicitly forbid leading zeros by skipping starting digits equal to zero. This ensures the reconstructed number is valid under the problem’s formatting rule.
-
-Another detail is that we stop BFS as soon as remainder 0 is dequeued. This is safe because BFS explores states in increasing number of steps, so any first encounter of 0 already corresponds to a valid constructed number.
-
-## Worked Examples
-
-### Sample 1
-
-Input digits are 2 and 3. BFS starts from “2” and “3”, meaning remainders $2$ and $3$.
-
-| Step | Queue | Current | Action | New remainder |
-| --- | --- | --- | --- | --- |
-| 1 | 2, 3 | 2 | expand with 2, 3 | 24, 27 mod 2023 |
-| 2 | 3, ... | 3 | expand transitions | ... |
-| ... | ... | ... | ... | ... |
-| k | ... | r | reach 0 | 0 |
-
-Eventually a sequence of transitions leads to remainder 0, and reconstruction yields a valid number like the sample output.
-
-This trace confirms that we are not searching numerically but exploring modular states, which is why the process terminates quickly.
-
-### Sample 2
-
-Input digits are 5 and 7. We similarly start from remainders 5 and 7.
-
-| Step | Queue | Current | Action | New remainder |
-| --- | --- | --- | --- | --- |
-| 1 | 5, 7 | 5 | expand | (5_10+5, 5_10+7) |
-| 2 | ... | 7 | expand | ... |
-| ... | ... | ... | ... | ... |
-| k | ... | r | reach 0 | 0 |
-
-Again, BFS guarantees that once 0 is reached, we have a valid digit-only construction.
-
-These examples illustrate that the structure of the digits does not matter individually; only their induced transitions modulo 2023 matter.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | $O(2023)$ | Each remainder is visited at most once, and each has at most two transitions |
-| Space | $O(2023)$ | Arrays store distance and reconstruction data for each remainder |
-
-The constant state space size dominates the analysis. Even though the produced number can have up to $10^{100}$ digits, we never manipulate it directly during search, only during reconstruction.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    return solve()
-
-# provided samples
-assert run("2 3\n") == "322322332332", "sample 1"
-assert run("5 7\n") == "777775577775", "sample 2"
-
-# custom cases
-assert run("1 2\n") != "", "small digits, reachable construction exists"
-assert run("9 0\n") != "" or run("9 0\n").startswith("9"), "zero handling edge"
-assert run("3 6\n") != "", "generic pair should produce valid number"
-assert run("8 8\n") != "", "degenerate case (though input says distinct, robustness)"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 2 3 | sample output | correctness baseline |
-| 5 7 | sample output | correctness baseline |
-| 1 2 | nontrivial digits | general reachability |
-| 9 0 | no leading zero | zero handling |
-| 3 6 | random pair | BFS correctness |
-| 8 8 | degenerate case | robustness |
-
-## Edge Cases
-
-When one of the digits is zero, the BFS initialization skips it as a starting point. For example, if input is $0$ and $7$, we only start from “7”. Any transition that appends 0 is still allowed later, but the initial state never begins with 0, so no invalid leading-zero number is produced. The BFS still explores states like 70, 700, and so on, and if any of them reach remainder 0, reconstruction yields a valid answer.
-
-When both digits are non-zero, initialization includes both, and BFS may reach remainder 0 from either starting branch. The algorithm does not care which one is chosen; parent pointers ensure a consistent reconstruction path.
-
-The termination case where no solution exists is theoretically possible in a general automaton, but in this specific setup with multiplication by 10 modulo 2023 and two digits, reachability of 0 is guaranteed under standard number theory properties used in the intended solution structure, so the BFS will always find an answer within the finite state space.
+A subtle implementation point is initi

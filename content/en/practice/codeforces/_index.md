@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2368 contests, 16109 problems, 8852 verified."
+description: "Codeforces problem solutions with full editorials. 2372 contests, 16159 problems, 8870 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,18 +11,20 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2368 contests, 16109 problems, 8852 verified.**
+**2372 contests, 16159 problems, 8870 verified.**
 
-## Unknown — 426 contests, 3436 problems, 2138 verified
+## Unknown — 428 contests, 3463 problems, 2147 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104733](104733/) | [2022 Google Code Jam Round 3 (GCJ 22 Round 3)](https://codeforces.com/contest/104733) | 8 | 1/8 | Special | - |
+| [104735](104735/) | [2019 Google Code Jam World Finals (GCJ 19 World Finals)](https://codeforces.com/contest/104735) | 12 | 1/12 | Special | - |
 | [104736](104736/) | [2023-2024 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104736) | 13 | 13/13 | ICPC/IOI | - |
-| [104745](104745/) | [CAMA 2023](https://codeforces.com/contest/104745) | 14 | 14/14 | Special | - |
-| [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 10 | 6/10 | Special | - |
-| [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
-| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 8 | 5/8 | ICPC/IOI | - |
-| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 8 | 1/8 | ICPC/IOI | - |
+| [104745](104745/) | [CAMA 2023](https://codeforces.com/contest/104745) | 16 | 16/16 | Special | - |
+| [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 12 | 8/12 | Special | - |
+| [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 9 | 3/9 | ICPC/IOI | - |
+| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 9 | 7/9 | ICPC/IOI | - |
+| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 9 | 1/9 | ICPC/IOI | - |
 | [104772](104772/) | [2023-2024 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104772) | 13 | 5/13 | ICPC/IOI | - |
 | [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
 | [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |
@@ -1661,7 +1663,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 173 contests, 1302 problems, 599 verified
+## 2023 — 175 contests, 1325 problems, 608 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1797,13 +1799,15 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104728](104728/) | [Huazhong University of Science of Technology Freshmen Cup 2023](https://codeforces.com/contest/104728) | 12 | 5/12 | Special | - |
+| [104730](104730/) | [Moscow team school olympiad (MKOSHP) 2023](https://codeforces.com/contest/104730) | 7 | 1/7 | Special | - |
 | [104741](104741/) | [The 10th Jimei University Programming Contest](https://codeforces.com/contest/104741) | 12 | 12/12 | Special | - |
-| [104743](104743/) | [TheForces Round #25(5^2-Forces)](https://codeforces.com/contest/104743) | 3 | 0/3 | Special | - |
-| [104755](104755/) | [LU ICPC Selection Contest 2023](https://codeforces.com/contest/104755) | 12 | 10/12 | ICPC/IOI | - |
+| [104743](104743/) | [TheForces Round #25(5^2-Forces)](https://codeforces.com/contest/104743) | 5 | 0/5 | Special | - |
+| [104755](104755/) | [LU ICPC Selection Contest 2023](https://codeforces.com/contest/104755) | 13 | 13/13 | ICPC/IOI | - |
 | [104757](104757/) | [2023-2024 ICPC East North America Regional Contest (ECNA 2023)](https://codeforces.com/contest/104757) | 12 | 8/12 | ICPC/IOI | - |
 | [104763](104763/) | [UTPC Contest 11-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104763) | 8 | 3/8 | Div. 2 | - |
 | [104764](104764/) | [UTPC Contest 11-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104764) | 8 | 0/8 | Div. 1 | - |
-| [104767](104767/) | [2023-2024 CTU Open Contest](https://codeforces.com/contest/104767) | 11 | 10/11 | Special | - |
+| [104767](104767/) | [2023-2024 CTU Open Contest](https://codeforces.com/contest/104767) | 12 | 10/12 | Special | - |
 | [104768](104768/) | [2023 China Collegiate Programming Contest (CCPC) Guilin Onsite (The 2nd Universal Cup. Stage 8: Guilin)](https://codeforces.com/contest/104768) | 13 | 13/13 | Special | - |
 | [104770](104770/) | [The XXXI Saint-Petersburg High School Programming Contest (SpbKOSHP 2023) | Qualification for the XXIV Russia Open High School Programming Contest (VKOSHP 2023)](https://codeforces.com/contest/104770) | 12 | 3/12 | Special | - |
 | [104782](104782/) | [2023 Romanian Collegiate Programming Contest (RCPC)](https://codeforces.com/contest/104782) | 13 | 13/13 | Special | - |

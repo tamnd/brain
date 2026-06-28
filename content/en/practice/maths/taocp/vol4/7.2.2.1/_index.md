@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 369/446 solved."
+description: "Section 7.2.2.1 exercises: 391/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 369/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 391/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -63,18 +63,18 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 369/446 solved.
 | [43](43.md) |  [*M30*] | math-hard | solved | 3m10s |
 | [44](44.md) |  [*M04*] | math-simple | verified | 2m07s |
 | 45 |  [*11*] | simple | - | - |
-| 46 |  [*19*] | medium | - | - |
-| 47 |  [*19*] | medium | - | - |
-| 48 | &#9654; [*24*] | medium | - | - |
-| 49 | &#9654; [*24*] | medium | - | - |
-| 50 |  [*20*] | medium | - | - |
-| 51 |  [*22*] | medium | - | - |
-| 52 |  [*40*] | project | - | - |
-| 53 |  [*M26*] | math-hard | - | - |
-| 54 | &#9654; [*35*] | hard | - | - |
-| 55 |  [*34*] | hard | - | - |
-| 56 |  [*47*] | research | - | - |
-| 57 |  [*22*] | medium | - | - |
+| [46](46.md) |  [*19*] | medium | solved | 2m50s |
+| [47](47.md) |  [*19*] | medium | solved | 3m30s |
+| [48](48.md) | &#9654; [*24*] | medium | solved | 54s |
+| [49](49.md) | &#9654; [*24*] | medium | solved | 5m31s |
+| [50](50.md) |  [*20*] | medium | verified | 1m05s |
+| [51](51.md) |  [*22*] | medium | solved | 3m02s |
+| [52](52.md) |  [*40*] | project | solved | 3m34s |
+| [53](53.md) |  [*M26*] | math-hard | solved | 6m15s |
+| [54](54.md) | &#9654; [*35*] | hard | solved | 4m03s |
+| [55](55.md) |  [*34*] | hard | solved | 3m51s |
+| [56](56.md) |  [*47*] | research | solved | 4m40s |
+| [57](57.md) |  [*22*] | medium | solved | 5m02s |
 | 58 | &#9654; [*22*] | medium | - | - |
 | 59 |  [*30*] | hard | - | - |
 | 60 |  [*30*] | hard | - | - |
@@ -454,13 +454,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 369/446 solved.
 | [438](438.md) |  [*30*] | hard | solved | 4m17s |
 | [439](439.md) |  [*M30*] | math-hard | solved | 2m37s |
 | [440](440.md) |  [*21*] | medium | solved | 3m20s |
-| 441 |  [*18*] | medium | - | - |
-| 442 | &#9654; [*M23*] | math-medium | - | - |
-| 443 | &#9654; [*M30*] | math-hard | - | - |
-| 444 |  [*M27*] | math-hard | - | - |
-| 445 | &#9654; [*M22*] | math-medium | - | - |
-| 446 | &#9654; [*44*] | project | - | - |
-| 447 |  [*22*] | medium | - | - |
-| 448 |  [*22*] | medium | - | - |
-| 449 |  [*40*] | project | - | - |
-| 450 |  [*42*] | project | - | - |
+| [441](441.md) |  [*18*] | medium | solved | 58s |
+| [442](442.md) | &#9654; [*M23*] | math-medium | verified | 3m53s |
+| [443](443.md) | &#9654; [*M30*] | math-hard | solved | 4m37s |
+| [444](444.md) |  [*M27*] | math-hard | solved | 1m17s |
+| [445](445.md) | &#9654; [*M22*] | math-medium | solved | 3m13s |
+| [446](446.md) | &#9654; [*44*] | project | verified | 4m12s |
+| [447](447.md) |  [*22*] | medium | verified | 3m27s |
+| [448](448.md) |  [*22*] | medium | solved | 1m04s |
+| [449](449.md) |  [*40*] | project | solved | 1m05s |
+| [450](450.md) |  [*42*] | project | solved | 3m23s |
