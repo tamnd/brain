@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2285 contests, 15351 problems, 8366 verified."
+description: "Codeforces problem solutions with full editorials. 2286 contests, 15355 problems, 8366 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2285 contests, 15351 problems, 8366 verified.**
+**2286 contests, 15355 problems, 8366 verified.**
 
-## Unknown — 377 contests, 2999 problems, 1860 verified
+## Unknown — 378 contests, 3003 problems, 1860 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104895](104895/) | [Open Olympiad in Informatics 2021-22, first day](https://codeforces.com/contest/104895) | 4 | 0/4 | Special | - |
 | [104896](104896/) | [Open Olympiad in Informatics 2021-22, second day](https://codeforces.com/contest/104896) | 3 | 2/3 | Special | - |
 | [104901](104901/) | [The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)](https://codeforces.com/contest/104901) | 13 | 11/13 | ICPC/IOI | - |
 | [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 1 | 1/1 | Special | - |
