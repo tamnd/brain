@@ -1,22 +1,22 @@
 ---
 title: "Central Russia Regional Contest, 2022, Qualification Contest"
-description: "8 problems from Central Russia Regional Contest, 2022, Qualification Contest (contest 104804), difficulty -. 3/8 solutions verified against sample I/O."
+description: "10 problems from Central Russia Regional Contest, 2022, Qualification Contest (contest 104804), difficulty -. 4/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104804
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 3
-total_solve_s: 602
-date: "2026-06-28T13:27:15+07:00"
+n_problems: 10
+n_verified: 4
+total_solve_s: 988
+date: "2026-06-28T13:32:37+07:00"
 weight: 104804
 draft: false
 ---
 
 # [Central Russia Regional Contest, 2022, Qualification Contest](https://codeforces.com/contest/104804)
 
-Special | 8 problems | 3/8 verified | Difficulty - | 10m 2s
+Special | 10 problems | 4/10 verified | Difficulty - | 16m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,3 +28,5 @@ Special | 8 problems | 3/8 verified | Difficulty - | 10m 2s
 | [F](F/) | [Good substring](https://codeforces.com/problemset/problem/104804/F) |  |  |  | 1m 6s | ✓ |
 | [G](G/) | [\u041e, \u043d\u0435\u0442! \u0413\u0435\u043e\u043c\u0430!!!](https://codeforces.com/problemset/problem/104804/G) |  |  |  | 1m 28s |  |
 | [H](H/) | [\u042d\u0434\u0443\u0440\u0434 \u0438 \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u0438](https://codeforces.com/problemset/problem/104804/H) |  |  |  | 1m 12s |  |
+| [J](J/) | [\u041f\u0430\u0440\u043e\u043c\u044b](https://codeforces.com/problemset/problem/104804/J) |  |  |  | 5m 19s |  |
+| [K](K/) | [\u041f\u0435\u0447\u0430\u0442\u044c](https://codeforces.com/problemset/problem/104804/K) |  |  |  | 1m 7s | ✓ |
