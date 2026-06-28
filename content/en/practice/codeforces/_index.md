@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2337 contests, 15808 problems, 8633 verified."
+description: "Codeforces problem solutions with full editorials. 2338 contests, 15811 problems, 8633 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2337 contests, 15808 problems, 8633 verified.**
+**2338 contests, 15811 problems, 8633 verified.**
 
 ## Unknown — 408 contests, 3270 problems, 2011 verified
 
@@ -1643,7 +1643,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 160 contests, 1170 problems, 509 verified
+## 2023 — 161 contests, 1173 problems, 509 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1779,6 +1779,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104791](104791/) | [The 2023 CCPC (Qinhuangdao) Onsite Warmup](https://codeforces.com/contest/104791) | 3 | 0/3 | Special | - |
 | [104802](104802/) | [TheForces Round #26 (Readall-Forces)](https://codeforces.com/contest/104802) | 5 | 0/5 | Special | - |
 | [104803](104803/) | [NOIP 2023](https://codeforces.com/contest/104803) | 1 | 0/1 | Special | - |
 | [104814](104814/) | [Муниципальный этап ВсОШ по информатике в Республике Башкортостан 2023 (9 - 11 классы)](https://codeforces.com/contest/104814) | 5 | 2/5 | Special | - |
