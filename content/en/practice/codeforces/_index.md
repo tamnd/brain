@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2328 contests, 15722 problems, 8586 verified."
+description: "Codeforces problem solutions with full editorials. 2329 contests, 15737 problems, 8597 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2328 contests, 15722 problems, 8586 verified.**
+**2329 contests, 15737 problems, 8597 verified.**
 
-## Unknown — 403 contests, 3207 problems, 1978 verified
+## Unknown — 404 contests, 3222 problems, 1989 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104820](104820/) | [РСО-Алания 2018-2023. Избранное](https://codeforces.com/contest/104820) | 15 | 11/15 | Special | - |
 | [104824](104824/) | [COMP4128 23T3 Contest 3](https://codeforces.com/contest/104824) | 6 | 0/6 | Special | - |
 | [104829](104829/) | [Муниципальный этап ВсОШ по информатике 2023-2024, Краснодарский край](https://codeforces.com/contest/104829) | 0 | 0/0 | Special | - |
 | [104832](104832/) | [2023-2024 ICPC, Asia Yokohama Regional Contest 2023](https://codeforces.com/contest/104832) | 11 | 11/11 | ICPC/IOI | - |
