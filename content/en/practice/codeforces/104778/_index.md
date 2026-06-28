@@ -1,25 +1,26 @@
 ---
 title: "2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап)"
-description: "12 problems from 2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап) (contest 104778), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from 2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап) (contest 104778), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104778
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 671
-date: "2026-06-28T15:10:42+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 711
+date: "2026-06-28T15:26:56+07:00"
 weight: 104778
 draft: false
 ---
 
 # [2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап)](https://codeforces.com/contest/104778)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 11s
+Special | 13 problems | 13/13 verified | Difficulty - | 11m 51s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u0422\u0440\u0435\u0443\u0433\u043e\u043b\u044c\u043d\u0438\u043a](https://codeforces.com/problemset/problem/104778/A) |  |  |  | 40s | ✓ |
 | [B](B/) | [\u0411\u0430\u0441\u043a\u0435\u0442\u0431\u043e\u043b](https://codeforces.com/problemset/problem/104778/B) |  |  |  | 56s | ✓ |
 | [C](C/) | [\u0414\u0432\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438](https://codeforces.com/problemset/problem/104778/C) |  |  |  | 43s | ✓ |
 | [D](D/) | [\u041a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u0438\u0432 \u0441 \u0438\u043d\u0432\u0435\u0440\u0441\u0438\u044f\u043c\u0438](https://codeforces.com/problemset/problem/104778/D) |  |  |  | 1m 20s | ✓ |
