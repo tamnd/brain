@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2346 contests, 15875 problems, 8692 verified."
+description: "Codeforces problem solutions with full editorials. 2352 contests, 15902 problems, 8719 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,18 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2346 contests, 15875 problems, 8692 verified.**
+**2352 contests, 15902 problems, 8719 verified.**
 
-## Unknown — 413 contests, 3307 problems, 2045 verified
+## Unknown — 419 contests, 3334 problems, 2072 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
+| [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |
+| [104775](104775/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (3 группа регионов)](https://codeforces.com/contest/104775) | 0 | 0/0 | Special | - |
+| [104776](104776/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (4 группа регионов)](https://codeforces.com/contest/104776) | 0 | 0/0 | Special | - |
+| [104777](104777/) | [2023-2024 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 157)](https://codeforces.com/contest/104777) | 14 | 14/14 | Educational | - |
+| [104778](104778/) | [2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап)](https://codeforces.com/contest/104778) | 13 | 13/13 | Special | - |
 | [104783](104783/) | [2021-2022 CTU Open Contest](https://codeforces.com/contest/104783) | 12 | 12/12 | Special | - |
 | [104784](104784/) | [2019-2020 CTU Open Contest](https://codeforces.com/contest/104784) | 3 | 0/3 | Special | - |
 | [104785](104785/) | [2023 United Kingdom and Ireland Programming Contest (UKIEPC 2023)](https://codeforces.com/contest/104785) | 11 | 11/11 | Special | - |
