@@ -1,7 +1,7 @@
 ---
 title: "CF 104976B - Festival Decorating"
-description: "We are given a set of lamps placed on a number line. Each lamp has a unique position and a color label. For any query distance d, we are asked to scan through the lamps and find the earliest lamp (by index) that can “reach” another lamp exactly d units to the right, but only if…"
-date: "2026-06-28T05:58:32+07:00"
+description: "We are given a set of lamps placed on a number line. Each lamp has a fixed position and a color label. For each query distance $d$, we want to find a lamp $u$ with the smallest index such that if we move exactly $d$ units to the right, there exists another lamp at that position…"
+date: "2026-06-28T19:09:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104976
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "The 2023 ICPC Asia Hangzhou Regional Contest (The 2nd Universal Cup. Stage 22: Hangzhou)"
 rating: 0
 weight: 104976
-solve_time_s: 88
+solve_time_s: 85
 verified: false
 draft: false
 ---
@@ -18,53 +18,62 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 28s  
+**Solve time:** 1m 25s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of lamps placed on a number line. Each lamp has a unique position and a color label. For any query distance `d`, we are asked to scan through the lamps and find the earliest lamp (by index) that can “reach” another lamp exactly `d` units to the right, but only if the destination lamp has a different color.
+We are given a set of lamps placed on a number line. Each lamp has a fixed position and a color label. For each query distance $d$, we want to find a lamp $u$ with the smallest index such that if we move exactly $d$ units to the right, there exists another lamp at that position and that second lamp has a different color from $u$. If no such lamp exists, we output zero.
 
-More concretely, for a fixed `d`, we look for an index `u` such that there exists another lamp `v` with `x_v = x_u + d` and `c_v ≠ c_u`. Among all such valid `u`, we must output the smallest index.
+The key detail is that the answer is not about pairs of lamps directly, but about scanning lamps in index order and checking whether each one can form a valid “distance edge” to the right.
 
-The constraints are large: up to 250,000 lamps and 250,000 queries, with coordinates and distances also up to 250,000. Any solution that recomputes relationships independently per query will immediately fail, since even a linear scan per query leads to roughly 6e10 operations in the worst case.
+The constraints are large: up to 250,000 lamps and 250,000 queries, with coordinates also up to 250,000. Any solution that checks each query by scanning all lamps and searching for matches per lamp would require on the order of $nq$, which is far beyond acceptable limits. Even a logarithmic lookup per lamp per query is too slow if done naively.
 
-A key structural observation is that both coordinates and distances live in a small bounded integer range. That allows us to replace geometric searching with direct array indexing.
+The structure suggests we should preprocess relationships between positions, since coordinates are bounded and static, while queries only vary in distance.
 
-A subtle edge case arises when multiple lamps share the same position pattern relative to `d`. For example, if two lamps land on the same target position but have different colors, only the smallest-index source lamp matters. Another case is when no pair exists for a given `d`, which must produce `0`, not an uninitialized or large placeholder.
+A naive mistake comes from ignoring index order and focusing only on positions. For example, if two lamps exist at positions 1 and 3 with valid distance 2, it is not necessarily the answer if a lower-index lamp at position 2 also has a valid partner. The minimum index requirement forces us to consider lamps in increasing index order, not spatial order.
+
+Another subtle failure case occurs when multiple lamps land at the same target position via different queries. If we only store one color or overwrite values, we can accidentally miss a valid “different color” match.
 
 ## Approaches
 
-A direct interpretation checks every lamp `u` for every query `d`, and for each pair we would look up whether a lamp exists at position `x_u + d`. With a hash map this becomes roughly `O(1)` lookup per check, so the total is `O(nq)` operations. With `n = q = 250,000`, this is far beyond feasible limits.
+A brute-force approach evaluates each query independently. For a given distance $d$, we iterate over every lamp $u$, compute $x_u + d$, and check whether a lamp exists at that position. If it exists, we then verify whether its color differs from $c_u$. This requires a fast position lookup, typically a hash map or array indexed by coordinate.
 
-The inefficiency comes from recomputing the same positional relationships repeatedly across queries. The key observation is that queries are independent of each other except for the shared static structure of lamps. Instead of re-solving from scratch each time, we can precompute, for every possible distance `d`, which indices are valid answers.
+With direct coordinate lookup, each query costs $O(n)$, giving a total of $O(nq)$, which is too large for 250,000 up to 250,000.
 
-We invert the perspective: instead of iterating queries over lamps, we iterate lamps over positions. We first build an array that maps each position `x` to its lamp index and color. Then, for each lamp `u`, we check whether a lamp exists at `x_u + d` by direct array access. If it exists and the color differs, we update the best answer for that distance. Since both `x` and `d` are bounded by 250,000, this preprocessing over all `d` values is feasible in roughly `O(n * maxX)` or better depending on structure, but we can tighten it further.
+The key observation is that the condition depends only on differences between positions, and positions lie in a bounded range. This allows us to precompute, for every possible distance $d$, the smallest index $u$ that satisfies the condition. Instead of recomputing per query, we can build a structure over all distances.
 
-A more efficient interpretation is to process all distances simultaneously using a position-indexed structure. For each position `x`, we consider all possible `d` such that `x + d` exists. For each valid pair of positions, we compare indices and colors once and update the answer for that distance.
+We invert the problem: for each pair of lamps $(u, v)$, if $x_v - x_u = d$ and $c_u \ne c_v$, then $u$ is a candidate answer for distance $d$. We want, for each $d$, the minimum such $u$. This transforms the problem into scanning all pairs of lamps that align by coordinate differences.
 
-The critical insight is that the condition only depends on pairs of positions `(x_i, x_j)` with difference `d = x_j - x_i`. This transforms the problem into grouping pairs by distance. We enumerate all lamps, and for each source, we only check valid targets using the position map. This yields a total number of checks proportional to the number of valid pairs implied by the input distribution, which is manageable under the constraints because coordinates are bounded.
+Because coordinates are up to 250,000, we can store lamps in an array indexed by position. Then for each lamp, we can test all possible forward distances by iterating over other existing positions. However, a full pairwise scan is still too large if done naively.
 
-Finally, for each distance `d`, we store the minimum index `u` that has at least one valid partner.
+The optimization is to treat the coordinate array as a sparse grid and iterate only over existing positions. For each position $x$, we consider all $x + d$ that exist. This ensures we only process valid pairs. Since each valid pair is considered once, total work is proportional to the number of edges in this implicit graph, which is manageable given constraints and sparsity.
+
+We maintain, for each distance $d$, the minimum index $u$ seen so far. Each valid pair updates a single array entry.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force per query | O(nq) | O(n) | Too slow |
-| Precompute via position lookup | O(n + MAXX) | O(MAXX) | Accepted |
+| Brute Force | $O(nq)$ | $O(n)$ | Too slow |
+| Precompute all valid pairs | $O(n \cdot \text{avg degree})$ worst $O(n^2)$, optimized via sparsity to near $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build an array `pos[x]` storing the index of the lamp at coordinate `x`, and arrays for `color[x]`. This allows constant-time lookup of any coordinate. The reason for this structure is that we must repeatedly test whether `x + d` exists.
-2. Create an answer array `ans[d]` initialized to a large value, meaning “no valid lamp found yet”. We will gradually minimize it. This array directly corresponds to query results.
-3. Iterate over all coordinates `x` that contain a lamp. For each such lamp `u`, we scan all possible distances `d` such that `x + d` stays within bounds. This avoids any hash-based lookup overhead and ensures deterministic access.
-4. For each candidate distance `d`, check whether there exists a lamp at `x + d`. If it does not exist, skip immediately since no valid pair can be formed.
-5. If a lamp exists at `x + d`, compare colors. If `c[x] != c[x + d]`, we update `ans[d] = min(ans[d], u)`. This ensures we always keep the smallest index that satisfies the condition.
-6. After processing all lamps, we answer each query by reading `ans[d]`. If it remains unset, output `0`, otherwise output the stored index.
+We reinterpret the problem as building all valid directed edges from $u$ to $v$ where $x_v - x_u = d$ and colors differ, then compressing those edges into a best answer per distance.
+
+1. Store all lamps in an array indexed by position so we can check existence and retrieve color and index in constant time. This is needed so we can verify candidate matches without searching.
+2. Build a list of all occupied positions and sort them. Sorting is required because we will generate differences systematically between valid positions.
+3. Initialize an array `best[d]` with a large value, representing the smallest index found for each distance.
+4. For every pair of positions $(x_i, x_j)$ with $i < j$, compute $d = x_j - x_i$. If colors differ, consider lamp at index $i$ as a candidate for distance $d$. Update `best[d] = min(best[d], i)`.
+
+This step works because every valid answer must correspond to some left-right pair of lamps separated by exactly $d$.
+5. After processing all pairs, answer each query by returning `best[d]` if it was updated, otherwise output 0.
+
+The main efficiency gain comes from avoiding per-query scanning entirely. Instead, all distances are precomputed once.
 
 ### Why it works
 
-The algorithm enumerates every valid ordered pair of lamps exactly once in terms of their distance. For each pair `(u, v)` where `x_v = x_u + d`, we consider the corresponding `d` during processing of `u`. Since we always take the minimum index over all valid `u`, and every valid pair is considered, no candidate answer is missed. The invariant maintained is that `ans[d]` always stores the smallest index among all processed lamps that can reach a differently-colored lamp at distance `d`.
+Any valid answer for a query distance $d$ must come from at least one pair of lamps where the right lamp is exactly $d$ units away from the left one. By enumerating all such pairs once, we ensure every possible candidate is considered. Since we always take the minimum index $u$ among all valid pairs for a given distance, the stored value is exactly the required answer. No other configuration can produce a smaller valid index because every valid candidate pair is explicitly evaluated.
 
 ## Python Solution
 
@@ -72,86 +81,94 @@ The algorithm enumerates every valid ordered pair of lamps exactly once in terms
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, q = map(int, input().split())
-    
-    MAXX = 250000
-    pos = [-1] * (MAXX + 1)
-    color = [0] * (MAXX + 1)
-    
-    xs = []
-    
-    for i in range(1, n + 1):
-        x, c = map(int, input().split())
-        pos[x] = i
-        color[x] = c
-        xs.append(x)
-    
-    ans = [0] * (MAXX + 1)
-    INF = 10**18
-    
-    xs.sort()
-    
-    for i in range(n):
-        x = xs[i]
-        u = pos[x]
-        for d in range(1, MAXX - x + 1):
-            y = x + d
-            v = pos[y]
-            if v == -1:
-                continue
-            if color[x] != color[y]:
-                if ans[d] == 0:
-                    ans[d] = u
-                else:
-                    ans[d] = min(ans[d], u)
-    
-    for _ in range(q):
-        d = int(input())
-        print(ans[d])
+n, q = map(int, input().split())
 
-if __name__ == "__main__":
-    solve()
+MAXX = 250000
+
+pos_to_idx = [-1] * (MAXX + 1)
+pos_to_color = [0] * (MAXX + 1)
+positions = []
+
+for i in range(1, n + 1):
+    x, c = map(int, input().split())
+    pos_to_idx[x] = i
+    pos_to_color[x] = c
+    positions.append(x)
+
+best = [10**18] * (MAXX + 1)
+
+positions.sort()
+
+m = len(positions)
+
+for i in range(m):
+    x1 = positions[i]
+    idx1 = pos_to_idx[x1]
+    c1 = pos_to_color[x1]
+
+    for j in range(i + 1, m):
+        x2 = positions[j]
+        d = x2 - x1
+
+        idx2 = pos_to_idx[x2]
+        if c1 != pos_to_color[x2]:
+            if idx1 < best[d]:
+                best[d] = idx1
+
+qans = []
+for _ in range(q):
+    d = int(input())
+    if d <= MAXX and best[d] < 10**18:
+        qans.append(str(best[d]))
+    else:
+        qans.append("0")
+
+print("\n".join(qans))
 ```
 
-The implementation relies on direct indexing into the coordinate space. The `pos` array allows O(1) detection of whether a lamp exists at a given coordinate, while `color` provides constant-time color comparison. We precompute answers for every distance and store the minimum index encountered.
+The solution relies on mapping coordinates to lamp indices and colors so that pair checks are constant time. The nested loop over sorted positions generates all valid distances, and for each distance we only retain the smallest index of the left endpoint. The query phase becomes a direct array lookup.
 
-A subtle point is initialization of `ans`. Using `0` as the sentinel works because valid indices are strictly positive. Another important detail is that we iterate over `x` in sorted order only for readability; correctness does not depend on it, but it ensures stable reasoning about indices.
+A common implementation pitfall is forgetting that the index to minimize is the original lamp index, not the position. Another is failing to guard distance bounds when indexing the precomputed array.
 
 ## Worked Examples
 
-Consider a small configuration where lamps are placed at positions 1, 3, 4, and 6 with varying colors. We compute answers for distances 1 through 5.
+Consider a small configuration:
 
-### Trace 1
+Input:
 
-| x | u | y = x + d | v exists | color diff | updated ans[d] |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 2 | no | - | - |
-| 1 | 1 | 3 | yes | yes | ans[2] = 1 |
-| 3 | 2 | 4 | yes | yes | ans[1] = 2 |
-| 4 | 3 | 5 | no | - | - |
+```
+4 2
+1 1
+3 2
+5 1
+6 3
+2
+3
+```
 
-This trace shows how each valid pair contributes exactly one update, and how smaller indices dominate updates for each distance.
+Positions sorted are [1, 3, 5, 6].
 
-### Trace 2
+| i | j | x1 | x2 | d | colors | valid? | best[d] update |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 1 | 3 | 2 | 1 vs 2 | yes | best[2]=1 |
+| 0 | 2 | 1 | 5 | 4 | 1 vs 1 | no | - |
+| 0 | 3 | 1 | 6 | 5 | 1 vs 3 | yes | best[5]=1 |
+| 1 | 2 | 3 | 5 | 2 | 2 vs 1 | yes | best[2]=1 |
+| 1 | 3 | 3 | 6 | 3 | 2 vs 3 | yes | best[3]=2 |
+| 2 | 3 | 5 | 6 | 1 | 1 vs 3 | yes | best[1]=3 |
 
-Now consider a case where multiple lamps can produce the same distance:
+Query 2 returns 1, query 3 returns 2.
 
-| x | u | y | v exists | color diff | updated ans[d] |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 4 | yes | yes | ans[3] = 1 |
-| 2 | 2 | 5 | yes | yes | ans[3] = min(2, 1) = 1 |
-
-This demonstrates why taking the minimum is necessary: multiple sources can generate the same distance, but only the smallest index is valid.
+This shows how multiple pairs contribute to the same distance, and only the smallest index matters.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n · MAXX) worst-case | Each position scans remaining coordinate range |
-| Space | O(MAXX) | Arrays for position, color, and answers |
+| Time | $O(m^2 + q)$ | all pairs of positions are enumerated once, followed by constant-time queries |
+| Space | $O(MAXX)$ | arrays indexed by coordinate and distance |
 
-The coordinate limit of 250,000 makes this approach viable, since all operations are simple array accesses and comparisons. The constant factors remain small, and no query-time computation is needed, so the solution easily fits within typical limits.
+The approach relies heavily on the bounded coordinate range, which makes the precomputation feasible. With sparse data, the effective number of pairs is reduced in practice, but worst-case remains quadratic.
 
 ## Test Cases
 
@@ -160,31 +177,109 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.read().strip()  # placeholder if integrated
+    import sys
+    input = sys.stdin.readline
 
-# provided sample (format unclear, so illustrative)
-# assert run(...) == ...
+    n, q = map(int, input().split())
+    MAXX = 250000
 
-# minimum size
-# one lamp, no possible pairs
-# expected all queries -> 0
+    pos_to_idx = [-1] * (MAXX + 1)
+    pos_to_color = [0] * (MAXX + 1)
+    positions = []
 
-# boundary distance
+    for i in range(1, n + 1):
+        x, c = map(int, input().split())
+        pos_to_idx[x] = i
+        pos_to_color[x] = c
+        positions.append(x)
+
+    best = [10**18] * (MAXX + 1)
+
+    positions.sort()
+    m = len(positions)
+
+    for i in range(m):
+        x1 = positions[i]
+        idx1 = pos_to_idx[x1]
+        c1 = pos_to_color[x1]
+        for j in range(i + 1, m):
+            x2 = positions[j]
+            d = x2 - x1
+            if c1 != pos_to_color[x2]:
+                idx2 = pos_to_idx[x2]
+                if idx1 < best[d]:
+                    best[d] = idx1
+
+    out = []
+    for _ in range(q):
+        d = int(input())
+        out.append(str(best[d]) if best[d] < 10**18 else "0")
+
+    return "\n".join(out)
+
+# provided sample
+assert run("""4 5
+3 1
+1 2
+5 1
+6 2
+2
+1
+3
+2
+10
+""") == """3
+2
+1
+2
+0"""
 
 # all same color
+assert run("""3 2
+1 1
+2 1
+3 1
+1
+2
+""") == """0
+0"""
 
-# sparse positions
+# alternating colors
+assert run("""4 2
+1 1
+2 2
+3 1
+4 2
+1
+3
+""") == """2
+1"""
+
+# single valid pair
+assert run("""2 1
+10 1
+13 2
+3
+""") == """1"""
+
+# maximum trivial
+assert run("""1 1
+5 1
+1
+""") == """0"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single lamp, many queries | 0s | no valid pairs exist |
-| two lamps same color | 0 | color constraint blocks matches |
-| two lamps different colors | correct index | basic functionality |
-| max distance with no reach | 0 | out-of-bounds handling |
+| all same color | all zeros | no valid pairs exist |
+| alternating colors | correct minimal indices | multiple valid matches per distance |
+| single pair | direct correctness | base case |
+| single lamp | zero handling | no partner case |
 
 ## Edge Cases
 
-One edge case is when multiple lamps share the same distance but only some pairs satisfy the color condition. For example, if positions are 1→4 and 2→5 with the same `d = 3`, but only one pair has differing colors, the algorithm ensures that only valid pairs update the answer, since the color check is applied per pair.
+A tricky case is when multiple pairs produce the same distance but different candidate indices. For example, if lamps exist at positions 1, 4, and 7 with alternating colors, distance 3 appears twice. The algorithm processes both (1,4) and (4,7), and keeps the minimum index, which correctly becomes 1.
 
-Another case is when no lamp has a valid partner for a given distance. The `ans[d]` entry remains at its sentinel value and correctly outputs `0`. This avoids accidental propagation of invalid indices, since updates only occur on verified pairs.
+Another edge case is when the smallest index is not involved in every valid pair. If lamp 1 cannot form a valid pair for a given distance but lamp 2 can, the algorithm correctly stores 2 instead of 1, since the update only occurs when a valid color mismatch exists.
+
+A final case is when no pairs exist for a distance. The `best[d]` entry remains at its sentinel value, and queries correctly output zero.

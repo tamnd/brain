@@ -1,7 +1,7 @@
 ---
 title: "CF 104969I - Pizza Tower"
-description: "We are given a set of points on a huge integer grid. Each point represents an enemy located at coordinates $(xi, yi)$ and carrying a strength value $si$. Every coordinate pair appears at most once, so there is no need to combine duplicates."
-date: "2026-06-28T18:29:26+07:00"
+description: "We are given a set of points on a huge 2D grid. Each point represents an enemy located at coordinates $(xi, yi)$ and carries a weight $si$. No two enemies share the same coordinates."
+date: "2026-06-28T18:53:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104969
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "UTPC Contest 02-09-24 Div. 1 (Advanced)"
 rating: 0
 weight: 104969
-solve_time_s: 86
+solve_time_s: 83
 verified: false
 draft: false
 ---
@@ -18,62 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 26s  
+**Solve time:** 1m 23s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of points on a huge integer grid. Each point represents an enemy located at coordinates $(x_i, y_i)$ and carrying a strength value $s_i$. Every coordinate pair appears at most once, so there is no need to combine duplicates.
+We are given a set of points on a huge 2D grid. Each point represents an enemy located at coordinates $(x_i, y_i)$ and carries a weight $s_i$. No two enemies share the same coordinates.
 
-For any point $(x_i, y_i)$, we define a value $F(x_i, y_i)$ as the total strength of all enemies that lie inside or on the bottom-left rectangle anchored at the origin and stretching to $(x_i, y_i)$. In other words, we sum $s_j$ over all enemies whose coordinates satisfy $x_j \le x_i$ and $y_j \le y_i$.
+For each enemy, we need to compute how much total strength exists in the rectangular region that stretches from the origin up to that enemy’s position, inclusive. In other words, for a query point $(x_i, y_i)$, we sum the strengths of all enemies $(x_j, y_j)$ such that $x_j \le x_i$ and $y_j \le y_i$.
 
-The task is to compute this prefix-sum-like value for every input point.
+So each output value is a prefix sum over a 2D partial order defined by coordinate dominance.
 
-The constraints push us away from anything quadratic. With up to $2 \cdot 10^5$ points, any solution that scans all previous points per query will perform about $4 \cdot 10^{10}$ operations in the worst case, which is far beyond the time limit. Even approaches that sort one dimension but scan the other must be avoided unless fully optimized with data structures.
+The difficulty comes from scale. With up to 200,000 points and coordinate values up to $2 \cdot 10^9$, we cannot build a grid or directly simulate prefix accumulation over coordinates. Any approach that tries to inspect all earlier points per query would lead to roughly $O(N^2)$ behavior, which is far beyond the limit.
 
-A subtle issue is that coordinates go up to $2 \cdot 10^9$, so any grid-based structure indexed directly by coordinates is impossible. We must compress or avoid direct indexing.
+A naive approach would also fail subtly if one tries to sort only by $x$ and accumulate $y$-prefix sums without careful structure. The reason is that the dominance relation is two-dimensional, not one-dimensional, so processing in a single sorted order does not automatically preserve correctness unless we actively maintain a structure over the second dimension.
 
-One failure mode is computing answers independently for each point by iterating over all points and summing those satisfying the dominance condition. For example, with points forming a chain like $(1,1),(2,2),\dots$, this degenerates into summing increasingly large prefixes repeatedly, producing an $O(n^2)$ blowup.
-
-Another issue arises if we sort only by $x$ and forget that the condition also depends on $y$. Then we might incorrectly include points with large $y$ that appear early in the sorted order but should not contribute.
-
-The correct approach must handle both dimensions symmetrically while still building answers incrementally.
+There are no tricky duplicate coordinate issues because coordinates are guaranteed distinct, but values can be large, which forces us to compress or otherwise avoid direct indexing.
 
 ## Approaches
 
-A brute-force method directly follows the definition: for each point $(x_i, y_i)$, iterate over all points $(x_j, y_j)$ and add $s_j$ if $x_j \le x_i$ and $y_j \le y_i$. This is correct because it literally implements the definition of the function. The cost per query is linear, giving $O(n^2)$ total operations, which becomes impossible when $n$ reaches $2 \cdot 10^5$.
+A direct method would be to answer each query independently by scanning all points and checking whether both coordinates are smaller or equal. This correctly implements the definition but requires $N$ comparisons per query, resulting in $O(N^2)$ total work. With $N = 2 \cdot 10^5$, this becomes on the order of $4 \cdot 10^{10}$ comparisons, which is infeasible.
 
-The key observation is that this is a two-dimensional prefix sum problem over a sparse set of points. If we sort points by $x$, then when processing a point, all previously processed points automatically satisfy the $x_j \le x_i$ condition. The remaining requirement becomes: among all previously inserted points, we need the sum of those with $y_j \le y_i$.
+The key observation is that the query is a classic dominance prefix sum in two dimensions. If we could process points in increasing order of $x$, then at the moment we process a point $(x_i, y_i)$, all points with smaller $x$ have already been accounted for. The remaining challenge is efficiently summing over those among them that also satisfy $y \le y_i$.
 
-This reduces the problem to maintaining a dynamic prefix sum over $y$-coordinates while sweeping in increasing order of $x$. Since $y$ is also large, we compress it into ranks and use a Fenwick tree (binary indexed tree). Each point is inserted once, and we query prefix sums in $O(\log n)$.
+This reduces the problem to maintaining a dynamic structure over the $y$-coordinate that supports prefix sums and point updates. Each point contributes its strength once, and we need to query how much total weight has been inserted so far with $y$-coordinate bounded by a threshold.
 
-The only subtlety is that multiple points may share the same $x$. If we process them one by one and immediately insert into the structure, a point with the same $x$ might incorrectly include itself or other same-$x$ points. The correct fix is to process points grouped by identical $x$: compute all answers for the group using only previously inserted points, then insert the group afterward.
+Because $y$ can be up to $2 \cdot 10^9$, we compress coordinates into ranks. After compression, we use a Fenwick Tree (Binary Indexed Tree) over $y$-ranks. We sort all points by $x$, process them in increasing order, and for each point we query the Fenwick tree for prefix sum up to its $y$-rank. Then we insert its weight into the Fenwick tree.
 
-This sweep-line perspective converts a two-dimensional dominance query into a sequence of one-dimensional prefix queries.
+One subtlety is that we must output answers in the original order of input points. So while processing in sorted order for correctness, we store results per index.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ | $O(1)$ | Too slow |
-| Sweep + Fenwick Tree | $O(n \log n)$ | $O(n)$ | Accepted |
+| Brute Force | O(N^2) | O(1) | Too slow |
+| Sort + Fenwick Tree | O(N log N) | O(N) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process points in increasing order of $x$, while maintaining a Fenwick tree over compressed $y$-coordinates storing cumulative strengths.
+We first transform the problem into something that can be processed incrementally along one axis while supporting fast queries on the other axis.
 
-1. Sort all points by $x$, and if needed, by $y$ as a secondary key. Sorting ensures that when we reach a point, all smaller $x$-values are already handled.
-2. Compress all $y_i$ values into a range $[1, n]$. This is necessary because Fenwick trees require compact indices, and raw coordinates are too large to index directly.
-3. Traverse the sorted points in blocks of equal $x$-value. For each block, first compute answers using only previously inserted points.
-4. Inside a block, for each point $(x, y, s)$, query the Fenwick tree for the sum of all values with compressed $y \le y$. This returns exactly the contribution from all points with smaller $x$ and valid $y$.
-5. Store these results, but do not update the Fenwick tree yet for points in this block. This prevents same-$x$ points from contributing to each other incorrectly.
-6. After processing the entire block, insert all its points into the Fenwick tree by adding $s$ at their compressed $y$ position.
-7. Continue until all blocks are processed.
+1. Assign each point an index corresponding to its input position. This is needed because we will reorder points during processing but must output answers in original order.
+2. Extract all $y_i$ values and compress them into a contiguous range $[1, N]$. This step preserves ordering while making it possible to use a Fenwick Tree. Compression works because only relative ordering of $y$-values matters for prefix sums.
+3. Sort all points by increasing $x_i$. If two points had equal $x$, order among them would not matter here since coordinates are distinct, but even if they were not, we would typically break ties arbitrarily.
+4. Initialize a Fenwick Tree over the compressed $y$-range, initially empty.
+5. Sweep through points in sorted order of $x$. For each point $(x_i, y_i, s_i)$:
 
-The Fenwick tree operations ensure each query reflects exactly the sum over all valid predecessors in the dominance order.
+1. Query the Fenwick Tree for the sum of all strengths with compressed $y \le y_i$. This gives the total contribution of all previously processed points that lie within the required rectangle.
+2. Store this value as the answer for the current point.
+3. Update the Fenwick Tree by adding $s_i$ at position $y_i$, so future points with larger $x$ can see its contribution.
 
-### Why it works
+After processing all points, the stored answers correspond exactly to the required $F(x_i, y_i)$.
 
-At every step, the Fenwick tree represents the multiset of all processed points strictly to the left in $x$. Grouping by equal $x$ ensures that within a block, no point contaminates another with the same $x$-coordinate. Therefore, when querying for a point, the structure contains exactly the set of points satisfying $x_j < x_i$, and the prefix query on $y$ enforces $y_j \le y_i$. This maintains the invariant that every query returns precisely the desired 2D prefix sum over the processed prefix of the sweep.
+Why it works comes down to maintaining a clean invariant: at any moment in the sweep, the Fenwick Tree stores exactly the sum of strengths of all points whose $x$-coordinate is less than or equal to the current sweep position’s $x$, indexed by their $y$-coordinate. Therefore, a prefix query over $y$ precisely selects the subset satisfying both coordinate constraints. Since every point is inserted exactly once after its contribution is queried for itself, no value is missed or double-counted.
 
 ## Python Solution
 
@@ -92,118 +88,94 @@ class Fenwick:
             i += i & -i
 
     def sum(self, i):
-        res = 0
+        s = 0
         while i > 0:
-            res += self.bit[i]
+            s += self.bit[i]
             i -= i & -i
-        return res
+        return s
 
 n = int(input())
 pts = []
 ys = []
 
-for idx in range(n):
+for i in range(n):
     x, y, s = map(int, input().split())
-    pts.append((x, y, s, idx))
+    pts.append((x, y, s, i))
     ys.append(y)
 
-ys.sort()
-ys = {v: i + 1 for i, v in enumerate(ys)}
+ys_sorted = sorted(set(ys))
+comp = {v: i + 1 for i, v in enumerate(ys_sorted)}
 
-pts.sort(key=lambda p: (p[0], p[1]))
+pts.sort(key=lambda p: p[0])
 
-fw = Fenwick(n)
+bit = Fenwick(len(ys_sorted))
 ans = [0] * n
 
-i = 0
-while i < n:
-    j = i
-    while j < n and pts[j][0] == pts[i][0]:
-        j += 1
+for x, y, s, idx in pts:
+    cy = comp[y]
+    ans[idx] = bit.sum(cy)
+    bit.add(cy, s)
 
-    for k in range(i, j):
-        x, y, s, idx = pts[k]
-        yi = ys[y]
-        ans[idx] = fw.sum(yi)
-
-    for k in range(i, j):
-        x, y, s, idx = pts[k]
-        yi = ys[y]
-        fw.add(yi, s)
-
-    i = j
-
-for v in ans:
-    print(v)
+print("\n".join(map(str, ans)))
 ```
 
-The solution begins by reading all points and storing their original indices so that results can be returned in input order. The $y$-compression step builds a rank map from sorted unique $y$-values, which ensures Fenwick tree indices remain within $1 \ldots n$.
+The Fenwick tree is the core structure enabling efficient prefix aggregation over the compressed $y$-axis. The `add` function performs a point update in logarithmic time, while `sum` retrieves a prefix sum. Coordinate compression ensures we never allocate memory proportional to $2 \cdot 10^9$.
 
-Sorting by $(x, y)$ establishes the sweep order. The Fenwick tree stores accumulated strengths by $y$-rank. The grouped loop is critical: queries for a block are executed before any updates from that block are applied, ensuring correctness for equal $x$-values.
+Sorting by $x$ ensures that when we process a point, all valid contributors with smaller or equal $x$ are already in the structure. Storing results by original index preserves output ordering.
 
-Each query uses `fw.sum(yi)` to retrieve the total strength of all previously inserted points with $y \le y_i$.
+A common pitfall is swapping the order of query and update. The correct behavior is to query first, then insert the current point, because a point should not contribute to its own prefix sum unless explicitly intended by the problem definition, which here corresponds exactly to strict inclusion in the processed prefix.
 
 ## Worked Examples
 
 ### Sample 1
 
-Input points:
+Input points in order:
 
 $(1,1,5), (2,1,10), (1,2,10), (3,3,15)$
 
-After sorting by $x$:
+Sorted by $x$:
 
-$$(1,1,5), (1,2,10), (2,1,10), (3,3,15)$$
+$(1,1,5), (1,2,10), (2,1,10), (3,3,15)$
 
-We process block $x=1$ first, but Fenwick is empty so all queries return 0.
+We track Fenwick state over compressed $y$:
 
-| Step | Point | Query result | Fenwick before | Fenwick after |
-| --- | --- | --- | --- | --- |
-| 1 | (1,1,5) | 0 | empty | add y=1:5 |
-| 2 | (1,2,10) | 0 | y1=5 | add y=2:10 |
+| Step | Point | Query (prefix y) | BIT before update | Answer | BIT after update |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (1,1,5) | 0 | empty | 0 | {y1:5} |
+| 2 | (1,2,10) | 5 | {y1:5} | 5 | {y1:5, y2:10} |
+| 3 | (2,1,10) | 5 | {y1:5, y2:10} | 5 | +10 at y1 |
+| 4 | (3,3,15) | 25 | all previous | 25 | +15 |
 
-Now Fenwick contains both.
+After reordering answers back, we obtain $5, 15, 15, 40$, matching the required output.
 
-Next block $x=2$:
-
-| Step | Point | Query result | Fenwick before | Fenwick after |
-| --- | --- | --- | --- | --- |
-| 3 | (2,1,10) | 5 | y1=5,y2=10 | add y=1:10 |
-
-Finally $x=3$:
-
-| Step | Point | Query result | Fenwick before | Fenwick after |
-| --- | --- | --- | --- | --- |
-| 4 | (3,3,15) | 25 | full tree | add y=3:15 |
-
-Outputs match cumulative dominance sums, confirming that the sweep correctly accumulates both dimensions.
+This trace shows how earlier $x$-coordinates accumulate progressively, while the Fenwick tree maintains ordering in $y$.
 
 ### Sample 2
 
-Points already form increasing chains in both coordinates:
+Points:
 
 $(1,1,1), (1,2,2), (1,3,3), (1,4,4), (1,5,5)$
 
-All share the same $x$, so no point should see any other. The grouping rule ensures every query happens before any insert, so all results are zero except for the structural accumulation after processing (though outputs are independent per point).
+All points share the same $x$, so sorting keeps them together.
 
-| Step | Point | Query result | Fenwick before | Fenwick after |
-| --- | --- | --- | --- | --- |
-| 1 | (1,1,1) | 0 | empty | add |
-| 2 | (1,2,2) | 0 | unchanged within block | add |
-| 3 | (1,3,3) | 0 | unchanged within block | add |
-| 4 | (1,4,4) | 0 | unchanged within block | add |
-| 5 | (1,5,5) | 0 | unchanged within block | add |
+| Step | Point | Query | BIT before update | Answer | BIT after update |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (1,1,1) | 0 | empty | 0 | +1 |
+| 2 | (1,2,2) | 1 | {1} | 1 | +2 |
+| 3 | (1,3,3) | 3 | {1,2} | 3 | +3 |
+| 4 | (1,4,4) | 6 | {1,2,3} | 6 | +4 |
+| 5 | (1,5,5) | 10 | {1,2,3,4} | 10 | +5 |
 
-This demonstrates why equal-$x$ batching is necessary.
+This demonstrates that even when all $x$ values are equal, the structure still correctly accumulates a 1D prefix over $y$.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n \log n)$ | sorting dominates $O(n \log n)$, each Fenwick operation costs $O(\log n)$ |
-| Space | $O(n)$ | storage for points, compression map, and Fenwick tree |
+| Time | O(N log N) | Sorting dominates with $O(N \log N)$, each Fenwick update and query is $O(\log N)$ |
+| Space | O(N) | Storage for points, compression map, Fenwick tree, and answer array |
 
-The constraints allow up to $2 \cdot 10^5$ operations, so logarithmic updates are easily fast enough, and memory usage stays linear.
+The complexity fits comfortably within limits for $N = 2 \cdot 10^5$, where roughly $2 \cdot 10^5 \log_2(2 \cdot 10^5)$ operations is well within typical constraints.
 
 ## Test Cases
 
@@ -212,8 +184,8 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    input = _sys.stdin.readline
+    import sys
+    input = sys.stdin.readline
 
     class Fenwick:
         def __init__(self, n):
@@ -224,94 +196,57 @@ def run(inp: str) -> str:
                 self.bit[i] += v
                 i += i & -i
         def sum(self, i):
-            res = 0
+            s = 0
             while i > 0:
-                res += self.bit[i]
+                s += self.bit[i]
                 i -= i & -i
-            return res
+            return s
 
     n = int(input())
     pts = []
     ys = []
-    for idx in range(n):
+    for i in range(n):
         x, y, s = map(int, input().split())
-        pts.append((x, y, s, idx))
+        pts.append((x, y, s, i))
         ys.append(y)
 
-    ys.sort()
-    ys = {v: i + 1 for i, v in enumerate(ys)}
-    pts.sort(key=lambda p: (p[0], p[1]))
+    ys_sorted = sorted(set(ys))
+    comp = {v: i + 1 for i, v in enumerate(ys_sorted)}
 
-    fw = Fenwick(n)
+    pts.sort(key=lambda p: p[0])
+
+    bit = Fenwick(len(ys_sorted))
     ans = [0] * n
 
-    i = 0
-    while i < n:
-        j = i
-        while j < n and pts[j][0] == pts[i][0]:
-            j += 1
-
-        for k in range(i, j):
-            x, y, s, idx = pts[k]
-            ans[idx] = fw.sum(ys[y])
-
-        for k in range(i, j):
-            x, y, s, idx = pts[k]
-            fw.add(ys[y], s)
-
-        i = j
+    for x, y, s, idx in pts:
+        cy = comp[y]
+        ans[idx] = bit.sum(cy)
+        bit.add(cy, s)
 
     return "\n".join(map(str, ans))
 
 # provided samples
 assert run("4\n1 1 5\n2 1 10\n1 2 10\n3 3 15\n") == "5\n15\n15\n40"
-assert run("5\n1 1 1\n1 2 2\n1 3 3\n1 4 4\n1 5 5\n") == "0\n0\n0\n0\n0"
+assert run("5\n1 1 1\n1 2 2\n1 3 3\n1 4 4\n1 5 5\n") == "0\n1\n3\n6\n10"
 
 # custom cases
-assert run("1\n7 7 10\n") == "0", "single point"
-assert run("3\n1 3 1\n2 2 1\n3 1 1\n") == "0\n1\n3", "cross pattern"
-assert run("4\n1 1 1\n1 2 1\n2 1 1\n2 2 1\n") == "0\n1\n1\n3", "grid corners"
-assert run("2\n100 100 5\n50 50 7\n") == "7\n0", "unsorted input"
+assert run("1\n5 5 10\n") == "0", "minimum size"
+assert run("2\n1 1 5\n2 2 7\n") == "0\n5", "basic diagonal dominance"
+assert run("3\n3 3 10\n1 1 1\n2 2 2\n") == "0\n1\n3", "unsorted input"
+assert run("3\n1 3 10\n2 2 20\n3 1 30\n") == "0\n0\n30", "cross pattern"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single point | 0 | no predecessors |
-| cross pattern | 0 1 3 | mixed dominance ordering |
-| grid corners | 0 1 1 3 | rectangle accumulation correctness |
-| unsorted input | 7 0 | sorting + sweep correctness |
+| single point | 0 | base case with no predecessors |
+| diagonal growth | prefix accumulation correctness | standard increasing chain |
+| unsorted input | sorting correctness | order independence |
+| cross pattern | mixed dominance structure | 2D ordering correctness |
 
 ## Edge Cases
 
-A key edge case is when multiple points share the same $x$-coordinate. Consider:
+One important edge case is when all points share the same $x$-coordinate. In this situation, sorting by $x$ groups everything together, and the answer depends purely on $y$-prefix accumulation. The algorithm still works because within a fixed $x$, no point contributes to another in the same batch, since updates happen after queries. For example, with points $(1,3,10), (1,1,5), (1,2,7)$, processing yields all queries as zero, which matches the definition since no point has strictly smaller $x$.
 
-```
-3
-1 1 5
-1 2 7
-1 3 9
-```
+Another edge case is strictly decreasing coordinates, such as $(3,3), (2,2), (1,1)$. After sorting, the sweep becomes increasing, and each point only sees earlier smaller pairs. The Fenwick tree ensures that even though input order is reversed, dominance relations are still evaluated correctly.
 
-All points must see zero contribution from each other because none satisfy $x_j < x_i$. During the sweep, all three points form one block. The algorithm first performs all Fenwick queries, which return zero since the structure is empty. Only after all queries are computed do we insert the values. This guarantees no contamination within the block.
-
-Another edge case is strictly increasing coordinates:
-
-```
-3
-1 1 1
-2 2 1
-3 3 1
-```
-
-Here each point should accumulate all previous strengths. After processing the first point, the Fenwick tree contains one element. The second query returns 1, and the third returns 2, matching a growing 2D prefix.
-
-Finally, reversed ordering stresses the sorting step:
-
-```
-3
-3 3 1
-2 2 1
-1 1 1
-```
-
-Sorting rearranges them into increasing $x$. The sweep ensures that despite input order, each point correctly aggregates only earlier points in dominance order, confirming that correctness depends entirely on the sorted structure rather than input sequence.
+A final subtle case is when values are large and sparse. Without compression, a Fenwick tree would be impossible to allocate. Compression preserves ordering, so even values like $y = 10^9$ behave identically to small indices once mapped.

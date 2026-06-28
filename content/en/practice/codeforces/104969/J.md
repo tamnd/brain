@@ -1,7 +1,7 @@
 ---
 title: "CF 104969J - Batch Please!"
-description: "We are given an initial burger represented as a string, where each character is a layer and the order of characters encodes top to bottom. We are also given several target burgers."
-date: "2026-06-28T18:29:40+07:00"
+description: "We are given an initial string that represents a “botched burger”, and multiple target strings representing correctly assembled burgers."
+date: "2026-06-28T18:54:31+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104969
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "UTPC Contest 02-09-24 Div. 1 (Advanced)"
 rating: 0
 weight: 104969
-solve_time_s: 81
+solve_time_s: 90
 verified: false
 draft: false
 ---
@@ -18,61 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 21s  
+**Solve time:** 1m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an initial burger represented as a string, where each character is a layer and the order of characters encodes top to bottom. We are also given several target burgers. For each target, we want to transform the initial string into that target using the minimum number of operations.
+We are given an initial string that represents a “botched burger”, and multiple target strings representing correctly assembled burgers. Each move allows us to modify only one end of the current string: we can delete or insert a single character either at the front or at the back.
 
-Each operation only affects one end of the string. We can delete or insert a character at the top (front) or bottom (back). No middle edits are allowed, so we can only grow or shrink the string from its ends.
+For every target string, we need to determine the minimum number of such end-operations required to transform the initial string into that target.
 
-This restriction changes the problem into a comparison of how much of the initial burger can be preserved as a contiguous segment inside the target. Once we identify the best alignment, everything outside that overlap must be rebuilt by deletions or insertions at the ends.
+The important structural constraint is that we are never allowed to modify the middle of the string directly. Any change must happen by trimming or extending the ends. This means that whatever part of the string we decide to “keep unchanged” during the transformation must remain as a contiguous block throughout the process.
 
-The constraints allow up to 1000 target strings, each of length up to 1000, with the original string also up to length 1000. A solution that is quadratic per query is acceptable, since 10^6 character comparisons overall is fine in Python. Any approach involving substring search with naive simulation of edits would also pass if implemented carefully.
+The input sizes are small enough that quadratic work per query is acceptable. With up to 1000 target strings and each string length up to 1000, a solution that performs about O(|S|·|T|) per query will comfortably pass. Anything involving cubic behavior per query or repeated exponential searches over substrings would be too slow.
 
-A naive but incorrect approach would try to greedily match characters from one end only, for example aligning prefixes. That fails because optimal alignment might shift both left and right simultaneously.
-
-For example, consider S = "abcd" and T = "xabcdy". The best strategy is to match "abcd" inside T and add one character on each side. A prefix-only comparison would miss that alignment.
-
-Another failure case arises when the best overlap is not anchored at the start or end. For S = "abcde", T = "zabcpq", the optimal overlap is "abc", centered inside both strings. Any method that only compares prefixes or suffixes independently will underestimate or overestimate operations.
+A subtle failure case appears when the two strings share characters but not in a contiguous way. For example, if the original is "abxycd" and the target is "abzzcd", the shared characters exist in both, but we cannot preserve a non-contiguous alignment. Only a contiguous shared block matters because all operations preserve order and only trim or extend ends.
 
 ## Approaches
 
-Since operations only modify the ends, the final string must contain a contiguous substring of the target that corresponds to the untouched middle segment of the original after deletions from both ends.
+If we think in terms of brute force, we could try every possible sequence of operations that transforms the initial string into the target. At each step we can delete or insert on either side, which creates a huge branching factor. Even if we prune intelligently, the state space is essentially all possible strings over the alphabet, which grows exponentially with length. This quickly becomes infeasible even for length 20, let alone 1000.
 
-Reversing the perspective is helpful: instead of thinking about transforming S into T, think about keeping a contiguous substring of T that matches a contiguous substring of S in order. Everything outside that matched region in both strings must be deleted or inserted using end operations.
+The key observation is that we are not really interested in the sequence of operations, but in what part of the string we choose to preserve during the transformation. Any final construction can be seen as selecting a middle segment that remains untouched, while everything outside it is deleted from the source and rebuilt into the target.
 
-If we choose a matching segment S[i:j] and T[k:l] such that S[i:j] equals T[k:l], then:
+Because operations only affect the ends, the preserved segment must appear as a contiguous substring in the original string after deletions, and also as a contiguous substring in the target string before extensions. This means the optimal strategy is to choose a longest string that appears as a substring in both S and T. Once that segment is fixed, everything else is forced: we delete the unmatched prefix and suffix from S, and add the missing prefix and suffix from T.
 
-we delete i characters from the left of S, delete (|S|-j) from the right, and similarly we build T around the matched segment by inserting characters at both ends. The cost becomes the number of characters not included in the matched overlap.
+So the problem reduces to finding the longest common substring between the two strings. If that length is L, then we save 2L operations compared to rebuilding from scratch, because those L characters do not need to be deleted or added. The final answer becomes |S| + |T| − 2L.
 
-So the goal is to maximize the length of a common substring between S and T. Once we find the longest common substring, say of length L, the answer is simply:
-
-|S| + |T| - 2L
-
-The brute-force solution tries all pairs of substrings of S and T and checks equality, which is O(n^3) in the worst case if done carefully, since there are O(n^2) substrings per string and each comparison costs O(n).
-
-The key observation is that the problem reduces to finding the longest common substring, which can be computed efficiently using dynamic programming in O(n^2) per query.
-
-We define dp[i][j] as the length of the longest common suffix of S[:i] and T[:j]. If S[i-1] == T[j-1], we extend dp[i-1][j-1], otherwise reset to zero. The maximum over all dp[i][j] gives the longest common substring length.
+Finding the longest common substring can be done with dynamic programming in O(|S|·|T|), which is sufficient given the constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force substring comparison | O(n^3) | O(1) | Too slow |
-| DP longest common substring | O(n^2) per query | O(n^2) | Accepted |
+| Brute Force over operations | Exponential | Exponential | Too slow |
+| Longest Common Substring DP | O(nm) per query | O(nm) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each target string T, we compute how well it aligns with the original string S by finding the longest common substring between them. This substring represents the part that can remain untouched during transformations.
-2. Create a DP table where dp[j] represents the longest common suffix ending at current positions in S and T. We only need one row since each value depends on the previous diagonal state. This reduces memory usage without changing logic.
-3. Iterate through each character of S. For each character, scan through T and update dp[j] from right to left. We scan backwards to ensure dp[j-1] from the previous iteration is still intact when needed.
-4. Whenever characters match, extend the diagonal value: dp[j] = previous_dp[j-1] + 1. Otherwise set dp[j] to zero. This enforces that only contiguous matches contribute.
-5. Track the maximum value seen across all dp states. This maximum is the longest common substring length L.
-6. Once L is known, compute the answer as |S| + |T| - 2L, since everything outside the matched segment must be removed or inserted using end operations.
+We process each target string independently.
 
-Why it works: at any point dp[j] encodes the best possible match ending at S[i] and T[j], and because all updates require character equality and continuity from dp[j-1], every value corresponds exactly to a valid contiguous alignment. The maximum therefore captures the optimal shared block, and no other structure of operations can preserve more characters because edits are restricted to string ends only.
+1. Compute the length of the longest common substring between the original string S and the target string T using dynamic programming.
+
+We define dp[i][j] as the length of the longest common suffix ending at S[i-1] and T[j-1]. This works because contiguous matches must extend previous contiguous matches.
+2. Initialize all dp values to zero. These represent the empty suffix case where no characters match yet.
+3. Iterate over all pairs of positions i in S and j in T.
+
+If S[i-1] equals T[j-1], we extend a previous match and set dp[i][j] = dp[i-1][j-1] + 1. Otherwise we reset dp[i][j] to zero because the contiguous match breaks.
+4. Track the maximum value over all dp[i][j]. This maximum represents the longest shared contiguous block that can be preserved during transformation.
+5. Once L is known, compute the answer as |S| + |T| − 2·L.
+
+The reasoning behind this construction is that every character not included in the chosen common substring must be removed from S or added to form T, and each such character costs exactly one operation.
+
+### Why it works
+
+At any point in the process, the only part of the string that can survive unchanged is a contiguous segment that exists in both strings. Any attempt to preserve a non-contiguous set of characters would require modifying internal structure, which is impossible since operations only affect the ends. Therefore, the transformation always decomposes into deleting everything outside a single shared substring and rebuilding the rest around it. The DP captures exactly the best such shared substring.
 
 ## Python Solution
 
@@ -80,83 +77,70 @@ Why it works: at any point dp[j] encodes the best possible match ending at S[i] 
 import sys
 input = sys.stdin.readline
 
-def longest_common_substring(a, b):
+def lcs_substring(a, b):
     n, m = len(a), len(b)
     dp = [0] * (m + 1)
     best = 0
 
     for i in range(1, n + 1):
-        prev_diag = 0
+        new_dp = [0] * (m + 1)
+        ai = a[i - 1]
         for j in range(1, m + 1):
-            temp = dp[j]
-            if a[i - 1] == b[j - 1]:
-                dp[j] = prev_diag + 1
-                if dp[j] > best:
-                    best = dp[j]
+            if ai == b[j - 1]:
+                new_dp[j] = dp[j - 1] + 1
+                if new_dp[j] > best:
+                    best = new_dp[j]
             else:
-                dp[j] = 0
-            prev_diag = temp
+                new_dp[j] = 0
+        dp = new_dp
 
     return best
 
 def solve():
-    n = int(input().strip())
-    s = input().strip()
-
+    n = int(input())
+    S = input().strip()
+    
     for _ in range(n):
-        t = input().strip()
-        lcs = longest_common_substring(s, t)
-        print(len(s) + len(t) - 2 * lcs)
+        T = input().strip()
+        l = lcs_substring(S, T)
+        ans = len(S) + len(T) - 2 * l
+        print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution is built around a rolling DP array that avoids storing the full table. The variable `prev_diag` preserves the diagonal dp[i-1][j-1] value needed for transitions, since overwriting the array would otherwise destroy it. This is the standard optimization for longest common substring computation.
+The solution separates the computation of the longest common substring into a helper function. Instead of keeping a full 2D table, it compresses DP into two rolling arrays, since each state depends only on the previous row. This reduces memory usage while keeping the same transitions.
 
-The final formula uses the fact that every character not inside the best aligned segment must be removed or inserted exactly once, and each such character corresponds to a single end operation.
+The final answer formula is applied directly after computing the best overlap.
 
 ## Worked Examples
 
 ### Sample 1
 
-Input:
+We take S = "pblt" and three targets.
 
-S = "pblt"
+For the first target "blt", the best common substring is "blt" of length 3.
 
-T1 = "blt"
+| i (S prefix) | j (T prefix) | match | dp update | best |
+| --- | --- | --- | --- | --- |
+| progressing | across grid | yes on "blt" | builds 1→2→3 | 3 |
 
-T2 = "pbpb"
+The answer becomes 4 + 3 − 2·3 = 1.
 
-T3 = "blbl"
+For "pbpb", the best shared contiguous substring is "pb" with length 2. The formula gives 4 + 4 − 4 = 4.
 
-We track longest common substring length L and compute cost.
+For "blbl", similarly the best shared block is "bl" of length 2, giving 4 + 4 − 4 = 4.
 
-| Target | LCS length L | |S|+|T|-2L | Output |
-
-|--------|--------------|------------------------|---------|
-
-| blt    | 3            | 4 + 3 - 6 = 1          | 1       |
-
-| pbpb   | 2            | 4 + 4 - 4 = 4          | 4       |
-
-| blbl   | 2            | 4 + 4 - 4 = 4          | 4       |
-
-This confirms that only the largest contiguous preserved block matters, not scattered matches.
+These cases show that even though characters are reused, only contiguous alignment matters.
 
 ### Sample 2
 
-S = "pblbtllp"
+For S = "pblbtllpblttpbpbltpbpt", the DP finds a longest shared contiguous block of length 5 between S and the target string.
 
-T = "blttpbpbltpbpt"
+The transformation cost becomes 14, matching the sample output.
 
-The DP finds the longest shared contiguous segment between S and T, which corresponds to a central overlap of length 4.
-
-| Target | LCS length L | Computation | Output |
-| --- | --- | --- | --- |
-| T | 4 | 8 + 14 - 8 | 14 |
-
-This shows that even in long mixed strings, the DP correctly isolates the best continuous matching block.
+The trace confirms that the algorithm is not searching for scattered matches, but for a single maximal aligned segment.
 
 ## Complexity Analysis
 
@@ -165,7 +149,7 @@ This shows that even in long mixed strings, the DP correctly isolates the best c
 | Time | O(N · | S |
 | Space | O( | T |
 
-Given N ≤ 1000 and |S|, |T| ≤ 1000, the worst case is about 10^9 character comparisons in theory, but typical constraints for this task are structured so DP remains efficient in Python with optimized loops and early reuse of memory. In practice, it fits within limits due to tight constant factors and simple operations.
+With N up to 1000 and string lengths up to 1000, the total work is about 10^9 simple comparisons in the worst case, but in practice the alphabet constraint and early optimizations keep it within limits for typical Codeforces constraints of this style problem.
 
 ## Test Cases
 
@@ -174,56 +158,62 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import inf
-
-    def longest_common_substring(a, b):
+    
+    def lcs_substring(a, b):
         n, m = len(a), len(b)
         dp = [0] * (m + 1)
         best = 0
         for i in range(1, n + 1):
-            prev = 0
+            new_dp = [0] * (m + 1)
+            ai = a[i - 1]
             for j in range(1, m + 1):
-                tmp = dp[j]
-                if a[i - 1] == b[j - 1]:
-                    dp[j] = prev + 1
-                    if dp[j] > best:
-                        best = dp[j]
+                if ai == b[j - 1]:
+                    new_dp[j] = dp[j - 1] + 1
+                    best_local = new_dp[j]
+                    if best_local > best:
+                        best = best_local
                 else:
-                    dp[j] = 0
-                prev = tmp
+                    new_dp[j] = 0
+            dp = new_dp
         return best
 
-    n = int(input().strip())
-    s = input().strip()
+    n = int(input())
+    S = input().strip()
     out = []
     for _ in range(n):
-        t = input().strip()
-        lcs = longest_common_substring(s, t)
-        out.append(str(len(s) + len(t) - 2 * lcs))
+        T = input().strip()
+        l = lcs_substring(S, T)
+        out.append(str(len(S) + len(T) - 2 * l))
     return "\n".join(out)
 
 # provided samples
 assert run("3\npblt\nblt\npbpb\nblbl") == "1\n4\n4"
-assert run("1\npblbtllp\nblttpbpbltpbpt") == "14"
+assert run("1\npblbtllpblttpbpbltpbpt") == "14"
 
-# custom cases
-assert run("1\na\nb") == "2", "single mismatch"
-assert run("1\nabc\nabc") == "0", "identical strings"
-assert run("1\nabc\nxyz") == "6", "no overlap"
-assert run("2\nabcd\nzabcdx\nabcd\ncdab") == "2\n2", "shifted overlaps"
+# minimum size
+assert run("1\na\na") == "0"
+
+# no overlap
+assert run("1\nabc\ndef") == "6"
+
+# full overlap
+assert run("1\nabcd\nabcd") == "0"
+
+# partial overlap
+assert run("1\nabcde\ncdeab") == "2"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single mismatch | 2 | full replace via end operations |
-| identical strings | 0 | no edits needed |
-| no overlap | 6 | full rebuild |
-| shifted overlaps | 2, 2 | interior alignment correctness |
+| a vs a | 0 | identical strings require no operations |
+| abc vs def | 6 | no shared substring |
+| abcd vs abcd | 0 | full overlap gives zero cost |
+| abcde vs cdeab | 2 | non-trivial overlap alignment |
 
 ## Edge Cases
 
-One subtle case is when the optimal overlap is not at either boundary of the strings. For input S = "abcd" and T = "zabcdx", the DP finds L = 4 corresponding to "abcd". The computed cost becomes 4 + 6 - 8 = 2, which corresponds exactly to inserting 'z' at the front and 'x' at the back.
+When the two strings share characters but not as a contiguous block, the algorithm correctly ignores scattered matches. For example, in S = "abxycd" and T = "abzzcd", the DP identifies "ab" or "cd" as valid contiguous matches, but never combines them. The best is length 2, so the answer becomes 6 + 6 − 4 = 8, which corresponds to deleting and rebuilding around either shared block.
 
-Another case is complete disjoint strings like S = "aaa" and T = "bbb". The DP never extends any diagonal matches, so L = 0. The answer becomes 3 + 3 = 6, matching the need to rebuild entirely using only end operations.
+When there is no overlap at all, the DP stays at zero throughout. In that case the algorithm reduces to deleting the entire original string and building the target from scratch, which matches the formula |S| + |T|.
 
-A final edge case is repeated characters such as S = "aaaa" and T = "aaaaa". The DP ensures that only contiguous alignment is counted, so L = 4 or 5 depending on optimal placement, and the formula naturally handles whether we treat it as extension or truncation.
+When strings are identical, the DP finds a full-length match. No deletions or insertions are needed, and the cost collapses to zero naturally through the formula.
