@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2306 contests, 15533 problems, 8475 verified."
+description: "Codeforces problem solutions with full editorials. 2307 contests, 15533 problems, 8475 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2306 contests, 15533 problems, 8475 verified.**
+**2307 contests, 15533 problems, 8475 verified.**
 
-## Unknown — 390 contests, 3112 problems, 1920 verified
+## Unknown — 391 contests, 3112 problems, 1920 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104852](104852/) | [Municipal stage of the All-Russian School Olympiad in Informatics in the Vologda Region 2023, grades 9-11](https://codeforces.com/contest/104852) | 0 | 0/0 | Special | - |
 | [104856](104856/) | [Муниципальный этап ВсОШ по информатике в Москве, 2023, 9-11 классы](https://codeforces.com/contest/104856) | 0 | 0/0 | Special | - |
 | [104857](104857/) | [The 2023 ICPC Asia Hefei Regional Contest (The 2nd Universal Cup. Stage 12: Hefei)](https://codeforces.com/contest/104857) | 12 | 12/12 | ICPC/IOI | - |
 | [104871](104871/) | [2023-2024 ICPC Central Europe Regional Contest (CERC 23)](https://codeforces.com/contest/104871) | 12 | 4/12 | ICPC/IOI | - |
