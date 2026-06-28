@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15950 problems, 8748 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15955 problems, 8751 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15950 problems, 8748 verified.**
+**2353 contests, 15955 problems, 8751 verified.**
 
-## Unknown — 420 contests, 3372 problems, 2095 verified
+## Unknown — 420 contests, 3375 problems, 2097 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -75,8 +75,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104950](104950/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104950) | 0 | 0/0 | Special | - |
 | [104959](104959/) | [Интернет-олимпиады, Сезон 2023-2024, Первая личная олимпиада](https://codeforces.com/contest/104959) | 4 | 0/4 | Special | - |
 | [104962](104962/) | [Высшая проба - 2021. Заключительный этап](https://codeforces.com/contest/104962) | 5 | 3/5 | Special | - |
-| [104963](104963/) | [Высшая проба - 2022. Заключительный этап](https://codeforces.com/contest/104963) | 3 | 2/3 | Special | - |
-| [104964](104964/) | [Высшая проба - 2023. Заключительный этап](https://codeforces.com/contest/104964) | 4 | 0/4 | Special | - |
+| [104963](104963/) | [Высшая проба - 2022. Заключительный этап](https://codeforces.com/contest/104963) | 5 | 4/5 | Special | - |
+| [104964](104964/) | [Высшая проба - 2023. Заключительный этап](https://codeforces.com/contest/104964) | 5 | 0/5 | Special | - |
 | [104973](104973/) | [BdOI Preliminary 2024](https://codeforces.com/contest/104973) | 5 | 4/5 | Special | - |
 | [104984](104984/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая личная олимпиада](https://codeforces.com/contest/104984) | 4 | 0/4 | Special | - |
 | [104985](104985/) | [Innopolis Open 2024. Final round](https://codeforces.com/contest/104985) | 5 | 4/5 | Special | - |
@@ -1824,7 +1824,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [105663](105663/) | [AGM 2023, Final Round, Day 1](https://codeforces.com/contest/105663) | 12 | 3/12 | Special | - |
 | [105664](105664/) | [AGM 2023, Final Round, Day 2](https://codeforces.com/contest/105664) | 12 | 3/12 | Special | - |
 
-## 2024 — 266 contests, 2335 problems, 1124 verified
+## 2024 — 266 contests, 2337 problems, 1125 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1955,7 +1955,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | 10 | 3/10 | Special | 800-3500 |
 | [104930](104930/) | [UTPC Contest 01-26-24 Div. 2 (Beginner)](https://codeforces.com/contest/104930) | 8 | 3/8 | Div. 2 | - |
 | [104931](104931/) | [UTPC Contest 01-26-24 Div. 1 (Advanced)](https://codeforces.com/contest/104931) | 8 | 1/8 | Div. 1 | - |
-| [104941](104941/) | [SLPC 2024 Open Division](https://codeforces.com/contest/104941) | 8 | 1/8 | Special | - |
+| [104941](104941/) | [SLPC 2024 Open Division](https://codeforces.com/contest/104941) | 10 | 2/10 | Special | - |
 | [104968](104968/) | [UTPC Contest 02-09-24 Div. 2 (Beginner)](https://codeforces.com/contest/104968) | 8 | 3/8 | Div. 2 | - |
 | [104969](104969/) | [UTPC Contest 02-09-24 Div. 1 (Advanced)](https://codeforces.com/contest/104969) | 7 | 1/7 | Div. 1 | - |
 | [104974](104974/) | [Codentines Day](https://codeforces.com/contest/104974) | 15 | 3/15 | Special | - |
