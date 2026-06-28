@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15940 problems, 8743 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15948 problems, 8748 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15940 problems, 8743 verified.**
+**2353 contests, 15948 problems, 8748 verified.**
 
-## Unknown — 420 contests, 3362 problems, 2090 verified
+## Unknown — 420 contests, 3370 problems, 2095 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -58,13 +58,13 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104882](104882/) | [Voronezh State University - Sitronics contest II](https://codeforces.com/contest/104882) | 12 | 8/12 | Special | - |
 | [104885](104885/) | [Municipal stage of ROI in Nizhny Novgorod 2023](https://codeforces.com/contest/104885) | 6 | 4/6 | Special | - |
 | [104886](104886/) | [USI-Team-Selection 2023-2024](https://codeforces.com/contest/104886) | 6 | 4/6 | Special | - |
-| [104891](104891/) | [The 2023 ICPC Asia Macau Regional Contest (The 2nd Universal Cup. Stage 15: Macau)](https://codeforces.com/contest/104891) | 8 | 0/8 | ICPC/IOI | - |
+| [104891](104891/) | [The 2023 ICPC Asia Macau Regional Contest (The 2nd Universal Cup. Stage 15: Macau)](https://codeforces.com/contest/104891) | 11 | 2/11 | ICPC/IOI | - |
 | [104895](104895/) | [Open Olympiad in Informatics 2021-22, first day](https://codeforces.com/contest/104895) | 4 | 0/4 | Special | - |
-| [104896](104896/) | [Open Olympiad in Informatics 2021-22, second day](https://codeforces.com/contest/104896) | 3 | 2/3 | Special | - |
+| [104896](104896/) | [Open Olympiad in Informatics 2021-22, second day](https://codeforces.com/contest/104896) | 4 | 2/4 | Special | - |
 | [104901](104901/) | [The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)](https://codeforces.com/contest/104901) | 13 | 11/13 | ICPC/IOI | - |
-| [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 1 | 1/1 | Special | - |
+| [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 4 | 4/4 | Special | - |
 | [104916](104916/) | [Муниципальный этап ВсОШ по информатике в Самаре 2022-2023 (9-11 классы)](https://codeforces.com/contest/104916) | 5 | 4/5 | Special | - |
-| [104921](104921/) | [Easy_Training](https://codeforces.com/contest/104921) | 5 | 1/5 | Special | - |
+| [104921](104921/) | [Easy_Training](https://codeforces.com/contest/104921) | 6 | 1/6 | Special | - |
 | [104922](104922/) | [Qualification stage of Open Olympiad 2023-2024](https://codeforces.com/contest/104922) | 9 | 0/9 | Special | - |
 | [104925](104925/) | [Osijek Competitive Programming Camp, Fall 2023. Day 6: Estonian Contest (The 2nd Universal Cup. Stage 19: Estonia)](https://codeforces.com/contest/104925) | 10 | 8/10 | Special | - |
 | [104935](104935/) | [MITIT 2024 Combined Round](https://codeforces.com/contest/104935) | 6 | 0/6 | Special | - |

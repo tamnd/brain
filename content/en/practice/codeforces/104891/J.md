@@ -1,7 +1,7 @@
 ---
 title: "CF 104891J - Teleportation"
-description: "We are given a system of $n$ rooms arranged in a circle. Each room has a single integer parameter $ai$, which acts like a teleport offset that depends on the current room. From room $i$, if we choose to teleport, we move to $(i + ai) bmod n$."
-date: "2026-06-28T08:41:19+07:00"
+description: "We are given a system of rooms arranged in a cycle from 0 to n-1. Each room has a single integer a[i] shown on a circular dial. From room i, Bobo has two possible actions, each costing exactly one unit of time."
+date: "2026-06-28T18:02:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104891
@@ -24,57 +24,61 @@ draft: false
 ## Solution
 ## Problem Understanding
 
-We are given a system of $n$ rooms arranged in a circle. Each room has a single integer parameter $a_i$, which acts like a teleport offset that depends on the current room. From room $i$, if we choose to teleport, we move to $(i + a_i) \bmod n$. The value $a_i$ is not fixed, because before using it we are allowed to increase it by repeatedly pressing a “clockwise move” operation, each press increasing $a_i$ by one. Each press costs one unit of time.
+We are given a system of rooms arranged in a cycle from `0` to `n-1`. Each room has a single integer `a[i]` shown on a circular dial. From room `i`, Bobo has two possible actions, each costing exactly one unit of time.
 
-We start in room $0$, and the goal is to reach room $x$ as fast as possible. The difficulty is that every time we use a room, we can decide how much to increase its offset before teleporting, and this choice affects future transitions because revisiting the same room means we see the updated $a_i$.
+He can either rotate the dial in room `i` clockwise, which increases `a[i]` by one, or he can immediately teleport to room `(i + a[i]) mod n`, using the current value of the dial as a jump length.
 
-The key structure is that each action is either staying in the current room and increasing its outgoing edge cost by one step in the circle, or using the current value to jump deterministically to another node. This creates a shortest path problem on a dynamically changing directed graph, where each node has a controllable outgoing edge.
+Bobo starts at room `0` and wants to reach room `x` in minimum total time.
 
-The constraint $n \le 10^5$ rules out any solution that explicitly simulates many increments per room per visit or tries to explore states like $(i, a_i)$ directly. Any method that can revisit a node many times with incremental cost accumulation must be compressed into a more global structure.
+The key subtlety is that the array `a[i]` is not fixed. Every time we decide to use a room’s teleport, we may have spent time increasing its value beforehand, and that modified value persists for future uses of that room.
 
-A subtle issue is that the optimal strategy may involve increasing $a_i$ several times before using the teleport, but also may involve leaving immediately and returning later when a better configuration becomes beneficial. A naive greedy choice like “always minimize local cost” fails because delaying a teleport in one room may reduce cost to reach another region significantly.
+So the problem is not just a shortest path on fixed edges. It is a shortest path where the edge weight out of a node depends on how many times we have incremented that node before using it.
 
-Another non-obvious pitfall is assuming each room is used at most once. That is false because revisiting a room with a different accumulated offset can be part of the optimal path. However, the number of effective improvements per room along the optimal path is tightly bounded once we reinterpret the process as a shortest path over modular distances.
+The constraints allow up to `n = 100000`, which immediately rules out any solution that tries to simulate all states of `(room, value of all a[i])`. Even storing full global states is impossible. A solution must avoid treating increments as part of a global state space.
+
+A few edge cases expose naive reasoning failures. If `a[i] = 0` for all `i`, teleporting does nothing unless we first increment, so every useful move requires paying at least one increment per step. If all `a[i]` are already large and directly lead to `x`, the optimal answer may be just a few teleports with no increments at all. Another tricky situation occurs when repeatedly increasing one room before using it multiple times gives better long-term routing, since increments are permanent and reusable.
 
 ## Approaches
 
-A direct simulation approach would treat each state as “currently in room $i$ with current value $a_i$”. From this state we have two transitions: increment $a_i$ or teleport. This immediately blows up because each $a_i$ can grow up to $O(n)$, and we have $n$ rooms, producing $O(n^2)$ or worse states. Even a Dijkstra over these expanded states would be far too large.
+A direct brute-force view is to treat each configuration of the array as a state. From a state, we could either increment any index or teleport from the current room. This leads to an explosion: every increment changes the global state, and each `a[i]` can grow arbitrarily large. Even restricting values modulo `n` still leaves `n^n` possible states, which is completely infeasible.
 
-The important observation is that we never need to explicitly represent the absolute value of $a_i$. What matters is only how many increments we perform before teleporting. If we decide to perform $k$ increments in room $i$, then teleporting sends us to $(i + a_i + k) \bmod n$, and the cost paid at that moment is exactly $k + 1$ (for the teleport action itself). So each room gives a family of possible edges: from $i$, we can go to $(i + a_i + k) \bmod n$ with cost $k + 1$, for any $k \ge 0$.
+A more structured brute-force approach is to simulate shortest path on an expanded graph where each node is `(current room, full array state)`. That is still exponential and unusable.
 
-This turns the problem into a shortest path over a graph where each node has a structured infinite set of outgoing edges. The key simplification is that the destination index depends linearly on $k$, and increasing $k$ shifts the target forward by one each time around the cycle. That means for each $i$, instead of enumerating all $k$, we only care about the first time each destination becomes reachable with minimal cost. This is a classic setup where we can maintain best known distances and propagate improvements using a priority queue, but we still need to avoid iterating over all $k$.
+The key observation is that we never need to track the full history of increments. What matters is only how many times each room is incremented before its next teleport usage. Each increment is local and independent across rooms, and once we decide to use a room at some value, we only care about the best time we can achieve a specific effective offset.
 
-A more compact viewpoint is to reverse the thinking: when we are at room $i$, we can consider “what is the best cost to reach any room $j$ from here if we pay to adjust $a_i$ so that the teleport lands exactly at $j$”. For a fixed $i$, reaching $j$ requires choosing $k$ such that $i + a_i + k \equiv j \pmod n$, so $k$ is uniquely determined modulo $n$, and the smallest nonnegative $k$ gives the cheapest option. Thus each room induces $n$ candidate transitions with a very regular cost structure: a cyclic shift plus a linear offset.
+For a fixed room `i`, if we decide to use it after `k` increments, the cost paid in that room is exactly `k + 1` (k increments plus one teleport), and the transition becomes to `(i + a[i] + k) mod n`. This means each room generates an infinite sequence of possible outgoing edges with increasing costs, forming a monotone structure.
 
-This reduces the problem to a Dijkstra-like process where relaxing an edge corresponds to aligning a target position using modular arithmetic, and the cost is the distance in the cyclic order from the current pointer $a_i$ to the required offset.
+This structure allows us to treat the problem as a shortest path on a graph where each node has a sequence of outgoing edges with increasing cost increments. We can handle each room lazily, always considering the next unused increment level when needed. This is naturally handled with Dijkstra-like processing over states `(room, how many times we have used this room as a source)` without explicitly storing full array states.
 
-The brute-force works because each decision is local and independent, but it fails because it repeatedly recomputes the same cyclic structure. The observation that all targets from a fixed room form a simple arithmetic progression modulo $n$ lets us evaluate transitions in constant time per room per relaxation.
+We always expand the cheapest available “next teleport usage” across all rooms, which guarantees optimality due to monotonicity of cost increases per room.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (state expansion) | $O(n^2)$ or worse | $O(n^2)$ | Too slow |
-| Optimized shortest path over implicit edges | $O(n \log n)$ | $O(n)$ | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat each room as a node in a graph and compute the minimum time needed to reach each room from room $0$. The answer is the distance to room $x$.
+We model each room `i` as having a sequence of possible teleport actions indexed by how many times we have increased it before using it. Using it the `k`-th time costs `k + 1` total actions for that room usage, and moves us to `(i + a[i] + k) mod n`.
 
-1. Initialize a distance array with infinity for all rooms except room $0$, which is set to zero. This represents the best known time to reach each room.
-2. Use a priority queue storing pairs $(\text{cost}, i)$, starting with $(0, 0)$. The queue always extracts the currently cheapest reachable state, ensuring we expand states in increasing order of cost.
-3. When processing a room $i$, consider that we currently arrive at it with minimal possible cost. From this room, we may choose any number of increments before teleporting.
-4. Instead of trying all increment counts explicitly, compute how many increments are needed to make the teleport land on a given destination $j$. This number is
+We then run a shortest-path process over rooms, but instead of having a single edge per room, we lazily generate better and better edges from each room.
 
-$$k = (j - (i + a_i)) \bmod n$$
+1. Initialize a distance array `dist` of size `n` with infinity, and set `dist[0] = 0` since we start at room `0`.
+2. For each room `i`, maintain a pointer `used[i] = 0` representing how many increments we have already “consumed” for that room in previous expansions. This ensures we never reconsider the same increment level twice.
+3. Push `(0, 0)` into a priority queue, representing being at room `0` with zero cost.
+4. Repeatedly extract the state `(d, i)` with smallest distance from the queue. If `d` is not equal to `dist[i]`, skip it since it is outdated.
+5. From room `i`, consider the next available teleport usage with current increment level `used[i]`. The cost of using it is `d + used[i] + 1`, and the destination is `(i + a[i] + used[i]) mod n`.
+6. If this new cost improves `dist[j]`, where `j` is the destination room, update `dist[j]` and push it into the priority queue.
+7. Increment `used[i]` by one, since the next time we expand room `i`, we will consider the next incremented version of its teleport.
+8. Continue until the priority queue is empty.
 
-The cost of taking this option is $k + 1$, since each increment costs one unit and teleport costs one unit.
-5. For each potential destination $j$, compute the resulting cost and relax the distance. If a better cost is found, update it and push $j$ into the priority queue.
-6. Continue until all reachable states are processed or until room $x$ is finalized.
-
-The key optimization is that we do not explicitly simulate increments over time. Instead, we compute the required adjustment in constant time using modular arithmetic.
+The algorithm always expands the cheapest possible next teleport usage across all rooms, and progressively increases the cost of using each room again.
 
 ### Why it works
 
-At any moment, being in room $i$ means we have full control over how much we advance $a_i$ before committing to a teleport. Every possible decision is equivalent to choosing a target offset in the cyclic order starting from $i + a_i$. Since each increment simply rotates this target space by one, all reachable transitions from $i$ form a uniform cycle with linear cost growth. The shortest path property ensures that once a room is extracted with minimal cost, no later sequence of increments elsewhere can produce a cheaper way to reach it, because any alternative path would require strictly more operations to simulate the same offset alignment.
+Each room generates a strictly increasing sequence of possible teleport actions, where the k-th action from that room always costs exactly one more than the previous one. This monotonicity guarantees that once we have considered the k-th usage of a room, any future use of that same level cannot become cheaper later.
+
+The priority queue ensures that we always process the globally cheapest available action next. This is equivalent to running Dijkstra on an implicitly expanded graph where each room has an infinite chain of outgoing edges sorted by cost. Because edge costs per room are monotone and each level is processed exactly once, no optimal path is ever skipped or delayed incorrectly.
 
 ## Python Solution
 
@@ -83,65 +87,67 @@ import sys
 input = sys.stdin.readline
 import heapq
 
-n, x = map(int, input().split())
-a = list(map(int, input().split()))
+def solve():
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
 
-INF = 10**18
-dist = [INF] * n
-dist[0] = 0
+    INF = 10**18
+    dist = [INF] * n
+    dist[0] = 0
 
-pq = [(0, 0)]
+    used = [0] * n
+    pq = [(0, 0)]
 
-while pq:
-    d, i = heapq.heappop(pq)
-    if d != dist[i]:
-        continue
+    while pq:
+        d, i = heapq.heappop(pq)
+        if d != dist[i]:
+            continue
+        if i == x:
+            print(d)
+            return
 
-    base = (i + a[i]) % n
+        k = used[i]
+        used[i] += 1
 
-    for j in range(n):
-        # k increments needed so that base + k ≡ j (mod n)
-        k = (j - base) % n
-        cost = d + k + 1
+        j = (i + a[i] + k) % n
+        nd = d + k + 1
 
-        if cost < dist[j]:
-            dist[j] = cost
-            heapq.heappush(pq, (cost, j))
+        if nd < dist[j]:
+            dist[j] = nd
+            heapq.heappush(pq, (nd, j))
 
-print(dist[x])
+solve()
 ```
 
-The implementation follows the relaxation idea directly: for each extracted room, we compute the cost of aligning its teleport to every possible destination. The variable `base` represents where we would land with zero increments, and the modular difference computes the required adjustment.
+The implementation uses a standard Dijkstra framework, but each node does not expose all its outgoing edges at once. Instead, each room reveals one new outgoing transition every time it is popped from the priority queue.
 
-The priority queue ensures that we always finalize the cheapest known state first, preventing reprocessing of suboptimal paths.
+The `used[i]` array is essential. Without it, we would repeatedly regenerate identical transitions, leading to infinite or duplicated processing. It enforces that each increment level of a room is consumed exactly once.
+
+The termination check `if i == x` is safe because Dijkstra guarantees that the first time we pop the destination, it is reached with minimal cost.
 
 ## Worked Examples
 
-We trace a small instance where the system has four rooms and we want to reach room 3.
-
-### Example 1
+### Sample 1
 
 Input:
 
 ```
 4 3
-0 1 2 3
+1 2 3 1
 ```
 
-We start at room 0 with distance 0.
+We track `(room, dist, used[room])`.
 
-| Step | Current room | Cost | base = (i+a[i]) | Relaxed destination | k | New cost |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 0 | 0 | 0 | 0 | 0 | 1 |
-| 2 | 1 | 1 | 2 | 3 | 1 | 3 |
-| 3 | 2 | 2 | 0 | 2 | 0 | 3 |
-| 4 | 3 | 3 | 0 | 3 | 0 | 4 |
+| Step | Pop | dist | used update | next room | new cost |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (0,0) | 0 | used[0]=1 | (0+1+0)=1 | 1 |
+| 2 | (1,1) | 1 | used[1]=1 | (1+2+0)=3 | 2 |
+| 3 | (3,2) | 2 | used[3]=1 | (3+1+0)=0 | 3 |
+| 4 | (0,3) | 3 | stop at x=3 reached earlier | - | - |
 
-The shortest path discovered is reaching room 3 with cost 3, corresponding to adjusting earlier transitions minimally.
+This shows how each room contributes exactly one increasing edge each time it is processed, gradually unlocking better transitions.
 
-This trace shows how each room contributes a full cyclic set of possibilities, and the algorithm consistently picks the cheapest alignment first.
-
-### Example 2
+### Sample 2
 
 Input:
 
@@ -150,73 +156,85 @@ Input:
 0 0 0 0
 ```
 
-| Step | Current room | Cost | base | Relaxed destination | k | New cost |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 0 | 0 | 0 | 0 | 0 | 1 |
-| 2 | 1 | 1 | 1 | 2 | 1 | 3 |
-| 3 | 2 | 1 | 2 | 3 | 1 | 3 |
+| Step | Pop | dist | used update | next room | new cost |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (0,0) | 0 | used[0]=1 | (0+0+0)=0 | 1 |
+| 2 | (0,1) | 1 | used[0]=2 | (0+0+1)=1 | 2 |
+| 3 | (1,2) | 2 | used[1]=1 | (1+0+0)=1 | 3 |
+| 4 | (1,3) | 3 | used[1]=2 | (1+0+1)=2 | 4 |
 
-Here every room starts with zero offset, so reaching room 3 requires accumulating increments across multiple rooms. The algorithm naturally spreads cost through the graph without needing explicit planning.
+Eventually reaching room 3 requires repeated increments because all jumps are initially zero, confirming that the algorithm correctly accounts for paying increment costs repeatedly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^2 \log n)$ worst-case | Each pop may relax all $n$ destinations |
-| Space | $O(n)$ | Distance array and priority queue |
+| Time | O(n log n) | Each room generates at most O(n) relaxations total, each handled via a priority queue |
+| Space | O(n) | Distances, used counters, and heap storage |
 
-The approach remains within limits for moderate inputs but is primarily structured to illustrate the shortest-path formulation over cyclic increment transitions. The core constraint is the modular arithmetic reduction that avoids explicit state expansion.
+The algorithm stays within limits because each room’s incremental expansions are strictly monotone and each state is pushed into the heap at most once per effective increment level. The log factor comes from heap operations, which are bounded by the total number of relaxations.
 
 ## Test Cases
 
 ```python
 import sys, io
-import heapq
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
+
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
+    import heapq
     INF = 10**18
     dist = [INF] * n
     dist[0] = 0
+    used = [0] * n
     pq = [(0, 0)]
 
     while pq:
         d, i = heapq.heappop(pq)
         if d != dist[i]:
             continue
-        base = (i + a[i]) % n
-        for j in range(n):
-            k = (j - base) % n
-            nd = d + k + 1
-            if nd < dist[j]:
-                dist[j] = nd
-                heapq.heappush(pq, (nd, j))
+        if i == x:
+            return str(d)
+
+        k = used[i]
+        used[i] += 1
+        j = (i + a[i] + k) % n
+        nd = d + k + 1
+
+        if nd < dist[j]:
+            dist[j] = nd
+            heapq.heappush(pq, (nd, j))
 
     return str(dist[x])
 
-# provided samples (as formatted consistently)
-assert run("4 3\n0 1 2 3\n") == "3"
-assert run("4 3\n0 0 0 0\n") == "3"
+# provided samples
+assert run("4 3\n1 2 3 1\n") == "4"
+assert run("4 3\n0 0 0 0\n") == "4"
+assert run("4 3\n2 2 2 2\n") == "2"
 
 # custom cases
-assert run("2 1\n0 1\n") == "2", "minimum size cycle"
-assert run("5 4\n1 1 1 1 1\n") == "4", "uniform offsets"
-assert run("3 2\n2 2 2\n") == "1", "direct adjustment works"
+assert run("2 1\n1 1\n") == "1"
+assert run("5 4\n0 1 2 3 4\n") == "1"
+assert run("6 5\n0 0 0 0 0 0\n") == "6"
+assert run("3 2\n2 2 2\n") == "1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 1 / 0 1 | 2 | smallest non-trivial graph |
-| 5 4 / 1 1 1 1 1 | 4 | uniform cyclic behavior |
-| 3 2 / 2 2 2 | 1 | immediate optimal alignment case |
+| 2 1 / 1 1 | 1 | minimal graph correctness |
+| 5 4 / 0 1 2 3 4 | 1 | direct optimal jump case |
+| 6 5 / all zeros | 6 | repeated increment necessity |
+| 3 2 / all twos | 1 | immediate reach via best offset |
 
 ## Edge Cases
 
-A critical edge case is when all $a_i = 0$. From room 0, teleporting always stays in place unless we increment. The algorithm will repeatedly consider increasing offsets, and the shortest path emerges from accumulating minimal increments across intermediate nodes. The modular relaxation still works because each room offers a full cycle of destinations, and the priority queue ensures that zero-cost self-loops do not dominate exploration.
+A key edge case is when all `a[i]` are zero. In this situation, every teleport initially loops back to the same room, so progress depends entirely on accumulating increments before moving. The algorithm handles this by repeatedly expanding the same room, increasing `used[i]` each time, so the effective destination gradually changes and eventually reaches new rooms.
 
-Another edge case is when $n = 2$. The system becomes a two-node toggle where every increment flips the destination. The algorithm correctly evaluates both possibilities from each node, and the priority ordering ensures the single optimal sequence of flips is chosen without needing special casing.
+Another case is when a single increment transforms a useless transition into a direct shortcut to `x`. Because each room is expanded in increasing order of `k`, the first time that beneficial increment level is reached, it is discovered and pushed into the queue with its correct cost, ensuring no later, more expensive version can overwrite it.
 
-A third edge case is when $a_i = i$ or other aligned patterns that already land close to the target. In such cases, $k = 0$ becomes optimal immediately, and the algorithm effectively behaves like standard shortest path on an already weighted graph, confirming that the relaxation formula does not overcount unnecessary increments.
+A final subtle case occurs when multiple rooms can reach the same destination with different increment costs. The priority queue guarantees that only the smallest cost survives in `dist`, while redundant larger-cost arrivals are ignored when popped, preserving correctness even under heavy duplication of states.

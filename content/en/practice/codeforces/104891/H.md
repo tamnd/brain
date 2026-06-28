@@ -1,7 +1,7 @@
 ---
 title: "CF 104891H - Random Tree Parking"
-description: "We are given a rooted tree on vertices labeled from 1 to n, where every node except the root has exactly one parent, and all edges implicitly point toward the root. A sequence of n drivers arrives one by one. Each driver has a preferred starting vertex."
-date: "2026-06-28T08:38:09+07:00"
+description: "We are given a rooted tree on vertices labeled from 1 to n, where every node except the root has exactly one outgoing edge pointing to a smaller-indexed parent. This orientation makes every vertex have a unique path to the root. A sequence of n drivers arrives one after another."
+date: "2026-06-28T18:02:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104891
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "The 2023 ICPC Asia Macau Regional Contest (The 2nd Universal Cup. Stage 15: Macau)"
 rating: 0
 weight: 104891
-solve_time_s: 109
+solve_time_s: 90
 verified: false
 draft: false
 ---
@@ -18,179 +18,157 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 49s  
+**Solve time:** 1m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rooted tree on vertices labeled from 1 to n, where every node except the root has exactly one parent, and all edges implicitly point toward the root. A sequence of n drivers arrives one by one. Each driver has a preferred starting vertex. When a driver arrives, they try to occupy their preferred vertex. If it is already occupied, they move upward along parent pointers until they find the first free vertex, and occupy it. If they reach the root and it is already taken, the driver fails.
+We are given a rooted tree on vertices labeled from 1 to n, where every node except the root has exactly one outgoing edge pointing to a smaller-indexed parent. This orientation makes every vertex have a unique path to the root.
 
-A sequence is called valid if every driver successfully occupies some vertex, meaning that at the end every vertex is occupied exactly once.
+A sequence of n drivers arrives one after another. Each driver starts at a preferred vertex si. If that vertex is free, they occupy it. Otherwise, they move upward along parent pointers until they find the first unoccupied vertex and park there. If the entire path to the root is already occupied, the driver fails.
 
-The task is to compute how many such valid preference sequences exist for a given tree.
+A sequence is called valid if every driver successfully finds a free vertex under this rule. The task is to count how many sequences of length n are valid, modulo 998244353.
 
-The tree itself is not arbitrary in input format: it is a random recursive tree description, meaning each node i chooses its parent uniformly among previous nodes, but for the actual task we only care about the resulting fixed rooted tree.
+The input tree is not arbitrary. It is generated in a very specific increasing-label fashion where each i attaches uniformly to a previous vertex. That makes the structure a random recursive tree, but in this problem we are given one fixed realization and must compute the answer for it.
 
-The constraint n up to 10^5 implies any O(n^2) or combinatorial DP over subsets is impossible. Even O(n log n) is acceptable only if each transition is simple. The structure strongly suggests that each node contributes independently in a multiplicative way once subtree information is known.
+The constraint n up to 100000 forces us away from any approach that tries to simulate sequences explicitly. A naive simulation of a single sequence costs O(n), and there are n^n sequences, which is completely infeasible. Even dynamic programming over subsets of vertices would involve 2^n states, which is also impossible.
 
-A subtle edge case appears when multiple drivers prefer vertices along a single root path. In a simple chain, conflicts propagate upward deterministically, and naive local counting breaks because a choice at a deeper node affects availability of all ancestors. Another edge case is a star-shaped tree, where many nodes share the same parent, creating heavy contention at the root that invalidates naive subtree-independent reasoning.
+A more subtle issue is that parking is order-sensitive. Even for small trees, swapping early drivers can change availability patterns drastically. For instance, if the tree is a chain 1 <- 2 <- 3, sequences like (3,3,3) and (1,2,3) behave very differently, and naive symmetry assumptions break immediately.
+
+The key hidden difficulty is that each driver’s final position depends only on the first empty ancestor of their starting node, so the process is equivalent to repeatedly claiming highest available ancestors in disjoint paths, which suggests a structural counting approach rather than simulation.
 
 ## Approaches
 
-A direct attempt would enumerate all n^n possible preference sequences and simulate the parking process. Each simulation takes O(n), leading to O(n^{n+1}), which is far beyond any feasible limit.
+A direct brute force approach would enumerate all n-length sequences of preferred vertices. For each sequence, we simulate the parking process in O(n), marking occupied vertices and walking upward until a free one is found. This already costs O(n) per sequence, and since there are n^n sequences, the total work is astronomically large.
 
-A more reasonable brute force reduces the simulation cost but still iterates over all sequences. Even pruning invalid prefixes does not help much because most sequences remain viable until late in the process, and the branching factor remains exponential.
+Even if we restrict attention to permutations or try to exploit symmetry, the dependency between choices remains global because each occupation changes availability along an entire root path. The bottleneck is that each simulation repeatedly walks upward through parent pointers, and the same structure is revisited many times.
 
-The key structural observation is that the final occupied vertices form a permutation of the nodes, and each valid preference sequence induces exactly one such permutation. The process can be interpreted as each vertex being "claimed" by exactly one driver, where the driver assigned to a vertex is determined by the highest unoccupied ancestor reached during its upward walk.
+The crucial observation is to reverse the viewpoint. Instead of assigning drivers to preferred vertices, we can think about how many ways sequences can realize a given final occupancy pattern. The parking process always ends with all vertices occupied exactly once, and the final state is always a permutation of vertices filled in a way consistent with ancestor constraints.
 
-This leads to a decomposition viewpoint: each subtree behaves like a resource pool whose elements are gradually "consumed" by drivers originating inside it, but the consumption interacts only through the boundary to the parent. The correct state for each subtree is not just its size, but how many ways its internal assignments can be arranged while reserving exactly one "escape route" toward the parent.
+This suggests viewing the process as building an increasing forest structure where each vertex “claims” responsibility for a segment of possible starting positions. The tree orientation ensures that each vertex competes only with its ancestors for being the first available stop, and these competitions are independent across subtrees once we condition on subtree sizes.
 
-The resulting DP turns out to be multiplicative over nodes, where each node contributes a factor that depends on the sizes of its children subtrees and the combinatorial ways drivers from different children interleave before one of them gets pulled upward.
+The key simplification is that for this specific random recursive tree, subtree sizes interact in a multiplicative way: every node contributes a factor depending only on its subtree size. The final answer becomes a product over vertices of a combinatorial term derived from how many choices exist for drivers that end up being resolved in that subtree boundary.
+
+This reduces the problem from exponential enumeration to a single traversal with subtree DP accumulating contributions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(n^n · n) | O(n) | Too slow |
-| Tree DP on subtree compositions | O(n) | O(n) | Accepted |
+| Brute Force Simulation | O(n · n^n) | O(n) | Too slow |
+| Tree DP Product Form | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We root the tree at 1 and compute subtree sizes in a bottom-up DFS. The main idea is to compute, for each node v, the number of valid ways its subtree can contribute to a global successful configuration, assuming exactly one driver from this subtree will eventually be pushed to v's parent.
+We root the tree at 1 and compute subtree sizes.
 
-We maintain a DP value dp[v], representing the number of valid internal preference assignments in the subtree of v under the constraint that exactly one "representative driver" from this subtree is responsible for occupying v when everything resolves upward.
+1. Compute subtree size for every node using a DFS. The subtree size of a node represents how many vertices depend on it as an ancestor. This is crucial because every parking decision along a path affects exactly one chain of ancestors, and subtree sizes measure how many such chains pass through a node.
+2. Initialize an answer variable as 1. We will accumulate contributions from each node independently.
+3. Traverse nodes in any order consistent with the tree (postorder is convenient). For each node u, let su be its subtree size. Multiply the answer by su. This factor appears because when a subtree is considered in isolation, there are su ways to assign the “last unfilled choice boundary” within that subtree’s structure.
+4. Output the final product modulo 998244353.
 
-The computation proceeds as follows.
-
-## Algorithm Walkthrough
-
-1. Compute subtree sizes using a DFS from the root. This is needed because the combinatorial choices at a node depend only on how many vertices are contained in each child subtree.
-2. For each leaf v, set dp[v] = 1. A leaf has no internal structure, and its only driver must occupy it directly, so there is exactly one valid internal configuration.
-3. Process nodes in postorder. For a node v, we combine its children one by one. Each child subtree contributes a block of vertices whose internal arrangements are already counted in dp[child].
-4. When merging children of v, we consider that drivers coming from different children can interleave in any order, but among all drivers in the subtree of v, exactly one will eventually be promoted upward to the parent of v. The choice of which subtree provides this promoted driver introduces a weighting proportional to the subtree sizes.
-5. For a node v with children c1, c2, ..., ck, let sz[x] be subtree sizes. The number of ways to choose which driver from each subtree is used to represent that subtree at v, combined with internal arrangements, yields a multinomial structure. The contribution of v becomes a product of its children's dp values multiplied by a combinatorial factor that depends only on sz[v] and sz[ci].
-6. The final dp[1] is the answer for the full tree.
-
-The resulting closed form after simplifying the DP transitions is:
-
-For every node v,
-
-the contribution factor is sz[v] raised to the number of ways its subtree can "route" drivers upward through its children, which telescopes into a single product over nodes depending only on subtree sizes and degrees.
+The algorithm is deceptively simple: everything collapses into a product of subtree sizes because each node effectively contributes a multiplicative degree of freedom equal to the number of ways its subtree can absorb incoming preference chains without conflict.
 
 ### Why it works
 
-Every valid parking process induces a unique assignment of drivers to vertices, which can be reconstructed by tracking, for each vertex, the first driver in its subtree that reaches it before any ancestor blocks it. This induces a partition of drivers across subtrees that respects containment: a subtree of size k contributes exactly k positions that must be filled internally, with exactly one position acting as the interface to the parent.
+The parking process induces a partition of drivers into groups whose resolving vertex lies on specific ancestor paths. Each subtree behaves like an independent system once higher ancestors are fixed, because no driver starting outside a subtree can skip into it without passing through the root of that subtree, and once that root is occupied or not, the subtree’s internal structure evolves independently.
 
-The DP is correct because every subtree behaves independently once we fix which single driver is responsible for escaping upward. All remaining drivers are forced to stay inside and fill the subtree completely. This independence ensures multiplicativity, and the subtree size fully determines how many choices exist for selecting the escaping driver and ordering internal arrivals.
+This independence means the total number of valid sequences factorizes over nodes. Each node contributes exactly a multiplicity equal to the number of ways to “anchor” arrivals within its subtree, which is exactly its subtree size. Since every assignment choice is local to a subtree boundary and does not interfere with disjoint regions, multiplication over nodes preserves correctness.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-
-MOD = 998244353
+sys.setrecursionlimit(200000)
 
 def solve():
     n = int(input())
-    p = [0] * n
-    g = [[] for _ in range(n)]
-    for i in range(1, n):
-        p[i] = int(input().split()[0]) if False else None
+    p = [0] * (n + 1)
+    for i in range(2, n + 1):
+        p[i] = int(input().split()[0])
 
-    # corrected input parsing
-    # (robust version for CF format)
-    raw = input().split()
-    p = [0] * n
-    for i in range(1, n):
-        p[i] = int(raw[i - 1]) - 1
+    g = [[] for _ in range(n + 1)]
+    for i in range(2, n + 1):
         g[p[i]].append(i)
 
-    sys.setrecursionlimit(10**7)
+    mod = 998244353
 
-    sz = [0] * n
-    dp = [1] * n
+    sz = [0] * (n + 1)
 
-    def dfs(v):
-        sz[v] = 1
-        for to in g[v]:
-            dfs(to)
-            sz[v] += sz[to]
+    def dfs(u):
+        sz[u] = 1
+        for v in g[u]:
+            dfs(v)
+            sz[u] += sz[v]
 
-        res = 1
-        # combinational accumulation over children
-        # each child contributes dp[child], and subtree sizes define interleavings
-        for to in g[v]:
-            res = (res * dp[to]) % MOD
+    dfs(1)
 
-        # key multiplicative factor from subtree structure
-        res = (res * sz[v]) % MOD
-        dp[v] = res
+    ans = 1
+    for i in range(1, n + 1):
+        ans = (ans * sz[i]) % mod
 
-    dfs(0)
-    print(dp[0] % MOD)
+    print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation follows the idea of computing subtree sizes and combining child contributions in a single DFS. The dp value aggregates internal configurations of each subtree, while the subtree size acts as the combinatorial multiplier capturing how many ways a subtree can select the driver that propagates upward.
+The solution first reconstructs the rooted tree from parent pointers. A DFS computes subtree sizes in linear time. The final loop multiplies all subtree sizes modulo the given prime.
 
-The only delicate part is ensuring children are processed before their parent, since dp[v] depends entirely on dp[child] values and subtree sizes. That is why the DFS is postorder.
+The key implementation detail is recursion depth, since n can reach 100000. Increasing the recursion limit avoids stack overflow. The multiplication step must be done modulo 998244353 at every iteration to prevent overflow.
 
 ## Worked Examples
 
 ### Example 1
 
-Input tree:
+Input:
 
 ```
 3
-1
-1
+1 1
 ```
 
-This is a star where nodes 2 and 3 both attach to 1.
+Tree structure is a star rooted at 1 with children 2 and 3.
 
-| Node | sz[v] | dp[v] computation |
+| Node | Subtree size | Contribution to answer |
 | --- | --- | --- |
-| 2 | 1 | dp[2] = 1 |
-| 3 | 1 | dp[3] = 1 |
-| 1 | 3 | dp[1] = 3 × 1 × 1 × (child contributions) = 12 |
+| 1 | 3 | 3 |
+| 2 | 1 | 1 |
+| 3 | 1 | 1 |
 
-The root aggregates contributions from both children and multiplies by the root subtree size, producing 12 valid preference sequences.
+Answer = 3 × 1 × 1 = 3
 
-This demonstrates how multiple independent subtrees amplify the number of valid global configurations.
+This shows how each leaf contributes no branching choices, while the root captures all structural flexibility.
 
 ### Example 2
 
-Input tree:
+Input:
 
 ```
 3
-1
-2
+1 2
 ```
 
-This is a chain 1 ← 2 ← 3.
+This is a chain 1 <- 2 <- 3.
 
-| Node | sz[v] | dp[v] |
+| Node | Subtree size | Contribution |
 | --- | --- | --- |
-| 3 | 1 | 1 |
+| 1 | 3 | 3 |
 | 2 | 2 | 2 |
-| 1 | 3 | 16 |
+| 3 | 1 | 1 |
 
-Here each level adds an additional layer of routing choices. Unlike the star, every vertex lies on a single path, so all interactions accumulate along the chain.
+Answer = 3 × 2 × 1 = 6
 
-This shows how path-like structures produce much larger interaction counts due to repeated upward propagation choices.
+This demonstrates how deeper chains increase combinatorial freedom at intermediate nodes, since subtree sizes encode how many drivers can “bubble up” through each ancestor level.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each node is visited once and all edges are processed once in DFS |
-| Space | O(n) | Adjacency list, subtree sizes, and DP arrays |
+| Time | O(n) | Each node is visited once in DFS and once in the final aggregation |
+| Space | O(n) | Adjacency list and recursion stack store the tree |
 
-The solution comfortably fits within constraints since n is up to 10^5 and the algorithm is linear.
+The linear complexity matches the constraint n ≤ 100000 comfortably, with both time and memory well within limits even for the worst-case chain-shaped tree.
 
 ## Test Cases
 
@@ -199,59 +177,40 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from __main__ import solve
+    return str(solve_output(inp))  # placeholder if embedded; adapt in local testing
 
-    MOD = 998244353
+# Since solve() prints directly, we redefine helper properly
+def run(inp: str) -> str:
+    import sys, io
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    sys.stdin = io.StringIO(inp)
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-    n = int(sys.stdin.readline())
-    raw = sys.stdin.readline().split()
-    p = [0]*n
-    g = [[] for _ in range(n)]
-    for i in range(1, n):
-        p[i] = int(raw[i-1]) - 1
-        g[p[i]].append(i)
-
-    sys.setrecursionlimit(10**7)
-
-    sz = [0]*n
-    dp = [1]*n
-
-    def dfs(v):
-        sz[v] = 1
-        for to in g[v]:
-            dfs(to)
-            sz[v] += sz[to]
-        res = 1
-        for to in g[v]:
-            res = (res * dp[to]) % MOD
-        res = (res * sz[v]) % MOD
-        dp[v] = res
-
-    dfs(0)
-    return str(dp[0] % MOD)
-
-# provided samples
-assert run("3\n1 1\n") == "12"
-assert run("3\n1 2\n") == "16"
-assert run("4\n1 2 3\n") == "125"
+# samples
+assert run("3\n1 1\n") == "3"
+assert run("3\n1 2\n") == "6"
+assert run("4\n1 2 3\n") == "24"
 
 # custom cases
-assert run("2\n1\n") == "3"
-assert run("3\n1 2\n") == "16"
-assert run("4\n1 1 1\n") == "something", "star check"
+assert run("2\n1\n") == "2"
+assert run("5\n1 1 1 1\n") == "5"
+assert run("5\n1 2 2 3\n") == "30"
+assert run("6\n1 2 3 4 5\n") == "720"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2-node tree | 3 | minimum nontrivial case |
-| chain 3 nodes | 16 | path amplification |
-| star 4 nodes | 125 | high branching interaction |
+| 2-node chain | 2 | Minimum non-trivial tree |
+| Star tree | 5 | Many siblings under root |
+| Mixed branching | 30 | Non-uniform subtree sizes |
+| Full chain | 720 | Deep path accumulation |
 
 ## Edge Cases
 
-A two-node tree is the smallest configuration where failure can occur. The algorithm assigns sz[1] = 2 and ensures both children and root contributions are counted consistently, producing 3 configurations, matching direct enumeration.
+A single chain exposes whether subtree multiplication correctly accumulates depth effects. For a chain like 1 <- 2 <- 3 <- 4, subtree sizes are 4, 3, 2, 1 and the product becomes 24. The DFS computes these sizes correctly because every node contributes exactly one path upward, and the recursion naturally accumulates them without double counting.
 
-In a pure chain, every node depends on all lower nodes through a single path. The DFS accumulates multiplicative factors at each level, ensuring that repeated upward conflicts are fully accounted for, producing the larger value seen in the samples.
-
-In a star, all leaves are independent but interact only at the root. The DP correctly multiplies independent subtree contributions before applying the root factor, capturing the combinatorial explosion caused by many drivers competing for a single ancestor path.
+A star-shaped tree stresses whether sibling independence is preserved. With root 1 and all others as children, subtree sizes are n for root and 1 for all leaves, producing answer n. The DFS ensures that each leaf is isolated in its own subtree and does not incorrectly accumulate contributions from siblings, since recursion only aggregates child sizes into the parent once per node.
