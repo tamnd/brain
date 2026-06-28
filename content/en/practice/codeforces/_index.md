@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2368 contests, 16120 problems, 8862 verified."
+description: "Codeforces problem solutions with full editorials. 2370 contests, 16140 problems, 8864 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2368 contests, 16120 problems, 8862 verified.**
+**2370 contests, 16140 problems, 8864 verified.**
 
-## Unknown — 426 contests, 3443 problems, 2145 verified
+## Unknown — 428 contests, 3463 problems, 2147 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104733](104733/) | [2022 Google Code Jam Round 3 (GCJ 22 Round 3)](https://codeforces.com/contest/104733) | 8 | 1/8 | Special | - |
+| [104735](104735/) | [2019 Google Code Jam World Finals (GCJ 19 World Finals)](https://codeforces.com/contest/104735) | 12 | 1/12 | Special | - |
 | [104736](104736/) | [2023-2024 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104736) | 13 | 13/13 | ICPC/IOI | - |
 | [104745](104745/) | [CAMA 2023](https://codeforces.com/contest/104745) | 16 | 16/16 | Special | - |
 | [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 12 | 8/12 | Special | - |
