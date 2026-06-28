@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2351 contests, 15902 problems, 8719 verified."
+description: "Codeforces problem solutions with full editorials. 2352 contests, 15902 problems, 8719 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2351 contests, 15902 problems, 8719 verified.**
+**2352 contests, 15902 problems, 8719 verified.**
 
-## Unknown — 418 contests, 3334 problems, 2072 verified
+## Unknown — 419 contests, 3334 problems, 2072 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
 | [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |
 | [104775](104775/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (3 группа регионов)](https://codeforces.com/contest/104775) | 0 | 0/0 | Special | - |
 | [104776](104776/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (4 группа регионов)](https://codeforces.com/contest/104776) | 0 | 0/0 | Special | - |
