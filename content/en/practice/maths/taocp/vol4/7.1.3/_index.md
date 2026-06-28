@@ -80,11 +80,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 189/219 solved.
 | [60](60.md) |  [*HM28*] | hm-hard | solved | 4m02s |
 | [61](61.md) |  [*46*] | research | solved | 3m44s |
 | [62](62.md) | &#9654; [*22*] | medium | verified | 1m13s |
-| [63](63.md) |  [*19*] | medium | verified | 1m04s |
-| [64](64.md) |  [*22*] | medium | verified | 2m10s |
-| [65](65.md) |  [*M16*] | math-medium | verified | 54s |
-| [66](66.md) | &#9654; [*M26*] | math-hard | verified | 1m32s |
-| [67](67.md) |  [*M31*] | math-hard | solved | 2m21s |
+| [63](63.md) |  [*19*] | medium | verified | 1m09s |
+| [64](64.md) |  [*22*] | medium | verified | 3m25s |
+| [65](65.md) |  [*M16*] | math-medium | verified | 1m07s |
+| [66](66.md) | &#9654; [*M26*] | math-hard | solved | 1m01s |
+| [67](67.md) |  [*M31*] | math-hard | solved | 1m01s |
 | 68 |  [*20*] | medium | - | - |
 | 69 |  [*25*] | medium | - | - |
 | 70 | &#9654; [*31*] | hard | - | - |
