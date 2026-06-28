@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15956 problems, 8752 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15957 problems, 8752 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15956 problems, 8752 verified.**
+**2353 contests, 15957 problems, 8752 verified.**
 
 ## Unknown — 420 contests, 3375 problems, 2097 verified
 
@@ -1655,7 +1655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 164 contests, 1210 problems, 540 verified
+## 2023 — 164 contests, 1211 problems, 540 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1816,7 +1816,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104880](104880/) | [The 18-th Beihang University Collegiate Programming Contest (BCPC 2023) - Preliminary](https://codeforces.com/contest/104880) | 15 | 14/15 | Special | - |
 | [104883](104883/) | [The 18-th Beihang University Collegiate Programming Contest (BCPC 2023) - Final](https://codeforces.com/contest/104883) | 9 | 8/9 | Special | - |
 | [104887](104887/) | [2023 Abakoda Long Contest](https://codeforces.com/contest/104887) | 13 | 3/13 | Special | - |
-| [104976](104976/) | [The 2023 ICPC Asia Hangzhou Regional Contest (The 2nd Universal Cup. Stage 22: Hangzhou)](https://codeforces.com/contest/104976) | 12 | 2/12 | ICPC/IOI | - |
+| [104976](104976/) | [The 2023 ICPC Asia Hangzhou Regional Contest (The 2nd Universal Cup. Stage 22: Hangzhou)](https://codeforces.com/contest/104976) | 13 | 2/13 | ICPC/IOI | - |
 | [105013](105013/) | [The 19th Southeast University Programming Contest (Summer)](https://codeforces.com/contest/105013) | 12 | 10/12 | Special | - |
 | [105173](105173/) | [The 2024 CCPC National Invitational Contest (Northeast), The 18th Northeast Collegiate Programming Contest](https://codeforces.com/contest/105173) | 13 | 4/13 | Special | - |
 | [105184](105184/) | [The 8th Hebei Collegiate Programming Contest](https://codeforces.com/contest/105184) | 11 | 5/11 | Special | - |
