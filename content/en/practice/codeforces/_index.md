@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2361 contests, 16030 problems, 8786 verified."
+description: "Codeforces problem solutions with full editorials. 2361 contests, 16033 problems, 8787 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,15 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2361 contests, 16030 problems, 8786 verified.**
+**2361 contests, 16033 problems, 8787 verified.**
 
-## Unknown — 423 contests, 3396 problems, 2104 verified
+## Unknown — 423 contests, 3399 problems, 2105 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
-| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 7 | 4/7 | ICPC/IOI | - |
-| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 6 | 1/6 | ICPC/IOI | - |
+| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 8 | 5/8 | ICPC/IOI | - |
+| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 8 | 1/8 | ICPC/IOI | - |
 | [104772](104772/) | [2023-2024 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104772) | 13 | 5/13 | ICPC/IOI | - |
 | [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
 | [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |

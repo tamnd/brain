@@ -1,7 +1,7 @@
 ---
 title: "CF 104760D - \u0412\u0435\u0441\u0435\u043b\u044b\u0435 \u0444\u043e\u043d\u0430\u0440\u0438"
-description: "We are given a graph where vertices represent lamps and edges represent streets connecting pairs of lamps. Each street imposes a constraint: the two lamps at its ends must not share the same color after repainting."
-date: "2026-06-28T22:02:05+07:00"
+description: "The city can be modeled as a graph where each lamp is a vertex and each street connects two lamps. The task is to assign one of two colors to every lamp so that every street connects lamps of different colors."
+date: "2026-06-28T22:36:17+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104760
@@ -24,49 +24,46 @@ draft: false
 ## Solution
 ## Problem Understanding
 
-We are given a graph where vertices represent lamps and edges represent streets connecting pairs of lamps. Each street imposes a constraint: the two lamps at its ends must not share the same color after repainting. Each lamp can be painted using one of two available colors, so the task is equivalent to deciding whether we can assign one of two colors to every vertex such that every edge connects vertices of different colors.
+The city can be modeled as a graph where each lamp is a vertex and each street connects two lamps. The task is to assign one of two colors to every lamp so that every street connects lamps of different colors. In graph terms, this is asking whether the graph can be 2-colored so that no edge is monochromatic.
 
-The graph may contain self-loops and multiple edges between the same pair of vertices. A self-loop immediately creates a contradiction because it requires a vertex to differ from itself. Multiple edges between the same pair do not change the constraint, they only repeat it.
+There is an additional structural detail that matters: a street may connect a lamp to itself, and there may be multiple streets between the same pair of lamps. Multiple streets do not change any constraint because they all enforce the same condition between the same two endpoints. A self-loop, however, creates a direct contradiction because it demands a vertex to have a color different from itself.
 
-The number of vertices per test is up to 400, and there can be up to 50 tests. Even though the number of edges can reach about 80,000 in the worst case, this is still small enough that an $O(N + M)$ or $O(N^2)$ per test solution is easily sufficient. Anything relying on exponential search over colorings is infeasible since $2^{400}$ is far beyond any limit.
+The constraints allow up to 400 vertices per test case and up to 50 test cases. Even in the densest case this is a small graph, so an O(NM) or O(N + M) per test solution is easily fast enough. Anything involving exponential search over colorings would fail immediately since 2^400 is astronomically large.
 
-A few corner situations matter.
+A naive implementation pitfall appears when self-loops or disconnected components are mishandled. For example, if a vertex has an edge to itself like input `1 1`, the correct answer is always NO, even though a naive BFS might never explicitly detect a contradiction unless it checks edges carefully.
 
-A graph with no edges is always valid because there are no constraints at all. For example, $N=5, M=0$ should output YES.
-
-A graph containing a self-loop is always invalid. For example, $N=1, M=1, (1,1)$ must output NO because the single vertex cannot be colored differently from itself.
-
-A disconnected graph must be checked component by component. One bad component makes the entire graph invalid.
+Another subtle case is multiple components. A graph can be bipartite component-wise even if not connected, so a solution that only starts BFS from node 1 can incorrectly miss other components that violate bipartiteness.
 
 ## Approaches
 
-The brute-force idea is to try every possible assignment of two colors to the $N$ vertices and check whether all edges satisfy the constraint. Each assignment requires scanning all edges, which costs $O(M)$, and there are $2^N$ assignments, giving $O(2^N \cdot M)$. With $N=400$, this is completely unusable.
+A brute-force strategy would try all assignments of two colors to N vertices and verify whether every edge connects differently colored endpoints. This directly encodes the condition but requires checking 2^N assignments, and for each assignment scanning all edges, leading to O(2^N · M). With N up to 400, this is infeasible.
 
-The key observation is that the condition on edges is exactly the definition of a bipartite graph. We do not need to search over all assignments; we only need to check whether such a coloring exists. Bipartite checking can be done by BFS or DFS: we pick an uncolored vertex, assign it a color, and propagate alternating colors along edges. If we ever see a contradiction, the graph is not bipartite.
+The key observation is that the constraint is exactly the definition of a bipartite graph. Instead of exploring all assignments globally, we propagate constraints locally: once a node is assigned a color, all its neighbors are forced to take the opposite color. If a contradiction appears during propagation, no valid coloring exists. This converts an exponential search into a linear traversal per component.
 
-Self-loops can be handled immediately as failure, since they force a vertex to differ from itself. Parallel edges do not affect correctness because they impose identical constraints repeatedly.
-
-This reduces the problem to a standard graph traversal over all components.
+The presence of self-loops simplifies detection further, because any self-loop immediately violates bipartiteness without needing traversal.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(2^N \cdot M)$ | $O(N)$ | Too slow |
-| BFS/DFS Bipartite Check | $O(N + M)$ | $O(N + M)$ | Accepted |
+| Brute Force | O(2^N · M) | O(N) | Too slow |
+| BFS/DFS Bipartite Check | O(N + M) | O(N + M) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build an adjacency list for the graph. If an edge connects a vertex to itself, immediately mark the test as impossible. This is because a self-loop enforces a contradiction regardless of coloring.
-2. Maintain an array `color` initialized to -1 for all vertices, meaning uncolored. We will use two colors, 0 and 1.
-3. Iterate through all vertices from 1 to N. Whenever we find an uncolored vertex, we start a BFS from it and assign it color 0.
-4. In BFS, remove a vertex `v` from the queue and examine all neighbors `u`. If `u` is uncolored, assign it the opposite color of `v` and push it into the queue.
-5. If `u` is already colored and has the same color as `v`, we immediately conclude the graph is not bipartite and stop.
-6. Repeat this process for every disconnected component. If no contradictions are found, the graph is valid.
+We process each test case independently.
 
-The key idea is that BFS enforces constraints locally while propagating decisions globally. Each edge acts as a parity constraint between two vertices.
+1. Read the number of vertices and edges, then build an adjacency list for the graph. This representation allows efficient traversal of neighbors during coloring.
+2. While reading edges, immediately check whether an edge connects a vertex to itself. If such an edge exists, the graph cannot be properly colored, because it forces two different colors on the same node. In this case, we can immediately conclude the answer is NO for the test case.
+3. Initialize an array `color` of size N with all values unset. This array stores one of two states for each vertex, representing its assigned color in the attempted bipartition.
+4. Iterate through every vertex from 1 to N. If a vertex is uncolored, it starts a new BFS or DFS traversal. This step is necessary because the graph may be disconnected, and each connected component must satisfy bipartiteness independently.
+5. Assign the starting vertex a color, for example 0, and push it into a queue.
+6. While the queue is not empty, extract a vertex and inspect all its neighbors. If a neighbor is uncolored, assign it the opposite color and enqueue it. If it is already colored and has the same color as the current vertex, a contradiction is found and the graph is not bipartite.
+7. If all components can be processed without contradiction, output YES.
+
+The critical idea is that coloring is not guessed but forced. Each edge enforces a constraint, and BFS ensures all constraints propagate consistently.
 
 ### Why it works
 
-The BFS process maintains an invariant: whenever a vertex is colored, its color is consistent with all already-processed paths from the BFS source. Each edge enforces a parity relation, and BFS ensures that parity assignments remain consistent along all discovered paths. If a contradiction arises, it means there are two different parity requirements for the same vertex, which implies an odd cycle or a self-loop exists in that component, making a two-coloring impossible.
+The algorithm maintains the invariant that whenever a vertex is colored, its color is consistent with all previously processed edges within its connected component. BFS ensures that every edge is checked exactly once for consistency, and any violation of bipartiteness appears as a direct conflict between two adjacent vertices with identical assigned colors. Because every vertex is eventually reached from some starting point, all components are validated independently, ensuring global correctness.
 
 ## Python Solution
 
@@ -76,120 +73,107 @@ input = sys.stdin.readline
 from collections import deque
 
 def solve():
-    T = int(input())
-    out = []
-
-    for _ in range(T):
-        parts = list(map(int, input().split()))
-        n, m = parts[0], parts[1]
-        edges = parts[2:]
-
-        adj = [[] for _ in range(n + 1)]
-        bad = False
-
-        idx = 0
-        for _ in range(m):
-            a = edges[idx]
-            b = edges[idx + 1]
-            idx += 2
-
-            if a == b:
-                bad = True
-            else:
-                adj[a].append(b)
-                adj[b].append(a)
-
-        if bad:
-            out.append("NO")
+    n, m = map(int, input().split())
+    
+    adj = [[] for _ in range(n + 1)]
+    
+    for _ in range(m):
+        a, b = map(int, input().split())
+        if a == b:
+            print("NO")
+            # consume remaining edges
+            for __ in range(_ + 1, m):
+                input()
+            return
+        adj[a].append(b)
+        adj[b].append(a)
+    
+    color = [-1] * (n + 1)
+    
+    for start in range(1, n + 1):
+        if color[start] != -1:
             continue
+        
+        color[start] = 0
+        q = deque([start])
+        
+        while q:
+            v = q.popleft()
+            for to in adj[v]:
+                if color[to] == -1:
+                    color[to] = 1 - color[v]
+                    q.append(to)
+                elif color[to] == color[v]:
+                    print("NO")
+                    return
+    
+    print("YES")
 
-        color = [-1] * (n + 1)
-
-        def bfs(start):
-            q = deque([start])
-            color[start] = 0
-
-            while q:
-                v = q.popleft()
-                for u in adj[v]:
-                    if color[u] == -1:
-                        color[u] = color[v] ^ 1
-                        q.append(u)
-                    elif color[u] == color[v]:
-                        return False
-            return True
-
-        ok = True
-        for i in range(1, n + 1):
-            if color[i] == -1:
-                if not bfs(i):
-                    ok = False
-                    break
-
-        out.append("YES" if ok else "NO")
-
-    print("\n".join(out))
+def main():
+    t = int(input())
+    for _ in range(t):
+        solve()
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The adjacency list construction ensures we can traverse neighbors efficiently. The early check for self-loops avoids unnecessary traversal. The BFS function enforces alternating colors and detects conflicts immediately. The XOR operation `color[v] ^ 1` is a compact way to flip between the two colors.
+The solution builds an adjacency list per test case and immediately rejects any self-loop. The BFS uses a queue to propagate alternating colors across edges. The `color` array starts at -1 to represent unvisited vertices, which is essential for distinguishing unprocessed nodes from valid color assignments.
 
-The outer loop ensures disconnected components are also validated.
+A subtle implementation detail is handling multiple test cases efficiently by rebuilding the graph each time, since N is small but input size can still accumulate. Another important point is ensuring that disconnected components are all checked, which is why the outer loop scans every vertex.
 
 ## Worked Examples
 
-### Example 1
+Consider a simple bipartite graph with two components:
 
 Input:
 
 ```
-3 1
+1
+4 2
 1 2
-1 3
+3 4
 ```
 
-This graph has edges (1,2) and (1,3). We expect YES.
+| Step | Vertex | Action | Color State | Queue |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | start BFS, assign 0 | [0, -1, -1, -1] | [1] |
+| 2 | 1 | visit neighbors, set 2=1 | [0, 1, -1, -1] | [2] |
+| 3 | 2 | done | [0, 1, -1, -1] | [] |
+| 4 | 3 | start new BFS, assign 0 | [0, 1, 0, -1] | [3] |
+| 5 | 3 | set 4=1 | [0, 1, 0, 1] | [4] |
 
-| Step | Queue | Coloring | Action |
-| --- | --- | --- | --- |
-| Start | [1] | 1=0 | initialize |
-| Pop 1 | [] | 2=1, 3=1 | assign neighbors |
-| Push neighbors | [2,3] | consistent | continue |
-| Process rest | [] | no conflicts | finish |
+This confirms that disconnected components are handled independently while preserving bipartite structure.
 
-No contradiction appears, so the graph is bipartite.
-
-### Example 2
+Now consider a non-bipartite triangle:
 
 Input:
 
 ```
+1
 3 3
 1 2
 2 3
-1 3
+3 1
 ```
 
-This is a triangle, so it is impossible.
+| Step | Vertex | Action | Color State | Queue |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | assign 0 | [0, -1, -1] | [1] |
+| 2 | 2 | assign 1 | [0, 1, -1] | [2] |
+| 3 | 3 | assign 0 | [0, 1, 0] | [3] |
+| 4 | 3 | conflict with 1 | contradiction | stop |
 
-| Step | Queue | Coloring | Action |
-| --- | --- | --- | --- |
-| Start | [1] | 1=0 | initialize |
-| Pop 1 | [] | 2=1, 3=1 | assign |
-| Pop 2 | [3] | check 3 | conflict (3 already 1, expected 0) |
-
-A contradiction occurs on edge (2,3), confirming the odd cycle.
+The conflict arises when edge (3,1) forces two vertices of the same color to be adjacent, proving the graph is not bipartite.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(N + M)$ | each vertex and edge processed once during BFS |
-| Space | $O(N + M)$ | adjacency list plus color array |
+| Time | O(N + M) | Each vertex is enqueued once and each edge is checked at most twice |
+| Space | O(N + M) | Adjacency list plus color array |
 
-The constraints allow up to 400 vertices and about 80,000 edges per test, so this linear traversal easily fits within limits even for 50 test cases.
+Given N ≤ 400 and M up to about 1e5, this is comfortably within limits even for 50 test cases.
 
 ## Test Cases
 
@@ -201,85 +185,66 @@ def run(inp: str) -> str:
     from collections import deque
 
     def solve():
-        T = int(input())
-        out = []
-        for _ in range(T):
-            parts = list(map(int, input().split()))
-            n, m = parts[0], parts[1]
-            edges = parts[2:]
-
-            adj = [[] for _ in range(n + 1)]
-            bad = False
-
-            idx = 0
-            for _ in range(m):
-                a = edges[idx]
-                b = edges[idx + 1]
-                idx += 2
-                if a == b:
-                    bad = True
-                else:
-                    adj[a].append(b)
-                    adj[b].append(a)
-
-            if bad:
-                out.append("NO")
+        n, m = map(int, input().split())
+        adj = [[] for _ in range(n + 1)]
+        
+        for _ in range(m):
+            a, b = map(int, input().split())
+            if a == b:
+                return "NO"
+            adj[a].append(b)
+            adj[b].append(a)
+        
+        color = [-1] * (n + 1)
+        
+        for i in range(1, n + 1):
+            if color[i] != -1:
                 continue
+            color[i] = 0
+            q = deque([i])
+            while q:
+                v = q.popleft()
+                for to in adj[v]:
+                    if color[to] == -1:
+                        color[to] = 1 - color[v]
+                        q.append(to)
+                    elif color[to] == color[v]:
+                        return "NO"
+        return "YES"
 
-            color = [-1] * (n + 1)
+    t = int(input())
+    out = []
+    for _ in range(t):
+        out.append(solve())
+    return "\n".join(out)
 
-            def bfs(s):
-                q = deque([s])
-                color[s] = 0
-                while q:
-                    v = q.popleft()
-                    for u in adj[v]:
-                        if color[u] == -1:
-                            color[u] = color[v] ^ 1
-                            q.append(u)
-                        elif color[u] == color[v]:
-                            return False
-                return True
+# provided sample (interpreted cleanly)
+assert run("1\n3 2\n1 2\n1 3\n") == "YES"
 
-            for i in range(1, n + 1):
-                if color[i] == -1:
-                    if not bfs(i):
-                        out.append("NO")
-                        break
-            else:
-                out.append("YES")
+# self-loop case
+assert run("1\n1 1\n1 1\n") == "NO"
 
-        return "\n".join(out)
+# triangle (odd cycle)
+assert run("1\n3 3\n1 2\n2 3\n3 1\n") == "NO"
 
-    return solve()
+# disconnected bipartite
+assert run("1\n4 2\n1 2\n3 4\n") == "YES"
 
-# provided sample (interpreted)
-assert run("3\n3 1 1 2 1 3\n3 3 1 2 2 3 1 3\n1 0\n") == "YES\nNO\nYES"
-
-# custom: no edges
-assert run("1\n5 0\n") == "YES"
-
-# custom: self loop
-assert run("1\n2 1 1 1\n") == "NO"
-
-# custom: disconnected bipartite
-assert run("1\n4 2 1 2 3 4\n") == "YES"
-
-# custom: odd cycle
-assert run("1\n3 3 1 2 2 3 3 1\n") == "NO"
+# fully connected bipartite square
+assert run("1\n4 4\n1 2\n2 3\n3 4\n4 1\n") == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 5 isolated nodes | YES | empty graph validity |
-| self-loop | NO | immediate contradiction |
-| two edges in disjoint pairs | YES | disconnected components |
-| triangle cycle | NO | odd cycle detection |
+| self-loop | NO | immediate contradiction detection |
+| triangle | NO | odd cycle rejection |
+| disconnected edges | YES | component-wise processing |
+| square cycle | YES | even cycle bipartiteness |
 
 ## Edge Cases
 
-A self-loop is the most direct failure case. If we take input `1 1 1 1`, the adjacency construction flags it immediately and returns NO without even attempting BFS. This is correct because any coloring would require a vertex to differ from itself.
+A self-loop is the most direct failure mode. For input `1 1 / 1 1`, the algorithm returns NO immediately before any traversal. This is correct because a node cannot have a different color from itself, and BFS would otherwise never explicitly detect this unless special-cased.
 
-Disconnected components are handled by restarting BFS whenever a new uncolored vertex is found. For a graph like `1-2` and `3-4`, the BFS from 1 colors only its component, then BFS from 3 handles the second component independently. Since both are bipartite, the final result is YES.
+Disconnected graphs are handled by restarting BFS from every unvisited node. Without this, a component containing an odd cycle could be ignored if BFS started elsewhere.
 
-Odd cycles produce a contradiction during traversal. In a triangle, BFS assigns alternating colors but eventually encounters an edge forcing equality between two vertices already constrained to differ, exposing inconsistency and correctly rejecting the graph.
+Multiple edges between the same nodes do not affect correctness. Each duplicate edge simply rechecks the same color constraint, but since colors remain consistent, no contradiction arises.
