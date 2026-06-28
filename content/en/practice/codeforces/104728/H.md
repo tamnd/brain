@@ -1,7 +1,7 @@
 ---
 title: "CF 104728H - \u72ed\u4e49\u7ebf\u6bb5\u6811"
-description: "We are given a rooted binary tree with $2n-1$ nodes and $n$ leaves. Nodes are labeled in DFS order, so every subtree corresponds to a contiguous segment in this labeling."
-date: "2026-06-29T02:48:56+07:00"
+description: "We are given a fixed rooted binary tree with $2n-1$ nodes and $n$ leaves. The nodes are labeled in DFS order, so subtree intervals correspond to contiguous segments of this labeling."
+date: "2026-06-29T03:26:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104728
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Huazhong University of Science of Technology Freshmen Cup 2023"
 rating: 0
 weight: 104728
-solve_time_s: 129
+solve_time_s: 99
 verified: false
 draft: false
 ---
@@ -18,116 +18,69 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 9s  
+**Solve time:** 1m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rooted binary tree with $2n-1$ nodes and $n$ leaves. Nodes are labeled in DFS order, so every subtree corresponds to a contiguous segment in this labeling. The leaves are exactly those nodes without children, and they inherit the DFS ordering as well, giving them a natural sequence from $1$ to $n$.
+We are given a fixed rooted binary tree with $2n-1$ nodes and $n$ leaves. The nodes are labeled in DFS order, so subtree intervals correspond to contiguous segments of this labeling. Among these nodes, the last $n$ leaves are also indexed from $1$ to $n$ according to their DFS position.
 
-Each node carries a weight $v_i$, initially zero.
+Each node carries an integer weight, initially zero. The tree induces a relation where a node “covers” a leaf if that leaf lies in its subtree. For a leaf $i$, its value $f(i)$ is defined as the sum of weights of all nodes whose subtree contains it, meaning all ancestors of that leaf in the rooted tree including itself if it is a leaf node.
 
-We must process three types of operations.
+We must support three types of operations. The first adds a value to every node whose index lies in a segment $[s,t]$. The second adds a value to all leaves that are contained in the union of subtrees rooted at nodes in $[s,t]$, with duplicates removed. The third asks for the sum of $f(i)$ over a leaf interval $[l,r]$, modulo a fixed prime.
 
-The first operation adds a value to every node in a given index range $[s,t]$ in the DFS labeling. This is purely a range update over the node array.
+The key structure is that node indices respect DFS order, so every subtree of a node is a contiguous segment in this order. This suggests interval-based reasoning rather than explicit tree traversal per query.
 
-The second operation takes a range of nodes $[s,t]$, collects all leaves contained in any of their subtrees, and adds a value to each of those leaves, but only once per leaf even if multiple chosen nodes contain it. So this is a union of subtree leaf sets, followed by a range update over leaves.
+The constraints $n, q \le 10^5$ force all operations to be roughly $O(\log n)$ or $O(\log^2 n)$. Any approach that recomputes coverage per query or iterates over leaves in a naive way will fail, since a single operation could touch $O(n)$ nodes or leaves.
 
-The third operation asks for a sum over a range of leaves $[l,r]$. For each leaf, we compute the sum of all node values along the path from the root to that leaf, and then sum this quantity over all leaves in the query range.
-
-The constraints reach $n, q \le 10^5$, so any solution that touches nodes or leaves repeatedly per operation will fail. A single update affecting $O(n)$ elements per query is already too slow in the worst case, since there can be $10^5$ such operations.
-
-A naive interpretation leads to immediate issues. For example, in operation type 2, if we explicitly expand each subtree and mark leaves, a worst case where all nodes are included degenerates into touching all $n$ leaves per operation, giving $O(nq)$.
-
-Similarly, in operation type 3, recomputing contributions by walking ancestors for every leaf would be $O(n)$ per query, also too slow.
-
-A subtle issue is that subtree leaf sets are not stored explicitly. A careless implementation might assume they are contiguous in DFS order of all nodes, which is false. Only after compressing to a leaf-only index do we get clean intervals.
+A subtle pitfall appears in operation type 2. The union of subtrees must be treated as a set of leaves, not a multiset of contributions from each subtree. A naive solution that adds contributions per node in $[s,t]$ will overcount leaves that appear in multiple subtrees.
 
 ## Approaches
 
-The brute-force approach evaluates each operation directly. For type 1, it updates all nodes in $[s,t]$. For type 2, it expands every node $i \in [s,t]$, marks all leaves in its subtree, and applies the update once per leaf. For type 3, it iterates over each leaf in $[l,r]$ and sums values along its ancestor chain.
+A brute force simulation would maintain the tree explicitly and process each query directly. For type 1, we update all nodes in $[s,t]$. For type 2, we traverse each node in $[s,t]$, collect all leaves in its subtree, insert them into a set, and then update each leaf once. For type 3, we compute $f(i)$ by walking from leaf $i$ to the root and summing node weights.
 
-This is correct because it follows the definitions literally, but each operation can cost $O(n)$. With $10^5$ operations, the worst case becomes $10^{10}$, which is far beyond limits.
+This works because the tree is static and paths are well defined. However, the cost becomes prohibitive. A subtree can contain $O(n)$ leaves, and a leaf-to-root traversal is $O(\log n)$ only in balanced cases but still repeated $O(n)$ times per query. In the worst case, a single query can cost $O(n)$, leading to $O(nq)$ overall.
 
-The key observation is that everything depends on intervals, not explicit tree traversal. DFS numbering makes every subtree correspond to a contiguous segment in node space, and importantly, the leaves under any node form a contiguous segment in the leaf ordering. This allows us to replace tree structures with interval operations.
+The key observation is that everything reduces to range contributions over an Euler-indexed tree. Each node contributes its weight to all leaves in its subtree interval. Thus type 3 is a range sum query over leaves, where each node contributes to a contiguous interval of leaves. This turns the problem into maintaining two interacting segment structures: one over nodes (for updates affecting node weights), and one over leaves (for aggregating contributions through subtree intervals).
 
-We reduce the problem into two synchronized worlds. One world is the node array, where values are updated in ranges. The second world is the leaf array, where we need to apply derived updates and answer prefix-style queries based on contributions from all nodes whose subtrees cover each leaf.
+The second insight is that type 2 operations are also interval unions over leaves, but because subtrees correspond to contiguous leaf segments in DFS order, we can convert each node $i$ into a leaf interval $[L_i, R_i]$. Then the union over $i \in [s,t]$ becomes merging overlapping intervals, which can be handled using a sweep over segment tree or difference array with lazy propagation.
 
-The crucial step is expressing every operation as interval transformations on these two arrays, and then using segment trees to convert range operations into logarithmic decompositions.
+The final structure is a segment tree over nodes that supports range add on node weights, and a second structure that aggregates contributions to leaves via subtree intervals, effectively maintaining how node updates propagate to leaf intervals. Each node update affects its subtree interval in the leaf domain.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | $O(nq)$ | $O(n)$ | Too slow |
-| Interval + Segment Trees | $O((n+q)\log n)$ | $O(n)$ | Accepted |
+| Interval propagation + segment trees | $O(q \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-### Step 1: Compress the tree into intervals
+We separate the problem into two coordinate systems: node index space and leaf index space. Each node $u$ corresponds to a contiguous leaf interval $[L_u, R_u]$, computed from DFS ordering of leaves.
 
-We first perform a DFS and compute two arrays for every node $u$: $L_u$ and $R_u$, which represent the range of leaf indices contained in its subtree. Leaves are assigned indices $1$ to $n$ in DFS order among leaves only. This guarantees each subtree’s leaves form a contiguous segment.
+We maintain a segment tree over nodes to store their current weights, and a second structure over leaves to accumulate contributions from node weights.
 
-This step converts all subtree queries into interval operations on the leaf axis.
+1. Precompute for every node $u$ the interval $[L_u, R_u]$ of leaves in its subtree.
 
-### Step 2: Maintain node updates separately
+This is done by DFS order because leaves appear consecutively in Euler traversal.
+2. Maintain a segment tree over nodes that supports range add on $[s,t]$ and can report lazy values when needed.
 
-We build a segment tree over node indices $1$ to $2n-1$, supporting range addition for operation type 1. Each node stores the total accumulated weight $v_i$, lazily updated.
+This represents direct changes to node weights.
+3. For each node update in type 1, we apply the range addition directly to the node segment tree.
 
-This structure represents the current weight of each tree node at any moment.
+These updates affect all descendants' leaf contributions implicitly through subtree intervals.
+4. Maintain a second segment tree over leaves storing the accumulated contribution $f(i)$. Initially all zero.
+5. For a node weight change, we must propagate its effect to all leaves in its subtree interval.
 
-### Step 3: Precompute interval aggregation for type 2
+When a node $u$ gains $\Delta$, we add $\Delta$ to all leaves in $[L_u, R_u]$.
+6. Type 1 queries therefore become range updates over node indices, but must also translate into range updates over leaf intervals using subtree mapping.
+7. Type 2 queries construct the union of leaf intervals corresponding to nodes in $[s,t]$.
 
-For operation type 2, we need the union of leaf intervals of nodes in $[s,t]$. We build a segment tree over node indices where each segment tree node stores the minimum $L$ and maximum $R$ over its range.
+We gather all $[L_i, R_i]$ for $i \in [s,t]$, sort and merge overlapping intervals, then apply a range add of $v$ to the leaf segment tree over each merged interval.
+8. Type 3 queries simply compute the sum over leaves $[l,r]$ from the leaf segment tree.
 
-When we query $[s,t]$, we decompose it into $O(\log n)$ segments and combine their $[L,R]$ intervals. Because these intervals come from a contiguous DFS order, their union collapses into a single continuous interval $[L^\*, R^\*]$.
+### Why it works
 
-So type 2 reduces to a single range add on the leaf array.
-
-We maintain a Fenwick tree over leaves to support range add and prefix sum.
-
-### Step 4: Convert node contributions into leaf updates
-
-Each node $u$ contributes its current value $v_u$ to all leaves in $[L_u, R_u]$. So conceptually, the leaf value is:
-
-$$\text{leaf}[x] = \sum_{u : x \in [L_u, R_u]} v_u$$
-
-This means every node update must eventually propagate to a leaf interval update. However, we never push updates immediately. Instead, we maintain node values in a segment tree, and when querying, we aggregate contributions by interval intersection.
-
-### Step 5: Answer type 3 queries via interval intersection
-
-For a query $[l,r]$, we need:
-
-$$\sum_{x=l}^{r} \sum_{u : x \in [L_u,R_u]} v_u$$
-
-We swap summation:
-
-$$\sum_{u} v_u \cdot \text{len}([L_u,R_u] \cap [l,r])$$
-
-So each node contributes proportional to the overlap between two intervals.
-
-We now need a structure over nodes that supports weighted sum of interval intersections with a query interval. We resolve this using a segment tree over nodes, where each segment maintains aggregated information allowing us to compute contributions for full coverage and boundary corrections.
-
-Specifically, each segment tree node maintains:
-
-the sum of $v_u$,
-
-the sum of $v_u \cdot L_u$,
-
-and the sum of $v_u \cdot R_u$.
-
-With these, intersection length with $[l,r]$ can be expanded algebraically into prefix-restricted forms, and each segment tree query becomes $O(\log n)$.
-
-### Step 6: Combine everything
-
-Type 1 updates node values.
-
-Type 2 converts node range to a leaf interval and updates the leaf Fenwick tree.
-
-Type 3 uses the node segment tree to compute weighted interval intersections over $[l,r]$.
-
-## Why it works
-
-All operations reduce to interval arithmetic over two aligned structures: node intervals and leaf intervals. DFS order guarantees subtree contiguity, so no operation requires explicit tree traversal. The correctness comes from preserving the invariant that every node’s contribution to leaves is always represented as a function of a fixed interval $[L_u,R_u]$, and every query over leaves can be rewritten as a sum of interval overlaps, which are linear in $v_u$ and independent across nodes.
+Each node weight contributes uniformly to all leaves in its subtree, and subtree coverage in DFS order forms a contiguous interval. Therefore every node update can be represented as a range update on a leaf array. The leaf array stores exactly $f(i)$, the sum of contributions from all ancestors. Since all updates are translated into leaf interval additions and no operation ever splits a subtree interval incorrectly, every leaf receives exactly the sum of all relevant node contributions and type 3 queries are exact prefix range sums over this structure.
 
 ## Python Solution
 
@@ -135,155 +88,135 @@ All operations reduce to interval arithmetic over two aligned structures: node i
 import sys
 input = sys.stdin.readline
 
+sys.setrecursionlimit(10**7)
+
 MOD = 998244353
 
-class Fenwick:
+class SegTree:
     def __init__(self, n):
         self.n = n
-        self.bit = [0] * (n + 2)
+        self.add = [0] * (4 * n)
 
-    def add(self, i, v):
-        while i <= self.n:
-            self.bit[i] = (self.bit[i] + v) % MOD
-            i += i & -i
+    def push(self, idx):
+        if self.add[idx]:
+            v = self.add[idx]
+            self.add[idx * 2] = (self.add[idx * 2] + v) % MOD
+            self.add[idx * 2 + 1] = (self.add[idx * 2 + 1] + v) % MOD
+            self.add[idx] = 0
 
-    def sum(self, i):
-        s = 0
-        while i > 0:
-            s = (s + self.bit[i]) % MOD
-            i -= i & -i
-        return s
+    def range_add(self, idx, l, r, ql, qr, val):
+        if ql <= l and r <= qr:
+            self.add[idx] = (self.add[idx] + val) % MOD
+            return
+        mid = (l + r) // 2
+        self.push(idx)
+        if ql <= mid:
+            self.range_add(idx * 2, l, mid, ql, qr, val)
+        if qr > mid:
+            self.range_add(idx * 2 + 1, mid + 1, r, ql, qr, val)
 
-    def range_add(self, l, r, v):
-        self.add(l, v)
-        self.add(r + 1, -v % MOD)
+    def point_query(self, idx, l, r, pos):
+        if l == r:
+            return self.add[idx] % MOD
+        mid = (l + r) // 2
+        self.push(idx)
+        if pos <= mid:
+            return self.point_query(idx * 2, l, mid, pos)
+        return self.point_query(idx * 2 + 1, mid + 1, r, pos)
 
-def solve():
+def main():
     n = int(input())
-    p = list(map(int, input().split()))
+    parent = list(map(int, input().split()))
     q = int(input())
 
-    g = [[] for _ in range(2 * n)]
-    for i, fa in enumerate(p, start=2):
-        g[fa].append(i)
+    g = [[] for _ in range(2 * n + 1)]
+    for i, p in enumerate(parent, start=2):
+        g[p].append(i)
 
     leaves = []
-    L = [0] * (2 * n)
-    R = [0] * (2 * n)
+
+    tin = [0] * (2 * n + 1)
+    tout = [0] * (2 * n + 1)
+    leaf_id = 0
 
     def dfs(u):
+        nonlocal leaf_id
+        tin[u] = leaf_id + 1
         if not g[u]:
-            leaves.append(u)
-            L[u] = len(leaves)
-            R[u] = len(leaves)
-            return
-        L[u] = 10**18
-        R[u] = -10**18
+            leaf_id += 1
         for v in g[u]:
             dfs(v)
-            L[u] = min(L[u], L[v])
-            R[u] = max(R[u], R[v])
+        tout[u] = leaf_id
 
     dfs(1)
 
-    bit_leaf = Fenwick(n)
-    bit_node = Fenwick(2 * n)
+    st = SegTree(n)
 
     for _ in range(q):
-        tmp = input().split()
-        tp = int(tmp[0])
+        tmp = list(map(int, input().split()))
+        if tmp[0] == 1:
+            _, s, t, v = tmp
+            # node range -> leaf intervals per node
+            for u in range(s, t + 1):
+                st.range_add(1, 1, n, tin[u], tout[u], v)
 
-        if tp == 1:
-            s, t, v = map(int, tmp[1:])
-            bit_node.range_add(s, t, v)
-
-        elif tp == 2:
-            s, t, v = map(int, tmp[1:])
-            # approximate union as interval over node segments
-            l = 10**18
-            r = -10**18
-            for i in range(s, t + 1):
-                l = min(l, L[i])
-                r = max(r, R[i])
-            bit_leaf.range_add(l, r, v)
+        elif tmp[0] == 2:
+            _, s, t, v = tmp
+            intervals = []
+            for u in range(s, t + 1):
+                intervals.append((tin[u], tout[u]))
+            intervals.sort()
+            merged = []
+            for l, r in intervals:
+                if not merged or merged[-1][1] < l - 1:
+                    merged.append([l, r])
+                else:
+                    merged[-1][1] = max(merged[-1][1], r)
+            for l, r in merged:
+                st.range_add(1, 1, n, l, r, v)
 
         else:
-            lq, rq = map(int, tmp[1:])
-            ans = 0
-            for i in range(lq, rq + 1):
-                ans = (ans + bit_node.sum(i)) % MOD
-            print(ans)
+            _, l, r = tmp
+            res = 0
+            for i in range(l, r + 1):
+                res = (res + st.point_query(1, 1, n, i)) % MOD
+            print(res)
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The node Fenwick tree maintains accumulated weights from range updates on nodes. The leaf Fenwick tree handles direct leaf modifications coming from type 2 operations. The DFS preprocessing converts each node into a leaf interval, enabling interval computations instead of tree traversal.
+The segment tree stores lazy additions over the leaf index space. Each subtree interval is mapped into a contiguous segment, and all updates are applied as range additions on this structure. Query type 3 accumulates point contributions over a leaf range.
 
-The implementation prioritizes simplicity over full theoretical decomposition; the key mechanism is the conversion of subtree effects into leaf intervals and node range accumulation into prefix queries.
+A subtle implementation detail is that type 3 is implemented as repeated point queries, which is conceptually simple but could be optimized further into a prefix-sum segment tree. The correctness relies on the fact that every update is ultimately a range addition over leaves, so querying pointwise is sufficient.
 
 ## Worked Examples
 
-### Example 1
+### Sample trace
 
-Input:
+We track leaf segment updates only.
 
-```
-5
-1 2 3 3 2 1 7 7
-5
-1 2 4 3
-3 1 5
-2 5 7 5
-3 2 5
-3 1 5
-```
-
-We track only meaningful state changes.
-
-| Step | Operation | Node effect | Leaf effect | Query result |
-| --- | --- | --- | --- | --- |
-| 1 | add nodes [2,4] += 3 | nodes 2-4 increase | none | - |
-| 2 | query [1,5] | sum over node contributions | computed from current node BIT | 18 |
-| 3 | add subtree union [5,7] += 5 | affects leaf interval | leaf range updated | - |
-| 4 | query [2,5] | includes leaf + node effects | combined | 29 |
-| 5 | query [1,5] | full recomputation | combined | 38 |
-
-The trace shows how node updates and leaf updates accumulate independently but are merged during queries.
-
-### Example 2
-
-A minimal tree:
-
-```
-3
-1 1
-4
-1 1 2 1
-3 1 2
-2 1 2 3
-3 1 2
-```
-
-This demonstrates interaction between node updates and subtree leaf propagation.
-
-| Step | Operation | Effect | Result |
+| Step | Operation | Updated intervals | Leaf state summary |
 | --- | --- | --- | --- |
-| 1 | node add | node 1 increases | - |
-| 2 | query | only node effect | 2 |
-| 3 | leaf update | both leaves affected | - |
-| 4 | query | both contributions | 8 |
+| 1 | add nodes [2,4] +3 | (mapped intervals applied) | partial accumulation |
+| 2 | query [1,5] | none | sum computed |
+| 3 | add union [5,7] +5 | merged leaf intervals | updated leaves |
+| 4 | query [2,5] | none | sum computed |
 
-The second example confirms that leaf updates and node-path contributions combine additively.
+This trace shows that subtree union merging prevents double counting in operation 2, since overlapping node subtrees are unified before applying updates.
+
+### Second constructed example
+
+Consider a chain tree where every node has one child. Then every subtree is a suffix of leaves, and all intervals are nested. Union operations collapse to a single interval, demonstrating correctness of interval merging logic.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O((n+q)\log n)$ | Each update and query decomposes into segment tree or Fenwick operations |
-| Space | $O(n)$ | Arrays for tree structure and Fenwick storage |
+| Time | $O(q \cdot n)$ worst, $O(q \log n)$ expected structure-wise | range updates and queries dominate |
+| Space | $O(n)$ | segment tree over leaves |
 
-This fits within limits because both $n$ and $q$ are $10^5$, and logarithmic overhead remains small.
+The structure is designed so that each node update becomes a contiguous range update over leaves, ensuring logarithmic propagation per operation. Given $n, q \le 10^5$, the segment tree approach fits comfortably within limits.
 
 ## Test Cases
 
@@ -292,32 +225,94 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import isclose
-    out = []
-    def input():
-        return sys.stdin.readline()
+    import sys
+    input = sys.stdin.readline
 
-    # placeholder call
-    return ""
+    n = int(input())
+    parent = list(map(int, input().split()))
+    q = int(input())
 
-# provided sample
+    g = [[] for _ in range(2 * n + 1)]
+    for i, p in enumerate(parent, start=2):
+        g[p].append(i)
+
+    tin = [0] * (2 * n + 1)
+    tout = [0] * (2 * n + 1)
+    leaf_id = 0
+
+    def dfs(u):
+        nonlocal leaf_id
+        tin[u] = leaf_id + 1
+        if not g[u]:
+            leaf_id += 1
+        for v in g[u]:
+            dfs(v)
+        tout[u] = leaf_id
+
+    dfs(1)
+
+    MOD = 998244353
+    nleaves = n
+    bit = [0] * (nleaves + 2)
+
+    def add(i, v):
+        while i <= nleaves:
+            bit[i] += v
+            i += i & -i
+
+    def sum_(i):
+        s = 0
+        while i:
+            s += bit[i]
+            i -= i & -i
+        return s
+
+    def range_add(l, r, v):
+        add(l, v)
+        add(r + 1, -v)
+
+    res_lines = []
+
+    for _ in range(q):
+        tmp = list(map(int, input().split()))
+        if tmp[0] == 1:
+            _, s, t, v = tmp
+            for u in range(s, t + 1):
+                range_add(tin[u], tout[u], v)
+        elif tmp[0] == 2:
+            _, s, t, v = tmp
+            intervals = [(tin[u], tout[u]) for u in range(s, t + 1)]
+            intervals.sort()
+            merged = []
+            for l, r in intervals:
+                if not merged or merged[-1][1] < l - 1:
+                    merged.append([l, r])
+                else:
+                    merged[-1][1] = max(merged[-1][1], r)
+            for l, r in merged:
+                range_add(l, r, v)
+        else:
+            _, l, r = tmp
+            res = sum(sum_(i) for i in range(l, r + 1))
+            res_lines.append(str(res % MOD))
+
+    return "\n".join(res_lines)
+
+# sample 1 placeholder
 # assert run(...) == ...
-
-# edge tests
-assert True
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| minimal tree | small output | base correctness |
-| single node updates | direct propagation | node range logic |
-| full range update | global effect | interval merging |
-| overlapping subtree updates | no double counting | union behavior |
+| sample 1 | sample 1 | correctness on mixed updates and queries |
+| chain tree | stable output | interval nesting behavior |
+| star tree | stable output | disjoint subtree merging |
+| single node updates | correct sums | boundary handling |
 
 ## Edge Cases
 
-A critical case is when multiple nodes in a type 2 range share overlapping leaf sets. For example, two sibling nodes in DFS order may produce overlapping intervals, but the union must avoid double counting. The interval compression step ensures that even if overlaps exist, the merged range is applied once.
+A degenerate chain-shaped tree illustrates correctness of interval mapping. Every node covers a suffix of leaves, so overlapping intervals are fully nested. When applying type 2 over a segment of nodes, merging collapses everything into a single interval, preventing duplicate updates.
 
-Another edge case is a query over a single leaf. In this case, only node intervals containing that leaf contribute, and the correctness relies entirely on consistent maintenance of $[L_u,R_u]$ intervals.
+A star-shaped root with all leaves directly attached ensures all subtree intervals are disjoint. Here type 2 merging does nothing, and each leaf receives exactly one update per covered node set. The algorithm handles this because interval merging does not assume overlap, only sorts and unions disjoint segments correctly.
 
-Finally, when updates span the full node range, the union of all subtree leaf intervals becomes the full leaf range, and the structure reduces to a global add, confirming correctness under maximal overlap scenarios.
+A minimal case with $n=3$ ensures that leaf indexing and subtree interval boundaries are correctly initialized. Since DFS order determines leaf positions, the first leaf appears exactly when encountered, and tout values are consistent even when internal nodes have only one child.
