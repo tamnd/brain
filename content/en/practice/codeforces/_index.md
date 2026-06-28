@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2293 contests, 15424 problems, 8407 verified."
+description: "Codeforces problem solutions with full editorials. 2294 contests, 15428 problems, 8411 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2293 contests, 15424 problems, 8407 verified.**
+**2294 contests, 15428 problems, 8411 verified.**
 
-## Unknown — 382 contests, 3035 problems, 1876 verified
+## Unknown — 383 contests, 3039 problems, 1880 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104879](104879/) | [Innopolis Open 2024. Qualification Round 2](https://codeforces.com/contest/104879) | 4 | 4/4 | Special | - |
 | [104882](104882/) | [Voronezh State University - Sitronics contest II](https://codeforces.com/contest/104882) | 12 | 8/12 | Special | - |
 | [104885](104885/) | [Municipal stage of ROI in Nizhny Novgorod 2023](https://codeforces.com/contest/104885) | 6 | 4/6 | Special | - |
 | [104886](104886/) | [USI-Team-Selection 2023-2024](https://codeforces.com/contest/104886) | 6 | 4/6 | Special | - |
