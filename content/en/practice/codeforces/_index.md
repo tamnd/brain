@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15944 problems, 8745 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15947 problems, 8748 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15944 problems, 8745 verified.**
+**2353 contests, 15947 problems, 8748 verified.**
 
-## Unknown — 420 contests, 3366 problems, 2092 verified
+## Unknown — 420 contests, 3369 problems, 2095 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -62,7 +62,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104895](104895/) | [Open Olympiad in Informatics 2021-22, first day](https://codeforces.com/contest/104895) | 4 | 0/4 | Special | - |
 | [104896](104896/) | [Open Olympiad in Informatics 2021-22, second day](https://codeforces.com/contest/104896) | 4 | 2/4 | Special | - |
 | [104901](104901/) | [The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)](https://codeforces.com/contest/104901) | 13 | 11/13 | ICPC/IOI | - |
-| [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 1 | 1/1 | Special | - |
+| [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 4 | 4/4 | Special | - |
 | [104916](104916/) | [Муниципальный этап ВсОШ по информатике в Самаре 2022-2023 (9-11 классы)](https://codeforces.com/contest/104916) | 5 | 4/5 | Special | - |
 | [104921](104921/) | [Easy_Training](https://codeforces.com/contest/104921) | 5 | 1/5 | Special | - |
 | [104922](104922/) | [Qualification stage of Open Olympiad 2023-2024](https://codeforces.com/contest/104922) | 9 | 0/9 | Special | - |
