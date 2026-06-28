@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2332 contests, 15767 problems, 8614 verified."
+description: "Codeforces problem solutions with full editorials. 2333 contests, 15780 problems, 8622 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2332 contests, 15767 problems, 8614 verified.**
+**2333 contests, 15780 problems, 8622 verified.**
 
-## Unknown — 405 contests, 3235 problems, 1992 verified
+## Unknown — 406 contests, 3248 problems, 2000 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104805](104805/) | [Central Russia Regional Contest, 2022](https://codeforces.com/contest/104805) | 13 | 8/13 | Special | - |
 | [104813](104813/) | [The 9th CCPC (Harbin) Onsite(The 2nd Universal Cup. Stage 10: Harbin)](https://codeforces.com/contest/104813) | 13 | 3/13 | Special | - |
 | [104820](104820/) | [РСО-Алания 2018-2023. Избранное](https://codeforces.com/contest/104820) | 15 | 11/15 | Special | - |
 | [104824](104824/) | [COMP4128 23T3 Contest 3](https://codeforces.com/contest/104824) | 6 | 0/6 | Special | - |
