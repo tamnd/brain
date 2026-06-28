@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15929 problems, 8736 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15931 problems, 8736 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15929 problems, 8736 verified.**
+**2353 contests, 15931 problems, 8736 verified.**
 
 ## Unknown — 420 contests, 3357 problems, 2085 verified
 
@@ -1655,7 +1655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 164 contests, 1204 problems, 538 verified
+## 2023 — 164 contests, 1206 problems, 538 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1795,7 +1795,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104786](104786/) | [FIICode2023Round1](https://codeforces.com/contest/104786) | 5 | 4/5 | Special | - |
 | [104787](104787/) | [The 2023 CCPC (Qinhuangdao) Onsite (The 2nd Universal Cup. Stage 9: Qinhuangdao)](https://codeforces.com/contest/104787) | 13 | 12/13 | Special | - |
 | [104791](104791/) | [The 2023 CCPC (Qinhuangdao) Onsite Warmup](https://codeforces.com/contest/104791) | 3 | 0/3 | Special | - |
-| [104802](104802/) | [TheForces Round #26 (Readall-Forces)](https://codeforces.com/contest/104802) | 5 | 0/5 | Special | - |
+| [104802](104802/) | [TheForces Round #26 (Readall-Forces)](https://codeforces.com/contest/104802) | 7 | 0/7 | Special | - |
 | [104803](104803/) | [NOIP 2023](https://codeforces.com/contest/104803) | 1 | 0/1 | Special | - |
 | [104814](104814/) | [Муниципальный этап ВсОШ по информатике в Республике Башкортостан 2023 (9 - 11 классы)](https://codeforces.com/contest/104814) | 5 | 2/5 | Special | - |
 | [104819](104819/) | [2023 Sun Yat-sen University Collegiate Programming Contest, Onsite](https://codeforces.com/contest/104819) | 12 | 12/12 | Special | - |
