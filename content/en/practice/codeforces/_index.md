@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15952 problems, 8749 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15954 problems, 8751 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15952 problems, 8749 verified.**
+**2353 contests, 15954 problems, 8751 verified.**
 
-## Unknown — 420 contests, 3372 problems, 2095 verified
+## Unknown — 420 contests, 3374 problems, 2097 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -75,7 +75,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104950](104950/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104950) | 0 | 0/0 | Special | - |
 | [104959](104959/) | [Интернет-олимпиады, Сезон 2023-2024, Первая личная олимпиада](https://codeforces.com/contest/104959) | 4 | 0/4 | Special | - |
 | [104962](104962/) | [Высшая проба - 2021. Заключительный этап](https://codeforces.com/contest/104962) | 5 | 3/5 | Special | - |
-| [104963](104963/) | [Высшая проба - 2022. Заключительный этап](https://codeforces.com/contest/104963) | 3 | 2/3 | Special | - |
+| [104963](104963/) | [Высшая проба - 2022. Заключительный этап](https://codeforces.com/contest/104963) | 5 | 4/5 | Special | - |
 | [104964](104964/) | [Высшая проба - 2023. Заключительный этап](https://codeforces.com/contest/104964) | 4 | 0/4 | Special | - |
 | [104973](104973/) | [BdOI Preliminary 2024](https://codeforces.com/contest/104973) | 5 | 4/5 | Special | - |
 | [104984](104984/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая личная олимпиада](https://codeforces.com/contest/104984) | 4 | 0/4 | Special | - |
