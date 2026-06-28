@@ -24,5 +24,5 @@ Exercise solutions for [TAOCP](../) Volume 4. 938 solved, 348 verified, 2383 tot
 | 7.2.1.5 |  | — | — | 69 |
 | 7.2.1.6 |  | — | — | 123 |
 | [7.2.2](7.2.2/) | Backtracking | 79 | 37 | 121 |
-| [7.2.2.1](7.2.2.1/) | Dancing Links | 342 | 96 | 454 |
+| [7.2.2.1](7.2.2.1/) | Dancing Links | 344 | 96 | 454 |
 | 7.2.2.2 |  | — | — | 531 |
