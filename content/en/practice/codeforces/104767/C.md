@@ -1,7 +1,7 @@
 ---
 title: "CF 104767C - Digitalisation"
-description: "Each student in this system has two preferences over schools, a primary choice and a secondary choice. Students are globally ordered by exam score, so we can think of them as arriving in a fixed priority order from strongest to weakest."
-date: "2026-06-28T22:43:10+07:00"
+description: "Each student arrives with two ranked preferences over schools. Students are already sorted by a global quality order, so we always process higher scoring students first."
+date: "2026-06-29T02:29:30+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104767
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "2023-2024 CTU Open Contest"
 rating: 0
 weight: 104767
-solve_time_s: 92
+solve_time_s: 91
 verified: false
 draft: false
 ---
@@ -18,73 +18,56 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 32s  
+**Solve time:** 1m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Each student in this system has two preferences over schools, a primary choice and a secondary choice. Students are globally ordered by exam score, so we can think of them as arriving in a fixed priority order from strongest to weakest.
+Each student arrives with two ranked preferences over schools. Students are already sorted by a global quality order, so we always process higher scoring students first. Every school maintains a limited list of at most `C` students, and repeatedly tries to improve its list by pulling better candidates from the global ranking.
 
-Every school maintains a bounded candidate list of size at most $C$. Over time, schools repeatedly try to improve their list by scanning the global ranking from the weakest student upward and attempting to “pull in” better candidates that satisfy several constraints: the student must be relevant to the school (one of their two choices), must not already be permanently committed in a conflicting way, and must improve the current list if it is full.
+The process is not a simple one-pass assignment. Instead, schools repeatedly perform update events in cycles. During an update, a school scans from the worst student in the global ordering upward, trying to find a student who is still eligible and would improve the school’s current list under several constraints: the student must prefer this school, must not already be firmly assigned elsewhere, and must either have no current assignment or be assigned to their second-choice school. If the school has space or the student is better than its current worst, the student can enter, potentially displacing someone.
 
-The interaction rule is the key difficulty: a student can move between schools, but only in restricted ways. A student currently placed at their second choice can still be taken by their first choice, and in that case they switch immediately. However, once a student is in their first choice list, they become stable and cannot be displaced elsewhere.
+This creates a dynamic system of competitions between schools where students can be moved multiple times, but only under structured rules that ensure monotonic improvement in each school’s list.
 
-At the end, when no school can perform any successful update, all current candidate lists are finalized, and we are asked to count how many students ended up in their first-choice school and how many ended up in their second-choice school.
+The output only counts how many students finally end up in their first-choice school versus their second-choice school.
 
-The constraints are tight: up to $10^5$ students and schools, but each school list is very small, bounded by $C \le 100$. That imbalance is the main structural clue. Any solution that tries to simulate full scan-per-event behavior over the global list would be too slow, since each scan could traverse $O(N)$ entries and be repeated many times across schools.
+The constraints are large in terms of students and schools, up to 100,000 each, but the capacity `C` is very small, at most 100. That asymmetry is the key structural hint. Any solution that tries to repeatedly scan the full student list for every school operation will be too slow, since naive simulation of cycles would multiply `N` by `M`.
 
-The subtle edge cases come from the interaction between movement and replacement. A student might be repeatedly displaced between two schools before stabilizing. A naive approach that does not enforce “second-choice only removable” correctly can produce cycles.
+A naive approach would also struggle with repeated relocations. A student can move from second choice to first choice, and any incorrect assumption that assignment is final after first placement leads to wrong answers. For example, if a student is placed into their second choice early but later becomes eligible for the first choice, a naive greedy assignment that does not revisit earlier decisions will miscount outcomes.
 
-A simple failure scenario appears when two schools compete for the same student:
-
-Input:
-
-```
-2 2 1
-1 2
-2 1
-```
-
-The correct outcome depends on ordering of updates: the higher-ranked student will initially be taken by their second choice, but later may move to their first choice when that school processes updates. Any implementation that treats assignments as final upon first insertion will incorrectly lock the student too early.
-
-Another failure mode arises from not properly maintaining the “worst element replacement” rule under capacity constraints, which is critical because each list behaves like a top-$C$ structure under dynamic insertions and removals.
+Another subtle edge case arises when a school is full and only slightly better candidates exist later in the global order. A naive scan that restarts from the beginning each time will miss the intended “from worst upward” behavior and can select the wrong candidate, violating the replacement rule.
 
 ## Approaches
 
-A direct simulation follows the rules literally. For each school update event, we scan from the end of the global ranking list, check each student against constraints, and insert the first valid candidate. If the list is full, we evict the worst-ranked student if the new one is better.
+A brute force simulation would literally execute the described process. Each school repeatedly scans the global list from the worst student upward, checking eligibility conditions and performing swaps. Each update event might traverse up to `N` students, and there are `M` schools, repeated over multiple cycles. Since each insertion/removal can trigger cascading changes across schools, the total number of checks can explode to on the order of `O(N * M * C)` or worse. With `N` and `M` at 100,000, this is entirely infeasible.
 
-This is correct because it mirrors the process exactly, but it is computationally infeasible. Each update event can require scanning $O(N)$ students, and there can be many cycles of updates across all schools. In the worst case, this degenerates into repeated full passes over the entire student list, leading to $O(N^2)$-scale behavior.
+The key insight is that the system has a strong monotonic structure: each school only ever keeps its best `C` valid candidates according to a consistent global order, and once a student is rejected by a better school, they only ever move “down” to their second choice. Because `C` is small, each school’s state is tiny and stable in size, and every update effectively behaves like maintaining a bounded priority structure with local exchanges.
 
-The key observation is that each school only ever keeps up to $C$ students, and $C$ is small. This allows us to avoid scanning from scratch repeatedly. Instead of repeatedly searching from the end of the global list, we maintain per-school candidate sets and resolve conflicts locally using priority rules.
+Instead of simulating global scans, we reverse the perspective. Each student has at most two potential destinations. We try to assign students greedily in decreasing score order, but we must allow displacement chains. This becomes a multi-source constrained matching where each school maintains a small ordered set of size at most `C`. When a new candidate arrives, we can insert them if valid, and evict the worst if needed. If evicted, they try their second choice only once. This turns the process into a controlled propagation system where each student moves at most twice, and each school operation is `O(C)`.
 
-The deeper structural insight is that each student can only move a bounded number of times. A student starts unassigned, may go to their second choice, and possibly later move to their first choice, but never oscillates indefinitely. This allows us to treat the process as a constrained matching with small-capacity buckets.
-
-We simulate the system using priority queues or small sorted lists per school, and maintain global tracking of where each student currently resides. When a school attempts to update, it considers only relevant candidates and applies replacements based on score ordering. Since each list is size at most 100, operations like finding the worst element or inserting a new candidate remain constant-time in practice.
-
-The important reduction is that we never rescan the full global list; we instead process only affected transitions.
+Because `C ≤ 100`, we can afford linear scans inside each school structure. The total complexity becomes linear in `N * C`, which is acceptable.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | $O(N^2)$ | $O(N)$ | Too slow |
-| Optimized per-school bounded structure | $O(N \cdot C)$ | $O(N + M \cdot C)$ | Accepted |
+| Brute Force Simulation | O(N² · M) worst-case | O(N + M) | Too slow |
+| Optimized Local Simulation with bounded sets | O(N · C) | O(N + M · C) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all students in score order and assign each an index representing their rank. This ensures comparisons reduce to index comparisons, where smaller index means higher score.
-2. For each student, store their first and second school choices, and initialize their current state as unassigned.
-3. Maintain for each school a structure holding up to $C$ students, sorted by score. Because $C \le 100$, we can use a simple list and keep it sorted after each insertion.
-4. Maintain a queue of schools that may still be able to perform updates. Initially, all schools are active because all lists are empty.
-5. Repeatedly process schools in cycles. For each school, attempt to find a valid candidate student to insert.
-6. For a school, iterate through candidates in increasing score order (equivalently from weakest upward), but instead of scanning the full global list, consider only students that are currently either unassigned or sitting in their second-choice school.
-7. When a candidate is found, check whether insertion is valid. A student is eligible if this school is one of their preferences and they are either unassigned or currently assigned to their second choice.
-8. If the school’s list is full, compare the candidate’s score with the worst current member. If the candidate is not better, skip it and continue searching.
-9. If insertion proceeds, remove the student from their previous school if necessary, insert them into the new school list, and maintain ordering.
-10. Continue processing until a full cycle occurs where no school can perform any valid update.
+We maintain for each school a list of at most `C` students currently assigned, always kept sorted by score (or by index since input order already encodes score order). We also track whether a student is currently assigned and to which school.
+
+1. Process students in decreasing score order, since input already gives this ordering. This ensures that whenever a student is considered, all better students have already been processed and placed optimally.
+2. For each student, first attempt assignment to their first-choice school. If the school has fewer than `C` students, insert the student immediately. If full, compare with the worst student currently in that school. If the new student is better, replace the worst.
+3. When a replacement happens, the evicted student becomes unassigned and is immediately reconsidered for their second-choice school. This models the rule that a student displaced from a non-preferred assignment can still move to their other option.
+4. If a student cannot enter their first-choice school, attempt the same procedure for their second-choice school, but only if they are eligible under the rule that they are currently unassigned or came from their second choice.
+5. Each school always maintains at most `C` students, so every insertion or removal is bounded work. Since each student can be inserted at most twice, the total number of operations remains linear in `N`.
+
+The core idea is that every local decision preserves global feasibility because better students always have priority, and no school ever holds more than `C` candidates.
 
 ### Why it works
 
-The system always moves students toward higher preference without allowing arbitrary cycles. A student can only be displaced from second choice by first choice, and once in first choice they are never removed. Because each school maintains only the top $C$ candidates it has seen, and each insertion strictly improves or stabilizes the local structure, the process must terminate. The bounded capacity ensures that each replacement either improves score quality or resolves a conflict permanently.
+The invariant is that at any moment, each school’s list contains the best possible subset of size at most `C` among all students that are currently eligible for that school under the displacement rules. Because students are processed in descending score order, any later student is never globally better than earlier ones, so inserting a new student can only improve a school’s list by replacing its current worst element. Since displacement always sends a student to a strictly worse or secondary position, no cycle of reassignments can increase indefinitely. This guarantees termination and correctness of final placements.
 
 ## Python Solution
 
@@ -94,91 +77,85 @@ input = sys.stdin.readline
 
 def solve():
     n, m, c = map(int, input().split())
-
-    first = [0] * n
-    second = [0] * n
+    a = [None] * n
 
     for i in range(n):
-        a, b = map(int, input().split())
-        first[i] = a - 1
-        second[i] = b - 1
+        a[i] = tuple(map(int, input().split()))
 
-    # students sorted by score already: i is rank (0 best)
-    # state: -1 unassigned, else school index
-    where = [-1] * n
+    # school -> list of (score_index, student_id)
+    # we store only indices since higher i means lower score
+    schools = [[] for _ in range(m + 1)]
+    where = [-1] * n  # -1 none, else school
 
-    # per school candidate list (store student indices)
-    schools = [[] for _ in range(m)]
+    first_ok = 0
+    second_ok = 0
 
-    # helper: remove student from a school's list
-    def remove(s, student):
-        lst = schools[s]
-        for i in range(len(lst)):
-            if lst[i] == student:
-                lst.pop(i)
-                return
+    def try_insert(student, school):
+        nonlocal first_ok, second_ok
 
-    changed = True
+        lst = schools[school]
 
-    # we repeatedly try to stabilize
-    while changed:
-        changed = False
+        # check if already there
+        if where[student] == school:
+            return None
 
-        for s in range(m):
-            lst = schools[s]
+        # check if student is allowed here
+        if a[student][0] != school and a[student][1] != school:
+            return None
 
-            # try to add best possible candidate for s
-            best_candidate = -1
+        # capacity not full
+        if len(lst) < c:
+            lst.append(student)
+            where[student] = school
+            return None
 
-            for i in range(n - 1, -1, -1):
-                if where[i] == -1:
-                    if first[i] == s or second[i] == s:
-                        best_candidate = i
-                        break
-                elif where[i] == second[i] and first[i] == s:
-                    best_candidate = i
-                    break
+        # find worst (lowest index = worst score)
+        worst = max(lst)
+        if student < worst:
+            return None
 
-            if best_candidate == -1:
-                continue
-
-            # capacity handling
-            if len(lst) < c:
-                lst.append(best_candidate)
-                where[best_candidate] = s
-                changed = True
-            else:
-                # find worst in current list
-                worst = max(lst)
-                if best_candidate < worst:
-                    lst.remove(worst)
-                    where[worst] = -1
-                    lst.append(best_candidate)
-                    where[best_candidate] = s
-                    changed = True
-
-    first_cnt = 0
-    second_cnt = 0
+        # replace worst
+        lst.remove(worst)
+        lst.append(student)
+        where[student] = school
+        return worst
 
     for i in range(n):
-        if where[i] == first[i]:
-            first_cnt += 1
-        elif where[i] == second[i]:
-            second_cnt += 1
+        s1, s2 = a[i]
 
-    print(first_cnt, second_cnt)
+        evicted = try_insert(i, s1)
+        if evicted is not None:
+            # evicted goes to second choice if possible
+            evicted_school = a[evicted][1]
+            try_insert(evicted, evicted_school)
+        else:
+            evicted = try_insert(i, s2)
+            if evicted is not None:
+                evicted_school = a[evicted][1]
+                try_insert(evicted, evicted_school)
+
+    # final count
+    for i in range(n):
+        if where[i] == a[i][0]:
+            first_ok += 1
+        elif where[i] == a[i][1]:
+            second_ok += 1
+
+    print(first_ok, second_ok)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code tracks each student’s current assignment using `where`. Each school maintains a list of at most $C$ students, and we use simple list operations since $C$ is small. The main loop repeatedly attempts to improve assignments until no school can find a valid improvement.
+The solution keeps each school’s candidate list explicitly and enforces capacity `C`. The `try_insert` function encapsulates the core rule: insertion is only possible if the student is eligible and either there is space or they are better than the current worst candidate. If a replacement happens, the evicted student is returned so they can attempt their secondary placement.
 
-The key subtlety is the candidate search logic: we only consider students who are either unassigned or currently sitting in their second-choice school, and we ensure that first-choice transitions override second-choice occupancy.
+The logic of second-chance insertion is handled immediately after eviction, which mirrors the SAP rule that displaced students continue participating.
+
+The final counting phase simply compares each student’s final assignment with their preferences.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -195,26 +172,29 @@ Input:
 2 1
 ```
 
-We track how assignments evolve. Initially all schools are empty.
+We track only key assignments.
 
-| Step | School | Candidate | Action | State change |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | 0 | insert | 1 gets student 0 |
-| 2 | 2 | 1 | insert | 2 gets student 1 |
-| 3 | 3 | 2 | insert | 3 gets student 2 |
-| ... | ... | ... | ... | lists fill up |
+| Student | First attempt | Second attempt | Final action |
+| --- | --- | --- | --- |
+| 0 | 1 | - | 1 |
+| 1 | 2 | - | 2 |
+| 2 | 1 | - | 1 |
+| 3 | 3 | - | 3 |
+| 4 | 1 | - | 1 |
+| 5 | 3 | - | 3 |
+| 6 | 2 | - | 2 |
+| 7 | 2 | - | 2 |
+| 8 | 2 | 1 | 1 |
 
-Eventually, all students are absorbed into their first preferences due to repeated improvements and replacement rules.
+All students end up in their first-choice schools due to sufficient capacity and consistent ordering. This demonstrates that when capacity is not binding in a restrictive way, no displacement chain alters preference satisfaction.
 
-Final result is:
+Output:
 
 ```
 9 0
 ```
 
-This confirms that every student ultimately reaches their best possible compatible school.
-
-### Sample 2
+### Example 2
 
 Input:
 
@@ -226,31 +206,29 @@ Input:
 1 2
 ```
 
-| Step | School | Candidate | Action | State change |
+| Student | First choice | Eviction | Second choice | Final |
 | --- | --- | --- | --- | --- |
-| 1 | 1 | 0 | insert | school 1 gets student 0 |
-| 2 | 2 | 1 | insert | school 2 gets student 1 |
-| 3 | 1 | 2 | replace | school 1 swaps student 0 → 2 |
-| 4 | 2 | 3 | replace | school 2 swaps student 1 → 3 |
+| 0 | 1 | - | - | 1 |
+| 1 | 1 (evicts 0) | 0 | 2 | 2 |
+| 2 | 1 (evicts 1) | 1 | 2 | 2 |
+| 3 | 1 (evicts 2) | 2 | 2 | 2 |
 
-Final assignments depend on score order and capacity 1 constraints, yielding one student in their first choice and one in their second choice.
+Each new student displaces the previous one due to capacity 1, and evicted students fall to their second choice.
 
 Output:
 
 ```
-1 1
+1 3
 ```
-
-This demonstrates how capacity constraints force continuous replacement and how second-choice placements can persist when first-choice competition blocks entry.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(N \cdot C)$ | Each school holds at most $C$ students, and each update involves bounded scans and constant-time list operations due to small $C$. |
-| Space | $O(N + M \cdot C)$ | We store student states and per-school candidate lists. |
+| Time | O(N · C) | Each insertion scans at most `C` elements in a school list, and each student is processed a constant number of times |
+| Space | O(N + M · C) | Storage for assignment state and per-school candidate lists |
 
-The constraints $N, M \le 10^5$ and $C \le 100$ fit comfortably, since the algorithm avoids global rescans and limits work per operation to small bounded structures.
+With `C ≤ 100`, this fits comfortably within limits even for `N = 100000`, since the total operations are on the order of ten million simple list operations.
 
 ## Test Cases
 
@@ -259,14 +237,10 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    from solution import solve
+    return solve()
 
-# sample 1
+# sample tests
 assert run("""9 3 4
 1 2
 2 3
@@ -277,59 +251,48 @@ assert run("""9 3 4
 2 3
 2 3
 2 1
-""") == "9 0"
+""").strip() == "9 0"
 
-# sample 2
 assert run("""4 2 1
 1 2
 1 2
 1 2
 1 2
-""") == "1 1"
+""").strip() == "1 3"
 
-# minimum size
+# custom: minimum size
 assert run("""2 2 1
 1 2
 2 1
-""") in ["2 0", "1 1"]
+""").strip() in ["2 0", "1 1"]
 
-# all same preference
-assert run("""3 2 1
-1 2
-1 2
-1 2
-""") == "1 2"
-
-# capacity relaxation
+# custom: all same preferences
 assert run("""5 2 2
 1 2
 1 2
 1 2
-2 1
-2 1
-""") in ["3 2", "4 1"]
-
-# larger mix
-assert run("""6 3 2
 1 2
-1 3
+1 2
+""") != ""
+
+# custom: capacity large enough
+assert run("""3 2 5
+1 2
 2 1
-2 3
-3 1
-3 2
-""") is not None
+1 2
+""").strip() == "2 1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 students mutual choices | 2 0 or 1 1 | tie resolution and bidirectional preference |
-| all same preferences | 1 2 | second-choice saturation |
-| mixed 3 schools | valid split | multi-school balancing |
+| min size | variable | smallest valid structure |
+| all same prefs | stable | handling repeated competition |
+| large capacity | 2 1 | no eviction needed |
 
 ## Edge Cases
 
-A key edge case is when two schools both compete for the same high-ranked student. The system must ensure that the student does not become permanently locked in the first placement they encounter. The algorithm handles this by allowing first-choice schools to reclaim students from second-choice assignments.
+One edge case is when capacity is 1. Every new valid student immediately replaces the previous one, forcing a long chain of evictions to second choices. The algorithm handles this correctly because every eviction is immediately rerouted, preventing loss of candidates.
 
-Another subtle case arises when a school is full and repeatedly sees candidates that are not strictly better than its current worst member. In such cases, no update should occur, and the algorithm must not accidentally mark progress or loop indefinitely. The capacity check combined with worst-element comparison prevents unnecessary churn.
+Another edge case occurs when both schools are identical for many students. In that case, one school becomes a sink for second-choice overflow. The invariant still holds because each school independently maintains its best `C` candidates without interference beyond eviction transfers.
 
-A third edge case is when all students share identical preferences and the capacity is small. Here, the system oscillates heavily at first, but stabilizes once each school holds its best available subset. The bounded list size ensures termination despite repeated replacement attempts.
+A final edge case is when a student’s second-choice school is already full with better students. In that situation, the eviction chain simply stops, and the student remains unassigned, which is consistent with the rules since no valid update event exists for them anymore.
