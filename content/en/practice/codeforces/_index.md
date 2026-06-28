@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2340 contests, 15822 problems, 8644 verified."
+description: "Codeforces problem solutions with full editorials. 2341 contests, 15832 problems, 8654 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2340 contests, 15822 problems, 8644 verified.**
+**2341 contests, 15832 problems, 8654 verified.**
 
 ## Unknown — 410 contests, 3281 problems, 2022 verified
 
@@ -1645,7 +1645,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 161 contests, 1173 problems, 509 verified
+## 2023 — 162 contests, 1183 problems, 519 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1781,6 +1781,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104787](104787/) | [The 2023 CCPC (Qinhuangdao) Onsite (The 2nd Universal Cup. Stage 9: Qinhuangdao)](https://codeforces.com/contest/104787) | 10 | 10/10 | Special | - |
 | [104791](104791/) | [The 2023 CCPC (Qinhuangdao) Onsite Warmup](https://codeforces.com/contest/104791) | 3 | 0/3 | Special | - |
 | [104802](104802/) | [TheForces Round #26 (Readall-Forces)](https://codeforces.com/contest/104802) | 5 | 0/5 | Special | - |
 | [104803](104803/) | [NOIP 2023](https://codeforces.com/contest/104803) | 1 | 0/1 | Special | - |
