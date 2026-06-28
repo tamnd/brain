@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2367 contests, 16093 problems, 8836 verified."
+description: "Codeforces problem solutions with full editorials. 2368 contests, 16106 problems, 8849 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2367 contests, 16093 problems, 8836 verified.**
+**2368 contests, 16106 problems, 8849 verified.**
 
-## Unknown — 425 contests, 3423 problems, 2125 verified
+## Unknown — 426 contests, 3436 problems, 2138 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104736](104736/) | [2023-2024 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104736) | 13 | 13/13 | ICPC/IOI | - |
 | [104745](104745/) | [CAMA 2023](https://codeforces.com/contest/104745) | 14 | 14/14 | Special | - |
 | [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 10 | 6/10 | Special | - |
 | [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
