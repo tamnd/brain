@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2274 contests, 15278 problems, 8335 verified."
+description: "Codeforces problem solutions with full editorials. 2275 contests, 15283 problems, 8335 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2274 contests, 15278 problems, 8335 verified.**
+**2275 contests, 15283 problems, 8335 verified.**
 
-## Unknown — 368 contests, 2942 problems, 1833 verified
+## Unknown — 369 contests, 2947 problems, 1833 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104936](104936/) | [MITIT 2024 Beginner Round](https://codeforces.com/contest/104936) | 5 | 0/5 | Special | - |
 | [104937](104937/) | [MITIT 2024 Advanced Round](https://codeforces.com/contest/104937) | 5 | 1/5 | Special | - |
 | [104945](104945/) | [2023-2024 ICPC Southwestern European Regional Contest (SWERC 2023)](https://codeforces.com/contest/104945) | 13 | 3/13 | ICPC/IOI | - |
 | [104949](104949/) | [2023-2024 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104949) | 0 | 0/0 | Special | - |
