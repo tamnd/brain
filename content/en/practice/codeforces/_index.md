@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2363 contests, 16057 problems, 8807 verified."
+description: "Codeforces problem solutions with full editorials. 2364 contests, 16067 problems, 8813 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2363 contests, 16057 problems, 8807 verified.**
+**2364 contests, 16067 problems, 8813 verified.**
 
-## Unknown — 423 contests, 3399 problems, 2105 verified
+## Unknown — 424 contests, 3409 problems, 2111 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104752](104752/) | [Concurso de programación ANIEI 2023](https://codeforces.com/contest/104752) | 10 | 6/10 | Special | - |
 | [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
 | [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 8 | 5/8 | ICPC/IOI | - |
 | [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 8 | 1/8 | ICPC/IOI | - |
