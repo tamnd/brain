@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2319 contests, 15639 problems, 8544 verified."
+description: "Codeforces problem solutions with full editorials. 2320 contests, 15650 problems, 8555 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2319 contests, 15639 problems, 8544 verified.**
+**2320 contests, 15650 problems, 8555 verified.**
 
-## Unknown — 400 contests, 3190 problems, 1967 verified
+## Unknown — 401 contests, 3201 problems, 1978 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104832](104832/) | [2023-2024 ICPC, Asia Yokohama Regional Contest 2023](https://codeforces.com/contest/104832) | 11 | 11/11 | ICPC/IOI | - |
 | [104836](104836/) | [Муниципальный этап ВсОШ по информатике в городе Петрозаводске и республике Карелия 2023-2024 (9-11 класс)](https://codeforces.com/contest/104836) | 7 | 2/7 | Special | - |
 | [104840](104840/) | [Интернет-олимпиады, Сезон 2023-2024, Третья командная олимпиада](https://codeforces.com/contest/104840) | 12 | 8/12 | Special | - |
 | [104842](104842/) | [2020-2021 ICPC, Moscow Subregional](https://codeforces.com/contest/104842) | 14 | 10/14 | ICPC/IOI | - |
