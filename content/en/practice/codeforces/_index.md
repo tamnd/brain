@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2360 contests, 16022 problems, 8784 verified."
+description: "Codeforces problem solutions with full editorials. 2361 contests, 16033 problems, 8789 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,14 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2360 contests, 16022 problems, 8784 verified.**
+**2361 contests, 16033 problems, 8789 verified.**
 
-## Unknown — 422 contests, 3388 problems, 2102 verified
+## Unknown — 423 contests, 3399 problems, 2105 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 7 | 4/7 | ICPC/IOI | - |
-| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 6 | 1/6 | ICPC/IOI | - |
+| [104758](104758/) | [The 2023 ICPC Masters Mexico Regional #ICPCMX2023 Edition](https://codeforces.com/contest/104758) | 8 | 2/8 | ICPC/IOI | - |
+| [104760](104760/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Qualification Contest](https://codeforces.com/contest/104760) | 8 | 5/8 | ICPC/IOI | - |
+| [104761](104761/) | [2023-2024 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104761) | 8 | 1/8 | ICPC/IOI | - |
 | [104772](104772/) | [2023-2024 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104772) | 13 | 5/13 | ICPC/IOI | - |
 | [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
 | [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |
@@ -1657,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 169 contests, 1263 problems, 567 verified
+## 2023 — 169 contests, 1263 problems, 569 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1795,7 +1796,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 | [104763](104763/) | [UTPC Contest 11-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104763) | 8 | 3/8 | Div. 2 | - |
 | [104764](104764/) | [UTPC Contest 11-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104764) | 8 | 0/8 | Div. 1 | - |
-| [104767](104767/) | [2023-2024 CTU Open Contest](https://codeforces.com/contest/104767) | 11 | 8/11 | Special | - |
+| [104767](104767/) | [2023-2024 CTU Open Contest](https://codeforces.com/contest/104767) | 11 | 10/11 | Special | - |
 | [104768](104768/) | [2023 China Collegiate Programming Contest (CCPC) Guilin Onsite (The 2nd Universal Cup. Stage 8: Guilin)](https://codeforces.com/contest/104768) | 13 | 13/13 | Special | - |
 | [104770](104770/) | [The XXXI Saint-Petersburg High School Programming Contest (SpbKOSHP 2023) | Qualification for the XXIV Russia Open High School Programming Contest (VKOSHP 2023)](https://codeforces.com/contest/104770) | 12 | 3/12 | Special | - |
 | [104782](104782/) | [2023 Romanian Collegiate Programming Contest (RCPC)](https://codeforces.com/contest/104782) | 13 | 13/13 | Special | - |
