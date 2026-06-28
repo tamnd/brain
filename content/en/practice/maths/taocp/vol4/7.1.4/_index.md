@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 101/267 solved."
+description: "Section 7.1.4 exercises: 104/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 101/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 104/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -33,7 +33,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 101/267 solved.
 | [13](13.md) |  [*M15*] | math-simple | verified | 1m23s |
 | [14](14.md) |  [*M24*] | math-medium | verified | 5m14s |
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m38s |
-| 16 | &#9654; [*22*] | medium | - | - |
+| [16](16.md) | &#9654; [*22*] | medium | solved | 2m21s |
 | [17](17.md) |  [*32*] | hard | solved | 2m16s |
 | [18](18.md) |  [*13*] | simple | solved | 3m30s |
 | 19 |  [*20*] | medium | - | - |
@@ -176,7 +176,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 101/267 solved.
 | [156](156.md) |  [*30*] | hard | verified | 4m18s |
 | [157](157.md) |  [*M24*] | math-medium | solved | 4m20s |
 | [158](158.md) |  [*M24*] | math-medium | solved | 4m27s |
-| 159 |  [*20*] | medium | - | - |
+| [159](159.md) |  [*20*] | medium | solved | 2m30s |
 | [160](160.md) | &#9654; [*24*] | medium | solved | 4m48s |
 | [161](161.md) |  [*28*] | hard | solved | 4m07s |
 | [162](162.md) | &#9654; [*30*] | hard | solved | 4m33s |
@@ -202,7 +202,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 101/267 solved.
 | [182](182.md) |  [*M38*] | math-project | verified | 2m33s |
 | [183](183.md) | &#9654; [*M25*] | math-medium | solved | 4m15s |
 | [184](184.md) |  [*M23*] | math-medium | solved | 3m31s |
-| 185 |  [*M25*] | math-medium | - | - |
+| [185](185.md) |  [*M25*] | math-medium | solved | 2m47s |
 | 186 |  [*10*] | simple | - | - |
 | 187 | &#9654; [*20*] | medium | - | - |
 | 188 |  [*16*] | medium | - | - |
