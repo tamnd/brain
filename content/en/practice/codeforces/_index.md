@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2289 contests, 15382 problems, 8373 verified."
+description: "Codeforces problem solutions with full editorials. 2290 contests, 15388 problems, 8377 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2289 contests, 15382 problems, 8373 verified.**
+**2290 contests, 15388 problems, 8377 verified.**
 
-## Unknown — 380 contests, 3017 problems, 1864 verified
+## Unknown — 381 contests, 3023 problems, 1868 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104885](104885/) | [Municipal stage of ROI in Nizhny Novgorod 2023](https://codeforces.com/contest/104885) | 6 | 4/6 | Special | - |
 | [104886](104886/) | [USI-Team-Selection 2023-2024](https://codeforces.com/contest/104886) | 6 | 4/6 | Special | - |
 | [104891](104891/) | [The 2023 ICPC Asia Macau Regional Contest (The 2nd Universal Cup. Stage 15: Macau)](https://codeforces.com/contest/104891) | 8 | 0/8 | ICPC/IOI | - |
 | [104895](104895/) | [Open Olympiad in Informatics 2021-22, first day](https://codeforces.com/contest/104895) | 4 | 0/4 | Special | - |
