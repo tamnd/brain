@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15936 problems, 8740 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15937 problems, 8741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15936 problems, 8740 verified.**
+**2353 contests, 15937 problems, 8741 verified.**
 
-## Unknown — 420 contests, 3359 problems, 2087 verified
+## Unknown — 420 contests, 3360 problems, 2088 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -31,7 +31,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104790](104790/) | [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790) | 12 | 12/12 | Special | - |
 | [104797](104797/) | [2021-2022 ICPC Central Europe Regional Contest (CERC 21)](https://codeforces.com/contest/104797) | 12 | 7/12 | ICPC/IOI | - |
 | [104804](104804/) | [Central Russia Regional Contest, 2022, Qualification Contest](https://codeforces.com/contest/104804) | 12 | 6/12 | Special | - |
-| [104805](104805/) | [Central Russia Regional Contest, 2022](https://codeforces.com/contest/104805) | 13 | 8/13 | Special | - |
+| [104805](104805/) | [Central Russia Regional Contest, 2022](https://codeforces.com/contest/104805) | 14 | 9/14 | Special | - |
 | [104813](104813/) | [The 9th CCPC (Harbin) Onsite(The 2nd Universal Cup. Stage 10: Harbin)](https://codeforces.com/contest/104813) | 13 | 3/13 | Special | - |
 | [104820](104820/) | [РСО-Алания 2018-2023. Избранное](https://codeforces.com/contest/104820) | 15 | 11/15 | Special | - |
 | [104824](104824/) | [COMP4128 23T3 Contest 3](https://codeforces.com/contest/104824) | 6 | 0/6 | Special | - |
