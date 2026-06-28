@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2268 contests, 15248 problems, 8330 verified."
+description: "Codeforces problem solutions with full editorials. 2269 contests, 15252 problems, 8330 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2268 contests, 15248 problems, 8330 verified.**
+**2269 contests, 15252 problems, 8330 verified.**
 
-## Unknown — 363 contests, 2920 problems, 1829 verified
+## Unknown — 364 contests, 2924 problems, 1829 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104959](104959/) | [Интернет-олимпиады, Сезон 2023-2024, Первая личная олимпиада](https://codeforces.com/contest/104959) | 4 | 0/4 | Special | - |
 | [104962](104962/) | [Высшая проба - 2021. Заключительный этап](https://codeforces.com/contest/104962) | 5 | 3/5 | Special | - |
 | [104963](104963/) | [Высшая проба - 2022. Заключительный этап](https://codeforces.com/contest/104963) | 3 | 2/3 | Special | - |
 | [104964](104964/) | [Высшая проба - 2023. Заключительный этап](https://codeforces.com/contest/104964) | 4 | 0/4 | Special | - |
