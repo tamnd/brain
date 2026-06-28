@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2338 contests, 15811 problems, 8633 verified."
+description: "Codeforces problem solutions with full editorials. 2339 contests, 15819 problems, 8641 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2338 contests, 15811 problems, 8633 verified.**
+**2339 contests, 15819 problems, 8641 verified.**
 
-## Unknown — 408 contests, 3270 problems, 2011 verified
+## Unknown — 409 contests, 3278 problems, 2019 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104790](104790/) | [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790) | 8 | 8/8 | Special | - |
 | [104797](104797/) | [2021-2022 ICPC Central Europe Regional Contest (CERC 21)](https://codeforces.com/contest/104797) | 12 | 7/12 | ICPC/IOI | - |
 | [104804](104804/) | [Central Russia Regional Contest, 2022, Qualification Contest](https://codeforces.com/contest/104804) | 10 | 4/10 | Special | - |
 | [104805](104805/) | [Central Russia Regional Contest, 2022](https://codeforces.com/contest/104805) | 13 | 8/13 | Special | - |

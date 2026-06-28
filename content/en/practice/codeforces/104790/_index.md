@@ -1,22 +1,22 @@
 ---
 title: "2023 Benelux Algorithm Programming Contest (BAPC 23)"
-description: "4 problems from 2023 Benelux Algorithm Programming Contest (BAPC 23) (contest 104790), difficulty -. 4/4 solutions verified against sample I/O."
+description: "8 problems from 2023 Benelux Algorithm Programming Contest (BAPC 23) (contest 104790), difficulty -. 8/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104790
 contest_type: "Special"
 rating_range: "-"
-n_problems: 4
-n_verified: 4
-total_solve_s: 244
-date: "2026-06-28T13:57:14+07:00"
+n_problems: 8
+n_verified: 8
+total_solve_s: 462
+date: "2026-06-28T14:04:33+07:00"
 weight: 104790
 draft: false
 ---
 
 # [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790)
 
-Special | 4 problems | 4/4 verified | Difficulty - | 4m 4s
+Special | 8 problems | 8/8 verified | Difficulty - | 7m 42s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -24,3 +24,7 @@ Special | 4 problems | 4/4 verified | Difficulty - | 4m 4s
 | [C](C/) | [Compressing Commands](https://codeforces.com/problemset/problem/104790/C) |  |  |  | 52s | ✓ |
 | [F](F/) | [Funicular Frenzy](https://codeforces.com/problemset/problem/104790/F) |  |  |  | 1m 9s | ✓ |
 | [G](G/) | [Geometry Game](https://codeforces.com/problemset/problem/104790/G) |  |  |  | 1m 5s | ✓ |
+| [H](H/) | [Hidden Art](https://codeforces.com/problemset/problem/104790/H) |  |  |  | 1m 6s | ✓ |
+| [J](J/) | [Jungle Job](https://codeforces.com/problemset/problem/104790/J) |  |  |  | 45s | ✓ |
+| [K](K/) | [King of the Hill](https://codeforces.com/problemset/problem/104790/K) |  |  |  | 42s | ✓ |
+| [L](L/) | [Locking Doors](https://codeforces.com/problemset/problem/104790/L) |  |  |  | 1m 5s | ✓ |
