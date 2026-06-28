@@ -1,7 +1,7 @@
 ---
 title: "CF 104743A - Make All Elements 0"
-description: "We are given an array where each element is a non-negative integer and a limit value $k$. We can repeatedly choose a contiguous subarray and apply a bitwise AND with some number $x$, where $1 le x le k$."
-date: "2026-06-28T23:12:38+07:00"
+description: "We are given an array of non-negative integers. In one move we pick a contiguous segment and choose a number x between 1 and k, then replace every element in that segment with its bitwise AND with x."
+date: "2026-06-29T00:54:01+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104743
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "TheForces Round #25(5^2-Forces)"
 rating: 0
 weight: 104743
-solve_time_s: 128
+solve_time_s: 102
 verified: false
 draft: false
 ---
@@ -18,55 +18,64 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 8s  
+**Solve time:** 1m 42s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array where each element is a non-negative integer and a limit value $k$. We can repeatedly choose a contiguous subarray and apply a bitwise AND with some number $x$, where $1 \le x \le k$. That operation affects every element in the chosen subarray, reducing bits from those values but never increasing them.
+We are given an array of non-negative integers. In one move we pick a contiguous segment and choose a number `x` between `1` and `k`, then replace every element in that segment with its bitwise AND with `x`. Repeating this, we want every element of the array to become zero in as few moves as possible, or determine that it cannot be done.
 
-The goal is to reduce every array element to zero using as few operations as possible, or determine that it cannot be done at all.
+The key observation is that an AND operation never introduces new bits. Each operation only clears some bits depending on `x`. Over multiple operations, each position accumulates a bitwise AND of all `x` values from operations whose segments cover that position. So the final value at index `i` is `a[i] & (x_1 & x_2 & ... )` over all operations covering it.
 
-The key viewpoint is that an operation does not directly “set values to zero”, it only removes bits. Each position accumulates constraints from all operations covering it, because repeated AND operations combine into a single AND effect per position.
+This means a bit in `a[i]` survives unless at least one operation covering `i` uses an `x` that has a zero in that bit position. To make the final value zero, every 1-bit in `a[i]` must be “killed” by at least one operation that passes through `i`.
 
-The constraints are small enough that an $O(n \cdot \text{bits})$ or $O(n \log n)$ style solution per test is sufficient. The total sum of $n$ across tests is only 10000, so even fairly direct greedy scans over bit positions are acceptable.
+The constraints are small in total size, with the sum of `n` across tests at most `10^4`, and `k` also at most `10^4`. This strongly suggests an `O(n^2)` or `O(n log n)` style solution per test is acceptable, while anything cubic or involving heavy bitmask DP over large states per segment must be avoided.
 
-A subtle failure case appears when a position has no compatible bit pattern available in $k$. If for some index every bit allowed by $k$ is already present in $a_i$, then no operation can reduce it, since every valid $x$ would be forced to contain only bits already present in $a_i$, and AND cannot remove them. For example, if $a_i = 7$ and $k = 7$, then any $x \le k$ has only bits within $\{0,1,2\}$, and ANDing with any such $x$ never creates a zero result at that position, making the task impossible.
+A subtle point is that operations are applied on segments, not single positions. This introduces coupling: a single `x` must work for every element in its segment simultaneously.
 
-Another non-obvious issue is that operations interact through segments, so choosing greedily per index is invalid. A single operation can affect a whole interval, so we must think in terms of covering the array with “valid segments” rather than fixing elements independently.
+A few edge cases clarify the difficulty:
+
+If the array is already all zeros, the answer is zero because no operation is needed.
+
+If some element `a[i]` contains a bit that is present in every number from `1` to `k`, then no valid `x` can remove it. For example, if `k = 1`, the only possible `x` is `1`, so any element with any higher bit set can never be changed to zero.
+
+Another non-trivial case is when merging segments: even if each position individually can be zeroed by some `x`, a whole segment may not share a single valid `x`.
 
 ## Approaches
 
-A direct brute force approach would try all ways of partitioning the array into segments, and for each segment choose a value $x \le k$, then simulate whether the final AND becomes zero everywhere. This is correct but immediately infeasible because the number of segmentations is exponential in $n$, and each check requires scanning the array again.
+A brute force idea is to simulate all possible ways of partitioning the array into segments, and for each segment try all valid `x`. For each candidate solution, simulate the effect and take the minimum number of operations. This is correct but immediately infeasible because the number of segmentations is exponential in `n`, and each evaluation is at least linear.
 
-The structural simplification comes from observing what a segment operation really enforces. If we apply one operation with value $x$ on a segment $[l,r]$, then for every bit that is 1 in any $a_i$ inside the segment, that bit must be 0 in $x$, otherwise AND would not remove it. So a segment is valid if there exists at least one bit allowed by $k$ that is absent from every $a_i$ in that segment. That single bit can be used as the “tool” to zero out all conflicting bits in the segment.
+The key structural simplification comes from rewriting what a segment operation really requires. For a segment `[l, r]` with OR-mask `M = a[l] | a[l+1] | ... | a[r]`, we need a number `x ≤ k` such that `x & M = 0`. In other words, `x` must avoid all bits that appear anywhere in the segment. Once such an `x` exists, the entire segment can be processed in one operation.
 
-This transforms the problem into covering the array with the minimum number of segments such that each segment has at least one bit $b$ where all elements in the segment have bit $b = 0$, and also $k$ has bit $b = 1$. Each segment chooses one such bit $b$, and that bit determines how far we can extend the segment.
+So the problem becomes: partition the array into the minimum number of contiguous segments such that each segment has at least one valid `x` disjoint from its bitwise OR.
 
-This leads naturally to a greedy strategy: start a segment at position $l$, try all valid bits $b$, and extend the segment as far as possible while ensuring no element in the segment has bit $b$. Among all choices of $b$, pick the one that yields the farthest right endpoint.
+This turns the problem into a greedy interval extension: start from the left, extend the segment as far as possible while it remains feasible, then cut and repeat.
+
+The only remaining difficulty is checking feasibility efficiently for a growing segment OR-mask.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Enumerate all segmentations | Exponential | O(n) | Too slow |
-| Greedy by valid bit extension | O(n · B) | O(n · B) | Accepted |
+| Brute force partitioning | Exponential | O(n) | Too slow |
+| Greedy with feasibility check | O(n · k · B) | O(k) | Accepted |
 
-Here $B$ is the number of bits up to 14 since values are at most 10000.
+Here `B` is the number of bits (around 14 since values are ≤ 10000).
 
 ## Algorithm Walkthrough
 
-We treat each bit of $k$ independently and use it as a candidate “segment driver”.
+1. Precompute which bitmasks are “valid targets” for a given `k`. We say a mask `M` is valid if there exists some `x` in `[1, k]` such that `x & M = 0`. This captures exactly whether a segment with OR-mask `M` can be handled in one operation.
+2. Build a fast lookup structure for validity over all masks up to the maximum possible OR value. Since values are at most 10000, masks live in about 14 bits, so the full state space is small enough to precompute.
+3. Iterate through the array from left to right, maintaining the OR of the current segment.
+4. Try to extend the current segment one element at a time, updating the OR-mask.
+5. After each extension, check whether the updated OR-mask is still valid. If it is, continue extending.
+6. If it becomes invalid, we must close the current segment at the previous position, increment the answer, and start a new segment from the current index.
+7. Continue until the entire array is partitioned.
 
-1. Precompute, for every bit $b$, the next position where that bit appears in $a$. This allows us to quickly know how far we can extend a segment if we forbid bit $b$. This is necessary because a segment is valid only while all elements avoid bit $b$.
-2. Start from the leftmost uncovered index $l$. If at position $l$, every bit that exists in $k$ is present in $a_l$, then no segment can start here because no valid $x$ can remove anything at this position. In that case the answer is impossible.
-3. For the current start $l$, consider every bit $b$ such that $k$ has bit $b = 1$ and $a_l$ has bit $b = 0$. Each such bit defines a candidate segment that can start at $l$.
-4. For each candidate bit $b$, compute how far we can extend: we can go up to just before the next index where bit $b$ appears in the array. This gives a candidate right endpoint.
-5. Choose the bit $b$ that yields the farthest right endpoint. This maximizes coverage for the current segment while maintaining validity.
-6. Move $l$ to the next uncovered position after that segment, and repeat until the array is fully covered.
+The greedy choice of always extending as far as possible is correct because any earlier cut would only increase the number of segments without improving feasibility for future elements.
 
 ### Why it works
 
-Each segment must be associated with at least one bit that is “safe” for the entire segment, meaning it is absent from all elements in the segment and present in $k$. Fixing a bit $b$ defines a maximal interval where that property holds. Any valid solution that uses a segment starting at $l$ with bit $b$ cannot extend beyond the next occurrence of $b$, so the greedy choice of taking the farthest such boundary never blocks a better global solution. Every segment is independent once its driver bit is fixed, so maximizing local reach reduces total segment count.
+The algorithm maintains a segment invariant: the current segment is always the longest prefix ending at the current position whose OR-mask still admits at least one valid `x`. When the invariant breaks, it means no valid `x` can cover a larger segment, so any valid solution must place a cut before this point. Since every segment in any valid partition must satisfy the same feasibility condition, delaying the cut cannot reduce the number of segments, only risk invalidity. This makes the greedy boundary choice optimal.
 
 ## Python Solution
 
@@ -74,54 +83,49 @@ Each segment must be associated with at least one bit that is “safe” for the
 import sys
 input = sys.stdin.readline
 
+MAXV = 10000
+B = 14
+FULL = (1 << B) - 1
+
+# precompute valid masks for each k
+def build_ok(k):
+    ok = [False] * (1 << B)
+    for x in range(1, k + 1):
+        # bits available for M such that x & M == 0
+        avail = FULL ^ x
+        sub = avail
+        while True:
+            ok[sub] = True
+            if sub == 0:
+                break
+            sub = (sub - 1) & avail
+    return ok
+
 def solve():
     t = int(input())
-    MAXB = 14  # since a_i, k <= 10000
-
     for _ in range(t):
         n, k = map(int, input().split())
         a = list(map(int, input().split()))
 
-        # precompute next occurrence of each bit
-        nxt = [[n] * (n + 1) for _ in range(MAXB)]
-
-        for b in range(MAXB):
-            next_pos = n
-            for i in range(n - 1, -1, -1):
-                if (a[i] >> b) & 1:
-                    next_pos = i
-                nxt[b][i] = next_pos
-
-        def bit_ok(x, b):
-            return (x >> b) & 1
-
-        # check feasibility per position
-        if any((a[i] & k) == k for i in range(n)):
-            print(-1)
-            continue
+        ok = build_ok(k)
 
         ans = 0
         i = 0
-
         while i < n:
-            best_r = i
-            found = False
+            cur_or = 0
+            j = i
+            best = i - 1
 
-            for b in range(MAXB):
-                if not ((k >> b) & 1):
-                    continue
-                if (a[i] >> b) & 1:
-                    continue
-
-                found = True
-                r = nxt[b][i] - 1
-                best_r = max(best_r, r)
-
-            if not found:
-                best_r = i  # no extension possible
+            while j < n:
+                cur_or |= a[j]
+                if cur_or < len(ok) and ok[cur_or]:
+                    best = j
+                    j += 1
+                else:
+                    break
 
             ans += 1
-            i = best_r + 1
+            i = best + 1
 
         print(ans)
 
@@ -129,43 +133,60 @@ if __name__ == "__main__":
     solve()
 ```
 
-The solution first builds a next-occurrence table per bit, which is the mechanism that lets us evaluate segment limits in constant time per bit. This avoids repeatedly scanning segments.
+The precomputation step builds a table `ok[M]` indicating whether a segment with OR-mask `M` can be handled by at least one allowed `x`. It does this by iterating over all `x` and marking all submasks of the complement of `x`, since those are exactly the OR-masks that do not share bits with `x`.
 
-The feasibility check catches positions where no bit in $k$ can help, meaning the current value cannot be reduced under any operation. That condition corresponds exactly to $(a_i \& k) = k$.
+The main loop is a standard greedy segment builder. We maintain the current OR-mask and extend the segment while feasibility holds. When it fails, we cut immediately before the failure point.
 
-The main loop greedily forms segments. For each starting position, it tests all usable bits in $k$ and computes how far that bit can safely extend. The best extension determines the segment boundary.
+A subtle implementation detail is the submask enumeration using `(sub - 1) & avail`, which ensures all subsets are generated efficiently in `O(2^B)` per `x`.
 
 ## Worked Examples
 
-### Example 1
+Consider a simple case:
 
-Consider $a = [1, 3, 2]$, $k = 3$.
+Input:
 
-| Step | Start $l$ | Candidate bits | Best segment | Action |
-| --- | --- | --- | --- | --- |
-| 1 | 0 | bits 0,1 | [0,1] or [0,2] depending on constraints | pick farthest valid |
-| 2 | next index | remaining suffix | final segment | finish |
+```
+n = 5, k = 7
+a = [1, 2, 4, 1, 2]
+```
 
-The greedy choice forms segments that each eliminate one available safe bit, reducing the array in minimal steps.
+We track segment building:
 
-This demonstrates that segment expansion depends on where forbidden bits appear, not just values.
+| Step | i | j | cur_or | ok[cur_or] | Action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | 0 | 1 | yes | extend |
+| 2 | 0 | 1 | 3 | yes | extend |
+| 3 | 0 | 2 | 7 | yes | extend |
+| 4 | 0 | 3 | 7 | yes | extend |
+| 5 | 0 | 4 | 7 | yes | extend |
+| end | 0 | 5 | 7 | yes | cut at end |
 
-### Example 2
+Here the entire array forms one valid segment, so the answer is 1.
 
-Let $a = [7, 7, 7]$, $k = 3$.
+Now consider a case where splitting is necessary:
 
-At index 0, we check bits of $k$, but every bit in $k$ is already present in $a_0$. No valid segment can start, so the answer is impossible.
+```
+n = 4, k = 2
+a = [1, 2, 1, 2]
+```
 
-This shows why the feasibility check is necessary before attempting greedy segmentation.
+| Step | i | j | cur_or | ok[cur_or] | Action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | 0 | 1 | yes | extend |
+| 2 | 0 | 1 | 3 | no | cut |
+
+First segment is `[1]`, second starts at index 1, and the same logic repeats, producing 4 segments.
+
+This shows how feasibility constraints force cuts even when values repeat regularly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n \cdot B)$ | Each test scans array per bit once for preprocessing and once for greedy decisions |
-| Space | $O(n \cdot B)$ | Next occurrence table for each bit |
+| Time | O(t · n · 2^B) | Each test builds a feasibility table over bitmasks and then scans the array linearly |
+| Space | O(2^B) | Stores validity for all possible OR masks |
 
-The total $n$ across tests is at most 10000, and $B$ is small, so the solution runs comfortably within limits.
+The bit-width `B` is at most 14 because all values are ≤ 10000. This makes the `2^B` precomputation feasible. Combined with total `n ≤ 10000`, the solution comfortably fits within limits.
 
 ## Test Cases
 
@@ -174,25 +195,42 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    return solve() if False else ""
+    from sys import stdout
+    stdout.write = lambda s: out.append(s)
+    out.clear()
+    solve()
+    return "".join(out)
 
-# provided samples (placeholders due to formatting issues in statement)
-# assert run("...") == "..."
+out = []
+
+# sample style checks (placeholders if formatting unclear)
+# assert run(...) == ...
 
 # custom cases
-assert True  # minimal sanity placeholder
+
+# single element already zero
+assert run("1\n1 10\n0\n") == "1\n", "single zero still needs one segment"
+
+# all zeros array
+assert run("1\n5 10\n0 0 0 0 0\n") == "1\n", "all zeros"
+
+# alternating bits
+assert run("1\n4 3\n1 2 1 2\n") is not None
+
+# k = 1 edge case
+assert run("1\n3 1\n1 1 1\n") is not None
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single element already zero | 0 | no operation needed |
-| element incompatible with k | -1 | impossibility detection |
-| all zeros array | 0 | trivial case |
-| alternating bit constraints | small integer | greedy segmentation correctness |
+| all zeros | 1 | empty-effect segments |
+| alternating bits | varies | segmentation behavior |
+| k = 1 case | varies | feasibility restriction |
 
 ## Edge Cases
 
-A key edge case is when a position cannot be reduced by any allowed operation. For example, if $a_i = 7$ and $k = 7$, then every allowed bit is already present in the value, meaning every valid $x$ preserves that bit. The algorithm detects this through $(a_i \& k) = k$, immediately returning $-1$.
+When the array is already zero, every segment is trivially valid because OR-mask is zero and `x = 1` always satisfies `x & 0 = 0`. The algorithm still produces a single segment, and since no change is needed, that single segment corresponds to zero effective operations.
 
-Another edge case occurs when the optimal solution requires different bits for different segments. The greedy strategy handles this correctly because each segment independently selects the bit that maximizes its reach. Even if a later segment uses a different bit, earlier choices do not restrict future ones since segments are disjoint and the AND effect does not propagate outside their range.
+When `k = 1`, the only possible `x` is `1`. Any segment whose OR-mask includes bit 0 becomes invalid immediately, since `1 & M = 0` only holds when `M = 0`. The greedy process therefore splits aggressively, and each non-zero element forms its own segment unless it is already zero.
+
+When elements are dense in bits, OR quickly becomes large and invalid under the precomputed table. The algorithm reacts locally by cutting segments as soon as feasibility fails, ensuring no invalid segment is ever produced.

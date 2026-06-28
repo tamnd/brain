@@ -8,19 +8,19 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 3
 n_verified: 0
-total_solve_s: 527
+total_solve_s: 502
 contest_year: 2023
-date: "2026-06-28T23:17:10+07:00"
+date: "2026-06-29T00:54:01+07:00"
 weight: 104743
 draft: false
 ---
 
 # [TheForces Round #25(5^2-Forces)](https://codeforces.com/contest/104743)
 
-Special | 3 problems | 0/3 verified | Difficulty - | 8m 47s
+Special | 3 problems | 0/3 verified | Difficulty - | 8m 22s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Make All Elements 0](https://codeforces.com/problemset/problem/104743/A) |  |  |  | 2m 8s |  |
-| [B](B/) | [Array Construction](https://codeforces.com/problemset/problem/104743/B) |  |  |  | 1m 20s |  |
+| [A](A/) | [Make All Elements 0](https://codeforces.com/problemset/problem/104743/A) |  |  |  | 1m 42s |  |
+| [B](B/) | [Array Construction](https://codeforces.com/problemset/problem/104743/B) |  |  |  | 1m 21s |  |
 | [E](E/) | [Range Modulo Queries](https://codeforces.com/problemset/problem/104743/E) |  |  |  | 5m 19s |  |
