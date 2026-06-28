@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2344 contests, 15851 problems, 8669 verified."
+description: "Codeforces problem solutions with full editorials. 2345 contests, 15863 problems, 8681 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2344 contests, 15851 problems, 8669 verified.**
+**2345 contests, 15863 problems, 8681 verified.**
 
-## Unknown — 412 contests, 3295 problems, 2033 verified
+## Unknown — 413 contests, 3307 problems, 2045 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104783](104783/) | [2021-2022 CTU Open Contest](https://codeforces.com/contest/104783) | 12 | 12/12 | Special | - |
 | [104784](104784/) | [2019-2020 CTU Open Contest](https://codeforces.com/contest/104784) | 3 | 0/3 | Special | - |
 | [104785](104785/) | [2023 United Kingdom and Ireland Programming Contest (UKIEPC 2023)](https://codeforces.com/contest/104785) | 11 | 11/11 | Special | - |
 | [104789](104789/) | [Innopolis Open 2024. Qualification Round 1](https://codeforces.com/contest/104789) | 3 | 3/3 | Special | - |
