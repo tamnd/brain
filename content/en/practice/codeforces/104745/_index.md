@@ -1,28 +1,29 @@
 ---
 title: "CAMA 2023"
-description: "14 problems from CAMA 2023 (contest 104745), difficulty -. 14/14 solutions verified against sample I/O."
+description: "16 problems from CAMA 2023 (contest 104745), difficulty -. 16/16 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104745
 contest_type: "Special"
 rating_range: "-"
-n_problems: 14
-n_verified: 14
-total_solve_s: 715
-date: "2026-06-28T23:06:34+07:00"
+n_problems: 16
+n_verified: 16
+total_solve_s: 818
+date: "2026-06-28T01:23:11+07:00"
 weight: 104745
 draft: false
 ---
 
 # [CAMA 2023](https://codeforces.com/contest/104745)
 
-Special | 14 problems | 14/14 verified | Difficulty - | 11m 55s
+Special | 16 problems | 16/16 verified | Difficulty - | 13m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Saving the cinema](https://codeforces.com/problemset/problem/104745/A) |  |  |  | 45s | ✓ |
 | [B](B/) | [Operation](https://codeforces.com/problemset/problem/104745/B) |  |  |  | 48s | ✓ |
 | [C](C/) | [Maximum profit](https://codeforces.com/problemset/problem/104745/C) |  |  |  | 49s | ✓ |
+| [D](D/) | [jbum](https://codeforces.com/problemset/problem/104745/D) |  |  |  | 1m 5s | ✓ |
 | [E](E/) | [Looking for palindromes](https://codeforces.com/problemset/problem/104745/E) |  |  |  | 46s | ✓ |
 | [F](F/) | [Harry Potter in CMS](https://codeforces.com/problemset/problem/104745/F) |  |  |  | 52s | ✓ |
 | [G](G/) | [XOR + Constructive = Love](https://codeforces.com/problemset/problem/104745/G) |  |  |  | 47s | ✓ |
@@ -34,3 +35,4 @@ Special | 14 problems | 14/14 verified | Difficulty - | 11m 55s
 | [M](M/) | [The battle of Helm's Deep](https://codeforces.com/problemset/problem/104745/M) |  |  |  | 58s | ✓ |
 | [N](N/) | [The Omer's orange tree](https://codeforces.com/problemset/problem/104745/N) |  |  |  | 51s | ✓ |
 | [O](O/) | [Bea the maximizer](https://codeforces.com/problemset/problem/104745/O) |  |  |  | 47s | ✓ |
+| [P](P/) | [Ski resort](https://codeforces.com/problemset/problem/104745/P) |  |  |  | 38s | ✓ |
