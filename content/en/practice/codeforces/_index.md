@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2352 contests, 15902 problems, 8719 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15915 problems, 8724 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2352 contests, 15902 problems, 8719 verified.**
+**2353 contests, 15915 problems, 8724 verified.**
 
-## Unknown — 419 contests, 3334 problems, 2072 verified
+## Unknown — 420 contests, 3347 problems, 2077 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104772](104772/) | [2023-2024 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104772) | 13 | 5/13 | ICPC/IOI | - |
 | [104773](104773/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (1 группа регионов)](https://codeforces.com/contest/104773) | 0 | 0/0 | Special | - |
 | [104774](104774/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (2 группа регионов)](https://codeforces.com/contest/104774) | 0 | 0/0 | Special | - |
 | [104775](104775/) | [Школьный этап ВСОШ по информатике 9-11 класс 2023 (3 группа регионов)](https://codeforces.com/contest/104775) | 0 | 0/0 | Special | - |
