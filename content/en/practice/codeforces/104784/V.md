@@ -1,7 +1,7 @@
 ---
 title: "CF 104784V - Beer Vision"
-description: "I can’t write a correct editorial for Codeforces 104784V - Beer Vision without the actual problem statement. Right now the prompt only contains metadata (title, rating, tags), but no description of the task, input/output format, or constraints."
-date: "2026-06-28T14:44:58+07:00"
+description: "I don’t have the actual statement of Codeforces 104784V - Beer Vision in the prompt, and the “Problem Statement” section is empty. Without the formal definition of the input/output and constraints, any full editorial would be guesswork and could easily describe the wrong problem."
+date: "2026-06-28T16:18:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104784
@@ -9,7 +9,7 @@ codeforces_index: "V"
 codeforces_contest_name: "2019-2020 CTU Open Contest"
 rating: 0
 weight: 104784
-solve_time_s: 24
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for **Codeforces 104784V - Beer Vision** without the actual problem statement.
+I don’t have the actual statement of Codeforces 104784V - Beer Vision in the prompt, and the “Problem Statement” section is empty. Without the formal definition of the input/output and constraints, any full editorial would be guesswork and could easily describe the wrong problem.
 
-Right now the prompt only contains metadata (title, rating, tags), but no description of the task, input/output format, or constraints. Anything I write from here would be guesswork, and for a Codeforces editorial that would defeat the purpose of the exercise.
-
-Paste the full statement (or even a screenshot/text dump), and I’ll turn it into a complete, senior-level editorial in the exact format you specified.
+If you paste the statement (or even just the input format and goal), I can write the complete Codeforces-style editorial exactly in the format you requested, including the algorithm derivation, proof sketch, Python solution, and test cases.
