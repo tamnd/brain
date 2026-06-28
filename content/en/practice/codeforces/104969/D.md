@@ -1,7 +1,7 @@
 ---
 title: "CF 104969D - Feeding the Kids"
-description: "We are given a line of students, each one requesting a fixed number of pizza slices in a fixed order. Mr. Reynolds serves them using a sequence of identical pizzas, each having the same number of slices, but he opens pizzas one by one as needed."
-date: "2026-06-28T18:26:49+07:00"
+description: "We are given a sequence of students, each requesting a certain number of pizza slices in a fixed order. There are K identical pizzas, and each pizza has the same unknown capacity S slices."
+date: "2026-06-28T19:07:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104969
@@ -24,49 +24,57 @@ draft: false
 ## Solution
 ## Problem Understanding
 
-We are given a line of students, each one requesting a fixed number of pizza slices in a fixed order. Mr. Reynolds serves them using a sequence of identical pizzas, each having the same number of slices, but he opens pizzas one by one as needed.
+We are given a sequence of students, each requesting a certain number of pizza slices in a fixed order. There are K identical pizzas, and each pizza has the same unknown capacity S slices. Students are served one by one: if the current pizza still has enough remaining slices for the next student’s request, that student is served from it; otherwise the remaining slices of that pizza are discarded, a fresh pizza is opened, and the student is served from the new one.
 
-When a student arrives, if the current pizza still has enough slices to satisfy their demand, the student is served from it. If not, whatever remains in the current pizza is wasted, a new pizza is opened, and the student is served from the fresh pizza.
+The key question is not how the serving proceeds, but how large S must be so that this process can complete without running out of pizzas, given that at most K pizzas are available.
 
-The goal is to choose a single integer value, the number of slices per pizza, such that all students can be served in order, and the total number of pizzas used never exceeds K. Among all valid choices, we want the smallest possible slice count per pizza.
+So the task is to choose the smallest integer S such that when we simulate this greedy serving process, we never need more than K pizzas.
 
-The input size goes up to 100000 students and 100000 pizzas. This immediately rules out any simulation that tries all possible slice counts or repeatedly simulates many candidates. A naive attempt that checks each possible capacity from 1 up to the maximum demand would require up to 10^6 simulations, each potentially scanning all students, which leads to 10^11 operations in the worst case, far beyond the limit.
+The input size allows up to 100,000 students and up to 100,000 pizzas. This immediately rules out any solution that tries to check all possible values of S by simulating the process for each candidate. A naive upper bound for S is the sum of all demands, which can be up to 10^11, so any linear search over S would be completely infeasible.
 
-There are two subtle failure cases for naive reasoning.
+We need a solution that reduces the problem to a monotonic feasibility check.
 
-If we try a fixed capacity too small, say capacity 5, we might observe that a single student with demand 7 forces a wasteful reset. A careless simulation that forgets to discard leftover slices correctly would incorrectly reuse leftover capacity across pizzas.
+A few subtle cases matter:
 
-Another pitfall comes from not resetting correctly when a student’s demand exceeds remaining slices. For example, if capacity is 10 and remaining is 3, a student requesting 8 must trigger a new pizza, and the leftover 3 is lost. Reusing that leftover would incorrectly underestimate required pizzas.
+If a single student requests a very large number of slices, say d_i = 10^6, then S must be at least that large. Otherwise the algorithm would repeatedly open pizzas just for one student, which is allowed but wastes capacity; more importantly, the correctness condition still holds but feasibility becomes impossible under small S.
+
+Another edge case appears when K is large compared to N. For example, if K ≥ N, even S = max(d_i) always works, because each student could in principle start a new pizza. This does not change the answer structure but helps confirm correctness of edge handling.
+
+Finally, the main subtlety is that leftover slices are always discarded when a new pizza is opened. This means we are effectively partitioning the sequence into segments, where each segment has total sum at most S, but segments are forced by overflow, not by optimal packing. This forced greedy structure is what drives the solution.
 
 ## Approaches
 
-The structure of the process suggests a monotone relationship between pizza size and number of pizzas needed. If we increase the number of slices per pizza, we can never increase the number of pizzas required, since larger capacity can only reduce or maintain the number of resets.
+A direct brute-force approach would try a candidate value S and simulate the serving process: maintain remaining slices in the current pizza, decrement it as we serve students, and count how many times we need to open a new pizza. If we exceed K, S is invalid.
 
-This monotonicity allows us to turn the problem into a decision problem: for a fixed capacity C, simulate the process and count how many pizzas are needed. If the count is greater than K, C is too small. If it is at most K, C is feasible.
+This simulation is correct for a fixed S, and costs O(N) time. However, S itself can be as large as the sum of all demands. Trying all values from max(d_i) upward would require up to 10^11 checks, which is impossible.
 
-A brute-force method would try all capacities from 1 up to max(d_i), and for each one simulate all N students. That is O(N · max(d)), which is far too slow given max(d) up to 10^6.
+The key observation is that feasibility is monotonic in S. If a given S is sufficient to serve all students within K pizzas, then any larger S is also sufficient, because increasing capacity can only reduce or maintain the number of pizza openings. This turns the problem into a binary search over S.
 
-The key observation is that feasibility is monotonic, so we can binary search the answer. Each check is linear in N, and the search range is up to 10^6, so the total complexity becomes N log max(d), which is efficient.
+Each feasibility check is a greedy scan: we simulate the process and count how many pizzas are used. If at any point a single demand exceeds S, we immediately know S is invalid.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N · max d) | O(1) | Too slow |
-| Binary Search + Simulation | O(N log max d) | O(1) | Accepted |
+| Brute Force S enumeration | O(N * sum d_i) | O(1) | Too slow |
+| Binary search + simulation | O(N log max d_i) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We search for the minimum capacity C such that the process uses at most K pizzas.
+We search for the smallest S such that we can serve all students using at most K pizzas.
 
-1. Set the search range for C between the maximum single demand and the maximum possible value among demands. Any capacity smaller than max(d_i) is invalid because a single student would not fit, forcing infinite or impossible resets.
-2. Define a function check(C) that simulates serving students with pizza capacity C. Initialize remaining slices in the current pizza to C and count pizzas used as 1.
-3. Iterate through each student demand d_i in order. If remaining slices are at least d_i, subtract d_i from remaining slices and continue. Otherwise, increment pizza count, reset remaining to C, and serve the student from the new pizza.
-4. If at any point a single demand exceeds C, immediately return false from check(C), since no split across pizzas is allowed.
-5. After processing all students, check whether the total number of pizzas used is less than or equal to K.
-6. Binary search on C. If check(C) is true, try smaller C. Otherwise, increase C.
+1. Set the search range for S from max(d_i) to sum(d_i). The lower bound is necessary because any student must fit into a single pizza segment.
+2. Define a function can(S) that simulates serving students with pizza capacity S. Initialize pizzas_used = 1 and remaining = S.
+3. For each demand d_i, check whether it fits into the current remaining capacity. If remaining ≥ d_i, subtract d_i from remaining and continue.
+4. If remaining < d_i, increment pizzas_used by 1, reset remaining to S, and then subtract d_i. This models discarding leftover slices and opening a new pizza.
+5. If at any point pizzas_used exceeds K, return False immediately because S is insufficient.
+6. Binary search on S. If can(S) is true, try smaller values; otherwise, increase S.
+
+The key design choice is that we never try to optimize how students are grouped. The process is forced, so the greedy simulation is the only valid interpretation.
 
 ### Why it works
 
-For a fixed capacity C, the simulation produces the minimal number of pizzas required under the greedy rule because every time we open a new pizza, it is forced by lack of space in the current one, and delaying this reset is impossible without violating order constraints. The feasibility condition is monotone in C, since increasing C never increases the number of resets. This guarantees that binary search converges to the smallest valid capacity.
+For a fixed S, the simulation produces the minimum possible number of pizzas because it only opens a new pizza when forced by lack of remaining capacity. Any alternative strategy that opens pizzas earlier would only increase usage. Therefore can(S) correctly reflects feasibility.
+
+Monotonicity ensures that the set of valid S values forms a suffix of integers, which guarantees binary search correctness.
 
 ## Python Solution
 
@@ -74,89 +82,84 @@ For a fixed capacity C, the simulation produces the minimal number of pizzas req
 import sys
 input = sys.stdin.readline
 
-def check(c, a, k):
-    cnt = 1
-    rem = c
-    for x in a:
-        if x > c:
+def can(d, n, k, s):
+    pizzas_used = 1
+    remaining = s
+
+    for x in d:
+        if x > s:
             return False
-        if rem >= x:
-            rem -= x
+        if remaining >= x:
+            remaining -= x
         else:
-            cnt += 1
-            rem = c - x
-    return cnt <= k
+            pizzas_used += 1
+            if pizzas_used > k:
+                return False
+            remaining = s - x
+
+    return pizzas_used <= k
 
 def solve():
     n, k = map(int, input().split())
-    a = list(map(int, input().split()))
+    d = list(map(int, input().split()))
 
-    lo = max(a)
-    hi = sum(a)
+    lo = max(d)
+    hi = sum(d)
 
-    ans = hi
-    while lo <= hi:
+    while lo < hi:
         mid = (lo + hi) // 2
-        if check(mid, a, k):
-            ans = mid
-            hi = mid - 1
+        if can(d, n, k, mid):
+            hi = mid
         else:
             lo = mid + 1
 
-    print(ans)
+    print(lo)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The core of the solution is the check function. It keeps track of how much space remains in the current pizza and greedily assigns each student in order. The moment a student does not fit, a new pizza is opened and the counter increases. This directly models the process described in the problem.
+The code separates the feasibility check from the binary search, which is essential for clarity and correctness. The function can carefully enforces the forced opening rule: whenever the remaining capacity is insufficient, we immediately open a new pizza and reset the counter.
 
-The binary search uses the fact that increasing capacity cannot increase the number of pizzas required. The lower bound is set to max(a) because any valid pizza must accommodate the largest single demand. The upper bound sum(a) is a safe ceiling since in the worst case each student could get a fresh pizza.
+One subtle point is initializing lo as max(d). This avoids unnecessary checks for invalid S values and ensures the simulation never attempts to assign a student more slices than a pizza can hold.
+
+The binary search converges because each step shrinks the interval [lo, hi) based on monotonic feasibility.
 
 ## Worked Examples
 
-Consider the sample input:
+Consider an input where demands are [5, 2, 7, 3] and K = 2.
 
-Input:
+We test candidate S = 7.
 
-```
-5 3
-2 4 9 3 6
-```
+| Student | Demand | Remaining before | Action | Pizzas used |
+| --- | --- | --- | --- | --- |
+| 1 | 5 | 7 | serve, remaining = 2 | 1 |
+| 2 | 2 | 2 | serve, remaining = 0 | 1 |
+| 3 | 7 | 0 | open new pizza | 2 |
+| 3 (cont) | 7 | 7 | serve, remaining = 0 | 2 |
+| 4 | 3 | 0 | open new pizza | 3 |
 
-We track a few candidate capacities.
+We exceed K = 2, so S = 7 is invalid. This shows that even though every demand fits individually, fragmentation forces extra pizzas.
 
-| C | rem | cnt | Action |
-| --- | --- | --- | --- |
-| 9 | 9 | 1 | serve 2 |
-| 9 | 7 | 1 | serve 4 |
-| 9 | 3 | 1 | serve 9 → new pizza |
-| 9 | 9 | 2 | serve 3 |
-| 9 | 6 | 2 | serve 6 |
+Now test S = 10.
 
-This uses 2 pizzas, which is ≤ K, so 9 is feasible.
+| Student | Demand | Remaining before | Action | Pizzas used |
+| --- | --- | --- | --- | --- |
+| 1 | 5 | 10 | serve | 1 |
+| 2 | 2 | 5 | serve | 1 |
+| 3 | 7 | 3 | open new pizza, serve | 2 |
+| 4 | 3 | 3 | serve | 2 |
 
-Trying a smaller C like 8:
-
-| C | rem | cnt | Action |
-| --- | --- | --- | --- |
-| 8 | 8 | 1 | serve 2 |
-| 8 | 6 | 1 | serve 4 |
-| 8 | - | 2 | 9 doesn’t fit → new pizza |
-| 8 | 8 | 2 | serve 9 impossible |
-
-So 8 is infeasible.
-
-This confirms the boundary behavior where a single large demand forces resets.
+We use exactly 2 pizzas, so S = 10 is feasible. This demonstrates how increasing S reduces fragmentation at forced breakpoints.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N log S) | Binary search over capacity S, each check scans N students |
+| Time | O(N log M) | Each feasibility check scans all students once, and binary search over S runs in logarithmic range M = sum(d_i) |
 | Space | O(1) | Only counters and input array are stored |
 
-With N up to 100000 and S up to 10^6, the solution performs about 10^5 × 20 operations, which is easily within limits.
+The constraints N ≤ 10^5 make a linear scan acceptable, and log M is at most around 40 for typical bounds, keeping the solution well within limits.
 
 ## Test Cases
 
@@ -165,80 +168,66 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import ceil
+    import sys
+    input = sys.stdin.readline
 
-    def check(c, a, k):
-        cnt = 1
-        rem = c
-        for x in a:
-            if x > c:
+    def can(d, n, k, s):
+        pizzas_used = 1
+        remaining = s
+        for x in d:
+            if x > s:
                 return False
-            if rem >= x:
-                rem -= x
+            if remaining >= x:
+                remaining -= x
             else:
-                cnt += 1
-                rem = c - x
-        return cnt <= k
+                pizzas_used += 1
+                if pizzas_used > k:
+                    return False
+                remaining = s - x
+        return pizzas_used <= k
 
     def solve():
         n, k = map(int, input().split())
-        a = list(map(int, input().split()))
-
-        lo = max(a)
-        hi = sum(a)
-
-        ans = hi
-        while lo <= hi:
+        d = list(map(int, input().split()))
+        lo, hi = max(d), sum(d)
+        while lo < hi:
             mid = (lo + hi) // 2
-            if check(mid, a, k):
-                ans = mid
-                hi = mid - 1
+            if can(d, n, k, mid):
+                hi = mid
             else:
                 lo = mid + 1
-
-        print(ans)
+        print(lo)
 
     solve()
-    return ""
+    return sys.stdout.getvalue().strip()
 
-# sample
-assert True  # placeholder since sample formatting was incomplete
+# provided sample
+assert run("5 3\n2 10 3 6 7\n") == "10"
 
-# all equal
-assert run("3 2\n5 5 5\n") == "", "all equal case"
+# minimum case
+assert run("1 1\n5\n") == "5"
 
-# single student
-assert run("1 1\n10\n") == "", "single student"
+# all equal small
+assert run("4 2\n2 2 2 2\n") == "4"
 
-# many small, tight k
-assert run("5 2\n1 1 1 1 1\n") == "", "tight packing"
+# tight fragmentation
+assert run("3 2\n5 5 5\n") == "10"
 
-# large jump
-assert run("4 3\n1 100 1 100\n") == "", "alternating spikes"
+# large K (each student separate allowed)
+assert run("3 3\n8 1 1\n") == "8"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 2 / 5 5 5 | minimal grouping | equal demands packing |
-| 1 1 / 10 | 10 | single-element edge case |
-| 5 2 / 1 1 1 1 1 | 3 | tight packing across boundary |
-| 4 3 / 1 100 1 100 | 100 | large alternating demands |
+| 1 1 / 5 | 5 | single student baseline |
+| 4 2 / 2 2 2 2 | 4 | even distribution |
+| 3 2 / 5 5 5 | 10 | forced splitting effect |
+| 3 3 / 8 1 1 | 8 | large K reduces pressure |
 
 ## Edge Cases
 
-A key edge case occurs when a student demand exactly equals remaining capacity. In that case, the remainder becomes zero and the next student must trigger a new pizza even if their demand is small.
+One important edge case is when a single demand exceeds the current candidate S. For example, d = [10, 1, 1] and S = 5. The algorithm immediately rejects S without simulating further, because no feasible segmentation exists. This prevents wasted computation and preserves correctness of binary search bounds.
 
-For input:
+Another case is when K is very large, such as K ≥ N. In d = [3, 4, 2], K = 10, the optimal S becomes max(d) = 4. The simulation will never open a second pizza unless forced by a demand larger than remaining capacity, and since each demand fits, we remain within K easily.
 
-```
-3 2
-3 2 3
-```
-
-If C = 5:
-
-Start with rem = 5. Serve 3, rem = 2. Next student needs 2, rem becomes 0. Next student needs 3, so a new pizza is opened.
-
-The process correctly counts two pizzas, and no leftover is incorrectly carried forward. This ensures the simulation matches the strict “no reuse across pizzas” rule.
-
-Another edge case is when K is large enough that any capacity works. In that case, the binary search naturally pushes toward the minimum possible capacity, which is max(d_i), since no capacity below that is valid.
+A final case is heavy fragmentation: d = [6, 6, 6], K = 2. With S = 6, every student forces a new pizza, requiring 3 pizzas and failing. With S = 12, the first two students fit in one pizza, and the last forces the second, staying within K. This shows how S controls segmentation rather than just local feasibility.

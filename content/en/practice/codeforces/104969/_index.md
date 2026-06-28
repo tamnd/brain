@@ -10,7 +10,7 @@ n_problems: 8
 n_verified: 2
 total_solve_s: 652
 contest_year: 2024
-date: "2026-06-28T18:54:31+07:00"
+date: "2026-06-28T19:07:34+07:00"
 weight: 104969
 draft: false
 ---
