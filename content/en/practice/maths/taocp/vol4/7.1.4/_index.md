@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 131/267 solved."
+description: "Section 7.1.4 exercises: 158/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 131/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 158/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 131/267 solved.
 | [19](19.md) |  [*20*] | medium | solved | 1m08s |
 | [20](20.md) |  [*15*] | simple | verified | 2m12s |
 | [21](21.md) |  [*05*] | simple | verified | 1m05s |
-| 22 | &#9654; [*M21*] | math-medium | - | - |
+| [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m51s |
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
 | 24 |  [*M22*] | math-medium | - | - |
 | 25 |  [*M20*] | math-medium | - | - |
@@ -227,34 +227,34 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 131/267 solved.
 | [207](207.md) | &#9654; [*M25*] | math-medium | solved | 1m11s |
 | [208](208.md) | &#9654; [*16*] | medium | verified | 2m43s |
 | [209](209.md) |  [*M21*] | math-medium | verified | 2m52s |
-| 210 | &#9654; [*23*] | medium | - | - |
-| 211 |  [*M20*] | math-medium | - | - |
-| 212 | &#9654; [*25*] | medium | - | - |
-| 213 |  [*16*] | medium | - | - |
-| 214 | &#9654; [*21*] | medium | - | - |
-| 215 |  [*21*] | medium | - | - |
-| 216 | &#9654; [*30*] | hard | - | - |
-| 217 |  [*29*] | hard | - | - |
-| 218 | &#9654; [*24*] | medium | - | - |
-| 219 |  [*20*] | medium | - | - |
-| 220 | &#9654; [*21*] | medium | - | - |
-| 221 | &#9654; [*M27*] | math-hard | - | - |
-| 222 | &#9654; [*27*] | hard | - | - |
-| 223 |  [*28*] | hard | - | - |
-| 224 | &#9654; [*20*] | medium | - | - |
-| 225 | &#9654; [*30*] | hard | - | - |
-| 226 | &#9654; [*20*] | medium | - | - |
-| 227 |  [*20*] | medium | - | - |
-| 228 |  [*21*] | medium | - | - |
+| [210](210.md) | &#9654; [*23*] | medium | verified | 1m13s |
+| [211](211.md) |  [*M20*] | math-medium | solved | 3m58s |
+| [212](212.md) | &#9654; [*25*] | medium | verified | 2m48s |
+| [213](213.md) |  [*16*] | medium | verified | 1m |
+| [214](214.md) | &#9654; [*21*] | medium | solved | 4m21s |
+| [215](215.md) |  [*21*] | medium | solved | 4m44s |
+| [216](216.md) | &#9654; [*30*] | hard | solved | 4m33s |
+| [217](217.md) |  [*29*] | hard | solved | 4m07s |
+| [218](218.md) | &#9654; [*24*] | medium | verified | 1m23s |
+| [219](219.md) |  [*20*] | medium | verified | 3m33s |
+| [220](220.md) | &#9654; [*21*] | medium | solved | 1m08s |
+| [221](221.md) | &#9654; [*M27*] | math-hard | verified | 1m23s |
+| [222](222.md) | &#9654; [*27*] | hard | verified | 4m14s |
+| [223](223.md) |  [*28*] | hard | solved | 2m03s |
+| [224](224.md) | &#9654; [*20*] | medium | solved | 3m04s |
+| [225](225.md) | &#9654; [*30*] | hard | verified | 1m31s |
+| [226](226.md) | &#9654; [*20*] | medium | solved | 4m |
+| [227](227.md) |  [*20*] | medium | verified | 2m30s |
+| [228](228.md) |  [*21*] | medium | solved | 3m29s |
 | [229](229.md) |  [*15*] | simple | solved | 57s |
 | [230](230.md) |  [*25*] | medium | solved | 1m51s |
-| 231 |  [*23*] | medium | - | - |
-| 232 | &#9654; [*23*] | medium | - | - |
-| 233 | &#9654; [*25*] | medium | - | - |
-| 234 |  [*22*] | medium | - | - |
-| 235 |  [*22*] | medium | - | - |
-| 236 | &#9654; [*M25*] | math-medium | - | - |
-| 237 |  [*25*] | medium | - | - |
+| [231](231.md) |  [*23*] | medium | solved | 4m08s |
+| [232](232.md) | &#9654; [*23*] | medium | solved | 4m43s |
+| [233](233.md) | &#9654; [*25*] | medium | solved | 2m04s |
+| [234](234.md) |  [*22*] | medium | solved | 1m31s |
+| [235](235.md) |  [*22*] | medium | solved | 5m02s |
+| [236](236.md) | &#9654; [*M25*] | math-medium | solved | 4m36s |
+| [237](237.md) |  [*25*] | medium | solved | 4m29s |
 | 238 | &#9654; [*22*] | medium | - | - |
 | 239 | &#9654; [*21*] | medium | - | - |
 | 240 | &#9654; [*22*] | medium | - | - |
