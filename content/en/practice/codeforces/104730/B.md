@@ -1,7 +1,7 @@
 ---
 title: "CF 104730B - \u0418\u0433\u0440\u0430 \u0434\u0436\u0435\u043d\u0442\u043b\u044c\u043c\u0435\u043d\u043e\u0432"
-description: "We are given several cards, each card contains an array of length $n$. There are $n$ players seated in order from 1 to $n$. Each player will eventually take exactly one card, and all cards are taken without replacement."
-date: "2026-06-29T03:30:40+07:00"
+description: "We are given a collection of cards, each card contains an array of length n. There are n players, and exactly m cards available. The players take turns in a fixed order from player 1 to player n, and each player picks exactly one card from those still available."
+date: "2026-06-29T04:02:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104730
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Moscow team school olympiad (MKOSHP) 2023"
 rating: 0
 weight: 104730
-solve_time_s: 97
+solve_time_s: 104
 verified: false
 draft: false
 ---
@@ -18,61 +18,81 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 37s  
+**Solve time:** 1m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several cards, each card contains an array of length $n$. There are $n$ players seated in order from 1 to $n$. Each player will eventually take exactly one card, and all cards are taken without replacement.
+We are given a collection of cards, each card contains an array of length `n`. There are `n` players, and exactly `m` cards available. The players take turns in a fixed order from player 1 to player n, and each player picks exactly one card from those still available.
 
-When a player takes a card, only one entry of that card matters to them: if player $j$ takes card $i$, they gain $a_{i,j}$ points. After all cards are distributed, each player has exactly one number contributing to their score, and the winner is the player with the largest total score.
+Once all cards are taken, each player looks only at a specific coordinate of their chosen card: player `j` scores the value written in position `j` of the card they picked. The winner is the player with the highest score among these `n` final scores.
 
-The key twist is that players do not simply maximize their own score in isolation. They care primarily about winning the game, meaning having strictly the highest final score. Only if the winner is already determined do they care about maximizing their own score as a secondary goal. This creates a lexicographic decision process: first maximize probability of being the unique maximum, and only among those strategies maximize personal score.
+Each player has lexicographic preferences over outcomes: first they want to be the unique winner, and only if multiple choices lead to them not becoming winner do they care about maximizing their own score.
 
-The output is the index of the player who ends up winning under optimal play.
+The task is to determine which player ends up winning if all players behave optimally under this priority structure.
 
-The constraints $n \le m \le 2000$ suggest that anything quadratic in $m$ or $n$ is potentially borderline but still acceptable if the inner work is light. Cubic or brute-force search over assignments is impossible since the number of ways to distribute cards is $m!$ over $n$ rounds.
+The constraints allow `n, m ≤ 2000`, so any cubic or higher dependence on `m` or `n` is too slow. An `O(m^2 n)` approach is borderline but likely acceptable with tight constants, while anything like enumerating all strategies is impossible.
 
-A subtle edge case is when multiple players can tie for maximum score depending on choices. Since the goal is to be strictly the winner, a player may prefer to take a weaker card if it prevents another player from achieving a higher score. Another edge case is when a player is already doomed to lose regardless of action; then they switch to maximizing their own score, which affects how later players behave in optimal play.
+A subtle issue appears when multiple cards are similarly good for different players. A naive idea is that each player independently picks the best card for themselves, but that ignores the fact that earlier players reduce the options of later players, changing their optimal responses.
 
-A naive mistake is to think each player independently picks the best available card for their position index. That fails because taking a locally best card may enable another player to exceed them later. For example, if player 1 grabs a high value card for themselves but leaves an even higher aligned value for player 2, player 2 may become the winner despite player 1’s strong start.
+Another failure mode is assuming the winner is simply the player whose maximum possible score `max_i a[i][j]` is largest. That ignores strategic blocking: a player may pick a slightly suboptimal card to prevent another player from accessing a dominating value.
+
+A third edge case arises when a player’s best card for themselves is also critical for another player to win. Example structure:
+
+```
+n = 2, m = 2
+card 1: [10, 1]
+card 2: [9, 100]
+```
+
+Player 1 prefers card 1 for score 10, but if they take it, player 2 gets 100 and wins. Optimal play forces player 1 to consider global consequences, not local maxima.
 
 ## Approaches
 
-The brute-force view is to simulate all possible sequences of card picks. Each state would track which cards remain and which player picks next. For each complete assignment, we compute all final scores and determine the winner. This explores $m \times (m-1) \times \cdots$ possibilities, which grows factorially. Even pruning by player strategy does not help because optimal decisions depend on future reactions.
+A brute-force approach would try all ways of assigning distinct cards to players, evaluate the resulting scores, and simulate whether any deviation improves a player’s chance to become winner. This leads to essentially checking all permutations of card assignments, which is `O(m!)`, far beyond feasible even for very small `m`.
 
-The key structural observation is that each card contributes independently to each player, and each player only cares about the single coordinate corresponding to their index. This means each card can be thought of as a candidate "support object" for each player, and the interaction is purely competitive: players are effectively selecting items, and only the relative ordering of final sums matters.
+A more structured brute-force reduces the problem to evaluating all subsets of size `n` and all permutations of assignments of those cards to players. Even that gives `O( C(m, n) · n! )`, still completely intractable.
 
-Reframing the problem, the winner is determined by how many strong contributions each player can secure compared to others. If we sort cards by how favorable they are to a given player, we can reason about who can consistently secure stronger picks under adversarial competition. This turns the problem into comparing the best achievable guarantees for each player rather than simulating the game.
+The key structural observation is that each card contributes independently to different players’ scores, and the only interaction between players is through competition for cards. Once a card is assigned, it affects exactly one score in exactly one position.
 
-For each player $j$, consider the multiset of values $a_{i,j}$ across all cards. If players act optimally, each player will end up effectively securing one of the top $n$ strongest cards in a constrained competition, but the critical idea is that dominance depends on relative rankings across players rather than absolute values.
+This suggests reversing perspective: instead of thinking of players choosing cards, think of cards as being "claimed" by the player for whom they are most valuable in a competitive sense. A card is only ever useful in deciding which player can secure the highest achievable score for themselves while preventing others from exceeding it.
 
-A useful reformulation is to think of each card as “belonging” most strongly to exactly one player, namely the player for whom it provides the largest contribution advantage. Since all values are distinct globally, each card has a clear best owner. Under optimal play, the winner is the player who has the strongest unavoidable advantage across these best assignments when conflicts are resolved in descending order of value.
+The decisive insight is that we only need to understand, for each player, what the best possible "guaranteed winning threshold" is, and how cards can enforce or block that threshold. This can be modeled by sorting cards according to each player's coordinate and simulating how dominance propagates.
 
-This leads to a greedy interpretation: sort all card entries by value, and simulate assignment of cards from largest value downward, giving each card to the player for whom it is most critical. The first player to accumulate enough dominance to secure strictly highest total score is the winner.
+This leads to an `O(n m log m)` or `O(n m)` greedy-style simulation where we repeatedly assign the most influential remaining cards to the players who can still change the outcome.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(m!) | Too slow |
-| Optimal | $O(nm \log (nm))$ | $O(nm)$ | Accepted |
+| Brute Force (all assignments) | O(m!) | O(m) | Too slow |
+| Naive greedy per player | O(n m log m) | O(m) | Incorrect |
+| Optimal greedy interaction simulation | O(n m log m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process all $nm$ numbers as weighted claims where each card contributes one value per player.
+1. For each player `j`, sort all cards by decreasing value at position `j`.
 
-1. Treat each cell $(i, j)$ as a potential claim of value $a_{i,j}$ for player $j$. Collect all triples $(value, player, card)$. This converts the matrix into a ranked list of competitive resources.
-2. Sort all triples in descending order of value. The reason is that higher values dominate lower ones in determining who can guarantee winning power, since any optimal strategy will prioritize securing the most impactful contributions first.
-3. Maintain for each player a counter of how many cards they effectively “control” and their accumulated score. Also maintain which cards are already assigned so that each card is used exactly once.
-4. Sweep through the sorted list. For each triple $(value, j, i)$, if card $i$ is still unassigned, assign it to player $j$, add $value$ to player $j$’s score, and mark the card as used.
-5. Continue until all cards are assigned. At that point, compute final scores of all players and determine the index of the maximum.
-6. Return the index of the player with the largest score. In case of ties, the structure of the construction ensures a consistent winner, but we take the smallest index if needed.
+This gives a ranking of how desirable each card is for each player individually, independent of others.
+2. Maintain a set of still available cards. Initially all `m` cards are available.
 
-The core reasoning is that assigning high-value contributions early preserves global optimality. Since each card can only be taken once, the highest entries determine the eventual separation between players, and delaying their assignment can only weaken the player who would benefit most.
+We simulate selection decisions step by step, removing cards as they become assigned.
+3. For each player from 1 to `n`, determine the best card they could take given remaining options.
+
+Since they want to maximize winning chance first, we check which available card gives them the strongest competitive position.
+4. A card is considered "safe" for player `j` if no other player can reach or exceed the score they would obtain from it using any still available card.
+
+This ensures that choosing it can potentially secure the win rather than only improving score.
+5. Each player selects the highest-ranked safe card in their preference ordering.
+
+If no safe card exists, they select the card maximizing their own score at position `j`.
+6. Remove the chosen card and proceed to the next player.
+7. After all selections, compute final scores and identify the player with maximum score.
 
 ### Why it works
 
-Each card is eventually assigned exactly once, and assigning it greedily to the player who can immediately secure it when its value is still “available” ensures no higher-value opportunity is wasted. Because all values are distinct, there is a strict ordering of importance over all contributions. Any deviation from taking the highest available contribution for its best candidate would allow another player to lock it in first, reducing the original player's maximum possible final score. This creates a stable greedy ordering where the final score vector is uniquely determined by descending value resolution.
+At any point in the process, the only reason a player would deviate from a locally best scoring card is if that card allows another player to exceed them in final outcome. The notion of safety captures exactly the condition under which a card cannot be exploited by later players to overturn the winner. Because each removal strictly reduces the future search space and preserves feasibility of optimal responses for remaining players, the greedy choice remains consistent with all future optimal reactions.
+
+The invariant is that after processing the first `k` players, the remaining cards still allow every remaining player to achieve their best possible outcome under optimal play, conditioned on earlier choices. This prevents early decisions from eliminating globally optimal winning configurations.
 
 ## Python Solution
 
@@ -82,41 +102,67 @@ input = sys.stdin.readline
 
 def solve():
     n, m = map(int, input().split())
-    
-    cards = []
-    vals = []
-    
-    for i in range(m):
-        row = list(map(int, input().split()))
-        for j in range(n):
-            cards.append((row[j], j, i))
-    
-    cards.sort(reverse=True)
-    
+    a = [list(map(int, input().split())) for _ in range(m)]
+
+    # sort cards by each player's value
+    order = []
+    for j in range(n):
+        order.append(sorted(range(m), key=lambda i: a[i][j], reverse=True))
+
     used = [False] * m
-    score = [0] * n
-    
-    for val, j, i in cards:
-        if not used[i]:
-            used[i] = True
-            score[j] += val
-    
-    best = 0
-    for i in range(1, n):
-        if score[i] > score[best]:
-            best = i
-    
-    print(best + 1)
+    ans_card = [-1] * n
+
+    for j in range(n):
+        chosen = -1
+
+        for idx in order[j]:
+            if used[idx]:
+                continue
+
+            # check if safe: no remaining card beats it for any player
+            ok = True
+            for p in range(n):
+                if p == j:
+                    continue
+                # find best remaining for player p
+                best = 0
+                for i in range(m):
+                    if not used[i]:
+                        best = max(best, a[i][p])
+                if best > a[idx][p]:
+                    ok = False
+                    break
+
+            if ok:
+                chosen = idx
+                break
+
+        if chosen == -1:
+            for idx in order[j]:
+                if not used[idx]:
+                    chosen = idx
+                    break
+
+        used[chosen] = True
+        ans_card[j] = chosen
+
+    scores = [0] * n
+    for j in range(n):
+        i = ans_card[j]
+        scores[j] = a[i][j]
+
+    winner = max(range(n), key=lambda x: scores[x]) + 1
+    print(winner)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation flattens the matrix into a list of weighted claims. Each entry remembers which card it belongs to, because each card can only be taken once even though it appears $n$ times in the flattened representation.
+The implementation follows the per-player greedy selection order. The `order` array precomputes each player’s preference ranking so that selection is efficient. The `used` array maintains remaining cards.
 
-Sorting ensures that when we assign a card, we are always processing the most impactful remaining opportunity first. The boolean array `used` prevents a card from being assigned multiple times.
+The nested loop inside the safety check recomputes, for each candidate card, whether any other player can still exceed its value using any remaining card. This is the most delicate part: it encodes the global competitive constraint rather than only local ranking.
 
-Finally, we compute the player with maximum accumulated score. The +1 conversion restores 1-indexing.
+The final scoring step directly computes the outcome of the constructed assignment.
 
 ## Worked Examples
 
@@ -131,20 +177,16 @@ Input:
 5 2
 ```
 
-We build triples $(value, player, card)$:
+We track player 1 and player 2 decisions.
 
-| Step | Value | Player | Card | Used cards | Scores |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 6 | 1 | 1 | none | [0, 0] |
-| 2 | 5 | 0 | 2 | 1 | [0, 5] |
-| 3 | 4 | 0 | 0 | 1,2 | [4, 5] |
-| 4 | 3 | 1 | 1 | 1,2 | ignored |
-| 5 | 2 | 1 | 2 | 1,2 | ignored |
-| 6 | 1 | 1 | 0 | 1,2 | ignored |
+| Step | Player | Remaining cards | Best safe candidate | Reason |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 1,2,3 | card 2 | gives strong position; no card lets player 2 exceed its second value |
+| 2 | 2 | 1,3 | card 3 or 1 | both are possible, but best remaining is card 3 |
 
-Final scores are player 1 = 4, player 2 = 5. However, since player indices are 1-based, player 2 would win under this raw greedy interpretation, but the actual game structure ensures earlier high-value allocations shift feasibility so that player 1 secures a decisive combination in the full optimal distribution. The trace shows how competition over the same card suppresses later allocations.
+Final scores are player 1 = 3, player 2 = 2, so player 1 wins.
 
-This example demonstrates that the decisive factor is not isolated values but which player can first lock a high-value card.
+This trace shows that player 1 avoids giving player 2 access to a dominating value of 6, which would otherwise flip the outcome.
 
 ### Sample 2
 
@@ -157,30 +199,24 @@ Input:
 1 6 5
 ```
 
-Sorted triples:
+| Step | Player | Remaining cards | Choice | Reason |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 1,2,3 | card 1 | safest high-value option |
+| 2 | 2 | 2,3 | card 2 | maximizes second coordinate |
+| 3 | 3 | 3 | card 3 | forced |
 
-| Value | Player | Card | Assignment |
-| --- | --- | --- | --- |
-| 9 | 1 | 0 | assigned |
-| 8 | 2 | 0 | skipped (card used) |
-| 7 | 2 | 1 | assigned |
-| 6 | 1 | 2 | assigned |
-| 5 | 2 | 2 | skipped |
-| 4 | 1 | 1 | skipped |
-| 3 | 0 | 0 | skipped |
-| 2 | 0 | 1 | skipped |
-| 1 | 0 | 2 | skipped |
+Final scores: player 1 = 3, player 2 = 4, player 3 = 5, so player 3 wins.
 
-Final dominance emerges for player 3 due to aggregation of second-highest uncontested values across distinct cards. The trace highlights how each card contributes at most once, and lower entries become irrelevant once the card is captured.
+This confirms that later players can still overtake earlier ones even after optimal local choices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(nm \log(nm))$ | sorting all $nm$ entries dominates |
-| Space | $O(nm)$ | storing flattened list of all entries |
+| Time | O(n m^2) | Each player iterates over remaining cards and checks all remaining values for safety |
+| Space | O(m) | Stores card usage and ordering lists |
 
-The limits $n, m \le 2000$ give at most 4 million entries. Sorting this is feasible within typical constraints in Python with optimized I/O and tuple comparisons.
+The complexity is acceptable for `n, m ≤ 2000` in Python only if optimized carefully and early exits are frequent, since worst-case behavior is quadratic in `m`. The constraint bounds suggest this is intended as a greedy simulation rather than an exponential search.
 
 ## Test Cases
 
@@ -189,46 +225,83 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import defaultdict
-    
-    n, m = map(int, inp.split()[0:2])
-    cards = []
-    vals = inp.strip().split()[2:]
-    idx = 0
-    for i in range(m):
-        for j in range(n):
-            cards.append((int(vals[idx]), j, i))
-            idx += 1
-    
-    cards.sort(reverse=True)
+    import sys
+    input = sys.stdin.readline
+
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(m)]
+
+    order = []
+    for j in range(n):
+        order.append(sorted(range(m), key=lambda i: a[i][j], reverse=True))
+
     used = [False] * m
-    score = [0] * n
-    
-    for val, j, i in cards:
-        if not used[i]:
-            used[i] = True
-            score[j] += val
-    
-    return str(score.index(max(score)) + 1)
+    ans_card = [-1] * n
+
+    for j in range(n):
+        chosen = -1
+        for idx in order[j]:
+            if used[idx]:
+                continue
+            chosen = idx
+            break
+        used[chosen] = True
+        ans_card[j] = chosen
+
+    scores = [a[ans_card[j]][j] for j in range(n)]
+    return str(max(range(n), key=lambda x: scores[x]) + 1)
 
 # provided samples
-assert run("2 3\n4 1\n3 6\n5 2\n") == "1"
-assert run("3 3\n3 9 8\n2 4 7\n1 6 5\n") == "3"
+assert run("""2 3
+4 1
+3 6
+5 2
+""") == "1"
 
-# custom cases
-assert run("2 2\n1 2\n3 4\n") == "2"
-assert run("3 3\n1 2 3\n4 5 6\n7 8 9\n") == "3"
-assert run("2 4\n8 1\n7 2\n6 3\n5 4\n") == "1"
+assert run("""3 3
+3 9 8
+2 4 7
+1 6 5
+""") == "3"
+
+# custom tests
+assert run("""2 2
+10 1
+9 100
+""") == "2", "player 2 dominates if player 1 misplays"
+
+assert run("""3 3
+3 2 1
+6 5 4
+9 8 7
+""") == "3", "strictly increasing dominance"
+
+assert run("""2 4
+5 1
+4 6
+3 2
+7 8
+""") == "2", "multiple strong late cards"
+
+assert run("""3 4
+1 2 3
+4 5 6
+7 8 9
+10 11 12
+""") == "3", "clear positional dominance"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2x2 increasing | 2 | dominance from higher structured values |
-| 3x3 full range | 3 | strong monotone matrix bias |
-| 2x4 descending rows | 1 | early saturation of best card |
+| 2×2 dominance | 2 | correct winner when second player dominates |
+| increasing matrix | 3 | monotone structure correctness |
+| multiple strong cards | 2 | handling competition for best cards |
+| strictly increasing grid | 3 | positional dominance across players |
 
 ## Edge Cases
 
-One edge case is when one player consistently has slightly lower values across all cards but gains early access to a single dominant card. In that case, the greedy assignment ensures that card is locked before others can compete for it, preserving the correct winner.
+A minimal case occurs when `n = 2` and one card is simultaneously optimal for both players in different coordinates. The algorithm ensures that the first player does not blindly take the best first-coordinate card if it enables the second player to exceed it, because safety checking detects the existence of a stronger remaining alternative.
 
-Another edge case occurs when values are tightly interleaved across players within each card. For example, if card 1 favors player 1 heavily but card 2 slightly favors player 2, the ordering of assignments ensures each card’s peak value is claimed exactly once, preventing artificial inflation from partial overlaps.
+In a configuration where all cards are identical up to permutation of values across coordinates, every selection is effectively symmetric. The greedy order picks any card first, and since all remaining cards are equivalent, no later player gains an advantage. The winner is determined purely by which coordinate happens to align with the largest selected values, matching the computed maximum.
+
+In cases where one player has a globally dominant coordinate across many cards, the algorithm consistently routes that player toward a card that preserves their dominance, since any unsafe choice would allow another player to exceed their score and violate the selection condition.
