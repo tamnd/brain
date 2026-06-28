@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2308 contests, 15533 problems, 8475 verified."
+description: "Codeforces problem solutions with full editorials. 2310 contests, 15559 problems, 8487 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2308 contests, 15533 problems, 8475 verified.**
+**2310 contests, 15559 problems, 8487 verified.**
 
-## Unknown — 392 contests, 3112 problems, 1920 verified
+## Unknown — 394 contests, 3138 problems, 1932 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104848](104848/) | [2021-2022 ICPC, Moscow Subregional](https://codeforces.com/contest/104848) | 15 | 11/15 | ICPC/IOI | - |
+| [104849](104849/) | [2022-2023 ICPC, Asia Yokohama Regional Contest 2022](https://codeforces.com/contest/104849) | 11 | 1/11 | ICPC/IOI | - |
 | [104851](104851/) | [Municipal stage of the All-Russian School Olympiad in Informatics in the Vologda Region 2023, grades 7-8](https://codeforces.com/contest/104851) | 0 | 0/0 | Special | - |
 | [104852](104852/) | [Municipal stage of the All-Russian School Olympiad in Informatics in the Vologda Region 2023, grades 9-11](https://codeforces.com/contest/104852) | 0 | 0/0 | Special | - |
 | [104856](104856/) | [Муниципальный этап ВсОШ по информатике в Москве, 2023, 9-11 классы](https://codeforces.com/contest/104856) | 0 | 0/0 | Special | - |
