@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2339 contests, 15819 problems, 8641 verified."
+description: "Codeforces problem solutions with full editorials. 2340 contests, 15822 problems, 8644 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2339 contests, 15819 problems, 8641 verified.**
+**2340 contests, 15822 problems, 8644 verified.**
 
-## Unknown — 409 contests, 3278 problems, 2019 verified
+## Unknown — 410 contests, 3281 problems, 2022 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104789](104789/) | [Innopolis Open 2024. Qualification Round 1](https://codeforces.com/contest/104789) | 3 | 3/3 | Special | - |
 | [104790](104790/) | [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790) | 8 | 8/8 | Special | - |
 | [104797](104797/) | [2021-2022 ICPC Central Europe Regional Contest (CERC 21)](https://codeforces.com/contest/104797) | 12 | 7/12 | ICPC/IOI | - |
 | [104804](104804/) | [Central Russia Regional Contest, 2022, Qualification Contest](https://codeforces.com/contest/104804) | 10 | 4/10 | Special | - |
