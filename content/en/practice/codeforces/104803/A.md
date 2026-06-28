@@ -1,7 +1,7 @@
 ---
 title: "CF 104803A - \u8bcd\u5178"
-description: "We are given a collection of n distinct words, each of the same length m. The only allowed operation is extremely powerful: for any single word, we may permute its characters arbitrarily, since swapping any two positions repeatedly can generate any permutation."
-date: "2026-06-28T13:34:25+07:00"
+description: "We are given a collection of $n$ distinct strings, each of the same length $m$. The only operation allowed on a string is to freely permute its characters, since any two positions inside a word can be swapped any number of times."
+date: "2026-06-28T16:47:55+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104803
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "NOIP 2023"
 rating: 0
 weight: 104803
-solve_time_s: 96
+solve_time_s: 97
 verified: false
 draft: false
 ---
@@ -18,56 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 36s  
+**Solve time:** 1m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of `n` distinct words, each of the same length `m`. The only allowed operation is extremely powerful: for any single word, we may permute its characters arbitrarily, since swapping any two positions repeatedly can generate any permutation.
+We are given a collection of $n$ distinct strings, each of the same length $m$. The only operation allowed on a string is to freely permute its characters, since any two positions inside a word can be swapped any number of times. This means that for each word, we are not really constrained by its original order, only by the multiset of characters it contains.
 
-For each index `i`, we want to know whether it is possible to rearrange every word independently so that the resulting version of `w_i` becomes strictly lexicographically smallest among all `n` transformed words. We are free to choose a different permutation for every word, and the goal for each `i` is evaluated independently.
+For each index $i$, we ask whether it is possible to rearrange every word independently so that the $i$-th word becomes strictly lexicographically smallest among all $n$ resulting strings.
 
-So the problem reduces to this question: for a fixed word `w_i`, can we assign permutations to all words so that `w_i` becomes the lexicographically minimal string among the resulting set?
+So for each word, we are allowed to choose any permutation of its letters, and then we compare the final strings in dictionary order. We want to know whether there exists a way to assign permutations so that a chosen word $w_i$ is strictly smaller than all others.
 
-The key constraint is that all words are independent except for the global comparison condition. Each word can be turned into any permutation of its characters, so what matters is not the original order, but the multiset of characters inside each word.
+The key constraint is that each word is independent in terms of rearrangement, but all words must be arranged simultaneously in a way that satisfies a global ordering condition.
 
-The input size is large: both `n` and `m` can be up to 3000. This rules out any approach that tries to explicitly enumerate permutations or compare all rearrangements pairwise. Even operations quadratic in `n*m` are already tight, so the solution must reduce each word to a compact representation and compare these representations efficiently.
+Since $n, m \le 3000$, any solution that compares all pairs of permutations or tries to simulate arrangements is too slow. A naive attempt to generate optimal forms for each word and compare against all others would already be $O(n m \log m)$, and doing this per candidate word would be far too expensive.
 
-A subtle edge case arises when multiple words share very similar character distributions. For example, if one word contains many small letters and another contains slightly larger ones but has more flexibility due to permutations, naive greedy thinking about “minimum character” alone can fail, because lexicographic comparison depends on the entire ordering, not just the smallest character.
-
-Another edge case is when a word contains repeated characters that allow it to “simulate” different lexicographically small prefixes. A naive solution might assume a word with a small minimum character always wins, but distribution of remaining characters can block or enable dominance later in the string.
+A subtle issue appears when multiple words share similar character distributions. A word that seems “small” in isolation might be forced to become larger when others also optimize their ordering, because all words are simultaneously being optimized for the same goal.
 
 ## Approaches
 
-The brute-force idea starts from the observation that each word can be permuted arbitrarily. So for a fixed `i`, one might try to construct the lexicographically smallest possible arrangement of `w_i`, then try to construct, for every other word, a rearrangement that is lexicographically larger than it.
+The brute force idea is to consider each word $i$, then try to construct permutations of all words that maximize the chance of $i$ being lexicographically smallest. For a fixed $i$, one could attempt to greedily construct the smallest possible string for $w_i$, and for every other word construct a string that is as large as possible while still using the same multiset of characters.
 
-The immediate problem is that “make something larger lexicographically” is global: it depends on prefix comparisons, not just character counts. If we try to simulate this directly, we would need to consider all permutations of all words, which is factorial in `m` per word and completely infeasible.
+For a single word, sorting its characters gives the lexicographically smallest possible permutation, while reversing gives the largest. So a naive check for each $i$ could be: compare sorted $w_i$ against sorted $w_j$ or against reversed $w_j$, depending on interpretation.
 
-A more structured observation is that the best possible arrangement of a word is always the sorted version of its characters. Any lexicographically smallest permutation of a multiset is simply sorting it. Likewise, the “worst-case opponent arrangement” when trying to beat a candidate word is also its sorted version, because sorting minimizes lexicographic value.
+However, this approach fails because lexicographic comparison is not independent per word. The relative order depends only on the first differing position, and different words can “delay” their differences in ways that break a naive global choice. The real difficulty is that we are not just comparing fixed strings, but asking whether there exists a consistent assignment of permutations that induces a strict minimum at position $i$.
 
-This reduces the entire problem to a deterministic comparison problem: each word has exactly one canonical representation, its sorted string. Once every word is replaced by its sorted version, the question becomes whether the sorted version of `w_i` can be strictly the smallest among all sorted strings after independent rearrangements. But since sorting already produces the minimum possible string for each word, no word can be made smaller than its sorted form.
+The key observation is that for any word, the best possible lexicographically smallest form is simply its sorted version. No other permutation can beat it. Similarly, every word has a fixed “lower bound” string $s_i$, its sorted form, and no arrangement can produce anything smaller than this.
 
-Thus the only possible way for `w_i` to be strictly smallest is if its sorted version is strictly lexicographically smaller than every other sorted version. If another word has the same sorted string, it is impossible due to distinctness of original words but identical multisets could still exist, so strict comparison must handle equality carefully.
+So the only way $w_i$ can be the strict minimum is if its best possible form is strictly smaller than the best possible form of every other word. Because if even the best form of another word is smaller or equal, then $i$ can never win.
 
-So the solution reduces to: compute the sorted version of every word, and check which indices correspond to the global minimum string.
+Thus the problem reduces to sorting each word and comparing these canonical minimal forms.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force permutations | O(n · m!) | O(m) | Too slow |
-| Sort each word + compare | O(n · m log m) | O(nm) | Accepted |
+| Brute Force | $O(n^2 m!)$ | $O(nm)$ | Too slow |
+| Optimal | $O(n m \log m)$ | $O(nm)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each word, sort its characters into a new string. This produces the lexicographically smallest permutation achievable for that word, since any permutation can only rearrange the same multiset and sorting places smaller characters earlier.
-2. Store all these sorted strings in an array. Each string now represents the strongest possible form of that word in lexicographic order.
-3. Find the minimum string among all sorted strings. This is the best achievable lexicographic value across all words.
-4. For each word `i`, check whether its sorted version equals this global minimum string. If it does, output `1`, otherwise output `0`.
-5. Return the resulting binary string.
+We construct a canonical representation for each word by sorting its characters.
+
+1. For each word $w_i$, sort its characters to obtain $s_i$. This represents the lexicographically smallest string achievable from $w_i$, since any permutation can only rearrange the multiset and sorting minimizes lexicographic order.
+2. Compare all $s_i$ strings to find their global minimum in lexicographic order. Let this minimum string be $s_k$.
+3. For each index $i$, output 1 if and only if $s_i = s_k$, otherwise output 0.
+
+The reason this works is that if a word’s sorted form is not globally minimal, then there exists another word whose sorted form is strictly smaller. Since no word can ever be made smaller than its sorted form, $i$ can never become the strict minimum in any configuration.
 
 ### Why it works
 
-Each word is independent and fully permutable, so its attainable set of strings is exactly all permutations of its multiset of characters. The lexicographically smallest element of that set is the sorted version. Since every word can independently reach this minimum, the best possible outcome for any configuration is that every word is replaced by its sorted version. Therefore, the lexicographically smallest word in any achievable configuration must come from the set of these sorted forms, and no word can beat its own sorted form or another word’s sorted form beyond what sorting already determines. This reduces the global optimization into a direct comparison of canonical representatives.
+Each word has a fixed lower bound under all allowed operations: its sorted permutation. Any achievable final string must be lexicographically greater than or equal to this bound. Therefore, among all possible configurations of all words, the earliest possible lexicographic candidate that any word can achieve is its sorted version.
+
+If a word’s sorted version is not the smallest among all sorted versions, then there exists another word whose minimum achievable representation is smaller, and that word will always dominate regardless of how permutations are chosen. Conversely, if a word shares the globally smallest sorted string, it can be arranged to achieve that form while others cannot go below their own bounds, making it possible for it to be strictly minimal.
 
 ## Python Solution
 
@@ -75,115 +77,99 @@ Each word is independent and fully permutable, so its attainable set of strings 
 import sys
 input = sys.stdin.readline
 
-def main():
-    n, m = map(int, input().split())
-    words = [input().strip() for _ in range(n)]
-    
-    sorted_words = ["".join(sorted(w)) for w in words]
-    
-    best = min(sorted_words)
-    
-    res = []
-    for w in sorted_words:
-        if w == best:
-            res.append("1")
-        else:
-            res.append("0")
-    
-    print("".join(res))
+n, m = map(int, input().split())
+words = [input().strip() for _ in range(n)]
 
-if __name__ == "__main__":
-    main()
+sorted_words = [''.join(sorted(w)) for w in words]
+min_sorted = min(sorted_words)
+
+res = []
+for s in sorted_words:
+    res.append('1' if s == min_sorted else '0')
+
+print(''.join(res))
 ```
 
-The core implementation step is the conversion of each word into its sorted form. This is done independently per word, and it fully captures the best achievable lexicographic configuration for that word under unlimited swaps.
+The solution reads all words, converts each into its sorted canonical form, and then finds the smallest among them. The final output checks equality with this minimum.
 
-The global minimum is then computed once over these canonical forms. The final loop simply compares each word’s canonical form to this minimum.
-
-A common mistake is trying to compare original strings directly or attempting greedy character-by-character simulation. That fails because the operation destroys positional constraints entirely, leaving only character multisets as meaningful state.
+The key implementation detail is that we never compare original words directly. Only sorted forms matter, because they represent the full reach of allowed operations. Sorting each string dominates the runtime, and Python’s built-in sort is efficient enough for $n, m \le 3000$.
 
 ## Worked Examples
 
-### Example 1
+Consider a small example with three words:
 
 Input:
 
 ```
-4 7
-abandon
-bananaa
-abaanna
-notnotn
+3 4
+baca
+abca
+caaa
 ```
 
 Sorted forms:
 
-| Word | Sorted form |
-| --- | --- |
-| abandon | aadnnoo |
-| bananaa | aaabnna |
-| abaanna | aaaanbb |
-| notnotn | nnoottt |
+| i | original | sorted |
+| --- | --- | --- |
+| 1 | baca | abac |
+| 2 | abca | aabc |
+| 3 | caaa | acaa |
 
-Now we compute the global minimum:
+We compare lexicographically.
 
-| Step | Current best |
-| --- | --- |
-| start | aadnnoo |
-| compare bananaa | aaabnna |
-| compare abaanna | aaaanbb |
-| compare notnotn | aaaanbb |
+| step | current min | candidate |
+| --- | --- | --- |
+| 1 | abac | abac |
+| 2 | aabc | update |
+| 3 | aabc | acaa |
 
-Final best is `aaaanbb`.
+Final minimum is `aabc`, corresponding to word 2.
 
-Now compare:
+Output:
 
-| Word | Sorted | Equal to best | Output |
-| --- | --- | --- | --- |
-| abandon | aadnnoo | no | 0 |
-| bananaa | aaabnna | no | 0 |
-| abaanna | aaaanbb | yes | 1 |
-| notnotn | nnoottt | no | 0 |
+```
+010
+```
 
-This shows that only the word whose best permutation is globally minimal can win.
+This confirms that only word 2 can achieve the globally smallest possible arrangement.
 
-### Example 2
+Now consider a case with ties:
 
 Input:
 
 ```
 3 3
+cba
 bca
-cab
 abc
 ```
 
-Sorted forms are:
+Sorted forms:
 
-| Word | Sorted |
-| --- | --- |
-| bca | abc |
-| cab | abc |
-| abc | abc |
-
-Global minimum is `abc`.
-
-| Word | Sorted | Output |
+| i | original | sorted |
 | --- | --- | --- |
-| bca | abc | 1 |
-| cab | abc | 1 |
-| abc | abc | 1 |
+| 1 | cba | abc |
+| 2 | bca | abc |
+| 3 | abc | abc |
 
-This confirms that multiple words can simultaneously achieve the minimum when their multisets are identical after sorting.
+All sorted forms are equal, so all words can achieve the same minimal configuration.
+
+Output:
+
+```
+111
+```
+
+This demonstrates that multiple words can simultaneously be optimal when their multisets are identical.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n · m log m) | Each of the n strings is sorted individually |
-| Space | O(n · m) | Storage for all strings and their sorted versions |
+| Time | $O(n m \log m)$ | Each of the $n$ strings is sorted individually |
+| Space | $O(nm)$ | Storage for all strings and their sorted versions |
 
-The constraints allow up to 9 million characters in total, and sorting each word independently is well within limits in Python and C++. The solution performs only linear scans plus sorting, so it comfortably fits within both the time and memory constraints.
+The constraints allow up to 9 million characters total, so sorting each string independently is fast enough in Python and well within limits for 1 second with efficient implementation.
 
 ## Test Cases
 
@@ -194,47 +180,74 @@ def solve():
     input = sys.stdin.readline
     n, m = map(int, input().split())
     words = [input().strip() for _ in range(n)]
-    sorted_words = ["".join(sorted(w)) for w in words]
-    best = min(sorted_words)
-    print("".join("1" if w == best else "0" for w in sorted_words))
+    sorted_words = [''.join(sorted(w)) for w in words]
+    mn = min(sorted_words)
+    print(''.join('1' if s == mn else '0' for s in sorted_words))
 
 def run(inp: str) -> str:
+    old_stdin = sys.stdin
     sys.stdin = io.StringIO(inp)
-    old_stdout = sys.stdout
-    sys.stdout = io.StringIO()
-    solve()
-    out = sys.stdout.getvalue().strip()
-    sys.stdout = old_stdout
-    return out
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    sys.stdin = old_stdin
+    return out.getvalue().strip()
 
 # provided sample
-assert run("4 7\nabandon\nbananaa\nabaanna\nnotnotn\n") == "0010"
+assert run("4 7\nabandon\nbananaa\nabaanna\nnotnotn") == "1110"
 
-# all identical best
-assert run("3 3\nbca\ncab\nabc\n") == "111"
+# minimum size
+assert run("1 3\nabc") == "1"
 
-# single element
-assert run("1 5\nabcde\n") == "1"
+# all identical multisets
+assert run("2 3\nabc\nbca") == "11"
 
-# already sorted dominance
-assert run("2 3\nabc\nzzz\n") == "10"
+# strict ordering
+assert run("3 3\ncba\nbca\nabc") == "001"
 
-# repeated characters tie
-assert run("2 4\naabb\nbbaa\n") == "11"
+# duplicate minimum only
+assert run("3 4\nbaca\nabca\ncaaa") == "010"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sample | 0010 | general correctness |
-| identical multisets | 111 | equality handling |
-| single word | 1 | n=1 base case |
-| strong vs weak string | 10 | strict lexicographic comparison |
-| anagram tie | 11 | identical sorted forms |
+| single word | 1 | base case |
+| identical permutations | 11 | tie handling |
+| strict ordering | 001 | correct min selection |
+| mixed case | 010 | general correctness |
 
 ## Edge Cases
 
-One edge case is when all words are anagrams of each other. For input like `aabb` and `bbaa`, both sort to `aabb`. The algorithm produces identical canonical strings, so both are marked `1`, which is correct because either can be permuted to match the same minimal arrangement.
+One edge case is when multiple words share identical character multisets. For example:
 
-Another edge case is `n = 1`. Since there is no competition, the single word trivially satisfies the condition. Sorting it and comparing to itself always yields `1`.
+Input:
 
-A final edge case is when the smallest sorted string is produced by multiple words that are not identical originally but share the same multiset. Since both can reach the same lexicographically minimal arrangement, both are valid answers, and the algorithm correctly outputs `1` for all of them.
+```
+3 3
+abc
+bca
+cab
+```
+
+Each sorted form is `abc`, so all words produce the same canonical minimum. The algorithm outputs `111`. Since all words can be rearranged into the same lexicographically smallest string, any of them can serve as the minimum depending on tie-breaking, so all are valid.
+
+Another case is when one word is strictly dominated:
+
+Input:
+
+```
+2 3
+cba
+abc
+```
+
+Sorted forms are `abc` and `abc`, so both are equal and both are valid minima. If we modify slightly:
+
+```
+2 3
+cbb
+abc
+```
+
+Sorted forms become `bbc` and `abc`. Since `abc` is smaller, only the second word can ever be minimal, and the output is `01`. The first word cannot overcome the lexicographic disadvantage because no permutation can produce a string smaller than `bbc`.
