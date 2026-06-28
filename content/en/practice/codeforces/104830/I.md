@@ -1,7 +1,7 @@
 ---
 title: "CF 104830I - Transportation Vouchers (voucher)"
-description: "I’m missing the actual problem content here. Right now the statement only contains the title, I/O placeholders, and page metadata, but no description of the rules for transportation vouchers, so there’s nothing concrete to derive an algorithm from."
-date: "2026-06-28T12:03:11+07:00"
+description: "The statement content for Codeforces 104830I - “Transportation Vouchers (voucher)” is not actually included in your prompt (it only shows headers, with empty input/output sections and no functional description)."
+date: "2026-06-28T17:17:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104830
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2023 Taiwan NHSPC Mock Contest (Mirror)"
 rating: 0
 weight: 104830
-solve_time_s: 26
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem content here.
+The statement content for Codeforces 104830I - “Transportation Vouchers (voucher)” is not actually included in your prompt (it only shows headers, with empty input/output sections and no functional description).
 
-Right now the statement only contains the title, I/O placeholders, and page metadata, but no description of the rules for transportation vouchers, so there’s nothing concrete to derive an algorithm from. Writing a correct Codeforces-style editorial without the problem definition would mean inventing details, which would obviously be unreliable.
+Without the actual problem definition, constraints, and operations, any “editorial” would be guesswork, which would defeat the purpose of a correct competitive programming explanation.
 
-If you paste the full statement (or even a screenshot / partial text), I can produce the complete editorial in the exact format you specified, including the algorithm walkthrough, proofs, Python solution, and test cases.
+If you paste the full statement (or even a screenshot/text dump), I can immediately produce the complete editorial in the exact style you requested, including algorithm derivation, edge cases, complexity, and full Python solution.
