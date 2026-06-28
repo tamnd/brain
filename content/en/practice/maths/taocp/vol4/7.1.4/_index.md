@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 63/267 solved."
+description: "Section 7.1.4 exercises: 65/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 63/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 65/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -139,8 +139,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 63/267 solved.
 | [119](119.md) |  [*20*] | medium | verified | 1m44s |
 | [120](120.md) |  [*18*] | medium | verified | 4m |
 | [121](121.md) | &#9654; [*M22*] | math-medium | solved | 2m40s |
-| 122 |  [*27*] | hard | - | - |
-| 123 |  [*M20*] | math-medium | - | - |
+| [122](122.md) |  [*27*] | hard | solved | 3m21s |
+| [123](123.md) |  [*M20*] | math-medium | solved | 2m07s |
 | 124 | &#9654; [*27*] | hard | - | - |
 | 125 | &#9654; [*HM34*] | hm-hard | - | - |
 | 126 |  [*HM42*] | hm-project | - | - |

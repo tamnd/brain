@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15957 problems, 8752 verified."
+description: "Codeforces problem solutions with full editorials. 2354 contests, 15969 problems, 8755 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15957 problems, 8752 verified.**
+**2354 contests, 15969 problems, 8755 verified.**
 
 ## Unknown — 420 contests, 3375 problems, 2097 verified
 
@@ -1655,7 +1655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 164 contests, 1211 problems, 540 verified
+## 2023 — 165 contests, 1223 problems, 543 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1791,6 +1791,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104770](104770/) | [The XXXI Saint-Petersburg High School Programming Contest (SpbKOSHP 2023) | Qualification for the XXIV Russia Open High School Programming Contest (VKOSHP 2023)](https://codeforces.com/contest/104770) | 12 | 3/12 | Special | - |
 | [104782](104782/) | [2023 Romanian Collegiate Programming Contest (RCPC)](https://codeforces.com/contest/104782) | 13 | 13/13 | Special | - |
 | [104786](104786/) | [FIICode2023Round1](https://codeforces.com/contest/104786) | 5 | 4/5 | Special | - |
 | [104787](104787/) | [The 2023 CCPC (Qinhuangdao) Onsite (The 2nd Universal Cup. Stage 9: Qinhuangdao)](https://codeforces.com/contest/104787) | 13 | 12/13 | Special | - |
