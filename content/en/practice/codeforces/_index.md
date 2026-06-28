@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2314 contests, 15592 problems, 8512 verified."
+description: "Codeforces problem solutions with full editorials. 2315 contests, 15604 problems, 8520 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2314 contests, 15592 problems, 8512 verified.**
+**2315 contests, 15604 problems, 8520 verified.**
 
-## Unknown — 398 contests, 3171 problems, 1957 verified
+## Unknown — 399 contests, 3183 problems, 1965 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104840](104840/) | [Интернет-олимпиады, Сезон 2023-2024, Третья командная олимпиада](https://codeforces.com/contest/104840) | 12 | 8/12 | Special | - |
 | [104842](104842/) | [2020-2021 ICPC, Moscow Subregional](https://codeforces.com/contest/104842) | 14 | 10/14 | ICPC/IOI | - |
 | [104845](104845/) | [Муниципальный этап ВсОШ по информатике в Московской области 2023-2024 (9-11 классы)](https://codeforces.com/contest/104845) | 4 | 1/4 | Special | - |
 | [104846](104846/) | [Муниципальный этап ВсОШ по информатике в Московской области 2023-2024 (7-8 классы)](https://codeforces.com/contest/104846) | 4 | 3/4 | Special | - |
