@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2320 contests, 15650 problems, 8555 verified."
+description: "Codeforces problem solutions with full editorials. 2321 contests, 15658 problems, 8555 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2320 contests, 15650 problems, 8555 verified.**
+**2321 contests, 15658 problems, 8555 verified.**
 
 ## Unknown — 401 contests, 3201 problems, 1978 verified
 
@@ -1636,7 +1636,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 150 contests, 1081 problems, 464 verified
+## 2023 — 151 contests, 1089 problems, 464 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1772,6 +1772,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104830](104830/) | [2023 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/104830) | 8 | 0/8 | Special | - |
 | [104833](104833/) | [The 2023 Zhejiang SCI-TECH University Freshman Programming Contest](https://codeforces.com/contest/104833) | 14 | 14/14 | Special | - |
 | [104834](104834/) | [UTPC Contest 12-01-23 Div. 1 (Advanced)](https://codeforces.com/contest/104834) | 7 | 3/7 | Div. 1 | - |
 | [104835](104835/) | [UTPC Contest 12-01-23 Div. 2 (Beginner)](https://codeforces.com/contest/104835) | 7 | 5/7 | Div. 2 | - |
