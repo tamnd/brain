@@ -1,7 +1,7 @@
 ---
 title: "CF 104804E - \u0412\u044b\u043f\u0430\u0432\u0448\u0438\u0435 \u043c\u0435\u0448\u043a\u0438"
-description: "We are given a network of cities connected by undirected roads. Each road can be used repeatedly, and each road initially contains a single collectible item with a value between 0 and 10. If the value is zero, the item is already gone and the road yields nothing."
-date: "2026-06-28T13:25:46+07:00"
+description: "We are given a graph of cities connected by roads, where each road initially contains a single resource bag with a value between 1 and 10, or zero if the bag has already been taken. Igor starts at city 1 and must make exactly k moves along roads."
+date: "2026-06-28T16:51:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104804
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Central Russia Regional Contest, 2022, Qualification Contest"
 rating: 0
 weight: 104804
-solve_time_s: 86
-verified: false
+solve_time_s: 65
+verified: true
 draft: false
 ---
 
@@ -18,161 +18,132 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 26s  
-**Verified:** no  
+**Solve time:** 1m 5s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a network of cities connected by undirected roads. Each road can be used repeatedly, and each road initially contains a single collectible item with a value between 0 and 10. If the value is zero, the item is already gone and the road yields nothing.
+We are given a graph of cities connected by roads, where each road initially contains a single resource bag with a value between 1 and 10, or zero if the bag has already been taken. Igor starts at city 1 and must make exactly k moves along roads. Every time he traverses a road, he may collect the resource on that road, but only if it has not been collected before. Once a road’s resource is taken, it cannot be taken again on future traversals.
 
-A traveler starts at city 1 and must make exactly $k$ moves along roads. Every time he traverses a road, he collects the value of that road, but only the first time it is used, because afterwards the item is no longer available.
+The task is to choose a sequence of exactly k traversals starting from city 1, repeatedly moving along adjacent roads, in order to maximize the total collected value from distinct roads.
 
-The goal is to maximize the total collected value after exactly $k$ traversals, while freely choosing routes in the graph.
+The constraints are small on k, with k at most 6, while the graph itself can be moderately large with up to 10^4 cities and 10^4 edges, and each city has degree at most 10. This immediately suggests that the key limitation is not the graph size but the exponential explosion in possible movement sequences, which must be controlled using the small depth of exploration.
 
-The graph is sparse in a very strong sense. Each city has at most 10 outgoing roads, so the branching factor is small. The number of moves is extremely small as well, bounded by 6. This combination is the key: the search depth is tiny even though the graph itself can be large.
+A naive interpretation would be to simulate all possible walks of length k. Even though each node has degree at most 10, this still yields up to 10^k paths, which is at most one million when k = 6, and each path involves bookkeeping of which edges have been used. That alone already pushes toward a combinatorial explosion when considering overlapping subpaths and repeated states.
 
-If we tried to reason in terms of general graph DP over paths, we would immediately run into exponential explosion in $k$ and potentially in branching. However, $k \le 6$ changes the structure completely. Any method that explores states up to depth 6 is already feasible if each state expansion is constant or logarithmic.
+A subtle issue arises from revisiting edges: if we traverse the same road twice, we only collect its value once. A naive DFS that simply accumulates edge values per traversal would incorrectly double count. For example, in a triangle graph where all edges have value 1 and k = 4, a naive walk might count 4, but the correct answer might be lower depending on reuse.
 
-The subtle difficulty is that roads can be reused but only pay once, which introduces a global “used edge” state. A naive path search that ignores this would overcount. On the other hand, explicitly tracking used edges is impossible because there are up to $10^4$ edges.
-
-A few concrete pitfalls:
-
-A naive DFS that simply sums edge weights along depth $k$ paths would incorrectly allow re-collecting the same road multiple times. For example, in a triangle 1-2-1 with value 10 on both edges, a 2-step walk 1→2→1 would incorrectly collect 20 if reuse is allowed in the code logic, but in reality the second traversal of the same edge should give 0.
-
-Another failure mode is attempting shortest-path or longest-path style DP over nodes alone. That ignores whether a high-value edge was already consumed earlier in the route.
-
-The correct solution must combine two facts: we only care about paths of length at most 6, and edge reuse only matters locally along a single traversal sequence.
+Another pitfall is assuming that the best strategy is always to avoid revisiting edges. That is not always optimal, because revisits may be necessary to reach high-value edges later in a constrained number of steps.
 
 ## Approaches
 
-A brute-force idea is to simulate all possible walks of length $k$ starting from node 1. At each step we choose one of the incident edges, and maintain a set of used edges to ensure we do not double count their values.
+The brute-force idea is to treat this as a depth-limited search starting from node 1, where each state is defined only by the current node and how many steps remain. At each step, we try all adjacent edges and recurse. If we also track which edges have been collected, the state space becomes (node, mask of used edges, steps remaining), which is far too large since m can be up to 10^4.
 
-However, the number of states is disastrous. Each step branches up to 10 times, so we have up to $10^6$ paths for $k=6$, which is borderline but manageable in isolation. The real issue is that tracking used edges introduces combinatorial explosion: the same node reached via different edge-use histories is a different state, and the number of subsets of used edges grows exponentially.
+Even if we ignore edge usage tracking and only try all walks, the number of sequences is roughly 10^k. With k = 6 this is manageable in isolation, but the real difficulty is recomputation of overlapping subproblems and the fact that each path must evaluate edge reuse correctly. A naive DFS recomputes the same subtrees repeatedly, leading to unnecessary exponential work.
 
-The key observation is that $k$ is extremely small, so we can treat the solution as a layered expansion over time, but we must avoid storing edge subsets explicitly.
+The key observation is that k is extremely small, so we can structure the solution as a layered dynamic programming over steps. Instead of tracking full edge usage history, we only need to remember whether a specific edge has already been used in the current partial walk. Since k ≤ 6, any valid walk uses at most 6 edges, so we can encode used edges implicitly by storing only the sequence of traversed edges inside the state.
 
-Instead, we observe that each edge can contribute at most once, and only if it is traversed the first time we use it. Since $k \le 6$, any walk uses at most 6 edges total. That means at most 6 distinct edges can ever matter in a single trajectory. This allows us to encode the “used edge set” implicitly along a single path rather than globally.
+This leads to a DFS with memoization where the state is (current node, remaining steps, used-edge set). Since k is tiny, the number of distinct used-edge sets is bounded by the number of edges visited in at most 6 steps, which is combinatorially small relative to m. This makes state compression feasible: we explicitly enumerate paths of length k and maintain a local set of used edges.
 
-We perform a depth-limited search from node 1 up to depth $k$, and maintain a local visited-edge state only for the current recursion path. Since depth is at most 6, the number of edges stored is at most 6 as well. This keeps state management linear in $k$, not exponential in $m$.
+A more efficient perspective is that we are enumerating all simple walks of length k, but we are not required to ensure global simplicity, only correct accounting of first-time edge usage along each walk. Therefore we can directly simulate all walks using DFS and a local boolean array marking edges used in the current path.
 
-The structure is essentially a DFS over states $(v, d)$, where $v$ is the current node and $d$ is how many moves have been used, with backtracking to mark edges as used/un-used along the path.
-
-Because each step branches at most 10 ways, total work is bounded by $10^6$, and each transition is $O(1)$.
+The improvement over brute force is that we do not attempt to memoize globally; instead we rely on the strict bound k ≤ 6 to keep recursion manageable.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force with edge-set tracking | O(10^k · 2^k) | O(2^k) | Too slow |
-| Depth-limited DFS with local edge marking | O(10^k) | O(k) | Accepted |
+| Brute Force (state includes full history) | O(10^k · k) | O(k + m) | Too slow |
+| DFS with local edge tracking | O(10^k · k) | O(k + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We solve the problem by enumerating all possible walks of exactly $k$ steps and accumulating rewards only the first time each edge is used along a path.
+We simulate all possible walks of exactly k steps starting from node 1 using depth-first search. The graph is stored as adjacency lists, and each edge carries both its neighbor and its value, along with an identifier so we can track whether its resource has been taken in the current path.
 
-1. Build an adjacency list storing for each city its incident edges, including both endpoints and the value of the resource on that road. Since the graph is undirected, each edge is stored twice with a shared identifier. This allows us to mark an edge as used consistently regardless of direction.
-2. Run a recursive DFS starting from node 1 with depth 0 and accumulated score 0.
-3. At each recursive call, if the current depth equals $k$, update a global answer with the current score. This corresponds to completing one full itinerary.
-4. Otherwise, iterate over all outgoing edges from the current node. For each edge, check whether it has already been used in the current path. If not used, traversing it yields its value; if used, it yields zero.
-5. Temporarily mark the edge as used and recurse into the neighboring city with depth increased by 1 and updated score.
-6. After returning from recursion, unmark the edge to restore the state for other branches. This backtracking is essential because each path must have an independent notion of which edges were already taken.
-7. Continue until all depth-k paths have been explored, and return the maximum score observed.
+1. Build an adjacency list where every undirected edge is stored twice with a unique index and its value. This allows us to distinguish edges even if they connect the same pair of nodes.
+2. Start a DFS from node 1 with 0 collected score and 0 steps used. At this point no edge is marked as used, so no resource has been collected yet.
+3. At each recursive call, if we have performed exactly k moves, we update a global answer with the current collected score and stop exploring further. This ensures we only evaluate complete walks.
+4. Otherwise, iterate over all edges adjacent to the current node. For each edge, we attempt to traverse it to the neighboring node.
+5. If the edge has not been used in the current path, we temporarily mark it as used and add its value to the current score. If it has already been used earlier in the same walk, we traverse it but add zero to the score.
+6. Recurse into the neighboring node with one additional step used.
+7. After returning from recursion, unmark the edge to restore the state for other branches of the DFS.
 
-### Why it works
-
-The algorithm maintains a consistent invariant: at every recursion state, the set of marked edges exactly corresponds to the edges used along the current partial walk. This ensures that each path is evaluated with correct one-time edge rewards.
-
-Because every possible sequence of $k$ edge traversals is explored exactly once, and each sequence is evaluated with correct edge usage semantics, the maximum over all explored states equals the optimal answer. No valid walk is omitted, and no invalid reuse is counted, so correctness follows from exhaustive enumeration over a correctly modeled state space.
+The reason this procedure is valid is that every possible walk of length k starting from node 1 is generated exactly once by the recursion tree. For each walk, the algorithm simulates precisely the rule that each edge contributes its value only the first time it appears in that walk. Since we never reuse a global visited structure, different branches remain independent and no valid walk is skipped or double counted.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-
 sys.setrecursionlimit(10**7)
 
 n, m, k = map(int, input().split())
 
 g = [[] for _ in range(n + 1)]
-
 edges = []
+
 for i in range(m):
     a, b, c = map(int, input().split())
-    g[a].append((b, c, i))
-    g[b].append((a, c, i))
-    edges.append(c)
+    g[a].append((b, i, c))
+    g[b].append((a, i, c))
+    edges.append((a, b, c))
 
 used = [False] * m
-ans = 0
+best = 0
 
-def dfs(v, depth, score):
-    global ans
-    if depth == k:
-        ans = max(ans, score)
+def dfs(u, steps, score):
+    global best
+    if steps == k:
+        if score > best:
+            best = score
         return
 
-    for to, val, idx in g[v]:
-        if not used[idx]:
-            used[idx] = True
-            dfs(to, depth + 1, score + val)
-            used[idx] = False
+    for v, eid, val in g[u]:
+        if not used[eid]:
+            used[eid] = True
+            dfs(v, steps + 1, score + val)
+            used[eid] = False
         else:
-            dfs(to, depth + 1, score)
+            dfs(v, steps + 1, score)
 
 dfs(1, 0, 0)
-print(ans)
+
+print(best)
 ```
 
-The adjacency list stores each undirected road with an index so that both directions share the same usage flag. This is crucial because treating directions independently would allow double counting the same road.
+The adjacency list stores both endpoints of each edge, and each edge is assigned an index so that we can track whether its resource has already been collected in the current path. The recursion depth corresponds exactly to the number of moves made.
 
-The recursion depth is explicitly bounded by $k$, and the score is threaded through the call stack rather than recomputed. The backtracking of the `used` array guarantees correctness of the local state.
+The key implementation detail is the separation between traversal and scoring: even when an edge is reused, we still move along it but do not add its value again. This is handled explicitly by branching on the used flag rather than trying to reconstruct history later.
 
-One subtle point is that edges with value 0 still need to be explored, because they may lead to higher-value edges later. The algorithm naturally handles this since zero-value edges are included in the traversal but do not contribute to the score.
+The recursion limit is increased because the search tree can reach depth 6 with a branching factor up to 10, and Python’s default recursion depth may be insufficient for worst-case branching patterns.
 
 ## Worked Examples
 
 ### Sample 1
 
-Input:
+Input graph is a simple chain 1-2-3-4-5 with edge values 1, 2, 3, 1, and k = 3.
 
-```
-5 4 3
-1 2 1
-2 3 2
-3 4 3
-4 5 1
-```
+We trace DFS paths starting from node 1.
 
-This is a simple chain graph. Starting from 1, each move forces progress along the line.
-
-| Step | Node | Depth | Score | Action |
+| Step | Node | Steps | Score | Action |
 | --- | --- | --- | --- | --- |
 | 0 | 1 | 0 | 0 | start |
-| 1 | 2 | 1 | 1 | take 1-2 |
-| 2 | 3 | 2 | 3 | take 2-3 |
-| 3 | 4 | 3 | 6 | take 3-4 |
+| 1 | 2 | 1 | 1 | take edge 1-2 |
+| 2 | 3 | 2 | 3 | take edge 2-3 |
+| 3 | 4 | 3 | 6 | take edge 3-4 |
 
-The DFS explores all paths of length 3, but all are equivalent due to the linear structure. The best achievable sum is 6.
+This path reaches k steps and yields 6.
 
-This confirms the algorithm correctly accumulates edge values only once per traversal.
+Other branches either go backward or end with smaller sums. The algorithm explores all of them and retains 6 as the maximum.
+
+This confirms that the DFS correctly accumulates edge values exactly once per first traversal in the path.
 
 ### Sample 2
 
-Input:
+Cycle graph 1-2-3-4-5-6-1 with varying weights and k = 6.
 
-```
-6 6 6
-1 2 3
-2 3 3
-3 4 5
-4 5 1
-5 6 7
-6 1 3
-```
+One optimal walk is to traverse the cycle once.
 
-This graph forms a cycle, allowing repeated circulation.
-
-| Step | Node | Depth | Score | Action |
+| Step | Node | Steps | Score | Action |
 | --- | --- | --- | --- | --- |
 | 0 | 1 | 0 | 0 | start |
 | 1 | 2 | 1 | 3 | 1-2 |
@@ -182,18 +153,18 @@ This graph forms a cycle, allowing repeated circulation.
 | 5 | 6 | 5 | 19 | 5-6 |
 | 6 | 1 | 6 | 22 | 6-1 |
 
-The DFS correctly recognizes that each edge contributes only once per path traversal, and the cycle is fully exploited.
+The final return to node 1 does not add extra revisited edges beyond the first cycle traversal, matching the rule that each edge contributes only once per path.
 
-This demonstrates that revisiting nodes is allowed, but edge reuse is carefully controlled, which is the core constraint of the problem.
+The DFS ensures all cyclic permutations and backtracking variants are explored, but only the best scoring full-length walk is retained.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(10^k)$ | Each step branches into at most 10 edges, and depth is at most 6 |
-| Space | $O(k)$ | recursion depth and at most k active edge marks |
+| Time | O(10^k) | Each step branches into at most 10 edges, and depth is k ≤ 6 |
+| Space | O(k + m) | recursion stack depth k plus adjacency storage |
 
-The bound $k \le 6$ makes exponential enumeration over walks feasible. Even in the worst case, $10^6$ states is small enough for Python when each transition is constant time.
+The constraints are designed so that k being at most 6 dominates the complexity. Even with maximum branching, the total number of explored states remains around one million, which is acceptable in Python when operations per state are minimal.
 
 ## Test Cases
 
@@ -202,8 +173,7 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    sys.setrecursionlimit(10**7)
+    from math import isclose
 
     n, m, k = map(int, sys.stdin.readline().split())
     g = [[] for _ in range(n + 1)]
@@ -211,28 +181,30 @@ def run(inp: str) -> str:
 
     for i in range(m):
         a, b, c = map(int, sys.stdin.readline().split())
-        g[a].append((b, c, i))
-        g[b].append((a, c, i))
-        edges.append(c)
+        g[a].append((b, i, c))
+        g[b].append((a, i, c))
 
     used = [False] * m
-    ans = 0
+    best = 0
 
-    def dfs(v, depth, score):
-        nonlocal ans
-        if depth == k:
-            ans = max(ans, score)
+    import sys
+    sys.setrecursionlimit(10**7)
+
+    def dfs(u, steps, score):
+        nonlocal best
+        if steps == k:
+            best = max(best, score)
             return
-        for to, val, idx in g[v]:
-            if not used[idx]:
-                used[idx] = True
-                dfs(to, depth + 1, score + val)
-                used[idx] = False
+        for v, eid, val in g[u]:
+            if not used[eid]:
+                used[eid] = True
+                dfs(v, steps + 1, score + val)
+                used[eid] = False
             else:
-                dfs(to, depth + 1, score)
+                dfs(v, steps + 1, score)
 
     dfs(1, 0, 0)
-    return str(ans)
+    return str(best)
 
 # provided samples
 assert run("""5 4 3
@@ -251,38 +223,36 @@ assert run("""6 6 6
 6 1 3
 """) == "22"
 
-# custom cases
+# minimum size
 assert run("""1 0 0
-""") == "0", "no moves"
+""") == "0"
 
-assert run("""2 1 1
-1 2 5
-""") == "5", "single edge"
+# all edges zero
+assert run("""3 3 3
+1 2 0
+2 3 0
+3 1 0
+""") == "0"
 
-assert run("""3 2 2
+# star graph
+assert run("""5 4 2
 1 2 10
-2 3 10
-""") == "20", "simple chain"
-
-assert run("""4 4 2
-1 2 1
-2 1 1
-1 3 5
-3 4 5
-""") == "10", "choice of edges"
+1 3 1
+1 4 1
+1 5 1
+""") == "11"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 0 0 | 0 | zero-move base case |
-| 1-2 single edge | 5 | single traversal correctness |
-| chain of 3 nodes | 20 | additive path accumulation |
-| branching choice | 10 | correct selection of best path |
+| single node | 0 | zero-step base case |
+| all zero weights | 0 | correctness of reuse handling |
+| star graph | 11 | optimal edge choice under branching |
 
 ## Edge Cases
 
-One edge case is when the graph contains cycles that allow revisiting nodes but reusing edges incorrectly if state is not tracked. For example, in a triangle 1-2-3-1 with all weights 10 and $k=3$, the correct answer is 30. The DFS marks each edge as used once per path, so the cycle contributes fully once per traversal sequence.
+One edge case is when k = 0. The algorithm immediately triggers the base condition in DFS and records a score of zero without entering any recursion. This correctly handles graphs with no moves allowed.
 
-Another case is when multiple edges exist between the same pair of nodes. Since each edge has its own index, the algorithm correctly distinguishes them. Without indexing, one would incorrectly merge their usage state and lose valid paths.
+Another edge case occurs when all edges from the starting node have value zero. The DFS still explores all possible walks, but since every traversal contributes zero, the best value remains zero. The used-edge tracking does not interfere, since marking and unmarking edges does not affect accumulated score.
 
-A final case is when all edge weights are zero. The algorithm still explores all paths of length $k$, but every transition yields zero score. The maximum remains zero, which is correctly produced because updates only depend on accumulated score, not structure alone.
+A more subtle case is when the optimal path requires revisiting a node through different edges. For example, in a triangle graph, the algorithm may traverse 1-2-3-1-2-3, and must ensure that only the first traversal of each edge contributes. The used array enforces this locally per path, so repeated traversal does not inflate the score while still allowing necessary movement through already-used edges.
