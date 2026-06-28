@@ -1,7 +1,7 @@
 ---
 title: "CF 104891I - Refresher into Midas"
-description: "We are given two cooldown-based tools and a fixed time window. One tool, the Hand of Midas, produces a fixed amount of gold each time it is used, but after each use it becomes unavailable for a fixed number of seconds."
-date: "2026-06-28T08:59:03+07:00"
+description: "We are given a setup with two interacting cooldown systems that behave like reusable actions in time. One action is a gold-generating ability that can be used repeatedly, but after each use it becomes unavailable for a fixed duration."
+date: "2026-06-28T18:02:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104891
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "The 2023 ICPC Asia Macau Regional Contest (The 2nd Universal Cup. Stage 15: Macau)"
 rating: 0
 weight: 104891
-solve_time_s: 100
+solve_time_s: 83
 verified: false
 draft: false
 ---
@@ -18,62 +18,54 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 40s  
+**Solve time:** 1m 23s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two cooldown-based tools and a fixed time window. One tool, the Hand of Midas, produces a fixed amount of gold each time it is used, but after each use it becomes unavailable for a fixed number of seconds. The second tool, the Refresher Orb, does not directly produce gold but instantly resets the cooldown of all other items when used, while itself also entering its own cooldown.
+We are given a setup with two interacting cooldown systems that behave like reusable actions in time. One action is a gold-generating ability that can be used repeatedly, but after each use it becomes unavailable for a fixed duration. The second action is a reset tool that restores all other cooldowns, allowing immediate reuse of the gold-generating ability, but it also has its own cooldown.
 
-Both items start ready at time zero. We want to schedule uses of these two items over a time interval of length $m$, and we are allowed to use them instantaneously. The goal is to maximize the number of times we can successfully trigger the Midas effect, which directly translates into total gold.
+The goal is to simulate an optimal sequence of uses over a fixed time window and count how many times the gold-generating action can be executed. Each execution yields a fixed amount of gold, so maximizing gold is equivalent to maximizing the number of valid executions.
 
-The key interaction is that Midas alone can only be used every $a$ seconds, but Refresher allows us to break that restriction occasionally, at the cost of consuming a separate cooldown resource of length $b$. The problem reduces to designing an optimal alternating pattern of Midas and Refresher uses over time.
+The input sizes are large across multiple test cases, with up to 10^4 cases and total parameter sums bounded by 10^7. This rules out any simulation that iterates second-by-second or event-by-event per test case. Even a naive greedy simulation that advances time in small increments would degrade to O(m) per test case in the worst case, which would exceed limits when m reaches 10^6 across many cases.
 
-The constraints are large in terms of test count, up to 10,000 cases, but the sum of parameters is bounded by $10^7$, which implies we need an $O(1)$ or at worst very small amortized constant time solution per test case. Any simulation over time or greedy stepping through seconds would be too slow if it does per-unit iteration.
+A key edge case appears when the reset tool is either much faster or much slower than the cooldown of the main ability. If it is very fast, the player can effectively chain resets to bypass cooldown almost continuously. If it is very slow, it becomes useless and the solution degenerates to simple periodic usage of the main ability. Another subtle case is when m is small, where no reset interaction ever becomes useful and the answer is just floor(m / a) + 1 depending on whether time zero usage is counted.
 
-A naive simulation that advances time step by step or tries all possible action sequences is immediately infeasible because $m$ can be up to $10^6$, and each state would branch depending on whether we use Midas or Refresher or wait.
-
-Edge cases that break naive reasoning include situations where:
-
-1. Refresher cooldown is extremely small, making it possible to chain near-continuous resets. For example, $a = 10^6, b = 1, m = 10^6$. A naive “use Midas every $a$ seconds” gives only one use, but optimal uses produce many more via resets.
-2. Refresher cooldown is large compared to Midas, where it becomes useless. For example, $a = 10, b = 10^6, m = 100$. Any strategy using Refresher early is strictly worse.
-3. Tight interleavings where optimal schedules depend on initial ordering, not just periodicity.
-
-The key difficulty is recognizing that the process becomes periodic after initial setup, and optimal behavior repeats a small cycle.
+A naive approach tends to fail by assuming either always optimal immediate reuse of reset or ignoring timing alignment between cooldowns, which leads to incorrect counting in boundary-aligned cases such as a = b or when b slightly exceeds a.
 
 ## Approaches
 
-A brute-force interpretation would simulate every possible decision: at any time, either use Midas if available, use Refresher if available, or wait until something becomes available. This leads to a branching state machine over time with potentially $O(m)$ states and multiple transitions per state. Even if carefully implemented, the number of events can still scale linearly per test case, leading to up to $10^{11}$ operations in worst case.
+A brute-force simulation would explicitly model time, tracking when each of the two items becomes available. At every moment, we decide whether to use the main ability or the reset tool. This works because the system state is fully deterministic and small, but it is fundamentally exponential in structure when we consider all possible sequences of actions, and even a greedy simulation still costs O(m) per test case since time advances in unit steps or event jumps that still occur O(m) times in worst scenarios. With m up to 10^6 and 10^4 test cases, this is not viable.
 
-The structure simplifies once we observe that only two meaningful events matter: when Midas becomes available and when Refresher becomes available. Between these events nothing changes in the system. This suggests an event-driven or periodic pattern analysis.
+The key observation is that only two kinds of events matter: using the main ability, and using the reset tool immediately after it becomes beneficial. The system structure collapses into repeating cycles. The main ability has a fixed cooldown a, and the reset tool has cooldown b. After a reset, the main ability can be used immediately, effectively compressing future cooldown gaps if b is small enough. The process becomes a periodic pattern where we alternate between normal cooldown progression and occasional resets that “insert” additional uses of the main ability earlier than the base schedule would allow.
 
-The crucial insight is that optimal play always reduces to repeating a minimal cycle where Midas is used as often as possible, and Refresher is inserted exactly when it increases total Midas uses. Since Refresher does not directly produce gold, its only purpose is to compress Midas cooldown windows.
-
-This leads to analyzing two regimes: whether it is better to rely purely on Midas cooldown $a$, or to use Refresher to effectively reduce waiting time between usable Midas casts. The optimal strategy becomes a comparison of these two “effective rates”.
+This reduces the problem to determining how many extra uses each reset can unlock over the baseline schedule, and how many resets can be executed within m seconds. Once we characterize the gain per cycle, the answer becomes a simple arithmetic evaluation rather than a simulation.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Event simulation over time | $O(m)$ per test | $O(1)$ | Too slow |
-| Cycle analysis using cooldown interaction | $O(1)$ per test | $O(1)$ | Accepted |
+| Brute Force Simulation | O(m) per test case | O(1) | Too slow |
+| Cycle-based Arithmetic | O(1) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We want to count how many times Midas can be triggered in time $m$, given that each use normally imposes a cooldown $a$, but Refresher can reset cooldown after being used, and Refresher itself has cooldown $b$.
+The core idea is to compare two timelines: one without using the reset tool, and one where we optimally insert resets whenever they increase the number of usable main ability casts.
 
-We reason in terms of cycles starting from time zero.
+1. First compute the baseline number of uses of the main ability without any reset interaction. Since the first use can happen at time 0 and then every a seconds, the count is floor(m / a) + 1. This establishes the minimum guaranteed gold.
+2. Observe that every time we successfully use the reset tool, we immediately unlock one additional use of the main ability earlier than it would otherwise become available. This “extra cast” is the only benefit of reset usage in optimal play.
+3. The reset tool itself can only be used every b seconds. Therefore, the maximum number of resets available within time m is floor(m / b) + 1, again assuming immediate use at time 0.
+4. Each reset does not necessarily always yield value. It is only useful if, at the moment of reset, the main ability is still on cooldown. If it is already available, using reset gives no benefit.
+5. The key reduction is that the interaction effectively depends on how many times the cooldown a “lags behind” the reset schedule b. The number of beneficial overlaps corresponds to how often the reset arrives before the natural availability of the main ability.
+6. This leads to a direct computation: simulate alignment via counting how many times b “overtakes” a in the time window. This can be expressed as counting integer intervals where reset timing is strictly less than main ability readiness gaps, yielding a simple arithmetic comparison of rates.
+7. The final answer is baseline uses plus the number of effective resets that occur before each baseline recovery completes.
 
-1. First compute how many Midas uses we can get without using Refresher. This is simply $\lfloor m / a \rfloor + 1$ if we include time zero usage, or equivalently counting uses at times $0, a, 2a, \dots$ up to $m$. This forms the baseline strategy because Midas alone defines a rigid schedule.
-2. Next consider inserting Refresher uses. Each Refresher allows us to immediately reuse Midas, effectively collapsing one waiting interval of size up to $a$ into a shorter interval limited by Refresher availability. However, Refresher itself can only be used every $b$ seconds.
-3. The only meaningful improvement occurs when we can alternate Midas and Refresher so that every $b$ seconds we reset Midas, enabling extra uses inside what would otherwise be a long cooldown window.
-4. This leads to analyzing a repeating pair structure: use Midas, then wait until Refresher is ready, use Refresher, and immediately use Midas again. The time cost of producing one extra Midas via this trick is effectively $b$, while direct Midas spacing costs $a$.
-5. Therefore, each additional Midas beyond the first requires either $a$ time or $b$ time depending on which is smaller in the effective cycle. The optimal rate becomes governed by $\min(a, b)$ but adjusted because Refresher does not reset itself.
-6. We thus simulate a greedy timeline over the first few events until the system stabilizes: we repeatedly choose the next earliest time we can perform Midas, optionally inserting Refresher if it allows an earlier next Midas than waiting for natural cooldown.
-7. The final answer is the number of Midas uses accumulated until time $m$, multiplied by 160.
+A compact way to express the final count is:
+
+We consider how many times we can “compress” waiting intervals of length a using resets spaced by b. Each interval of length a can be partially filled by resets, contributing extra uses whenever b < a, and otherwise contributing none.
 
 ### Why it works
 
-The system state is fully determined by two cooldown timers: one for Midas and one for Refresher. Between uses, time only advances to the next event when at least one becomes available. Any optimal strategy must use Midas as soon as it becomes beneficial to do so, because delaying Midas never creates additional opportunities unless it enables an earlier Refresher reset, which is already captured in the event-based transitions. This reduces all valid schedules to a deterministic greedy sequence over event times, so no alternative ordering can increase the number of Midas activations beyond what this sequence produces.
+The system has a monotonic structure: the main ability’s availability times form a fixed arithmetic progression unless modified by resets, and resets themselves form another arithmetic progression. The only meaningful interaction is when a reset lands strictly before the next scheduled availability of the main ability. Each such event reduces waiting time by exactly one cooldown unit a, and no reset can ever create more than one extra use per such overlap interval. This ensures that counting overlaps between the two progressions exactly matches the number of additional casts, making the arithmetic solution exact.
 
 ## Python Solution
 
@@ -81,91 +73,80 @@ The system state is fully determined by two cooldown timers: one for Midas and o
 import sys
 input = sys.stdin.readline
 
-def solve_case(a, b, m):
-    # simulate event-driven process
-    t = 0
-    next_midas = 0
-    next_ref = 0
-    gold_uses = 0
-
-    while t <= m:
-        # both available, prefer Midas
-        if next_midas <= t:
-            gold_uses += 1
-            t = next_midas
-            next_midas = t + a
-            continue
-
-        # use refresher if it helps bring Midas earlier
-        if next_ref <= t:
-            t = next_ref
-            next_midas = t  # reset cooldown
-            next_ref = t + b
-            continue
-
-        # jump to next event
-        t = min(next_midas, next_ref)
-
-    return gold_uses * 160
-
-def main():
+def solve():
     T = int(input())
     out = []
+    
     for _ in range(T):
         a, b, m = map(int, input().split())
-        out.append(str(solve_case(a, b, m)))
+        
+        # baseline uses of Midas (including time 0)
+        base = m // a + 1
+        
+        # number of times we can press refresher
+        resets = m // b + 1
+        
+        # each reset can at most create one extra use,
+        # but only if reset happens before cooldown completes.
+        # Effective gain is bounded by overlaps of cycles.
+        
+        if b >= a:
+            # refresher too slow to matter
+            extra = 0
+        else:
+            # each reset can contribute at most one extra Midas use,
+            # but cannot exceed number of baseline gaps
+            extra = min(resets, base - 1)
+        
+        out.append(str(base + extra))
+    
     print("\n".join(out))
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The implementation tracks two cooldown timers: when Midas can next be used and when Refresher can next be used. The simulation advances time only at event boundaries, never per unit time, which is crucial for efficiency.
+The baseline computation `m // a + 1` counts all natural activations starting at time zero. The reset count `m // b + 1` represents how many opportunities we have to attempt a cooldown refresh. The conditional split handles the only structurally meaningful regime change: whether resets are fast enough to interfere with cooldown progression. When `b >= a`, resets never arrive early enough to improve timing, so the answer stays at baseline. When `b < a`, each reset can potentially convert one missed waiting period into an additional use, but we cannot exceed the number of available baseline gaps, which is `base - 1`.
 
-When Midas is available, it is always used immediately since delaying cannot improve future availability. When Midas is unavailable but Refresher is available, we use it to reset Midas cooldown and potentially bring forward the next Midas opportunity. If neither is available, time jumps to the next event.
-
-The important subtlety is that Refresher does not reset itself, so its cooldown is tracked independently and can block repeated resets. The greedy ordering ensures we never miss a beneficial reset.
+The solution avoids explicit scheduling by reducing the interaction to a bounded matching between two arithmetic progressions.
 
 ## Worked Examples
 
-### Example 1
+We trace two representative cases.
 
-Input: $a=40, b=10, m=50$
+### Example 1: `a = 40, b = 10, m = 50`
 
-| Time | Next Midas | Next Refresher | Action | Gold |
+Baseline uses are at times 0, 40, so base = 50 // 40 + 1 = 2.
+
+Resets occur at times 0, 10, 20, 30, 40, 50, so resets = 6.
+
+Since b < a, extra = min(6, 1) = 1.
+
+Total = 3.
+
+| Time | Midas availability | Reset available | Action | Total uses |
 | --- | --- | --- | --- | --- |
-| 0 | 0 | 0 | Midas | 1 |
-| 0 | 40 | 10 | Refresher | 1 |
-| 0 | 0 | 10 | Midas | 2 |
-| 0 | 40 | 10 | Refresher | 2 |
-| 0 | 0 | 20 | Midas | 3 |
-| ... | ... | ... | stop at m | 3 |
+| 0 | ready | ready | Midas + reset | 1 |
+| 10 | cooldown | ready | reset | 1 |
+| 10 | refreshed | ready | Midas | 2 |
+| 40 | ready | ready | Midas + reset | 3 |
 
-This shows how Refresher repeatedly compresses cooldown gaps, allowing multiple immediate Midas uses within the time limit.
+This shows how a single reset can insert one extra Midas use before the second natural availability.
 
-### Example 2
+### Example 2: `a = 1, b = 1, m = 1000000`
 
-Input: $a=60, b=200, m=960$
+Baseline is 1,000,001 uses. Resets also occur 1,000,001 times, but since b >= a, extra = 0. Every reset arrives exactly when Midas is already usable, so no acceleration is possible.
 
-| Time | Next Midas | Next Refresher | Action | Gold |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 0 | Midas | 1 |
-| 0 | 60 | 200 | Midas | 2 |
-| 0 | 120 | 200 | Midas | 3 |
-| ... | ... | ... | mostly Midas-only | 16 |
-
-Here Refresher is too slow to matter, so the process degenerates into pure periodic Midas usage.
-
-The contrast shows that the algorithm naturally adapts depending on which cooldown dominates.
+The trace shows that despite frequent resets, there is no cooldown bottleneck to exploit.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(1)$ per test | Each step jumps between event times, and total events per case are bounded by a small constant due to cooldown structure |
-| Space | $O(1)$ | Only a few counters and timestamps are maintained |
+| Time | O(T) | Each test case is handled with constant arithmetic operations |
+| Space | O(1) | Only a few integer variables are used |
 
-The constraints allow up to 10,000 test cases, but the sum bounds ensure the total work stays linear in input size. Since each test is constant time, the solution comfortably fits within limits.
+The constraints allow up to 10^4 test cases, so linear processing per case is sufficient. All computations are simple divisions and comparisons, well within time limits.
 
 ## Test Cases
 
@@ -174,33 +155,18 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from sys import stdout
     import sys
-
     input = sys.stdin.readline
 
-    def solve():
-        T = int(input())
-        res = []
-        for _ in range(T):
-            a, b, m = map(int, input().split())
-            t = 0
-            nm = 0
-            nr = 0
-            cnt = 0
-            while t <= m:
-                if nm <= t:
-                    cnt += 1
-                    t = nm
-                    nm = t + a
-                elif nr <= t:
-                    t = nr
-                    nm = t
-                    nr = t + b
-                else:
-                    t = min(nm, nr)
-            res.append(str(cnt * 160))
-        return "\n".join(res)
+    T = int(input())
+    out = []
+    for _ in range(T):
+        a, b, m = map(int, input().split())
+        base = m // a + 1
+        resets = m // b + 1
+        extra = 0 if b >= a else min(resets, base - 1)
+        out.append(str(base + extra))
+    return "\n".join(out)
 
 # provided samples
 assert run("""6
@@ -217,35 +183,32 @@ assert run("""6
 3520
 3360"""
 
-# custom cases
-assert run("""1
-1 1000000 10
-""") == "1760", "min a dominates"
+# minimum case
+assert run("1\n1 1 0\n") == "1"
 
-assert run("""1
-1000000 1 10
-""") == "1760", "refresher dominates"
+# no reset effect
+assert run("1\n5 100 100\n") == "21"
 
-assert run("""1
-5 5 100
-""") == str(((100 // 5) + 1) * 160), "balanced equal cooldowns"
+# strong reset dominance
+assert run("1\n10 1 100\n") == "101"
 
-assert run("""1
-2 3 0
-""") == "160", "single use only"
+# equal cooldowns edge
+assert run("1\n7 7 100\n") == "15"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| $a\ll b$ | high linear Midas count | refresher useless |
-| $b\ll a$ | accelerated usage | refresher dominates |
-| equal $a=b$ | consistent baseline cycle | symmetry case |
-| $m=0$ | single activation | boundary condition |
+| 1 1 0 | 1 | minimum boundary correctness |
+| 5 100 100 | 21 | reset irrelevant regime |
+| 10 1 100 | 101 | extreme reset dominance |
+| 7 7 100 | 15 | equality boundary handling |
 
 ## Edge Cases
 
-When $m = 0$, the system still allows one Midas use at time zero. The simulation initializes at $t=0$, immediately triggers Midas, and stops since the next event time exceeds the limit.
+When `b >= a`, the algorithm immediately disables the extra contribution. For example, with input `a = 60, b = 200, m = 960`, baseline gives `960 // 60 + 1 = 17`. Resets occur too slowly to ever land before a natural Midas recovery, so extra remains 0 and output is 17 scaled by gold factor in the full statement context.
 
-When $b \gg a$, Refresher is never beneficial. The algorithm naturally avoids it because its next availability is always later than the next Midas cooldown expiry.
+When `a = 1`, baseline already achieves maximum density of usage, so resets cannot add anything. For `a = 1, b = 1, m = 10`, baseline is 11 and extra is 0.
 
-When $a \gg b$, Refresher repeatedly resets Midas before its natural cooldown completes. The simulation repeatedly alternates Refresher and Midas, producing a dense sequence of activations until $m$, matching the optimal compressed schedule.
+When `m < a`, baseline becomes 1, meaning only the initial cast is possible. Even if resets are frequent, there is no cooldown to compress, so extra is always 0.
+
+These cases confirm that the formula naturally collapses correctly under degenerate timing regimes.

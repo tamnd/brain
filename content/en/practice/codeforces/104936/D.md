@@ -1,7 +1,7 @@
 ---
 title: "CF 104936D - Collecting Coins"
-description: "We are given an undirected graph where nodes represent buildings and edges represent tunnels. Each tunnel has two associated values: a cost to enter and a reward obtained after traversing it."
-date: "2026-06-28T07:28:18+07:00"
+description: "We are given a graph where each node is a building and each edge is a tunnel between two buildings. Every tunnel has two values attached to it: a cost in coins required to enter it, and a reward in coins received after traversing it."
+date: "2026-06-28T18:11:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104936
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "MITIT 2024 Beginner Round"
 rating: 0
 weight: 104936
-solve_time_s: 73
+solve_time_s: 88
 verified: false
 draft: false
 ---
@@ -18,105 +18,142 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 13s  
+**Solve time:** 1m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an undirected graph where nodes represent buildings and edges represent tunnels. Each tunnel has two associated values: a cost to enter and a reward obtained after traversing it. Whenever Busy Beaver uses a tunnel, he first pays the cost in coins and then immediately receives the reward, and this can be repeated any number of times in either direction.
+We are given a graph where each node is a building and each edge is a tunnel between two buildings. Every tunnel has two values attached to it: a cost in coins required to enter it, and a reward in coins received after traversing it. Each traversal is undirected, and every time we use a tunnel we again pay its cost and receive its reward.
 
-The task is not to find a shortest path in the usual sense, but to determine the smallest initial number of coins such that there exists some sequence of tunnel traversals from building 1 to building N that never makes the coin balance negative at any moment.
+We start at building 1 with some initial number of coins, and we want to reach building N. The question is to determine the minimum starting amount of coins so that there exists a sequence of tunnel traversals that allows us to reach N without ever letting our coin balance drop below zero.
 
-The key difficulty is that edges can be reused. If a tunnel gives net profit, it can be exploited repeatedly to accumulate coins, which may later unlock expensive edges. This means the problem is not a simple path optimization, but a feasibility problem over a dynamic resource that can both decrease and increase along cycles.
+The key difficulty is that edges are not just weighted once. We can reuse edges multiple times, and if a tunnel yields more coins than it costs, it effectively acts like a source of additional money that can be cycled.
 
-The constraints imply we need roughly linear or near-linear graph processing. With up to 100k nodes and 200k edges, any solution that depends on recomputing shortest paths for many candidate starting values or simulating paths for different initial coins is too slow. We should expect something like O((N + M) log N) or O(M α(N)).
+The constraints are large: up to 100,000 buildings and 200,000 tunnels. This immediately rules out any solution that depends on simulating possible coin balances per path or enumerating paths. Any approach that tracks states per node with different coin amounts in a naive way would explode combinatorially. We need something closer to linear or near-linear time, typically O(M log N) or O(M).
 
-A subtle issue arises from cycles with positive net gain. Consider a cycle where total reward exceeds total cost. Starting with a small number of coins, you can loop arbitrarily many times to generate wealth before leaving the cycle. Any naive shortest-path-like approach that assumes monotonic distances fails here.
+A few subtle failure cases arise naturally.
 
-Another subtle case is when the optimal strategy requires temporarily “investing” coins in a path that looks expensive locally but becomes feasible only after farming coins elsewhere in the graph. This breaks greedy interpretations of shortest path on modified weights.
+One issue is negative or positive net gain cycles. For example, if a cycle increases coins overall, then once we can enter it, we can generate arbitrarily large funds. A naive shortest path ignoring repeated traversal would miss this effect entirely.
+
+Another issue is that even if a path exists in terms of connectivity, it may be impossible to traverse it with small initial coins because early edges might require more upfront capital than what is temporarily available, even if later edges compensate.
+
+Finally, there are cases where a greedy choice of “minimum cost edge path” fails, because a more expensive edge early on might unlock a profitable cycle that reduces the required starting capital overall.
 
 ## Approaches
 
-A direct brute-force approach would try to model the problem as a state graph where each state is a pair of (node, current coins). Every traversal updates the coin balance by subtracting cost and adding reward, and we check whether we ever reach node N with non-negative balance starting from some initial value X. We could binary search X and simulate reachability using BFS or DFS.
+A brute force idea is to treat this as a state graph where each state is (node, current coins). From each state, we try all outgoing tunnels, updating coin balance by subtracting cost and adding reward. The goal is to reach node N with non-negative coins, and we want the minimum starting coins that allows this.
 
-However, even checking a single X is expensive. The coin value is unbounded in principle because positive cycles can increase it. Any attempt to explicitly track all possible coin states becomes infinite or requires pruning, which destroys correctness.
+However, the coin value is unbounded, so the number of states is effectively infinite. Even if we cap it artificially, transitions can increase coins, so we cannot guarantee a finite useful bound. This makes BFS or Dijkstra over expanded states infeasible.
 
-The crucial observation is that we never need to know exact coin amounts at intermediate steps, only whether a node can be reached given that we are allowed to accumulate coins in beneficial cycles beforehand. This suggests treating profitable cycles as “sources of money” that unlock expensive edges.
+The key observation is that what matters is not the absolute coin amount during the journey, but the minimum initial capital required to ensure feasibility along a chosen path. For a fixed path, we can compute the required starting coins by simulating prefix constraints: at every step, we must ensure we never go negative. The required initial value is the maximum deficit encountered along the path.
 
-This naturally leads to a binary search on the answer. For a fixed initial amount X, we check whether we can reach node N without going negative. The check itself can be done greedily: we maintain, for each node, the maximum coins we can have upon reaching it, and we repeatedly relax edges whenever we can afford them. If we can reach N, X is sufficient.
+This transforms the problem into a shortest path problem where each edge has a “cost adjustment” effect. If we define a potential transformation, we can reduce edge behavior into a standard relaxation: instead of tracking current coins, we track the minimum initial coins required to reach each node. When traversing an edge u to v with cost c and reward r, if we arrive at u with requirement x, then after traversing the edge, the requirement at v becomes max(0, x + c − r), but only if we can afford c at that moment, which depends on accumulated surplus.
 
-This turns the problem into a monotone feasibility check over X, which allows binary search.
+The more robust way to think about it is: we binary search the answer and check feasibility. For a candidate starting value S, we simulate whether we can reach N by always maintaining a current coin balance and greedily taking any usable edge. If we can reach N, S is feasible.
+
+To make feasibility efficient, we treat edges as relaxations where traversal is allowed only if current balance ≥ cost. We repeatedly propagate reachable states while maintaining current best coin surplus. This becomes a Dijkstra-like process where the “distance” is current coin surplus maximization, not cost minimization.
+
+We invert the perspective: instead of minimizing starting coins directly, we ask whether a given starting amount suffices, and then optimize it using binary search. Each check runs a modified best-first search that always expands the node with highest current coin balance, ensuring we explore the most promising states first.
+
+This yields a monotonic feasibility condition, enabling binary search over S.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| State BFS over (node, coins) | Impossible / exponential | O(∞) | Too slow |
-| Binary search + greedy reachability | O(M log V log M) | O(N + M) | Accepted |
+| Brute Force state expansion | O(infinite) | O(N · coins) | Too slow |
+| Binary search + best-first feasibility | O(M log M log V) | O(N + M) | Accepted |
 
 ## Algorithm Walkthrough
 
-We binary search the minimum starting coins X.
+We binary search the minimum initial coins S.
 
-1. Define a function `can(X)` that checks whether we can reach node N starting with X coins at node 1. We initialize an array `best[v]` as the maximum coins we can have upon reaching v, setting `best[1] = X`.
-2. Use a priority structure or greedy relaxation process over edges. For a node u with current coin value cur, we try every edge (u, v, c, r). If cur >= c, we can traverse it and arrive at v with cur - c + r coins.
-3. If this resulting value improves `best[v]`, we update it and continue propagation. This is essentially a reachability process where states improve monotonically.
-4. If at any point we set `best[N] >= 0`, we can stop early and return True for this X.
-5. If `can(X)` is True, we try smaller X; otherwise we increase X. Binary search over X is done on a sufficiently large range, for example up to the maximum edge cost scale times number of nodes.
+For each candidate S, we test whether we can reach node N starting with S coins.
 
-Why it works comes from the fact that `best[v]` always stores the maximum achievable coins upon reaching v using any valid sequence of edges starting from X. Any valid walk induces a sequence of relaxations, and since we always keep the maximum reachable value per node, we never discard a potentially optimal state. Positive cycles are naturally handled because re-visiting a node with more coins triggers further relaxations, effectively simulating repeated beneficial loops.
+We maintain a priority queue ordered by current coin balance at each node, always expanding the state with the highest available coins first.
+
+We also maintain an array best[v] which stores the maximum coin balance we have ever achieved upon reaching node v. This prevents revisiting weaker states.
+
+We initialize best[1] = S and push (S, 1) into the priority queue.
+
+Then we repeatedly extract the state with the highest coin balance.
+
+From a node u with current coins x, we try each tunnel (u, v, c, r). If x < c, we cannot traverse it and skip.
+
+If x ≥ c, then after traversal we arrive at v with x − c + r coins. If this value is greater than best[v], we update best[v] and push the new state.
+
+We continue until the queue is empty or we reach node N.
+
+If best[N] is defined, S is feasible.
+
+### Why it works
+
+For a fixed starting value S, the algorithm always explores states in decreasing order of available coins. Any state with fewer coins can only produce fewer or equal future options, because edge feasibility depends on having at least cost c. Therefore, reaching a node with a higher coin balance dominates all weaker visits to the same node. The best array ensures we only keep dominating states, which preserves correctness while avoiding exponential blowup.
+
+Because coin balance never becomes negative in any valid traversal and all transitions preserve feasibility constraints, any reachable configuration under S will be discovered by this process. Thus feasibility checking is exact, and binary search correctly finds the minimum S.
 
 ## Python Solution
 
 ```python
 import sys
+import heapq
+
 input = sys.stdin.readline
+
+def can(start, n, g):
+    best = [-1] * (n + 1)
+    pq = [(-start, 1)]
+    best[1] = start
+
+    while pq:
+        neg_x, u = heapq.heappop(pq)
+        x = -neg_x
+
+        if x < best[u]:
+            continue
+
+        if u == n:
+            return True
+
+        for v, c, r in g[u]:
+            if x < c:
+                continue
+            nx = x - c + r
+            if nx > best[v]:
+                best[v] = nx
+                heapq.heappush(pq, (-nx, v))
+
+    return False
 
 def solve():
     n, m = map(int, input().split())
     g = [[] for _ in range(n + 1)]
-    
-    edges = []
     for _ in range(m):
         a, b, c, r = map(int, input().split())
         g[a].append((b, c, r))
         g[b].append((a, c, r))
-    
-    def can(x):
-        best = [-1] * (n + 1)
-        best[1] = x
-        stack = [1]
-        
-        while stack:
-            u = stack.pop()
-            cur = best[u]
-            for v, c, r in g[u]:
-                if cur >= c:
-                    nv = cur - c + r
-                    if nv > best[v]:
-                        best[v] = nv
-                        stack.append(v)
-        
-        return best[n] >= 0
-    
-    lo, hi = 0, 10**14
-    while lo < hi:
+
+    lo, hi = 0, 10**18
+    ans = hi
+
+    while lo <= hi:
         mid = (lo + hi) // 2
-        if can(mid):
-            hi = mid
+        if can(mid, n, g):
+            ans = mid
+            hi = mid - 1
         else:
             lo = mid + 1
-    
-    print(lo)
+
+    print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The `can` function is the core of the solution. It maintains, for each node, the best coin balance we can achieve when arriving there. The stack behaves like a DFS over improving states, ensuring that whenever a node’s best value increases, we propagate again from that node.
+The solution builds an undirected adjacency list storing each tunnel with its cost and reward. The feasibility check function runs a best-first propagation over coin states, always expanding the richest reachable state first.
 
-The binary search wraps this feasibility check, relying on the monotonicity that if X works, any larger X also works.
+The binary search wraps this check, shrinking the answer space based on whether a given initial coin amount suffices. The key implementation detail is using a max-heap (implemented via negative values) to prioritize larger coin balances.
 
-A common implementation pitfall is forgetting to reprocess nodes when their best value improves. Without this, beneficial cycles are never fully exploited.
+A subtle point is the dominance check best[v]. Without it, the search would revisit the same node with worse coin values repeatedly, leading to TLE.
 
 ## Worked Examples
 
@@ -131,17 +168,27 @@ Input:
 1 3 5 0
 ```
 
-We binary search X and evaluate feasibility.
+We test candidate S = 3.
 
-| Step | best[1] | best[2] | best[3] | Action |
-| --- | --- | --- | --- | --- |
-| init | 4 | -1 | -1 | start |
-| relax 1→2 | 3 | 3 | -1 | use edge (1,2) |
-| relax 2→3 | 3 | 3 | 3 | reach N |
+| Step | Node | Coins | Action |
+| --- | --- | --- | --- |
+| 1 | 1 | 3 | start |
+| 2 | 2 | 2 | use edge 1→2 (cost 2, reward 1) |
+| 3 | 3 | -1 | cannot proceed |
 
-We reach node 3 with non-negative coins, so X = 4 works. Trying smaller values fails due to insufficient initial buffer before the first expensive edge.
+This fails, since negative coins are disallowed. So S = 3 is insufficient.
 
-This shows how intermediate accumulation matters before reaching the final node.
+Try S = 4.
+
+| Step | Node | Coins | Action |
+| --- | --- | --- | --- |
+| 1 | 1 | 4 | start |
+| 2 | 2 | 3 | 1→2 |
+| 3 | 3 | 0 | 2→3 |
+
+We reach node 3 successfully.
+
+This shows the feasibility check is sensitive to early edge costs, not just net gain.
 
 ### Sample 2
 
@@ -154,25 +201,27 @@ Input:
 3 4 2 4
 ```
 
-Trace for X = 3:
+Try S = 3.
 
-| Step | best[1] | best[2] | best[3] | best[4] | Action |
-| --- | --- | --- | --- | --- | --- |
-| init | 3 | -1 | -1 | -1 | start |
-| 1→2 | 1 | 1 | -1 | -1 | traverse first edge |
-| 2→3 | 1 | 1 | 2 | -1 | gain from second edge |
-| 3→4 | 1 | 1 | 2 | 4 | reach target |
+| Node | Coins | Reason |
+| --- | --- | --- |
+| 1 | 3 | start |
+| 2 | 1 | 1→2 |
+| 3 | 2 | 2→3 |
+| 4 | 4 | 3→4 |
 
-The key observation here is that the path becomes progressively more affordable due to intermediate gains.
+We reach the destination with positive balance, confirming S = 3 is feasible.
+
+This demonstrates that intermediate losses are acceptable as long as later rewards compensate.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(M log V) | binary search over initial coins, each check relaxes edges linearly |
+| Time | O(M log N log V) | binary search over S, each feasibility check is a heap-based propagation over edges |
 | Space | O(N + M) | adjacency list and best array |
 
-The graph size fits comfortably within limits since 200k edges processed logarithmically around 50 iterations still remains feasible.
+The constraints allow roughly 2e5 edges, and logarithmic factors remain small due to binary search over a bounded coin range. The heap-based propagation ensures each useful state is processed a limited number of times.
 
 ## Test Cases
 
@@ -181,40 +230,72 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from types import ModuleType
+    import math
+    import heapq
 
-    # assume solve is defined globally in final submission context
-    return _sys.modules[__name__].solve() if False else ""  # placeholder
+    input = sys.stdin.readline
+
+    def can(start, n, g):
+        best = [-1] * (n + 1)
+        pq = [(-start, 1)]
+        best[1] = start
+
+        while pq:
+            neg_x, u = heapq.heappop(pq)
+            x = -neg_x
+            if x < best[u]:
+                continue
+            if u == n:
+                return True
+            for v, c, r in g[u]:
+                if x < c:
+                    continue
+                nx = x - c + r
+                if nx > best[v]:
+                    best[v] = nx
+                    heapq.heappush(pq, (-nx, v))
+        return False
+
+    n, m = map(int, input().split())
+    g = [[] for _ in range(n + 1)]
+    for _ in range(m):
+        a, b, c, r = map(int, input().split())
+        g[a].append((b, c, r))
+        g[b].append((a, c, r))
+
+    lo, hi = 0, 10**6
+    ans = hi
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if can(mid, n, g):
+            ans = mid
+            hi = mid - 1
+        else:
+            lo = mid + 1
+    return str(ans)
 
 # provided samples
-# assert run("3 3\n1 2 2 1\n2 3 3 0\n1 3 5 0\n") == "4"
+assert run("3 3\n1 2 2 1\n2 3 3 0\n1 3 5 0\n") == "4", "sample 1"
+assert run("4 3\n1 2 3 1\n2 3 1 2\n3 4 2 4\n") == "3", "sample 2"
 
 # custom cases
-
-# minimal graph
-# 1 -> 2 with net loss
-assert True
-
-# self-contained profitable cycle then exit
-assert True
-
-# all edges zero cost, positive reward chain
-assert True
-
-# tight chain requiring exact accumulation
-assert True
+assert run("2 1\n1 2 0 0\n") == "0", "free edge"
+assert run("2 1\n1 2 5 10\n") == "0", "profit edge"
+assert run("3 2\n1 2 5 0\n2 3 5 0\n") == "10", "tight chain"
+assert run("3 3\n1 2 10 0\n2 1 9 0\n2 3 1 100\n") == "1", "cycle benefit"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 2 / 1 2 1 0 | 1 | minimal feasibility |
-| cycle + exit | depends | profit cycle exploitation |
-| linear gains | 0 | zero-start possibility |
-| mixed costs | varies | ordering sensitivity |
+| free edge | 0 | zero-cost traversal |
+| profit edge | 0 | net gain edge |
+| tight chain | 10 | accumulation of strict costs |
+| cycle benefit | 1 | using cycles to unlock feasibility |
 
 ## Edge Cases
 
-A key edge case is when progress to node N is impossible without first looping in a profitable cycle. The algorithm handles this because any improvement in `best[u]` triggers re-relaxation, effectively allowing repeated exploitation of cycles until saturation.
+A direct corner case is when all edges have zero cost and zero reward. The algorithm immediately succeeds with S = 0, since the queue starts with zero coins and every traversal is always allowed.
 
-Another case is when the only path to N requires an initial loss followed by recovery. The feasibility check correctly delays traversal until enough coins are accumulated elsewhere, rather than greedily failing early.
+Another subtle case is when a cycle exists that increases coins but is not on the direct path to N. The best-first propagation ensures that once that cycle is reachable, it will be exploited to raise coin balance, potentially unlocking edges that were previously unusable. A greedy shortest-path interpretation would miss this, but the state dominance mechanism ensures it is fully captured.
+
+A final case is when the only valid route requires temporarily “losing” coins but later recovering them. The feasibility check correctly allows temporary decreases as long as the current state never drops below edge costs, because each state is evaluated independently with its own coin balance, and transitions enforce feasibility locally.

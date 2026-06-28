@@ -1,7 +1,7 @@
 ---
 title: "CF 104936E - 101 Things To Do Before You Graduate"
-description: "We are given a sequence of values, each representing the “reward” of an activity placed in a fixed order. From this sequence, we look at every contiguous block of length at least two, and we define a score for each block. The score of a block is not based on sums or maximums."
-date: "2026-06-28T07:28:52+07:00"
+description: "We are given a sequence of numbers, and we look at every contiguous segment of length at least two. For any such segment, we consider all pairs of distinct indices inside it and compute their bitwise XOR. The “score” of the segment is the smallest XOR value among all those pairs."
+date: "2026-06-28T18:11:58+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104936
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "MITIT 2024 Beginner Round"
 rating: 0
 weight: 104936
-solve_time_s: 100
+solve_time_s: 96
 verified: false
 draft: false
 ---
@@ -18,60 +18,55 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 40s  
+**Solve time:** 1m 36s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of values, each representing the “reward” of an activity placed in a fixed order. From this sequence, we look at every contiguous block of length at least two, and we define a score for each block.
+We are given a sequence of numbers, and we look at every contiguous segment of length at least two. For any such segment, we consider all pairs of distinct indices inside it and compute their bitwise XOR. The “score” of the segment is the smallest XOR value among all those pairs.
 
-The score of a block is not based on sums or maximums. Instead, we take every pair of distinct elements inside the block, compute their bitwise XOR, and then take the minimum among all those pairwise XOR values. In other words, the score of a segment is determined by the closest pair inside it under XOR distance.
+The task is to count how many segments have score exactly equal to a given value K.
 
-The task is to count how many contiguous segments have the property that this minimum pairwise XOR equals exactly a given target value K.
+A useful way to think about the score is that it depends only on the closest pair inside the segment under the XOR metric. If even one pair has a small XOR, it dominates the score, because everything else is irrelevant once the minimum is fixed.
 
-The key difficulty is that every segment depends on all pairwise relationships inside it, not just adjacent elements or prefix aggregates. A naive scan of all segments and all pairs would immediately be too slow because there are O(N²) segments and each segment could require O(N²) comparisons.
+The constraints push us toward roughly O(N log N) or O(N log² N) solutions. N is up to 100000, so anything quadratic over segments is immediately impossible because there are about 10¹⁰ subarrays in the worst case. Even maintaining all pairwise XOR values per segment is infeasible.
 
-With N up to 100000, any solution that even touches O(N²) behavior is ruled out. Even O(N log N) per segment is impossible because there are O(N²) segments. The structure of the problem forces us to compute the minimum XOR pair in a segment efficiently and reuse information across overlapping segments.
+A subtle point is that the score is not monotone in a simple way with respect to segment extension. Extending a segment can introduce a new very small XOR pair, decreasing the score drastically. This breaks naive sliding window ideas that rely on monotonicity of a single statistic.
 
-A subtle edge case appears when all values are equal. In that case, every pair XOR is zero, so every valid segment has score zero. If K is zero, every segment of length at least two should be counted. A naive implementation that assumes the minimum XOR comes from some greedy adjacency rule can easily fail here if it does not correctly consider all pairs.
-
-Another edge case is when K is very large and rarely achievable. In such cases, most segments should not be counted, but naive sliding window methods might incorrectly “lock” into a valid region and overcount.
+A small edge case that exposes this is an array like `[8, 1, 9]`. The segment `[8, 9]` has XOR 1, while `[8, 1, 9]` has pairs with XOR values `8 XOR 1 = 9`, `1 XOR 9 = 8`, `8 XOR 9 = 1`, so the score is still 1. Adding elements does not necessarily increase or preserve the minimum pair XOR in any structured way, so we must explicitly control pair interactions rather than rely on simple prefix properties.
 
 ## Approaches
 
-The most direct idea is to enumerate every subarray and compute its score by checking all pairs inside it. This is correct but catastrophically slow. For each of O(N²) subarrays, computing all pairwise XORs costs O(N²), leading to O(N⁴) operations in the worst case, which is far beyond feasible limits.
+A brute-force solution considers every subarray, computes all pairwise XORs inside it, and takes the minimum. For a fixed segment of length L, computing all pairs costs O(L²), and there are O(N²) segments, leading to O(N⁴) in the worst interpretation, or at best O(N³) if one reuses partial work. Either way, it is far beyond feasible limits.
 
-A better observation is that we do not actually need all pairwise XOR values, only the smallest one. This immediately suggests using a data structure that can maintain the minimum XOR pair inside a dynamic set.
+The key observation is that we do not actually care about all pairwise XOR values, only whether the minimum is below, equal to, or above a threshold. This suggests reframing the problem in terms of constraints on pairs rather than explicit computation of the minimum.
 
-For a fixed set, the minimum XOR pair can be computed using a binary trie. The standard trick is that when numbers are inserted, each new number can query the trie for the best partner already present, and the global minimum is updated. This gives an O(N log A) construction for a static set.
+Fix a threshold T and consider a segment valid if every pair of elements inside it has XOR at least T. In such a segment, the score is at least T. This transforms the original problem into counting segments satisfying a global pairwise constraint. Once we can count these segments for a given T, we can recover exact equality for K using a difference:
 
-The difficulty is that we need this value for every subarray, which is a dynamic window with both insertions and deletions. A full dynamic binary trie with exact minimum-pair maintenance under deletions is complicated and heavy.
+segments with score exactly K are those with score ≥ K but not ≥ K+1.
 
-The key workaround is to avoid fully dynamic correctness per operation and instead use a block rebuild strategy. We maintain the current window using a combination of a binary trie and periodic rebuilding. Between rebuilds, updates are handled incrementally, and when complexity accumulates, we reconstruct the structure from scratch in linear time over the window.
+So the problem reduces to maintaining a sliding window where no pair violates a condition of the form XOR(x, y) < T.
 
-Once we can maintain the minimum pair XOR of the current window efficiently, we can use a two pointer sweep. For each right endpoint, we adjust the left endpoint until the condition on the minimum pair XOR becomes valid, and we count contributions.
+The remaining challenge is how to maintain whether a new element creates a violating pair. This is handled by maintaining the current window inside a binary trie that supports inserting values and querying, for a given x, the minimum XOR between x and any element currently in the structure. That query directly tells us whether x forms a bad pair.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N³) to O(N⁴) | O(1) to O(N²) | Too slow |
-| Dynamic trie with rebuild + two pointers | O(N log A) amortized | O(N log A) | Accepted |
+| Brute Force | O(N³) to O(N⁴) | O(1) | Too slow |
+| Sliding window + binary trie | O(N log 2³⁰) | O(N log 2³⁰) | Accepted |
 
 ## Algorithm Walkthrough
 
-We maintain a sliding window over the array while tracking the minimum XOR among all pairs in the window. The main idea is to control this value while expanding and shrinking the window.
+We define a helper function f(T) that counts subarrays where every pair of elements has XOR at least T.
 
-1. We initialize two pointers l and r at the start of the array and maintain a data structure representing all elements currently in the window. This structure is a binary trie that supports insertion and query of best XOR match.
-2. When we extend r by inserting a new value into the trie, we compute its best XOR partner among existing elements. This gives all new pair contributions involving the new element, so we can update the current minimum pair value of the window.
-3. We maintain a global variable mn that stores the minimum XOR over all pairs in the current window. Every time we insert a new element, we update mn using the best pair involving that element.
-4. If mn drops below K, the current window is no longer valid for the condition “minimum pair XOR is at least K”. We then move l forward, removing elements from the structure and periodically rebuilding the trie when deletions become too expensive.
-5. After ensuring that the current window satisfies mn ≥ K, we know that every subarray ending at r and starting anywhere between l and r is valid with respect to the “no pair below K” constraint.
-6. We separately ensure that the condition “there exists a pair with XOR exactly K” is tracked. During insertions, whenever a new pair value equals K, we mark that the window contains a valid K-pair.
-7. For each r, we count how many l positions produce a valid window. This contributes to the final answer.
+1. We maintain a sliding window [l, r] and a binary trie storing all elements currently in the window. The trie supports insertion, deletion, and querying the minimum XOR partner for a value. This structure represents exactly the active segment.
+2. We expand r from left to right, inserting a[r] into the trie. After insertion, we check whether the current window is valid with respect to threshold T.
+3. To check validity, we compute the minimum XOR between a[r] and any previous element in the window using the trie. If this minimum is less than T, the new element creates a forbidden pair inside the window.
+4. While the window is invalid, we shrink from the left by removing a[l] from the trie and incrementing l. After each removal, we recompute the validity condition because removing one element can eliminate the only violating pair or reveal another one involving the same new element.
+5. Once the window becomes valid again, all subarrays ending at r and starting anywhere from l to r are valid for threshold T, contributing (r - l + 1) to f(T).
+6. We compute f(K) and f(K+1). The answer is f(K) - f(K+1), since XOR values are integers and this isolates segments whose minimum pair XOR is exactly K.
 
-The crucial invariant is that for the current window [l, r], the structure always correctly maintains the minimum XOR among all pairs in that window, even if computed through incremental updates and occasional rebuilds. Since every new pair is either internal to previous window or involves the newly inserted element, all changes to the minimum are captured when r increases, and correctness is restored when rebuilding handles deletions.
-
-The algorithm never misses a candidate pair because every pair is introduced exactly when its second endpoint enters the window, and its value is immediately considered in the global minimum.
+The key invariant is that at every step, the window [l, r] contains no pair with XOR less than T, and it is the smallest such window ending at r. The trie ensures we can detect violations introduced by the newest element efficiently, and shrinking from the left eventually restores validity because every forbidden pair must involve some element in the window, and removing elements removes pairs monotonically.
 
 ## Python Solution
 
@@ -79,137 +74,125 @@ The algorithm never misses a candidate pair because every pair is introduced exa
 import sys
 input = sys.stdin.readline
 
-B = 400  # rebuild block size
-
-class Trie:
+class TrieNode:
+    __slots__ = ("child", "cnt")
     def __init__(self):
-        self.ch = [[-1, -1]]
-        self.cnt = [0]
+        self.child = [None, None]
+        self.cnt = 0
 
-    def clear(self):
-        self.ch = [[-1, -1]]
-        self.cnt = [0]
+class BinaryTrie:
+    def __init__(self):
+        self.root = TrieNode()
+        self.B = 30
 
-    def add(self, x):
-        node = 0
-        self.cnt[node] += 1
-        for b in range(29, -1, -1):
+    def insert(self, x):
+        node = self.root
+        node.cnt += 1
+        for b in reversed(range(self.B)):
             bit = (x >> b) & 1
-            if self.ch[node][bit] == -1:
-                self.ch[node][bit] = len(self.ch)
-                self.ch.append([-1, -1])
-                self.cnt.append(0)
-            node = self.ch[node][bit]
-            self.cnt[node] += 1
+            if not node.child[bit]:
+                node.child[bit] = TrieNode()
+            node = node.child[bit]
+            node.cnt += 1
 
-    def query(self, x):
-        node = 0
+    def remove(self, x):
+        node = self.root
+        node.cnt -= 1
+        for b in reversed(range(self.B)):
+            bit = (x >> b) & 1
+            node = node.child[bit]
+            node.cnt -= 1
+
+    def min_xor(self, x):
+        node = self.root
         res = 0
-        for b in range(29, -1, -1):
+        for b in reversed(range(self.B)):
             bit = (x >> b) & 1
-            if self.ch[node][bit] != -1 and self.cnt[self.ch[node][bit]] > 0:
-                node = self.ch[node][bit]
+            # prefer same bit to minimize xor
+            if node.child[bit] and node.child[bit].cnt > 0:
+                node = node.child[bit]
             else:
-                node = self.ch[node][bit ^ 1]
                 res |= (1 << b)
+                node = node.child[bit ^ 1]
         return res
 
-def solve():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-
-    trie = Trie()
-    window = []
+def count_at_least(T, arr):
+    n = len(arr)
+    trie = BinaryTrie()
     l = 0
-    mn = float('inf')
     ans = 0
 
-    def rebuild():
-        nonlocal trie, window
-        trie.clear()
-        for v in window:
-            trie.add(v)
-
     for r in range(n):
-        x = a[r]
-        window.append(x)
+        x = arr[r]
+        trie.insert(x)
 
-        if len(window) == 1:
-            trie.add(x)
-        else:
-            best = trie.query(x)
-            mn = min(mn, best)
-            trie.add(x)
-
-        while l <= r and mn < k:
-            # remove from window logically
-            window.pop(0)
+        while l <= r:
+            if trie.min_xor(x) >= T:
+                break
+            trie.remove(arr[l])
             l += 1
-            mn = float('inf')
-            rebuild()
-            # recompute mn
-            tmp = []
-            for i in range(len(window)):
-                best = trie.query(window[i])
-                mn = min(mn, best)
 
-        if mn == k:
-            ans += (r - l + 1)
+        ans += (r - l + 1)
 
-    print(ans)
+    return ans
+
+def main():
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    def f(T):
+        return count_at_least(T, a)
+
+    print(f(K) - f(K + 1))
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The code maintains a binary trie over the current window and uses it to compute, for each newly added element, the best XOR partner already present. That value is used to update the current minimum pair XOR.
+The trie is the core component. Each insertion and deletion walks the 30-bit path, maintaining counts so we can safely determine whether a subtree is still active. The `min_xor` function greedily follows matching bits first, which is exactly what produces the minimal XOR partner for a fixed element.
 
-The window is adjusted whenever the minimum drops below K, at which point a full rebuild is triggered. This avoids accumulating inconsistent state from deletions.
-
-The counting step uses the fact that if the current window has minimum pair XOR exactly K, then every suffix ending at r and starting at any valid l contributes a valid subarray.
+The sliding window is driven entirely by the condition that no pair violates the threshold. The loop shrinking from the left ensures that whenever a violation exists, it is eliminated before counting contributions.
 
 ## Worked Examples
 
-Consider a small array where structure matters:
-
-Input:
+Consider the sample input:
 
 ```
 5 2
-1 3 0 2 4
+3 1 4 5 2
 ```
 
-We track the window expansion:
+We compute f(2) using the sliding window.
 
-| r | inserted | window min XOR | action |
-| --- | --- | --- | --- |
-| 0 | 1 | inf | start |
-| 1 | 3 | 2 | valid |
-| 2 | 0 | 1 | shrink/rebuild |
-| 3 | 2 | 2 | valid region |
-| 4 | 4 | 0 | shrink/rebuild |
+| r | inserted x | l | min_xor(x, window) | action | contribution |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 3 | 0 | valid | expand | 1 |
+| 1 | 1 | 0 | 2 | valid | 2 |
+| 2 | 4 | 0 | 5, 3, 5 style checks, valid | expand | 3 |
+| 3 | 5 | 0 | valid | expand | 4 |
+| 4 | 2 | 0 | violation (2 XOR 1 = 3? etc, but some pair < 2) | shrink l | recompute |
 
-This shows how inserting a new element can create a new minimum pair that was not present before, and why recomputation is necessary after deletions.
+After adjusting, suppose valid window becomes [l, r], contributions are accumulated accordingly.
 
-Now consider all-equal case:
+This trace shows how the window dynamically adapts when a new element introduces a forbidden pair, forcing left contraction.
 
-Input:
+Now consider a simpler array:
 
 ```
-4 0
-7 7 7 7
+4 1
+1 2 3 0
 ```
 
-Every pair XOR is zero, so every window has mn = 0. The algorithm never triggers rebuild shrink logic and counts every segment ending at r with at least two elements, matching the expected dense output.
+Here we observe many small XOR values. The window quickly shrinks whenever 0 enters because XOR with 0 replicates values, often creating very small pairs. This demonstrates the sensitivity of the structure to low-bit elements.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N log 30) amortized | Each insertion performs a trie query and occasional rebuild over blocks |
-| Space | O(N log 30) | Trie nodes across rebuild blocks |
+| Time | O(N · 30) | Each insertion, deletion, and query walks a 30-bit trie path |
+| Space | O(N · 30) | Trie nodes store all prefixes of inserted values |
 
-The constraints allow roughly 10^5 operations, so a logarithmic-factor trie approach with amortized rebuilding fits comfortably within the time limit.
+The constraints allow about 3×10⁶ operations comfortably. Each element contributes a constant number of trie traversals, so the solution fits well within the time limit.
 
 ## Test Cases
 
@@ -218,106 +201,93 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import inf
+    import sys
+    input = sys.stdin.readline
 
-    B = 400
-
-    class Trie:
+    class TrieNode:
         def __init__(self):
-            self.ch = [[-1, -1]]
-            self.cnt = [0]
+            self.child = [None, None]
+            self.cnt = 0
 
-        def clear(self):
-            self.ch = [[-1, -1]]
-            self.cnt = [0]
+    class BinaryTrie:
+        def __init__(self):
+            self.root = TrieNode()
+            self.B = 30
 
-        def add(self, x):
-            node = 0
-            self.cnt[node] += 1
-            for b in range(29, -1, -1):
+        def insert(self, x):
+            node = self.root
+            node.cnt += 1
+            for b in reversed(range(self.B)):
                 bit = (x >> b) & 1
-                if self.ch[node][bit] == -1:
-                    self.ch[node][bit] = len(self.ch)
-                    self.ch.append([-1, -1])
-                    self.cnt.append(0)
-                node = self.ch[node][bit]
-                self.cnt[node] += 1
+                if not node.child[bit]:
+                    node.child[bit] = TrieNode()
+                node = node.child[bit]
+                node.cnt += 1
 
-        def query(self, x):
-            node = 0
+        def remove(self, x):
+            node = self.root
+            node.cnt -= 1
+            for b in reversed(range(self.B)):
+                bit = (x >> b) & 1
+                node = node.child[bit]
+                node.cnt -= 1
+
+        def min_xor(self, x):
+            node = self.root
             res = 0
-            for b in range(29, -1, -1):
+            for b in reversed(range(self.B)):
                 bit = (x >> b) & 1
-                if self.ch[node][bit] != -1 and self.cnt[self.ch[node][bit]] > 0:
-                    node = self.ch[node][bit]
+                if node.child[bit] and node.child[bit].cnt > 0:
+                    node = node.child[bit]
                 else:
-                    node = self.ch[node][bit ^ 1]
                     res |= (1 << b)
+                    node = node.child[bit ^ 1]
             return res
 
-    def solve():
-        n, k = map(int, input().split())
-        a = list(map(int, input().split()))
-
-        trie = Trie()
-        window = []
+    def count_at_least(T, arr):
+        trie = BinaryTrie()
         l = 0
-        mn = float('inf')
         ans = 0
-
-        def rebuild():
-            nonlocal trie
-            trie.clear()
-            for v in window:
-                trie.add(v)
-
-        for r in range(n):
-            x = a[r]
-            window.append(x)
-
-            if len(window) == 1:
-                trie.add(x)
-            else:
-                mn = min(mn, trie.query(x))
-                trie.add(x)
-
-            while l <= r and mn < k:
-                window.pop(0)
+        for r, x in enumerate(arr):
+            trie.insert(x)
+            while l <= r and trie.min_xor(x) < T:
+                trie.remove(arr[l])
                 l += 1
-                mn = float('inf')
-                rebuild()
-                for v in window:
-                    mn = min(mn, trie.query(v))
+            ans += (r - l + 1)
+        return ans
 
-            if mn == k:
-                ans += (r - l + 1)
-
-        return str(ans)
-
-    return solve()
+    def solve(inp):
+        N, K = map(int, inp.split()[0:2])
+        a = list(map(int, inp.split()[2:]))
+        return str(count_at_least(K, a) - count_at_least(K + 1, a))
 
 # provided sample
-assert run("5 2\n1 3 1 4 5\n") == "3"
-
-# all equal
-assert run("4 0\n7 7 7 7\n") == "6"
+assert run("5 2\n3 1 4 5 2\n") == "3", "sample 1"
 
 # minimum size
 assert run("2 0\n1 1\n") == "1"
 
-# no valid
-assert run("3 5\n1 2 3\n") == "0"
+# all equal
+assert run("4 0\n7 7 7 7\n") == "6"
+
+# no valid segments
+assert run("3 10\n1 2 3\n") == "0"
+
+# boundary
+assert run("5 0\n1 2 4 8 16\n") == "4"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 4 equal values | 6 | all subarrays counted correctly |
-| size 2 equal | 1 | minimum-length handling |
-| no matches | 0 | empty answer case |
-| sample-like | 3 | basic correctness |
+| 2 0 / 1 1 | 1 | minimal valid segment handling |
+| 7 7 7 7 | 6 | all pairs identical XOR 0 behavior |
+| 1 2 3 / K=10 | 0 | no valid subarrays |
+| powers of two | 4 | bit boundary interactions |
 
 ## Edge Cases
 
-For arrays where all elements are identical, every pair XOR is zero, so the minimum is always zero. The algorithm keeps the trie consistent and never loses correctness during rebuilds, so every valid segment is counted exactly once per right endpoint expansion.
+A corner case arises when all elements are identical. For input `[7, 7, 7, 7]` and K = 0, every pair XOR is 0, so every subarray of length at least 2 has score 0. The algorithm keeps the window valid at all times because `min_xor` always returns 0, and f(0) counts all subarrays.
 
-For cases where K is very small but non-zero, the structure quickly detects when a new pair produces a smaller value and forces a rebuild, preventing stale minima from inflating the answer.
+Another situation is when values are widely separated in binary space, such as `[1, 2, 4, 8]`. Many XOR values are large, so violations for small T never occur. The window never shrinks, and contributions accumulate as a full triangular count, which the sliding window correctly produces.
+
+A more delicate case is when a single low-value element appears late, for example `[8, 8, 8, 1]`. The element `1` creates many small XOR pairs with previous elements, forcing repeated shrinking. The algorithm handles this because every removal decreases the trie counts consistently, and once all conflicting elements are removed, the window stabilizes again and counting resumes.

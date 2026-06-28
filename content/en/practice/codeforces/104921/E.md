@@ -1,7 +1,7 @@
 ---
 title: "CF 104921E - Game with Integers"
-description: "We are given an integer that starts as a single value on a number line. Two players alternate turns, starting with the first player. On each move, the current player may either increase the number by 1 or decrease it by 1."
-date: "2026-06-28T08:01:52+07:00"
+description: "We start with a single integer, and two players alternately modify it. On each move a player can increase or decrease the current value by exactly one. Vanya moves first. The game ends early if, immediately after Vanya makes a move, the resulting number is divisible by 3."
+date: "2026-06-28T18:08:28+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104921
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Easy_Training"
 rating: 0
 weight: 104921
-solve_time_s: 66
+solve_time_s: 72
 verified: false
 draft: false
 ---
@@ -18,62 +18,57 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 6s  
+**Solve time:** 1m 12s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an integer that starts as a single value on a number line. Two players alternate turns, starting with the first player. On each move, the current player may either increase the number by 1 or decrease it by 1. After each move made by the first player, we check whether the resulting number is divisible by 3. If it is, the first player immediately wins. If 10 total moves are played without the first player ever achieving such a state immediately after their own move, the second player wins.
+We start with a single integer, and two players alternately modify it. On each move a player can increase or decrease the current value by exactly one. Vanya moves first. The game ends early if, immediately after Vanya makes a move, the resulting number is divisible by 3. If no such moment occurs within 10 total moves, Vova is declared the winner.
 
-So the game is a short alternating sequence of at most 10 increments or decrements of a single integer, with the win condition only checked after the first player’s moves.
+The key aspect is that only Vanya can win directly, and only on his own moves. Vova’s role is purely defensive: he tries to avoid ever allowing Vanya to land on a multiple of 3 right after Vanya’s turn, while also surviving long enough for the 10-move limit to expire.
 
-The constraints are small: the starting value is at most 1000 and there are at most 100 test cases. This immediately rules out any need for simulation over large state spaces or complex graph exploration. Even a brute-force simulation of all possible move sequences is small because the game tree has depth at most 10 and branching factor 2, giving at most 2^10 paths per state, which is only 1024.
+The constraints are small: at most 100 test cases and initial values up to 1000. This immediately rules out any need for heavy simulation over large state spaces or optimization structures. Even a straightforward game tree exploration is feasible in principle because the depth is bounded by 10 moves, but we will see that even that is overkill.
 
-A subtle aspect is that the winning condition depends only on divisibility by 3 after the first player’s moves, not after every move. This asymmetry makes it easy to misinterpret a naive simulation that checks both players equally.
+A subtle point is that the winning condition is checked only after Vanya’s moves. Vova never wins directly by reaching divisibility, he only wins by preventing Vanya’s success until the move limit is reached. This asymmetry is what drives the solution.
 
-Another pitfall is misunderstanding the time limit condition. The second player wins if after 10 moves have occurred total (not 10 turns per player), the first player has not already won. So the game length is bounded tightly and does not depend on reaching a terminal state naturally.
+A naive mistake would be to treat the game as symmetric or to check divisibility after every move. For example, starting from n = 1, if Vanya plays +1, we get 2, which is not divisible by 3. If one incorrectly checked both players, one might think Vova also has a winning condition, which is false.
 
-A minimal example helps clarify structure. If n = 3, the first player already wins immediately after the first move if they move to 3 or 6 or 0 mod 3 states, which is always possible since ±1 changes residue mod 3 deterministically.
+Another common pitfall is to simulate greedily, always trying to move toward a multiple of 3. That fails because Vova actively interferes, and the problem is fundamentally adversarial.
 
 ## Approaches
 
-A brute-force interpretation simulates the full game tree. From each state, we track whose turn it is and the current value. On the first player’s turns, we check after each move whether the value is divisible by 3. If yes, we stop. Otherwise we continue until depth 10 moves is reached. This is correct because it directly models the rules.
+A direct brute-force approach would simulate the game as a depth-limited search tree. Each state consists of the current number, the move index, and whose turn it is. From each state, we branch into two possibilities, adding or subtracting one. We stop if we reach a state where Vanya just moved and the number is divisible by 3, or if we exceed 10 moves.
 
-However, this approach can expand up to 2^10 possible sequences per test case, and for 100 test cases this is still manageable but unnecessary. More importantly, it hides the key structure: the state depends only on the current value modulo 3 and the parity of the move number, not the full integer.
+This brute-force works because the state space is tiny: at most 2 choices per move over 10 moves gives at most 2^10 = 1024 paths. With 100 test cases, this is about 100,000 states, which is still manageable.
 
-The crucial observation is that only the residue of the number modulo 3 matters. Adding or subtracting 1 changes the residue cyclically among 0, 1, and 2. From any residue, both +1 and -1 lead to predictable transitions. The game is therefore a small deterministic reachability problem on a 3-node cycle, over at most 10 steps, with alternating checkpoints on the first player’s turns.
+However, this is unnecessary because the structure of the problem collapses into modular arithmetic. Every move changes the number by ±1, so only the residue modulo 3 matters. Each move flips the residue in a predictable way: from any residue, Vanya can always force a transition, and Vova can only respond by shifting it away.
 
-Instead of simulating full values, we only need to check whether the first player can force a state where, on their turn, the residue becomes 0 within at most 5 of their moves (since there are 10 total moves, the first player moves 5 times).
+The key observation is that the only thing that matters is whether Vanya can force the residue to 0 on his move within 10 steps. Since both players always change the number by ±1, the residue cycles through 0, 1, 2 in a controlled way. This turns the game into a finite, periodic state problem rather than a growing numeric one.
 
-Thus the problem reduces to: starting from n mod 3, can the first player reach residue 0 in at most 5 moves, given that the second player responds adversarially but both players always have symmetric ±1 options?
-
-Because both moves symmetrically shift residue, the second player cannot restrict reachable residues in any meaningful way. After each pair of moves, the first player effectively has control over the parity of the residue progression. This collapses the problem into checking whether within 5 steps of ±1 transitions on a cycle of size 3, we can land on 0.
-
-Since from any residue, within at most 2 moves we can reach any other residue on a 3-cycle, the first player can always force a hit on 0 within the allowed number of turns unless the structure of turn checking prevents alignment. Careful parity analysis shows the only losing situations occur when the starting residue already aligns unfavorably with forced checkpoints, which resolves into a simple direct rule based on n mod 3 and small depth parity.
-
-In fact, simulation shows the outcome depends only on whether n % 3 == 0 or not, combined with whether the first move can immediately win; otherwise, the bounded horizon guarantees eventual reachability in optimal play.
+If we try all possibilities for 10 moves, we quickly see a pattern: Vanya can win immediately whenever the initial value is not already protected by Vova’s response pattern. In fact, optimal play reduces to a simple parity/modulo condition rather than a search.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(2^10 · t) | O(10) | Accepted |
-| Modular Game Analysis | O(t) | O(1) | Accepted |
+| Brute Force Search | O(2^10 · t) | O(10) | Accepted but unnecessary |
+| Modulo Analysis | O(t) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We reduce the integer to its remainder modulo 3 since only divisibility by 3 matters. We then simulate optimal play in terms of these residues rather than full integers.
+The central idea is to track only the value modulo 3 and reason about how Vanya can force a winning position.
 
-1. Compute r = n mod 3. This captures all relevant information about winning states since only r == 0 matters for victory.
-2. Observe that from any residue r, both possible moves (+1 and -1) allow transitions to the other two residues in a deterministic cycle. This means no player can permanently avoid any residue class.
-3. Note that the first player wins immediately if after their first move the residue becomes 0. This is only possible if r is 1 or 2, since both have a neighbor leading to 0 in one move.
-4. If the first player does not win immediately, we consider whether the second player can prevent the first player from ever landing on residue 0 on their turns within the next 4 first-player moves.
-5. Since the residue graph is a triangle and every move flips to an adjacent node, any starting residue leads to 0 within at most 2 steps regardless of opponent choices.
-6. Therefore, the first player can always force a win within the bounded horizon unless the starting position already gives the second player a forced immediate containment, which does not exist under symmetric transitions.
-7. Conclude that the outcome reduces to checking whether n mod 3 is 0 at the start in a way that blocks immediate first-move correction, otherwise the first player wins.
+1. Compute the remainder r = n mod 3. This is the only information that influences whether we can ever reach a multiple of 3 after Vanya’s move.
+2. Observe that after Vanya moves, he wants the resulting value to be 0 mod 3. That means he wants to land exactly on a number congruent to 0 modulo 3 at one of his turns.
+3. Each move changes the residue by either +1 or -1 modulo 3. This means every move simply rotates the residue among {0, 1, 2}.
+4. Since players alternate, Vova can always respond to push the residue away from 0 whenever Vanya tries to approach it in a single step, but he cannot permanently avoid it across multiple forced alternations.
+5. The game is short, capped at 10 moves. Over such a small horizon, Vanya effectively has enough opportunities to force a position where Vova’s responses cannot avoid a 0 residue on Vanya’s turn unless the initial configuration is already in a protected cycle.
+6. The resulting analysis collapses to checking whether n % 3 == 0 is immediately winning or whether Vanya can step into a multiple of 3 on his first move or after a short forced sequence. Under optimal play, this always resolves to a deterministic outcome that depends only on the initial residue pattern and move parity, not on the actual magnitude of n.
+
+In fact, the optimal result simplifies further: Vanya wins if and only if n % 3 != 0.
 
 ### Why it works
 
-The invariant is that the only state information relevant to the game is the residue class modulo 3, and every move preserves full connectivity of the residue graph. Since the graph of residues under ±1 transitions is a 3-cycle, it has diameter 2, meaning every state is reachable from every other state in at most two moves. Because the game horizon allows 5 first-player moves, the first player always has enough move budget to force a visit to residue 0 on one of their turns. The opponent cannot restrict reachability because both transitions are symmetric and invertible over the cycle. Therefore no adversarial strategy can prevent eventual access to a winning residue within the allowed number of steps.
+The invariant is that the game state reduces entirely to the residue modulo 3, and each player only has the ability to rotate this residue by one step in either direction. Because Vanya moves first and only needs to succeed once on his own move, any nonzero residue allows him to choose a direction that reaches 0 modulo 3 immediately or forces Vova into a position where he cannot prevent it within the bounded horizon of 10 moves. Since the state space has size 3 and both players have symmetric movement power, the only stable losing configuration for Vanya is when he is already at residue 0 and cannot improve his position on the first move without giving Vova control.
 
 ## Python Solution
 
@@ -85,44 +80,51 @@ def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
-        # From analysis, first player always wins
-        print("First")
+        if n % 3 == 0:
+            print("Second")
+        else:
+            print("First")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution reduces the entire game to a constant-time decision per test case. The key implementation choice is recognizing that no state besides n mod 3 is relevant, and even that collapses further because the bounded horizon and symmetric transitions make every configuration winning for the first player.
+The code reads each test case and computes the residue of n modulo 3. If the number is already divisible by 3, Vanya is forced into a position where any move breaks the condition and Vova can maintain control long enough for the 10-move limit to expire. Otherwise, Vanya can immediately adjust the value on his first move to reach a multiple of 3.
 
-The code therefore avoids simulation entirely. It simply outputs “First” for every test case.
+The implementation is deliberately minimal because all game dynamics collapse into this single modular check.
 
 ## Worked Examples
 
-Consider two representative inputs.
+Consider n = 5.
 
-First, n = 5. We compute the game progression conceptually. The first player can move to 4 or 6. Either choice leads to a position that is one move away from a multiple of 3. The second player cannot prevent the first player from reaching a multiple of 3 on their next move, because both ±1 moves preserve adjacency in the 3-cycle. Within a small number of moves, the first player forces a win.
+| Move | Player | Value | mod 3 | Outcome |
+| --- | --- | --- | --- | --- |
+| 0 | Start | 5 | 2 | Vanya to move |
+| 1 | Vanya | 6 | 0 | Vanya wins immediately |
 
-Second, n = 3. Here the starting position is already divisible by 3. The first player can immediately move to 2 or 4, and must rely on later moves to return to a multiple of 3. Even in this case, within the bounded 10-move horizon, the cycle structure guarantees eventual return on a first-player move.
+This shows that when starting at residue 2, Vanya can choose +1 and win instantly.
 
-| Move | Player | Value choice | n mod 3 |
-| --- | --- | --- | --- |
-| 0 | Start | 3 | 0 |
-| 1 | First | 4 | 1 |
-| 2 | Second | 3 or 5 | 0 or 2 |
-| 3 | First | 2 or 4 | 2 or 1 |
-| 4 | Second | varies | varies |
-| 5 | First | reaches 3 eventually | 0 |
+Now consider n = 6.
 
-This trace shows that regardless of intermediate choices, the cycle structure repeatedly returns the game to states where residue 0 is reachable on a first-player move.
+| Move | Player | Value | mod 3 | Outcome |
+| --- | --- | --- | --- | --- |
+| 0 | Start | 6 | 0 | Vanya to move |
+| 1 | Vanya | 5 or 7 | 2 or 1 | cannot be 0 |
+| 2 | Vova | adjusts | cycles | delay |
+| ... | ... | ... | ... | Vova survives until limit |
+
+Here Vanya cannot achieve a winning move immediately, and Vova can always respond to avoid giving a multiple of 3 on Vanya’s turns within the bounded 10 moves, leading to a loss for Vanya.
+
+These examples demonstrate the asymmetry: only non-multiples of 3 give Vanya immediate forcing power.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t) | Each test case reduces to a constant-time check on n |
-| Space | O(1) | No auxiliary data structures beyond input variables |
+| Time | O(t) | Each test case is handled with a single modulo operation |
+| Space | O(1) | No additional storage beyond input variables |
 
-The constraints allow up to 100 test cases, so a constant-time per test case solution is optimal and runs instantly within limits.
+The constraints allow up to 100 test cases, so a constant-time check per test case is trivially fast and well within limits.
 
 ## Test Cases
 
@@ -131,36 +133,42 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from math import *  # placeholder if needed
-    input = _sys.stdin.readline
+    import sys
+    input = sys.stdin.readline
 
     t = int(input())
     out = []
     for _ in range(t):
         n = int(input())
-        out.append("First")
+        if n % 3 == 0:
+            out.append("Second")
+        else:
+            out.append("First")
     return "\n".join(out)
 
-# provided samples (format assumed corrected)
-# assert run(...) == ...
+# provided samples
+assert run("6\n1\n3\n5\n10\n9\n1000\n") == "First\nSecond\nFirst\nFirst\nSecond\nFirst"
 
 # custom cases
-assert run("1\n1\n") == "First", "minimum value"
-assert run("1\n1000\n") == "First", "upper bound"
-assert run("3\n3\n6\n9\n") == "First\nFirst\nFirst", "all multiples of 3"
-assert run("2\n2\n5\n") == "First\nFirst", "non-multiples"
+assert run("3\n1\n2\n3\n") == "First\nFirst\nSecond"
+assert run("2\n6\n9\n") == "Second\nSecond"
+assert run("1\n1000\n") == "First"
+assert run("1\n0\n") == "Second"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1\n1 | First | smallest non-multiple |
-| 1\n1000 | First | upper boundary behavior |
-| 3\n3\n6\n9 | Firsts | all divisible by 3 |
-| 2\n2\n5 | First\nFirst | general non-zero residues |
+| 1,2,3 | First,First,Second | basic residue behavior |
+| 6,9 | Second,Second | multiples of 3 losing cases |
+| 1000 | First | large input consistency |
+| 0 | Second | boundary divisible case |
 
 ## Edge Cases
 
-For n = 1, the first move can immediately reach 0 or 2. Since 0 is adjacent, the first player can force a win quickly. The algorithm outputs “First” and matches the expected behavior.
+For n = 3, we start already at a multiple of 3. Vanya’s first move must change the value to either 2 or 4, neither divisible by 3. From that point, Vova can mirror moves to avoid ever letting Vanya land on a multiple of 3 on his turn, and the 10-move limit guarantees Vanya cannot force a breakthrough.
 
-For n = 1000, the residue is 1000 mod 3 = 1. From this state, the first player can move to 0 or 2 immediately, and selecting 0 yields an instant win after the first move. The output is again “First”, consistent with the rule that any non-terminal starting residue is immediately exploitable by the first player under optimal play.
+For n = 1, Vanya can immediately move to 2, which is not divisible by 3, but the complementary move on the next turn allows him to reach 3 on a later Vanya turn if Vova does not perfectly counter. Since Vanya moves first and has flexibility in choosing ±1, he can steer the residue cycle to reach 0 on his own move within a small number of steps.
+
+For n = 1000, the residue is 1, which behaves identically to any other nonzero residue. The magnitude is irrelevant, and the modular cycle alone determines that Vanya can force a win.
+
+These cases confirm that only divisibility by 3 at the start creates a stable losing configuration for Vanya under optimal play.

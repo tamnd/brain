@@ -1,7 +1,7 @@
 ---
 title: "CF 104896D - Air Reform"
-description: "I can’t reliably write a correct editorial for “Codeforces 104896D - Air Reform” because the actual problem statement (what is being optimized, what inputs mean, and what constraints apply) is missing from your message."
-date: "2026-06-28T08:21:59+07:00"
+description: "The problem statement section is empty, so there isn’t enough information to reconstruct what “Air Reform” (CF 104896D) is actually asking."
+date: "2026-06-28T18:04:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104896
@@ -22,12 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for “Codeforces 104896D - Air Reform” because the actual problem statement (what is being optimized, what inputs mean, and what constraints apply) is missing from your message.
+The problem statement section is empty, so there isn’t enough information to reconstruct what “Air Reform” (CF 104896D) is actually asking. Without the rules of the problem, any editorial would just be guesswork, and that would defeat the purpose of a correct Codeforces-style explanation.
 
-Right now there’s no way to know whether this is a graph problem, geometry, greedy, DP, or something else, and guessing would produce a misleading editorial.
-
-If you paste the full problem statement (or even just the core description + constraints), I’ll produce the complete editorial in the exact format you requested, including:
-
-the intuition buildup, brute force breakdown, optimal insight, step-by-step algorithm, Python solution, worked traces, complexity analysis, and edge-case handling.
+If you paste the full statement (or even just the input/output description and constraints), I can immediately write the complete editorial in the format you specified, including the algorithm derivation, proof sketch, and full implementation.
 
 Send the statement and I’ll take it from there.
