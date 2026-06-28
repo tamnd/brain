@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 4: Combinatorial Algorithms"
-description: "Volume 4: Combinatorial Algorithms. 881 solved, 334 verified, 2383 total."
+description: "Volume 4: Combinatorial Algorithms. 886 solved, 335 verified, 2410 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 40
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 4: Combinatorial Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 4. 881 solved, 334 verified, 2383 total.
+Exercise solutions for [TAOCP](../) Volume 4. 886 solved, 335 verified, 2410 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -23,6 +23,6 @@ Exercise solutions for [TAOCP](../) Volume 4. 881 solved, 334 verified, 2383 tot
 | 7.2.1.4 |  | — | — | 73 |
 | 7.2.1.5 |  | — | — | 69 |
 | 7.2.1.6 |  | — | — | 123 |
-| [7.2.2](7.2.2/) | Backtracking | 79 | 37 | 101 |
-| [7.2.2.1](7.2.2.1/) | Dancing Links | 309 | 89 | 450 |
-| 7.2.2.2 |  | — | — | 528 |
+| [7.2.2](7.2.2/) | Backtracking | 79 | 37 | 121 |
+| [7.2.2.1](7.2.2.1/) | Dancing Links | 315 | 91 | 454 |
+| 7.2.2.2 |  | — | — | 531 |

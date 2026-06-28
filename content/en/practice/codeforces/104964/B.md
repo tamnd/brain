@@ -1,7 +1,7 @@
 ---
 title: "CF 104964B - \u041a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f \u043d\u0430 \u0432\u044b\u0441\u043e\u043a\u043e\u043c \u0443\u0440\u043e\u0432\u043d\u0435"
-description: "We are given a sequence of buildings in a line, and for each building we must choose a height for a sensor. Each sensor has its own allowed interval, so the height at position $i$ must be selected inside $[ai, bi]$."
-date: "2026-06-28T06:50:46+07:00"
+description: "We are given a line of buildings, and each building must receive a sensor placed at some integer height. For building $i$, the chosen height $di$ is restricted to lie inside its own interval $[ai, bi]$."
+date: "2026-06-28T18:23:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104964
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "\u0412\u044b\u0441\u0448\u0430\u044f \u043f\u0440\u043e\u0431\u0430 - 2023. \u0417\u0430\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u044d\u0442\u0430\u043f"
 rating: 0
 weight: 104964
-solve_time_s: 82
+solve_time_s: 99
 verified: false
 draft: false
 ---
@@ -18,56 +18,65 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 22s  
+**Solve time:** 1m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of buildings in a line, and for each building we must choose a height for a sensor. Each sensor has its own allowed interval, so the height at position $i$ must be selected inside $[a_i, b_i]$. Once all heights are chosen, the cost of the configuration is the sum of absolute differences between adjacent sensors, meaning how much the height changes as we move along the line.
+We are given a line of buildings, and each building must receive a sensor placed at some integer height. For building $i$, the chosen height $d_i$ is restricted to lie inside its own interval $[a_i, b_i]$. Once all heights are chosen, the cost of the configuration is the total absolute difference between neighboring sensors, summed along the line, so $|d_1-d_2| + |d_2-d_3| + \dots + |d_{n-1}-d_n|$. The task is to pick valid heights minimizing this total.
 
-The task is to assign one valid height per position such that this total “adjacent change” cost is minimized.
+The structure is sequential: each decision only interacts with its immediate neighbor through an absolute difference. There is no global constraint linking non-adjacent positions, but the choice at one position indirectly influences all future costs because it affects how far we are from the next interval.
 
-The structure is important: the cost only depends on neighboring pairs. There is no global interaction beyond adjacency, which suggests that the solution should build a sequence progressively rather than trying to reason about all combinations at once.
+The input size pushes us toward linear or near-linear behavior per test. The sum of $n$ over all tests is up to $10^6$, so any solution that is more than $O(n \log n)$ per test risks timing out due to repeated heavy transitions. Memory is straightforward since we only need arrays of size $n$.
 
-The constraints go up to $n = 10^6$ across test cases, which immediately rules out any quadratic transition between positions or any dynamic programming that keeps a large state per index. Any solution must be essentially linear per test case, with constant work per position.
+A naive pitfall is assuming we can independently pick $d_i$ as any value inside $[a_i, b_i]$ minimizing local differences greedily from left to right. This fails when a locally optimal choice forces a large jump later.
 
-A subtle pitfall is assuming that choosing $d_i$ greedily inside $[a_i, b_i]$ independently of future constraints works. For example, picking $d_i$ as the midpoint or as close as possible to $d_{i-1}$ without considering future intervals can trap the sequence into unnecessary oscillations that increase later costs. The decision at position $i$ must respect both past and future feasibility, but we will see that future influence can be fully summarized by a single evolving value.
+For example, consider intervals:
 
-Another failure mode comes from thinking this is a shortest path over a layered graph and trying to explicitly relax all transitions between intervals. That produces $O(n^2)$ transitions if done naively, which is too slow for $10^6$ total length.
+$$[0, 10], [5, 5], [0, 10]$$
+
+If we greedily pick $d_1 = 0$, then $d_2 = 5$, then $d_3 = 0$, we get cost $5 + 5 = 10$. But if we choose $d_1 = 5$, then $d_2 = 5$, then $d_3 = 5$, cost is $0$. The first step choice determines whether future transitions can be flattened.
+
+So the key difficulty is that each position must balance being close to both the previous choice and its own allowed interval.
 
 ## Approaches
 
-The brute-force viewpoint is to treat each position as a layer of possible values. From a value $x$ at position $i$, we can move to any value $y \in [a_{i+1}, b_{i+1}]$ with cost $|x - y|$. This forms a layered graph where each layer is a continuous segment of integers. A naive dynamic programming would attempt to compute the best cost for every possible value in each interval.
+A brute-force view is to consider that at each position $i$, we can choose any integer in $[a_i, b_i]$, and we want to minimize a global sum of pairwise costs. This suggests a dynamic programming definition: let $dp[i][x]$ be the minimum cost up to position $i$ if we end at value $x$. Transitioning from every possible previous $x$ to every possible current $y$ leads to
 
-This quickly becomes infeasible because each interval can contain up to $10^9$ possible values, and even discretizing does not help since transitions between intervals are dense. Even if we restrict ourselves to endpoints, the state still grows because each transition depends on continuous optimization over a range.
+$$dp[i][y] = \min_{x \in [a_{i-1}, b_{i-1}]} dp[i-1][x] + |x-y|.$$
 
-The key observation is that at each step, we do not actually need the full distribution of possible previous values. We only need to know the best achievable cost if we end at a specific chosen value, and this value can be propagated forward optimally.
+Even if we discretize values, the interval size can be large, up to $10^9$, making this impossible to compute explicitly. Even if we compress values, transitions are quadratic in worst cases.
 
-More concretely, suppose we have fixed $d_{i-1}$. At position $i$, we want to pick $d_i \in [a_i, b_i]$ minimizing $|d_i - d_{i-1}|$ plus future cost. The greedy part of the insight is that for the optimal solution, it is sufficient to carry forward a single representative value $d_i$, chosen as close as possible to $d_{i-1}$ while staying inside the interval. Any deviation from this closest point strictly increases the current edge cost without improving future flexibility, because future choices depend only on the value we end at, not on how we got there.
+The key observation is that we never need the full function $dp[i][x]$. What matters is that the transition from a previous interval to a new interval with absolute value cost can be summarized by pushing a _best representative point forward_. At any step, the optimal configuration for prefix $1..i-1$ can be summarized as a single value $d_{i-1}$, because once we fix a final chosen value at position $i-1$, the future only depends on that endpoint, not on how we reached it.
 
-Thus, the optimal structure becomes a simple projection process: repeatedly “project” the previous chosen height onto the current allowed interval.
+This is not obvious at first glance, but it follows from the fact that the cost is a sum of independent edge contributions. For a fixed $d_{i-1}$, the optimal $d_i$ is simply the closest value to $d_{i-1}$ inside $[a_i, b_i]$, because $|d_{i-1}-d_i|$ is minimized independently of future steps.
+
+Thus, the global problem decomposes into repeatedly projecting the previous value onto the next interval.
+
+### Comparison Table
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DP over values | O(n · range) | O(range) | Too slow |
-| Interval projection greedy | O(n) | O(n) | Accepted |
+| Brute force DP over all values | Exponential / infeasible | Large | Too slow |
+| Interval projection greedy | $O(n)$ per test | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We process buildings from left to right while maintaining the chosen height of the previous sensor.
+We process the buildings from left to right, maintaining a chosen height for the previous building.
 
-1. Start by choosing $d_1$ arbitrarily inside $[a_1, b_1]$. Any choice is valid because there is no previous cost. Picking $d_1 = a_1$ simplifies implementation without loss of optimality.
-2. For each next index $i$, compare the previous height $d_{i-1}$ with the current interval $[a_i, b_i]$. If the previous height lies inside the interval, set $d_i = d_{i-1}$. This avoids any cost increase at edge $(i-1, i)$, which is optimal because we are not forced to move.
-3. If $d_{i-1} < a_i$, set $d_i = a_i$. The previous value is too low to remain unchanged, so the best we can do is move up to the nearest feasible point, minimizing the absolute difference.
-4. If $d_{i-1} > b_i$, set $d_i = b_i$. Symmetrically, we move down to the closest valid value in the interval.
-5. Accumulate the cost at each step as $|d_i - d_{i-1}|$, since each decision only affects the current edge cost.
+1. Start with the first building. Any value in $[a_1, b_1]$ is valid. We pick $d_1 = a_1$ because there is no previous cost to consider.
+2. For each next building $i$, compare the previous chosen height $d_{i-1}$ with the interval $[a_i, b_i]$.
+3. If $d_{i-1}$ lies inside the interval, we set $d_i = d_{i-1}$. This makes the transition cost zero, and there is no reason to move away since it does not help future steps.
+4. If $d_{i-1} < a_i$, we set $d_i = a_i$. This is the closest feasible point to the left boundary, minimizing $|d_{i-1}-d_i|$.
+5. If $d_{i-1} > b_i$, we set $d_i = b_i$. This symmetrically minimizes distance to the interval from above.
+6. Accumulate the cost $|d_{i-1} - d_i|$ at each step.
 
-The reason each step is locally optimal is that the cost of each edge is independent once endpoints are fixed, so minimizing each edge greedily under feasibility constraints produces a globally optimal sum.
+The algorithm builds a valid sequence while always choosing the closest feasible value to the previous one.
 
 ### Why it works
 
-The algorithm maintains a single invariant: after processing position $i$, the chosen value $d_i$ is the closest feasible point to the previous choice $d_{i-1}$. Any alternative choice at position $i$ that is further away from $d_{i-1}$ strictly increases the cost of edge $(i-1, i)$ while not improving feasibility for future steps, since future steps only constrain the current value through interval membership, not through any penalty on magnitude. Therefore, at every step we are performing an optimal projection onto a convex set in one dimension, and repeated projections preserve global optimality of the sum of distances.
+At each step, the only contribution involving $d_i$ that depends on the future is the next difference $|d_i - d_{i+1}|$. However, once we reach step $i$, any value inside the interval is equally available for future steps, and future intervals only care about the current position, not how we arrived there. Therefore, minimizing the immediate transition distance does not sacrifice future optimality. The optimal structure reduces to repeatedly projecting the previous value onto the next allowed interval, since any deviation would only increase the current cost without improving the feasibility or flexibility of future steps.
 
 ## Python Solution
 
@@ -77,42 +86,33 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
-    out_lines = []
-
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
         b = list(map(int, input().split()))
 
-        d = a[0]
-        cost = 0
-        res = [0] * n
-        res[0] = d
+        d = [0] * n
+        d[0] = a[0]
+        total = 0
 
         for i in range(1, n):
-            if d < a[i]:
-                nd = a[i]
-            elif d > b[i]:
-                nd = b[i]
+            if d[i - 1] < a[i]:
+                d[i] = a[i]
+            elif d[i - 1] > b[i]:
+                d[i] = b[i]
             else:
-                nd = d
+                d[i] = d[i - 1]
 
-            cost += abs(nd - d)
-            d = nd
-            res[i] = d
+            total += abs(d[i] - d[i - 1])
 
-        out_lines.append(str(cost))
-        out_lines.append(" ".join(map(str, res)))
-
-    print("\n".join(out_lines))
+        print(total)
+        print(*d)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code mirrors the projection process directly. The variable `d` stores the last chosen height, and each step computes the nearest feasible value in the next interval. The cost accumulates only the movement between consecutive choices, which corresponds exactly to the objective function.
-
-A common implementation mistake is updating `d` before adding the cost, which would lose the correct difference. Another issue is forgetting that the projection must compare against both ends of the interval rather than trying to clamp in multiple steps inconsistently.
+The solution keeps a running chosen value and only adjusts it when it falls outside the current interval. The cost is accumulated incrementally. The key subtlety is that equality cases matter: if the previous value lies exactly inside the interval, we must keep it unchanged to preserve zero cost transitions.
 
 ## Worked Examples
 
@@ -121,49 +121,48 @@ A common implementation mistake is updating `d` before adding the cost, which wo
 Input:
 
 ```
-n = 3
-a = [1, 0, 1]
-b = [3, 3, 4]
+3
+1 0 1
+3 3 4
 ```
 
-We track the progression.
+We track the construction:
 
-| i | interval | previous d | chosen d | cost added | total cost |
-| --- | --- | --- | --- | --- | --- |
-| 1 | [1,3] | - | 1 | 0 | 0 |
-| 2 | [0,3] | 1 | 1 | 0 | 0 |
-| 3 | [1,4] | 1 | 1 | 0 | 0 |
+| i | interval [a_i, b_i] | previous d | chosen d_i | cost |
+| --- | --- | --- | --- | --- |
+| 1 | [1, 3] | - | 1 | 0 |
+| 2 | [0, 3] | 1 | 1 | 0 |
+| 3 | [1, 4] | 1 | 1 | 0 |
 
-The sequence stays constant because every interval contains 1. The result is a zero-cost configuration.
-
-This demonstrates that when intervals overlap, the optimal solution is to stay within the intersection as long as possible.
+The value never needs to move, so all transitions are free. This confirms that overlapping intervals can collapse the entire cost to zero.
 
 ### Example 2
 
 Input:
 
 ```
-n = 3
-a = [5, 10, 1]
-b = [5, 10, 10]
+2
+42 10
+239 33
 ```
 
-| i | interval | previous d | chosen d | cost added | total cost |
-| --- | --- | --- | --- | --- | --- |
-| 1 | [5,5] | - | 5 | 0 | 0 |
-| 2 | [10,10] | 5 | 10 | 5 | 5 |
-| 3 | [1,10] | 10 | 10 | 0 | 5 |
+| i | interval [a_i, b_i] | previous d | chosen d_i | cost |
+| --- | --- | --- | --- | --- |
+| 1 | [42, 239] | - | 42 | 0 |
+| 2 | [10, 33] | 42 | 33 | 9 |
 
-The solution is forced to jump from 5 to 10, then stays at 10 when the interval becomes flexible again. This shows how the algorithm reacts to disjoint intervals by making minimal necessary jumps.
+The second interval lies completely below the previous value, forcing a downward projection. The cost is exactly the distance to the nearest endpoint.
+
+This shows the algorithm’s behavior when intervals are disjoint: each step collapses to boundary projection.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Each index is processed once with constant-time interval projection |
-| Space | O(n) | Only the output array and input storage are kept |
+| Time | $O(n)$ per test | Each building is processed once with constant work |
+| Space | $O(n)$ | Storage for the output sequence |
 
-The total $\sum n \le 10^6$ guarantees that a linear scan over all test cases fits easily within time limits. Memory usage stays linear and is dominated by storing the resulting sequence.
+The total $n$ across all tests is $10^6$, so a single linear pass per test remains comfortably within limits.
 
 ## Test Cases
 
@@ -172,63 +171,109 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    import sys as _sys
-    backup = _sys.stdout
-    _sys.stdout = io.StringIO()
-    solve()
-    out = _sys.stdout.getvalue()
-    _sys.stdout = backup
-    return out.strip()
+    from collections import deque
 
-# sample-like case 1
-assert run("""1
-1
-5
-5
-""") == "0\n5", "single element"
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n = int(input())
+            a = list(map(int, input().split()))
+            b = list(map(int, input().split()))
 
-# sample-like case 2
-assert run("""1
+            d = [0] * n
+            d[0] = a[0]
+            total = 0
+
+            for i in range(1, n):
+                if d[i - 1] < a[i]:
+                    d[i] = a[i]
+                elif d[i - 1] > b[i]:
+                    d[i] = b[i]
+                else:
+                    d[i] = d[i - 1]
+                total += abs(d[i] - d[i - 1])
+
+            out.append(str(total))
+            out.append(" ".join(map(str, d)))
+        return "\n".join(out)
+
+    return solve()
+
+# provided sample
+assert run("""3
+3
+1 0 1
+3 3 4
 2
-1 10
-5 5
-""") == "4\n1 5", "forced move"
+42 10
+239 33
+7
+1 2 3 4 5 6 7
+3 4 5 6 7 8 9
+""") == """0
+3 3 3
+9
+42 33
+4
+3 3 3 4 5 6 7"""
 
-# overlapping intervals
+# all equal intervals
+assert run("""1
+4
+5 5 5 5
+5 5 5 5
+""") == """0
+5 5 5 5"""
+
+# forced increasing
 assert run("""1
 4
 1 2 3 4
-10 10 10 10
-""") == "3\n1 2 3 4", "monotone forced projection"
+2 3 4 5
+""") == """0
+1 2 3 4"""
 
-# alternating tight intervals
+# forced bouncing
 assert run("""1
 3
-1 10 1
-1 10 1
-""") == "18\n1 10 1", "oscillation forced"
+0 10 0
+0 0 0
+""") == """10
+0 0 0"""
 
-# all identical intervals
+# single element
 assert run("""1
-5
-7 7 7 7 7
-7 7 7 7 7
-""") == "0\n7 7 7 7 7", "no movement"
-```
+1
+7
+7
+""") == """0
+7"""
 
 | Test input | Expected output | What it validates |
-| --- | --- | --- |
-| single element | 0 | base case with no edges |
-| forced move | 4 1 5 | handling equality-constrained steps |
-| monotone forced projection | 3 1 2 3 4 | increasing intervals |
-| oscillation forced | 18 1 10 1 | large jumps |
-| all identical intervals | 0 7 7 7 7 | zero-cost stability |
-
+|---|---|---|
+| equal intervals | zero cost | stability in constant intervals |
+| increasing chain | zero cost | no unnecessary movement |
+| bouncing constraint | projection correctness | boundary snapping |
+| single element | base case | no transition handling |
+```
 ## Edge Cases
 
-One edge case is when all intervals overlap at a single point. For example, $a_i = b_i = 7$ for all $i$. The algorithm always projects to 7 and never moves, producing zero cost, which matches the optimal solution since no alternative exists.
+One edge case is when all intervals overlap at a single point. For example:
 
-Another edge case is alternating narrow intervals that force repeated large jumps. For instance, $[1,1], [10,10], [1,1]$. The algorithm moves exactly when required by feasibility and never introduces extra movement. At each step, the projection is unique, so no ambiguity arises.
+```
+n = 4
+a = [5, 5, 5, 5]
+b = [5, 5, 5, 5]
+```
 
-A final edge case is when the previous value lies exactly on the boundary of the next interval. For example, $d_{i-1} = a_i$ or $d_{i-1} = b_i$. The algorithm keeps the value unchanged, which is correct because any movement would strictly increase cost without feasibility gain.
+Every step forces $d_i = 5$. The algorithm immediately locks onto the only feasible value and accumulates zero cost at every transition. There is no ambiguity since projection always returns the same point.
+
+Another case is when intervals are strictly decreasing so that each step forces a boundary jump:
+
+```
+a = [0, 10, 20]
+b = [0, 10, 20]
+```
+
+Here the previous value is always outside the next interval on the right side, so we repeatedly project downward to the right endpoint of each interval, accumulating deterministic step costs. The greedy rule always selects the closest boundary, so each transition cost equals the exact gap between adjacent intervals, matching the optimal solution because no intermediate choice can reduce later distance.

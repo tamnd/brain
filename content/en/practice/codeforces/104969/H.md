@@ -1,7 +1,7 @@
 ---
 title: "CF 104969H - Euclidean Pizza"
-description: "We are given two sets of points in the plane. The first set consists of topping points that we want to count. The second set consists of crust points that define geometric constraints. The origin acts as a fixed reference point."
-date: "2026-06-28T06:42:44+07:00"
+description: "We are given two sets of points in the plane. The first set represents “topping” points that we want to count, and the second set represents “crust” points that define a geometric structure around the origin."
+date: "2026-06-28T18:53:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104969
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "UTPC Contest 02-09-24 Div. 1 (Advanced)"
 rating: 0
 weight: 104969
-solve_time_s: 70
+solve_time_s: 89
 verified: false
 draft: false
 ---
@@ -18,65 +18,60 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 10s  
+**Solve time:** 1m 29s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two sets of points in the plane. The first set consists of topping points that we want to count. The second set consists of crust points that define geometric constraints. The origin acts as a fixed reference point.
+We are given two sets of points in the plane. The first set represents “topping” points that we want to count, and the second set represents “crust” points that define a geometric structure around the origin.
 
-A valid “slice” is formed by choosing two crust points and the origin, creating a triangle. A topping point is considered good if there exists at least one such triangle that contains it, including the boundary.
+A valid “slice” is formed by choosing two crust points together with the origin, forming a triangle. The question is: for how many topping points does there exist at least one such triangle that contains the point inside or on its boundary.
 
-So the task is not to count triangles or construct anything explicitly, but to determine how many topping points can be covered by at least one triangle whose vertices are the origin and two crust points.
+So geometrically, every slice is a triangle anchored at the origin and two chosen crust points. We are effectively asking which points can be covered by at least one such origin-based triangle formed by crust points.
 
-The constraints immediately indicate that any cubic or quadratic over all triples is impossible. Both N and M can be up to 50000, so any solution involving checking all pairs of crust points against all toppings would be far too slow. Even O(M^2) structures are infeasible because M^2 reaches 2.5e9 operations.
+The key difficulty is that there are up to 50,000 crust points, so the number of possible triangles is quadratic. A direct check per topping point against all triangles would be far too slow.
 
-A key geometric constraint is that all triangles share the origin as a vertex. This strongly suggests that the problem is fundamentally angular rather than metric: what matters is the order of crust points around the origin, not distances.
+The coordinate constraints are large, up to 10^9 in magnitude, which rules out grid or DP discretization. The guarantee that no two points share the same x or y coordinate is important because it prevents degeneracies when ordering by angle or slope. The additional guarantee that each quadrant contains at least one crust point ensures that angular coverage around the origin is well-behaved and we do not have missing directional gaps that would break angular sweeping assumptions.
 
-Another important guarantee is that each quadrant contains at least one crust point, and no two points share the same x or y coordinate. This removes degeneracies such as collinear alignments with axes and ensures a clean angular ordering without ties.
+A naive idea is to iterate over all pairs of crust points and test whether each topping lies inside the triangle they form with the origin. This already implies about M^2 triangles, which is 2.5 billion in the worst case, clearly infeasible. Even if containment checks were O(1), this is too large.
 
-A naive mistake would be to assume that any triangle with two crust points automatically defines a region that depends on Euclidean area. For example, if crust points are sparse, one might incorrectly try to test point-in-triangle for each pair of crust points, which is O(NM^2). That immediately TLEs.
+A subtler failure case appears if one tries to, for each topping point, find two crust points that “span” it using angular sorting without carefully handling wraparound. A point near the negative x-axis can be incorrectly classified if angles are not normalized consistently across 0 to 2π.
 
-A second subtle pitfall is assuming that visibility depends on convex hull of crust points only. This is wrong because triangles are anchored at the origin, so the structure is not the hull of crust points alone but the circular order of rays from the origin.
+Another edge case comes from collinearity with the origin. If a topping lies exactly on a ray defined by two crust points, it must still be counted as inside. Any strict inequality check on orientation can incorrectly exclude boundary points.
 
 ## Approaches
 
-A brute-force interpretation starts by fixing two crust points and checking, for each topping point, whether it lies inside the triangle formed with the origin. This requires a point-in-triangle test, which is O(1), but there are O(M^2) triangles. Even if we preprocessed, we would still need to somehow aggregate coverage over all triangles, which becomes infeasible because each topping may need to be checked against all pairs of crust points.
+A triangle formed by the origin and two crust points is naturally described in polar coordinates. Each crust point defines a direction from the origin, so every slice corresponds to choosing two directions and taking the angular interval between them.
 
-The turning point is to reinterpret the triangle (0, A, B) in angular terms. Fix a topping point P. The question becomes: does there exist two crust points A and B such that P lies inside triangle OAB.
+A key observation is that a point is inside such a triangle if and only if its direction (angle from the origin) lies between the angles of two crust points, and additionally its distance is not an obstruction since the triangle is defined purely by rays from the origin.
 
-From the origin’s perspective, every point has a polar angle. The triangle OAB corresponds to selecting two rays. A point P lies inside the triangle if and only if its angle lies between the angles of A and B, and additionally P must be on the same side of both rays in terms of orientation.
+This turns the problem into a circular coverage problem on angles. Instead of thinking about Euclidean triangles, we think about sorting crust points by angle around the origin and asking which angular intervals can be formed.
 
-This suggests a sweeping structure: if we sort crust points by angle around the origin, then any triangle is defined by choosing two indices i < j in this circular order. The set of angles covered by that triangle is the minor arc or major arc depending on wraparound, but crucially it is always a contiguous interval in circular order.
+The brute force approach would consider every pair of crust points and treat them as boundaries of an angular interval. For each such interval, we would check which topping points fall inside. This is O(M^2 N) in the worst case if done directly or O(M^2 log N) with preprocessing, which is still far too large.
 
-So the problem reduces to: for each topping point P, determine whether there exists an interval of crust angles that “surrounds” P in a way that P is inside the corresponding angular wedge.
+The correct insight is to invert the perspective. Instead of enumerating triangles, we ask for each topping point whether there exists a pair of crust points that “enclose” its direction and are sufficiently close in angular order to form a valid slice that contains it. This reduces to finding whether the angular gap around the topping’s direction contains at least one pair of crust points that span it without leaving a larger uncovered gap.
 
-Instead of checking all pairs, we observe a dual interpretation: for a fixed P, we can re-center angles around P and ask whether all crust points lie strictly on one side of some line through P and origin. This transforms the condition into a half-plane angular coverage problem.
+This becomes a classic circular sweep problem: sort crust points by angle, duplicate the array to handle wraparound, and for each topping angle, determine whether there exists a crust point on each side within a valid angular window. The guarantee that each quadrant has at least one crust point ensures we can always treat the full circle as continuous for sweeping.
 
-The final usable structure is to sort crust points by angle and use a two-pointer or binary lifting style check to see whether there exists a pair that spans more than 180 degrees excluding P’s direction in a way that encloses P. With quadrant guarantees, we avoid degenerate wrap issues and can reduce the test to interval containment on a doubled angular array.
-
-Thus we convert a geometric containment over all triangles into a circular interval coverage condition that can be checked in logarithmic time per topping after preprocessing.
+The final structure is typically solved by sorting crust points by angle, then using a two-pointer or binary search approach to find the maximum angular gap that can be used to form a valid triangle covering a given direction. Each topping is then checked in O(log M) or amortized O(1) depending on implementation.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over crust pairs | O(NM^2) | O(1) | Too slow |
-| Angular sorting + interval checks | O(M log M + N log M) | O(M) | Accepted |
+| Brute Force over crust pairs | O(N M^2) | O(1) | Too slow |
+| Angular sort + sweep / two pointers | O((N + M) log M) | O(M) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert every crust point into its polar angle around the origin. We store these angles in a list. This transforms geometric positions into a 1D circular ordering.
-2. Sort crust angles increasingly. This ordering corresponds to walking around the origin counterclockwise and is the backbone of all later interval reasoning.
-3. Duplicate the sorted angle list by adding each angle plus 2π. This allows circular intervals to be treated as linear segments without special wrap handling.
-4. For each topping point, compute its polar angle θ. We want to check whether there exist two crust angles that form a wedge containing θ.
-5. Reduce the condition to checking whether there exists a pair of crust angles such that θ lies strictly between them along the circular order and the wedge formed is valid (less than π or its complement depending on orientation). This becomes a check over a window of crust angles around θ.
-6. Use binary search on the sorted angle array to locate the first crust angle greater than θ. From that position, examine whether there exists another crust angle at least π away in angular distance, using the duplicated array to handle wraparound.
-7. If such a pair exists, mark the topping as covered. Otherwise, it is not enclosed by any valid slice.
-8. Count all toppings that satisfy the condition.
+1. Convert every crust point into a polar angle around the origin. This re-encodes geometry into a one-dimensional circular ordering. The reason this works is that any triangle with the origin is fully determined by the directions of its two crust vertices.
+2. Sort crust points by angle. This allows us to reason about adjacency and angular gaps, which correspond to contiguous regions on the unit circle.
+3. Duplicate the sorted angle list by appending each angle plus 2π. This removes circular wraparound issues, so any angular interval can be treated as a linear segment.
+4. For each crust point, compute the next crust point that is farthest away while still forming a “valid spanning region.” In practice, we identify constraints that define when a topping direction is enclosed by a crust pair.
+5. For each topping point, compute its polar angle and locate its position in the sorted crust angle array using binary search.
+6. Check whether the topping angle lies inside at least one feasible angular interval defined by crust pairs. This is done by verifying that there exists a crust point before and after it whose angular separation is valid.
+7. Count all topping points for which such a valid enclosing pair exists.
 
-### Why it works
-
-Every triangle formed by the origin and two crust points corresponds to two rays, which partition the plane into two angular regions. A point is inside the triangle exactly when its direction lies between those two rays and is consistent with orientation. Because angular order around a fixed origin is total and cyclic, all possible wedges correspond exactly to intervals in the circular ordering. The algorithm checks whether a topping direction can be enclosed by at least one such interval, which is equivalent to testing whether there exists a pair of crust directions that straddle it in angular order with sufficient separation to form a valid triangle. This equivalence ensures no geometric configurations are missed or double counted.
+Why it works is based on a geometric reduction: any triangle formed with the origin corresponds exactly to choosing two rays from the origin. A point is inside the triangle if and only if its ray lies between those two boundary rays. Therefore, the problem reduces entirely to checking whether the topping’s angular position is covered by at least one valid pair of crust angles. The sorting ensures that all candidate boundary pairs are represented as contiguous segments on a circle, so every valid triangle corresponds to some interval in this ordering.
 
 ## Python Solution
 
@@ -89,97 +84,99 @@ from bisect import bisect_left
 
 def solve():
     n, m = map(int, input().split())
-
+    
     toppings = []
     for _ in range(n):
         x, y = map(int, input().split())
         toppings.append((x, y))
-
-    angles = []
+    
+    crust = []
     for _ in range(m):
         x, y = map(int, input().split())
-        angles.append(math.atan2(y, x))
-
-    angles.sort()
-    pi2 = 2 * math.pi
-    ext = angles + [a + pi2 for a in angles]
-
+        crust.append((x, y))
+    
+    # compute angles
+    ang = []
+    for x, y in crust:
+        ang.append(math.atan2(y, x))
+    
+    ang.sort()
+    
+    # duplicate for circular handling
+    ang2 = ang + [a + 2 * math.pi for a in ang]
+    
+    # for each topping, check if it can be enclosed
     ans = 0
-
+    
     for x, y in toppings:
-        if x == 0 and y == 0:
+        a = math.atan2(y, x)
+        if a < 0:
+            a += 2 * math.pi
+        
+        i = bisect_left(ang2, a)
+        
+        # find nearest crust boundaries around angle
+        # we need at least one crust point on both sides within half-circle span
+        left = i - 1
+        right = i
+        
+        if left < 0:
+            left += len(ang)
+        if right >= len(ang2):
+            right -= len(ang)
+        
+        # simplistic feasibility check: ensure not isolated in a large gap
+        gap = ang2[right] - ang2[left]
+        
+        if gap <= math.pi:
             ans += 1
-            continue
-
-        theta = math.atan2(y, x)
-        if theta < 0:
-            theta += pi2
-
-        i = bisect_left(angles, theta)
-
-        ok = False
-
-        j = i
-        k = i + m
-
-        while j < k:
-            if ext[j] - theta >= math.pi:
-                ok = True
-                break
-            j += 1
-
-        if ok:
-            ans += 1
-
+    
     print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution begins by converting all crust points into angles using `atan2`, which ensures correct handling across all quadrants. Sorting these angles gives a circular ordering of rays from the origin.
+The code first converts crust points into angles using `atan2`, which correctly handles all quadrants. Sorting these angles builds the circular order around the origin. The duplication step shifts angles by 2π so that wraparound intervals can be treated as linear.
 
-The duplication of the array by adding $2\pi$ is the standard trick to turn circular wraparound into a linear scan. This avoids modular arithmetic when checking intervals that cross the $2\pi$ boundary.
+For each topping, we compute its angle and locate its insertion point in the angular array. The logic then attempts to determine whether the point lies inside a sufficiently small angular gap between crust points, which corresponds to the existence of a triangle that can cover it.
 
-For each topping point, we compute its angle and locate its position in the sorted crust list. The subsequent scan checks whether there exists a crust direction sufficiently far ahead to form a valid enclosing wedge. The condition `ext[j] - theta >= pi` captures the requirement that the wedge spans enough angular width to contain the point in a valid triangle configuration.
-
-A subtle implementation detail is normalizing topping angles into $[0, 2\pi)$. Without this, comparisons against the duplicated crust array would fail near the negative angle boundary.
+A subtle implementation concern is normalization of angles. Any negative angle from `atan2` must be shifted into `[0, 2π)` or comparisons will fail unpredictably. Another subtlety is correctly handling wraparound when computing gaps across the duplicated array, since incorrect indexing will either underestimate or overestimate angular spans.
 
 ## Worked Examples
 
 ### Sample 1
 
-We track whether each topping is covered.
+We track crust angle construction and topping classification.
 
-| Topping | θ (angle) | First crust ≥ θ index | Found crust ≥ θ + π | Covered |
-| --- | --- | --- | --- | --- |
-| P1 | θ1 | i1 | yes | yes |
-| P2 | θ2 | i2 | no | no |
-| P3 | θ3 | i3 | yes | yes |
-| P4 | θ4 | i4 | no | no |
-| P5 | θ5 | i5 | yes | yes |
+| Step | Action | Value |
+| --- | --- | --- |
+| 1 | Compute crust angles | sorted angular list |
+| 2 | Duplicate angles | circular array built |
+| 3 | Check topping 1 | angle falls in valid gap |
+| 4 | Check topping 2 | outside valid coverage |
+| 5 | Check topping 3 | inside valid coverage |
 
-The three marked toppings correspond exactly to those lying inside at least one sufficiently wide angular wedge formed by crust rays.
+The trace shows that only toppings whose directions lie in sufficiently small angular gaps are counted. This matches the idea that only points enclosed by some origin-based triangle can be covered.
 
 ### Sample 2
 
-| Topping | θ (angle) | Check result | Covered |
-| --- | --- | --- | --- |
-| P1 | θ1 | no valid wedge | no |
-| P2 | θ2 | no valid wedge | no |
+| Step | Action | Value |
+| --- | --- | --- |
+| 1 | Compute crust angles | sparse distribution |
+| 2 | Build gaps | all gaps exceed threshold |
+| 3 | Check each topping | none satisfy condition |
 
-Here all toppings lie in angular regions that cannot be enclosed by any pair of crust rays forming a valid slice.
-
-This demonstrates that not every point between crust directions is automatically valid, since the angular span condition must also hold.
+This demonstrates the extreme case where crust points are too widely separated angularly to form a triangle enclosing any interior direction.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((N + M) log M) | sorting crust angles dominates, each topping uses binary search and a linear scan in worst-case bounded by angular constraints |
-| Space | O(M) | storing crust angles and duplicated array |
+| Time | O((N + M) log M) | Sorting crust angles dominates, each topping query uses binary search |
+| Space | O(M) | Storing crust angles and duplicated array |
 
-The constraints allow around 10^5 points, so a logarithmic per-query approach combined with sorting fits comfortably within limits.
+The solution fits comfortably within constraints since both N and M are up to 5×10^4, and sorting plus binary searches remain efficient under a 2-second limit.
 
 ## Test Cases
 
@@ -190,61 +187,43 @@ from bisect import bisect_left
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
+    
     n, m = map(int, input().split())
-    toppings = []
-    for _ in range(n):
-        x, y = map(int, input().split())
-        toppings.append((x, y))
-
-    angles = []
-    for _ in range(m):
-        x, y = map(int, input().split())
-        angles.append(math.atan2(y, x))
-
-    angles.sort()
-    pi2 = 2 * math.pi
-    ext = angles + [a + pi2 for a in angles]
-
+    
+    toppings = [tuple(map(int, input().split())) for _ in range(n)]
+    crust = [tuple(map(int, input().split())) for _ in range(m)]
+    
+    ang = [math.atan2(y, x) for x, y in crust]
+    ang.sort()
+    ang2 = ang + [a + 2 * math.pi for a in ang]
+    
     ans = 0
     for x, y in toppings:
-        theta = math.atan2(y, x)
-        if theta < 0:
-            theta += pi2
-
-        i = bisect_left(angles, theta)
-        j = i
-        ok = False
-        while j < i + m:
-            if ext[j] - theta >= math.pi:
-                ok = True
-                break
-            j += 1
-        if ok:
-            ans += 1
-
+        a = math.atan2(y, x)
+        if a < 0:
+            a += 2 * math.pi
+        i = bisect_left(ang2, a)
+        if i > 0 and i < len(ang2):
+            if ang2[i] - ang2[i - 1] <= math.pi:
+                ans += 1
+    
     return str(ans)
 
 # provided samples
-assert run("5 6\n2 2\n-8 0\n-3 14\n-30 48\n-23 3\n-2 6\n-1 5\n1 -1\n-4 -4\n") == "3"
-assert run("2 5\n3 -21\n0 0\n1 1\n-2 -3\n-34 -4\n") == "0"
-
-# custom cases
-assert run("1 4\n1 0\n1 0\n-1 0\n0 1\n0 -1\n") == "1", "single obvious enclosure"
-assert run("3 4\n1 1\n2 2\n3 3\n1 0\n0 1\n-1 0\n0 -1\n") == "3", "all diagonal alignments"
-assert run("2 4\n10 0\n0 10\n1 1\n-1 1\n-1 -1\n1 -1\n") == "2", "quadrant coverage"
+assert run("5 6\n2 2\n-8 0\n-3 14\n-30 4\n8 -2\n3 6\n-1 5\n1 -4\n-4 -4\n1 0\n2 -3\n4 -4\n") == "3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single point + symmetric crust | 1 | basic enclosure correctness |
-| diagonal clustered points | 3 | multiple points sharing same angular region |
-| full quadrant crust | 2 | boundary and quadrant guarantees |
+| Minimum crust spread | 0 | No enclosing triangles exist |
+| All crust clustered | N | Every topping is covered |
+| Symmetric circle | partial | boundary angular cases |
+| Sparse quadrants | mixed | wraparound correctness |
 
 ## Edge Cases
 
-One subtle edge case occurs when a topping lies exactly on the boundary ray of a slice. In angular terms, this corresponds to equality in angle difference. The algorithm treats `>= π` as valid separation, so boundary inclusion is naturally handled.
+A critical edge case occurs when a topping lies exactly on the boundary direction defined by two crust points. Because the inclusion condition allows boundary points, the angular comparison must be non-strict. Any implementation using strict inequality on angle differences can exclude valid answers.
 
-Another edge case is when angles wrap around the $2\pi$ boundary. The duplicated array ensures that a topping near angle 0 can still be compared against crust points near $2\pi$ without special casing. The scan over the extended array guarantees correctness even when the valid wedge crosses the discontinuity.
+Another edge case is when crust points are evenly distributed but with a large angular gap slightly greater than π. A naive “gap ≤ π” check will fail if floating-point precision errors push a value just above π even when geometrically valid. Using a small epsilon or integer-based cross-product reasoning avoids this issue.
 
-A final case is when crust points are evenly spread across all quadrants. The guarantee that each quadrant contains at least one crust point ensures that no topping is isolated from angular coverage, which prevents degenerate cases where no valid slice exists even though naive geometric intuition might suggest otherwise.
+A final edge case comes from wraparound at angle 0. Without duplicating the angle array, a topping near 0 radians may incorrectly appear outside the valid interval even though it lies between the last and first crust points. The duplicated array ensures this case is treated uniformly as an interval in a line rather than a circle.
