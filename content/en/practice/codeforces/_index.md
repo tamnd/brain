@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2305 contests, 15533 problems, 8475 verified."
+description: "Codeforces problem solutions with full editorials. 2306 contests, 15533 problems, 8475 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2305 contests, 15533 problems, 8475 verified.**
+**2306 contests, 15533 problems, 8475 verified.**
 
 ## Unknown — 390 contests, 3112 problems, 1920 verified
 
@@ -1625,7 +1625,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 146 contests, 1053 problems, 442 verified
+## 2023 — 147 contests, 1053 problems, 442 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1761,6 +1761,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104853](104853/) | [Муниципальный этап ВсОШ по информатике в Липецкой области 2023 (9-11 классы)](https://codeforces.com/contest/104853) | 0 | 0/0 | Special | - |
 | [104854](104854/) | [2023-2024 ICPC, Swiss Subregional](https://codeforces.com/contest/104854) | 11 | 11/11 | ICPC/IOI | - |
 | [104855](104855/) | [TheForces Round #27(3^3-Forces)](https://codeforces.com/contest/104855) | 6 | 0/6 | Special | - |
 | [104869](104869/) | [The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)](https://codeforces.com/contest/104869) | 13 | 13/13 | ICPC/IOI | - |
