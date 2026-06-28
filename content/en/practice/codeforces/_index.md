@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2324 contests, 15684 problems, 8578 verified."
+description: "Codeforces problem solutions with full editorials. 2327 contests, 15709 problems, 8585 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2324 contests, 15684 problems, 8578 verified.**
+**2327 contests, 15709 problems, 8585 verified.**
 
-## Unknown — 402 contests, 3201 problems, 1978 verified
+## Unknown — 403 contests, 3207 problems, 1978 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104824](104824/) | [COMP4128 23T3 Contest 3](https://codeforces.com/contest/104824) | 6 | 0/6 | Special | - |
 | [104829](104829/) | [Муниципальный этап ВсОШ по информатике 2023-2024, Краснодарский край](https://codeforces.com/contest/104829) | 0 | 0/0 | Special | - |
 | [104832](104832/) | [2023-2024 ICPC, Asia Yokohama Regional Contest 2023](https://codeforces.com/contest/104832) | 11 | 11/11 | ICPC/IOI | - |
 | [104836](104836/) | [Муниципальный этап ВсОШ по информатике в городе Петрозаводске и республике Карелия 2023-2024 (9-11 класс)](https://codeforces.com/contest/104836) | 7 | 2/7 | Special | - |
@@ -1637,7 +1638,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 153 contests, 1115 problems, 487 verified
+## 2023 — 155 contests, 1134 problems, 494 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1773,6 +1774,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104822](104822/) | [RCPCamp 2023 Day 1](https://codeforces.com/contest/104822) | 12 | 1/12 | Special | - |
+| [104823](104823/) | [The 17-th BIT Campus Programming Contest - Online Round](https://codeforces.com/contest/104823) | 7 | 6/7 | Special | - |
 | [104825](104825/) | [The 17-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/104825) | 13 | 13/13 | Special | - |
 | [104828](104828/) | [The 11-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/104828) | 13 | 10/13 | Special | - |
 | [104830](104830/) | [2023 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/104830) | 8 | 0/8 | Special | - |
