@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2283 contests, 15335 problems, 8353 verified."
+description: "Codeforces problem solutions with full editorials. 2284 contests, 15348 problems, 8364 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2283 contests, 15335 problems, 8353 verified.**
+**2284 contests, 15348 problems, 8364 verified.**
 
-## Unknown — 375 contests, 2983 problems, 1847 verified
+## Unknown — 376 contests, 2996 problems, 1858 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104901](104901/) | [The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)](https://codeforces.com/contest/104901) | 13 | 11/13 | ICPC/IOI | - |
 | [104915](104915/) | [Муниципальный этап ВсОШ по информатике в Самаре 2023-2024 (9-11 классы)](https://codeforces.com/contest/104915) | 1 | 1/1 | Special | - |
 | [104916](104916/) | [Муниципальный этап ВсОШ по информатике в Самаре 2022-2023 (9-11 классы)](https://codeforces.com/contest/104916) | 5 | 4/5 | Special | - |
 | [104921](104921/) | [Easy_Training](https://codeforces.com/contest/104921) | 5 | 1/5 | Special | - |
