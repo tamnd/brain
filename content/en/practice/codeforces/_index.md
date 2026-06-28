@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2280 contests, 15324 problems, 8347 verified."
+description: "Codeforces problem solutions with full editorials. 2281 contests, 15329 problems, 8348 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2280 contests, 15324 problems, 8347 verified.**
+**2281 contests, 15329 problems, 8348 verified.**
 
-## Unknown — 372 contests, 2972 problems, 1841 verified
+## Unknown — 373 contests, 2977 problems, 1842 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104921](104921/) | [Easy_Training](https://codeforces.com/contest/104921) | 5 | 1/5 | Special | - |
 | [104922](104922/) | [Qualification stage of Open Olympiad 2023-2024](https://codeforces.com/contest/104922) | 9 | 0/9 | Special | - |
 | [104925](104925/) | [Osijek Competitive Programming Camp, Fall 2023. Day 6: Estonian Contest (The 2nd Universal Cup. Stage 19: Estonia)](https://codeforces.com/contest/104925) | 10 | 8/10 | Special | - |
 | [104935](104935/) | [MITIT 2024 Combined Round](https://codeforces.com/contest/104935) | 6 | 0/6 | Special | - |
