@@ -1,23 +1,23 @@
 ---
 title: "Huazhong University of Science of Technology Freshmen Cup 2023"
-description: "10 problems from Huazhong University of Science of Technology Freshmen Cup 2023 (contest 104728), difficulty -. 4/10 solutions verified against sample I/O."
+description: "12 problems from Huazhong University of Science of Technology Freshmen Cup 2023 (contest 104728), difficulty -. 5/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104728
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 4
-total_solve_s: 977
+n_problems: 12
+n_verified: 5
+total_solve_s: 1152
 contest_year: 2023
-date: "2026-06-29T02:52:04+07:00"
+date: "2026-06-29T02:53:10+07:00"
 weight: 104728
 draft: false
 ---
 
 # [Huazhong University of Science of Technology Freshmen Cup 2023](https://codeforces.com/contest/104728)
 
-Special | 10 problems | 4/10 verified | Difficulty - | 16m 17s
+Special | 12 problems | 5/12 verified | Difficulty - | 19m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,5 @@ Special | 10 problems | 4/10 verified | Difficulty - | 16m 17s
 | [J](J/) | [\u57fa\u56e0\u7f16\u8f91](https://codeforces.com/problemset/problem/104728/J) |  |  |  | 1m 37s |  |
 | [K](K/) | [\u4e0d\u5b9a\u9879\u9009\u62e9\u9898](https://codeforces.com/problemset/problem/104728/K) |  |  |  | 1m 16s | ✓ |
 | [L](L/) | [Azur Lane](https://codeforces.com/problemset/problem/104728/L) |  |  |  | 1m 30s |  |
+| [M](M/) | [\u8fd1\u4f3c\u9012\u589e\u5e8f\u5217](https://codeforces.com/problemset/problem/104728/M) |  |  |  | 1m 56s |  |
+| [N](N/) | [A+B problem](https://codeforces.com/problemset/problem/104728/N) |  |  |  | 59s | ✓ |
