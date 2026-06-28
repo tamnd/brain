@@ -1,23 +1,23 @@
 ---
 title: "2023-2024 ICPC, Swiss Subregional"
-description: "10 problems from 2023-2024 ICPC, Swiss Subregional (contest 104854), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2023-2024 ICPC, Swiss Subregional (contest 104854), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104854
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 541
+n_problems: 11
+n_verified: 11
+total_solve_s: 593
 contest_year: 2023
-date: "2026-06-28T11:06:05+07:00"
+date: "2026-06-28T11:06:15+07:00"
 weight: 104854
 draft: false
 ---
 
 # [2023-2024 ICPC, Swiss Subregional](https://codeforces.com/contest/104854)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 1s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 9m 53s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 9m 1s
 | [H](H/) | [Homogeneous Mixings](https://codeforces.com/problemset/problem/104854/H) |  |  |  | 56s | ✓ |
 | [I](I/) | [Intelligent Cat Embedding](https://codeforces.com/problemset/problem/104854/I) |  |  |  | 56s | ✓ |
 | [J](J/) | [Judging Gifts](https://codeforces.com/problemset/problem/104854/J) |  |  |  | 59s | ✓ |
+| [K](K/) | [Kenough Time](https://codeforces.com/problemset/problem/104854/K) |  |  |  | 52s | ✓ |
