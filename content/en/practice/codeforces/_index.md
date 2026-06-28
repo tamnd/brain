@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15937 problems, 8741 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15938 problems, 8741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15937 problems, 8741 verified.**
+**2353 contests, 15938 problems, 8741 verified.**
 
 ## Unknown — 420 contests, 3360 problems, 2088 verified
 
@@ -1655,7 +1655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 164 contests, 1209 problems, 540 verified
+## 2023 — 164 contests, 1210 problems, 540 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1804,7 +1804,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104823](104823/) | [The 17-th BIT Campus Programming Contest - Online Round](https://codeforces.com/contest/104823) | 7 | 6/7 | Special | - |
 | [104825](104825/) | [The 17-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/104825) | 13 | 13/13 | Special | - |
 | [104828](104828/) | [The 11-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/104828) | 13 | 10/13 | Special | - |
-| [104830](104830/) | [2023 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/104830) | 8 | 0/8 | Special | - |
+| [104830](104830/) | [2023 Taiwan NHSPC Mock Contest (Mirror)](https://codeforces.com/contest/104830) | 9 | 0/9 | Special | - |
 | [104833](104833/) | [The 2023 Zhejiang SCI-TECH University Freshman Programming Contest](https://codeforces.com/contest/104833) | 14 | 14/14 | Special | - |
 | [104834](104834/) | [UTPC Contest 12-01-23 Div. 1 (Advanced)](https://codeforces.com/contest/104834) | 7 | 3/7 | Div. 1 | - |
 | [104835](104835/) | [UTPC Contest 12-01-23 Div. 2 (Beginner)](https://codeforces.com/contest/104835) | 7 | 5/7 | Div. 2 | - |
