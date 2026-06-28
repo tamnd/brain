@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15923 problems, 8731 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15925 problems, 8732 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15923 problems, 8731 verified.**
+**2353 contests, 15925 problems, 8732 verified.**
 
-## Unknown — 420 contests, 3351 problems, 2080 verified
+## Unknown — 420 contests, 3353 problems, 2081 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104783](104783/) | [2021-2022 CTU Open Contest](https://codeforces.com/contest/104783) | 12 | 12/12 | Special | - |
 | [104784](104784/) | [2019-2020 CTU Open Contest](https://codeforces.com/contest/104784) | 4 | 0/4 | Special | - |
 | [104785](104785/) | [2023 United Kingdom and Ireland Programming Contest (UKIEPC 2023)](https://codeforces.com/contest/104785) | 14 | 14/14 | Special | - |
-| [104789](104789/) | [Innopolis Open 2024. Qualification Round 1](https://codeforces.com/contest/104789) | 3 | 3/3 | Special | - |
+| [104789](104789/) | [Innopolis Open 2024. Qualification Round 1](https://codeforces.com/contest/104789) | 5 | 4/5 | Special | - |
 | [104790](104790/) | [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790) | 8 | 8/8 | Special | - |
 | [104797](104797/) | [2021-2022 ICPC Central Europe Regional Contest (CERC 21)](https://codeforces.com/contest/104797) | 12 | 7/12 | ICPC/IOI | - |
 | [104804](104804/) | [Central Russia Regional Contest, 2022, Qualification Contest](https://codeforces.com/contest/104804) | 10 | 4/10 | Special | - |
