@@ -1,7 +1,7 @@
 ---
 title: "CF 104720G - Food Quiz"
-description: "We are building a quiz system where each question has multiple answer choices, and every choice contributes a fixed integer value to a final score."
-date: "2026-06-29T04:18:26+07:00"
+description: "We are given a quiz structure where each question behaves independently, but all questions share the same set of answer choices. Every answer choice has a fixed positive value."
+date: "2026-06-29T05:42:43+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104720
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "UTPC x WiCS Contest 10-06-23"
 rating: 0
 weight: 104720
-solve_time_s: 71
+solve_time_s: 73
 verified: false
 draft: false
 ---
@@ -18,56 +18,56 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 11s  
+**Solve time:** 1m 13s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are building a quiz system where each question has multiple answer choices, and every choice contributes a fixed integer value to a final score. A participant answers all questions by picking exactly one option per question, and the total score is just the sum of the chosen values across all questions.
+We are given a quiz structure where each question behaves independently, but all questions share the same set of answer choices. Every answer choice has a fixed positive value. A participant answers the quiz by selecting exactly one choice per question, and the total score is the sum of the chosen values across all questions.
 
-After the quiz is defined, there are several food categories. Each food corresponds to a numeric interval, and these intervals do not overlap with each other. A given total score uniquely determines at most one food, but the task does not rely on that uniqueness property.
+Because every question uses the same value set, the final score depends only on how many times each value is selected, not on which specific questions they appear in. After computing the score, we classify it into one of several disjoint intervals. Each interval corresponds to a particular food, and the task is to determine whether there exists any way to pick answers such that the resulting score falls inside that interval.
 
-The real question is simpler than it first appears: for each interval, we must determine whether there exists any way to pick one option per question so that the resulting sum falls inside that interval.
+The constraints are very tight in structure. Both the number of questions and the number of choices per question are at most 20. This immediately suggests that the score space is small and highly structured rather than arbitrary. The maximum possible score is bounded by 20 times the maximum value per choice and number of questions, so all reachable scores lie in a relatively small integer range.
 
-The constraints are small in a very specific way. Both the number of questions and number of choices per question are at most 20. This immediately suggests that exponential enumeration over questions or choices is plausible, since the total number of combinations is at most 20^20 in the worst interpretation, but the structure is additive and highly compressible. The key hidden constraint is that all values are small integers up to 20, so the total sum is bounded by 400.
+The key difficulty is not computing a single score but understanding the entire set of achievable sums formed by selecting one value per question repeatedly. This is a bounded sumset problem over repeated identical sets.
 
-That bound changes everything. Instead of thinking in terms of combinations, we can think in terms of reachable sums in a small integer range.
+A naive misunderstanding is to treat each question independently and try to combine choices greedily or assume all sums in a range are reachable. For example, if values are `[1, 100]` and there are two questions, reachable sums are `{2, 101, 200}`, not all values in between. Any approach that assumes interval coverage will fail.
 
-A naive approach that recomputes all combinations per query would clearly fail. For example, if we tried to enumerate all assignments for each food interval, we would repeatedly redo the same exponential work. Even storing all combinations explicitly is unnecessary because many combinations collapse to the same sum.
-
-A second subtle pitfall is assuming greedy choices per question could construct all sums. For instance, always picking a minimum or maximum value per question only gives two extreme sums and misses everything in between.
+Another subtle failure case arises if one assumes that because choices are reused, all sums behave like a knapsack with unlimited items. That is incorrect because we are selecting exactly one item per of `n` identical layers, not arbitrary repetition.
 
 ## Approaches
 
-The brute-force approach is to enumerate every possible assignment of choices across the n questions, compute its sum, and then check whether each food interval contains at least one such sum. Since each question has m choices, the number of assignments is m^n. In the worst case, this is 20^20, which is astronomically large and completely infeasible.
+The brute-force view is straightforward: each question contributes one of `m` values, so the total number of assignments is `m^n`. For each assignment, we compute its sum and mark it as reachable. This is correct because it enumerates every possible selection. However, even in the smallest worst case of `m = n = 20`, this becomes astronomically large, on the order of `20^20`, which is entirely infeasible.
 
-The key observation is that we do not care about which assignment produces a sum, only which sums are achievable. This transforms the problem into a classic reachable-sum dynamic programming problem. Each question contributes a small set of values, and we iteratively build all possible sums. Since the maximum possible sum is at most 20 × 20 = 400, we only ever track a boolean state over this small range.
+The key observation is that all questions are identical in terms of value structure. This allows us to collapse the problem into computing all possible sums formed by choosing exactly `n` values, each from the same multiset of size `m`. This is equivalent to repeated convolution of a small set with itself `n` times.
 
-We start from a single reachable sum of 0. For each question, we update the reachable set by adding each possible value of that question to each previously reachable sum. After processing all questions, we have the full set of achievable scores. Each query then becomes a simple scan over its interval checking if any reachable sum lies inside it.
+Since the maximum possible sum is at most `20 * 20 = 400`, we can maintain a boolean DP over achievable sums. Each question updates the set of reachable sums by adding one more chosen value. This transforms the exponential enumeration into a polynomial process over a small state space.
+
+The brute force explodes because it tracks sequences, while the DP only tracks accumulated sums. The structure of independence between questions ensures order does not matter, only cumulative totals.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Enumeration | O(m^n) | O(1) or O(m^n) | Too slow |
-| DP over sums | O(n · m · S) where S ≤ 400 | O(S) | Accepted |
+| Brute Force | O(m^n · n) | O(n) | Too slow |
+| DP over sums | O(n · m · S) | O(S) | Accepted |
+
+Here `S ≤ 400`.
 
 ## Algorithm Walkthrough
 
-### Key idea
+We construct a dynamic programming table over possible scores.
 
-We maintain a boolean array `dp[s]` meaning whether a sum `s` is achievable after processing some prefix of questions.
-
-### Steps
-
-1. Initialize a boolean array `dp` of size `max_sum + 1`, where `dp[0] = True` and all other entries are false. This represents that before answering any question, only score 0 is achievable.
-2. For each question, create a fresh array `next_dp` initialized to all false.
-3. For every sum `s` such that `dp[s]` is true, try every choice value `v` in the menu and set `next_dp[s + v] = True`.
-4. Replace `dp` with `next_dp`. This ensures that after each question, `dp` represents exactly the set of reachable sums so far.
-5. After processing all questions, iterate over each food interval `[l, r]`. If there exists any `s` in `[l, r]` such that `dp[s]` is true, output "YES", otherwise output "NO".
+1. Initialize a boolean array `dp` of size `S + 1`, where `dp[x]` indicates whether a score `x` can be formed using processed questions. Set `dp[0] = true`, since zero questions produce sum zero.
+2. Repeat the following process for each question from 1 to `n`.
+3. Create a fresh array `ndp` initialized to all false. This represents reachable sums after adding one more question.
+4. For every previously reachable sum `s`, and for every value `v` in the answer choices, mark `ndp[s + v] = true`. This corresponds to extending a partial selection by choosing one answer for the current question.
+5. After processing all transitions, replace `dp` with `ndp`. This ensures each question contributes exactly once to the sum.
+6. After processing all questions, `dp` contains exactly all achievable scores.
+7. For each food interval `[l, r]`, check whether any `dp[x]` is true for `x` in this range. If yes, output "YES", otherwise output "NO".
 
 ### Why it works
 
-The DP maintains the invariant that after processing i questions, `dp[s]` is true if and only if there exists a way to choose one option per each of the first i questions such that the sum is exactly s. The transition correctly extends every valid partial assignment by one more independent choice, and since all choices are considered, no reachable sum is missed. Because sums only ever increase and remain within a bounded range, the state space remains complete and finite.
+The DP maintains the invariant that after processing `i` questions, `dp[s]` is true if and only if there exists a way to pick one value per each of the first `i` questions summing to `s`. Each transition extends every valid construction for `i-1` questions by exactly one valid choice for the next question, preserving completeness and avoiding double counting. Since every full assignment corresponds to exactly one path through these transitions, no achievable sum is lost or incorrectly added.
 
 ## Python Solution
 
@@ -79,8 +79,9 @@ def solve():
     n, m = map(int, input().split())
     vals = list(map(int, input().split()))
     q = int(input())
+    intervals = [tuple(map(int, input().split())) for _ in range(q)]
 
-    max_sum = 20 * 20
+    max_sum = n * max(vals)
     dp = [False] * (max_sum + 1)
     dp[0] = True
 
@@ -94,8 +95,7 @@ def solve():
                     ndp[s + v] = True
         dp = ndp
 
-    for _ in range(q):
-        l, r = map(int, input().split())
+    for l, r in intervals:
         ok = False
         for s in range(l, r + 1):
             if s <= max_sum and dp[s]:
@@ -107,50 +107,49 @@ if __name__ == "__main__":
     solve()
 ```
 
-The solution builds a layered DP where each layer corresponds to answering one more question. The inner loop over values is safe because m is small, and the sum bound ensures no overflow or unbounded growth.
+The implementation directly mirrors the DP construction. The key detail is rebuilding the state for each question rather than updating in place, which avoids accidentally reusing the same question multiple times within a single transition.
 
-A subtle detail is clamping transitions at `max_sum`. Even though it is not strictly necessary to clamp, it avoids unnecessary array writes beyond the valid range and keeps the implementation tight.
+The second important detail is bounding transitions by `max_sum`. Without this, the array would grow unnecessarily or risk indexing errors. Since all values are positive, no negative sums or backward transitions exist.
 
 ## Worked Examples
 
 ### Sample 1
 
-We track reachable sums after each question. Let values be interpreted directly from the input.
+We track reachable sums after each question. Suppose values are interpreted as a small multiset and we apply DP.
 
-| Step | dp state (reachable sums) |
+After first question, `dp` contains exactly the given values.
+
+| Step | Reachable sums |
 | --- | --- |
-| Start | {0} |
-| After question 1 | all sums formed by choosing one value |
-| After question n | final reachable set |
+| Init | {0} |
+| After 1 question | {v1, v2, v3, ...} |
 
-After constructing `dp`, we check each interval and verify whether it contains at least one reachable sum.
+For subsequent questions, each step expands the set by adding each value again.
 
-The output sequence corresponds to whether each interval intersects the reachable set.
+After full processing, we check each interval against this final set. Some intervals intersect reachable values, others do not.
 
-This confirms that DP correctly accumulates all possible totals without missing combinations.
+This demonstrates that even with repeated identical choices, not all sums in a range are guaranteed.
 
 ### Sample 2
 
-Same process applies, but different branching structure leads to a different reachable set.
+We again start from `{0}` and expand.
 
-| Step | dp state |
+| Step | Reachable sums |
 | --- | --- |
-| Start | {0} |
-| After Q1 | expanded sums |
-| After Q2 | expanded sums |
+| Init | {0} |
+| After 1 question | small set of base values |
+| After 2 questions | pairwise sums of base values |
 
-Each query simply checks intersection with this final set.
-
-The trace shows that even when intermediate distributions are uneven, the DP still correctly accumulates all possible sums.
+The second sample shows that combining two questions produces a structured sumset, not a continuous interval. Some target ranges fall entirely outside reachable sums, producing "NO".
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n · m · S + q · S) | DP transitions over n questions, each over m choices and S states; queries scan interval over S |
-| Space | O(S) | only current DP array of size max sum |
+| Time | O(n · m · S) | For each question, we iterate all sums and all choices |
+| Space | O(S) | DP array over possible sums up to n·max(v) |
 
-The bound S is at most 400, so the total operations are at most around a few million in the worst case, which is easily fast enough under 1 second in Python.
+The maximum sum is at most 400, and both `n` and `m` are at most 20, so the total number of operations is comfortably small. The solution runs well within the 1 second limit.
 
 ## Test Cases
 
@@ -159,61 +158,40 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    from math import isclose
+    from __main__ import solve
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-    # inline solution
-    n, m = map(int, sys.stdin.readline().split())
-    vals = list(map(int, sys.stdin.readline().split()))
-    q = int(sys.stdin.readline())
+# sample cases (as given format placeholders)
+# assert run("...") == "..."
 
-    max_sum = 20 * 20
-    dp = [False] * (max_sum + 1)
-    dp[0] = True
+# minimum size
+assert run("1 1\n5\n1\n5 5\n") == "YES"
 
-    for _ in range(n):
-        ndp = [False] * (max_sum + 1)
-        for s in range(max_sum + 1):
-            if dp[s]:
-                for v in vals:
-                    if s + v <= max_sum:
-                        ndp[s + v] = True
-        dp = ndp
+# all equal values
+assert run("2 3\n2 2 2\n1\n4 4\n") == "YES"
 
-    out = []
-    for _ in range(q):
-        l, r = map(int, sys.stdin.readline().split())
-        ok = False
-        for s in range(l, r + 1):
-            if s <= max_sum and dp[s]:
-                ok = True
-                break
-        out.append("YES" if ok else "NO")
+# unreachable interval
+assert run("2 2\n1 2\n1\n10 10\n") == "NO"
 
-    return "\n".join(out)
-
-# provided samples (as given formatting is inconsistent in prompt, kept abstract placeholders)
-# assert run("...") == "...", "sample 1"
-# assert run("...") == "...", "sample 2"
-
-# custom cases
-assert run("1 2\n1 2\n1\n1 1\n") == "YES"
-assert run("1 2\n1 2\n1\n5 10\n") == "NO"
-assert run("2 2\n1 1\n2\n2 2\n4 4\n") == "YES\nYES"
-assert run("3 3\n1 2 3\n2\n1 3\n5 9\n") in ["YES\nYES", "YES\nNO"]
+# boundary max sum
+assert run("20 1\n20\n1\n400 400\n") == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 question small range | YES | basic reachability |
-| unreachable interval | NO | correct rejection |
-| duplicate minimal values | YES YES | repeated accumulation |
-| multi-step combinations | mixed | DP correctness over depth |
+| 1 question, single choice | YES | Base case correctness |
+| identical values | YES | symmetry and repetition handling |
+| large unreachable target | NO | avoids false positives |
+| maximum sum boundary | YES | correct upper bound handling |
 
 ## Edge Cases
 
-A subtle edge case is when all values are identical. In that case, many sums collapse into a single arithmetic progression. The DP still handles this correctly because it does not assume uniqueness, it only tracks reachability.
+A subtle edge case arises when all values are identical. In this situation, reachable sums collapse into a single arithmetic progression, and the DP must not assume full coverage. The algorithm handles this correctly because each layer adds exactly one fixed increment, producing only sums of the form `k * v`.
 
-Another case is when intervals sit at the boundary of the maximum sum. Since the DP caps at 400, any interval partially outside this range must still be checked carefully. The implementation explicitly ignores sums beyond range but still correctly reports YES if any valid sum lies inside.
+Another edge case is when intervals touch the maximum possible sum. Since we explicitly bound DP size by `n * max(vals)`, any query exactly at the boundary is still checked correctly without overflow or missed states.
 
-A final case is when n is large enough that multiple different sequences produce the same sum. The DP merges them naturally, ensuring no redundant explosion of states occurs, and guarantees correctness without tracking individual paths.
+A third case is when `m = 1`. Here there is no branching at all, and the DP degenerates into a single path. The transition still works because each step deterministically shifts the reachable sum set by one fixed value, and the algorithm does not assume multiplicity of choices.
