@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 220/446 solved."
+description: "Section 7.2.2.1 exercises: 246/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 220/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 246/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -47,9 +47,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 220/446 solved.
 | [27](27.md) |  [*22*] | medium | verified | 1m12s |
 | [28](28.md) |  [*M23*] | math-medium | solved | 2m55s |
 | [29](29.md) |  [*26*] | hard | solved | 1m26s |
-| 30 |  [*23*] | medium | - | - |
-| 31 |  [*M21*] | math-medium | - | - |
-| 32 |  [**] |  | - | - |
+| [30](30.md) |  [*23*] | medium | solved | 1m01s |
+| [31](31.md) |  [*M21*] | math-medium | verified | 1m05s |
+| [32](32.md) |  [**] |  | solved | 4m31s |
 | 33 |  [*M16*] | math-medium | - | - |
 | 34 |  [*M25*] | math-medium | - | - |
 | 35 |  [*M21*] | math-medium | - | - |
@@ -315,30 +315,30 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 220/446 solved.
 | [297](297.md) |  [*46*] | research | solved | 3m39s |
 | [298](298.md) | &#9654; [*22*] | medium | solved | 1m02s |
 | [299](299.md) |  [*39*] | project | solved | 2m09s |
-| 300 | &#9654; [*23*] | medium | - | - |
-| 301 |  [*25*] | medium | - | - |
-| 302 |  [*26*] | hard | - | - |
-| 303 | &#9654; [*HM25*] | hm-medium | - | - |
-| 304 |  [**] |  | - | - |
-| 305 |  [**] |  | - | - |
-| 306 | &#9654; [*30*] | hard | - | - |
-| 307 |  [*M21*] | math-medium | - | - |
-| 308 |  [*22*] | medium | - | - |
-| 309 |  [**] |  | - | - |
-| 310 |  [**] |  | - | - |
-| 311 | &#9654; [*30*] | hard | - | - |
-| 312 |  [*22*] | medium | - | - |
-| 313 | &#9654; [*29*] | hard | - | - |
-| 314 | &#9654; [*28*] | hard | - | - |
-| 315 |  [*20*] | medium | - | - |
-| 316 |  [*20*] | medium | - | - |
-| 317 |  [*22*] | medium | - | - |
-| 318 | &#9654; [*20*] | medium | - | - |
-| 319 |  [*21*] | medium | - | - |
+| [300](300.md) | &#9654; [*23*] | medium | solved | 44s |
+| [301](301.md) |  [*25*] | medium | solved | 3m06s |
+| [302](302.md) |  [*26*] | hard | solved | 3m05s |
+| [303](303.md) | &#9654; [*HM25*] | hm-medium | solved | 3m24s |
+| [304](304.md) |  [**] |  | solved | 2m51s |
+| [305](305.md) |  [**] |  | solved | 3m49s |
+| [306](306.md) | &#9654; [*30*] | hard | verified | 1m25s |
+| [307](307.md) |  [*M21*] | math-medium | verified | 1m36s |
+| [308](308.md) |  [*22*] | medium | solved | 3m50s |
+| [309](309.md) |  [**] |  | solved | 2m46s |
+| [310](310.md) |  [**] |  | solved | 3m25s |
+| [311](311.md) | &#9654; [*30*] | hard | solved | 1m17s |
+| [312](312.md) |  [*22*] | medium | solved | 3m16s |
+| [313](313.md) | &#9654; [*29*] | hard | solved | 2m52s |
+| [314](314.md) | &#9654; [*28*] | hard | solved | 2m14s |
+| [315](315.md) |  [*20*] | medium | verified | 1m14s |
+| [316](316.md) |  [*20*] | medium | solved | 2m46s |
+| [317](317.md) |  [*22*] | medium | verified | 1m15s |
+| [318](318.md) | &#9654; [*20*] | medium | solved | 4m08s |
+| [319](319.md) |  [*21*] | medium | verified | 1m18s |
 | 320 | &#9654; [*M38*] | math-project | - | - |
-| 321 |  [*42*] | project | - | - |
-| 322 |  [*25*] | medium | - | - |
-| 323 |  [*M25*] | math-medium | - | - |
+| [321](321.md) |  [*42*] | project | verified | 1m02s |
+| [322](322.md) |  [*25*] | medium | verified | 1m13s |
+| [323](323.md) |  [*M25*] | math-medium | solved | 3m57s |
 | 324 | &#9654; [*30*] | hard | - | - |
 | 325 |  [*27*] | hard | - | - |
 | 326 | &#9654; [*M25*] | math-medium | - | - |
