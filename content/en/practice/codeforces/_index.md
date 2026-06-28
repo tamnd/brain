@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2353 contests, 15916 problems, 8726 verified."
+description: "Codeforces problem solutions with full editorials. 2353 contests, 15917 problems, 8726 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2353 contests, 15916 problems, 8726 verified.**
+**2353 contests, 15917 problems, 8726 verified.**
 
-## Unknown — 420 contests, 3347 problems, 2077 verified
+## Unknown — 420 contests, 3348 problems, 2077 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104777](104777/) | [2023-2024 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 157)](https://codeforces.com/contest/104777) | 14 | 14/14 | Educational | - |
 | [104778](104778/) | [2023-2024 Всероссийская командная олимпиада школьников по программированию, региональный этап Саратовской области (ВКОШП 23, Саратовский отборочный этап)](https://codeforces.com/contest/104778) | 13 | 13/13 | Special | - |
 | [104783](104783/) | [2021-2022 CTU Open Contest](https://codeforces.com/contest/104783) | 12 | 12/12 | Special | - |
-| [104784](104784/) | [2019-2020 CTU Open Contest](https://codeforces.com/contest/104784) | 3 | 0/3 | Special | - |
+| [104784](104784/) | [2019-2020 CTU Open Contest](https://codeforces.com/contest/104784) | 4 | 0/4 | Special | - |
 | [104785](104785/) | [2023 United Kingdom and Ireland Programming Contest (UKIEPC 2023)](https://codeforces.com/contest/104785) | 11 | 11/11 | Special | - |
 | [104789](104789/) | [Innopolis Open 2024. Qualification Round 1](https://codeforces.com/contest/104789) | 3 | 3/3 | Special | - |
 | [104790](104790/) | [2023 Benelux Algorithm Programming Contest (BAPC 23)](https://codeforces.com/contest/104790) | 8 | 8/8 | Special | - |
