@@ -1,7 +1,7 @@
 ---
 title: "CF 104764D - Jelly Swarm"
-description: "We are given a set of distinct points on a line, each representing the position of a jellyfish. We must choose exactly K of these points and measure how “spread out” that chosen subset is."
-date: "2026-06-28T21:11:29+07:00"
+description: "We are given a set of distinct integer positions on a line, each representing a jellyfish. From these positions we must choose exactly $K$ of them and consider only those chosen points."
+date: "2026-06-28T21:41:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104764
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "UTPC Contest 11-03-23 Div. 1 (Advanced)"
 rating: 0
 weight: 104764
-solve_time_s: 74
+solve_time_s: 62
 verified: false
 draft: false
 ---
@@ -18,51 +18,48 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 14s  
+**Solve time:** 1m 2s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of distinct points on a line, each representing the position of a jellyfish. We must choose exactly K of these points and measure how “spread out” that chosen subset is. The measure of spread is the maximum distance between any two selected points, which is simply the difference between the largest and smallest chosen positions.
+We are given a set of distinct integer positions on a line, each representing a jellyfish. From these positions we must choose exactly $K$ of them and consider only those chosen points. Among all possible choices of $K$ points, we look at the largest distance between any two chosen points, and we want to make that quantity as small as possible.
 
-The task is to pick K positions so that this range is as small as possible, then output that minimum possible range.
+Once a subset is chosen, Jerry can stand anywhere, but that does not change the fact that the spread of the group is determined only by the leftmost and rightmost selected jellyfish. The maximum distance inside any chosen set is simply the difference between its maximum and minimum element. So the task reduces to selecting a subset of size $K$ that minimizes the range.
 
-The constraint N up to 2×10^5 immediately rules out any solution that tries all subsets of size K, since that would involve roughly $\binom{N}{K}$ combinations. Even checking all pairs of subsets would explode far beyond feasible limits. Anything worse than O(N log N) or O(N) after sorting is unlikely to pass comfortably.
+The input size reaches $2 \cdot 10^5$, so any solution that tries all subsets or even all combinations is immediately impossible. A quadratic scan over pairs or subsets would require on the order of $10^{10}$ operations in the worst case, which is far beyond a 1 second limit. We should expect at most a near-linear or $N \log N$ solution.
 
-A subtle point is that the positions are not ordered in input. Any reasoning about intervals depends on sorted order. Another important edge case is when K equals 1. In that case, the answer is always 0 because a single point has no distance to another point.
+A naive pitfall is forgetting that only the chosen extremes matter. For example, if positions are $[1, 2, 10, 11]$ and $K = 3$, choosing $\{1, 2, 11\}$ gives range 10, while $\{1, 2, 10\}$ gives range 9, even though both include the same small elements. The structure depends entirely on which three consecutive points in sorted order are chosen.
 
-A common incorrect approach is to assume that choosing points around the median or using some greedy expansion from an arbitrary point is sufficient. For example, if points are `[1, 2, 100, 101, 102]` and K = 3, starting from 100 might suggest `[100, 101, 102]` with range 2, which is optimal, but starting from 2 might incorrectly pick `[1, 2, 100]` giving range 99. Any non-sorted or non-window-based heuristic can easily miss the optimal cluster.
-
-Another failure case appears when clusters are not globally dense but locally dense. For instance `[1, 10, 11, 12, 20]` with K = 3 clearly has optimal window `[10, 11, 12]` with range 2. Any strategy that tries to balance spacing globally will fail here unless it explicitly evaluates contiguous groups in sorted order.
+Another subtle issue is assuming that Jerry’s position matters for the distance. It does not. The problem asks for the maximum distance among jellyfish only, so Jerry is irrelevant to the objective function.
 
 ## Approaches
 
-The brute-force idea is straightforward: choose every subset of size K, compute the difference between its maximum and minimum element, and take the minimum. This is correct because it evaluates the exact definition of the problem. However, the number of subsets is enormous. Even for N = 200, the number of combinations is already astronomically large, and here N is 200,000. The brute-force approach degenerates into an infeasible combinatorial explosion.
+The brute-force idea is to enumerate every subset of size $K$, compute its minimum and maximum element, and take the smallest possible difference. This is correct because the definition of the objective is purely combinational over subsets. However, the number of such subsets is $\binom{N}{K}$, which becomes enormous even for moderate values of $N$. For $N = 200000$, this is completely infeasible, and even for $N = 40$ it is already too large.
 
-The key observation is that once the points are sorted, any optimal selection of K points must lie in a contiguous block of the sorted array. If we pick K points that are not contiguous in sorted order, there is always a way to replace a larger gap element with a closer intermediate point and not worsen the answer. This reduces the problem to checking only windows of length K in the sorted array.
+The key structural observation is that once the positions are sorted, any optimal subset of size $K$ must consist of $K$ consecutive elements in that sorted order. If a subset skips an element inside its span, replacing a larger chosen element with that skipped smaller one can only reduce the range or keep it unchanged. This monotonicity collapses the search space from combinatorial to linear over windows.
 
-So the task becomes scanning all consecutive segments of size K and computing the difference between the last and first element in each segment, then taking the minimum.
+Thus, after sorting, the problem becomes scanning all contiguous windows of length $K$ and computing the difference between endpoints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N^K) | O(K) | Too slow |
-| Optimal | O(N log N) | O(1) extra (or O(N)) | Accepted |
+| Brute Force | $O(\binom{N}{K} \cdot K)$ | $O(K)$ | Too slow |
+| Sliding window on sorted array | $O(N \log N)$ | $O(1)$ extra | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Sort the array of positions in non-decreasing order. This transforms the problem into a structured line where local segments correspond to candidate clusters. Sorting is necessary because “closeness” is only meaningful when points are ordered.
-2. Initialize a variable `answer` with a large value. This will store the best (minimum) range found across all valid groups.
-3. Iterate over all indices `i` from `0` to `N - K`. Each `i` defines a window starting at `a[i]` and ending at `a[i + K - 1]`. Every such window represents a candidate group of exactly K jellyfish.
-4. For each window, compute the range `a[i + K - 1] - a[i]`. This directly gives the maximum distance between any two points in that group because the array is sorted.
-5. Update `answer` with the minimum value encountered across all windows.
-6. Output `answer`.
+1. Sort all jellyfish positions in increasing order. This ensures any group’s spread is determined by contiguous structure in this ordering rather than arbitrary selection.
+2. Initialize an answer variable with a very large value. This will track the best (smallest) range encountered.
+3. Iterate over every index $i$ such that a window of size $K$ starting at $i$ fits inside the array. For each $i$, consider the group formed by elements from $i$ to $i + K - 1$.
+4. Compute the range of this group as $a[i + K - 1] - a[i]$. This is valid because within a sorted array, the maximum and minimum of a contiguous segment are its endpoints.
+5. Update the answer with the minimum value over all such windows.
 
-The reason we only consider consecutive windows is that any optimal set of K points can be transformed into a contiguous block without increasing its span. If a chosen set skips an intermediate point, replacing a far endpoint with a closer intermediate one never increases the range.
+After finishing the scan, the stored answer is the smallest possible range.
 
-## Why it works
+### Why it works
 
-After sorting, any chosen subset of K elements has a minimum and maximum defined by their positions in the sorted array. If the subset is not contiguous, there exists at least one element between its minimum and maximum that is not included. Swapping a distant chosen element with a closer unchosen element inside the same interval can only reduce or preserve the span. Repeating this process compresses any optimal subset into a contiguous window without increasing its maximum distance. This guarantees that the optimal solution must appear among sliding windows of length K.
+After sorting, suppose an optimal subset is not contiguous in index order. Then there exists at least one element inside the interval between its minimum and maximum that is not selected. Replacing one of the chosen extreme elements with this missing interior element cannot increase the range, because it moves an endpoint inward or keeps it unchanged. Repeating this argument transforms any optimal subset into a contiguous block without worsening its objective value. Thus restricting attention to consecutive segments does not lose optimality.
 
 ## Python Solution
 
@@ -70,17 +67,13 @@ After sorting, any chosen subset of K elements has a minimum and maximum defined
 import sys
 input = sys.stdin.readline
 
-def solve():
+def main():
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
     
     a.sort()
     
-    if k == 1:
-        print(0)
-        return
-    
-    ans = 10**18
+    ans = float('inf')
     
     for i in range(n - k + 1):
         ans = min(ans, a[i + k - 1] - a[i])
@@ -88,36 +81,50 @@ def solve():
     print(ans)
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The sorting step is essential because without it, the difference between endpoints of a window would not correspond to actual geometric proximity. The loop over `n - k + 1` windows ensures every contiguous group is checked exactly once. The subtraction `a[i + k - 1] - a[i]` captures the full diameter of the window.
+The solution starts by reading input and sorting the position list. Sorting is essential because it converts the geometric problem on a line into a structured array problem where windows represent candidate groups.
 
-A small subtlety is the `k == 1` case, which avoids unnecessary computation and correctly outputs zero. Although the loop would also handle it safely, explicitly returning makes the logic cleaner and avoids edge confusion.
+The loop over starting indices enumerates all valid size-$K$ segments. For each segment, we compute its spread directly from endpoints. The minimum over all such spreads is stored. The use of a single pass ensures linear scanning after sorting.
+
+A common mistake is trying to maintain a dynamic window without sorting first. That breaks the endpoint property and leads to incorrect range calculations. Another mistake is miscomputing indices, especially forgetting that the last valid start is $n - k$.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
-Input: `N=5, K=3, a=[8, 6, 15, 5, 10]`
+Input:
 
-After sorting: `[5, 6, 8, 10, 15]`
+```
+5 3
+8 6 1 5 5
+```
+
+Sorted array becomes $[1, 5, 5, 6, 8]$.
+
+We evaluate windows:
 
 | i | Window | Range |
 | --- | --- | --- |
-| 0 | [5, 6, 8] | 3 |
-| 1 | [6, 8, 10] | 4 |
-| 2 | [8, 10, 15] | 7 |
+| 0 | [1, 5, 5] | 4 |
+| 1 | [5, 5, 6] | 1 |
+| 2 | [5, 6, 8] | 3 |
 
-Minimum range is 3.
+Minimum range is 1.
 
-This trace shows how the optimal cluster emerges purely from local density, specifically the first three elements.
+This shows that clustering around repeated or close values significantly reduces spread, and the optimal group always emerges from a contiguous segment.
 
-### Example 2
+### Sample 2
 
-Input: `N=7, K=4, a=[1, 2, 4, 5, 6, 7, 9]`
+Input:
 
-Sorted already.
+```
+7 4
+1 2 4 5 6 7 9
+```
+
+Sorted array is identical.
 
 | i | Window | Range |
 | --- | --- | --- |
@@ -126,18 +133,18 @@ Sorted already.
 | 2 | [4, 5, 6, 7] | 3 |
 | 3 | [5, 6, 7, 9] | 4 |
 
-Minimum range is 3.
+Answer is 3.
 
-This demonstrates that the optimal segment may not start at the beginning and requires scanning all windows.
+This confirms that the optimal window is not necessarily at one end of the array, but anywhere the local density is highest.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N log N) | sorting dominates, sliding window is linear |
-| Space | O(1) extra | sorting in-place aside from input storage |
+| Time | $O(N \log N)$ | sorting dominates, scan is linear |
+| Space | $O(1)$ extra | only sorting and a few variables used |
 
-The constraints allow up to 200,000 elements, and O(N log N) sorting plus a single linear scan fits comfortably within typical limits. Memory usage stays linear and only stores the input array.
+The constraints allow up to $2 \cdot 10^5$ elements, and $O(N \log N)$ sorting is well within limits in Python. The linear scan afterward is negligible.
 
 ## Test Cases
 
@@ -146,44 +153,42 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import isclose
-    import builtins
-
+    import sys
     input = sys.stdin.readline
 
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
     a.sort()
 
-    if k == 1:
-        return "0"
-
-    ans = 10**18
+    ans = float('inf')
     for i in range(n - k + 1):
         ans = min(ans, a[i + k - 1] - a[i])
-
     return str(ans)
 
-# provided samples (formatted correctly)
-assert run("5 3\n2 8 6 15 5\n") == "3", "sample 1"
-assert run("7 4\n1 2 4 5 6 7 9\n") == "3", "sample 2"
+# provided samples
+assert run("5 3\n8 6 1 5 5\n") == "1"
+assert run("7 4\n1 2 4 5 6 7 9\n") == "3"
 
 # custom cases
 assert run("1 1\n100\n") == "0", "single element"
-assert run("5 2\n1 100 200 300 400\n") == "99", "small pair window"
-assert run("6 3\n1 2 3 100 101 102\n") == "2", "two clusters"
-assert run("5 5\n10 20 30 40 50\n") == "40", "all elements chosen"
+assert run("4 2\n1 10 20 30\n") == "9", "smallest pair dominates"
+assert run("5 5\n1 2 3 4 5\n") == "4", "take all elements"
+assert run("6 3\n1 2 2 100 101 102\n") == "0", "tight cluster"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single element | 0 | K = 1 edge case |
-| sparse array pairs | 99 | correct window difference |
-| two clusters | 2 | local optimal grouping |
-| all elements | 40 | full range selection |
+| single element | 0 | minimal edge case |
+| spaced numbers | 9 | correct pair window |
+| take all | 4 | full range handling |
+| clustered values | 0 | best local window detection |
 
 ## Edge Cases
 
-For K = 1, consider input `N=4, K=1, a=[10, 100, 1000, 10000]`. After sorting, any single window has zero range. The algorithm immediately returns 0, matching the definition since max minus min over a single element is always zero.
+A key edge case is when $K = 1$. The range of any single element is zero, and the algorithm handles this because every window of size 1 produces $a[i] - a[i] = 0$.
 
-For a tightly clustered group hidden inside sparse values, consider `[1, 2, 3, 100, 101]` with K = 3. The sorted windows produce ranges 2, 98, and 2. The algorithm evaluates each contiguous block and correctly identifies that both `[1,2,3]` and `[100,101,?]` style clusters must be checked, and the minimum remains 2.
+Another case is when all values are identical, although the statement guarantees distinct positions. If that restriction were removed, the sliding window still correctly returns zero for any $K$, since all endpoints match.
+
+Large gaps between clusters test whether the algorithm correctly avoids picking extreme ends. For example, $[1, 2, 3, 100, 101]$ with $K = 3$ yields optimal window $[1,2,3]$ or $[100,101, \text{(invalid)}]$ depending on position, and the scan correctly selects the dense region rather than endpoints spanning the entire range.
+
+The algorithm naturally handles all of these because every candidate is evaluated uniformly through endpoint differences after sorting.
