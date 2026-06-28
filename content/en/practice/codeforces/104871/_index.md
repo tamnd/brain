@@ -1,25 +1,26 @@
 ---
 title: "2023-2024 ICPC Central Europe Regional Contest (CERC 23)"
-description: "11 problems from 2023-2024 ICPC Central Europe Regional Contest (CERC 23) (contest 104871), difficulty -. 4/11 solutions verified against sample I/O."
+description: "12 problems from 2023-2024 ICPC Central Europe Regional Contest (CERC 23) (contest 104871), difficulty -. 4/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104871
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 4
-total_solve_s: 483
-date: "2026-06-28T10:40:05+07:00"
+total_solve_s: 508
+date: "2026-06-28T10:48:02+07:00"
 weight: 104871
 draft: false
 ---
 
 # [2023-2024 ICPC Central Europe Regional Contest (CERC 23)](https://codeforces.com/contest/104871)
 
-ICPC/IOI | 11 problems | 4/11 verified | Difficulty - | 8m 3s
+ICPC/IOI | 12 problems | 4/12 verified | Difficulty - | 8m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Attendance](https://codeforces.com/problemset/problem/104871/A) |  |  |  | 25s |  |
 | [B](B/) | [Ball Passing](https://codeforces.com/problemset/problem/104871/B) |  |  |  | 39s |  |
 | [C](C/) | [Cakes](https://codeforces.com/problemset/problem/104871/C) |  |  |  | 1m | ✓ |
 | [D](D/) | [Drying Laundry](https://codeforces.com/problemset/problem/104871/D) |  |  |  | 58s | ✓ |
