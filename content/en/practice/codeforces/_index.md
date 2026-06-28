@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2298 contests, 15466 problems, 8435 verified."
+description: "Codeforces problem solutions with full editorials. 2299 contests, 15479 problems, 8435 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2298 contests, 15466 problems, 8435 verified.**
+**2299 contests, 15479 problems, 8435 verified.**
 
-## Unknown — 386 contests, 3075 problems, 1904 verified
+## Unknown — 387 contests, 3088 problems, 1904 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104872](104872/) | [2023-2024 Russia Team Open, High School Programming Contest (VKOSHP XXIV)](https://codeforces.com/contest/104872) | 13 | 0/13 | Special | - |
 | [104873](104873/) | [2018-2019 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104873) | 12 | 11/12 | ICPC/IOI | - |
 | [104874](104874/) | [2019-2020 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104874) | 13 | 2/13 | ICPC/IOI | - |
 | [104875](104875/) | [2022-2023 ICPC Northwestern European Regional Programming Contest (NWERC 2022)](https://codeforces.com/contest/104875) | 11 | 11/11 | ICPC/IOI | - |
