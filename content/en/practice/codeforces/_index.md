@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2400 contests, 16383 problems, 8968 verified."
+description: "Codeforces problem solutions with full editorials. 2401 contests, 16395 problems, 8980 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2400 contests, 16383 problems, 8968 verified.**
+**2401 contests, 16395 problems, 8980 verified.**
 
-## Unknown — 446 contests, 3600 problems, 2191 verified
+## Unknown — 447 contests, 3612 problems, 2203 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104670](104670/) | [2021-2022 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2021)](https://codeforces.com/contest/104670) | 12 | 12/12 | ICPC/IOI | - |
 | [104672](104672/) | [2020 Google Code Jam Round 3 (GCJ 20 Round 3)](https://codeforces.com/contest/104672) | 7 | 0/7 | Special | - |
 | [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 6 | 5/6 | Special | - |
 | [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 10 | 7/10 | Special | - |
