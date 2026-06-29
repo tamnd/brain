@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 200/267 solved."
+description: "Section 7.1.4 exercises: 211/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 200/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 211/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -53,17 +53,17 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 200/267 solved.
 | [33](33.md) | &#9654; [*M22*] | math-medium | verified | 2m24s |
 | [34](34.md) |  [*M25*] | math-medium | solved | 1m11s |
 | [35](35.md) | &#9654; [*22*] | medium | verified | 1m26s |
-| 36 |  [*25*] | medium | - | - |
-| 37 |  [*M20*] | math-medium | - | - |
-| 38 | &#9654; [*27*] | hard | - | - |
-| 39 |  [*M20*] | math-medium | - | - |
-| 40 | &#9654; [*22*] | medium | - | - |
-| 41 |  [*M25*] | math-medium | - | - |
-| 42 |  [*22*] | medium | - | - |
-| 43 | &#9654; [*22*] | medium | - | - |
-| 44 | &#9654; [*M32*] | math-hard | - | - |
-| 45 |  [*22*] | medium | - | - |
-| 46 |  [*M23*] | math-medium | - | - |
+| [36](36.md) |  [*25*] | medium | verified | 2m43s |
+| [37](37.md) |  [*M20*] | math-medium | verified | 1m17s |
+| [38](38.md) | &#9654; [*27*] | hard | solved | 4m13s |
+| [39](39.md) |  [*M20*] | math-medium | verified | 2m30s |
+| [40](40.md) | &#9654; [*22*] | medium | solved | 1m42s |
+| [41](41.md) |  [*M25*] | math-medium | solved | 4m09s |
+| [42](42.md) |  [*22*] | medium | verified | 3m42s |
+| [43](43.md) | &#9654; [*22*] | medium | solved | 3m11s |
+| [44](44.md) | &#9654; [*M32*] | math-hard | solved | 1m07s |
+| [45](45.md) |  [*22*] | medium | verified | 2m27s |
+| [46](46.md) |  [*M23*] | math-medium | solved | 1m20s |
 | 47 |  [*M21*] | math-medium | - | - |
 | 48 |  [*M22*] | math-medium | - | - |
 | 49 |  [*20*] | medium | - | - |
