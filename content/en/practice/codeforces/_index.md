@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2416 contests, 16532 problems, 9060 verified."
+description: "Codeforces problem solutions with full editorials. 2416 contests, 16533 problems, 9060 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,16 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2416 contests, 16532 problems, 9060 verified.**
+**2416 contests, 16533 problems, 9060 verified.**
 
-## Unknown — 458 contests, 3703 problems, 2259 verified
+## Unknown — 458 contests, 3704 problems, 2259 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [104645](104645/) | [2018 Google Code Jam World Finals (GCJ 18 World Finals)](https://codeforces.com/contest/104645) | 9 | 2/9 | Special | - |
 | [104648](104648/) | [2019 Google Code Jam Round 1A (GCJ 19 Round 1A)](https://codeforces.com/contest/104648) | 6 | 3/6 | Special | - |
 | [104649](104649/) | [2019 Google Code Jam Round 1B (GCJ 19 Round 1B)](https://codeforces.com/contest/104649) | 6 | 1/6 | Special | - |
-| [104655](104655/) | [2019 Google Code Jam Round 1C (GCJ 19 Round 1C)](https://codeforces.com/contest/104655) | 5 | 1/5 | Special | - |
+| [104655](104655/) | [2019 Google Code Jam Round 1C (GCJ 19 Round 1C)](https://codeforces.com/contest/104655) | 6 | 1/6 | Special | - |
 | [104656](104656/) | [2019 Google Code Jam Round 2 (GCJ 19 Round 2)](https://codeforces.com/contest/104656) | 7 | 2/7 | Special | - |
 | [104659](104659/) | [2020 Google Code Jam Round 1B (GCJ 20 Round 1B)](https://codeforces.com/contest/104659) | 5 | 2/5 | Special | - |
 | [104660](104660/) | [2020 Google Code Jam Qualification Round (GCJ 20 Qualification Round)](https://codeforces.com/contest/104660) | 9 | 9/9 | Special | - |
