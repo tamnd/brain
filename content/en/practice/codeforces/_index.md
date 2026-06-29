@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2416 contests, 16539 problems, 9064 verified."
+description: "Codeforces problem solutions with full editorials. 2416 contests, 16540 problems, 9064 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2416 contests, 16539 problems, 9064 verified.**
+**2416 contests, 16540 problems, 9064 verified.**
 
-## Unknown — 458 contests, 3709 problems, 2261 verified
+## Unknown — 458 contests, 3710 problems, 2261 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -38,7 +38,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104691](104691/) | [Кубы и квадраты](https://codeforces.com/contest/104691) | 1 | 0/1 | Special | - |
 | [104692](104692/) | [2021 Google Code Jam Round 1C (GCJ 21 Round 1C)](https://codeforces.com/contest/104692) | 6 | 2/6 | Special | - |
 | [104699](104699/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая командная олимпиада](https://codeforces.com/contest/104699) | 12 | 2/12 | Special | - |
-| [104702](104702/) | [2021 Google Code Jam Round 2 (GCJ 21 Round 2)](https://codeforces.com/contest/104702) | 6 | 0/6 | Special | - |
+| [104702](104702/) | [2021 Google Code Jam Round 2 (GCJ 21 Round 2)](https://codeforces.com/contest/104702) | 7 | 0/7 | Special | - |
 | [104707](104707/) | [COMP4128 23T3 Contest 2](https://codeforces.com/contest/104707) | 6 | 0/6 | Special | - |
 | [104708](104708/) | [2021 Google Code Jam Round 3 (GCJ 21 Round 3)](https://codeforces.com/contest/104708) | 8 | 1/8 | Special | - |
 | [104709](104709/) | [2022 Google Code Jam Round 1A (GCJ 22 Round 1A)](https://codeforces.com/contest/104709) | 5 | 2/5 | Special | - |
