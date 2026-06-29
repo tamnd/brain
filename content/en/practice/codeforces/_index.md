@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2406 contests, 16460 problems, 9026 verified."
+description: "Codeforces problem solutions with full editorials. 2408 contests, 16473 problems, 9034 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2406 contests, 16460 problems, 9026 verified.**
+**2408 contests, 16473 problems, 9034 verified.**
 
-## Unknown — 450 contests, 3655 problems, 2239 verified
+## Unknown — 451 contests, 3656 problems, 2239 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -26,6 +26,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 11 | 10/11 | Special | - |
 | [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 10/11 | Special | - |
 | [104688](104688/) | [2021 Google Code Jam Round 1A (GCJ 21 Round 1A)](https://codeforces.com/contest/104688) | 8 | 2/8 | Special | - |
+| [104689](104689/) | [Квадраты и кубы](https://codeforces.com/contest/104689) | 1 | 0/1 | Special | - |
 | [104690](104690/) | [2021 Google Code Jam Round 1B (GCJ 21 Round 1B)](https://codeforces.com/contest/104690) | 7 | 2/7 | Special | - |
 | [104691](104691/) | [Кубы и квадраты](https://codeforces.com/contest/104691) | 1 | 0/1 | Special | - |
 | [104692](104692/) | [2021 Google Code Jam Round 1C (GCJ 21 Round 1C)](https://codeforces.com/contest/104692) | 6 | 2/6 | Special | - |
@@ -1687,7 +1688,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 185 contests, 1410 problems, 653 verified
+## 2023 — 186 contests, 1422 problems, 661 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1823,6 +1824,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 12 | 8/12 | Special | - |
 | [104664](104664/) | [UTPC Contest 10-06-23 Div. 2 (Beginner)](https://codeforces.com/contest/104664) | 7 | 4/7 | Div. 2 | - |
 | [104665](104665/) | [UTPC Contest 10-06-23 Div. 1 (Advanced)](https://codeforces.com/contest/104665) | 7 | 2/7 | Div. 1 | - |
 | [104671](104671/) | [2023 ICPC Columbia University Local Contest](https://codeforces.com/contest/104671) | 11 | 2/11 | ICPC/IOI | - |
