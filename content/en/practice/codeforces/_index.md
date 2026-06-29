@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2375 contests, 16183 problems, 8889 verified."
+description: "Codeforces problem solutions with full editorials. 2377 contests, 16204 problems, 8895 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2375 contests, 16183 problems, 8889 verified.**
+**2377 contests, 16204 problems, 8895 verified.**
 
-## Unknown — 428 contests, 3464 problems, 2148 verified
+## Unknown — 429 contests, 3474 problems, 2151 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104718](104718/) | [2021 Google Code Jam World Finals (GCJ 21 World Finals)](https://codeforces.com/contest/104718) | 10 | 3/10 | Special | - |
 | [104733](104733/) | [2022 Google Code Jam Round 3 (GCJ 22 Round 3)](https://codeforces.com/contest/104733) | 9 | 2/9 | Special | - |
 | [104735](104735/) | [2019 Google Code Jam World Finals (GCJ 19 World Finals)](https://codeforces.com/contest/104735) | 12 | 1/12 | Special | - |
 | [104736](104736/) | [2023-2024 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104736) | 13 | 13/13 | ICPC/IOI | - |
@@ -1663,7 +1664,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 178 contests, 1348 problems, 626 verified
+## 2023 — 179 contests, 1359 problems, 629 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1799,6 +1800,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104720](104720/) | [UTPC x WiCS Contest 10-06-23](https://codeforces.com/contest/104720) | 11 | 3/11 | Special | - |
 | [104721](104721/) | [CSP-J 2023](https://codeforces.com/contest/104721) | 2 | 1/2 | Special | - |
 | [104724](104724/) | [CSP-S 2023](https://codeforces.com/contest/104724) | 4 | 2/4 | Special | - |
 | [104725](104725/) | [2023年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/104725) | 12 | 12/12 | Special | - |
