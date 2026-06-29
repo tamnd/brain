@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.2: Oriented Trees"
-description: "Section 2.3.4.2 exercises: 27/28 solved."
+description: "Section 2.3.4.2 exercises: 28/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.4.2. Oriented Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.2: 27/28 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.2: 28/28 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -45,4 +45,4 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.2: 27/28 solved.
 | [25](25.md) |  [**] |  | solved | 3m13s |
 | [26](26.md) |  [**] |  | solved | 4m13s |
 | [27](27.md) |  [**] |  | solved | 4m22s |
-| 28 |  [**] |  | - | - |
+| [28](28.md) |  [**] |  | solved | 9m22s |
