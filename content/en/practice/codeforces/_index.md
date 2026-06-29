@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2440 contests, 16745 problems, 9217 verified."
+description: "Codeforces problem solutions with full editorials. 2441 contests, 16751 problems, 9221 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2440 contests, 16745 problems, 9217 verified.**
+**2441 contests, 16751 problems, 9221 verified.**
 
 ## Unknown — 473 contests, 3837 problems, 2361 verified
 
@@ -1710,7 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 196 contests, 1513 problems, 722 verified
+## 2023 — 197 contests, 1519 problems, 726 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1846,6 +1846,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104597](104597/) | [XXVII Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/104597) | 6 | 4/6 | Special | - |
 | [104604](104604/) | [XXVII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/104604) | 5 | 2/5 | Special | - |
 | [104605](104605/) | [XXVII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/104605) | 5 | 2/5 | Special | - |
 | [104609](104609/) | [Udmurt SU + Izhevsk STU Contest 2012](https://codeforces.com/contest/104609) | 10 | 8/10 | Special | - |
