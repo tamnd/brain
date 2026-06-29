@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 867 solved, 475 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 869 solved, 475 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 867 solved, 475 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 869 solved, 475 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -33,7 +33,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 867 solved, 475 verified, 889 tota
 | [1.4.2](1.4.2/) | Coroutines | 7 | 4 | 7 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 5 | 0 | 8 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 5 | 7 |
-| [1.4.4](1.4.4/) | Input and Output | 17 | 1 | 19 |
+| [1.4.4](1.4.4/) | Input and Output | 19 | 1 | 19 |
 | [2.1](2.1/) | Introduction | 9 | 7 | 9 |
 | [2.2.1](2.2.1/) | Stacks, Queues, and Deques | 14 | 11 | 14 |
 | [2.2.2](2.2.2/) | Sequential Allocation | 19 | 9 | 19 |
