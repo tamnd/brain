@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 867 solved, 492 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 871 solved, 494 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 867 solved, 492 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 871 solved, 494 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 867 solved, 492 verified, 890 tota
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 13 | 9 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 13 | 9 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
-| [3.2.2](3.2.2/) | Other Methods | 33 | 21 | 36 |
+| [3.2.2](3.2.2/) | Other Methods | 36 | 23 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 16 | 25 |
 | [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
 | [3.3.3](3.3.3/) | Theoretical Tests | 27 | 12 | 28 |
@@ -32,7 +32,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 867 solved, 492 verified, 890 tota
 | [4.2.2](4.2.2/) | Accuracy of Floating Point Arithmetic | 32 | 22 | 32 |
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 6 | 3 | 6 |
 | [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 9 | 20 |
-| [4.3.1](4.3.1/) | The Classical Algorithms | 41 | 21 | 43 |
+| [4.3.1](4.3.1/) | The Classical Algorithms | 42 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 18 | 6 | 19 |
 | [4.4](4.4/) | Radix Conversion | 19 | 11 | 19 |
