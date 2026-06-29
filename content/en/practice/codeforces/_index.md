@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2432 contests, 16678 problems, 9165 verified."
+description: "Codeforces problem solutions with full editorials. 2433 contests, 16687 problems, 9171 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2432 contests, 16678 problems, 9165 verified.**
+**2433 contests, 16687 problems, 9171 verified.**
 
-## Unknown — 468 contests, 3790 problems, 2321 verified
+## Unknown — 469 contests, 3799 problems, 2327 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104611](104611/) | [2023湖南省赛](https://codeforces.com/contest/104611) | 9 | 6/9 | Special | - |
 | [104614](104614/) | [2022-2023 ICPC East Central North America Regional Contest (ECNA 2022)](https://codeforces.com/contest/104614) | 12 | 12/12 | ICPC/IOI | - |
 | [104627](104627/) | [COMP4128 23T3 Contest 1](https://codeforces.com/contest/104627) | 5 | 2/5 | Special | - |
 | [104630](104630/) | [2020 Google Code Jam Round 1C (GCJ 20 Round 1C)](https://codeforces.com/contest/104630) | 3 | 3/3 | Special | - |
