@@ -22,4 +22,4 @@ Exercises from [TAOCP Volume 1](../) Section 4.6: 5/5 solved.
 | [2](02.md) |  [*17*] | medium | verified | 2m29s |
 | [3](03.md) |  [*M20*] | math-medium | verified | 1m22s |
 | [4](04.md) |  [*21*] | medium | solved | 1m32s |
-| [5](05.md) | &#9654; [*M21*] | math-medium | verified | 2m48s |
+| [5](05.md) | &#9654; [*M21*] | math-medium | verified | 3m56s |
