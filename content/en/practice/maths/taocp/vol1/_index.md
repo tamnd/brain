@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 885 solved, 483 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 888 solved, 484 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 885 solved, 483 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 888 solved, 484 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -31,7 +31,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 885 solved, 483 verified, 889 tota
 | [1.3.3](1.3.3/) | Applications to Permutations | 37 | 6 | 37 |
 | [1.4.1](1.4.1/) | Subroutines | 7 | 4 | 7 |
 | [1.4.2](1.4.2/) | Coroutines | 7 | 4 | 7 |
-| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 6 | 1 | 8 |
+| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 8 | 1 | 8 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 5 | 7 |
 | [1.4.4](1.4.4/) | Input and Output | 19 | 1 | 19 |
 | [2.1](2.1/) | Introduction | 9 | 7 | 9 |
@@ -45,7 +45,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 885 solved, 483 verified, 889 tota
 | [2.3.1](2.3.1/) | Traversing Binary Trees | 37 | 5 | 37 |
 | [2.3.2](2.3.2/) | Binary Tree Representation of Trees | 22 | 19 | 22 |
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 | 19 |
-| [2.3.4.1](2.3.4.1/) | Free Trees | 12 | 0 | 13 |
+| [2.3.4.1](2.3.4.1/) | Free Trees | 13 | 1 | 13 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 28 | 8 | 28 |
 | [2.3.4.3](2.3.4.3/) |  | 8 | 0 | 8 |
 | [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 30 | 11 | 30 |
