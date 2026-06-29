@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2444 contests, 16766 problems, 9236 verified."
+description: "Codeforces problem solutions with full editorials. 2445 contests, 16769 problems, 9239 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2444 contests, 16766 problems, 9236 verified.**
+**2445 contests, 16769 problems, 9239 verified.**
 
-## Unknown — 476 contests, 3852 problems, 2376 verified
+## Unknown — 477 contests, 3855 problems, 2379 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104593](104593/) | [2018 Google Code Jam Round 1A (GCJ 18 Round 1A)](https://codeforces.com/contest/104593) | 3 | 3/3 | Special | - |
 | [104594](104594/) | [2018 Google Code Jam Round 1B (GCJ 18 Round 1B)](https://codeforces.com/contest/104594) | 3 | 3/3 | Special | - |
 | [104595](104595/) | [2018 Google Code Jam Round 2 (GCJ 18 Round 2)](https://codeforces.com/contest/104595) | 2 | 2/2 | Special | - |
 | [104596](104596/) | [2019-2020 ICPC East Central North America Regional Contest (ECNA 2019)](https://codeforces.com/contest/104596) | 10 | 10/10 | ICPC/IOI | - |
