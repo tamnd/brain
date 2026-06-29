@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 814 solved, 449 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 815 solved, 449 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 814 solved, 449 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 815 solved, 449 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -53,4 +53,4 @@ Exercise solutions for [TAOCP](../) Volume 1. 814 solved, 449 verified, 889 tota
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 0 | 4 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 7 | 0 | 12 |
 | [2.4](2.4/) | Multilinked Structures | 14 | 0 | 15 |
-| [2.5](2.5/) | Dynamic Storage Allocation | 41 | 11 | 44 |
+| [2.5](2.5/) | Dynamic Storage Allocation | 42 | 11 | 44 |
