@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2403 contests, 16419 problems, 8999 verified."
+description: "Codeforces problem solutions with full editorials. 2404 contests, 16431 problems, 9005 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2403 contests, 16419 problems, 8999 verified.**
+**2404 contests, 16431 problems, 9005 verified.**
 
-## Unknown — 449 contests, 3636 problems, 2222 verified
+## Unknown — 450 contests, 3648 problems, 2228 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104666](104666/) | [2019-2020 ICPC Central Europe Regional Contest (CERC 19)](https://codeforces.com/contest/104666) | 12 | 6/12 | ICPC/IOI | - |
 | [104668](104668/) | [2018-2019 ACM-ICPC Central Europe Regional Contest (CERC 18)](https://codeforces.com/contest/104668) | 12 | 10/12 | ICPC/IOI | - |
 | [104669](104669/) | [Turtle Codes](https://codeforces.com/contest/104669) | 12 | 9/12 | Special | - |
 | [104670](104670/) | [2021-2022 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2021)](https://codeforces.com/contest/104670) | 12 | 12/12 | ICPC/IOI | - |
