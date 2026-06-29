@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 6
-total_solve_s: 757
+total_solve_s: 758
 contest_year: 2023
-date: "2026-06-29T14:36:05+07:00"
+date: "2026-06-29T14:36:27+07:00"
 weight: 104678
 draft: false
 ---
 
 # [October come back. Together training](https://codeforces.com/contest/104678)
 
-Special | 10 problems | 6/10 verified | Difficulty - | 12m 37s
+Special | 10 problems | 6/10 verified | Difficulty - | 12m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,4 @@ Special | 10 problems | 6/10 verified | Difficulty - | 12m 37s
 | [G](G/) | [Two ants](https://codeforces.com/problemset/problem/104678/G) |  |  |  | 1m 27s | ✓ |
 | [H](H/) | [Make a wish!](https://codeforces.com/problemset/problem/104678/H) |  |  |  | 1m 42s |  |
 | [I](I/) | [Robin Hood](https://codeforces.com/problemset/problem/104678/I) |  |  |  | 1m 1s | ✓ |
-| [J](J/) | [Find the cat](https://codeforces.com/problemset/problem/104678/J) |  |  |  | 1m 19s |  |
+| [J](J/) | [Find the cat](https://codeforces.com/problemset/problem/104678/J) |  |  |  | 1m 20s |  |

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2406 contests, 16450 problems, 9016 verified."
+description: "Codeforces problem solutions with full editorials. 2406 contests, 16452 problems, 9017 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2406 contests, 16450 problems, 9016 verified.**
+**2406 contests, 16452 problems, 9017 verified.**
 
 ## Unknown — 450 contests, 3651 problems, 2231 verified
 
@@ -1687,7 +1687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 185 contests, 1404 problems, 651 verified
+## 2023 — 185 contests, 1406 problems, 652 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1826,7 +1826,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104664](104664/) | [UTPC Contest 10-06-23 Div. 2 (Beginner)](https://codeforces.com/contest/104664) | 7 | 4/7 | Div. 2 | - |
 | [104665](104665/) | [UTPC Contest 10-06-23 Div. 1 (Advanced)](https://codeforces.com/contest/104665) | 7 | 2/7 | Div. 1 | - |
 | [104671](104671/) | [2023 ICPC Columbia University Local Contest](https://codeforces.com/contest/104671) | 11 | 2/11 | ICPC/IOI | - |
-| [104678](104678/) | [October come back. Together training](https://codeforces.com/contest/104678) | 8 | 5/8 | Special | - |
+| [104678](104678/) | [October come back. Together training](https://codeforces.com/contest/104678) | 10 | 6/10 | Special | - |
 | [104679](104679/) | [Replay of Battle of Brains 2022, University of Dhaka](https://codeforces.com/contest/104679) | 9 | 8/9 | Special | - |
 | [104683](104683/) | [TheForces Round #24 (DIV3-Forces)](https://codeforces.com/contest/104683) | 3 | 1/3 | Special | - |
 | [104720](104720/) | [UTPC x WiCS Contest 10-06-23](https://codeforces.com/contest/104720) | 11 | 3/11 | Special | - |
