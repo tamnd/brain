@@ -8,19 +8,19 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 6
 n_verified: 1
-total_solve_s: 213
-date: "2026-06-29T08:41:45+07:00"
+total_solve_s: 216
+date: "2026-06-29T14:46:21+07:00"
 weight: 104690
 draft: false
 ---
 
 # [2021 Google Code Jam Round 1B (GCJ 21 Round 1B)](https://codeforces.com/contest/104690)
 
-Special | 6 problems | 1/6 verified | Difficulty - | 3m 33s
+Special | 6 problems | 1/6 verified | Difficulty - | 3m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A1](A1/) | [Broken Clock A1](https://codeforces.com/problemset/problem/104690/A1) |  |  |  | 31s |  |
+| [A1](A1/) | [Broken Clock A1](https://codeforces.com/problemset/problem/104690/A1) |  |  |  | 34s |  |
 | [A2](A2/) | [Broken Clock A2](https://codeforces.com/problemset/problem/104690/A2) |  |  |  | 57s | ✓ |
 | [A3](A3/) | [Broken Clock A3](https://codeforces.com/problemset/problem/104690/A3) |  |  |  | 30s |  |
 | [B1](B1/) | [Subtransmutation B1](https://codeforces.com/problemset/problem/104690/B1) |  |  |  | 37s |  |
