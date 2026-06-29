@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 59/525 solved."
+description: "Section 7.2.2.2 exercises: 64/525 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 59/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 64/525 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -161,11 +161,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 59/525 solved.
 | [142](142.md) |  [*24*] | medium | verified | 1m02s |
 | [143](143.md) | &#9654; [*30*] | hard | solved | 3m47s |
 | [144](144.md) |  [*15*] | simple | solved | 3m05s |
-| 145 |  [*23*] | medium | - | - |
-| 146 |  [*25*] | medium | - | - |
-| 147 |  [*05*] | simple | - | - |
-| 148 |  [*21*] | medium | - | - |
-| 149 | &#9654; [*26*] | hard | - | - |
+| [145](145.md) |  [*23*] | medium | solved | 3m05s |
+| [146](146.md) |  [*25*] | medium | solved | 3m53s |
+| [147](147.md) |  [*05*] | simple | verified | 57s |
+| [148](148.md) |  [*21*] | medium | verified | 59s |
+| [149](149.md) | &#9654; [*26*] | hard | verified | 1m03s |
 | 150 |  [*21*] | medium | - | - |
 | 151 | &#9654; [*26*] | hard | - | - |
 | 152 |  [*22*] | medium | - | - |
