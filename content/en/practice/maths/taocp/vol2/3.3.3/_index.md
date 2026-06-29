@@ -24,7 +24,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.3.3: 28/28 solved.
 | [4](04.md) | &#9654; [*M19*] | math-medium | verified | 2m01s |
 | [5](05.md) |  [*M21*] | math-medium | solved | 2m14s |
 | [6](06.md) |  [*M17*] | math-medium | solved | 3m15s |
-| [7](07.md) | &#9654; [*M34*] | math-hard | solved | 5m41s |
+| [7](07.md) | &#9654; [*M34*] | math-hard | verified | 1m13s |
 | [8](08.md) | &#9654; [*M34*] | math-hard | verified | 4m30s |
 | [9](09.md) |  [*M40*] | math-project | solved | 4m02s |
 | [10](10.md) |  [*M20*] | math-medium | verified | 15m12s |

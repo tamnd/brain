@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 884 solved, 495 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 884 solved, 496 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 495 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 496 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -21,7 +21,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 495 verified, 890 tota
 | [3.2.2](3.2.2/) | Other Methods | 36 | 21 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 25 | 16 | 25 |
 | [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
-| [3.3.3](3.3.3/) | Theoretical Tests | 28 | 11 | 28 |
+| [3.3.3](3.3.3/) | Theoretical Tests | 28 | 12 | 28 |
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 14 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 10 | 19 |
