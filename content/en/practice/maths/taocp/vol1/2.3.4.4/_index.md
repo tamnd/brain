@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.4: Enumeration of Trees"
-description: "Section 2.3.4.4 exercises: 18/30 solved."
+description: "Section 2.3.4.4 exercises: 23/30 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.4.4. Enumeration of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 18/30 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 23/30 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,15 +26,15 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 18/30 solved.
 | [6](06.md) |  [**] |  | solved | 4m54s |
 | [7](07.md) |  [**] |  | verified | 1m41s |
 | [8](08.md) |  [**] |  | solved | 4m03s |
-| 9 |  [**] |  | - | - |
+| [9](09.md) |  [**] |  | solved | 4m |
 | [10](10.md) |  [**] |  | solved | 5m |
-| 11 |  [**] |  | - | - |
+| [11](11.md) |  [**] |  | verified | 1m37s |
 | [12](12.md) |  [**] |  | solved | 5m26s |
-| 13 |  [**] |  | - | - |
+| [13](13.md) |  [**] |  | verified | 1m54s |
 | [14](14.md) |  [**] |  | solved | 5m23s |
-| 15 |  [**] |  | - | - |
+| [15](15.md) |  [**] |  | verified | 1m43s |
 | [16](16.md) |  [**] |  | solved | 9m47s |
-| 17 |  [**] |  | - | - |
+| [17](17.md) |  [**] |  | verified | 3m23s |
 | [18](18.md) |  [**] |  | solved | 6m29s |
 | [19](19.md) |  [**] |  | solved | 5m34s |
 | [20](20.md) |  [**] |  | solved | 5m08s |
