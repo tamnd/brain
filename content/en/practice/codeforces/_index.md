@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2406 contests, 16448 problems, 9014 verified."
+description: "Codeforces problem solutions with full editorials. 2406 contests, 16450 problems, 9016 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2406 contests, 16448 problems, 9014 verified.**
+**2406 contests, 16450 problems, 9016 verified.**
 
-## Unknown — 450 contests, 3649 problems, 2229 verified
+## Unknown — 450 contests, 3651 problems, 2231 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104669](104669/) | [Turtle Codes](https://codeforces.com/contest/104669) | 12 | 9/12 | Special | - |
 | [104670](104670/) | [2021-2022 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2021)](https://codeforces.com/contest/104670) | 13 | 13/13 | ICPC/IOI | - |
 | [104672](104672/) | [2020 Google Code Jam Round 3 (GCJ 20 Round 3)](https://codeforces.com/contest/104672) | 7 | 0/7 | Special | - |
-| [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 6 | 5/6 | Special | - |
+| [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 8 | 7/8 | Special | - |
 | [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 10 | 7/10 | Special | - |
 | [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 8/11 | Special | - |
 | [104688](104688/) | [2021 Google Code Jam Round 1A (GCJ 21 Round 1A)](https://codeforces.com/contest/104688) | 6 | 0/6 | Special | - |
