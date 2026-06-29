@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 879 solved, 495 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 883 solved, 497 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,17 +9,17 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 879 solved, 495 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 883 solved, 497 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [3.1](3.1/) | Introduction | 23 | 13 | 23 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 4 | 5 |
-| [3.2.1.1](3.2.1.1/) | Choice of Modulus | 13 | 9 | 14 |
-| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 13 | 9 | 14 |
+| [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 10 | 14 |
+| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 9 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
 | [3.2.2](3.2.2/) | Other Methods | 36 | 23 | 36 |
-| [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 16 | 25 |
+| [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 25 | 17 | 25 |
 | [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
 | [3.3.3](3.3.3/) | Theoretical Tests | 28 | 12 | 28 |
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
@@ -45,4 +45,4 @@ Exercise solutions for [TAOCP](../) Volume 2. 879 solved, 495 verified, 890 tota
 | [4.6.2](4.6.2/) | Factorization of Polynomials | 40 | 29 | 40 |
 | [4.6.3](4.6.3/) | Evaluation of Powers | 35 | 14 | 35 |
 | [4.6.4](4.6.4/) | Evaluation of Polynomials | 74 | 45 | 74 |
-| [4.7](4.7/) | Manipulation of Power Series | 27 | 20 | 28 |
+| [4.7](4.7/) | Manipulation of Power Series | 28 | 20 | 28 |

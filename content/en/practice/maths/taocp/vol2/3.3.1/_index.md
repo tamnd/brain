@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.1: General Test Procedures for Studying Random Data"
-description: "Section 3.3.1 exercises: 24/25 solved."
+description: "Section 3.3.1 exercises: 25/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.3.1. General Test Procedures for Studying Random Data
 
-Exercises from [TAOCP Volume 1](../) Section 3.3.1: 24/25 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.3.1: 25/25 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,7 +22,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.3.1: 24/25 solved.
 | [2](02.md) |  [*20*] | medium | solved | 12m29s |
 | [3](03.md) | &#9654; [*23*] | medium | verified | 8m53s |
 | [4](04.md) | &#9654; [*23*] | medium | verified | 6m29s |
-| 5 |  [*22*] | medium | - | - |
+| [5](05.md) |  [*22*] | medium | verified | 1m56s |
 | [6](06.md) |  [*M20*] | math-medium | verified | 5m18s |
 | [7](07.md) |  [*M16*] | math-medium | verified | 5m42s |
 | [8](08.md) |  [*00*] | immediate | verified | 6m44s |

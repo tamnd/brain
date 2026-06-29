@@ -39,5 +39,5 @@ Exercises from [TAOCP Volume 1](../) Section 3.1: 23/23 solved.
 | [19](19.md) |  [*HM47*] | hm-research | verified | 25m42s |
 | [20](20.md) |  [*30*] | hard | solved | 27m41s |
 | [21](21.md) |  [*40*] | project | solved | 1h14m |
-| [22](22.md) |  [*21*] | medium | verified | 1m24s |
+| [22](22.md) |  [*21*] | medium | verified | 2m54s |
 | [23](23.md) | &#9654; [*M26*] | math-hard | verified | 20m40s |
