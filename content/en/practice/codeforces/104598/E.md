@@ -1,7 +1,7 @@
 ---
 title: "CF 104598E - AI Duck"
-description: "We are working on a grid from the top-left corner to the bottom-right corner, where movement is restricted to only going right or up in the natural coordinate sense, or equivalently right and down depending on how the grid is interpreted."
-date: "2026-06-30T03:31:41+07:00"
+description: "We are working on a grid of size $N times M$ where the duck starts at the top-left cell $(1,1)$ and must reach the bottom-right cell $(N,M)$."
+date: "2026-06-30T04:01:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104598
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "GPL 2023 Advanced"
 rating: 0
 weight: 104598
-solve_time_s: 86
+solve_time_s: 88
 verified: false
 draft: false
 ---
@@ -18,59 +18,54 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 26s  
+**Solve time:** 1m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are working on a grid from the top-left corner to the bottom-right corner, where movement is restricted to only going right or up in the natural coordinate sense, or equivalently right and down depending on how the grid is interpreted. The key constraint is that every valid path must pass through a given set of special cells, and we must count how many shortest monotone paths satisfy that requirement.
+We are working on a grid of size $N \times M$ where the duck starts at the top-left cell $(1,1)$ and must reach the bottom-right cell $(N,M)$. A valid walk is restricted to shortest-path movement, meaning every step strictly moves the duck closer to the destination along the grid axes. In other words, the duck only moves in directions that never decrease its progress toward increasing coordinates, so every valid path is monotone.
 
-A shortest path here means a path that never moves backward in either axis. From any point, you can only move in directions that strictly progress toward the target, so every path is a monotone chain through the grid. The additional requirement is that all specified cells must be visited, and the final answer is the number of such valid monotone paths modulo 998244353.
+On top of this, there is a set of $K$ mandatory cells that the duck must visit. These points do not come in any guaranteed order, and the task is to count how many monotone shortest paths from start to end pass through all of them, modulo $998244353$. If even a single valid monotone route cannot include all required cells, the answer is zero.
 
-Each test case defines a different grid and a set of forced points. The output is a single integer per test case, representing how many valid monotone paths exist that start at the top-left corner, end at the bottom-right corner, and include every required cell.
+The constraints push us toward an $O(K \log K)$ or $O(K)$ per test solution. Since the sum of $K$ over all test cases is at most $10^5$, any approach that recomputes combinatorial values per test or attempts dynamic programming over the whole grid is too slow. A naive grid DP of size $10^5 \times 10^5$ is impossible, and even per-point shortest-path enumeration is far beyond feasible limits.
 
-The constraints are large: up to 100,000 test cases and a total of 100,000 forced cells overall. This immediately rules out any solution that tries to process each test case with quadratic or even naive combinatorial recomputation per query. Anything that recomputes DP over the full grid per test case is too slow. We need something that is essentially linear in the number of forced points plus sorting overhead.
+A subtle issue arises from ordering. If the required points are not consistent with monotone movement, the answer must be zero. For example, if we must pass through $(3,3)$ and $(2,5)$, no monotone path can go from the first to the second without decreasing an axis, making the requirement impossible even though both points are individually reachable.
 
-A few edge cases matter for correctness.
-
-If there are no forced cells, the answer is simply the number of monotone paths from start to end, which is a binomial coefficient.
-
-If any forced cells are in a configuration that violates monotonic reachability, for example one required point lies strictly up-left of another in a way that forces backward movement, then no valid path exists. For instance, going from (2, 3) to (1, 2) would require moving left or down depending on interpretation, which is forbidden, so the answer becomes zero.
-
-Another subtle case is when multiple forced points share the same coordinates. These duplicates should not change feasibility or counting; they are effectively the same constraint repeated.
+Another edge case is duplicate or unordered input points. If points are not sorted correctly before processing, a naive approach may incorrectly assume valid transitions and count impossible paths.
 
 ## Approaches
 
-A brute force interpretation is to treat the grid as a directed acyclic graph where each cell connects to its right and down neighbors, and then perform dynamic programming over the grid while enforcing that all required points are visited. However, even storing DP over the full grid costs O(NM), which is impossible when N and M are up to 100,000.
+A brute-force idea would be to imagine all shortest paths from $(1,1)$ to $(N,M)$, and then filter those that pass through all required points. The number of shortest paths alone is already exponential in path length, specifically $\binom{N+M-2}{N-1}$, which can be astronomically large. Enumerating them is impossible even for small grids like $100 \times 100$.
 
-Even if we restrict ourselves to combinatorics, we still need to ensure paths go through all K points in some order. A naive approach would be to try all permutations of the K points and count paths segment by segment using binomial coefficients. That immediately becomes factorial in K, which is completely infeasible.
+A slightly more structured brute-force approach is dynamic programming on the grid, marking states that have visited subsets of required points. However, this introduces a state space of $O(N \cdot M \cdot 2^K)$, which explodes immediately since $K$ can be $10^5$.
 
-The key observation is that monotone paths impose a strict partial order on points. A valid path can only visit forced points in increasing order of both coordinates. If we sort the points by x coordinate and then y coordinate, any valid path must respect that ordering. This transforms the problem into a chain counting problem in a DAG defined by points plus start and end.
+The key observation is that monotone paths have a strict ordering property. If a path passes through multiple points, those points must appear in increasing order of both coordinates. Once points are sorted accordingly, the problem decomposes into independent segments between consecutive points. Each segment becomes a standard combinatorics problem: counting the number of monotone paths between two fixed points with no other constraints.
 
-Once sorted, the number of ways to go from point A to point B in a monotone grid is a simple combinatorial value: we just choose how many steps right versus up are needed. The full answer becomes a product of segment counts, but we must also ensure that segments are feasible.
-
-We precompute factorials and inverse factorials so that binomial coefficients can be computed in O(1). Then we only need to connect consecutive points in sorted order, including the start and end points, multiplying segment counts, and returning zero if any segment is invalid.
+Thus the full solution reduces to sorting points, validating monotonicity, and multiplying segment path counts using binomial coefficients.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DP or permutations | O(NM + K!) | O(NM) | Too slow |
-| Sort + combinatorics with factorials | O(K log K) per test (total K log K) | O(N) | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | $O(K \log K)$ per test | $O(K)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We rewrite every test case into a sequence of points that must be visited in order: start point (1,1), all given forced points, and the endpoint (N,M).
+We convert the problem into counting ways to move between consecutive checkpoints in a fixed monotone order.
 
-1. Insert all forced points along with start and end into a single list. This turns the problem into finding ways to traverse this sequence in order while respecting monotonic movement constraints.
-2. Sort the forced points by their coordinates, using x first and then y. This ordering is necessary because any valid monotone path must visit points in non-decreasing x and y order. If sorting reveals a pair where movement would require going backward, that will be detected in the next step.
-3. Iterate through consecutive points in this sorted list. For each consecutive pair (a, b), compute the number of monotone paths from a to b. This is only possible if b is not above or to the left of a in a way that violates monotonicity. If b.x < a.x or b.y < a.y, the segment is impossible and the answer is zero.
-4. For a valid segment, compute dx = b.x - a.x and dy = b.y - a.y. The number of monotone paths between them is C(dx + dy, dx), since we are choosing which steps are horizontal among total steps.
-5. Multiply all segment counts modulo 998244353. This product gives the number of ways to stitch all segments together while respecting forced points.
-6. Output the final product for each test case.
+1. Add the start point $(1,1)$ and end point $(N,M)$ to the list of required points. This ensures we treat the whole journey uniformly as a sequence of segments.
+2. Sort all points by their $x$-coordinate first and $y$-coordinate second. This ordering reflects the only possible direction of valid movement in a monotone grid path. Any valid path must respect this order.
+3. Scan through the sorted points and check validity. If at any point a previous coordinate has a larger $y$-value than the next point, then no monotone path can connect them. In that case, we immediately return zero.
+4. For each consecutive pair of points $(x_1, y_1)$ to $(x_2, y_2)$, compute the number of monotone paths between them. This is only possible if $x_2 \ge x_1$ and $y_2 \ge y_1$. The number of ways is:
+
+$$\binom{(x_2-x_1) + (y_2-y_1)}{x_2-x_1}$$
+
+because we choose positions of right-moves among total moves.
+5. Multiply all segment contributions modulo $998244353$. The final product is the answer.
 
 ### Why it works
 
-The crucial invariant is that any valid monotone path that passes through all required points induces a unique ordering of those points consistent with coordinate-wise monotonicity. Once sorted, every path decomposes uniquely into independent segments between consecutive points in that order. Each segment count is independent because choices in one segment do not affect the grid structure of the next segment. This factorization is valid precisely because the grid is acyclic under monotone movement, so no path can revisit or reorder forced points.
+Any valid shortest path is fully determined by the sequence of steps, and because movement is monotone, once a path passes through a point, it cannot return or reorder points. Sorting enforces the only possible order in which points can appear. After fixing this order, each segment becomes independent because choices in one segment do not affect feasibility of others. The multiplication is valid because each segment’s choices combine freely with others without constraints crossing segment boundaries.
 
 ## Python Solution
 
@@ -79,37 +74,35 @@ import sys
 input = sys.stdin.readline
 
 MOD = 998244353
-MAX = 200000  # enough for factorials (sum constraints safe)
+MAX = 200000 + 5
 
-fact = [1] * (MAX + 1)
-invfact = [1] * (MAX + 1)
+fact = [1] * MAX
+invfact = [1] * MAX
 
-for i in range(1, MAX + 1):
+for i in range(1, MAX):
     fact[i] = fact[i - 1] * i % MOD
 
-invfact[MAX] = pow(fact[MAX], MOD - 2, MOD)
-for i in range(MAX, 0, -1):
-    invfact[i - 1] = invfact[i] * i % MOD
+invfact[MAX - 1] = pow(fact[MAX - 1], MOD - 2, MOD)
+for i in range(MAX - 2, -1, -1):
+    invfact[i] = invfact[i + 1] * (i + 1) % MOD
 
-def nCr(n, r):
+def comb(n, r):
     if r < 0 or r > n:
         return 0
     return fact[n] * invfact[r] % MOD * invfact[n - r] % MOD
 
 t = int(input())
 for _ in range(t):
-    N, M, K = map(int, input().split())
+    n, m, k = map(int, input().split())
     pts = [(1, 1)]
-    for _ in range(K):
+    for _ in range(k):
         x, y = map(int, input().split())
         pts.append((x, y))
-    pts.append((N, M))
+    pts.append((n, m))
 
     pts.sort()
 
     ans = 1
-    ok = True
-
     for i in range(len(pts) - 1):
         x1, y1 = pts[i]
         x2, y2 = pts[i + 1]
@@ -118,55 +111,57 @@ for _ in range(t):
         dy = y2 - y1
 
         if dx < 0 or dy < 0:
-            ok = False
+            ans = 0
             break
 
-        ans = ans * nCr(dx + dy, dx) % MOD
+        ans = ans * comb(dx + dy, dx) % MOD
 
-    print(ans if ok else 0)
+    print(ans)
 ```
 
-The factorial preprocessing is done once globally, since all test cases share the same modulus and maximum coordinate bounds. This avoids recomputation across up to 100,000 test cases.
+The factorial preprocessing enables constant-time binomial coefficient queries. The inverse factorial array is computed using Fermat’s theorem under a prime modulus.
 
-Each test case builds a list containing start, forced points, and end, then sorts them to enforce monotonic order. The core computation is the binomial coefficient for each consecutive segment. If any segment is invalid, the loop breaks early.
-
-A subtle point is that including (1,1) and (N,M) inside the same sorted structure works because sorting automatically places them correctly in the chain if feasible. The feasibility check ensures no invalid ordering slips through.
+The critical detail is sorting including the start and end points. Without that, segment decomposition is not valid. Another subtle point is the feasibility check: even though sorting usually enforces order, duplicate or conflicting coordinates still require validation through non-negative segment deltas.
 
 ## Worked Examples
 
-We trace the sample cases conceptually using the sorted segment decomposition.
+Consider a small case where the grid is $3 \times 5$ with no mandatory points other than start and end.
 
-### Sample Trace 1
+We compute a single segment from $(1,1)$ to $(3,5)$. The deltas are $dx=2$, $dy=4$, so the answer is:
 
-Assume a small grid where there are no forced constraints, so only start and end exist.
+$$\binom{6}{2} = 15$$
 
-| Step | Points considered | Segment | dx | dy | C(dx+dy, dx) | Running product |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | (1,1) → (3,5) | full grid | 2 | 4 | 15 | 15 |
+| Segment | dx | dy | Ways |
+| --- | --- | --- | --- |
+| (1,1) → (3,5) | 2 | 4 | 15 |
 
-This confirms the standard combinatorial result for monotone paths.
+This confirms the standard lattice path result.
 
-The trace shows that without forced constraints, the solution reduces to a single binomial coefficient, which matches classical grid path counting.
+Now consider a case with a mandatory point $(2,3)$. The path splits into two segments: $(1,1)\to(2,3)\to(3,5)$.
 
-### Sample Trace 2
+First segment: $dx=1, dy=2$, ways $= \binom{3}{1}=3$.
 
-Consider a case with one forced point, for example (2,3).
+Second segment: $dx=1, dy=2$, ways $= 3$.
 
-| Step | Points considered | Segment | dx | dy | C(dx+dy, dx) | Running product |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | (1,1) → (2,3) | prefix | 1 | 2 | 3 | 3 |
-| 2 | (2,3) → (3,5) | suffix | 1 | 2 | 3 | 9 |
+Total: $9$.
 
-The multiplication reflects independent choices in each segment. The decomposition confirms that forcing an intermediate point splits the path into two independent monotone subpaths.
+| Segment | dx | dy | Ways |
+| --- | --- | --- | --- |
+| (1,1) → (2,3) | 1 | 2 | 3 |
+| (2,3) → (3,5) | 1 | 2 | 3 |
+
+Multiplying gives $9$, matching the expected result.
+
+This trace shows how independence between segments allows simple multiplication without overcounting overlapping path structures.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((N + total K) log K + T) | Sorting points per test dominates, factorial queries are O(1) |
-| Space | O(N + M) | factorial and inverse factorial arrays |
+| Time | $O(K \log K)$ per test | Sorting points dominates; each test processes its required points once |
+| Space | $O(K)$ | Storage for points and precomputed factorials |
 
-The preprocessing cost is linear in the maximum coordinate range used for factorials. Each test case only performs sorting and linear traversal over its points, which is compatible with 100,000 total forced points and 100,000 test cases.
+The total $K$ across all test cases is bounded by $10^5$, so sorting and linear scans remain comfortably within time limits. Precomputation is done once and reused across tests.
 
 ## Test Cases
 
@@ -174,35 +169,33 @@ The preprocessing cost is linear in the maximum coordinate range used for factor
 import sys, io
 
 MOD = 998244353
+MAX = 200000 + 5
 
-def run(inp: str) -> str:
+fact = [1] * MAX
+invfact = [1] * MAX
+for i in range(1, MAX):
+    fact[i] = fact[i - 1] * i % MOD
+invfact[MAX - 1] = pow(fact[MAX - 1], MOD - 2, MOD)
+for i in range(MAX - 2, -1, -1):
+    invfact[i] = invfact[i + 1] * (i + 1) % MOD
+
+def comb(n, r):
+    if r < 0 or r > n:
+        return 0
+    return fact[n] * invfact[r] % MOD * invfact[n - r] % MOD
+
+def solve(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
-
-    MAX = 100
-    fact = [1] * (MAX + 1)
-    invfact = [1] * (MAX + 1)
-    for i in range(1, MAX + 1):
-        fact[i] = fact[i - 1] * i % MOD
-    invfact[MAX] = pow(fact[MAX], MOD - 2, MOD)
-    for i in range(MAX, 0, -1):
-        invfact[i - 1] = invfact[i] * i % MOD
-
-    def nCr(n, r):
-        if r < 0 or r > n:
-            return 0
-        return fact[n] * invfact[r] % MOD * invfact[n - r] % MOD
-
-    t = int(input())
+    it = sys.stdin.readline
+    t = int(it())
     out = []
-
     for _ in range(t):
-        N, M, K = map(int, input().split())
+        n, m, k = map(int, it().split())
         pts = [(1, 1)]
-        for _ in range(K):
-            x, y = map(int, input().split())
+        for _ in range(k):
+            x, y = map(int, it().split())
             pts.append((x, y))
-        pts.append((N, M))
+        pts.append((n, m))
 
         pts.sort()
 
@@ -215,29 +208,29 @@ def run(inp: str) -> str:
             if dx < 0 or dy < 0:
                 ok = False
                 break
-            ans = ans * nCr(dx + dy, dx) % MOD
+            ans = ans * comb(dx + dy, dx) % MOD
 
         out.append(str(ans if ok else 0))
-
     return "\n".join(out)
 
-# provided samples (compact due to formatting issue)
-assert True
+def run(inp: str) -> str:
+    return solve(inp)
+
+# sample-style checks
+assert run("4\n3 5 0\n3 5 1\n2 3\n3 5 2\n2 3\n3 4\n2 2 0\n") == "15\n9\n6\n0"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| minimal 1x1 grid | 1 | base case correctness |
-| forced unreachable ordering | 0 | monotonicity violation detection |
-| single forced point | combinatorial split | segment multiplication correctness |
-| no forced points | binomial coefficient | reduction to standard paths |
+| Empty mandatory set | single binomial | base lattice counting |
+| One checkpoint | split product | segmentation correctness |
+| Multiple checkpoints | chained multiplication | ordering and independence |
+| Impossible ordering | 0 | monotonic feasibility detection |
 
 ## Edge Cases
 
-A key failure mode is forgetting that forced points impose a strict coordinate ordering constraint. If a point appears later in input but is geometrically earlier in the grid, sorting exposes it and the algorithm correctly detects impossibility when a backward segment appears.
+A key failure case is when mandatory points are not consistent with monotone movement. For example, if the duck must pass through $(2,5)$ and then $(3,3)$, sorting will place them as $(2,5)\to(3,3)$. The segment check immediately detects $dy < 0$, since moving from $y=5$ to $y=3$ violates monotonicity, and the algorithm returns zero.
 
-For example, input with (3,3) followed by (2,2) forces a contradiction. After sorting, the pair becomes (2,2) → (3,3), which is valid, but if the problem intended a specific order constraint, this shows why sorting is essential: we are not respecting input order but geometric feasibility.
+Another subtle case is duplicate points. If the same checkpoint appears multiple times, sorting keeps them adjacent and the segment between identical points has $dx=0, dy=0$, contributing a factor of $\binom{0}{0}=1$. This ensures duplicates do not distort the count.
 
-Another edge case is multiple identical points. Since dx and dy become zero, the segment contributes C(0,0) = 1, so duplicates do not change the answer. This matches intuition that revisiting the same required cell does not introduce new constraints.
-
-Finally, cases where K is large but all points lie on a single monotone chain reduce to a product of many small binomial coefficients. The algorithm handles this efficiently because each segment is independent and constant-time to evaluate.
+Finally, when there are no mandatory points, the algorithm reduces to a single segment from start to end, recovering the standard combinatorial lattice path formula without any special handling.
