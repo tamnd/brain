@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 173/267 solved."
+description: "Section 7.1.4 exercises: 183/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 173/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 183/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -43,7 +43,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 173/267 solved.
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
 | [24](24.md) |  [*M22*] | math-medium | solved | 59s |
 | [25](25.md) |  [*M20*] | math-medium | verified | 2m24s |
-| 26 |  [*M20*] | math-medium | - | - |
+| [26](26.md) |  [*M20*] | math-medium | verified | 1m08s |
 | 27 | &#9654; [*M26*] | math-hard | - | - |
 | 28 |  [*M16*] | math-medium | - | - |
 | 29 |  [*HM20*] | hm-medium | - | - |
@@ -268,15 +268,15 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 173/267 solved.
 | [248](248.md) |  [*M22*] | math-medium | solved | 3m44s |
 | [249](249.md) |  [*HM31*] | hm-hard | solved | 3m48s |
 | [250](250.md) |  [*28*] | hard | solved | 4m03s |
-| 251 |  [*M46*] | math-research | - | - |
-| 252 |  [*M30*] | math-hard | - | - |
-| 253 | &#9654; [*M26*] | math-hard | - | - |
-| 254 | &#9654; [*M23*] | math-medium | - | - |
-| 255 | &#9654; [*25*] | medium | - | - |
-| 256 |  [*M32*] | math-hard | - | - |
-| 257 |  [*40*] | project | - | - |
-| 258 | &#9654; [*25*] | medium | - | - |
-| 259 | &#9654; [*25*] | medium | - | - |
+| [251](251.md) |  [*M46*] | math-research | verified | 2m58s |
+| [252](252.md) |  [*M30*] | math-hard | solved | 4m03s |
+| [253](253.md) | &#9654; [*M26*] | math-hard | verified | 2m05s |
+| [254](254.md) | &#9654; [*M23*] | math-medium | solved | 2m26s |
+| [255](255.md) | &#9654; [*25*] | medium | verified | 1m23s |
+| [256](256.md) |  [*M32*] | math-hard | solved | 4m52s |
+| [257](257.md) |  [*40*] | project | verified | 4m48s |
+| [258](258.md) | &#9654; [*25*] | medium | verified | 4m22s |
+| [259](259.md) | &#9654; [*25*] | medium | solved | 1m54s |
 | 260 | &#9654; [*M27*] | math-hard | - | - |
 | 261 |  [*HM21*] | hm-medium | - | - |
 | 262 |  [*M26*] | math-hard | - | - |
