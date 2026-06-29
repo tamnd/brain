@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 223/267 solved."
+description: "Section 7.1.4 exercises: 227/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 223/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 227/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -76,10 +76,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 223/267 solved.
 | [56](56.md) |  [*20*] | medium | verified | 1m19s |
 | [57](57.md) |  [*25*] | medium | solved | 47s |
 | [58](58.md) |  [*20*] | medium | verified | 1m09s |
-| 59 | &#9654; [*M28*] | math-hard | - | - |
-| 60 |  [*M22*] | math-medium | - | - |
-| 61 | &#9654; [*M27*] | math-hard | - | - |
-| 62 | &#9654; [*M21*] | math-medium | - | - |
+| [59](59.md) | &#9654; [*M28*] | math-hard | verified | 2m37s |
+| [60](60.md) |  [*M22*] | math-medium | solved | 3m58s |
+| [61](61.md) | &#9654; [*M27*] | math-hard | solved | 1m08s |
+| [62](62.md) | &#9654; [*M21*] | math-medium | verified | 2m59s |
 | 63 |  [*M27*] | math-hard | - | - |
 | 64 |  [*M21*] | math-medium | - | - |
 | 65 | &#9654; [*M25*] | math-medium | - | - |
