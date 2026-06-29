@@ -8,7 +8,7 @@ section_title: "Digital Searching"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 603
+weight: 6030000
 draft: false
 ---
 

@@ -8,7 +8,7 @@ section_title: "Sorting by Merging"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50204
+weight: 5020400
 draft: false
 ---
 

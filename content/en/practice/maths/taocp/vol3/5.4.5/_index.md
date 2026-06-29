@@ -8,7 +8,7 @@ section_title: "The Oscillating Sort"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50405
+weight: 5040500
 draft: false
 ---
 

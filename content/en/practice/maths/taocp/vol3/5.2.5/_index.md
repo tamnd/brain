@@ -8,7 +8,7 @@ section_title: "Sorting by Distribution"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50205
+weight: 5020500
 draft: false
 ---
 

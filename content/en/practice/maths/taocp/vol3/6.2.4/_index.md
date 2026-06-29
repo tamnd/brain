@@ -8,7 +8,7 @@ section_title: "Multiway Trees"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 60204
+weight: 6020400
 draft: false
 ---
 

@@ -8,7 +8,7 @@ section_title: "The Polyphase Merge"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50402
+weight: 5040200
 draft: false
 ---
 

@@ -8,7 +8,7 @@ section_title: "Binary Tree Searching"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 60202
+weight: 6020200
 draft: false
 ---
 

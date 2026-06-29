@@ -8,7 +8,7 @@ section_title: "Two-Tape Sorting"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50408
+weight: 5040800
 draft: false
 ---
 

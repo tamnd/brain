@@ -8,7 +8,7 @@ section_title: "Hashing"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 604
+weight: 6040000
 draft: false
 ---
 

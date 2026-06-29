@@ -8,7 +8,7 @@ section_title: "Multiway Merging and Replacement Selection"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50401
+weight: 5040100
 draft: false
 ---
 

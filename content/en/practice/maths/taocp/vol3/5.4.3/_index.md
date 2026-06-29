@@ -8,7 +8,7 @@ section_title: "The Cascade Merge"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50403
+weight: 5040300
 draft: false
 ---
 

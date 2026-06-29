@@ -8,7 +8,7 @@ section_title: "Balanced Trees"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 60203
+weight: 6020300
 draft: false
 ---
 

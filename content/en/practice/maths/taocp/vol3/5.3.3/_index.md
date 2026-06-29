@@ -8,7 +8,7 @@ section_title: "Minimum-Comparison Selection"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50303
+weight: 5030300
 draft: false
 ---
 

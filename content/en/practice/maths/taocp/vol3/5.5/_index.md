@@ -8,7 +8,7 @@ section_title: "Summary, History, and Bibliography"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 505
+weight: 5050000
 draft: false
 ---
 

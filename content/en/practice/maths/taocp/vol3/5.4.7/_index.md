@@ -8,7 +8,7 @@ section_title: "External Radix Sorting"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50407
+weight: 5040700
 draft: false
 ---
 

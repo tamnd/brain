@@ -8,7 +8,7 @@ section_title: "Disks and Drums"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50409
+weight: 5040900
 draft: false
 ---
 

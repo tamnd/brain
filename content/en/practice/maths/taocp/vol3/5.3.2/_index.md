@@ -26,8 +26,8 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.2: 20/20 solved.
 | [6](06.md) |  [*M26*] | math-hard | solved | 2m21s |
 | [7](07.md) |  [*21*] | medium | verified | 4m11s |
 | [8](08.md) |  [*24*] | medium | verified | 3m04s |
-| [9](09.md) |  [*27*] | hard | solved | 1m14s |
-| [10](10.md) |  [*33*] | hard | solved | 1m43s |
+| [9](09.md) |  [*27*] | hard | solved | 4m44s |
+| [10](10.md) |  [*33*] | hard | solved | 4m14s |
 | [11](11.md) |  [*M40*] | math-project | solved | 4m16s |
 | [12](12.md) |  [*M21*] | math-medium | solved | 4m11s |
 | [14](14.md) |  [*41*] | project | solved | 4m17s |

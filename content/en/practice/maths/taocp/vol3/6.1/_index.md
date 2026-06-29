@@ -8,7 +8,7 @@ section_title: "Sequential Searching"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 601
+weight: 6010000
 draft: false
 ---
 

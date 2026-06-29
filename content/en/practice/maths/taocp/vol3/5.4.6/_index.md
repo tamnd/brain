@@ -8,7 +8,7 @@ section_title: "Practical Considerations for Tape Merging"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50406
+weight: 5040600
 draft: false
 ---
 

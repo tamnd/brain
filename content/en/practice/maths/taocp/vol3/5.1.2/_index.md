@@ -27,5 +27,5 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.2: 11/11 solved.
 | [7](07.md) |  [*M21*] | math-medium | verified | 1h12m |
 | [8](08.md) |  [*20*] | medium | solved | 31m23s |
 | [9](09.md) |  [*33*] | hard | solved | 20m23s |
-| [10](10.md) |  [*M30*] | math-hard | solved | 4m48s |
-| [11](11.md) |  [*M26*] | math-hard | solved | 4m22s |
+| [10](10.md) |  [*M30*] | math-hard | solved | 50m54s |
+| [11](11.md) |  [*M26*] | math-hard | verified | 52m40s |

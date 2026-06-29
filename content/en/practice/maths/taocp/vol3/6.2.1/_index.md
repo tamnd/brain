@@ -8,7 +8,7 @@ section_title: "Searching an Ordered Table"
 chapter: 6
 chapter_title: "Searching"
 volume: 3
-weight: 60201
+weight: 6020100
 draft: false
 ---
 

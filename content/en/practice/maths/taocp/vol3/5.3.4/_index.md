@@ -8,7 +8,7 @@ section_title: "Networks for Sorting"
 chapter: 5
 chapter_title: "Sorting"
 volume: 3
-weight: 50304
+weight: 5030400
 draft: false
 ---
 
