@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 874 solved, 478 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 877 solved, 479 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 874 solved, 478 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 877 solved, 479 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -49,8 +49,8 @@ Exercise solutions for [TAOCP](../) Volume 1. 874 solved, 478 verified, 889 tota
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 28 | 8 | 28 |
 | [2.3.4.3](2.3.4.3/) |  | 8 | 0 | 8 |
 | [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 30 | 11 | 30 |
-| [2.3.4.5](2.3.4.5/) | Path Length | 15 | 3 | 17 |
+| [2.3.4.5](2.3.4.5/) | Path Length | 17 | 4 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 0 | 4 |
-| [2.3.5](2.3.5/) | Lists and Garbage Collection | 7 | 0 | 12 |
+| [2.3.5](2.3.5/) | Lists and Garbage Collection | 8 | 0 | 12 |
 | [2.4](2.4/) | Multilinked Structures | 14 | 0 | 15 |
 | [2.5](2.5/) | Dynamic Storage Allocation | 44 | 11 | 44 |
