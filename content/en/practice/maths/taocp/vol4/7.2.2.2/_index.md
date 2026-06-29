@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 22/525 solved."
+description: "Section 7.2.2.2 exercises: 33/525 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 22/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 33/525 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 22/525 solved.
 | [9](09.md) |  [*M21*] | math-medium | solved | 3m20s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 4m15s |
 | [11](11.md) | &#9654; [**] |  | verified | 57s |
-| 12 | &#9654; [**] |  | - | - |
+| [12](12.md) | &#9654; [**] |  | solved | 3m21s |
 | 13 |  [*24*] | medium | - | - |
 | 14 |  [*22*] | medium | - | - |
 | 15 |  [*24*] | medium | - | - |
@@ -127,16 +127,16 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 22/525 solved.
 | [108](108.md) |  [*23*] | medium | solved | 3m26s |
 | [109](109.md) | &#9654; [*20*] | medium | verified | 1m04s |
 | [110](110.md) |  [*19*] | medium | verified | 3m31s |
-| 111 |  [*40*] | project | - | - |
-| 112 |  [*46*] | research | - | - |
-| 113 | &#9654; [*30*] | hard | - | - |
-| 114 |  [*27*] | hard | - | - |
-| 115 |  [*25*] | medium | - | - |
-| 116 |  [*22*] | medium | - | - |
-| 117 |  [*23*] | medium | - | - |
-| 118 |  [*20*] | medium | - | - |
-| 119 |  [*18*] | medium | - | - |
-| 120 |  [*M20*] | math-medium | - | - |
+| [111](111.md) |  [*40*] | project | verified | 1m03s |
+| [112](112.md) |  [*46*] | research | solved | 2m57s |
+| [113](113.md) | &#9654; [*30*] | hard | solved | 4m31s |
+| [114](114.md) |  [*27*] | hard | solved | 3m |
+| [115](115.md) |  [*25*] | medium | solved | 3m36s |
+| [116](116.md) |  [*22*] | medium | verified | 4m03s |
+| [117](117.md) |  [*23*] | medium | verified | 1m05s |
+| [118](118.md) |  [*20*] | medium | verified | 3m24s |
+| [119](119.md) |  [*18*] | medium | solved | 1m33s |
+| [120](120.md) |  [*M20*] | math-medium | verified | 1m33s |
 | 121 |  [*21*] | medium | - | - |
 | 122 | &#9654; [*21*] | medium | - | - |
 | 123 |  [*17*] | medium | - | - |
