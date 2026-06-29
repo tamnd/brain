@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2416 contests, 16538 problems, 9062 verified."
+description: "Codeforces problem solutions with full editorials. 2416 contests, 16539 problems, 9064 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2416 contests, 16538 problems, 9062 verified.**
+**2416 contests, 16539 problems, 9064 verified.**
 
 ## Unknown — 458 contests, 3709 problems, 2261 verified
 
@@ -1695,7 +1695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 187 contests, 1434 problems, 667 verified
+## 2023 — 187 contests, 1435 problems, 669 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1832,7 +1832,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 | [104651](104651/) | [The 2023 CCPC Online Contest](https://codeforces.com/contest/104651) | 12 | 6/12 | Special | - |
-| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 12 | 8/12 | Special | - |
+| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 13 | 10/13 | Special | - |
 | [104664](104664/) | [UTPC Contest 10-06-23 Div. 2 (Beginner)](https://codeforces.com/contest/104664) | 7 | 4/7 | Div. 2 | - |
 | [104665](104665/) | [UTPC Contest 10-06-23 Div. 1 (Advanced)](https://codeforces.com/contest/104665) | 7 | 2/7 | Div. 1 | - |
 | [104671](104671/) | [2023 ICPC Columbia University Local Contest](https://codeforces.com/contest/104671) | 11 | 2/11 | ICPC/IOI | - |
