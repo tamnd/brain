@@ -211,7 +211,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [191](191.md) |  [*M30*] | math-hard | solved | 4m23s |
 | [192](192.md) |  [*HM38*] | hm-project | solved | 4m27s |
 | [193](193.md) | &#9654; [*M21*] | math-medium | solved | 4m05s |
-| [194](194.md) |  [*M24*] | math-medium | solved | 2m54s |
+| [194](194.md) |  [*M24*] | math-medium | solved | 1m49s |
 | [195](195.md) | &#9654; [*HM25*] | hm-medium | verified | 1m16s |
 | [196](196.md) |  [*21*] | medium | solved | 4m31s |
 | [197](197.md) |  [*22*] | medium | solved | 1m05s |
