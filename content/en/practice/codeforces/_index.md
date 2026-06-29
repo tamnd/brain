@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2439 contests, 16735 problems, 9210 verified."
+description: "Codeforces problem solutions with full editorials. 2440 contests, 16745 problems, 9217 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2439 contests, 16735 problems, 9210 verified.**
+**2440 contests, 16745 problems, 9217 verified.**
 
-## Unknown — 472 contests, 3827 problems, 2354 verified
+## Unknown — 473 contests, 3837 problems, 2361 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104598](104598/) | [GPL 2023 Advanced](https://codeforces.com/contest/104598) | 10 | 7/10 | Special | - |
 | [104599](104599/) | [GPL 2023 Novice](https://codeforces.com/contest/104599) | 10 | 7/10 | Special | - |
 | [104603](104603/) | [2023 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/104603) | 14 | 13/14 | Special | - |
 | [104610](104610/) | [2020 Google Code Jam Round 1A (GCJ 20 Round 1A)](https://codeforces.com/contest/104610) | 3 | 3/3 | Special | - |
