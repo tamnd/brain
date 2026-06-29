@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.1: Dancing Links"
-description: "Section 7.2.2.1 exercises: 437/446 solved."
+description: "Section 7.2.2.1 exercises: 439/446 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.1. Dancing Links
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 437/446 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 439/446 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -287,7 +287,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 437/446 solved.
 | [269](269.md) |  [*21*] | medium | solved | 4m36s |
 | [270](270.md) |  [*22*] | medium | solved | 4m18s |
 | [271](271.md) |  [*20*] | medium | solved | 1m19s |
-| 272 |  [*23*] | medium | - | - |
+| [272](272.md) |  [*23*] | medium | verified | 3m02s |
 | [273](273.md) |  [*25*] | medium | solved | 2m35s |
 | [274](274.md) |  [*21*] | medium | solved | 3m49s |
 | [275](275.md) |  [*21*] | medium | solved | 3m31s |
@@ -335,7 +335,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 437/446 solved.
 | [317](317.md) |  [*22*] | medium | verified | 1m15s |
 | [318](318.md) | &#9654; [*20*] | medium | solved | 4m08s |
 | [319](319.md) |  [*21*] | medium | verified | 1m18s |
-| 320 | &#9654; [*M38*] | math-project | - | - |
+| [320](320.md) | &#9654; [*M38*] | math-project | solved | 1m51s |
 | [321](321.md) |  [*42*] | project | verified | 1m02s |
 | [322](322.md) |  [*25*] | medium | verified | 1m13s |
 | [323](323.md) |  [*M25*] | math-medium | solved | 3m57s |
