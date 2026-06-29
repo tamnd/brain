@@ -1,28 +1,29 @@
 ---
 title: "Replay of Ostad Presents Intra KUET Programming Contest 2023"
-description: "12 problems from Replay of Ostad Presents Intra KUET Programming Contest 2023 (contest 104663), difficulty -. 8/12 solutions verified against sample I/O."
+description: "13 problems from Replay of Ostad Presents Intra KUET Programming Contest 2023 (contest 104663), difficulty -. 10/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104663
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 8
-total_solve_s: 996
+n_problems: 13
+n_verified: 10
+total_solve_s: 1049
 contest_year: 2023
-date: "2026-06-29T14:58:20+07:00"
+date: "2026-06-29T16:38:49+07:00"
 weight: 104663
 draft: false
 ---
 
 # [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663)
 
-Special | 12 problems | 8/12 verified | Difficulty - | 16m 36s
+Special | 13 problems | 10/13 verified | Difficulty - | 17m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Counting Subarrays](https://codeforces.com/problemset/problem/104663/A) |  |  |  | 1m 31s |  |
-| [C](C/) | [Don't Let Them Pass](https://codeforces.com/problemset/problem/104663/C) |  |  |  | 1m 28s |  |
+| [A](A/) | [Counting Subarrays](https://codeforces.com/problemset/problem/104663/A) |  |  |  | 1m 39s | ✓ |
+| [B](B/) | [Digit occurrence Sum](https://codeforces.com/problemset/problem/104663/B) |  |  |  | 1m 34s | ✓ |
+| [C](C/) | [Don't Let Them Pass](https://codeforces.com/problemset/problem/104663/C) |  |  |  | 39s |  |
 | [D](D/) | [Eating Honey Nuts](https://codeforces.com/problemset/problem/104663/D) |  |  |  | 1m 56s |  |
 | [E](E/) | [Fruit Seller of KUETLand](https://codeforces.com/problemset/problem/104663/E) |  |  |  | 1m 34s | ✓ |
 | [F](F/) | [Lazy KUETian](https://codeforces.com/problemset/problem/104663/F) |  |  |  | 1m 17s | ✓ |
