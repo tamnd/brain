@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2422 contests, 16595 problems, 9093 verified."
+description: "Codeforces problem solutions with full editorials. 2423 contests, 16605 problems, 9103 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2422 contests, 16595 problems, 9093 verified.**
+**2423 contests, 16605 problems, 9103 verified.**
 
-## Unknown — 461 contests, 3735 problems, 2269 verified
+## Unknown — 462 contests, 3745 problems, 2279 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104635](104635/) | [2019 Google Code Jam Qualification Round (GCJ 19 Qualification Round)](https://codeforces.com/contest/104635) | 10 | 10/10 | Special | - |
 | [104640](104640/) | [Интернет-олимпиады, Сезон 2023-2024, Первая командная олимпиада](https://codeforces.com/contest/104640) | 12 | 5/12 | Special | - |
 | [104642](104642/) | [2018 Google Code Jam Qualification Round (GCJ 18 Qualification Round)](https://codeforces.com/contest/104642) | 8 | 2/8 | Special | - |
 | [104644](104644/) | [2018 Google Code Jam Round 1C (GCJ 18 Round 1C)](https://codeforces.com/contest/104644) | 5 | 1/5 | Special | - |
