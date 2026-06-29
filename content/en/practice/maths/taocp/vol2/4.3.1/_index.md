@@ -34,7 +34,7 @@ Exercises from [TAOCP Volume 1](../) Section 4.3.1: 43/43 solved.
 | [14](14.md) | &#9654; [*M23*] | math-medium | solved | 1m50s |
 | [15](15.md) |  [*M20*] | math-medium | verified | 6m19s |
 | [16](16.md) |  [*39*] | project | verified | 6m02s |
-| [17](17.md) |  [*M20*] | math-medium | solved | 24m42s |
+| [17](17.md) |  [*M20*] | math-medium | solved | 4m10s |
 | [18](18.md) |  [*M30*] | math-hard | verified | 11m37s |
 | [19](19.md) | &#9654; [*M21*] | math-medium | verified | 2m49s |
 | [20](20.md) |  [*M22*] | math-medium | solved | 10m34s |
