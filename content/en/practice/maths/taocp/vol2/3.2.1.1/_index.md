@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.2.1.1: Choice of Modulus"
-description: "Section 3.2.1.1 exercises: 14/14 solved."
+description: "Section 3.2.1.1 exercises: 13/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.2.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.2.1.1. Choice of Modulus
 
-Exercises from [TAOCP Volume 1](../) Section 3.2.1.1: 14/14 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.2.1.1: 13/14 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,7 +26,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.2.1.1: 14/14 solved.
 | [6](06.md) | &#9654; [*28*] | hard | verified | 14m32s |
 | [7](07.md) |  [*M24*] | math-medium | verified | 24m11s |
 | [8](08.md) | &#9654; [*20*] | medium | verified | 20m27s |
-| [9](09.md) | &#9654; [*M25*] | math-medium | solved | 35m07s |
+| 9 | &#9654; [*M25*] | math-medium | - | - |
 | [10](10.md) |  [*M26*] | math-hard | verified | 13m19s |
 | [11](11.md) |  [*M30*] | math-hard | solved | 48m42s |
 | [12](12.md) | &#9654; [*M28*] | math-hard | verified | 19m45s |

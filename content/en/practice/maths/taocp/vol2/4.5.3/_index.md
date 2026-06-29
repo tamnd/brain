@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.3: Analysis of Euclid's Algorithm"
-description: "Section 4.5.3 exercises: 42/42 solved."
+description: "Section 4.5.3 exercises: 39/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.5.3. Analysis of Euclid's Algorithm
 
-Exercises from [TAOCP Volume 1](../) Section 4.5.3: 42/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 4.5.3: 39/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -33,7 +33,7 @@ Exercises from [TAOCP Volume 1](../) Section 4.5.3: 42/42 solved.
 | [13](13.md) |  [*M40*] | math-project | solved | 9m11s |
 | [14](14.md) |  [*M22*] | math-medium | solved | 2m03s |
 | [15](15.md) | &#9654; [*M31*] | math-hard | solved | 3m05s |
-| [16](16.md) |  [*HM30*] | hm-hard | solved | 3m57s |
+| 16 |  [*HM30*] | hm-hard | - | - |
 | [17](17.md) | &#9654; [*M23*] | math-medium | solved | 4m35s |
 | [18](18.md) |  [*M25*] | math-medium | solved | 10m06s |
 | [19](19.md) |  [*M20*] | math-medium | verified | 2m11s |
@@ -50,13 +50,13 @@ Exercises from [TAOCP Volume 1](../) Section 4.5.3: 42/42 solved.
 | [30](30.md) | &#9654; [*HM22*] | hm-medium | verified | 6m05s |
 | [31](31.md) | &#9654; [*M35*] | math-hard | verified | 1m51s |
 | [32](32.md) |  [*20*] | medium | verified | 2m03s |
-| [33](33.md) |  [*M32*] | math-hard | solved | 7m30s |
+| 33 |  [*M32*] | math-hard | - | - |
 | [34](34.md) |  [*HM41*] | hm-project | verified | 7m01s |
 | [35](35.md) |  [*HM41*] | hm-project | verified | 5m47s |
 | [36](36.md) |  [*M25*] | math-medium | verified | 5m43s |
 | [37](37.md) |  [*M38*] | math-project | verified | 5m07s |
 | [38](38.md) |  [*M35*] | math-hard | solved | 1m25s |
 | [39](39.md) | &#9654; [*M25*] | math-medium | verified | 3m22s |
-| [40](40.md) |  [*M28*] | math-hard | solved | 7m43s |
+| 40 |  [*M28*] | math-hard | - | - |
 | [41](41.md) |  [*M40*] | math-project | verified | 7m52s |
 | [42](42.md) |  [*M30*] | math-hard | solved | 6m31s |

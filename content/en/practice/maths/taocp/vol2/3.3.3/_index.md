@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.3: Theoretical Tests"
-description: "Section 3.3.3 exercises: 28/28 solved."
+description: "Section 3.3.3 exercises: 27/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.3"
@@ -14,12 +14,12 @@ draft: false
 
 # Section 3.3.3. Theoretical Tests
 
-Exercises from [TAOCP Volume 1](../) Section 3.3.3: 28/28 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.3.3: 27/28 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*M10*] | math-simple | verified | 12m11s |
-| [2](02.md) |  [*HM22*] | hm-medium | solved | 5m28s |
+| 2 |  [*HM22*] | hm-medium | - | - |
 | [3](03.md) |  [*M23*] | math-medium | solved | 9m16s |
 | [4](04.md) | &#9654; [*M19*] | math-medium | verified | 2m01s |
 | [5](05.md) |  [*M21*] | math-medium | solved | 2m14s |

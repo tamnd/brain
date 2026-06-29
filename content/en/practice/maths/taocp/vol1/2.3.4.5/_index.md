@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.5: Path Length"
-description: "Section 2.3.4.5 exercises: 17 solved."
+description: "Section 2.3.4.5 exercises: 10/17 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.5"
@@ -14,8 +14,24 @@ draft: false
 
 # Section 2.3.4.5. Path Length
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.5: 17 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.5: 10/17 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-
+| [1](01.md) |  [**] |  | solved | 5m09s |
+| 2 |  [**] |  | - | - |
+| [3](03.md) |  [**] |  | solved | 5m47s |
+| 4 |  [**] |  | - | - |
+| [5](05.md) |  [**] |  | solved | 4m59s |
+| [6](06.md) |  [**] |  | solved | 10m42s |
+| [7](07.md) |  [**] |  | solved | 4m37s |
+| 8 |  [**] |  | - | - |
+| [9](09.md) |  [**] |  | solved | 5m44s |
+| 10 |  [**] |  | - | - |
+| [11](11.md) |  [**] |  | solved | 3m47s |
+| [12](12.md) |  [**] |  | solved | 7m59s |
+| 13 |  [**] |  | - | - |
+| 14 |  [**] |  | - | - |
+| [15](15.md) |  [**] |  | solved | 3m18s |
+| [16](16.md) |  [**] |  | solved | 13m21s |
+| 17 |  [**] |  | - | - |

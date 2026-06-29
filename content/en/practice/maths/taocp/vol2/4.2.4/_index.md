@@ -30,8 +30,8 @@ Exercises from [TAOCP Volume 1](../) Section 4.2.4: 20/20 solved.
 | [10](10.md) | &#9654; [*HM28*] | hm-hard | solved | 3m34s |
 | [11](11.md) |  [*M15*] | math-simple | solved | 1m01s |
 | [12](12.md) |  [*HM25*] | hm-medium | verified | 1m06s |
-| [13](13.md) | &#9654; [*M20*] | math-medium | verified | 1m11s |
-| [14](14.md) | &#9654; [*HM30*] | hm-hard | verified | 2m19s |
+| [13](13.md) | &#9654; [*M20*] | math-medium | verified | 2m |
+| [14](14.md) | &#9654; [*HM30*] | hm-hard | solved | 3m18s |
 | [15](15.md) |  [*HM28*] | hm-hard | solved | 4m56s |
 | [16](16.md) |  [*HM28*] | hm-hard | solved | 4m15s |
 | [17](17.md) | &#9654; [*HM25*] | hm-medium | verified | 1m20s |
