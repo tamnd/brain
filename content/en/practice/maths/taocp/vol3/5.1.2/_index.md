@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.2: Permutations of a Multiset"
-description: "Section 5.1.2 exercises: 6/11 solved."
+description: "Section 5.1.2 exercises: 11/11 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.2"
@@ -14,18 +14,18 @@ draft: false
 
 # Section 5.1.2. Permutations of a Multiset
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.2: 6/11 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.2: 11/11 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 1m24s |
-| 2 |  [**] |  | - | - |
-| 3 |  [*M13*] | math-simple | - | - |
-| [4](04.md) |  [*M11*] | math-simple | verified | 1m29s |
-| [5](05.md) |  [*M23*] | math-medium | solved | 5m02s |
-| 6 |  [*M15*] | math-simple | - | - |
-| 7 |  [*M21*] | math-medium | - | - |
-| 8 |  [*20*] | medium | - | - |
-| [9](09.md) |  [*33*] | hard | verified | 4m34s |
+| [1](01.md) |  [**] |  | verified | 30m29s |
+| [2](02.md) |  [**] |  | solved | 15m46s |
+| [3](03.md) |  [*M13*] | math-simple | verified | 17m31s |
+| [4](04.md) |  [*M11*] | math-simple | solved | 18m56s |
+| [5](05.md) |  [*M23*] | math-medium | verified | 16m30s |
+| [6](06.md) |  [*M15*] | math-simple | solved | 1h12m |
+| [7](07.md) |  [*M21*] | math-medium | verified | 1h12m |
+| [8](08.md) |  [*20*] | medium | solved | 31m23s |
+| [9](09.md) |  [*33*] | hard | solved | 20m23s |
 | [10](10.md) |  [*M30*] | math-hard | solved | 4m48s |
 | [11](11.md) |  [*M26*] | math-hard | solved | 4m22s |
