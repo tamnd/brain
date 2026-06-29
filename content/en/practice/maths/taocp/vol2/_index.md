@@ -21,7 +21,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 496 verified, 890 tota
 | [3.2.2](3.2.2/) | Other Methods | 36 | 21 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 25 | 16 | 25 |
 | [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
-| [3.3.3](3.3.3/) | Theoretical Tests | 28 | 11 | 28 |
+| [3.3.3](3.3.3/) | Theoretical Tests | 28 | 12 | 28 |
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 14 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 10 | 19 |
@@ -31,7 +31,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 496 verified, 890 tota
 | [4.2.1](4.2.1/) | Single-Precision Calculations | 19 | 13 | 19 |
 | [4.2.2](4.2.2/) | Accuracy of Floating Point Arithmetic | 32 | 22 | 32 |
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 6 | 3 | 6 |
-| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 13 | 20 |
+| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 12 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 43 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 19 | 6 | 19 |
