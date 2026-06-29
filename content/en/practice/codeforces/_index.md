@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2429 contests, 16649 problems, 9141 verified."
+description: "Codeforces problem solutions with full editorials. 2430 contests, 16657 problems, 9145 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2429 contests, 16649 problems, 9141 verified.**
+**2430 contests, 16657 problems, 9145 verified.**
 
 ## Unknown — 467 contests, 3777 problems, 2308 verified
 
@@ -1704,7 +1704,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 191 contests, 1477 problems, 699 verified
+## 2023 — 192 contests, 1485 problems, 703 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1840,6 +1840,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104618](104618/) | [UTPC Contest 09-22-23 Div. 1](https://codeforces.com/contest/104618) | 8 | 4/8 | Div. 1 | - |
 | [104619](104619/) | [2023 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/104619) | 12 | 9/12 | ICPC/IOI | - |
 | [104636](104636/) | [Мисис 2023 осень - массивы, строки](https://codeforces.com/contest/104636) | 8 | 5/8 | Special | - |
 | [104637](104637/) | [Мисис 2023 осень - базовая математика, условия, циклы](https://codeforces.com/contest/104637) | 10 | 4/10 | Special | - |
