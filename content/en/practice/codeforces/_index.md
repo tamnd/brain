@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2406 contests, 16446 problems, 9012 verified."
+description: "Codeforces problem solutions with full editorials. 2409 contests, 16482 problems, 9043 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,22 +11,24 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2406 contests, 16446 problems, 9012 verified.**
+**2409 contests, 16482 problems, 9043 verified.**
 
-## Unknown — 450 contests, 3649 problems, 2229 verified
+## Unknown — 452 contests, 3665 problems, 2248 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104660](104660/) | [2020 Google Code Jam Qualification Round (GCJ 20 Qualification Round)](https://codeforces.com/contest/104660) | 9 | 9/9 | Special | - |
 | [104666](104666/) | [2019-2020 ICPC Central Europe Regional Contest (CERC 19)](https://codeforces.com/contest/104666) | 12 | 6/12 | ICPC/IOI | - |
 | [104668](104668/) | [2018-2019 ACM-ICPC Central Europe Regional Contest (CERC 18)](https://codeforces.com/contest/104668) | 12 | 10/12 | ICPC/IOI | - |
 | [104669](104669/) | [Turtle Codes](https://codeforces.com/contest/104669) | 12 | 9/12 | Special | - |
 | [104670](104670/) | [2021-2022 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2021)](https://codeforces.com/contest/104670) | 13 | 13/13 | ICPC/IOI | - |
 | [104672](104672/) | [2020 Google Code Jam Round 3 (GCJ 20 Round 3)](https://codeforces.com/contest/104672) | 7 | 0/7 | Special | - |
-| [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 6 | 5/6 | Special | - |
-| [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 10 | 7/10 | Special | - |
-| [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 8/11 | Special | - |
-| [104688](104688/) | [2021 Google Code Jam Round 1A (GCJ 21 Round 1A)](https://codeforces.com/contest/104688) | 6 | 0/6 | Special | - |
-| [104690](104690/) | [2021 Google Code Jam Round 1B (GCJ 21 Round 1B)](https://codeforces.com/contest/104690) | 6 | 1/6 | Special | - |
+| [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 8 | 7/8 | Special | - |
+| [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 11 | 10/11 | Special | - |
+| [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 10/11 | Special | - |
+| [104688](104688/) | [2021 Google Code Jam Round 1A (GCJ 21 Round 1A)](https://codeforces.com/contest/104688) | 8 | 2/8 | Special | - |
+| [104689](104689/) | [Квадраты и кубы](https://codeforces.com/contest/104689) | 1 | 0/1 | Special | - |
+| [104690](104690/) | [2021 Google Code Jam Round 1B (GCJ 21 Round 1B)](https://codeforces.com/contest/104690) | 7 | 2/7 | Special | - |
 | [104691](104691/) | [Кубы и квадраты](https://codeforces.com/contest/104691) | 1 | 0/1 | Special | - |
 | [104692](104692/) | [2021 Google Code Jam Round 1C (GCJ 21 Round 1C)](https://codeforces.com/contest/104692) | 6 | 2/6 | Special | - |
 | [104699](104699/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая командная олимпиада](https://codeforces.com/contest/104699) | 12 | 2/12 | Special | - |
@@ -1547,7 +1549,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 135 contests, 889 problems, 365 verified
+## 2022 — 135 contests, 891 problems, 367 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1684,10 +1686,10 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
-| [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 10 | 10/10 | Special | - |
+| [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 185 contests, 1404 problems, 651 verified
+## 2023 — 186 contests, 1422 problems, 661 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1823,12 +1825,13 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 12 | 8/12 | Special | - |
 | [104664](104664/) | [UTPC Contest 10-06-23 Div. 2 (Beginner)](https://codeforces.com/contest/104664) | 7 | 4/7 | Div. 2 | - |
 | [104665](104665/) | [UTPC Contest 10-06-23 Div. 1 (Advanced)](https://codeforces.com/contest/104665) | 7 | 2/7 | Div. 1 | - |
 | [104671](104671/) | [2023 ICPC Columbia University Local Contest](https://codeforces.com/contest/104671) | 11 | 2/11 | ICPC/IOI | - |
-| [104678](104678/) | [October come back. Together training](https://codeforces.com/contest/104678) | 8 | 5/8 | Special | - |
-| [104679](104679/) | [Replay of Battle of Brains 2022, University of Dhaka](https://codeforces.com/contest/104679) | 9 | 8/9 | Special | - |
-| [104683](104683/) | [TheForces Round #24 (DIV3-Forces)](https://codeforces.com/contest/104683) | 3 | 1/3 | Special | - |
+| [104678](104678/) | [October come back. Together training](https://codeforces.com/contest/104678) | 10 | 6/10 | Special | - |
+| [104679](104679/) | [Replay of Battle of Brains 2022, University of Dhaka](https://codeforces.com/contest/104679) | 10 | 9/10 | Special | - |
+| [104683](104683/) | [TheForces Round #24 (DIV3-Forces)](https://codeforces.com/contest/104683) | 6 | 1/6 | Special | - |
 | [104720](104720/) | [UTPC x WiCS Contest 10-06-23](https://codeforces.com/contest/104720) | 11 | 3/11 | Special | - |
 | [104721](104721/) | [CSP-J 2023](https://codeforces.com/contest/104721) | 2 | 1/2 | Special | - |
 | [104724](104724/) | [CSP-S 2023](https://codeforces.com/contest/104724) | 4 | 2/4 | Special | - |

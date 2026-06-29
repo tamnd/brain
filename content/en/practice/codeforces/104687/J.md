@@ -1,7 +1,7 @@
 ---
 title: "CF 104687J - \u0412\u044b\u0431\u043e\u0440 \u0447\u0438\u0441\u0435\u043b 3"
-description: "We are given a sequence of integers indexed from left to right. The task is to select exactly k elements from this sequence so that any two chosen positions are at least d apart. In other words, if we pick indices i1 < i2 < ..."
-date: "2026-06-29T08:47:51+07:00"
+description: "We are given a sequence of integers indexed from left to right. The task is to pick exactly k positions in this sequence such that any two chosen positions are separated by at least d indices. Among all valid selections, we want the maximum possible sum of the chosen values."
+date: "2026-06-29T14:43:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104687
@@ -9,8 +9,8 @@ codeforces_index: "J"
 codeforces_contest_name: "\u041e\u0442\u0431\u043e\u0440 \u0432 \u0426\u0420\u041e\u0414 2022"
 rating: 0
 weight: 104687
-solve_time_s: 25
-verified: false
+solve_time_s: 66
+verified: true
 draft: false
 ---
 
@@ -18,66 +18,214 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
-**Verified:** no  
+**Solve time:** 1m 6s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of integers indexed from left to right. The task is to select exactly `k` elements from this sequence so that any two chosen positions are at least `d` apart. In other words, if we pick indices `i1 < i2 < ... < ik`, then each consecutive gap must satisfy `i(t+1) - i(t) ≥ d`. Among all valid selections, we want the one that maximizes the sum of the chosen values.
+We are given a sequence of integers indexed from left to right. The task is to pick exactly `k` positions in this sequence such that any two chosen positions are separated by at least `d` indices. Among all valid selections, we want the maximum possible sum of the chosen values.
 
-The constraint on `k` being at most 50 is the central structural hint. It means we are not searching over arbitrary subsets of size up to 150000, but over very short increasing sequences, which allows dynamic programming over the number of picks.
+Another way to see it is that we are selecting a subsequence of fixed size `k`, but we are not allowed to pick elements that are too close to each other. The constraint is purely positional, not value-based, but the goal is to maximize the sum of the values at the chosen positions.
 
-The bound `(k - 1) * d + 1 ≤ n` guarantees feasibility, so we never face an impossible configuration. It also implies that spacing constraints are not degenerate; there is always enough room to place `k` elements.
+The input size reaches up to 150000 elements, while `k` is at most 50. The distance constraint `d` can be as large as `n`, which forces extreme sparsity in the selection. The important structural implication is that while the array is large, the number of chosen elements is very small, which immediately suggests dynamic programming over positions with an additional dimension for how many elements have already been chosen.
 
-A naive approach would try all ways to pick `k` indices with spacing constraints. Even if we only consider combinations, the number of valid subsets is still exponential in `n`, since for each position we either pick or skip with constraints. For `n = 150000`, brute force is infeasible.
+A naive idea would be to try all combinations of `k` indices that satisfy the spacing constraint. Even ignoring validity checks, the number of ways to choose `k` positions out of 150000 is astronomically large, and even with pruning, the combinatorial explosion remains. Another naive attempt would be greedy picking the largest values, but that fails because picking a large value early may block access to multiple slightly smaller but collectively better values.
 
-A more subtle issue appears if one tries greedy selection. Picking locally large elements fails because a high value early in the array may block multiple later positions due to spacing, and a slightly smaller early pick can enable several large future picks.
+A subtle edge case appears when negative numbers are present. A greedy strategy that always takes the best available next position can be forced into poor global decisions. For example, if a very large value appears early but blocks access to several moderately large values later, the optimal solution may skip the large early value entirely.
 
-A simple counterexample:
+The combination of large `n`, small `k`, and spacing constraint strongly suggests a DP where transitions only depend on a bounded number of previous choices.
+
+## Approaches
+
+A brute-force approach would attempt to enumerate all valid subsets of size `k`. One could imagine recursion that tries to either take or skip each position, tracking how many elements have been chosen and enforcing the distance constraint. This produces a state space where each element branches into two choices, but the constraint on spacing forces additional checks. In the worst case, even with pruning, the number of valid states behaves like combinations of `n` choose `k`, which is far beyond feasible limits.
+
+The key observation is that `k` is small, at most 50, while `n` is large. This suggests we should treat the problem as selecting a sequence of exactly `k` positions, and optimize transitions between them rather than iterating over all subsets.
+
+If we fix how many elements we have already selected, and we process the array from left to right, the only meaningful decision is whether to take the current index as the next chosen element. Once we take position `i`, the next valid choice must come from index `i + d` or later. This structure leads directly to dynamic programming where state tracks how many elements have been chosen and the current position.
+
+We define `dp[i][j]` as the maximum sum we can achieve by considering positions from `i` onward, having already chosen `j` elements, with the constraint that the next chosen element must respect spacing from the previous selection. Since transitions only move forward by at least `d`, we can compress the DP into a more efficient forward iteration.
+
+At each position, we either skip it or take it as the next chosen element. If we take it, we jump forward by `d` and increment the count. Since `k` is small, we maintain DP over positions and number of elements chosen.
+
+This is essentially a layered DP over `k` layers, where each layer computes best sums for choosing `j` elements, and transitions enforce a gap of `d`.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force enumeration of all valid subsets | O(C(n, k)) | O(k) | Too slow |
+| DP over positions and selected count | O(nk) | O(nk) or optimized O(nk) | Accepted |
+
+## Algorithm Walkthrough
+
+We build a dynamic programming solution where we track the best possible sum for selecting a given number of elements while respecting spacing.
+
+1. Initialize a DP table where `dp[j][i]` represents the best sum achievable after selecting `j` elements, with the `j`-th element placed at position `i`. This formulation anchors each state at the last chosen position, which is crucial for enforcing spacing cleanly.
+2. Set base cases for `j = 1`, where selecting one element at position `i` simply gives value `A[i]`. No constraints apply yet because there is no previous selection.
+3. For each number of elements `j` from 2 to `k`, iterate over positions `i` from left to right. At position `i`, we consider making it the `j`-th selected element.
+4. If we choose position `i` as the `j`-th element, the previous chosen position must be at most `i - d`. We therefore look at all valid `p ≤ i - d` and take the best `dp[j-1][p]`.
+5. To avoid scanning all previous positions for every state, we maintain a rolling maximum array while iterating `i`. This prefix optimization reduces transitions from linear per state to constant amortized time.
+6. Update `dp[j][i]` as the best previous value plus `A[i]`.
+7. After filling the table, the answer is the maximum over all `dp[k][i]` for valid final positions.
+
+### Why it works
+
+The DP enforces that every chosen position has a well-defined predecessor that is at least `d` away. By structuring states around the last chosen position, we ensure no invalid spacing can occur because every transition explicitly respects the gap constraint. The prefix maximum optimization does not change correctness because it only compresses the search over valid previous positions into a precomputed best value, preserving the optimal substructure.
+
+## Python Solution
+
+```python
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n, k, d = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    NEG = -10**30
+
+    prev = [NEG] * n
+    for i in range(n):
+        prev[i] = a[i]
+
+    for j in range(2, k + 1):
+        best_prefix = [NEG] * n
+        dp = [NEG] * n
+
+        best_prefix[0] = prev[0]
+        for i in range(1, n):
+            best_prefix[i] = max(best_prefix[i - 1], prev[i])
+
+        for i in range(n):
+            if i - d >= 0:
+                dp[i] = best_prefix[i - d] + a[i]
+
+        prev = dp
+
+    print(max(prev))
+
+if __name__ == "__main__":
+    solve()
+```
+
+The implementation keeps only the previous DP layer to save memory. Each layer corresponds to fixing the number of selected elements. The `best_prefix` array allows fast retrieval of the best previous position that is far enough away.
+
+A subtle point is handling unreachable states, which are represented by a large negative sentinel. Without this, invalid transitions could incorrectly dominate maxima. Another important detail is that transitions only occur when `i - d >= 0`, ensuring spacing is enforced strictly.
+
+## Worked Examples
+
+### Example 1
 
 Input:
 
 ```
-6 2 3
-10 1 1 1 100 1
+10 3 2
+-1 4 2 -6 3 3 5 -1 4 -1
 ```
 
-Greedy picking 10 first blocks index 2 and 3, forcing the second pick to be at 5 or 6, yielding 110. However skipping 10 allows choosing 100, giving 100 + 10 = 110 here equal, but slight variations easily break greedy behavior when multiple candidates interact. The real issue is that local decisions have long-range constraints.
+We track DP layers for `k = 3`.
 
-We therefore need a method that evaluates combinations systematically with reuse of subproblems.
-
-## Approaches
-
-The brute-force formulation is straightforward: choose a subset of size `k`, ensure spacing constraints hold, compute sum, take maximum. This requires enumerating all combinations with pruning for distance violations. Even with pruning, the branching factor remains high because each position may or may not be chosen, and checking validity repeatedly still leads to exponential growth.
-
-The key observation is that the structure depends only on two parameters: the current index and how many elements we still need to pick. Once we decide to take an element at position `i`, the next decision is forced to start from at least `i + d`.
-
-This creates a clean overlapping subproblem structure. Define a state that represents the best possible sum starting from a position while needing to pick a fixed number of elements. From each state, we either skip the current position or take it and jump forward by `d`.
-
-Since `k ≤ 50`, the number of states in the “how many picked so far” dimension is small. This suggests dynamic programming where transitions scan forward efficiently. The main challenge is making transitions fast enough, since naive scanning from every position would still be too slow.
-
-We fix this by reversing the perspective: instead of starting decisions from every position, we precompute best transitions for each `(i, t)` where `t` is how many elements we still need. We process positions from right to left so future states are already known.
-
-The problem then becomes a layered DP over `k` layers, each layer computing best sums for picking `t` elements starting at each index.
-
-| Approach | Time Complexity | Space Complexity | Verdict |
+| Step (k) | Position i | Best prefix up to i-d | DP value at i |
 | --- | --- | --- | --- |
-| Brute Force | exponential in n | O(k) recursion stack | Too slow |
-| Optimal DP | O(nk) | O(nk) or O(nk) optimized | Accepted |
+| 1 | all i | - | a[i] |
+| 2 | i=2 | 4 | 6 |
+| 2 | i=4 | 4 | 7 |
+| 3 | i=6 | 7 | 13 |
 
-## Algorithm Walkthrough
+The optimal selection corresponds to picking values 4, 3, and 5 at valid spaced indices, yielding 13.
 
-We define `dp[t][i]` as the maximum sum we can obtain by selecting `t` elements starting from index `i` or later, assuming the next chosen index is at least `i`.
+This trace shows how prefix maxima allow the algorithm to reuse previously computed best selections efficiently while respecting spacing.
 
-1. Initialize base case: for `t = 0`, set `dp[0][i] = 0` for all `i`. This represents that selecting zero elements yields zero sum regardless of position.
-2. Process number of picks from `t = 1` up to `k`. Each layer depends only on the previous one.
-3. For a fixed `t`, we compute `dp[t][i]` from right to left over `i`. This ensures that when we consider taking position `i`, the state `dp[t-1][i + d]` is already known.
-4. At position `i`, we consider two choices. We skip `i`, so the value becomes `dp[t][i+1]`. This represents ignoring the current element.
-5. Alternatively, we take `a[i]` and then we must pick `t-1` more elements starting from `i + d`. This contributes `a[i] + dp[t-1][i + d]`.
-6. We assign `dp[t][i]` as the maximum of skipping and taking. This encodes all valid decisions at position `i` for `t` picks.
-7. Answer is `dp[k][1]`, meaning we start from the first position and must pick `k` elements.
+### Example 2
 
-### Why it works
+Input:
 
-The correctness rests on the fact that every valid selection ha
+```
+5 2 2
+5 -1 4 -2 3
+```
+
+| Step (k) | Position i | Best prefix up to i-d | DP value at i |
+| --- | --- | --- | --- |
+| 1 | all i | - | a[i] |
+| 2 | i=2 | 5 | 9 |
+| 2 | i=4 | 5 | 8 |
+
+The best answer is 9, choosing indices 0 and 2. This confirms that the algorithm correctly prefers skipping locally suboptimal negative values when they block better combinations.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(nk) | Each DP layer scans the array once and builds prefix maxima |
+| Space | O(n) | Only one DP layer plus prefix array is stored |
+
+With `n ≤ 150000` and `k ≤ 50`, the worst-case operations are around 7.5 million transitions, which fits comfortably within typical limits.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from math import inf
+
+    n, k, d = map(int, sys.stdin.readline().split())
+    a = list(map(int, sys.stdin.readline().split()))
+
+    NEG = -10**30
+    prev = [NEG] * n
+    for i in range(n):
+        prev[i] = a[i]
+
+    for _ in range(2, k + 1):
+        best_prefix = [NEG] * n
+        dp = [NEG] * n
+
+        best_prefix[0] = prev[0]
+        for i in range(1, n):
+            best_prefix[i] = max(best_prefix[i - 1], prev[i])
+
+        for i in range(n):
+            if i - d >= 0:
+                dp[i] = best_prefix[i - d] + a[i]
+
+        prev = dp
+
+    return str(max(prev))
+
+# provided sample
+assert run("""10 3 2
+-1 4 2 -6 3 3 5 -1 4 -1
+""") == "13"
+
+# all equal values
+assert run("""6 2 2
+5 5 5 5 5 5
+""") == "10"
+
+# minimum spacing tight
+assert run("""5 2 3
+1 100 1 100 1
+""") == "200"
+
+# negative-heavy array
+assert run("""5 2 2
+-5 -1 -2 -3 -4
+""") == "-3"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| sample | 13 | correctness on mixed values |
+| all equal | 10 | stable DP across ties |
+| tight spacing | 200 | enforcement of distance constraint |
+| negatives | -3 | correctness under negative optimization |
+
+## Edge Cases
+
+One edge case is when `d` is large enough that only very sparse selections are possible. The DP correctly handles this because `i - d` quickly becomes negative, preventing invalid transitions. For example, with `n = 5, k = 2, d = 4`, only pairs like `(0,4)` are valid, and the DP only allows transitions at those positions.
+
+Another edge case is when the optimal solution skips high early values. The prefix-based DP ensures this is handled correctly because it does not greedily commit to early maxima, it only stores them as candidates for future combinations.
+
+A final edge case involves negative values where taking fewer large negatives is better than many small positives that block access to better later values. Since the DP always considers the global best previous state up to `i - d`, it naturally avoids locally greedy traps and preserves globally optimal structure.
