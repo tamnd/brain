@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.4.3.1: A MIX Simulator"
-description: "Section 1.4.3.1 exercises: 5/8 solved."
+description: "Section 1.4.3.1 exercises: 6/8 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.3.1"
@@ -14,11 +14,11 @@ draft: false
 
 # Section 1.4.3.1. A MIX Simulator
 
-Exercises from [TAOCP Volume 1](../) Section 1.4.3.1: 5/8 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.4.3.1: 6/8 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 |  [*14*] | simple | - | - |
+| [1](01.md) |  [*14*] | simple | verified | 3m12s |
 | [2](02.md) |  [*20*] | medium | solved | 5m33s |
 | 3 |  [*22*] | medium | - | - |
 | [4](04.md) |  [*14*] | simple | solved | 5m17s |

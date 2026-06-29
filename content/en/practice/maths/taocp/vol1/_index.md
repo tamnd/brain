@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 883 solved, 482 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 885 solved, 483 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 883 solved, 482 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 885 solved, 483 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 883 solved, 482 verified, 889 tota
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 27 | 30 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 44 | 46 |
 | [1.2.4](1.2.4/) | Integer Functions and Elementary Number Theory | 46 | 41 | 46 |
-| [1.2.5](1.2.5/) | Permutations and Factorials | 17 | 1 | 18 |
+| [1.2.5](1.2.5/) | Permutations and Factorials | 18 | 1 | 18 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 68 | 52 | 68 |
 | [1.2.7](1.2.7/) | Harmonic Numbers | 25 | 19 | 25 |
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 42 | 35 | 42 |
@@ -31,7 +31,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 883 solved, 482 verified, 889 tota
 | [1.3.3](1.3.3/) | Applications to Permutations | 37 | 6 | 37 |
 | [1.4.1](1.4.1/) | Subroutines | 7 | 4 | 7 |
 | [1.4.2](1.4.2/) | Coroutines | 7 | 4 | 7 |
-| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 5 | 0 | 8 |
+| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 6 | 1 | 8 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 5 | 7 |
 | [1.4.4](1.4.4/) | Input and Output | 19 | 1 | 19 |
 | [2.1](2.1/) | Introduction | 9 | 7 | 9 |
