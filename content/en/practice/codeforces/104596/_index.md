@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 ICPC East Central North America Regional Contest (ECNA 2019)"
-description: "10 problems from 2019-2020 ICPC East Central North America Regional Contest (ECNA 2019) (contest 104596), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2019-2020 ICPC East Central North America Regional Contest (ECNA 2019) (contest 104596), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104596
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 525
-date: "2026-06-30T04:42:52+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 599
+date: "2026-06-30T06:24:27+07:00"
 weight: 104596
 draft: false
 ---
 
 # [2019-2020 ICPC East Central North America Regional Contest (ECNA 2019)](https://codeforces.com/contest/104596)
 
-ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 8m 45s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 9m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 8m 45s
 | [H](H/) | [Remainder Reminder](https://codeforces.com/problemset/problem/104596/H) |  |  |  | 53s | ✓ |
 | [I](I/) | [Square Rooms](https://codeforces.com/problemset/problem/104596/I) |  |  |  | 1m 4s | ✓ |
 | [J](J/) | [Taxed Editor](https://codeforces.com/problemset/problem/104596/J) |  |  |  | 45s | ✓ |
+| [K](K/) | [Where Have You Bin?](https://codeforces.com/problemset/problem/104596/K) |  |  |  | 1m 14s | ✓ |
