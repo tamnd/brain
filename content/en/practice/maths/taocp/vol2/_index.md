@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 861 solved, 493 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 861 solved, 492 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 861 solved, 493 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 861 solved, 492 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -40,7 +40,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 861 solved, 493 verified, 890 tota
 | [4.5.2](4.5.2/) | The Greatest Common Divisor | 41 | 26 | 42 |
 | [4.5.3](4.5.3/) | Analysis of Euclid's Algorithm | 39 | 22 | 42 |
 | [4.5.4](4.5.4/) | Factoring into Primes | 46 | 28 | 46 |
-| [4.6](4.6/) | Polynomial Arithmetic | 5 | 5 | 5 |
+| [4.6](4.6/) | Polynomial Arithmetic | 5 | 4 | 5 |
 | [4.6.1](4.6.1/) | Division of Polynomials | 24 | 12 | 26 |
 | [4.6.2](4.6.2/) | Factorization of Polynomials | 40 | 29 | 40 |
 | [4.6.3](4.6.3/) | Evaluation of Powers | 35 | 14 | 35 |
