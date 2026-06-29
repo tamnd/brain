@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2385 contests, 16265 problems, 8910 verified."
+description: "Codeforces problem solutions with full editorials. 2386 contests, 16277 problems, 8912 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2385 contests, 16265 problems, 8910 verified.**
+**2386 contests, 16277 problems, 8912 verified.**
 
-## Unknown — 437 contests, 3535 problems, 2166 verified
+## Unknown — 438 contests, 3547 problems, 2168 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104699](104699/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая командная олимпиада](https://codeforces.com/contest/104699) | 12 | 2/12 | Special | - |
 | [104702](104702/) | [2021 Google Code Jam Round 2 (GCJ 21 Round 2)](https://codeforces.com/contest/104702) | 6 | 0/6 | Special | - |
 | [104707](104707/) | [COMP4128 23T3 Contest 2](https://codeforces.com/contest/104707) | 6 | 0/6 | Special | - |
 | [104708](104708/) | [2021 Google Code Jam Round 3 (GCJ 21 Round 3)](https://codeforces.com/contest/104708) | 8 | 1/8 | Special | - |
