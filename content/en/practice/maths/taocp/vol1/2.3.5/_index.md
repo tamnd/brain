@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.5: Lists and Garbage Collection"
-description: "Section 2.3.5 exercises: 11/12 solved."
+description: "Section 2.3.5 exercises: 12/12 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.5. Lists and Garbage Collection
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.5: 11/12 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.5: 12/12 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,4 +29,4 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.5: 11/12 solved.
 | [9](09.md) |  [**] |  | verified | 3m06s |
 | [10](10.md) |  [**] |  | solved | 12m46s |
 | [11](11.md) |  [**] |  | verified | 3m03s |
-| 12 |  [**] |  | - | - |
+| [12](12.md) |  [**] |  | solved | 5m18s |

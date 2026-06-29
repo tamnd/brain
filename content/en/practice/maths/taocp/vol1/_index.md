@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 880 solved, 481 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 883 solved, 482 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 880 solved, 481 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 883 solved, 482 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 880 solved, 481 verified, 889 tota
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 27 | 30 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 44 | 46 |
 | [1.2.4](1.2.4/) | Integer Functions and Elementary Number Theory | 46 | 41 | 46 |
-| [1.2.5](1.2.5/) | Permutations and Factorials | 15 | 0 | 18 |
+| [1.2.5](1.2.5/) | Permutations and Factorials | 17 | 1 | 18 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 68 | 52 | 68 |
 | [1.2.7](1.2.7/) | Harmonic Numbers | 25 | 19 | 25 |
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 42 | 35 | 42 |
@@ -51,6 +51,6 @@ Exercise solutions for [TAOCP](../) Volume 1. 880 solved, 481 verified, 889 tota
 | [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 30 | 11 | 30 |
 | [2.3.4.5](2.3.4.5/) | Path Length | 17 | 4 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 0 | 4 |
-| [2.3.5](2.3.5/) | Lists and Garbage Collection | 11 | 2 | 12 |
+| [2.3.5](2.3.5/) | Lists and Garbage Collection | 12 | 2 | 12 |
 | [2.4](2.4/) | Multilinked Structures | 14 | 0 | 15 |
 | [2.5](2.5/) | Dynamic Storage Allocation | 44 | 11 | 44 |
