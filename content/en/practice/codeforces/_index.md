@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2446 contests, 16776 problems, 9246 verified."
+description: "Codeforces problem solutions with full editorials. 2446 contests, 16777 problems, 9247 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,16 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2446 contests, 16776 problems, 9246 verified.**
+**2446 contests, 16777 problems, 9247 verified.**
 
-## Unknown — 478 contests, 3862 problems, 2386 verified
+## Unknown — 478 contests, 3863 problems, 2387 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [104592](104592/) | [2017 Google Code Jam World Finals (GCJ 17 World Finals)](https://codeforces.com/contest/104592) | 6 | 6/6 | Special | - |
 | [104593](104593/) | [2018 Google Code Jam Round 1A (GCJ 18 Round 1A)](https://codeforces.com/contest/104593) | 3 | 3/3 | Special | - |
 | [104594](104594/) | [2018 Google Code Jam Round 1B (GCJ 18 Round 1B)](https://codeforces.com/contest/104594) | 3 | 3/3 | Special | - |
-| [104595](104595/) | [2018 Google Code Jam Round 2 (GCJ 18 Round 2)](https://codeforces.com/contest/104595) | 3 | 3/3 | Special | - |
+| [104595](104595/) | [2018 Google Code Jam Round 2 (GCJ 18 Round 2)](https://codeforces.com/contest/104595) | 4 | 4/4 | Special | - |
 | [104596](104596/) | [2019-2020 ICPC East Central North America Regional Contest (ECNA 2019)](https://codeforces.com/contest/104596) | 10 | 10/10 | ICPC/IOI | - |
 | [104598](104598/) | [GPL 2023 Advanced](https://codeforces.com/contest/104598) | 10 | 7/10 | Special | - |
 | [104599](104599/) | [GPL 2023 Novice](https://codeforces.com/contest/104599) | 10 | 7/10 | Special | - |
