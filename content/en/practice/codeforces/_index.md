@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2413 contests, 16508 problems, 9053 verified."
+description: "Codeforces problem solutions with full editorials. 2415 contests, 16518 problems, 9056 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2413 contests, 16508 problems, 9053 verified.**
+**2415 contests, 16518 problems, 9056 verified.**
 
-## Unknown — 455 contests, 3682 problems, 2253 verified
+## Unknown — 457 contests, 3692 problems, 2256 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104648](104648/) | [2019 Google Code Jam Round 1A (GCJ 19 Round 1A)](https://codeforces.com/contest/104648) | 5 | 2/5 | Special | - |
+| [104649](104649/) | [2019 Google Code Jam Round 1B (GCJ 19 Round 1B)](https://codeforces.com/contest/104649) | 5 | 1/5 | Special | - |
 | [104655](104655/) | [2019 Google Code Jam Round 1C (GCJ 19 Round 1C)](https://codeforces.com/contest/104655) | 5 | 1/5 | Special | - |
 | [104656](104656/) | [2019 Google Code Jam Round 2 (GCJ 19 Round 2)](https://codeforces.com/contest/104656) | 7 | 2/7 | Special | - |
 | [104659](104659/) | [2020 Google Code Jam Round 1B (GCJ 20 Round 1B)](https://codeforces.com/contest/104659) | 5 | 2/5 | Special | - |
