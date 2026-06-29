@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2420 contests, 16577 problems, 9084 verified."
+description: "Codeforces problem solutions with full editorials. 2421 contests, 16587 problems, 9088 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2420 contests, 16577 problems, 9084 verified.**
+**2421 contests, 16587 problems, 9088 verified.**
 
 ## Unknown — 461 contests, 3735 problems, 2269 verified
 
@@ -1698,7 +1698,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 188 contests, 1447 problems, 681 verified
+## 2023 — 189 contests, 1457 problems, 685 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1834,6 +1834,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104637](104637/) | [Мисис 2023 осень - базовая математика, условия, циклы](https://codeforces.com/contest/104637) | 10 | 4/10 | Special | - |
 | [104639](104639/) | [The 2023 ICPC Asia EC Regionals Online Contest (I)](https://codeforces.com/contest/104639) | 12 | 12/12 | ICPC/IOI | - |
 | [104651](104651/) | [The 2023 CCPC Online Contest](https://codeforces.com/contest/104651) | 12 | 6/12 | Special | - |
 | [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 13 | 10/13 | Special | - |
