@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2410 contests, 16487 problems, 9045 verified."
+description: "Codeforces problem solutions with full editorials. 2411 contests, 16494 problems, 9047 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2410 contests, 16487 problems, 9045 verified.**
+**2411 contests, 16494 problems, 9047 verified.**
 
-## Unknown — 453 contests, 3670 problems, 2250 verified
+## Unknown — 454 contests, 3677 problems, 2252 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104656](104656/) | [2019 Google Code Jam Round 2 (GCJ 19 Round 2)](https://codeforces.com/contest/104656) | 7 | 2/7 | Special | - |
 | [104659](104659/) | [2020 Google Code Jam Round 1B (GCJ 20 Round 1B)](https://codeforces.com/contest/104659) | 5 | 2/5 | Special | - |
 | [104660](104660/) | [2020 Google Code Jam Qualification Round (GCJ 20 Qualification Round)](https://codeforces.com/contest/104660) | 9 | 9/9 | Special | - |
 | [104666](104666/) | [2019-2020 ICPC Central Europe Regional Contest (CERC 19)](https://codeforces.com/contest/104666) | 12 | 6/12 | ICPC/IOI | - |
