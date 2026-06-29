@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 12/525 solved."
+description: "Section 7.2.2.2 exercises: 22/525 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 12/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 22/525 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,7 +28,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 12/525 solved.
 | [8](08.md) | &#9654; [*22*] | medium | verified | 1m05s |
 | [9](09.md) |  [*M21*] | math-medium | solved | 3m20s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 4m15s |
-| 11 | &#9654; [**] |  | - | - |
+| [11](11.md) | &#9654; [**] |  | verified | 57s |
 | 12 | &#9654; [**] |  | - | - |
 | 13 |  [*24*] | medium | - | - |
 | 14 |  [*22*] | medium | - | - |
@@ -118,15 +118,15 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 12/525 solved.
 | 99 |  [*25*] | medium | - | - |
 | [100](100.md) |  [*22*] | medium | solved | 1m48s |
 | [101](101.md) | &#9654; [*31*] | hard | solved | 3m48s |
-| 102 |  [*22*] | medium | - | - |
-| 103 |  [*18*] | medium | - | - |
-| 104 |  [*M21*] | math-medium | - | - |
-| 105 | &#9654; [*M28*] | math-hard | - | - |
-| 106 |  [*M20*] | math-medium | - | - |
-| 107 | &#9654; [*22*] | medium | - | - |
-| 108 |  [*23*] | medium | - | - |
-| 109 | &#9654; [*20*] | medium | - | - |
-| 110 |  [*19*] | medium | - | - |
+| [102](102.md) |  [*22*] | medium | verified | 2m17s |
+| [103](103.md) |  [*18*] | medium | solved | 3m39s |
+| [104](104.md) |  [*M21*] | math-medium | solved | 4m18s |
+| [105](105.md) | &#9654; [*M28*] | math-hard | solved | 1m11s |
+| [106](106.md) |  [*M20*] | math-medium | verified | 3m11s |
+| [107](107.md) | &#9654; [*22*] | medium | solved | 6m46s |
+| [108](108.md) |  [*23*] | medium | solved | 3m26s |
+| [109](109.md) | &#9654; [*20*] | medium | verified | 1m04s |
+| [110](110.md) |  [*19*] | medium | verified | 3m31s |
 | 111 |  [*40*] | project | - | - |
 | 112 |  [*46*] | research | - | - |
 | 113 | &#9654; [*30*] | hard | - | - |
