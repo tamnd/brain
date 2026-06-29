@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2416 contests, 16540 problems, 9064 verified."
+description: "Codeforces problem solutions with full editorials. 2419 contests, 16565 problems, 9072 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2416 contests, 16540 problems, 9064 verified.**
+**2419 contests, 16565 problems, 9072 verified.**
 
-## Unknown — 458 contests, 3710 problems, 2261 verified
+## Unknown — 461 contests, 3735 problems, 2269 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104640](104640/) | [Интернет-олимпиады, Сезон 2023-2024, Первая командная олимпиада](https://codeforces.com/contest/104640) | 12 | 5/12 | Special | - |
+| [104642](104642/) | [2018 Google Code Jam Qualification Round (GCJ 18 Qualification Round)](https://codeforces.com/contest/104642) | 8 | 2/8 | Special | - |
+| [104644](104644/) | [2018 Google Code Jam Round 1C (GCJ 18 Round 1C)](https://codeforces.com/contest/104644) | 5 | 1/5 | Special | - |
 | [104645](104645/) | [2018 Google Code Jam World Finals (GCJ 18 World Finals)](https://codeforces.com/contest/104645) | 9 | 2/9 | Special | - |
 | [104648](104648/) | [2019 Google Code Jam Round 1A (GCJ 19 Round 1A)](https://codeforces.com/contest/104648) | 6 | 3/6 | Special | - |
 | [104649](104649/) | [2019 Google Code Jam Round 1B (GCJ 19 Round 1B)](https://codeforces.com/contest/104649) | 6 | 1/6 | Special | - |
