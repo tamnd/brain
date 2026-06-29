@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 883 solved, 497 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 884 solved, 498 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 883 solved, 497 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 498 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -34,7 +34,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 883 solved, 497 verified, 890 tota
 | [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 9 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 43 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
-| [4.3.3](4.3.3/) | How Fast Can We Multiply? | 18 | 6 | 19 |
+| [4.3.3](4.3.3/) | How Fast Can We Multiply? | 19 | 7 | 19 |
 | [4.4](4.4/) | Radix Conversion | 19 | 11 | 19 |
 | [4.5.1](4.5.1/) | Fractions | 9 | 5 | 9 |
 | [4.5.2](4.5.2/) | The Greatest Common Divisor | 42 | 26 | 42 |
