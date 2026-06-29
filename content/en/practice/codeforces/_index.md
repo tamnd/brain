@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2425 contests, 16625 problems, 9123 verified."
+description: "Codeforces problem solutions with full editorials. 2428 contests, 16637 problems, 9132 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2425 contests, 16625 problems, 9123 verified.**
+**2428 contests, 16637 problems, 9132 verified.**
 
-## Unknown — 464 contests, 3765 problems, 2299 verified
+## Unknown — 467 contests, 3777 problems, 2308 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104627](104627/) | [COMP4128 23T3 Contest 1](https://codeforces.com/contest/104627) | 5 | 2/5 | Special | - |
+| [104630](104630/) | [2020 Google Code Jam Round 1C (GCJ 20 Round 1C)](https://codeforces.com/contest/104630) | 3 | 3/3 | Special | - |
+| [104631](104631/) | [2020 Google Code Jam Round 2 (GCJ 20 Round 2)](https://codeforces.com/contest/104631) | 4 | 4/4 | Special | - |
 | [104633](104633/) | [2020 ICPC World Finals](https://codeforces.com/contest/104633) | 15 | 15/15 | ICPC/IOI | - |
 | [104634](104634/) | [2020 Google Code Jam Virtual World Finals (GCJ 20 Virtual World Finals)](https://codeforces.com/contest/104634) | 5 | 5/5 | Special | - |
 | [104635](104635/) | [2019 Google Code Jam Qualification Round (GCJ 19 Qualification Round)](https://codeforces.com/contest/104635) | 10 | 10/10 | Special | - |
