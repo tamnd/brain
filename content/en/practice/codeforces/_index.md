@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2397 contests, 16355 problems, 8956 verified."
+description: "Codeforces problem solutions with full editorials. 2399 contests, 16372 problems, 8966 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2397 contests, 16355 problems, 8956 verified.**
+**2399 contests, 16372 problems, 8966 verified.**
 
-## Unknown — 445 contests, 3593 problems, 2191 verified
+## Unknown — 446 contests, 3600 problems, 2191 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104672](104672/) | [2020 Google Code Jam Round 3 (GCJ 20 Round 3)](https://codeforces.com/contest/104672) | 7 | 0/7 | Special | - |
 | [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 6 | 5/6 | Special | - |
 | [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 10 | 7/10 | Special | - |
 | [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 8/11 | Special | - |
@@ -1542,7 +1543,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 134 contests, 879 problems, 355 verified
+## 2022 — 135 contests, 889 problems, 365 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1679,6 +1680,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 10 | 10/10 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
 ## 2023 — 182 contests, 1379 problems, 643 verified
