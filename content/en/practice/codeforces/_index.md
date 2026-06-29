@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2379 contests, 16225 problems, 8906 verified."
+description: "Codeforces problem solutions with full editorials. 2380 contests, 16234 problems, 8906 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2379 contests, 16225 problems, 8906 verified.**
+**2380 contests, 16234 problems, 8906 verified.**
 
-## Unknown — 431 contests, 3495 problems, 2162 verified
+## Unknown — 432 contests, 3504 problems, 2162 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104712](104712/) | [2022 Google Code Jam Round 2 (GCJ 22 Round 2)](https://codeforces.com/contest/104712) | 9 | 0/9 | Special | - |
 | [104713](104713/) | [2020-2021 ICPC Central Europe Regional Contest (CERC 20)](https://codeforces.com/contest/104713) | 11 | 10/11 | ICPC/IOI | - |
 | [104716](104716/) | [2022 Google Code Jam World Finals (GCJ 22 World Finals)](https://codeforces.com/contest/104716) | 10 | 1/10 | Special | - |
 | [104718](104718/) | [2021 Google Code Jam World Finals (GCJ 21 World Finals)](https://codeforces.com/contest/104718) | 10 | 3/10 | Special | - |
