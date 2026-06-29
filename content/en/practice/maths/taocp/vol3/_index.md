@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 534 solved, 214 verified, 904 total."
+description: "Volume 3: Sorting and Searching. 523 solved, 210 verified, 832 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,26 +9,26 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 534 solved, 214 verified, 904 total.
+Exercise solutions for [TAOCP](../) Volume 3. 523 solved, 210 verified, 832 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
-| [5](5/) | Introduction to Sorting | 5 | 4 | 21 |
-| [5.1](5.1/) | Combinatorial Properties of Permutations | 4 | 2 | 30 |
-| [5.1.1](5.1.1/) | Inversions | 4 | 2 | 30 |
-| [5.1.2](5.1.2/) | Permutations of a Multiset | 11 | 4 | 26 |
-| [5.1.3](5.1.3/) | Runs | 14 | 9 | 24 |
-| [5.1.4](5.1.4/) | Tableaux and Involutions | 12 | 7 | 45 |
-| [5.2](5.2/) | Internal Sorting | 5 | 3 | 18 |
-| [5.2.1](5.2.1/) | Sorting by Insertion | 14 | 8 | 30 |
-| [5.2.2](5.2.2/) | Sorting by Exchanging | 7 | 2 | 63 |
-| [5.2.3](5.2.3/) | Sorting by Selection | 15 | 4 | 44 |
-| [5.2.4](5.2.4/) | Sorting by Merging | 8 | 5 | 27 |
-| [5.2.5](5.2.5/) | Sorting by Distribution | 9 | 6 | 21 |
-| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 8 | 5 | 29 |
-| [5.3.2](5.3.2/) | Minimum-Comparison Merging | 20 | 10 | 22 |
-| [5.3.3](5.3.3/) | Minimum-Comparison Selection | 16 | 4 | 31 |
-| [5.3.4](5.3.4/) | Networks for Sorting | 6 | 2 | 66 |
+| [5](5/) | Introduction to Sorting | 5 | 3 | 18 |
+| [5.1](5.1/) | Combinatorial Properties of Permutations | 1 | 1 | 26 |
+| [5.1.1](5.1.1/) | Inversions | 1 | 1 | 26 |
+| [5.1.2](5.1.2/) | Permutations of a Multiset | 6 | 3 | 24 |
+| [5.1.3](5.1.3/) | Runs | 14 | 9 | 21 |
+| [5.1.4](5.1.4/) | Tableaux and Involutions | 12 | 7 | 40 |
+| [5.2](5.2/) | Internal Sorting | 5 | 3 | 13 |
+| [5.2.1](5.2.1/) | Sorting by Insertion | 14 | 8 | 25 |
+| [5.2.2](5.2.2/) | Sorting by Exchanging | 7 | 2 | 56 |
+| [5.2.3](5.2.3/) | Sorting by Selection | 15 | 4 | 35 |
+| [5.2.4](5.2.4/) | Sorting by Merging | 8 | 5 | 23 |
+| [5.2.5](5.2.5/) | Sorting by Distribution | 9 | 6 | 18 |
+| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 8 | 5 | 23 |
+| [5.3.2](5.3.2/) | Minimum-Comparison Merging | 20 | 10 | 21 |
+| [5.3.3](5.3.3/) | Minimum-Comparison Selection | 16 | 4 | 26 |
+| [5.3.4](5.3.4/) | Networks for Sorting | 6 | 2 | 60 |
 | [5.4.1](5.4.1/) | Multiway Merging and Replacement Selection | 27 | 11 | 27 |
 | [5.4.2](5.4.2/) | The Polyphase Merge | 30 | 6 | 30 |
 | [5.4.3](5.4.3/) | The Cascade Merge | 11 | 3 | 11 |
