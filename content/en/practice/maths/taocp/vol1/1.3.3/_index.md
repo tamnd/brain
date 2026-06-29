@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.3.3: Applications to Permutations"
-description: "Section 1.3.3 exercises: 28/37 solved."
+description: "Section 1.3.3 exercises: 30/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.3.3. Applications to Permutations
 
-Exercises from [TAOCP Volume 1](../) Section 1.3.3: 28/37 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.3.3: 30/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,9 +30,9 @@ Exercises from [TAOCP Volume 1](../) Section 1.3.3: 28/37 solved.
 | [10](10.md) |  [*M28*] | math-hard | solved | 8m53s |
 | [11](11.md) |  [*15*] | simple | solved | 7m47s |
 | [12](12.md) |  [*M27*] | math-hard | solved | 3m15s |
-| 13 |  [*M24*] | math-medium | - | - |
+| [13](13.md) |  [*M24*] | math-medium | solved | 2m59s |
 | [14](14.md) |  [*M34*] | math-hard | solved | 15m44s |
-| 15 |  [*M12*] | math-simple | - | - |
+| [15](15.md) |  [*M12*] | math-simple | verified | 3m16s |
 | 16 |  [*M15*] | math-simple | - | - |
 | [17](17.md) |  [*M24*] | math-medium | solved | 4m18s |
 | 18 |  [*M27*] | math-hard | - | - |
