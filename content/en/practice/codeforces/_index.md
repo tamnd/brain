@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2416 contests, 16534 problems, 9060 verified."
+description: "Codeforces problem solutions with full editorials. 2416 contests, 16540 problems, 9064 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2416 contests, 16534 problems, 9060 verified.**
+**2416 contests, 16540 problems, 9064 verified.**
 
-## Unknown — 458 contests, 3705 problems, 2259 verified
+## Unknown — 458 contests, 3710 problems, 2261 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,8 +22,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104649](104649/) | [2019 Google Code Jam Round 1B (GCJ 19 Round 1B)](https://codeforces.com/contest/104649) | 6 | 1/6 | Special | - |
 | [104655](104655/) | [2019 Google Code Jam Round 1C (GCJ 19 Round 1C)](https://codeforces.com/contest/104655) | 6 | 1/6 | Special | - |
 | [104656](104656/) | [2019 Google Code Jam Round 2 (GCJ 19 Round 2)](https://codeforces.com/contest/104656) | 8 | 2/8 | Special | - |
-| [104659](104659/) | [2020 Google Code Jam Round 1B (GCJ 20 Round 1B)](https://codeforces.com/contest/104659) | 5 | 2/5 | Special | - |
-| [104660](104660/) | [2020 Google Code Jam Qualification Round (GCJ 20 Qualification Round)](https://codeforces.com/contest/104660) | 9 | 9/9 | Special | - |
+| [104659](104659/) | [2020 Google Code Jam Round 1B (GCJ 20 Round 1B)](https://codeforces.com/contest/104659) | 8 | 3/8 | Special | - |
+| [104660](104660/) | [2020 Google Code Jam Qualification Round (GCJ 20 Qualification Round)](https://codeforces.com/contest/104660) | 10 | 10/10 | Special | - |
 | [104666](104666/) | [2019-2020 ICPC Central Europe Regional Contest (CERC 19)](https://codeforces.com/contest/104666) | 12 | 6/12 | ICPC/IOI | - |
 | [104668](104668/) | [2018-2019 ACM-ICPC Central Europe Regional Contest (CERC 18)](https://codeforces.com/contest/104668) | 12 | 10/12 | ICPC/IOI | - |
 | [104669](104669/) | [Turtle Codes](https://codeforces.com/contest/104669) | 12 | 9/12 | Special | - |
@@ -38,7 +38,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104691](104691/) | [Кубы и квадраты](https://codeforces.com/contest/104691) | 1 | 0/1 | Special | - |
 | [104692](104692/) | [2021 Google Code Jam Round 1C (GCJ 21 Round 1C)](https://codeforces.com/contest/104692) | 6 | 2/6 | Special | - |
 | [104699](104699/) | [Интернет-олимпиады, Сезон 2023-2024, Вторая командная олимпиада](https://codeforces.com/contest/104699) | 12 | 2/12 | Special | - |
-| [104702](104702/) | [2021 Google Code Jam Round 2 (GCJ 21 Round 2)](https://codeforces.com/contest/104702) | 6 | 0/6 | Special | - |
+| [104702](104702/) | [2021 Google Code Jam Round 2 (GCJ 21 Round 2)](https://codeforces.com/contest/104702) | 7 | 0/7 | Special | - |
 | [104707](104707/) | [COMP4128 23T3 Contest 2](https://codeforces.com/contest/104707) | 6 | 0/6 | Special | - |
 | [104708](104708/) | [2021 Google Code Jam Round 3 (GCJ 21 Round 3)](https://codeforces.com/contest/104708) | 8 | 1/8 | Special | - |
 | [104709](104709/) | [2022 Google Code Jam Round 1A (GCJ 22 Round 1A)](https://codeforces.com/contest/104709) | 5 | 2/5 | Special | - |
@@ -1695,7 +1695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 187 contests, 1434 problems, 667 verified
+## 2023 — 187 contests, 1435 problems, 669 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1832,7 +1832,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
 | [104651](104651/) | [The 2023 CCPC Online Contest](https://codeforces.com/contest/104651) | 12 | 6/12 | Special | - |
-| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 12 | 8/12 | Special | - |
+| [104663](104663/) | [Replay of Ostad Presents Intra KUET Programming Contest 2023](https://codeforces.com/contest/104663) | 13 | 10/13 | Special | - |
 | [104664](104664/) | [UTPC Contest 10-06-23 Div. 2 (Beginner)](https://codeforces.com/contest/104664) | 7 | 4/7 | Div. 2 | - |
 | [104665](104665/) | [UTPC Contest 10-06-23 Div. 1 (Advanced)](https://codeforces.com/contest/104665) | 7 | 2/7 | Div. 1 | - |
 | [104671](104671/) | [2023 ICPC Columbia University Local Contest](https://codeforces.com/contest/104671) | 11 | 2/11 | ICPC/IOI | - |
