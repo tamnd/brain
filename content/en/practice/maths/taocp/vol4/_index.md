@@ -17,7 +17,7 @@ Exercise solutions for [TAOCP](../) Volume 4. 1326 solved, 491 verified, 2410 to
 | [7.1.2](7.1.2/) | Boolean Evaluation | 85 | 32 | 85 |
 | [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 219 | 94 | 219 |
 | [7.1.4](7.1.4/) | Binary Decision Diagrams | 266 | 103 | 267 |
-| [7.2.1.1](7.2.1.1/) | Generating All n-Tuples | 11 | 4 | 112 |
+| [7.2.1.1](7.2.1.1/) | Generating All n-Tuples | 12 | 5 | 112 |
 | 7.2.1.2 |  | — | — | 113 |
 | 7.2.1.3 |  | — | — | 111 |
 | 7.2.1.4 |  | — | — | 73 |
