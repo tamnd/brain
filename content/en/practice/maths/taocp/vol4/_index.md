@@ -16,7 +16,7 @@ Exercise solutions for [TAOCP](../) Volume 4. 1216 solved, 434 verified, 2410 to
 | [7.1.1](7.1.1/) | Boolean Basics | 132 | 63 | 132 |
 | [7.1.2](7.1.2/) | Boolean Evaluation | 85 | 32 | 85 |
 | [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 218 | 91 | 219 |
-| [7.1.4](7.1.4/) | Binary Decision Diagrams | 222 | 80 | 267 |
+| [7.1.4](7.1.4/) | Binary Decision Diagrams | 223 | 81 | 267 |
 | 7.2.1.1 |  | — | — | 112 |
 | 7.2.1.2 |  | — | — | 113 |
 | 7.2.1.3 |  | — | — | 111 |
