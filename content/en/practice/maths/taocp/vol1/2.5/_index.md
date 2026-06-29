@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.5: Dynamic Storage Allocation"
-description: "Section 2.5 exercises: 38/44 solved."
+description: "Section 2.5 exercises: 42/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.5. Dynamic Storage Allocation
 
-Exercises from [TAOCP Volume 1](../) Section 2.5: 38/44 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.5: 42/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -47,11 +47,11 @@ Exercises from [TAOCP Volume 1](../) Section 2.5: 38/44 solved.
 | [27](27.md) |  [**] |  | solved | 4m08s |
 | [28](28.md) |  [**] |  | verified | 4m16s |
 | [29](29.md) |  [**] |  | solved | 6m23s |
-| 30 |  [**] |  | - | - |
-| 31 |  [**] |  | - | - |
-| 32 |  [**] |  | - | - |
+| [30](30.md) |  [**] |  | solved | 6m45s |
+| [31](31.md) |  [**] |  | verified | 2m42s |
+| [32](32.md) |  [**] |  | solved | 4m03s |
 | [33](33.md) |  [**] |  | solved | 4m |
-| 34 |  [**] |  | - | - |
+| [34](34.md) |  [**] |  | solved | 7m03s |
 | [35](35.md) |  [**] |  | solved | 4m31s |
 | 36 |  [**] |  | - | - |
 | [37](37.md) |  [**] |  | solved | 4m12s |
