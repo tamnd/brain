@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.4: Binary Decision Diagrams"
-description: "Section 7.1.4 exercises: 169/267 solved."
+description: "Section 7.1.4 exercises: 197/267 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.4. Binary Decision Diagrams
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.4: 169/267 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.4: 197/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -42,14 +42,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 169/267 solved.
 | [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m51s |
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
 | [24](24.md) |  [*M22*] | math-medium | solved | 59s |
-| 25 |  [*M20*] | math-medium | - | - |
-| 26 |  [*M20*] | math-medium | - | - |
-| 27 | &#9654; [*M26*] | math-hard | - | - |
-| 28 |  [*M16*] | math-medium | - | - |
-| 29 |  [*HM20*] | hm-medium | - | - |
-| 30 | &#9654; [*M21*] | math-medium | - | - |
-| 31 |  [*M21*] | math-medium | - | - |
-| 32 | &#9654; [*M20*] | math-medium | - | - |
+| [25](25.md) |  [*M20*] | math-medium | verified | 2m24s |
+| [26](26.md) |  [*M20*] | math-medium | verified | 1m08s |
+| [27](27.md) | &#9654; [*M26*] | math-hard | verified | 1m26s |
+| [28](28.md) |  [*M16*] | math-medium | verified | 1m |
+| [29](29.md) |  [*HM20*] | hm-medium | verified | 1m04s |
+| [30](30.md) | &#9654; [*M21*] | math-medium | verified | 1m24s |
+| [31](31.md) |  [*M21*] | math-medium | solved | 1m09s |
+| [32](32.md) | &#9654; [*M20*] | math-medium | solved | 3m36s |
 | 33 | &#9654; [*M22*] | math-medium | - | - |
 | 34 |  [*M25*] | math-medium | - | - |
 | 35 | &#9654; [*22*] | medium | - | - |
@@ -265,23 +265,23 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 169/267 solved.
 | [245](245.md) | &#9654; [*M22*] | math-medium | solved | 4m09s |
 | [246](246.md) |  [*M21*] | math-medium | verified | 2m32s |
 | [247](247.md) | &#9654; [*M27*] | math-hard | solved | 2m14s |
-| 248 |  [*M22*] | math-medium | - | - |
-| 249 |  [*HM31*] | hm-hard | - | - |
-| 250 |  [*28*] | hard | - | - |
-| 251 |  [*M46*] | math-research | - | - |
-| 252 |  [*M30*] | math-hard | - | - |
-| 253 | &#9654; [*M26*] | math-hard | - | - |
-| 254 | &#9654; [*M23*] | math-medium | - | - |
-| 255 | &#9654; [*25*] | medium | - | - |
-| 256 |  [*M32*] | math-hard | - | - |
-| 257 |  [*40*] | project | - | - |
-| 258 | &#9654; [*25*] | medium | - | - |
-| 259 | &#9654; [*25*] | medium | - | - |
-| 260 | &#9654; [*M27*] | math-hard | - | - |
-| 261 |  [*HM21*] | hm-medium | - | - |
-| 262 |  [*M26*] | math-hard | - | - |
-| 263 |  [*HM25*] | hm-medium | - | - |
-| 264 |  [*M46*] | math-research | - | - |
-| 265 | &#9654; [*21*] | medium | - | - |
-| 266 | &#9654; [*20*] | medium | - | - |
-| 267 |  [*HM32*] | hm-hard | - | - |
+| [248](248.md) |  [*M22*] | math-medium | solved | 3m44s |
+| [249](249.md) |  [*HM31*] | hm-hard | solved | 3m48s |
+| [250](250.md) |  [*28*] | hard | solved | 4m03s |
+| [251](251.md) |  [*M46*] | math-research | verified | 2m58s |
+| [252](252.md) |  [*M30*] | math-hard | solved | 4m03s |
+| [253](253.md) | &#9654; [*M26*] | math-hard | verified | 2m05s |
+| [254](254.md) | &#9654; [*M23*] | math-medium | solved | 2m26s |
+| [255](255.md) | &#9654; [*25*] | medium | verified | 1m23s |
+| [256](256.md) |  [*M32*] | math-hard | solved | 4m52s |
+| [257](257.md) |  [*40*] | project | verified | 4m48s |
+| [258](258.md) | &#9654; [*25*] | medium | verified | 4m22s |
+| [259](259.md) | &#9654; [*25*] | medium | solved | 1m54s |
+| [260](260.md) | &#9654; [*M27*] | math-hard | solved | 4m39s |
+| [261](261.md) |  [*HM21*] | hm-medium | verified | 1m09s |
+| [262](262.md) |  [*M26*] | math-hard | solved | 4m20s |
+| [263](263.md) |  [*HM25*] | hm-medium | solved | 4m30s |
+| [264](264.md) |  [*M46*] | math-research | solved | 3m53s |
+| [265](265.md) | &#9654; [*21*] | medium | verified | 2m39s |
+| [266](266.md) | &#9654; [*20*] | medium | solved | 3m48s |
+| [267](267.md) |  [*HM32*] | hm-hard | solved | 4m12s |
