@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.4: Enumeration of Trees"
-description: "Section 2.3.4.4 exercises: 14/30 solved."
+description: "Section 2.3.4.4 exercises: 15/30 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.4"
@@ -14,11 +14,11 @@ draft: false
 
 # Section 2.3.4.4. Enumeration of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 14/30 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 15/30 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 |  [**] |  | - | - |
+| [1](01.md) |  [**] |  | solved | 3m56s |
 | [2](02.md) |  [**] |  | solved | 4m21s |
 | [3](03.md) |  [**] |  | solved | 6m51s |
 | 4 |  [**] |  | - | - |
