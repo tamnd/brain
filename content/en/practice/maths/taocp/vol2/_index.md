@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 884 solved, 504 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 884 solved, 495 verified, 890 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,29 +9,29 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 504 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 495 verified, 890 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
-| [3.1](3.1/) | Introduction | 23 | 17 | 23 |
-| [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
-| [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 11 | 14 |
+| [3.1](3.1/) | Introduction | 23 | 13 | 23 |
+| [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 4 | 5 |
+| [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 9 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 9 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
 | [3.2.2](3.2.2/) | Other Methods | 36 | 21 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 25 | 16 | 25 |
-| [3.3.2](3.3.2/) | Empirical Tests | 35 | 20 | 39 |
+| [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
 | [3.3.3](3.3.3/) | Theoretical Tests | 28 | 11 | 28 |
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 14 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 10 | 19 |
-| [3.5](3.5/) | What Is a Random Sequence? | 44 | 21 | 46 |
+| [3.5](3.5/) | What Is a Random Sequence? | 44 | 17 | 46 |
 | [3.6](3.6/) | Summary | 15 | 10 | 15 |
 | [4.1](4.1/) | Positional Number Systems | 34 | 16 | 34 |
 | [4.2.1](4.2.1/) | Single-Precision Calculations | 19 | 13 | 19 |
 | [4.2.2](4.2.2/) | Accuracy of Floating Point Arithmetic | 32 | 22 | 32 |
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 6 | 3 | 6 |
-| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 13 | 20 |
+| [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 12 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 43 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 19 | 6 | 19 |
