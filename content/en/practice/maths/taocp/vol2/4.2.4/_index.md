@@ -24,7 +24,7 @@ Exercises from [TAOCP Volume 1](../) Section 4.2.4: 20/20 solved.
 | [4](04.md) |  [*M18*] | math-medium | verified | 1m09s |
 | [5](05.md) | &#9654; [*M20*] | math-medium | verified | 56s |
 | [6](06.md) |  [*25*] | medium | verified | 1m25s |
-| [7](07.md) |  [*HM28*] | hm-hard | solved | 4m41s |
+| [7](07.md) |  [*HM28*] | hm-hard | solved | 3m57s |
 | [8](08.md) |  [*HM23*] | hm-medium | verified | 2m57s |
 | [9](09.md) |  [*HM25*] | hm-medium | verified | 1m26s |
 | [10](10.md) | &#9654; [*HM28*] | hm-hard | solved | 3m29s |
