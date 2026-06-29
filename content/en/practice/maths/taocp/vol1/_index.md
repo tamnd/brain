@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 829 solved, 458 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 833 solved, 460 verified, 889 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 829 solved, 458 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 833 solved, 460 verified, 889 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -48,7 +48,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 829 solved, 458 verified, 889 tota
 | [2.3.4.1](2.3.4.1/) | Free Trees | 12 | 0 | 13 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 12 | 0 | 28 |
 | [2.3.4.3](2.3.4.3/) |  | 8 | 0 | 8 |
-| [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 26 | 9 | 30 |
+| [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 30 | 11 | 30 |
 | [2.3.4.5](2.3.4.5/) | Path Length | 10 | 0 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 0 | 4 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 7 | 0 | 12 |
