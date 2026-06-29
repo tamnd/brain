@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2421 contests, 16587 problems, 9088 verified."
+description: "Codeforces problem solutions with full editorials. 2424 contests, 16610 problems, 9108 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2421 contests, 16587 problems, 9088 verified.**
+**2424 contests, 16610 problems, 9108 verified.**
 
-## Unknown — 461 contests, 3735 problems, 2269 verified
+## Unknown — 463 contests, 3750 problems, 2284 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104634](104634/) | [2020 Google Code Jam Virtual World Finals (GCJ 20 Virtual World Finals)](https://codeforces.com/contest/104634) | 5 | 5/5 | Special | - |
+| [104635](104635/) | [2019 Google Code Jam Qualification Round (GCJ 19 Qualification Round)](https://codeforces.com/contest/104635) | 10 | 10/10 | Special | - |
 | [104640](104640/) | [Интернет-олимпиады, Сезон 2023-2024, Первая командная олимпиада](https://codeforces.com/contest/104640) | 12 | 5/12 | Special | - |
 | [104642](104642/) | [2018 Google Code Jam Qualification Round (GCJ 18 Qualification Round)](https://codeforces.com/contest/104642) | 8 | 2/8 | Special | - |
 | [104644](104644/) | [2018 Google Code Jam Round 1C (GCJ 18 Round 1C)](https://codeforces.com/contest/104644) | 5 | 1/5 | Special | - |
@@ -1698,7 +1700,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 189 contests, 1457 problems, 685 verified
+## 2023 — 190 contests, 1465 problems, 690 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1834,6 +1836,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104636](104636/) | [Мисис 2023 осень - массивы, строки](https://codeforces.com/contest/104636) | 8 | 5/8 | Special | - |
 | [104637](104637/) | [Мисис 2023 осень - базовая математика, условия, циклы](https://codeforces.com/contest/104637) | 10 | 4/10 | Special | - |
 | [104639](104639/) | [The 2023 ICPC Asia EC Regionals Online Contest (I)](https://codeforces.com/contest/104639) | 12 | 12/12 | ICPC/IOI | - |
 | [104651](104651/) | [The 2023 CCPC Online Contest](https://codeforces.com/contest/104651) | 12 | 6/12 | Special | - |

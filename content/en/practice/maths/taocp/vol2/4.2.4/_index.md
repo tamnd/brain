@@ -18,10 +18,10 @@ Exercises from [TAOCP Volume 1](../) Section 4.2.4: 20/20 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*13*] | simple | verified | 1m14s |
-| [2](02.md) |  [*22*] | medium | verified | 4m49s |
-| [3](03.md) |  [*15*] | simple | verified | 2m02s |
-| [4](04.md) |  [*M18*] | math-medium | verified | 2m25s |
+| [1](01.md) |  [*13*] | simple | verified | 2m16s |
+| [2](02.md) |  [*22*] | medium | solved | 3m55s |
+| [3](03.md) |  [*15*] | simple | verified | 3m43s |
+| [4](04.md) |  [*M18*] | math-medium | verified | 1m09s |
 | [5](05.md) | &#9654; [*M20*] | math-medium | verified | 1m06s |
 | [6](06.md) |  [*25*] | medium | solved | 1m10s |
 | [7](07.md) |  [*HM28*] | hm-hard | solved | 4m41s |
