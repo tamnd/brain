@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "The problem statement is effectively empty (“H” with no description, input, or output), so there isn’t enough information to derive any algorithm, correctness argument, or implementation."
-date: "2026-06-30T21:44:15+07:00"
+description: "The problem statement is not included beyond the title “H”, so there isn’t enough information to reconstruct what Codeforces 104508H - Harmony Coloring is asking."
+date: "2026-06-30T22:41:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 35
+solve_time_s: 44
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 44s  
 **Verified:** no  
 
 ## Solution
-The problem statement is effectively empty (“H” with no description, input, or output), so there isn’t enough information to derive any algorithm, correctness argument, or implementation.
+The problem statement is not included beyond the title “H”, so there isn’t enough information to reconstruct what Codeforces 104508H - Harmony Coloring is asking.
 
-To write a proper Codeforces-style editorial, I need at least:
+To write a correct editorial, I would need at least the full description of the task: what the input represents, what constraints apply, and what needs to be computed.
 
-the full statement (what the structure is: arrays, graph, coloring rules, constraints), input/output format, and any samples if available.
-
-Send the complete problem text for “104508H - Harmony Coloring”, and I’ll produce the full editorial in the format you specified.
+If you paste the full statement (or even a screenshot/text dump), I can produce the complete structured editorial exactly in the format you specified.

@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "I can’t write a correct editorial from this yet because the actual problem statement is missing. Right now, only the title “List of Orders” is provided, but there are no details about: what the input contains, what an “order” means in this context, what operations are required…"
-date: "2026-06-30T21:44:45+07:00"
+description: "I can’t write a correct editorial from what you provided because the actual problem statement is missing. Right now I only see: Everything else (input, output, constraints, and the actual task) is empty, so any “solution” would be guesswork and very likely wrong."
+date: "2026-06-30T22:41:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 31
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,20 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial from this yet because the actual problem statement is missing.
+I can’t write a correct editorial from what you provided because the actual problem statement is missing.
 
-Right now, only the title “List of Orders” is provided, but there are no details about:
+Right now I only see:
 
-what the input contains, what an “order” means in this context, what operations are required, or what needs to be computed.
+```
+## Problem Statement
 
-For a Codeforces editorial, even small differences in interpretation completely change the solution (this could range from greedy scheduling, sorting with constraints, segment trees, graph ordering, or something else entirely).
+L
+```
 
-Send either:
+Everything else (input, output, constraints, and the actual task) is empty, so any “solution” would be guesswork and very likely wrong.
 
-the full problem statement, or a link, or even a screenshot text dump,
-
-and I’ll produce the complete editorial in the exact format you specified, including algorithm walkthrough, proof idea, Python solution, and edge case analysis.
+Paste the full Codeforces statement for **104508L - List of Orders** (or even a screenshot/text dump), and I’ll produce a complete editorial in the exact format you specified.
