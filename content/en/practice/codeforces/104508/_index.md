@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 4
-total_solve_s: 844
+total_solve_s: 847
 contest_year: 2023
-date: "2026-06-30T16:25:42+07:00"
+date: "2026-06-30T16:50:58+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 4/12 verified | Difficulty - | 14m 4s
+Special | 12 problems | 4/12 verified | Difficulty - | 14m 7s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Special | 12 problems | 4/12 verified | Difficulty - | 14m 4s
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
 | [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 37s |  |
 | [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 52s | ✓ |
-| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 37s |  |
+| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 40s |  |
 | [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 20s |  |
 | [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 59s |  |
 | [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 29s |  |
