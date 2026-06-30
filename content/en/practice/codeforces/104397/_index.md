@@ -1,22 +1,22 @@
 ---
 title: "The 21st UESTC Programming Contest Final"
-description: "11 problems from The 21st UESTC Programming Contest Final (contest 104397), difficulty -. 4/11 solutions verified against sample I/O."
+description: "11 problems from The 21st UESTC Programming Contest Final (contest 104397), difficulty -. 5/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104397
 contest_type: "Special"
 rating_range: "-"
 n_problems: 11
-n_verified: 4
-total_solve_s: 930
-date: "2026-07-01T00:54:16+07:00"
+n_verified: 5
+total_solve_s: 954
+date: "2026-07-01T00:55:04+07:00"
 weight: 104397
 draft: false
 ---
 
 # [The 21st UESTC Programming Contest Final](https://codeforces.com/contest/104397)
 
-Special | 11 problems | 4/11 verified | Difficulty - | 15m 30s
+Special | 11 problems | 5/11 verified | Difficulty - | 15m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,4 @@ Special | 11 problems | 4/11 verified | Difficulty - | 15m 30s
 | [H](H/) | [Morning ECO, Evening EMO](https://codeforces.com/problemset/problem/104397/H) |  |  |  | 39s |  |
 | [I](I/) | [W-shaped Rail Fence Cipher](https://codeforces.com/problemset/problem/104397/I) |  |  |  | 1m 6s | ✓ |
 | [J](J/) | [Billboard](https://codeforces.com/problemset/problem/104397/J) |  |  |  | 1m 43s |  |
-| [K](K/) | [Da Capo](https://codeforces.com/problemset/problem/104397/K) |  |  |  | 1m 14s |  |
+| [K](K/) | [Da Capo](https://codeforces.com/problemset/problem/104397/K) |  |  |  | 1m 38s | ✓ |
