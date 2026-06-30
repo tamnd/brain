@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "I can’t write a correct editorial for this yet because the problem statement for Codeforces 104508H - Harmony Coloring isn’t included in your prompt (it only shows “H”)."
-date: "2026-06-30T21:07:03+07:00"
+description: "The problem statement is effectively empty (“H” with no description, input, or output), so there isn’t enough information to derive any algorithm, correctness argument, or implementation."
+date: "2026-06-30T21:44:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 98
+solve_time_s: 35
 verified: false
 draft: false
 ---
@@ -18,19 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 38s  
+**Solve time:** 35s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the problem statement for **Codeforces 104508H - Harmony Coloring** isn’t included in your prompt (it only shows “H”).
+The problem statement is effectively empty (“H” with no description, input, or output), so there isn’t enough information to derive any algorithm, correctness argument, or implementation.
 
-Right now there’s no way to reliably reconstruct:
+To write a proper Codeforces-style editorial, I need at least:
 
-- what “coloring” is being done on (graph, grid, tree, sequence, etc.)
-- what “harmony” constraint means
-- what the input/output format actually is
-- what the constraints are
+the full statement (what the structure is: arrays, graph, coloring rules, constraints), input/output format, and any samples if available.
 
-If I tried to proceed anyway, I’d be forced to invent a problem, and the resulting editorial would be meaningless for Codeforces prep.
-
-Paste the full statement (or even a screenshot / partial text), and I’ll produce the full senior-level editorial in the exact format you requested.
+Send the complete problem text for “104508H - Harmony Coloring”, and I’ll produce the full editorial in the format you specified.

@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "The input you provided only shows the problem title (“Codeforces 104508L - List of Orders”) but the actual statement is missing, so there’s no way to reconstruct the algorithm, constraints, or required output behavior."
-date: "2026-06-30T21:07:08+07:00"
+description: "I can’t write a correct editorial from this yet because the actual problem statement is missing. Right now, only the title “List of Orders” is provided, but there are no details about: what the input contains, what an “order” means in this context, what operations are required…"
+date: "2026-06-30T21:44:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 82
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 22s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The input you provided only shows the problem title (“Codeforces 104508L - List of Orders”) but the actual statement is missing, so there’s no way to reconstruct the algorithm, constraints, or required output behavior.
+I can’t write a correct editorial from this yet because the actual problem statement is missing.
 
-Right now, any attempt to write a full editorial would be guesswork, and for Codeforces problems that usually leads to completely wrong logic.
+Right now, only the title “List of Orders” is provided, but there are no details about:
 
-Send the full problem statement (or at least the input/output description and constraints), and I’ll write the complete editorial in the exact format you specified.
+what the input contains, what an “order” means in this context, what operations are required, or what needs to be computed.
+
+For a Codeforces editorial, even small differences in interpretation completely change the solution (this could range from greedy scheduling, sorting with constraints, segment trees, graph ordering, or something else entirely).
+
+Send either:
+
+the full problem statement, or a link, or even a screenshot text dump,
+
+and I’ll produce the complete editorial in the exact format you specified, including algorithm walkthrough, proof idea, Python solution, and edge case analysis.
