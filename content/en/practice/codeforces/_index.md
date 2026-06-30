@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2477 contests, 16979 problems, 9394 verified."
+description: "Codeforces problem solutions with full editorials. 2478 contests, 16988 problems, 9396 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2477 contests, 16979 problems, 9394 verified.**
+**2478 contests, 16988 problems, 9396 verified.**
 
-## Unknown — 503 contests, 4025 problems, 2517 verified
+## Unknown — 504 contests, 4034 problems, 2519 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104521](104521/) | [CerealCodes II Novice](https://codeforces.com/contest/104521) | 9 | 2/9 | Special | - |
 | [104522](104522/) | [CerealCodes II Intermediate](https://codeforces.com/contest/104522) | 11 | 2/11 | Special | - |
 | [104523](104523/) | [CerealCodes II Advanced](https://codeforces.com/contest/104523) | 10 | 2/10 | Special | - |
 | [104531](104531/) | [2022 SYSU School Contest](https://codeforces.com/contest/104531) | 13 | 13/13 | Special | - |
