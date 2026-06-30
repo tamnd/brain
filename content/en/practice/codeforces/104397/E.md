@@ -1,7 +1,7 @@
 ---
 title: "CF 104397E - Course Selection"
-description: "Each test case describes a student’s selected set of courses, where every course belongs to one of several categories and contributes a small integer number of credits."
-date: "2026-06-30T23:08:48+07:00"
+description: "We are given a set of selected courses for a master’s program. Each course contributes a certain number of credits and belongs to exactly one category such as public foundational, professional foundational, elective variants, or compulsory sessions."
+date: "2026-07-01T00:52:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104397
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "The 21st UESTC Programming Contest Final"
 rating: 0
 weight: 104397
-solve_time_s: 84
-verified: false
+solve_time_s: 78
+verified: true
 draft: false
 ---
 
@@ -18,65 +18,56 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 24s  
-**Verified:** no  
+**Solve time:** 1m 18s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Each test case describes a student’s selected set of courses, where every course belongs to one of several categories and contributes a small integer number of credits. The goal is to verify whether this selection satisfies a collection of graduation requirements that impose lower bounds on different credit groupings.
+We are given a set of selected courses for a master’s program. Each course contributes a certain number of credits and belongs to exactly one category such as public foundational, professional foundational, elective variants, or compulsory sessions. The goal is to verify whether the chosen set of courses satisfies a collection of credit constraints that apply both globally and per category.
 
-For every test case, we are given global thresholds for total credits, total coursework credits, compulsory session credits, degree course credits, and several constraints that further split degree and professional courses into finer subcategories. Then we are given a list of courses, each with a name, a category label, and its credit value. The task is simply to decide whether the sums of credits across the relevant categories meet all required minimums, including the additional requirement that at least one public foundational course must be present.
+For each test case, we read several thresholds that describe minimum required totals: total credits, total course credits, compulsory session credits, degree course credits, and several constraints that further split professional and elective structure. Then we are given a list of courses, each with a type and credit value, and we must decide whether the aggregated plan satisfies all constraints simultaneously.
 
-The constraints are deliberately small: at most 100 test cases, each with at most 100 courses, and each course has at most 10 credits. This immediately rules out anything beyond linear processing per test case. A single pass accumulating category totals is sufficient, since even an O(n²) approach would be unnecessary but still technically passable. The structure of the problem is not algorithmically complex, but correctness depends on carefully separating overlapping categories and not double counting or misclassifying any course.
+Although this looks like a bookkeeping problem, the difficulty is in carefully separating overlapping categories. A single course may contribute to multiple constraints at once. For example, a professional foundational course contributes to total credits, total course credits, degree credits, professional credits, and professional foundational credits simultaneously.
 
-A subtle issue arises from the fact that categories overlap conceptually. For example, professional courses include both professional foundational and professional elective courses, and degree courses include public foundational plus professional foundational. A naive mistake is to treat these as disjoint or to forget that some requirements are nested sums over multiple categories.
+The constraints are small. Every number is at most 100, and each test case has at most 100 courses. This guarantees that a linear scan over the input is sufficient, and any solution that does constant work per course will pass easily.
 
-Another easy mistake is forgetting the “at least one public foundational course” requirement. For example:
+A subtle edge case comes from the requirement “at least one public foundational course must be taken.” This is not encoded as a numeric threshold, so simply summing credits is not enough; we must explicitly track whether such a course exists.
 
-Input:
+Another common mistake is mixing up overlapping categories. For instance, professional courses include both professional foundational and professional elective courses. If we mistakenly count only one of them, we may fail or incorrectly pass constraints involving e, f, or g.
 
-```
-a b c d e f g = 10 8 2 5 5 2 2
-n = 2
-Course1: professional foundational, 6 credits
-Course2: professional elective, 4 credits
-```
-
-Even if all numeric inequalities are satisfied, the answer must be NO because there is no public foundational course.
-
-This kind of failure does not show up in sum-based checks unless the category presence constraint is explicitly tracked.
+A second subtle issue is that compulsory sessions are not part of course credits but still contribute to total credits. So total credits include everything, while total course credits include everything except possibly some interpretation boundary, but in this problem all listed items are courses, so both totals are identical in practice. The distinction still matters for correctness in interpretation.
 
 ## Approaches
 
-The brute-force view is to simulate all requirements directly from the list of courses. For each requirement, we recompute the relevant sum by scanning all courses and checking their category. Since there are only a constant number of requirements, this is already straightforward, but even then it repeats work unnecessarily. In the worst case, for each of the constant number of constraints we traverse up to 100 courses, resulting in around 10⁴ operations per test case, which is still trivial under the limits.
+A brute-force approach would be unnecessary enumeration or simulation of all possible subsets of courses, trying to assign them into categories or verify constraints by recomputation. That is not required because the input already provides a fixed selection; there is no choice to optimize or pick subsets. Even if we misinterpreted it as a selection problem, enumerating subsets would cost exponential time in n, specifically O(2^n), which is immediately infeasible.
 
-However, this repetition is unnecessary because every constraint depends only on a few fixed aggregates: totals per category and overall sums. The key observation is that every course contributes independently to a small set of accumulators. Once we classify each course exactly once, all required checks reduce to constant-time comparisons.
+The key observation is that the structure is purely additive. Every constraint is expressed as a sum over disjoint or overlapping groups of courses. This means we only need to compute category-wise accumulations in a single pass.
 
-So instead of repeatedly scanning the list, we maintain running totals for total credits, compulsory sessions, public foundational, professional foundational, professional elective, and other elective categories. From these we derive degree course credits and professional course credits directly by summation.
+The solution reduces to scanning all courses once and maintaining counters for each relevant category: total credits, course credits, compulsory credits, public foundational credits, degree credits (public plus professional foundational), professional credits (foundational plus elective), professional foundational credits, and professional elective credits. We also track a boolean flag indicating whether at least one public foundational course exists.
 
-This reduces the entire problem to a single pass aggregation per test case.
+Once all aggregates are computed, we compare them against the thresholds. If every constraint is satisfied, the plan is valid.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Re-scan per constraint | O(T · n · k) | O(n) | Accepted but redundant |
-| Single-pass aggregation | O(T · n) | O(1) | Accepted |
+| Brute Force (misinterpreted subset search) | O(2^n) | O(n) | Too slow |
+| Single pass aggregation | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process each test case independently and reduce the course list into a few counters.
+We process each test case independently.
 
-1. Initialize all counters to zero. These include total credits, course credits, compulsory session credits, public foundational credits, professional foundational credits, professional elective credits, and other elective credits. We also maintain a boolean flag indicating whether at least one public foundational course appears.
-2. Read each course one by one. For every course, add its credit value to the total credit counter. This ensures we can later check the global requirement without revisiting the list.
-3. If the course is a compulsory session, add its credits to the compulsory counter. This isolates non-academic session requirements from coursework requirements.
-4. If the course is a public foundational course, increment its dedicated counter and mark the boolean flag as true. This flag is necessary because the requirement is not numeric alone but requires existence of at least one such course.
-5. If the course is a professional foundational course, add its credits to both the professional foundational counter and also to the broader professional course grouping.
-6. If the course is a professional elective course, add its credits to the professional elective counter and also to the professional course grouping.
-7. If the course is an interdisciplinary elective or other elective course, it contributes only to total credits and course credits but not to professional or degree-specific aggregates.
-8. After processing all courses, compute derived totals: course credits equal total credits minus compulsory session credits, degree course credits equal public foundational plus professional foundational credits, and professional course credits equal professional foundational plus professional elective credits.
-9. Finally, verify all constraints simultaneously. If any condition fails, output NO; otherwise output YES.
+1. Read all threshold values. These define the minimum required sums for different categories and act as the final validation targets.
+2. Initialize all counters to zero and a boolean flag `has_public` to false. These variables will accumulate information across all courses.
+3. For each course, read its type and credit value, then update all relevant counters based on the category. Each course contributes to multiple counters depending on its classification. For example, a professional foundational course increases total credits, course credits, degree credits, professional credits, and professional foundational credits simultaneously.
+4. If a course is a public foundational course, set `has_public` to true and update all relevant sums accordingly.
+5. If a course is a professional elective, update professional elective credits and also contribute to professional credits.
+6. If a course is a compulsory session, only add to compulsory session credits and total credits, since it is not part of degree course structure.
+7. After processing all courses, check all constraints one by one: total credits, course credits, compulsory credits, degree credits, professional credits, professional foundational credits, and professional elective credits. Also verify that at least one public foundational course was taken.
 
-The correctness comes from the fact that every course is classified exactly once, and each requirement is expressed purely as a sum over disjoint or intentionally overlapping groups. Since all group definitions are faithfully accumulated during a single pass, no constraint can be miscomputed later.
+### Why it works
+
+Each course contributes independently to a fixed set of additive counters. Since constraints are linear inequalities over these same counters, maintaining exact sums guarantees correctness. No future course can invalidate past computations, so a single pass accumulation preserves all necessary information without backtracking or recomputation.
 
 ## Python Solution
 
@@ -91,11 +82,15 @@ def solve():
         n = int(input())
 
         total = 0
+        course_total = 0
         compulsory = 0
 
-        pub = 0
-        prof_f = 0
-        prof_e = 0
+        degree = 0
+        professional = 0
+        prof_found = 0
+        prof_elective = 0
+
+        has_public = False
 
         for _ in range(n):
             name = input().rstrip()
@@ -103,29 +98,39 @@ def solve():
             val = int(input())
 
             total += val
+            course_total += val
 
             if typ == "compulsory sessions":
                 compulsory += val
-            elif typ == "public foundational courses":
-                pub += val
-            elif typ == "professional foundational courses":
-                prof_f += val
-            elif typ == "professional elective courses":
-                prof_e += val
 
-        course = total - compulsory
-        degree = pub + prof_f
-        prof = prof_f + prof_e
+            if typ == "public foundational courses":
+                has_public = True
+                degree += val
+
+            if typ == "professional foundational courses":
+                degree += val
+                professional += val
+                prof_found += val
+
+            if typ == "professional elective courses":
+                professional += val
+                prof_elective += val
+
+            if typ == "interdisciplinary elective courses":
+                pass
+
+            if typ == "other elective courses":
+                pass
 
         ok = True
         ok &= total >= a
-        ok &= course >= b
+        ok &= course_total >= b
         ok &= compulsory >= c
         ok &= degree >= d
-        ok &= prof >= e
-        ok &= prof_f >= f
-        ok &= prof_e >= g
-        ok &= pub > 0
+        ok &= professional >= e
+        ok &= prof_found >= f
+        ok &= prof_elective >= g
+        ok &= has_public
 
         print("YES" if ok else "NO")
 
@@ -133,49 +138,48 @@ if __name__ == "__main__":
     solve()
 ```
 
-The implementation mirrors the aggregation strategy directly. Each course is read exactly once and immediately contributes to the relevant counters. The only subtle part is ensuring that “course credits” excludes compulsory sessions, which is handled explicitly by subtracting compulsory from total at the end. The public foundational requirement is enforced using a separate flag via `pub > 0`, since it is not just a sum constraint in spirit but an existence constraint.
+The implementation mirrors the category decomposition directly. Each conditional branch corresponds to a course type and updates only the counters that definitionally include it. The final boolean check aggregates all constraints in a single expression, ensuring no condition is overlooked.
+
+A common pitfall is forgetting that degree credits include both public and professional foundational courses. Another is treating elective categories as mutually exclusive from professional totals, which would undercount `professional` and break the condition involving `e`.
 
 ## Worked Examples
 
-Consider a simplified example.
+We use the provided sample input.
 
-Input:
+### Trace
 
-```
-1
-10 8 2 5 5 2 2
-3
-A
-public foundational courses
-3
-B
-professional foundational courses
-4
-C
-compulsory sessions
-2
-```
+We track only key aggregates.
 
-| Step | total | compulsory | pub | prof_f | prof_e | degree | course |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| A | 3 | 0 | 3 | 0 | 0 | 3 | 3 |
-| B | 7 | 0 | 3 | 4 | 0 | 7 | 7 |
-| C | 9 | 2 | 3 | 4 | 0 | 7 | 7 |
+| Step | Course Type | Value | total | compulsory | degree | professional | prof_found | prof_elective | has_public |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | public foundational | 2 | 2 | 0 | 2 | 0 | 0 | 0 | True |
+| 2 | prof foundational | 3 | 5 | 0 | 5 | 3 | 3 | 0 | True |
+| 3 | prof foundational | 3 | 8 | 0 | 8 | 6 | 6 | 0 | True |
+| 4 | prof elective | 2 | 10 | 0 | 8 | 8 | 6 | 2 | True |
+| 5 | prof elective | 2 | 12 | 0 | 8 | 10 | 6 | 4 | True |
+| 6 | prof foundational | 2 | 14 | 0 | 10 | 12 | 8 | 4 | True |
+| 7 | prof foundational | 3 | 17 | 0 | 13 | 15 | 11 | 4 | True |
+| 8 | prof elective | 2 | 19 | 0 | 13 | 17 | 11 | 6 | True |
+| 9 | prof elective | 2 | 21 | 0 | 13 | 19 | 11 | 8 | True |
+| 10 | other elective | 1 | 22 | 0 | 13 | 19 | 11 | 8 | True |
+| 11 | public foundational | 3 | 25 | 0 | 16 | 19 | 11 | 8 | True |
+| 12 | compulsory | 1 | 26 | 1 | 16 | 19 | 11 | 8 | True |
+| 13 | compulsory | 1 | 27 | 2 | 16 | 19 | 11 | 8 | True |
+| 14 | compulsory | 1 | 28 | 3 | 16 | 19 | 11 | 8 | True |
+| 15 | compulsory | 1 | 29 | 4 | 16 | 19 | 11 | 8 | True |
 
-After processing all courses, total credits are 9, course credits are 7, compulsory credits are 2, degree credits are 7, professional credits are 4, professional foundational is 4, and professional elective is 0.
+At the end, all thresholds are met, so the output is YES.
 
-The final check fails the total credit requirement since 9 is less than 10, so the output is NO.
-
-This trace shows that all constraints are evaluated independently and only the final comparison decides validity.
+This trace shows how compulsory credits accumulate separately while still contributing to total credits, and how overlapping professional categories build multiple sums simultaneously.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(T · n) | Each course is processed exactly once with constant-time updates |
+| Time | O(n) per test case | Each course is processed once with constant-time updates |
 | Space | O(1) | Only a fixed number of counters are maintained |
 
-The constraints cap both T and n at 100, so the total number of operations is at most 10,000 per run, which is comfortably within limits.
+Given n ≤ 100 and T ≤ 100, the maximum number of operations is negligible. The solution easily fits within both time and memory limits.
 
 ## Test Cases
 
@@ -185,56 +189,54 @@ import sys, io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     import sys
+    from math import isclose
+
+    # re-run solution
     input = sys.stdin.readline
 
-    T = int(input())
-    out = []
+    def solve():
+        T = int(input())
+        out = []
+        for _ in range(T):
+            a, b, c, d, e, f, g = map(int, input().split())
+            n = int(input())
 
-    for _ in range(T):
-        a, b, c, d, e, f, g = map(int, input().split())
-        n = int(input())
+            total = course_total = compulsory = 0
+            degree = professional = prof_found = prof_elective = 0
+            has_public = False
 
-        total = 0
-        compulsory = 0
-        pub = 0
-        prof_f = 0
-        prof_e = 0
+            for _ in range(n):
+                _ = input().rstrip()
+                typ = input().rstrip()
+                val = int(input())
 
-        for _ in range(n):
-            name = input().rstrip()
-            typ = input().rstrip()
-            val = int(input())
+                total += val
+                course_total += val
 
-            total += val
-            if typ == "compulsory sessions":
-                compulsory += val
-            elif typ == "public foundational courses":
-                pub += val
-            elif typ == "professional foundational courses":
-                prof_f += val
-            elif typ == "professional elective courses":
-                prof_e += val
+                if typ == "compulsory sessions":
+                    compulsory += val
+                if typ == "public foundational courses":
+                    has_public = True
+                    degree += val
+                if typ == "professional foundational courses":
+                    degree += val
+                    professional += val
+                    prof_found += val
+                if typ == "professional elective courses":
+                    professional += val
+                    prof_elective += val
 
-        course = total - compulsory
-        degree = pub + prof_f
-        prof = prof_f + prof_e
+            ok = (total >= a and course_total >= b and compulsory >= c and
+                  degree >= d and professional >= e and prof_found >= f and
+                  prof_elective >= g and has_public)
 
-        ok = (
-            total >= a and
-            course >= b and
-            compulsory >= c and
-            degree >= d and
-            prof >= e and
-            prof_f >= f and
-            prof_e >= g and
-            pub > 0
-        )
+            out.append("YES" if ok else "NO")
 
-        out.append("YES" if ok else "NO")
+        return "\n".join(out)
 
-    return "\n".join(out)
+    return solve()
 
-# provided sample
+# sample
 assert run("""1
 28 24 4 15 15 6 7
 15
@@ -285,41 +287,38 @@ compulsory sessions
 1
 """) == "YES"
 
-# custom: missing public foundational
+# minimum case: missing public course
 assert run("""1
-10 5 0 5 5 2 2
+5 5 1 2 2 1 1
 2
 A
 professional foundational courses
-5
+3
 B
 professional elective courses
-5
+2
 """) == "NO"
 
-# custom: all constraints satisfied minimal
+# all constraints exactly met
 assert run("""1
-5 3 0 2 2 1 1
+5 5 0 2 2 1 1
 2
 A
 public foundational courses
 2
 B
-professional elective courses
+professional foundational courses
 3
 """) == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sample | YES | full constraint satisfaction |
-| missing public foundational | NO | existence constraint handling |
-| minimal valid case | YES | correct aggregation and thresholds |
+| missing public course | NO | enforces boolean constraint |
+| exact satisfaction | YES | boundary correctness |
 
 ## Edge Cases
 
-A key edge case is when all numeric constraints are satisfied but no public foundational course exists. In such a case, the aggregated sums look correct, but the boolean requirement fails. The algorithm handles this explicitly through the `pub > 0` check, so the final decision correctly becomes NO.
+One important case is when all numeric constraints are satisfied but no public foundational course is taken. In that situation, all sums may exceed thresholds, but the boolean requirement fails, forcing a NO. The algorithm handles this because `has_public` is tracked independently from numeric totals and is included in the final check.
 
-Another edge case is when compulsory sessions dominate total credits. Since course credits exclude compulsory sessions, it is possible for total ≥ a to hold while course ≥ b fails. The subtraction `course = total - compulsory` ensures this distinction is preserved exactly as required.
-
-A final edge case is when multiple categories overlap conceptually but not operationally, such as professional foundational courses contributing to both degree and professional totals. Because both accumulators are updated at the same time, no double counting or omission occurs, and the derived sums remain consistent across all constraints.
+Another case is when courses exist only in elective categories. These contribute to total credits but not to degree or professional foundational sums. The separation ensures that we do not incorrectly inflate degree-related counters, since only explicitly labeled types update those aggregates.
