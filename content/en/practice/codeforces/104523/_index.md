@@ -1,22 +1,22 @@
 ---
 title: "CerealCodes II Advanced"
-description: "9 problems from CerealCodes II Advanced (contest 104523), difficulty -. 2/9 solutions verified against sample I/O."
+description: "10 problems from CerealCodes II Advanced (contest 104523), difficulty -. 2/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104523
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 2
-total_solve_s: 1240
-date: "2026-06-30T10:08:04+07:00"
+total_solve_s: 1405
+date: "2026-06-30T10:08:57+07:00"
 weight: 104523
 draft: false
 ---
 
 # [CerealCodes II Advanced](https://codeforces.com/contest/104523)
 
-Special | 9 problems | 2/9 verified | Difficulty - | 20m 40s
+Special | 10 problems | 2/10 verified | Difficulty - | 23m 25s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 9 problems | 2/9 verified | Difficulty - | 20m 40s
 | [F](F/) | [Vacation II](https://codeforces.com/problemset/problem/104523/F) |  |  |  | 3m 18s |  |
 | [G](G/) | [Cereal Bushes](https://codeforces.com/problemset/problem/104523/G) |  |  |  | 2m 51s |  |
 | [H](H/) | [Date](https://codeforces.com/problemset/problem/104523/H) |  |  |  | 1m 51s | ✓ |
+| [I](I/) | [Magical Zoo](https://codeforces.com/problemset/problem/104523/I) |  |  |  | 2m 45s |  |
 | [J](J/) | [Purchasing Cereal](https://codeforces.com/problemset/problem/104523/J) |  |  |  | 1m 40s |  |
