@@ -1,25 +1,35 @@
 ---
 title: "National Taiwan University Class Preliminary 2023"
-description: "2 problems from National Taiwan University Class Preliminary 2023 (contest 104508), difficulty -. 0/2 solutions verified against sample I/O."
+description: "12 problems from National Taiwan University Class Preliminary 2023 (contest 104508), difficulty -. 2/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104508
 contest_type: "Special"
 rating_range: "-"
-n_problems: 2
-n_verified: 0
-total_solve_s: 77
+n_problems: 12
+n_verified: 2
+total_solve_s: 496
 contest_year: 2023
-date: "2026-06-30T10:48:55+07:00"
+date: "2026-06-30T10:51:09+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 2 problems | 0/2 verified | Difficulty - | 1m 17s
+Special | 12 problems | 2/12 verified | Difficulty - | 8m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 39s |  |
 | [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 38s |  |
+| [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
+| [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 28s |  |
+| [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 32s |  |
+| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 28s |  |
+| [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 33s |  |
+| [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 29s |  |
+| [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 36s |  |
+| [J](J/) | [Japanese Monsters](https://codeforces.com/problemset/problem/104508/J) |  |  |  | 50s | ✓ |
+| [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 29s |  |
+| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 31s |  |
