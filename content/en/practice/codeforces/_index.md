@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2514 contests, 17364 problems, 9627 verified."
+description: "Codeforces problem solutions with full editorials. 2515 contests, 17377 problems, 9634 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2514 contests, 17364 problems, 9627 verified.**
+**2515 contests, 17377 problems, 9634 verified.**
 
-## Unknown — 525 contests, 4258 problems, 2655 verified
+## Unknown — 526 contests, 4271 problems, 2662 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104412](104412/) | [2023 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/104412) | 13 | 7/13 | ICPC/IOI | - |
 | [104417](104417/) | [The 13th Shandong ICPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/104417) | 13 | 13/13 | ICPC/IOI | - |
 | [104427](104427/) | [2022-2023 Winter Petrozavodsk Camp, Day 2: GP of ainta](https://codeforces.com/contest/104427) | 11 | 11/11 | Special | - |
 | [104439](104439/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2021](https://codeforces.com/contest/104439) | 0 | 0/0 | Special | - |
