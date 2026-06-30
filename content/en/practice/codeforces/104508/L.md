@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "I’m missing the actual problem content here. Right now the statement section only contains “L”, so there is no description of what the input represents, what operations are required, or what needs to be computed."
-date: "2026-06-30T19:54:38+07:00"
+description: "The input you provided only shows the problem title (“Codeforces 104508L - List of Orders”) but the actual statement is missing, so there’s no way to reconstruct the algorithm, constraints, or required output behavior."
+date: "2026-06-30T21:07:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 30
+solve_time_s: 82
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 1m 22s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem content here.
+The input you provided only shows the problem title (“Codeforces 104508L - List of Orders”) but the actual statement is missing, so there’s no way to reconstruct the algorithm, constraints, or required output behavior.
 
-Right now the statement section only contains “L”, so there is no description of what the input represents, what operations are required, or what needs to be computed. Writing a correct Codeforces-style editorial without that would force guessing, and that would very likely produce a completely wrong solution and reasoning.
+Right now, any attempt to write a full editorial would be guesswork, and for Codeforces problems that usually leads to completely wrong logic.
 
-If you paste the full problem statement (or even just the input/output description and constraints), I’ll write the complete editorial in the exact format you specified, including intuition, algorithm derivation, complexity analysis, and full code.
-
-Send the statement and I’ll take it from there.
+Send the full problem statement (or at least the input/output description and constraints), and I’ll write the complete editorial in the exact format you specified.

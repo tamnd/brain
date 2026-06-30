@@ -1,7 +1,7 @@
 ---
 title: "CF 104508D - Decision Problem"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see “D” with empty input/output sections, so there’s no way to know what the task is (data structures, graph decision, DP, interactive, etc.)."
-date: "2026-06-30T19:53:39+07:00"
+description: "The provided prompt does not include the actual problem statement. For Codeforces 104508D - Decision Problem, the only available text is: - Title: D - No statement - No input format - No output format - No constraints - No samples Because of that, it is impossible to write a…"
+date: "2026-06-30T21:05:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 35
+solve_time_s: 215
 verified: false
 draft: false
 ---
@@ -18,12 +18,46 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 3m 35s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The provided prompt does not include the actual problem statement.
 
-Right now I only see “D” with empty input/output sections, so there’s no way to know what the task is (data structures, graph decision, DP, interactive, etc.). Any attempt to proceed would just be guessing and would produce a useless editorial.
+For **Codeforces 104508D - Decision Problem**, the only available text is:
 
-Send the full statement (or even a screenshot / pasted text), and I’ll write the complete Codeforces-style editorial in the exact format you requested.
+- Title: **D**
+- No statement
+- No input format
+- No output format
+- No constraints
+- No samples
+
+Because of that, it is impossible to write a correct editorial or implementation. Every required section of your requested editorial depends on information that is missing:
+
+- Problem Understanding requires knowing what the task asks.
+- Approaches depend on the algorithm.
+- Algorithm Walkthrough requires the actual solution.
+- Python Solution cannot be written without the specification.
+- Worked Examples need sample inputs and outputs.
+- Complexity Analysis depends on the intended algorithm.
+- Test Cases require the exact input/output format.
+- Edge Cases depend on the problem semantics.
+
+Please provide one of the following:
+
+1. The full problem statement for **Codeforces 104508D - Decision Problem**, or
+2. A link or PDF containing the statement, or
+3. The HTML/text copied from the contest page.
+
+Once I have the complete statement, I can produce the full editorial exactly in the requested format, including:
+
+- Problem Understanding
+- Approaches with brute force and optimal solution
+- Algorithm Walkthrough with proof sketch
+- Complete Python 3 solution
+- Detailed code explanation
+- Worked examples with trace tables
+- Complexity analysis
+- Assert-based test cases
+- Edge case analysis

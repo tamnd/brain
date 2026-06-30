@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "The problem information provided is not sufficient to reconstruct a correct editorial. Right now we only have the label “H” for Codeforces 104508H - Harmony Coloring, but no actual statement, constraints, input/output format, or samples."
-date: "2026-06-30T19:54:09+07:00"
+description: "I can’t write a correct editorial for this yet because the problem statement for Codeforces 104508H - Harmony Coloring isn’t included in your prompt (it only shows “H”)."
+date: "2026-06-30T21:07:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 98
 verified: false
 draft: false
 ---
@@ -18,14 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 1m 38s  
 **Verified:** no  
 
 ## Solution
-The problem information provided is not sufficient to reconstruct a correct editorial.
+I can’t write a correct editorial for this yet because the problem statement for **Codeforces 104508H - Harmony Coloring** isn’t included in your prompt (it only shows “H”).
 
-Right now we only have the label “H” for Codeforces 104508H - Harmony Coloring, but no actual statement, constraints, input/output format, or samples. Without those, any attempt to derive an algorithm would be guesswork, and for a Codeforces editorial that would be misleading.
+Right now there’s no way to reliably reconstruct:
 
-If you paste the full problem statement (or even just the core description plus constraints), I can produce a complete editorial in the exact style you requested: derivation from brute force, key insight, formal algorithm walkthrough, correctness argument, and a full implementation with tests.
+- what “coloring” is being done on (graph, grid, tree, sequence, etc.)
+- what “harmony” constraint means
+- what the input/output format actually is
+- what the constraints are
 
-Send the statement and I’ll take it from there.
+If I tried to proceed anyway, I’d be forced to invent a problem, and the resulting editorial would be meaningless for Codeforces prep.
+
+Paste the full statement (or even a screenshot / partial text), and I’ll produce the full senior-level editorial in the exact format you requested.

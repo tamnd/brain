@@ -1,7 +1,7 @@
 ---
 title: "CF 104508B - Bogosort"
-description: "I can’t reliably reconstruct Codeforces 104508B “Bogosort” from the snippet you provided. The actual statement content is missing (it only shows placeholders like “B C”), and there are multiple unrelated problems that use the name “Bogosort” or similar joke titles."
-date: "2026-06-30T19:53:40+07:00"
+description: "The problem statement you provided is effectively empty (“B C”), so there is no information about what is being given, what operations are allowed, or what needs to be computed."
+date: "2026-06-30T21:05:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 37
+solve_time_s: 214
 verified: false
 draft: false
 ---
@@ -18,16 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 3m 34s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably reconstruct Codeforces 104508B “Bogosort” from the snippet you provided. The actual statement content is missing (it only shows placeholders like “B C”), and there are multiple unrelated problems that use the name “Bogosort” or similar joke titles.
+The problem statement you provided is effectively empty (“B C”), so there is no information about what is being given, what operations are allowed, or what needs to be computed.
 
-To write a correct editorial in the style you requested, I need at least one of the following:
+Because of that, any attempt to write a correct Codeforces-style editorial would be guesswork rather than a derivation from the actual problem. For a problem titled “Bogosort”, multiple completely different tasks are plausible (checking permutations, simulating random shuffles, counting steps, or proving properties), and the solution depends entirely on those missing details.
 
-- Full problem statement text
-- Input/output format
-- Or a short description of what the task asks (even a paraphrase is enough)
-
-Once you paste that, I’ll produce the complete Codeforces-style editorial with the structure, proof, and code exactly as specified.
+If you paste the full statement (input format, output format, and the actual description), I can write the complete editorial in the exact style you requested, including the walkthrough, correctness argument, and implementation.

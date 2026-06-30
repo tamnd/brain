@@ -1,7 +1,7 @@
 ---
 title: "CF 104508I - IMO Problem"
-description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now the statement section only shows: with no description, input/output format, or constraints."
-date: "2026-06-30T19:54:07+07:00"
+description: "The problem statement is incomplete as provided. Right now we only have the identifier “I” and no description of what the input represents, what operations are allowed, or what must be computed."
+date: "2026-06-30T21:08:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 28
+solve_time_s: 193
 verified: false
 draft: false
 ---
@@ -18,27 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 3m 13s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem content is missing.
+The problem statement is incomplete as provided. Right now we only have the identifier “I” and no description of what the input represents, what operations are allowed, or what must be computed. Without that, any editorial would necessarily be a guess, which would defeat the purpose of a Codeforces-style explanation.
 
-Right now the statement section only shows:
+To write the kind of structured, correctness-focused editorial you’re asking for, I need at least the full statement or a link-like description of the task: what the input is, what transformation or query is required, and the output definition.
 
-```
-I
-```
-
-with no description, input/output format, or constraints. Without that, anything I write would be guesswork, and for a Codeforces editorial that would inevitably produce a wrong solution and misleading reasoning.
-
-If you paste the full problem statement (or even a screenshot/text dump), I’ll produce the complete editorial in the exact format you specified, including:
-
-- a clean restatement of the problem in my own words
-- constraint analysis tied to algorithm choices
-- brute force → optimization progression
-- full correctness argument
-- optimized Python solution
-- worked traces, edge cases, and test suite
-
-Send the statement and I’ll continue from there.
+If you paste the full problem (or even just the core statement text), I’ll produce a complete editorial in the exact format you specified, including intuition, optimal derivation, proof sketch, implementation, and edge-case analysis.
