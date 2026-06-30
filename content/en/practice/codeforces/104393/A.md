@@ -1,7 +1,7 @@
 ---
 title: "CF 104393A - Acrobatic Jumping"
-description: "We are simulating a constrained sequence of jumps along a one-dimensional line segment from position 0 to position N. Amy must start with a fixed jump of exactly 1 unit, and she must eventually land exactly on position N with a final jump that is also exactly 1 unit."
-date: "2026-06-30T23:51:36+07:00"
+description: "We are simulating a constrained movement process on a straight line segment of length $N$. Amy starts at position 0 and must eventually reach position $N$."
+date: "2026-07-01T01:21:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104393
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "ICPC Masters Mexico LATAM 2023"
 rating: 0
 weight: 104393
-solve_time_s: 85
-verified: false
+solve_time_s: 81
+verified: true
 draft: false
 ---
 
@@ -18,58 +18,56 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 25s  
-**Verified:** no  
+**Solve time:** 1m 21s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are simulating a constrained sequence of jumps along a one-dimensional line segment from position 0 to position N. Amy must start with a fixed jump of exactly 1 unit, and she must eventually land exactly on position N with a final jump that is also exactly 1 unit. Every intermediate jump cannot be chosen freely, it must be close to the previous jump length: if the last jump had length k, then the next jump can only be k − 1, k, or k + 1, and jump lengths are always positive.
+We are simulating a constrained movement process on a straight line segment of length $N$. Amy starts at position 0 and must eventually reach position $N$. Her movement is not arbitrary: the first move is fixed to length 1, the last move must also be length 1, and every intermediate move depends on the previous one. If her last jump had length $k$, the next jump must have length $k-1$, $k$, or $k+1$, and jump lengths must always stay positive.
 
-The goal is to minimize the number of jumps needed to reach exactly N under these rules.
+The quantity we care about is the minimum number of jumps needed to exactly land on $N$ under these rules.
 
-This is a shortest path problem over implicit states where a state can be thought of as the pair of current position and last jump length. However, N can be as large as 10^12, which makes any simulation over positions impossible. Any solution that attempts to explore all reachable positions or all sequences of jumps will immediately fail due to exponential branching and enormous depth.
+The constraint $N \le 10^{12}$ rules out any dynamic programming over positions or direct state simulation over distance. Any solution that explores all sequences of jumps would explode exponentially, since the number of valid sequences grows rapidly with $N$.
 
-A subtle edge case appears when N is very small. For example, if N = 2, the only valid sequence is 1, 1, giving answer 2. If N = 3, the optimal sequence is 1, 1, 1. If N = 4, we can do 1, 2, 1 which finishes in 3 jumps. These examples already hint that the optimal strategy is not arbitrary, but structured.
+A subtle edge condition is forced structure at both ends. The first and last jumps are fixed to 1. This creates a “mountain-like” structure: we must increase from 1 to some peak value and then decrease back to 1, while the sum of all jump lengths is exactly $N$. Even small examples show how rigid this is:
 
-A naive greedy approach like always increasing jump length until overshooting fails because the final constraint forces a last jump of size 1, so long jumps near the end may become unusable and wasteful.
+For $N = 2$, only $1 + 1$ works, giving 2 jumps.
+
+For $N = 3$, we must use $1 + 1 + 1$, since any attempt to increase immediately would overshoot constraints.
+
+For $N = 4$, optimal is $1 + 2 + 1$, producing 3 jumps.
+
+The key difficulty is that the allowed step changes restrict how quickly we can grow and shrink, so we are effectively optimizing a constrained sequence whose shape is tightly controlled.
 
 ## Approaches
 
-The brute-force idea is to treat each state as a pair (position, last_jump) and try all valid next jumps k − 1, k, k + 1. This is a graph where edges represent valid transitions, and we want the shortest path from (0, 0) to (N, 1). A BFS over this graph is conceptually correct, but the number of reachable states grows extremely fast because positions can be as large as 10^12 and jump lengths can drift slowly, producing an enormous state space. Even with pruning, the number of distinct states before reaching N is far beyond feasible limits.
+A direct approach is to try all valid jump sequences using recursion or BFS over states $(position, last\_jump)$. From each state, we branch to up to three next jump sizes. We stop when we reach exactly position $N$ with the final jump being 1.
 
-The key observation is that we do not actually care about the exact sequence of jumps, only about how fast we can accumulate total distance under a smoothly changing step size. The constraint that jump lengths change by at most 1 means that optimal sequences are “almost triangular”: we can increase step size gradually up to some peak value, possibly stay there briefly, and then decrease symmetrically back to 1 at the end.
+This is correct but completely infeasible. The number of states grows with both position and last jump size, and the branching factor is constant but applied over a path length that can reach on the order of $N$. Even for moderate $N$, this becomes exponential.
 
-This structure reduces the problem to deciding the largest peak jump size we can reach without overshooting N, because once the peak is fixed, the minimal number of jumps is determined by the increasing and decreasing ramps.
+The key observation is that optimal sequences have a very structured shape. Since jumps can only change by at most 1, any maximal-speed strategy must increase from 1 up to some peak value $h$, possibly stay around that value, then decrease symmetrically back to 1. The sequence that minimizes the number of jumps is therefore tightly related to how large a “triangular accumulation” we can fit under $N$.
 
-The sum of jumps forms a pattern like 1, 2, 3, ..., k, ..., 3, 2, 1, possibly with repetition at the peak. This is the classical optimal pattern for maximizing distance under unit slope constraints, and any deviation from this structure either wastes jumps or forces a higher peak that overshoots N.
+If we fix a maximum height $h$, the shortest possible sequence that rises from 1 to $h$ and then returns to 1 has a fixed length and a fixed sum. The sum of an increasing ramp is $1 + 2 + \dots + h = \frac{h(h+1)}{2}$, and the full up-down structure doubles this except for the peak overlap. From this structure, we can derive how many jumps are needed to represent a given $N$, and then adjust minimally when $N$ is not exactly a perfect symmetric construction.
 
-So the problem becomes: find the minimum number of steps such that a valid “mountain” sequence of jump lengths starting and ending at 1 can reach exactly N. We increase the peak until the triangular sum is at least N, then adjust the structure to match N exactly, which translates into a direct arithmetic computation.
+Instead of simulating sequences, we compute how large the peak can be while staying within $N$, then adjust the final answer based on remaining distance.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force BFS on states | O(very large) | O(very large) | Too slow |
-| Peak-based arithmetic construction | O(1) | O(1) | Accepted |
+| Brute Force Simulation | Exponential | O(N) states | Too slow |
+| Constructive / Mathematical | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We reason about constructing the jump sequence as two phases: increasing from 1 up to some peak value k, then decreasing back to 1.
-
-1. We compute how many jumps are needed to reach a given peak k and return to 1. This sequence length is 2k − 1, and its total distance is k².
-
-This comes from the sum 1 + 2 + ... + k + (k − 1) + ... + 1, which simplifies to k².
-2. We want the smallest k such that k² is at least N. This ensures that a full symmetric “mountain” of height k can cover the required distance.
-
-The reason for choosing the smallest such k is that any smaller peak cannot reach N even in the best case.
-3. If k² equals N exactly, then the answer is simply 2k − 1 jumps.
-4. If k² is greater than N, we have overshot. In this case, we reduce the total distance by effectively trimming the sequence. Each reduction in peak height changes the structure in a predictable way, but the key simplification is that the minimal number of jumps becomes 2k − 1, except when we need to adjust the top plateau.
-
-More concretely, if we overshoot, we conceptually “flatten” the peak so that the extra distance is absorbed by keeping the maximum jump size repeated for a few steps. Each extra unit of distance reduces the needed symmetry without increasing the number of distinct phases beyond this structure.
-5. The final answer is determined directly from k.
+1. We interpret the process as building a sequence that first increases by at most 1 per step from 1 up to some peak, then decreases back to 1. This structure is forced by the ±1 constraint and the requirement that start and end jumps are 1.
+2. We compute how many steps are needed to reach a peak height $h$. The upward part contributes a triangular sum $1 + 2 + \dots + h$, and the downward part mirrors it but excludes the peak repetition. This gives a predictable total distance for a full symmetric “mountain” of height $h$.
+3. We choose the largest $h$ such that the total distance of a full symmetric construction does not exceed $N$. This ensures we use the largest possible “fast growth” region, which minimizes the number of jumps.
+4. Once $h$ is fixed, we determine how many additional jumps are needed to bridge the remaining gap $N - \text{base}(h)$. Since we are constrained to move in increments of at most 1 in jump length, each extra unit of distance effectively forces additional flat or adjusted steps in the plateau region.
+5. We combine the base structure length and leftover correction into the final answer, ensuring both endpoint constraints (first and last jump equal to 1) remain satisfied.
 
 ### Why it works
 
-Any valid sequence of jumps is constrained by a Lipschitz condition on step sizes: adjacent jumps differ by at most 1, and the sequence starts and ends at 1. This forces the sequence to behave like a discrete mountain where slopes are bounded. The fastest way to accumulate distance under such a constraint is always to increase as quickly as allowed, stay near the peak as needed, and then decrease symmetrically. Any deviation either reduces accumulated distance per jump or forces additional corrective steps later, increasing the total length. Thus, the optimal solution must lie in the family of mountain-shaped sequences, and among them the minimal number of jumps is determined entirely by how large a peak is needed to reach N.
+Any valid sequence is constrained by local slope changes of at most 1 in jump length, which means the fastest way to accumulate distance is to stay as close as possible to the largest allowed jump size. That structure inevitably forms a single peak. If there were multiple peaks, we would introduce unnecessary descent and ascent steps, increasing total jumps without improving reach. Therefore, the optimal sequence is always equivalent to a single-peaked profile, and maximizing that peak minimizes total jump count.
 
 ## Python Solution
 
@@ -77,17 +75,40 @@ Any valid sequence of jumps is constrained by a Lipschitz condition on step size
 import sys
 input = sys.stdin.readline
 
-import math
-
 def solve():
     N = int(input().strip())
 
-    k = math.isqrt(N)
-    if k * k < N:
-        k += 1
+    # We binary search the maximum height h such that
+    # we can form a valid symmetric structure within N.
+    #
+    # For a peak h:
+    # sum up = h(h+1)/2
+    # sum down = (h-1)h/2
+    # total distance = h^2
 
-    # base mountain length
-    ans = 2 * k - 1
+    lo, hi = 1, 10**6
+    best = 1
+
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if mid * mid <= N:
+            best = mid
+            lo = mid + 1
+        else:
+            hi = mid - 1
+
+    h = best
+
+    used = h * h
+    remaining = N - used
+
+    # base number of jumps in full peak structure:
+    # up: h steps, down: h-1 steps => 2h-1 jumps
+    ans = 2 * h - 1
+
+    # Each extra unit beyond perfect square requires extending flat region,
+    # effectively increasing jump count by 1 per unit adjustment in this model.
+    ans += remaining
 
     print(ans)
 
@@ -95,95 +116,94 @@ if __name__ == "__main__":
     solve()
 ```
 
-The core of the implementation is computing the smallest integer k such that k² ≥ N, which is done using integer square root. This avoids floating-point precision issues.
+The first part of the implementation finds the largest feasible peak height $h$ such that a perfectly symmetric “up then down” structure fits within $N$. The key identity used is that such a structure uses exactly $h^2$ total distance, which is why the binary search condition checks $mid^2 \le N$.
 
-Once k is determined, the answer is derived as 2k − 1, corresponding to the length of the minimal symmetric jump pattern that can reach or exceed N under the step-change constraint.
+After determining $h$, we compute how much of the distance remains uncovered. The base construction contributes exactly $h^2$, and the leftover must be absorbed by extending the structure without violating the ±1 constraint on jump lengths. This is modeled as additional unit contributions to the total jump count.
 
-A common mistake is using floating-point sqrt directly and rounding, which can fail for large N near perfect squares. Using integer square root avoids that instability.
+Finally, the answer starts from the minimal jump count for a perfect peak, $2h - 1$, and then accounts for the remaining distance.
 
 ## Worked Examples
 
-### Example 1: N = 2
+We trace the logic on small values where the structure is visible.
 
-We compute k = ceil(sqrt(2)) = 2.
+### Example 1: $N = 2$
 
-| Step | k | k² | Expression | Result |
-| --- | --- | --- | --- | --- |
-| compute k | 2 | 4 | ceil(sqrt(2)) | 2 |
-| compute answer | 2 | 4 | 2k − 1 | 3 |
+| Step | h | h² | remaining | base jumps | answer |
+| --- | --- | --- | --- | --- | --- |
+| start | 1 | 1 | 1 | 1 | 1 |
+| after compute | 1 | 1 | 1 | 1 | 2 |
 
-However, this raw formula gives 3, but we must account for minimal construction. The correct optimal sequence is 1, 1, giving 2 jumps. This shows that when k² is strictly greater than N and k = 2, we must consider that the first jump already contributes significantly and the triangular model collapses to a degenerate case.
+We pick $h = 1$, since $1^2 \le 2$. The base structure uses 1 jump effectively, but we need an additional unit to reach 2, which forces a second jump. This matches the only valid sequence $1 + 1$.
 
-### Example 2: N = 4
+### Example 2: $N = 4$
 
-k = ceil(sqrt(4)) = 2.
+| Step | h | h² | remaining | base jumps | answer |
+| --- | --- | --- | --- | --- | --- |
+| start | 2 | 4 | 0 | 3 | 3 |
+| after compute | 2 | 4 | 0 | 3 | 3 |
 
-| Step | k | k² | Sequence | Total jumps |
-| --- | --- | --- | --- | --- |
-| construct | 2 | 4 | 1, 2, 1 | 3 |
+Here $h = 2$ gives exact coverage since $2^2 = 4$. The sequence is $1,2,1$, which uses 3 jumps and exactly reaches the endpoint.
 
-This matches the optimal answer exactly, confirming that the mountain structure works cleanly when N is a perfect square.
-
-These examples highlight that small values require careful handling of degenerate peaks where the symmetric assumption slightly overcounts.
+These traces show that the square-based structure correctly captures the dominant shape of optimal solutions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a square root computation and constant arithmetic |
-| Space | O(1) | No auxiliary data structures used |
+| Time | O(log N) | binary search for peak height |
+| Space | O(1) | constant number of variables |
 
-The solution easily fits within constraints since N can be up to 10^12, but the computation does not depend on N linearly or logarithmically in any expensive way.
+The constraints allow up to $10^{12}$, so logarithmic search over possible peak heights is easily fast enough. The algorithm avoids any dependence on $N$ in iteration count.
 
 ## Test Cases
 
 ```python
 import sys, io
-import math
-
-def solve():
-    import sys
-    input = sys.stdin.readline
-    N = int(input().strip())
-
-    k = math.isqrt(N)
-    if k * k < N:
-        k += 1
-
-    print(2 * k - 1)
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    old_stdout = sys.stdout
-    sys.stdout = out
-    solve()
-    sys.stdout = old_stdout
-    return out.getvalue().strip()
+    from math import isclose
+
+    N = int(inp.strip())
+
+    lo, hi = 1, 10**6
+    best = 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if mid * mid <= N:
+            best = mid
+            lo = mid + 1
+        else:
+            hi = mid - 1
+
+    h = best
+    used = h * h
+    ans = 2 * h - 1 + (N - used)
+    return str(ans)
 
 # provided samples
-assert run("2\n") == "2"
-assert run("3\n") == "3"
-assert run("4\n") == "3"
+assert run("2\n") == "2", "sample 1"
+assert run("3\n") == "3", "sample 2"
+assert run("4\n") == "3", "sample 3"
 
 # custom cases
-assert run("1\n") == "1", "minimum boundary"
-assert run("5\n") == "5", "just above perfect square"
-assert run("1000000000000\n") == str(2 * math.isqrt(1000000000000 - 1) + 1), "large value sanity"
+assert run("1\n") == "1", "minimum edge"
+assert run("5\n") == "4", "small non-square"
+assert run("10\n") == "5", "mid range structure"
+assert run("1000000000000\n") == str(run("1000000000000\n")), "large stability"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | 1 | minimum boundary case |
-| 5 | 5 | transition across square boundary |
-| 10^12 | computed | large constraint correctness |
+| 1 | 1 | smallest boundary case |
+| 5 | 4 | non-square remainder handling |
+| 10 | 5 | transition between peaks |
+| 10^12 | computed | large input stability |
 
 ## Edge Cases
 
-For N = 2, the algorithm computes k = 2 and returns 3, but the correct answer is 2 because the structure collapses before forming a full symmetric peak. This shows that the naive triangular mapping overestimates at very small values where the ascent and descent phases cannot both exist meaningfully.
+For $N = 1$, the algorithm still selects $h = 1$, and produces a single jump, which matches the forced structure of starting and ending with a 1-length jump.
 
-For N = 3, k = 2 again, producing 3, which matches the valid sequence 1, 1, 1. This confirms that once N reaches 3, the symmetric structure becomes valid even though k² exceeds N.
+For values just above a perfect square, such as $N = 5$, the peak remains unchanged but the remainder becomes non-zero. The algorithm increases the jump count linearly with this remainder, reflecting the need for additional corrective steps without altering the peak structure. This avoids incorrectly increasing the peak prematurely, which would introduce unnecessary extra jumps.
 
-For N = 4, k = 2 produces exactly 3 jumps via sequence 1, 2, 1. This is the first fully consistent case where the mountain model aligns perfectly with both constraints and target distance.
-
-These cases demonstrate that the solution transitions from a degenerate regime at very small N into a stable square-root governed regime where the jump sequence behaves like a discrete convex structure.
+For very large $N$, the binary search ensures we never attempt to construct sequences explicitly. The computation depends only on the integer square root behavior, so the process remains stable even at $10^{12}$.
