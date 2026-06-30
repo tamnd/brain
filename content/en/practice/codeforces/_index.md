@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2515 contests, 17377 problems, 9634 verified."
+description: "Codeforces problem solutions with full editorials. 2516 contests, 17382 problems, 9635 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2515 contests, 17377 problems, 9634 verified.**
+**2516 contests, 17382 problems, 9635 verified.**
 
 ## Unknown — 526 contests, 4271 problems, 2662 verified
 
@@ -1763,7 +1763,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 218 contests, 1711 problems, 838 verified
+## 2023 — 219 contests, 1716 problems, 839 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1899,6 +1899,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104408](104408/) | [TheForces Round #15 (Yummy-Forces)](https://codeforces.com/contest/104408) | 5 | 1/5 | Special | - |
 | [104414](104414/) | [2023 Hunan Provincal Multi-University Training (Xiangtan University)](https://codeforces.com/contest/104414) | 11 | 11/11 | Special | - |
 | [104415](104415/) | [IME++ Starters Try-outs 2023](https://codeforces.com/contest/104415) | 10 | 10/10 | Special | - |
 | [104420](104420/) | [TheForces Round #16 (2^4-Forces)](https://codeforces.com/contest/104420) | 5 | 1/5 | Special | - |
