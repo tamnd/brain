@@ -1,7 +1,7 @@
 ---
 title: "CF 104396A - Today's Word"
-description: "I don't have enough information to write a correct editorial and solution. The problem statement as provided is corrupted in several places, so the string construction rule cannot be reconstructed unambiguously."
-date: "2026-06-30T23:12:51+07:00"
+description: "I don't have enough information to write a correct editorial and solution for this problem because the problem statement as provided is corrupted. The recurrence defining $Sn$ contains broken indices: This expression is mathematically impossible."
+date: "2026-07-01T00:46:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104396
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "2023 Jiangsu Collegiate Programming Contest, 2023 National Invitational of CCPC (Hunan), The 13th Xiangtan Collegiate Programming Contest"
 rating: 0
 weight: 104396
-solve_time_s: 32
+solve_time_s: 43
 verified: false
 draft: false
 ---
@@ -18,46 +18,56 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 43s  
 **Verified:** no  
 
 ## Solution
-I don't have enough information to write a correct editorial and solution.
+I don't have enough information to write a correct editorial and solution for this problem because the problem statement as provided is corrupted.
 
-The problem statement as provided is corrupted in several places, so the string construction rule cannot be reconstructed unambiguously. In particular, this definition is malformed:
+The recurrence defining $S_n$ contains broken indices:
 
 ```
 Sn = Sn−1 [0 . . . 2l −1]+Sn−1 +next(Sn−1 [ 2l . . . l−1]),
 ```
 
-The index ranges are clearly broken by formatting. As written they are impossible because:
+This expression is mathematically impossible. If `l` is the length of `S_{n-1}`, then ranges such as:
 
-- `2l − 1` is larger than the last index `l − 1`.
-- The second slice starts at `2l`, which is outside the string.
-- The example
+- `0 ... 2l−1`
+- `2l ... l−1`
+
+cannot both be valid substrings of a string of length `l`.
+
+The sample note also appears corrupted:
 
 ```
 S1 = boc bocchi dij
 ```
 
-also lost formatting, so it is impossible to determine exactly which substrings were concatenated.
+which seems to be missing separators and does not uniquely identify the construction.
 
-Without the original recurrence, I cannot derive the algorithm or produce a correct implementation, since different plausible interpretations lead to completely different solutions.
+Because the recurrence is incomplete, I cannot derive:
+
+- how the string grows,
+- which substring is copied,
+- what the recurrence actually is,
+- or produce a provably correct algorithm and implementation.
+
+Writing an editorial or inventing the missing recurrence would almost certainly produce an incorrect solution.
 
 Please provide one of the following:
 
-1. The original PDF page for Problem A, or
-2. A screenshot of the recurrence formula, or
-3. The Codeforces link for 104396A.
+1. the original Codeforces statement (preferred),
+2. a PDF or screenshot of the problem,
+3. or just the correct recurrence for $S_n$.
 
-Once the recurrence is readable, I'll produce the complete editorial in the exact format you requested, including:
+Once I have the complete statement, I'll produce the full editorial in the exact format you requested, including:
 
 - Problem Understanding
 - Approaches
-- Algorithm Walkthrough with proof sketch
-- Complete Python 3 solution
-- Line-by-line implementation explanation
-- Worked examples with trace tables
+- Algorithm Walkthrough
+- Correctness proof
+- Complete Python solution
+- Worked examples
 - Complexity analysis
-- Assert-based test suite
+- Assert-based test cases
 - Edge case discussion

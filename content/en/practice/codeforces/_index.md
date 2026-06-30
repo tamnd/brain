@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2521 contests, 17427 problems, 9658 verified."
+description: "Codeforces problem solutions with full editorials. 2521 contests, 17428 problems, 9662 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2521 contests, 17427 problems, 9658 verified.**
+**2521 contests, 17428 problems, 9662 verified.**
 
 ## Unknown — 530 contests, 4305 problems, 2679 verified
 
@@ -1767,7 +1767,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 220 contests, 1727 problems, 845 verified
+## 2023 — 220 contests, 1728 problems, 849 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1903,7 +1903,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
-| [104396](104396/) | [2023 Jiangsu Collegiate Programming Contest, 2023 National Invitational of CCPC (Hunan), The 13th Xiangtan Collegiate Programming Contest](https://codeforces.com/contest/104396) | 11 | 6/11 | Special | - |
+| [104396](104396/) | [2023 Jiangsu Collegiate Programming Contest, 2023 National Invitational of CCPC (Hunan), The 13th Xiangtan Collegiate Programming Contest](https://codeforces.com/contest/104396) | 12 | 10/12 | Special | - |
 | [104408](104408/) | [TheForces Round #15 (Yummy-Forces)](https://codeforces.com/contest/104408) | 5 | 1/5 | Special | - |
 | [104414](104414/) | [2023 Hunan Provincal Multi-University Training (Xiangtan University)](https://codeforces.com/contest/104414) | 11 | 11/11 | Special | - |
 | [104415](104415/) | [IME++ Starters Try-outs 2023](https://codeforces.com/contest/104415) | 10 | 10/10 | Special | - |
