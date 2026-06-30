@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2506 contests, 17278 problems, 9559 verified."
+description: "Codeforces problem solutions with full editorials. 2507 contests, 17291 problems, 9572 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2506 contests, 17278 problems, 9559 verified.**
+**2507 contests, 17291 problems, 9572 verified.**
 
 ## Unknown — 523 contests, 4234 problems, 2631 verified
 
@@ -1760,7 +1760,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 212 contests, 1649 problems, 794 verified
+## 2023 — 213 contests, 1662 problems, 807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1896,6 +1896,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104435](104435/) | [2023 UP ACM Algolympics Final Round](https://codeforces.com/contest/104435) | 13 | 13/13 | Special | - |
 | [104443](104443/) | [TheForces Round #18 (JuneIsApril-Forces)](https://codeforces.com/contest/104443) | 7 | 6/7 | Special | - |
 | [104447](104447/) | [Al-Baath Collegiate Programming Contest 2023](https://codeforces.com/contest/104447) | 11 | 11/11 | Special | - |
 | [104455](104455/) | [TheForces Round #19 (Briefest-Forces)](https://codeforces.com/contest/104455) | 6 | 2/6 | Special | - |
