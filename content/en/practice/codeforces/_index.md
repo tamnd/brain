@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2508 contests, 17300 problems, 9576 verified."
+description: "Codeforces problem solutions with full editorials. 2509 contests, 17311 problems, 9587 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2508 contests, 17300 problems, 9576 verified.**
+**2509 contests, 17311 problems, 9587 verified.**
 
-## Unknown — 523 contests, 4234 problems, 2631 verified
+## Unknown — 524 contests, 4245 problems, 2642 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104427](104427/) | [2022-2023 Winter Petrozavodsk Camp, Day 2: GP of ainta](https://codeforces.com/contest/104427) | 11 | 11/11 | Special | - |
 | [104439](104439/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2021](https://codeforces.com/contest/104439) | 0 | 0/0 | Special | - |
 | [104440](104440/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2022](https://codeforces.com/contest/104440) | 0 | 0/0 | Special | - |
 | [104441](104441/) | [Invitational stage of the All-Russian Olympiad in Informatics for schoolchildren](https://codeforces.com/contest/104441) | 0 | 0/0 | Special | - |
