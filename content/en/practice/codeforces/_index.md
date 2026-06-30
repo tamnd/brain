@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2487 contests, 17100 problems, 9452 verified."
+description: "Codeforces problem solutions with full editorials. 2488 contests, 17112 problems, 9464 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2487 contests, 17100 problems, 9452 verified.**
+**2488 contests, 17112 problems, 9464 verified.**
 
-## Unknown — 509 contests, 4100 problems, 2552 verified
+## Unknown — 510 contests, 4112 problems, 2564 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104479](104479/) | [Adam Gąsienica‑Samek Contest 1](https://codeforces.com/contest/104479) | 12 | 12/12 | Special | - |
 | [104487](104487/) | [Tishreen + SVU CPC 2023](https://codeforces.com/contest/104487) | 14 | 11/14 | Special | - |
 | [104491](104491/) | [43rd Petrozavodsk Programming Camp (2022 Summer) Day 7. HSE Koresha Contest](https://codeforces.com/contest/104491) | 11 | 0/11 | Special | - |
 | [104511](104511/) | [Lexington Informatics Tournament (LIT) 2023](https://codeforces.com/contest/104511) | 10 | 3/10 | Special | - |
