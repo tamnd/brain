@@ -1,23 +1,23 @@
 ---
 title: "Al-Baath Collegiate Programming Contest 2023"
-description: "11 problems from Al-Baath Collegiate Programming Contest 2023 (contest 104447), difficulty -. 11/11 solutions verified against sample I/O."
+description: "13 problems from Al-Baath Collegiate Programming Contest 2023 (contest 104447), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104447
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 661
+n_problems: 13
+n_verified: 13
+total_solve_s: 742
 contest_year: 2023
-date: "2026-06-30T18:01:21+07:00"
+date: "2026-06-30T18:46:47+07:00"
 weight: 104447
 draft: false
 ---
 
 # [Al-Baath Collegiate Programming Contest 2023](https://codeforces.com/contest/104447)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 1s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 22s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,3 +32,5 @@ Special | 11 problems | 11/11 verified | Difficulty - | 11m 1s
 | [I](I/) | [Will you accept Basharo challenge?](https://codeforces.com/problemset/problem/104447/I) |  |  |  | 1m 9s | ✓ |
 | [J](J/) | [How Kifah sees Extreme?](https://codeforces.com/problemset/problem/104447/J) |  |  |  | 51s | ✓ |
 | [K](K/) | [Do you believe that this is a real story?](https://codeforces.com/problemset/problem/104447/K) |  |  |  | 1m 6s | ✓ |
+| [L](L/) | [Amazing Teacher](https://codeforces.com/problemset/problem/104447/L) |  |  |  | 36s | ✓ |
+| [M](M/) | [Is it possible?](https://codeforces.com/problemset/problem/104447/M) |  |  |  | 45s | ✓ |
