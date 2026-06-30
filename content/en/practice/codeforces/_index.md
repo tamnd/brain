@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2492 contests, 17157 problems, 9484 verified."
+description: "Codeforces problem solutions with full editorials. 2493 contests, 17170 problems, 9484 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2492 contests, 17157 problems, 9484 verified.**
+**2493 contests, 17170 problems, 9484 verified.**
 
-## Unknown — 512 contests, 4137 problems, 2578 verified
+## Unknown — 513 contests, 4150 problems, 2578 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104461](104461/) | [The 14th Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple](https://codeforces.com/contest/104461) | 13 | 0/13 | Special | - |
 | [104466](104466/) | [2023-2024 ICPC German Collegiate Programming Contest (GCPC 2023)](https://codeforces.com/contest/104466) | 13 | 9/13 | ICPC/IOI | - |
 | [104467](104467/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2022](https://codeforces.com/contest/104467) | 12 | 5/12 | Special | - |
 | [104479](104479/) | [Adam Gąsienica‑Samek Contest 1](https://codeforces.com/contest/104479) | 12 | 12/12 | Special | - |
