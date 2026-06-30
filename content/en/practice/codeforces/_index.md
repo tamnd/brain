@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2503 contests, 17278 problems, 9559 verified."
+description: "Codeforces problem solutions with full editorials. 2504 contests, 17278 problems, 9559 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2503 contests, 17278 problems, 9559 verified.**
+**2504 contests, 17278 problems, 9559 verified.**
 
-## Unknown — 520 contests, 4234 problems, 2631 verified
+## Unknown — 521 contests, 4234 problems, 2631 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104441](104441/) | [Invitational stage of the All-Russian Olympiad in Informatics for schoolchildren](https://codeforces.com/contest/104441) | 0 | 0/0 | Special | - |
 | [104442](104442/) | [AdaByron Regional Madrid 2023](https://codeforces.com/contest/104442) | 11 | 10/11 | Special | - |
 | [104451](104451/) | [Первенство Свердловской области по программированию среди начинающих 2023](https://codeforces.com/contest/104451) | 7 | 3/7 | Special | - |
 | [104452](104452/) | [ICPC Central Russia Regional Contest - 2020](https://codeforces.com/contest/104452) | 14 | 5/14 | ICPC/IOI | - |
