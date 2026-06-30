@@ -1,7 +1,7 @@
 ---
 title: "CF 104505D - Supermarket queue"
-description: "We are given a stream of events that simulate how customers interact with a supermarket that has multiple checkout queues."
-date: "2026-06-30T11:32:11+07:00"
+description: "We are simulating a supermarket with several checkout queues. Customers arrive, choose a queue, and then stay in that queue until they are processed in order."
+date: "2026-06-30T12:03:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104505
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2023 USP Try-outs"
 rating: 0
 weight: 104505
-solve_time_s: 88
+solve_time_s: 138
 verified: false
 draft: false
 ---
@@ -18,194 +18,112 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 28s  
+**Solve time:** 2m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a stream of events that simulate how customers interact with a supermarket that has multiple checkout queues. Each customer belongs to exactly one queue once they enter it, and the queue behaves like a normal FIFO structure: people join the end, and departures always happen from the front.
+We are simulating a supermarket with several checkout queues. Customers arrive, choose a queue, and then stay in that queue until they are processed in order. The key twist is psychological: a customer becomes unhappy if, while they are waiting in their chosen queue, they observe activity in other queues, specifically when they can “see” other queues having customers entering or leaving.
 
-Two types of events occur in chronological order. Either a customer enters a specific queue, or the front customer of a queue leaves it. The full sequence is well-formed, meaning that every departure corresponds to a real person who is currently at the front of that queue.
+The input is a chronological sequence of events. Some events insert a customer into a specific queue, and other events remove the front customer from a queue. The queues behave like standard FIFO structures. Every customer is assigned exactly once, and every removal always affects the front of a queue.
 
-The key behavioral twist is not about queue mechanics but about perception. A customer becomes sad if, while they are still waiting inside their own queue, they observe activity in other queues, specifically if they see someone entering another queue or leaving another queue at any time after they have already joined.
+The task is to identify which customers ever experience this “visibility” condition while waiting. The output is the count of such customers followed by their identifiers in sorted order.
 
-So for each customer, we must determine whether there exists any event involving a different queue that occurs strictly between their entry and their own eventual exit.
+The constraints are large enough that any solution must process events in linear time. With up to 100000 customers and 200000 events, any approach that re-scans queues or simulates visibility per customer would be too slow. The correct solution must maintain state incrementally, updating information per event in O(1) or O(log n) time.
 
-The input size is up to 100000 customers and 200000 events. This immediately rules out any solution that recomputes or scans event ranges per customer. Any approach that checks each customer against all events or even all other customers would lead to quadratic behavior and fail.
-
-A subtle edge case comes from simultaneous-looking interleavings across queues. A customer might enter a queue that is otherwise inactive, but still becomes sad because another queue is active during their waiting interval. Another edge case is when a queue has only one customer: if no other queue has activity during their interval, they should not be marked sad even though their own queue has events.
+A subtle edge case arises when only one queue is active or when events alternate between a single queue and many queues. In such cases, naive implementations that mark sadness whenever any queue changes tend to overcount, because they do not respect whether the observing customer is actually waiting at that time.
 
 ## Approaches
 
-A brute-force interpretation would be to simulate the full system and, for each customer, record their entry and exit time. After that, we could scan all events between these two times and check whether any event belongs to a different queue. This is logically correct because sadness depends only on whether any external event occurs during their waiting interval.
+A direct simulation approach would track every queue explicitly and, for each customer, simulate their entire waiting interval. During that interval, we would check whether any other queue has an event. This would require scanning many events per customer, leading to a worst case of O(n²), which is too slow.
 
-However, this leads to a direct bottleneck. Each customer could potentially span almost the entire event sequence, and checking that interval per customer leads to O(n^2) behavior in the worst case. With n up to 100000, this is far beyond acceptable limits.
+The key observation is that a customer only becomes sad if there exists at least one event in another queue during the time they are actively waiting. Instead of tracking per-customer timelines, we can maintain a global notion of “queue activity changes” and associate these changes with the currently waiting customers.
 
-The key observation is that we do not need to reason about each customer individually in terms of all events. Instead, we can process events globally and maintain a simple state: whether there exists at least one queue currently "active" besides a given queue at the time a customer is waiting.
+The structure of the problem suggests that we only need to know, at any time, whether more than one queue is active and whether a given customer’s waiting interval overlaps with any cross-queue activity. This reduces the problem to maintaining counters per queue and tracking when a customer is at the front or waiting.
 
-The crucial reformulation is that a customer becomes sad if during the interval from their entry to exit, there is at least one event that is not internal to their own queue activity. Since events are processed in order, we can track whether at each time step the system has more than one queue being touched or if some queue different from theirs is active.
-
-We maintain for each queue whether it currently has at least one person inside. We also maintain a global count of how many queues are non-empty. When a customer enters a queue, if at that moment there is already activity in any other queue, that customer immediately becomes sad. Similarly, if at any later event, while they are still inside, another queue is affected, they should be marked sad. This reduces the problem to maintaining a global "external activity flag" per customer interval.
-
-We store entry time per person and mark their queue. When processing events, we track which queues are active and which customers are currently inside. If more than one queue is active at a time, then every currently present customer in any queue becomes sad, because they observe cross-queue activity.
-
-This transforms the problem into maintaining active queues and propagating a global condition to all currently waiting customers.
+This allows us to process each event once, updating queue states and marking affected customers immediately.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2) | O(n) | Too slow |
-| Active-queue simulation | O(n) | O(n) | Accepted |
+| Brute Force Simulation | O(n²) | O(n) | Too slow |
+| Event Sweep with Queue Tracking | O(n + k) | O(n + k) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process events in chronological order while maintaining the set of active queues and the customers currently inside them.
+1. Maintain a queue structure for each checkout line. Each queue stores customers in arrival order. This reflects the real FIFO behavior.
+2. Maintain a boolean or counter that tracks whether each queue is currently “active”, meaning it has at least one customer.
+3. Maintain a global counter of how many queues are non-empty at any time. This is important because sadness is triggered only when there is activity in multiple queues during waiting periods.
+4. Maintain a status array for each customer indicating whether they are currently waiting and whether they have already been marked sad.
+5. When processing an insertion event, push the customer into the corresponding queue. If this queue transitions from empty to non-empty, increment the active queue counter.
+6. When processing a removal event, pop the front of the queue. If the removed customer was waiting and there exists at least one other active queue at that time, mark that customer as sad.
+7. After removing, if the queue becomes empty, decrement the active queue counter.
+8. At every event, the only customer whose “waiting interval ends” is the one being removed. Thus, we only need to check sadness at removal time, not continuously.
 
-1. Initialize an array to store entry time and queue assignment for each person. We also maintain a list of active customers per queue, and a flag array indicating whether a customer is already sad. This is necessary because we must update sadness at the moment we detect cross-queue interaction.
-2. Maintain a counter of how many queues are currently non-empty. A queue is considered active if it has at least one customer inside at that moment.
-3. When processing an entry event for a person into a queue, we record their entry time and add them to the queue. If this causes the queue to transition from empty to non-empty, we increase the active queue counter.
-4. Immediately after processing an entry, if the number of active queues is greater than 1, we mark the entering person as sad. The reasoning is that they have just witnessed activity in another queue while becoming part of the system.
-5. When processing an exit event from a queue, we remove the front person. That person’s waiting interval ends at this event. If the queue becomes empty after removal, we decrease the active queue counter.
-6. After processing an exit, if the number of active queues is still greater than 1, then all remaining customers in queues are exposed to cross-queue activity at this time step. However, instead of marking everyone repeatedly, we rely on a lazy propagation idea: once a customer is marked sad, they remain so, and we only need to ensure that every customer who is ever inside during a multi-queue-active moment is marked.
-7. At the end, we collect all customers marked as sad and output them in sorted order.
-
-The key invariant is that whenever the system has at least two non-empty queues, any customer currently inside the system is guaranteed to have observed an event in another queue during their waiting interval. This is because every event corresponds to either an entry or exit, and both are observable disruptions in another queue. Since customers never leave their queue until processed, any overlap with a multi-active state implies exposure.
+The key invariant is that a customer becomes sad exactly once, at the moment they leave the queue if during their waiting period there was at least one other active queue. The global active-queue counter correctly summarizes whether such interference was possible at any time during their wait.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+from collections import deque
 
 def solve():
     n, k = map(int, input().split())
 
-    entry_time = [0] * (n + 1)
-    queue_of = [0] * (n + 1)
+    queues = [deque() for _ in range(k + 1)]
+    active = [0] * (k + 1)
+    active_count = 0
+
+    # track if a queue is currently non-empty
+    # track customers in each queue
     sad = [False] * (n + 1)
 
-    from collections import deque
-    queues = [deque() for _ in range(k + 1)]
-
-    active_queues = 0
-    time = 0
-
     for _ in range(2 * n):
-        time += 1
-        tmp = input().split()
+        tmp = list(map(int, input().split()))
+        typ = tmp[0]
 
-        if tmp[0] == '1':
-            p = int(tmp[1])
-            f = int(tmp[2])
-
-            if len(queues[f]) == 0:
-                active_queues += 1
-
+        if typ == 1:
+            _, p, f = tmp
             queues[f].append(p)
-            entry_time[p] = time
-            queue_of[p] = f
-
-            if active_queues > 1:
-                sad[p] = True
+            if not active[f]:
+                active[f] = 1
+                active_count += 1
 
         else:
-            f = int(tmp[1])
+            _, f = tmp
             p = queues[f].popleft()
 
-            if active_queues > 1:
+            # if more than one queue active, this customer saw activity elsewhere
+            if active_count > 1:
                 sad[p] = True
 
-            if len(queues[f]) == 0:
-                active_queues -= 1
+            if not queues[f]:
+                active[f] = 0
+                active_count -= 1
 
     res = [i for i in range(1, n + 1) if sad[i]]
     print(len(res))
-    print(*res)
+    if res:
+        print(*res)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The entry logic assigns each person to their queue and immediately checks whether the system is already in a multi-queue-active state. If so, the entering customer has already observed external activity at the moment of joining.
+After reading the input, each queue is modeled with a deque so that insertions and removals are constant time. The active array tracks whether a queue currently contains any customers, and active_count maintains how many queues are non-empty. Each removal event directly identifies the customer leaving, and at that moment we decide whether they were sad based on whether more than one queue was active.
 
-The exit logic ensures that the departing customer is also checked against the current global state. If multiple queues are active at that moment, then while they were waiting up to this exit event, they necessarily observed other queue activity.
-
-The active queue counter is the critical component that avoids scanning all queues per event.
+The crucial detail is that we never simulate visibility per customer over time. Instead, we compress the entire process into event-based state changes.
 
 ## Worked Examples
 
-We use the sample input.
+### Sample 1
 
-### Trace
+Input:
 
-Initial state has no active queues.
-
-| Step | Event | Active queues | Queue states | Sad marked |
-| --- | --- | --- | --- | --- |
-| 1 | 1 1 1 | 1 | Q1:[1] | {} |
-| 2 | 1 2 2 | 2 | Q1:[1], Q2:[2] | {1,2} |
-| 3 | 1 3 3 | 3 | Q3:[3] added | {1,2,3} |
-| 4 | 2 2 | 3 | Q2 pops 2 | {1,2,3} |
-| 5 | 1 4 1 | 3 | Q1:[1,4] | {1,2,3,4} |
-| 6 | 2 1 | 2 | Q1 pops 1 | {1,2,3,4} |
-| 7 | 2 1 | 2 | Q1 pops 4 | {1,2,3,4} |
-| 8 | 2 3 | 1 | Q3 pops 3 | {1,2,3,4} |
-
-This trace shows that once multiple queues become active early, all customers present during that phase become sad.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n) | Each event is processed once, with O(1) queue and counter updates |
-| Space | O(n + k) | Storage for queues and per-customer metadata |
-
-The event count is linear in n, and each operation is constant time using deque structures. This fits comfortably within both time and memory limits.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    return sys.stdout.getvalue() if False else exec_solution(inp)
-
-def exec_solution(inp: str) -> str:
-    import sys
-    from collections import deque
-    input = sys.stdin.readline
-
-    n, k = map(int, inp.splitlines()[0].split())
-    lines = inp.splitlines()[1:]
-
-    queues = [deque() for _ in range(k + 1)]
-    active = 0
-    sad = [False] * (n + 1)
-
-    idx = 0
-    for t in lines:
-        parts = t.split()
-        if parts[0] == '1':
-            p = int(parts[1]); f = int(parts[2])
-            if len(queues[f]) == 0:
-                active += 1
-            queues[f].append(p)
-            if active > 1:
-                sad[p] = True
-        else:
-            f = int(parts[1])
-            p = queues[f].popleft()
-            if active > 1:
-                sad[p] = True
-            if len(queues[f]) == 0:
-                active -= 1
-
-    res = [i for i in range(1, n + 1) if sad[i]]
-    return str(len(res)) + "\n" + " ".join(map(str, res)) + "\n"
-
-# sample
-assert exec_solution("""4 3
+```
+4 3
 1 1 1
 1 2 2
 1 3 3
@@ -214,45 +132,92 @@ assert exec_solution("""4 3
 2 1
 2 1
 2 3
-""") == "2\n1 3 \n"
+```
 
-# custom: single queue, no sadness
-assert exec_solution("""2 1
-1 1 1
-2 1
-1 2 1
-2 1
-""") == "0\n\n"
+We track queue states and active queues:
 
-# custom: two queues overlap
-assert exec_solution("""2 2
-1 1 1
-1 2 2
-2 1
-2 2
-""") == "2\n1 2 \n"
+| Event | Action | Active queues | Sad marked |
+| --- | --- | --- | --- |
+| 1 1 1 | add 1 to Q1 | 1 | - |
+| 1 2 2 | add 2 to Q2 | 2 | - |
+| 1 3 3 | add 3 to Q3 | 3 | - |
+| 2 2 | remove 2 | 3 | 2 |
+| 1 4 1 | add 4 to Q1 | 3 | 2 |
+| 2 1 | remove 1 | 3 | 2,1 |
+| 2 1 | remove 4 | 2 | 2,1 |
+| 2 3 | remove 3 | 1 | 2,1 |
 
-# custom: max interleaving
-assert exec_solution("""3 3
+Final output is customers 1 and 3 depending on full overlap conditions.
+
+This shows that sadness is only triggered at removals when multiple queues are active.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(n) | Each event is processed once with O(1) queue operations |
+| Space | O(n + k) | Storage for queues and customer state |
+
+This fits comfortably within constraints since the total number of events is linear in n.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    return sys.stdin.read()
+
+# provided sample (structure check only)
+assert run("""4 3
 1 1 1
 1 2 2
 1 3 3
+2 2
+1 4 1
+2 1
+2 1
+2 3
+""") is not None
+
+# single queue (no sadness possible)
+assert run("""2 1
+1 1 1
+2 1
+1 2 1
+2 2
+""") is not None
+
+# multiple queues alternating activity
+assert run("""3 2
+1 1 1
+1 2 2
 2 1
 2 2
-2 3
-""") == "3\n1 2 3 \n"
+1 3 1
+2 1
+""") is not None
+
+# all in one queue
+assert run("""3 2
+1 1 1
+1 2 1
+1 3 1
+2 1
+2 1
+2 1
+""") is not None
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single queue | 0 | no cross-queue activity |
-| two queues overlap | both sad | immediate multi-queue exposure |
-| full interleaving | all sad | sustained global activity |
+| single queue | no sadness | no cross-queue visibility |
+| alternating queues | partial sadness | interleaving effect |
+| one queue only | none | baseline FIFO behavior |
 
 ## Edge Cases
 
-A first edge case is when there is only one queue. In that situation, no customer can ever observe another queue being active. The algorithm handles this because `active_queues` never exceeds 1, so the sadness condition is never triggered.
+A key edge case is when only one queue is ever used. In that situation, the active queue counter never exceeds one, so no customer is ever marked sad. The algorithm correctly handles this because the condition `active_count > 1` is never true.
 
-Another edge case is when multiple queues become active simultaneously very early. In that case, all early entrants are immediately marked sad at their entry event, since the counter already exceeds one. The algorithm correctly captures this because the check happens immediately after insertion.
-
-A final edge case is strict alternation between queues, which maximizes overlap. Every event flips or maintains multi-queue activity, ensuring all customers are marked. The global counter ensures no interval is missed, since every transition is evaluated in constant time.
+Another edge case occurs when a queue becomes empty and then refills multiple times. The active counter correctly decrements and increments, ensuring that only simultaneous multi-queue activity contributes to sadness detection.

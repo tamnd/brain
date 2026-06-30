@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2482 contests, 17041 problems, 9420 verified."
+description: "Codeforces problem solutions with full editorials. 2483 contests, 17054 problems, 9425 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2482 contests, 17041 problems, 9420 verified.**
+**2483 contests, 17054 problems, 9425 verified.**
 
 ## Unknown — 507 contests, 4075 problems, 2541 verified
 
@@ -1744,7 +1744,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 204 contests, 1571 problems, 745 verified
+## 2023 — 205 contests, 1584 problems, 750 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1880,6 +1880,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104505](104505/) | [2023 USP Try-outs](https://codeforces.com/contest/104505) | 13 | 5/13 | Special | - |
 | [104508](104508/) | [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508) | 12 | 2/12 | Special | - |
 | [104535](104535/) | [Formula++ 2023](https://codeforces.com/contest/104535) | 0 | 0/0 | Special | - |
 | [104542](104542/) | [TheForces Round #22 (Interesting-Forces)](https://codeforces.com/contest/104542) | 6 | 1/6 | Special | - |
