@@ -8,21 +8,21 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 4
-total_solve_s: 547
+total_solve_s: 844
 contest_year: 2023
-date: "2026-06-30T16:20:52+07:00"
+date: "2026-06-30T16:25:42+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 4/12 verified | Difficulty - | 9m 7s
+Special | 12 problems | 4/12 verified | Difficulty - | 14m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 54s | ✓ |
-| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 31s |  |
+| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 5m 28s |  |
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
 | [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 37s |  |
 | [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 52s | ✓ |
