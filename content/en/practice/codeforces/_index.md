@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2495 contests, 17195 problems, 9504 verified."
+description: "Codeforces problem solutions with full editorials. 2496 contests, 17201 problems, 9506 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2495 contests, 17195 problems, 9504 verified.**
+**2496 contests, 17201 problems, 9506 verified.**
 
 ## Unknown — 515 contests, 4175 problems, 2598 verified
 
@@ -1752,7 +1752,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 209 contests, 1625 problems, 772 verified
+## 2023 — 210 contests, 1631 problems, 774 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1888,6 +1888,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104455](104455/) | [TheForces Round #19 (Briefest-Forces)](https://codeforces.com/contest/104455) | 6 | 2/6 | Special | - |
 | [104468](104468/) | [The 2023 Damascus University Collegiate Programming Contest](https://codeforces.com/contest/104468) | 13 | 2/13 | Special | - |
 | [104471](104471/) | [TheForces Round #20 (7-Problems-Forces)](https://codeforces.com/contest/104471) | 7 | 4/7 | Special | - |
 | [104493](104493/) | [2023 ICPC HIAST Collegiate Programming Contest](https://codeforces.com/contest/104493) | 14 | 14/14 | ICPC/IOI | - |
