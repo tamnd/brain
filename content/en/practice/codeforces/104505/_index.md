@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 4
-total_solve_s: 1274
+total_solve_s: 1272
 contest_year: 2023
-date: "2026-06-30T11:02:31+07:00"
+date: "2026-06-30T11:32:11+07:00"
 weight: 104505
 draft: false
 ---
 
 # [2023 USP Try-outs](https://codeforces.com/contest/104505)
 
-Special | 11 problems | 4/11 verified | Difficulty - | 21m 14s
+Special | 11 problems | 4/11 verified | Difficulty - | 21m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Metaverse Real Estate](https://codeforces.com/problemset/problem/104505/A) |  |  |  | 1m 37s |  |
 | [B](B/) | [Maracas](https://codeforces.com/problemset/problem/104505/B) |  |  |  | 3m 3s |  |
 | [C](C/) | [Quasi-Palindrome](https://codeforces.com/problemset/problem/104505/C) |  |  |  | 3m 33s |  |
-| [D](D/) | [Supermarket queue](https://codeforces.com/problemset/problem/104505/D) |  |  |  | 1m 30s |  |
+| [D](D/) | [Supermarket queue](https://codeforces.com/problemset/problem/104505/D) |  |  |  | 1m 28s |  |
 | [E](E/) | [Long Live Mexico](https://codeforces.com/problemset/problem/104505/E) |  |  |  | 1m 6s | ✓ |
 | [F](F/) | [Goalkeeper of 7 games (or less)](https://codeforces.com/problemset/problem/104505/F) |  |  |  | 1m 52s |  |
 | [G](G/) | [Choice hero](https://codeforces.com/problemset/problem/104505/G) |  |  |  | 59s | ✓ |

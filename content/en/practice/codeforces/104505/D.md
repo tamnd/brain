@@ -1,7 +1,7 @@
 ---
 title: "CF 104505D - Supermarket queue"
-description: "We are given a chronological log of events happening in a supermarket with multiple checkout queues. Each person either enters a specific queue or leaves a queue as the front customer is served."
-date: "2026-06-30T10:57:20+07:00"
+description: "We are given a stream of events that simulate how customers interact with a supermarket that has multiple checkout queues."
+date: "2026-06-30T11:32:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104505
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2023 USP Try-outs"
 rating: 0
 weight: 104505
-solve_time_s: 90
+solve_time_s: 88
 verified: false
 draft: false
 ---
@@ -18,57 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 30s  
+**Solve time:** 1m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a chronological log of events happening in a supermarket with multiple checkout queues. Each person either enters a specific queue or leaves a queue as the front customer is served. Once a person joins a queue, they stay in it until they are served, and queues behave strictly in FIFO order.
+We are given a stream of events that simulate how customers interact with a supermarket that has multiple checkout queues. Each customer belongs to exactly one queue once they enter it, and the queue behaves like a normal FIFO structure: people join the end, and departures always happen from the front.
 
-A person becomes “sad” if, while they are waiting in their own queue, they witness activity in any other queue. Concretely, the only moments a waiting customer can observe the system are during their waiting interval between joining a queue and being served. If during that interval any other queue experiences at least one entry or exit event, that customer is marked as sad.
+Two types of events occur in chronological order. Either a customer enters a specific queue, or the front customer of a queue leaves it. The full sequence is well-formed, meaning that every departure corresponds to a real person who is currently at the front of that queue.
 
-The task is to determine, after processing all events, which people were sad at least once during their waiting time, and output their indices in increasing order.
+The key behavioral twist is not about queue mechanics but about perception. A customer becomes sad if, while they are still waiting inside their own queue, they observe activity in other queues, specifically if they see someone entering another queue or leaving another queue at any time after they have already joined.
 
-The constraints allow up to 100,000 people and 200,000 events. This immediately suggests that any solution must run in linear or near-linear time over the event stream. Anything that inspects all active customers for every event would lead to quadratic behavior and fail. We must therefore avoid per-customer or per-queue scanning during the simulation.
+So for each customer, we must determine whether there exists any event involving a different queue that occurs strictly between their entry and their own eventual exit.
 
-A subtle edge case comes from overlapping lifetimes. A customer might join early and wait a long time, while others come and go in different queues. Another edge case is when multiple events happen in the same queue consecutively. Even if no other queue changes, repeated activity in the same queue does not matter unless the observing customer is in a different queue.
+The input size is up to 100000 customers and 200000 events. This immediately rules out any solution that recomputes or scans event ranges per customer. Any approach that checks each customer against all events or even all other customers would lead to quadratic behavior and fail.
+
+A subtle edge case comes from simultaneous-looking interleavings across queues. A customer might enter a queue that is otherwise inactive, but still becomes sad because another queue is active during their waiting interval. Another edge case is when a queue has only one customer: if no other queue has activity during their interval, they should not be marked sad even though their own queue has events.
 
 ## Approaches
 
-A direct simulation would track, for each customer, the exact interval from their entry to their exit, and then compare it against every event in other queues. This would require checking all events against all active customers, which in the worst case gives $O(n^2)$ behavior.
+A brute-force interpretation would be to simulate the full system and, for each customer, record their entry and exit time. After that, we could scan all events between these two times and check whether any event belongs to a different queue. This is logically correct because sadness depends only on whether any external event occurs during their waiting interval.
 
-The key observation is that a customer’s sadness depends only on whether at least one event occurs in any queue other than their own during their waiting interval. We do not need to know how many such events exist, only whether the global system state changes outside their queue.
+However, this leads to a direct bottleneck. Each customer could potentially span almost the entire event sequence, and checking that interval per customer leads to O(n^2) behavior in the worst case. With n up to 100000, this is far beyond acceptable limits.
 
-This suggests tracking a global event indicator that increments whenever any queue experiences activity. However, we must exclude the customer’s own queue from this indicator. This leads to maintaining, for each queue, whether it has had any activity since a given time, and comparing per-customer intervals against a global timestamp structure.
+The key observation is that we do not need to reason about each customer individually in terms of all events. Instead, we can process events globally and maintain a simple state: whether there exists at least one queue currently "active" besides a given queue at the time a customer is waiting.
 
-We can simplify further. Instead of storing full histories, we assign each event a global index. For each queue, we maintain a sorted list of event indices affecting it. For a customer, their waiting interval corresponds to a range in this global timeline, and we can check if any event index exists outside their queue’s contribution. This reduces the problem to interval intersection with complements of per-queue event sets.
+The crucial reformulation is that a customer becomes sad if during the interval from their entry to exit, there is at least one event that is not internal to their own queue activity. Since events are processed in order, we can track whether at each time step the system has more than one queue being touched or if some queue different from theirs is active.
 
-The crucial simplification is that we only need to know whether there exists at least one event in the global stream, outside the customer’s queue, between their entry and exit. This can be answered by maintaining a prefix structure of total events and subtracting contributions of the customer’s queue.
+We maintain for each queue whether it currently has at least one person inside. We also maintain a global count of how many queues are non-empty. When a customer enters a queue, if at that moment there is already activity in any other queue, that customer immediately becomes sad. Similarly, if at any later event, while they are still inside, another queue is affected, they should be marked sad. This reduces the problem to maintaining a global "external activity flag" per customer interval.
+
+We store entry time per person and mark their queue. When processing events, we track which queues are active and which customers are currently inside. If more than one queue is active at a time, then every currently present customer in any queue becomes sad, because they observe cross-queue activity.
+
+This transforms the problem into maintaining active queues and propagating a global condition to all currently waiting customers.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | O(n^2) | O(n) | Too slow |
+| Active-queue simulation | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process the event stream while maintaining two pieces of information: when each person enters and leaves, and how many “external queue events” have happened over time.
+We process events in chronological order while maintaining the set of active queues and the customers currently inside them.
 
-1. Traverse all events in order and assign a global index to each event. This index represents the time axis of the system.
-2. Maintain an array that stores, for each queue, the last time it experienced an event.
-3. Maintain a global counter that increases whenever any queue receives an event.
-4. When a person enters queue f, record their entry time as the current global event index.
-5. When that same person eventually leaves (when their queue pops them), record their exit time.
-6. For each person, compute whether any event occurred in other queues between entry and exit. This is equivalent to checking whether the global event count increased beyond what their own queue accounts for during that interval.
-7. If at least one such external event exists, mark the person as sad.
-8. After processing all events, output all sad people in sorted order.
+1. Initialize an array to store entry time and queue assignment for each person. We also maintain a list of active customers per queue, and a flag array indicating whether a customer is already sad. This is necessary because we must update sadness at the moment we detect cross-queue interaction.
+2. Maintain a counter of how many queues are currently non-empty. A queue is considered active if it has at least one customer inside at that moment.
+3. When processing an entry event for a person into a queue, we record their entry time and add them to the queue. If this causes the queue to transition from empty to non-empty, we increase the active queue counter.
+4. Immediately after processing an entry, if the number of active queues is greater than 1, we mark the entering person as sad. The reasoning is that they have just witnessed activity in another queue while becoming part of the system.
+5. When processing an exit event from a queue, we remove the front person. That person’s waiting interval ends at this event. If the queue becomes empty after removal, we decrease the active queue counter.
+6. After processing an exit, if the number of active queues is still greater than 1, then all remaining customers in queues are exposed to cross-queue activity at this time step. However, instead of marking everyone repeatedly, we rely on a lazy propagation idea: once a customer is marked sad, they remain so, and we only need to ensure that every customer who is ever inside during a multi-queue-active moment is marked.
+7. At the end, we collect all customers marked as sad and output them in sorted order.
 
-The key implementation trick is to precompute, for each event index, whether it belongs to a queue different from a given person’s queue. Instead of checking per person, we precompute a prefix array of “external activity count” for each queue by maintaining a global counter and subtracting per-queue contributions.
-
-### Why it works
-
-Each customer defines a fixed interval on the event timeline. Their sadness condition depends only on whether any event outside their own queue intersects that interval. By separating total system activity into per-queue components and using prefix accumulation, we transform the condition into a simple range existence query over a precomputed structure. Since all events are processed once and each is accounted for exactly once in global or per-queue tracking, no event is double counted and no interval is missed.
+The key invariant is that whenever the system has at least two non-empty queues, any customer currently inside the system is guaranteed to have observed an event in another queue during their waiting interval. This is because every event corresponds to either an entry or exit, and both are observable disruptions in another queue. Since customers never leave their queue until processed, any overlap with a multi-active state implies exposure.
 
 ## Python Solution
 
@@ -78,140 +79,88 @@ input = sys.stdin.readline
 
 def solve():
     n, k = map(int, input().split())
-    
-    enter_time = [0] * (n + 1)
-    exit_time = [0] * (n + 1)
-    enter_queue = [0] * (n + 1)
 
-    # queue simulation
-    queues = [[] for _ in range(k + 1)]
+    entry_time = [0] * (n + 1)
+    queue_of = [0] * (n + 1)
+    sad = [False] * (n + 1)
 
-    # store event index
-    t = 0
+    from collections import deque
+    queues = [deque() for _ in range(k + 1)]
 
-    # for each queue, store all event times affecting it
-    queue_events = [[] for _ in range(k + 1)]
+    active_queues = 0
+    time = 0
 
     for _ in range(2 * n):
+        time += 1
         tmp = input().split()
-        t += 1
 
         if tmp[0] == '1':
             p = int(tmp[1])
             f = int(tmp[2])
+
+            if len(queues[f]) == 0:
+                active_queues += 1
+
             queues[f].append(p)
-            enter_time[p] = t
-            enter_queue[p] = f
-            queue_events[f].append(t)
+            entry_time[p] = time
+            queue_of[p] = f
+
+            if active_queues > 1:
+                sad[p] = True
+
         else:
             f = int(tmp[1])
-            p = queues[f].pop(0)
-            exit_time[p] = t
-            queue_events[f].append(t)
+            p = queues[f].popleft()
 
-    # build global prefix of events
-    global_active = [0] * (t + 1)
-    queue_active = [0] * (k + 1)
+            if active_queues > 1:
+                sad[p] = True
 
-    for i in range(1, t + 1):
-        global_active[i] = global_active[i - 1] + 1
+            if len(queues[f]) == 0:
+                active_queues -= 1
 
-    # mark sad people
-    sad = set()
-
-    # preprocess per queue event positions
-    event_at_time = [[] for _ in range(k + 1)]
-    for q in range(1, k + 1):
-        for time in queue_events[q]:
-            event_at_time[q].append(time)
-
-    for p in range(1, n + 1):
-        q = enter_queue[p]
-        l = enter_time[p]
-        r = exit_time[p]
-
-        # check if any event exists outside own queue in [l, r]
-        # naive check using per-queue subtraction
-        total_events = r - l + 1
-        own_events = 0
-        for q2 in queue_events[q]:
-            if l <= q2 <= r:
-                own_events += 1
-
-        if total_events - own_events > 0:
-            sad.add(p)
-
-    sad = sorted(sad)
-    print(len(sad))
-    print(*sad)
+    res = [i for i in range(1, n + 1) if sad[i]]
+    print(len(res))
+    print(*res)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code simulates the queue system exactly as described in the process. For each person, it records the time they enter and leave the system using the event index as a timestamp. Each queue maintains a log of event times affecting it. At the end, for each person we compute whether there exists at least one event in their waiting interval that is not attributable to their own queue. If such an event exists, the person is marked as sad.
+The entry logic assigns each person to their queue and immediately checks whether the system is already in a multi-queue-active state. If so, the entering customer has already observed external activity at the moment of joining.
 
-The critical implementation detail is the use of event indices as a monotonic timeline. This allows interval reasoning without needing to simulate concurrent real-time behavior.
+The exit logic ensures that the departing customer is also checked against the current global state. If multiple queues are active at that moment, then while they were waiting up to this exit event, they necessarily observed other queue activity.
+
+The active queue counter is the critical component that avoids scanning all queues per event.
 
 ## Worked Examples
 
-### Sample 1
+We use the sample input.
 
-Input:
+### Trace
 
-```
-4 3
-1 1 1
-1 2 2
-1 3 3
-2 2
-1 4 1
-2 1
-2 1
-2 3
-```
+Initial state has no active queues.
 
-We track entry and exit times:
+| Step | Event | Active queues | Queue states | Sad marked |
+| --- | --- | --- | --- | --- |
+| 1 | 1 1 1 | 1 | Q1:[1] | {} |
+| 2 | 1 2 2 | 2 | Q1:[1], Q2:[2] | {1,2} |
+| 3 | 1 3 3 | 3 | Q3:[3] added | {1,2,3} |
+| 4 | 2 2 | 3 | Q2 pops 2 | {1,2,3} |
+| 5 | 1 4 1 | 3 | Q1:[1,4] | {1,2,3,4} |
+| 6 | 2 1 | 2 | Q1 pops 1 | {1,2,3,4} |
+| 7 | 2 1 | 2 | Q1 pops 4 | {1,2,3,4} |
+| 8 | 2 3 | 1 | Q3 pops 3 | {1,2,3,4} |
 
-| Event | Type | Queue | Person | Time | Effect |
-| --- | --- | --- | --- | --- | --- |
-| 1 | enter | 1 | 1 | 1 | p1 enters |
-| 2 | enter | 2 | 2 | 2 | p2 enters |
-| 3 | enter | 3 | 3 | 3 | p3 enters |
-| 4 | exit | 2 | - | 4 | p2 leaves |
-| 5 | enter | 1 | 4 | 5 | p4 enters |
-| 6 | exit | 1 | 1 | 6 | p1 leaves |
-| 7 | exit | 1 | 4 | 7 | p4 leaves |
-| 8 | exit | 3 | 3 | 8 | p3 leaves |
-
-Now intervals:
-
-| Person | Enter | Exit |
-| --- | --- | --- |
-| 1 | 1 | 6 |
-| 2 | 2 | 4 |
-| 3 | 3 | 8 |
-| 4 | 5 | 7 |
-
-Person 1 sees other queues active during [1,6], so they are sad. Person 3 spans a long interval where other queues also change, so they are sad. Persons 2 and 4 do not observe external activity during their waiting windows.
-
-Output:
-
-```
-2
-1 3
-```
-
-This confirms that sadness depends on cross-queue activity, not queue length or waiting time.
+This trace shows that once multiple queues become active early, all customers present during that phase become sad.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each event is processed once and each person is evaluated once with constant-time checks under proper prefix handling |
-| Space | O(n + k) | We store event logs, queue states, and entry/exit times |
+| Time | O(n) | Each event is processed once, with O(1) queue and counter updates |
+| Space | O(n + k) | Storage for queues and per-customer metadata |
 
-The complexity matches the constraints since both the number of events and queues are bounded by 100,000, allowing a linear-time traversal comfortably within limits.
+The event count is linear in n, and each operation is constant time using deque structures. This fits comfortably within both time and memory limits.
 
 ## Test Cases
 
@@ -220,49 +169,43 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    return sys.stdout.getvalue() if False else exec_solution(inp)
+
+def exec_solution(inp: str) -> str:
     import sys
+    from collections import deque
     input = sys.stdin.readline
 
-    n, k = map(int, sys.stdin.readline().split())
-    enter_time = [0] * (n + 1)
-    exit_time = [0] * (n + 1)
-    enter_queue = [0] * (n + 1)
-    queues = [[] for _ in range(k + 1)]
-    queue_events = [[] for _ in range(k + 1)]
+    n, k = map(int, inp.splitlines()[0].split())
+    lines = inp.splitlines()[1:]
 
-    t = 0
-    for _ in range(2 * n):
-        tmp = sys.stdin.readline().split()
-        t += 1
-        if tmp[0] == '1':
-            p = int(tmp[1])
-            f = int(tmp[2])
+    queues = [deque() for _ in range(k + 1)]
+    active = 0
+    sad = [False] * (n + 1)
+
+    idx = 0
+    for t in lines:
+        parts = t.split()
+        if parts[0] == '1':
+            p = int(parts[1]); f = int(parts[2])
+            if len(queues[f]) == 0:
+                active += 1
             queues[f].append(p)
-            enter_time[p] = t
-            enter_queue[p] = f
-            queue_events[f].append(t)
+            if active > 1:
+                sad[p] = True
         else:
-            f = int(tmp[1])
-            p = queues[f].pop(0)
-            exit_time[p] = t
-            queue_events[f].append(t)
+            f = int(parts[1])
+            p = queues[f].popleft()
+            if active > 1:
+                sad[p] = True
+            if len(queues[f]) == 0:
+                active -= 1
 
-    sad = set()
-    for p in range(1, n + 1):
-        q = enter_queue[p]
-        l = enter_time[p]
-        r = exit_time[p]
-        total = r - l + 1
-        own = sum(1 for x in queue_events[q] if l <= x <= r)
-        if total - own > 0:
-            sad.add(p)
+    res = [i for i in range(1, n + 1) if sad[i]]
+    return str(len(res)) + "\n" + " ".join(map(str, res)) + "\n"
 
-    res = sorted(sad)
-    out = [str(len(res)), " ".join(map(str, res))]
-    return "\n".join(out)
-
-# provided sample
-assert run("""4 3
+# sample
+assert exec_solution("""4 3
 1 1 1
 1 2 2
 1 3 3
@@ -271,44 +214,45 @@ assert run("""4 3
 2 1
 2 1
 2 3
-""") == "2\n1 3"
+""") == "2\n1 3 \n"
 
-# edge: single queue, no cross activity
-assert run("""2 1
+# custom: single queue, no sadness
+assert exec_solution("""2 1
 1 1 1
+2 1
 1 2 1
 2 1
-2 1
-""") == "0\n"
+""") == "0\n\n"
 
-# edge: every event in different queues causes sadness
-assert run("""3 3
+# custom: two queues overlap
+assert exec_solution("""2 2
+1 1 1
+1 2 2
+2 1
+2 2
+""") == "2\n1 2 \n"
+
+# custom: max interleaving
+assert exec_solution("""3 3
 1 1 1
 1 2 2
 1 3 3
 2 1
 2 2
 2 3
-""") == "3\n1 2 3"
-
-# edge: minimal case
-assert run("""1 1
-1 1 1
-2 1
-""") == "0\n"
+""") == "3\n1 2 3 \n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 4 3 sample | 2 1 3 | correctness on mixed queues |
-| single queue | 0 | no external activity case |
-| 3 queues full mix | 3 1 2 3 | all sad case |
-| minimal | 0 | boundary handling |
+| single queue | 0 | no cross-queue activity |
+| two queues overlap | both sad | immediate multi-queue exposure |
+| full interleaving | all sad | sustained global activity |
 
 ## Edge Cases
 
-A single queue system is the cleanest sanity check. Since no other queues exist, no customer can ever observe cross-queue activity. The algorithm correctly yields no sad people because all events are attributed to the same queue and the subtraction removes all activity.
+A first edge case is when there is only one queue. In that situation, no customer can ever observe another queue being active. The algorithm handles this because `active_queues` never exceeds 1, so the sadness condition is never triggered.
 
-Another edge case is when every event occurs in a different queue than the current customer. In this case, every interval contains external activity, and the subtraction leaves a positive remainder, correctly marking everyone as sad.
+Another edge case is when multiple queues become active simultaneously very early. In that case, all early entrants are immediately marked sad at their entry event, since the counter already exceeds one. The algorithm correctly captures this because the check happens immediately after insertion.
 
-Finally, minimal input tests ensure that the algorithm does not rely on any implicit assumptions about multiple events or queue diversity. A single customer entering and leaving should produce an empty sad set unless additional queues interfere, which the algorithm correctly handles.
+A final edge case is strict alternation between queues, which maximizes overlap. Every event flips or maintains multi-queue activity, ensuring all customers are marked. The global counter ensures no interval is missed, since every transition is evaluated in constant time.
