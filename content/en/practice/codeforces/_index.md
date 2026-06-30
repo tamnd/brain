@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2469 contests, 16908 problems, 9359 verified."
+description: "Codeforces problem solutions with full editorials. 2470 contests, 16918 problems, 9369 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2469 contests, 16908 problems, 9359 verified.**
+**2470 contests, 16918 problems, 9369 verified.**
 
-## Unknown — 498 contests, 3973 problems, 2486 verified
+## Unknown — 499 contests, 3983 problems, 2496 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104545](104545/) | [VIII MaratonUSP Freshman Contest](https://codeforces.com/contest/104545) | 10 | 10/10 | Special | - |
 | [104550](104550/) | [2015 Google Code Jam Round 1A (GCJ 15 Round 1A)](https://codeforces.com/contest/104550) | 3 | 3/3 | Special | - |
 | [104551](104551/) | [2015 Google Code Jam Round 1C (GCJ 15 Round 1C)](https://codeforces.com/contest/104551) | 3 | 3/3 | Special | - |
 | [104555](104555/) | [2023-2024 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/104555) | 13 | 9/13 | ICPC/IOI | - |
