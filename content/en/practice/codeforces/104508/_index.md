@@ -8,25 +8,25 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 5
-total_solve_s: 911
+total_solve_s: 615
 contest_year: 2023
-date: "2026-06-30T16:52:07+07:00"
+date: "2026-06-30T17:20:51+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 5/12 verified | Difficulty - | 15m 11s
+Special | 12 problems | 5/12 verified | Difficulty - | 10m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 54s | ✓ |
-| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 5m 28s |  |
+| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 35s |  |
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
 | [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 40s |  |
 | [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 52s | ✓ |
-| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 40s |  |
+| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 37s |  |
 | [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 1m 8s | ✓ |
 | [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 59s |  |
 | [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 42s |  |
