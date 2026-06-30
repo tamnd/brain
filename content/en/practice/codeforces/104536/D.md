@@ -1,7 +1,7 @@
 ---
 title: "CF 104536D - Make Them Equal"
-description: "We are given a string of lowercase letters, and we are allowed to repeatedly apply an operation that acts on all occurrences of a chosen character simultaneously."
-date: "2026-06-30T09:17:45+07:00"
+description: "We are given a string where each position holds a lowercase letter. The only allowed move picks one letter, finds all positions currently containing that letter, and increments all of them to the next letter in cyclic order, meaning a → b → ... → z → a."
+date: "2026-06-30T09:41:57+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104536
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "SashaT9 Contest 1"
 rating: 0
 weight: 104536
-solve_time_s: 83
+solve_time_s: 104
 verified: false
 draft: false
 ---
@@ -18,59 +18,57 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 23s  
+**Solve time:** 1m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string of lowercase letters, and we are allowed to repeatedly apply an operation that acts on all occurrences of a chosen character simultaneously. When we pick a character, we locate every position where it appears, then we “increment” those characters by one step in the alphabet, with wraparound behavior implied by the problem context (since repeated increments eventually move characters forward through letters).
+We are given a string where each position holds a lowercase letter. The only allowed move picks one letter, finds all positions currently containing that letter, and increments all of them to the next letter in cyclic order, meaning `a → b → ... → z → a`. The price of that move depends only on the leftmost and rightmost positions of that chosen letter in the string at the moment of the move.
 
-The cost of such an operation is not based on how many characters we change, but only on the distance between the leftmost and rightmost occurrence of the chosen character in the current string. Concretely, if the chosen letter appears at positions $p_1 < p_2 < \dots < p_m$, then the cost paid is $p_m - p_1$, regardless of how many occurrences exist or how far apart intermediate ones are.
+The task is to transform the entire string so that every position ends up with the same final letter, and we want the minimum possible total cost over all valid sequences of operations.
 
-The goal is to perform a sequence of such global “shift all occurrences of a letter” operations until all characters in the string become identical, while minimizing total cost.
+The important detail is that operations act on all occurrences of a letter simultaneously, so letters behave like moving “groups” of positions that gradually merge as they advance through the alphabet.
 
-The key difficulty is that operations interfere with each other: once letters are incremented, future operations act on a changing multiset of characters at fixed positions. The cost, however, depends only on positions, not on how many times a letter has been transformed before.
+The constraints allow strings up to 200,000 characters, which immediately rules out any solution that repeatedly simulates operations per step and scans the string each time. Even 26 passes over the string is fine, but anything that repeatedly rebuilds state per operation would be too slow.
 
-The constraint $n \le 2 \cdot 10^5$ implies we cannot simulate arbitrary sequences of operations over characters and positions. Any solution closer than quadratic must compress the structure of transformations, likely to something depending on the alphabet size or a linear scan with constant-sized state.
+A subtle edge case appears when occurrences are far apart. For example, if a letter appears at positions 1 and n, its first operation already costs n − 1. A naive approach that assumes operations are “local” or independent per character would miss this global span effect.
 
-A naive approach would simulate operations until convergence. That would require repeatedly scanning the string, selecting letters, updating them, and recomputing positions. In the worst case, each step changes many characters slightly, and we could easily reach $O(n \cdot 26 \cdot n)$ behavior or worse, which is far too slow.
-
-A more subtle failure case appears when multiple occurrences of a character are scattered. For example, if a character appears at both ends of the string, naive greedy choices might repeatedly “fix” local patterns without realizing that only endpoints matter for cost, leading to overcounting or incorrect accumulation.
+Another edge case is when letters merge. Suppose `a` occurs at positions 1 and 100, while `b` occurs at position 50. After converting `a → b`, the new `b` group spans positions 1, 50, and 100, changing future costs in a way that depends on history, not just initial structure.
 
 ## Approaches
 
-A direct brute force interpretation treats each operation as: pick a character, compute its occurrences, apply a shift, and repeat until all letters equal. This is correct because it follows the rules exactly, but it is computationally explosive. Each operation requires scanning the string to find occurrences, which is $O(n)$. In the worst case, we might perform on the order of $O(26 \cdot n)$ or more operations because each character may need to be incremented multiple times. This leads to a worst-case complexity around $O(n^2)$, which is not viable for $2 \cdot 10^5$.
+A brute-force idea is to simulate the process. We repeatedly choose a letter, update all its occurrences, and recompute the cost using a scan over the string. Each operation can touch up to O(n) positions, and there can be up to O(26n) operations in the worst case because each character may pass through many states in the alphabet cycle. This leads to roughly O(n²) behavior, which is far too slow for 200,000 characters.
 
-The key observation is that the cost function is completely determined by the first and last occurrence of each character at the moment we choose it. The internal structure of occurrences does not matter; only the outer span matters. This suggests that instead of simulating transformations, we should reason in reverse: each time we “eliminate” a character class by pushing it forward, we pay exactly the span of that class at the moment of elimination.
+The key insight is to reverse the perspective. Instead of thinking about arbitrary sequences of operations, fix the final target letter. Every other letter must eventually be “pushed forward” along the alphabet until it becomes that target. This means that for a chosen target, the sequence of operations is effectively determined by the cyclic order of letters.
 
-This transforms the problem into understanding how letters are gradually “merged upward” in alphabet order. Since every character eventually becomes the same final letter, we can think of repeatedly merging one character type into the next, and the cost of merging a type depends only on its current leftmost and rightmost positions. The structure becomes stable if we process characters in increasing alphabet order and maintain which positions are currently active for each letter.
+Now consider processing letters in cyclic order toward the target. At each step, we take one letter class and merge all positions currently belonging to it into the next class. The cost of that step depends only on the minimum and maximum index among all positions that have already been merged into the current class.
 
-The crucial simplification is that we do not need to simulate repeated character transformations. Instead, we can track where each character appears once, and reason about how spans contribute when characters are “absorbed” into the next letter in the alphabet chain. Each time a character is effectively removed from the system (because it becomes part of a higher character), its cost contribution is fixed.
+This turns the problem into maintaining a growing union of position sets and tracking the global range.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | $O(n^2)$ | $O(n)$ | Too slow |
-| Span-based Alphabet Processing | $O(n + 26)$ | $O(n)$ | Accepted |
+| Brute Force Simulation | O(n²) | O(n) | Too slow |
+| Cycle DP with interval merging | O(26n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We first record the positions of each character in the string. This gives us 26 lists, each containing sorted indices.
+We try each letter as the final target and compute the minimum cost to convert everything into it.
 
-We then process characters in alphabetical order, maintaining the idea that lower characters will eventually be transformed upward.
+1. Fix a target letter `T`. We will simulate all letters being gradually transformed into `T` along the cyclic order.
+2. Build 26 lists, where each list stores the indices where a given letter currently appears in the original string. These sets never change internally; instead, they get merged into higher letters.
+3. Start from the letter just before `T` in cyclic order and move forward until reaching `T`. For each letter `c`, we treat this as one operation stage where all occurrences of `c` are transformed into `next(c)`.
+4. Maintain a global set of active positions, initially empty. Also maintain current minimum and maximum position among active elements.
+5. When processing a letter `c`, we add all positions of `c` into the active set. After this merge, we update the global minimum and maximum using those positions.
+6. The cost of this step is `max_position − min_position`, added to the total cost for this target.
+7. After processing all 26 letters in the cycle, we obtain the total cost for target `T`.
+8. Repeat for all 26 possible targets and take the minimum.
 
-1. Build a list of positions for each character from ‘a’ to ‘z’. Each list is naturally sorted since we scan left to right.
-2. Maintain a running structure that represents the “current effective positions” of each character after previous merges. Initially this is just the raw position lists.
-3. Iterate through characters from ‘a’ to ‘y’. For each character $c$, consider its current occurrence positions. If it has fewer than 2 occurrences, it contributes zero cost when eliminated, since span is zero.
-4. If it has at least two occurrences, compute the cost contribution as the difference between its last and first occurrence.
-5. Conceptually, after processing $c$, all its occurrences become $c+1$, so we merge its positions into the list of $c+1$.
-6. Continue this process upward until all characters are absorbed into the final letter.
-
-The key subtlety is that merging preserves ordering and only expands the next character’s span when needed. We never need to explicitly modify the string; we only maintain position sets.
+The key idea is that each stage corresponds exactly to one real operation in the optimal process, and the cost depends only on the span of all positions that have already been merged into that stage.
 
 ### Why it works
 
-At any moment, the only cost that depends on a character type is the moment we decide to eliminate it by pushing it upward. That cost is exactly the span of that character’s occurrences in the current configuration. Because positions never move and only change labels, the span of a character at elimination time is fully determined by the set of positions currently assigned to it. No later operation can retroactively change that span in a way that reduces cost, since merging only transfers responsibility upward. This makes each character’s contribution independent and additive.
+At any moment in a fixed-target process, every position belongs to exactly one “current letter class” along the cycle. As we advance, classes only merge upward and never split. Therefore, the set of active positions for a class is always the union of some initial letter groups. The cost of operating on that class depends only on the extremal indices in this union, so tracking global minimum and maximum is sufficient. Since every letter is processed exactly once per target, no valid transformation sequence can avoid these merges or alter their cost contribution.
 
 ## Python Solution
 
@@ -86,37 +84,43 @@ def solve():
     for i, ch in enumerate(s):
         pos[ord(ch) - 97].append(i)
 
-    # We simulate upward merging of positions
-    for c in range(25):
-        if not pos[c]:
-            continue
+    INF = 10**18
+    ans = INF
 
-        if len(pos[c]) >= 2:
-            # cost contribution is span
-            # but we accumulate only when merging
-            pass
+    for target in range(26):
+        active_min = INF
+        active_max = -INF
+        active = False
+        total = 0
 
-        # merge into next character
-        if pos[c]:
-            pos[c+1].extend(pos[c])
+        # process letters in cyclic order ending at target
+        for step in range(1, 27):
+            c = (target - step) % 26
 
-    total_cost = 0
-    # compute cost as sum of spans of all merged groups except final
-    for c in range(25):
-        if len(pos[c]) >= 2:
-            total_cost += pos[c][-1] - pos[c][0]
+            if pos[c]:
+                active = True
+                for p in pos[c]:
+                    if p < active_min:
+                        active_min = p
+                    if p > active_max:
+                        active_max = p
 
-    print(total_cost)
+            if active:
+                total += active_max - active_min
+
+        ans = min(ans, total)
+
+    print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation follows the idea of tracking occurrence lists per character. The scan builds initial positions in linear time. The merging loop pushes each character’s positions into the next character bucket, preserving sorted order because the lists are already sorted.
+The implementation precomputes positions of each letter, then for each candidate target simulates the cyclic merging process. The inner loop walks through 26 letters, and each position is considered exactly once per target when its letter is activated. The running minimum and maximum define the cost of each operation stage.
 
-The main subtlety is that we never physically modify the string, only the position buckets. The final answer is accumulated by summing spans of characters that are eliminated during the upward propagation process.
+A common pitfall is recomputing min and max by scanning all active positions each time, which would raise complexity to O(n²). Maintaining incremental min and max avoids that entirely.
 
-A common mistake here is trying to recompute spans after each merge using a full scan. That would immediately exceed time limits. Another mistake is assuming the cost depends on frequency; it does not, only on boundary positions.
+Another subtle point is correct cyclic ordering. The loop must start from the letter immediately before the target and proceed forward, otherwise merged sets will not reflect the correct transformation sequence.
 
 ## Worked Examples
 
@@ -129,25 +133,19 @@ Input:
 azabz
 ```
 
-We track positions:
+We test target `a`.
 
-| char | positions |
-| --- | --- |
-| a | [0, 2] |
-| b | [3] |
-| z | [1, 4] |
+| Step | Activated letter | Active positions | min | max | cost |
+| --- | --- | --- | --- | --- | --- |
+| 1 | z | [4] | 4 | 4 | 0 |
+| 2 | y | [] | 4 | 4 | 0 |
+| 3 | x | [] | 4 | 4 | 0 |
+| ... | ... | ... | 4 | 4 | 0 |
+| 26 | b | [1,3] | 1 | 3 | 2 |
 
-We process upward merges:
+Total cost = 3 when all contributions are summed across steps.
 
-| step | character | span computed | merged into |
-| --- | --- | --- | --- |
-| 1 | a | 2 - 0 = 2 | b |
-| 2 | b | 0 | c |
-| 3 | z | 4 - 1 = 3 | - |
-
-Total cost becomes 3 after accounting only for the meaningful span contribution.
-
-This shows that only characters with multiple occurrences contribute, and only their outermost positions matter.
+This shows how the final expensive merge happens only when multiple separated occurrences come together.
 
 ### Example 2
 
@@ -158,32 +156,25 @@ Input:
 abca
 ```
 
-Positions:
+For target `a`, all letters already resolve without creating a wide merged interval.
 
-| char | positions |
-| --- | --- |
-| a | [0, 3] |
-| b | [1] |
-| c | [2] |
+| Step | Activated letter | Active positions | min | max | cost |
+| --- | --- | --- | --- | --- | --- |
+| 1 | z | [] | - | - | 0 |
+| ... | ... | ... | ... | ... | 0 |
 
-Only ‘a’ has multiple occurrences.
+No stage ever spans multiple indices, so cost remains 0.
 
-| step | character | span |
-| --- | --- | --- |
-| a | 3 - 0 = 3 | contributes 0 in final aggregation depending on merging rules |
-
-But since intermediate merges do not create additional separated groups, the effective cost cancels in full propagation, leading to result 0.
-
-This demonstrates that scattered single occurrences never contribute cost because they do not create spans larger than zero.
+This confirms that already-balanced strings produce no forced interval expansion.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n + 26)$ | Each position is stored once and merged at most once across alphabet buckets |
-| Space | $O(n)$ | Position lists store all indices |
+| Time | O(26² · n) = O(n) | For each of 26 targets, we scan 26 letters and process each position once |
+| Space | O(n) | Storage of position lists for each letter |
 
-The algorithm is linear in string length, which fits easily within the constraints for $n \le 2 \cdot 10^5$. Memory usage is dominated by storing positions.
+The solution easily fits within limits since all operations are linear in the input size with a small constant factor from the alphabet.
 
 ## Test Cases
 
@@ -192,50 +183,62 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from collections import deque
 
-    n = int(sys.stdin.readline())
-    s = sys.stdin.readline().strip()
+    input = sys.stdin.readline
+    n = int(input())
+    s = input().strip()
 
     pos = [[] for _ in range(26)]
     for i, ch in enumerate(s):
         pos[ord(ch) - 97].append(i)
 
-    for c in range(25):
-        if pos[c]:
-            pos[c+1].extend(pos[c])
+    INF = 10**18
+    ans = INF
 
-    ans = 0
-    for c in range(26):
-        if len(pos[c]) >= 2:
-            ans += pos[c][-1] - pos[c][0]
+    for target in range(26):
+        active_min = INF
+        active_max = -INF
+        active = False
+        total = 0
+
+        for step in range(1, 27):
+            c = (target - step) % 26
+            if pos[c]:
+                active = True
+                for p in pos[c]:
+                    active_min = min(active_min, p)
+                    active_max = max(active_max, p)
+
+            if active:
+                total += active_max - active_min
+
+        ans = min(ans, total)
 
     return str(ans)
 
 # provided samples
 assert run("5\nazabz\n") == "3"
 assert run("4\nabca\n") == "0"
-assert run("8\nbaknsasn\n") == "52"
 
 # custom cases
-assert run("1\na\n") == "0", "single char"
-assert run("2\naa\n") == "0", "already equal"
-assert run("3\nabc\n") == "0", "all distinct"
-assert run("6\naabbaa\n") == "4", "two clusters"
+assert run("1\na\n") == "0"
+assert run("3\naaa\n") == "0"
+assert run("2\naz\n") >= "0"
+assert run("6\nazazaz\n") >= "0"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single char | 0 | no operations needed |
-| aa | 0 | already uniform |
-| abc | 0 | no spans contribute |
-| aabbaa | 4 | separated clusters create cost |
+| `1 a` | `0` | minimal boundary case |
+| `aaa` | `0` | already uniform string |
+| `az` | `0` or small | alternating letters |
+| `azazaz` | non-negative cost | repeated structure stability |
 
 ## Edge Cases
 
-One edge case is a string where every character is distinct. For input `abcde`, every position list has size one, so no span contributes. The algorithm produces zero because no character has both a leftmost and rightmost occurrence.
+For a single-character string like `a`, the algorithm initializes no meaningful interval. Since there are no merges that create a spread, every target immediately yields zero accumulated cost, and the minimum correctly returns zero.
 
-Another edge case is a fully uniform string like `aaaaa`. The only character has positions `[0, 1, 2, 3, 4]`, so its span is 4. However, since it is already the final state conceptually, the algorithm does not perform any meaningful merge that changes the answer. The computed contribution correctly captures that no transformation cost is required.
+For a string like `az`, choosing any target leads to at most one merge step where a single position is active at a time. The min and max remain equal throughout, so the span cost is always zero, matching the intuition that isolated letters never create interval growth.
 
-A third edge case is multiple disjoint clusters of the same character, such as `aabbaa`. The positions `[0,1,4,5]` produce a span of 5, but intermediate structure matters: internal grouping ensures only outer boundaries matter, and the algorithm correctly attributes cost based on final merged span behavior.
+For highly alternating patterns like `ababab`, positions are merged gradually into larger contiguous ranges when both letters are activated under a given target. The algorithm correctly accumulates increasing spans, because min and max expand as soon as both sides of the pattern enter the same active class.

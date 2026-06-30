@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2472 contests, 16937 problems, 9373 verified."
+description: "Codeforces problem solutions with full editorials. 2473 contests, 16945 problems, 9377 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2472 contests, 16937 problems, 9373 verified.**
+**2473 contests, 16945 problems, 9377 verified.**
 
-## Unknown — 499 contests, 3983 problems, 2496 verified
+## Unknown — 500 contests, 3991 problems, 2500 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104536](104536/) | [SashaT9 Contest 1](https://codeforces.com/contest/104536) | 8 | 4/8 | Special | - |
 | [104545](104545/) | [VIII MaratonUSP Freshman Contest](https://codeforces.com/contest/104545) | 10 | 10/10 | Special | - |
 | [104550](104550/) | [2015 Google Code Jam Round 1A (GCJ 15 Round 1A)](https://codeforces.com/contest/104550) | 3 | 3/3 | Special | - |
 | [104551](104551/) | [2015 Google Code Jam Round 1C (GCJ 15 Round 1C)](https://codeforces.com/contest/104551) | 3 | 3/3 | Special | - |
