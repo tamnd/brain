@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2525 contests, 17460 problems, 9698 verified."
+description: "Codeforces problem solutions with full editorials. 2526 contests, 17474 problems, 9704 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2525 contests, 17460 problems, 9698 verified.**
+**2526 contests, 17474 problems, 9704 verified.**
 
-## Unknown — 530 contests, 4312 problems, 2696 verified
+## Unknown — 531 contests, 4326 problems, 2702 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104381](104381/) | [The Andover Computing Open (TACO) 2022](https://codeforces.com/contest/104381) | 14 | 6/14 | Special | - |
 | [104393](104393/) | [ICPC Masters Mexico LATAM 2023](https://codeforces.com/contest/104393) | 10 | 9/10 | ICPC/IOI | - |
 | [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 7 | 5/7 | Special | - |
 | [104397](104397/) | [The 21st UESTC Programming Contest Final](https://codeforces.com/contest/104397) | 11 | 5/11 | Special | - |
