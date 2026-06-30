@@ -10,7 +10,7 @@ n_problems: 0
 n_verified: 0
 total_solve_s: 0
 contest_year: 2023
-date: "-T09:48:00+07:00"
+date: "-T09:53:59+07:00"
 weight: 104535
 draft: false
 ---
