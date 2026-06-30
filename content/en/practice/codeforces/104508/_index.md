@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 5
-total_solve_s: 1282
+total_solve_s: 932
 contest_year: 2023
-date: "2026-06-30T21:44:45+07:00"
+date: "2026-06-30T22:10:57+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 5/12 verified | Difficulty - | 21m 22s
+Special | 12 problems | 5/12 verified | Difficulty - | 15m 32s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 54s | ✓ |
-| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 3m 34s |  |
+| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 36s |  |
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
-| [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 3m 35s |  |
+| [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 43s |  |
 | [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 52s | ✓ |
 | [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 3m 34s |  |
 | [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 1m 8s | ✓ |

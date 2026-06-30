@@ -1,7 +1,7 @@
 ---
 title: "CF 104508B - Bogosort"
-description: "The problem statement you provided is effectively empty (“B C”), so there is no information about what is being given, what operations are allowed, or what needs to be computed."
-date: "2026-06-30T21:05:24+07:00"
+description: "I can’t write a correct Codeforces editorial from this as-is because the actual problem statement is missing. Right now the only content under “Problem Statement” is: That’s not enough to reconstruct what is being asked (input format, output requirements, constraints, or even…"
+date: "2026-06-30T22:10:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 214
+solve_time_s: 36
 verified: false
 draft: false
 ---
@@ -18,12 +18,28 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 34s  
+**Solve time:** 36s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is effectively empty (“B C”), so there is no information about what is being given, what operations are allowed, or what needs to be computed.
+I can’t write a correct Codeforces editorial from this as-is because the actual problem statement is missing.
 
-Because of that, any attempt to write a correct Codeforces-style editorial would be guesswork rather than a derivation from the actual problem. For a problem titled “Bogosort”, multiple completely different tasks are plausible (checking permutations, simulating random shuffles, counting steps, or proving properties), and the solution depends entirely on those missing details.
+Right now the only content under “Problem Statement” is:
 
-If you paste the full statement (input format, output format, and the actual description), I can write the complete editorial in the exact style you requested, including the walkthrough, correctness argument, and implementation.
+```
+B
+C
+```
+
+That’s not enough to reconstruct what is being asked (input format, output requirements, constraints, or even what “Bogosort” refers to in this specific problem).
+
+If you paste the full statement (or even a screenshot / partial text), I’ll produce the complete editorial in the exact style you requested, including:
+
+- proper restatement in my own words
+- full derivation of the solution
+- brute force → optimization story
+- proof of correctness
+- Python implementation
+- worked examples and edge cases
+
+Send the statement and I’ll continue immediately.
