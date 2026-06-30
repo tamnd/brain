@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2521 contests, 17433 problems, 9677 verified."
+description: "Codeforces problem solutions with full editorials. 2521 contests, 17434 problems, 9678 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,14 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2521 contests, 17433 problems, 9677 verified.**
+**2521 contests, 17434 problems, 9678 verified.**
 
-## Unknown — 530 contests, 4310 problems, 2694 verified
+## Unknown — 530 contests, 4311 problems, 2695 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [104393](104393/) | [ICPC Masters Mexico LATAM 2023](https://codeforces.com/contest/104393) | 10 | 9/10 | ICPC/IOI | - |
-| [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 6 | 4/6 | Special | - |
+| [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 7 | 5/7 | Special | - |
 | [104397](104397/) | [The 21st UESTC Programming Contest Final](https://codeforces.com/contest/104397) | 11 | 5/11 | Special | - |
 | [104400](104400/) | [Hunan University 2023 the 19th Programming Contest](https://codeforces.com/contest/104400) | 12 | 12/12 | Special | - |
 | [104412](104412/) | [2023 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/104412) | 13 | 9/13 | ICPC/IOI | - |
