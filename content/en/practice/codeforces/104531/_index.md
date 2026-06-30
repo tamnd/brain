@@ -1,22 +1,22 @@
 ---
 title: "2022 SYSU School Contest"
-description: "11 problems from 2022 SYSU School Contest (contest 104531), difficulty -. 11/11 solutions verified against sample I/O."
+description: "13 problems from 2022 SYSU School Contest (contest 104531), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104531
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 703
-date: "2026-06-30T09:58:31+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 873
+date: "2026-06-30T09:59:45+07:00"
 weight: 104531
 draft: false
 ---
 
 # [2022 SYSU School Contest](https://codeforces.com/contest/104531)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 11m 43s
+Special | 13 problems | 13/13 verified | Difficulty - | 14m 33s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,5 @@ Special | 11 problems | 11/11 verified | Difficulty - | 11m 43s
 | [I](I/) | [Bracket](https://codeforces.com/problemset/problem/104531/I) |  |  |  | 51s | ✓ |
 | [J](J/) | [intervals](https://codeforces.com/problemset/problem/104531/J) |  |  |  | 56s | ✓ |
 | [K](K/) | [Xor-permutation](https://codeforces.com/problemset/problem/104531/K) |  |  |  | 47s | ✓ |
+| [L](L/) | [FYC`s luv letter](https://codeforces.com/problemset/problem/104531/L) |  |  |  | 2m | ✓ |
+| [M](M/) | [Water](https://codeforces.com/problemset/problem/104531/M) |  |  |  | 50s | ✓ |
