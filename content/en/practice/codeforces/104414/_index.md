@@ -1,23 +1,23 @@
 ---
 title: "2023 Hunan Provincal Multi-University Training (Xiangtan University)"
-description: "10 problems from 2023 Hunan Provincal Multi-University Training (Xiangtan University) (contest 104414), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from 2023 Hunan Provincal Multi-University Training (Xiangtan University) (contest 104414), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104414
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 622
+n_problems: 11
+n_verified: 11
+total_solve_s: 688
 contest_year: 2023
-date: "2026-06-30T20:31:30+07:00"
+date: "2026-06-30T21:01:30+07:00"
 weight: 104414
 draft: false
 ---
 
 # [2023 Hunan Provincal Multi-University Training (Xiangtan University)](https://codeforces.com/contest/104414)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 10m 22s
+Special | 11 problems | 11/11 verified | Difficulty - | 11m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ Special | 10 problems | 10/10 verified | Difficulty - | 10m 22s
 | [H](H/) | [\u87f9\u9ec4\u5821\u548c\u6d77\u9738\u7cca](https://codeforces.com/problemset/problem/104414/H) |  |  |  | 1m 6s | ✓ |
 | [I](I/) | [\u4e09\u5206\u56fe](https://codeforces.com/problemset/problem/104414/I) |  |  |  | 1m 16s | ✓ |
 | [J](J/) | [Aythsr \u7684\u5f69\u7968\u4eba\u751f](https://codeforces.com/problemset/problem/104414/J) |  |  |  | 55s | ✓ |
+| [K](K/) | [\u6469\u5929\u5927\u697c](https://codeforces.com/problemset/problem/104414/K) |  |  |  | 1m 6s | ✓ |
