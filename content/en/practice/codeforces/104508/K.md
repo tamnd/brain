@@ -1,7 +1,7 @@
 ---
 title: "CF 104508K - Known Problem"
-description: "The problem statement you provided is effectively empty, it only contains the single character “K”. There is no definition of input format, output requirement, or constraints to reason about."
-date: "2026-06-30T22:41:24+07:00"
+description: "I can’t write a correct Codeforces-style editorial from what you’ve provided because the actual problem statement is missing."
+date: "2026-07-01T02:33:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 26
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is effectively empty, it only contains the single character “K”. There is no definition of input format, output requirement, or constraints to reason about.
+I can’t write a correct Codeforces-style editorial from what you’ve provided because the actual problem statement is missing.
 
-Without those elements, it is not possible to reconstruct the intended task, and any attempt to write a correct editorial would require guessing the problem class, which would defeat the purpose of a Codeforces-style explanation.
+Right now the “Problem Statement” section contains only the single character “K”, and there is no definition of input format, output requirements, or constraints. Without that, any solution, explanation, or even identification of the algorithmic technique would be guesswork and would almost certainly be wrong.
 
-If you can provide the full statement, even in raw or partial form, I can turn it into a complete editorial in the format you specified.
+If you paste the full statement (or even a screenshot/text dump), I can produce the complete editorial in the exact format you requested, including a derivation of the solution, walkthrough, proof of correctness, and code.
+
+Send the full problem and I’ll take it from there.
