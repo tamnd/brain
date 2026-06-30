@@ -1,7 +1,7 @@
 ---
 title: "CF 104508I - IMO Problem"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see: but none of the input/output specification, constraints, or even the task description."
-date: "2026-06-30T12:08:41+07:00"
+description: "The problem data you provided is incomplete. Right now I only see the label “I” with no actual statement, constraints, input/output format, or samples."
+date: "2026-06-30T14:16:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,18 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem data you provided is incomplete. Right now I only see the label “I” with no actual statement, constraints, input/output format, or samples. Writing a correct Codeforces-style editorial without the actual problem would require guessing the task, which would likely produce a wrong or fabricated solution.
 
-Right now I only see:
-
-```
-I
-```
-
-but none of the input/output specification, constraints, or even the task description. Without that, anything I write would be pure guesswork, and for a Codeforces editorial that would almost certainly be wrong in both algorithm and proof.
-
-Paste the full statement (or even just the main description + constraints), and I’ll produce the complete editorial in the exact format you requested, including derivation, edge cases, and full implementation.
+Please paste the full problem statement (or at least the full description, input/output format, and samples). Once you send it, I’ll produce the complete editorial in the exact style you requested.

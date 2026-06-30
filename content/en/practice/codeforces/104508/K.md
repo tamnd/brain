@@ -1,7 +1,7 @@
 ---
 title: "CF 104508K - Known Problem"
-description: "I can’t write a correct editorial from this as-is because the problem content is effectively missing. Right now the statement only shows: - Problem name: Codeforces 104508K - Known Problem - Statement: K - Input / Output: empty That’s not enough to reconstruct what the task is…"
-date: "2026-06-30T12:09:01+07:00"
+description: "I can’t write a meaningful editorial for this yet because the problem information is essentially empty. Right now the only thing provided is the title line “K” with no statement, no input format, and no description of what is being computed."
+date: "2026-06-30T14:16:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -22,14 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial from this as-is because the problem content is effectively missing.
+I can’t write a meaningful editorial for this yet because the problem information is essentially empty.
 
-Right now the statement only shows:
+Right now the only thing provided is the title line “K” with no statement, no input format, and no description of what is being computed. Without that, any attempt to reconstruct a solution would be guesswork, and an editorial would be fiction rather than explanation.
 
-- Problem name: Codeforces 104508K - Known Problem
-- Statement: `K`
-- Input / Output: empty
-
-That’s not enough to reconstruct what the task is, what the constraints are, or what algorithmic technique applies. Any attempt to “fill in” the problem would be guessing, and that would produce a misleading editorial.
-
-If you paste the full problem statement (or even a screenshot / text dump), I’ll write the complete Codeforces-style editorial in the exact format you requested, including brute force reasoning, optimal insight, walkthrough, code, and edge case analysis.
+If you paste the full problem statement (or even just the key parts: what the input represents, what needs to be computed, and constraints), I’ll write the complete Codeforces-style editorial in the exact format you requested, including the brute force reasoning, optimal insight, full walkthrough, and test cases.

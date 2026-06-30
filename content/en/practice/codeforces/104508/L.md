@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now all I have is the title “List of Orders” and an empty statement, so there’s no way to determine what the input/output mean, what structure is being used, or what algorithmic…"
-date: "2026-06-30T12:09:03+07:00"
+description: "I can’t write a correct editorial for Codeforces 104508L - List of Orders from what you’ve provided because the actual problem statement is missing."
+date: "2026-06-30T14:16:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 28
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,12 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+I can’t write a correct editorial for **Codeforces 104508L - List of Orders** from what you’ve provided because the actual problem statement is missing.
 
-Right now all I have is the title “List of Orders” and an empty statement, so there’s no way to determine what the input/output mean, what structure is being used, or what algorithmic technique applies.
+Right now I only see the title and empty sections for input/output, which isn’t enough to reconstruct:
 
-Paste the full problem text (or at least input/output description + constraints + samples), and I’ll produce a complete Codeforces-style editorial in the format you requested.
+- what structure the “orders” have,
+- what transformation or query is required,
+- what constraints drive the solution,
+- or even what the output is supposed to represent.
+
+Given how Codeforces problems are tightly coupled to their statement details, guessing here would almost certainly produce a wrong solution and a misleading editorial.
+
+If you paste the full problem statement (or even just the input/output description and constraints), I’ll produce a complete, Codeforces-style editorial in the exact format you specified, including the algorithm walkthrough, proof sketch, Python solution, worked traces, and edge-case analysis.

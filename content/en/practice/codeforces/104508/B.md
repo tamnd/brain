@@ -1,7 +1,7 @@
 ---
 title: "CF 104508B - Bogosort"
-description: "I’m missing the actual problem statement for “Codeforces 104508B - Bogosort” (your prompt shows only placeholders “B C”). Without the real input/output description, any full editorial would risk inventing rules, which would make it useless or incorrect."
-date: "2026-06-30T12:07:39+07:00"
+description: "The statement you pasted is effectively empty, so there is no way to reconstruct the actual task or derive a correct algorithm."
+date: "2026-06-30T14:14:51+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 36
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 36s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement for “Codeforces 104508B - Bogosort” (your prompt shows only placeholders “B C”).
+The statement you pasted is effectively empty, so there is no way to reconstruct the actual task or derive a correct algorithm.
 
-Without the real input/output description, any full editorial would risk inventing rules, which would make it useless or incorrect.
+“Bogosort” as a title is also not enough to pin down the problem, since Codeforces sometimes uses that as a joke name for very different underlying tasks (checking permutations, expected steps to sort, parity of permutations, etc.). The input/output section is also missing, so any attempt to write a solution would be guesswork.
 
-If you paste the full statement (or even just the core description + constraints + samples), I’ll produce the complete Codeforces-style editorial in the exact format you requested, including algorithm derivation, proofs, code, and tests.
+If you paste the full problem statement (or even just the input format, output format, and constraints), I can produce the complete editorial in the exact style you requested, including the full derivation, algorithm walkthrough, and tested Python solution.

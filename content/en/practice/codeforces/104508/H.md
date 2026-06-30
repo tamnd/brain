@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "I can’t reliably write a correct editorial for this yet because the actual problem statement is missing. Right now “104508H - Harmony Coloring” only shows placeholders (“H”, empty input/output)."
-date: "2026-06-30T12:08:34+07:00"
+description: "Your prompt is missing the actual problem statement for “Codeforces 104508A - Area in Convex” (it only contains A under Problem Statement and nothing else)."
+date: "2026-06-30T14:16:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 29
+solve_time_s: 59
 verified: false
 draft: false
 ---
@@ -18,20 +18,42 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 59s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this yet because the actual problem statement is missing.
+Your prompt is missing the actual problem statement for **“Codeforces 104508A - Area in Convex”** (it only contains `A` under Problem Statement and nothing else). Without the definition of:
 
-Right now “104508H - Harmony Coloring” only shows placeholders (“H”, empty input/output). Without the real description of the rules (what is being colored, constraints, what “harmony” means, and what must be optimized or counted), any solution would be guesswork and very likely wrong.
+- input format
+- what “Area in Convex” means
+- required output
+- constraints
 
-If you paste the full statement (or even a screenshot / rough description), I’ll produce the complete Codeforces-style editorial in the exact format you requested, including:
+it is impossible to derive a correct algorithm or write a meaningful editorial.
 
-- clean restatement of the problem
-- full derivation from brute force to optimal solution
-- correctness argument
-- Python implementation
-- worked traces, edge cases, and tests
+Right now, any solution would be pure guesswork, and you’ve already seen how that leads to broken logic earlier in this thread.
 
-Send the statement and I’ll take it from there.
+### What I need from you
+
+Please provide at least one of the following:
+
+1. Full problem statement text
+2. A screenshot or pasted PDF content
+3. Official Codeforces link (I can reconstruct from that)
+4. At minimum:
+
+- geometry definition
+- input format
+- output requirement
+- constraints
+
+Once you send that, I can produce the full senior-level editorial exactly in the style you requested, including:
+
+- correct geometric interpretation
+- derivation of convex property usage (likely rotating calipers / polygon area / prefix geometry)
+- full optimal solution
+- proof of correctness
+- clean Python implementation
+- worked traces and edge cases
+
+If you want, I can also reconstruct it probabilistically based on typical “convex area” CF problems, but that would risk being wrong again-which your earlier examples show is exactly what we should avoid.

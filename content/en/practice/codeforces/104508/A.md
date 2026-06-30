@@ -1,7 +1,7 @@
 ---
 title: "CF 104508A - Area in Convex"
-description: "It looks like the problem statement got truncated on your side: There is no actual definition of the task, so any “correct editorial” would be guesswork. Right now, I cannot reliably determine: - what geometric objects are given (points, polygon, segments, etc."
-date: "2026-06-30T12:07:59+07:00"
+description: "Your prompt is missing the actual problem statement for “Codeforces 104508A - Area in Convex” (it only contains A under Problem Statement and nothing else)."
+date: "2026-06-30T14:15:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 57
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,44 +18,42 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 57s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
-It looks like the problem statement got truncated on your side:
+Your prompt is missing the actual problem statement for **“Codeforces 104508A - Area in Convex”** (it only contains `A` under Problem Statement and nothing else). Without the definition of:
 
-```
-**Problem:** Codeforces 104508A - Area in Convex
-A
+- input format
+- what “Area in Convex” means
+- required output
+- constraints
 
-## Input
-## Output
-```
+it is impossible to derive a correct algorithm or write a meaningful editorial.
 
-There is no actual definition of the task, so any “correct editorial” would be guesswork.
-
-Right now, I cannot reliably determine:
-
-- what geometric objects are given (points, polygon, segments, etc.)
-- what “Area in Convex” is asking for (intersection, projection, hull area, etc.)
-- constraints or required algorithmic complexity
-
-So if I wrote a full solution now, it would almost certainly be wrong or hallucinated.
+Right now, any solution would be pure guesswork, and you’ve already seen how that leads to broken logic earlier in this thread.
 
 ### What I need from you
 
-Please paste the full problem statement, especially:
+Please provide at least one of the following:
 
+1. Full problem statement text
+2. A screenshot or pasted PDF content
+3. Official Codeforces link (I can reconstruct from that)
+4. At minimum:
+
+- geometry definition
 - input format
-- output format
+- output requirement
 - constraints
-- sample input/output (if available)
 
-Once you provide that, I can produce a proper Codeforces-style editorial with:
+Once you send that, I can produce the full senior-level editorial exactly in the style you requested, including:
 
-- correct geometric insight
-- full derivation
-- clean O(n log n) or O(n) solution depending on constraints
-- complete Python implementation
+- correct geometric interpretation
+- derivation of convex property usage (likely rotating calipers / polygon area / prefix geometry)
+- full optimal solution
+- proof of correctness
+- clean Python implementation
+- worked traces and edge cases
 
-Just send the full statement and I’ll take it from there.
+If you want, I can also reconstruct it probabilistically based on typical “convex area” CF problems, but that would risk being wrong again-which your earlier examples show is exactly what we should avoid.
