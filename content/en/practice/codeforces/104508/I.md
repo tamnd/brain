@@ -1,7 +1,7 @@
 ---
 title: "CF 104508I - IMO Problem"
-description: "The problem statement you provided is incomplete (“I” only), so there isn’t enough information to derive the intended solution, constraints, or even the task type."
-date: "2026-06-30T16:51:41+07:00"
+description: "I can’t write a correct editorial yet because the actual problem content is missing. Right now the statement section is just: with empty Input/Output, so there’s no way to determine what the task is, what the constraints are, or what algorithmic idea is being tested."
+date: "2026-06-30T17:51:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 42
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 42s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is incomplete (“I” only), so there isn’t enough information to derive the intended solution, constraints, or even the task type.
+I can’t write a correct editorial yet because the actual problem content is missing.
 
-To write a correct Codeforces-style editorial, I need at least the full statement including what is given in the input, what must be computed, and any constraints.
+Right now the statement section is just:
 
-Please paste the complete statement for Codeforces 104508I, and I’ll produce the full structured editorial in the format you requested.
+```
+I
+```
+
+with empty Input/Output, so there’s no way to determine what the task is, what the constraints are, or what algorithmic idea is being tested. Any attempt to proceed would be guessing, and that would defeat the point of a Codeforces-style editorial.
+
+Paste the full problem statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you requested, including the walkthrough, proof idea, code, and edge-case analysis.
