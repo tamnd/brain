@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2463 contests, 16872 problems, 9330 verified."
+description: "Codeforces problem solutions with full editorials. 2464 contests, 16875 problems, 9333 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2463 contests, 16872 problems, 9330 verified.**
+**2464 contests, 16875 problems, 9333 verified.**
 
-## Unknown — 492 contests, 3937 problems, 2457 verified
+## Unknown — 493 contests, 3940 problems, 2460 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104563](104563/) | [2016 Google Code Jam Round 1A (GCJ 16 Round 1A)](https://codeforces.com/contest/104563) | 3 | 3/3 | Special | - |
 | [104564](104564/) | [2016 Google Code Jam Round 1B (GCJ 16 Round 1B)](https://codeforces.com/contest/104564) | 3 | 3/3 | Special | - |
 | [104565](104565/) | [2016 Google Code Jam Round 1C (GCJ 16 Round 1C)](https://codeforces.com/contest/104565) | 3 | 3/3 | Special | - |
 | [104566](104566/) | [The 2018 ACM-ICPC Asia Qingdao Regional Contest, Online (The 2nd Universal Cup. Stage 1: Qingdao)](https://codeforces.com/contest/104566) | 11 | 11/11 | ICPC/IOI | - |
