@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2485 contests, 17075 problems, 9441 verified."
+description: "Codeforces problem solutions with full editorials. 2486 contests, 17086 problems, 9441 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2485 contests, 17075 problems, 9441 verified.**
+**2486 contests, 17086 problems, 9441 verified.**
 
-## Unknown — 507 contests, 4075 problems, 2541 verified
+## Unknown — 508 contests, 4086 problems, 2541 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104491](104491/) | [43rd Petrozavodsk Programming Camp (2022 Summer) Day 7. HSE Koresha Contest](https://codeforces.com/contest/104491) | 11 | 0/11 | Special | - |
 | [104511](104511/) | [Lexington Informatics Tournament (LIT) 2023](https://codeforces.com/contest/104511) | 10 | 3/10 | Special | - |
 | [104518](104518/) | [UNICAMP Selection Contest 2023](https://codeforces.com/contest/104518) | 12 | 12/12 | Special | - |
 | [104520](104520/) | [Teamscode Summer 2023 Contest](https://codeforces.com/contest/104520) | 19 | 7/19 | Special | - |
