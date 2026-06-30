@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2523 contests, 17441 problems, 9684 verified."
+description: "Codeforces problem solutions with full editorials. 2524 contests, 17448 problems, 9686 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2523 contests, 17441 problems, 9684 verified.**
+**2524 contests, 17448 problems, 9686 verified.**
 
 ## Unknown — 530 contests, 4312 problems, 2696 verified
 
@@ -1767,7 +1767,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 222 contests, 1734 problems, 854 verified
+## 2023 — 223 contests, 1741 problems, 856 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1903,6 +1903,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104386](104386/) | [TheForces Round #14 (Cool-Forces)](https://codeforces.com/contest/104386) | 7 | 2/7 | Special | - |
 | [104390](104390/) | [The Unofficial Mirror Contest of 19th Thailand Olympiad in Informatics Day 1](https://codeforces.com/contest/104390) | 3 | 2/3 | Special | - |
 | [104391](104391/) | [The Unofficial Mirror Contest of 19th Thailand Olympiad in Informatics Day 2](https://codeforces.com/contest/104391) | 3 | 2/3 | Special | - |
 | [104396](104396/) | [2023 Jiangsu Collegiate Programming Contest, 2023 National Invitational of CCPC (Hunan), The 13th Xiangtan Collegiate Programming Contest](https://codeforces.com/contest/104396) | 12 | 10/12 | Special | - |
