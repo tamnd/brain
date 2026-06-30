@@ -1,22 +1,22 @@
 ---
 title: "Hunan University 2023 the 19th Programming Contest"
-description: "9 problems from Hunan University 2023 the 19th Programming Contest (contest 104400), difficulty -. 8/9 solutions verified against sample I/O."
+description: "11 problems from Hunan University 2023 the 19th Programming Contest (contest 104400), difficulty -. 9/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104400
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 8
-total_solve_s: 582
-date: "2026-06-30T23:03:59+07:00"
+n_problems: 11
+n_verified: 9
+total_solve_s: 700
+date: "2026-06-30T23:04:55+07:00"
 weight: 104400
 draft: false
 ---
 
 # [Hunan University 2023 the 19th Programming Contest](https://codeforces.com/contest/104400)
 
-Special | 9 problems | 8/9 verified | Difficulty - | 9m 42s
+Special | 11 problems | 9/11 verified | Difficulty - | 11m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,5 @@ Special | 9 problems | 8/9 verified | Difficulty - | 9m 42s
 | [G](G/) | [XOR Segments](https://codeforces.com/problemset/problem/104400/G) |  |  |  | 50s | ✓ |
 | [I](I/) | [Infinite recurring Decimal](https://codeforces.com/problemset/problem/104400/I) |  |  |  | 41s | ✓ |
 | [J](J/) | [Sakuyalove and Latin Square](https://codeforces.com/problemset/problem/104400/J) |  |  |  | 1m 1s | ✓ |
+| [K](K/) | [The Demon Jester](https://codeforces.com/problemset/problem/104400/K) |  |  |  | 1m 2s | ✓ |
+| [L](L/) | [Timetable Queries](https://codeforces.com/problemset/problem/104400/L) |  |  |  | 56s |  |
