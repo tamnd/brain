@@ -1,7 +1,7 @@
 ---
 title: "CF 104508E - Er Wei Shu Dian"
-description: "I can’t write a correct, meaningful editorial for that problem yet because the actual problem statement is missing."
-date: "2026-06-30T10:49:27+07:00"
+description: "I can’t write a correct editorial from what you provided because the actual problem statement is missing. Right now I only see the title “Codeforces 104508E - Er Wei Shu Dian”, but no description of the task, input format, or constraints."
+date: "2026-06-30T12:08:04+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,14 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct, meaningful editorial for that problem yet because the actual problem statement is missing.
+I can’t write a correct editorial from what you provided because the actual problem statement is missing.
 
-Right now all we have is the title “104508E - Er Wei Shu Dian”, but no description of what the input represents, what operations are allowed, or what needs to be computed. Without that, any solution would be guesswork, and for Codeforces editorials that would almost certainly be wrong.
+Right now I only see the title “Codeforces 104508E - Er Wei Shu Dian”, but no description of the task, input format, or constraints. Without that, any attempt to derive an algorithm would be guesswork, and for a competitive programming editorial that would be unreliable.
 
-If you paste the full statement (or even a screenshot / raw text), I’ll produce a complete editorial in the exact style you requested: full derivation, brute force → optimization path, correctness argument, edge cases, Python solution, and thorough walkthroughs.
+If you paste the full problem statement (or even a screenshot/text dump), I can immediately produce the complete editorial in the exact style you requested, including:
 
-Send the statement and I’ll take it from there.
+- a proper rephrasing of the problem,
+- constraint-driven reasoning,
+- brute force vs optimal transition,
+- full algorithm walkthrough,
+- code,
+- and edge case analysis with traces.
+
+Send the statement and I’ll continue from there.

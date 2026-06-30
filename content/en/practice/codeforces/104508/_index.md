@@ -8,28 +8,28 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 2
-total_solve_s: 496
+total_solve_s: 507
 contest_year: 2023
-date: "2026-06-30T10:51:09+07:00"
+date: "2026-06-30T12:09:03+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 2/12 verified | Difficulty - | 8m 16s
+Special | 12 problems | 2/12 verified | Difficulty - | 8m 27s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 39s |  |
-| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 38s |  |
+| [A](A/) | [Area in Convex](https://codeforces.com/problemset/problem/104508/A) |  |  |  | 57s |  |
+| [B](B/) | [Bogosort](https://codeforces.com/problemset/problem/104508/B) |  |  |  | 36s |  |
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
-| [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 28s |  |
-| [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 32s |  |
-| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 28s |  |
-| [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 33s |  |
+| [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 30s |  |
+| [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 31s |  |
+| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 30s |  |
+| [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 30s |  |
 | [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 29s |  |
-| [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 36s |  |
+| [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 32s |  |
 | [J](J/) | [Japanese Monsters](https://codeforces.com/problemset/problem/104508/J) |  |  |  | 50s | ✓ |
-| [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 29s |  |
-| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 31s |  |
+| [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 31s |  |
+| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 28s |  |
