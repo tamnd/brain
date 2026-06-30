@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "The statement you provided is effectively missing. “H” alone without the actual description of the input, output, or rules does not contain enough information to reconstruct the problem, so any attempt to write a correct editorial would be guesswork."
-date: "2026-06-30T18:47:59+07:00"
+description: "The problem information provided is not sufficient to reconstruct a correct editorial. Right now we only have the label “H” for Codeforces 104508H - Harmony Coloring, but no actual statement, constraints, input/output format, or samples."
+date: "2026-06-30T19:54:09+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 31
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-The statement you provided is effectively missing. “H” alone without the actual description of the input, output, or rules does not contain enough information to reconstruct the problem, so any attempt to write a correct editorial would be guesswork.
+The problem information provided is not sufficient to reconstruct a correct editorial.
 
-For a Codeforces editorial, the core requirement is understanding what is being computed. Here we do not know whether “Harmony Coloring” refers to a graph coloring constraint, a DP over sequences, or something entirely different. Without that, there is no way to define the state, the transitions, or even the target output.
+Right now we only have the label “H” for Codeforces 104508H - Harmony Coloring, but no actual statement, constraints, input/output format, or samples. Without those, any attempt to derive an algorithm would be guesswork, and for a Codeforces editorial that would be misleading.
 
-If you paste the full problem statement (or at least the input format, output format, and the rules involving the “coloring”), I can produce a complete editorial in the exact structure you requested, including a correct algorithm, proof, implementation, and test coverage.
+If you paste the full problem statement (or even just the core description plus constraints), I can produce a complete editorial in the exact style you requested: derivation from brute force, key insight, formal algorithm walkthrough, correctness argument, and a full implementation with tests.
+
+Send the statement and I’ll take it from there.
