@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2471 contests, 16931 problems, 9372 verified."
+description: "Codeforces problem solutions with full editorials. 2472 contests, 16937 problems, 9373 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2471 contests, 16931 problems, 9372 verified.**
+**2472 contests, 16937 problems, 9373 verified.**
 
 ## Unknown — 499 contests, 3983 problems, 2496 verified
 
@@ -1736,7 +1736,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 201 contests, 1553 problems, 742 verified
+## 2023 — 202 contests, 1559 problems, 743 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1872,6 +1872,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104542](104542/) | [TheForces Round #22 (Interesting-Forces)](https://codeforces.com/contest/104542) | 6 | 1/6 | Special | - |
 | [104544](104544/) | [Aleppo Collegiate Programming Contest 2023 V.2](https://codeforces.com/contest/104544) | 13 | 3/13 | Special | - |
 | [104570](104570/) | [TheForces Round #23 (Balanced-Forces)](https://codeforces.com/contest/104570) | 5 | 0/5 | Special | - |
 | [104573](104573/) | [UTPC Contest 09-08-23 Div. 1](https://codeforces.com/contest/104573) | 8 | 6/8 | Div. 1 | - |
