@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 6
 n_verified: 4
-total_solve_s: 451
-date: "2026-06-30T00:44:37+07:00"
+total_solve_s: 641
+date: "2026-06-30T00:45:46+07:00"
 weight: 104395
 draft: false
 ---
 
 # [Cupertino Informatics Tournament](https://codeforces.com/contest/104395)
 
-Special | 6 problems | 4/6 verified | Difficulty - | 7m 31s
+Special | 6 problems | 4/6 verified | Difficulty - | 10m 41s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -24,5 +24,5 @@ Special | 6 problems | 4/6 verified | Difficulty - | 7m 31s
 | [C](C/) | [String Keyboard](https://codeforces.com/problemset/problem/104395/C) |  |  |  | 2m 33s |  |
 | [D](D/) | [Reds and Blues](https://codeforces.com/problemset/problem/104395/D) |  |  |  | 1m 31s | ✓ |
 | [E](E/) | [Vacation Planning](https://codeforces.com/problemset/problem/104395/E) |  |  |  | 59s | ✓ |
-| [F](F/) | [Cycles](https://codeforces.com/problemset/problem/104395/F) |  |  |  | 32s |  |
+| [F](F/) | [Cycles](https://codeforces.com/problemset/problem/104395/F) |  |  |  | 3m 42s |  |
 | [G](G/) | [Lines](https://codeforces.com/problemset/problem/104395/G) |  |  |  | 59s | ✓ |
