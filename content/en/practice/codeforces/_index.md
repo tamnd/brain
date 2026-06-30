@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2479 contests, 17007 problems, 9403 verified."
+description: "Codeforces problem solutions with full editorials. 2480 contests, 17019 problems, 9415 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2479 contests, 17007 problems, 9403 verified.**
+**2480 contests, 17019 problems, 9415 verified.**
 
-## Unknown — 505 contests, 4053 problems, 2526 verified
+## Unknown — 506 contests, 4065 problems, 2538 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104518](104518/) | [UNICAMP Selection Contest 2023](https://codeforces.com/contest/104518) | 12 | 12/12 | Special | - |
 | [104520](104520/) | [Teamscode Summer 2023 Contest](https://codeforces.com/contest/104520) | 19 | 7/19 | Special | - |
 | [104521](104521/) | [CerealCodes II Novice](https://codeforces.com/contest/104521) | 9 | 2/9 | Special | - |
 | [104522](104522/) | [CerealCodes II Intermediate](https://codeforces.com/contest/104522) | 11 | 2/11 | Special | - |
