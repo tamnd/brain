@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2521 contests, 17434 problems, 9678 verified."
+description: "Codeforces problem solutions with full editorials. 2521 contests, 17435 problems, 9679 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2521 contests, 17434 problems, 9678 verified.**
+**2521 contests, 17435 problems, 9679 verified.**
 
-## Unknown — 530 contests, 4311 problems, 2695 verified
+## Unknown — 530 contests, 4312 problems, 2696 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 7 | 5/7 | Special | - |
 | [104397](104397/) | [The 21st UESTC Programming Contest Final](https://codeforces.com/contest/104397) | 11 | 5/11 | Special | - |
 | [104400](104400/) | [Hunan University 2023 the 19th Programming Contest](https://codeforces.com/contest/104400) | 12 | 12/12 | Special | - |
-| [104412](104412/) | [2023 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/104412) | 13 | 9/13 | ICPC/IOI | - |
+| [104412](104412/) | [2023 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/104412) | 14 | 10/14 | ICPC/IOI | - |
 | [104417](104417/) | [The 13th Shandong ICPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/104417) | 13 | 13/13 | ICPC/IOI | - |
 | [104427](104427/) | [2022-2023 Winter Petrozavodsk Camp, Day 2: GP of ainta](https://codeforces.com/contest/104427) | 11 | 11/11 | Special | - |
 | [104439](104439/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2021](https://codeforces.com/contest/104439) | 0 | 0/0 | Special | - |
