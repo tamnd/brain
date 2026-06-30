@@ -1,7 +1,7 @@
 ---
 title: "CF 104508D - Decision Problem"
-description: "I can’t write a correct editorial for this yet because the actual problem statement for Codeforces 104508D - Decision Problem is missing from your prompt (it only shows “D” with no description, input, or output rules)."
-date: "2026-06-30T14:14:51+07:00"
+description: "I can’t write a correct editorial yet because the actual problem content is missing. Right now I only see the title “Codeforces 104508D - Decision Problem”, but there is no statement, no input/output specification, and no constraints."
+date: "2026-06-30T15:50:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,18 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement for **Codeforces 104508D - Decision Problem** is missing from your prompt (it only shows “D” with no description, input, or output rules).
+I can’t write a correct editorial yet because the actual problem content is missing.
 
-Without the statement, any solution, algorithm, or complexity analysis would be guesswork, and for a Codeforces editorial that would risk being completely wrong.
+Right now I only see the title “Codeforces 104508D - Decision Problem”, but there is no statement, no input/output specification, and no constraints. Without those, any solution would be guesswork and would almost certainly be wrong.
 
-Send either:
-
-- the full problem statement, or
-- a link + pasted text of the statement, or
-- even just the input/output description and constraints
-
-and I’ll produce the complete editorial in the exact format you specified.
+Please paste the full problem statement (or at least the input format, output format, and constraints). Once you send it, I’ll produce a complete Codeforces-style editorial in the format you requested, including the algorithm walkthrough, complexity analysis, and tested reference implementation.
