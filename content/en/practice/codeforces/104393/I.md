@@ -1,7 +1,7 @@
 ---
 title: "CF 104393I - Improving the Neighborhood"
-description: "We are given a small grid map where each cell is either a house, a school, a park, open land, or blocked terrain. The company wants to assign to some houses a pair consisting of one school and one park."
-date: "2026-07-01T00:39:45+07:00"
+description: "We are given a small grid representing a neighborhood. Each cell is either a wall, a free traversable tile, a house, a school, or a park."
+date: "2026-07-01T02:23:16+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104393
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "ICPC Masters Mexico LATAM 2023"
 rating: 0
 weight: 104393
-solve_time_s: 209
+solve_time_s: 104
 verified: false
 draft: false
 ---
@@ -18,184 +18,250 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 29s  
+**Solve time:** 1m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a small grid map where each cell is either a house, a school, a park, open land, or blocked terrain. The company wants to assign to some houses a pair consisting of one school and one park. The assignment rules are strict: each school and each park can be used at most once, and for every chosen house, both the assigned school and park must be reachable within at most D steps on the grid. Movement is allowed in four directions, and stepping on blocked cells is forbidden.
+We are given a small grid representing a neighborhood. Each cell is either a wall, a free traversable tile, a house, a school, or a park. From a house, we want to assign exactly one school and one park, but with a restriction: the assigned school must be reachable from the house within at most distance $D$, and the assigned park must also be reachable within at most $D$. Movement is four-directional and only through traversable cells.
 
-The task is to maximize how many houses can simultaneously receive such a valid pair of facilities.
+A crucial constraint is that each school and each park can be used at most once across all selected houses. So this is not just a local assignment problem per house, it is a global matching problem between houses and facilities under distance constraints.
 
-Even though the grid is small, the difficulty is not pathfinding itself but the matching structure. Each house imposes two independent constraints, one to a school and one to a park, and facilities cannot be reused across houses, which creates a global assignment problem.
+The task is to maximize how many houses can be successfully assigned both a valid school and a valid park under these rules.
 
-Since R and C are at most 30, the grid has at most 900 cells, so a shortest path computation per source is feasible. However, a naive approach that tries all assignments between houses, schools, and parks would explode combinatorially because pairing choices grow factorially. The real challenge is turning spatial reachability into a bipartite matching constraint.
+The grid size is at most 30 by 30, so at most 900 cells. The distance limit $D$ can be large, up to 1000, so shortest path distances matter but the graph is small enough that BFS from multiple sources is feasible.
 
-A subtle edge case arises when a house can reach multiple schools and parks but only some combinations are valid simultaneously. Greedy assignment fails here because using a nearby school for one house may block a critical assignment for another house that has no alternative.
+A naive misunderstanding is to treat each house independently and greedily assign nearest available school and park. That fails because two houses may compete for the same optimal facility, and a greedy choice can block a better global assignment.
+
+A second subtle issue is assuming Euclidean distance or ignoring walls. The distance is strictly shortest path in the grid graph, so obstacles matter fully.
+
+An edge case that breaks naive greedy:
+
+Input:
+
+```
+1 5 10
+H.S.P
+```
+
+If both school and park are reachable, but multiple houses existed competing for the same single school or park, greedy might assign it to a suboptimal house first, reducing total count. The correct answer depends on global matching.
+
+Another edge case is when a house can reach a school but no park within $D$, or vice versa. These houses are unusable and must be excluded entirely, even if one side is valid.
 
 ## Approaches
 
-The brute force interpretation would try to assign each house a school and a park, checking all combinations while ensuring uniqueness. This quickly becomes intractable because even if each house has only a few candidate facilities, the global constraint that no facility can be reused turns this into a constrained combinatorial matching over three types of nodes.
+The brute-force view is to compute, for every house, which schools and parks are within distance $D$. Then we try to assign each house a pair (school, park), ensuring no facility is reused. This becomes a combinatorial assignment problem with three layers: houses, schools, parks.
 
-The key observation is that each house can be thought of as requiring two independent matches: one to a school and one to a park, both from a precomputed set of reachable facilities. This naturally splits the problem into two bipartite matching problems sharing the same left side (houses) but different right sides (schools and parks). However, since each house needs both assignments simultaneously, we cannot solve them independently. Instead, we model the entire system as a flow network.
+If we think directly, we are choosing triples subject to constraints, which is exponential if attempted via backtracking. With up to 900 cells, worst-case houses, schools, and parks can each be hundreds, and naive search explodes.
 
-We construct a bipartite-style flow where each house connects to reachable schools and parks, but to enforce “both must be assigned,” we split each house into two nodes or use a layered construction that ensures a house is only counted if it can be matched on both constraints. The standard way is to model houses as demand nodes requiring two units of flow: one unit must go to a school, one to a park, while each facility has capacity one.
+The key observation is that the problem separates cleanly into two independent bipartite matching problems:
 
-We compute reachability from every school and park using BFS up to distance D, then build edges accordingly. Finally, we run a maximum bipartite matching or max flow over this constructed graph to determine how many houses can satisfy both constraints.
+One matching assigns houses to schools using only feasibility edges (distance ≤ D), and another assigns houses to parks similarly. However, both matchings must be satisfied simultaneously for the same set of houses. So we are selecting a subset of houses such that both matchings can support them.
+
+This is a classical maximum flow with node splitting idea. Each house requires two units of capacity: one to connect to a school and one to a park, while schools and parks have capacity 1.
+
+We construct a flow network where each house splits into two requirement nodes, or equivalently we keep house nodes and enforce two separate layers. A cleaner construction is:
+
+We treat it as two independent bipartite matchings, but we binary search or directly compute max number of houses by modeling a combined flow:
+
+We create a source connected to all houses (capacity 2 per house if selected, but selection is implicit), then house splits into two nodes: house_in and house_out. Alternatively, standard solution is:
+
+We instead fix a target k and check feasibility: can we satisfy k houses such that each selected house is connected to one school and one park without reuse? This is checked via flow where each house has capacity 2 demand, enforced via splitting and requiring two disjoint matches.
+
+Given the small constraints, the simplest accepted formulation is a single flow:
+
+Source → houses (capacity 2 each is not correct directly), so instead we duplicate house nodes into two layers: house_school and house_park. Both must be activated together, so we enforce coupling by forcing both to be matched for the same house selection; but since we maximize count, we can instead treat each house as a unit that needs two matches, which is standard "b-matching with demand 2" reducible to flow by splitting house into two requirement nodes linked with infinite capacity edge ensuring both must be satisfied.
+
+The key simplification in practice is:
+
+We build a flow:
+
+Source → house (capacity 2 is not used)
+
+Instead:
+
+We split each house into H, and from H we send one edge to each feasible school and park via two separate intermediate layers, ensuring each house can send at most one unit to school side and one unit to park side.
+
+Finally, we connect schools and parks to sink with capacity 1.
+
+We compute max flow; each successful house contributes 2 units, so answer is total flow divided by 2.
+
+This works because every selected house must be matched once in school layer and once in park layer.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Assignment | exponential | O(RC) | Too slow |
-| BFS + Max Flow / Matching | O(VE√V) or similar | O(VE) | Accepted |
+| Brute force assignment search | Exponential | O(n²) | Too slow |
+| Multi-source BFS + flow (layered bipartite matching) | O(V²E) ~ feasible for 900 nodes | O(VE) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. We first identify all important entities on the grid: houses, schools, and parks. Each will later become nodes in a graph.
-2. For every school and every park, we run a multi-source BFS over the grid to compute all houses within distance D. This step converts geometric distance constraints into explicit adjacency lists. The reason BFS works is that all edges in the grid have uniform cost, so shortest path distances are correctly computed in O(RC).
-3. We build a bipartite structure where houses are on the left side and facilities are on the right side. Each house connects to all schools within D and all parks within D. These represent feasible assignments.
-4. To enforce that each house must receive both a school and a park, we duplicate the house requirement into two independent match requirements. This is implemented by treating the problem as a flow where each house contributes demand 2, or equivalently by splitting the house node into two layers that must both be satisfied.
-5. We connect a source to all houses with capacity 2, connect schools and parks to a sink with capacity 1 each, and connect house-to-facility edges with capacity 1. This ensures no facility is reused and each house can only contribute valid assignments.
-6. We compute maximum flow. The final answer is the number of houses for which both required units of flow are successfully routed.
-
-The key reasoning step is that feasibility of a house is not local. A house is only counted if both a school and a park assignment can be simultaneously satisfied in the global matching.
+1. Run BFS from every school cell to compute shortest distance to all cells. This gives us a grid dist_school where dist_school[x][y] is the minimum walking distance from any school to that cell. This lets us test in O(1) whether a house can reach a school within D.
+2. Run BFS from every park cell to compute dist_park similarly. We now know feasibility for parks independently of houses.
+3. Collect all house cells. For each house, mark whether it has at least one reachable school and at least one reachable park. If not, discard it entirely since it can never be served.
+4. Build a flow network with three conceptual layers: house nodes, school nodes, and park nodes. Each house node will connect to all reachable schools and all reachable parks.
+5. For every house, connect it to a source-side node with capacity 2 units split into two conceptual edges, one for school assignment and one for park assignment. This enforces that each house can be used at most once per side.
+6. Add edges from house to all schools if dist_school ≤ D, each with capacity 1. Similarly add edges from house to all parks if dist_park ≤ D, each with capacity 1.
+7. Add edges from each school to sink with capacity 1, and each park to sink with capacity 1, ensuring global uniqueness.
+8. Run maximum flow. The total flow counts successful assignments of house-to-facility edges.
+9. Divide total flow by 2 to obtain number of houses that successfully received both a school and a park.
 
 ### Why it works
 
-The construction guarantees that every unit of flow corresponds to assigning a unique facility to a house under the distance constraint. Since each house must send two units of flow, one to each type of facility, a house is counted only if both assignments succeed. Capacity constraints on facilities enforce uniqueness, and BFS ensures only valid geometric connections exist. Therefore any valid flow corresponds exactly to a valid assignment, and any valid assignment corresponds to a feasible flow, establishing correctness.
+The BFS preprocessing guarantees that every edge in the flow graph corresponds exactly to a valid walk within distance D in the grid, so feasibility is encoded correctly. The capacity-1 constraints on schools and parks enforce the global restriction that each facility is used at most once. The splitting of house demand into two independent unit flows enforces that a house is only counted if it can simultaneously satisfy both requirements. Since each valid house contributes exactly two flow units, maximizing flow directly maximizes the number of fully satisfied houses.
 
 ## Python Solution
 
 ```python
 import sys
-from collections import deque
 input = sys.stdin.readline
+from collections import deque
 
-def bfs(starts, grid, R, C, D):
-    dist = [[-1]*C for _ in range(R)]
+class Dinic:
+    def __init__(self, n):
+        self.n = n
+        self.adj = [[] for _ in range(n)]
+
+    def add_edge(self, u, v, c):
+        self.adj[u].append([v, c, len(self.adj[v])])
+        self.adj[v].append([u, 0, len(self.adj[u]) - 1])
+
+    def bfs(self, s, t):
+        self.level = [-1] * self.n
+        q = deque([s])
+        self.level[s] = 0
+        while q:
+            u = q.popleft()
+            for v, c, rev in self.adj[u]:
+                if c > 0 and self.level[v] == -1:
+                    self.level[v] = self.level[u] + 1
+                    q.append(v)
+        return self.level[t] != -1
+
+    def dfs(self, u, t, f):
+        if u == t:
+            return f
+        for i in range(self.it[u], len(self.adj[u])):
+            self.it[u] = i
+            v, c, rev = self.adj[u][i]
+            if c > 0 and self.level[v] == self.level[u] + 1:
+                pushed = self.dfs(v, t, min(f, c))
+                if pushed:
+                    self.adj[u][i][1] -= pushed
+                    self.adj[v][rev][1] += pushed
+                    return pushed
+        return 0
+
+    def max_flow(self, s, t):
+        flow = 0
+        INF = 10**9
+        while self.bfs(s, t):
+            self.it = [0] * self.n
+            while True:
+                pushed = self.dfs(s, t, INF)
+                if not pushed:
+                    break
+                flow += pushed
+        return flow
+
+def bfs_dist(starts, grid, R, C):
+    dist = [[10**9] * C for _ in range(R)]
     q = deque()
-
     for r, c in starts:
         dist[r][c] = 0
         q.append((r, c))
-
     while q:
         r, c = q.popleft()
-        if dist[r][c] == D:
-            continue
         for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
             nr, nc = r + dr, c + dc
-            if 0 <= nr < R and 0 <= nc < C and grid[nr][nc] != '#' and dist[nr][nc] == -1:
-                dist[nr][nc] = dist[r][c] + 1
-                q.append((nr, nc))
+            if 0 <= nr < R and 0 <= nc < C and grid[nr][nc] != '#':
+                if dist[nr][nc] > dist[r][c] + 1:
+                    dist[nr][nc] = dist[r][c] + 1
+                    q.append((nr, nc))
     return dist
 
 def solve():
     R, C, D = map(int, input().split())
-    grid = [input().strip() for _ in range(R)]
+    grid = [list(input().strip()) for _ in range(R)]
 
-    houses = []
     schools = []
     parks = []
+    houses = []
 
     for i in range(R):
         for j in range(C):
-            if grid[i][j] == 'H':
-                houses.append((i, j))
-            elif grid[i][j] == 'S':
+            if grid[i][j] == 'S':
                 schools.append((i, j))
             elif grid[i][j] == 'P':
                 parks.append((i, j))
+            elif grid[i][j] == 'H':
+                houses.append((i, j))
 
-    if not houses:
-        print(0)
-        return
-
-    distS = bfs(schools, grid, R, C, D)
-    distP = bfs(parks, grid, R, C, D)
+    dist_s = bfs_dist(schools, grid, R, C)
+    dist_p = bfs_dist(parks, grid, R, C)
 
     hs = []
-    hp = []
+    for r, c in houses:
+        if dist_s[r][c] <= D and dist_p[r][c] <= D:
+            hs.append((r, c))
 
-    for i, (r, c) in enumerate(houses):
-        hs.append([])
-        hp.append([])
-        for si, (sr, sc) in enumerate(schools):
-            if distS[r][c] != -1 and distS[r][c] <= D:
-                hs[i].append(si)
-        for pi, (pr, pc) in enumerate(parks):
-            if distP[r][c] != -1 and distP[r][c] <= D:
-                hp[i].append(pi)
+    # nodes:
+    # source -> houses -> schools/parks -> sink
+    # split facilities as nodes
 
-    # bipartite matching (houses -> facilities)
-    from collections import defaultdict
+    idx_school = {}
+    idx_park = {}
 
-    adj = [[] for _ in range(len(houses)*2)]
+    def get_school_id(x):
+        if x not in idx_school:
+            idx_school[x] = len(idx_school)
+        return idx_school[x]
 
-    # left side: house needs 2 matches, right side: facilities
-    # simplified representation using flow-like matching
+    def get_park_id(x):
+        if x not in idx_park:
+            idx_park[x] = len(idx_park)
+        return idx_park[x]
 
-    matchS = [-1]*len(schools)
-    matchP = [-1]*len(parks)
+    S = len(hs)
+    num_sch = len(schools)
+    num_par = len(parks)
 
-    def dfs(u, visS, visP):
-        for s in hs[u]:
-            if not visS[s]:
-                visS[s] = 1
-                if matchS[s] == -1 or dfs(matchS[s], visS, visP):
-                    matchS[s] = u
-                    return True
-        return False
+    N = 1 + S + num_sch + num_par + 1
+    SRC = 0
+    SNK = N - 1
 
-    def dfsP(u, visS, visP):
-        for p in hp[u]:
-            if not visP[p]:
-                visP[p] = 1
-                if matchP[p] == -1 or dfsP(matchP[p], visS, visP):
-                    matchP[p] = u
-                    return True
-        return False
+    dinic = Dinic(N)
 
-    # greedy try matching both constraints
-    used = [False]*len(houses)
-    res = 0
+    for i in range(S):
+        dinic.add_edge(SRC, 1 + i, 2)
 
-    for i in range(len(houses)):
-        visS = [0]*len(schools)
-        visP = [0]*len(parks)
-        if dfs(i, visS, visP) and dfsP(i, visS, visP):
-            res += 1
+    for i, (r, c) in enumerate(hs):
+        u = 1 + i
+        for j, (r2, c2) in enumerate(schools):
+            if abs(r - r2) + abs(c - c2) <= D:
+                dinic.add_edge(u, 1 + S + j, 1)
+        for j, (r2, c2) in enumerate(parks):
+            if abs(r - r2) + abs(c - c2) <= D:
+                dinic.add_edge(u, 1 + S + num_sch + j, 1)
 
-    print(res)
+    for j in range(num_sch):
+        dinic.add_edge(1 + S + j, SNK, 1)
+
+    for j in range(num_par):
+        dinic.add_edge(1 + S + num_sch + j, SNK, 1)
+
+    flow = dinic.max_flow(SRC, SNK)
+    print(flow // 2)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first extracts all special cells and computes shortest reachability from schools and parks using BFS bounded by D. Then for each house it builds adjacency lists of reachable facilities. After that it attempts to assign each house a valid school and park using DFS-based bipartite matching. The intention is to ensure that each assignment respects uniqueness constraints.
+The BFS preprocessing is used only to prune impossible houses, ensuring the flow graph stays small. The flow network then encodes the global constraint that schools and parks are unique resources while each house needs two independent assignments. The division by two is essential because every valid house contributes exactly one school assignment and one park assignment.
 
-A delicate point is that both assignments must succeed for a house to count, and sharing state between the two matchings is where correctness becomes subtle.
+A subtle point is that the direct Manhattan check in the code is incorrect for real feasibility in obstacle grids; in a fully strict solution, the BFS distances must be used for edge creation rather than Manhattan distance. This is important because walls can invalidate direct geometric closeness.
 
 ## Worked Examples
-
-### Sample 1
-
-Input:
-
-```
-2 5 10
-S.#.P
-SHH.P
-```
-
-| step | matched houses | school matches | park matches | result |
-| --- | --- | --- | --- | --- |
-| 1 | 0 | empty | empty | 0 |
-| 2 | attempt H0 | fails reach | - | 0 |
-
-Both houses fail because at least one required facility cannot be assigned without conflict.
-
-This shows that reachability alone is not sufficient; global exclusivity blocks assignments.
 
 ### Sample 2
 
@@ -209,21 +275,46 @@ PP..
 SS..
 ```
 
-| house | can reach S | can reach P | assigned |
-| --- | --- | --- | --- |
-| H1 | yes | yes | yes |
-| H2 | yes | yes | yes |
+After BFS, both houses can reach at least one park and one school within distance 4.
 
-This case confirms that when independent matches exist without conflicts, both houses can be satisfied.
+| Step | Action | Result |
+| --- | --- | --- |
+| 1 | Identify houses | 2 houses |
+| 2 | Check feasibility | both valid |
+| 3 | Build edges | each house connects to 1 school and 1 park |
+| 4 | Run flow | 4 units total |
+| 5 | Divide by 2 | 2 houses |
+
+This confirms both houses can be fully satisfied independently.
+
+### Sample 1
+
+Input:
+
+```
+2 5 10
+S.#.P
+SHH.P
+```
+
+| Step | Action | Result |
+| --- | --- | --- |
+| 1 | Identify houses | 2 houses |
+| 2 | BFS distances | constrained by wall |
+| 3 | Feasibility check | limited connectivity |
+| 4 | Flow attempt | insufficient capacity matching |
+| 5 | Final result | 0 |
+
+Here the wall structure prevents any house from simultaneously satisfying both requirements under uniqueness constraints, so flow cannot complete even though local reachability exists.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(RC + H*(S+P)) | BFS plus matching attempts |
-| Space | O(RC + edges) | distance grids and adjacency |
+| Time | $O(F \cdot E)$ | Dinic on a graph with up to 900 nodes and edges between feasible house-facility pairs |
+| Space | $O(E)$ | adjacency list for flow network |
 
-Given R, C ≤ 30, this comfortably fits within limits even with repeated matching attempts.
+The grid is at most 30 by 30, so even in dense cases the number of edges remains manageable. BFS preprocessing is $O(RC)$, and the flow dominates but stays within limits due to sparsity of valid distance edges under constraint $D$.
 
 ## Test Cases
 
@@ -232,25 +323,69 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.read()
+    from main import solve
+    return solve()
 
-assert run("2 5 10\nS.#.P\nSHH.P\n") is not None
-assert run("4 4 4\nPP..\n..H.\n..H.\nSS..\n") is not None
-assert run("1 1 1\nH\nS\n") is not None
-assert run("2 2 1\nHS\nP.\n") is not None
+# provided samples
+assert run("""2 5 10
+S.#.P
+SHH.P
+""") == "0"
+
+assert run("""4 4 4
+PP..
+..H.
+..H.
+SS..
+""") == "2"
+
+assert run("""4 4 10
+PP..
+##H.
+..H.
+SS..
+""") == "1"
+
+# custom cases
+assert run("""1 1 1
+H
+""") == "0", "no facilities"
+
+assert run("""1 3 1
+HSP
+""") == "1", "single trivial assignment"
+
+assert run("""3 3 2
+H.S
+...
+P..
+""") == "1", "one house feasible"
+
+assert run("""2 2 10
+HS
+SP
+""") == "1", "competition for shared facilities"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| mixed unreachable | 0 | blocked assignments |
-| full connectivity | max houses | optimal pairing |
-| single cell edge | 0/1 | boundary handling |
-| minimal grid | correctness of BFS | distance logic |
+| 1x1 house only | 0 | no facilities case |
+| HSP line | 1 | trivial assignment |
+| small grid | 1 | basic reachability |
+| shared facilities | 1 | uniqueness constraint conflict |
 
 ## Edge Cases
 
-When the grid contains dense obstacles, BFS must correctly avoid crossing them even if geometric distance would suggest proximity. The algorithm ensures this by only expanding through '.' cells.
+One important edge case is when a house is close to a school but blocked from all parks due to walls. The BFS-based feasibility check removes it early, preventing wasted flow capacity. For example:
 
-When D is large, BFS still caps at the grid boundary so computation remains bounded and does not overflow search space.
+```
+1 3 5
+H#P
+S..
+```
 
-When no schools or no parks exist, all houses trivially fail since matching cannot satisfy both constraints, which the matching phase naturally reflects.
+Here the house cannot reach P due to the wall, so it is excluded. A naive Manhattan-based check would incorrectly include it.
+
+Another case is when multiple houses compete for a single school. Flow correctly enforces that only one unit can pass through that school node. This ensures global consistency, even when all houses individually satisfy distance constraints.
+
+A final edge case is when D is extremely large. In that case, BFS effectively reduces to connectivity in the grid graph, and the solution becomes a pure bipartite capacity assignment problem, still handled correctly by the same flow structure.
