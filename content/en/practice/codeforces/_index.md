@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2467 contests, 16902 problems, 9353 verified."
+description: "Codeforces problem solutions with full editorials. 2468 contests, 16905 problems, 9356 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2467 contests, 16902 problems, 9353 verified.**
+**2468 contests, 16905 problems, 9356 verified.**
 
-## Unknown — 496 contests, 3967 problems, 2480 verified
+## Unknown — 497 contests, 3970 problems, 2483 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104551](104551/) | [2015 Google Code Jam Round 1C (GCJ 15 Round 1C)](https://codeforces.com/contest/104551) | 3 | 3/3 | Special | - |
 | [104555](104555/) | [2023-2024 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/104555) | 13 | 9/13 | ICPC/IOI | - |
 | [104560](104560/) | [2015 Google Code Jam World Finals (GCJ 15 World Finals)](https://codeforces.com/contest/104560) | 6 | 6/6 | Special | - |
 | [104562](104562/) | [2016 Google Code Jam Qualification Round (GCJ 16 Qualification)](https://codeforces.com/contest/104562) | 8 | 5/8 | Special | - |
