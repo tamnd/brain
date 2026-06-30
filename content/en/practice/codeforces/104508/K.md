@@ -1,7 +1,7 @@
 ---
 title: "CF 104508K - Known Problem"
-description: "I can’t write a correct Codeforces editorial from this as-is because the actual problem content is missing. Right now the statement only shows: with empty input/output sections."
-date: "2026-06-30T17:51:17+07:00"
+description: "The problem statement you provided is incomplete, so there isn’t enough information to derive a correct algorithm or write a meaningful Codeforces-style editorial."
+date: "2026-06-30T18:48:05+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 28
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,20 +18,27 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial from this as-is because the actual problem content is missing.
+The problem statement you provided is incomplete, so there isn’t enough information to derive a correct algorithm or write a meaningful Codeforces-style editorial.
 
-Right now the statement only shows:
+Right now, the only “statement” content is a single character:
 
 ```
 K
 ```
 
-with empty input/output sections. That doesn’t contain enough information to reconstruct what the task is asking, so any “solution” would be guesswork and would very likely be wrong.
+Without the actual description of what “K” refers to, there is no way to determine:
 
-If you paste the full problem statement (or even just the key parts: what the input describes, what needs to be computed, and constraints), I’ll produce a complete editorial in the exact style you requested, including the full algorithm walkthrough, proof sketch, code, and edge-case analysis.
+- what the input format is,
+- what transformation or computation is required,
+- what constraints we must optimize for,
+- or even what kind of problem it is (graph, DP, math, strings, etc.).
 
-Send the statement and I’ll continue from there.
+Any attempt to write a full editorial here would require inventing a problem, which would make the explanation useless for solving the real one.
+
+If you paste the full statement (or even a screenshot / PDF text), I can produce exactly the kind of deep, structured editorial you asked for, including:
+
+a correct intuition path, brute force to optimal transition, formal algorithm walkthrough, and clean implementation.

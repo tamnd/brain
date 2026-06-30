@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "Your prompt is missing the actual problem statement for “Codeforces 104508A - Area in Convex” (it only contains A under Problem Statement and nothing else)."
-date: "2026-06-30T14:16:37+07:00"
+description: "The statement you provided is effectively missing. “H” alone without the actual description of the input, output, or rules does not contain enough information to reconstruct the problem, so any attempt to write a correct editorial would be guesswork."
+date: "2026-06-30T18:47:59+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 59
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,42 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 59s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-Your prompt is missing the actual problem statement for **“Codeforces 104508A - Area in Convex”** (it only contains `A` under Problem Statement and nothing else). Without the definition of:
+The statement you provided is effectively missing. “H” alone without the actual description of the input, output, or rules does not contain enough information to reconstruct the problem, so any attempt to write a correct editorial would be guesswork.
 
-- input format
-- what “Area in Convex” means
-- required output
-- constraints
+For a Codeforces editorial, the core requirement is understanding what is being computed. Here we do not know whether “Harmony Coloring” refers to a graph coloring constraint, a DP over sequences, or something entirely different. Without that, there is no way to define the state, the transitions, or even the target output.
 
-it is impossible to derive a correct algorithm or write a meaningful editorial.
-
-Right now, any solution would be pure guesswork, and you’ve already seen how that leads to broken logic earlier in this thread.
-
-### What I need from you
-
-Please provide at least one of the following:
-
-1. Full problem statement text
-2. A screenshot or pasted PDF content
-3. Official Codeforces link (I can reconstruct from that)
-4. At minimum:
-
-- geometry definition
-- input format
-- output requirement
-- constraints
-
-Once you send that, I can produce the full senior-level editorial exactly in the style you requested, including:
-
-- correct geometric interpretation
-- derivation of convex property usage (likely rotating calipers / polygon area / prefix geometry)
-- full optimal solution
-- proof of correctness
-- clean Python implementation
-- worked traces and edge cases
-
-If you want, I can also reconstruct it probabilistically based on typical “convex area” CF problems, but that would risk being wrong again-which your earlier examples show is exactly what we should avoid.
+If you paste the full problem statement (or at least the input format, output format, and the rules involving the “coloring”), I can produce a complete editorial in the exact structure you requested, including a correct algorithm, proof, implementation, and test coverage.
