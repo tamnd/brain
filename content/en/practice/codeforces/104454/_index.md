@@ -1,22 +1,22 @@
 ---
 title: "ICPC Central Russia Regional Contest, 2021"
-description: "14 problems from ICPC Central Russia Regional Contest, 2021 (contest 104454), difficulty -. 5/14 solutions verified against sample I/O."
+description: "15 problems from ICPC Central Russia Regional Contest, 2021 (contest 104454), difficulty -. 6/15 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104454
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 14
-n_verified: 5
-total_solve_s: 1274
-date: "2026-06-30T14:30:35+07:00"
+n_problems: 15
+n_verified: 6
+total_solve_s: 1378
+date: "2026-06-30T14:30:46+07:00"
 weight: 104454
 draft: false
 ---
 
 # [ICPC Central Russia Regional Contest, 2021](https://codeforces.com/contest/104454)
 
-ICPC/IOI | 14 problems | 5/14 verified | Difficulty - | 21m 14s
+ICPC/IOI | 15 problems | 6/15 verified | Difficulty - | 22m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -34,3 +34,4 @@ ICPC/IOI | 14 problems | 5/14 verified | Difficulty - | 21m 14s
 | [L](L/) | [Permutations and sums](https://codeforces.com/problemset/problem/104454/L) |  |  |  | 1m 26s | ✓ |
 | [M](M/) | [Three cushion carom](https://codeforces.com/problemset/problem/104454/M) |  |  |  | 1m 52s |  |
 | [N](N/) | [Just another array problem](https://codeforces.com/problemset/problem/104454/N) |  |  |  | 1m 11s | ✓ |
+| [O](O/) | [Sea Battle](https://codeforces.com/problemset/problem/104454/O) |  |  |  | 1m 44s | ✓ |

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2496 contests, 17201 problems, 9507 verified."
+description: "Codeforces problem solutions with full editorials. 2497 contests, 17216 problems, 9513 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2496 contests, 17201 problems, 9507 verified.**
+**2497 contests, 17216 problems, 9513 verified.**
 
-## Unknown — 515 contests, 4175 problems, 2598 verified
+## Unknown — 516 contests, 4190 problems, 2604 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104454](104454/) | [ICPC Central Russia Regional Contest, 2021](https://codeforces.com/contest/104454) | 15 | 6/15 | ICPC/IOI | - |
 | [104459](104459/) | [The 10th Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/104459) | 13 | 11/13 | Special | - |
 | [104460](104460/) | [The 2019 ICPC China Shaanxi Provincial Programming Contest](https://codeforces.com/contest/104460) | 12 | 9/12 | ICPC/IOI | - |
 | [104461](104461/) | [The 14th Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple](https://codeforces.com/contest/104461) | 13 | 0/13 | Special | - |
