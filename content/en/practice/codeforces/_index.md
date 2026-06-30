@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2512 contests, 17343 problems, 9606 verified."
+description: "Codeforces problem solutions with full editorials. 2513 contests, 17353 problems, 9616 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2512 contests, 17343 problems, 9606 verified.**
+**2513 contests, 17353 problems, 9616 verified.**
 
 ## Unknown — 525 contests, 4258 problems, 2655 verified
 
@@ -1762,7 +1762,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 216 contests, 1690 problems, 817 verified
+## 2023 — 217 contests, 1700 problems, 827 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1898,6 +1898,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104415](104415/) | [IME++ Starters Try-outs 2023](https://codeforces.com/contest/104415) | 10 | 10/10 | Special | - |
 | [104420](104420/) | [TheForces Round #16 (2^4-Forces)](https://codeforces.com/contest/104420) | 5 | 1/5 | Special | - |
 | [104426](104426/) | [Syrian Private Universities Collegiate Programming Contest 2023](https://codeforces.com/contest/104426) | 14 | 5/14 | Special | - |
 | [104432](104432/) | [TheForces Round #17 (AOE-Forces)](https://codeforces.com/contest/104432) | 6 | 1/6 | Special | - |

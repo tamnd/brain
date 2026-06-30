@@ -1,23 +1,23 @@
 ---
 title: "IME++ Starters Try-outs 2023"
-description: "9 problems from IME++ Starters Try-outs 2023 (contest 104415), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from IME++ Starters Try-outs 2023 (contest 104415), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104415
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 456
+n_problems: 10
+n_verified: 10
+total_solve_s: 504
 contest_year: 2023
-date: "2026-06-30T19:52:25+07:00"
+date: "2026-06-30T19:52:47+07:00"
 weight: 104415
 draft: false
 ---
 
 # [IME++ Starters Try-outs 2023](https://codeforces.com/contest/104415)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 7m 36s
+Special | 10 problems | 10/10 verified | Difficulty - | 8m 24s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 9 problems | 9/9 verified | Difficulty - | 7m 36s
 | [G](G/) | [Graphical Nightmare](https://codeforces.com/problemset/problem/104415/G) |  |  |  | 52s | ✓ |
 | [H](H/) | [How do you spell this?](https://codeforces.com/problemset/problem/104415/H) |  |  |  | 1m 1s | ✓ |
 | [I](I/) | [Impressing the Captain](https://codeforces.com/problemset/problem/104415/I) |  |  |  | 43s | ✓ |
+| [J](J/) | [Jagged Roads](https://codeforces.com/problemset/problem/104415/J) |  |  |  | 48s | ✓ |
