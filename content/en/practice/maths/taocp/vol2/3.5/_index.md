@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.5: What Is a Random Sequence?"
-description: "Section 3.5 exercises: 41/44 solved."
+description: "Section 3.5 exercises: 44/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.5. What Is a Random Sequence?
 
-Exercises from [TAOCP Volume 1](../) Section 3.5: 41/44 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.5: 44/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -38,7 +38,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.5: 41/44 solved.
 | [18](18.md) | &#9654; [*HM22*] | hm-medium | solved | 1m58s |
 | [19](19.md) |  [*HM35*] | hm-hard | verified | 2m06s |
 | [20](20.md) | &#9654; [*HM36*] | hm-project | solved | 2m11s |
-| 21 |  [*HM40*] | hm-project | - | - |
+| [21](21.md) |  [*HM40*] | hm-project | solved | 1m52s |
 | [22](22.md) | &#9654; [*HM30*] | hm-hard | verified | 1m51s |
 | [23](23.md) |  [*M32*] | math-hard | verified | 1m50s |
 | [24](24.md) | &#9654; [*M35*] | math-hard | verified | 2m12s |
@@ -47,8 +47,8 @@ Exercises from [TAOCP Volume 1](../) Section 3.5: 41/44 solved.
 | [27](27.md) |  [**] |  | solved | 9m49s |
 | [28](28.md) | &#9654; [*HM21*] | hm-medium | solved | 6m26s |
 | [29](29.md) |  [*HM34*] | hm-hard | solved | 2m29s |
-| 30 | &#9654; [*M39*] | math-project | - | - |
-| 31 |  [*M30*] | math-hard | - | - |
+| [30](30.md) | &#9654; [*M39*] | math-project | solved | 5m39s |
+| [31](31.md) |  [*M30*] | math-hard | solved | 3m08s |
 | [32](32.md) |  [*M24*] | math-medium | solved | 14m06s |
 | [33](33.md) |  [*HM22*] | hm-medium | verified | 2m37s |
 | [34](34.md) | &#9654; [*M25*] | math-medium | verified | 2m |

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2430 contests, 16657 problems, 9145 verified."
+description: "Codeforces problem solutions with full editorials. 2526 contests, 17474 problems, 9704 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,76 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2430 contests, 16657 problems, 9145 verified.**
+**2526 contests, 17474 problems, 9704 verified.**
 
-## Unknown — 467 contests, 3777 problems, 2308 verified
+## Unknown — 531 contests, 4326 problems, 2702 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104381](104381/) | [The Andover Computing Open (TACO) 2022](https://codeforces.com/contest/104381) | 14 | 6/14 | Special | - |
+| [104393](104393/) | [ICPC Masters Mexico LATAM 2023](https://codeforces.com/contest/104393) | 10 | 9/10 | ICPC/IOI | - |
+| [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 7 | 5/7 | Special | - |
+| [104397](104397/) | [The 21st UESTC Programming Contest Final](https://codeforces.com/contest/104397) | 11 | 5/11 | Special | - |
+| [104400](104400/) | [Hunan University 2023 the 19th Programming Contest](https://codeforces.com/contest/104400) | 12 | 12/12 | Special | - |
+| [104412](104412/) | [2023 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/104412) | 14 | 10/14 | ICPC/IOI | - |
+| [104417](104417/) | [The 13th Shandong ICPC Provincial Collegiate Programming Contest](https://codeforces.com/contest/104417) | 13 | 13/13 | ICPC/IOI | - |
+| [104427](104427/) | [2022-2023 Winter Petrozavodsk Camp, Day 2: GP of ainta](https://codeforces.com/contest/104427) | 11 | 11/11 | Special | - |
+| [104439](104439/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2021](https://codeforces.com/contest/104439) | 0 | 0/0 | Special | - |
+| [104440](104440/) | [Пригласительный этап ВсОШ по информатике, Сириус, 2022](https://codeforces.com/contest/104440) | 0 | 0/0 | Special | - |
+| [104441](104441/) | [Invitational stage of the All-Russian Olympiad in Informatics for schoolchildren](https://codeforces.com/contest/104441) | 0 | 0/0 | Special | - |
+| [104442](104442/) | [AdaByron Regional Madrid 2023](https://codeforces.com/contest/104442) | 11 | 10/11 | Special | - |
+| [104451](104451/) | [Первенство Свердловской области по программированию среди начинающих 2023](https://codeforces.com/contest/104451) | 7 | 3/7 | Special | - |
+| [104452](104452/) | [ICPC Central Russia Regional Contest - 2020](https://codeforces.com/contest/104452) | 14 | 5/14 | ICPC/IOI | - |
+| [104453](104453/) | [ICPC Central Russia Regional Qualyfing Round, 2021](https://codeforces.com/contest/104453) | 12 | 9/12 | ICPC/IOI | - |
+| [104454](104454/) | [ICPC Central Russia Regional Contest, 2021](https://codeforces.com/contest/104454) | 15 | 6/15 | ICPC/IOI | - |
+| [104459](104459/) | [The 10th Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/104459) | 13 | 11/13 | Special | - |
+| [104460](104460/) | [The 2019 ICPC China Shaanxi Provincial Programming Contest](https://codeforces.com/contest/104460) | 12 | 9/12 | ICPC/IOI | - |
+| [104461](104461/) | [The 14th Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple](https://codeforces.com/contest/104461) | 13 | 0/13 | Special | - |
+| [104466](104466/) | [2023-2024 ICPC German Collegiate Programming Contest (GCPC 2023)](https://codeforces.com/contest/104466) | 13 | 9/13 | ICPC/IOI | - |
+| [104467](104467/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2022](https://codeforces.com/contest/104467) | 12 | 5/12 | Special | - |
+| [104479](104479/) | [Adam Gąsienica‑Samek Contest 1](https://codeforces.com/contest/104479) | 12 | 12/12 | Special | - |
+| [104487](104487/) | [Tishreen + SVU CPC 2023](https://codeforces.com/contest/104487) | 14 | 11/14 | Special | - |
+| [104491](104491/) | [43rd Petrozavodsk Programming Camp (2022 Summer) Day 7. HSE Koresha Contest](https://codeforces.com/contest/104491) | 11 | 0/11 | Special | - |
+| [104511](104511/) | [Lexington Informatics Tournament (LIT) 2023](https://codeforces.com/contest/104511) | 10 | 3/10 | Special | - |
+| [104518](104518/) | [UNICAMP Selection Contest 2023](https://codeforces.com/contest/104518) | 12 | 12/12 | Special | - |
+| [104520](104520/) | [Teamscode Summer 2023 Contest](https://codeforces.com/contest/104520) | 19 | 7/19 | Special | - |
+| [104521](104521/) | [CerealCodes II Novice](https://codeforces.com/contest/104521) | 9 | 2/9 | Special | - |
+| [104522](104522/) | [CerealCodes II Intermediate](https://codeforces.com/contest/104522) | 11 | 2/11 | Special | - |
+| [104523](104523/) | [CerealCodes II Advanced](https://codeforces.com/contest/104523) | 10 | 2/10 | Special | - |
+| [104531](104531/) | [2022 SYSU School Contest](https://codeforces.com/contest/104531) | 13 | 13/13 | Special | - |
+| [104536](104536/) | [SashaT9 Contest 1](https://codeforces.com/contest/104536) | 8 | 4/8 | Special | - |
+| [104545](104545/) | [VIII MaratonUSP Freshman Contest](https://codeforces.com/contest/104545) | 10 | 10/10 | Special | - |
+| [104550](104550/) | [2015 Google Code Jam Round 1A (GCJ 15 Round 1A)](https://codeforces.com/contest/104550) | 3 | 3/3 | Special | - |
+| [104551](104551/) | [2015 Google Code Jam Round 1C (GCJ 15 Round 1C)](https://codeforces.com/contest/104551) | 3 | 3/3 | Special | - |
+| [104555](104555/) | [2023-2024 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/104555) | 13 | 9/13 | ICPC/IOI | - |
+| [104560](104560/) | [2015 Google Code Jam World Finals (GCJ 15 World Finals)](https://codeforces.com/contest/104560) | 6 | 6/6 | Special | - |
+| [104562](104562/) | [2016 Google Code Jam Qualification Round (GCJ 16 Qualification)](https://codeforces.com/contest/104562) | 8 | 5/8 | Special | - |
+| [104563](104563/) | [2016 Google Code Jam Round 1A (GCJ 16 Round 1A)](https://codeforces.com/contest/104563) | 3 | 3/3 | Special | - |
+| [104564](104564/) | [2016 Google Code Jam Round 1B (GCJ 16 Round 1B)](https://codeforces.com/contest/104564) | 3 | 3/3 | Special | - |
+| [104565](104565/) | [2016 Google Code Jam Round 1C (GCJ 16 Round 1C)](https://codeforces.com/contest/104565) | 3 | 3/3 | Special | - |
+| [104566](104566/) | [The 2018 ACM-ICPC Asia Qingdao Regional Contest, Online (The 2nd Universal Cup. Stage 1: Qingdao)](https://codeforces.com/contest/104566) | 11 | 11/11 | ICPC/IOI | - |
+| [104568](104568/) | [2016 Google Code Jam Round 2 (GCJ 16 Round 2)](https://codeforces.com/contest/104568) | 4 | 4/4 | Special | - |
+| [104569](104569/) | [2016 Google Code Jam Round 3 (GCJ 16 Round 3)](https://codeforces.com/contest/104569) | 4 | 4/4 | Special | - |
+| [104579](104579/) | [2016 Google Code Jam World Finals (GCJ 16 World Finals)](https://codeforces.com/contest/104579) | 5 | 5/5 | Special | - |
+| [104581](104581/) | [2017 Google Code Jam Round 1A (GCJ 17 Round 1A)](https://codeforces.com/contest/104581) | 3 | 3/3 | Special | - |
+| [104582](104582/) | [2017 Google Code Jam Qualification Round (GCJ 17 Qualification Round)](https://codeforces.com/contest/104582) | 4 | 4/4 | Special | - |
+| [104584](104584/) | [2017 Google Code Jam Round 1B (GCJ 17 Round 1B)](https://codeforces.com/contest/104584) | 3 | 3/3 | Special | - |
+| [104585](104585/) | [2017 Google Code Jam Round 1C (GCJ 17 Round 1C)](https://codeforces.com/contest/104585) | 3 | 3/3 | Special | - |
+| [104586](104586/) | [Codemasters Codecup 2023 - Отборочный тур](https://codeforces.com/contest/104586) | 10 | 6/10 | Special | - |
+| [104587](104587/) | [2020-2021 ICPC East Central North America Regional Contest (ECNA 2020)](https://codeforces.com/contest/104587) | 12 | 12/12 | ICPC/IOI | - |
+| [104590](104590/) | [2017 Google Code Jam Round 2 (GCJ 17 Round 2)](https://codeforces.com/contest/104590) | 4 | 4/4 | Special | - |
+| [104591](104591/) | [2017 Google Code Jam Round 3 (GCJ 17 Round 3)](https://codeforces.com/contest/104591) | 4 | 4/4 | Special | - |
+| [104592](104592/) | [2017 Google Code Jam World Finals (GCJ 17 World Finals)](https://codeforces.com/contest/104592) | 6 | 6/6 | Special | - |
+| [104593](104593/) | [2018 Google Code Jam Round 1A (GCJ 18 Round 1A)](https://codeforces.com/contest/104593) | 3 | 3/3 | Special | - |
+| [104594](104594/) | [2018 Google Code Jam Round 1B (GCJ 18 Round 1B)](https://codeforces.com/contest/104594) | 3 | 3/3 | Special | - |
+| [104595](104595/) | [2018 Google Code Jam Round 2 (GCJ 18 Round 2)](https://codeforces.com/contest/104595) | 4 | 4/4 | Special | - |
+| [104596](104596/) | [2019-2020 ICPC East Central North America Regional Contest (ECNA 2019)](https://codeforces.com/contest/104596) | 11 | 11/11 | ICPC/IOI | - |
+| [104598](104598/) | [GPL 2023 Advanced](https://codeforces.com/contest/104598) | 10 | 7/10 | Special | - |
+| [104599](104599/) | [GPL 2023 Novice](https://codeforces.com/contest/104599) | 10 | 7/10 | Special | - |
+| [104603](104603/) | [2023 Argentinian Programming Tournament (TAP)](https://codeforces.com/contest/104603) | 14 | 13/14 | Special | - |
+| [104610](104610/) | [2020 Google Code Jam Round 1A (GCJ 20 Round 1A)](https://codeforces.com/contest/104610) | 3 | 3/3 | Special | - |
+| [104611](104611/) | [2023湖南省赛](https://codeforces.com/contest/104611) | 10 | 10/10 | Special | - |
+| [104614](104614/) | [2022-2023 ICPC East Central North America Regional Contest (ECNA 2022)](https://codeforces.com/contest/104614) | 12 | 12/12 | ICPC/IOI | - |
 | [104627](104627/) | [COMP4128 23T3 Contest 1](https://codeforces.com/contest/104627) | 5 | 2/5 | Special | - |
 | [104630](104630/) | [2020 Google Code Jam Round 1C (GCJ 20 Round 1C)](https://codeforces.com/contest/104630) | 3 | 3/3 | Special | - |
 | [104631](104631/) | [2020 Google Code Jam Round 2 (GCJ 20 Round 2)](https://codeforces.com/contest/104631) | 4 | 4/4 | Special | - |
@@ -40,7 +104,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104672](104672/) | [2020 Google Code Jam Round 3 (GCJ 20 Round 3)](https://codeforces.com/contest/104672) | 7 | 0/7 | Special | - |
 | [104677](104677/) | [Sugar Sweet ❤️](https://codeforces.com/contest/104677) | 8 | 7/8 | Special | - |
 | [104681](104681/) | [2021 Google Code Jam Qualification Round (GCJ 21 Qualification Round)](https://codeforces.com/contest/104681) | 11 | 10/11 | Special | - |
-| [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 11 | 10/11 | Special | - |
+| [104687](104687/) | [Отбор в ЦРОД 2022](https://codeforces.com/contest/104687) | 12 | 11/12 | Special | - |
 | [104688](104688/) | [2021 Google Code Jam Round 1A (GCJ 21 Round 1A)](https://codeforces.com/contest/104688) | 8 | 2/8 | Special | - |
 | [104689](104689/) | [Квадраты и кубы](https://codeforces.com/contest/104689) | 1 | 0/1 | Special | - |
 | [104690](104690/) | [2021 Google Code Jam Round 1B (GCJ 21 Round 1B)](https://codeforces.com/contest/104690) | 7 | 2/7 | Special | - |
@@ -1704,7 +1768,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 192 contests, 1485 problems, 703 verified
+## 2023 — 224 contests, 1753 problems, 868 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1840,6 +1904,38 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104385](104385/) | [2023 (ICPC) Jiangxi Provincial Contest -- Official Contest](https://codeforces.com/contest/104385) | 12 | 12/12 | ICPC/IOI | - |
+| [104386](104386/) | [TheForces Round #14 (Cool-Forces)](https://codeforces.com/contest/104386) | 7 | 2/7 | Special | - |
+| [104390](104390/) | [The Unofficial Mirror Contest of 19th Thailand Olympiad in Informatics Day 1](https://codeforces.com/contest/104390) | 3 | 2/3 | Special | - |
+| [104391](104391/) | [The Unofficial Mirror Contest of 19th Thailand Olympiad in Informatics Day 2](https://codeforces.com/contest/104391) | 3 | 2/3 | Special | - |
+| [104396](104396/) | [2023 Jiangsu Collegiate Programming Contest, 2023 National Invitational of CCPC (Hunan), The 13th Xiangtan Collegiate Programming Contest](https://codeforces.com/contest/104396) | 12 | 10/12 | Special | - |
+| [104408](104408/) | [TheForces Round #15 (Yummy-Forces)](https://codeforces.com/contest/104408) | 5 | 1/5 | Special | - |
+| [104414](104414/) | [2023 Hunan Provincal Multi-University Training (Xiangtan University)](https://codeforces.com/contest/104414) | 11 | 11/11 | Special | - |
+| [104415](104415/) | [IME++ Starters Try-outs 2023](https://codeforces.com/contest/104415) | 10 | 10/10 | Special | - |
+| [104420](104420/) | [TheForces Round #16 (2^4-Forces)](https://codeforces.com/contest/104420) | 5 | 1/5 | Special | - |
+| [104426](104426/) | [Syrian Private Universities Collegiate Programming Contest 2023](https://codeforces.com/contest/104426) | 14 | 5/14 | Special | - |
+| [104432](104432/) | [TheForces Round #17 (AOE-Forces)](https://codeforces.com/contest/104432) | 6 | 1/6 | Special | - |
+| [104435](104435/) | [2023 UP ACM Algolympics Final Round](https://codeforces.com/contest/104435) | 13 | 13/13 | Special | - |
+| [104443](104443/) | [TheForces Round #18 (JuneIsApril-Forces)](https://codeforces.com/contest/104443) | 8 | 7/8 | Special | - |
+| [104447](104447/) | [Al-Baath Collegiate Programming Contest 2023](https://codeforces.com/contest/104447) | 13 | 13/13 | Special | - |
+| [104455](104455/) | [TheForces Round #19 (Briefest-Forces)](https://codeforces.com/contest/104455) | 6 | 2/6 | Special | - |
+| [104468](104468/) | [The 2023 Damascus University Collegiate Programming Contest](https://codeforces.com/contest/104468) | 13 | 2/13 | Special | - |
+| [104471](104471/) | [TheForces Round #20 (7-Problems-Forces)](https://codeforces.com/contest/104471) | 7 | 4/7 | Special | - |
+| [104493](104493/) | [2023 ICPC HIAST Collegiate Programming Contest](https://codeforces.com/contest/104493) | 14 | 14/14 | ICPC/IOI | - |
+| [104502](104502/) | [TheForces Round #21 (EDU-Forces)](https://codeforces.com/contest/104502) | 7 | 2/7 | Special | - |
+| [104505](104505/) | [2023 USP Try-outs](https://codeforces.com/contest/104505) | 13 | 5/13 | Special | - |
+| [104508](104508/) | [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508) | 12 | 6/12 | Special | - |
+| [104535](104535/) | [Formula++ 2023](https://codeforces.com/contest/104535) | 0 | 0/0 | Special | - |
+| [104542](104542/) | [TheForces Round #22 (Interesting-Forces)](https://codeforces.com/contest/104542) | 6 | 1/6 | Special | - |
+| [104544](104544/) | [Aleppo Collegiate Programming Contest 2023 V.2](https://codeforces.com/contest/104544) | 13 | 3/13 | Special | - |
+| [104570](104570/) | [TheForces Round #23 (Balanced-Forces)](https://codeforces.com/contest/104570) | 5 | 0/5 | Special | - |
+| [104573](104573/) | [UTPC Contest 09-08-23 Div. 1](https://codeforces.com/contest/104573) | 8 | 6/8 | Div. 1 | - |
+| [104574](104574/) | [UTPC Contest 09-08-23 Div. 2 (Beginner)](https://codeforces.com/contest/104574) | 8 | 7/8 | Div. 2 | - |
+| [104597](104597/) | [XXVII Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/104597) | 6 | 4/6 | Special | - |
+| [104604](104604/) | [XXVII Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/104604) | 5 | 2/5 | Special | - |
+| [104605](104605/) | [XXVII Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/104605) | 5 | 2/5 | Special | - |
+| [104609](104609/) | [Udmurt SU + Izhevsk STU Contest 2012](https://codeforces.com/contest/104609) | 10 | 8/10 | Special | - |
+| [104617](104617/) | [UTPC Contest 09-22-23 Div. 2 (Beginner)](https://codeforces.com/contest/104617) | 8 | 7/8 | Div. 2 | - |
 | [104618](104618/) | [UTPC Contest 09-22-23 Div. 1](https://codeforces.com/contest/104618) | 8 | 4/8 | Div. 1 | - |
 | [104619](104619/) | [2023 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/104619) | 12 | 9/12 | ICPC/IOI | - |
 | [104636](104636/) | [Мисис 2023 осень - массивы, строки](https://codeforces.com/contest/104636) | 8 | 5/8 | Special | - |

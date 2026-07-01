@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.3.3: Applications to Permutations"
-description: "Section 1.3.3 exercises: 25/37 solved."
+description: "Section 1.3.3 exercises: 37/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.3"
@@ -14,12 +14,12 @@ draft: false
 
 # Section 1.3.3. Applications to Permutations
 
-Exercises from [TAOCP Volume 1](../) Section 1.3.3: 25/37 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.3.3: 37/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 |  [*02*] | simple | - | - |
-| 2 |  [*10*] | simple | - | - |
+| [1](01.md) |  [*02*] | simple | verified | 1m35s |
+| [2](02.md) |  [*10*] | simple | solved | 3m09s |
 | [3](03.md) |  [*03*] | simple | solved | 9m53s |
 | [4](04.md) |  [*10*] | simple | solved | 9m44s |
 | [5](05.md) |  [*M10*] | math-simple | solved | 7m27s |
@@ -29,23 +29,23 @@ Exercises from [TAOCP Volume 1](../) Section 1.3.3: 25/37 solved.
 | [9](09.md) |  [*10*] | simple | solved | 8m55s |
 | [10](10.md) |  [*M28*] | math-hard | solved | 8m53s |
 | [11](11.md) |  [*15*] | simple | solved | 7m47s |
-| 12 |  [*M27*] | math-hard | - | - |
-| 13 |  [*M24*] | math-medium | - | - |
+| [12](12.md) |  [*M27*] | math-hard | solved | 3m15s |
+| [13](13.md) |  [*M24*] | math-medium | solved | 2m59s |
 | [14](14.md) |  [*M34*] | math-hard | solved | 15m44s |
-| 15 |  [*M12*] | math-simple | - | - |
-| 16 |  [*M15*] | math-simple | - | - |
+| [15](15.md) |  [*M12*] | math-simple | verified | 3m16s |
+| [16](16.md) |  [*M15*] | math-simple | verified | 4m12s |
 | [17](17.md) |  [*M24*] | math-medium | solved | 4m18s |
-| 18 |  [*M27*] | math-hard | - | - |
+| [18](18.md) |  [*M27*] | math-hard | verified | 2m27s |
 | [19](19.md) |  [*HM21*] | hm-medium | solved | 8m39s |
-| 20 |  [*M20*] | math-medium | - | - |
+| [20](20.md) |  [*M20*] | math-medium | verified | 2m09s |
 | [21](21.md) |  [*M22*] | math-medium | solved | 5m40s |
-| 22 |  [*HM34*] | hm-hard | - | - |
-| 23 |  [*HM42*] | hm-project | - | - |
+| [22](22.md) |  [*HM34*] | hm-hard | verified | 4m50s |
+| [23](23.md) |  [*HM42*] | hm-project | solved | 4m12s |
 | [24](24.md) |  [*M41*] | math-project | solved | 3m22s |
-| 25 |  [*M22*] | math-medium | - | - |
+| [25](25.md) |  [*M22*] | math-medium | solved | 4m30s |
 | [26](26.md) |  [*M24*] | math-medium | solved | 13m33s |
 | [27](27.md) |  [*M20*] | math-medium | solved | 5m39s |
-| 28 |  [*M21*] | math-medium | - | - |
+| [28](28.md) |  [*M21*] | math-medium | solved | 4m28s |
 | [29](29.md) |  [*M25*] | math-medium | solved | 6m56s |
 | [30](30.md) |  [*M24*] | math-medium | solved | 8m42s |
 | [31](31.md) |  [*HM38*] | hm-project | solved | 7m57s |

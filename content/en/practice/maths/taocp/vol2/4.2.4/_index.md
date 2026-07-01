@@ -29,12 +29,12 @@ Exercises from [TAOCP Volume 1](../) Section 4.2.4: 20/20 solved.
 | [9](09.md) |  [*HM25*] | hm-medium | solved | 2m31s |
 | [10](10.md) | &#9654; [*HM28*] | hm-hard | solved | 3m34s |
 | [11](11.md) |  [*M15*] | math-simple | solved | 1m01s |
-| [12](12.md) |  [*HM25*] | hm-medium | verified | 1m06s |
+| [12](12.md) |  [*HM25*] | hm-medium | verified | 4m36s |
 | [13](13.md) | &#9654; [*M20*] | math-medium | verified | 2m |
 | [14](14.md) | &#9654; [*HM30*] | hm-hard | solved | 3m18s |
-| [15](15.md) |  [*HM28*] | hm-hard | solved | 4m56s |
-| [16](16.md) |  [*HM28*] | hm-hard | solved | 4m15s |
-| [17](17.md) | &#9654; [*HM25*] | hm-medium | verified | 1m20s |
-| [18](18.md) |  [*HM30*] | hm-hard | solved | 4m22s |
-| [19](19.md) |  [*HM25*] | hm-medium | verified | 2m29s |
-| [20](20.md) |  [*HM40*] | hm-project | verified | 2m10s |
+| [15](15.md) |  [*HM28*] | hm-hard | solved | 4m19s |
+| [16](16.md) |  [*HM28*] | hm-hard | solved | 4m45s |
+| [17](17.md) | &#9654; [*HM25*] | hm-medium | solved | 4m41s |
+| [18](18.md) |  [*HM30*] | hm-hard | solved | 1m48s |
+| [19](19.md) |  [*HM25*] | hm-medium | verified | 2m53s |
+| [20](20.md) |  [*HM40*] | hm-project | solved | 3m05s |

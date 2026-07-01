@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.4: Enumeration of Trees"
-description: "Section 2.3.4.4 exercises: 14/30 solved."
+description: "Section 2.3.4.4 exercises: 30/30 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.4"
@@ -14,37 +14,37 @@ draft: false
 
 # Section 2.3.4.4. Enumeration of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 14/30 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.4: 30/30 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 |  [**] |  | - | - |
+| [1](01.md) |  [**] |  | solved | 3m56s |
 | [2](02.md) |  [**] |  | solved | 4m21s |
 | [3](03.md) |  [**] |  | solved | 6m51s |
-| 4 |  [**] |  | - | - |
+| [4](04.md) |  [**] |  | verified | 1m45s |
 | [5](05.md) |  [**] |  | solved | 4m56s |
 | [6](06.md) |  [**] |  | solved | 4m54s |
-| 7 |  [**] |  | - | - |
-| 8 |  [**] |  | - | - |
-| 9 |  [**] |  | - | - |
+| [7](07.md) |  [**] |  | verified | 1m41s |
+| [8](08.md) |  [**] |  | solved | 4m03s |
+| [9](09.md) |  [**] |  | solved | 4m |
 | [10](10.md) |  [**] |  | solved | 5m |
-| 11 |  [**] |  | - | - |
+| [11](11.md) |  [**] |  | verified | 1m37s |
 | [12](12.md) |  [**] |  | solved | 5m26s |
-| 13 |  [**] |  | - | - |
+| [13](13.md) |  [**] |  | verified | 1m54s |
 | [14](14.md) |  [**] |  | solved | 5m23s |
-| 15 |  [**] |  | - | - |
+| [15](15.md) |  [**] |  | verified | 1m43s |
 | [16](16.md) |  [**] |  | solved | 9m47s |
-| 17 |  [**] |  | - | - |
+| [17](17.md) |  [**] |  | verified | 3m23s |
 | [18](18.md) |  [**] |  | solved | 6m29s |
 | [19](19.md) |  [**] |  | solved | 5m34s |
 | [20](20.md) |  [**] |  | solved | 5m08s |
-| 21 |  [**] |  | - | - |
-| 22 |  [**] |  | - | - |
+| [21](21.md) |  [**] |  | verified | 2m11s |
+| [22](22.md) |  [**] |  | verified | 3m04s |
 | [23](23.md) |  [**] |  | solved | 6m59s |
-| 24 |  [**] |  | - | - |
+| [24](24.md) |  [**] |  | verified | 1m58s |
 | [25](25.md) |  [**] |  | solved | 4m08s |
 | [26](26.md) |  [**] |  | solved | 6m38s |
-| 27 |  [**] |  | - | - |
-| 28 |  [**] |  | - | - |
-| 29 |  [**] |  | - | - |
-| 30 |  [**] |  | - | - |
+| [27](27.md) |  [**] |  | solved | 3m18s |
+| [28](28.md) |  [**] |  | solved | 4m54s |
+| [29](29.md) |  [**] |  | verified | 2m50s |
+| [30](30.md) |  [**] |  | verified | 1m39s |

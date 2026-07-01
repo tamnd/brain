@@ -18,15 +18,15 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) | &#9654; [*20*] | medium | verified | 2m09s |
-| [2](02.md) | &#9654; [*21*] | medium | solved | 4m20s |
-| [3](03.md) |  [*16*] | medium | verified | 1m13s |
-| [4](04.md) |  [*21*] | medium | verified | 2m42s |
-| [5](05.md) |  [*20*] | medium | verified | 1m06s |
-| [6](06.md) |  [*10*] | simple | verified | 4m19s |
-| [7](07.md) |  [*21*] | medium | solved | 5m28s |
-| [8](08.md) |  [*22*] | medium | solved | 1m04s |
-| [9](09.md) |  [*16*] | medium | verified | 1m05s |
+| [1](01.md) | &#9654; [*20*] | medium | solved | 2m08s |
+| [2](02.md) | &#9654; [*21*] | medium | solved | 3m14s |
+| [3](03.md) |  [*16*] | medium | solved | 2m47s |
+| [4](04.md) |  [*21*] | medium | solved | 3m27s |
+| [5](05.md) |  [*20*] | medium | solved | 3m14s |
+| [6](06.md) |  [*10*] | simple | solved | 2m55s |
+| [7](07.md) |  [*21*] | medium | solved | 3m08s |
+| [8](08.md) |  [*22*] | medium | solved | 5m16s |
+| [9](09.md) |  [*16*] | medium | solved | 4m17s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m04s |
 | [11](11.md) |  [*20*] | medium | verified | 1m13s |
 | [12](12.md) | &#9654; [*M21*] | math-medium | verified | 2m53s |

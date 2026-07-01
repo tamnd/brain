@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.2: The Greatest Common Divisor"
-description: "Section 4.5.2 exercises: 41/42 solved."
+description: "Section 4.5.2 exercises: 42/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.5.2. The Greatest Common Divisor
 
-Exercises from [TAOCP Volume 1](../) Section 4.5.2: 41/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 4.5.2: 42/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -52,7 +52,7 @@ Exercises from [TAOCP Volume 1](../) Section 4.5.2: 41/42 solved.
 | [32](32.md) |  [*M42*] | math-project | solved | 2m30s |
 | [33](33.md) |  [*M46*] | math-research | solved | 7m13s |
 | [34](34.md) |  [*HM49*] | hm-research | verified | 3m16s |
-| 35 |  [*M25*] | math-medium | - | - |
+| [35](35.md) |  [*M25*] | math-medium | solved | 7m20s |
 | [36](36.md) | &#9654; [*M28*] | math-hard | solved | 17m18s |
 | [37](37.md) |  [*M9*] | math-simple | solved | 6m24s |
 | [38](38.md) | &#9654; [*M32*] | math-hard | verified | 2m42s |
