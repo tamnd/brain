@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2584 contests, 18070 problems, 10143 verified."
+description: "Codeforces problem solutions with full editorials. 2585 contests, 18083 problems, 10156 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2584 contests, 18070 problems, 10143 verified.**
+**2585 contests, 18083 problems, 10156 verified.**
 
-## Unknown — 553 contests, 4547 problems, 2878 verified
+## Unknown — 554 contests, 4560 problems, 2891 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104252](104252/) | [2022-2023 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104252) | 13 | 13/13 | ICPC/IOI | - |
 | [104270](104270/) | [The 2018 ICPC Asia Qingdao Regional Programming Contest (The 1st Universal Cup, Stage 9: Qingdao)](https://codeforces.com/contest/104270) | 13 | 13/13 | ICPC/IOI | - |
 | [104273](104273/) | [Индивидуальная олимпиада школьников по информатике и программированию 2023](https://codeforces.com/contest/104273) | 6 | 2/6 | Special | - |
 | [104274](104274/) | [2023 VIII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/104274) | 10 | 3/10 | Special | - |
