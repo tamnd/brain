@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2671 contests, 18790 problems, 10627 verified."
+description: "Codeforces problem solutions with full editorials. 2672 contests, 18802 problems, 10635 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2671 contests, 18790 problems, 10627 verified.**
+**2672 contests, 18802 problems, 10635 verified.**
 
-## Unknown — 600 contests, 4881 problems, 3101 verified
+## Unknown — 601 contests, 4893 problems, 3109 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104020](104020/) | [2022 Benelux Algorithm Programming Contest (BAPC 22)](https://codeforces.com/contest/104020) | 12 | 8/12 | Special | - |
 | [104021](104021/) | [The 2019 ICPC Asia Yinchuan Regional Contest](https://codeforces.com/contest/104021) | 14 | 14/14 | ICPC/IOI | - |
 | [104030](104030/) | [2022-2023 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2022)](https://codeforces.com/contest/104030) | 11 | 9/11 | ICPC/IOI | - |
 | [104031](104031/) | [Муниципальный этап ВсОШ по информатике в Самаре 2021-2022 (9-11 классы)](https://codeforces.com/contest/104031) | 5 | 4/5 | Special | - |
