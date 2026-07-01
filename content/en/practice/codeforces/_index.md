@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2665 contests, 18719 problems, 10566 verified."
+description: "Codeforces problem solutions with full editorials. 2667 contests, 18744 problems, 10584 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2665 contests, 18719 problems, 10566 verified.**
+**2667 contests, 18744 problems, 10584 verified.**
 
 ## Unknown — 599 contests, 4867 problems, 3087 verified
 
@@ -1697,7 +1697,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 156 contests, 1096 problems, 494 verified
+## 2022 — 158 contests, 1121 problems, 512 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1834,6 +1834,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104025](104025/) | [The 16-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/104025) | 13 | 10/13 | Special | - |
+| [104027](104027/) | [The 10-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/104027) | 12 | 8/12 | Special | - |
 | [104037](104037/) | [CSP-Junior 2022](https://codeforces.com/contest/104037) | 4 | 0/4 | Special | - |
 | [104048](104048/) | [UTPC Contest 11-11-22 Div. 2 (Beginner)](https://codeforces.com/contest/104048) | 11 | 2/11 | Div. 2 | - |
 | [104049](104049/) | [UTPC Contest 11-11-22 Div. 1 (Advanced)](https://codeforces.com/contest/104049) | 11 | 1/11 | Div. 1 | - |
