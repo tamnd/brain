@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2587 contests, 18106 problems, 10171 verified."
+description: "Codeforces problem solutions with full editorials. 2589 contests, 18116 problems, 10178 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2587 contests, 18106 problems, 10171 verified.**
+**2589 contests, 18116 problems, 10178 verified.**
 
-## Unknown — 554 contests, 4560 problems, 2891 verified
+## Unknown — 556 contests, 4569 problems, 2894 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104243](104243/) | [Открытая олимпиада школьников по программированию 2022-23, первый тур](https://codeforces.com/contest/104243) | 4 | 1/4 | Special | - |
+| [104244](104244/) | [Открытая олимпиада школьников по программированию 2022-23, второй тур](https://codeforces.com/contest/104244) | 4 | 1/4 | Special | - |
 | [104252](104252/) | [2022-2023 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104252) | 13 | 13/13 | ICPC/IOI | - |
 | [104270](104270/) | [The 2018 ICPC Asia Qingdao Regional Programming Contest (The 1st Universal Cup, Stage 9: Qingdao)](https://codeforces.com/contest/104270) | 13 | 13/13 | ICPC/IOI | - |
 | [104273](104273/) | [Индивидуальная олимпиада школьников по информатике и программированию 2023](https://codeforces.com/contest/104273) | 6 | 2/6 | Special | - |
@@ -539,7 +541,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 12 | 12/12 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 3 | 1/3 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 6 | 2/6 | Special | - |
-| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 11 | 11/11 | Special | - |
+| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 12 | 12/12 | Special | - |
 | [106373](106373/) | [2024-2025 Московская олимпиада школьников по информатике, 10-11 класс](https://codeforces.com/contest/106373) | 12 | 4/12 | Special | - |
 | [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 4 | 4/4 | Special | - |
 | [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 10 | 9/10 | Special | - |
@@ -1793,7 +1795,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 260 contests, 2129 problems, 1129 verified
+## 2023 — 260 contests, 2130 problems, 1133 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1932,7 +1934,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104246](104246/) | [CodeSmash 2021 by RAPL](https://codeforces.com/contest/104246) | 12 | 6/12 | Special | - |
 | [104248](104248/) | [Udmurt SU Contest 2010](https://codeforces.com/contest/104248) | 11 | 9/11 | Special | - |
 | [104255](104255/) | [BSUIR Open X. Reload. Students final](https://codeforces.com/contest/104255) | 9 | 2/9 | Special | - |
-| [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 7 | 5/7 | Div. 2 | - |
+| [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 8 | 7/8 | Div. 2 | - |
 | [104262](104262/) | [UTPC Contest 03-24-23 Div. 1 (Advanced)](https://codeforces.com/contest/104262) | 8 | 2/8 | Div. 1 | - |
 | [104264](104264/) | [TheForces Round #9 (Fool-Forces)](https://codeforces.com/contest/104264) | 8 | 3/8 | Special | - |
 | [104282](104282/) | [The 20th Hangzhou City University Programming Contest](https://codeforces.com/contest/104282) | 13 | 13/13 | Special | - |
@@ -1985,7 +1987,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104493](104493/) | [2023 ICPC HIAST Collegiate Programming Contest](https://codeforces.com/contest/104493) | 14 | 14/14 | ICPC/IOI | - |
 | [104502](104502/) | [TheForces Round #21 (EDU-Forces)](https://codeforces.com/contest/104502) | 7 | 2/7 | Special | - |
 | [104505](104505/) | [2023 USP Try-outs](https://codeforces.com/contest/104505) | 13 | 5/13 | Special | - |
-| [104508](104508/) | [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508) | 12 | 6/12 | Special | - |
+| [104508](104508/) | [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508) | 12 | 8/12 | Special | - |
 | [104535](104535/) | [Formula++ 2023](https://codeforces.com/contest/104535) | 0 | 0/0 | Special | - |
 | [104542](104542/) | [TheForces Round #22 (Interesting-Forces)](https://codeforces.com/contest/104542) | 6 | 1/6 | Special | - |
 | [104544](104544/) | [Aleppo Collegiate Programming Contest 2023 V.2](https://codeforces.com/contest/104544) | 13 | 3/13 | Special | - |

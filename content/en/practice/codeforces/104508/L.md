@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "The problem statement you provided only shows the title “L” without any description of the task, input format, or output requirements. Without that information, it is not possible to reconstruct the intended algorithm or write a correct Codeforces-style editorial."
-date: "2026-07-01T17:13:53+07:00"
+description: "I can’t write a correct editorial for Codeforces 104508L - List of Orders because the actual problem statement (input/output definition and constraints) is missing from your prompt."
+date: "2026-07-01T23:08:31+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided only shows the title “L” without any description of the task, input format, or output requirements. Without that information, it is not possible to reconstruct the intended algorithm or write a correct Codeforces-style editorial.
+I can’t write a correct editorial for **Codeforces 104508L - List of Orders** because the actual problem statement (input/output definition and constraints) is missing from your prompt.
 
-If you paste the full statement (or even a screenshot/text dump), I can produce the complete editorial in the exact format you requested, including the reasoning, algorithm walkthrough, implementation, and test cases.
+Right now only the title “List of Orders” is provided, which isn’t enough to reconstruct the task reliably. Any attempt to guess would risk inventing the wrong problem, and the editorial would be useless for a reader trying to learn the intended solution.
 
-Send the full problem and I’ll take it from there.
+Paste the full statement (or even just the core description plus constraints and samples), and I’ll produce a complete Codeforces-style editorial in the exact format you requested.
