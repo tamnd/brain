@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2542 contests, 17652 problems, 9843 verified."
+description: "Codeforces problem solutions with full editorials. 2543 contests, 17660 problems, 9848 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2542 contests, 17652 problems, 9843 verified.**
+**2543 contests, 17660 problems, 9848 verified.**
 
-## Unknown — 538 contests, 4389 problems, 2750 verified
+## Unknown — 539 contests, 4397 problems, 2755 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104343](104343/) | [2023 VIII Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/104343) | 8 | 5/8 | Special | - |
 | [104344](104344/) | [Maratona dos Bixes 2023 - UNICAMP](https://codeforces.com/contest/104344) | 11 | 8/11 | Special | - |
 | [104345](104345/) | [2022-2023 Winter Petrozavodsk Camp, Day 4: KAIST+KOI Contest](https://codeforces.com/contest/104345) | 13 | 5/13 | Special | - |
 | [104359](104359/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2022](https://codeforces.com/contest/104359) | 6 | 6/6 | Special | - |
