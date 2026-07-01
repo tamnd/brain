@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2568 contests, 17894 problems, 10018 verified."
+description: "Codeforces problem solutions with full editorials. 2570 contests, 17912 problems, 10029 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2568 contests, 17894 problems, 10018 verified.**
+**2570 contests, 17912 problems, 10029 verified.**
 
-## Unknown — 546 contests, 4456 problems, 2807 verified
+## Unknown — 547 contests, 4468 problems, 2817 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104288](104288/) | [2021 ICPC World Finals](https://codeforces.com/contest/104288) | 12 | 10/12 | ICPC/IOI | - |
 | [104290](104290/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/104290) | 0 | 0/0 | Special | - |
 | [104291](104291/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/104291) | 0 | 0/0 | Special | - |
 | [104295](104295/) | [vkoshp.letovo](https://codeforces.com/contest/104295) | 12 | 12/12 | Special | - |
@@ -1783,7 +1784,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 251 contests, 2043 problems, 1077 verified
+## 2023 — 252 contests, 2049 problems, 1078 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1919,6 +1920,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104289](104289/) | [Bangladesh CP Server - BCS Round 1 (Div. 3)](https://codeforces.com/contest/104289) | 6 | 1/6 | Div. 3 | - |
 | [104294](104294/) | [UTPC Spring 2023 Open Contest](https://codeforces.com/contest/104294) | 14 | 9/14 | Special | - |
 | [104301](104301/) | [TheForces Round #10 (TEN-Forces)](https://codeforces.com/contest/104301) | 6 | 5/6 | Special | - |
 | [104303](104303/) | [2023 Xiangtan Unversity Freshman Conteset](https://codeforces.com/contest/104303) | 10 | 9/10 | Special | - |
