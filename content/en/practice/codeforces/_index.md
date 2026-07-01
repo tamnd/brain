@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2592 contests, 18139 problems, 10197 verified."
+description: "Codeforces problem solutions with full editorials. 2593 contests, 18148 problems, 10203 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2592 contests, 18139 problems, 10197 verified.**
+**2593 contests, 18148 problems, 10203 verified.**
 
-## Unknown — 559 contests, 4592 problems, 2913 verified
+## Unknown — 560 contests, 4601 problems, 2919 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 9 | 6/9 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
 | [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 9 | 8/9 | Special | - |
 | [104239](104239/) | [Интернет-олимпиады, Сезон 2022-2023, Четвертая личная олимпиада](https://codeforces.com/contest/104239) | 4 | 4/4 | Special | - |
