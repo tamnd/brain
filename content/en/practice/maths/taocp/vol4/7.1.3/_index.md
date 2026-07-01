@@ -42,7 +42,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [22](22.md) |  [*21*] | medium | verified | 2m20s |
 | [23](23.md) | &#9654; [*27*] | hard | solved | 5m11s |
 | [24](24.md) | &#9654; [*M30*] | math-hard | solved | 4m38s |
-| [25](25.md) | &#9654; [*15*] | simple | verified | 1m08s |
+| [25](25.md) | &#9654; [*15*] | simple | solved | 4m22s |
 | [26](26.md) |  [*22*] | medium | verified | 2m18s |
 | [27](27.md) |  [*21*] | medium | verified | 1m19s |
 | [28](28.md) |  [*16*] | medium | verified | 1m17s |
