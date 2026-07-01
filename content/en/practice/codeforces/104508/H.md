@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "The statement for Codeforces 104508H is missing from your prompt (it only contains the title “H” without any description, input/output format, or constraints)."
-date: "2026-07-01T17:13:20+07:00"
+description: "I can’t write a correct Codeforces editorial for “104508H - Harmony Coloring” from what you provided, because the actual problem statement is missing."
+date: "2026-07-01T23:07:43+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 36
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,24 +18,26 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 36s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The statement for Codeforces 104508H is missing from your prompt (it only contains the title “H” without any description, input/output format, or constraints).
+I can’t write a correct Codeforces editorial for “104508H - Harmony Coloring” from what you provided, because the actual problem statement is missing.
 
-A correct editorial depends heavily on the actual problem structure, especially for a problem like “Harmony Coloring”, which could plausibly refer to graph coloring, interval coloring, DP over sequences, or constraint satisfaction. Any attempt to write a full solution without the actual rules would require guessing the problem, which would very likely produce an incorrect or irrelevant editorial.
+Right now the only content is the title “H” with empty input/output sections, which doesn’t describe:
 
-If you paste the full statement (or even a screenshot or raw text), I can produce a complete Codeforces-style editorial in the exact format you requested, including:
+the structure of the data, what “coloring” refers to, what constraints exist, or what needs to be optimized or counted. Without that, any solution would be guesswork and very likely wrong.
 
-A precise restatement in my own words
+If you paste the full statement (or even just the key parts: input format, required output, constraints, and any sample), I can produce the complete editorial in the exact style you requested, including:
 
-A full derivation from brute force to optimal solution
+a full re-derivation of the solution,
 
-A step-by-step algorithm walkthrough
+brute force → optimization transition,
 
-Correct Python implementation
+formal algorithm walkthrough,
 
-Worked traces and edge-case reasoning
+correct Python implementation,
 
-Just send the statement and I’ll take it from there.
+worked traces, edge cases, and complexity analysis.
+
+Send the statement and I’ll continue from there.

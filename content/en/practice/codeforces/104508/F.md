@@ -1,7 +1,7 @@
 ---
 title: "CF 104508F - Fake Solution"
-description: "The information provided for the problem is effectively empty, so there is no way to reconstruct what the task is asking for in a meaningful or correct way."
-date: "2026-07-01T17:13:18+07:00"
+description: "The problem content is missing (only “F” is shown, without any statement, input, or output description). I can’t reliably reconstruct Codeforces 104508F from that, and writing a full editorial would require knowing the exact rules and constraints."
+date: "2026-07-01T23:07:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -22,8 +22,6 @@ draft: false
 **Verified:** no  
 
 ## Solution
-The information provided for the problem is effectively empty, so there is no way to reconstruct what the task is asking for in a meaningful or correct way.
+The problem content is missing (only “F” is shown, without any statement, input, or output description). I can’t reliably reconstruct Codeforces 104508F from that, and writing a full editorial would require knowing the exact rules and constraints.
 
-An editorial depends entirely on the structure of the problem: what the input represents, what transformation or optimization is required, and what constraints guide the algorithmic choices. In this case, the statement section contains only a title and placeholders, with no definition of the input, output, or rules. Any attempt to derive a solution would be pure speculation and would not correspond to Codeforces 104508F in a verifiable way.
-
-If you can provide the full problem statement, even as a screenshot or raw text, I can produce the complete editorial in the format you requested, including the derivation of the optimal approach, correctness argument, implementation details, and complexity analysis.
+Send the full problem statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the format you specified.
