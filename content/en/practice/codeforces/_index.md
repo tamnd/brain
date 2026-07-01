@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2686 contests, 18959 problems, 10729 verified."
+description: "Codeforces problem solutions with full editorials. 2687 contests, 18971 problems, 10730 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2686 contests, 18959 problems, 10729 verified.**
+**2687 contests, 18971 problems, 10730 verified.**
 
-## Unknown — 610 contests, 4993 problems, 3181 verified
+## Unknown — 611 contests, 5005 problems, 3182 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103994](103994/) | [Московская командная олимпиада (МКОШП) 2022](https://codeforces.com/contest/103994) | 12 | 1/12 | Special | - |
 | [103997](103997/) | [Splay Training](https://codeforces.com/contest/103997) | 1 | 0/1 | Special | - |
 | [104010](104010/) | [2022-2023 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 22)](https://codeforces.com/contest/104010) | 12 | 12/12 | Special | - |
 | [104011](104011/) | [2021-2022 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104011) | 14 | 13/14 | ICPC/IOI | - |
