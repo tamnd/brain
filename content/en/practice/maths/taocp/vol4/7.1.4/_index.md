@@ -120,8 +120,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [100](100.md) | &#9654; [*24*] | medium | solved | 3m39s |
 | [101](101.md) |  [*20*] | medium | solved | 6m41s |
 | [102](102.md) |  [*23*] | medium | solved | 4m47s |
-| [103](103.md) | &#9654; [*20*] | medium | verified | 1m03s |
-| [104](104.md) | &#9654; [*21*] | medium | verified | 2m53s |
+| [103](103.md) | &#9654; [*20*] | medium | solved | 3m30s |
+| [104](104.md) | &#9654; [*21*] | medium | solved | 4m06s |
 | [105](105.md) |  [*25*] | medium | verified | 5m27s |
 | [106](106.md) |  [*25*] | medium | verified | 2m50s |
 | [107](107.md) |  [*26*] | hard | verified | 4m06s |
