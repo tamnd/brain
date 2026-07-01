@@ -25,8 +25,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 266/267 solved.
 | [5](05.md) |  [*20*] | medium | solved | 3m14s |
 | [6](06.md) |  [*10*] | simple | solved | 2m55s |
 | [7](07.md) |  [*21*] | medium | solved | 3m08s |
-| [8](08.md) |  [*22*] | medium | solved | 1m04s |
-| [9](09.md) |  [*16*] | medium | verified | 1m05s |
+| [8](08.md) |  [*22*] | medium | solved | 5m16s |
+| [9](09.md) |  [*16*] | medium | solved | 4m17s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m04s |
 | [11](11.md) |  [*20*] | medium | verified | 1m13s |
 | [12](12.md) | &#9654; [*M21*] | math-medium | verified | 2m53s |
