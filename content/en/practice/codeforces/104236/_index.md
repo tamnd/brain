@@ -1,22 +1,22 @@
 ---
 title: "Harker Programming Invitational 2023 Advanced"
-description: "9 problems from Harker Programming Invitational 2023 Advanced (contest 104236), difficulty -. 7/9 solutions verified against sample I/O."
+description: "10 problems from Harker Programming Invitational 2023 Advanced (contest 104236), difficulty -. 7/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104236
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 7
-total_solve_s: 683
-date: "2026-07-01T23:27:29+07:00"
+total_solve_s: 784
+date: "2026-07-01T23:28:31+07:00"
 weight: 104236
 draft: false
 ---
 
 # [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236)
 
-Special | 9 problems | 7/9 verified | Difficulty - | 11m 23s
+Special | 10 problems | 7/10 verified | Difficulty - | 13m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,3 +29,4 @@ Special | 9 problems | 7/9 verified | Difficulty - | 11m 23s
 | [G](G/) | [Aranara Game (Hard)](https://codeforces.com/problemset/problem/104236/G) |  |  |  | 1m 7s | ✓ |
 | [H](H/) | [Environmental Policy](https://codeforces.com/problemset/problem/104236/H) |  |  |  | 1m 25s |  |
 | [I](I/) | [Possible Meetings](https://codeforces.com/problemset/problem/104236/I) |  |  |  | 1m 9s | ✓ |
+| [J](J/) | [Discount Spiderman](https://codeforces.com/problemset/problem/104236/J) |  |  |  | 1m 41s |  |
