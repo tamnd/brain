@@ -1,23 +1,23 @@
 ---
 title: "2022 International Collegiate Programming Contest, Jinan Site"
-description: "9 problems from 2022 International Collegiate Programming Contest, Jinan Site (contest 104076), difficulty -. 7/9 solutions verified against sample I/O."
+description: "13 problems from 2022 International Collegiate Programming Contest, Jinan Site (contest 104076), difficulty -. 10/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104076
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 7
-total_solve_s: 591
+n_problems: 13
+n_verified: 10
+total_solve_s: 884
 contest_year: 2022
-date: "2026-07-02T02:49:30+07:00"
+date: "2026-07-02T02:51:10+07:00"
 weight: 104076
 draft: false
 ---
 
 # [2022 International Collegiate Programming Contest, Jinan Site](https://codeforces.com/contest/104076)
 
-Special | 9 problems | 7/9 verified | Difficulty - | 9m 51s
+Special | 13 problems | 10/13 verified | Difficulty - | 14m 44s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,7 @@ Special | 9 problems | 7/9 verified | Difficulty - | 9m 51s
 | [G](G/) | [Quick Sort](https://codeforces.com/problemset/problem/104076/G) |  |  |  | 48s | ✓ |
 | [H](H/) | [Set of Intervals](https://codeforces.com/problemset/problem/104076/H) |  |  |  | 1m 31s | ✓ |
 | [I](I/) | [Shortest Path](https://codeforces.com/problemset/problem/104076/I) |  |  |  | 53s | ✓ |
+| [J](J/) | [Skills](https://codeforces.com/problemset/problem/104076/J) |  |  |  | 2m 7s |  |
+| [K](K/) | [Stack Sort](https://codeforces.com/problemset/problem/104076/K) |  |  |  | 56s | ✓ |
+| [L](L/) | [Tree Distance](https://codeforces.com/problemset/problem/104076/L) |  |  |  | 1m 3s | ✓ |
+| [M](M/) | [Best Carry Player](https://codeforces.com/problemset/problem/104076/M) |  |  |  | 47s | ✓ |

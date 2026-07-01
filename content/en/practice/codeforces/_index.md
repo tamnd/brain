@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2644 contests, 18554 problems, 10468 verified."
+description: "Codeforces problem solutions with full editorials. 2645 contests, 18567 problems, 10478 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2644 contests, 18554 problems, 10468 verified.**
+**2645 contests, 18567 problems, 10478 verified.**
 
 ## Unknown — 588 contests, 4798 problems, 3039 verified
 
@@ -1686,7 +1686,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 146 contests, 1000 problems, 444 verified
+## 2022 — 147 contests, 1013 problems, 454 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1823,6 +1823,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104076](104076/) | [2022 International Collegiate Programming Contest, Jinan Site](https://codeforces.com/contest/104076) | 13 | 10/13 | Special | - |
 | [104077](104077/) | [The 2022 ICPC Asia Xian Regional Contest](https://codeforces.com/contest/104077) | 12 | 10/12 | ICPC/IOI | - |
 | [104081](104081/) | [2022年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/104081) | 12 | 9/12 | Special | - |
 | [104090](104090/) | [The 2022 ICPC Asia Hangzhou Regional Programming Contest](https://codeforces.com/contest/104090) | 13 | 10/13 | ICPC/IOI | - |
