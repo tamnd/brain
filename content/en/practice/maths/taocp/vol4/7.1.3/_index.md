@@ -103,7 +103,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [83](83.md) | &#9654; [*33*] | hard | solved | 10m48s |
 | [84](84.md) |  [*25*] | medium | solved | 6m12s |
 | [85](85.md) |  [*22*] | medium | verified | 6m02s |
-| [86](86.md) |  [*M27*] | math-hard | verified | 2m34s |
+| [86](86.md) |  [*M27*] | math-hard | solved | 12m07s |
 | [87](87.md) | &#9654; [*20*] | medium | solved | 59s |
 | [88](88.md) |  [*20*] | medium | verified | 1m08s |
 | [89](89.md) |  [*23*] | medium | solved | 2m11s |
