@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2533 contests, 17567 problems, 9787 verified."
+description: "Codeforces problem solutions with full editorials. 2536 contests, 17584 problems, 9804 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2533 contests, 17567 problems, 9787 verified.**
+**2536 contests, 17584 problems, 9804 verified.**
 
-## Unknown — 533 contests, 4348 problems, 2720 verified
+## Unknown — 536 contests, 4365 problems, 2737 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104359](104359/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2022](https://codeforces.com/contest/104359) | 6 | 6/6 | Special | - |
+| [104360](104360/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2021](https://codeforces.com/contest/104360) | 6 | 6/6 | Special | - |
+| [104361](104361/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2020](https://codeforces.com/contest/104361) | 5 | 5/5 | Special | - |
 | [104373](104373/) | [The 2021 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/104373) | 11 | 11/11 | ICPC/IOI | - |
 | [104375](104375/) | [2023 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/104375) | 11 | 7/11 | ICPC/IOI | - |
 | [104381](104381/) | [The Andover Computing Open (TACO) 2022](https://codeforces.com/contest/104381) | 14 | 6/14 | Special | - |
