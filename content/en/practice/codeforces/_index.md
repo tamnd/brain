@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2680 contests, 18901 problems, 10707 verified."
+description: "Codeforces problem solutions with full editorials. 2681 contests, 18913 problems, 10711 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2680 contests, 18901 problems, 10707 verified.**
+**2681 contests, 18913 problems, 10711 verified.**
 
 ## Unknown — 609 contests, 4992 problems, 3181 verified
 
@@ -1708,7 +1708,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 160 contests, 1140 problems, 529 verified
+## 2022 — 161 contests, 1152 problems, 533 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1845,6 +1845,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104009](104009/) | [AGM 2022, Final Round, Day 1](https://codeforces.com/contest/104009) | 12 | 4/12 | Special | - |
 | [104023](104023/) | [2022 China Collegiate Programming Contest (CCPC) Weihai Site](https://codeforces.com/contest/104023) | 13 | 13/13 | Special | - |
 | [104024](104024/) | [The 16-th BIT Campus Programming Contest - Online Round(2022)](https://codeforces.com/contest/104024) | 6 | 4/6 | Special | - |
 | [104025](104025/) | [The 16-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/104025) | 13 | 10/13 | Special | - |
