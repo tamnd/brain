@@ -208,8 +208,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [188](188.md) |  [*16*] | medium | verified | 1m13s |
 | [189](189.md) |  [*18*] | medium | solved | 3m49s |
 | [190](190.md) |  [*20*] | medium | solved | 1m40s |
-| [191](191.md) | &#9654; [*HM25*] | hm-medium | verified | 1m16s |
-| [192](192.md) |  [*M20*] | math-medium | solved | 4m32s |
+| [191](191.md) | &#9654; [*HM25*] | hm-medium | solved | 3m52s |
+| [192](192.md) |  [*M20*] | math-medium | solved | 4m37s |
 | [193](193.md) |  [*M21*] | math-medium | verified | 2m31s |
 | [194](194.md) |  [*M25*] | math-medium | solved | 4m32s |
 | [195](195.md) |  [*24*] | medium | solved | 4m |
