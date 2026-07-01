@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2684 contests, 18944 problems, 10727 verified."
+description: "Codeforces problem solutions with full editorials. 2687 contests, 18971 problems, 10730 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2684 contests, 18944 problems, 10727 verified.**
+**2687 contests, 18971 problems, 10730 verified.**
 
-## Unknown — 609 contests, 4992 problems, 3181 verified
+## Unknown — 611 contests, 5005 problems, 3182 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103994](103994/) | [Московская командная олимпиада (МКОШП) 2022](https://codeforces.com/contest/103994) | 12 | 1/12 | Special | - |
+| [103997](103997/) | [Splay Training](https://codeforces.com/contest/103997) | 1 | 0/1 | Special | - |
 | [104010](104010/) | [2022-2023 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 22)](https://codeforces.com/contest/104010) | 12 | 12/12 | Special | - |
 | [104011](104011/) | [2021-2022 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104011) | 14 | 13/14 | ICPC/IOI | - |
 | [104012](104012/) | [2022-2023 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104012) | 14 | 13/14 | ICPC/IOI | - |
@@ -1708,7 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 164 contests, 1183 problems, 549 verified
+## 2022 — 165 contests, 1197 problems, 551 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1845,6 +1847,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103999](103999/) | [FMI No Stress 11](https://codeforces.com/contest/103999) | 14 | 2/14 | Special | - |
 | [104002](104002/) | [UTPC Contest 10-28-22 Div. 2 (Beginner)](https://codeforces.com/contest/104002) | 9 | 2/9 | Div. 2 | - |
 | [104003](104003/) | [UTPC Contest 10-28-22 Div. 1 (Advanced)](https://codeforces.com/contest/104003) | 9 | 2/9 | Div. 1 | - |
 | [104008](104008/) | [2022 China Collegiate Programming Contest (CCPC) Guilin Site](https://codeforces.com/contest/104008) | 13 | 12/13 | Special | - |
