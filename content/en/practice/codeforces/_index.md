@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2563 contests, 17862 problems, 9992 verified."
+description: "Codeforces problem solutions with full editorials. 2564 contests, 17868 problems, 9997 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2563 contests, 17862 problems, 9992 verified.**
+**2564 contests, 17868 problems, 9997 verified.**
 
 ## Unknown — 543 contests, 4444 problems, 2795 verified
 
@@ -1780,7 +1780,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 249 contests, 2023 problems, 1063 verified
+## 2023 — 250 contests, 2029 problems, 1068 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1916,6 +1916,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104301](104301/) | [TheForces Round #10 (TEN-Forces)](https://codeforces.com/contest/104301) | 6 | 5/6 | Special | - |
 | [104303](104303/) | [2023 Xiangtan Unversity Freshman Conteset](https://codeforces.com/contest/104303) | 10 | 9/10 | Special | - |
 | [104304](104304/) | [The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Final](https://codeforces.com/contest/104304) | 9 | 9/9 | Special | - |
 | [104308](104308/) | [Mirror of Independence Day Programming Contest 2023 by MIST Computer Club](https://codeforces.com/contest/104308) | 11 | 11/11 | Special | - |
