@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2649 contests, 18603 problems, 10498 verified."
+description: "Codeforces problem solutions with full editorials. 2650 contests, 18613 problems, 10499 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2649 contests, 18603 problems, 10498 verified.**
+**2650 contests, 18613 problems, 10499 verified.**
 
-## Unknown — 589 contests, 4808 problems, 3048 verified
+## Unknown — 590 contests, 4818 problems, 3049 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104067](104067/) | [Интернет-олимпиады, Сезон 2022-2023, Третья командная олимпиада (продвинутая версия)](https://codeforces.com/contest/104067) | 10 | 1/10 | Special | - |
 | [104069](104069/) | [VII MaratonUSP Freshman Contest](https://codeforces.com/contest/104069) | 10 | 9/10 | Special | - |
 | [104091](104091/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2022-2023](https://codeforces.com/contest/104091) | 6 | 6/6 | Special | - |
 | [104092](104092/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2021-2022 (9-11 классы)](https://codeforces.com/contest/104092) | 5 | 4/5 | Special | - |
