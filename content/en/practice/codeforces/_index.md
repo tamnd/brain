@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2623 contests, 18357 problems, 10357 verified."
+description: "Codeforces problem solutions with full editorials. 2624 contests, 18370 problems, 10360 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2623 contests, 18357 problems, 10357 verified.**
+**2624 contests, 18370 problems, 10360 verified.**
 
 ## Unknown — 576 contests, 4690 problems, 2980 verified
 
@@ -1817,7 +1817,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 272 contests, 2227 problems, 1203 verified
+## 2023 — 273 contests, 2240 problems, 1206 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1953,6 +1953,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104146](104146/) | [Abakoda Long Contest 2022](https://codeforces.com/contest/104146) | 13 | 3/13 | Special | - |
 | [104147](104147/) | [JCPC 2022](https://codeforces.com/contest/104147) | 11 | 2/11 | Special | - |
 | [104157](104157/) | [UTPC Contest 01-27-23 Div. 2 (Beginner)](https://codeforces.com/contest/104157) | 9 | 6/9 | Div. 2 | - |
 | [104158](104158/) | [UTPC Contest 01-27-23 Div. 1 (Advanced)](https://codeforces.com/contest/104158) | 9 | 6/9 | Div. 1 | - |
