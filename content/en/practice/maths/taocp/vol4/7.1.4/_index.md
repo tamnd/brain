@@ -230,7 +230,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [210](210.md) | &#9654; [*23*] | medium | verified | 2m12s |
 | [211](211.md) |  [*M20*] | math-medium | verified | 1m57s |
 | [212](212.md) | &#9654; [*25*] | medium | solved | 4m49s |
-| [213](213.md) |  [*16*] | medium | verified | 1m |
+| [213](213.md) |  [*16*] | medium | solved | 6m11s |
 | [214](214.md) | &#9654; [*21*] | medium | solved | 4m21s |
 | [215](215.md) |  [*21*] | medium | solved | 4m44s |
 | [216](216.md) | &#9654; [*30*] | hard | solved | 4m33s |
