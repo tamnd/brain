@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2583 contests, 18060 problems, 10138 verified."
+description: "Codeforces problem solutions with full editorials. 2586 contests, 18094 problems, 10165 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2583 contests, 18060 problems, 10138 verified.**
+**2586 contests, 18094 problems, 10165 verified.**
 
-## Unknown — 553 contests, 4547 problems, 2878 verified
+## Unknown — 554 contests, 4560 problems, 2891 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104252](104252/) | [2022-2023 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/104252) | 13 | 13/13 | ICPC/IOI | - |
 | [104270](104270/) | [The 2018 ICPC Asia Qingdao Regional Programming Contest (The 1st Universal Cup, Stage 9: Qingdao)](https://codeforces.com/contest/104270) | 13 | 13/13 | ICPC/IOI | - |
 | [104273](104273/) | [Индивидуальная олимпиада школьников по информатике и программированию 2023](https://codeforces.com/contest/104273) | 6 | 2/6 | Special | - |
 | [104274](104274/) | [2023 VIII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/104274) | 10 | 3/10 | Special | - |
@@ -1651,7 +1652,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 135 contests, 891 problems, 367 verified
+## 2022 — 136 contests, 901 problems, 372 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1788,10 +1789,11 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104254](104254/) | [BSUIR Open X. Reload. Semifinal](https://codeforces.com/contest/104254) | 10 | 5/10 | Special | - |
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 258 contests, 2106 problems, 1114 verified
+## 2023 — 259 contests, 2117 problems, 1123 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1927,6 +1929,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104248](104248/) | [Udmurt SU Contest 2010](https://codeforces.com/contest/104248) | 11 | 9/11 | Special | - |
 | [104255](104255/) | [BSUIR Open X. Reload. Students final](https://codeforces.com/contest/104255) | 9 | 2/9 | Special | - |
 | [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 7 | 5/7 | Div. 2 | - |
 | [104262](104262/) | [UTPC Contest 03-24-23 Div. 1 (Advanced)](https://codeforces.com/contest/104262) | 8 | 2/8 | Div. 1 | - |
