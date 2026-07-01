@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2558 contests, 17814 problems, 9951 verified."
+description: "Codeforces problem solutions with full editorials. 2559 contests, 17826 problems, 9961 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2558 contests, 17814 problems, 9951 verified.**
+**2559 contests, 17826 problems, 9961 verified.**
 
 ## Unknown — 543 contests, 4444 problems, 2795 verified
 
@@ -1780,7 +1780,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 244 contests, 1975 problems, 1022 verified
+## 2023 — 245 contests, 1987 problems, 1032 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1916,6 +1916,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104312](104312/) | [UTPC Spring 2023 Contest (HS)](https://codeforces.com/contest/104312) | 12 | 10/12 | Special | - |
 | [104316](104316/) | [VIII Липецкая командная олимпиада школьников по программированию. Финал](https://codeforces.com/contest/104316) | 12 | 12/12 | Special | - |
 | [104317](104317/) | [Shanghai University 2023 Spring Contest](https://codeforces.com/contest/104317) | 10 | 4/10 | Special | - |
 | [104322](104322/) | [哈尔滨工程大学程序设计竞赛 2023](https://codeforces.com/contest/104322) | 13 | 2/13 | Special | - |
