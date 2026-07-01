@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2616 contests, 18316 problems, 10336 verified."
+description: "Codeforces problem solutions with full editorials. 2621 contests, 18342 problems, 10354 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2616 contests, 18316 problems, 10336 verified.**
+**2621 contests, 18342 problems, 10354 verified.**
 
-## Unknown — 571 contests, 4669 problems, 2967 verified
+## Unknown — 575 contests, 4686 problems, 2979 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104149](104149/) | [CPUlm Winter Contest 2022](https://codeforces.com/contest/104149) | 13 | 12/13 | Special | - |
+| [104150](104150/) | [Интернет-олимпиады, Сезон 2022-2023, Первая личная олимпиада](https://codeforces.com/contest/104150) | 4 | 0/4 | Special | - |
+| [104155](104155/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104155) | 0 | 0/0 | Special | - |
+| [104156](104156/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104156) | 0 | 0/0 | Special | - |
 | [104159](104159/) | [Олимпиада школьников РС(Я) (5-8 классы) 2022-23, 2 день](https://codeforces.com/contest/104159) | 4 | 3/4 | Special | - |
 | [104162](104162/) | [Длинный тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104162) | 9 | 3/9 | Special | - |
 | [104164](104164/) | [Короткий тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104164) | 4 | 1/4 | Special | - |
@@ -1812,7 +1816,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 270 contests, 2207 problems, 1195 verified
+## 2023 — 271 contests, 2216 problems, 1201 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1948,6 +1952,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104157](104157/) | [UTPC Contest 01-27-23 Div. 2 (Beginner)](https://codeforces.com/contest/104157) | 9 | 6/9 | Div. 2 | - |
 | [104158](104158/) | [UTPC Contest 01-27-23 Div. 1 (Advanced)](https://codeforces.com/contest/104158) | 9 | 6/9 | Div. 1 | - |
 | [104172](104172/) | [The 2023 ICPC Asia Hong Kong Regional Programming Contest (The 1st Universal Cup, Stage 2:Hong Kong)](https://codeforces.com/contest/104172) | 12 | 12/12 | ICPC/IOI | - |
 | [104180](104180/) | [UTPC Contest 02-10-23 Div. 2 (Beginner)](https://codeforces.com/contest/104180) | 9 | 7/9 | Div. 2 | - |
