@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.1: Generating All n-Tuples"
-description: "Section 7.2.1.1 exercises: 61/112 solved."
+description: "Section 7.2.1.1 exercises: 63/112 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.1. Generating All n-Tuples
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 61/112 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 63/112 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -67,8 +67,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 61/112 solved.
 | [47](47.md) |  [*HM24*] | hm-medium | solved | 5m30s |
 | [48](48.md) |  [*HM48*] | hm-research | solved | 6m21s |
 | [49](49.md) |  [*20*] | medium | solved | 4m28s |
-| 50 | &#9654; [*21*] | medium | - | - |
-| 51 |  [*M24*] | math-medium | - | - |
+| [50](50.md) | &#9654; [*21*] | medium | solved | 6m38s |
+| [51](51.md) |  [*M24*] | math-medium | solved | 4m01s |
 | 52 |  [*M20*] | math-medium | - | - |
 | 53 |  [*M46*] | math-research | - | - |
 | 54 |  [*M20*] | math-medium | - | - |
