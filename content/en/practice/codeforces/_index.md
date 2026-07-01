@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2549 contests, 17713 problems, 9887 verified."
+description: "Codeforces problem solutions with full editorials. 2550 contests, 17719 problems, 9891 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2549 contests, 17713 problems, 9887 verified.**
+**2550 contests, 17719 problems, 9891 verified.**
 
 ## Unknown — 540 contests, 4407 problems, 2765 verified
 
@@ -1777,7 +1777,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 238 contests, 1911 problems, 988 verified
+## 2023 — 239 contests, 1917 problems, 992 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1913,6 +1913,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104328](104328/) | [FIICode2023](https://codeforces.com/contest/104328) | 6 | 4/6 | Special | - |
 | [104329](104329/) | [TheForces Round #12 (Double-Forces)](https://codeforces.com/contest/104329) | 4 | 0/4 | Special | - |
 | [104333](104333/) | [Replay of BU - PSTU Programming club collaborative contest](https://codeforces.com/contest/104333) | 10 | 5/10 | Special | - |
 | [104336](104336/) | [II Olympiad of classes at the Mechanics and Mathematics Faculty of MSU in programming 2023.](https://codeforces.com/contest/104336) | 8 | 4/8 | Special | - |
