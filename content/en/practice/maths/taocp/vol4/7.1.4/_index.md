@@ -22,9 +22,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 266/267 solved.
 | [2](02.md) | &#9654; [*21*] | medium | solved | 3m14s |
 | [3](03.md) |  [*16*] | medium | solved | 2m47s |
 | [4](04.md) |  [*21*] | medium | solved | 3m27s |
-| [5](05.md) |  [*20*] | medium | verified | 1m06s |
-| [6](06.md) |  [*10*] | simple | verified | 4m19s |
-| [7](07.md) |  [*21*] | medium | solved | 5m28s |
+| [5](05.md) |  [*20*] | medium | solved | 3m14s |
+| [6](06.md) |  [*10*] | simple | solved | 2m55s |
+| [7](07.md) |  [*21*] | medium | solved | 3m08s |
 | [8](08.md) |  [*22*] | medium | solved | 1m04s |
 | [9](09.md) |  [*16*] | medium | verified | 1m05s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m04s |
