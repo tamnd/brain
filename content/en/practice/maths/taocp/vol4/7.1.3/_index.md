@@ -113,7 +113,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [93](93.md) |  [*18*] | medium | solved | 5m11s |
 | [94](94.md) |  [*21*] | medium | solved | 5m10s |
 | [95](95.md) |  [*22*] | medium | solved | 4m32s |
-| [96](96.md) |  [*21*] | medium | solved | 1m25s |
+| [96](96.md) |  [*21*] | medium | solved | 4m25s |
 | [97](97.md) |  [*23*] | medium | verified | 2m32s |
 | [98](98.md) |  [*20*] | medium | solved | 1m05s |
 | [99](99.md) | &#9654; [*28*] | hard | solved | 2m32s |
