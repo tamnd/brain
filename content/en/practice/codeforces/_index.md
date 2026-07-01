@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2663 contests, 18703 problems, 10553 verified."
+description: "Codeforces problem solutions with full editorials. 2664 contests, 18708 problems, 10557 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2663 contests, 18703 problems, 10553 verified.**
+**2664 contests, 18708 problems, 10557 verified.**
 
-## Unknown — 597 contests, 4851 problems, 3074 verified
+## Unknown — 598 contests, 4856 problems, 3078 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104031](104031/) | [Муниципальный этап ВсОШ по информатике в Самаре 2021-2022 (9-11 классы)](https://codeforces.com/contest/104031) | 5 | 4/5 | Special | - |
 | [104033](104033/) | [Школьный этап ВСОШ по информатике 9-11 класс 2022 (1 группа регионов)](https://codeforces.com/contest/104033) | 0 | 0/0 | Special | - |
 | [104034](104034/) | [Школьный этап ВСОШ по информатике 9-11 класс 2022 (2 группа регионов)](https://codeforces.com/contest/104034) | 0 | 0/0 | Special | - |
 | [104035](104035/) | [Школьный этап ВСОШ по информатике 9-11 класс 2022 (3 группа регионов)](https://codeforces.com/contest/104035) | 0 | 0/0 | Special | - |
