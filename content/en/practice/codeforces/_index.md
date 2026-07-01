@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2630 contests, 18427 problems, 10376 verified."
+description: "Codeforces problem solutions with full editorials. 2631 contests, 18437 problems, 10386 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2630 contests, 18427 problems, 10376 verified.**
+**2631 contests, 18437 problems, 10386 verified.**
 
-## Unknown — 581 contests, 4734 problems, 2996 verified
+## Unknown — 582 contests, 4744 problems, 3006 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104115](104115/) | [Voronezh State University - Sitronics contest, 2022](https://codeforces.com/contest/104115) | 10 | 10/10 | Special | - |
 | [104118](104118/) | [2022 ICPC Asia-Manila Regional Contest](https://codeforces.com/contest/104118) | 12 | 12/12 | ICPC/IOI | - |
 | [104119](104119/) | [Муниципальный этап ВсОШ по информатике, Москва, 2022 год](https://codeforces.com/contest/104119) | 0 | 0/0 | Special | - |
 | [104120](104120/) | [2022 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/104120) | 12 | 1/12 | ICPC/IOI | - |
