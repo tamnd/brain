@@ -191,8 +191,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [171](171.md) |  [*M26*] | math-hard | solved | 6m54s |
 | [172](172.md) |  [*M28*] | math-hard | solved | 6m07s |
 | [173](173.md) | &#9654; [*HM33*] | hm-hard | solved | 6m35s |
-| [174](174.md) | &#9654; [*M39*] | math-project | solved | 4m17s |
-| [175](175.md) |  [*M30*] | math-hard | verified | 1m18s |
+| [174](174.md) | &#9654; [*M39*] | math-project | solved | 8m13s |
+| [175](175.md) |  [*M30*] | math-hard | solved | 6m42s |
 | [176](176.md) |  [*M35*] | math-hard | solved | 4m26s |
 | [177](177.md) |  [*M22*] | math-medium | verified | 2m27s |
 | [178](178.md) |  [*M24*] | math-medium | solved | 3m54s |
