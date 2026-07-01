@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [9](09.md) |  [*16*] | medium | solved | 4m17s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 4m12s |
 | [11](11.md) |  [*20*] | medium | solved | 4m26s |
-| [12](12.md) | &#9654; [*M21*] | math-medium | verified | 2m53s |
+| [12](12.md) | &#9654; [*M21*] | math-medium | solved | 17m29s |
 | [13](13.md) |  [*M15*] | math-simple | verified | 1m23s |
 | [14](14.md) |  [*M24*] | math-medium | verified | 5m14s |
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m38s |
