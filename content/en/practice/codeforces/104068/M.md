@@ -1,0 +1,77 @@
+---
+title: "CF 104068M - \u5b9d\u53ef\u68a6\u4e0e\u6bd2\u7624 Toxel"
+description: "Let $F = mathrm{MUX}(f,g,h)$ denote the Boolean function defined by selecting $g$ when $f=1$ and selecting $h$ when $f=0$, so that $$F = (f wedge g) vee (neg f wedge h)."
+date: "2026-07-02T03:07:57+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104068
+codeforces_index: "M"
+codeforces_contest_name: "The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Preliminary"
+rating: 0
+weight: 104068
+solve_time_s: 123
+verified: false
+draft: false
+---
+
+[CF 104068M - \u5b9d\u53ef\u68a6\u4e0e\u6bd2\u7624 Toxel](https://codeforces.com/problemset/problem/104068/M)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 3s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Let $F = \mathrm{MUX}(f,g,h)$ denote the Boolean function defined by selecting $g$ when $f=1$ and selecting $h$ when $f=0$, so that
+
+$$F = (f \wedge g)\ \vee\ (\neg f \wedge h).$$
+
+The task is to construct the ZDD for $F$ using the standard ZDD operations and respecting the fixed variable ordering and reduction rules of Section 7.1.4.
+
+The construction proceeds by structural recursion on the top variable of the involved diagrams. Let $V(f)$ denote the index of the root variable of $f$, and similarly for $g$ and $h$. Let $v$ be the minimum of these indices, so $v = \min(V(f), V(g), V(h))$, where sinks are treated as having no variable and therefore do not constrain the minimum.
+
+Each diagram is decomposed at variable $x_v$ into low and high cofactors. If $x_v$ does not appear at the root of a diagram, that diagram is unchanged under both cofactors. If it does appear, its low and high successors are used.
+
+Thus each argument is rewritten in the form
+
+$$f = (f_0, f_1), \quad g = (g_0, g_1), \quad h = (h_0, h_1),$$
+
+where the pair denotes the ZDD cofactors with respect to $x_v$, interpreted as equality when the root variable exceeds $v$.
+
+The function $F$ is then determined by Shannon expansion at $x_v$. Substituting $f = (x_v?f_1:f_0)$ into the defining expression yields
+
+$$F = (x_v \wedge f_1 \wedge g)\ \vee\ (\neg x_v \wedge f_0 \wedge h).$$
+
+Separating the cases $x_v=0$ and $x_v=1$ gives the cofactors of $F$:
+
+$$F_0 = f_0 \wedge h_0,
+\qquad
+F_1 = f_1 \wedge g_1.$$
+
+This simplification uses that in the $x_v=0$ branch, the condition $f$ reduces to $f_0$, so selection reduces to $h$, and in the $x_v=1$ branch, selection reduces to $g$.
+
+However, when $x_v$ does not occur in one or more of $f,g,h$, the cofactors are interpreted with the standard extension rule: a diagram without variable $v$ is copied unchanged into both branches.
+
+Therefore the recursive definition of the ZDD node for $F$ is determined as follows. If $f$ is a sink, then
+
+$$\mathrm{MUX}(\bot,g,h) = h,
+\qquad
+\mathrm{MUX}(\top,g,h) = g.$$
+
+These identities follow directly from $(\bot \wedge g)\vee(\top \wedge h)=h$ and $(\top \wedge g)\vee(\bot \wedge h)=g$.
+
+If $f$ is a non-sink node labeled by $x_v$, write $f=(f_0,f_1)$. Then the result is a node labeled by $x_v$ whose low and high pointers are computed recursively:
+
+$$\mathrm{MUX}(f,g,h)_0 = \mathrm{MUX}(f_0, g_0, h_0),
+\qquad
+\mathrm{MUX}(f,g,h)_1 = \mathrm{MUX}(f_1, g_1, h_1).$$
+
+If $g$ or $h$ has root variable greater than $v$, their cofactors satisfy $g_0=g_1=g$ and $h_0=h_1=h$, so the recursion automatically preserves correctness under the ordering constraint.
+
+Reduction is enforced in the standard ZDD manner. If the computed low and high children coincide, the node is eliminated and replaced by that child. If an identical triple $(v,F_0,F_1)$ has already been constructed, the existing node is reused, ensuring canonicity.
+
+The correctness follows from the fact that the Shannon decomposition at the least variable $x_v$ partitions the domain into disjoint cases $x_v=0$ and $x_v=1$, and in each case the defining expression of MUX reduces exactly to either $h$ or $g$ with consistent cofactors. The recursion preserves the variable ordering since every recursive call is made on strictly larger variable indices, and it preserves ZDD reduction since no node with identical low and high successors is retained.
+
+This completes the construction of $\mathrm{MUX}(f,g,h)$ as a ZDD operation. ∎
