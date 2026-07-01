@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2542 contests, 17652 problems, 9843 verified."
+description: "Codeforces problem solutions with full editorials. 2567 contests, 17894 problems, 10018 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,19 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2542 contests, 17652 problems, 9843 verified.**
+**2567 contests, 17894 problems, 10018 verified.**
 
-## Unknown — 538 contests, 4389 problems, 2750 verified
+## Unknown — 545 contests, 4456 problems, 2807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104291](104291/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/104291) | 0 | 0/0 | Special | - |
+| [104295](104295/) | [vkoshp.letovo](https://codeforces.com/contest/104295) | 12 | 12/12 | Special | - |
+| [104313](104313/) | [II Открытая командная олимпиада ЮМШ по программированию](https://codeforces.com/contest/104313) | 15 | 14/15 | Special | - |
+| [104314](104314/) | [XXV Interregional Programming Olympiad, Vologda SU, 2023](https://codeforces.com/contest/104314) | 10 | 4/10 | Special | - |
+| [104324](104324/) | [SDU Open 2023](https://codeforces.com/contest/104324) | 12 | 12/12 | Special | - |
+| [104334](104334/) | [Osijek Competitive Programming Camp, Winter 2023, Day 9: Magical Story of LaLa (The 1st Universal Cup. Stage 14: Ranoa)](https://codeforces.com/contest/104334) | 10 | 10/10 | Special | - |
+| [104343](104343/) | [2023 VIII Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/104343) | 8 | 5/8 | Special | - |
 | [104344](104344/) | [Maratona dos Bixes 2023 - UNICAMP](https://codeforces.com/contest/104344) | 11 | 8/11 | Special | - |
 | [104345](104345/) | [2022-2023 Winter Petrozavodsk Camp, Day 4: KAIST+KOI Contest](https://codeforces.com/contest/104345) | 13 | 5/13 | Special | - |
 | [104359](104359/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2022](https://codeforces.com/contest/104359) | 6 | 6/6 | Special | - |
@@ -1775,7 +1782,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 233 contests, 1868 problems, 959 verified
+## 2023 — 251 contests, 2043 problems, 1077 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1911,6 +1918,24 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104294](104294/) | [UTPC Spring 2023 Open Contest](https://codeforces.com/contest/104294) | 14 | 9/14 | Special | - |
+| [104301](104301/) | [TheForces Round #10 (TEN-Forces)](https://codeforces.com/contest/104301) | 6 | 5/6 | Special | - |
+| [104303](104303/) | [2023 Xiangtan Unversity Freshman Conteset](https://codeforces.com/contest/104303) | 10 | 9/10 | Special | - |
+| [104304](104304/) | [The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Final](https://codeforces.com/contest/104304) | 9 | 9/9 | Special | - |
+| [104308](104308/) | [Mirror of Independence Day Programming Contest 2023 by MIST Computer Club](https://codeforces.com/contest/104308) | 11 | 11/11 | Special | - |
+| [104311](104311/) | [TheForces Round #11 (DIV2.5-Forces)](https://codeforces.com/contest/104311) | 6 | 2/6 | Special | - |
+| [104312](104312/) | [UTPC Spring 2023 Contest (HS)](https://codeforces.com/contest/104312) | 12 | 10/12 | Special | - |
+| [104316](104316/) | [VIII Липецкая командная олимпиада школьников по программированию. Финал](https://codeforces.com/contest/104316) | 12 | 12/12 | Special | - |
+| [104317](104317/) | [Shanghai University 2023 Spring Contest](https://codeforces.com/contest/104317) | 10 | 4/10 | Special | - |
+| [104322](104322/) | [哈尔滨工程大学程序设计竞赛 2023](https://codeforces.com/contest/104322) | 13 | 2/13 | Special | - |
+| [104325](104325/) | [AGM 2023 Qualification Round](https://codeforces.com/contest/104325) | 12 | 7/12 | Special | - |
+| [104326](104326/) | [Udmurt SU Contest 2011](https://codeforces.com/contest/104326) | 11 | 5/11 | Special | - |
+| [104328](104328/) | [FIICode2023](https://codeforces.com/contest/104328) | 6 | 4/6 | Special | - |
+| [104329](104329/) | [TheForces Round #12 (Double-Forces)](https://codeforces.com/contest/104329) | 4 | 0/4 | Special | - |
+| [104333](104333/) | [Replay of BU - PSTU Programming club collaborative contest](https://codeforces.com/contest/104333) | 10 | 5/10 | Special | - |
+| [104336](104336/) | [II Olympiad of classes at the Mechanics and Mathematics Faculty of MSU in programming 2023.](https://codeforces.com/contest/104336) | 8 | 4/8 | Special | - |
+| [104337](104337/) | [2023 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/104337) | 13 | 13/13 | Special | - |
+| [104339](104339/) | [FAMCS Olympiad for scholars, Qualification (copy)](https://codeforces.com/contest/104339) | 8 | 7/8 | Special | - |
 | [104349](104349/) | [TheForces Round #13 (Boombastic-Forces)](https://codeforces.com/contest/104349) | 7 | 1/7 | Special | - |
 | [104353](104353/) | [2023 Xiangtan University Programming Contest](https://codeforces.com/contest/104353) | 10 | 10/10 | Special | - |
 | [104354](104354/) | [2023 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104354) | 12 | 12/12 | Special | - |
