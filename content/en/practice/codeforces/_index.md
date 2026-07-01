@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2639 contests, 18506 problems, 10429 verified."
+description: "Codeforces problem solutions with full editorials. 2640 contests, 18511 problems, 10433 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2639 contests, 18506 problems, 10429 verified.**
+**2640 contests, 18511 problems, 10433 verified.**
 
-## Unknown — 586 contests, 4787 problems, 3029 verified
+## Unknown — 587 contests, 4792 problems, 3033 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104092](104092/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2021-2022 (9-11 классы)](https://codeforces.com/contest/104092) | 5 | 4/5 | Special | - |
 | [104094](104094/) | [2022-2023 Russia Team Open, High School Programming Contest (VKOSHP XXIII)](https://codeforces.com/contest/104094) | 12 | 1/12 | Special | - |
 | [104095](104095/) | [2020 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104095) | 12 | 10/12 | Special | - |
 | [104096](104096/) | [Муниципальный этап ВсОШ, Краснодарский край, 2022](https://codeforces.com/contest/104096) | 5 | 0/5 | Special | - |
