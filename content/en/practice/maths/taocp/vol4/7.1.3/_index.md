@@ -91,7 +91,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [71](71.md) |  [*20*] | medium | solved | 3m45s |
 | [72](72.md) |  [*25*] | medium | solved | 4m58s |
 | [73](73.md) |  [*22*] | medium | solved | 4m43s |
-| [74](74.md) |  [*22*] | medium | solved | 1m10s |
+| [74](74.md) |  [*22*] | medium | solved | 12m45s |
 | [75](75.md) | &#9654; [*32*] | hard | solved | 5m16s |
 | [76](76.md) |  [*27*] | hard | verified | 2m13s |
 | [77](77.md) |  [*26*] | hard | solved | 50s |
