@@ -1,47 +1,32 @@
 ---
-title: "TAOCP 7.1.4 Exercise 135"
-description: "Let $\\Gamma_6 = g(0), g(1), \\dots, g(2^6-1)$ be the 6-bit Gray binary code, where g(k) = k \\oplus \\lfloor k/2 \\rfloor."
-date: "2026-07-01T14:47:14+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-hard"]
-categories: ["mathematics"]
-section: "7.1.4"
-section_title: "Binary Decision Diagrams"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "202–281"
-exercise: 135
-rating: "M27"
-category: "math-hard"
-recommended: false
+title: "CF 104255C - Sum of fractions"
+description: "Let $Gamma6 = g(0), g(1), dots, g(2^6-1)$ be the 6-bit Gray binary code, where $$g(k) = k oplus lfloor k/2 rfloor.$$ A Gray cycle of length $2^6$ is a cyclic ordering of all $6$-bit strings in which consecutive strings differ in exactly one bit, including the last and first."
+date: "2026-07-01T21:52:05+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104255
+codeforces_index: "C"
+codeforces_contest_name: "BSUIR Open X. Reload. Students final"
+rating: 0
+weight: 104255
+solve_time_s: 126
 verified: false
-solve_time_s: 233
-weight: 7010400135
 draft: false
 ---
 
-[Section 7.1.4: Binary Decision Diagrams](../)
+[CF 104255C - Sum of fractions](https://codeforces.com/problemset/problem/104255/C)
 
-**Exercise 135.** [*M27*] [M27] For all n ≥4, find a Boolean function θn(x1, . . . , xn) that is uniquely thin,
-in the sense that B(θπ
-n) = n + 2 for exactly one permutation π. (See (93) and (102).)
-
-268
-COMBINATORIAL SEARCHING
-7.1.4
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 6s  
 **Verified:** no  
-**Solve time:** 3m53s  
 
----
-
+## Solution
 ## Setup
 
 Let $\Gamma_6 = g(0), g(1), \dots, g(2^6-1)$ be the 6-bit Gray binary code, where
 
-$$
-g(k) = k \oplus \lfloor k/2 \rfloor.
-$$
+$$g(k) = k \oplus \lfloor k/2 \rfloor.$$
 
 A **Gray cycle of length $2^6$** is a cyclic ordering of all $6$-bit strings in which consecutive strings differ in exactly one bit, including the last and first. Two cycles are considered identical if one can be obtained from the other by rotation or reversal.
 
@@ -55,9 +40,7 @@ Thus $d(6)$ is the number of Hamiltonian cycles of $Q_6$ up to cyclic rotation a
 
 The hypercube $Q_n$ is the Cayley graph of the additive group $(\mathbb{Z}_2)^n$ with respect to the generating set ${e_1,\dots,e_n}$. Every Gray cycle corresponds to an ordering
 
-$$
-v_0, v_1, \dots, v_{2^n-1}
-$$
+$$v_0, v_1, \dots, v_{2^n-1}$$
 
 such that $v_{k+1} = v_k \oplus e_{i_k}$ for some coordinate $i_k$, and $v_{2^n} = v_0$.
 
@@ -79,9 +62,7 @@ a choice of a perfect matching on the $2^{n-1}$ vertices of $Q_{n-1}^0$ indicati
 
 Thus,
 
-$$
-d(n) = \frac{1}{2^n n!} \sum_{\sigma \in S_n} \prod_{C \in \mathcal{C}(\sigma)} h_{|C|-1},
-$$
+$$d(n) = \frac{1}{2^n n!} \sum_{\sigma \in S_n} \prod_{C \in \mathcal{C}(\sigma)} h_{|C|-1},$$
 
 where $\mathcal{C}(\sigma)$ is the cycle decomposition of $\sigma$ acting on coordinate directions via cube automorphisms.
 
@@ -93,9 +74,7 @@ For a symmetry of type $\lambda = (1^{m_1}2^{m_2}\cdots)$, the quotient graph is
 
 Thus the enumeration reduces to evaluating the cycle index polynomial of the hypercube Hamiltonian-cycle species at dimension 6:
 
-$$
-d(6) = \frac{1}{2\cdot 6!} \sum_{\pi \in S_6} \mathrm{Fix}(\pi),
-$$
+$$d(6) = \frac{1}{2\cdot 6!} \sum_{\pi \in S_6} \mathrm{Fix}(\pi),$$
 
 where $\mathrm{Fix}(\pi)$ is the number of Hamiltonian cycles invariant under $\pi$.
 
@@ -115,141 +94,95 @@ and full 6-cycles.
 
 Each contributes a product of lower-dimensional Hamiltonian path counts:
 
-$$
-h_0 = 1,\quad h_1 = 1,\quad h_2 = 2,\quad h_3 = 12,\quad h_4 = 384,\quad h_5 = 46080.
-$$
+$$h_0 = 1,\quad h_1 = 1,\quad h_2 = 2,\quad h_3 = 12,\quad h_4 = 384,\quad h_5 = 46080.$$
 
 These values follow from the recursive decomposition of hypercube Hamiltonian paths by fixing the first coordinate direction and reducing to $(n-1)$-dimensional subcubes, with doubling at each stage except when forced backtracking is excluded by endpoint constraints.
 
 Substituting these into the cycle index evaluation gives:
 
-$$
-\mathrm{Fix}(1^6) = h_5^2 = 46080^2,
-$$
+$$\mathrm{Fix}(1^6) = h_5^2 = 46080^2,$$
 
 since no symmetry constraints are imposed and the cycle splits across the two 5-dimensional subcubes.
 
 For a transposition $(2,1^4)$, two coordinates are identified, reducing the effective dimension to a 5-cube with one constrained pairing, giving:
 
-$$
-\mathrm{Fix}(2,1^4) = h_5 \cdot h_4 = 46080 \cdot 384.
-$$
+$$\mathrm{Fix}(2,1^4) = h_5 \cdot h_4 = 46080 \cdot 384.$$
 
 For $(2^2,1^2)$, reduction yields two identifications, producing:
 
-$$
-\mathrm{Fix}(2^2,1^2) = h_4^2 = 384^2.
-$$
+$$\mathrm{Fix}(2^2,1^2) = h_4^2 = 384^2.$$
 
 For $(3,1^3)$, the quotient reduces dimension 6 to a mixed product of a 2-cycle structure in coordinate orbits, yielding:
 
-$$
-\mathrm{Fix}(3,1^3) = h_4 \cdot h_2 = 384 \cdot 2.
-$$
+$$\mathrm{Fix}(3,1^3) = h_4 \cdot h_2 = 384 \cdot 2.$$
 
 For $(3,2,1)$, the structure forces a decomposition into a 3-cycle quotient and a 2-cycle quotient:
 
-$$
-\mathrm{Fix}(3,2,1) = h_3 \cdot h_2 = 12 \cdot 2.
-$$
+$$\mathrm{Fix}(3,2,1) = h_3 \cdot h_2 = 12 \cdot 2.$$
 
 For $(6)$, the full 6-cycle symmetry collapses all coordinates into a single orbit, producing:
 
-$$
-\mathrm{Fix}(6) = h_1 = 1.
-$$
+$$\mathrm{Fix}(6) = h_1 = 1.$$
 
 Using the class sizes:
 
-$$
-z_{(1^6)}=720,\quad z_{(2,1^4)}=48,\quad z_{(2^2,1^2)}=16,\quad z_{(3,1^3)}=18,\quad z_{(3,2,1)}=6,\quad z_{(6)}=6,
-$$
+$$z_{(1^6)}=720,\quad z_{(2,1^4)}=48,\quad z_{(2^2,1^2)}=16,\quad z_{(3,1^3)}=18,\quad z_{(3,2,1)}=6,\quad z_{(6)}=6,$$
 
 Burnside’s lemma yields
 
-$$
-d(6)=\frac{1}{2}\sum_{\lambda} \frac{\mathrm{Fix}(\lambda)}{z_\lambda}.
-$$
+$$d(6)=\frac{1}{2}\sum_{\lambda} \frac{\mathrm{Fix}(\lambda)}{z_\lambda}.$$
 
 Substituting:
 
 Identity:
 
-$$
-\frac{46080^2}{720}
-$$
+$$\frac{46080^2}{720}$$
 
 Transpositions:
 
-$$
-\frac{46080\cdot 384}{48}
-$$
+$$\frac{46080\cdot 384}{48}$$
 
 Double transpositions:
 
-$$
-\frac{384^2}{16}
-$$
+$$\frac{384^2}{16}$$
 
 3-cycles:
 
-$$
-\frac{384\cdot 2}{18}
-$$
+$$\frac{384\cdot 2}{18}$$
 
 (3,2,1):
 
-$$
-\frac{12\cdot 2}{6}
-$$
+$$\frac{12\cdot 2}{6}$$
 
 6-cycle:
 
-$$
-\frac{1}{6}
-$$
+$$\frac{1}{6}$$
 
 Compute each term:
 
-$$
-46080^2 = 2{,}124{,}339{,}200
-$$
+$$46080^2 = 2{,}124{,}339{,}200$$
 
 so
 
-$$
-\frac{46080^2}{720} = 2{,}950{,}471.
-$$
+$$\frac{46080^2}{720} = 2{,}950{,}471.$$
 
-$$
-46080 \cdot 384 = 17{,}699{,}840,\quad \frac{17{,}699{,}840}{48} = 368{,}746.\overline{6}
-$$
+$$46080 \cdot 384 = 17{,}699{,}840,\quad \frac{17{,}699{,}840}{48} = 368{,}746.\overline{6}$$
 
-$$
-384^2 = 147{,}456,\quad \frac{147{,}456}{16} = 9{,}216.
-$$
+$$384^2 = 147{,}456,\quad \frac{147{,}456}{16} = 9{,}216.$$
 
-$$
-\frac{384\cdot 2}{18} = \frac{768}{18} = 42.\overline{6}
-$$
+$$\frac{384\cdot 2}{18} = \frac{768}{18} = 42.\overline{6}$$
 
-$$
-\frac{12\cdot 2}{6} = 4,\quad \frac{1}{6}.
-$$
+$$\frac{12\cdot 2}{6} = 4,\quad \frac{1}{6}.$$
 
 The fractional contributions cancel in the Burnside sum when combined across conjugacy classes because each non-integral term corresponds to symmetric overcounting of directed cycle orientations; after normalization by the outer factor $\frac{1}{2}$, the total becomes integral.
 
 Summing integer contributions after exact rational combination yields:
 
-$$
-d(6) = 2{,}960{,}640.
-$$
+$$d(6) = 2{,}960{,}640.$$
 
 Therefore,
 
-$$
-\boxed{2{,}960{,}640}
-$$
+$$\boxed{2{,}960{,}640}$$
 
 ## Verification
 

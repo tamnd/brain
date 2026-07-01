@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2582 contests, 18051 problems, 10136 verified."
+description: "Codeforces problem solutions with full editorials. 2583 contests, 18060 problems, 10138 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2582 contests, 18051 problems, 10136 verified.**
+**2583 contests, 18060 problems, 10138 verified.**
 
 ## Unknown — 553 contests, 4547 problems, 2878 verified
 
@@ -1791,7 +1791,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 257 contests, 2097 problems, 1112 verified
+## 2023 — 258 contests, 2106 problems, 1114 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1927,6 +1927,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104255](104255/) | [BSUIR Open X. Reload. Students final](https://codeforces.com/contest/104255) | 9 | 2/9 | Special | - |
 | [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 7 | 5/7 | Div. 2 | - |
 | [104262](104262/) | [UTPC Contest 03-24-23 Div. 1 (Advanced)](https://codeforces.com/contest/104262) | 8 | 2/8 | Div. 1 | - |
 | [104264](104264/) | [TheForces Round #9 (Fool-Forces)](https://codeforces.com/contest/104264) | 8 | 3/8 | Special | - |
