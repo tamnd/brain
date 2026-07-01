@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2633 contests, 18456 problems, 10403 verified."
+description: "Codeforces problem solutions with full editorials. 2634 contests, 18468 problems, 10415 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2633 contests, 18456 problems, 10403 verified.**
+**2634 contests, 18468 problems, 10415 verified.**
 
 ## Unknown — 583 contests, 4758 problems, 3018 verified
 
@@ -1681,7 +1681,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 140 contests, 942 problems, 400 verified
+## 2022 — 141 contests, 954 problems, 412 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1818,6 +1818,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104101](104101/) | [The 2022 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/104101) | 12 | 12/12 | Special | - |
 | [104103](104103/) | [Innopolis Open 2022-2023. Second qualification round](https://codeforces.com/contest/104103) | 5 | 5/5 | Special | - |
 | [104128](104128/) | [The 2022 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/104128) | 13 | 0/13 | ICPC/IOI | - |
 | [104160](104160/) | [The 2022 ICPC Asia Shenyang Regional Contest (The 1st Universal Cup, Stage 1: Shenyang)](https://codeforces.com/contest/104160) | 13 | 13/13 | ICPC/IOI | - |

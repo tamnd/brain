@@ -1,23 +1,23 @@
 ---
 title: "The 2022 Zhejiang University City College Freshman Programming Contest"
-description: "9 problems from The 2022 Zhejiang University City College Freshman Programming Contest (contest 104101), difficulty -. 9/9 solutions verified against sample I/O."
+description: "12 problems from The 2022 Zhejiang University City College Freshman Programming Contest (contest 104101), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104101
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 439
+n_problems: 12
+n_verified: 12
+total_solve_s: 588
 contest_year: 2022
-date: "2026-07-02T02:09:23+07:00"
+date: "2026-07-02T02:10:47+07:00"
 weight: 104101
 draft: false
 ---
 
 # [The 2022 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/104101)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 7m 19s
+Special | 12 problems | 12/12 verified | Difficulty - | 9m 48s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,6 @@ Special | 9 problems | 9/9 verified | Difficulty - | 7m 19s
 | [G](G/) | [Red Black Tree](https://codeforces.com/problemset/problem/104101/G) |  |  |  | 44s | ✓ |
 | [H](H/) | [Beautiful String](https://codeforces.com/problemset/problem/104101/H) |  |  |  | 46s | ✓ |
 | [I](I/) | [Digit Problem](https://codeforces.com/problemset/problem/104101/I) |  |  |  | 52s | ✓ |
+| [J](J/) | [Simple Game](https://codeforces.com/problemset/problem/104101/J) |  |  |  | 44s | ✓ |
+| [K](K/) | [Bit](https://codeforces.com/problemset/problem/104101/K) |  |  |  | 59s | ✓ |
+| [L](L/) | [Elden Ring](https://codeforces.com/problemset/problem/104101/L) |  |  |  | 46s | ✓ |
