@@ -1,0 +1,163 @@
+---
+title: "CF 104049C - Capturing Bronze"
+description: "We represent a family $f$ as a reduced ordered decision diagram over variables $x1,x2,dots,xn$, using the conventions of Section 7.1.4 and Exercise 203. A node $v$ has fields $$V(v),quad LO(v),quad HI(v),$$ and terminals $bot,top$."
+date: "2026-07-02T03:43:23+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104049
+codeforces_index: "C"
+codeforces_contest_name: "UTPC Contest 11-11-22 Div. 1 (Advanced)"
+rating: 0
+weight: 104049
+solve_time_s: 130
+verified: false
+draft: false
+---
+
+[CF 104049C - Capturing Bronze](https://codeforces.com/problemset/problem/104049/C)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 10s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+We represent a family $f$ as a reduced ordered decision diagram over variables $x_1,x_2,\dots,x_n$, using the conventions of Section 7.1.4 and Exercise 203. A node $v$ has fields
+
+$$V(v),\quad LO(v),\quad HI(v),$$
+
+and terminals $\bot,\top$. Variable ordering is strictly increasing along every edge.
+
+All operations below are implemented by structural recursion on pairs of nodes, with memoization of previously computed pairs.
+
+Let $\mathrm{Apply}(op,f,g)$ denote a memoized recursive procedure returning the result of applying $op$ to nodes $f,g$. Let $\mathrm{top}(v)$ denote $V(v)$, and let $\mathrm{low}(v),\mathrm{high}(v)$ denote its children.
+
+When $f$ and $g$ are nonterminals, let $i=\mathrm{top}(f)$, $j=\mathrm{top}(g)$. Let $k=\min(i,j)$. We split by Shannon expansion on variable $x_k$.
+
+A node with variable index $k$ but missing in one operand is treated by duplicating that operand on both branches.
+
+All results are reduced by the usual rule: identical subgraphs are shared, and nodes with equal low and high children are eliminated.
+
+### (a) Join $f \sqcup g$
+
+The join is defined by
+
+$$f \sqcup g = \{\alpha \cup \beta \mid \alpha \in f,\ \beta \in g\}.$$
+
+Recursion:
+
+If $f=\bot$ or $g=\bot$, then $f \sqcup g=\bot$.
+
+If $f=\top$, then $f \sqcup g=g$. If $g=\top$, then $f \sqcup g=f$.
+
+Otherwise let $k=\min(V(f),V(g))$. Define projections
+
+$$f_0 = f|_{x_k=0},\quad f_1 = f|_{x_k=1},\quad g_0 = g|_{x_k=0},\quad g_1 = g|_{x_k=1}.$$
+
+Then
+
+$$(f \sqcup g)_0 = (f_0 \sqcup g_0),
+\qquad
+(f \sqcup g)_1 = (f_1 \sqcup g_0)\ \sqcup\ (f_0 \sqcup g_1)\ \sqcup\ (f_1 \sqcup g_1).$$
+
+The root node is created at level $k$ with these children, followed by reduction.
+
+This recurrence reflects that a set in $f \sqcup g$ either omits $x_k$ in both components or includes it from at least one side, producing all unions of subcases.
+
+### (b) Meet $f \sqcap g$
+
+The meet is
+
+$$f \sqcap g = \{\alpha \cap \beta \mid \alpha \in f,\ \beta \in g\}.$$
+
+Base cases:
+
+$$\bot \sqcap g = \bot,\quad f \sqcap \bot = \bot,\quad \top \sqcap g = g,\quad f \sqcap \top = f.$$
+
+Recursion with $k=\min(V(f),V(g))$:
+
+$$(f \sqcap g)_0 = f_0 \sqcap g_0,
+\qquad
+(f \sqcap g)_1 = f_1 \sqcap g_1.$$
+
+The cross terms vanish because an element belongs to the intersection only if it is present in both operands at every variable position.
+
+### (c) Symmetric difference $f \Delta g$
+
+Here
+
+$$f \Delta g = \{ \alpha \oplus \beta \mid \alpha \in f,\ \beta \in g \},$$
+
+where $\oplus$ is symmetric difference of sets.
+
+Base cases:
+
+$$\bot \Delta g = \bot,\quad f \Delta \bot = \bot,\quad \top \Delta g = g,\quad f \Delta \top = f.$$
+
+Recursion with $k=\min(V(f),V(g))$:
+
+$$(f \Delta g)_0 = f_0 \Delta g_0,$$
+
+$$(f \Delta g)_1 = (f_1 \Delta g_0)\ \sqcup\ (f_0 \Delta g_1).$$
+
+The second line follows from the identity
+
+$$(A\oplus x)\oplus B = (A\oplus B)\oplus x,$$
+
+and partitioning by presence of $x_k$.
+
+### (d) Quotient $f/g$
+
+By definition,
+
+$$f/g = \{\alpha \mid \forall \beta \in g,\ \alpha \cup \beta \in f,\ \alpha \cap \beta = \varnothing\}.$$
+
+Base cases:
+
+If $g=\bot$, the universal condition is empty, hence every $\alpha$ is allowed, so $f/g$ is the universal family over the variable domain, represented by the terminal $\top$ in the Boolean-function interpretation.
+
+If $f=\bot$ and $g\neq \bot$, then $f/g=\bot$.
+
+If $g=\top=\{\varnothing\}$, then the condition reduces to $\alpha \in f$, hence
+
+$$f/\top = f.$$
+
+Recursion with $k=\min(V(f),V(g))$. Split $g = g_0 \cup (e_k \sqcup g_1)$ and similarly for $f$.
+
+The quotient condition separates by whether $x_k$ is forced absent from $\alpha$.
+
+If $k \notin g$ (all sets in $g$ omit $x_k$), then
+
+$$(f/g)_0 = f_0/g,\qquad (f/g)_1 = f_1/g.$$
+
+If $k \in g$, then any $\alpha \in f/g$ must satisfy disjointness from all sets in $g_1$, forcing exclusion of $x_k$ from the interaction term, and we obtain:
+
+$$(f/g)_0 = (f_0/g_0)\ \cap\ (f_1/g_1),
+\qquad
+(f/g)_1 = (f_1/g_0)\ \cap\ (f_0/g_1).$$
+
+These clauses come directly from distributing the universal quantifier over the decomposition of $g$ into parts that include or exclude $x_k$, and enforcing compatibility in $f$ componentwise.
+
+### (e) Remainder $f \bmod g$
+
+By definition,
+
+$$f \bmod g = f \setminus (g \sqcup (f/g)).$$
+
+Recursion uses the already defined operations:
+
+$$\mathrm{mod}(f,g) = \mathrm{BUTNOT}(f,\ \mathrm{Join}(g,\ \mathrm{Quot}(f,g))).$$
+
+At node level, with $k=\min(V(f),V(g))$, we compute:
+
+$$(f \bmod g)_0 = f_0 \bmod g_0,$$
+
+$$(f \bmod g)_1 = f_1 \bmod g_0\ \setminus\ (g_1 \sqcup (f/g)).$$
+
+The second term removes exactly those elements generated by joining $g$ with the quotient, applied consistently at the $x_k=1$ branch.
+
+Finally, all results are reduced by node sharing and elimination of redundant tests.
+
+This completes the construction of all five operations using the ordered-reduced BDD framework. ∎
