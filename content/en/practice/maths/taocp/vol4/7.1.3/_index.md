@@ -219,7 +219,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.3: 219/219 solved.
 | [199](199.md) | &#9654; [*23*] | medium | verified | 3m |
 | [200](200.md) |  [*20*] | medium | verified | 55s |
 | [201](201.md) |  [*20*] | medium | solved | 1m57s |
-| [202](202.md) |  [*20*] | medium | solved | 4m27s |
+| [202](202.md) |  [*20*] | medium | solved | 3m48s |
 | [203](203.md) |  [*22*] | medium | solved | 4m32s |
 | [204](204.md) | &#9654; [*22*] | medium | solved | 4m26s |
 | [205](205.md) | &#9654; [*22*] | medium | solved | 1m34s |
