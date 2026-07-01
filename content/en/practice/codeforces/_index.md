@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2611 contests, 18277 problems, 10310 verified."
+description: "Codeforces problem solutions with full editorials. 2612 contests, 18281 problems, 10311 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2611 contests, 18277 problems, 10310 verified.**
+**2612 contests, 18281 problems, 10311 verified.**
 
-## Unknown — 568 contests, 4652 problems, 2960 verified
+## Unknown — 569 contests, 4656 problems, 2961 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104164](104164/) | [Короткий тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104164) | 4 | 1/4 | Special | - |
 | [104168](104168/) | [The American University in Cairo CSEA End of Winter Break Contest 2023](https://codeforces.com/contest/104168) | 2 | 2/2 | Special | - |
 | [104174](104174/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая личная олимпиада + Первый отбор на ИОИП](https://codeforces.com/contest/104174) | 4 | 2/4 | Special | - |
 | [104178](104178/) | [BdOI Preliminary 2023](https://codeforces.com/contest/104178) | 4 | 4/4 | Special | - |
