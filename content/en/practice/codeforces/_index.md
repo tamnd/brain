@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2556 contests, 17789 problems, 9933 verified."
+description: "Codeforces problem solutions with full editorials. 2557 contests, 17799 problems, 9937 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2556 contests, 17789 problems, 9933 verified.**
+**2557 contests, 17799 problems, 9937 verified.**
 
-## Unknown — 541 contests, 4419 problems, 2777 verified
+## Unknown — 542 contests, 4429 problems, 2781 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104314](104314/) | [XXV Interregional Programming Olympiad, Vologda SU, 2023](https://codeforces.com/contest/104314) | 10 | 4/10 | Special | - |
 | [104324](104324/) | [SDU Open 2023](https://codeforces.com/contest/104324) | 12 | 12/12 | Special | - |
 | [104334](104334/) | [Osijek Competitive Programming Camp, Winter 2023, Day 9: Magical Story of LaLa (The 1st Universal Cup. Stage 14: Ranoa)](https://codeforces.com/contest/104334) | 10 | 10/10 | Special | - |
 | [104343](104343/) | [2023 VIII Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/104343) | 8 | 5/8 | Special | - |
