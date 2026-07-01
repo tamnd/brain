@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2615 contests, 18307 problems, 10330 verified."
+description: "Codeforces problem solutions with full editorials. 2649 contests, 18603 problems, 10498 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,30 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2615 contests, 18307 problems, 10330 verified.**
+**2649 contests, 18603 problems, 10498 verified.**
 
-## Unknown — 571 contests, 4669 problems, 2967 verified
+## Unknown — 589 contests, 4808 problems, 3048 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104069](104069/) | [VII MaratonUSP Freshman Contest](https://codeforces.com/contest/104069) | 10 | 9/10 | Special | - |
+| [104091](104091/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2022-2023](https://codeforces.com/contest/104091) | 6 | 6/6 | Special | - |
+| [104092](104092/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2021-2022 (9-11 классы)](https://codeforces.com/contest/104092) | 5 | 4/5 | Special | - |
+| [104094](104094/) | [2022-2023 Russia Team Open, High School Programming Contest (VKOSHP XXIII)](https://codeforces.com/contest/104094) | 12 | 1/12 | Special | - |
+| [104095](104095/) | [2020 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104095) | 12 | 10/12 | Special | - |
+| [104096](104096/) | [Муниципальный этап ВсОШ, Краснодарский край, 2022](https://codeforces.com/contest/104096) | 5 | 0/5 | Special | - |
+| [104114](104114/) | [2022 ICPC Southeastern Europe Regional Contest](https://codeforces.com/contest/104114) | 14 | 12/14 | ICPC/IOI | - |
+| [104115](104115/) | [Voronezh State University - Sitronics contest, 2022](https://codeforces.com/contest/104115) | 10 | 10/10 | Special | - |
+| [104118](104118/) | [2022 ICPC Asia-Manila Regional Contest](https://codeforces.com/contest/104118) | 12 | 12/12 | ICPC/IOI | - |
+| [104119](104119/) | [Муниципальный этап ВсОШ по информатике, Москва, 2022 год](https://codeforces.com/contest/104119) | 0 | 0/0 | Special | - |
+| [104120](104120/) | [2022 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/104120) | 12 | 1/12 | ICPC/IOI | - |
+| [104135](104135/) | [Зимний личный контест 2023](https://codeforces.com/contest/104135) | 9 | 1/9 | Special | - |
+| [104142](104142/) | [Зимний личный чемпионат ИжГТУ по программированию 2023](https://codeforces.com/contest/104142) | 11 | 2/11 | Special | - |
+| [104148](104148/) | [Олимпиада школьников РС(Я) (5-8 классы) 2022-23, 1 день](https://codeforces.com/contest/104148) | 4 | 1/4 | Special | - |
+| [104149](104149/) | [CPUlm Winter Contest 2022](https://codeforces.com/contest/104149) | 13 | 12/13 | Special | - |
+| [104150](104150/) | [Интернет-олимпиады, Сезон 2022-2023, Первая личная олимпиада](https://codeforces.com/contest/104150) | 4 | 0/4 | Special | - |
+| [104155](104155/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104155) | 0 | 0/0 | Special | - |
+| [104156](104156/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104156) | 0 | 0/0 | Special | - |
 | [104159](104159/) | [Олимпиада школьников РС(Я) (5-8 классы) 2022-23, 2 день](https://codeforces.com/contest/104159) | 4 | 3/4 | Special | - |
 | [104162](104162/) | [Длинный тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104162) | 9 | 3/9 | Special | - |
 | [104164](104164/) | [Короткий тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104164) | 4 | 1/4 | Special | - |
@@ -1669,7 +1687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 138 contests, 924 problems, 395 verified
+## 2022 — 150 contests, 1039 problems, 465 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1806,13 +1824,25 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104068](104068/) | [The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Preliminary](https://codeforces.com/contest/104068) | 10 | 8/10 | Special | - |
+| [104071](104071/) | [NOIP 2022](https://codeforces.com/contest/104071) | 4 | 0/4 | Special | - |
+| [104072](104072/) | [AGM 2022, Final Round, Day 2](https://codeforces.com/contest/104072) | 12 | 3/12 | Special | - |
+| [104076](104076/) | [2022 International Collegiate Programming Contest, Jinan Site](https://codeforces.com/contest/104076) | 13 | 10/13 | Special | - |
+| [104077](104077/) | [The 2022 ICPC Asia Xian Regional Contest](https://codeforces.com/contest/104077) | 12 | 10/12 | ICPC/IOI | - |
+| [104081](104081/) | [2022年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/104081) | 12 | 9/12 | Special | - |
+| [104090](104090/) | [The 2022 ICPC Asia Hangzhou Regional Programming Contest](https://codeforces.com/contest/104090) | 13 | 10/13 | ICPC/IOI | - |
+| [104097](104097/) | [2022 Taiwan NHSPC Mock Contest](https://codeforces.com/contest/104097) | 9 | 3/9 | Special | - |
+| [104099](104099/) | [Муниципальный этап ВсОШ по информатике в Липецке 2022 (9-11 классы)](https://codeforces.com/contest/104099) | 0 | 0/0 | Special | - |
+| [104101](104101/) | [The 2022 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/104101) | 12 | 12/12 | Special | - |
+| [104103](104103/) | [Innopolis Open 2022-2023. Second qualification round](https://codeforces.com/contest/104103) | 5 | 5/5 | Special | - |
+| [104128](104128/) | [The 2022 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/104128) | 13 | 0/13 | ICPC/IOI | - |
 | [104160](104160/) | [The 2022 ICPC Asia Shenyang Regional Contest (The 1st Universal Cup, Stage 1: Shenyang)](https://codeforces.com/contest/104160) | 13 | 13/13 | ICPC/IOI | - |
 | [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 10 | 10/10 | ICPC/IOI | - |
 | [104254](104254/) | [BSUIR Open X. Reload. Semifinal](https://codeforces.com/contest/104254) | 10 | 5/10 | Special | - |
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 269 contests, 2198 problems, 1189 verified
+## 2023 — 273 contests, 2240 problems, 1206 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1948,6 +1978,10 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104146](104146/) | [Abakoda Long Contest 2022](https://codeforces.com/contest/104146) | 13 | 3/13 | Special | - |
+| [104147](104147/) | [JCPC 2022](https://codeforces.com/contest/104147) | 11 | 2/11 | Special | - |
+| [104157](104157/) | [UTPC Contest 01-27-23 Div. 2 (Beginner)](https://codeforces.com/contest/104157) | 9 | 6/9 | Div. 2 | - |
+| [104158](104158/) | [UTPC Contest 01-27-23 Div. 1 (Advanced)](https://codeforces.com/contest/104158) | 9 | 6/9 | Div. 1 | - |
 | [104172](104172/) | [The 2023 ICPC Asia Hong Kong Regional Programming Contest (The 1st Universal Cup, Stage 2:Hong Kong)](https://codeforces.com/contest/104172) | 12 | 12/12 | ICPC/IOI | - |
 | [104180](104180/) | [UTPC Contest 02-10-23 Div. 2 (Beginner)](https://codeforces.com/contest/104180) | 9 | 7/9 | Div. 2 | - |
 | [104181](104181/) | [UTPC Contest 02-10-23 Div. 1 (Advanced)](https://codeforces.com/contest/104181) | 9 | 7/9 | Div. 1 | - |

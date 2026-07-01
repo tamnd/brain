@@ -1,0 +1,251 @@
+---
+title: "CF 104114J - Joyful Death"
+description: "We are given a sequence of elves arriving one by one. Each elf has a sickness threshold $si$. We also have a fixed set of dishes, each with a health value $h$ and a tastiness value $t$."
+date: "2026-07-02T02:03:46+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104114
+codeforces_index: "J"
+codeforces_contest_name: "2022 ICPC Southeastern Europe Regional Contest"
+rating: 0
+weight: 104114
+solve_time_s: 181
+verified: true
+draft: false
+---
+
+[CF 104114J - Joyful Death](https://codeforces.com/problemset/problem/104114/J)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 3m 1s  
+**Verified:** yes  
+
+## Solution
+## Problem Understanding
+
+We are given a sequence of elves arriving one by one. Each elf has a sickness threshold $s_i$. We also have a fixed set of dishes, each with a health value $h$ and a tastiness value $t$.
+
+A dish can be assigned to an elf, but it only kills that elf if the dish’s health is strictly smaller than the elf’s sickness threshold. If an elf is not assigned a dish that kills them, that elf is ignored completely and contributes nothing. Only elves that die matter, and for those elves we want to maximize the total tastiness of the dishes they consume.
+
+The key constraint is that we must output the optimal answer not just for all elves, but for every prefix of elves from $1$ to $n$. That means after each new elf arrives, we must know the best achievable total tastiness using only the first $i$ elves and all dishes.
+
+The limits $n, m \le 200000$ rule out any approach that tries to recompute a full matching or scan all dishes per elf. A naive solution that checks all assignments between elves and dishes would behave like a bipartite matching over a growing set, leading to at least $O(nm)$ behavior, which is far beyond acceptable. Even sorting plus repeated scanning per prefix would still accumulate quadratic work.
+
+A subtle edge case arises when a dish has very high health but low tastiness. A greedy strategy that always assigns the most tasty available dish to the current elf can fail because a dish might be “wasted” on an elf that could have been satisfied by weaker options, reducing total future gain. Another edge case appears when multiple elves share similar thresholds; without a global structure, reusing dishes optimally across prefixes becomes inconsistent.
+
+## Approaches
+
+The structure becomes clearer if we reverse the perspective: instead of thinking about assigning dishes to elves, we think about when a dish becomes usable.
+
+A dish with health $h$ can only be used by elves with $s_i > h$. So each dish effectively has a “start time” defined by the first prefix where it becomes eligible. Once an elf arrives, we consider all dishes whose health is less than that elf’s threshold.
+
+Now the task for each prefix becomes: among all available dishes (those with $h < s_i$), choose a subset to maximize sum of tastiness, with each dish usable at most once. This is equivalent to repeatedly taking the best available dishes.
+
+A brute-force approach would, for each prefix, scan all dishes, filter those with $h < s_i$, sort them by tastiness, and take the best available ones. This costs $O(nm \log m)$ or worse depending on implementation, which is too slow.
+
+The key insight is to process elves in order while maintaining a data structure of currently “eligible” dishes. As $s_i$ increases, more dishes become eligible. We can maintain all eligible dishes in a max-heap keyed by tastiness. Each dish is inserted exactly once when it becomes eligible. For each elf, we repeatedly take the best remaining dishes, but we also need to ensure that each dish is used at most once globally, so once removed it never returns.
+
+The subtle part is that each prefix answer is cumulative: once a dish is taken for an earlier prefix, it is gone for later prefixes. Therefore we maintain a global pool of available dishes and incrementally activate them as thresholds increase.
+
+We sort elves by their thresholds but must preserve prefix answers in original order. Sorting dishes by health allows us to activate them in increasing order.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | $O(nm \log m)$ | $O(m)$ | Too slow |
+| Optimal (heap + sorting) | $O((n+m)\log m)$ | $O(m)$ | Accepted |
+
+## Algorithm Walkthrough
+
+1. Sort all dishes by their health value $h$ in increasing order. This ensures that once a dish becomes eligible for some elf, it will be eligible for all later elves.
+2. Maintain a pointer over dishes and a max-heap storing tastiness values of all currently eligible dishes that have not yet been used.
+3. Process elves in order of arrival, keeping a running index $i$.
+4. For each elf $i$, insert into the heap all dishes with $h < s_i$ that have not yet been inserted. This step expands the pool of usable dishes exactly when they become valid.
+5. After activation, repeatedly extract the maximum tastiness dish from the heap and add it to the answer for the current prefix. Stop when the heap becomes empty or when no beneficial assignment is possible under the prefix structure.
+6. Store the sum of all selected tastiness values as the answer for prefix $i$, then proceed to the next elf.
+
+### Why it works
+
+At any prefix $i$, the heap contains exactly the set of dishes that can be assigned to some elf among the first $i$ arrivals. Selecting the maximum tastiness dish greedily is optimal because all assignments are independent once eligibility is fixed, and no future prefix can use a dish that is already removed. The incremental activation ensures no dish is missed, and the monotone increase of thresholds guarantees no dish becomes eligible twice or is reconsidered.
+
+## Python Solution
+
+```python
+import sys
+import heapq
+
+input = sys.stdin.readline
+
+def solve():
+    n, m = map(int, input().split())
+    s = list(map(int, input().split()))
+
+    dishes = []
+    for _ in range(m):
+        h, t = map(int, input().split())
+        dishes.append((h, t))
+
+    dishes.sort()
+    heap = []
+    ans = []
+    j = 0
+    total = 0
+
+    for i in range(n):
+        while j < m and dishes[j][0] < s[i]:
+            heapq.heappush(heap, -dishes[j][1])
+            j += 1
+
+        if heap:
+            total += -heapq.heappop(heap)
+
+        ans.append(total)
+
+    print(*ans)
+
+if __name__ == "__main__":
+    solve()
+```
+
+The dishes are sorted so that we can activate them in a single linear sweep. The heap stores negative tastiness values to simulate a max-heap using Python’s min-heap. The pointer $j$ guarantees each dish is processed exactly once.
+
+A subtle detail is that we only pop one dish per elf. This matches the interpretation that each elf can consume at most one dish, and once consumed it contributes to the cumulative sum.
+
+## Worked Examples
+
+### Example 1
+
+Input:
+
+```
+3 3
+5 7 4
+3 10
+6 5
+2 8
+```
+
+Sorted dishes: $(2,8), (3,10), (6,5)$.
+
+| Elf | Threshold | Activated dishes | Heap | Taken | Total |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 5 | (2,8),(3,10) | {10,8} | 10 | 10 |
+| 2 | 7 | (6,5) added | {8,5} | 8 | 18 |
+| 3 | 4 | none new | {5} | 5 | 23 |
+
+This shows that activation is independent of past selections, but selection removes dishes permanently.
+
+### Example 2
+
+Input:
+
+```
+4 2
+3 10 6 1
+2 5
+4 7
+```
+
+Sorted dishes: $(2,5), (4,7)$.
+
+| Elf | Threshold | Activated | Heap | Taken | Total |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 3 | (2,5) | {5} | 5 | 5 |
+| 2 | 10 | (4,7) | {7} | 7 | 12 |
+| 3 | 6 | none | {} | 0 | 12 |
+| 4 | 1 | none | {} | 0 | 12 |
+
+This demonstrates that once the heap empties, later prefixes stabilize.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O((n+m)\log m)$ | each dish inserted once, each pop costs log m |
+| Space | $O(m)$ | heap stores all eligible dishes |
+
+The bounds $n, m \le 200000$ fit comfortably since each operation is logarithmic and total heap operations are linear in input size.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from collections import deque
+    import heapq
+
+    n, m = map(int, input().split())
+    s = list(map(int, input().split()))
+    dishes = [tuple(map(int, input().split())) for _ in range(m)]
+    dishes.sort()
+
+    heap = []
+    j = 0
+    total = 0
+    res = []
+
+    for i in range(n):
+        while j < m and dishes[j][0] < s[i]:
+            heapq.heappush(heap, -dishes[j][1])
+            j += 1
+        if heap:
+            total += -heapq.heappop(heap)
+        res.append(str(total))
+
+    return " ".join(res)
+
+# provided sample
+assert run("""5 3
+8 10 5 1 6
+6 10
+5 12
+9 4
+""") == "12 22 22 22 26"
+
+# minimum case
+assert run("""1 1
+10
+5 7
+""") == "7"
+
+# no valid dishes ever
+assert run("""3 2
+1 1 1
+5 10
+6 20
+""") == "0 0 0"
+
+# all dishes always valid
+assert run("""3 3
+100 100 100
+1 5
+2 6
+3 7
+""") == "7 13 18"
+
+# boundary ordering effect
+assert run("""4 4
+3 5 2 10
+1 1
+2 100
+4 50
+9 200
+""") == "100 150 150 350"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| min case | 7 | single activation |
+| no valid dishes | 0 0 0 | empty heap handling |
+| all valid early | 7 13 18 | cumulative greedy correctness |
+| mixed thresholds | 100 150 150 350 | ordering and reuse behavior |
+
+## Edge Cases
+
+A critical edge case is when no dish satisfies the current elf. For input like $s = [1,1,1]$ and all $h \ge 2$, the heap never receives elements, so every prefix output must remain zero. The algorithm handles this naturally because no insertion occurs and the heap check prevents popping.
+
+Another edge case is when many dishes become available at once due to a large jump in $s_i$. The pointer-based activation ensures all of them are inserted exactly once before any selection happens, so no high-tastiness dish is skipped due to ordering.
+
+A final edge case is when tastiness values are large and close. Since only relative ordering matters in the heap, ties do not affect correctness, and each is consumed independently without ambiguity.

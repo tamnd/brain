@@ -35,9 +35,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m50s |
 | [16](16.md) | &#9654; [*22*] | medium | solved | 3m14s |
 | [17](17.md) |  [*32*] | hard | solved | 6m15s |
-| [18](18.md) |  [*13*] | simple | solved | 3m30s |
-| [19](19.md) |  [*20*] | medium | solved | 1m08s |
-| [20](20.md) |  [*15*] | simple | verified | 2m12s |
+| [18](18.md) |  [*13*] | simple | solved | 3m39s |
+| [19](19.md) |  [*20*] | medium | solved | 5m |
+| [20](20.md) |  [*15*] | simple | verified | 1m53s |
 | [21](21.md) |  [*05*] | simple | verified | 1m05s |
 | [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m51s |
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
@@ -188,36 +188,36 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [168](168.md) | &#9654; [*HM40*] | hm-project | solved | 6m05s |
 | [169](169.md) |  [*M46*] | math-research | solved | 6m56s |
 | [170](170.md) | &#9654; [*M25*] | math-medium | solved | 7m21s |
-| [171](171.md) |  [*M26*] | math-hard | solved | 5m18s |
-| [172](172.md) |  [*M28*] | math-hard | solved | 5m43s |
-| [173](173.md) | &#9654; [*HM33*] | hm-hard | solved | 4m19s |
-| [174](174.md) | &#9654; [*M39*] | math-project | solved | 4m17s |
-| [175](175.md) |  [*M30*] | math-hard | verified | 1m18s |
-| [176](176.md) |  [*M35*] | math-hard | solved | 4m26s |
-| [177](177.md) |  [*M22*] | math-medium | verified | 2m27s |
-| [178](178.md) |  [*M24*] | math-medium | solved | 3m54s |
-| [179](179.md) |  [*M47*] | math-research | solved | 4m41s |
-| [180](180.md) |  [*M27*] | math-hard | verified | 3m30s |
-| [181](181.md) |  [*M21*] | math-medium | verified | 2m13s |
-| [182](182.md) |  [*M38*] | math-project | verified | 2m33s |
-| [183](183.md) | &#9654; [*M25*] | math-medium | solved | 4m15s |
-| [184](184.md) |  [*M23*] | math-medium | solved | 3m31s |
-| [185](185.md) |  [*M25*] | math-medium | solved | 2m47s |
-| [186](186.md) |  [*10*] | simple | verified | 1m16s |
-| [187](187.md) | &#9654; [*20*] | medium | solved | 3m43s |
-| [188](188.md) |  [*16*] | medium | solved | 1m05s |
-| [189](189.md) |  [*18*] | medium | solved | 2m24s |
-| [190](190.md) |  [*20*] | medium | solved | 4m07s |
-| [191](191.md) | &#9654; [*HM25*] | hm-medium | verified | 1m16s |
-| [192](192.md) |  [*M20*] | math-medium | solved | 4m32s |
-| [193](193.md) |  [*M21*] | math-medium | verified | 2m31s |
-| [194](194.md) |  [*M25*] | math-medium | solved | 4m32s |
-| [195](195.md) |  [*24*] | medium | solved | 4m |
-| [196](196.md) |  [*M21*] | math-medium | solved | 1m11s |
-| [197](197.md) |  [*25*] | medium | verified | 1m09s |
-| [198](198.md) | &#9654; [*23*] | medium | solved | 1m13s |
-| [199](199.md) |  [*21*] | medium | solved | 1m09s |
-| [200](200.md) |  [*21*] | medium | solved | 3m46s |
+| [171](171.md) |  [*M26*] | math-hard | solved | 6m54s |
+| [172](172.md) |  [*M28*] | math-hard | solved | 6m07s |
+| [173](173.md) | &#9654; [*HM33*] | hm-hard | solved | 6m35s |
+| [174](174.md) | &#9654; [*M39*] | math-project | solved | 8m13s |
+| [175](175.md) |  [*M30*] | math-hard | solved | 6m42s |
+| [176](176.md) |  [*M35*] | math-hard | solved | 6m38s |
+| [177](177.md) |  [*M22*] | math-medium | solved | 3m31s |
+| [178](178.md) |  [*M24*] | math-medium | solved | 6m |
+| [179](179.md) |  [*M47*] | math-research | solved | 2m46s |
+| [180](180.md) |  [*M27*] | math-hard | verified | 3m52s |
+| [181](181.md) |  [*M21*] | math-medium | solved | 4m53s |
+| [182](182.md) |  [*M38*] | math-project | solved | 2m48s |
+| [183](183.md) | &#9654; [*M25*] | math-medium | solved | 3m41s |
+| [184](184.md) |  [*M23*] | math-medium | solved | 2m53s |
+| [185](185.md) |  [*M25*] | math-medium | solved | 3m08s |
+| [186](186.md) |  [*10*] | simple | solved | 1m46s |
+| [187](187.md) | &#9654; [*20*] | medium | solved | 1m48s |
+| [188](188.md) |  [*16*] | medium | verified | 1m13s |
+| [189](189.md) |  [*18*] | medium | solved | 3m49s |
+| [190](190.md) |  [*20*] | medium | solved | 1m40s |
+| [191](191.md) | &#9654; [*HM25*] | hm-medium | solved | 3m52s |
+| [192](192.md) |  [*M20*] | math-medium | solved | 4m37s |
+| [193](193.md) |  [*M21*] | math-medium | solved | 3m51s |
+| [194](194.md) |  [*M25*] | math-medium | solved | 4m06s |
+| [195](195.md) |  [*24*] | medium | solved | 1m50s |
+| [196](196.md) |  [*M21*] | math-medium | solved | 1m42s |
+| [197](197.md) |  [*25*] | medium | verified | 1m57s |
+| [198](198.md) | &#9654; [*23*] | medium | verified | 2m17s |
+| [199](199.md) |  [*21*] | medium | verified | 2m12s |
+| [200](200.md) |  [*21*] | medium | solved | 2m06s |
 | [201](201.md) |  [*22*] | medium | verified | 2m45s |
 | [202](202.md) |  [*24*] | medium | verified | 1m19s |
 | [203](203.md) | &#9654; [*M24*] | math-medium | solved | 6m31s |
