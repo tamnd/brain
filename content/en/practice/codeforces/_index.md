@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2679 contests, 18889 problems, 10695 verified."
+description: "Codeforces problem solutions with full editorials. 2680 contests, 18901 problems, 10707 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2679 contests, 18889 problems, 10695 verified.**
+**2680 contests, 18901 problems, 10707 verified.**
 
-## Unknown — 608 contests, 4980 problems, 3169 verified
+## Unknown — 609 contests, 4992 problems, 3181 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104010](104010/) | [2022-2023 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 22)](https://codeforces.com/contest/104010) | 12 | 12/12 | Special | - |
 | [104011](104011/) | [2021-2022 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104011) | 14 | 13/14 | ICPC/IOI | - |
 | [104012](104012/) | [2022-2023 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104012) | 14 | 13/14 | ICPC/IOI | - |
 | [104013](104013/) | [2020-2021 ICPC NERC (NEERC), North-Western Russia Regional Contest (Northern Subregionals)](https://codeforces.com/contest/104013) | 14 | 14/14 | ICPC/IOI | - |
