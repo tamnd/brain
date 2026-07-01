@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 266/267 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) | &#9654; [*20*] | medium | verified | 2m09s |
+| [1](01.md) | &#9654; [*20*] | medium | solved | 2m08s |
 | [2](02.md) | &#9654; [*21*] | medium | solved | 4m20s |
 | [3](03.md) |  [*16*] | medium | verified | 1m13s |
 | [4](04.md) |  [*21*] | medium | verified | 2m42s |
