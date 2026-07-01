@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2640 contests, 18511 problems, 10433 verified."
+description: "Codeforces problem solutions with full editorials. 2642 contests, 18530 problems, 10449 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2640 contests, 18511 problems, 10433 verified.**
+**2642 contests, 18530 problems, 10449 verified.**
 
-## Unknown — 587 contests, 4792 problems, 3033 verified
+## Unknown — 588 contests, 4798 problems, 3039 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104091](104091/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2022-2023](https://codeforces.com/contest/104091) | 6 | 6/6 | Special | - |
 | [104092](104092/) | [Муниципальный этап ВОШ по информатике в Петрозаводске и Карелии 2021-2022 (9-11 классы)](https://codeforces.com/contest/104092) | 5 | 4/5 | Special | - |
 | [104094](104094/) | [2022-2023 Russia Team Open, High School Programming Contest (VKOSHP XXIII)](https://codeforces.com/contest/104094) | 12 | 1/12 | Special | - |
 | [104095](104095/) | [2020 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104095) | 12 | 10/12 | Special | - |
@@ -1685,7 +1686,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 143 contests, 963 problems, 415 verified
+## 2022 — 144 contests, 976 problems, 425 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1822,6 +1823,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104090](104090/) | [The 2022 ICPC Asia Hangzhou Regional Programming Contest](https://codeforces.com/contest/104090) | 13 | 10/13 | ICPC/IOI | - |
 | [104097](104097/) | [2022 Taiwan NHSPC Mock Contest](https://codeforces.com/contest/104097) | 9 | 3/9 | Special | - |
 | [104099](104099/) | [Муниципальный этап ВсОШ по информатике в Липецке 2022 (9-11 классы)](https://codeforces.com/contest/104099) | 0 | 0/0 | Special | - |
 | [104101](104101/) | [The 2022 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/104101) | 12 | 12/12 | Special | - |
