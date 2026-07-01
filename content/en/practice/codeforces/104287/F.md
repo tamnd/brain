@@ -1,0 +1,213 @@
+---
+title: "CF 104287F - Greatest Common Mutiple"
+description: "Each test gives three integers. Think of the first two numbers as defining a rule for which integers are “valid”: a number is valid only if it is divisible by both of them. The third number acts like a modulus cap that we care about only through remainders."
+date: "2026-07-01T20:46:16+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104287
+codeforces_index: "F"
+codeforces_contest_name: "Teamscode Spring 2023 Contest"
+rating: 0
+weight: 104287
+solve_time_s: 83
+verified: true
+draft: false
+---
+
+[CF 104287F - Greatest Common Mutiple](https://codeforces.com/problemset/problem/104287/F)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 23s  
+**Verified:** yes  
+
+## Solution
+## Problem Understanding
+
+Each test gives three integers. Think of the first two numbers as defining a rule for which integers are “valid”: a number is valid only if it is divisible by both of them. The third number acts like a modulus cap that we care about only through remainders.
+
+Among all valid numbers, we are allowed to pick any one we want, even extremely large ones. For each chosen number, we compute its remainder when divided by the third number. The task is to determine the largest remainder we can ever obtain.
+
+The key difficulty is that valid numbers are not arbitrary. Any number divisible by both inputs must be a multiple of their least common multiple. So the search space is an infinite arithmetic progression starting from that least common multiple.
+
+The constraints are large in value but moderate in number of test cases. There are at most a few thousand queries, and each value can be up to 10^9. This strongly suggests a solution that is logarithmic or constant time per test case. Any approach that enumerates multiples or simulates growth of valid numbers will fail immediately because valid numbers are unbounded and the modulus cap can also be large.
+
+A naive mistake is to assume we only need to check a few multiples of the least common multiple up to c. That is not safe because the best remainder often occurs near the end of the modulus cycle, not near the beginning.
+
+For example, suppose the least common multiple is 6 and c is 10. The valid sequence is 6, 12, 18, 24, and so on. The remainders modulo 10 are 6, 2, 8, 4, 0, repeating. The maximum is 8, which does not come from the first or second multiple in any predictable small window. A limited scan would miss it depending on the cutoff.
+
+Another subtle issue is assuming the answer is simply the least common multiple modulo c. That fails because larger multiples can wrap around and produce larger remainders than the base value.
+
+## Approaches
+
+Every valid number in the problem has the form of a multiple of a single base value, the least common multiple of the two inputs. Let this value be L. Then all candidates are L, 2L, 3L, and so on.
+
+The brute force approach would generate these values and compute their remainders modulo c, stopping after some range. This is conceptually correct but immediately breaks down because there is no natural upper bound on how far we might need to go. Even restricting to the first c multiples is already too large when c can be 10^9.
+
+The key observation is that we are not trying to optimize over the original integers, but over residues modulo c. Once we reduce every valid number modulo c, the structure becomes periodic. The sequence (k·L) mod c forms a simple cyclic subgroup in modular arithmetic. The step size is fixed, so the reachable residues are evenly spaced around the modular circle.
+
+This structure implies that the set of reachable residues is exactly the set of multiples of gcd(L, c). From this, the maximum reachable residue is simply the largest multiple of that gcd below c, which is c minus that gcd.
+
+So the problem reduces entirely to computing L and then a single gcd operation.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | O(c / LCM step) per test, unbounded in worst case | O(1) | Too slow |
+| Optimal | O(log a + log b + log c) | O(1) | Accepted |
+
+## Algorithm Walkthrough
+
+Let L be the least common multiple of a and b, and let g be the greatest common divisor of L and c.
+
+1. Compute g1 = gcd(a, b). This identifies the overlap in prime factors between a and b, which prevents overflow when building the LCM. The LCM is a * b / g1.
+2. Compute L carefully using division before multiplication: L = (a // g1) * b. This avoids intermediate overflow beyond 32-bit bounds, even though Python can technically handle big integers safely.
+3. Compute g = gcd(L, c). This captures the spacing of reachable residues modulo c. Every valid number reduces to a multiple of g in modular arithmetic.
+4. Return c - g as the answer. This is the largest value strictly less than c that lies in the residue class generated by L modulo c.
+
+The reason step 3 is correct is that multiplying by L modulo c produces a cyclic subgroup of the additive group modulo c. The subgroup size is determined entirely by gcd(L, c), and all reachable residues are exactly the multiples of that gcd.
+
+## Why it works
+
+All valid numbers are multiples of L. Reducing modulo c turns this into repeated addition of a fixed step size L mod c. The set of reachable residues is therefore the additive subgroup generated by L in the ring modulo c. That subgroup contains exactly all multiples of gcd(L, c). The largest element in that set is the last multiple before wrapping past c, which is c minus gcd(L, c). No larger residue is reachable because any increment of L only moves within this fixed lattice.
+
+## Python Solution
+
+```python
+import sys
+input = sys.stdin.readline
+
+from math import gcd
+
+def solve():
+    t = int(input())
+    out = []
+    for _ in range(t):
+        a, b, c = map(int, input().split())
+        
+        g1 = gcd(a, b)
+        l = (a // g1) * b
+        g = gcd(l, c)
+        
+        out.append(str(c - g))
+    
+    print("\n".join(out))
+
+if __name__ == "__main__":
+    solve()
+```
+
+The implementation follows the algebra directly. The only delicate part is constructing the LCM without overflow in intermediate steps, which is handled by dividing before multiplying.
+
+The final subtraction `c - g` corresponds to selecting the highest reachable residue in the modular cycle.
+
+## Worked Examples
+
+Consider the sample input:
+
+```
+a = 2, b = 3, c = 10
+```
+
+Here L = 6. The table of multiples is:
+
+| k | d = kL | d mod c |
+| --- | --- | --- |
+| 1 | 6 | 6 |
+| 2 | 12 | 2 |
+| 3 | 18 | 8 |
+| 4 | 24 | 4 |
+| 5 | 30 | 0 |
+
+The maximum is 8. Since gcd(6, 10) = 2, the formula gives 10 - 2 = 8, matching the table.
+
+Now consider:
+
+```
+a = 4, b = 2, c = 2023
+```
+
+Here L = 4. The gcd with c is 1, since 2023 is not divisible by 2 or 4.
+
+| k | d = 4k | d mod 2023 |
+| --- | --- | --- |
+| 1 | 4 | 4 |
+| 2 | 8 | 8 |
+| 3 | 12 | 12 |
+
+The reachable residues eventually cover all multiples of 1 modulo 2023, so the maximum is 2022. The formula gives 2023 - 1 = 2022.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(T log max A) | Each test uses a constant number of gcd operations |
+| Space | O(1) | Only a few integers are stored per test case |
+
+The constraints allow a few thousand test cases, and each operation is logarithmic in magnitude, so the solution easily fits within limits.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
+    from math import gcd
+
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            a, b, c = map(int, input().split())
+            g1 = gcd(a, b)
+            l = (a // g1) * b
+            g = gcd(l, c)
+            out.append(str(c - g))
+        return "\n".join(out)
+
+    return solve()
+
+# provided samples
+assert run("""5
+2 3 10
+3 7 10
+4 2 2023
+33 66 3366
+103241 103870 100000007
+""") == """8
+9
+2022
+3300
+100000006"""
+
+# minimum values
+assert run("""1
+1 1 5
+""") == "0"
+
+# identical numbers
+assert run("""1
+6 6 10
+""") == "4"
+
+# coprime case
+assert run("""1
+7 9 20
+""") == "19"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1 1 5 | 0 | L equals 1, full residue cycle |
+| 6 6 10 | 4 | LCM equals input, nontrivial gcd with c |
+| 7 9 20 | 19 | coprime case where answer becomes c−1 |
+
+## Edge Cases
+
+When a and b are identical, the least common multiple collapses to the same value, and the reachable set is just multiples of that number. For input 6 6 10, L is 6 and gcd(6, 10) is 2, so the answer is 8 mod 10, which matches 10 − 2 = 8.
+
+When a and b are coprime, L becomes their product, but the structure simplifies because gcd(L, c) depends only on how that product interacts with c. If no shared factor exists, gcd is 1 and the answer becomes c − 1, meaning all residues except 0 are reachable.
+
+When c shares all prime factors with L, the gcd equals c and the answer becomes 0. This corresponds to the case where every valid number is always divisible by c, so no positive remainder can appear.

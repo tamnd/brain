@@ -30,7 +30,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [10](10.md) | &#9654; [*21*] | medium | solved | 4m12s |
 | [11](11.md) |  [*20*] | medium | solved | 4m26s |
 | [12](12.md) | &#9654; [*M21*] | math-medium | solved | 17m29s |
-| [13](13.md) |  [*M15*] | math-simple | verified | 1m23s |
+| [13](13.md) |  [*M15*] | math-simple | solved | 3m34s |
 | [14](14.md) |  [*M24*] | math-medium | verified | 5m14s |
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m38s |
 | [16](16.md) | &#9654; [*22*] | medium | solved | 2m21s |
@@ -137,19 +137,19 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [117](117.md) |  [*M20*] | math-medium | solved | 4m59s |
 | [118](118.md) |  [*M23*] | math-medium | solved | 3m18s |
 | [119](119.md) |  [*20*] | medium | solved | 4m04s |
-| [120](120.md) |  [*18*] | medium | verified | 4m |
-| [121](121.md) | &#9654; [*M22*] | math-medium | solved | 2m40s |
-| [122](122.md) |  [*27*] | hard | solved | 3m21s |
-| [123](123.md) |  [*M20*] | math-medium | solved | 2m07s |
-| [124](124.md) | &#9654; [*27*] | hard | solved | 1m55s |
-| [125](125.md) | &#9654; [*HM34*] | hm-hard | solved | 4m11s |
-| [126](126.md) |  [*HM42*] | hm-project | solved | 4m11s |
-| [127](127.md) |  [*46*] | research | verified | 2m47s |
-| [128](128.md) | &#9654; [*25*] | medium | solved | 1m46s |
-| [129](129.md) |  [*M25*] | math-medium | solved | 59s |
-| [130](130.md) |  [*HM31*] | hm-hard | solved | 4m48s |
-| [131](131.md) |  [*M28*] | math-hard | solved | 6m17s |
-| [132](132.md) |  [*32*] | hard | solved | 4m25s |
+| [120](120.md) |  [*18*] | medium | solved | 5m54s |
+| [121](121.md) | &#9654; [*M22*] | math-medium | solved | 7m43s |
+| [122](122.md) |  [*27*] | hard | solved | 6m18s |
+| [123](123.md) |  [*M20*] | math-medium | solved | 4m08s |
+| [124](124.md) | &#9654; [*27*] | hard | solved | 4m55s |
+| [125](125.md) | &#9654; [*HM34*] | hm-hard | solved | 5m42s |
+| [126](126.md) |  [*HM42*] | hm-project | solved | 4m17s |
+| [127](127.md) |  [*46*] | research | solved | 5m11s |
+| [128](128.md) | &#9654; [*25*] | medium | solved | 3m51s |
+| [129](129.md) |  [*M25*] | math-medium | solved | 4m04s |
+| [130](130.md) |  [*HM31*] | hm-hard | solved | 4m03s |
+| [131](131.md) |  [*M28*] | math-hard | solved | 4m06s |
+| [132](132.md) |  [*32*] | hard | solved | 4m38s |
 | [133](133.md) |  [*20*] | medium | solved | 55s |
 | [134](134.md) |  [*24*] | medium | solved | 4m43s |
 | [135](135.md) |  [*M27*] | math-hard | solved | 4m38s |
