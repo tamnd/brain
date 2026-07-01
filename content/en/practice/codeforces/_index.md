@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2648 contests, 18593 problems, 10490 verified."
+description: "Codeforces problem solutions with full editorials. 2649 contests, 18603 problems, 10498 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2648 contests, 18593 problems, 10490 verified.**
+**2649 contests, 18603 problems, 10498 verified.**
 
 ## Unknown — 589 contests, 4808 problems, 3048 verified
 
@@ -1687,7 +1687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 149 contests, 1029 problems, 457 verified
+## 2022 — 150 contests, 1039 problems, 465 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1824,6 +1824,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104068](104068/) | [The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Preliminary](https://codeforces.com/contest/104068) | 10 | 8/10 | Special | - |
 | [104071](104071/) | [NOIP 2022](https://codeforces.com/contest/104071) | 4 | 0/4 | Special | - |
 | [104072](104072/) | [AGM 2022, Final Round, Day 2](https://codeforces.com/contest/104072) | 12 | 3/12 | Special | - |
 | [104076](104076/) | [2022 International Collegiate Programming Contest, Jinan Site](https://codeforces.com/contest/104076) | 13 | 10/13 | Special | - |
