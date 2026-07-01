@@ -243,10 +243,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [223](223.md) |  [*28*] | hard | solved | 1m40s |
 | [224](224.md) | &#9654; [*20*] | medium | verified | 4m15s |
 | [225](225.md) | &#9654; [*30*] | hard | verified | 2m48s |
-| [226](226.md) | &#9654; [*20*] | medium | solved | 4m |
-| [227](227.md) |  [*20*] | medium | verified | 2m30s |
-| [228](228.md) |  [*21*] | medium | solved | 3m29s |
-| [229](229.md) |  [*15*] | simple | solved | 57s |
+| [226](226.md) | &#9654; [*20*] | medium | solved | 6m41s |
+| [227](227.md) |  [*20*] | medium | solved | 4m09s |
+| [228](228.md) |  [*21*] | medium | solved | 1m39s |
+| [229](229.md) |  [*15*] | simple | solved | 1m20s |
 | [230](230.md) |  [*25*] | medium | solved | 1m51s |
 | [231](231.md) |  [*23*] | medium | solved | 4m08s |
 | [232](232.md) | &#9654; [*23*] | medium | solved | 4m43s |
