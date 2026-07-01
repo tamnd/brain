@@ -180,8 +180,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [160](160.md) | &#9654; [*24*] | medium | solved | 5m39s |
 | [161](161.md) |  [*28*] | hard | solved | 5m25s |
 | [162](162.md) | &#9654; [*30*] | hard | solved | 6m30s |
-| [163](163.md) |  [*23*] | medium | solved | 4m24s |
-| [164](164.md) | &#9654; [*M27*] | math-hard | solved | 4m24s |
+| [163](163.md) |  [*23*] | medium | solved | 4m47s |
+| [164](164.md) | &#9654; [*M27*] | math-hard | solved | 4m51s |
 | [165](165.md) |  [*M21*] | math-medium | solved | 4m21s |
 | [166](166.md) |  [*M29*] | math-hard | verified | 3m59s |
 | [167](167.md) |  [*21*] | medium | solved | 4m23s |
