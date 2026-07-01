@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2659 contests, 18703 problems, 10553 verified."
+description: "Codeforces problem solutions with full editorials. 2660 contests, 18703 problems, 10553 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2659 contests, 18703 problems, 10553 verified.**
+**2660 contests, 18703 problems, 10553 verified.**
 
-## Unknown — 593 contests, 4851 problems, 3074 verified
+## Unknown — 594 contests, 4851 problems, 3074 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104036](104036/) | [Школьный этап ВСОШ по информатике 9-11 класс 2022 (4 группа регионов)](https://codeforces.com/contest/104036) | 0 | 0/0 | Special | - |
 | [104059](104059/) | [2022-2023 ACM-ICPC German Collegiate Programming Contest (GCPC 2022)](https://codeforces.com/contest/104059) | 13 | 12/13 | ICPC/IOI | - |
 | [104064](104064/) | [2021-2022 ICPC Northwestern European Regional Programming Contest (NWERC 2021)](https://codeforces.com/contest/104064) | 12 | 10/12 | ICPC/IOI | - |
 | [104066](104066/) | [Интернет-олимпиады, Сезон 2022-2023, Третья командная олимпиада (базовая версия)](https://codeforces.com/contest/104066) | 8 | 3/8 | Special | - |
