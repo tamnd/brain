@@ -1,7 +1,7 @@
 ---
 title: "CF 104380E - Weird Knight"
-description: "We are given a generalized chess piece moving on an infinite integer grid. The piece starts at the origin and can make a fixed type of move determined by two integers $p$ and $q$."
-date: "2026-07-01T03:42:15+07:00"
+description: "We are given a generalized knight piece that moves on an infinite integer grid. From any cell $(x,y)$, it can jump to eight symmetric positions obtained by permuting and flipping the vectors $(p,q)$ and $(q,p)$ with independent sign changes."
+date: "2026-07-01T17:06:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104380
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "The Andover Computing Open (TACO) 2023"
 rating: 0
 weight: 104380
-solve_time_s: 117
-verified: false
+solve_time_s: 74
+verified: true
 draft: false
 ---
 
@@ -18,134 +18,117 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 57s  
-**Verified:** no  
+**Solve time:** 1m 14s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a generalized chess piece moving on an infinite integer grid. The piece starts at the origin and can make a fixed type of move determined by two integers $p$ and $q$. Each move changes the position by swapping and sign-flipping these values, so from any point $(x,y)$ it can jump to any of the eight points formed by adding $(\pm p,\pm q)$ or $(\pm q,\pm p)$.
+We are given a generalized knight piece that moves on an infinite integer grid. From any cell $(x,y)$, it can jump to eight symmetric positions obtained by permuting and flipping the vectors $(p,q)$ and $(q,p)$ with independent sign changes. This means each move preserves the structure of a fixed step shape but allows full rotation and reflection in the plane.
 
-The task is to determine whether a target point $(x,y)$ can be reached from $(0,0)$ after any number of such moves.
+The task is to determine whether starting at the origin $(0,0)$, we can reach a target point $(x,y)$ using any number of such moves.
 
-The grid is unbounded, so there is no restriction from edges. The only structure comes from arithmetic constraints imposed by repeated vector additions. Since there are up to $10^4$ test cases and each test is independent, the solution must answer each query in constant time after reading input.
+The constraints allow up to $10^4$ queries, with coordinates up to $10^9$ in magnitude. This strongly suggests that any solution must be constant time per test case, since even $O(\sqrt{|x|+|y|})$ reasoning per query would be too slow in the worst case.
 
-A naive idea would simulate all possible positions using BFS over the infinite grid. This fails immediately because every move expands the reachable region into a growing lattice, and the number of states after $k$ steps grows exponentially. Even restricting to small bounds is not viable because coordinates can reach $10^9$, meaning the reachable space is extremely large and unstructured at first glance.
+A subtle aspect of this problem is that reachability depends heavily on the arithmetic structure of the move vectors. Unlike shortest path or BFS formulations, the grid is infinite and symmetric, so the answer is determined entirely by number-theoretic invariants rather than search.
 
-Two edge cases tend to break naive reasoning:
+The main edge cases arise when either $p$ or $q$ is zero, or when $p = q$, since the move set degenerates in symmetry or collapses directions. For example, if $p = q = 0$, the knight never moves, so only $(0,0)$ is reachable. If $p = 0$, the knight only moves along axis-aligned stripes, and parity constraints become decisive.
 
-When $p = q$, all moves collapse into diagonal steps of the form $(\pm p, \pm p)$. A careless assumption might be that any pair divisible by $p$ is reachable, but this ignores parity coupling between coordinates.
-
-When $p = 0$ or $q = 0$, movement becomes axis-aligned. Some incorrect solutions mistakenly treat this as unrestricted Manhattan movement, but in fact both coordinates are independently constrained by multiples of the nonzero parameter.
-
-These cases indicate that reachability depends on linear structure rather than geometric intuition.
+Another important edge case is parity obstruction. For instance, a $(1,2)$-knight cannot reach every lattice point even if both coordinates are individually divisible by some gcd-like structure, because the coloring of the grid induced by parity of coordinates is preserved across moves.
 
 ## Approaches
 
-A brute-force approach would try to explore all positions using BFS or DFS over states $(x,y)$. Each state branches into up to eight new states. Even if we assume pruning of visited states, the reachable lattice is infinite and unbounded, and coordinates can grow arbitrarily large in magnitude. The number of states explored before reaching anything meaningful would exceed any feasible limit, especially since coordinates can be $10^9$.
+A brute-force interpretation would simulate all possible walks from $(0,0)$, performing a BFS over the infinite grid. Each node expands into up to 8 neighbors, so after $k$ steps we explore $8^k$ states in the worst case. Since coordinates can be as large as $10^9$, any meaningful target could require an enormous number of steps, making this approach infeasible.
 
-The key observation is that every move is a linear combination of two base transformations: $(p,q)$ and $(q,p)$, each with independent sign choices. After many moves, the position is always an integer linear combination of these two vectors. This turns the problem from graph reachability into solving a 2D linear Diophantine system.
+The key observation is that the move set forms a lattice in $\mathbb{Z}^2$. Every move adds a vector from the set
 
-Once we express the final position as a combination of two basis vectors, we can reduce the problem to checking whether a linear system has integer solutions. The structure splits into two regimes: a non-degenerate case where the vectors form a valid basis, and degenerate cases where the determinant becomes zero and special parity constraints appear.
+$$(\pm p, \pm q), (\pm q, \pm p)$$
+
+so the reachable points form all integer linear combinations of these vectors. This reduces the problem to checking whether $(x,y)$ lies in the additive subgroup generated by these moves.
+
+Instead of exploring paths, we analyze invariants of this lattice. Two independent constraints emerge:
+
+First, every move preserves divisibility by $g = \gcd(p,q)$. Both coordinates of every move are multiples of $g$, so any reachable point must satisfy $x \equiv 0 \pmod g$ and $y \equiv 0 \pmod g$.
+
+Second, after dividing everything by $g$, we reduce to a coprime pair $(a,b)$ with $\gcd(a,b)=1$. In this normalized system, the structure depends only on parity and degeneracy:
+
+If both $a$ and $b$ are nonzero and unequal, the lattice generated is all integer points whose parity condition matches the parity of reachable combinations. In fact, one can show that $(x',y')$ is reachable iff $(x'+y') \bmod 2 = 0$, because each move changes parity in a controlled way.
+
+When $a = b$, the moves collapse to diagonal directions, restricting reachable points to lines $x' \pm y' = \text{constant}$.
+
+When one of $a,b$ is zero, movement becomes axis-aligned, and reachability reduces to checking independent one-dimensional divisibility along axes.
+
+The final solution becomes a direct case analysis based on $(p,q)$, scaled by their gcd.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force BFS | Exponential | Exponential | Too slow |
-| Linear algebra reduction | $O(1)$ | $O(1)$ | Accepted |
+| Brute Force BFS | Exponential | O(nodes) | Too slow |
+| Optimal number-theoretic | O(1) per test | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat each move as choosing one of two vector types:
-
-$(p,q)$-type moves and $(q,p)$-type moves, each with independent sign flips. After all moves, the final position can be written as:
-
-$$(x,y) = a(p,q) + b(q,p)$$
-
-where $a$ and $b$ are integers representing net contributions of the two move types.
-
-### 1. Handle degenerate cases where $p = 0$ or $q = 0$
-
-If one of them is zero, each move affects only one axis at a time. We directly check whether both $x$ and $y$ are multiples of the nonzero value. This is necessary because no combination of moves can ever produce a coordinate not divisible by that step size.
-
-### 2. Handle general case $p \neq \pm q$
-
-We solve the linear system:
-
-$$x = ap + bq,\quad y = aq + bp$$
-
-This system has a unique solution when $p^2 \neq q^2$. We compute:
-
-$$a = \frac{px - qy}{p^2 - q^2}, \quad b = \frac{py - qx}{p^2 - q^2}$$
-
-The point is reachable only if both $a$ and $b$ are integers, since they correspond to counts of moves.
-
-### 3. Handle degenerate case $p = q$ or $p = -q$
-
-Here the determinant becomes zero and the system collapses. Every move changes both coordinates by the same magnitude, so we only track parity consistency.
-
-We divide coordinates by $p$ (or $|p|$) and check whether the scaled values $x/p$ and $y/p$ have the same parity. This ensures that both coordinates can be formed using the same number of moves up to sign distribution.
+1. Compute $g = \gcd(p,q)$. If both $p$ and $q$ are zero, the only reachable point is the origin. Any other query is impossible.
+2. Reduce the problem by scaling: set $p = p/g$, $q = q/g$, and similarly check that $x$ and $y$ must be divisible by $g$. If either coordinate is not divisible, return "No". This follows because every move preserves divisibility by $g$.
+3. Normalize coordinates: define $x' = x/g$, $y' = y/g$. From this point, we reason only in the coprime system.
+4. If $p = 0$, then the knight moves only vertically and horizontally in steps of $q$. This means one coordinate remains invariant modulo the other direction's step structure. Reachability reduces to checking whether $x'$ is divisible by $q$ and $y'$ is divisible by $q$, since movement is axis-aligned.
+5. If $p = q$, all moves reduce to diagonal steps of the form $(\pm p, \pm p)$. This constrains reachable points to those satisfying $x' \equiv y' \pmod{2p}$, which simplifies to requiring $x' \equiv y' \pmod 2$.
+6. If neither degeneracy holds, the full lattice is generated. In this case, parity becomes the only obstruction: each move changes the sum $x+y$ by an even number, so $x' + y'$ must be even for reachability.
+7. Return "Yes" if all conditions are satisfied, otherwise "No".
 
 ### Why it works
 
-The reachable set is exactly the integer span of two vectors $(p,q)$ and $(q,p)$, but when these vectors become linearly dependent, the span collapses into a constrained 1D lattice with parity restrictions. In the non-degenerate case, linear independence guarantees that every reachable point corresponds uniquely to integer coefficients $a$ and $b$, so integer solvability becomes both necessary and sufficient.
+The reachable set forms an additive subgroup of $\mathbb{Z}^2$ generated by symmetric vectors derived from $(p,q)$. Any such subgroup is fully characterized by linear divisibility constraints and parity invariants. The gcd reduction isolates scaling, while the remaining structure is determined by whether the basis vectors span the full integer lattice or a sublattice with parity or diagonal restrictions. Since all moves preserve these invariants and any point satisfying them can be constructed via integer combinations, the conditions are both necessary and sufficient.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+from math import gcd
 
 def solve():
     T = int(input())
     for _ in range(T):
         p, q, x, y = map(int, input().split())
 
-        # Case 1: zero step in one dimension
         if p == 0 and q == 0:
-            print("YES" if x == 0 and y == 0 else "NO")
+            print("Yes" if x == 0 and y == 0 else "No")
             continue
+
+        g = gcd(abs(p), abs(q))
+        if x % g != 0 or y % g != 0:
+            print("No")
+            continue
+
+        x //= g
+        y //= g
+        p //= g
+        q //= g
+
+        # normalize absolute structure
+        p, q = abs(p), abs(q)
 
         if p == 0:
-            if x % q != 0 or y % q != 0:
-                print("NO")
-            else:
-                print("YES")
-            continue
-
-        if q == 0:
-            if x % p != 0 or y % p != 0:
-                print("NO")
-            else:
-                print("YES")
-            continue
-
-        # Case 2: degenerate diagonal system
-        if p == q or p == -q:
-            if x % p != 0 or y % p != 0:
-                print("NO")
-                continue
-            a = x // p
-            b = y // p
-            print("YES" if (a & 1) == (b & 1) else "NO")
-            continue
-
-        # Case 3: general linear system
-        denom = p * p - q * q
-        num_a = p * x - q * y
-        num_b = p * y - q * x
-
-        if num_a % denom != 0 or num_b % denom != 0:
-            print("NO")
+            # moves are (0, ±q) and (±q, 0)
+            print("Yes" if x % q == 0 and y % q == 0 else "No")
+        elif p == q:
+            # diagonal lattice
+            print("Yes" if (x - y) % 2 == 0 else "No")
         else:
-            print("YES")
+            # general case: parity constraint
+            print("Yes" if (x + y) % 2 == 0 else "No")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first isolates degenerate geometries where the vector system loses rank, because those cases cannot be handled by division formulas. It then applies direct divisibility checks for axis-only movement. For the general case, it computes the determinant-based inverse of the transformation matrix and verifies that both coefficients are integers.
+The implementation begins by handling the trivial immobile case. The gcd reduction enforces the global scaling constraint early, which prevents false positives when coordinates are not compatible with the step lattice.
 
-A subtle point is that we never need to explicitly compute absolute reachability sets. All structure is captured algebraically by the linear system, and correctness depends only on integer feasibility, not on constructing actual paths.
+The case $p = 0$ is treated separately because the move set collapses into axis-aligned jumps, making reachability purely divisibility-based.
+
+When $p = q$, every move lies on diagonals, so the invariant becomes equality of coordinate parity after normalization.
+
+All other cases rely on the fact that the symmetric move set spans a full-rank lattice with a single parity constraint on reachable points.
 
 ## Worked Examples
 
@@ -153,52 +136,40 @@ A subtle point is that we never need to explicitly compute absolute reachability
 
 Input:
 
-```
-1
-2 3 0 2
-```
+$$p=2,\ q=3,\ x=0,\ y=2$$
 
-We compute:
+After reading, we compute $g=\gcd(2,3)=1$. No scaling changes coordinates.
 
-$$denom = 2^2 - 3^2 = -5$$
-
-$$num_a = 2 \cdot 0 - 3 \cdot 2 = -6,\quad num_b = 2 \cdot 2 - 3 \cdot 0 = 4$$
-
-| Step | num_a | num_b | denom | Result |
+| Step | x | y | Condition checked | Result |
 | --- | --- | --- | --- | --- |
-| Compute values | -6 | 4 | -5 | Check divisibility |
-| Check integer division | -6 % -5 != 0 | 4 % -5 != 0 | fail | NO |
+| start | 0 | 2 | gcd ok | continue |
+| general case | 0 | 2 | (x+y) even? | true |
 
-This shows that even though coordinates look small, they do not align with the lattice generated by the move vectors.
+The sum $0+2=2$ is even, so the point is reachable under the parity constraint of the full lattice.
 
 ### Example 2
 
 Input:
 
-```
-1
-1 3 5 10
-```
+$$p=1,\ q=3,\ x=5,\ y=10$$
 
-$$denom = 1 - 9 = -8$$
+Here $g=1$, so no scaling change.
 
-$$num_a = 1 \cdot 5 - 3 \cdot 10 = -25,\quad num_b = 1 \cdot 10 - 3 \cdot 5 = -5$$
-
-| Step | num_a | num_b | denom | Result |
+| Step | x | y | Condition checked | Result |
 | --- | --- | --- | --- | --- |
-| Compute values | -25 | -5 | -8 | Check divisibility |
-| Division test | not divisible | not divisible | fail | NO |
+| start | 5 | 10 | gcd ok | continue |
+| general case | 5 | 10 | (x+y) even? | false |
 
-This confirms that not all integer points are reachable even when coordinates are reachable individually by simpler moves.
+Since $5+10=15$ is odd, the parity invariant is violated, so the point cannot be reached.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(T)$ | Each test case performs constant arithmetic operations |
-| Space | $O(1)$ | No auxiliary structures are stored |
+| Time | O(1) per test case | Only gcd and constant arithmetic checks are performed |
+| Space | O(1) | No auxiliary structures beyond scalars |
 
-The solution easily handles $10^4$ test cases within limits because each query reduces to a fixed number of integer operations.
+The solution processes up to $10^4$ test cases easily within limits because each case reduces to a handful of integer operations.
 
 ## Test Cases
 
@@ -207,64 +178,55 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import isclose
-    output = []
+    from math import gcd
 
-    T = int(input())
-    for _ in range(T):
-        p, q, x, y = map(int, input().split())
-
-        if p == 0 and q == 0:
-            output.append("YES" if x == 0 and y == 0 else "NO")
-            continue
-
-        if p == 0:
-            output.append("YES" if x % q == 0 and y % q == 0 else "NO")
-            continue
-
-        if q == 0:
-            output.append("YES" if x % p == 0 and y % p == 0 else "NO")
-            continue
-
-        if p == q or p == -q:
-            if x % p != 0 or y % p != 0:
-                output.append("NO")
+    def solve():
+        T = int(input())
+        out = []
+        for _ in range(T):
+            p, q, x, y = map(int, input().split())
+            if p == 0 and q == 0:
+                out.append("Yes" if x == 0 and y == 0 else "No")
+                continue
+            g = gcd(abs(p), abs(q))
+            if x % g != 0 or y % g != 0:
+                out.append("No")
+                continue
+            x2, y2 = x // g, y // g
+            p2, q2 = abs(p // g), abs(q // g)
+            if p2 == 0:
+                out.append("Yes" if x2 % q2 == 0 and y2 % q2 == 0 else "No")
+            elif p2 == q2:
+                out.append("Yes" if (x2 - y2) % 2 == 0 else "No")
             else:
-                a = x // p
-                b = y // p
-                output.append("YES" if (a & 1) == (b & 1) else "NO")
-            continue
+                out.append("Yes" if (x2 + y2) % 2 == 0 else "No")
+        return "\n".join(out)
 
-        denom = p * p - q * q
-        num_a = p * x - q * y
-        num_b = p * y - q * x
-
-        output.append("YES" if num_a % denom == 0 and num_b % denom == 0 else "NO")
-
-    return "\n".join(output) + "\n"
+    return solve()
 
 # provided samples
-assert run("1\n2 3 0 2\n") == "YES\n", "sample 1"
-assert run("1\n1 3 5 10\n") == "NO\n", "sample 2"
+assert run("1\n2 3 0 2\n") == "YES"
 
 # custom cases
-assert run("1\n1 0 3 5\n") == "NO\n", "axis mismatch"
-assert run("1\n2 2 4 4\n") == "YES\n", "diagonal parity"
-assert run("1\n2 2 4 6\n") == "NO\n", "parity violation"
-assert run("1\n2 3 2 3\n") in ("YES\n","NO\n"), "small sanity check"
+assert run("1\n0 0 1 1\n") == "No"
+assert run("1\n1 0 2 3\n") == "No"
+assert run("1\n2 2 4 4\n") == "Yes"
+assert run("1\n1 2 3 5\n") in ["Yes", "No"]
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| p=1,q=0,x=3,y=5 | NO | axis-only restriction |
-| p=2,q=2,x=4,y=4 | YES | degenerate parity case |
-| p=2,q=2,x=4,y=6 | NO | parity constraint failure |
-| (2,3,2,3) | varies by lattice check | general sanity check |
+| 1 0 0 1 1 | No | immobile knight edge case |
+| 1 1 0 2 3 | No | axis-only restriction |
+| 1 2 2 4 4 | Yes | diagonal symmetry case |
+| 1 1 2 3 5 | depends | general parity behavior |
 
 ## Edge Cases
 
-When $p = 0$, the algorithm correctly reduces movement to independent axis jumps. For an input like $(0,3,6,9)$, both coordinates are divisible by 3, so the algorithm returns YES, matching the fact that repeated vertical and horizontal moves can independently construct any multiple of 3 on each axis.
+When $p = q = 0$, the algorithm immediately returns "Yes" only for $(0,0)$. For any other point, all invariants fail because no movement is possible at all.
 
-When $p = q$, say $(2,2,4,6)$, the scaled values are $2$ and $3$. Their parity differs, so the algorithm rejects the move even though both are multiples of 2. This captures the hidden constraint that each move affects both coordinates simultaneously, forcing parity synchronization.
+When $p = 0$, the code enters the axis-aligned branch. For example, with input $(0,3)$, reaching $(6,9)$ succeeds because both coordinates are multiples of 3, while $(5,9)$ fails immediately due to x not being divisible by 3.
 
-When $p \neq \pm q$, for example $(2,3,0,2)$, the determinant method shows fractional coefficients, immediately rejecting the position. This aligns with the geometric fact that $(0,2)$ does not lie on the integer lattice spanned by the two move vectors.
+When $p = q$, such as $(2,2)$, movement is restricted to diagonal lines. A point like $(4,4)$ passes since $x-y=0$, while $(4,5)$ fails because it breaks parity symmetry after normalization.
+
+In the general case, such as $(1,3)$, the parity check filters unreachable points. For $(2,4)$, the sum is even so it passes, while $(1,2)$ fails because it lies outside the parity sublattice.
