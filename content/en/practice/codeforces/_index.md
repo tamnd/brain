@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2526 contests, 17474 problems, 9704 verified."
+description: "Codeforces problem solutions with full editorials. 2527 contests, 17492 problems, 9716 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2526 contests, 17474 problems, 9704 verified.**
+**2527 contests, 17492 problems, 9716 verified.**
 
 ## Unknown — 531 contests, 4326 problems, 2702 verified
 
@@ -1768,7 +1768,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 224 contests, 1753 problems, 868 verified
+## 2023 — 225 contests, 1771 problems, 880 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1904,6 +1904,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104380](104380/) | [The Andover Computing Open (TACO) 2023](https://codeforces.com/contest/104380) | 18 | 12/18 | Special | - |
 | [104385](104385/) | [2023 (ICPC) Jiangxi Provincial Contest -- Official Contest](https://codeforces.com/contest/104385) | 12 | 12/12 | ICPC/IOI | - |
 | [104386](104386/) | [TheForces Round #14 (Cool-Forces)](https://codeforces.com/contest/104386) | 7 | 2/7 | Special | - |
 | [104390](104390/) | [The Unofficial Mirror Contest of 19th Thailand Olympiad in Informatics Day 1](https://codeforces.com/contest/104390) | 3 | 2/3 | Special | - |
