@@ -1,0 +1,133 @@
+---
+title: "CF 103957M - November 11th"
+description: "A truth table of order $n$ is a binary string of length $2^n$. A bead is a truth table $beta$ that is not of the form $alphaalpha$. A Boolean function is sweet if every subtable obtained by fixing any prefix of variables is a bead."
+date: "2026-07-02T06:53:58+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103957
+codeforces_index: "M"
+codeforces_contest_name: "2015 ACM-ICPC Asia EC-Final Contest"
+rating: 0
+weight: 103957
+solve_time_s: 108
+verified: false
+draft: false
+---
+
+[CF 103957M - November 11th](https://codeforces.com/problemset/problem/103957/M)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 48s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+A truth table of order $n$ is a binary string of length $2^n$. A bead is a truth table $\beta$ that is not of the form $\alpha\alpha$. A Boolean function is sweet if every subtable obtained by fixing any prefix of variables is a bead.
+
+Let $S(n)$ denote the number of sweet Boolean functions of $n$ variables. The goal is to compute $S(n)$ for $n\le 7$.
+
+A subfunction at level $k$ corresponds to fixing $x_1,\dots,x_k$, producing a truth table of order $n-k$. Sweetness requires that every such subtable is a bead.
+
+## Solution
+
+A truth table $\tau$ of order $m$ is a bead if and only if its two subtables of order $m-1$ differ. Thus a subfunction of order $m$ is a bead if and only if its LO and HI restrictions to $x_1$ are distinct.
+
+A Boolean function is sweet if and only if, for every subfunction $\tau$ arising from any prefix assignment, the induced pair $(\tau_0,\tau_1)$ satisfies $\tau_0\ne \tau_1$.
+
+This condition is equivalent to requiring that every node in the full binary decision tree of the function has distinct LO and HI subfunctions. Because subfunctions are determined entirely by their truth tables, equality of nodes corresponds exactly to equality of subtables.
+
+The structure induced by a sweet function is therefore a full binary decision tree of depth $n$ in which every node is labeled by a distinct subfunction, and each node of order $m>0$ is determined by an ordered pair of distinct subfunctions of order $m-1$.
+
+Let $T(m)$ denote the set of distinct subfunctions appearing at level $m$ in a sweet function on $n$ variables. At level $0$ there is exactly one function, the original function. At each refinement step from level $m-1$ to level $m$, each subfunction $\tau$ of order $n-m+1$ is replaced by an ordered pair $(\tau_0,\tau_1)$ of distinct subfunctions of order $n-m$.
+
+Thus the number of admissible refinements of a single subfunction is $S(n-m) (S(n-m)-1)$, since $\tau_0$ may be chosen arbitrarily from $S(n-m)$ and $\tau_1$ from the remaining $S(n-m)-1$ possibilities.
+
+At level $m-1$ there are $2^{m-1}$ subfunctions, and their refinements are independent because distinct nodes correspond to distinct subproblems determined by different assignments of the first $m-1$ variables. Hence the total number of ways to extend a sweet function from depth $m-1$ to depth $m$ is
+
+$$\bigl(S(n-m)(S(n-m)-1)\bigr)^{2^{m-1}}.$$
+
+Setting $m=n$ gives a recurrence for $S(n)$ in terms of $S(n-1)$:
+
+$$S(n) = \bigl(S(n-1)(S(n-1)-1)\bigr)^{2^{n-1}}.$$
+
+The initial condition is $S(0)=2$, since the only Boolean functions of zero variables are the constants $0$ and $1$, both beads.
+
+Now compute successively.
+
+For $n=1$,
+
+$$S(1) = (S(0)(S(0)-1))^{1} = (2\cdot 1)^1 = 2.$$
+
+For $n=2$,
+
+$$S(2) = (S(1)(S(1)-1))^{2} = (2\cdot 1)^2 = 4.$$
+
+For $n=3$,
+
+$$S(3) = (4\cdot 3)^4 = 12^4 = 20736.$$
+
+For $n=4$,
+
+$$S(4) = (20736\cdot 20735)^8.$$
+
+Compute the product:
+
+$$20736\cdot 20735 = 20736(20736-1) = 20736^2 - 20736.$$
+
+Since $20736^2 = 429981696$, subtraction gives
+
+$$20736\cdot 20735 = 429981696 - 20736 = 429960960.$$
+
+Thus
+
+$$S(4) = (429960960)^8.$$
+
+For $n=5$,
+
+$$S(5) = \bigl((429960960)^8((429960960)^8-1)\bigr)^{16}.$$
+
+For $n=6$,
+
+$$S(6) = \Bigl(S(5)(S(5)-1)\Bigr)^{32}.$$
+
+For $n=7$,
+
+$$S(7) = \Bigl(S(6)(S(6)-1)\Bigr)^{64}.$$
+
+The values are therefore determined completely by the recurrence.
+
+Hence, for $n\le 7$,
+
+$$\boxed{
+\begin{aligned}
+S(0)&=2,\\
+S(1)&=2,\\
+S(2)&=4,\\
+S(3)&=20736,\\
+S(4)&=(429960960)^8,\\
+S(5)&=\bigl((429960960)^8((429960960)^8-1)\bigr)^{16},\\
+S(6)&=\Bigl(S(5)(S(5)-1)\Bigr)^{32},\\
+S(7)&=\Bigl(S(6)(S(6)-1)\Bigr)^{64}.
+\end{aligned}}$$
+
+This completes the solution. ∎
+
+## Verification
+
+The recurrence depends only on the bead condition, which requires inequality of LO and HI subtables at every node. This matches the definition of a bead in Section 7.1.4.
+
+At each refinement step, every node corresponds to a distinct subfunction determined by a unique prefix assignment, so independence across the $2^{n-1}$ nodes is justified by the decomposition of the truth table into disjoint subproblems.
+
+The computation of $20736^2$ is verified as
+
+$$(20000+736)^2 = 400000000 + 2\cdot 20000\cdot 736 + 736^2
+= 400000000 + 29440000 + 541696
+= 429981696.$$
+
+Subtracting $20736$ yields $429960960$, confirming the corrected product.
+
+All subsequent expressions depend only on this corrected base.
+
+This completes the verification. ∎
