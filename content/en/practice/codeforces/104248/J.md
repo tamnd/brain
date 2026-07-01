@@ -1,52 +1,38 @@
 ---
-title: "TAOCP 7.1.4 Exercise 139"
-description: "Let $k \\ge 2$ be even and consider the $(kr+2)$-cube $G = G_k G_{k-1} \\cdots G_1 G_0 G_{-1}$, where $G_i$ is an $r$-cube for $i>0$ and $G_0 = G_{-1} = P_2$."
-date: "2026-07-01T15:12:08+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.1.4"
-section_title: "Binary Decision Diagrams"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "202–281"
-exercise: 139
-rating: "22"
-category: "medium"
-recommended: false
+title: "CF 104248J - Birthdays"
+description: "Let $k ge 2$ be even and consider the $(kr+2)$-cube $G = Gk G{k-1} cdots G1 G0 G{-1}$, where $Gi$ is an $r$-cube for $i0$ and $G0 = G{-1} = P2$. A vertex $v$ is written as $$v = vk v{k-1} cdots v1 v0 v{-1},$$ where $vi in {0,1}^r$ for $i0$ and $v0,v{-1} in {0,1}$."
+date: "2026-07-01T22:11:48+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104248
+codeforces_index: "J"
+codeforces_contest_name: "Udmurt SU Contest 2010"
+rating: 0
+weight: 104248
+solve_time_s: 130
 verified: false
-solve_time_s: 229
-weight: 7010400139
 draft: false
 ---
 
-[Section 7.1.4: Binary Decision Diagrams](../)
+[CF 104248J - Birthdays](https://codeforces.com/problemset/problem/104248/J)
 
-**Exercise 139.** [*22*] [22] Generalize the algorithm of exercise 138 so that (i) it computes a common
-profile chart for all functions of a BDD base, instead of a single function; and (ii) it
-restricts the chart to variables {xa, xa+1, . . . , xb}, preserving {x1, . . . , xa−1} at the top
-and {xb+1, . . . , xn} at the bottom.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 10s  
 **Verified:** no  
-**Solve time:** 3m49s  
 
----
-
+## Solution
 ## Solution
 
 Let $k \ge 2$ be even and consider the $(kr+2)$-cube $G = G_k G_{k-1} \cdots G_1 G_0 G_{-1}$, where $G_i$ is an $r$-cube for $i>0$ and $G_0 = G_{-1} = P_2$. A vertex $v$ is written as
 
-$$
-v = v_k v_{k-1} \cdots v_1 v_0 v_{-1},
-$$
+$$v = v_k v_{k-1} \cdots v_1 v_0 v_{-1},$$
 
 where $v_i \in {0,1}^r$ for $i>0$ and $v_0,v_{-1} \in {0,1}$.
 
 For $i>0$, let $s_i$ be the parity of $v_i$. Define the $k$-bit signature
 
-$$
-\sigma(v) = s_k s_{k-1} \cdots s_2 (s_1 \oplus v_0).
-$$
+$$\sigma(v) = s_k s_{k-1} \cdots s_2 (s_1 \oplus v_0).$$
 
 This generalizes the $k=4$ construction, where the last coordinate is twisted by $v_0$.
 
@@ -56,11 +42,9 @@ Each vertex $v$ chooses exactly one outgoing edge $M_{l(v)}(v)$ according to a f
 
 The construction extends by replacing the fixed lookup table in the $k=4$ case with a systematic partition of ${0,1}^k$ into $k+1$ classes indexed by ${0,1,\dots,k}$.
 
-Define a Gray ordering on $k$-bit strings via the binary reflected Gray code $g(0), g(1), \dots, g(2^k-1)$ from (7.2.1.1–(5)). Partition this cycle into $k+1$ consecutive blocks
+Define a Gray ordering on $k$-bit strings via the binary reflected Gray code $g(0), g(1), \dots, g(2^k-1)$ from (7.2.1.1-(5)). Partition this cycle into $k+1$ consecutive blocks
 
-$$
-B_0, B_1, \dots, B_k
-$$
+$$B_0, B_1, \dots, B_k$$
 
 such that each block contains strings whose first transition in the Gray walk corresponds to a distinct coordinate direction among ${0,1,\dots,k}$. The parity condition defining $\sigma(v)$ ensures that adjacent vertices in $G$ induce adjacent signatures in the Gray cycle, because flipping $v_l$ changes exactly one parity bit $s_l$ and leaves all higher blocks unchanged.
 
