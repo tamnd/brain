@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2577 contests, 18003 problems, 10101 verified."
+description: "Codeforces problem solutions with full editorials. 2578 contests, 18016 problems, 10114 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2577 contests, 18003 problems, 10101 verified.**
+**2578 contests, 18016 problems, 10114 verified.**
 
-## Unknown — 552 contests, 4534 problems, 2865 verified
+## Unknown — 553 contests, 4547 problems, 2878 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104270](104270/) | [The 2018 ICPC Asia Qingdao Regional Programming Contest (The 1st Universal Cup, Stage 9: Qingdao)](https://codeforces.com/contest/104270) | 13 | 13/13 | ICPC/IOI | - |
 | [104273](104273/) | [Индивидуальная олимпиада школьников по информатике и программированию 2023](https://codeforces.com/contest/104273) | 6 | 2/6 | Special | - |
 | [104274](104274/) | [2023 VIII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/104274) | 10 | 3/10 | Special | - |
 | [104279](104279/) | [21st UESTC Programming Contest - Preliminary](https://codeforces.com/contest/104279) | 18 | 16/18 | Special | - |
