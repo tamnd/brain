@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2587 contests, 18106 problems, 10171 verified."
+description: "Codeforces problem solutions with full editorials. 2587 contests, 18107 problems, 10173 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2587 contests, 18106 problems, 10171 verified.**
+**2587 contests, 18107 problems, 10173 verified.**
 
 ## Unknown — 554 contests, 4560 problems, 2891 verified
 
@@ -1793,7 +1793,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 260 contests, 2129 problems, 1129 verified
+## 2023 — 260 contests, 2130 problems, 1131 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1932,7 +1932,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104246](104246/) | [CodeSmash 2021 by RAPL](https://codeforces.com/contest/104246) | 12 | 6/12 | Special | - |
 | [104248](104248/) | [Udmurt SU Contest 2010](https://codeforces.com/contest/104248) | 11 | 9/11 | Special | - |
 | [104255](104255/) | [BSUIR Open X. Reload. Students final](https://codeforces.com/contest/104255) | 9 | 2/9 | Special | - |
-| [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 7 | 5/7 | Div. 2 | - |
+| [104261](104261/) | [UTPC Contest 03-24-23 Div. 2 (Beginner)](https://codeforces.com/contest/104261) | 8 | 7/8 | Div. 2 | - |
 | [104262](104262/) | [UTPC Contest 03-24-23 Div. 1 (Advanced)](https://codeforces.com/contest/104262) | 8 | 2/8 | Div. 1 | - |
 | [104264](104264/) | [TheForces Round #9 (Fool-Forces)](https://codeforces.com/contest/104264) | 8 | 3/8 | Special | - |
 | [104282](104282/) | [The 20th Hangzhou City University Programming Contest](https://codeforces.com/contest/104282) | 13 | 13/13 | Special | - |
