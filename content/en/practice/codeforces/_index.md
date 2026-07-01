@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2534 contests, 17572 problems, 9792 verified."
+description: "Codeforces problem solutions with full editorials. 2535 contests, 17578 problems, 9798 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2534 contests, 17572 problems, 9792 verified.**
+**2535 contests, 17578 problems, 9798 verified.**
 
-## Unknown — 534 contests, 4353 problems, 2725 verified
+## Unknown — 535 contests, 4359 problems, 2731 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104360](104360/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2021](https://codeforces.com/contest/104360) | 6 | 6/6 | Special | - |
 | [104361](104361/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2020](https://codeforces.com/contest/104361) | 5 | 5/5 | Special | - |
 | [104373](104373/) | [The 2021 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/104373) | 11 | 11/11 | ICPC/IOI | - |
 | [104375](104375/) | [2023 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/104375) | 11 | 7/11 | ICPC/IOI | - |
