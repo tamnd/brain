@@ -1,22 +1,22 @@
 ---
 title: "II Открытая командная олимпиада ЮМШ по программированию"
-description: "12 problems from II Открытая командная олимпиада ЮМШ по программированию (contest 104313), difficulty -. 11/12 solutions verified against sample I/O."
+description: "15 problems from II Открытая командная олимпиада ЮМШ по программированию (contest 104313), difficulty -. 14/15 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104313
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 609
-date: "2026-07-01T19:48:10+07:00"
+n_problems: 15
+n_verified: 14
+total_solve_s: 798
+date: "2026-07-01T19:49:57+07:00"
 weight: 104313
 draft: false
 ---
 
 # [II Открытая командная олимпиада ЮМШ по программированию](https://codeforces.com/contest/104313)
 
-Special | 12 problems | 11/12 verified | Difficulty - | 10m 9s
+Special | 15 problems | 14/15 verified | Difficulty - | 13m 18s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,4 +31,7 @@ Special | 12 problems | 11/12 verified | Difficulty - | 10m 9s
 | [I](I/) | [\u041c\u0435\u0442\u0440\u043e](https://codeforces.com/problemset/problem/104313/I) |  |  |  | 56s | ✓ |
 | [J](J/) | [MEX vs. MID](https://codeforces.com/problemset/problem/104313/J) |  |  |  | 53s | ✓ |
 | [K](K/) | [\u041c\u0430\u0441\u0441\u0438\u0432 \u0438 \u0441\u0442\u0435\u043f\u0435\u043d\u0438 \u0434\u0432\u043e\u0439\u043a\u0438](https://codeforces.com/problemset/problem/104313/K) |  |  |  | 58s | ✓ |
+| [L](L/) | [\u041f\u043e\u0447\u0435\u043c\u0443 \u043a\u0430\u0440\u0442\u044b \u0432 \u0434\u0440\u0443\u0433\u043e\u043c \u043f\u043e\u0440\u044f\u0434\u043a\u0435?](https://codeforces.com/problemset/problem/104313/L) |  |  |  | 1m 11s | ✓ |
 | [M](M/) | [\u0423\u0447\u0430\u0441\u0442\u043e\u043a \u0434\u043e\u0440\u043e\u0433\u0438](https://codeforces.com/problemset/problem/104313/M) |  |  |  | 43s | ✓ |
+| [N](N/) | [\u0421\u043e\u043a\u0440\u043e\u0432\u0438\u0449\u0435](https://codeforces.com/problemset/problem/104313/N) |  |  |  | 51s | ✓ |
+| [O](O/) | [\u0411\u044e\u0434\u0436\u0435\u0442\u043d\u043e\u0435 \u043f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435](https://codeforces.com/problemset/problem/104313/O) |  |  |  | 1m 7s | ✓ |
