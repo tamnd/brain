@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2551 contests, 17730 problems, 9896 verified."
+description: "Codeforces problem solutions with full editorials. 2554 contests, 17767 problems, 9917 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2551 contests, 17730 problems, 9896 verified.**
+**2554 contests, 17767 problems, 9917 verified.**
 
-## Unknown — 540 contests, 4407 problems, 2765 verified
+## Unknown — 541 contests, 4419 problems, 2777 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104324](104324/) | [SDU Open 2023](https://codeforces.com/contest/104324) | 12 | 12/12 | Special | - |
 | [104334](104334/) | [Osijek Competitive Programming Camp, Winter 2023, Day 9: Magical Story of LaLa (The 1st Universal Cup. Stage 14: Ranoa)](https://codeforces.com/contest/104334) | 10 | 10/10 | Special | - |
 | [104343](104343/) | [2023 VIII Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/104343) | 8 | 5/8 | Special | - |
 | [104344](104344/) | [Maratona dos Bixes 2023 - UNICAMP](https://codeforces.com/contest/104344) | 11 | 8/11 | Special | - |
@@ -1777,7 +1778,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 240 contests, 1928 problems, 997 verified
+## 2023 — 242 contests, 1953 problems, 1006 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1913,6 +1914,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104322](104322/) | [哈尔滨工程大学程序设计竞赛 2023](https://codeforces.com/contest/104322) | 13 | 2/13 | Special | - |
+| [104325](104325/) | [AGM 2023 Qualification Round](https://codeforces.com/contest/104325) | 12 | 7/12 | Special | - |
 | [104326](104326/) | [Udmurt SU Contest 2011](https://codeforces.com/contest/104326) | 11 | 5/11 | Special | - |
 | [104328](104328/) | [FIICode2023](https://codeforces.com/contest/104328) | 6 | 4/6 | Special | - |
 | [104329](104329/) | [TheForces Round #12 (Double-Forces)](https://codeforces.com/contest/104329) | 4 | 0/4 | Special | - |
