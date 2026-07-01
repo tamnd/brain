@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2539 contests, 17621 problems, 9829 verified."
+description: "Codeforces problem solutions with full editorials. 2540 contests, 17628 problems, 9830 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2539 contests, 17621 problems, 9829 verified.**
+**2540 contests, 17628 problems, 9830 verified.**
 
 ## Unknown — 536 contests, 4365 problems, 2737 verified
 
@@ -1773,7 +1773,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 232 contests, 1861 problems, 958 verified
+## 2023 — 233 contests, 1868 problems, 959 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1909,6 +1909,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104349](104349/) | [TheForces Round #13 (Boombastic-Forces)](https://codeforces.com/contest/104349) | 7 | 1/7 | Special | - |
 | [104353](104353/) | [2023 Xiangtan University Programming Contest](https://codeforces.com/contest/104353) | 10 | 10/10 | Special | - |
 | [104354](104354/) | [2023 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104354) | 12 | 12/12 | Special | - |
 | [104355](104355/) | [2023 Xian Jiaotong University Programming Contest](https://codeforces.com/contest/104355) | 15 | 3/15 | Special | - |
