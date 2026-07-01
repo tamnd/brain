@@ -1,36 +1,27 @@
 ---
-title: "TAOCP 7.1.4 Exercise 162"
-description: "Let $X = (x_{ij})$ be a $6 \\times 6$ matrix with entries in ${0,1}$."
-date: "2026-07-01T17:13:28+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "hard"]
-categories: ["mathematics"]
-section: "7.1.4"
-section_title: "Binary Decision Diagrams"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "202–281"
-exercise: 162
-rating: "30"
-category: "hard"
-recommended: true
+title: "CF 104197J - Jewel of Data Structure Problems"
+description: "Let $X = (x{ij})$ be a $6 times 6$ matrix with entries in ${0,1}$. Extend $X$ to all of $mathbb{Z}^2$ by setting $x{ij} = 0$ whenever $(i,j) notin [1,6] times [1,6]$."
+date: "2026-07-02T00:14:02+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 104197
+codeforces_index: "J"
+codeforces_contest_name: "Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)"
+rating: 0
+weight: 104197
+solve_time_s: 122
 verified: false
-solve_time_s: 390
-weight: 7010400162
 draft: false
 ---
 
-[Section 7.1.4: Binary Decision Diagrams](../)
+[CF 104197J - Jewel of Data Structure Problems](https://codeforces.com/problemset/problem/104197/J)
 
-**Exercise 162.** &#9654; [*30*] [30] (Caged Life.) If X and L(X) are tame but L(L(X)) is wild, we say that X
-“escapes” its cage after three steps. How many 6 × 6 matrices escape their 6 × 6 cage
-after exactly k steps, for k = 1, 2, . . . ?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 2s  
 **Verified:** no  
-**Solve time:** 6m30s  
 
----
-
+## Solution
 ## Setup
 
 Let $X = (x_{ij})$ be a $6 \times 6$ matrix with entries in ${0,1}$. Extend $X$ to all of $\mathbb{Z}^2$ by setting $x_{ij} = 0$ whenever $(i,j) \notin [1,6] \times [1,6]$. Let $L(X) = (y_{ij})$ be Conway’s Life update rule applied to this extended configuration, and then restricted again to the $6 \times 6$ window, where $y_{ij} = L(x_{i-1,j-1}, \dots, x_{i+1,j+1})$.
@@ -57,9 +48,7 @@ Thus $W(X)$ is a Boolean function on $36$ variables.
 
 Define iterates $L^k(X)$ and corresponding wildness predicates $W_k(X) = W(L^k(X))$. The condition “escapes after exactly $k$ steps” is
 
-$$
-E_k(X) = \bigwedge_{t=0}^{k-1} \neg W_t(X) \;\wedge\; W_k(X).
-$$
+$$E_k(X) = \bigwedge_{t=0}^{k-1} \neg W_t(X) \;\wedge\; W_k(X).$$
 
 Each $W_t(X)$ is a Boolean function of $X$ obtained by composing $t$ applications of the local rule $L$ followed by a boundary test.
 
@@ -87,9 +76,7 @@ $N_1$ counts solutions to a set of local forbidden patterns, but since each cons
 
 Thus the exact count is
 
-$$
-\#E_1 = 2^{36} - \#\{X : W_1(X)=0\}.
-$$
+$$\#E_1 = 2^{36} - \#\{X : W_1(X)=0\}.$$
 
 No further simplification is possible without expanding all boundary patterns.
 
@@ -97,9 +84,7 @@ No further simplification is possible without expanding all boundary patterns.
 
 Escape after exactly two steps requires
 
-$$
-\neg W(X) \wedge W(L(X)).
-$$
+$$\neg W(X) \wedge W(L(X)).$$
 
 The first condition enforces that no immediate boundary activation occurs. The second requires that after one stable evolution step inside the cage, a boundary configuration emerges that produces activation.
 
@@ -113,17 +98,13 @@ The number of such configurations equals the number of admissible labelings of t
 
 Formally,
 
-$$
-\#E_2 = \#\{X : W(X)=0\} - \#\{X : W(X)=0 \wedge W(L(X))=0\}.
-$$
+$$\#E_2 = \#\{X : W(X)=0\} - \#\{X : W(X)=0 \wedge W(L(X))=0\}.$$
 
 ### Case $k=3$
 
 Escape after three steps is
 
-$$
-W(L^3(X))=1,\quad W(X)=W(L(X))=W(L^2(X))=0.
-$$
+$$W(L^3(X))=1,\quad W(X)=W(L(X))=W(L^2(X))=0.$$
 
 By locality, $L^2(X)$ depends on radius-$2$ neighborhoods in $X$, and $L^3(X)$ depends on radius-$3$ neighborhoods.
 
@@ -135,9 +116,7 @@ first-layer forbidden $3 \times 3$ patterns, second-layer induced $5 \times 5$ c
 
 Hence
 
-$$
-\#E_3 = \#\{X : W(X)=W(L(X))=0\} - \#\{X : W(X)=W(L(X))=W(L^2(X))=0\}.
-$$
+$$\#E_3 = \#\{X : W(X)=W(L(X))=0\} - \#\{X : W(X)=W(L(X))=W(L^2(X))=0\}.$$
 
 ### Case $k=4$
 
@@ -145,9 +124,7 @@ Escape after four steps requires avoidance of all earlier activations and a fina
 
 Thus $E_4$ corresponds to configurations that remain stable under three iterations but fail at the fourth, which is equivalent to the difference of nested constraint sets:
 
-$$
-\#E_4 = \#\{X : W(L^3(X))=0, \, W(L^2(X))=0, \, W(L(X))=0, \, W(X)=0\} - \#\{X : \forall t \le 4, W(L^t(X))=0\}.
-$$
+$$\#E_4 = \#\{X : W(L^3(X))=0, \, W(L^2(X))=0, \, W(L(X))=0, \, W(X)=0\} - \#\{X : \forall t \le 4, W(L^t(X))=0\}.$$
 
 The second term is zero because beyond radius $4$ stabilization implies global non-activation under boundary extension constraints is impossible for all configurations, since every configuration eventually induces boundary interaction patterns within radius $4$.
 
