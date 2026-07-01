@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2527 contests, 17492 problems, 9716 verified."
+description: "Codeforces problem solutions with full editorials. 2529 contests, 17518 problems, 9738 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2527 contests, 17492 problems, 9716 verified.**
+**2529 contests, 17518 problems, 9738 verified.**
 
-## Unknown — 531 contests, 4326 problems, 2702 verified
+## Unknown — 532 contests, 4337 problems, 2709 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104375](104375/) | [2023 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/104375) | 11 | 7/11 | ICPC/IOI | - |
 | [104381](104381/) | [The Andover Computing Open (TACO) 2022](https://codeforces.com/contest/104381) | 14 | 6/14 | Special | - |
 | [104393](104393/) | [ICPC Masters Mexico LATAM 2023](https://codeforces.com/contest/104393) | 10 | 9/10 | ICPC/IOI | - |
 | [104395](104395/) | [Cupertino Informatics Tournament](https://codeforces.com/contest/104395) | 7 | 5/7 | Special | - |
@@ -1768,7 +1769,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 225 contests, 1771 problems, 880 verified
+## 2023 — 226 contests, 1786 problems, 895 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1904,6 +1905,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104377](104377/) | [The 21st Sichuan University Programming Contest](https://codeforces.com/contest/104377) | 15 | 15/15 | Special | - |
 | [104380](104380/) | [The Andover Computing Open (TACO) 2023](https://codeforces.com/contest/104380) | 18 | 12/18 | Special | - |
 | [104385](104385/) | [2023 (ICPC) Jiangxi Provincial Contest -- Official Contest](https://codeforces.com/contest/104385) | 12 | 12/12 | ICPC/IOI | - |
 | [104386](104386/) | [TheForces Round #14 (Cool-Forces)](https://codeforces.com/contest/104386) | 7 | 2/7 | Special | - |
