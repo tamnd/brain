@@ -179,7 +179,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [159](159.md) |  [*20*] | medium | solved | 6m03s |
 | [160](160.md) | &#9654; [*24*] | medium | solved | 5m39s |
 | [161](161.md) |  [*28*] | hard | solved | 5m25s |
-| [162](162.md) | &#9654; [*30*] | hard | solved | 4m33s |
+| [162](162.md) | &#9654; [*30*] | hard | solved | 6m30s |
 | [163](163.md) |  [*23*] | medium | solved | 4m24s |
 | [164](164.md) | &#9654; [*M27*] | math-hard | solved | 4m24s |
 | [165](165.md) |  [*M21*] | math-medium | solved | 4m21s |
