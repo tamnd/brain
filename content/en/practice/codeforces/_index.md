@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2638 contests, 18494 problems, 10428 verified."
+description: "Codeforces problem solutions with full editorials. 2639 contests, 18506 problems, 10429 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2638 contests, 18494 problems, 10428 verified.**
+**2639 contests, 18506 problems, 10429 verified.**
 
-## Unknown — 585 contests, 4775 problems, 3028 verified
+## Unknown — 586 contests, 4787 problems, 3029 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104094](104094/) | [2022-2023 Russia Team Open, High School Programming Contest (VKOSHP XXIII)](https://codeforces.com/contest/104094) | 12 | 1/12 | Special | - |
 | [104095](104095/) | [2020 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104095) | 12 | 10/12 | Special | - |
 | [104096](104096/) | [Муниципальный этап ВсОШ, Краснодарский край, 2022](https://codeforces.com/contest/104096) | 5 | 0/5 | Special | - |
 | [104114](104114/) | [2022 ICPC Southeastern Europe Regional Contest](https://codeforces.com/contest/104114) | 14 | 12/14 | ICPC/IOI | - |
