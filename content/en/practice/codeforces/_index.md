@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2675 contests, 18836 problems, 10648 verified."
+description: "Codeforces problem solutions with full editorials. 2676 contests, 18847 problems, 10655 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2675 contests, 18836 problems, 10648 verified.**
+**2676 contests, 18847 problems, 10655 verified.**
 
-## Unknown — 604 contests, 4927 problems, 3122 verified
+## Unknown — 605 contests, 4938 problems, 3129 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104014](104014/) | [2022-2023 ICPC NERC, квалификации Уральского региона и Северо-Запада России](https://codeforces.com/contest/104014) | 11 | 7/11 | ICPC/IOI | - |
 | [104015](104015/) | [ICPC 2021-2022 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/104015) | 13 | 11/13 | ICPC/IOI | - |
 | [104017](104017/) | [2021-2022 ICPC Southwestern European Regional Contest (SWERC 2021-2022)](https://codeforces.com/contest/104017) | 12 | 1/12 | ICPC/IOI | - |
 | [104018](104018/) | [2022-2023 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104018) | 9 | 1/9 | ICPC/IOI | - |
