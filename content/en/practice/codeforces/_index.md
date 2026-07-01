@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2673 contests, 18811 problems, 10636 verified."
+description: "Codeforces problem solutions with full editorials. 2674 contests, 18823 problems, 10637 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2673 contests, 18811 problems, 10636 verified.**
+**2674 contests, 18823 problems, 10637 verified.**
 
-## Unknown — 602 contests, 4902 problems, 3110 verified
+## Unknown — 603 contests, 4914 problems, 3111 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104017](104017/) | [2021-2022 ICPC Southwestern European Regional Contest (SWERC 2021-2022)](https://codeforces.com/contest/104017) | 12 | 1/12 | ICPC/IOI | - |
 | [104018](104018/) | [2022-2023 ICPC NERC (NEERC), Kyrgyzstan Regional Contest](https://codeforces.com/contest/104018) | 9 | 1/9 | ICPC/IOI | - |
 | [104020](104020/) | [2022 Benelux Algorithm Programming Contest (BAPC 22)](https://codeforces.com/contest/104020) | 12 | 8/12 | Special | - |
 | [104021](104021/) | [The 2019 ICPC Asia Yinchuan Regional Contest](https://codeforces.com/contest/104021) | 14 | 14/14 | ICPC/IOI | - |
