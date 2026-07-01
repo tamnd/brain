@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2692 contests, 19024 problems, 10758 verified."
+description: "Codeforces problem solutions with full editorials. 2693 contests, 19038 problems, 10770 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2692 contests, 19024 problems, 10758 verified.**
+**2693 contests, 19038 problems, 10770 verified.**
 
 ## Unknown — 613 contests, 5028 problems, 3194 verified
 
@@ -1714,7 +1714,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 166 contests, 1206 problems, 557 verified
+## 2022 — 167 contests, 1220 problems, 569 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1851,6 +1851,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103973](103973/) | [2022 Huazhong University of Science and Technology Freshmen Cup](https://codeforces.com/contest/103973) | 14 | 12/14 | Special | - |
 | [103990](103990/) | [2022 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/103990) | 9 | 6/9 | ICPC/IOI | - |
 | [103999](103999/) | [FMI No Stress 11](https://codeforces.com/contest/103999) | 14 | 2/14 | Special | - |
 | [104002](104002/) | [UTPC Contest 10-28-22 Div. 2 (Beginner)](https://codeforces.com/contest/104002) | 9 | 2/9 | Div. 2 | - |

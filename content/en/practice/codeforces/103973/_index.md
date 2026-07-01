@@ -1,23 +1,23 @@
 ---
 title: "2022 Huazhong University of Science and Technology Freshmen Cup"
-description: "10 problems from 2022 Huazhong University of Science and Technology Freshmen Cup (contest 103973), difficulty -. 9/10 solutions verified against sample I/O."
+description: "14 problems from 2022 Huazhong University of Science and Technology Freshmen Cup (contest 103973), difficulty -. 12/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103973
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 9
-total_solve_s: 548
+n_problems: 14
+n_verified: 12
+total_solve_s: 856
 contest_year: 2022
-date: "2026-07-02T06:22:05+07:00"
+date: "2026-07-02T06:23:48+07:00"
 weight: 103973
 draft: false
 ---
 
 # [2022 Huazhong University of Science and Technology Freshmen Cup](https://codeforces.com/contest/103973)
 
-Special | 10 problems | 9/10 verified | Difficulty - | 9m 8s
+Special | 14 problems | 12/14 verified | Difficulty - | 14m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,7 @@ Special | 10 problems | 9/10 verified | Difficulty - | 9m 8s
 | [H](H/) | [Substrings](https://codeforces.com/problemset/problem/103973/H) |  |  |  | 1m 11s |  |
 | [I](I/) | [Photos](https://codeforces.com/problemset/problem/103973/I) |  |  |  | 47s | ✓ |
 | [J](J/) | [Two Kings](https://codeforces.com/problemset/problem/103973/J) |  |  |  | 50s | ✓ |
+| [K](K/) | [The Grandstand](https://codeforces.com/problemset/problem/103973/K) |  |  |  | 44s | ✓ |
+| [L](L/) | [Phigros](https://codeforces.com/problemset/problem/103973/L) |  |  |  | 2m 1s |  |
+| [M](M/) | [Walk Alone's Conjecture](https://codeforces.com/problemset/problem/103973/M) |  |  |  | 1m 5s | ✓ |
+| [N](N/) | [Coloring](https://codeforces.com/problemset/problem/103973/N) |  |  |  | 1m 18s | ✓ |
