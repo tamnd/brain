@@ -142,8 +142,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [122](122.md) |  [*27*] | hard | solved | 6m18s |
 | [123](123.md) |  [*M20*] | math-medium | solved | 4m08s |
 | [124](124.md) | &#9654; [*27*] | hard | solved | 4m55s |
-| [125](125.md) | &#9654; [*HM34*] | hm-hard | solved | 4m11s |
-| [126](126.md) |  [*HM42*] | hm-project | solved | 4m11s |
+| [125](125.md) | &#9654; [*HM34*] | hm-hard | solved | 5m42s |
+| [126](126.md) |  [*HM42*] | hm-project | solved | 4m17s |
 | [127](127.md) |  [*46*] | research | verified | 2m47s |
 | [128](128.md) | &#9654; [*25*] | medium | solved | 1m46s |
 | [129](129.md) |  [*M25*] | math-medium | solved | 59s |
