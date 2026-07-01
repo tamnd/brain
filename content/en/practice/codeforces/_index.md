@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2606 contests, 18246 problems, 10283 verified."
+description: "Codeforces problem solutions with full editorials. 2609 contests, 18263 problems, 10296 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2606 contests, 18246 problems, 10283 verified.**
+**2609 contests, 18263 problems, 10296 verified.**
 
-## Unknown — 565 contests, 4642 problems, 2952 verified
+## Unknown — 567 contests, 4650 problems, 2958 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104174](104174/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая личная олимпиада + Первый отбор на ИОИП](https://codeforces.com/contest/104174) | 4 | 2/4 | Special | - |
+| [104178](104178/) | [BdOI Preliminary 2023](https://codeforces.com/contest/104178) | 4 | 4/4 | Special | - |
 | [104182](104182/) | [Innopolis Open 2022-2023. Final round](https://codeforces.com/contest/104182) | 5 | 5/5 | Special | - |
 | [104195](104195/) | [Интернет-олимпиады, Сезон 2022-2023, Третья личная олимпиада + Второй отбор на ИОИП](https://codeforces.com/contest/104195) | 4 | 2/4 | Special | - |
 | [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 11 | 10/11 | Special | - |
@@ -1805,7 +1807,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 267 contests, 2177 problems, 1170 verified
+## 2023 — 268 contests, 2186 problems, 1177 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1941,6 +1943,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104180](104180/) | [UTPC Contest 02-10-23 Div. 2 (Beginner)](https://codeforces.com/contest/104180) | 9 | 7/9 | Div. 2 | - |
 | [104181](104181/) | [UTPC Contest 02-10-23 Div. 1 (Advanced)](https://codeforces.com/contest/104181) | 9 | 7/9 | Div. 1 | - |
 | [104217](104217/) | [UTPC Contest 03-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104217) | 8 | 4/8 | Div. 2 | - |
 | [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 7 | 5/7 | Div. 1 | - |
