@@ -1,23 +1,23 @@
 ---
 title: "The 17th Chinese Northeast Collegiate Programming Contest"
-description: "12 problems from The 17th Chinese Northeast Collegiate Programming Contest (contest 104366), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from The 17th Chinese Northeast Collegiate Programming Contest (contest 104366), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104366
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 693
+n_problems: 13
+n_verified: 13
+total_solve_s: 741
 contest_year: 2023
-date: "2026-07-01T17:45:44+07:00"
+date: "2026-07-01T17:48:43+07:00"
 weight: 104366
 draft: false
 ---
 
 # [The 17th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/104366)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 33s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 21s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,4 +32,5 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 33s
 | [I](I/) | [Subsetting and Summing](https://codeforces.com/problemset/problem/104366/I) |  |  |  | 55s | ✓ |
 | [J](J/) | [Less Time on the Road](https://codeforces.com/problemset/problem/104366/J) |  |  |  | 1m 11s | ✓ |
 | [K](K/) | [The Secret Comparison](https://codeforces.com/problemset/problem/104366/K) |  |  |  | 51s | ✓ |
+| [L](L/) | [Spatial Quantum Energy Theory](https://codeforces.com/problemset/problem/104366/L) |  |  |  | 48s | ✓ |
 | [M](M/) | [Easy Problem of Prime](https://codeforces.com/problemset/problem/104366/M) |  |  |  | 55s | ✓ |

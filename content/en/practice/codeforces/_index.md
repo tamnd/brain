@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2531 contests, 17542 problems, 9762 verified."
+description: "Codeforces problem solutions with full editorials. 2535 contests, 17578 problems, 9798 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2531 contests, 17542 problems, 9762 verified.**
+**2535 contests, 17578 problems, 9798 verified.**
 
-## Unknown — 533 contests, 4348 problems, 2720 verified
+## Unknown — 535 contests, 4359 problems, 2731 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104360](104360/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2021](https://codeforces.com/contest/104360) | 6 | 6/6 | Special | - |
+| [104361](104361/) | [Всероссийская олимпиада по информатике им. Мстислава Келдыша - 2020](https://codeforces.com/contest/104361) | 5 | 5/5 | Special | - |
 | [104373](104373/) | [The 2021 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/104373) | 11 | 11/11 | ICPC/IOI | - |
 | [104375](104375/) | [2023 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/104375) | 11 | 7/11 | ICPC/IOI | - |
 | [104381](104381/) | [The Andover Computing Open (TACO) 2022](https://codeforces.com/contest/104381) | 14 | 6/14 | Special | - |
@@ -1770,7 +1772,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 227 contests, 1799 problems, 908 verified
+## 2023 — 229 contests, 1824 problems, 933 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1906,6 +1908,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104363](104363/) | [The 18th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/104363) | 12 | 12/12 | Special | - |
+| [104366](104366/) | [The 17th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/104366) | 13 | 13/13 | Special | - |
 | [104369](104369/) | [The 2023 Guangdong Provincial Collegiate Programming Contest](https://codeforces.com/contest/104369) | 13 | 13/13 | Special | - |
 | [104377](104377/) | [The 21st Sichuan University Programming Contest](https://codeforces.com/contest/104377) | 15 | 15/15 | Special | - |
 | [104380](104380/) | [The Andover Computing Open (TACO) 2023](https://codeforces.com/contest/104380) | 18 | 12/18 | Special | - |
