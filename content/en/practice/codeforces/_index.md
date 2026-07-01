@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2669 contests, 18763 problems, 10601 verified."
+description: "Codeforces problem solutions with full editorials. 2671 contests, 18790 problems, 10627 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2669 contests, 18763 problems, 10601 verified.**
+**2671 contests, 18790 problems, 10627 verified.**
 
-## Unknown — 599 contests, 4867 problems, 3087 verified
+## Unknown — 600 contests, 4881 problems, 3101 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104021](104021/) | [The 2019 ICPC Asia Yinchuan Regional Contest](https://codeforces.com/contest/104021) | 14 | 14/14 | ICPC/IOI | - |
 | [104030](104030/) | [2022-2023 ACM-ICPC Nordic Collegiate Programming Contest (NCPC 2022)](https://codeforces.com/contest/104030) | 11 | 9/11 | ICPC/IOI | - |
 | [104031](104031/) | [Муниципальный этап ВсОШ по информатике в Самаре 2021-2022 (9-11 классы)](https://codeforces.com/contest/104031) | 5 | 4/5 | Special | - |
 | [104033](104033/) | [Школьный этап ВСОШ по информатике 9-11 класс 2022 (1 группа регионов)](https://codeforces.com/contest/104033) | 0 | 0/0 | Special | - |
@@ -1559,7 +1560,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 133 contests, 840 problems, 325 verified
+## 2021 — 134 contests, 853 problems, 337 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1695,6 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
 ## 2022 — 160 contests, 1140 problems, 529 verified
