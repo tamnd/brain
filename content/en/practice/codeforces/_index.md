@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2570 contests, 17912 problems, 10029 verified."
+description: "Codeforces problem solutions with full editorials. 2571 contests, 17930 problems, 10042 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2570 contests, 17912 problems, 10029 verified.**
+**2571 contests, 17930 problems, 10042 verified.**
 
-## Unknown — 547 contests, 4468 problems, 2817 verified
+## Unknown — 548 contests, 4486 problems, 2830 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104287](104287/) | [Teamscode Spring 2023 Contest](https://codeforces.com/contest/104287) | 18 | 13/18 | Special | - |
 | [104288](104288/) | [2021 ICPC World Finals](https://codeforces.com/contest/104288) | 12 | 10/12 | ICPC/IOI | - |
 | [104290](104290/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/104290) | 0 | 0/0 | Special | - |
 | [104291](104291/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/104291) | 0 | 0/0 | Special | - |
