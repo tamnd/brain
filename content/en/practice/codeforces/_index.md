@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2547 contests, 17699 problems, 9882 verified."
+description: "Codeforces problem solutions with full editorials. 2548 contests, 17709 problems, 9887 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2547 contests, 17699 problems, 9882 verified.**
+**2548 contests, 17709 problems, 9887 verified.**
 
 ## Unknown — 540 contests, 4407 problems, 2765 verified
 
@@ -1777,7 +1777,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 236 contests, 1897 problems, 983 verified
+## 2023 — 237 contests, 1907 problems, 988 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1913,6 +1913,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104333](104333/) | [Replay of BU - PSTU Programming club collaborative contest](https://codeforces.com/contest/104333) | 10 | 5/10 | Special | - |
 | [104336](104336/) | [II Olympiad of classes at the Mechanics and Mathematics Faculty of MSU in programming 2023.](https://codeforces.com/contest/104336) | 8 | 4/8 | Special | - |
 | [104337](104337/) | [2023 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/104337) | 13 | 13/13 | Special | - |
 | [104339](104339/) | [FAMCS Olympiad for scholars, Qualification (copy)](https://codeforces.com/contest/104339) | 8 | 7/8 | Special | - |
