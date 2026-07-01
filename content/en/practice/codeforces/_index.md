@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2579 contests, 18024 problems, 10117 verified."
+description: "Codeforces problem solutions with full editorials. 2580 contests, 18032 problems, 10119 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2579 contests, 18024 problems, 10117 verified.**
+**2580 contests, 18032 problems, 10119 verified.**
 
 ## Unknown — 553 contests, 4547 problems, 2878 verified
 
@@ -1790,7 +1790,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 255 contests, 2082 problems, 1105 verified
+## 2023 — 256 contests, 2090 problems, 1107 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1926,6 +1926,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104262](104262/) | [UTPC Contest 03-24-23 Div. 1 (Advanced)](https://codeforces.com/contest/104262) | 8 | 2/8 | Div. 1 | - |
 | [104264](104264/) | [TheForces Round #9 (Fool-Forces)](https://codeforces.com/contest/104264) | 8 | 3/8 | Special | - |
 | [104282](104282/) | [The 20th Hangzhou City University Programming Contest](https://codeforces.com/contest/104282) | 13 | 13/13 | Special | - |
 | [104283](104283/) | [Contest Based on Brain Craft Intra SUST Programming Contest 2023](https://codeforces.com/contest/104283) | 12 | 11/12 | Special | - |
