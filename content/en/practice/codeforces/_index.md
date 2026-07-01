@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2560 contests, 17832 problems, 9963 verified."
+description: "Codeforces problem solutions with full editorials. 2561 contests, 17843 problems, 9974 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2560 contests, 17832 problems, 9963 verified.**
+**2561 contests, 17843 problems, 9974 verified.**
 
 ## Unknown — 543 contests, 4444 problems, 2795 verified
 
@@ -1780,7 +1780,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 246 contests, 1993 problems, 1034 verified
+## 2023 — 247 contests, 2004 problems, 1045 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1916,6 +1916,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104308](104308/) | [Mirror of Independence Day Programming Contest 2023 by MIST Computer Club](https://codeforces.com/contest/104308) | 11 | 11/11 | Special | - |
 | [104311](104311/) | [TheForces Round #11 (DIV2.5-Forces)](https://codeforces.com/contest/104311) | 6 | 2/6 | Special | - |
 | [104312](104312/) | [UTPC Spring 2023 Contest (HS)](https://codeforces.com/contest/104312) | 12 | 10/12 | Special | - |
 | [104316](104316/) | [VIII Липецкая командная олимпиада школьников по программированию. Финал](https://codeforces.com/contest/104316) | 12 | 12/12 | Special | - |
