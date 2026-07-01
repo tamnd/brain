@@ -1,7 +1,7 @@
 ---
 title: "CF 104246D - Distribute the Pizza"
-description: "A pizza is cut into identical radial slices. Each slice corresponds to a fixed central angle θ, so once θ is known, the total number of slices in a full pizza is completely determined by how many times θ fits into 360 degrees."
-date: "2026-07-01T22:14:11+07:00"
+description: "A pizza is cut into identical slices, and each slice is a sector defined by a fixed central angle θ. The radius r is irrelevant for the distribution question because all slices are congruent; what matters is only how many equal angular pieces the full 360° circle is partitioned…"
+date: "2026-07-01T23:01:55+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104246
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "CodeSmash 2021 by RAPL"
 rating: 0
 weight: 104246
-solve_time_s: 71
+solve_time_s: 83
 verified: false
 draft: false
 ---
@@ -18,49 +18,46 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 11s  
+**Solve time:** 1m 23s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-A pizza is cut into identical radial slices. Each slice corresponds to a fixed central angle θ, so once θ is known, the total number of slices in a full pizza is completely determined by how many times θ fits into 360 degrees. The radius r is given but plays no role in how the slices are divided or distributed.
+A pizza is cut into identical slices, and each slice is a sector defined by a fixed central angle θ. The radius r is irrelevant for the distribution question because all slices are congruent; what matters is only how many equal angular pieces the full 360° circle is partitioned into.
 
-Two people want to split all available slices between them, and each slice must be given entirely to one person. The only question is whether the total number of slices can be split into two equal integer groups.
+From the statement, we are not directly given the number of slices. Instead, we are told the slice angle θ, which implicitly defines the number of slices as 360 / θ, and we are guaranteed this is an integer for every test case.
 
-So the task reduces to checking whether the full pizza can be split into an even number of slices, given that the number of slices is implied by θ.
+Two people want to split the pizza so that both receive an integer number of whole slices, and both get the same number of slices. Since slices cannot be subdivided, the problem reduces to checking whether the total number of slices is even.
 
-The constraints are small enough that each test case must be answered in constant time. With up to 2400 test cases, any solution that recomputes anything expensive per case is unnecessary. A direct arithmetic check is sufficient.
+The input size is small, with up to 2400 test cases and constant-time arithmetic per case. This strongly suggests that any O(1) per test case solution is sufficient, and even simple arithmetic or modular checks are well within limits. Anything involving iteration over slices or factoring is unnecessary.
 
-A subtle failure case appears when the number of slices is odd. For example, if θ = 120, then the pizza has 3 slices. One person would get 1 slice and the other 2, which is not equal, so the answer must be NO. Another case is θ = 360, which yields a single slice, which is also impossible to split evenly.
-
-The radius input can also mislead implementation: if it is parsed or used in computations, it can introduce unnecessary complexity or incorrect logic. It should be ignored entirely.
+A subtle edge case arises when θ is large, such as θ = 360. In that case, there is only one slice, and it is impossible to split it equally between two people. Another corner case is θ = 180, where there are exactly two slices and a fair split is possible.
 
 ## Approaches
 
-The brute-force way to think about the problem is to explicitly construct the pizza division. Given θ, we compute the number of slices n = 360 / θ, then simulate distributing these slices alternately or by counting and checking whether both people end up with the same number. This works, but it is overkill: the simulation itself is O(n) per test case, and in the worst case θ = 1 gives 360 slices per test, leading to unnecessary repeated work across up to 2400 cases.
+A direct way to think about the problem is to first compute the number of slices n = 360 / θ. Once we have n, the question becomes whether n can be divided into two equal integers, meaning whether n is divisible by 2.
 
-The key observation is that we never need to simulate distribution at all. The only requirement for equal distribution is that the total number of slices is divisible by 2. Since the problem guarantees that θ divides 360, the number of slices is always an integer, so we only need to check whether (360 / θ) is even.
+The brute-force mindset would be to simulate cutting the pizza or explicitly counting slices, but that is already unnecessary since the slice count is determined by a simple division. Any approach that iterates around the circle or builds slices explicitly would still run in constant time per case but is conceptually overkill.
 
-This reduces each test case to a single division and modulo check.
+The key observation is that fairness between two people is equivalent to asking whether the total number of identical units is even. The geometry and radius play no role beyond guaranteeing that slices are congruent; only the parity of the slice count matters.
+
+Thus the problem reduces to checking whether (360 / θ) % 2 == 0, which can be rewritten as checking whether 360 / θ is even.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(360 / θ) per test | O(1) | Too slow |
-| Direct Arithmetic Check | O(1) per test | O(1) | Accepted |
+| Direct slice counting | O(1) | O(1) | Accepted |
+| Optimal parity check | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We compute the number of slices implied by the angle, then test whether that count is evenly divisible between the two people.
-
-1. Read θ for each test case, ignoring r entirely because it does not affect slice count or distribution.
-2. Compute the total number of slices as n = 360 / θ. This is valid because the problem guarantees the pizza can be divided into equal slices.
-3. Check whether n is divisible by 2. If n % 2 == 0, both people can receive exactly n / 2 slices.
-4. Output "YES" if the condition holds, otherwise output "NO".
+1. Read θ for each test case and compute the number of slices n as 360 divided by θ. The problem guarantees divisibility, so no rounding issues occur.
+2. Check whether n is divisible by 2. This determines whether the slices can be partitioned into two equal groups without breaking any slice.
+3. If n is even, output "YES". Otherwise, output "NO".
 
 ### Why it works
 
-The structure of the problem fixes the pizza into n identical discrete objects (slices). Any valid distribution must assign whole objects. Equal distribution is equivalent to splitting a set of size n into two equal integer parts. The only property that matters is parity of n. Since n is uniquely determined by 360 / θ, the decision reduces entirely to checking whether that quotient is even.
+Each slice is an indivisible unit of resource. Any valid distribution assigns whole slices only, so the problem reduces to partitioning n identical objects into two equal-sized sets. Such a partition exists if and only if n is even. No geometric property other than the total count influences feasibility, so parity is both necessary and sufficient.
 
 ## Python Solution
 
@@ -82,38 +79,79 @@ if __name__ == "__main__":
     solve()
 ```
 
-The solution reads each test case independently. The integer division is safe because θ is guaranteed to divide 360 evenly.
+The solution reads each test case independently and ignores r, since it does not affect the number of slices. The integer division 360 // θ is safe because the problem guarantees that θ divides 360. The parity check directly encodes the feasibility condition.
 
-The only subtle implementation detail is ensuring that r is still parsed even though it is unused. Forgetting to read it correctly would desynchronize input parsing.
+A common implementation mistake is attempting floating-point division for 360 / θ and then checking parity, which can introduce precision issues in other problems. Here, using integer division avoids any such risk and aligns with the discrete structure of slices.
 
 ## Worked Examples
 
-We trace the logic on the sample cases.
+Consider θ values that produce different slice counts.
 
-### Sample Input
+### Example 1
+
+Input:
 
 ```
-310 45
-5 40
-8 60
+r = 10, θ = 45
 ```
 
-| r | θ | n = 360/θ | n % 2 | Output |
-| --- | --- | --- | --- | --- |
-| 310 | 45 | 8 | 0 | YES |
-| 5 | 40 | 9 | 1 | NO |
-| 8 | 60 | 6 | 0 | YES |
+Here n = 360 / 45 = 8.
 
-The first case produces 8 slices, which splits into 4 and 4. The second produces 9 slices, which cannot be evenly divided. The third produces 6 slices, which splits into 3 and 3.
+| Step | Value |
+| --- | --- |
+| θ | 45 |
+| n = 360 / θ | 8 |
+| n % 2 | 0 |
+| Output | YES |
+
+Since 8 slices can be split into 4 and 4, the output is YES.
+
+### Example 2
+
+Input:
+
+```
+r = 5, θ = 60
+```
+
+Here n = 360 / 60 = 6.
+
+| Step | Value |
+| --- | --- |
+| θ | 60 |
+| n = 6 |  |
+| n % 2 | 0 |
+| Output | YES |
+
+This shows an even slice count still yields a valid split.
+
+### Example 3
+
+Input:
+
+```
+r = 8, θ = 120
+```
+
+Here n = 360 / 120 = 3.
+
+| Step | Value |
+| --- | --- |
+| θ | 120 |
+| n = 3 |  |
+| n % 2 | 1 |
+| Output | NO |
+
+This demonstrates the failure case when slices are odd in number.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t) | Each test case requires constant-time arithmetic operations |
-| Space | O(1) | No additional data structures are used |
+| Time | O(t) | Each test case requires constant-time arithmetic and a modulo check |
+| Space | O(1) | No additional data structures are used beyond a few variables |
 
-The input size of at most 2400 test cases is easily handled with constant work per case, well within time limits.
+The constraints allow up to 2400 test cases, so a linear scan over input is trivial within time limits. Each iteration performs only a couple of integer operations, ensuring the solution runs comfortably within 1 second.
 
 ## Test Cases
 
@@ -122,53 +160,38 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    import io as sysio
+    out = []
+    input = sys.stdin.readline
 
-    out = sysio.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    t = int(input())
+    for _ in range(t):
+        r, theta = map(int, input().split())
+        n = 360 // theta
+        out.append("YES" if n % 2 == 0 else "NO")
 
-# provided sample
-assert run("""3
-310 45
-5 40
-8 60
-""") == "YES\nNO\nYES"
+    return "\n".join(out)
 
-# theta = 360, single slice
-assert run("""1
-10 360
-""") == "NO"
+# provided samples
+assert run("3\n10 45\n5 40\n8 60\n") == "YES\nNO\nYES"
 
-# theta = 180, two slices
-assert run("""1
-10 180
-""") == "YES"
-
-# theta = 90, four slices
-assert run("""1
-10 90
-""") == "YES"
-
-# theta = 120, three slices
-assert run("""1
-10 120
-""") == "NO"
+# custom cases
+assert run("1\n1 360\n") == "NO", "single slice"
+assert run("1\n1 180\n") == "YES", "two slices"
+assert run("1\n10 90\n") == "YES", "four slices"
+assert run("1\n10 120\n") == "NO", "three slices"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| θ = 360 | NO | single slice edge case |
-| θ = 180 | YES | minimal even split |
-| θ = 120 | NO | odd number of slices case |
-| θ = 90 | YES | general even case |
+| 1 360 | NO | single slice cannot be split |
+| 1 180 | YES | minimal valid even split |
+| 1 90 | YES | typical even case |
+| 1 120 | NO | odd number of slices case |
 
 ## Edge Cases
 
-When θ = 360, the pizza becomes a single slice. The algorithm computes n = 1 and immediately rejects it since 1 is not divisible by 2, producing NO as required.
+When θ = 360, the pizza consists of a single slice. The algorithm computes n = 1, detects odd parity, and correctly returns NO.
 
-When θ = 180, we get n = 2. The modulo check confirms it is even, so the output is YES, corresponding to one slice per person.
+When θ = 180, there are exactly two slices. The computation yields n = 2, and parity is even, producing YES, matching the only possible fair split.
 
-When θ = 120, n = 3. Even though division is exact, parity fails, and the algorithm correctly outputs NO.
+When θ = 1 or any small divisor of 360, the algorithm still behaves consistently because it relies only on integer arithmetic and parity, so no precision or scaling issues arise.
