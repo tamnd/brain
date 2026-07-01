@@ -241,8 +241,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [221](221.md) | &#9654; [*M27*] | math-hard | solved | 3m01s |
 | [222](222.md) | &#9654; [*27*] | hard | solved | 2m11s |
 | [223](223.md) |  [*28*] | hard | solved | 1m40s |
-| [224](224.md) | &#9654; [*20*] | medium | solved | 3m04s |
-| [225](225.md) | &#9654; [*30*] | hard | verified | 1m31s |
+| [224](224.md) | &#9654; [*20*] | medium | verified | 4m15s |
+| [225](225.md) | &#9654; [*30*] | hard | verified | 2m48s |
 | [226](226.md) | &#9654; [*20*] | medium | solved | 4m |
 | [227](227.md) |  [*20*] | medium | verified | 2m30s |
 | [228](228.md) |  [*21*] | medium | solved | 3m29s |
