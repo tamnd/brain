@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2689 contests, 18993 problems, 10738 verified."
+description: "Codeforces problem solutions with full editorials. 2692 contests, 19024 problems, 10758 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2689 contests, 18993 problems, 10738 verified.**
+**2692 contests, 19024 problems, 10758 verified.**
 
-## Unknown — 612 contests, 5018 problems, 3184 verified
+## Unknown — 613 contests, 5028 problems, 3194 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103985](103985/) | [Московская командная олимпиада (МКОШП) 2017, Лига А](https://codeforces.com/contest/103985) | 10 | 10/10 | Special | - |
 | [103993](103993/) | [ICPC 2022-2023 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/103993) | 13 | 2/13 | ICPC/IOI | - |
 | [103994](103994/) | [Московская командная олимпиада (МКОШП) 2022](https://codeforces.com/contest/103994) | 12 | 1/12 | Special | - |
 | [103997](103997/) | [Splay Training](https://codeforces.com/contest/103997) | 1 | 0/1 | Special | - |
@@ -1408,7 +1409,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 790 problems, 344 verified
+## 2020 — 160 contests, 800 problems, 344 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1571,8 +1572,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 134 contests, 853 problems, 337 verified
+## 2021 — 135 contests, 864 problems, 347 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1708,6 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103987](103987/) | [2021 Huazhong University of Science and Technology Freshmen Cup](https://codeforces.com/contest/103987) | 11 | 10/11 | Special | - |
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
