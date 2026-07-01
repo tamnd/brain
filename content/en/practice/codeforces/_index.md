@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2627 contests, 18403 problems, 10363 verified."
+description: "Codeforces problem solutions with full editorials. 2628 contests, 18415 problems, 10364 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2627 contests, 18403 problems, 10363 verified.**
+**2628 contests, 18415 problems, 10364 verified.**
 
-## Unknown — 578 contests, 4710 problems, 2983 verified
+## Unknown — 579 contests, 4722 problems, 2984 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104120](104120/) | [2022 ICPC Gran Premio de Mexico Repechaje](https://codeforces.com/contest/104120) | 12 | 1/12 | ICPC/IOI | - |
 | [104135](104135/) | [Зимний личный контест 2023](https://codeforces.com/contest/104135) | 9 | 1/9 | Special | - |
 | [104142](104142/) | [Зимний личный чемпионат ИжГТУ по программированию 2023](https://codeforces.com/contest/104142) | 11 | 2/11 | Special | - |
 | [104148](104148/) | [Олимпиада школьников РС(Я) (5-8 классы) 2022-23, 1 день](https://codeforces.com/contest/104148) | 4 | 1/4 | Special | - |
