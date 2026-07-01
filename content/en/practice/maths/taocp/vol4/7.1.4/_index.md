@@ -210,11 +210,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [190](190.md) |  [*20*] | medium | solved | 1m40s |
 | [191](191.md) | &#9654; [*HM25*] | hm-medium | solved | 3m52s |
 | [192](192.md) |  [*M20*] | math-medium | solved | 4m37s |
-| [193](193.md) |  [*M21*] | math-medium | verified | 2m31s |
-| [194](194.md) |  [*M25*] | math-medium | solved | 4m32s |
-| [195](195.md) |  [*24*] | medium | solved | 4m |
-| [196](196.md) |  [*M21*] | math-medium | solved | 1m11s |
-| [197](197.md) |  [*25*] | medium | verified | 1m09s |
+| [193](193.md) |  [*M21*] | math-medium | solved | 3m51s |
+| [194](194.md) |  [*M25*] | math-medium | solved | 4m06s |
+| [195](195.md) |  [*24*] | medium | solved | 1m50s |
+| [196](196.md) |  [*M21*] | math-medium | solved | 1m42s |
+| [197](197.md) |  [*25*] | medium | verified | 1m57s |
 | [198](198.md) | &#9654; [*23*] | medium | solved | 1m13s |
 | [199](199.md) |  [*21*] | medium | solved | 1m09s |
 | [200](200.md) |  [*21*] | medium | solved | 3m46s |
