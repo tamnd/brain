@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2656 contests, 18677 problems, 10550 verified."
+description: "Codeforces problem solutions with full editorials. 2657 contests, 18688 problems, 10551 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2656 contests, 18677 problems, 10550 verified.**
+**2657 contests, 18688 problems, 10551 verified.**
 
 ## Unknown — 593 contests, 4851 problems, 3074 verified
 
@@ -1691,7 +1691,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 153 contests, 1070 problems, 491 verified
+## 2022 — 154 contests, 1081 problems, 492 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1828,6 +1828,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104049](104049/) | [UTPC Contest 11-11-22 Div. 1 (Advanced)](https://codeforces.com/contest/104049) | 11 | 1/11 | Div. 1 | - |
 | [104052](104052/) | [Innopolis Open 2022-2023. First qualification round](https://codeforces.com/contest/104052) | 5 | 4/5 | Special | - |
 | [104053](104053/) | [2022 China Collegiate Programming Contest (CCPC) Guangzhou Onsite](https://codeforces.com/contest/104053) | 13 | 10/13 | Special | - |
 | [104065](104065/) | [2022 China Collegiate Programming Contest (CCPC) Mianyang Onsite](https://codeforces.com/contest/104065) | 13 | 12/13 | Special | - |
