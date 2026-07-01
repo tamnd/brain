@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2624 contests, 18370 problems, 10360 verified."
+description: "Codeforces problem solutions with full editorials. 2627 contests, 18403 problems, 10363 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2624 contests, 18370 problems, 10360 verified.**
+**2627 contests, 18403 problems, 10363 verified.**
 
-## Unknown — 576 contests, 4690 problems, 2980 verified
+## Unknown — 578 contests, 4710 problems, 2983 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104135](104135/) | [Зимний личный контест 2023](https://codeforces.com/contest/104135) | 9 | 1/9 | Special | - |
+| [104142](104142/) | [Зимний личный чемпионат ИжГТУ по программированию 2023](https://codeforces.com/contest/104142) | 11 | 2/11 | Special | - |
 | [104148](104148/) | [Олимпиада школьников РС(Я) (5-8 классы) 2022-23, 1 день](https://codeforces.com/contest/104148) | 4 | 1/4 | Special | - |
 | [104149](104149/) | [CPUlm Winter Contest 2022](https://codeforces.com/contest/104149) | 13 | 12/13 | Special | - |
 | [104150](104150/) | [Интернет-олимпиады, Сезон 2022-2023, Первая личная олимпиада](https://codeforces.com/contest/104150) | 4 | 0/4 | Special | - |
@@ -1674,7 +1676,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 138 contests, 924 problems, 395 verified
+## 2022 — 139 contests, 937 problems, 395 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1811,6 +1813,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [104128](104128/) | [The 2022 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/104128) | 13 | 0/13 | ICPC/IOI | - |
 | [104160](104160/) | [The 2022 ICPC Asia Shenyang Regional Contest (The 1st Universal Cup, Stage 1: Shenyang)](https://codeforces.com/contest/104160) | 13 | 13/13 | ICPC/IOI | - |
 | [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 10 | 10/10 | ICPC/IOI | - |
 | [104254](104254/) | [BSUIR Open X. Reload. Semifinal](https://codeforces.com/contest/104254) | 10 | 5/10 | Special | - |
