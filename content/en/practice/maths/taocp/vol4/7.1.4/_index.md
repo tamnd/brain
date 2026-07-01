@@ -255,7 +255,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [235](235.md) |  [*22*] | medium | solved | 2m06s |
 | [236](236.md) | &#9654; [*M25*] | math-medium | solved | 4m40s |
 | [237](237.md) |  [*25*] | medium | solved | 6m41s |
-| [238](238.md) | &#9654; [*22*] | medium | solved | 1m30s |
+| [238](238.md) | &#9654; [*22*] | medium | solved | 5m58s |
 | [239](239.md) | &#9654; [*21*] | medium | verified | 1m15s |
 | [240](240.md) | &#9654; [*22*] | medium | solved | 2m12s |
 | [241](241.md) | &#9654; [*28*] | hard | solved | 4m08s |
