@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2567 contests, 17894 problems, 10018 verified."
+description: "Codeforces problem solutions with full editorials. 2568 contests, 17894 problems, 10018 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2567 contests, 17894 problems, 10018 verified.**
+**2568 contests, 17894 problems, 10018 verified.**
 
-## Unknown — 545 contests, 4456 problems, 2807 verified
+## Unknown — 546 contests, 4456 problems, 2807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104290](104290/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/104290) | 0 | 0/0 | Special | - |
 | [104291](104291/) | [Тридцать пятая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/104291) | 0 | 0/0 | Special | - |
 | [104295](104295/) | [vkoshp.letovo](https://codeforces.com/contest/104295) | 12 | 12/12 | Special | - |
 | [104313](104313/) | [II Открытая командная олимпиада ЮМШ по программированию](https://codeforces.com/contest/104313) | 15 | 14/15 | Special | - |
