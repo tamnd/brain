@@ -125,7 +125,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [105](105.md) |  [*25*] | medium | solved | 5m49s |
 | [106](106.md) |  [*25*] | medium | solved | 4m10s |
 | [107](107.md) |  [*26*] | hard | solved | 4m10s |
-| [108](108.md) |  [*HM24*] | hm-medium | solved | 4m31s |
+| [108](108.md) |  [*HM24*] | hm-medium | solved | 7m35s |
 | [109](109.md) | &#9654; [*HM17*] | hm-medium | solved | 3m55s |
 | [110](110.md) |  [*25*] | medium | solved | 3m06s |
 | [111](111.md) |  [*M22*] | math-medium | verified | 2m23s |
