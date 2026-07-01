@@ -19,7 +19,7 @@ project = "brain-codeforces"
 domain = "codeforces.tamnd.com"
 source_prefix = "/practice/codeforces/"
 output = "public-shards/codeforces"
-file_budget = 18000
+file_budget = 25000
 
 [[shards]]
 name = "kvant"
