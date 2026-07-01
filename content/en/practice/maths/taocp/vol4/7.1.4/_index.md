@@ -122,9 +122,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [102](102.md) |  [*23*] | medium | solved | 4m47s |
 | [103](103.md) | &#9654; [*20*] | medium | solved | 3m30s |
 | [104](104.md) | &#9654; [*21*] | medium | solved | 4m06s |
-| [105](105.md) |  [*25*] | medium | verified | 5m27s |
-| [106](106.md) |  [*25*] | medium | verified | 2m50s |
-| [107](107.md) |  [*26*] | hard | verified | 4m06s |
+| [105](105.md) |  [*25*] | medium | solved | 5m49s |
+| [106](106.md) |  [*25*] | medium | solved | 4m10s |
+| [107](107.md) |  [*26*] | hard | solved | 4m10s |
 | [108](108.md) |  [*HM24*] | hm-medium | solved | 4m31s |
 | [109](109.md) | &#9654; [*HM17*] | hm-medium | solved | 3m55s |
 | [110](110.md) |  [*25*] | medium | solved | 3m06s |
