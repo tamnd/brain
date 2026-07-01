@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "I can’t write a correct editorial yet because the actual problem statement is missing. Right now the prompt only contains the title “L - List of Orders” but no description of what the input represents, what needs to be computed, or any constraints."
-date: "2026-07-01T02:33:06+07:00"
+description: "The problem statement you provided only shows the title “L” without any description of the task, input format, or output requirements. Without that information, it is not possible to reconstruct the intended algorithm or write a correct Codeforces-style editorial."
+date: "2026-07-01T17:13:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 27
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem statement is missing.
+The problem statement you provided only shows the title “L” without any description of the task, input format, or output requirements. Without that information, it is not possible to reconstruct the intended algorithm or write a correct Codeforces-style editorial.
 
-Right now the prompt only contains the title “L - List of Orders” but no description of what the input represents, what needs to be computed, or any constraints. Without that, any solution or algorithm would be a guess, and for Codeforces-style editorial writing that would inevitably drift into incorrect assumptions.
+If you paste the full statement (or even a screenshot/text dump), I can produce the complete editorial in the exact format you requested, including the reasoning, algorithm walkthrough, implementation, and test cases.
 
-If you paste the full statement (or even just the key parts: what an “order” is, what operations are allowed, and what needs to be output), I’ll produce a complete editorial in the exact format you requested, including a correct optimal solution, proof sketch, and test cases.
+Send the full problem and I’ll take it from there.
