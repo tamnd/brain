@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2573 contests, 17956 problems, 10067 verified."
+description: "Codeforces problem solutions with full editorials. 2574 contests, 17969 problems, 10080 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2573 contests, 17956 problems, 10067 verified.**
+**2574 contests, 17969 problems, 10080 verified.**
 
 ## Unknown — 549 contests, 4500 problems, 2844 verified
 
@@ -1786,7 +1786,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 253 contests, 2061 problems, 1089 verified
+## 2023 — 254 contests, 2074 problems, 1102 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1922,6 +1922,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104282](104282/) | [The 20th Hangzhou City University Programming Contest](https://codeforces.com/contest/104282) | 13 | 13/13 | Special | - |
 | [104283](104283/) | [Contest Based on Brain Craft Intra SUST Programming Contest 2023](https://codeforces.com/contest/104283) | 12 | 11/12 | Special | - |
 | [104289](104289/) | [Bangladesh CP Server - BCS Round 1 (Div. 3)](https://codeforces.com/contest/104289) | 6 | 1/6 | Div. 3 | - |
 | [104294](104294/) | [UTPC Spring 2023 Open Contest](https://codeforces.com/contest/104294) | 14 | 9/14 | Special | - |
