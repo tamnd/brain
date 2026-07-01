@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2637 contests, 18482 problems, 10418 verified."
+description: "Codeforces problem solutions with full editorials. 2638 contests, 18494 problems, 10428 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2637 contests, 18482 problems, 10418 verified.**
+**2638 contests, 18494 problems, 10428 verified.**
 
-## Unknown — 584 contests, 4763 problems, 3018 verified
+## Unknown — 585 contests, 4775 problems, 3028 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104095](104095/) | [2020 CCPC Henan Provincial Collegiate Programming Contest](https://codeforces.com/contest/104095) | 12 | 10/12 | Special | - |
 | [104096](104096/) | [Муниципальный этап ВсОШ, Краснодарский край, 2022](https://codeforces.com/contest/104096) | 5 | 0/5 | Special | - |
 | [104114](104114/) | [2022 ICPC Southeastern Europe Regional Contest](https://codeforces.com/contest/104114) | 14 | 12/14 | ICPC/IOI | - |
 | [104115](104115/) | [Voronezh State University - Sitronics contest, 2022](https://codeforces.com/contest/104115) | 10 | 10/10 | Special | - |
