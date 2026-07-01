@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2695 contests, 19054 problems, 10771 verified."
+description: "Codeforces problem solutions with full editorials. 2696 contests, 19064 problems, 10772 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2695 contests, 19054 problems, 10771 verified.**
+**2696 contests, 19064 problems, 10772 verified.**
 
-## Unknown — 613 contests, 5028 problems, 3194 verified
+## Unknown — 614 contests, 5038 problems, 3195 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103967](103967/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (продвинутая версия)](https://codeforces.com/contest/103967) | 10 | 1/10 | Special | - |
 | [103985](103985/) | [Московская командная олимпиада (МКОШП) 2017, Лига А](https://codeforces.com/contest/103985) | 10 | 10/10 | Special | - |
 | [103993](103993/) | [ICPC 2022-2023 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/103993) | 13 | 2/13 | ICPC/IOI | - |
 | [103994](103994/) | [Московская командная олимпиада (МКОШП) 2022](https://codeforces.com/contest/103994) | 12 | 1/12 | Special | - |
