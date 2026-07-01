@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2565 contests, 17880 problems, 10009 verified."
+description: "Codeforces problem solutions with full editorials. 2566 contests, 17894 problems, 10018 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2565 contests, 17880 problems, 10009 verified.**
+**2566 contests, 17894 problems, 10018 verified.**
 
 ## Unknown — 544 contests, 4456 problems, 2807 verified
 
@@ -1781,7 +1781,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 250 contests, 2029 problems, 1068 verified
+## 2023 — 251 contests, 2043 problems, 1077 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1917,6 +1917,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104294](104294/) | [UTPC Spring 2023 Open Contest](https://codeforces.com/contest/104294) | 14 | 9/14 | Special | - |
 | [104301](104301/) | [TheForces Round #10 (TEN-Forces)](https://codeforces.com/contest/104301) | 6 | 5/6 | Special | - |
 | [104303](104303/) | [2023 Xiangtan Unversity Freshman Conteset](https://codeforces.com/contest/104303) | 10 | 9/10 | Special | - |
 | [104304](104304/) | [The 17-th Beihang University Collegiate Programming Contest (BCPC 2022) - Final](https://codeforces.com/contest/104304) | 9 | 9/9 | Special | - |
