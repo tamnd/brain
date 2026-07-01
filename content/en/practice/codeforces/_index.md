@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2597 contests, 18171 problems, 10224 verified."
+description: "Codeforces problem solutions with full editorials. 2598 contests, 18178 problems, 10229 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2597 contests, 18171 problems, 10224 verified.**
+**2598 contests, 18178 problems, 10229 verified.**
 
 ## Unknown — 560 contests, 4601 problems, 2919 verified
 
@@ -1799,7 +1799,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 264 contests, 2153 problems, 1154 verified
+## 2023 — 265 contests, 2160 problems, 1159 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1935,6 +1935,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 7 | 5/7 | Div. 1 | - |
 | [104221](104221/) | [Финал региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/104221) | 5 | 3/5 | Special | - |
 | [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 3 | 3/3 | Special | - |
 | [104230](104230/) | [European Girls Olympiad in Informatics 2022. Day 2](https://codeforces.com/contest/104230) | 2 | 2/2 | Special | - |
