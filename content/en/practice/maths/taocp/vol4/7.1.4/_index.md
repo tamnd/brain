@@ -38,8 +38,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [18](18.md) |  [*13*] | simple | solved | 3m39s |
 | [19](19.md) |  [*20*] | medium | solved | 5m |
 | [20](20.md) |  [*15*] | simple | verified | 1m53s |
-| [21](21.md) |  [*05*] | simple | verified | 1m05s |
-| [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m51s |
+| [21](21.md) |  [*05*] | simple | verified | 51s |
+| [22](22.md) | &#9654; [*M21*] | math-medium | solved | 3m50s |
 | [23](23.md) | &#9654; [*M20*] | math-medium | verified | 2m09s |
 | [24](24.md) |  [*M22*] | math-medium | solved | 59s |
 | [25](25.md) |  [*M20*] | math-medium | verified | 2m24s |
@@ -220,33 +220,33 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [200](200.md) |  [*21*] | medium | solved | 2m06s |
 | [201](201.md) |  [*22*] | medium | verified | 1m57s |
 | [202](202.md) |  [*24*] | medium | solved | 4m58s |
-| [203](203.md) | &#9654; [*M24*] | math-medium | solved | 6m31s |
-| [204](204.md) | &#9654; [*M25*] | math-medium | solved | 5m21s |
-| [205](205.md) |  [*M25*] | math-medium | solved | 3m32s |
-| [206](206.md) |  [*M46*] | math-research | verified | 3m44s |
-| [207](207.md) | &#9654; [*M25*] | math-medium | solved | 1m11s |
-| [208](208.md) | &#9654; [*16*] | medium | verified | 2m43s |
-| [209](209.md) |  [*M21*] | math-medium | verified | 2m52s |
-| [210](210.md) | &#9654; [*23*] | medium | verified | 1m13s |
-| [211](211.md) |  [*M20*] | math-medium | solved | 3m58s |
-| [212](212.md) | &#9654; [*25*] | medium | verified | 2m48s |
-| [213](213.md) |  [*16*] | medium | verified | 1m |
-| [214](214.md) | &#9654; [*21*] | medium | solved | 4m21s |
-| [215](215.md) |  [*21*] | medium | solved | 4m44s |
-| [216](216.md) | &#9654; [*30*] | hard | solved | 4m33s |
-| [217](217.md) |  [*29*] | hard | solved | 4m07s |
-| [218](218.md) | &#9654; [*24*] | medium | verified | 1m23s |
-| [219](219.md) |  [*20*] | medium | verified | 3m33s |
-| [220](220.md) | &#9654; [*21*] | medium | solved | 1m08s |
-| [221](221.md) | &#9654; [*M27*] | math-hard | verified | 1m23s |
-| [222](222.md) | &#9654; [*27*] | hard | verified | 4m14s |
-| [223](223.md) |  [*28*] | hard | solved | 2m03s |
-| [224](224.md) | &#9654; [*20*] | medium | solved | 3m04s |
-| [225](225.md) | &#9654; [*30*] | hard | verified | 1m31s |
-| [226](226.md) | &#9654; [*20*] | medium | solved | 4m |
-| [227](227.md) |  [*20*] | medium | verified | 2m30s |
-| [228](228.md) |  [*21*] | medium | solved | 3m29s |
-| [229](229.md) |  [*15*] | simple | solved | 57s |
+| [203](203.md) | &#9654; [*M24*] | math-medium | solved | 6m09s |
+| [204](204.md) | &#9654; [*M25*] | math-medium | solved | 18m42s |
+| [205](205.md) |  [*M25*] | math-medium | solved | 5m27s |
+| [206](206.md) |  [*M46*] | math-research | solved | 8m24s |
+| [207](207.md) | &#9654; [*M25*] | math-medium | solved | 7m19s |
+| [208](208.md) | &#9654; [*16*] | medium | solved | 4m55s |
+| [209](209.md) |  [*M21*] | math-medium | solved | 1m44s |
+| [210](210.md) | &#9654; [*23*] | medium | verified | 2m12s |
+| [211](211.md) |  [*M20*] | math-medium | verified | 1m57s |
+| [212](212.md) | &#9654; [*25*] | medium | solved | 4m49s |
+| [213](213.md) |  [*16*] | medium | solved | 6m11s |
+| [214](214.md) | &#9654; [*21*] | medium | solved | 5m05s |
+| [215](215.md) |  [*21*] | medium | solved | 2m48s |
+| [216](216.md) | &#9654; [*30*] | hard | solved | 2m04s |
+| [217](217.md) |  [*29*] | hard | solved | 1m |
+| [218](218.md) | &#9654; [*24*] | medium | verified | 3m12s |
+| [219](219.md) |  [*20*] | medium | solved | 2m40s |
+| [220](220.md) | &#9654; [*21*] | medium | solved | 5m17s |
+| [221](221.md) | &#9654; [*M27*] | math-hard | solved | 3m01s |
+| [222](222.md) | &#9654; [*27*] | hard | solved | 2m11s |
+| [223](223.md) |  [*28*] | hard | solved | 1m40s |
+| [224](224.md) | &#9654; [*20*] | medium | verified | 4m15s |
+| [225](225.md) | &#9654; [*30*] | hard | verified | 2m48s |
+| [226](226.md) | &#9654; [*20*] | medium | solved | 6m41s |
+| [227](227.md) |  [*20*] | medium | solved | 4m09s |
+| [228](228.md) |  [*21*] | medium | solved | 1m39s |
+| [229](229.md) |  [*15*] | simple | solved | 1m20s |
 | [230](230.md) |  [*25*] | medium | solved | 1m51s |
 | [231](231.md) |  [*23*] | medium | solved | 4m08s |
 | [232](232.md) | &#9654; [*23*] | medium | solved | 4m43s |
