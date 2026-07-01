@@ -1,7 +1,7 @@
 ---
 title: "CF 104508I - IMO Problem"
-description: "The problem statement is missing (only “I” is shown), so there’s no way to reconstruct the task, constraints, or required output reliably. To write a correct Codeforces-style editorial, I need at least one of the following: 1. Full problem statement 2."
-date: "2026-07-01T02:32:38+07:00"
+description: "I can’t write a correct editorial for this yet because the problem statement is missing. Right now the prompt only shows: with no description of the task, input, or output."
+date: "2026-07-01T17:13:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 29
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,17 +18,22 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing (only “I” is shown), so there’s no way to reconstruct the task, constraints, or required output reliably.
+I can’t write a correct editorial for this yet because the problem statement is missing.
 
-To write a correct Codeforces-style editorial, I need at least one of the following:
+Right now the prompt only shows:
 
-1. Full problem statement
-2. Input/output specification + constraints
-3. A link or pasted text of the problem
-4. Sample inputs/outputs (helpful but not sufficient alone)
+```
+I
+```
 
-Send that and I’ll produce the complete editorial in the exact format you requested, including algorithm derivation, correctness argument, Python solution, and test suite.
+with no description of the task, input, or output. Without that, any solution would be guessing, and for Codeforces editorials that would very likely be wrong.
+
+Send either:
+
+the full problem statement, or a link / screenshot text, or even just the core description in your own words.
+
+Once I have that, I’ll produce the full editorial in the exact format you requested, including the algorithm walkthrough, proof idea, implementation, and test cases.
