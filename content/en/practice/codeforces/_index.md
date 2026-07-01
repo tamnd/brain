@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2604 contests, 18232 problems, 10271 verified."
+description: "Codeforces problem solutions with full editorials. 2605 contests, 18237 problems, 10276 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2604 contests, 18232 problems, 10271 verified.**
+**2605 contests, 18237 problems, 10276 verified.**
 
-## Unknown — 564 contests, 4637 problems, 2947 verified
+## Unknown — 565 contests, 4642 problems, 2952 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104182](104182/) | [Innopolis Open 2022-2023. Final round](https://codeforces.com/contest/104182) | 5 | 5/5 | Special | - |
 | [104195](104195/) | [Интернет-олимпиады, Сезон 2022-2023, Третья личная олимпиада + Второй отбор на ИОИП](https://codeforces.com/contest/104195) | 4 | 2/4 | Special | - |
 | [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 11 | 10/11 | Special | - |
 | [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 10 | 5/10 | Special | - |
