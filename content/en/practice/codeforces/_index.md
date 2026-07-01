@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2620 contests, 18329 problems, 10342 verified."
+description: "Codeforces problem solutions with full editorials. 2621 contests, 18342 problems, 10354 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2620 contests, 18329 problems, 10342 verified.**
+**2621 contests, 18342 problems, 10354 verified.**
 
-## Unknown — 574 contests, 4673 problems, 2967 verified
+## Unknown — 575 contests, 4686 problems, 2979 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104149](104149/) | [CPUlm Winter Contest 2022](https://codeforces.com/contest/104149) | 13 | 12/13 | Special | - |
 | [104150](104150/) | [Интернет-олимпиады, Сезон 2022-2023, Первая личная олимпиада](https://codeforces.com/contest/104150) | 4 | 0/4 | Special | - |
 | [104155](104155/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/104155) | 0 | 0/0 | Special | - |
 | [104156](104156/) | [2022-2023 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/104156) | 0 | 0/0 | Special | - |
