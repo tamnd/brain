@@ -1,0 +1,75 @@
+---
+title: "CF 103941A - Mocha \u4e0a\u5c0f\u73ed\u5566"
+description: "A Boolean function is sweet when every subtable arising from any prefix assignment is a bead. A truth table is a bead exactly when it is not of the form $alphaalpha$, so every subfunction must have distinct LO and HI subtables at every node of its ordered decision structure."
+date: "2026-07-02T06:56:17+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103941
+codeforces_index: "A"
+codeforces_contest_name: "2022 CCPC Henan Provincial Collegiate Programming Contest"
+rating: 0
+weight: 103941
+solve_time_s: 123
+verified: false
+draft: false
+---
+
+[CF 103941A - Mocha \u4e0a\u5c0f\u73ed\u5566](https://codeforces.com/problemset/problem/103941/A)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 3s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+A Boolean function is sweet when every subtable arising from any prefix assignment is a bead. A truth table is a bead exactly when it is not of the form $\alpha\alpha$, so every subfunction must have distinct LO and HI subtables at every node of its ordered decision structure.
+
+Let $f$ and $g$ be sweet Boolean functions of $n$ variables, and define
+
+$$h(x_1,\dots,x_n)=f(x_1,\dots,x_n)\wedge g(x_1,\dots,x_n).$$
+
+For any fixed prefix assignment $(x_1=c_1,\dots,x_k=c_k)$, let $f_c$, $g_c$, and $h_c$ denote the induced subtables of order $n-k$. Then
+
+$$h_c = f_c \wedge g_c$$
+
+is computed pointwise on truth tables.
+
+A subtable fails to be a bead exactly when it has the form $\beta\beta$, meaning its two halves (corresponding to $x_{k+1}=0$ and $x_{k+1}=1$) are equal. Thus $h$ is not sweet exactly when there exists a prefix assignment such that the induced subfunction satisfies
+
+$$h_c(0,x_{k+2},\dots,x_n)=h_c(1,x_{k+2},\dots,x_n).$$
+
+Using $h_c=f_c\wedge g_c$, equality of the two halves means that for every continuation,
+
+$$f_c(0,\dots)\wedge g_c(0,\dots) = f_c(1,\dots)\wedge g_c(1,\dots).$$
+
+Since $f$ and $g$ are sweet, each satisfies that for every prefix, its LO and HI subtables are distinct. Thus for each such prefix, at least one of $f_c(0,\dots)\ne f_c(1,\dots)$ and $g_c(0,\dots)\ne g_c(1,\dots)$ holds.
+
+Consider a prefix where both $f_c$ and $g_c$ vary in such a way that their conjunction becomes constant across the split. This occurs precisely when one function has value $0$ on all inputs where the other has differing values, causing the AND to collapse both branches to identical results.
+
+A concrete obstruction arises when there exists a prefix assignment such that one of $f_c$ or $g_c$ is identically $0$ on both branches while the other is arbitrary. Sweetness does not exclude this possibility, since a function may have a subfunction equal to the constant $0$ at some node while still having distinct LO and HI subtables at that node in higher levels.
+
+Take a prefix where $f_c(0,\dots)=f_c(1,\dots)=0$. This does not violate sweetness of $f$ because the relevant condition concerns equality of the two subtables, not their being constant across all variables below. The same applies to $g$. At such a node,
+
+$$h_c(0,\dots)=h_c(1,\dots)=0$$
+
+so $h_c$ is not a bead.
+
+It remains to show such a configuration can occur even when both $f$ and $g$ are sweet. Construct $f$ so that at some node its LO and HI subfunctions differ but both evaluate to $0$ at the next level of restriction, and similarly construct $g$ so that its variation occurs on disjoint support. Then at the combined node the AND forces both branches to identical $0$ values.
+
+Such configurations exist already for $n=2$. Let
+
+$$f(x_1,x_2)=x_1,\quad g(x_1,x_2)=\overline{x_1}.$$
+
+Both are sweet since their only nontrivial subfunctions have distinct LO and HI values. However,
+
+$$h(x_1,x_2)=f\wedge g = x_1\wedge \overline{x_1}=0,$$
+
+and the constant zero function has truth table $00$, which is not a bead. Hence $h$ is not sweet.
+
+Therefore the class of sweet functions is not closed under conjunction.
+
+$$\boxed{\text{false}}$$
+
+This completes the solution. ∎
