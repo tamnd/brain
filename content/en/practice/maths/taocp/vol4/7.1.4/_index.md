@@ -32,7 +32,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [12](12.md) | &#9654; [*M21*] | math-medium | solved | 17m29s |
 | [13](13.md) |  [*M15*] | math-simple | solved | 3m34s |
 | [14](14.md) |  [*M24*] | math-medium | solved | 2m20s |
-| [15](15.md) |  [*M23*] | math-medium | solved | 5m38s |
+| [15](15.md) |  [*M23*] | math-medium | solved | 5m50s |
 | [16](16.md) | &#9654; [*22*] | medium | solved | 2m21s |
 | [17](17.md) |  [*32*] | hard | solved | 2m16s |
 | [18](18.md) |  [*13*] | simple | solved | 3m30s |
@@ -167,7 +167,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [147](147.md) | &#9654; [*27*] | hard | solved | 3m42s |
 | [148](148.md) |  [*M21*] | math-medium | solved | 3m55s |
 | [149](149.md) |  [*M20*] | math-medium | solved | 4m |
-| [150](150.md) |  [*30*] | hard | solved | 4m35s |
+| [150](150.md) |  [*30*] | hard | solved | 5m08s |
 | [151](151.md) |  [*20*] | medium | verified | 2m16s |
 | [152](152.md) |  [*25*] | medium | solved | 1m08s |
 | [153](153.md) |  [*30*] | hard | solved | 2m34s |
