@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2652 contests, 18634 problems, 10514 verified."
+description: "Codeforces problem solutions with full editorials. 2653 contests, 18646 problems, 10524 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2652 contests, 18634 problems, 10514 verified.**
+**2653 contests, 18646 problems, 10524 verified.**
 
-## Unknown — 591 contests, 4826 problems, 3052 verified
+## Unknown — 592 contests, 4838 problems, 3062 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104064](104064/) | [2021-2022 ICPC Northwestern European Regional Programming Contest (NWERC 2021)](https://codeforces.com/contest/104064) | 12 | 10/12 | ICPC/IOI | - |
 | [104066](104066/) | [Интернет-олимпиады, Сезон 2022-2023, Третья командная олимпиада (базовая версия)](https://codeforces.com/contest/104066) | 8 | 3/8 | Special | - |
 | [104067](104067/) | [Интернет-олимпиады, Сезон 2022-2023, Третья командная олимпиада (продвинутая версия)](https://codeforces.com/contest/104067) | 10 | 1/10 | Special | - |
 | [104069](104069/) | [VII MaratonUSP Freshman Contest](https://codeforces.com/contest/104069) | 10 | 9/10 | Special | - |
