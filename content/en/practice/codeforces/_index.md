@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2564 contests, 17868 problems, 9997 verified."
+description: "Codeforces problem solutions with full editorials. 2565 contests, 17880 problems, 10009 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2564 contests, 17868 problems, 9997 verified.**
+**2565 contests, 17880 problems, 10009 verified.**
 
-## Unknown — 543 contests, 4444 problems, 2795 verified
+## Unknown — 544 contests, 4456 problems, 2807 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [104295](104295/) | [vkoshp.letovo](https://codeforces.com/contest/104295) | 12 | 12/12 | Special | - |
 | [104313](104313/) | [II Открытая командная олимпиада ЮМШ по программированию](https://codeforces.com/contest/104313) | 15 | 14/15 | Special | - |
 | [104314](104314/) | [XXV Interregional Programming Olympiad, Vologda SU, 2023](https://codeforces.com/contest/104314) | 10 | 4/10 | Special | - |
 | [104324](104324/) | [SDU Open 2023](https://codeforces.com/contest/104324) | 12 | 12/12 | Special | - |
