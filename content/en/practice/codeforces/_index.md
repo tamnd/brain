@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2587 contests, 18107 problems, 10175 verified."
+description: "Codeforces problem solutions with full editorials. 2587 contests, 18108 problems, 10176 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2587 contests, 18107 problems, 10175 verified.**
+**2587 contests, 18108 problems, 10176 verified.**
 
-## Unknown — 554 contests, 4560 problems, 2891 verified
+## Unknown — 554 contests, 4561 problems, 2892 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -539,7 +539,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [106353](106353/) | [2025-2026 ICPC Northwestern European Regional Programming Contest (NWERC 2025)](https://codeforces.com/contest/106353) | 12 | 12/12 | ICPC/IOI | - |
 | [106357](106357/) | [Practise Dynamic Forest offline queries](https://codeforces.com/contest/106357) | 3 | 1/3 | Special | - |
 | [106368](106368/) | [Innopolis Open 2025-2026. Final round](https://codeforces.com/contest/106368) | 6 | 2/6 | Special | - |
-| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 11 | 11/11 | Special | - |
+| [106369](106369/) | [2023 UCF Local Programming Contest](https://codeforces.com/contest/106369) | 12 | 12/12 | Special | - |
 | [106373](106373/) | [2024-2025 Московская олимпиада школьников по информатике, 10-11 класс](https://codeforces.com/contest/106373) | 12 | 4/12 | Special | - |
 | [106393](106393/) | [Интернет-олимпиады, Сезон 2025-2026, Вторая личная олимпиада](https://codeforces.com/contest/106393) | 4 | 4/4 | Special | - |
 | [106398](106398/) | [Отбор на ВКОШП.Junior 2026](https://codeforces.com/contest/106398) | 10 | 9/10 | Special | - |
