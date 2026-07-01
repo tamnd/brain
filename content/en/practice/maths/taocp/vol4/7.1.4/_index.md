@@ -202,10 +202,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [182](182.md) |  [*M38*] | math-project | solved | 2m48s |
 | [183](183.md) | &#9654; [*M25*] | math-medium | solved | 3m41s |
 | [184](184.md) |  [*M23*] | math-medium | solved | 2m53s |
-| [185](185.md) |  [*M25*] | math-medium | solved | 2m47s |
-| [186](186.md) |  [*10*] | simple | verified | 1m16s |
-| [187](187.md) | &#9654; [*20*] | medium | solved | 3m43s |
-| [188](188.md) |  [*16*] | medium | solved | 1m05s |
+| [185](185.md) |  [*M25*] | math-medium | solved | 3m08s |
+| [186](186.md) |  [*10*] | simple | solved | 1m46s |
+| [187](187.md) | &#9654; [*20*] | medium | solved | 1m48s |
+| [188](188.md) |  [*16*] | medium | verified | 1m13s |
 | [189](189.md) |  [*18*] | medium | solved | 2m24s |
 | [190](190.md) |  [*20*] | medium | solved | 4m07s |
 | [191](191.md) | &#9654; [*HM25*] | hm-medium | verified | 1m16s |
