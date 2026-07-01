@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2593 contests, 18148 problems, 10203 verified."
+description: "Codeforces problem solutions with full editorials. 2594 contests, 18161 problems, 10216 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2593 contests, 18148 problems, 10203 verified.**
+**2594 contests, 18161 problems, 10216 verified.**
 
 ## Unknown — 560 contests, 4601 problems, 2919 verified
 
@@ -1799,7 +1799,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 260 contests, 2130 problems, 1133 verified
+## 2023 — 261 contests, 2143 problems, 1146 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1935,6 +1935,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | 7 | 6/7 | Div. 4 | 800-1800 |
 | [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | 9 | 5/9 | Special | 800-3500 |
 | [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | 6 | 3/6 | Div. 2 | 800-2500 |
+| [104234](104234/) | [OCPC 2023, Oleksandr Kulkov Contest 3](https://codeforces.com/contest/104234) | 13 | 13/13 | Special | - |
 | [104246](104246/) | [CodeSmash 2021 by RAPL](https://codeforces.com/contest/104246) | 12 | 6/12 | Special | - |
 | [104248](104248/) | [Udmurt SU Contest 2010](https://codeforces.com/contest/104248) | 11 | 9/11 | Special | - |
 | [104255](104255/) | [BSUIR Open X. Reload. Students final](https://codeforces.com/contest/104255) | 9 | 2/9 | Special | - |

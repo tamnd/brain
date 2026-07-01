@@ -1,23 +1,23 @@
 ---
 title: "OCPC 2023, Oleksandr Kulkov Contest 3"
-description: "12 problems from OCPC 2023, Oleksandr Kulkov Contest 3 (contest 104234), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from OCPC 2023, Oleksandr Kulkov Contest 3 (contest 104234), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104234
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 684
+n_problems: 13
+n_verified: 13
+total_solve_s: 735
 contest_year: 2023
-date: "2026-07-01T23:38:23+07:00"
+date: "2026-07-01T23:38:40+07:00"
 weight: 104234
 draft: false
 ---
 
 # [OCPC 2023, Oleksandr Kulkov Contest 3](https://codeforces.com/contest/104234)
 
-Special | 12 problems | 12/12 verified | Difficulty - | 11m 24s
+Special | 13 problems | 13/13 verified | Difficulty - | 12m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -33,3 +33,4 @@ Special | 12 problems | 12/12 verified | Difficulty - | 11m 24s
 | [J](J/) | [Persian Casino](https://codeforces.com/problemset/problem/104234/J) |  |  |  | 48s | ✓ |
 | [K](K/) | [Determinant, or...?](https://codeforces.com/problemset/problem/104234/K) |  |  |  | 49s | ✓ |
 | [L](L/) | [Directed Vertex Cacti](https://codeforces.com/problemset/problem/104234/L) |  |  |  | 47s | ✓ |
+| [M](M/) | [Siteswap](https://codeforces.com/problemset/problem/104234/M) |  |  |  | 51s | ✓ |
