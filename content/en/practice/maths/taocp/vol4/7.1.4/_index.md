@@ -152,9 +152,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [132](132.md) |  [*32*] | hard | solved | 4m38s |
 | [133](133.md) |  [*20*] | medium | solved | 4m09s |
 | [134](134.md) |  [*24*] | medium | solved | 5m09s |
-| [135](135.md) |  [*M27*] | math-hard | solved | 4m38s |
-| [136](136.md) | &#9654; [*M34*] | math-hard | solved | 3m39s |
-| [137](137.md) |  [*M38*] | math-project | solved | 4m30s |
+| [135](135.md) |  [*M27*] | math-hard | solved | 3m53s |
+| [136](136.md) | &#9654; [*M34*] | math-hard | solved | 3m01s |
+| [137](137.md) |  [*M38*] | math-project | solved | 3m51s |
 | [138](138.md) | &#9654; [*M36*] | math-project | solved | 4m34s |
 | [139](139.md) |  [*22*] | medium | solved | 4m45s |
 | [140](140.md) |  [*27*] | hard | verified | 3m02s |
