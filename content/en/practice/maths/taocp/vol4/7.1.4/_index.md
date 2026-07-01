@@ -168,8 +168,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [148](148.md) |  [*M21*] | math-medium | solved | 3m55s |
 | [149](149.md) |  [*M20*] | math-medium | solved | 4m |
 | [150](150.md) |  [*30*] | hard | solved | 5m08s |
-| [151](151.md) |  [*20*] | medium | verified | 2m16s |
-| [152](152.md) |  [*25*] | medium | solved | 1m08s |
+| [151](151.md) |  [*20*] | medium | solved | 4m35s |
+| [152](152.md) |  [*25*] | medium | solved | 5m15s |
 | [153](153.md) |  [*30*] | hard | solved | 2m34s |
 | [154](154.md) |  [*20*] | medium | solved | 1m13s |
 | [155](155.md) | &#9654; [*25*] | medium | solved | 2m35s |
