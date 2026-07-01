@@ -1,23 +1,23 @@
 ---
 title: "2022 China Collegiate Programming Contest (CCPC) Guilin Site"
-description: "10 problems from 2022 China Collegiate Programming Contest (CCPC) Guilin Site (contest 104008), difficulty -. 10/10 solutions verified against sample I/O."
+description: "13 problems from 2022 China Collegiate Programming Contest (CCPC) Guilin Site (contest 104008), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 104008
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 605
+n_problems: 13
+n_verified: 12
+total_solve_s: 825
 contest_year: 2022
-date: "2026-07-02T05:31:38+07:00"
+date: "2026-07-02T05:32:52+07:00"
 weight: 104008
 draft: false
 ---
 
 # [2022 China Collegiate Programming Contest (CCPC) Guilin Site](https://codeforces.com/contest/104008)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 10m 5s
+Special | 13 problems | 12/13 verified | Difficulty - | 13m 45s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,6 @@ Special | 10 problems | 10/10 verified | Difficulty - | 10m 5s
 | [H](H/) | [Hysteretic Racing](https://codeforces.com/problemset/problem/104008/H) |  |  |  | 59s | ✓ |
 | [I](I/) | [Invincible Hotwheels](https://codeforces.com/problemset/problem/104008/I) |  |  |  | 51s | ✓ |
 | [J](J/) | [Permutation Puzzle](https://codeforces.com/problemset/problem/104008/J) |  |  |  | 54s | ✓ |
+| [K](K/) | [Barrel Theory](https://codeforces.com/problemset/problem/104008/K) |  |  |  | 56s | ✓ |
+| [L](L/) | [Largest Unique Wins](https://codeforces.com/problemset/problem/104008/L) |  |  |  | 1m 58s |  |
+| [M](M/) | [Youth Finale](https://codeforces.com/problemset/problem/104008/M) |  |  |  | 46s | ✓ |
