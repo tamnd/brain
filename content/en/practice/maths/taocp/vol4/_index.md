@@ -18,8 +18,8 @@ Exercise solutions for [TAOCP](../) Volume 4. 1569 solved, 428 verified, 2410 to
 | [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 219 | 80 | 219 |
 | [7.1.4](7.1.4/) | Binary Decision Diagrams | 267 | 31 | 267 |
 | [7.2.1.1](7.2.1.1/) | Generating All n-Tuples | 112 | 19 | 112 |
-| [7.2.1.2](7.2.1.2/) | Generating All Permutations | 113 | 5 | 113 |
-| [7.2.1.3](7.2.1.3/) | Generating All Combinations | 28 | 3 | 111 |
+| [7.2.1.2](7.2.1.2/) | Generating All Permutations | 113 | 3 | 113 |
+| [7.2.1.3](7.2.1.3/) | Generating All Combinations | 29 | 3 | 111 |
 | 7.2.1.4 |  | — | — | 73 |
 | 7.2.1.5 |  | — | — | 69 |
 | 7.2.1.6 |  | — | — | 123 |
