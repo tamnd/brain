@@ -18,8 +18,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*10*] | simple | verified | 1m05s |
-| [2](02.md) |  [*15*] | simple | solved | 1m29s |
+| [1](01.md) |  [*10*] | simple | verified | 54s |
+| [2](02.md) |  [*15*] | simple | verified | 1m15s |
 | [3](03.md) | &#9654; [*M20*] | math-medium | solved | 3m52s |
 | [4](04.md) | &#9654; [*18*] | medium | solved | 1m50s |
 | [5](05.md) | &#9654; [*22*] | medium | solved | 1m09s |
