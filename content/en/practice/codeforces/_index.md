@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2717 contests, 19310 problems, 10901 verified."
+description: "Codeforces problem solutions with full editorials. 2718 contests, 19318 problems, 10903 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2717 contests, 19310 problems, 10901 verified.**
+**2718 contests, 19318 problems, 10903 verified.**
 
-## Unknown — 624 contests, 5166 problems, 3267 verified
+## Unknown — 625 contests, 5174 problems, 3269 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103833](103833/) | [2018 International olympiad Tuymaada](https://codeforces.com/contest/103833) | 8 | 2/8 | Special | - |
 | [103855](103855/) | [XXII Open Cup. Grand Prix of Seoul](https://codeforces.com/contest/103855) | 13 | 12/13 | Special | - |
 | [103870](103870/) | [TeamsCode Summer 2022 Contest](https://codeforces.com/contest/103870) | 18 | 15/18 | Special | - |
 | [103886](103886/) | [CerealCodes 2022 Summer Contest](https://codeforces.com/contest/103886) | 17 | 10/17 | Special | - |
