@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "The problem statement is missing, so there is no way to reconstruct the actual task or derive a correct solution. Right now we only have the title “Harmony Coloring”, but no definition of the input, constraints, or what “harmonious” means in this context."
-date: "2026-07-02T20:47:41+07:00"
+description: "I can absolutely write the full editorial in that format, but I am missing the actual problem content for Codeforces 104508H - Harmony Coloring. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks."
+date: "2026-07-02T21:38:57+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 40
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,14 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 40s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing, so there is no way to reconstruct the actual task or derive a correct solution.
+I can absolutely write the full editorial in that format, but I am missing the actual problem content for **Codeforces 104508H - Harmony Coloring**. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks.
 
-Right now we only have the title “Harmony Coloring”, but no definition of the input, constraints, or what “harmonious” means in this context. On Codeforces, that could correspond to anything from graph coloring with adjacency constraints to array partitioning or even combinatorial counting, and each interpretation leads to a completely different algorithmic solution.
+Right now I don’t know:
 
-To write a proper editorial in the format you requested, I need at least the full statement including the input format, output format, constraints, and any samples. If you paste that, I can produce a complete end-to-end editorial with correct reasoning, optimal approach, and implementation.
+- what structure is being colored (graph, array, tree, grid, etc.)
+- what “harmony” constraint means
+- what the input/output format is
+- constraints (which determine the algorithmic approach)
 
-Send the full problem text and I’ll continue from there.
+Without that, any editorial would be pure fabrication and would not satisfy the requirement that the reader can reconstruct the solution.
+
+Please paste the full problem statement (or even a screenshot/text dump), and I will produce a complete Codeforces-style editorial exactly in the format you specified.
