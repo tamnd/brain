@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2781 contests, 19890 problems, 11213 verified."
+description: "Codeforces problem solutions with full editorials. 2791 contests, 19932 problems, 11221 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,22 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2781 contests, 19890 problems, 11213 verified.**
+**2791 contests, 19932 problems, 11221 verified.**
 
-## Unknown — 659 contests, 5473 problems, 3434 verified
+## Unknown — 669 contests, 5515 problems, 3442 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103522](103522/) | [Индивидуальная олимпиада школьников по информатике и программированию 2019](https://codeforces.com/contest/103522) | 5 | 0/5 | Special | - |
+| [103524](103524/) | [Интернет-олимпиады, Сезон 2017-2018, Первая личная олимпиада](https://codeforces.com/contest/103524) | 4 | 1/4 | Special | - |
+| [103526](103526/) | [Интернет-олимпиады, Сезон 2017-2018, Вторая личная олимпиада](https://codeforces.com/contest/103526) | 4 | 0/4 | Special | - |
+| [103532](103532/) | [2021-2022 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/103532) | 0 | 0/0 | Special | - |
+| [103533](103533/) | [2021-2022 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/103533) | 0 | 0/0 | Special | - |
+| [103535](103535/) | [2021 HDU Multi-University Training Contest 7](https://codeforces.com/contest/103535) | 12 | 1/12 | Special | - |
+| [103536](103536/) | [classic problems (for e-maxx)](https://codeforces.com/contest/103536) | 2 | 1/2 | Special | - |
+| [103540](103540/) | [CP Course Contest](https://codeforces.com/contest/103540) | 2 | 1/2 | Special | - |
+| [103548](103548/) | [Длинный тур отборочного этапа Открытой олимпиады 2021-2022](https://codeforces.com/contest/103548) | 9 | 1/9 | Special | - |
+| [103551](103551/) | [Интернет-олимпиады, Сезон 2021-2022, Первая личная олимпиада](https://codeforces.com/contest/103551) | 4 | 3/4 | Special | - |
 | [103559](103559/) | [Интернет-олимпиады, Сезон 2017-2018, Третья личная олимпиада](https://codeforces.com/contest/103559) | 4 | 0/4 | Special | - |
 | [103560](103560/) | [Индивидуальная олимпиада школьников по информатике и программированию 2018](https://codeforces.com/contest/103560) | 6 | 1/6 | Special | - |
 | [103566](103566/) | [2021-2022 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/103566) | 9 | 7/9 | Special | - |
