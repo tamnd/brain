@@ -10,7 +10,7 @@ n_problems: 12
 n_verified: 2
 total_solve_s: 465
 contest_year: 2022
-date: "2026-07-03T01:30:54+07:00"
+date: "2026-07-03T01:40:03+07:00"
 weight: 103604
 draft: false
 ---
@@ -29,7 +29,7 @@ Special | 12 problems | 2/12 verified | Difficulty - | 7m 45s
 | [F](F/) | [Kube](https://codeforces.com/problemset/problem/103604/F) |  |  |  | 31s |  |
 | [G](G/) | [Parenthesis](https://codeforces.com/problemset/problem/103604/G) |  |  |  | 27s |  |
 | [H](H/) | [Magic Powers](https://codeforces.com/problemset/problem/103604/H) |  |  |  | 32s |  |
-| [I](I/) | [River](https://codeforces.com/problemset/problem/103604/I) |  |  |  | 40s |  |
+| [I](I/) | [River](https://codeforces.com/problemset/problem/103604/I) |  |  |  | 34s |  |
 | [J](J/) | [Shelters](https://codeforces.com/problemset/problem/103604/J) |  |  |  | 1m 47s | ✓ |
 | [K](K/) | [Split](https://codeforces.com/problemset/problem/103604/K) |  |  |  | 25s |  |
-| [L](L/) | [Uranium](https://codeforces.com/problemset/problem/103604/L) |  |  |  | 30s |  |
+| [L](L/) | [Uranium](https://codeforces.com/problemset/problem/103604/L) |  |  |  | 36s |  |
