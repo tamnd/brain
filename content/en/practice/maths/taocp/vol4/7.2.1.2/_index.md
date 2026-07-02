@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.2: Generating All Permutations"
-description: "Section 7.2.1.2 exercises: 70/113 solved."
+description: "Section 7.2.1.2 exercises: 71/113 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.2. Generating All Permutations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 70/113 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 71/113 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -80,7 +80,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 70/113 solved.
 | [60](60.md) | &#9654; [*21*] | medium | solved | 6m39s |
 | [61](61.md) |  [*21*] | medium | solved | 7m33s |
 | [62](62.md) | &#9654; [*M23*] | math-medium | solved | 5m16s |
-| 63 |  [*M25*] | math-medium | - | - |
+| [63](63.md) |  [*M25*] | math-medium | solved | 7m16s |
 | 64 |  [*23*] | medium | - | - |
 | 65 |  [*M25*] | math-medium | - | - |
 | 66 |  [*22*] | medium | - | - |
