@@ -1,7 +1,7 @@
 ---
 title: "CF 103964C - The Battle of Chibi"
-description: "I can’t reliably write an editorial for this yet because the actual problem content is missing. What you provided only includes the title and empty Input/Output sections, so there’s no way to reconstruct the task, constraints, or required algorithm without guessing."
-date: "2026-07-02T17:50:46+07:00"
+description: "The problem statement for Codeforces 103964C is not included in your message, so I don’t have the actual task description, constraints, or input/output format needed to write a correct editorial."
+date: "2026-07-02T18:30:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 34
+solve_time_s: 35
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 35s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for this yet because the actual problem content is missing.
+The problem statement for Codeforces 103964C is not included in your message, so I don’t have the actual task description, constraints, or input/output format needed to write a correct editorial.
 
-What you provided only includes the title and empty Input/Output sections, so there’s no way to reconstruct the task, constraints, or required algorithm without guessing. Anything I write from here would be fabrication and very likely wrong for Codeforces 103964C.
+Right now I only see the title and empty sections, which isn’t enough to reconstruct the solution without guessing. For a Codeforces editorial, even small missing details like whether it is graph-based, DP, or greedy completely change the solution.
 
-If you paste the full statement (or even a screenshot / raw text), I’ll produce the complete editorial in the exact format you requested, including brute force reasoning, optimal insight, proof sketch, implementation, and tests.
+Paste the full problem statement (or at least the full input/output description and constraints), and I’ll write the complete editorial in the exact style you requested.

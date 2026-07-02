@@ -1,7 +1,7 @@
 ---
 title: "CF 103964D - Pick The Sticks"
-description: "I don’t have the actual statement of Codeforces 103964D - Pick The Sticks available in your prompt, and the input/output section is empty. That means there’s no reliable way to reconstruct the problem logic, constraints, or required output behavior."
-date: "2026-07-02T17:51:19+07:00"
+description: "I can’t write a correct editorial for “Codeforces 103964D - Pick The Sticks” from what you’ve provided, because the actual problem statement is missing."
+date: "2026-07-02T18:30:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 32
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,20 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I don’t have the actual statement of **Codeforces 103964D - Pick The Sticks** available in your prompt, and the input/output section is empty. That means there’s no reliable way to reconstruct the problem logic, constraints, or required output behavior.
+I can’t write a correct editorial for “Codeforces 103964D - Pick The Sticks” from what you’ve provided, because the actual problem statement is missing. Right now there’s no definition of the input, output, or rules of the process, so any solution or explanation would be guesswork.
 
-Writing a correct editorial here would require guessing the problem, which would almost certainly produce a wrong or misleading solution.
+If you paste the full statement (or even just the key parts: what the sticks are, what operations are allowed, and what needs to be computed), I’ll produce a complete Codeforces-style editorial in the exact format you specified, including:
 
-If you paste the full statement (or even just the core rules and constraints), I can immediately produce a complete, high-quality editorial in the exact format you requested, including algorithm, proofs, code, examples, and test cases.
+A clean restatement in geometric or array terms, a proper brute force vs optimized transition, a full invariant-based proof, Python implementation, worked traces, and edge-case analysis.
 
-Just send one of the following:
-
-1. Full problem statement
-2. Screenshot text
-3. Or a short description like “we are given ..., we must maximize/minimize ...”
-
-and I’ll take it from there.
+Send the statement and I’ll continue from there.
