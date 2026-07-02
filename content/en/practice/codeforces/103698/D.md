@@ -1,7 +1,7 @@
 ---
 title: "CF 103698D - Matrix"
-description: "I could not reliably locate the exact statement for “Codeforces 103698D - Matrix” in the standard archive, which usually means it is from a gym or mirrored contest with missing indexing. Without the precise problem definition, any full editorial would risk solving the wrong task."
-date: "2026-07-02T10:41:19+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 103698D - Matrix without the actual problem statement. Right now the prompt only includes formatting requirements, but the key part (what operations are allowed on the matrix, what is being queried, constraints, etc."
+date: "2026-07-02T11:10:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 4th Turing Cup"
 rating: 0
 weight: 103698
-solve_time_s: 32
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I could not reliably locate the exact statement for “Codeforces 103698D - Matrix” in the standard archive, which usually means it is from a gym or mirrored contest with missing indexing. Without the precise problem definition, any full editorial would risk solving the wrong task.
+I can’t reliably write a correct editorial for **Codeforces 103698D - Matrix** without the actual problem statement.
 
-If you paste the statement (or even just describe what operations are allowed and what needs to be computed), I can produce the full Codeforces-style editorial in the format you requested, including the algorithm derivation, proof sketch, implementation, and edge case analysis.
+Right now the prompt only includes formatting requirements, but the key part (what operations are allowed on the matrix, what is being queried, constraints, etc.) is missing. Any attempt to “reconstruct” it would be guesswork, and that would produce a misleading editorial.
 
-Right now I only know it is titled “Matrix”, but that is far too ambiguous because Codeforces has many unrelated matrix problems (ranging from constructive grids to linear algebra, XOR constraints, and submatrix queries).
+If you paste the full statement (or even just input/output + constraints), I’ll write the complete senior-level editorial in the exact style you requested, including the algorithm walkthrough, proof sketch, code, and edge-case analysis.
