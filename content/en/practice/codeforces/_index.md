@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2761 contests, 19732 problems, 11140 verified."
+description: "Codeforces problem solutions with full editorials. 2766 contests, 19767 problems, 11149 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2761 contests, 19732 problems, 11140 verified.**
+**2766 contests, 19767 problems, 11149 verified.**
 
-## Unknown — 648 contests, 5395 problems, 3388 verified
+## Unknown — 651 contests, 5415 problems, 3396 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103608](103608/) | [Интернет-олимпиады, Сезон 2021-2022, Четвертая личная олимпиада](https://codeforces.com/contest/103608) | 4 | 0/4 | Special | - |
+| [103623](103623/) | [Индивидуальная олимпиада школьников по информатике и программированию 2022](https://codeforces.com/contest/103623) | 5 | 0/5 | Special | - |
+| [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 11 | 8/11 | Special | - |
 | [103630](103630/) | [2022 VII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103630) | 10 | 0/10 | Special | - |
 | [103631](103631/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/103631) | 4 | 3/4 | Special | - |
 | [103632](103632/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/103632) | 0 | 0/0 | Special | - |
@@ -1749,7 +1752,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 200 contests, 1543 problems, 740 verified
+## 2022 — 202 contests, 1558 problems, 741 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1886,6 +1889,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103624](103624/) | [UTPC Contest 03-25-22 Div. 2 (Beginner)](https://codeforces.com/contest/103624) | 7 | 0/7 | Div. 2 | - |
+| [103625](103625/) | [UTPC Contest 03-25-22 Div 1. (Advanced)](https://codeforces.com/contest/103625) | 8 | 1/8 | Special | - |
 | [103633](103633/) | [Infoleague Spring 2022 Round Div. 2](https://codeforces.com/contest/103633) | 2 | 2/2 | Div. 2 | - |
 | [103634](103634/) | [Infoleague Spring 2022 Round Div. 1](https://codeforces.com/contest/103634) | 3 | 1/3 | Div. 1 | - |
 | [103647](103647/) | [UTPC Contest 04-08-22 Div. 2 (Beginner)](https://codeforces.com/contest/103647) | 9 | 0/9 | Div. 2 | - |
