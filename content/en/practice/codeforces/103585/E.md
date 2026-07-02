@@ -1,7 +1,7 @@
 ---
 title: "CF 103585E - Truffula Trouble"
-description: "The problem statement for “Codeforces 103585E - Truffula Trouble” is missing from your prompt, so there’s no way to reconstruct the actual task, constraints, or required output. Without that, any editorial would be guesswork rather than a correct explanation of a solution."
-date: "2026-07-02T23:30:59+07:00"
+description: "The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial. Please paste the full statement of Codeforces 103585E - Truffula Trouble (including input/output format and constraints)."
+date: "2026-07-03T00:01:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 46
+solve_time_s: 41
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 46s  
+**Solve time:** 41s  
 **Verified:** no  
 
 ## Solution
-The problem statement for “Codeforces 103585E - Truffula Trouble” is missing from your prompt, so there’s no way to reconstruct the actual task, constraints, or required output. Without that, any editorial would be guesswork rather than a correct explanation of a solution.
+The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial.
 
-If you paste the full statement (or even just input/output description and constraints), I can write the complete Codeforces-style editorial in the format you specified.
+Please paste the full statement of **Codeforces 103585E - Truffula Trouble** (including input/output format and constraints). Once you send it, I’ll produce the complete editorial in the exact structure you specified.

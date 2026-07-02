@@ -1,7 +1,7 @@
 ---
 title: "CF 103585G - Perfect Cacti: Part 1"
-description: "The problem statement for “103585G - Perfect Cacti: Part 1” is missing from your prompt, so I can’t reliably reconstruct the task or derive a correct solution."
-date: "2026-07-02T23:31:32+07:00"
+description: "The prompt is missing the actual problem statement, so there is no way to reliably reconstruct the intended graph structure, operations, or required output for “Perfect Cacti: Part 1”."
+date: "2026-07-03T00:16:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -22,8 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-The problem statement for “103585G - Perfect Cacti: Part 1” is missing from your prompt, so I can’t reliably reconstruct the task or derive a correct solution.
+The prompt is missing the actual problem statement, so there is no way to reliably reconstruct the intended graph structure, operations, or required output for “Perfect Cacti: Part 1”.
 
-For Codeforces editorials, even small details like whether we are counting cycles, checking cactus structure validity, or processing queries on a graph completely change the intended technique. If I guess here, the editorial would likely be wrong or misleading.
+For Codeforces editorials, even small differences in definitions (what “perfect” means, whether we are counting, validating, or constructing something on a cactus graph) completely change the solution technique. Without the statement, any detailed editorial would be guesswork and would likely be wrong.
 
-Paste the full statement (or even just the core description plus constraints and samples), and I’ll write the complete structured editorial in the format you specified.
+If you paste the full problem statement (or even just the core description and constraints), I can produce the complete editorial in the exact format you requested, including the derivation, algorithm walkthrough, and implementation.
