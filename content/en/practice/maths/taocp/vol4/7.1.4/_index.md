@@ -86,11 +86,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [66](66.md) |  [*20*] | medium | solved | 9m48s |
 | [67](67.md) |  [*24*] | medium | solved | 5m58s |
 | [68](68.md) |  [*20*] | medium | solved | 5m48s |
-| [69](69.md) |  [*21*] | medium | verified | 2m09s |
-| [70](70.md) |  [*21*] | medium | verified | 1m18s |
-| [71](71.md) |  [*20*] | medium | verified | 1m14s |
-| [72](72.md) |  [*25*] | medium | verified | 1m11s |
-| [73](73.md) | &#9654; [*25*] | medium | verified | 2m27s |
+| [69](69.md) |  [*21*] | medium | verified | 1m33s |
+| [70](70.md) |  [*21*] | medium | verified | 1m33s |
+| [71](71.md) |  [*20*] | medium | verified | 1m49s |
+| [72](72.md) |  [*25*] | medium | verified | 1m39s |
+| [73](73.md) | &#9654; [*25*] | medium | verified | 4m22s |
 | [74](74.md) | &#9654; [*M23*] | math-medium | verified | 1m24s |
 | [75](75.md) |  [*M20*] | math-medium | solved | 4m14s |
 | [76](76.md) | &#9654; [*M22*] | math-medium | solved | 4m26s |
