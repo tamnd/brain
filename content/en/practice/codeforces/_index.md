@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19549 problems, 11049 verified."
+description: "Codeforces problem solutions with full editorials. 2742 contests, 19562 problems, 11062 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19549 problems, 11049 verified.**
+**2742 contests, 19562 problems, 11062 verified.**
 
-## Unknown — 634 contests, 5260 problems, 3314 verified
+## Unknown — 634 contests, 5261 problems, 3315 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -93,7 +93,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104207](104207/) | [2017 China Collegiate Programming Contest Final (CCPC-Final 2017)](https://codeforces.com/contest/104207) | 11 | 11/11 | Special | - |
 | [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 10 | 7/10 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
-| [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 9 | 8/9 | Special | - |
+| [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 10 | 9/10 | Special | - |
 | [104239](104239/) | [Интернет-олимпиады, Сезон 2022-2023, Четвертая личная олимпиада](https://codeforces.com/contest/104239) | 4 | 4/4 | Special | - |
 | [104243](104243/) | [Открытая олимпиада школьников по программированию 2022-23, первый тур](https://codeforces.com/contest/104243) | 4 | 1/4 | Special | - |
 | [104244](104244/) | [Открытая олимпиада школьников по программированию 2022-23, второй тур](https://codeforces.com/contest/104244) | 4 | 1/4 | Special | - |
@@ -1735,7 +1735,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 194 contests, 1495 problems, 723 verified
+## 2022 — 195 contests, 1507 problems, 735 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1872,6 +1872,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103688](103688/) | [The 17th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103688) | 12 | 12/12 | Special | - |
 | [103698](103698/) | [The 4th Turing Cup](https://codeforces.com/contest/103698) | 7 | 7/7 | Special | - |
 | [103714](103714/) | [Software Engineering Cup 2022](https://codeforces.com/contest/103714) | 9 | 1/9 | Special | - |
 | [103715](103715/) | [Сурские таланты 2022](https://codeforces.com/contest/103715) | 7 | 1/7 | Special | - |

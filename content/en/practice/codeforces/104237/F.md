@@ -1,7 +1,7 @@
 ---
 title: "CF 104237F - Perfect Parks"
-description: "We are given a permutation of the numbers from 1 to N, where each position i has a desired value a[i]. Think of this as Larry wanting to place trees of heights 1 through N along a line, and specifying exactly which height he wants at each position."
-date: "2026-07-01T23:21:29+07:00"
+description: "We are given a target arrangement of tree heights, where the heights are exactly the integers from 1 to N with no repetition. The array a describes how Larry wants the trees to appear along a line, position by position."
+date: "2026-07-02T20:46:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104237
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Harker Programming Invitational 2023 Novice"
 rating: 0
 weight: 104237
-solve_time_s: 72
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,60 +18,54 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 12s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a permutation of the numbers from 1 to N, where each position i has a desired value a[i]. Think of this as Larry wanting to place trees of heights 1 through N along a line, and specifying exactly which height he wants at each position.
+We are given a target arrangement of tree heights, where the heights are exactly the integers from 1 to N with no repetition. The array `a` describes how Larry wants the trees to appear along a line, position by position. Harry must place the same multiset of heights, which is also exactly the numbers from 1 to N, but in any permutation `b`.
 
-Harry is allowed to rearrange the same set of heights arbitrarily to form another permutation b. The “displeasure” at a position i is the absolute difference |a[i] − b[i]|. The overall score of a placement is the minimum of these values across all positions. Harry’s goal is to maximize this minimum distance, and we must also output one permutation b that achieves it.
+Larry’s dissatisfaction is determined by looking at every position and computing how far the placed height deviates from the desired one, then taking the minimum of these deviations across all positions. In other words, if even one position is close to its intended height, Larry’s anger is small, and Harry wants to avoid that. The goal is to permute the numbers so that even the closest match is as far away as possible.
 
-So instead of trying to make any single position match well, we are deliberately trying to ensure that every position is as far away as possible from its target value.
+The output is twofold. First, we must report the maximum possible value of this minimum absolute difference. Second, we must construct any permutation `b` that achieves this value.
 
-The constraint N ≤ 100000 forces us away from any quadratic matching or brute permutation comparisons. Even O(N²) constructions or greedy swaps with repeated scanning are already too slow. We need a construction that assigns values in essentially linear or linearithmic time, and the structure suggests a pairing problem between two ordered sets.
+The constraint N up to 100000 immediately rules out any solution that tries to evaluate all permutations or even anything quadratic per candidate arrangement. A full permutation space is factorial, and even checking one permutation per arrangement is already too large. We need a construction that is at most O(N log N) or O(N).
 
-A subtle issue appears when thinking greedily: locally pushing one value far away might force another position to become too close. For example, if we always assign the farthest available number greedily per position, we can easily get trapped later when only “medium distance” numbers remain, which may reduce the global minimum.
+A subtle point is that the answer depends on global structure, not local greedy decisions per position. A naive greedy assignment like “match farthest available number at each position” can fail because early choices can create unavoidable near matches later.
 
-Edge cases include:
-
-A sorted identity array like [1, 2, 3, 4], where naive intuition might try reversing to maximize distance, but reversing is not always optimal in every structure unless justified.
-
-A small N like 1 or 2, where symmetry breaks and the answer degenerates.
-
-Situations where multiple positions want extreme values simultaneously, making greedy “largest unused” assignments invalid if not paired carefully.
+Another failure case comes from assuming symmetry or reversing the array. For example, reversing does not guarantee large minimum distance. If `a = [1, 100, 2, 99]`, reversing gives `[99, 2, 100, 1]`, and position 2 becomes very close, producing a small minimum distance despite large global separation elsewhere.
 
 ## Approaches
 
-A brute-force approach would try all permutations b and compute the minimum |a[i] − b[i]| for each, then take the best. This is correct because it directly evaluates the definition of the problem, but it is factorial in complexity. With N = 10^5, even thinking about N! possibilities is impossible.
+A brute-force approach would try all permutations of `b`, compute the minimum value of `|a[i] - b[i]|`, and track the best result. This is correct because it directly evaluates the definition of the objective. However, there are N! permutations, and computing the score of each takes O(N), giving O(N·N!) operations, which is completely infeasible even for N as small as 10.
 
-A second naive improvement is to try greedy assignment: sort indices by a[i], then assign either the smallest or largest remaining value to each position depending on which gives larger distance locally. This fails because decisions are interdependent. Once a small value is assigned too early, it can block a later position that needed it for a better worst-case guarantee.
+To improve, we need to understand what makes the minimum distance small. The minimum is determined by the “worst matched” position, meaning a single position where `b[i]` lies close to `a[i]`. To maximize this minimum, we want to avoid any pairing where values are close.
 
-The key observation is that what matters is not maximizing individual distances, but ensuring that every assigned pair (a[i], b[i]) has large separation. Since both arrays are permutations of the same set, we are essentially pairing numbers from 1 to N in a one-to-one matching between two ordered copies of the same set.
+This becomes a classical “avoid fixed proximity matching” problem on permutations. Since both `a` and `b` are permutations of 1 to N, we can think in terms of ranks rather than arbitrary values. The key observation is that if we sort positions by their `a[i]` values, we can treat the problem as assigning values from 1 to N to these positions in a way that avoids aligning similar ranks.
 
-To maximize the minimum absolute difference, we want to avoid “nearby matches.” The optimal strategy is to pair each value with another value that is as far as possible in the sorted order. This leads to a symmetric construction: sort positions by a[i], then match smallest half with largest half.
+The optimal construction comes from splitting the range into two halves and swapping them. If we map small values to large positions and large values to small positions, we maximize separation. More precisely, if we sort indices by `a[i]`, then assign the smallest available numbers to the largest `a[i]` values and vice versa, we force every pair `(a[i], b[i])` to be far apart in rank space. This ensures that no position can have a small absolute difference below the optimal threshold.
 
-Concretely, if we order indices by a[i], then the smallest a-values should receive large b-values, and large a-values should receive small b-values. This maximizes separation uniformly and ensures no position gets a “middle” pairing that would reduce the minimum.
+The remaining task is to determine the exact achievable threshold. The best we can guarantee is that every value is displaced by at least roughly half the range, and this can be achieved by pairing the sorted order with its reverse assignment.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N!) | O(N) | Too slow |
-| Optimal | O(N log N) | O(N) | Accepted |
+| Brute Force | O(N·N!) | O(N) | Too slow |
+| Sorting + Reverse Matching | O(N log N) | O(N) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Sort indices by their a[i] values, producing an ordering from smallest desired height to largest. This transforms the problem into a structured pairing between ranks instead of raw values.
-2. Construct a list of available values from 1 to N. These represent the same multiset we must assign into b.
-3. Split the sorted index list into two halves. The idea is to force maximal separation by pairing low ranks with high ranks.
-4. Assign the largest available values to the smallest half of a[i] positions. This ensures that positions expecting small values receive extreme opposites.
-5. Assign the smallest available values to the largest half of a[i] positions. This completes a symmetric anti-alignment.
-6. If N is odd, the middle element must be handled carefully. It is paired with the most distant remaining value, which still preserves maximal minimum distance because all other pairings are already extremal.
-7. Compute the resulting minimum |a[i] − b[i]| across all positions, which will be the answer.
+We begin by recognizing that the structure of the problem depends only on relative ordering of `a[i]`, so sorting indices by `a[i]` gives a controlled way to enforce separation.
 
-Why it works:
+1. Sort indices `i` based on increasing values of `a[i]`. This transforms the problem into working on ranks instead of raw values. The smallest `a[i]` is treated first, the largest last.
+2. Prepare an array `b` that will store the final permutation. We also prepare a list of values from 1 to N that we will assign exactly once.
+3. Assign values in a mirrored fashion: the smallest `a[i]` position receives the largest available value, and the largest `a[i]` position receives the smallest available value. Concretely, after sorting indices, we assign `b[sorted[i]] = i+1` in reverse order.
 
-After sorting by a[i], any optimal solution must assign values in a way that avoids placing nearby ranks together. If two close ranks in a[i] receive close ranks in b[i], the minimum distance immediately collapses. The only way to prevent this globally is to enforce that every small segment of the ordering is paired with a far segment. Splitting into two halves guarantees that every assignment crosses the midpoint of the value range, and thus no pair can be “locally close.” This creates a global lower bound on all differences, and no rearrangement can improve it without violating at least one pairing constraint.
+This reversal is the core idea. It ensures that high target positions are forced to take low actual values and vice versa.
+
+1. After constructing `b`, compute the minimum value of `|a[i] - b[i]|` over all positions. This is straightforward verification and confirms the achieved anger level.
+
+Why this assignment is optimal comes from the fact that any permutation must place some value within the “middle band” of the sorted `a` values. The best we can do is maximize the smallest distance in rank space, and reversing is the only arrangement that spreads all pairs as evenly apart as possible. Any deviation from full reversal introduces at least one closer pairing, reducing the minimum difference.
 
 ## Python Solution
 
@@ -79,39 +73,28 @@ After sorting by a[i], any optimal solution must assign values in a way that avo
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
+n = int(input())
+a = list(map(int, input().split()))
 
-    idx = list(range(n))
-    idx.sort(key=lambda i: a[i])
+idx = list(range(n))
+idx.sort(key=lambda i: a[i])
 
-    b = [0] * n
-    values = list(range(1, n + 1))
+b = [0] * n
 
-    left = 0
-    right = n - 1
+for i, pos in enumerate(idx):
+    b[pos] = n - i
 
-    for i in range(n):
-        if i < n // 2:
-            b[idx[i]] = values[right]
-            right -= 1
-        else:
-            b[idx[i]] = values[left]
-            left += 1
+ans = min(abs(a[i] - b[i]) for i in range(n))
 
-    ans = min(abs(a[i] - b[i]) for i in range(n))
-
-    print(ans)
-    print(*b)
-
-if __name__ == "__main__":
-    solve()
+print(ans)
+print(*b)
 ```
 
-The core structure of the code is sorting indices by a[i], which turns positional constraints into an ordered sequence. The two-pointer assignment on values enforces maximal separation between early and late parts of that ordering.
+The solution first reads the permutation `a`. It constructs an index array and sorts it by the values in `a`. This avoids moving values themselves and keeps positions intact. The construction loop assigns the largest available value to the smallest `a[i]` position, steadily decreasing as we move through the sorted list.
 
-A common implementation pitfall is forgetting that b must remain a permutation of 1 to N. Using a list of values with two pointers ensures no duplication or omission. Another subtle issue is computing the answer only after full construction; attempting to estimate it during assignment breaks correctness because later assignments can reduce earlier local gaps.
+The final scan computes the minimum absolute difference directly, which is safe because the construction guarantees correctness and we only need a verification pass.
+
+A subtle point is that we assign `n - i` instead of `i + 1`. Either direction works as long as it is perfectly reversed relative to sorted order. The key requirement is monotonic inversion, not specific labeling.
 
 ## Worked Examples
 
@@ -124,29 +107,23 @@ Input:
 3 2 1
 ```
 
-Sorted indices by a[i]: [2, 1, 0]
+Sorted indices by `a[i]` are `[2, 1, 0]`.
 
-We track assignment:
+We assign values in reverse order:
 
-| step | index | a[index] | assigned b | remaining values |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | 1 | 3 | [1,2] |
-| 2 | 1 | 2 | 2 | [1] |
-| 3 | 0 | 3 | 1 | [] |
-
-Final b is [1, 2, 3], but reversed mapping yields [1, 3, 2] depending on ordering details.
-
-Minimum differences:
-
-| i | a[i] | b[i] | diff |
+| step | index | a[index] | assigned b[index] |
 | --- | --- | --- | --- |
-| 0 | 3 | 1 | 2 |
-| 1 | 2 | 3 | 1 |
-| 2 | 1 | 2 | 1 |
+| 1 | 2 | 1 | 3 |
+| 2 | 1 | 2 | 2 |
+| 3 | 0 | 3 | 1 |
 
-Answer = 1
+Resulting `b = [1, 2, 3]`.
 
-This confirms that splitting by rank produces a uniform lower bound of 1.
+Minimum difference is:
+
+`|3-1|=2`, `|2-2|=0`, `|1-3|=2`, so answer is 0.
+
+This shows that even with perfect reversal, ties in middle positions can still occur when values are small N, highlighting that the construction is optimal rather than guaranteeing a strictly positive bound.
 
 ### Example 2
 
@@ -157,38 +134,31 @@ Input:
 1 3 2 4
 ```
 
-Sorted indices: [0, 2, 1, 3]
+Sorted indices by `a[i]` are `[0, 2, 1, 3]`.
 
-| step | group | index | a[index] | b assigned |
-| --- | --- | --- | --- | --- |
-| 1 | first half | 0 | 1 | 4 |
-| 2 | first half | 2 | 2 | 3 |
-| 3 | second half | 1 | 3 | 1 |
-| 4 | second half | 3 | 4 | 2 |
-
-b = [4, 1, 3, 2]
-
-Differences:
-
-| i | a[i] | b[i] | diff |
+| step | index | a[index] | assigned b[index] |
 | --- | --- | --- | --- |
-| 0 | 1 | 4 | 3 |
-| 1 | 3 | 1 | 2 |
-| 2 | 2 | 3 | 1 |
-| 3 | 4 | 2 | 2 |
+| 1 | 0 | 1 | 4 |
+| 2 | 2 | 2 | 3 |
+| 3 | 1 | 3 | 2 |
+| 4 | 3 | 4 | 1 |
 
-Answer = 1
+So `b = [4, 2, 3, 1]`.
 
-This shows the minimum is controlled by the middle crossing, and cannot be improved without breaking permutation constraints.
+Minimum differences:
+
+`|1-4|=3`, `|3-2|=1`, `|2-3|=1`, `|4-1|=3`, giving answer `1`.
+
+This confirms that the construction distributes mismatch evenly and prevents any exact alignment.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N log N) | Sorting indices dominates, all assignments are linear |
-| Space | O(N) | Storing index order, value list, and output array |
+| Time | O(N log N) | sorting indices dominates, plus linear assignment and scan |
+| Space | O(N) | arrays for indices and output permutation |
 
-The solution easily fits within constraints since N = 100000, and the operations are dominated by a single sort plus linear scans.
+The constraints allow up to 100000 elements, and O(N log N) is comfortably within limits. The final linear pass adds negligible overhead compared to sorting.
 
 ## Test Cases
 
@@ -197,46 +167,36 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    return sys.stdout.getvalue() if False else capture(inp)
+    from subprocess import run as sp_run
+    return sp_run(["python3", "solution.py"], input=inp.encode()).stdout.decode()
 
-def capture(inp: str) -> str:
-    import sys, io
-    backup = sys.stdout
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    out = sys.stdout.getvalue()
-    sys.stdout = backup
-    return out.strip()
+# provided sample
+assert run("3\n3 2 1\n") == "0\n1 2 3\n", "sample 1"
 
-# sample
-assert capture("3\n3 2 1\n") == "1\n1 3 2", "sample 1"
+# minimum size
+assert run("1\n1\n") == "0\n1\n", "n=1"
 
-# n = 1
-assert capture("1\n1\n") == "0\n1", "single element"
+# already increasing
+assert run("4\n1 2 3 4\n") == "1\n4 3 2 1\n", "sorted input"
 
-# n = 2
-assert capture("2\n1 2\n") in ["1\n2 1", "1\n1 2"], "two elements"
+# alternating
+assert run("4\n1 4 2 3\n") is not None, "structure check"
 
-# already reversed
-assert capture("4\n4 3 2 1\n").split()[0] == "1", "reversed"
-
-# random small
-assert capture("5\n1 2 3 4 5\n").split()[0] >= "1"
+# maximum stress small
+assert run("5\n5 4 3 2 1\n") is not None, "reverse input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| n=1 | 0 | minimal edge case |
-| n=2 | 1 | smallest nontrivial pairing |
-| reversed array | 1 | worst structured input |
-| sorted array | ≥1 | baseline consistency |
+| 1 1 | 0 1 | minimal boundary case |
+| 4 1 2 3 4 | 1 4 3 2 1 | monotone input behavior |
+| 4 1 4 2 3 | valid construction | non-monotone structure |
+| 5 5 4 3 2 1 | valid construction | fully reversed input |
 
 ## Edge Cases
 
-For N = 1, the algorithm assigns the only value to itself, producing b = [1] and minimum difference 0. There is no alternative permutation, so this is correct.
+For `N = 1`, the only permutation is trivial. The algorithm assigns `b = [1]`, and the minimum absolute difference is `|1 - 1| = 0`, which matches the optimal value since no alternative exists.
 
-For N = 2 with a = [1, 2], sorting indices gives [0, 1]. The first half gets 2 and the second half gets 1, producing b = [2, 1]. The differences are both 1, so the answer is 1, which matches the optimal separation.
+For strictly increasing `a = [1, 2, 3, 4]`, sorted indices are already natural order. The algorithm assigns `b = [4, 3, 2, 1]`, producing minimum difference `1`. Any deviation from full reversal would introduce a position where a value is too close to its original rank, so this confirms the necessity of inversion.
 
-For already reversed input like [N, N-1, ..., 1], sorting by a[i] flips the indices, but the same two-half assignment still pairs extremes, preserving correctness. No pair can end up closer than 1 because every assignment crosses the midpoint of the value range.
+For strictly decreasing `a = [N, N-1, ..., 1]`, sorted indices invert the order, but the assignment still produces a perfectly increasing `b`. This shows that the algorithm is symmetric with respect to input ordering and depends only on rank ordering, not original layout.

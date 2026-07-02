@@ -1,7 +1,7 @@
 ---
 title: "CF 104508K - Known Problem"
-description: "I can’t write a meaningful editorial for this as-is because the actual problem content is missing. Right now, the statement only shows a single character “K”, with no description of what the input represents, what operations are allowed, or what needs to be computed."
-date: "2026-07-01T23:08:17+07:00"
+description: "The problem statement is not actually present here (it only shows “K”), so there isn’t enough information to reconstruct what Codeforces 104508K is asking."
+date: "2026-07-02T20:47:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 32
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,21 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can’t write a meaningful editorial for this as-is because the actual problem content is missing.
+The problem statement is not actually present here (it only shows “K”), so there isn’t enough information to reconstruct what Codeforces 104508K is asking.
 
-Right now, the statement only shows a single character “K”, with no description of what the input represents, what operations are allowed, or what needs to be computed. Without that, any solution would be guesswork, and for Codeforces-style problems the structure of the task is the entire substance of the editorial.
+An editorial depends entirely on the underlying task: what the input represents, what needs to be computed, and what constraints shape the solution. With only an empty placeholder, any solution or explanation would be invented rather than derived.
 
-If you paste the full problem statement (or even just the input/output specification and constraints), I’ll produce a complete senior-level editorial in the exact format you requested, including:
-
-- a clean restatement of the problem in concrete terms
-- constraint-driven complexity reasoning
-- brute force to optimal transition
-- full algorithm walkthrough
-- tested Python solution
-- worked traces and edge-case handling
-
-Send the full statement and I’ll continue from there.
+If you paste the full statement (or even a screenshot / raw text), I can write the complete Codeforces-style editorial in the format you specified, including the full derivation, algorithm walkthrough, code, and edge case analysis.
