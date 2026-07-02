@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt. Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder."
-date: "2026-07-02T19:31:45+07:00"
+description: "The input you provided doesn’t include the actual problem statement (the section after the title is empty), so there isn’t enough information to reconstruct what “The Battle of Guandu” is asking, nor to write a correct editorial."
+date: "2026-07-02T21:34:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 31
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt.
+The input you provided doesn’t include the actual problem statement (the section after the title is empty), so there isn’t enough information to reconstruct what “The Battle of Guandu” is asking, nor to write a correct editorial.
 
-Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder. Any solution or algorithm I wrote would be guesswork, which would defeat the purpose of a Codeforces-style editorial.
+Right now, any attempt to proceed would be guessing the problem, which would break correctness of the solution and the editorial logic.
 
-Paste the full problem statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proofs, Python solution, examples, complexity analysis, and edge case tests.
+If you paste the full statement (or even a screenshot/text dump), I can write the complete Codeforces-style editorial in the format you requested, including algorithm derivation, proof sketch, implementation, and test coverage.

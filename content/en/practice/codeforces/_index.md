@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19547 problems, 11047 verified."
+description: "Codeforces problem solutions with full editorials. 2747 contests, 19606 problems, 11085 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19547 problems, 11047 verified.**
+**2747 contests, 19606 problems, 11085 verified.**
 
-## Unknown — 634 contests, 5259 problems, 3313 verified
+## Unknown — 638 contests, 5292 problems, 3337 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103666](103666/) | [Турнир Архимеда 2016](https://codeforces.com/contest/103666) | 7 | 7/7 | Special | - |
+| [103671](103671/) | [Tech Interview Prep C++ Challenges](https://codeforces.com/contest/103671) | 3 | 0/3 | Special | - |
+| [103678](103678/) | [2022 VII Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/103678) | 8 | 1/8 | Special | - |
+| [103687](103687/) | [The 19th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103687) | 13 | 13/13 | Special | - |
 | [103708](103708/) | [2022 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/103708) | 12 | 2/12 | ICPC/IOI | - |
 | [103800](103800/) | [The 2022 SDUT Summer Trials](https://codeforces.com/contest/103800) | 12 | 11/12 | Special | - |
 | [103806](103806/) | [XXVI Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103806) | 5 | 5/5 | Special | - |
@@ -34,7 +38,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
 | [103960](103960/) | [2022-2023 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103960) | 14 | 3/14 | ICPC/IOI | - |
-| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 4/11 | Special | - |
+| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 5/11 | Special | - |
 | [103965](103965/) | [Интернет-олимпиады, Сезон 2022-2023, Первая командная олимпиада](https://codeforces.com/contest/103965) | 10 | 9/10 | Special | - |
 | [103966](103966/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (базовая версия)](https://codeforces.com/contest/103966) | 8 | 1/8 | Special | - |
 | [103967](103967/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (продвинутая версия)](https://codeforces.com/contest/103967) | 10 | 1/10 | Special | - |
@@ -91,9 +95,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 14 | 14/14 | Special | - |
 | [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 12 | 9/12 | Special | - |
 | [104207](104207/) | [2017 China Collegiate Programming Contest Final (CCPC-Final 2017)](https://codeforces.com/contest/104207) | 11 | 11/11 | Special | - |
-| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 9 | 6/9 | Special | - |
+| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 10 | 7/10 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
-| [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 9 | 8/9 | Special | - |
+| [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 10 | 9/10 | Special | - |
 | [104239](104239/) | [Интернет-олимпиады, Сезон 2022-2023, Четвертая личная олимпиада](https://codeforces.com/contest/104239) | 4 | 4/4 | Special | - |
 | [104243](104243/) | [Открытая олимпиада школьников по программированию 2022-23, первый тур](https://codeforces.com/contest/104243) | 4 | 1/4 | Special | - |
 | [104244](104244/) | [Открытая олимпиада школьников по программированию 2022-23, второй тур](https://codeforces.com/contest/104244) | 4 | 1/4 | Special | - |
@@ -1735,7 +1739,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 194 contests, 1495 problems, 723 verified
+## 2022 — 196 contests, 1520 problems, 736 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1872,6 +1876,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103677](103677/) | [UTPC Spring 2022 Open Contest](https://codeforces.com/contest/103677) | 13 | 1/13 | Special | - |
+| [103688](103688/) | [The 17th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103688) | 12 | 12/12 | Special | - |
 | [103698](103698/) | [The 4th Turing Cup](https://codeforces.com/contest/103698) | 7 | 7/7 | Special | - |
 | [103714](103714/) | [Software Engineering Cup 2022](https://codeforces.com/contest/103714) | 9 | 1/9 | Special | - |
 | [103715](103715/) | [Сурские таланты 2022](https://codeforces.com/contest/103715) | 7 | 1/7 | Special | - |
@@ -1934,7 +1940,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 273 contests, 2243 problems, 1210 verified
+## 2023 — 273 contests, 2244 problems, 1211 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2080,7 +2086,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104217](104217/) | [UTPC Contest 03-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104217) | 8 | 4/8 | Div. 2 | - |
 | [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 8 | 7/8 | Div. 1 | - |
 | [104221](104221/) | [Финал региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/104221) | 5 | 3/5 | Special | - |
-| [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 3 | 3/3 | Special | - |
+| [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 4 | 4/4 | Special | - |
 | [104230](104230/) | [European Girls Olympiad in Informatics 2022. Day 2](https://codeforces.com/contest/104230) | 4 | 4/4 | Special | - |
 | [104234](104234/) | [OCPC 2023, Oleksandr Kulkov Contest 3](https://codeforces.com/contest/104234) | 13 | 13/13 | Special | - |
 | [104246](104246/) | [CodeSmash 2021 by RAPL](https://codeforces.com/contest/104246) | 12 | 6/12 | Special | - |

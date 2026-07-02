@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 8
-total_solve_s: 693
+total_solve_s: 707
 contest_year: 2023
-date: "2026-06-30T23:08:31+07:00"
+date: "2026-06-30T21:39:25+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 12 problems | 8/12 verified | Difficulty - | 11m 33s
+Special | 12 problems | 8/12 verified | Difficulty - | 11m 47s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,10 +26,10 @@ Special | 12 problems | 8/12 verified | Difficulty - | 11m 33s
 | [C](C/) | [Communication Problem](https://codeforces.com/problemset/problem/104508/C) |  |  |  | 2m 3s | ✓ |
 | [D](D/) | [Decision Problem](https://codeforces.com/problemset/problem/104508/D) |  |  |  | 2m 4s | ✓ |
 | [E](E/) | [Er Wei Shu Dian](https://codeforces.com/problemset/problem/104508/E) |  |  |  | 52s | ✓ |
-| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 33s |  |
+| [F](F/) | [Fake Solution](https://codeforces.com/problemset/problem/104508/F) |  |  |  | 40s |  |
 | [G](G/) | [Grouping Problem](https://codeforces.com/problemset/problem/104508/G) |  |  |  | 1m 8s | ✓ |
-| [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 31s |  |
+| [H](H/) | [Harmony Coloring](https://codeforces.com/problemset/problem/104508/H) |  |  |  | 27s |  |
 | [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 47s | ✓ |
 | [J](J/) | [Japanese Monsters](https://codeforces.com/problemset/problem/104508/J) |  |  |  | 50s | ✓ |
-| [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 32s |  |
-| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 30s |  |
+| [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 47s |  |
+| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 26s |  |

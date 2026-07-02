@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "I can’t write a correct Codeforces editorial for “104508H - Harmony Coloring” from what you provided, because the actual problem statement is missing."
-date: "2026-07-01T23:07:43+07:00"
+description: "I can absolutely write the full editorial in that format, but I am missing the actual problem content for Codeforces 104508H - Harmony Coloring. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks."
+date: "2026-07-02T21:38:57+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 31
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,26 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial for “104508H - Harmony Coloring” from what you provided, because the actual problem statement is missing.
+I can absolutely write the full editorial in that format, but I am missing the actual problem content for **Codeforces 104508H - Harmony Coloring**. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks.
 
-Right now the only content is the title “H” with empty input/output sections, which doesn’t describe:
+Right now I don’t know:
 
-the structure of the data, what “coloring” refers to, what constraints exist, or what needs to be optimized or counted. Without that, any solution would be guesswork and very likely wrong.
+- what structure is being colored (graph, array, tree, grid, etc.)
+- what “harmony” constraint means
+- what the input/output format is
+- constraints (which determine the algorithmic approach)
 
-If you paste the full statement (or even just the key parts: input format, required output, constraints, and any sample), I can produce the complete editorial in the exact style you requested, including:
+Without that, any editorial would be pure fabrication and would not satisfy the requirement that the reader can reconstruct the solution.
 
-a full re-derivation of the solution,
-
-brute force → optimization transition,
-
-formal algorithm walkthrough,
-
-correct Python implementation,
-
-worked traces, edge cases, and complexity analysis.
-
-Send the statement and I’ll continue from there.
+Please paste the full problem statement (or even a screenshot/text dump), and I will produce a complete Codeforces-style editorial exactly in the format you specified.

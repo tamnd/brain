@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.2: Generating All Permutations"
-description: "Section 7.2.1.2 exercises: 64/113 solved."
+description: "Section 7.2.1.2 exercises: 76/113 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.2. Generating All Permutations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 64/113 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 76/113 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -74,18 +74,18 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 64/113 solved.
 | [54](54.md) |  [*20*] | medium | solved | 4m21s |
 | [55](55.md) |  [*M27*] | math-hard | solved | 4m23s |
 | [56](56.md) |  [*M22*] | math-medium | solved | 5m55s |
-| 57 |  [*HM22*] | hm-medium | - | - |
-| 58 |  [*M21*] | math-medium | - | - |
-| 59 |  [*M20*] | math-medium | - | - |
-| 60 | &#9654; [*21*] | medium | - | - |
-| 61 |  [*21*] | medium | - | - |
-| 62 | &#9654; [*M23*] | math-medium | - | - |
-| 63 |  [*M25*] | math-medium | - | - |
-| 64 |  [*23*] | medium | - | - |
-| 65 |  [*M25*] | math-medium | - | - |
-| 66 |  [*22*] | medium | - | - |
-| 67 |  [*26*] | hard | - | - |
-| 68 |  [*M30*] | math-hard | - | - |
+| [57](57.md) |  [*HM22*] | hm-medium | solved | 7m26s |
+| [58](58.md) |  [*M21*] | math-medium | solved | 6m35s |
+| [59](59.md) |  [*M20*] | math-medium | solved | 8m01s |
+| [60](60.md) | &#9654; [*21*] | medium | solved | 6m39s |
+| [61](61.md) |  [*21*] | medium | solved | 7m33s |
+| [62](62.md) | &#9654; [*M23*] | math-medium | solved | 5m16s |
+| [63](63.md) |  [*M25*] | math-medium | solved | 7m16s |
+| [64](64.md) |  [*23*] | medium | solved | 6m54s |
+| [65](65.md) |  [*M25*] | math-medium | solved | 7m47s |
+| [66](66.md) |  [*22*] | medium | solved | 7m03s |
+| [67](67.md) |  [*26*] | hard | solved | 7m50s |
+| [68](68.md) |  [*M30*] | math-hard | solved | 7m43s |
 | 69 | &#9654; [*28*] | hard | - | - |
 | 70 | &#9654; [*M33*] | math-hard | - | - |
 | 71 |  [*48*] | research | - | - |

@@ -1,7 +1,7 @@
 ---
 title: "CF 104508L - List of Orders"
-description: "I can’t write a correct editorial for Codeforces 104508L - List of Orders because the actual problem statement (input/output definition and constraints) is missing from your prompt."
-date: "2026-07-01T23:08:31+07:00"
+description: "The problem content you provided only shows the title (“List of Orders”) but no actual statement, constraints, input/output format, or samples. Without that, I can’t reconstruct the intended solution or write a correct editorial."
+date: "2026-07-02T21:39:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 30
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for **Codeforces 104508L - List of Orders** because the actual problem statement (input/output definition and constraints) is missing from your prompt.
+The problem content you provided only shows the title (“List of Orders”) but no actual statement, constraints, input/output format, or samples. Without that, I can’t reconstruct the intended solution or write a correct editorial.
 
-Right now only the title “List of Orders” is provided, which isn’t enough to reconstruct the task reliably. Any attempt to guess would risk inventing the wrong problem, and the editorial would be useless for a reader trying to learn the intended solution.
+Codeforces problem IDs like this are usually not self-explanatory from the letter alone, and guessing would lead to a meaningless or incorrect write-up.
 
-Paste the full statement (or even just the core description plus constraints and samples), and I’ll produce a complete Codeforces-style editorial in the exact format you requested.
+Please paste one of the following so I can produce the full editorial in the exact format you requested:
+
+1. Full problem statement (preferred)
+2. Or at least input/output format + constraints + sample tests
+3. Or a link / copied text from Codeforces
+
+Once I have that, I’ll write the complete senior-level editorial with the structure you specified (problem understanding, brute force → optimal transition, algorithm walkthrough, proofs, code, and edge cases).
