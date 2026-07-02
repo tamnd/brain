@@ -1,7 +1,7 @@
 ---
 title: "CF 103585E - Truffula Trouble"
-description: "The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial. Please paste the full statement of Codeforces 103585E - Truffula Trouble (including input/output format and constraints)."
-date: "2026-07-03T00:01:00+07:00"
+description: "The problem statement for Codeforces 103585E - Truffula Trouble is missing from your message, so I don’t have the actual task definition (inputs, outputs, or rules) needed to write a correct editorial."
+date: "2026-07-03T00:29:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 41
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,10 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 41s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial.
+The problem statement for **Codeforces 103585E - Truffula Trouble** is missing from your message, so I don’t have the actual task definition (inputs, outputs, or rules) needed to write a correct editorial.
 
-Please paste the full statement of **Codeforces 103585E - Truffula Trouble** (including input/output format and constraints). Once you send it, I’ll produce the complete editorial in the exact structure you specified.
+To produce the kind of detailed, correct solution write-up you’re asking for, I need at least one of the following:
+
+- full problem statement (preferred), or  
+- a link + confirmation I should assume standard CF access, or  
+- a summary of what the problem asks (if you already have it locally)
+
+Once you paste it, I’ll write the complete editorial in the exact format you specified.
