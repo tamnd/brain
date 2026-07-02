@@ -1,7 +1,7 @@
 ---
 title: "CF 103698D - Matrix"
-description: "I can’t reliably write a correct editorial for CF 103698D - Matrix without the actual problem statement. Right now the input/output and core task are missing, and for Codeforces problems the solution structure depends heavily on details like what operations are allowed, what…"
-date: "2026-07-02T11:40:45+07:00"
+description: "The problem statement is missing, so there isn’t enough information to write a correct editorial yet. “Codeforces 103698D - Matrix” by itself doesn’t tell what the grid represents, what operations are allowed, or what needs to be computed."
+date: "2026-07-02T12:10:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 4th Turing Cup"
 rating: 0
 weight: 103698
-solve_time_s: 31
+solve_time_s: 35
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 35s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for **CF 103698D - Matrix** without the actual problem statement.
+The problem statement is missing, so there isn’t enough information to write a correct editorial yet.
 
-Right now the input/output and core task are missing, and for Codeforces problems the solution structure depends heavily on details like what operations are allowed, what needs to be computed, and what constraints apply. Guessing here would very likely produce a wrong algorithm and misleading editorial.
+“Codeforces 103698D - Matrix” by itself doesn’t tell what the grid represents, what operations are allowed, or what needs to be computed. Any attempt to reconstruct the solution without the actual statement would risk inventing constraints and producing an incorrect editorial.
 
-If you paste the full statement (or even just the key parts: what the matrix represents, what operations/queries exist, and what must be output), I’ll write the complete step-by-step editorial in the exact format you requested.
+Paste the full problem statement (or at least the input/output description and constraints), and I’ll write the complete Codeforces-style editorial in the format you specified.
