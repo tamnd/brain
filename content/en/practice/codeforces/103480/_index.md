@@ -1,23 +1,23 @@
 ---
 title: "The 4th Hangzhou Normal University Freshman Programming Contest"
-description: "10 problems from The 4th Hangzhou Normal University Freshman Programming Contest (contest 103480), difficulty -. 10/10 solutions verified against sample I/O."
+description: "13 problems from The 4th Hangzhou Normal University Freshman Programming Contest (contest 103480), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103480
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 501
+n_problems: 13
+n_verified: 13
+total_solve_s: 627
 contest_year: 2021
-date: "2026-07-03T06:32:55+07:00"
+date: "2026-07-03T06:33:42+07:00"
 weight: 103480
 draft: false
 ---
 
 # [The 4th Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/103480)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 8m 21s
+Special | 13 problems | 13/13 verified | Difficulty - | 10m 27s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,6 @@ Special | 10 problems | 10/10 verified | Difficulty - | 8m 21s
 | [H](H/) | [\u7b80\u5355\u7684 LRU \u95ee\u9898](https://codeforces.com/problemset/problem/103480/H) |  |  |  | 42s | ✓ |
 | [I](I/) | [\u597d\u60f3\u542c\u8086\u5b9d\u5531\u6b4c\u554a](https://codeforces.com/problemset/problem/103480/I) |  |  |  | 46s | ✓ |
 | [J](J/) | [\u6bc1\u706d\u51e4\u51f0\u4eba](https://codeforces.com/problemset/problem/103480/J) |  |  |  | 46s | ✓ |
+| [K](K/) | [\u6b22\u8fce\u6765\u5230\u676d\u5e08\u5927](https://codeforces.com/problemset/problem/103480/K) |  |  |  | 46s | ✓ |
+| [L](L/) | [Ayanoto \u53d8\u5f62\u8bb0](https://codeforces.com/problemset/problem/103480/L) |  |  |  | 40s | ✓ |
+| [M](M/) | [P \u9f99\u5b66\u957f\u7684\u6559\u8bf2](https://codeforces.com/problemset/problem/103480/M) |  |  |  | 40s | ✓ |
