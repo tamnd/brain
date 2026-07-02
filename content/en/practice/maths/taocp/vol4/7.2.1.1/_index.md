@@ -103,8 +103,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [83](83.md) |  [*41*] | project | solved | 4m43s |
 | [84](84.md) | &#9654; [*25*] | medium | solved | 4m08s |
 | [85](85.md) | &#9654; [*M25*] | math-medium | solved | 4m07s |
-| [86](86.md) | &#9654; [*26*] | hard | solved | 4m37s |
-| [87](87.md) |  [*27*] | hard | solved | 3m10s |
+| [86](86.md) | &#9654; [*26*] | hard | solved | 8m42s |
+| [87](87.md) |  [*27*] | hard | solved | 5m11s |
 | [88](88.md) | &#9654; [*25*] | medium | solved | 1m45s |
 | [89](89.md) | &#9654; [*25*] | medium | solved | 4m11s |
 | [90](90.md) |  [*26*] | hard | solved | 4m41s |
