@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now, all we have is the title “Walk Around The Campsite”, but no description of the grid, movement rules, constraints, or required output."
-date: "2026-07-03T02:40:35+07:00"
+description: "The statement you provided is effectively empty, so there is no way to reconstruct the problem meaningfully or produce a correct editorial."
+date: "2026-07-03T04:53:16+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 37
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,20 +18,22 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The statement you provided is effectively empty, so there is no way to reconstruct the problem meaningfully or produce a correct editorial.
 
-Right now, all we have is the title “Walk Around The Campsite”, but no description of the grid, movement rules, constraints, or required output. Without that, any solution would be guesswork and would likely be wrong.
+Right now we only know the title, but we do not know:
 
-If you paste the full statement (even screenshots or partial text), I’ll produce the full Codeforces-style editorial exactly in the format you requested, including:
+what the campsite layout is (grid, graph, points, segments),
 
-- clear re-derivation of the solution
-- brute force to optimal transition
-- full algorithm walkthrough
-- Python implementation
-- worked traces and edge cases
+what “walking around” means (paths, cycles, constraints),
 
-Send the statement and I’ll take it from there.
+what the input describes,
+
+what is being asked in the output.
+
+Any attempt to write a full Codeforces-style editorial without that would be pure guessing, and it would almost certainly be wrong.
+
+Send the full problem statement (input format, output format, and constraints if available), and I’ll produce a complete editorial in the exact style you requested.
