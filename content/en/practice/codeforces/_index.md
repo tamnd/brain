@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2723 contests, 19371 problems, 10923 verified."
+description: "Codeforces problem solutions with full editorials. 2727 contests, 19392 problems, 10937 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2723 contests, 19371 problems, 10923 verified.**
+**2727 contests, 19392 problems, 10937 verified.**
 
-## Unknown — 628 contests, 5208 problems, 3275 verified
+## Unknown — 632 contests, 5229 problems, 3289 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103806](103806/) | [XXVI Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103806) | 5 | 5/5 | Special | - |
+| [103808](103808/) | [XXVI Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103808) | 5 | 4/5 | Special | - |
+| [103809](103809/) | [XXVI Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/103809) | 6 | 5/6 | Special | - |
+| [103810](103810/) | [Всероссийская олимпиада школьников по информатике 2021—2022, Муниципальный этап, Челябинская область](https://codeforces.com/contest/103810) | 5 | 0/5 | Special | - |
 | [103811](103811/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2021](https://codeforces.com/contest/103811) | 12 | 1/12 | Special | - |
 | [103828](103828/) | [(DCPC + TCPC + BCPC) 2022](https://codeforces.com/contest/103828) | 14 | 1/14 | Special | - |
 | [103831](103831/) | [2017 International olympiad Tuymaada](https://codeforces.com/contest/103831) | 8 | 4/8 | Special | - |
