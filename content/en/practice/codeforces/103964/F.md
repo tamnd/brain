@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "I can’t produce a correct editorial for this as written because the actual problem content is missing. Right now we only have the title “The Battle of Guandu” and empty Input/Output sections."
-date: "2026-07-03T02:40:32+07:00"
+description: "I can’t reliably write a correct editorial for “Codeforces 103964F - The Battle of Guandu” from what you provided because the actual problem statement is missing (the input/output sections are empty, and there’s no description of the task, constraints, or samples)."
+date: "2026-07-03T04:52:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 34
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,14 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t produce a correct editorial for this as written because the actual problem content is missing.
+I can’t reliably write a correct editorial for “Codeforces 103964F - The Battle of Guandu” from what you provided because the actual problem statement is missing (the input/output sections are empty, and there’s no description of the task, constraints, or samples).
 
-Right now we only have the title “The Battle of Guandu” and empty Input/Output sections. There’s no description of what is given, what is required, or even what structure the task has (graph, strings, games, DP, etc.). Any attempt to “solve” it from this would be guesswork and would inevitably be wrong.
+Right now, anything I write would be guesswork, and for a competitive programming editorial that would almost certainly be wrong.
 
-If you paste the full statement (or even just the core description and constraints), I can write the full Codeforces-style editorial in the format you specified, including intuition, optimal solution derivation, walkthrough, and implementation.
+If you paste either:
 
-Send the problem text and I’ll continue from there.
+- the full problem statement, or
+- a screenshot/text of the task including constraints and samples, or
+- even just a rough description of what the problem asks,
+
+I can produce the full senior-level Codeforces editorial in the exact format you requested (problem understanding → approaches → algorithm → code → proofs → tests, etc.).

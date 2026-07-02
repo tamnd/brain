@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2775 contests, 19847 problems, 11192 verified."
+description: "Codeforces problem solutions with full editorials. 2776 contests, 19856 problems, 11201 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2775 contests, 19847 problems, 11192 verified.**
+**2776 contests, 19856 problems, 11201 verified.**
 
-## Unknown — 655 contests, 5446 problems, 3417 verified
+## Unknown — 656 contests, 5454 problems, 3426 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103567](103567/) | [2021-2022 Olympiad Cognitive Technologies, Prefinal Round](https://codeforces.com/contest/103567) | 8 | 8/8 | Special | - |
 | [103573](103573/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая личная олимпиада](https://codeforces.com/contest/103573) | 4 | 0/4 | Special | - |
 | [103586](103586/) | [Интернет-олимпиады, Сезон 2021-2022, Третья личная олимпиада](https://codeforces.com/contest/103586) | 4 | 1/4 | Special | - |
 | [103590](103590/) | [RocketOlymp 2022 9 класс](https://codeforces.com/contest/103590) | 5 | 3/5 | Special | - |
@@ -55,7 +56,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
 | [103960](103960/) | [2022-2023 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103960) | 14 | 3/14 | ICPC/IOI | - |
-| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 6/11 | Special | - |
+| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 7/11 | Special | - |
 | [103965](103965/) | [Интернет-олимпиады, Сезон 2022-2023, Первая командная олимпиада](https://codeforces.com/contest/103965) | 10 | 9/10 | Special | - |
 | [103966](103966/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (базовая версия)](https://codeforces.com/contest/103966) | 8 | 1/8 | Special | - |
 | [103967](103967/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (продвинутая версия)](https://codeforces.com/contest/103967) | 10 | 1/10 | Special | - |
@@ -1756,7 +1757,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 207 contests, 1606 problems, 763 verified
+## 2022 — 207 contests, 1607 problems, 763 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1900,7 +1901,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103604](103604/) | [AGM 2022 Qualification Round](https://codeforces.com/contest/103604) | 12 | 3/12 | Special | - |
 | [103624](103624/) | [UTPC Contest 03-25-22 Div. 2 (Beginner)](https://codeforces.com/contest/103624) | 7 | 0/7 | Div. 2 | - |
 | [103625](103625/) | [UTPC Contest 03-25-22 Div 1. (Advanced)](https://codeforces.com/contest/103625) | 8 | 1/8 | Special | - |
-| [103633](103633/) | [Infoleague Spring 2022 Round Div. 2](https://codeforces.com/contest/103633) | 2 | 2/2 | Div. 2 | - |
+| [103633](103633/) | [Infoleague Spring 2022 Round Div. 2](https://codeforces.com/contest/103633) | 3 | 2/3 | Div. 2 | - |
 | [103634](103634/) | [Infoleague Spring 2022 Round Div. 1](https://codeforces.com/contest/103634) | 3 | 1/3 | Div. 1 | - |
 | [103647](103647/) | [UTPC Contest 04-08-22 Div. 2 (Beginner)](https://codeforces.com/contest/103647) | 9 | 0/9 | Div. 2 | - |
 | [103648](103648/) | [UTPC Contest 04-08-22 Div. 1 (Advanced)](https://codeforces.com/contest/103648) | 9 | 1/9 | Div. 1 | - |
