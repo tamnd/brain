@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2764 contests, 19758 problems, 11149 verified."
+description: "Codeforces problem solutions with full editorials. 2765 contests, 19763 problems, 11149 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2764 contests, 19758 problems, 11149 verified.**
+**2765 contests, 19763 problems, 11149 verified.**
 
-## Unknown — 649 contests, 5406 problems, 3396 verified
+## Unknown — 650 contests, 5411 problems, 3396 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103623](103623/) | [Индивидуальная олимпиада школьников по информатике и программированию 2022](https://codeforces.com/contest/103623) | 5 | 0/5 | Special | - |
 | [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 11 | 8/11 | Special | - |
 | [103630](103630/) | [2022 VII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103630) | 10 | 0/10 | Special | - |
 | [103631](103631/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/103631) | 4 | 3/4 | Special | - |
