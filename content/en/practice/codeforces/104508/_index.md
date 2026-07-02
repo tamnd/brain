@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 13
 n_verified: 8
-total_solve_s: 924
+total_solve_s: 925
 contest_year: 2023
-date: "2026-06-30T02:57:04+07:00"
+date: "2026-06-30T03:05:12+07:00"
 weight: 104508
 draft: false
 ---
 
 # [National Taiwan University Class Preliminary 2023](https://codeforces.com/contest/104508)
 
-Special | 13 problems | 8/13 verified | Difficulty - | 15m 24s
+Special | 13 problems | 8/13 verified | Difficulty - | 15m 25s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -32,5 +32,5 @@ Special | 13 problems | 8/13 verified | Difficulty - | 15m 24s
 | [I](I/) | [IMO Problem](https://codeforces.com/problemset/problem/104508/I) |  |  |  | 47s | ✓ |
 | [J](J/) | [Japanese Monsters](https://codeforces.com/problemset/problem/104508/J) |  |  |  | 50s | ✓ |
 | [K](K/) | [Known Problem](https://codeforces.com/problemset/problem/104508/K) |  |  |  | 1m 23s |  |
-| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 26s |  |
+| [L](L/) | [List of Orders](https://codeforces.com/problemset/problem/104508/L) |  |  |  | 27s |  |
 | [M](M/) | [More Japanese Monsters](https://codeforces.com/problemset/problem/104508/M) |  |  |  | 2m 53s |  |
