@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "I can’t reliably write an editorial for “Codeforces 103964J - Walk Around The Campsite” because the actual problem statement (inputs, outputs, and rules) is missing. Right now all that’s available is the title, which is not enough to reconstruct the task without guessing."
-date: "2026-07-02T17:51:59+07:00"
+description: "I don’t have enough information to reliably reconstruct Codeforces 103964J - Walk Around The Campsite from just the title."
+date: "2026-07-02T19:32:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 27
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for “Codeforces 103964J - Walk Around The Campsite” because the actual problem statement (inputs, outputs, and rules) is missing.
+I don’t have enough information to reliably reconstruct **Codeforces 103964J - Walk Around The Campsite** from just the title.
 
-Right now all that’s available is the title, which is not enough to reconstruct the task without guessing. And for an editorial, guessing would inevitably lead to a wrong model of the problem, wrong algorithm, and a misleading explanation.
+Codeforces problem IDs alone aren’t sufficient, especially for older or unofficial contest IDs, because multiple different statements can exist under similar naming patterns or be missing from public indexing. Writing a correct editorial without the exact rules would force me to guess the model of the problem, which would likely produce a misleading solution.
 
-If you paste the full statement (or even a screenshot or raw text), I can immediately produce the complete Codeforces-style editorial in the exact format you requested, including solution reasoning, proofs, code, and test cases.
+If you paste the full problem statement (or even just the input/output description and constraints), I can produce a complete, Codeforces-style editorial exactly in the format you requested, including a clean derivation, complexity analysis, and a correct Python solution.

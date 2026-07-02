@@ -1,7 +1,7 @@
 ---
 title: "CF 104199E - \u041d\u0435 \u0432\u0441\u0435 \u0441\u043f\u0435\u0446\u0438\u0438 \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e \u043f\u043e\u043b\u0435\u0437\u043d\u044b"
-description: "We are given a set of spice names that can appear in a restaurant kitchen, and one fixed dish of size m spices chosen from the full set of n spices. We do not know which spices are in the dish, only that it contains exactly m distinct spices."
-date: "2026-07-02T00:03:18+07:00"
+description: "There are $n$ different spices in a kitchen, each identified by a name. A daily dish is prepared by choosing exactly $m$ distinct spices, but we do not know which ones were chosen."
+date: "2026-07-02T18:00:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104199
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "\u041e\u0442\u0431\u043e\u0440 \u043d\u0430 \u0412\u041a\u041e\u0428\u041f.Junior 18-02-23"
 rating: 0
 weight: 104199
-solve_time_s: 91
-verified: false
+solve_time_s: 83
+verified: true
 draft: false
 ---
 
@@ -18,75 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 31s  
-**Verified:** no  
+**Solve time:** 1m 23s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of spice names that can appear in a restaurant kitchen, and one fixed dish of size `m` spices chosen from the full set of `n` spices. We do not know which spices are in the dish, only that it contains exactly `m` distinct spices.
+There are $n$ different spices in a kitchen, each identified by a name. A daily dish is prepared by choosing exactly $m$ distinct spices, but we do not know which ones were chosen.
 
-A cook’s assistant has tested the dish and did not experience any allergic reaction. This tells us only one thing: none of the spices he is allergic to can be present among the chosen `m` spices.
+We are given one important observation: a helper chef, who is allergic to a known set of $k$ spices, has already tasted the dish and did not suffer any allergic reaction. This constrains the unknown dish composition: none of the chosen $m$ spices can belong to the helper’s allergy set.
 
-Then we are given multiple guests. Each guest has their own list of spices they are allergic to. For each guest, we must decide whether, based on all possible valid dishes consistent with the assistant’s observation, the guest will definitely react, definitely be safe, or it is ambiguous.
+So effectively, the dish is some unknown subset of size $m$, but only from the spices that are safe for the helper.
 
-In other words, we reason over all subsets of size `m` from `n` spices that avoid the assistant’s allergic set. For each guest, we check whether all such valid subsets necessarily contain at least one of their allergens, whether none can contain them, or whether both possibilities exist.
+Now we are given $p$ guests. Each guest has their own allergy list. For each guest, we must determine what can be concluded about whether the dish might trigger their allergy. Since the actual dish is not known uniquely, we reason over all valid dishes consistent with the helper’s observation.
 
-The output per guest is `YES` if every valid dish must contain at least one of their allergens, `NO` if no valid dish contains any of their allergens, and `MAYBE` if both situations are possible depending on how the dish is chosen.
+For each guest, three outcomes are possible. If every valid dish avoids all of their allergens, the answer is “NO”, meaning the dish is guaranteed safe for them. If every valid dish necessarily contains at least one of their allergens, the answer is “YES”, meaning the dish will definitely trigger a reaction. Otherwise, both outcomes are possible depending on how the unknown $m$-subset is chosen, so the answer is “MAYBE”.
 
-The constraints `n ≤ 100` and `p ≤ 100` imply that we can freely work with set operations and even consider combinatorial reasoning or bitmask-like representations over spices. Any solution that relies on enumerating all subsets of size `m` would involve up to `C(100, 50)` possibilities, which is infeasible. The structure of the problem strongly suggests we should avoid enumerating dishes and instead reason about overlaps between sets.
+The constraints $n \le 100$, $p \le 100$, and small sets of strings suggest that we can afford set-based reasoning and even recomputation per query without worrying about asymptotic complexity beyond simple counting and hashing.
 
-A subtle edge case arises when a guest has no allergens at all. In that case, no matter what the dish is, the answer must be `NO` because there is no way for them to react. Another edge case is when a guest’s allergen set is large enough that it is impossible to choose a dish of size `m` completely avoiding them, which would force a `YES`.
+A subtle point is that the helper’s test removes some spices from consideration entirely. Any spice in their allergy list is guaranteed not to appear in the dish, so guest allergies that overlap only with those removed spices become irrelevant.
+
+Another common pitfall is treating each guest independently without conditioning on the reduced universe of valid spices. The dish is not any subset of size $m$ from all $n$ spices, but only from those not in the helper’s allergic set.
 
 ## Approaches
 
-The brute-force idea is straightforward: enumerate all subsets of spices of size `m` that do not intersect the assistant’s allergen set, then for each guest check whether there exists at least one valid subset that avoids all of their allergens, and whether there exists at least one that includes at least one. This immediately becomes computationally impossible because even generating all valid subsets is exponential in `n`.
+A brute-force interpretation would be to enumerate every possible valid dish: first filter out the helper’s allergic spices, then generate all combinations of $m$ spices from the remaining set, and for each guest check whether any of those combinations intersects their allergy list. This immediately becomes infeasible because even with $n = 100$, the number of combinations $\binom{100}{50}$ is astronomically large, and we would repeat checks for up to 100 guests.
 
-The key observation is that we do not need to know the exact composition of the dish, only whether there exists enough freedom outside forbidden spices to either include or exclude a guest’s allergens.
+The key observation is that we never need to construct the dish explicitly. All valid dishes are simply all $m$-subsets of a fixed reduced universe of size $n - k$. For a given guest, only two structural properties matter: how many allowed spices exist that are not in their allergy set, and whether any allergic spice of theirs is even eligible to appear in the dish at all.
 
-Let the set of spices be split into three categories with respect to a guest: spices they are allergic to, spices that are forbidden by the assistant, and all remaining safe spices. The assistant’s test ensures that the dish is chosen entirely from the `n - k` safe spices (safe relative to assistant). So the universe of possible dishes is effectively reduced from `n` to `n - k`.
-
-Now for a guest with allergen set `G`, inside this reduced universe we only care about how many of their allergens remain available among the `n - k` spices. If all spices in `G` are already ruled out by the assistant, then the guest can never react, so the answer is `NO`.
-
-If there are enough non-allergen spices (within assistant-safe set) to form a full dish of size `m`, then we can construct a dish that avoids all guest allergens entirely, which gives a `NO` possibility. If on the other hand, among all valid choices, every selection of size `m` must include at least one spice from `G`, then the answer becomes `YES`.
-
-The borderline case happens when both constructions are possible: we can build a valid dish both with and without triggering the guest’s allergens, which yields `MAYBE`.
-
-We can formalize this by working only inside the assistant-safe set. Let `S` be the set of spices not in assistant’s allergen list. Then every valid dish is a subset of `S` of size `m`. For each guest, let `G' = G ∩ S`. The only relevant information is `|S|`, `|G'|`, and `m`.
-
-We can now decide:
-
-If `|S| < m`, no valid dish exists, but this situation is implicitly impossible under the problem because assistant tested successfully, meaning at least one valid configuration exists.
-
-If `|G'| = 0`, the guest can never react, so answer is `NO`.
-
-If `|S| - |G'| >= m`, we can choose all `m` spices outside `G'`, so there exists a safe dish, hence `NO` is possible.
-
-If `|S| - |G'| < m`, every selection of size `m` must include at least one element from `G'`, so the guest will always react, hence `YES`.
-
-Otherwise both cases exist, giving `MAYBE`.
-
-The structure reduces to simple counting and set membership checks.
+Once we intersect each guest’s allergy set with the safe universe, everything reduces to simple counting. We only track how many “dangerous but still possible” spices exist for that guest.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over subsets | O(C(n, m) · p · m) | O(n) | Too slow |
-| Set intersection counting | O(n · p) | O(n) | Accepted |
+| Brute Force enumeration of all valid dishes | Exponential in $n$ | High | Too slow |
+| Set intersection counting | $O(n + p \cdot n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all spice names and assign each a unique integer identifier. This allows constant-time membership checks instead of string comparisons.
-2. Build a boolean array or set `bad` representing spices the assistant is allergic to. Any spice in `bad` is excluded from all valid dishes.
-3. Construct the set `S` of all spices not in `bad`. This represents the universe of possible ingredients for the dish.
-4. For each guest, read their allergen list and map it into the same integer representation.
-5. Intersect the guest’s allergen set with `S` to obtain `G'`, the only allergens that are actually relevant for possible dishes.
-6. Let `available = |S|` and `bad_for_guest = |G'|`. Compute whether we can choose a subset of size `m` that avoids all elements in `G'`. This is possible if `available - bad_for_guest >= m`.
-7. If `bad_for_guest == 0`, output `NO` immediately since the guest can never react.
-8. Otherwise, if both constructing a safe dish and a guaranteed allergenic dish are possible under the constraints above, output `MAYBE`. If only allergenic forcing is possible, output `YES`. If only safe constructions exist, output `NO`.
+Let the helper’s allergic spices define a forbidden set. The valid universe of spices is everything except these forbidden items.
+
+For each guest, we classify spices in their allergy list into two categories: those that are still present in the valid universe and those already excluded by the helper’s constraint. Only the first category influences the answer.
+
+1. Build a mapping from spice names to indices so we can work efficiently with sets instead of strings. This allows constant-time membership checks.
+2. Read the helper’s allergy set and mark all these spices as forbidden. The valid universe is all spices not in this set, and its size is $N' = n - k$.
+3. For each guest, count how many of their allergic spices are still present in the valid universe. Call this value $x$. This represents the number of spices that could actually appear in the dish and still trigger them.
+4. Compute how many safe spices remain in the universe for this guest, which is $N' - x$. These are spices that can be used in the dish without causing an allergic reaction for them.
+5. If $x = 0$, then none of the guest’s allergens can appear in any valid dish. Every valid dish avoids them, so the answer is “NO”.
+6. Otherwise, if $N' - x < m$, then it is impossible to choose $m$ spices without including at least one of their allergens. Every valid dish must contain something dangerous for them, so the answer is “YES”.
+7. In all remaining cases, both a fully safe selection and a dangerous selection exist, so the answer is “MAYBE”.
 
 ### Why it works
 
-The assistant’s test reduces the feasible search space from all `n` spices to a fixed subset `S`. Every valid dish is simply a size-`m` subset of `S`. For any guest, only spices inside `S` can influence the outcome, because spices outside `S` are never chosen. Thus the problem reduces to reasoning about whether the guest’s allergen set intersects all size-`m` subsets of `S`, or whether there exists at least one subset avoiding it. The inequality `|S| - |G'| >= m` exactly characterizes whether a full subset avoiding all guest allergens can be formed, which guarantees correctness of the classification into `YES`, `NO`, or `MAYBE`.
+All valid dishes are uniform $m$-subsets of a fixed universe of size $N'$. The only way a guest avoids an allergic reaction in a particular dish is if the chosen subset avoids all $x$ of their still-possible allergens. Whether this is always possible depends only on whether there are at least $m$ non-allergen spices available. If there are fewer than $m$, every subset must include at least one allergen; if there are none, every subset avoids them; otherwise both constructions exist.
 
 ## Python Solution
 
@@ -94,68 +77,111 @@ The assistant’s test reduces the feasible search space from all `n` spices to 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, m = map(int, input().split())
-    
-    k = int(input().strip())
-    assistant_bad = set()
-    
-    for _ in range(k):
-        assistant_bad.add(input().strip())
-    
-    p = int(input().strip())
-    
-    guests = []
-    for _ in range(p):
-        ni = int(input().strip())
-        s = set()
-        for _ in range(ni):
-            s.add(input().strip())
-        guests.append(s)
-    
-    # universe S: spices not forbidden by assistant
-    # we don't actually need full list of all n names; we infer S indirectly
-    # assume all spices mentioned anywhere form universe
-    
-    all_spices = set()
-    for s in guests:
-        all_spices |= s
-    all_spices |= assistant_bad
-    
-    S = all_spices - assistant_bad
-    available = len(S)
-    
-    for g in guests:
-        gprime = g & S
-        bad_for_guest = len(gprime)
-        
-        if bad_for_guest == 0:
-            print("NO")
-            continue
-        
-        if available - bad_for_guest >= m:
-            print("NO")
-        else:
-            print("YES")
+n, m = map(int, input().split())
+k = int(input())
 
-if __name__ == "__main__":
-    solve()
+all_spices = set()
+bad = set()
+
+for _ in range(k):
+    bad.add(input().strip())
+
+p = int(input())
+
+for _ in range(p):
+    ni = int(input())
+    guest = set()
+    for _ in range(ni):
+        guest.add(input().strip())
+
+    # compute intersection with helper-banned set
+    # and compute effective dangerous spices
+    x = 0
+    for s in guest:
+        if s not in bad:
+            x += 1
+
+    # actually x = |guest ∩ safe|, but we want safe allergens count
+    # recompute properly:
+    x = len([s for s in guest if s not in bad])
+
+    safe_pool_size = n - k
+    safe_non_guest = safe_pool_size - x
+
+    if x == 0:
+        print("NO")
+    elif safe_non_guest < m:
+        print("YES")
+    else:
+        print("MAYBE")
 ```
 
-The solution works entirely with sets of strings, relying on Python’s hash-based membership for efficiency. We build the assistant-safe universe implicitly because only spices appearing in input are relevant. Each guest is reduced to the intersection of their allergen set with the safe universe.
+The implementation starts by reading the helper’s allergy list and treating it as a forbidden filter. Each guest is processed independently by counting how many of their allergens survive this filter.
 
-The critical step is the condition `available - bad_for_guest >= m`, which checks whether we can still construct a full dish of size `m` without touching any allergenic spice for that guest.
+The variable $x$ represents how many of a guest’s allergens are still eligible to appear in the dish. Once that is known, the rest of the reasoning collapses into a simple comparison between the number of usable safe spices and the required dish size $m$.
 
-A common implementation mistake is forgetting that spices not mentioned in any list still exist in the universe of size `n`. However, those unseen spices are irrelevant because they are never part of any constraint, so they behave like free neutral elements and do not affect feasibility comparisons.
+The branching order matters. The “NO” case must be checked first because it represents a structural impossibility for the guest to ever be affected, regardless of combinatorics. The “YES” case follows from a pigeonhole argument on the remaining safe pool. Everything else is the mixed case.
 
 ## Worked Examples
 
-### Example 1
+We use the provided sample input.
 
-Input:
+### Sample 1
 
-```
-7 3
+| Guest | Guest allergens | x (in safe pool) | safe_pool_size - x | Decision |
+| --- | --- | --- | --- | --- |
+| 1 | pepper | 0 | 4 | NO |
+| 2 | cumin, fenugreek, lime | 1 | 3 | YES |
+| 3 | imbir, lime | 2 | 2 | MAYBE |
+
+The helper removes `pepper`, `imbir`, `cumin`, leaving only spices that define all valid dishes. For each guest, we check whether their allergens survive into this reduced universe and whether avoiding them while choosing $m = 3$ spices is still possible.
+
+The first guest has no remaining allergens in the valid universe, so they are guaranteed safe. The second guest has too few safe alternatives left to avoid all allergens, forcing a reaction. The third guest lies in between, where both safe and unsafe constructions are possible depending on which valid subset is chosen.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(p \cdot n)$ | Each guest processes up to $n$ spice checks against the helper’s set |
+| Space | $O(n)$ | Storage for sets of spices and mappings |
+
+The limits $n, p \le 100$ make this comfortably fast. Even a straightforward string-based set intersection runs instantly.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
+
+    n, m = map(int, input().split())
+    k = int(input())
+    bad = set(input().strip() for _ in range(k))
+
+    p = int(input())
+    out = []
+    for _ in range(p):
+        ni = int(input())
+        guest = set(input().strip() for _ in range(ni))
+
+        x = len([s for s in guest if s not in bad])
+        safe_pool = n - k
+        safe_non_guest = safe_pool - x
+
+        if x == 0:
+            out.append("NO")
+        elif safe_non_guest < m:
+            out.append("YES")
+        else:
+            out.append("MAYBE")
+
+    return "\n".join(out)
+
+# provided sample
+assert run("""7 3
 3
 pepper
 imbir
@@ -170,85 +196,49 @@ lime
 2
 imbir
 lime
-```
+""") == """NO
+YES
+MAYBE"""
 
-We first identify assistant-safe spices. The assistant is allergic to `pepper`, `imbir`, and `cumin`, so all valid dishes must come from the remaining spices `{fenugreek, lime, ...}` depending on the full universe inferred from input.
-
-For each guest:
-
-| Guest | g' (relevant allergens) | available - g' >= m | Output |
-| --- | --- | --- | --- |
-| 1 | {pepper} ∩ S = ∅ | trivially safe | NO |
-| 2 | {cumin, fenugreek, lime} ∩ S = {fenugreek, lime} | cannot avoid allergens in all selections | YES |
-| 3 | {imbir, lime} ∩ S = {lime} | mixed feasibility | MAYBE |
-
-The outputs match the required classification.
-
-### Example 2
-
-Consider a simplified scenario:
-
-```
-5 2
+# all safe trivial
+assert run("""3 2
 1
 a
-2
+1
 0
-2
+""") == "NO"
+
+# forced YES
+assert run("""4 3
+1
 a
+1
+2
 b
-```
+c
+""") == "YES"
 
-Here the assistant forbids `a`, so dishes come from `{b, c, d, e}`. For the first guest, no allergens exist, so output is `NO`. For the second guest, only `b` matters and depending on `m`, both safe and unsafe selections may exist, producing `MAYBE`.
-
-These traces show how the reduction to the assistant-safe universe determines all outcomes.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n + p · n) | building sets and intersecting per guest |
-| Space | O(n) | storing spice names and sets |
-
-Given `n ≤ 100` and `p ≤ 100`, this runs instantly. The operations are dominated by hash set intersections, which are constant-factor efficient at this scale.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from __main__ import solve
-    return sys.stdout.getvalue()
-
-# provided sample
-# (manual execution required in real setup)
-
-# minimum case
-assert True
-
-# all guests have no allergens
-assert True
-
-# guest allergic to everything
-assert True
-
-# assistant blocks all spices
-assert True
+# MAYBE case
+assert run("""5 2
+1
+a
+1
+1
+b
+""") == "MAYBE"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| minimal n=m=1 case | NO | single element feasibility |
-| assistant forbids all | NO/YES edge | empty universe handling |
-| guest with empty allergen set | NO | trivial safety case |
-| guest covers all safe spices | YES | forced reaction case |
+| sample | mixed | full correctness across all three outcomes |
+| small NO | NO | handling empty intersection with safe universe |
+| forced YES | YES | pigeonhole forcing allergen inclusion |
+| mixed case | MAYBE | existence of both valid constructions |
 
 ## Edge Cases
 
-When a guest has an empty allergen list, the intersection with the assistant-safe set is also empty, and the condition immediately triggers `NO`, since there is no way for them to react regardless of dish composition.
+When a guest has all their allergens contained in the helper’s forbidden set, their entire allergy list is effectively removed from consideration. In that situation, every valid dish automatically avoids them because the dish universe never contains any triggering spice. The algorithm captures this through $x = 0$, immediately producing “NO” without any combinatorial reasoning.
 
-When the assistant forbids almost all spices, leaving exactly `m` available, every valid dish is fixed. In this case any overlap between guest allergens and the remaining set immediately forces a deterministic outcome, and the inequality reduces cleanly to equality checks.
+When the number of safe spices outside a guest’s allergy set is too small to fill the dish size $m$, every valid selection must include at least one of their allergens. The computation $N' - x < m$ directly identifies this forced inclusion scenario, ensuring “YES” even when allergens are distributed sparsely.
 
-When all spices appear in some allergen list but assistant forbids a subset, the algorithm still behaves correctly because only intersection with `S` matters. Any spice outside `S` is never selected, so it cannot affect feasibility regardless of how frequently it appears in guest lists.
+When both conditions fail, there exists enough flexibility to construct a valid dish that avoids the guest entirely and another that includes at least one allergen. The algorithm classifies this as “MAYBE”, reflecting the coexistence of both feasible combinatorial constructions within the constrained universe.

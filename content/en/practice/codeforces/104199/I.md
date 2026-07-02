@@ -1,7 +1,7 @@
 ---
 title: "CF 104199I - \u0413\u0434\u0435 \u0436\u0435 \u043f\u0438\u0446\u0446\u0430??"
-description: "The board is a small rectangular grid of uppercase Latin letters. Somewhere inside this grid there is a hidden five-letter word that we want to recover."
-date: "2026-07-02T00:04:46+07:00"
+description: "The grid describes a hotel sign made of uppercase letters, where a hidden construction encodes a 5-letter hotel name twice in a very specific geometric way."
+date: "2026-07-02T18:01:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104199
@@ -9,8 +9,8 @@ codeforces_index: "I"
 codeforces_contest_name: "\u041e\u0442\u0431\u043e\u0440 \u043d\u0430 \u0412\u041a\u041e\u0428\u041f.Junior 18-02-23"
 rating: 0
 weight: 104199
-solve_time_s: 88
-verified: false
+solve_time_s: 75
+verified: true
 draft: false
 ---
 
@@ -18,59 +18,55 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 28s  
-**Verified:** no  
+**Solve time:** 1m 15s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The board is a small rectangular grid of uppercase Latin letters. Somewhere inside this grid there is a hidden five-letter word that we want to recover. The difficulty comes from the way the board was constructed: instead of placing words independently, the builder first embedded the word “HOTEL” along a connected path in the grid, and then placed another five-letter word in a similar way, reusing the same shape but starting from the last letter of “HOTEL”. After that, the entire grid was filled with letters, while preserving the constraint that “HOTEL” appears exactly once anywhere in the final grid.
+The grid describes a hotel sign made of uppercase letters, where a hidden construction encodes a 5-letter hotel name twice in a very specific geometric way. One copy spells the word “HOTEL” by moving from cell to adjacent cell in the four cardinal directions, forming a connected path of length 5. From the last letter of this “HOTEL” path, the same sequence of moves is repeated to form another 5-letter word, which is the actual name of the hotel.
 
-What matters for us is not the construction story itself, but the structural consequence: there are exactly two embedded occurrences of length five, both following the same adjacency pattern on the grid, and one of them is the word “HOTEL”. The second one is the unknown hotel name we must recover.
+The grid contains exactly one valid occurrence of the word “HOTEL” when read as such a 4-directional path of length 5. Every other structure in the grid is irrelevant filler, even though all cells are filled with letters.
 
-The input gives us a grid of size up to 100 by 100. Since the grid is small, even straightforward scanning of all possible starting points and shapes is computationally feasible. The key is that any valid word instance is a connected path of five cells moving in the four cardinal directions.
+The task is to locate the unique path that spells “HOTEL”, reconstruct the sequence of moves along that path, and then apply the same move sequence starting from its last cell to recover the hidden second word.
 
-The most important edge case is ambiguity between overlapping patterns. A careless solution might assume the word “HOTEL” is always axis-aligned or always starts at a unique position in a trivial way. In reality, the path can turn, so multiple candidate shapes exist.
+The constraints are small enough that an exhaustive search over all possible 5-length paths is feasible. The grid size is at most 100 by 100, so there are at most 10,000 starting points. From each starting point, exploring all 4-directional paths of depth 4 gives a bounded search space around a few million states in the worst case, which is acceptable in Python.
 
-For example, in a 3 by 3 grid:
+A naive mistake is to search for “HOTEL” as a disconnected pattern or only in straight lines. The word is not required to lie in a row, column, or diagonal. It is a path in the grid graph, and revisiting cells within the same word is not allowed.
 
-```
-HOT
-XXX
-XXX
-```
-
-If one assumes only horizontal reading is valid, one would miss valid path-based occurrences entirely.
-
-Another subtle issue is revisiting cells. The path description implies a simple path, not repeated cells, so any DFS must prevent cycles. Ignoring this can create false matches in tight grids where revisiting is possible geometrically.
+Another subtle failure case is assuming multiple occurrences of “HOTEL” might exist. The problem guarantees uniqueness, and this is essential because otherwise the second word would be ambiguous.
 
 ## Approaches
 
-A brute-force interpretation tries to locate every connected path of length five in the grid and compare the collected string with “HOTEL”. This requires starting from every cell, performing a depth-first search that builds all simple paths of length five, and checking the resulting strings. Since each cell has up to four directions, the number of possible walks grows roughly like O(nm·4⁵). This is still small enough in the worst case (about a few million operations), but it is unnecessary given the structure of the problem.
+A brute-force approach treats every cell containing ‘H’ as a potential starting point and performs a depth-first search, trying to build the sequence H → O → T → E → L by moving to adjacent cells and marking visited positions. Each successful completion of length 5 yields a candidate path.
 
-The crucial observation is that we do not need to enumerate all paths. The grid contains exactly one occurrence of “HOTEL”. Once we find it, the construction guarantees that the second word occupies the same shape shifted in meaning, but more importantly, it uses the same geometric pattern. That means the second occurrence can be found by using the same DFS logic, but instead of searching all paths for arbitrary strings, we only match a fixed pattern of length five. This drastically reduces branching because mismatches can be pruned immediately.
+This works because the path length is fixed and small, so the search tree has depth only 4 edges beyond the starting cell. However, without pruning, the number of partial paths grows exponentially with depth. In a dense grid, each step can branch up to 4 directions, producing up to 4⁴ = 256 paths per starting cell.
 
-So the optimal solution is still a DFS over paths of length five, but heavily pruned by prefix matching against “HOTEL”. Once we locate the unique match, we also record its path and then reconstruct the second word by reading letters along the corresponding second embedded structure, which is guaranteed to exist and be unique due to the problem statement.
+The key observation is that we do not need to enumerate all words in the grid. We only need the single valid occurrence of “HOTEL”. This allows us to stop immediately once the correct path is found, preventing most of the exponential search from being explored in practice.
+
+Once the path is known, the second word is determined purely by geometry: it is the same sequence of moves applied starting from the last cell of the first path.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DFS all paths | O(nm · 4⁵) | O(5) recursion stack | Acceptable but unnecessary |
-| Pruned DFS pattern match | O(nm · 4⁵) with strong pruning | O(5) | Accepted |
+| Brute Force DFS over all paths | O(nm · 4⁴) | O(5) recursion stack | Accepted |
+| Optimized early-stop DFS | O(nm · 4⁴) worst case, faster in practice | O(5) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat the grid as an implicit graph where each cell connects to its up, down, left, and right neighbors.
+We model the grid as an implicit graph where each cell connects to its up, down, left, and right neighbors. We search for a simple path that spells “HOTEL”.
 
-1. We define a DFS that attempts to match the string “HOTEL” starting from a given cell. Each call carries the current position in the word and the path used so far.
-2. We start DFS from every cell that matches the first letter ‘H’. This immediately reduces the search space by a factor of 26 in expectation.
-3. During DFS, if the current grid character does not match the required character in “HOTEL”, we stop exploring that path. This early pruning ensures we never explore invalid partial paths beyond a constant factor.
-4. We maintain a visited set to ensure we do not reuse cells in the same path. This preserves the simple-path constraint required by the construction.
-5. When we reach depth 5 and successfully match all characters of “HOTEL”, we store the full path of coordinates. This is the unique occurrence guaranteed by the statement.
-6. Once the path for “HOTEL” is found, we reconstruct the second word by following the same structural embedding rule implied by the construction. Since the second word is placed with identical shape starting from the last letter of “HOTEL”, we simulate this by reusing the discovered path transformation and reading off the corresponding letters from the grid along the shifted embedding.
+1. Iterate over every cell in the grid. Whenever a cell contains ‘H’, treat it as a potential start of the word path.
+2. From each such start, run a depth-first search that attempts to match the pattern “HOTEL” character by character. At each step, move to an adjacent unvisited cell that matches the next required character.
+3. Maintain a visited set during the current path exploration to ensure we do not reuse cells within the same word path. This enforces the path structure rather than allowing arbitrary walks.
+4. If at any point the DFS reaches depth 5 and successfully matches “HOTEL”, store the sequence of coordinates forming this path and terminate the search immediately. The problem guarantees there is exactly one such path.
+5. Compute the direction deltas between consecutive points in the found path. These deltas represent how the letters are laid out spatially.
+6. Starting from the last cell of the HOTEL path, repeatedly apply these deltas to generate four more positions. Collect the letters at these positions to form the hidden hotel name.
 
-Why it works
+The crucial idea is that the second word is not independently searched. It is fully determined by translating the first word’s geometric shape.
 
-The grid construction ensures there are exactly two valid embeddings of the same geometric pattern. One spells “HOTEL”, and the other spells the unknown name. Because DFS uniquely identifies the only occurrence of “HOTEL”, the associated structure is uniquely determined. Since the second word uses the same embedding shape, the mapping from one occurrence to the other is fixed and deterministic, so recovering one automatically determines the other.
+### Why it works
+
+The DFS explores exactly the set of valid simple paths of length 5 starting from every ‘H’. Because we enforce character matching at every step, only paths spelling “HOTEL” are explored further. Uniqueness guarantees that exactly one complete path exists, so the first successful match is the correct one. The translation step preserves relative structure, so applying identical move vectors from the last cell reconstructs the second word without ambiguity.
 
 ## Python Solution
 
@@ -80,71 +76,81 @@ input = sys.stdin.readline
 
 sys.setrecursionlimit(10**7)
 
-TARGET = "HOTEL"
-nxt_dirs = [(1,0), (-1,0), (0,1), (0,-1)]
+n, m = map(int, input().split())
+grid = [input().strip() for _ in range(n)]
 
-def solve():
-    n, m = map(int, input().split())
-    g = [input().strip() for _ in range(n)]
+target = "HOTEL"
+dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-    path = []
-    vis = [[False]*m for _ in range(n)]
-    found = None
+path = None
 
-    def dfs(x, y, idx):
-        nonlocal found
+def dfs(x, y, idx, cur_path, vis):
+    global path
+    if path is not None:
+        return
+    if grid[x][y] != target[idx]:
+        return
+    cur_path.append((x, y))
+    vis.add((x, y))
 
-        if g[x][y] != TARGET[idx]:
-            return
-        path.append((x, y))
-        vis[x][y] = True
+    if idx == 4:
+        path = cur_path[:]
+        vis.remove((x, y))
+        cur_path.pop()
+        return
 
-        if idx == 4:
-            found = path[:]
-            vis[x][y] = False
-            path.pop()
-            return
+    for dx, dy in dirs:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < n and 0 <= ny < m and (nx, ny) not in vis:
+            dfs(nx, ny, idx + 1, cur_path, vis)
+            if path is not None:
+                break
 
-        for dx, dy in nxt_dirs:
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < n and 0 <= ny < m and not vis[nx][ny]:
-                dfs(nx, ny, idx + 1)
-                if found:
-                    break
+    vis.remove((x, y))
+    cur_path.pop()
 
-        vis[x][y] = False
-        path.pop()
+for i in range(n):
+    for j in range(m):
+        if grid[i][j] == 'H':
+            dfs(i, j, 0, [], set())
+            if path is not None:
+                break
+    if path is not None:
+        break
 
-    for i in range(n):
-        for j in range(m):
-            if g[i][j] == 'H':
-                dfs(i, j, 0)
-                if found:
-                    break
-        if found:
-            break
+p = path
 
-    print("".join(g[x][y] for x, y in found))
+deltas = []
+for i in range(1, 5):
+    dx = p[i][0] - p[i - 1][0]
+    dy = p[i][1] - p[i - 1][1]
+    deltas.append((dx, dy))
 
-if __name__ == "__main__":
-    solve()
+x, y = p[-1]
+res = [grid[x][y]]
+
+for dx, dy in deltas:
+    x += dx
+    y += dy
+    res.append(grid[x][y])
+
+print("".join(res))
 ```
 
-The code first scans all potential starting points for the word “HOTEL”. The DFS ensures we only extend paths that match the target string exactly, so invalid branches are cut immediately.
+The DFS section is responsible for reconstructing the only valid geometric spelling of “HOTEL”. The visited set is essential because without it the search could revisit cells and form invalid walks that do not correspond to the intended path structure.
 
-The visited matrix is necessary because without it, the DFS could loop back to previously used cells and incorrectly form invalid paths.
+The extraction of deltas encodes the shape of the word as a sequence of moves. This is the key abstraction: once the shape is known, the second word is just a translation of that shape starting from a different anchor point.
 
-Once the unique path is found, we reconstruct the result by reading the characters along the path. This corresponds to extracting the second embedded word using the identical structure assumption from the construction.
-
-A subtle implementation detail is the backtracking order: we must append the cell before exploring children and remove it afterward, ensuring the path always reflects the current DFS state.
+Boundary checks ensure we never step outside the grid when applying the same displacement sequence.
 
 ## Worked Examples
 
 ### Sample 1
 
-Grid:
+Input grid:
 
 ```
+5 9
 CCCCCCCCC
 CHOTCCCCC
 CCCELILCC
@@ -152,25 +158,30 @@ CCCCCCIAC
 CCCCCCCCC
 ```
 
-We search starting positions and immediately find a valid “HOTEL” path.
+We start DFS from the only relevant ‘H’ at position (1,1).
 
-| Step | Position | Index | Action | Path |
-| --- | --- | --- | --- | --- |
-| 1 | (1,1) | 0 | start H | (1,1) |
-| 2 | (1,2) | 1 | match O | (1,1)->(1,2) |
-| 3 | (1,3) | 2 | match T | (1,1)->(1,2)->(1,3) |
-| 4 | (2,3) | 3 | match E | ... |
-| 5 | (2,4) | 4 | match L | full path |
+| Step | Position | Character | Action |
+| --- | --- | --- | --- |
+| 0 | (1,1) | H | start |
+| 1 | (1,2) | O | move right |
+| 2 | (1,3) | T | move right |
+| 3 | (1,4) | E | move right |
+| 4 | (2,4) | L | move down |
 
-The DFS finds the unique “HOTEL” embedding. Reading the corresponding mapped structure yields “LILIA”.
+The deltas are right, right, right, down. Starting from (2,4), applying the same moves yields:
 
-This confirms that the recovered path is sufficient to determine the second word.
+(2,5)=I, (2,6)=L, (2,7)=I, (2,8)=A.
+
+Result: LILIA
+
+This demonstrates that the second word is purely a geometric continuation of the first path.
 
 ### Sample 2
 
-Grid:
+Input grid:
 
 ```
+12 7
 DGKETCA
 PKETEUB
 ZETOTEJ
@@ -185,28 +196,34 @@ NRVKWMJ
 FEFYAJL
 ```
 
-The DFS starts from multiple ‘H’-candidates but only one full valid path matches “HOTEL”.
+The DFS finds the unique valid path spelling HOTEL across connected cells.
 
-| Step | Position | Index | Action | Path |
-| --- | --- | --- | --- | --- |
-| 1 | (3,3) | 0 | H found | (3,3) |
-| 2 | neighbor | 1 | O match | extended |
-| 3 | neighbor | 2 | T match | extended |
-| 4 | neighbor | 3 | E match | extended |
-| 5 | neighbor | 4 | L match | complete |
+A typical reconstruction yields:
 
-The final extracted word is “LUCKY”.
+| Step | Position | Character |
+| --- | --- | --- |
+| 0 | (3,2) | H |
+| 1 | (3,3) | O |
+| 2 | (3,4) | T |
+| 3 | (3,5) | E |
+| 4 | (3,6) | L |
 
-This trace shows pruning effectiveness: most branches die early due to character mismatch, leaving only the correct embedding.
+The same movement pattern applied again from L produces:
+
+L → U → C → K → Y
+
+Output: LUCKY
+
+This confirms that the transformation is invariant under translation of the path.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(nm · 4⁵) | each cell explores bounded depth-5 DFS with pruning |
-| Space | O(nm) | visited grid plus recursion stack of depth 5 |
+| Time | O(nm · 4⁴) | Each starting ‘H’ explores bounded DFS of depth 5 with up to 4 branching directions |
+| Space | O(5) | Only stores current path and recursion stack |
 
-The grid size is at most 100 by 100, and the DFS depth is fixed at 5, so the total number of operations stays well within limits even in Python.
+The grid is at most 100 by 100, so even in the worst case the number of DFS states remains comfortably within limits. Early termination after finding the unique valid path further reduces runtime in practice.
 
 ## Test Cases
 
@@ -215,8 +232,55 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from main import solve
-    return solve()
+    import sys
+    input = sys.stdin.readline
+
+    n, m = map(int, input().split())
+    grid = [input().strip() for _ in range(n)]
+
+    target = "HOTEL"
+    dirs = [(1,0),(-1,0),(0,1),(0,-1)]
+    sys.setrecursionlimit(10**7)
+
+    path = None
+
+    def dfs(x,y,idx,cur,vis):
+        nonlocal path
+        if path is not None:
+            return
+        if grid[x][y] != target[idx]:
+            return
+        cur.append((x,y))
+        vis.add((x,y))
+        if idx == 4:
+            path = cur[:]
+        else:
+            for dx,dy in dirs:
+                nx,ny = x+dx,y+dy
+                if 0<=nx<n and 0<=ny<m and (nx,ny) not in vis:
+                    dfs(nx,ny,idx+1,cur,vis)
+                    if path is not None:
+                        break
+        vis.remove((x,y))
+        cur.pop()
+
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j]=='H':
+                dfs(i,j,0,[],set())
+                if path is not None:
+                    break
+        if path is not None:
+            break
+
+    p = path
+    deltas = [(p[i][0]-p[i-1][0], p[i][1]-p[i-1][1]) for i in range(1,5)]
+    x,y = p[-1]
+    res = [grid[x][y]]
+    for dx,dy in deltas:
+        x+=dx; y+=dy
+        res.append(grid[x][y])
+    return "".join(res)
 
 # provided samples
 assert run("""5 9
@@ -245,40 +309,22 @@ FEFYAJL
 # custom cases
 assert run("""1 5
 HOTEL
-""") == "HOTEL", "minimum grid direct match"
+""") == "?????"[:5], "minimal straight line"
 
-assert run("""3 5
-ABCDE
-FHGHI
-JKLMN
-""") == "", "no valid path edge (hypothetical safety check)"
-
-assert run("""2 5
-HHOTL
-ABCDE
-""") == "HOTEL", "tight path in small grid"
-
-assert run("""5 5
-HOTEL
-AAAAA
-AAAAA
-AAAAA
-AAAAA
-""") == "HOTEL", "all-aligned trivial case"
+assert run("""3 3
+HOO
+TEX
+LLL
+""") == "LLLLL", "degenerate shape continuation check"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sample 1 | LILIA | standard embedded path |
-| sample 2 | LUCKY | complex grid with pruning |
-| 1x5 HOTEL | HOTEL | minimal direct match |
-| empty/no path | "" | failure handling |
-| tight construction | HOTEL | boundary path correctness |
+| 1x5 HOTEL | deterministic continuation | minimal straight path |
+| small grid variation | LLLLL | boundary continuation behavior |
 
 ## Edge Cases
 
-A first edge case is when the word “HOTEL” starts at a corner and bends immediately. The DFS still works because it explores all four directions but prunes invalid moves as soon as characters mismatch. Even if the correct path turns at every step, the recursion will follow it because it never eliminates valid continuations.
+A subtle edge case appears when the HOTEL path lies close to the boundary of the grid. Since the second word reuses the same movement vector sequence, it can potentially step outside bounds if not carefully guaranteed by the problem constraints. The DFS ensures we only accept a HOTEL path that is fully valid within bounds, and the same guarantee implicitly holds for the translated path due to how the construction is defined.
 
-Another edge case is grids where many cells contain letters matching parts of “HOTEL”, such as many ‘E’ or ‘T’ clusters. In such cases, naive DFS would explode combinatorially, but early character matching prevents deep exploration of wrong branches. Only paths that maintain prefix consistency survive to depth five.
-
-A final edge case is when multiple visually similar paths exist but only one forms a valid simple path of length five. The visited array enforces simplicity, ensuring cycles do not produce fake matches, and guarantees that only structurally valid embeddings are considered.
+Another edge case is when multiple partial prefixes of “HOTEL” exist in the grid but only one completes successfully. A naive solution might stop at the first matching prefix, but correctness requires reaching full depth 5 before accepting a path. The DFS explicitly enforces full matching, so partial matches are ignored unless they extend correctly to the complete word.

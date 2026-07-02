@@ -1,7 +1,7 @@
 ---
 title: "CF 103964C - The Battle of Chibi"
-description: "I can’t reliably write an editorial for this yet because the actual problem content is missing. What you provided only includes the title and empty Input/Output sections, so there’s no way to reconstruct the task, constraints, or required algorithm without guessing."
-date: "2026-07-02T17:50:46+07:00"
+description: "I can’t produce a correct, problem-specific Codeforces editorial here because the actual statement for 103964C - The Battle of Chibi is missing from your prompt (it’s shown as blank in the input section)."
+date: "2026-07-02T19:30:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -22,8 +22,17 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for this yet because the actual problem content is missing.
+I can’t produce a correct, problem-specific Codeforces editorial here because the actual statement for **103964C - The Battle of Chibi** is missing from your prompt (it’s shown as blank in the input section).
 
-What you provided only includes the title and empty Input/Output sections, so there’s no way to reconstruct the task, constraints, or required algorithm without guessing. Anything I write from here would be fabrication and very likely wrong for Codeforces 103964C.
+Without the real task description, any “full solution” would be guesswork, and that would almost certainly produce an incorrect algorithm, wrong complexity analysis, and fabricated edge cases.
 
-If you paste the full statement (or even a screenshot / raw text), I’ll produce the complete editorial in the exact format you requested, including brute force reasoning, optimal insight, proof sketch, implementation, and tests.
+If you paste the full problem statement (or even just the core description and constraints), I’ll write the complete editorial in the exact style you requested, including:
+
+- a clean restatement in my own words
+- brute force → optimization reasoning
+- a precise algorithm walkthrough
+- full Python solution
+- worked traces with tables
+- edge case analysis tied to the actual logic
+
+Just send the statement and I’ll take it from there.

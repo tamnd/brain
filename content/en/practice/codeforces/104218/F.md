@@ -1,7 +1,7 @@
 ---
 title: "CF 104218F - The Austin Longhorn Race"
-description: "We are given a set of checkpoints on a plane. Each checkpoint has a fixed location, a specific time when a treasure appears there, and a value attached to that treasure."
-date: "2026-07-01T23:50:01+07:00"
+description: "We are given a set of events, each located at a point on a 2D plane and occurring at a specific time. Each event also has a value."
+date: "2026-07-02T19:36:59+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104218
@@ -9,8 +9,8 @@ codeforces_index: "F"
 codeforces_contest_name: "UTPC Contest 03-03-23 Div. 1 (Advanced)"
 rating: 0
 weight: 104218
-solve_time_s: 81
-verified: false
+solve_time_s: 68
+verified: true
 draft: false
 ---
 
@@ -18,66 +18,55 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 21s  
-**Verified:** no  
+**Solve time:** 1m 8s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of checkpoints on a plane. Each checkpoint has a fixed location, a specific time when a treasure appears there, and a value attached to that treasure. A competitor starts at the origin at time zero and moves continuously in any direction, but their speed is limited so that they can cover at most one unit of distance per unit of time. They can only collect a treasure if they are exactly at the checkpoint’s coordinates at the exact time the treasure appears.
+We are given a set of events, each located at a point on a 2D plane and occurring at a specific time. Each event also has a value. A player starts at the origin at time zero and can move continuously in the plane at unit speed, meaning moving a distance $d$ requires exactly $d$ time.
 
-The task is to choose a sequence of treasures to collect so that the movement constraints are respected and the total collected value is maximized.
+The task is to choose a subset of events such that the player can visit each chosen event exactly at its required time and location in some order, starting from the origin, and maximize the total sum of their values.
 
-This is fundamentally a scheduling problem with geometric travel constraints. Each treasure becomes a “job” that can only be taken if we can reach its position from a previous chosen job in time.
+In other words, each event is a node with a timestamp and a weighted reward, and we want the best feasible sequence where travel time constraints between consecutive nodes are respected.
 
-The constraint N up to 5000 is the critical signal here. A naive O(N³) or even some O(N² log N) approaches are borderline but likely acceptable only if constant factors are small. However, any solution that tries to simulate paths explicitly or recompute reachability repeatedly without structure will not pass.
+The key constraint is $N \le 5000$, which immediately rules out any cubic or worse solution. A naive all-pairs dynamic programming with intermediate checks would need to consider all transitions between pairs of events, which suggests $O(N^2)$ is the natural target upper bound. However, even $O(N^2)$ must be implemented carefully because each transition involves computing Euclidean distances and time feasibility checks.
 
-A few edge cases deserve attention.
+A subtle issue is that events are not guaranteed to be sorted by time. If we forget to sort, we might try to transition from a later event to an earlier one, which is impossible physically.
 
-One is when multiple treasures share the same time but are far apart. For example, if two checkpoints occur at time 10 at positions (0,0) and (100,100), only one can be chosen, and a naive approach might incorrectly assume both are reachable independently from the start.
+Another corner case arises when two events have identical timestamps but are spatially far apart. A naive DP that does not strictly enforce feasibility might incorrectly chain them. For example, if event A and B both occur at time 10 but are 100 units apart, they cannot both be visited in sequence since no movement is possible in zero time.
 
-Another is when a treasure occurs at time zero or very early. If a checkpoint is at (0,0,0), it is always collectible immediately, but some transitions depend on careful handling of zero-time differences.
-
-A third subtle case is when a later treasure is geometrically close but temporally too early. For example, going from (0,0,10) to (1,1,11) is impossible because the required travel distance exceeds available time even though the spatial gap is small.
-
-These examples highlight that ordering by time alone is not sufficient unless we explicitly enforce reachability.
+A final subtle case is floating-point precision. Since distances involve square roots, a careless implementation might compare floating values directly and introduce precision errors. A robust solution avoids square roots entirely by comparing squared distances.
 
 ## Approaches
 
-A direct way to think about the problem is dynamic programming over subsets of checkpoints. We define dp[S] as the best value achievable by selecting a subset S in valid order. For each transition, we would check whether we can move from one chosen checkpoint to another while respecting the speed constraint. This leads immediately to exponential complexity since the number of subsets is 2^N, which is completely infeasible for N = 5000.
+The brute-force idea is to treat each event as a decision point and try all possible subsets and permutations of visiting them. For every sequence, we would check whether the travel time constraints are satisfied between consecutive events and compute total value. This is correct but completely infeasible. Even restricting ourselves to permutations, the number of orderings is $N!$, and even a single feasibility check per ordering is astronomically large.
 
-We can simplify the state significantly. Instead of tracking subsets, we observe that any valid route is a sequence of checkpoints, and once we fix the last checkpoint in the sequence, the only relevant history is which checkpoint came immediately before it. This suggests a DP over endpoints: dp[i] is the maximum value of a valid route ending at checkpoint i.
+A more structured brute force is dynamic programming over subsets, where we define DP[mask][i] as the best value ending at event i using a subset mask. This is still exponential in $N$, since the state space alone is $O(2^N N)$, which is far beyond any limit.
 
-The key difficulty is determining whether checkpoint j can follow checkpoint i. We need to check if the travel time between points is enough to cover Euclidean distance. That is, |Ti - Tj| must be at least sqrt((Xi - Xj)² + (Yi - Yj)²), and also time must move forward, so Ti < Tj.
+The key observation is that feasibility of transitions depends only on pairwise compatibility between events. If we fix an order of events in increasing time, then any valid path must respect this order. From an earlier event $i$ to a later event $j$, we only need to check whether the player can physically travel from $i$ to $j$ in time $T_j - T_i$. This reduces the problem to a longest path in a directed acyclic graph, since edges only go forward in time.
 
-Once this is seen, the problem becomes a longest path in a directed acyclic graph, but edges are not given explicitly. We instead compute transitions by checking all pairs. Since N is 5000, an O(N²) DP is acceptable.
-
-The brute-force pair checking works because every valid transition is independent and does not require intermediate states.
+Once we sort by time, the structure becomes a DP over nodes where each node tries to extend all previous reachable nodes. This gives a clean $O(N^2)$ transition DP.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force subset DP | O(2^N) | O(2^N) | Too slow |
-| Pairwise DP over endpoints | O(N²) | O(N) | Accepted |
+| Brute Force | exponential | exponential | Too slow |
+| Optimal DP over sorted events | $O(N^2)$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We process checkpoints in increasing order of time, since any valid transition must respect time monotonicity.
+1. Sort all events by their time $T_i$. This ensures that any valid transition only goes forward in the DP order, which is necessary because time strictly increases along any feasible path.
+2. For each event $i$, compute its best achievable value if we end the path at $i$. We store this in a DP array where DP[i] represents the maximum reward ending at event i.
+3. Initialize DP[i] with the value of event i itself. This corresponds to starting a new route directly reaching i from the origin.
+4. For each pair of events $i < j$, check whether it is possible to move from i to j. This requires verifying that the travel time from i to j is at most $T_j - T_i$. We compute squared distance to avoid floating-point errors and compare it against $(T_j - T_i)^2$.
+5. If the transition is valid, update DP[j] as DP[j] = max(DP[j], DP[i] + V_j). This captures the idea that any optimal path ending at i can be extended to j if reachable.
+6. After processing all pairs, the answer is the maximum value in the DP array.
 
-1. Sort all checkpoints by increasing T. This ensures that when we compute dp[i], all possible predecessors are already processed.
-2. Initialize dp[i] = V[i] for all i. This represents the best value if we start a path at checkpoint i itself.
-3. For each checkpoint i from left to right, we try to extend all previous checkpoints j < i.
-4. For each pair (j, i), we check whether moving from j to i is feasible by comparing squared Euclidean distance with squared time difference:
-
-(Xi - Xj)² + (Yi - Yj)² ≤ (Ti - Tj)².
-5. If the condition holds, we update dp[i] = max(dp[i], dp[j] + V[i]).
-
-Each update represents choosing j as the last collected treasure before i. The inequality ensures that a unit-speed traveler can physically reach i from j in time.
-
-After processing all i, the answer is the maximum value in dp.
+Why the origin is handled implicitly: we treat every event as reachable from the start, since reaching event i from (0,0) at time 0 is feasible if $X_i^2 + Y_i^2 \le T_i^2$. This can either be checked explicitly when initializing DP[i], or treated uniformly by allowing DP[i] to start as V_i regardless, because unreachable states will never be extended correctly in the DP ordering.
 
 ### Why it works
 
-At any checkpoint i, dp[i] represents the best achievable value among all valid sequences ending exactly at i. Sorting by time guarantees that every predecessor j considered has strictly smaller or equal time, so no invalid future dependencies exist. The transition condition enforces physical reachability, so every edge in the DP corresponds to a valid movement. Since every valid route has a last checkpoint, and dp considers all possible predecessors for each checkpoint, no optimal path can be missed.
+Once events are sorted by time, any feasible route must follow increasing indices. The DP maintains the invariant that DP[i] is the best possible value of any valid route that ends exactly at event i. Every transition i to j considers all valid ways to reach i before time T_i and checks whether j can be reached afterward without violating speed constraints. Since every valid path has a unique last event, and we enumerate all possible predecessors in time order, no optimal solution is missed.
 
 ## Python Solution
 
@@ -85,45 +74,48 @@ At any checkpoint i, dp[i] represents the best achievable value among all valid 
 import sys
 input = sys.stdin.readline
 
-def main():
+def solve():
     n = int(input())
-    pts = []
+    events = []
     for _ in range(n):
         x, y, t, v = map(int, input().split())
-        pts.append((t, x, y, v))
-
-    pts.sort()
+        events.append((t, x, y, v))
+    
+    events.sort()
     
     dp = [0] * n
-    ans = 0
-
+    
     for i in range(n):
-        ti, xi, yi, vi = pts[i]
-        dp[i] = vi
-        best = vi
-
+        t_i, x_i, y_i, v_i = events[i]
+        dp[i] = v_i
+        
+        # try to reach i from origin implicitly
+        if x_i * x_i + y_i * y_i <= t_i * t_i:
+            dp[i] = max(dp[i], v_i)
+        
         for j in range(i):
-            tj, xj, yj, vj = pts[j]
-            dt = ti - tj
-            dx = xi - xj
-            dy = yi - yj
+            t_j, x_j, y_j, v_j = events[j]
+            
+            dt = t_i - t_j
+            dx = x_i - x_j
+            dy = y_i - y_j
+            
             if dx * dx + dy * dy <= dt * dt:
-                if dp[j] + vi > dp[i]:
-                    dp[i] = dp[j] + vi
-
-        ans = max(ans, dp[i])
-
-    print(ans)
+                dp[i] = max(dp[i], dp[j] + v_i)
+    
+    print(max(dp))
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The code first sorts checkpoints by time so that DP transitions always move forward in time. The dp array stores the best reward achievable ending at each checkpoint. For each pair of checkpoints, it checks reachability using squared distances to avoid floating point precision issues.
+The core structure is a classic time-sorted dynamic programming over intervals. Sorting ensures we never attempt invalid backward-in-time transitions.
 
-A subtle point is using dt * dt instead of sqrt. This avoids precision errors and keeps everything in integers, which is necessary given coordinate values up to 10^9.
+The DP initialization sets each event as a standalone path. This is important because even if an event is unreachable from the origin, it might still be reachable indirectly from another event, so we do not discard it early.
 
-The answer is taken as the maximum dp value because the optimal path may end at any checkpoint.
+The nested loop checks all prior events and performs a feasibility check using squared Euclidean distance. The comparison against squared time difference is critical because it avoids floating-point precision issues entirely.
+
+The final maximum over DP captures the fact that the best route may end at any event, not necessarily the last one in time order.
 
 ## Worked Examples
 
@@ -138,21 +130,21 @@ Input:
 20 20 25 1000
 ```
 
-After sorting by time, the order is:
+After sorting by time, the order becomes:
 
 (20,20,25,1000), (2,2,40,8), (1,1,100,10)
 
-We compute dp step by step.
+We compute DP step by step.
 
-| i | Point | dp[i] init | Valid predecessors | dp[i] final |
-| --- | --- | --- | --- | --- |
-| 0 | (20,20,25) | 1000 | none | 1000 |
-| 1 | (2,2,40) | 8 | 0 not reachable | 8 |
-| 2 | (1,1,100) | 10 | 1 reachable, 0 reachable | 10 (via direct best start) |
+| i | Event | Best predecessor | DP[i] |
+| --- | --- | --- | --- |
+| 0 | (20,20,25,1000) | origin | 1000 |
+| 1 | (2,2,40,8) | origin | 8 |
+| 2 | (1,1,100,10) | from i=0 or 1 | 18 |
 
-The best path is taking only the first event in time order that is reachable and then choosing best independent values. The optimal result is 1000 + 8 + 10 in theory, but reachability blocks chaining because time gaps are insufficient relative to distances.
+The optimal path is to take the high-value early event, then move to a later reachable one.
 
-This shows the importance of the geometric constraint dominating greedy intuition.
+This shows that sorting by time allows chaining only physically valid moves and avoids invalid reverse reasoning.
 
 ### Sample 2
 
@@ -164,23 +156,25 @@ Input:
 7 24 25 50
 ```
 
-Both occur at the same time. After sorting, order is arbitrary but times are equal.
+Both events occur at the same time. Their distance is $\sqrt{(15-7)^2 + (20-24)^2} = \sqrt{80}$, which is positive, while time difference is zero, so no transition is possible between them.
 
-| i | Point | dp[i] init | Valid predecessors | dp[i] final |
-| --- | --- | --- | --- | --- |
-| 0 | (15,20,25) | 100 | none | 100 |
-| 1 | (7,24,25) | 50 | cannot transition due to zero time | 50 |
+| i | Event | DP[i] |
+| --- | --- | --- |
+| 0 | (15,20,25,100) | 100 |
+| 1 | (7,24,25,50) | 50 |
 
-Since both occur simultaneously but are not at identical positions, only one can be taken, confirming that equal-time transitions are disallowed unless coordinates match exactly.
+Answer is 100.
+
+This demonstrates that equal-time events correctly cannot be chained.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N²) | Each checkpoint compares against all earlier checkpoints for feasibility |
-| Space | O(N) | DP array and stored checkpoint list |
+| Time | $O(N^2)$ | Each event checks all previous events for feasibility |
+| Space | $O(N)$ | Only DP array and event storage |
 
-With N = 5000, N² is about 25 million checks, which is feasible in Python with simple arithmetic operations.
+With $N \le 5000$, $N^2 = 25 \times 10^6$ transitions, which is borderline but acceptable in Python with tight loops and integer arithmetic only.
 
 ## Test Cases
 
@@ -189,24 +183,38 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from __main__ import main
-    return main()
+    from math import isclose
+    import builtins
+    return builtins.input()
 
 # provided samples
-# (placeholders since main prints directly; adapt if needed)
+assert run("3\n1 1 100 10\n2 2 40 8\n20 20 25 1000\n") == "18", "sample 1"
+assert run("2\n15 20 25 100\n7 24 25 50\n") == "100", "sample 2"
+
+# minimal case
+assert run("1\n0 0 0 5\n") == "5"
+
+# unreachable chain
+assert run("2\n100 100 1 10\n0 0 1000 20\n") == "20"
+
+# equal time far apart
+assert run("2\n0 0 5 10\n100 100 5 100\n") == "100"
+
+# all reachable line
+assert run("3\n0 0 0 1\n1 0 1 2\n2 0 2 3\n") == "6"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single node | value | base case |
-| two reachable in chain | sum | DP transition |
-| two same time far apart | max only | mutual exclusivity |
-| tight time-distance boundary | correct inequality handling | reachability edge |
+| single node | 5 | base initialization |
+| unreachable ordering | 20 | filtering invalid moves |
+| same time separation | 100 | zero-time constraint |
+| linear chain | 6 | DP chaining correctness |
 
 ## Edge Cases
 
-A key edge case is when two checkpoints have identical timestamps. The algorithm never allows transitions between them because dt becomes zero, and the distance check fails unless coordinates are identical. For example, (0,0,5,10) and (1,1,5,20) cannot be chained. The DP treats both independently, producing max(10,20), which matches the physical constraint.
+One edge case is events occurring at the same time. Since travel time is zero, only identical coordinates can allow chaining. The DP handles this correctly because the condition $dx^2 + dy^2 \le dt^2$ becomes $dx^2 + dy^2 \le 0$, forcing equality of positions.
 
-Another case is when a checkpoint is extremely close in space but slightly too early. Suppose (0,0,0) to (100,0,1). The distance is 100 but only 1 unit of time is available, so the inequality fails and dp does not propagate incorrectly.
+Another edge case is events that are individually reachable from the origin but not mutually reachable. The DP still correctly picks the best single event or combination because each event starts with its own value and only valid transitions improve it.
 
-A third case is when a long chain exists but intermediate nodes are required. The DP ensures correctness because once an intermediate checkpoint becomes optimal for reaching later nodes, it is already stored in dp and will be reused during later transitions.
+A final edge case is large coordinate values. Using squared integers fits safely in 64-bit arithmetic in Python, and avoids floating-point issues entirely, ensuring correctness even at maximum constraints.

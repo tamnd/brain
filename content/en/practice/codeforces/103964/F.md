@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "I can’t write a correct editorial for this one yet because the actual problem content is missing. What you provided only includes the title and metadata, but no description of the rules, input format, or what needs to be computed."
-date: "2026-07-02T17:51:31+07:00"
+description: "I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt. Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder."
+date: "2026-07-02T19:31:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this one yet because the actual problem content is missing.
+I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt.
 
-What you provided only includes the title and metadata, but no description of the rules, input format, or what needs to be computed. For Codeforces problems, the entire solution depends on those details, and guessing would just produce a fake editorial.
+Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder. Any solution or algorithm I wrote would be guesswork, which would defeat the purpose of a Codeforces-style editorial.
 
-If you paste the full statement (or even a screenshot/text dump), I’ll turn it into a complete, structured editorial in the exact format you specified.
+Paste the full problem statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proofs, Python solution, examples, complexity analysis, and edge case tests.

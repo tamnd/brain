@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.2: Generating All Permutations"
-description: "Section 7.2.1.2 exercises: 39/113 solved."
+description: "Section 7.2.1.2 exercises: 64/113 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.2. Generating All Permutations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 39/113 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 64/113 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -49,31 +49,31 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 39/113 solved.
 | [29](29.md) | &#9654; [*M25*] | math-medium | solved | 4m16s |
 | [30](30.md) |  [*25*] | medium | solved | 4m10s |
 | 31 |  [*M22*] | math-medium | - | - |
-| 32 |  [*M25*] | math-medium | - | - |
-| 33 |  [*25*] | medium | - | - |
-| 34 |  [*M26*] | math-hard | - | - |
-| 35 | &#9654; [*M20*] | math-medium | - | - |
-| 36 |  [*M23*] | math-medium | - | - |
-| 37 | &#9654; [*HM22*] | hm-medium | - | - |
-| 38 |  [*HM21*] | hm-medium | - | - |
-| 39 |  [*16*] | medium | - | - |
-| 40 |  [*M23*] | math-medium | - | - |
-| 41 | &#9654; [*M33*] | math-hard | - | - |
-| 42 |  [*M20*] | math-medium | - | - |
-| 43 |  [*M24*] | math-medium | - | - |
-| 44 |  [*20*] | medium | - | - |
-| 45 |  [*20*] | medium | - | - |
-| 46 |  [*20*] | medium | - | - |
-| 47 | &#9654; [*M21*] | math-medium | - | - |
-| 48 | &#9654; [*M25*] | math-medium | - | - |
-| 49 | &#9654; [*28*] | hard | - | - |
-| 50 |  [*M15*] | math-simple | - | - |
-| 51 |  [*M16*] | math-medium | - | - |
-| 52 | &#9654; [*M22*] | math-medium | - | - |
-| 53 | &#9654; [*M26*] | math-hard | - | - |
-| 54 |  [*20*] | medium | - | - |
-| 55 |  [*M27*] | math-hard | - | - |
-| 56 |  [*M22*] | math-medium | - | - |
+| [32](32.md) |  [*M25*] | math-medium | solved | 4m11s |
+| [33](33.md) |  [*25*] | medium | solved | 4m15s |
+| [34](34.md) |  [*M26*] | math-hard | solved | 4m11s |
+| [35](35.md) | &#9654; [*M20*] | math-medium | solved | 4m14s |
+| [36](36.md) |  [*M23*] | math-medium | solved | 4m26s |
+| [37](37.md) | &#9654; [*HM22*] | hm-medium | solved | 4m18s |
+| [38](38.md) |  [*HM21*] | hm-medium | solved | 5m45s |
+| [39](39.md) |  [*16*] | medium | solved | 4m28s |
+| [40](40.md) |  [*M23*] | math-medium | solved | 4m22s |
+| [41](41.md) | &#9654; [*M33*] | math-hard | solved | 4m56s |
+| [42](42.md) |  [*M20*] | math-medium | solved | 4m22s |
+| [43](43.md) |  [*M24*] | math-medium | solved | 4m19s |
+| [44](44.md) |  [*20*] | medium | solved | 4m18s |
+| [45](45.md) |  [*20*] | medium | solved | 4m22s |
+| [46](46.md) |  [*20*] | medium | solved | 4m21s |
+| [47](47.md) | &#9654; [*M21*] | math-medium | solved | 4m05s |
+| [48](48.md) | &#9654; [*M25*] | math-medium | solved | 5m18s |
+| [49](49.md) | &#9654; [*28*] | hard | solved | 4m26s |
+| [50](50.md) |  [*M15*] | math-simple | solved | 7m58s |
+| [51](51.md) |  [*M16*] | math-medium | solved | 4m22s |
+| [52](52.md) | &#9654; [*M22*] | math-medium | solved | 4m31s |
+| [53](53.md) | &#9654; [*M26*] | math-hard | solved | 8m10s |
+| [54](54.md) |  [*20*] | medium | solved | 4m21s |
+| [55](55.md) |  [*M27*] | math-hard | solved | 4m23s |
+| [56](56.md) |  [*M22*] | math-medium | solved | 5m55s |
 | 57 |  [*HM22*] | hm-medium | - | - |
 | 58 |  [*M21*] | math-medium | - | - |
 | 59 |  [*M20*] | math-medium | - | - |
