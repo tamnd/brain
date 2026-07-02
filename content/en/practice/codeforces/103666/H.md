@@ -1,51 +1,27 @@
 ---
-title: "TAOCP 7.2.1.1 Exercise 85"
-description: "Represent each domino ${i,j}$, $0 \\le i \\le j \\le 6$, as an undirected edge between vertices $i$ and $j$ in a multigraph $G$ on vertex set ${0,1,\\dots,6}$, with one loop at each vertex $i$ correspondi..."
-date: "2026-07-02T19:21:34+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.1"
-section_title: "Generating All n-Tuples"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "281–321"
-exercise: 85
-rating: "M25"
-category: "math-medium"
-recommended: true
+title: "CF 103666H - \u0420\u043e\u0431\u043e\u0442"
+description: "Represent each domino ${i,j}$, $0 le i le j le 6$, as an undirected edge between vertices $i$ and $j$ in a multigraph $G$ on vertex set ${0,1,dots,6}$, with one loop at each vertex $i$ corresponding to ${i,i}$."
+date: "2026-07-03T02:20:09+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103666
+codeforces_index: "H"
+codeforces_contest_name: "\u0422\u0443\u0440\u043d\u0438\u0440 \u0410\u0440\u0445\u0438\u043c\u0435\u0434\u0430 2016"
+rating: 0
+weight: 103666
+solve_time_s: 138
 verified: false
-solve_time_s: 247
-weight: 7020101085
 draft: false
 ---
 
-[Section 7.2.1.1: Generating All n-Tuples](../)
+[CF 103666H - \u0420\u043e\u0431\u043e\u0442](https://codeforces.com/problemset/problem/103666/H)
 
-**Exercise 85.** &#9654; [*M25*] [M25] (Dana Richards.) If Γ = (α0, . . . , αt−1) is any sequence of t strings and
-Γ′ = (α′
-0, . . . , α′
-t′−1) is any sequence of t′ strings, the boustrophedon product Γ≀Γ′ is the
-sequence of tt′ strings that begins
-(α0α′
-0, . . . , α0α′
-t′−1, α1α′
-t′−1, . . . , α1α′
-0, α2α′
-0, . . . , α2α′
-t′−1, α3α′
-t′−1, . . . )
-and ends with αt−1α′
-0 if t is even, αt−1α′
-t′−1 if t is odd. For example, the basic definition
-of Gray binary code in (5) can be expressed in this notation as Γn = (0, 1) ≀Γn−1 when
-n > 0. Prove that the operation ≀is associative, hence Γm+n = Γm ≀Γn.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 18s  
 **Verified:** no  
-**Solve time:** 4m07s  
 
----
-
+## Solution
 ## Solution
 
 Represent each domino ${i,j}$, $0 \le i \le j \le 6$, as an undirected edge between vertices $i$ and $j$ in a multigraph $G$ on vertex set ${0,1,\dots,6}$, with one loop at each vertex $i$ corresponding to ${i,i}$. A valid cyclic arrangement of all 28 dominoes is exactly an Euler circuit in $G$, since each domino is used once and consecutive dominoes must share an endpoint.
@@ -60,52 +36,36 @@ and similarly $\operatorname{indeg}(v)=7$, so $D$ is Eulerian.
 
 The BEST theorem gives the number of Euler circuits in a directed Eulerian graph rooted at a fixed starting vertex $r$ as
 
-$$
-N_r = \tau_r(D)\,\prod_{v} (\operatorname{outdeg}(v)-1)!,
-$$
+$$N_r = \tau_r(D)\,\prod_{v} (\operatorname{outdeg}(v)-1)!,$$
 
 where $\tau_r(D)$ is the number of directed spanning arborescences oriented toward $r$.
 
 Since every pair of distinct vertices in $D$ is joined in both directions, and loops do not affect arborescences, $\tau_r(D)$ equals the number of arborescences in the complete bidirected graph on $7$ vertices, which is
 
-$$
-\tau_r(D) = 7^{7-2} = 7^5.
-$$
+$$\tau_r(D) = 7^{7-2} = 7^5.$$
 
 For each vertex,
 
-$$
-(\operatorname{outdeg}(v)-1)! = 6!,
-$$
+$$(\operatorname{outdeg}(v)-1)! = 6!,$$
 
 hence
 
-$$
-\prod_v (\operatorname{outdeg}(v)-1)! = (6!)^7.
-$$
+$$\prod_v (\operatorname{outdeg}(v)-1)! = (6!)^7.$$
 
 Therefore the number of Euler circuits in $D$ starting at a fixed vertex is
 
-$$
-N_r = 7^5 (6!)^7.
-$$
+$$N_r = 7^5 (6!)^7.$$
 
 Each Euler circuit corresponds to a cyclic ordering of the 28 dominoes. A cycle is independent of the starting point and direction. A cycle of length $28$ has exactly $28$ choices of starting edge and $2$ orientations, all yielding the same cyclic arrangement. Hence the number of distinct cycles is
 
-$$
-\frac{7^5 (6!)^7}{28 \cdot 2} = \frac{7^5 (6!)^7}{56}.
-$$
+$$\frac{7^5 (6!)^7}{28 \cdot 2} = \frac{7^5 (6!)^7}{56}.$$
 
 Since $56 = 7 \cdot 8$, this simplifies to
 
-$$
-\frac{7^4 (6!)^7}{8}.
-$$
+$$\frac{7^4 (6!)^7}{8}.$$
 
 Thus the number of valid cyclic arrangements is
 
-$$
-\boxed{\frac{7^5 (6!)^7}{56}}.
-$$
+$$\boxed{\frac{7^5 (6!)^7}{56}}.$$
 
 ∎
