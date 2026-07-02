@@ -68,15 +68,15 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [48](48.md) |  [*HM48*] | hm-research | solved | 4m21s |
 | [49](49.md) |  [*20*] | medium | solved | 1m31s |
 | [50](50.md) | &#9654; [*21*] | medium | verified | 2m37s |
-| [51](51.md) |  [*M24*] | math-medium | solved | 4m01s |
-| [52](52.md) |  [*M20*] | math-medium | solved | 2m58s |
-| [53](53.md) |  [*M46*] | math-research | solved | 52s |
-| [54](54.md) |  [*M20*] | math-medium | solved | 42s |
-| [55](55.md) | &#9654; [*35*] | hard | verified | 1m31s |
-| [56](56.md) |  [*M30*] | math-hard | solved | 56s |
-| [57](57.md) |  [*32*] | hard | solved | 5m05s |
-| [58](58.md) | &#9654; [*21*] | medium | solved | 4m18s |
-| [59](59.md) |  [*22*] | medium | solved | 1m46s |
+| [51](51.md) |  [*M24*] | math-medium | solved | 3m26s |
+| [52](52.md) |  [*M20*] | math-medium | verified | 3m12s |
+| [53](53.md) |  [*M46*] | math-research | solved | 1m40s |
+| [54](54.md) |  [*M20*] | math-medium | solved | 4m14s |
+| [55](55.md) | &#9654; [*35*] | hard | solved | 2m36s |
+| [56](56.md) |  [*M30*] | math-hard | solved | 4m10s |
+| [57](57.md) |  [*32*] | hard | verified | 1m56s |
+| [58](58.md) | &#9654; [*21*] | medium | solved | 1m48s |
+| [59](59.md) |  [*22*] | medium | solved | 6m28s |
 | [60](60.md) |  [*20*] | medium | solved | 5m40s |
 | [61](61.md) |  [*M30*] | math-hard | solved | 7m18s |
 | [62](62.md) |  [*46*] | research | solved | 5m56s |
