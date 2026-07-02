@@ -61,10 +61,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [41](41.md) |  [*M25*] | math-medium | solved | 5m08s |
 | [42](42.md) |  [*22*] | medium | solved | 3m57s |
 | [43](43.md) | &#9654; [*22*] | medium | solved | 3m19s |
-| [44](44.md) | &#9654; [*M32*] | math-hard | solved | 1m07s |
-| [45](45.md) |  [*22*] | medium | verified | 2m27s |
-| [46](46.md) |  [*M23*] | math-medium | solved | 1m20s |
-| [47](47.md) |  [*M21*] | math-medium | verified | 1m08s |
+| [44](44.md) | &#9654; [*M32*] | math-hard | solved | 1m44s |
+| [45](45.md) |  [*22*] | medium | solved | 2m55s |
+| [46](46.md) |  [*M23*] | math-medium | solved | 1m45s |
+| [47](47.md) |  [*M21*] | math-medium | verified | 1m36s |
 | [48](48.md) |  [*M22*] | math-medium | solved | 2m21s |
 | [49](49.md) |  [*20*] | medium | verified | 1m12s |
 | [50](50.md) |  [*22*] | medium | solved | 4m31s |
