@@ -280,8 +280,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [260](260.md) | &#9654; [*M27*] | math-hard | solved | 1m12s |
 | [261](261.md) |  [*HM21*] | hm-medium | verified | 1m46s |
 | [262](262.md) |  [*M26*] | math-hard | solved | 5m05s |
-| [263](263.md) |  [*HM25*] | hm-medium | solved | 4m30s |
-| [264](264.md) |  [*M46*] | math-research | solved | 3m53s |
-| [265](265.md) | &#9654; [*21*] | medium | verified | 2m39s |
+| [263](263.md) |  [*HM25*] | hm-medium | solved | 5m07s |
+| [264](264.md) |  [*M46*] | math-research | solved | 1m40s |
+| [265](265.md) | &#9654; [*21*] | medium | solved | 2m05s |
 | [266](266.md) | &#9654; [*20*] | medium | solved | 3m48s |
 | [267](267.md) |  [*HM32*] | hm-hard | solved | 4m12s |
