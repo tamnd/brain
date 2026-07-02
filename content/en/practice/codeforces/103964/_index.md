@@ -1,28 +1,28 @@
 ---
 title: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
-description: "11 problems from The 2015 China Collegiate Programming Contest (CCPC 2015) (contest 103964), difficulty -. 5/11 solutions verified against sample I/O."
+description: "11 problems from The 2015 China Collegiate Programming Contest (CCPC 2015) (contest 103964), difficulty -. 6/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103964
 contest_type: "Special"
 rating_range: "-"
 n_problems: 11
-n_verified: 5
-total_solve_s: 554
-date: "2026-07-02T21:36:00+07:00"
+n_verified: 6
+total_solve_s: 466
+date: "2026-07-02T02:30:11+07:00"
 weight: 103964
 draft: false
 ---
 
 # [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964)
 
-Special | 11 problems | 5/11 verified | Difficulty - | 9m 14s
+Special | 11 problems | 6/11 verified | Difficulty - | 7m 46s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Secrete Master Plan](https://codeforces.com/problemset/problem/103964/A) |  |  |  | 46s | ✓ |
 | [B](B/) | [Build Towers](https://codeforces.com/problemset/problem/103964/B) |  |  |  | 1m | ✓ |
-| [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 2m 11s |  |
+| [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 43s | ✓ |
 | [D](D/) | [Pick The Sticks](https://codeforces.com/problemset/problem/103964/D) |  |  |  | 33s |  |
 | [E](E/) | [Ba Gua Zhen](https://codeforces.com/problemset/problem/103964/E) |  |  |  | 1m | ✓ |
 | [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 28s |  |
