@@ -92,7 +92,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [72](72.md) |  [*20*] | medium | solved | 4m57s |
 | [73](73.md) | &#9654; [*32*] | hard | solved | 9m03s |
 | [74](74.md) |  [*HM25*] | hm-medium | solved | 6m13s |
-| [75](75.md) |  [*32*] | hard | solved | 1m48s |
+| [75](75.md) |  [*32*] | hard | solved | 6m27s |
 | [76](76.md) |  [*M25*] | math-medium | solved | 4m56s |
 | [77](77.md) |  [*21*] | medium | solved | 49s |
 | [78](78.md) |  [*M26*] | math-hard | solved | 50s |
