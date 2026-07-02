@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2768 contests, 19788 problems, 11153 verified."
+description: "Codeforces problem solutions with full editorials. 2769 contests, 19792 problems, 11155 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2768 contests, 19788 problems, 11153 verified.**
+**2769 contests, 19792 problems, 11155 verified.**
 
-## Unknown — 652 contests, 5426 problems, 3399 verified
+## Unknown — 653 contests, 5430 problems, 3401 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103590](103590/) | [RocketOlymp 2022 9 класс](https://codeforces.com/contest/103590) | 4 | 2/4 | Special | - |
 | [103600](103600/) | [Турнир Архимеда 2021](https://codeforces.com/contest/103600) | 11 | 3/11 | Special | - |
 | [103608](103608/) | [Интернет-олимпиады, Сезон 2021-2022, Четвертая личная олимпиада](https://codeforces.com/contest/103608) | 4 | 0/4 | Special | - |
 | [103623](103623/) | [Индивидуальная олимпиада школьников по информатике и программированию 2022](https://codeforces.com/contest/103623) | 5 | 0/5 | Special | - |
