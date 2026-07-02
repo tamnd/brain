@@ -1,7 +1,7 @@
 ---
 title: "CF 103698H - Virus Experiment"
-description: "I can’t write a correct editorial for “Codeforces 103698H - Virus Experiment” because the actual problem statement is missing. Right now I don’t know: what the input describes (graph, strings, grid, probabilities, etc."
-date: "2026-07-02T09:50:18+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see the title “Virus Experiment”, but no description of the rules, input format, or required output."
+date: "2026-07-02T10:17:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -22,14 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for “Codeforces 103698H - Virus Experiment” because the actual problem statement is missing.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-Right now I don’t know:
+Right now I only see the title “Virus Experiment”, but no description of the rules, input format, or required output. For Codeforces problems, those details completely determine the solution technique, and guessing would risk inventing a different problem.
 
-what the input describes (graph, strings, grid, probabilities, etc.), what operation “virus experiment” refers to, what needs to be computed, or even what constraints drive the solution. Without that, any “editorial” would just be a guess, and that would defeat the purpose of a Codeforces-style explanation.
-
-If you paste the full problem statement (or even a screenshot / raw text), I can immediately produce the complete editorial in the exact format you specified, including:
-
-a clean restatement, brute force vs optimized transition, full algorithm walkthrough, Python solution, traces, and edge-case analysis.
-
-Send the statement and I’ll take it from there.
+Paste the full statement (or even just the core rules and constraints), and I’ll produce the complete editorial in the exact format you requested.
