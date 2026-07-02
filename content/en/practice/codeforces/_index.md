@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19544 problems, 11041 verified."
+description: "Codeforces problem solutions with full editorials. 2741 contests, 19544 problems, 11044 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19544 problems, 11041 verified.**
+**2741 contests, 19544 problems, 11044 verified.**
 
-## Unknown — 634 contests, 5259 problems, 3311 verified
+## Unknown — 634 contests, 5259 problems, 3313 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -34,7 +34,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
 | [103960](103960/) | [2022-2023 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103960) | 14 | 3/14 | ICPC/IOI | - |
-| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 2/11 | Special | - |
+| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 4/11 | Special | - |
 | [103965](103965/) | [Интернет-олимпиады, Сезон 2022-2023, Первая командная олимпиада](https://codeforces.com/contest/103965) | 10 | 9/10 | Special | - |
 | [103966](103966/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (базовая версия)](https://codeforces.com/contest/103966) | 8 | 1/8 | Special | - |
 | [103967](103967/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (продвинутая версия)](https://codeforces.com/contest/103967) | 10 | 1/10 | Special | - |
@@ -1934,7 +1934,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 273 contests, 2240 problems, 1206 verified
+## 2023 — 273 contests, 2240 problems, 1207 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2078,7 +2078,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104180](104180/) | [UTPC Contest 02-10-23 Div. 2 (Beginner)](https://codeforces.com/contest/104180) | 9 | 7/9 | Div. 2 | - |
 | [104181](104181/) | [UTPC Contest 02-10-23 Div. 1 (Advanced)](https://codeforces.com/contest/104181) | 9 | 7/9 | Div. 1 | - |
 | [104217](104217/) | [UTPC Contest 03-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104217) | 8 | 4/8 | Div. 2 | - |
-| [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 7 | 5/7 | Div. 1 | - |
+| [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 7 | 6/7 | Div. 1 | - |
 | [104221](104221/) | [Финал региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/104221) | 5 | 3/5 | Special | - |
 | [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 3 | 3/3 | Special | - |
 | [104230](104230/) | [European Girls Olympiad in Informatics 2022. Day 2](https://codeforces.com/contest/104230) | 2 | 2/2 | Special | - |
