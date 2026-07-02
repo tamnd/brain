@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2771 contests, 19809 problems, 11162 verified."
+description: "Codeforces problem solutions with full editorials. 2771 contests, 19810 problems, 11166 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2771 contests, 19809 problems, 11162 verified.**
+**2771 contests, 19810 problems, 11166 verified.**
 
-## Unknown — 654 contests, 5436 problems, 3405 verified
+## Unknown — 654 contests, 5437 problems, 3409 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103600](103600/) | [Турнир Архимеда 2021](https://codeforces.com/contest/103600) | 12 | 5/12 | Special | - |
 | [103608](103608/) | [Интернет-олимпиады, Сезон 2021-2022, Четвертая личная олимпиада](https://codeforces.com/contest/103608) | 4 | 0/4 | Special | - |
 | [103623](103623/) | [Индивидуальная олимпиада школьников по информатике и программированию 2022](https://codeforces.com/contest/103623) | 5 | 0/5 | Special | - |
-| [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 11 | 8/11 | Special | - |
+| [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 12 | 12/12 | Special | - |
 | [103630](103630/) | [2022 VII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103630) | 10 | 0/10 | Special | - |
 | [103631](103631/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/103631) | 4 | 3/4 | Special | - |
 | [103632](103632/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/103632) | 0 | 0/0 | Special | - |
