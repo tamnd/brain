@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.2: Generating All Permutations"
-description: "Section 7.2.1.2 exercises: 36/113 solved."
+description: "Section 7.2.1.2 exercises: 38/113 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.2. Generating All Permutations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 36/113 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 38/113 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -45,8 +45,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 36/113 solved.
 | 25 | &#9654; [*M21*] | math-medium | - | - |
 | [26](26.md) |  [*25*] | medium | solved | 4m28s |
 | [27](27.md) |  [*30*] | hard | solved | 4m06s |
-| 28 |  [*M25*] | math-medium | - | - |
-| 29 | &#9654; [*M25*] | math-medium | - | - |
+| [28](28.md) |  [*M25*] | math-medium | solved | 4m27s |
+| [29](29.md) | &#9654; [*M25*] | math-medium | solved | 4m16s |
 | 30 |  [*25*] | medium | - | - |
 | 31 |  [*M22*] | math-medium | - | - |
 | 32 |  [*M25*] | math-medium | - | - |
