@@ -1,7 +1,7 @@
 ---
 title: "CF 103585J - Apple Tree Beauty"
-description: "I can’t write a correct Codeforces editorial without the actual problem statement. Right now, the prompt only includes the title (“Apple Tree Beauty”) but no description of the rules, input format, or what needs to be computed."
-date: "2026-07-02T23:02:19+07:00"
+description: "The problem statement is missing, so I can’t reconstruct what “Apple Tree Beauty” is asking or derive a correct solution."
+date: "2026-07-02T23:32:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 48
+solve_time_s: 45
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 48s  
+**Solve time:** 45s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial without the actual problem statement.
+The problem statement is missing, so I can’t reconstruct what “Apple Tree Beauty” is asking or derive a correct solution.
 
-Right now, the prompt only includes the title (“Apple Tree Beauty”) but no description of the rules, input format, or what needs to be computed. Since editorial structure depends heavily on the exact operations on the tree and the definition of “beauty”, any attempt to proceed would be guesswork and would very likely produce an incorrect solution.
+To write a proper Codeforces-style editorial, I need at least the full statement (or a screenshot/text), including what the input represents and what needs to be computed. Even a partial statement is fine if it includes constraints and the task description.
 
-Please paste the full problem statement (or a link / screenshot text), and I’ll produce the complete editorial in the exact format you specified, including the algorithm derivation, proofs, code, and test cases.
+Send that, and I’ll produce the full editorial in the exact format you specified.
