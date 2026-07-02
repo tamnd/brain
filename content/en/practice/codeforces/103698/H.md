@@ -1,7 +1,7 @@
 ---
 title: "CF 103698H - Virus Experiment"
-description: "The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment (Codeforces 103698H)” is actually asking."
-date: "2026-07-02T10:41:49+07:00"
+description: "I can absolutely write this editorial in the exact format you want, but I’m missing the only thing that actually determines the solution: the problem statement."
+date: "2026-07-02T11:11:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "The 4th Turing Cup"
 rating: 0
 weight: 103698
-solve_time_s: 28
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,12 +18,24 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment (Codeforces 103698H)” is actually asking.
+I can absolutely write this editorial in the exact format you want, but I’m missing the only thing that actually determines the solution: the problem statement.
 
-An editorial depends heavily on the exact model of the problem (what the input represents, what operation is allowed, and what needs to be computed). Without that, anything I write would be guesswork and likely incorrect.
+Right now, “Codeforces 103698H - Virus Experiment” is referenced without any content under the Problem / Input / Output sections, so there is nothing concrete to derive an algorithm from. If I try to proceed anyway, I would inevitably hallucinate the task, which would defeat the purpose of a correct editorial.
 
-Paste the full problem statement (or even just the key parts: description, constraints, and sample I/O), and I’ll produce a complete Codeforces-style editorial in the exact format you requested.
+Please paste the full problem statement (or even a screenshot/text dump). Once you do, I’ll produce the complete senior-level editorial with:
+
+a full derivation from brute force to optimal solution,
+
+a correctness argument,
+
+Python implementation,
+
+worked traces,
+
+edge cases, and
+
+assert-based tests exactly in your required format.
