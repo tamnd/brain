@@ -44,8 +44,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [24](24.md) |  [*M22*] | math-medium | solved | 6m43s |
 | [25](25.md) |  [*M20*] | math-medium | solved | 5m18s |
 | [26](26.md) |  [*M20*] | math-medium | solved | 1m22s |
-| [27](27.md) | &#9654; [*M26*] | math-hard | verified | 1m26s |
-| [28](28.md) |  [*M16*] | math-medium | verified | 1m |
+| [27](27.md) | &#9654; [*M26*] | math-hard | solved | 2m43s |
+| [28](28.md) |  [*M16*] | math-medium | solved | 5m |
 | [29](29.md) |  [*HM20*] | hm-medium | verified | 1m04s |
 | [30](30.md) | &#9654; [*M21*] | math-medium | verified | 1m24s |
 | [31](31.md) |  [*M21*] | math-medium | solved | 1m09s |
