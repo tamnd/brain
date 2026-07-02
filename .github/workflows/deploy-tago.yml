@@ -140,6 +140,13 @@ jobs:
           path: public-shards/codeforces
           retention-days: 1
 
+      - name: Upload Codeforces-2 artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: public-codeforces-2
+          path: public-shards/codeforces-2
+          retention-days: 1
+
       - name: Upload Kvant artifact
         uses: actions/upload-artifact@v7.0.1
         with:
@@ -167,6 +174,9 @@ jobs:
           - name: codeforces
             project: brain-codeforces
             domain: codeforces.tamnd.com
+          - name: codeforces-2
+            project: brain-codeforces-2
+            domain: codeforces-2.tamnd.com
           - name: kvant
             project: brain-kvant
             domain: kvant.tamnd.com

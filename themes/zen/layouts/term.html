@@ -5,7 +5,7 @@
       <span class="zen-tag" style="background:var(--accent-light);color:var(--accent);border-color:var(--accent);">tag</span>
     </div>
     <h1>#{{.Page.Title}}</h1>
-    <p class="zen-section-header__meta">{{len .Pages}} pages tagged</p>
+    <p class="zen-section-header__meta">{{if .TermTotal}}{{.TermTotal}}{{else}}{{len .Pages}}{{end}} pages tagged{{if gt .TermTotal .TermShown}} · showing the newest {{.TermShown}}, search for the rest{{end}}</p>
   </div>
   <div class="zen-card-grid">
     {{range .Pages}}
