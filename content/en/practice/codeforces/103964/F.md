@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "I can’t write a correct editorial for this one yet because the actual problem content is missing. What you provided only includes the title and metadata, but no description of the rules, input format, or what needs to be computed."
-date: "2026-07-02T17:51:31+07:00"
+description: "The problem statement you provided is essentially empty, so there is no way to reconstruct the task, constraints, or required algorithm."
+date: "2026-07-02T18:31:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 49
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 49s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this one yet because the actual problem content is missing.
+The problem statement you provided is essentially empty, so there is no way to reconstruct the task, constraints, or required algorithm.
 
-What you provided only includes the title and metadata, but no description of the rules, input format, or what needs to be computed. For Codeforces problems, the entire solution depends on those details, and guessing would just produce a fake editorial.
+“Codeforces 103964F - The Battle of Guandu” is referenced only by title, but there is no description of the input, output, or rules of the problem. Without that, any attempt to write a correct editorial would be guesswork rather than explanation.
 
-If you paste the full statement (or even a screenshot/text dump), I’ll turn it into a complete, structured editorial in the exact format you specified.
+If you paste the full statement (or even just the key parts: what the input represents, what needs to be computed, and constraints), I can produce a complete Codeforces-style editorial in the exact format you requested, including:
+
+- a precise restatement of the problem
+- brute force and optimized solution reasoning
+- full algorithm walkthrough
+- Python implementation
+- worked examples and edge cases
+
+Send the statement and I’ll continue from there.

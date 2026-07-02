@@ -1,7 +1,7 @@
 ---
 title: "CF 103964B - Build Towers"
-description: "The statement you provided is effectively empty, so there isn’t enough information to reconstruct what “Build Towers” is actually asking."
-date: "2026-07-02T17:50:46+07:00"
+description: "I don’t have the actual statement for Codeforces 103964B - Build Towers in the prompt, and the required editorial depends heavily on the exact rules of the construction process (what “towers” are, what operations are allowed, and what is being optimized)."
+date: "2026-07-02T18:30:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 34
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The statement you provided is effectively empty, so there isn’t enough information to reconstruct what “Build Towers” is actually asking. Right now we don’t know what the input represents, what constraints exist, or what needs to be optimized or computed, which makes it impossible to write a correct editorial without inventing the problem.
+I don’t have the actual statement for **Codeforces 103964B - Build Towers** in the prompt, and the required editorial depends heavily on the exact rules of the construction process (what “towers” are, what operations are allowed, and what is being optimized).
 
-If you paste the full Codeforces statement (or even just the input format, output format, and a sample), I can produce the complete editorial in the exact style you requested, including the full algorithm derivation, complexity analysis, implementation, and edge-case discussion.
+Right now the input/output sections are empty, so any attempt to write a full solution would risk inventing the problem structure, which would make the editorial useless.
 
-Send the full problem text and I’ll take it from there.
+Please paste the full problem statement (or at least the rules and constraints). Once you do, I’ll produce the complete Codeforces-style editorial in the format you specified.
