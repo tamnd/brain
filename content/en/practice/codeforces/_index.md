@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2739 contests, 19516 problems, 11020 verified."
+description: "Codeforces problem solutions with full editorials. 2740 contests, 19528 problems, 11022 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2739 contests, 19516 problems, 11020 verified.**
+**2740 contests, 19528 problems, 11022 verified.**
 
-## Unknown — 633 contests, 5241 problems, 3300 verified
+## Unknown — 634 contests, 5253 problems, 3302 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103708](103708/) | [2022 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/103708) | 12 | 2/12 | ICPC/IOI | - |
 | [103800](103800/) | [The 2022 SDUT Summer Trials](https://codeforces.com/contest/103800) | 12 | 11/12 | Special | - |
 | [103806](103806/) | [XXVI Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103806) | 5 | 5/5 | Special | - |
 | [103808](103808/) | [XXVI Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103808) | 5 | 4/5 | Special | - |
