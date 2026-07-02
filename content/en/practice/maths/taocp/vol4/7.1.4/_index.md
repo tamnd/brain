@@ -73,7 +73,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [53](53.md) | &#9654; [*23*] | medium | solved | 5m41s |
 | [54](54.md) |  [*17*] | medium | solved | 6m24s |
 | [55](55.md) |  [*M30*] | math-hard | solved | 4m57s |
-| [56](56.md) |  [*20*] | medium | verified | 1m19s |
+| [56](56.md) |  [*20*] | medium | verified | 5m50s |
 | [57](57.md) |  [*25*] | medium | solved | 47s |
 | [58](58.md) |  [*20*] | medium | verified | 1m09s |
 | [59](59.md) | &#9654; [*M28*] | math-hard | verified | 2m37s |
