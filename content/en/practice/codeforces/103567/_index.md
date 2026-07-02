@@ -1,22 +1,22 @@
 ---
 title: "2021-2022 Olympiad Cognitive Technologies, Prefinal Round"
-description: "7 problems from 2021-2022 Olympiad Cognitive Technologies, Prefinal Round (contest 103567), difficulty -. 7/7 solutions verified against sample I/O."
+description: "8 problems from 2021-2022 Olympiad Cognitive Technologies, Prefinal Round (contest 103567), difficulty -. 8/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103567
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
-n_verified: 7
-total_solve_s: 316
-date: "2026-07-03T04:28:10+07:00"
+n_problems: 8
+n_verified: 8
+total_solve_s: 373
+date: "2026-07-03T04:51:08+07:00"
 weight: 103567
 draft: false
 ---
 
 # [2021-2022 Olympiad Cognitive Technologies, Prefinal Round](https://codeforces.com/contest/103567)
 
-Special | 7 problems | 7/7 verified | Difficulty - | 5m 16s
+Special | 8 problems | 8/8 verified | Difficulty - | 6m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,4 @@ Special | 7 problems | 7/7 verified | Difficulty - | 5m 16s
 | [E](E/) | [\u0425\u0430\u043a\u0435\u0440\u0441\u043a\u0430\u044f \u0410\u0442\u0430\u043a\u0430](https://codeforces.com/problemset/problem/103567/E) |  |  |  | 38s | ✓ |
 | [F](F/) | [\u041c\u0435\u0442\u0440\u043e](https://codeforces.com/problemset/problem/103567/F) |  |  |  | 45s | ✓ |
 | [G](G/) | [\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u044b\u0439 \u043a\u0440\u043e\u0441\u0441\u043e\u0432\u0435\u0440](https://codeforces.com/problemset/problem/103567/G) |  |  |  | 56s | ✓ |
+| [H](H/) | [\u041e\u0441\u043e\u0437\u043d\u0430\u043d\u0438\u0435 \u0434\u0435\u0441\u044f\u0442\u043e\u0433\u043e \u0443\u0440\u043e\u0432\u043d\u044f](https://codeforces.com/problemset/problem/103567/H) |  |  |  | 57s | ✓ |
