@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19547 problems, 11047 verified."
+description: "Codeforces problem solutions with full editorials. 2741 contests, 19549 problems, 11049 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19547 problems, 11047 verified.**
+**2741 contests, 19549 problems, 11049 verified.**
 
-## Unknown — 634 contests, 5259 problems, 3313 verified
+## Unknown — 634 contests, 5260 problems, 3314 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -91,7 +91,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 14 | 14/14 | Special | - |
 | [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 12 | 9/12 | Special | - |
 | [104207](104207/) | [2017 China Collegiate Programming Contest Final (CCPC-Final 2017)](https://codeforces.com/contest/104207) | 11 | 11/11 | Special | - |
-| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 9 | 6/9 | Special | - |
+| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 10 | 7/10 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
 | [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 9 | 8/9 | Special | - |
 | [104239](104239/) | [Интернет-олимпиады, Сезон 2022-2023, Четвертая личная олимпиада](https://codeforces.com/contest/104239) | 4 | 4/4 | Special | - |
@@ -1934,7 +1934,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
 
-## 2023 — 273 contests, 2243 problems, 1210 verified
+## 2023 — 273 contests, 2244 problems, 1211 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -2080,7 +2080,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104217](104217/) | [UTPC Contest 03-03-23 Div. 2 (Beginner)](https://codeforces.com/contest/104217) | 8 | 4/8 | Div. 2 | - |
 | [104218](104218/) | [UTPC Contest 03-03-23 Div. 1 (Advanced)](https://codeforces.com/contest/104218) | 8 | 7/8 | Div. 1 | - |
 | [104221](104221/) | [Финал региональной олимпиады «Машина Тьюринга» по программированию](https://codeforces.com/contest/104221) | 5 | 3/5 | Special | - |
-| [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 3 | 3/3 | Special | - |
+| [104229](104229/) | [European Girls Olympiad in Informatics 2022. Day 1](https://codeforces.com/contest/104229) | 4 | 4/4 | Special | - |
 | [104230](104230/) | [European Girls Olympiad in Informatics 2022. Day 2](https://codeforces.com/contest/104230) | 4 | 4/4 | Special | - |
 | [104234](104234/) | [OCPC 2023, Oleksandr Kulkov Contest 3](https://codeforces.com/contest/104234) | 13 | 13/13 | Special | - |
 | [104246](104246/) | [CodeSmash 2021 by RAPL](https://codeforces.com/contest/104246) | 12 | 6/12 | Special | - |
