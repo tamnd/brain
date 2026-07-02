@@ -13,13 +13,27 @@ source_prefix = "/practice/leetcode/"
 output = "public-shards/leetcode"
 file_budget = 18000
 
+# codeforces has more files than Cloudflare Pages allows in one deployment
+# (20000), so it is split by contest id. Contests up to range_max stay here;
+# newer ones go to codeforces-2. Non-numeric pages (the section index, assets)
+# stay on this primary shard.
 [[shards]]
 name = "codeforces"
 project = "brain-codeforces"
 domain = "codeforces.tamnd.com"
 source_prefix = "/practice/codeforces/"
 output = "public-shards/codeforces"
-file_budget = 25000
+file_budget = 18000
+range_max = 104454
+
+[[shards]]
+name = "codeforces-2"
+project = "brain-codeforces-2"
+domain = "codeforces-2.tamnd.com"
+source_prefix = "/practice/codeforces/"
+output = "public-shards/codeforces-2"
+file_budget = 18000
+range_min = 104455
 
 [[shards]]
 name = "kvant"
