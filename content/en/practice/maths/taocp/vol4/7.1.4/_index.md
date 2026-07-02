@@ -102,8 +102,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [82](82.md) | &#9654; [*25*] | medium | solved | 4m08s |
 | [83](83.md) |  [*M20*] | math-medium | verified | 2m59s |
 | [84](84.md) |  [*24*] | medium | solved | 4m06s |
-| [85](85.md) |  [*16*] | medium | verified | 1m13s |
-| [86](86.md) | &#9654; [*21*] | medium | verified | 1m12s |
+| [85](85.md) |  [*16*] | medium | solved | 5m19s |
+| [86](86.md) | &#9654; [*21*] | medium | solved | 5m06s |
 | [87](87.md) |  [*20*] | medium | verified | 4m04s |
 | [88](88.md) | &#9654; [*M25*] | math-medium | solved | 4m38s |
 | [89](89.md) |  [*15*] | simple | solved | 1m07s |
