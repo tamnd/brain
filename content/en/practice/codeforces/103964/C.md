@@ -1,7 +1,7 @@
 ---
 title: "CF 103964C - The Battle of Chibi"
-description: "The problem statement for Codeforces 103964C is not included in your message, so I don’t have the actual task description, constraints, or input/output format needed to write a correct editorial."
-date: "2026-07-02T18:30:47+07:00"
+description: "The problem statement section is empty in what you provided, so there is no information about what the input/output actually represent, what operations are allowed, or what needs to be computed."
+date: "2026-07-02T19:01:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 35
+solve_time_s: 51
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 51s  
 **Verified:** no  
 
 ## Solution
-The problem statement for Codeforces 103964C is not included in your message, so I don’t have the actual task description, constraints, or input/output format needed to write a correct editorial.
+The problem statement section is empty in what you provided, so there is no information about what the input/output actually represent, what operations are allowed, or what needs to be computed. Without that, any “editorial” would necessarily be guessing, which would defeat the purpose of a Codeforces-style explanation.
 
-Right now I only see the title and empty sections, which isn’t enough to reconstruct the solution without guessing. For a Codeforces editorial, even small missing details like whether it is graph-based, DP, or greedy completely change the solution.
+If you paste the full statement (or even just the core description plus constraints and samples), I can write the complete editorial in the exact format you requested, including the reasoning flow, optimal solution derivation, walkthrough, and code.
 
-Paste the full problem statement (or at least the full input/output description and constraints), and I’ll write the complete editorial in the exact style you requested.
+Right now the only usable information is the title “The Battle of Chibi”, which is not enough to reliably reconstruct the intended problem among possible variants.
