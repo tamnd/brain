@@ -1,7 +1,7 @@
 ---
 title: "CF 103964E - Ba Gua Zhen"
-description: "I can’t reliably reconstruct Codeforces 103964E (“Ba Gua Zhen”) from the title alone, and the statement section you provided is empty."
-date: "2026-07-02T20:10:52+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem content is missing. “Codeforces 103964E - Ba Gua Zhen” is referenced, but the statement you provided contains only the title and empty input/output sections."
+date: "2026-07-02T20:40:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 37
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably reconstruct Codeforces 103964E (“Ba Gua Zhen”) from the title alone, and the statement section you provided is empty. Writing a correct editorial without the actual rules, constraints, and operations would require guessing, which would very likely produce a wrong or misleading solution.
+I can’t write a correct editorial for this yet because the actual problem content is missing.
 
-If you paste the full problem statement (or even a screenshot / raw text), I’ll produce a complete Codeforces-style editorial in the exact format you requested, including the algorithm walkthrough, proofs, code, and test cases.
+“Codeforces 103964E - Ba Gua Zhen” is referenced, but the statement you provided contains only the title and empty input/output sections. Without the rules of the grid/graph/operations and what is being asked, any solution would be a guess, and that would defeat the purpose of a proper Codeforces editorial.
 
-Send the statement and I’ll take it from there.
+Paste the full problem statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including the algorithm derivation, correctness argument, complexity analysis, and tests.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19547 problems, 11047 verified."
+description: "Codeforces problem solutions with full editorials. 2741 contests, 19548 problems, 11048 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19547 problems, 11047 verified.**
+**2741 contests, 19548 problems, 11048 verified.**
 
-## Unknown — 634 contests, 5259 problems, 3313 verified
+## Unknown — 634 contests, 5260 problems, 3314 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -91,7 +91,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 14 | 14/14 | Special | - |
 | [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 12 | 9/12 | Special | - |
 | [104207](104207/) | [2017 China Collegiate Programming Contest Final (CCPC-Final 2017)](https://codeforces.com/contest/104207) | 11 | 11/11 | Special | - |
-| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 9 | 6/9 | Special | - |
+| [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 10 | 7/10 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
 | [104237](104237/) | [Harker Programming Invitational 2023 Novice](https://codeforces.com/contest/104237) | 9 | 8/9 | Special | - |
 | [104239](104239/) | [Интернет-олимпиады, Сезон 2022-2023, Четвертая личная олимпиада](https://codeforces.com/contest/104239) | 4 | 4/4 | Special | - |
