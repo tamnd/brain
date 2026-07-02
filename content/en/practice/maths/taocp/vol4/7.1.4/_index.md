@@ -109,7 +109,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [89](89.md) |  [*15*] | simple | solved | 5m01s |
 | [90](90.md) |  [*M20*] | math-medium | solved | 6m29s |
 | [91](91.md) | &#9654; [*26*] | hard | solved | 8m34s |
-| [92](92.md) |  [*M27*] | math-hard | solved | 4m34s |
+| [92](92.md) |  [*M27*] | math-hard | solved | 8m24s |
 | [93](93.md) |  [*36*] | project | solved | 4m54s |
 | [94](94.md) |  [*21*] | medium | verified | 1m15s |
 | [95](95.md) | &#9654; [*20*] | medium | verified | 1m12s |
