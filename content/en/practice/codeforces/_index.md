@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2791 contests, 19932 problems, 11221 verified."
+description: "Codeforces problem solutions with full editorials. 2796 contests, 19960 problems, 11224 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2791 contests, 19932 problems, 11221 verified.**
+**2796 contests, 19960 problems, 11224 verified.**
 
-## Unknown — 669 contests, 5515 problems, 3442 verified
+## Unknown — 671 contests, 5524 problems, 3444 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103500](103500/) | [box 2021](https://codeforces.com/contest/103500) | 5 | 1/5 | Special | - |
+| [103521](103521/) | [Интернет-олимпиады, Сезон 2018-2019, Третья личная олимпиада](https://codeforces.com/contest/103521) | 4 | 1/4 | Special | - |
 | [103522](103522/) | [Индивидуальная олимпиада школьников по информатике и программированию 2019](https://codeforces.com/contest/103522) | 5 | 0/5 | Special | - |
 | [103524](103524/) | [Интернет-олимпиады, Сезон 2017-2018, Первая личная олимпиада](https://codeforces.com/contest/103524) | 4 | 1/4 | Special | - |
 | [103526](103526/) | [Интернет-олимпиады, Сезон 2017-2018, Вторая личная олимпиада](https://codeforces.com/contest/103526) | 4 | 0/4 | Special | - |
@@ -1630,7 +1632,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 135 contests, 864 problems, 347 verified
+## 2021 — 136 contests, 877 problems, 347 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1766,11 +1768,12 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103496](103496/) | [Abakoda 2021 Long Contest](https://codeforces.com/contest/103496) | 13 | 0/13 | Special | - |
 | [103987](103987/) | [2021 Huazhong University of Science and Technology Freshmen Cup](https://codeforces.com/contest/103987) | 11 | 10/11 | Special | - |
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 209 contests, 1622 problems, 767 verified
+## 2022 — 211 contests, 1628 problems, 768 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1907,6 +1910,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103503](103503/) | [Infoleague Winter 2022 Round 1 Div. 2](https://codeforces.com/contest/103503) | 3 | 1/3 | Div. 2 | - |
+| [103505](103505/) | [Infoleague Winter 2022 Round 1 Div. 1](https://codeforces.com/contest/103505) | 3 | 0/3 | Div. 1 | - |
 | [103561](103561/) | [UTPC Contest 02-11-22 Div. 1 (Advanced)](https://codeforces.com/contest/103561) | 8 | 3/8 | Div. 1 | - |
 | [103562](103562/) | [UTPC Contest 02-11-22 Div. 2 (Beginner)](https://codeforces.com/contest/103562) | 7 | 1/7 | Div. 2 | - |
 | [103575](103575/) | [Innopolis Open 2021-2022. Final round](https://codeforces.com/contest/103575) | 5 | 4/5 | Special | - |
