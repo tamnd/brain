@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2748 contests, 19617 problems, 11094 verified."
+description: "Codeforces problem solutions with full editorials. 2749 contests, 19627 problems, 11102 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2748 contests, 19617 problems, 11094 verified.**
+**2749 contests, 19627 problems, 11102 verified.**
 
-## Unknown — 639 contests, 5303 problems, 3346 verified
+## Unknown — 640 contests, 5313 problems, 3354 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103664](103664/) | [Турнир Архимеда 2019](https://codeforces.com/contest/103664) | 10 | 8/10 | Special | - |
 | [103665](103665/) | [Турнир Архимеда 2018](https://codeforces.com/contest/103665) | 11 | 9/11 | Special | - |
 | [103666](103666/) | [Турнир Архимеда 2016](https://codeforces.com/contest/103666) | 7 | 7/7 | Special | - |
 | [103671](103671/) | [Tech Interview Prep C++ Challenges](https://codeforces.com/contest/103671) | 3 | 0/3 | Special | - |
