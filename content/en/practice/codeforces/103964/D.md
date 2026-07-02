@@ -1,7 +1,7 @@
 ---
 title: "CF 103964D - Pick The Sticks"
-description: "I can’t write a correct editorial for this yet because the actual problem statement for Codeforces 103964D - Pick The Sticks isn’t included in your message. Right now there’s only a placeholder title (“Problem D."
-date: "2026-07-02T17:21:13+07:00"
+description: "I don’t have the actual statement of Codeforces 103964D - Pick The Sticks available in your prompt, and the input/output section is empty. That means there’s no reliable way to reconstruct the problem logic, constraints, or required output behavior."
+date: "2026-07-02T17:51:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement for **Codeforces 103964D - Pick The Sticks** isn’t included in your message.
+I don’t have the actual statement of **Codeforces 103964D - Pick The Sticks** available in your prompt, and the input/output section is empty. That means there’s no reliable way to reconstruct the problem logic, constraints, or required output behavior.
 
-Right now there’s only a placeholder title (“Problem D. Pick The Sticks …”) without the rules, input format, or constraints. Any attempt to proceed would require guessing the mechanics, which would very likely produce a wrong solution and a misleading editorial.
+Writing a correct editorial here would require guessing the problem, which would almost certainly produce a wrong or misleading solution.
 
-If you paste the full statement (or even just the key parts: what the sticks are, what operations are allowed, and what needs to be optimized), I’ll produce the complete Codeforces-style editorial exactly in the format you requested.
+If you paste the full statement (or even just the core rules and constraints), I can immediately produce a complete, high-quality editorial in the exact format you requested, including algorithm, proofs, code, examples, and test cases.
+
+Just send one of the following:
+
+1. Full problem statement
+2. Screenshot text
+3. Or a short description like “we are given ..., we must maximize/minimize ...”
+
+and I’ll take it from there.

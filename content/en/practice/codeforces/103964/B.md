@@ -1,7 +1,7 @@
 ---
 title: "CF 103964B - Build Towers"
-description: "The statement you pasted is effectively empty, so there’s no way to reconstruct a correct solution or write a meaningful editorial for Codeforces 103964B - Build Towers."
-date: "2026-07-02T17:20:39+07:00"
+description: "The statement you provided is effectively empty, so there isn’t enough information to reconstruct what “Build Towers” is actually asking."
+date: "2026-07-02T17:50:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-The statement you pasted is effectively empty, so there’s no way to reconstruct a correct solution or write a meaningful editorial for Codeforces 103964B - Build Towers.
+The statement you provided is effectively empty, so there isn’t enough information to reconstruct what “Build Towers” is actually asking. Right now we don’t know what the input represents, what constraints exist, or what needs to be optimized or computed, which makes it impossible to write a correct editorial without inventing the problem.
 
-Right now we only know the title, and that’s not enough to determine the model, constraints, or even what “building towers” refers to in this context. Many CF problems with similar names range from greedy stacking, prefix constraints, DP on sequences, to geometry-like constructions, and each leads to completely different solutions.
+If you paste the full Codeforces statement (or even just the input format, output format, and a sample), I can produce the complete editorial in the exact style you requested, including the full algorithm derivation, complexity analysis, implementation, and edge-case discussion.
 
-Send the full problem statement (input, output, and description). Once you do, I’ll produce the complete editorial in the exact format you requested, including brute force reasoning, optimal insight, algorithm walkthrough, proofs, and test coverage.
+Send the full problem text and I’ll take it from there.
