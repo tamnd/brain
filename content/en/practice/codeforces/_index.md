@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2712 contests, 19237 problems, 10845 verified."
+description: "Codeforces problem solutions with full editorials. 2714 contests, 19272 problems, 10870 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2712 contests, 19237 problems, 10845 verified.**
+**2714 contests, 19272 problems, 10870 verified.**
 
-## Unknown — 621 contests, 5118 problems, 3230 verified
+## Unknown — 623 contests, 5153 problems, 3255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103870](103870/) | [TeamsCode Summer 2022 Contest](https://codeforces.com/contest/103870) | 18 | 15/18 | Special | - |
+| [103886](103886/) | [CerealCodes 2022 Summer Contest](https://codeforces.com/contest/103886) | 17 | 10/17 | Special | - |
 | [103914](103914/) | [Heltion Contest 1](https://codeforces.com/contest/103914) | 12 | 11/12 | Special | - |
 | [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
