@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2720 contests, 19340 problems, 10908 verified."
+description: "Codeforces problem solutions with full editorials. 2721 contests, 19346 problems, 10912 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2720 contests, 19340 problems, 10908 verified.**
+**2721 contests, 19346 problems, 10912 verified.**
 
 ## Unknown — 627 contests, 5196 problems, 3274 verified
 
@@ -1728,7 +1728,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 180 contests, 1354 problems, 627 verified
+## 2022 — 181 contests, 1360 problems, 631 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1865,6 +1865,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103824](103824/) | [2022 Summer Camp of XTU Qualifying Round](https://codeforces.com/contest/103824) | 6 | 4/6 | Special | - |
 | [103860](103860/) | [The 7th China Collegiate Programming Contest, Finals (CCPC Finals 2021)](https://codeforces.com/contest/103860) | 12 | 10/12 | Special | - |
 | [103861](103861/) | [2021 ICPC Asia East Continent Final](https://codeforces.com/contest/103861) | 13 | 9/13 | ICPC/IOI | - |
 | [103895](103895/) | [UTPC Contest 09-02-22 Div. 2 (Beginner)](https://codeforces.com/contest/103895) | 10 | 0/10 | Div. 2 | - |
