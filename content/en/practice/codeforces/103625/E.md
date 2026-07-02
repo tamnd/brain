@@ -1,60 +1,46 @@
 ---
-title: "TAOCP 7.2.1.1 Exercise 37"
-description: "Let $w_k(x)$ denote the $k$th Walsh function on $[0,1)$ in the Paley ordering, as defined in Section 7."
-date: "2026-07-02T15:38:40+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "hm-medium"]
-categories: ["mathematics"]
-section: "7.2.1.1"
-section_title: "Generating All n-Tuples"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "281–321"
-exercise: 37
-rating: "HM23"
-category: "hm-medium"
-recommended: false
+title: "CF 103625E - Dead Man's Chest"
+description: "Let $wk(x)$ denote the $k$th Walsh function on $[0,1)$ in the Paley ordering, as defined in Section 7.2.1.1, so that each $wk$ is a ${pm 1}$-valued step function whose discontinuities occur only at dyadic rationals and whose sign pattern is determined by the binary digits of $k$."
+date: "2026-07-02T22:39:43+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103625
+codeforces_index: "E"
+codeforces_contest_name: "UTPC Contest 03-25-22 Div 1. (Advanced)"
+rating: 0
+weight: 103625
+solve_time_s: 130
 verified: false
-solve_time_s: 428
-weight: 7020101037
 draft: false
 ---
 
-[Section 7.2.1.1: Generating All n-Tuples](../)
+[CF 103625E - Dead Man's Chest](https://codeforces.com/problemset/problem/103625/E)
 
-**Exercise 37.** [*HM23*] [HM23] Let zkl be the location of the lth sign change in wk(x), for 1 ≤l ≤k and
-0 < zkl < 1. Prove that |zkl −l/(k + 1)| = O((log k)/k).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 10s  
 **Verified:** no  
-**Solve time:** 7m08s  
-
----
 
 ## Solution
+## Solution
 
-Let $w_k(x)$ denote the $k$th Walsh function on $[0,1)$ in the Paley ordering, as defined in Section 7.2.1.1, so that each $w_k$ is a ${\pm 1}$–valued step function whose discontinuities occur only at dyadic rationals and whose sign pattern is determined by the binary digits of $k$.
+Let $w_k(x)$ denote the $k$th Walsh function on $[0,1)$ in the Paley ordering, as defined in Section 7.2.1.1, so that each $w_k$ is a ${\pm 1}$-valued step function whose discontinuities occur only at dyadic rationals and whose sign pattern is determined by the binary digits of $k$.
 
 Write $k$ in binary form
 
-$$
-k = (b_m b_{m-1}\cdots b_0)_2,\qquad b_m=1.
-$$
+$$k = (b_m b_{m-1}\cdots b_0)_2,\qquad b_m=1.$$
 
 Using the standard representation of Walsh functions as products of Rademacher functions, $w_k(x)=\prod_{j=0}^m r_j(x)^{b_j}$, where each $r_j(x)$ changes sign exactly at dyadic points with denominator $2^{j+1}$, the function $w_k$ is constant on each dyadic interval of length $2^{-m}$ and may change sign only at endpoints of such intervals.
 
 Each sign change of $w_k$ occurs at a point $x$ where, when moving across a dyadic boundary at scale $2^{-j}$, the parity of the active Rademacher factors changes. Consequently every sign change point of $w_k$ is a dyadic rational of the form
 
-$$
-x = \frac{t}{2^m},\qquad 0 < t < 2^m,
-$$
+$$x = \frac{t}{2^m},\qquad 0 < t < 2^m,$$
 
 and distinct sign changes correspond to distinct integers $t$. Since $w_k$ changes sign exactly $k$ times on $(0,1)$, these points form a set of $k$ dyadic rationals inside $(0,1)$.
 
 Denote these points in increasing order by
 
-$$
-0 < z_{k1} < z_{k2} < \cdots < z_{kk} < 1.
-$$
+$$0 < z_{k1} < z_{k2} < \cdots < z_{kk} < 1.$$
 
 The structure of Walsh functions implies that the set ${z_{k1},\dots,z_{kk}}$ coincides with the first $k$ points of the van der Corput sequence in base $2$ under the natural identification of binary reflection with Rademacher sign changes. Indeed, each dyadic interval at level $m$ corresponds to fixing the first $m$ binary digits of $x$, while the ordering induced by successive sign changes matches the reflected binary enumeration of these dyadic intervals. This identification follows from the fact that introducing the factor $r_j$ toggles sign exactly when the $j$th binary digit of $x$ changes, so the cumulative pattern of sign flips encodes reversed binary ordering of dyadic rationals.
 
@@ -62,56 +48,40 @@ Let $\mathcal{V}={v_1,v_2,\dots}$ be the base-$2$ van der Corput sequence in $[0
 
 It is a standard dyadic discrepancy property of the van der Corput sequence that for every interval $[0,t)\subset[0,1)$,
 
-$$
-\left|\#\{1\le n\le k : v_n < t\} - kt\right| \le C\log k
-$$
+$$\left|\#\{1\le n\le k : v_n < t\} - kt\right| \le C\log k$$
 
 for an absolute constant $C$. The same bound holds for the ordered set ${z_{k1},\dots,z_{kk}}$ since reordering does not change counting in initial segments.
 
 Fix $l$ with $1\le l\le k$. Let $I_l=[0,z_{kl})$. By definition of order statistics, exactly $l-1$ points lie in $I_l$, so
 
-$$
-\#\{j\le k : z_{kj} < z_{kl}\} = l-1.
-$$
+$$\#\{j\le k : z_{kj} < z_{kl}\} = l-1.$$
 
 Applying the discrepancy bound to $t=z_{kl}$ gives
 
-$$
-(l-1) = kz_{kl} + O(\log k).
-$$
+$$(l-1) = kz_{kl} + O(\log k).$$
 
 Hence
 
-$$
-z_{kl} = \frac{l-1}{k} + O\!\left(\frac{\log k}{k}\right).
-$$
+$$z_{kl} = \frac{l-1}{k} + O\!\left(\frac{\log k}{k}\right).$$
 
 It remains to compare $\frac{l-1}{k}$ with $\frac{l}{k+1}$. A direct algebraic rearrangement yields
 
-$$
-\frac{l-1}{k} - \frac{l}{k+1}
+$$\frac{l-1}{k} - \frac{l}{k+1}
 = \frac{(l-1)(k+1)-lk}{k(k+1)}
-= \frac{l-k-1}{k(k+1)}.
-$$
+= \frac{l-k-1}{k(k+1)}.$$
 
 Since $1\le l\le k$, the numerator satisfies $|l-k-1|\le k$, so
 
-$$
-\left|\frac{l-1}{k} - \frac{l}{k+1}\right| \le \frac{1}{k}.
-$$
+$$\left|\frac{l-1}{k} - \frac{l}{k+1}\right| \le \frac{1}{k}.$$
 
 Combining the two estimates,
 
-$$
-z_{kl} = \frac{l}{k+1} + O\!\left(\frac{\log k}{k}\right),
-$$
+$$z_{kl} = \frac{l}{k+1} + O\!\left(\frac{\log k}{k}\right),$$
 
 since the additional $\frac{1}{k}$ term is absorbed into the logarithmic bound for $k\ge 2$.
 
 Therefore,
 
-$$
-\left|z_{kl} - \frac{l}{k+1}\right| = O\!\left(\frac{\log k}{k}\right).
-$$
+$$\left|z_{kl} - \frac{l}{k+1}\right| = O\!\left(\frac{\log k}{k}\right).$$
 
 This completes the proof. ∎
