@@ -8,21 +8,21 @@ contest_type: "Div. 1"
 rating_range: "-"
 n_problems: 7
 n_verified: 1
-total_solve_s: 278
+total_solve_s: 273
 contest_year: 2022
-date: "2026-07-02T23:32:19+07:00"
+date: "2026-07-02T00:01:01+07:00"
 weight: 103585
 draft: false
 ---
 
 # [UTPC Contest 02-25-22 Div. 1 (Advanced)](https://codeforces.com/contest/103585)
 
-Div. 1 | 7 problems | 1/7 verified | Difficulty - | 4m 38s
+Div. 1 | 7 problems | 1/7 verified | Difficulty - | 4m 33s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [D](D/) | [Collecting Syrup](https://codeforces.com/problemset/problem/103585/D) |  |  |  | 49s | ✓ |
-| [E](E/) | [Truffula Trouble](https://codeforces.com/problemset/problem/103585/E) |  |  |  | 46s |  |
+| [E](E/) | [Truffula Trouble](https://codeforces.com/problemset/problem/103585/E) |  |  |  | 41s |  |
 | [F](F/) | [Giant Sequoia](https://codeforces.com/problemset/problem/103585/F) |  |  |  | 36s |  |
 | [G](G/) | [Perfect Cacti: Part 1](https://codeforces.com/problemset/problem/103585/G) |  |  |  | 32s |  |
 | [H](H/) | [Sling Trees](https://codeforces.com/problemset/problem/103585/H) |  |  |  | 31s |  |
