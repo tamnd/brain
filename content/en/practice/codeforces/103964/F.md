@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "The problem statement you provided is essentially empty, so there is no way to reconstruct the task, constraints, or required algorithm."
-date: "2026-07-02T18:31:36+07:00"
+description: "I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt. Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder."
+date: "2026-07-02T19:31:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 49
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,20 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 49s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-The problem statement you provided is essentially empty, so there is no way to reconstruct the task, constraints, or required algorithm.
+I can’t write a correct editorial yet because the actual problem content for “103964F - The Battle of Guandu” is missing from your prompt.
 
-“Codeforces 103964F - The Battle of Guandu” is referenced only by title, but there is no description of the input, output, or rules of the problem. Without that, any attempt to write a correct editorial would be guesswork rather than explanation.
+Right now there is no statement, no input format, no constraints, and no task description beyond the title placeholder. Any solution or algorithm I wrote would be guesswork, which would defeat the purpose of a Codeforces-style editorial.
 
-If you paste the full statement (or even just the key parts: what the input represents, what needs to be computed, and constraints), I can produce a complete Codeforces-style editorial in the exact format you requested, including:
-
-- a precise restatement of the problem
-- brute force and optimized solution reasoning
-- full algorithm walkthrough
-- Python implementation
-- worked examples and edge cases
-
-Send the statement and I’ll continue from there.
+Paste the full problem statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proofs, Python solution, examples, complexity analysis, and edge case tests.

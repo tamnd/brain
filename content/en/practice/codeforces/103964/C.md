@@ -1,7 +1,7 @@
 ---
 title: "CF 103964C - The Battle of Chibi"
-description: "The problem statement section is empty in what you provided, so there is no information about what the input/output actually represent, what operations are allowed, or what needs to be computed."
-date: "2026-07-02T19:01:10+07:00"
+description: "I can’t produce a correct, problem-specific Codeforces editorial here because the actual statement for 103964C - The Battle of Chibi is missing from your prompt (it’s shown as blank in the input section)."
+date: "2026-07-02T19:30:47+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 51
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 51s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-The problem statement section is empty in what you provided, so there is no information about what the input/output actually represent, what operations are allowed, or what needs to be computed. Without that, any “editorial” would necessarily be guessing, which would defeat the purpose of a Codeforces-style explanation.
+I can’t produce a correct, problem-specific Codeforces editorial here because the actual statement for **103964C - The Battle of Chibi** is missing from your prompt (it’s shown as blank in the input section).
 
-If you paste the full statement (or even just the core description plus constraints and samples), I can write the complete editorial in the exact format you requested, including the reasoning flow, optimal solution derivation, walkthrough, and code.
+Without the real task description, any “full solution” would be guesswork, and that would almost certainly produce an incorrect algorithm, wrong complexity analysis, and fabricated edge cases.
 
-Right now the only usable information is the title “The Battle of Chibi”, which is not enough to reliably reconstruct the intended problem among possible variants.
+If you paste the full problem statement (or even just the core description and constraints), I’ll write the complete editorial in the exact style you requested, including:
+
+- a clean restatement in my own words
+- brute force → optimization reasoning
+- a precise algorithm walkthrough
+- full Python solution
+- worked traces with tables
+- edge case analysis tied to the actual logic
+
+Just send the statement and I’ll take it from there.
