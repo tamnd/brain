@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2797 contests, 19972 problems, 11236 verified."
+description: "Codeforces problem solutions with full editorials. 2798 contests, 19983 problems, 11247 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2797 contests, 19972 problems, 11236 verified.**
+**2798 contests, 19983 problems, 11247 verified.**
 
 ## Unknown — 671 contests, 5524 problems, 3444 verified
 
@@ -1632,7 +1632,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 137 contests, 889 problems, 359 verified
+## 2021 — 138 contests, 900 problems, 370 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1768,6 +1768,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103492](103492/) | [China Collegiate Programming Contest 2021, Qualification Round (Online), Rematch](https://codeforces.com/contest/103492) | 11 | 11/11 | Special | - |
 | [103495](103495/) | [2021 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/103495) | 12 | 12/12 | Special | - |
 | [103496](103496/) | [Abakoda 2021 Long Contest](https://codeforces.com/contest/103496) | 13 | 0/13 | Special | - |
 | [103987](103987/) | [2021 Huazhong University of Science and Technology Freshmen Cup](https://codeforces.com/contest/103987) | 11 | 10/11 | Special | - |
