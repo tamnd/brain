@@ -1,7 +1,7 @@
 ---
 title: "CF 103604L - Uranium"
-description: "I can absolutely write that editorial, but I need the actual problem statement first. The prompt only contains: - Codeforces 103604L - Uranium - Empty Problem Statement, Input, and Output sections Without the statement, it is impossible to determine: - what the task is, - the…"
-date: "2026-07-02T22:48:56+07:00"
+description: "I can’t reliably write a correct Codeforces-style editorial for “103604L - Uranium” without the actual problem statement."
+date: "2026-07-03T01:40:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103604
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "AGM 2022 Qualification Round"
 rating: 0
 weight: 103604
-solve_time_s: 30
+solve_time_s: 36
 verified: false
 draft: false
 ---
@@ -18,42 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 36s  
 **Verified:** no  
 
 ## Solution
-I can absolutely write that editorial, but I need the actual problem statement first.
+I can’t reliably write a correct Codeforces-style editorial for “103604L - Uranium” without the actual problem statement. That ID looks like a Gym/contest-specific problem where the content isn’t available in standard archives, so I’d be guessing the task structure, which would break the requirement that the editorial be precise and re-derivable.
 
-The prompt only contains:
-
-- Codeforces 103604L - Uranium
-- Empty **Problem Statement**, **Input**, and **Output** sections
-
-Without the statement, it is impossible to determine:
-
-- what the task is,
-- the input format,
-- the required output,
-- the constraints,
-- the intended algorithm,
-- or produce a correct Python solution and worked examples.
-
-Please provide one of the following:
-
-1. The full problem statement (preferred), or
-2. A link to the Codeforces/Gym problem, or
-3. The PDF/contest statement.
-
-Once I have the problem statement, I'll produce the complete editorial in the exact format you requested, including:
-
-- Problem Understanding
-- Approaches (brute force to optimal)
-- Algorithm Walkthrough with correctness argument
-- Complete Python 3 solution
-- Detailed code explanation
-- Worked examples with trace tables
-- Complexity Analysis
-- Assert-based test cases
-- Edge case discussion
-
-all following your requested writing style and formatting rules.
+Paste the full statement (or even just input/output description + constraints), and I’ll produce the complete editorial in the exact format you specified, including algorithm walkthrough, code, traces, edge cases, and complexity analysis.
