@@ -1,0 +1,81 @@
+---
+title: "CF 103548I - \u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435"
+description: "Let $(a{n-1},dots,a1,a0)$ be elements of the ternary reflected Gray code, so consecutive tuples differ in exactly one coordinate by $+1$ or $-1$, with all entries in ${0,1,2}$. The full sequence runs through all $3^n$ ternary $n$-tuples."
+date: "2026-07-03T05:46:08+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103548
+codeforces_index: "I"
+codeforces_contest_name: "\u0414\u043b\u0438\u043d\u043d\u044b\u0439 \u0442\u0443\u0440 \u043e\u0442\u0431\u043e\u0440\u043e\u0447\u043d\u043e\u0433\u043e \u044d\u0442\u0430\u043f\u0430 \u041e\u0442\u043a\u0440\u044b\u0442\u043e\u0439 \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b 2021-2022"
+rating: 0
+weight: 103548
+solve_time_s: 121
+verified: false
+draft: false
+---
+
+[CF 103548I - \u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435](https://codeforces.com/problemset/problem/103548/I)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 1s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+Let $(a_{n-1},\dots,a_1,a_0)$ be elements of the ternary reflected Gray code, so consecutive tuples differ in exactly one coordinate by $+1$ or $-1$, with all entries in ${0,1,2}$. The full sequence runs through all $3^n$ ternary $n$-tuples.
+
+Let a valid state for part (a) be a tuple satisfying
+
+$a_{n-1}+\cdots+a_1+a_0=t.$
+
+Let a valid state for part (b) be a ternary multiset configuration satisfying
+
+$\{a_{n-1},\dots,a_0\}=\{r\cdot 0,\; s\cdot 1,\; t\cdot 2\}, \quad r+s+t=n.$
+
+The revolving-door Gray code $\Gamma_{st}$ on binary combinations has the defining property that successive valid states differ by a single adjacent exchange of $0$ and $1$ in the bitstring representation, hence by a local move in the corresponding combinatorial structure.
+
+The question asks whether analogous “revolving-door” properties hold after restricting the ternary reflected Gray code to the subsets described in (a) and (b).
+
+## Solution
+
+The ternary reflected Gray code is constructed so that consecutive full states differ in exactly one coordinate by $\pm 1$. If $x=(x_{n-1},\dots,x_0)$ and $y=(y_{n-1},\dots,y_0)$ are consecutive in the full code, then there exists a unique index $j$ such that $y_j=x_j\pm 1$ and $y_i=x_i$ for all $i\neq j$.
+
+### Part (a)
+
+Restrict to states with fixed sum $t$. Let $x$ and $y$ be consecutive elements in the full ternary reflected Gray code that both satisfy $\sum_i x_i=t$ and $\sum_i y_i=t$.
+
+Since $y$ differs from $x$ in exactly one coordinate $j$, the equality of sums forces a contradiction:
+
+$\sum_i y_i-\sum_i x_i = (x_j\pm 1 - x_j)=\pm 1 \neq 0.$
+
+Hence no two consecutive elements of the full ternary reflected Gray code both lie in the set defined by $\sum a_i=t$. Any transition between valid states must therefore skip at least one intermediate invalid state.
+
+Let $x$ and $x'$ be consecutive valid states in the induced subsequence. The path from $x$ to $x'$ in the full Gray code changes one coordinate by $+1$ or $-1$ at each step, and the total net change preserves the sum constraint. Therefore the total effect is a finite sequence of unit transfers between coordinates: some coordinates increase by $1$ and others decrease by $1$, with equal total increments and decrements.
+
+The number of coordinates changed can exceed two, since the Gray code may perform a sequence of alternating increments and decrements before returning to the hyperplane $\sum a_i=t$. No constraint forces the intermediate coordinates of the first return to involve only a single increment and a single decrement.
+
+Therefore the induced adjacency on the restricted set is not a single local operation analogous to the revolving-door interchange. The structure is not a Gray code on the Johnson-type graph underlying fixed-weight binary combinations.
+
+### Part (b)
+
+Now restrict to tuples with fixed multiset type ${r\cdot 0,s\cdot 1,t\cdot 2}$. Each full Gray code step changes exactly one coordinate by $\pm 1$, so the multiset type is preserved only if the change is compensated by a later opposite change in the same coordinate or by a balancing change elsewhere.
+
+Between two consecutive valid states in the induced subsequence, the evolution in the full ternary Gray code produces a path in which symbols are incremented and decremented one at a time. The net effect between valid endpoints is that some coordinates undergo a cyclic transfer of unit mass between levels $0,1,2$, and this can involve multiple coordinates.
+
+Unlike the binary case underlying the revolving-door Gray code $\Gamma_{st}$, there is no representation in which every valid state corresponds to a subset whose transitions are governed by a single exchange operation preserving a local adjacency structure. The intermediate dynamics involve carries in both directions of the ternary digit process, and these carries propagate across multiple positions before a valid composition of symbol counts is restored.
+
+Thus the induced sequence on multiset permutations does not correspond to a Hamiltonian path in a simple Cayley graph generated by local transpositions or adjacent exchanges of symbols. The transitions are not confined to a bounded local swap analogous to the binary revolving-door operation.
+
+## Verification
+
+In part (a), the key constraint is that a single Gray code step changes the total sum by $\pm 1$, which contradicts invariance of the sum constraint. Hence no single-step adjacency survives the restriction, forcing multi-step transitions between valid states.
+
+In part (b), a single Gray code step preserves the total number of symbols but changes one symbol value, which alters the multiset type unless compensated by later inverse changes. The restriction therefore induces transitions composed of multiple single-coordinate updates, not reducible to a single combinatorial exchange.
+
+Both induced structures therefore fail to preserve the one-move adjacency property characteristic of the revolving-door Gray code.
+
+## Conclusion
+
+The ternary reflected Gray code does not retain revolving-door-type adjacency properties under either restriction. In both cases, the induced sequence between valid states requires composite multi-step adjustments rather than a single local exchange operation, so the strong Gray-code adjacency structure is lost. ∎

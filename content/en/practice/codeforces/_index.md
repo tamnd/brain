@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2779 contests, 19880 problems, 11212 verified."
+description: "Codeforces problem solutions with full editorials. 2785 contests, 19907 problems, 11219 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,18 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2779 contests, 19880 problems, 11212 verified.**
+**2785 contests, 19907 problems, 11219 verified.**
 
-## Unknown — 657 contests, 5463 problems, 3433 verified
+## Unknown — 663 contests, 5490 problems, 3440 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103536](103536/) | [classic problems (for e-maxx)](https://codeforces.com/contest/103536) | 2 | 1/2 | Special | - |
+| [103540](103540/) | [CP Course Contest](https://codeforces.com/contest/103540) | 2 | 1/2 | Special | - |
+| [103548](103548/) | [Длинный тур отборочного этапа Открытой олимпиады 2021-2022](https://codeforces.com/contest/103548) | 9 | 1/9 | Special | - |
+| [103551](103551/) | [Интернет-олимпиады, Сезон 2021-2022, Первая личная олимпиада](https://codeforces.com/contest/103551) | 4 | 3/4 | Special | - |
+| [103559](103559/) | [Интернет-олимпиады, Сезон 2017-2018, Третья личная олимпиада](https://codeforces.com/contest/103559) | 4 | 0/4 | Special | - |
+| [103560](103560/) | [Индивидуальная олимпиада школьников по информатике и программированию 2018](https://codeforces.com/contest/103560) | 6 | 1/6 | Special | - |
 | [103566](103566/) | [2021-2022 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/103566) | 9 | 7/9 | Special | - |
 | [103567](103567/) | [2021-2022 Olympiad Cognitive Technologies, Prefinal Round](https://codeforces.com/contest/103567) | 8 | 8/8 | Special | - |
 | [103573](103573/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая личная олимпиада](https://codeforces.com/contest/103573) | 4 | 0/4 | Special | - |
