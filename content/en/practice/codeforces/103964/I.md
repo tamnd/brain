@@ -1,7 +1,7 @@
 ---
 title: "CF 103964I - Mahjong"
-description: "The problem statement is effectively missing. What you provided only contains the title line “Mahjong” without any description of rules, input format, or required output, so there is no way to reconstruct the intended task reliably."
-date: "2026-07-02T17:21:49+07:00"
+description: "I don’t have enough information about Codeforces 103964I - Mahjong from what you provided. Right now the statement section is empty, so there’s no way to reconstruct: - what the input represents (tiles, rules, constraints, etc."
+date: "2026-07-02T17:51:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 34
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-The problem statement is effectively missing. What you provided only contains the title line “Mahjong” without any description of rules, input format, or required output, so there is no way to reconstruct the intended task reliably.
+I don’t have enough information about **Codeforces 103964I - Mahjong** from what you provided.
 
-For Codeforces editorials, the solution depends entirely on the exact mechanics of the problem, especially in something like Mahjong where different problems can range from simple counting to complex tile state DP or matching rules. Without the actual statement, any “solution” would just be guessing and would almost certainly be wrong.
+Right now the statement section is empty, so there’s no way to reconstruct:
 
-If you paste the full problem text (or even a screenshot or partial statement), I can produce the complete editorial in the format you requested, including the full reasoning, algorithm derivation, code, and edge case analysis.
+- what the input represents (tiles, rules, constraints, etc.)
+- what the required output is
+- what the actual computational task is (counting hands, checking winning states, DP, etc.)
+
+And since an editorial has to be grounded in the exact rules of the problem, anything I write without the full statement would inevitably be guesswork and could mislead you.
+
+Please paste the full problem statement (including input/output format and constraints). Once you do, I’ll write the complete Codeforces-style editorial in the format you specified.

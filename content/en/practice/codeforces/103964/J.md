@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "I can’t write a correct editorial for this yet because the actual problem content is missing. Right now the only thing provided is the title “Walk Around The Campsite”, but there is no statement describing: - what the campsite structure is (grid, graph, points, etc."
-date: "2026-07-02T17:21:50+07:00"
+description: "I can’t reliably write an editorial for “Codeforces 103964J - Walk Around The Campsite” because the actual problem statement (inputs, outputs, and rules) is missing. Right now all that’s available is the title, which is not enough to reconstruct the task without guessing."
+date: "2026-07-02T17:51:59+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,28 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem content is missing.
+I can’t reliably write an editorial for “Codeforces 103964J - Walk Around The Campsite” because the actual problem statement (inputs, outputs, and rules) is missing.
 
-Right now the only thing provided is the title “Walk Around The Campsite”, but there is no statement describing:
+Right now all that’s available is the title, which is not enough to reconstruct the task without guessing. And for an editorial, guessing would inevitably lead to a wrong model of the problem, wrong algorithm, and a misleading explanation.
 
-- what the campsite structure is (grid, graph, points, etc.)
-- what “walk around” means (path, perimeter, visitation rule, constraints)
-- what the input/output format is
-- constraints that define the algorithmic direction
-
-Without those, any “solution” would be guesswork, and for Codeforces-style problems that almost always leads to an incorrect or meaningless editorial.
-
-If you paste the full problem statement (or even a screenshot / partial text), I’ll produce a complete editorial in the exact format you requested, including:
-
-- a precise restatement in graph/array terms
-- constraint-driven reasoning
-- brute force vs optimal derivation
-- full algorithm walkthrough with invariants
-- Python implementation
-- worked traces, edge cases, and test assertions
-
-Send the statement and I’ll continue from there.
+If you paste the full statement (or even a screenshot or raw text), I can immediately produce the complete Codeforces-style editorial in the exact format you requested, including solution reasoning, proofs, code, and test cases.
