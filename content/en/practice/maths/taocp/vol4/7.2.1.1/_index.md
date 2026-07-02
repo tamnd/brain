@@ -24,8 +24,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [4](04.md) | &#9654; [*18*] | medium | verified | 1m04s |
 | [5](05.md) | &#9654; [*22*] | medium | verified | 1m41s |
 | [6](06.md) |  [*M17*] | math-medium | verified | 3m55s |
-| [7](07.md) |  [*20*] | medium | solved | 3m10s |
-| [8](08.md) |  [*15*] | simple | verified | 1m15s |
+| [7](07.md) |  [*20*] | medium | solved | 5m29s |
+| [8](08.md) |  [*15*] | simple | solved | 6m22s |
 | [9](09.md) |  [*16*] | medium | solved | 4m08s |
 | [10](10.md) | &#9654; [*M21*] | math-medium | solved | 4m09s |
 | [11](11.md) |  [*M22*] | math-medium | solved | 2m57s |
