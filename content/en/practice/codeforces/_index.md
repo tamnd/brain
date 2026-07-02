@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2773 contests, 19838 problems, 11188 verified."
+description: "Codeforces problem solutions with full editorials. 2775 contests, 19847 problems, 11192 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2773 contests, 19838 problems, 11188 verified.**
+**2775 contests, 19847 problems, 11192 verified.**
 
-## Unknown — 654 contests, 5442 problems, 3417 verified
+## Unknown — 655 contests, 5446 problems, 3417 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103573](103573/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая личная олимпиада](https://codeforces.com/contest/103573) | 4 | 0/4 | Special | - |
 | [103586](103586/) | [Интернет-олимпиады, Сезон 2021-2022, Третья личная олимпиада](https://codeforces.com/contest/103586) | 4 | 1/4 | Special | - |
 | [103590](103590/) | [RocketOlymp 2022 9 класс](https://codeforces.com/contest/103590) | 5 | 3/5 | Special | - |
 | [103600](103600/) | [Турнир Архимеда 2021](https://codeforces.com/contest/103600) | 12 | 5/12 | Special | - |
@@ -1755,7 +1756,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 206 contests, 1601 problems, 759 verified
+## 2022 — 207 contests, 1606 problems, 763 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1892,6 +1893,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103575](103575/) | [Innopolis Open 2021-2022. Final round](https://codeforces.com/contest/103575) | 5 | 4/5 | Special | - |
 | [103577](103577/) | [2021 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/103577) | 13 | 13/13 | ICPC/IOI | - |
 | [103584](103584/) | [UTPC Contest 02-25-22 Div. 2 (Beginner)](https://codeforces.com/contest/103584) | 9 | 1/9 | Div. 2 | - |
 | [103585](103585/) | [UTPC Contest 02-25-22 Div. 1 (Advanced)](https://codeforces.com/contest/103585) | 9 | 1/9 | Div. 1 | - |
