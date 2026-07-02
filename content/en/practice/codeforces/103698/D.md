@@ -1,7 +1,7 @@
 ---
 title: "CF 103698D - Matrix"
-description: "I can’t reliably write a correct editorial for Codeforces 103698D - Matrix without the actual problem statement. Right now the prompt only includes formatting requirements, but the key part (what operations are allowed on the matrix, what is being queried, constraints, etc."
-date: "2026-07-02T11:10:46+07:00"
+description: "I can’t reliably write a correct editorial for CF 103698D - Matrix without the actual problem statement. Right now the input/output and core task are missing, and for Codeforces problems the solution structure depends heavily on details like what operations are allowed, what…"
+date: "2026-07-02T11:40:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 4th Turing Cup"
 rating: 0
 weight: 103698
-solve_time_s: 33
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for **Codeforces 103698D - Matrix** without the actual problem statement.
+I can’t reliably write a correct editorial for **CF 103698D - Matrix** without the actual problem statement.
 
-Right now the prompt only includes formatting requirements, but the key part (what operations are allowed on the matrix, what is being queried, constraints, etc.) is missing. Any attempt to “reconstruct” it would be guesswork, and that would produce a misleading editorial.
+Right now the input/output and core task are missing, and for Codeforces problems the solution structure depends heavily on details like what operations are allowed, what needs to be computed, and what constraints apply. Guessing here would very likely produce a wrong algorithm and misleading editorial.
 
-If you paste the full statement (or even just input/output + constraints), I’ll write the complete senior-level editorial in the exact style you requested, including the algorithm walkthrough, proof sketch, code, and edge-case analysis.
+If you paste the full statement (or even just the key parts: what the matrix represents, what operations/queries exist, and what must be output), I’ll write the complete step-by-step editorial in the exact format you requested.
