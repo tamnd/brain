@@ -125,8 +125,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [105](105.md) | &#9654; [*26*] | hard | verified | 5m10s |
 | [106](106.md) |  [*M40*] | math-project | solved | 2m56s |
 | [107](107.md) | &#9654; [*30*] | hard | solved | 2m09s |
-| [108](108.md) |  [*M27*] | math-hard | solved | 6m07s |
-| [109](109.md) |  [*M47*] | math-research | solved | 6m19s |
+| [108](108.md) |  [*M27*] | math-hard | solved | 3m49s |
+| [109](109.md) |  [*M47*] | math-research | solved | 4m55s |
 | [110](110.md) | &#9654; [*25*] | medium | solved | 1m48s |
 | [111](111.md) | &#9654; [*M25*] | math-medium | solved | 4m11s |
 | [112](112.md) | &#9654; [*M30*] | math-hard | solved | 6m32s |
