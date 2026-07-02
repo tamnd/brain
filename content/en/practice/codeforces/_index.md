@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2729 contests, 19414 problems, 10955 verified."
+description: "Codeforces problem solutions with full editorials. 2731 contests, 19432 problems, 10972 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2729 contests, 19414 problems, 10955 verified.**
+**2731 contests, 19432 problems, 10972 verified.**
 
 ## Unknown — 633 contests, 5241 problems, 3300 verified
 
@@ -1734,7 +1734,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 183 contests, 1383 problems, 648 verified
+## 2022 — 185 contests, 1401 problems, 665 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1871,6 +1871,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103765](103765/) | [2022 Collegiate Programming Contest of Xiangtan University](https://codeforces.com/contest/103765) | 10 | 10/10 | Special | - |
+| [103785](103785/) | [CodeBrew : Freshers Contest 2022](https://codeforces.com/contest/103785) | 8 | 7/8 | Special | - |
 | [103797](103797/) | [IME++ Starters Try-outs 2022](https://codeforces.com/contest/103797) | 10 | 7/10 | Special | - |
 | [103821](103821/) | [(Aleppo + HAIST + SVU + Private) CPC 2022](https://codeforces.com/contest/103821) | 13 | 10/13 | Special | - |
 | [103824](103824/) | [2022 Summer Camp of XTU Qualifying Round](https://codeforces.com/contest/103824) | 6 | 4/6 | Special | - |
