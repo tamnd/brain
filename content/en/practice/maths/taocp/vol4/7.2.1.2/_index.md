@@ -128,6 +128,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [108](108.md) |  [*M27*] | math-hard | solved | 3m49s |
 | [109](109.md) |  [*M47*] | math-research | solved | 4m55s |
 | [110](110.md) | &#9654; [*25*] | medium | solved | 5m15s |
-| [111](111.md) | &#9654; [*M25*] | math-medium | solved | 4m11s |
-| [112](112.md) | &#9654; [*M30*] | math-hard | solved | 6m32s |
+| [111](111.md) | &#9654; [*M25*] | math-medium | solved | 6m18s |
+| [112](112.md) | &#9654; [*M30*] | math-hard | solved | 4m10s |
 | [113](113.md) |  [*HM43*] | hm-project | solved | 6m14s |
