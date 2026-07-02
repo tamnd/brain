@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2724 contests, 19376 problems, 10923 verified."
+description: "Codeforces problem solutions with full editorials. 2725 contests, 19382 problems, 10928 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2724 contests, 19376 problems, 10923 verified.**
+**2725 contests, 19382 problems, 10928 verified.**
 
-## Unknown — 629 contests, 5213 problems, 3275 verified
+## Unknown — 630 contests, 5219 problems, 3280 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103809](103809/) | [XXVI Spain Olympiad in Informatics, Online Qualifier](https://codeforces.com/contest/103809) | 6 | 5/6 | Special | - |
 | [103810](103810/) | [Всероссийская олимпиада школьников по информатике 2021—2022, Муниципальный этап, Челябинская область](https://codeforces.com/contest/103810) | 5 | 0/5 | Special | - |
 | [103811](103811/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2021](https://codeforces.com/contest/103811) | 12 | 1/12 | Special | - |
 | [103828](103828/) | [(DCPC + TCPC + BCPC) 2022](https://codeforces.com/contest/103828) | 14 | 1/14 | Special | - |
