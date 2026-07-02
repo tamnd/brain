@@ -8,16 +8,16 @@ contest_type: "Div. 1"
 rating_range: "-"
 n_problems: 7
 n_verified: 1
-total_solve_s: 273
+total_solve_s: 258
 contest_year: 2022
-date: "2026-07-02T00:01:01+07:00"
+date: "2026-07-02T00:16:56+07:00"
 weight: 103585
 draft: false
 ---
 
 # [UTPC Contest 02-25-22 Div. 1 (Advanced)](https://codeforces.com/contest/103585)
 
-Div. 1 | 7 problems | 1/7 verified | Difficulty - | 4m 33s
+Div. 1 | 7 problems | 1/7 verified | Difficulty - | 4m 18s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,4 @@ Div. 1 | 7 problems | 1/7 verified | Difficulty - | 4m 33s
 | [G](G/) | [Perfect Cacti: Part 1](https://codeforces.com/problemset/problem/103585/G) |  |  |  | 32s |  |
 | [H](H/) | [Sling Trees](https://codeforces.com/problemset/problem/103585/H) |  |  |  | 31s |  |
 | [I](I/) | [Baobab](https://codeforces.com/problemset/problem/103585/I) |  |  |  | 39s |  |
-| [J](J/) | [Apple Tree Beauty](https://codeforces.com/problemset/problem/103585/J) |  |  |  | 45s |  |
+| [J](J/) | [Apple Tree Beauty](https://codeforces.com/problemset/problem/103585/J) |  |  |  | 30s |  |
