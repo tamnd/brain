@@ -113,10 +113,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [93](93.md) | &#9654; [*M28*] | math-hard | solved | 5m03s |
 | [94](94.md) |  [*22*] | medium | verified | 1m42s |
 | [95](95.md) | &#9654; [*M24*] | math-medium | solved | 4m20s |
-| [96](96.md) | &#9654; [*M28*] | math-hard | solved | 3m56s |
-| [97](97.md) |  [*M29*] | math-hard | solved | 14m45s |
-| [98](98.md) |  [*M34*] | math-hard | solved | 5m28s |
-| [99](99.md) | &#9654; [*M23*] | math-medium | solved | 6m02s |
+| [96](96.md) | &#9654; [*M28*] | math-hard | solved | 1m47s |
+| [97](97.md) |  [*M29*] | math-hard | solved | 6m42s |
+| [98](98.md) |  [*M34*] | math-hard | solved | 5m19s |
+| [99](99.md) | &#9654; [*M23*] | math-medium | solved | 2m31s |
 | [100](100.md) |  [*40*] | project | solved | 8m03s |
 | [101](101.md) | &#9654; [*M30*] | math-hard | solved | 8m06s |
 | [102](102.md) |  [*HM28*] | hm-hard | verified | 1m18s |
