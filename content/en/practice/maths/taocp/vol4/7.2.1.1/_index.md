@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.1: Generating All n-Tuples"
-description: "Section 7.2.1.1 exercises: 105/112 solved."
+description: "Section 7.2.1.1 exercises: 106/112 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.1. Generating All n-Tuples
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 105/112 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 106/112 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -110,7 +110,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 105/112 solved.
 | [90](90.md) |  [*26*] | hard | solved | 4m41s |
 | [91](91.md) | &#9654; [*34*] | hard | solved | 1m32s |
 | [92](92.md) |  [*M30*] | math-hard | solved | 4m31s |
-| 93 | &#9654; [*M28*] | math-hard | - | - |
+| [93](93.md) | &#9654; [*M28*] | math-hard | solved | 5m54s |
 | 94 |  [*22*] | medium | - | - |
 | 95 | &#9654; [*M24*] | math-medium | - | - |
 | 96 | &#9654; [*M28*] | math-hard | - | - |
