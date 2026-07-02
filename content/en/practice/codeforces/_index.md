@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2702 contests, 19132 problems, 10807 verified."
+description: "Codeforces problem solutions with full editorials. 2703 contests, 19144 problems, 10807 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2702 contests, 19132 problems, 10807 verified.**
+**2703 contests, 19144 problems, 10807 verified.**
 
-## Unknown — 619 contests, 5094 problems, 3219 verified
+## Unknown — 620 contests, 5106 problems, 3219 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
 | [103960](103960/) | [2022-2023 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103960) | 14 | 3/14 | ICPC/IOI | - |
 | [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 1/11 | Special | - |

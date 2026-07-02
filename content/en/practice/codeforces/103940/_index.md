@@ -1,22 +1,22 @@
 ---
 title: "2022 ICPC Gran Premio de Mexico 2da Fecha"
-description: "11 problems from 2022 ICPC Gran Premio de Mexico 2da Fecha (contest 103940), difficulty -. 0/11 solutions verified against sample I/O."
+description: "12 problems from 2022 ICPC Gran Premio de Mexico 2da Fecha (contest 103940), difficulty -. 0/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103940
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 0
-total_solve_s: 423
-date: "2026-07-02T07:02:35+07:00"
+total_solve_s: 449
+date: "2026-07-02T07:02:42+07:00"
 weight: 103940
 draft: false
 ---
 
 # [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940)
 
-ICPC/IOI | 11 problems | 0/11 verified | Difficulty - | 7m 3s
+ICPC/IOI | 12 problems | 0/12 verified | Difficulty - | 7m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ ICPC/IOI | 11 problems | 0/11 verified | Difficulty - | 7m 3s
 | [I](I/) | [Inversion Counting](https://codeforces.com/problemset/problem/103940/I) |  |  |  | 33s |  |
 | [J](J/) | [Joining the KAK](https://codeforces.com/problemset/problem/103940/J) |  |  |  | 28s |  |
 | [K](K/) | [Krystalova's Trivial Problem](https://codeforces.com/problemset/problem/103940/K) |  |  |  | 31s |  |
+| [L](L/) | [Limited Increasing Sequences](https://codeforces.com/problemset/problem/103940/L) |  |  |  | 26s |  |
