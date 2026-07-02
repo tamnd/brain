@@ -1,55 +1,32 @@
 ---
-title: "TAOCP 7.2.1.1 Exercise 29"
-description: "Let $G$ be the Cayley graph of $S_n$ with generating set \\{\\sigma,\\tau\\}, \\qquad \\sigma = (1\\,2\\,\\dots\\,n), \\quad \\tau = (1\\,2), where $n \\ge 3$ is odd."
-date: "2026-07-02T14:49:22+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.1"
-section_title: "Generating All n-Tuples"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "281–321"
-exercise: 29
-rating: "M24"
-category: "math-medium"
-recommended: false
+title: "CF 103660C - Ah, It's Yesterday Once More"
+description: "Let $G$ be the Cayley graph of $Sn$ with generating set $${sigma,tau}, qquad sigma = (1,2,dots,n), quad tau = (1,2),$$ where $n ge 3$ is odd."
+date: "2026-07-02T21:54:33+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103660
+codeforces_index: "C"
+codeforces_contest_name: "The 19th Zhejiang University City College Programming Contest"
+rating: 0
+weight: 103660
+solve_time_s: 132
 verified: false
-solve_time_s: 346
-weight: 7020101029
 draft: false
 ---
 
-[Section 7.2.1.1: Generating All n-Tuples](../)
+[CF 103660C - Ah, It's Yesterday Once More](https://codeforces.com/problemset/problem/103660/C)
 
-**Exercise 29.** [*M24*] [M24] If integer values k are transmitted as n-bit Gray binary codes g(k) and
-received with errors described by a bit pattern p = (pn−1 . . . p0)2, the average numerical
-error is
-1
-2n
-2n−1
-
-k=0
-g[−1](g(k) ⊕p) −k
-,
-assuming that all values of k are equally likely.
-Show that this sum is equal to
-2n−1
-k=0 |(k ⊕p) −k|/2n, just as if Gray binary code were not used, and evaluate it
-explicitly.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 12s  
 **Verified:** no  
-**Solve time:** 5m46s  
 
----
-
+## Solution
 ## Setup
 
 Let $G$ be the Cayley graph of $S_n$ with generating set
 
-$$
-\{\sigma,\tau\}, \qquad \sigma = (1\,2\,\dots\,n), \quad \tau = (1\,2),
-$$
+$$\{\sigma,\tau\}, \qquad \sigma = (1\,2\,\dots\,n), \quad \tau = (1\,2),$$
 
 where $n \ge 3$ is odd. The vertex set is $S_n$, and for each $g \in S_n$ there are directed edges $g \to g\sigma$ and $g \to g\tau$ (interpreted as undirected edges in the usual Cayley graph sense).
 
@@ -59,9 +36,7 @@ The problem asks whether $G$ has a Hamiltonian cycle for all odd $n \ge 3$.
 
 The elements $\sigma$ and $\tau$ generate $S_n$. Indeed, conjugating $\tau$ by powers of $\sigma$ yields
 
-$$
-\sigma^k \tau \sigma^{-k} = (k+1 \; k+2),
-$$
+$$\sigma^k \tau \sigma^{-k} = (k+1 \; k+2),$$
 
 with indices interpreted modulo $n$, so all adjacent transpositions are generated, hence all of $S_n$.
 
@@ -82,17 +57,13 @@ The general problem lies within the broader context of Hamiltonicity of Cayley g
 
 Write $H = \langle \sigma \rangle$. Each right coset $gH$ has the form
 
-$$
-g, \; g\sigma, \; g\sigma^2, \; \dots, \; g\sigma^{n-1},
-$$
+$$g, \; g\sigma, \; g\sigma^2, \; \dots, \; g\sigma^{n-1},$$
 
 forming an $n$-cycle under multiplication by $\sigma$. Thus the edges labeled by $\sigma$ decompose the Cayley graph into $(n-1)!$ disjoint cycles.
 
 The action of $\tau$ maps a coset $gH$ to the coset $g\tau H$. Since
 
-$$
-\tau \sigma^k \tau = (1\,2)\,(1\,2\,\dots\,n)^k\,(1\,2),
-$$
+$$\tau \sigma^k \tau = (1\,2)\,(1\,2\,\dots\,n)^k\,(1\,2),$$
 
 the generator $\tau$ conjugates $\sigma$ to a cyclic rotation of adjacent symbols, so it permutes cosets in a way determined by the induced action on $H \backslash S_n$.
 
@@ -100,7 +71,7 @@ This produces a quotient structure on cosets resembling a highly regular graph o
 
 first walks along a $\sigma$-cycle segment, then uses a $\tau$-edge to jump to another coset, and continues so that each coset cycle is spliced exactly once into a global cycle.
 
-The obstruction to a direct inductive construction is that the induced coset graph is not a simple cycle or tree; it has nontrivial overlaps coming from the interaction between right multiplication by $\sigma$ and conjugation by $\tau$. This prevents a straightforward reduction to Algorithm P–style recursion or to a wreath-product Gray code without additional structure.
+The obstruction to a direct inductive construction is that the induced coset graph is not a simple cycle or tree; it has nontrivial overlaps coming from the interaction between right multiplication by $\sigma$ and conjugation by $\tau$. This prevents a straightforward reduction to Algorithm P-style recursion or to a wreath-product Gray code without additional structure.
 
 No known invariant derived from parity, coset structure, or inversion statistics forces a failure of Hamiltonicity, but none yields a complete traversal scheme either.
 
