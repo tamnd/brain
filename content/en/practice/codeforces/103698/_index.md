@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 7
 n_verified: 4
-total_solve_s: 316
+total_solve_s: 313
 contest_year: 2022
-date: "2026-07-02T11:41:13+07:00"
+date: "2026-07-02T11:41:30+07:00"
 weight: 103698
 draft: false
 ---
 
 # [The 4th Turing Cup](https://codeforces.com/contest/103698)
 
-Special | 7 problems | 4/7 verified | Difficulty - | 5m 16s
+Special | 7 problems | 4/7 verified | Difficulty - | 5m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,4 @@ Special | 7 problems | 4/7 verified | Difficulty - | 5m 16s
 | [E](E/) | [Sequence](https://codeforces.com/problemset/problem/103698/E) |  |  |  | 27s |  |
 | [F](F/) | [Tree](https://codeforces.com/problemset/problem/103698/F) |  |  |  | 1m 6s | ✓ |
 | [G](G/) | [Palinomial](https://codeforces.com/problemset/problem/103698/G) |  |  |  | 1m 2s | ✓ |
-| [H](H/) | [Virus Experiment](https://codeforces.com/problemset/problem/103698/H) |  |  |  | 29s |  |
+| [H](H/) | [Virus Experiment](https://codeforces.com/problemset/problem/103698/H) |  |  |  | 26s |  |
