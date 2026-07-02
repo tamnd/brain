@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2808 contests, 20077 problems, 11301 verified."
+description: "Codeforces problem solutions with full editorials. 2809 contests, 20090 problems, 11311 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2808 contests, 20077 problems, 11301 verified.**
+**2809 contests, 20090 problems, 11311 verified.**
 
-## Unknown — 674 contests, 5546 problems, 3446 verified
+## Unknown — 675 contests, 5559 problems, 3456 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103469](103469/) | [2021 Summer Petrozavodsk Camp, Day 3: IQ test (XXII Open Cup, Grand Prix of IMO)](https://codeforces.com/contest/103469) | 13 | 10/13 | Special | - |
 | [103476](103476/) | [Innopolis Open 2021-2022. Second qualification round.](https://codeforces.com/contest/103476) | 5 | 1/5 | Special | - |
 | [103483](103483/) | [2021-2022 Russia Team Open, High School Programming Contest (VKOSHP XXII)](https://codeforces.com/contest/103483) | 12 | 1/12 | Special | - |
 | [103491](103491/) | [1 Silaeder olymp](https://codeforces.com/contest/103491) | 5 | 0/5 | Special | - |
