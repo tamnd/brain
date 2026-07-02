@@ -31,7 +31,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [11](11.md) |  [*M22*] | math-medium | solved | 5m37s |
 | [12](12.md) | &#9654; [*M23*] | math-medium | solved | 6m25s |
 | [13](13.md) |  [*M21*] | math-medium | solved | 6m06s |
-| [14](14.md) |  [*M22*] | math-medium | solved | 6m16s |
+| [14](14.md) |  [*M22*] | math-medium | solved | 7m28s |
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m27s |
 | [16](16.md) |  [*21*] | medium | solved | 6m15s |
 | [17](17.md) | &#9654; [*20*] | medium | solved | 6m23s |
