@@ -122,7 +122,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [102](102.md) |  [*HM28*] | hm-hard | verified | 1m18s |
 | [103](103.md) |  [*M20*] | math-medium | verified | 1m05s |
 | [104](104.md) |  [*17*] | medium | solved | 5m17s |
-| [105](105.md) |  [*M31*] | math-hard | solved | 5m54s |
+| [105](105.md) |  [*M31*] | math-hard | solved | 7m49s |
 | [106](106.md) | &#9654; [*M30*] | math-hard | solved | 5m41s |
 | [107](107.md) |  [*HM30*] | hm-hard | solved | 5m47s |
 | [108](108.md) |  [*M35*] | math-hard | solved | 4m38s |
