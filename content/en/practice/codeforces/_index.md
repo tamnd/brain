@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2802 contests, 20025 problems, 11274 verified."
+description: "Codeforces problem solutions with full editorials. 2803 contests, 20037 problems, 11275 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2802 contests, 20025 problems, 11274 verified.**
+**2803 contests, 20037 problems, 11275 verified.**
 
-## Unknown — 672 contests, 5529 problems, 3444 verified
+## Unknown — 673 contests, 5541 problems, 3445 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103483](103483/) | [2021-2022 Russia Team Open, High School Programming Contest (VKOSHP XXII)](https://codeforces.com/contest/103483) | 12 | 1/12 | Special | - |
 | [103491](103491/) | [1 Silaeder olymp](https://codeforces.com/contest/103491) | 5 | 0/5 | Special | - |
 | [103500](103500/) | [box 2021](https://codeforces.com/contest/103500) | 5 | 1/5 | Special | - |
 | [103521](103521/) | [Интернет-олимпиады, Сезон 2018-2019, Третья личная олимпиада](https://codeforces.com/contest/103521) | 4 | 1/4 | Special | - |
