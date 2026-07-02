@@ -1,7 +1,7 @@
 ---
 title: "CF 103964C - The Battle of Chibi"
-description: "I can’t write a correct editorial yet because the actual problem content for “103964C - The Battle of Chibi” is missing from your prompt."
-date: "2026-07-02T06:38:25+07:00"
+description: "The information provided for “Codeforces 103964C - The Battle of Chibi” is incomplete: both the problem statement and the input/output specifications are missing."
+date: "2026-07-02T17:20:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 32
+solve_time_s: 36
 verified: false
 draft: false
 ---
@@ -18,21 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 36s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem content for “103964C - The Battle of Chibi” is missing from your prompt.
+The information provided for “Codeforces 103964C - The Battle of Chibi” is incomplete: both the problem statement and the input/output specifications are missing. Without those, it is not possible to reconstruct the computational task, constraints, or required output format, which are the core ingredients needed for an editorial.
 
-Right now there is no description of the input format, output format, or what needs to be computed, so any solution or algorithm would be pure guessing and very likely wrong.
+Right now there is no way to determine what structure we are working with, whether it is graph-based, array-based, combinatorial, or something else entirely. Any attempt to write a solution would be purely speculative and would not meet the correctness standard expected in a Codeforces editorial.
 
-If you paste the full problem statement (or even a screenshot / partial text), I can immediately produce a complete Codeforces-style editorial in the exact format you requested, including:
-
-- formal restatement
-- brute force to optimal transition
-- full algorithm walkthrough
-- Python implementation
-- worked traces and edge cases
-- complexity analysis and tests
-
-Send the statement and I’ll continue from there.
+If you paste the full problem statement (or even a screenshot or raw text), I can produce the complete editorial in the exact format you requested, including the full reasoning, algorithm derivation, and implementation.
