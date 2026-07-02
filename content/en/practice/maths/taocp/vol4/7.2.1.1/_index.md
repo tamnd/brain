@@ -20,10 +20,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 54s |
 | [2](02.md) |  [*15*] | simple | verified | 1m15s |
-| [3](03.md) | &#9654; [*M20*] | math-medium | solved | 3m52s |
-| [4](04.md) | &#9654; [*18*] | medium | solved | 1m50s |
-| [5](05.md) | &#9654; [*22*] | medium | solved | 1m09s |
-| [6](06.md) |  [*M17*] | math-medium | verified | 1m05s |
+| [3](03.md) | &#9654; [*M20*] | math-medium | verified | 2m44s |
+| [4](04.md) | &#9654; [*18*] | medium | verified | 1m04s |
+| [5](05.md) | &#9654; [*22*] | medium | verified | 1m41s |
+| [6](06.md) |  [*M17*] | math-medium | verified | 3m55s |
 | [7](07.md) |  [*20*] | medium | solved | 3m10s |
 | [8](08.md) |  [*15*] | simple | verified | 1m15s |
 | [9](09.md) |  [*16*] | medium | solved | 4m08s |
