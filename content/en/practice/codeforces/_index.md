@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19536 problems, 11030 verified."
+description: "Codeforces problem solutions with full editorials. 2741 contests, 19539 problems, 11033 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19536 problems, 11030 verified.**
+**2741 contests, 19539 problems, 11033 verified.**
 
 ## Unknown — 634 contests, 5254 problems, 3303 verified
 
@@ -1735,7 +1735,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 194 contests, 1492 problems, 720 verified
+## 2022 — 194 contests, 1495 problems, 723 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1929,7 +1929,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104103](104103/) | [Innopolis Open 2022-2023. Second qualification round](https://codeforces.com/contest/104103) | 5 | 5/5 | Special | - |
 | [104128](104128/) | [The 2022 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/104128) | 13 | 0/13 | ICPC/IOI | - |
 | [104160](104160/) | [The 2022 ICPC Asia Shenyang Regional Contest (The 1st Universal Cup, Stage 1: Shenyang)](https://codeforces.com/contest/104160) | 13 | 13/13 | ICPC/IOI | - |
-| [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 10 | 10/10 | ICPC/IOI | - |
+| [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 13 | 13/13 | ICPC/IOI | - |
 | [104254](104254/) | [BSUIR Open X. Reload. Semifinal](https://codeforces.com/contest/104254) | 10 | 5/10 | Special | - |
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |
