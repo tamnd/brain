@@ -1,7 +1,7 @@
 ---
 title: "CF 104508H - Harmony Coloring"
-description: "I can absolutely write the full editorial in that format, but I am missing the actual problem content for Codeforces 104508H - Harmony Coloring. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks."
-date: "2026-07-02T21:38:57+07:00"
+description: "The statement as provided is not sufficient to reconstruct the problem. Right now the input and output sections are empty and the only identifier is “Harmony Coloring”, which is not enough to reliably infer the rules, constraints, or required output behavior."
+date: "2026-07-03T02:44:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 104508
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University Class Preliminary 2023"
 rating: 0
 weight: 104508
-solve_time_s: 27
+solve_time_s: 39
 verified: false
 draft: false
 ---
@@ -18,19 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 39s  
 **Verified:** no  
 
 ## Solution
-I can absolutely write the full editorial in that format, but I am missing the actual problem content for **Codeforces 104508H - Harmony Coloring**. The statement section in your prompt is empty, so there is no information about what “Harmony Coloring” actually asks.
+The statement as provided is not sufficient to reconstruct the problem. Right now the input and output sections are empty and the only identifier is “Harmony Coloring”, which is not enough to reliably infer the rules, constraints, or required output behavior.
 
-Right now I don’t know:
+For a Codeforces editorial, even a small ambiguity in the model of the problem completely changes the solution class, so I would need at least one of the following:
 
-- what structure is being colored (graph, array, tree, grid, etc.)
-- what “harmony” constraint means
-- what the input/output format is
-- constraints (which determine the algorithmic approach)
+The full problem statement text, or
 
-Without that, any editorial would be pure fabrication and would not satisfy the requirement that the reader can reconstruct the solution.
+A link or copy of the original CF problem, or
 
-Please paste the full problem statement (or even a screenshot/text dump), and I will produce a complete Codeforces-style editorial exactly in the format you specified.
+At minimum a precise description of what is being colored (graph, array, tree, grid), what “harmony” means in constraints, and what is required to output.
+
+Once you provide that, I can produce a complete editorial in the exact format you specified, including intuition, algorithm derivation, implementation, and complexity analysis.
