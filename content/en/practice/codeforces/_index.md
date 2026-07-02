@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2801 contests, 20010 problems, 11269 verified."
+description: "Codeforces problem solutions with full editorials. 2802 contests, 20025 problems, 11274 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2801 contests, 20010 problems, 11269 verified.**
+**2802 contests, 20025 problems, 11274 verified.**
 
 ## Unknown — 672 contests, 5529 problems, 3444 verified
 
@@ -1633,7 +1633,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 140 contests, 922 problems, 392 verified
+## 2021 — 141 contests, 937 problems, 397 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1769,6 +1769,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103485](103485/) | [Copa Do Matão, University Of São Paulo Programming Contest](https://codeforces.com/contest/103485) | 15 | 5/15 | Special | - |
 | [103486](103486/) | [The 15th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/103486) | 13 | 13/13 | Special | - |
 | [103488](103488/) | [The 2021 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/103488) | 9 | 9/9 | Special | - |
 | [103492](103492/) | [China Collegiate Programming Contest 2021, Qualification Round (Online), Rematch](https://codeforces.com/contest/103492) | 11 | 11/11 | Special | - |
