@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2741 contests, 19535 problems, 11030 verified."
+description: "Codeforces problem solutions with full editorials. 2741 contests, 19544 problems, 11041 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2741 contests, 19535 problems, 11030 verified.**
+**2741 contests, 19544 problems, 11041 verified.**
 
-## Unknown — 634 contests, 5253 problems, 3303 verified
+## Unknown — 634 contests, 5259 problems, 3311 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -85,11 +85,11 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104164](104164/) | [Короткий тур Открытой олимпиады 2022-2023](https://codeforces.com/contest/104164) | 4 | 1/4 | Special | - |
 | [104168](104168/) | [The American University in Cairo CSEA End of Winter Break Contest 2023](https://codeforces.com/contest/104168) | 2 | 2/2 | Special | - |
 | [104174](104174/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая личная олимпиада + Первый отбор на ИОИП](https://codeforces.com/contest/104174) | 4 | 2/4 | Special | - |
-| [104178](104178/) | [BdOI Preliminary 2023](https://codeforces.com/contest/104178) | 4 | 4/4 | Special | - |
+| [104178](104178/) | [BdOI Preliminary 2023](https://codeforces.com/contest/104178) | 5 | 4/5 | Special | - |
 | [104182](104182/) | [Innopolis Open 2022-2023. Final round](https://codeforces.com/contest/104182) | 5 | 5/5 | Special | - |
 | [104195](104195/) | [Интернет-олимпиады, Сезон 2022-2023, Третья личная олимпиада + Второй отбор на ИОИП](https://codeforces.com/contest/104195) | 4 | 2/4 | Special | - |
-| [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 11 | 10/11 | Special | - |
-| [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 10 | 5/10 | Special | - |
+| [104197](104197/) | [Anton Trygub Contest 1 (The 1st Universal Cup, Stage 4: Ukraine)](https://codeforces.com/contest/104197) | 14 | 14/14 | Special | - |
+| [104199](104199/) | [Отбор на ВКОШП.Junior 18-02-23](https://codeforces.com/contest/104199) | 12 | 9/12 | Special | - |
 | [104207](104207/) | [2017 China Collegiate Programming Contest Final (CCPC-Final 2017)](https://codeforces.com/contest/104207) | 11 | 11/11 | Special | - |
 | [104235](104235/) | [2022-2023 Olympiad Cognitive Technologies, Final Round](https://codeforces.com/contest/104235) | 9 | 6/9 | Special | - |
 | [104236](104236/) | [Harker Programming Invitational 2023 Advanced](https://codeforces.com/contest/104236) | 10 | 7/10 | Special | - |
@@ -1735,7 +1735,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 194 contests, 1492 problems, 720 verified
+## 2022 — 194 contests, 1495 problems, 723 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1929,7 +1929,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104103](104103/) | [Innopolis Open 2022-2023. Second qualification round](https://codeforces.com/contest/104103) | 5 | 5/5 | Special | - |
 | [104128](104128/) | [The 2022 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/104128) | 13 | 0/13 | ICPC/IOI | - |
 | [104160](104160/) | [The 2022 ICPC Asia Shenyang Regional Contest (The 1st Universal Cup, Stage 1: Shenyang)](https://codeforces.com/contest/104160) | 13 | 13/13 | ICPC/IOI | - |
-| [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 10 | 10/10 | ICPC/IOI | - |
+| [104196](104196/) | [2021-2022 ICPC East Central North America Regional Contest (ECNA 2021)](https://codeforces.com/contest/104196) | 13 | 13/13 | ICPC/IOI | - |
 | [104254](104254/) | [BSUIR Open X. Reload. Semifinal](https://codeforces.com/contest/104254) | 10 | 5/10 | Special | - |
 | [104673](104673/) | [2022-2023 CTU Open Contest](https://codeforces.com/contest/104673) | 12 | 12/12 | Special | - |
 | [104686](104686/) | [2022-2023 ICPC Central Europe Regional Contest (CERC 22)](https://codeforces.com/contest/104686) | 12 | 7/12 | ICPC/IOI | - |

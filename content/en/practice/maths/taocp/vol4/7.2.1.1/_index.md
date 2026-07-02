@@ -39,10 +39,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [19](19.md) |  [*23*] | medium | verified | 2m26s |
 | [20](20.md) |  [*M36*] | math-project | solved | 5m18s |
 | [21](21.md) |  [*M30*] | math-hard | solved | 2m39s |
-| [22](22.md) | &#9654; [*22*] | medium | solved | 4m35s |
-| [23](23.md) |  [*20*] | medium | solved | 3m32s |
-| [24](24.md) |  [*M21*] | math-medium | solved | 3m20s |
-| [25](25.md) | &#9654; [*M25*] | math-medium | solved | 4m56s |
+| [22](22.md) | &#9654; [*22*] | medium | verified | 3m04s |
+| [23](23.md) |  [*20*] | medium | verified | 1m48s |
+| [24](24.md) |  [*M21*] | math-medium | solved | 4m32s |
+| [25](25.md) | &#9654; [*M25*] | math-medium | solved | 2m01s |
 | [26](26.md) |  [*25*] | medium | solved | 5m23s |
 | [27](27.md) | &#9654; [*20*] | medium | solved | 11m55s |
 | [28](28.md) |  [*M27*] | math-hard | solved | 6m52s |
