@@ -17,12 +17,12 @@ Exercise solutions for [TAOCP](../) Volume 4. 1556 solved, 425 verified, 2383 to
 | [7.1.2](7.1.2/) | Boolean Evaluation | 85 | 32 | 85 |
 | [7.1.3](7.1.3/) | Bitwise Tricks and Techniques | 219 | 80 | 219 |
 | [7.1.4](7.1.4/) | Binary Decision Diagrams | 267 | 31 | 267 |
-| [7.2.1.1](7.2.1.1/) | Generating All n-Tuples | 112 | 17 | 112 |
+| [7.2.1.1](7.2.1.1/) | Generating All n-Tuples | 112 | 18 | 112 |
 | [7.2.1.2](7.2.1.2/) | Generating All Permutations | 113 | 4 | 113 |
 | [7.2.1.3](7.2.1.3/) | Generating All Combinations | 15 | 3 | 111 |
 | 7.2.1.4 |  | — | — | 73 |
 | 7.2.1.5 |  | — | — | 69 |
 | 7.2.1.6 |  | — | — | 123 |
-| [7.2.2](7.2.2/) | Backtracking | 79 | 37 | 101 |
-| [7.2.2.1](7.2.2.1/) | Dancing Links | 439 | 111 | 450 |
-| [7.2.2.2](7.2.2.2/) | Satisfiability | 95 | 47 | 528 |
+| [7.2.2](7.2.2/) | Backtracking | 79 | 37 | 121 |
+| [7.2.2.1](7.2.2.1/) | Dancing Links | 439 | 111 | 454 |
+| [7.2.2.2](7.2.2.2/) | Satisfiability | 95 | 47 | 531 |

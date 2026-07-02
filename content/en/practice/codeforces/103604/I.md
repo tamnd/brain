@@ -1,7 +1,7 @@
 ---
 title: "CF 103604I - River"
-description: "I can’t write a correct Codeforces editorial without the actual problem statement for 103604I - River. Right now the prompt is missing everything that defines the task: what the river structure is, what operations are allowed, what needs to be computed, and the constraints."
-date: "2026-07-02T22:48:19+07:00"
+description: "I’m missing the actual problem statement for Codeforces 103604I - River, so I can’t reliably reconstruct the intended solution or write a correct editorial."
+date: "2026-07-03T01:40:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103604
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "AGM 2022 Qualification Round"
 rating: 0
 weight: 103604
-solve_time_s: 40
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 40s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial without the actual problem statement for **103604I - River**.
+I’m missing the actual problem statement for **Codeforces 103604I - River**, so I can’t reliably reconstruct the intended solution or write a correct editorial.
 
-Right now the prompt is missing everything that defines the task: what the river structure is, what operations are allowed, what needs to be computed, and the constraints. Any attempt to “guess” would very likely produce a convincing but incorrect solution, which is worse than being explicit about the gap.
+This is especially important here because Codeforces “River” problems with generic names usually hide a very specific structure (grid flow, graph on segments, or DP over positions), and guessing would lead to a completely wrong algorithm and misleading editorial.
 
-If you paste the full statement (or even a screenshot/text dump), I’ll produce the complete editorial in the exact format you specified, including the algorithm walkthrough, proofs, code, and test cases.
+If you paste the statement (or even just input/output + constraints), I’ll produce the full senior-level editorial in the exact format you specified, including derivation, correctness argument, and implementation details.
+
+Send it over and I’ll continue from there.
