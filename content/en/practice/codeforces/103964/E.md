@@ -1,7 +1,7 @@
 ---
 title: "CF 103964E - Ba Gua Zhen"
-description: "The input you provided doesn’t contain the actual problem statement for “103964E - Ba Gua Zhen” (it only includes the title and empty input/output sections)."
-date: "2026-07-02T19:31:13+07:00"
+description: "I can’t reliably reconstruct Codeforces 103964E (“Ba Gua Zhen”) from the title alone, and the statement section you provided is empty."
+date: "2026-07-02T20:10:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 26
+solve_time_s: 37
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 37s  
 **Verified:** no  
 
 ## Solution
-The input you provided doesn’t contain the actual problem statement for “103964E - Ba Gua Zhen” (it only includes the title and empty input/output sections). Without the real description of the task, constraints, or operations, it’s impossible to produce a correct editorial or derive any algorithm.
+I can’t reliably reconstruct Codeforces 103964E (“Ba Gua Zhen”) from the title alone, and the statement section you provided is empty. Writing a correct editorial without the actual rules, constraints, and operations would require guessing, which would very likely produce a wrong or misleading solution.
 
-If you paste the full statement (or even a screenshot/text dump), I’ll write the complete Codeforces-style editorial in the format you specified, including approach evolution, proof sketch, code, and edge-case analysis.
+If you paste the full problem statement (or even a screenshot / raw text), I’ll produce a complete Codeforces-style editorial in the exact format you requested, including the algorithm walkthrough, proofs, code, and test cases.
 
-Send the full problem text and I’ll continue from there.
+Send the statement and I’ll take it from there.
