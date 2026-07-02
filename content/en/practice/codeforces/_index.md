@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2749 contests, 19627 problems, 11102 verified."
+description: "Codeforces problem solutions with full editorials. 2750 contests, 19639 problems, 11112 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2749 contests, 19627 problems, 11102 verified.**
+**2750 contests, 19639 problems, 11112 verified.**
 
-## Unknown — 640 contests, 5313 problems, 3354 verified
+## Unknown — 641 contests, 5325 problems, 3364 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103660](103660/) | [The 19th Zhejiang University City College Programming Contest](https://codeforces.com/contest/103660) | 12 | 10/12 | Special | - |
 | [103664](103664/) | [Турнир Архимеда 2019](https://codeforces.com/contest/103664) | 10 | 8/10 | Special | - |
 | [103665](103665/) | [Турнир Архимеда 2018](https://codeforces.com/contest/103665) | 11 | 9/11 | Special | - |
 | [103666](103666/) | [Турнир Архимеда 2016](https://codeforces.com/contest/103666) | 7 | 7/7 | Special | - |
