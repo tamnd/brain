@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.1 Exercise 36"
-description: "Let $X[0],X[1],\\dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current..."
-date: "2026-07-02T15:31:30+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.1"
-section_title: "Generating All n-Tuples"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "281–321"
-exercise: 36
-rating: "21"
-category: "medium"
-recommended: false
+title: "CF 103627A - Points"
+description: "Let $X[0],X[1],dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current array state."
+date: "2026-07-02T22:33:04+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103627
+codeforces_index: "A"
+codeforces_contest_name: "XXII Open Cup, Grand Prix of Daejeon"
+rating: 0
+weight: 103627
+solve_time_s: 93
 verified: false
-solve_time_s: 414
-weight: 7020101036
 draft: false
 ---
 
-[Section 7.2.1.1: Generating All n-Tuples](../)
+[CF 103627A - Points](https://codeforces.com/problemset/problem/103627/A)
 
-**Exercise 36.** [*21*] [21] Spell out the details of an efficient algorithm to compute the Walsh transform
-(x0, . . . , x2n−1) of a given vector (X0, . . . , X2n−1).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 33s  
 **Verified:** no  
-**Solve time:** 6m54s  
 
----
-
+## Solution
 ## Solution
 
 Let $X[0],X[1],\dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current array state.

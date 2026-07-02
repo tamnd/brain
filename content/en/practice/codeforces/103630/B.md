@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.1 Exercise 36"
-description: "Let $X[0],X[1],\\dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current..."
-date: "2026-07-02T15:31:30+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.1"
-section_title: "Generating All n-Tuples"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "281–321"
-exercise: 36
-rating: "21"
-category: "medium"
-recommended: false
+title: "CF 103630B - \u0420\u0443\u0434\u043e\u043b\u044c\u0444 \u0438 \u0438\u0433\u0440\u0430"
+description: "Let $X[0],X[1],dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current array state."
+date: "2026-07-02T22:30:57+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103630
+codeforces_index: "B"
+codeforces_contest_name: "2022 VII \u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u041f\u0424\u041e"
+rating: 0
+weight: 103630
+solve_time_s: 129
 verified: false
-solve_time_s: 414
-weight: 7020101036
 draft: false
 ---
 
-[Section 7.2.1.1: Generating All n-Tuples](../)
+[CF 103630B - \u0420\u0443\u0434\u043e\u043b\u044c\u0444 \u0438 \u0438\u0433\u0440\u0430](https://codeforces.com/problemset/problem/103630/B)
 
-**Exercise 36.** [*21*] [21] Spell out the details of an efficient algorithm to compute the Walsh transform
-(x0, . . . , x2n−1) of a given vector (X0, . . . , X2n−1).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 9s  
 **Verified:** no  
-**Solve time:** 6m54s  
 
----
-
+## Solution
 ## Solution
 
 Let $X[0],X[1],\dots,X[n-1]$ be the array to be permuted, and let the inner loop in (42) denote the operation that is executed once per produced permutation, typically a visit or output of the current array state.

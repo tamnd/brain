@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2759 contests, 19718 problems, 11137 verified."
+description: "Codeforces problem solutions with full editorials. 2762 contests, 19743 problems, 11148 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2759 contests, 19718 problems, 11137 verified.**
+**2762 contests, 19743 problems, 11148 verified.**
 
-## Unknown — 646 contests, 5381 problems, 3385 verified
+## Unknown — 649 contests, 5406 problems, 3396 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 11 | 8/11 | Special | - |
+| [103630](103630/) | [2022 VII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103630) | 10 | 0/10 | Special | - |
+| [103631](103631/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/103631) | 4 | 3/4 | Special | - |
 | [103632](103632/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/103632) | 0 | 0/0 | Special | - |
 | [103637](103637/) | [2019-2020 10th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/103637) | 11 | 10/11 | Special | - |
 | [103640](103640/) | [2021-2022 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103640) | 13 | 1/13 | ICPC/IOI | - |
