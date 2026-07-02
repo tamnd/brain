@@ -283,5 +283,5 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [263](263.md) |  [*HM25*] | hm-medium | solved | 5m07s |
 | [264](264.md) |  [*M46*] | math-research | solved | 1m40s |
 | [265](265.md) | &#9654; [*21*] | medium | solved | 2m05s |
-| [266](266.md) | &#9654; [*20*] | medium | solved | 3m48s |
-| [267](267.md) |  [*HM32*] | hm-hard | solved | 4m12s |
+| [266](266.md) | &#9654; [*20*] | medium | solved | 5m16s |
+| [267](267.md) |  [*HM32*] | hm-hard | solved | 5m43s |
