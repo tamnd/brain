@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [9](09.md) |  [*22*] | medium | verified | 4m27s |
 | [10](10.md) |  [*20*] | medium | solved | 4m04s |
 | [11](11.md) |  [*M22*] | math-medium | solved | 5m37s |
-| [12](12.md) | &#9654; [*M23*] | math-medium | solved | 6m38s |
+| [12](12.md) | &#9654; [*M23*] | math-medium | solved | 6m25s |
 | [13](13.md) |  [*M21*] | math-medium | solved | 4m54s |
 | [14](14.md) |  [*M22*] | math-medium | solved | 6m16s |
 | [15](15.md) |  [*M23*] | math-medium | solved | 5m27s |
@@ -130,4 +130,4 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [110](110.md) | &#9654; [*25*] | medium | solved | 5m15s |
 | [111](111.md) | &#9654; [*M25*] | math-medium | solved | 6m18s |
 | [112](112.md) | &#9654; [*M30*] | math-hard | solved | 4m10s |
-| [113](113.md) |  [*HM43*] | hm-project | solved | 6m14s |
+| [113](113.md) |  [*HM43*] | hm-project | solved | 12m52s |
