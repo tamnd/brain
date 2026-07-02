@@ -128,5 +128,5 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [108](108.md) |  [*M35*] | math-hard | solved | 8m48s |
 | [109](109.md) |  [*M22*] | math-medium | solved | 5m24s |
 | [110](110.md) |  [*M25*] | math-medium | solved | 6m25s |
-| [111](111.md) |  [*20*] | medium | solved | 4m49s |
+| [111](111.md) |  [*20*] | medium | solved | 9m23s |
 | [112](112.md) | &#9654; [*25*] | medium | solved | 6m |
