@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 7
 n_verified: 6
-total_solve_s: 362
+total_solve_s: 360
 contest_year: 2022
-date: "2026-07-02T12:41:11+07:00"
+date: "2026-07-02T13:03:07+07:00"
 weight: 103698
 draft: false
 ---
 
 # [The 4th Turing Cup](https://codeforces.com/contest/103698)
 
-Special | 7 problems | 6/7 verified | Difficulty - | 6m 2s
+Special | 7 problems | 6/7 verified | Difficulty - | 6m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [B](B/) | [Majhong](https://codeforces.com/problemset/problem/103698/B) |  |  |  | 52s | ✓ |
 | [C](C/) | [The 80/20 Rule](https://codeforces.com/problemset/problem/103698/C) |  |  |  | 49s | ✓ |
 | [D](D/) | [Matrix](https://codeforces.com/problemset/problem/103698/D) |  |  |  | 55s | ✓ |
-| [E](E/) | [Sequence](https://codeforces.com/problemset/problem/103698/E) |  |  |  | 34s |  |
+| [E](E/) | [Sequence](https://codeforces.com/problemset/problem/103698/E) |  |  |  | 32s |  |
 | [F](F/) | [Tree](https://codeforces.com/problemset/problem/103698/F) |  |  |  | 1m 6s | ✓ |
 | [G](G/) | [Palinomial](https://codeforces.com/problemset/problem/103698/G) |  |  |  | 1m 2s | ✓ |
 | [H](H/) | [Virus Experiment](https://codeforces.com/problemset/problem/103698/H) |  |  |  | 44s | ✓ |
