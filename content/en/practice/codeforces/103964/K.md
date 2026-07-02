@@ -1,7 +1,7 @@
 ---
 title: "CF 103964K - Game Rooms"
-description: "I can’t write a correct editorial for “CF 103964K - Game Rooms” because the actual problem statement content is missing. Right now there are no rules, no input/output definition, and no constraints to anchor the solution, so anything I write would be guesswork."
-date: "2026-07-02T20:41:42+07:00"
+description: "I can’t produce a correct Codeforces-style editorial for this yet because the actual problem content for “103964K - Game Rooms” is missing from your prompt (only the title is present)."
+date: "2026-07-02T21:35:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 26
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,12 +18,19 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for “CF 103964K - Game Rooms” because the actual problem statement content is missing. Right now there are no rules, no input/output definition, and no constraints to anchor the solution, so anything I write would be guesswork.
+I can’t produce a correct Codeforces-style editorial for this yet because the actual problem content for **“103964K - Game Rooms”** is missing from your prompt (only the title is present).
 
-If you paste the full statement (even a screenshot or raw text), I’ll produce the complete editorial in the exact format you requested, including a derivation of the solution, walkthrough, proofs, and tested implementation.
+Right now there’s no information about:
 
-Send the statement and I’ll continue from there.
+- what the “rooms” represent,
+- what operations or constraints exist,
+- what input/output format is,
+- or what needs to be optimized or computed.
+
+Any attempt to write a full editorial would require guessing the problem, which would very likely produce an incorrect or misleading solution.
+
+If you paste the full problem statement (or even a screenshot / raw text), I can immediately turn it into a complete, structured editorial in the exact style you requested.

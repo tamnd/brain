@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "I can’t reliably write a correct editorial for this problem yet because the actual statement is missing. Right now I only see the title “Walk Around The Campsite”, but there are no inputs, outputs, rules, or constraints."
-date: "2026-07-02T20:41:21+07:00"
+description: "I don’t have enough information to write a correct editorial for this problem. The statement you provided is effectively empty (“Problem J. Walk Around The Campsite . . ."
+date: "2026-07-02T21:35:22+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -22,8 +22,10 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this problem yet because the actual statement is missing.
+I don’t have enough information to write a correct editorial for this problem.
 
-Right now I only see the title “Walk Around The Campsite”, but there are no inputs, outputs, rules, or constraints. Without that, any solution would be guesswork and very likely wrong.
+The statement you provided is effectively empty (“Problem J. Walk Around The Campsite . . .” with no input/output or description), and without the actual rules of the problem there’s no way to reconstruct the intended solution, constraints, or edge cases without guessing.
 
-If you paste the full problem statement (or even a screenshot/text dump), I can produce a complete Codeforces-style editorial in the exact format you requested, including intuition, optimal solution, proof sketch, code, and edge-case analysis.
+If you paste the full problem statement (or even a screenshot/text dump), I can produce the complete Codeforces-style editorial exactly in the format you requested, including the reasoning, algorithm derivation, proof sketch, code, and test cases.
+
+Send the full statement and I’ll take it from there.
