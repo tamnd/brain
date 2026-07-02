@@ -1,7 +1,7 @@
 ---
 title: "CF 103585E - Truffula Trouble"
-description: "I can’t write a correct Codeforces editorial without the actual problem statement. Right now, the prompt only includes the title (“103585E - Truffula Trouble”) but no description, constraints, or input/output format."
-date: "2026-07-02T23:01:00+07:00"
+description: "The problem statement for “Codeforces 103585E - Truffula Trouble” is missing from your prompt, so there’s no way to reconstruct the actual task, constraints, or required output. Without that, any editorial would be guesswork rather than a correct explanation of a solution."
+date: "2026-07-02T23:30:59+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 33
+solve_time_s: 46
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 46s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial without the actual problem statement.
+The problem statement for “Codeforces 103585E - Truffula Trouble” is missing from your prompt, so there’s no way to reconstruct the actual task, constraints, or required output. Without that, any editorial would be guesswork rather than a correct explanation of a solution.
 
-Right now, the prompt only includes the title (“103585E - Truffula Trouble”) but no description, constraints, or input/output format. That makes it impossible to reconstruct the intended algorithm, and guessing would produce a fake editorial.
-
-Send the full problem statement (or a link / pasted text), and I’ll produce the complete editorial in the exact format you specified.
+If you paste the full statement (or even just input/output description and constraints), I can write the complete Codeforces-style editorial in the format you specified.

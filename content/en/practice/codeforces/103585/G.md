@@ -1,7 +1,7 @@
 ---
 title: "CF 103585G - Perfect Cacti: Part 1"
-description: "I can’t write a correct editorial yet because the actual problem statement is missing. Right now I only know the title “Perfect Cacti: Part 1”, but I don’t know what the input describes, what needs to be computed, or what constraints define “perfect”."
-date: "2026-07-02T23:01:31+07:00"
+description: "The problem statement for “103585G - Perfect Cacti: Part 1” is missing from your prompt, so I can’t reliably reconstruct the task or derive a correct solution."
+date: "2026-07-02T23:31:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 30
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem statement is missing.
+The problem statement for “103585G - Perfect Cacti: Part 1” is missing from your prompt, so I can’t reliably reconstruct the task or derive a correct solution.
 
-Right now I only know the title “Perfect Cacti: Part 1”, but I don’t know what the input describes, what needs to be computed, or what constraints define “perfect”.
+For Codeforces editorials, even small details like whether we are counting cycles, checking cactus structure validity, or processing queries on a graph completely change the intended technique. If I guess here, the editorial would likely be wrong or misleading.
 
-Please paste the full problem statement (or at least the full description, input/output format, and constraints). Once you do, I’ll produce the complete Codeforces-style editorial in the exact format you requested, including the derivation, algorithm walkthrough, proof, code, and test cases.
+Paste the full statement (or even just the core description plus constraints and samples), and I’ll write the complete structured editorial in the format you specified.
