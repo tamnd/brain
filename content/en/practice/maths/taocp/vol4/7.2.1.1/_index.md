@@ -18,21 +18,21 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*10*] | simple | verified | 1m05s |
-| [2](02.md) |  [*15*] | simple | solved | 1m29s |
-| [3](03.md) | &#9654; [*M20*] | math-medium | solved | 3m52s |
-| [4](04.md) | &#9654; [*18*] | medium | solved | 1m50s |
-| [5](05.md) | &#9654; [*22*] | medium | solved | 1m09s |
-| [6](06.md) |  [*M17*] | math-medium | verified | 1m05s |
-| [7](07.md) |  [*20*] | medium | solved | 3m10s |
-| [8](08.md) |  [*15*] | simple | verified | 1m15s |
-| [9](09.md) |  [*16*] | medium | solved | 4m08s |
-| [10](10.md) | &#9654; [*M21*] | math-medium | solved | 4m09s |
-| [11](11.md) |  [*M22*] | math-medium | solved | 2m57s |
-| [12](12.md) | &#9654; [*25*] | medium | solved | 3m53s |
-| [13](13.md) |  [*21*] | medium | solved | 3m50s |
-| [14](14.md) |  [*20*] | medium | solved | 4m52s |
-| [15](15.md) | &#9654; [*25*] | medium | solved | 4m38s |
+| [1](01.md) |  [*10*] | simple | verified | 54s |
+| [2](02.md) |  [*15*] | simple | verified | 1m15s |
+| [3](03.md) | &#9654; [*M20*] | math-medium | verified | 2m44s |
+| [4](04.md) | &#9654; [*18*] | medium | verified | 1m04s |
+| [5](05.md) | &#9654; [*22*] | medium | verified | 1m41s |
+| [6](06.md) |  [*M17*] | math-medium | verified | 3m55s |
+| [7](07.md) |  [*20*] | medium | solved | 5m29s |
+| [8](08.md) |  [*15*] | simple | solved | 6m22s |
+| [9](09.md) |  [*16*] | medium | solved | 6m45s |
+| [10](10.md) | &#9654; [*M21*] | math-medium | solved | 6m10s |
+| [11](11.md) |  [*M22*] | math-medium | solved | 7m59s |
+| [12](12.md) | &#9654; [*25*] | medium | solved | 6m39s |
+| [13](13.md) |  [*21*] | medium | solved | 8m |
+| [14](14.md) |  [*20*] | medium | solved | 6m06s |
+| [15](15.md) | &#9654; [*25*] | medium | solved | 5m41s |
 | [16](16.md) |  [*23*] | medium | solved | 2m50s |
 | [17](17.md) |  [*20*] | medium | solved | 4m14s |
 | [18](18.md) | &#9654; [*20*] | medium | solved | 4m15s |
@@ -117,16 +117,16 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.1: 112/112 solved.
 | [97](97.md) |  [*M29*] | math-hard | solved | 14m45s |
 | [98](98.md) |  [*M34*] | math-hard | solved | 5m28s |
 | [99](99.md) | &#9654; [*M23*] | math-medium | solved | 6m02s |
-| [100](100.md) |  [*40*] | project | verified | 1m29s |
-| [101](101.md) | &#9654; [*M30*] | math-hard | solved | 3m06s |
-| [102](102.md) |  [*HM28*] | hm-hard | verified | 1m15s |
-| [103](103.md) |  [*M20*] | math-medium | solved | 3m21s |
-| [104](104.md) |  [*17*] | medium | solved | 4m01s |
-| [105](105.md) |  [*M31*] | math-hard | solved | 5m54s |
-| [106](106.md) | &#9654; [*M30*] | math-hard | solved | 5m41s |
-| [107](107.md) |  [*HM30*] | hm-hard | solved | 5m47s |
-| [108](108.md) |  [*M35*] | math-hard | solved | 4m38s |
-| [109](109.md) |  [*M22*] | math-medium | solved | 4m28s |
-| [110](110.md) |  [*M25*] | math-medium | solved | 2m51s |
-| [111](111.md) |  [*20*] | medium | solved | 4m49s |
-| [112](112.md) | &#9654; [*25*] | medium | solved | 6m |
+| [100](100.md) |  [*40*] | project | solved | 8m03s |
+| [101](101.md) | &#9654; [*M30*] | math-hard | solved | 8m06s |
+| [102](102.md) |  [*HM28*] | hm-hard | verified | 1m18s |
+| [103](103.md) |  [*M20*] | math-medium | verified | 1m05s |
+| [104](104.md) |  [*17*] | medium | solved | 5m17s |
+| [105](105.md) |  [*M31*] | math-hard | solved | 7m49s |
+| [106](106.md) | &#9654; [*M30*] | math-hard | solved | 6m45s |
+| [107](107.md) |  [*HM30*] | hm-hard | solved | 6m21s |
+| [108](108.md) |  [*M35*] | math-hard | solved | 8m48s |
+| [109](109.md) |  [*M22*] | math-medium | solved | 5m24s |
+| [110](110.md) |  [*M25*] | math-medium | solved | 6m25s |
+| [111](111.md) |  [*20*] | medium | solved | 9m23s |
+| [112](112.md) | &#9654; [*25*] | medium | solved | 5m09s |

@@ -109,14 +109,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.4: 267/267 solved.
 | [89](89.md) |  [*15*] | simple | solved | 5m01s |
 | [90](90.md) |  [*M20*] | math-medium | solved | 6m29s |
 | [91](91.md) | &#9654; [*26*] | hard | solved | 8m34s |
-| [92](92.md) |  [*M27*] | math-hard | solved | 4m34s |
-| [93](93.md) |  [*36*] | project | solved | 4m54s |
-| [94](94.md) |  [*21*] | medium | verified | 1m15s |
-| [95](95.md) | &#9654; [*20*] | medium | verified | 1m12s |
-| [96](96.md) |  [*20*] | medium | verified | 1m17s |
-| [97](97.md) |  [*M20*] | math-medium | solved | 4m13s |
-| [98](98.md) | &#9654; [*22*] | medium | solved | 2m05s |
-| [99](99.md) |  [*20*] | medium | verified | 2m49s |
+| [92](92.md) |  [*M27*] | math-hard | solved | 8m24s |
+| [93](93.md) |  [*36*] | project | solved | 12m07s |
+| [94](94.md) |  [*21*] | medium | solved | 6m |
+| [95](95.md) | &#9654; [*20*] | medium | solved | 6m46s |
+| [96](96.md) |  [*20*] | medium | solved | 6m27s |
+| [97](97.md) |  [*M20*] | math-medium | solved | 5m58s |
+| [98](98.md) | &#9654; [*22*] | medium | solved | 7m26s |
+| [99](99.md) |  [*20*] | medium | solved | 4m49s |
 | [100](100.md) | &#9654; [*24*] | medium | solved | 3m39s |
 | [101](101.md) |  [*20*] | medium | solved | 6m41s |
 | [102](102.md) |  [*23*] | medium | solved | 4m47s |
