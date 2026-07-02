@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2784 contests, 19905 problems, 11218 verified."
+description: "Codeforces problem solutions with full editorials. 2785 contests, 19907 problems, 11219 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2784 contests, 19905 problems, 11218 verified.**
+**2785 contests, 19907 problems, 11219 verified.**
 
-## Unknown — 662 contests, 5488 problems, 3439 verified
+## Unknown — 663 contests, 5490 problems, 3440 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103536](103536/) | [classic problems (for e-maxx)](https://codeforces.com/contest/103536) | 2 | 1/2 | Special | - |
 | [103540](103540/) | [CP Course Contest](https://codeforces.com/contest/103540) | 2 | 1/2 | Special | - |
 | [103548](103548/) | [Длинный тур отборочного этапа Открытой олимпиады 2021-2022](https://codeforces.com/contest/103548) | 9 | 1/9 | Special | - |
 | [103551](103551/) | [Интернет-олимпиады, Сезон 2021-2022, Первая личная олимпиада](https://codeforces.com/contest/103551) | 4 | 3/4 | Special | - |
