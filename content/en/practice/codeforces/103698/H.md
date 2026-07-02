@@ -1,7 +1,7 @@
 ---
 title: "CF 103698H - Virus Experiment"
-description: "I can absolutely write this editorial in the exact format you want, but I’m missing the only thing that actually determines the solution: the problem statement."
-date: "2026-07-02T11:11:15+07:00"
+description: "The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment” is actually asking."
+date: "2026-07-02T11:41:30+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "The 4th Turing Cup"
 rating: 0
 weight: 103698
-solve_time_s: 29
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,24 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can absolutely write this editorial in the exact format you want, but I’m missing the only thing that actually determines the solution: the problem statement.
+The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment” is actually asking.
 
-Right now, “Codeforces 103698H - Virus Experiment” is referenced without any content under the Problem / Input / Output sections, so there is nothing concrete to derive an algorithm from. If I try to proceed anyway, I would inevitably hallucinate the task, which would defeat the purpose of a correct editorial.
+For a Codeforces editorial, I need at least the full description (or a link / pasted statement), because everything downstream depends on the exact mechanics: what the “virus” does, what the input structure is, and what must be computed.
 
-Please paste the full problem statement (or even a screenshot/text dump). Once you do, I’ll produce the complete senior-level editorial with:
-
-a full derivation from brute force to optimal solution,
-
-a correctness argument,
-
-Python implementation,
-
-worked traces,
-
-edge cases, and
-
-assert-based tests exactly in your required format.
+Please paste the full problem statement (or the input/output description + constraints). Once you do, I’ll produce the complete editorial in the exact style you specified, including brute-force intuition, optimal insight, full walkthrough, and tests.
