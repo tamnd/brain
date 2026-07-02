@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2771 contests, 19806 problems, 11158 verified."
+description: "Codeforces problem solutions with full editorials. 2771 contests, 19807 problems, 11160 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,15 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2771 contests, 19806 problems, 11158 verified.**
+**2771 contests, 19807 problems, 11160 verified.**
 
-## Unknown — 654 contests, 5435 problems, 3403 verified
+## Unknown — 654 contests, 5436 problems, 3405 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [103586](103586/) | [Интернет-олимпиады, Сезон 2021-2022, Третья личная олимпиада](https://codeforces.com/contest/103586) | 4 | 1/4 | Special | - |
 | [103590](103590/) | [RocketOlymp 2022 9 класс](https://codeforces.com/contest/103590) | 5 | 3/5 | Special | - |
-| [103600](103600/) | [Турнир Архимеда 2021](https://codeforces.com/contest/103600) | 11 | 3/11 | Special | - |
+| [103600](103600/) | [Турнир Архимеда 2021](https://codeforces.com/contest/103600) | 12 | 5/12 | Special | - |
 | [103608](103608/) | [Интернет-олимпиады, Сезон 2021-2022, Четвертая личная олимпиада](https://codeforces.com/contest/103608) | 4 | 0/4 | Special | - |
 | [103623](103623/) | [Индивидуальная олимпиада школьников по информатике и программированию 2022](https://codeforces.com/contest/103623) | 5 | 0/5 | Special | - |
 | [103627](103627/) | [XXII Open Cup, Grand Prix of Daejeon](https://codeforces.com/contest/103627) | 11 | 8/11 | Special | - |
