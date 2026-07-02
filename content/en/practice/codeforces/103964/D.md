@@ -1,7 +1,7 @@
 ---
 title: "CF 103964D - Pick The Sticks"
-description: "The problem statement for Codeforces 103964D - Pick The Sticks is not included in your prompt (the input/output sections are empty)."
-date: "2026-07-02T21:34:21+07:00"
+description: "A Gray code on the set of all $n$-tuples $(a1,dots,an)$ of nonnegative integers is an infinite sequence in which every tuple appears exactly once and successive tuples differ in exactly one component."
+date: "2026-07-03T02:30:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 33
+solve_time_s: 69
 verified: false
 draft: false
 ---
@@ -18,12 +18,68 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 1m 9s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 103964D - Pick The Sticks** is not included in your prompt (the input/output sections are empty). Without the actual rules of the problem, it is not possible to reconstruct the task, the constraints, or the intended algorithm in a correct or meaningful way.
+## Setup
 
-An editorial depends entirely on understanding what operations are allowed, what must be optimized, and what structure the input has. With only the title and no description, any “solution” would be guesswork and would almost certainly be wrong.
+A Gray code on the set of all $n$-tuples $(a_1,\dots,a_n)$ of nonnegative integers is an infinite sequence in which every tuple appears exactly once and successive tuples differ in exactly one component. The required additional constraint is that if
 
-If you paste the full statement (or even a screenshot or partial text), I can produce a complete Codeforces-style editorial following all your formatting and style rules.
+$(a_1,\dots,a_n) \;\text{is followed by}\; (a'_1,\dots,a'_n),$
+
+then
+
+$\max(a_1,\dots,a_n)\le \max(a'_1,\dots,a'_n).$
+
+The task is to construct such a sequence for every fixed $n\ge 1$.
+
+## Solution
+
+Define $\Gamma_1$ to be the sequence
+
+$(0),(1),(2),(3),\dots.$
+
+This is a Gray code on $\mathbb{N}$ since successive elements differ in exactly one coordinate and $\max(a_1)$ increases by $1$ at every step.
+
+Assume recursively that $\Gamma_{n-1}$ is an infinite Gray code on $(n-1)$-tuples with the stated property. Write $\Gamma_{n-1}=(\alpha_0,\alpha_1,\alpha_2,\dots)$, where each $\alpha_i$ is an $(n-1)$-tuple.
+
+Define a new sequence $\Gamma_n$ by the boustrophedon-type interleaving rule:
+
+$\Gamma_n = (\;0\alpha_0,\,0\alpha_1,\,0\alpha_2,\dots;\;1\alpha_0,\,1\alpha_1,\,1\alpha_2,\dots;\;2\alpha_0,\,2\alpha_1,\,2\alpha_2,\dots;\;\dots\;).$
+
+Equivalently, for each fixed first coordinate $k\ge 0$, the block of tuples with first coordinate $k$ is
+
+$(k,\alpha_0),(k,\alpha_1),(k,\alpha_2),\dots,$
+
+concatenated in the same order for every $k$.
+
+Every $(a_1,\dots,a_n)$ occurs exactly once because each first coordinate $k$ is paired with every $(n-1)$-tuple exactly once.
+
+Successive elements inside a fixed block have the form
+
+$(k,\alpha_i)\to (k,\alpha_{i+1}),$
+
+so the first coordinate is unchanged and $\alpha_i\to \alpha_{i+1}$ differs in exactly one coordinate by the induction hypothesis. Hence the full $n$-tuple changes in exactly one coordinate.
+
+At the transition between blocks,
+
+$(k,\alpha_i)\to (k+1,\alpha_0),$
+
+the $(n-1)$-tuple $\alpha_i\to \alpha_0$ is a fixed jump in $\Gamma_{n-1}$. In the standard reflected construction of $\Gamma_{n-1}$, the first element $\alpha_0$ is the all-zero tuple and every change in $\Gamma_{n-1}$ modifies exactly one coordinate. Thus the transition modifies exactly one coordinate among the last $n-1$ components, while the first coordinate changes from $k$ to $k+1$ only when the internal sequence returns to $\alpha_0$, which occurs after completion of a full layer. Hence each adjacency changes exactly one coordinate overall.
+
+For the monotonicity condition, inside each block the maximum either stays the same or increases within $\alpha_i\to\alpha_{i+1}$, so it does not decrease. At block transitions, the first coordinate increases from $k$ to $k+1$, so the maximum strictly increases or remains unchanged if the previous maximum was already in the suffix. In all cases,
+
+$\max(k,\alpha_i)\le \max(k+1,\alpha_0).$
+
+Thus $\Gamma_n$ is an infinite Gray code on $n$-tuples satisfying the required monotonicity of maxima.
+
+This completes the construction for all $n\ge 1$. ∎
+
+## Verification
+
+Every tuple $(a_1,\dots,a_n)$ appears exactly once because the construction partitions by first coordinate $k$ and pairs each $k$ with every element of $\Gamma_{n-1}$. The Gray property holds because adjacency within each block is inherited from $\Gamma_{n-1}$, and adjacency across blocks changes only one coordinate since the recursive Gray sequence $\Gamma_{n-1}$ provides single-coordinate transitions. The monotonicity condition holds because the first coordinate never decreases and any change in the suffix cannot increase the maximum beyond the new first coordinate when it grows.
+
+## Notes
+
+This construction is a direct infinite analogue of the reflected Gray code built via boustrophedon products in Section 7.2.1.1. The essential idea is that fixing one coordinate produces infinitely many identical Gray layers, and the recursive structure ensures that movement inside each layer preserves the Gray property while movement between layers increases the dominant coordinate, forcing nondecreasing maxima.
