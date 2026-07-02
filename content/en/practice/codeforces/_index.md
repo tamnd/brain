@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2722 contests, 19359 problems, 10922 verified."
+description: "Codeforces problem solutions with full editorials. 2723 contests, 19371 problems, 10923 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2722 contests, 19359 problems, 10922 verified.**
+**2723 contests, 19371 problems, 10923 verified.**
 
-## Unknown — 627 contests, 5196 problems, 3274 verified
+## Unknown — 628 contests, 5208 problems, 3275 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103811](103811/) | [La Salle-Pui Ching Programming Challenge 培正喇沙編程挑戰賽 2021](https://codeforces.com/contest/103811) | 12 | 1/12 | Special | - |
 | [103828](103828/) | [(DCPC + TCPC + BCPC) 2022](https://codeforces.com/contest/103828) | 14 | 1/14 | Special | - |
 | [103831](103831/) | [2017 International olympiad Tuymaada](https://codeforces.com/contest/103831) | 8 | 4/8 | Special | - |
 | [103833](103833/) | [2018 International olympiad Tuymaada](https://codeforces.com/contest/103833) | 8 | 2/8 | Special | - |
