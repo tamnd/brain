@@ -1,7 +1,7 @@
 ---
 title: "CF 103585J - Apple Tree Beauty"
-description: "The problem statement is missing, so I can’t reconstruct what “Apple Tree Beauty” is asking or derive a correct solution."
-date: "2026-07-02T23:32:19+07:00"
+description: "I’m missing the actual problem content for Codeforces 103585J - Apple Tree Beauty (the statement section is empty in your prompt)."
+date: "2026-07-03T00:16:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103585
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "UTPC Contest 02-25-22 Div. 1 (Advanced)"
 rating: 0
 weight: 103585
-solve_time_s: 45
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 45s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing, so I can’t reconstruct what “Apple Tree Beauty” is asking or derive a correct solution.
+I’m missing the actual problem content for **Codeforces 103585J - Apple Tree Beauty** (the statement section is empty in your prompt).
 
-To write a proper Codeforces-style editorial, I need at least the full statement (or a screenshot/text), including what the input represents and what needs to be computed. Even a partial statement is fine if it includes constraints and the task description.
+Without the statement, any editorial would be guesswork, and for Codeforces problems that almost always leads to inventing constraints or a wrong model.
 
-Send that, and I’ll produce the full editorial in the exact format you specified.
+Send either:
+
+- the full problem statement, or
+- a link + pasted text, or
+- even just the core rules and input/output description
+
+and I’ll produce the full editorial in the exact format you specified.
