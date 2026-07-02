@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2771 contests, 19810 problems, 11166 verified."
+description: "Codeforces problem solutions with full editorials. 2771 contests, 19811 problems, 11168 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2771 contests, 19810 problems, 11166 verified.**
+**2771 contests, 19811 problems, 11168 verified.**
 
-## Unknown — 654 contests, 5437 problems, 3409 verified
+## Unknown — 654 contests, 5438 problems, 3411 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103630](103630/) | [2022 VII Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103630) | 10 | 0/10 | Special | - |
 | [103631](103631/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, первый тур](https://codeforces.com/contest/103631) | 4 | 3/4 | Special | - |
 | [103632](103632/) | [Тридцать четвертая всероссийская олимпиада школьников по информатике, второй тур](https://codeforces.com/contest/103632) | 0 | 0/0 | Special | - |
-| [103637](103637/) | [2019-2020 10th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/103637) | 11 | 10/11 | Special | - |
+| [103637](103637/) | [2019-2020 10th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/103637) | 12 | 12/12 | Special | - |
 | [103640](103640/) | [2021-2022 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103640) | 13 | 1/13 | ICPC/IOI | - |
 | [103643](103643/) | [TeamsCode Spring 2022 Contest](https://codeforces.com/contest/103643) | 20 | 0/20 | Special | - |
 | [103652](103652/) | [2019 Summer Petrozavodsk Camp, Day 8: XIX Open Cup Onsite](https://codeforces.com/contest/103652) | 12 | 10/12 | Special | - |
