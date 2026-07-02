@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2809 contests, 20090 problems, 11311 verified."
+description: "Codeforces problem solutions with full editorials. 2810 contests, 20101 problems, 11317 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2809 contests, 20090 problems, 11311 verified.**
+**2810 contests, 20101 problems, 11317 verified.**
 
-## Unknown — 675 contests, 5559 problems, 3456 verified
+## Unknown — 676 contests, 5570 problems, 3462 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103466](103466/) | [The 2019 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/103466) | 11 | 6/11 | ICPC/IOI | - |
 | [103469](103469/) | [2021 Summer Petrozavodsk Camp, Day 3: IQ test (XXII Open Cup, Grand Prix of IMO)](https://codeforces.com/contest/103469) | 13 | 10/13 | Special | - |
 | [103476](103476/) | [Innopolis Open 2021-2022. Second qualification round.](https://codeforces.com/contest/103476) | 5 | 1/5 | Special | - |
 | [103483](103483/) | [2021-2022 Russia Team Open, High School Programming Contest (VKOSHP XXII)](https://codeforces.com/contest/103483) | 12 | 1/12 | Special | - |
