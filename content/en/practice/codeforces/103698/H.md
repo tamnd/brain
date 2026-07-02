@@ -1,7 +1,7 @@
 ---
 title: "CF 103698H - Virus Experiment"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only see the title “Virus Experiment”, but no description of the rules, input format, or required output."
-date: "2026-07-02T10:17:45+07:00"
+description: "The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment (Codeforces 103698H)” is actually asking."
+date: "2026-07-02T10:41:49+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103698
@@ -22,8 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem statement section is empty, so there isn’t enough information to reconstruct what “Virus Experiment (Codeforces 103698H)” is actually asking.
 
-Right now I only see the title “Virus Experiment”, but no description of the rules, input format, or required output. For Codeforces problems, those details completely determine the solution technique, and guessing would risk inventing a different problem.
+An editorial depends heavily on the exact model of the problem (what the input represents, what operation is allowed, and what needs to be computed). Without that, anything I write would be guesswork and likely incorrect.
 
-Paste the full statement (or even just the core rules and constraints), and I’ll produce the complete editorial in the exact format you requested.
+Paste the full problem statement (or even just the key parts: description, constraints, and sample I/O), and I’ll produce a complete Codeforces-style editorial in the exact format you requested.
