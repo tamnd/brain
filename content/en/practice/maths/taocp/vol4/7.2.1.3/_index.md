@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.3: Generating All Combinations"
-description: "Section 7.2.1.3 exercises: 36/111 solved."
+description: "Section 7.2.1.3 exercises: 38/111 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.3. Generating All Combinations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 36/111 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 38/111 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -42,8 +42,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 36/111 solved.
 | [22](22.md) |  [*M23*] | math-medium | solved | 15m31s |
 | [23](23.md) |  [*M23*] | math-medium | solved | 7m13s |
 | [24](24.md) | &#9654; [*M25*] | math-medium | solved | 15m09s |
-| 25 |  [*M35*] | math-hard | - | - |
-| 26 |  [*26*] | hard | - | - |
+| [25](25.md) |  [*M35*] | math-hard | solved | 18m02s |
+| [26](26.md) |  [*26*] | hard | solved | 6m57s |
 | 27 | &#9654; [*25*] | medium | - | - |
 | 28 |  [*M21*] | math-medium | - | - |
 | 29 | &#9654; [*M28*] | math-hard | - | - |
