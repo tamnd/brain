@@ -1,7 +1,7 @@
 ---
 title: "CF 103590C - \u0420\u0430\u0441\u0448\u0438\u0444\u0440\u043e\u0432\u043a\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u044f\u0448\u0435\u043a"
-description: "We are given a sequence of integers representing a child’s speech. We are allowed to modify this sequence by repeatedly inserting a pair of identical numbers anywhere in the array."
-date: "2026-07-02T22:54:32+07:00"
+description: "Let $Sigman = {0,1,2}^n$. Two $n$-trits $x = (x1,dots,xn)$ and $y = (y1,dots,yn)$ are adjacent in an anti-Gray ternary code if and only if $xi neq yi$ for every $1 le i le n$."
+date: "2026-07-03T00:54:20+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103590
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "RocketOlymp 2022 9 \u043a\u043b\u0430\u0441\u0441"
 rating: 0
 weight: 103590
-solve_time_s: 51
+solve_time_s: 130
 verified: false
 draft: false
 ---
@@ -18,49 +18,53 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 51s  
+**Solve time:** 2m 10s  
 **Verified:** no  
 
 ## Solution
-## Problem Understanding
+## Solution
 
-We are given a sequence of integers representing a child’s speech. We are allowed to modify this sequence by repeatedly inserting a pair of identical numbers anywhere in the array. Each insertion adds two copies of the same value next to each other, but they can be placed at any position, so they may later become separated by other elements.
+Let $\Sigma_n = {0,1,2}^n$. Two $n$-trits $x = (x_1,\dots,x_n)$ and $y = (y_1,\dots,y_n)$ are adjacent in an anti-Gray ternary code if and only if $x_i \neq y_i$ for every $1 \le i \le n$. The task is to determine whether there exists a cyclic ordering of all $3^n$ elements of $\Sigma_n$ such that consecutive elements are adjacent in this sense.
 
-A sequence is called a tandem repeat if it can be split into two equal halves, element by element. A longer sequence is considered valid if it can be split into several consecutive segments, where each segment is a tandem repeat. The operation of inserting identical pairs is meant to “repair” the sequence so that such a segmentation becomes possible.
+Write addition modulo $3$ on ${0,1,2}$ and extend it coordinatewise to $\Sigma_n$. For $d \in {1,2}^n$, define $x \oplus d = (x_1 + d_1,\dots,x_n + d_n)$. Then $x$ and $y$ are adjacent exactly when $y = x \oplus d$ for some $d \in {1,2}^n$. Indeed, $d_i = y_i - x_i \not\equiv 0 \pmod 3$ for every $i$, so $d_i \in {1,2}$, and conversely any such $d$ yields $y_i \neq x_i$ for all $i$.
 
-For mood equal to zero, the task is purely counting: we must count how many non-empty subarrays can be turned into a valid concatenation of tandem repeats using any number of insertions of identical pairs.
+Thus the required structure is a Hamiltonian cycle in the Cayley graph of the abelian group $\mathbb{Z}_3^n$ with generating set ${1,2}^n$. The construction proceeds by induction on $n$.
 
-For mood equal to one, instead of counting, we are asked for a constructive decision problem: for each test, either prove impossibility by outputting −1, or explicitly describe a sequence of insertions and then give a valid decomposition into tandem repeat blocks.
+For $n = 1$, the sequence
 
-The constraints separate the two cases significantly. In the counting version, the array size is up to 10^5, so any solution must be close to linear or logarithmic per operation, ruling out any quadratic subarray checking. In the constructive version, each test is small, but there can be many tests, so any construction must be simple and structured rather than adaptive search.
+$$(0,1,2,0)$$
 
-A subtle issue is that insertions do not change the relative order of original elements. This means the original sequence is always a subsequence of the final sequence, and all tandem structure must ultimately respect that fixed ordering. A naive assumption that “we can always fix anything by inserting pairs” fails because insertions cannot resolve ordering conflicts between different values.
+visits all elements of $\Sigma_1$ exactly once and satisfies $0 \neq 1 \neq 2 \neq 0$, so the condition holds.
 
-A common failure case appears when occurrences of different values interleave in a way that prevents any consistent symmetric pairing inside blocks. For example, in a sequence like [1, 2, 1, 2], the occurrences of 1 and 2 are perfectly interleaved. Even though each value appears twice, there is no way to split the sequence into tandem blocks without violating the mirror structure inside at least one block. Insertions cannot fix this, because they cannot reorder the original interleaving.
+Assume a cyclic ordering
 
-## Approaches
+$$x_0, x_1, \dots, x_{3^n-1}, x_0$$
 
-The brute-force approach for the counting version would examine every subarray and try to simulate whether it can be transformed into a valid concatenation of tandem repeats. For each subarray, we would repeatedly try to match elements into symmetric pairs and simulate insertions as needed. Even if each check were linear, this leads to O(n^3) behavior in the worst case, which is far beyond the limit for n up to 10^5.
+of $\Sigma_n$ exists such that $x_k$ and $x_{k+1}$ differ in every coordinate for all $k$, where indices are taken modulo $3^n$. In particular, $x_{3^n-1}$ differs from $x_0$ in every coordinate.
 
-The key observation is that insertions of identical adjacent pairs do not change the “interaction structure” between different values. They only allow us to stretch segments, but they do not change the relative nesting of occurrences. The real obstruction is not frequency, but interleaving: if occurrences of two values cross each other in an alternating pattern, no amount of insertions can make the sequence separable into symmetric blocks.
+Define three copies of this cycle in $\Sigma_{n+1} = \Sigma_n \times {0,1,2}$. For $r \in {0,1,2}$, define
 
-This leads to the central reduction: a subarray is valid if and only if the occurrences of every value inside it can be paired in a non-crossing way with respect to the global order. Once this is recognized, the problem becomes equivalent to checking whether the interval structure induced by equal values forms a set of non-crossing pairings. That structure can be maintained incrementally using a sliding window, tracking when a value creates a conflict with previously seen occurrences.
+$$x_k^{(r)} = (x_k, r).$$
 
-| Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute force simulation per subarray | O(n^3) | O(n) | Too slow |
-| Sliding window with conflict tracking | O(n) | O(n) | Accepted |
+Construct the sequence
 
-## Algorithm Walkthrough
+$$x_0^{(0)}, x_1^{(0)}, \dots, x_{3^n-1}^{(0)},\;
+x_0^{(1)}, x_1^{(1)}, \dots, x_{3^n-1}^{(1)},\;
+x_0^{(2)}, x_1^{(2)}, \dots, x_{3^n-1}^{(2)},\;
+x_0^{(0)}.$$
 
-We focus on the counting version, since the constructive version uses the same structural idea but builds an explicit arrangement.
+Each transition inside a fixed layer $r$ has the form
 
-### 1. Reduce the problem to interval conflicts
+$$(x_k, r) \to (x_{k+1}, r),$$
 
-For each value, consider its occurrences in a subarray. Each value induces pairs between occurrences that must eventually belong to mirrored positions in tandem blocks. If occurrences of different values interleave in the pattern A B A B, then any pairing of equal elements will necessarily cross, which prevents a valid block decomposition.
+and since $x_k$ and $x_{k+1}$ differ in every coordinate of $\Sigma_n$, the corresponding $(n+1)$-tuples differ in all $n+1$ coordinates.
 
-So instead of thinking about insertions, we track whether the current subarray induces any crossing pattern between equal-value occurrences.
+The transition between layers is
 
-### 2. Maintain last occurrences in a sliding window
+$$(x_{3^n-1}, 0) \to (x_0, 1),$$
 
-We sweep the right endpoint r of the subarray. For each value, we maintain its last occurrence inside the current window. When we extend the window, we up
+and for every coordinate $i \le n$ one has $x_{3^n-1,i} \neq x_{0,i}$ by the cycle property, while $0 \neq 1$ in the last coordinate. Hence this step also differs in every coordinate. The same argument applies to the transitions from layer $1$ to layer $2$ and from layer $2$ back to layer $0$, because addition by $1 \pmod 3$ changes every entry.
+
+The resulting sequence contains exactly $3 \cdot 3^n = 3^{n+1}$ distinct elements of $\Sigma_{n+1}$, and every consecutive pair differs in every coordinate. It is cyclic by construction.
+
+This completes the inductive construction of an anti-Gray ternary code for all $n \ge 1$. ∎
