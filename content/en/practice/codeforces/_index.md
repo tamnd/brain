@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2777 contests, 19865 problems, 11208 verified."
+description: "Codeforces problem solutions with full editorials. 2778 contests, 19872 problems, 11209 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2777 contests, 19865 problems, 11208 verified.**
+**2778 contests, 19872 problems, 11209 verified.**
 
 ## Unknown — 657 contests, 5463 problems, 3433 verified
 
@@ -1758,7 +1758,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [104022](104022/) | [The 2020 ICPC Asia Yinchuan Regional Programming Contest](https://codeforces.com/contest/104022) | 13 | 12/13 | ICPC/IOI | - |
 | [104257](104257/) | [2021 NTUIM Programming Design And Optimization (PDAO 2021)](https://codeforces.com/contest/104257) | 12 | 12/12 | Special | - |
 
-## 2022 — 207 contests, 1607 problems, 763 verified
+## 2022 — 208 contests, 1614 problems, 764 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1895,6 +1895,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | 7 | 1/7 | Div. 3 | 800-2200 |
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
+| [103562](103562/) | [UTPC Contest 02-11-22 Div. 2 (Beginner)](https://codeforces.com/contest/103562) | 7 | 1/7 | Div. 2 | - |
 | [103575](103575/) | [Innopolis Open 2021-2022. Final round](https://codeforces.com/contest/103575) | 5 | 4/5 | Special | - |
 | [103577](103577/) | [2021 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/103577) | 13 | 13/13 | ICPC/IOI | - |
 | [103584](103584/) | [UTPC Contest 02-25-22 Div. 2 (Beginner)](https://codeforces.com/contest/103584) | 9 | 1/9 | Div. 2 | - |
