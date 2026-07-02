@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 3
-total_solve_s: 411
-date: "2026-07-02T18:31:42+07:00"
+total_solve_s: 443
+date: "2026-07-02T19:01:28+07:00"
 weight: 103964
 draft: false
 ---
 
 # [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964)
 
-Special | 11 problems | 3/11 verified | Difficulty - | 6m 51s
+Special | 11 problems | 3/11 verified | Difficulty - | 7m 23s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Secrete Master Plan](https://codeforces.com/problemset/problem/103964/A) |  |  |  | 46s | ✓ |
-| [B](B/) | [Build Towers](https://codeforces.com/problemset/problem/103964/B) |  |  |  | 31s |  |
-| [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 35s |  |
-| [D](D/) | [Pick The Sticks](https://codeforces.com/problemset/problem/103964/D) |  |  |  | 33s |  |
-| [E](E/) | [Ba Gua Zhen](https://codeforces.com/problemset/problem/103964/E) |  |  |  | 32s |  |
+| [B](B/) | [Build Towers](https://codeforces.com/problemset/problem/103964/B) |  |  |  | 40s |  |
+| [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 51s |  |
+| [D](D/) | [Pick The Sticks](https://codeforces.com/problemset/problem/103964/D) |  |  |  | 43s |  |
+| [E](E/) | [Ba Gua Zhen](https://codeforces.com/problemset/problem/103964/E) |  |  |  | 29s |  |
 | [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 49s |  |
 | [G](G/) | [Ancient Go](https://codeforces.com/problemset/problem/103964/G) |  |  |  | 54s | ✓ |
 | [H](H/) | [Sudoku](https://codeforces.com/problemset/problem/103964/H) |  |  |  | 48s | ✓ |
