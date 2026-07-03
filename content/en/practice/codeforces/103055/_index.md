@@ -1,27 +1,28 @@
 ---
 title: "The 18th Zhejiang Provincial Collegiate Programming Contest"
-description: "12 problems from The 18th Zhejiang Provincial Collegiate Programming Contest (contest 103055), difficulty -. 3/12 solutions verified against sample I/O."
+description: "13 problems from The 18th Zhejiang Provincial Collegiate Programming Contest (contest 103055), difficulty -. 3/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103055
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 3
-total_solve_s: 634
-date: "2026-07-04T05:36:00+07:00"
+total_solve_s: 661
+date: "2026-07-04T05:46:07+07:00"
 weight: 103055
 draft: false
 ---
 
 # [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055)
 
-Special | 12 problems | 3/12 verified | Difficulty - | 10m 34s
+Special | 13 problems | 3/13 verified | Difficulty - | 11m 1s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [League of Legends](https://codeforces.com/problemset/problem/103055/A) |  |  |  | 42s | ✓ |
 | [B](B/) | [Restore Atlantis](https://codeforces.com/problemset/problem/103055/B) |  |  |  | 2m 31s |  |
+| [C](C/) | [Cube](https://codeforces.com/problemset/problem/103055/C) |  |  |  | 27s |  |
 | [D](D/) | [Shortest Path Query](https://codeforces.com/problemset/problem/103055/D) |  |  |  | 23s |  |
 | [E](E/) | [Specially Super Rare](https://codeforces.com/problemset/problem/103055/E) |  |  |  | 40s | ✓ |
 | [F](F/) | [Fair Distribution](https://codeforces.com/problemset/problem/103055/F) |  |  |  | 51s | ✓ |
