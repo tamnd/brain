@@ -30,7 +30,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 79/111 solved.
 | [10](10.md) | &#9654; [*21*] | medium | solved | 3m58s |
 | [11](11.md) |  [*19*] | medium | solved | 14m58s |
 | [12](12.md) |  [*HM32*] | hm-hard | solved | 5m34s |
-| [13](13.md) |  [*25*] | medium | solved | 6m58s |
+| [13](13.md) |  [*25*] | medium | solved | 6m27s |
 | [14](14.md) |  [*26*] | hard | solved | 3m48s |
 | [15](15.md) |  [*M22*] | math-medium | solved | 7m59s |
 | [16](16.md) |  [*M21*] | math-medium | solved | 12m45s |
