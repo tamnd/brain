@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2819 contests, 20186 problems, 11351 verified."
+description: "Codeforces problem solutions with full editorials. 2820 contests, 20198 problems, 11362 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2819 contests, 20186 problems, 11351 verified.**
+**2820 contests, 20198 problems, 11362 verified.**
 
 ## Unknown — 679 contests, 5594 problems, 3464 verified
 
@@ -1641,7 +1641,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 150 contests, 1020 problems, 441 verified
+## 2021 — 151 contests, 1032 problems, 452 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1777,6 +1777,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103448](103448/) | [The 16-th Beihang University Collegiate Programming Contest (BCPC 2021) - Preliminary](https://codeforces.com/contest/103448) | 12 | 11/12 | Special | - |
 | [103449](103449/) | [Infoleague Winter 2021 Training Round](https://codeforces.com/contest/103449) | 8 | 2/8 | Special | - |
 | [103451](103451/) | [Krosh Kaliningrad Contest 2](https://codeforces.com/contest/103451) | 10 | 3/10 | Special | - |
 | [103455](103455/) | [UTPC Contest 12-03-21 Div. 2 (Beginner)](https://codeforces.com/contest/103455) | 9 | 1/9 | Div. 2 | - |
