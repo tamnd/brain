@@ -1,26 +1,27 @@
 ---
 title: "2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020)"
-description: "10 problems from 2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020) (contest 103049), difficulty -. 2/10 solutions verified against sample I/O."
+description: "11 problems from 2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020) (contest 103049), difficulty -. 2/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103049
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
+n_problems: 11
 n_verified: 2
-total_solve_s: 488
+total_solve_s: 630
 contest_year: 2021
-date: "2026-07-04T01:40:38+07:00"
+date: "2026-07-04T01:48:59+07:00"
 weight: 103049
 draft: false
 ---
 
 # [2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020)](https://codeforces.com/contest/103049)
 
-ICPC/IOI | 10 problems | 2/10 verified | Difficulty - | 8m 8s
+ICPC/IOI | 11 problems | 2/11 verified | Difficulty - | 10m 30s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Atomic Energy](https://codeforces.com/problemset/problem/103049/A) |  |  |  | 2m 22s |  |
 | [B](B/) | [Bulldozer](https://codeforces.com/problemset/problem/103049/B) |  |  |  | 53s | ✓ |
 | [C](C/) | [Contest Struggles](https://codeforces.com/problemset/problem/103049/C) |  |  |  | 59s |  |
 | [D](D/) | [Dragon Balls](https://codeforces.com/problemset/problem/103049/D) |  |  |  | 27s |  |
