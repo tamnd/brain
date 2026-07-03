@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2884 contests, 20776 problems, 11535 verified."
+description: "Codeforces problem solutions with full editorials. 2885 contests, 20780 problems, 11535 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2884 contests, 20776 problems, 11535 verified.**
+**2885 contests, 20780 problems, 11535 verified.**
 
-## Unknown — 713 contests, 5881 problems, 3541 verified
+## Unknown — 714 contests, 5885 problems, 3541 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 4 | 0/4 | Special | - |
 | [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 4 | 0/4 | Special | - |
 | [103230](103230/) | [Moving intervals for packing and covering](https://codeforces.com/contest/103230) | 2 | 0/2 | Special | - |
 | [103241](103241/) | [Teamscode Summer 2021](https://codeforces.com/contest/103241) | 25 | 2/25 | Special | - |
