@@ -1,23 +1,23 @@
 ---
 title: "ACPC Kickoff 2021"
-description: "9 problems from ACPC Kickoff 2021 (contest 103158), difficulty -. 0/9 solutions verified against sample I/O."
+description: "10 problems from ACPC Kickoff 2021 (contest 103158), difficulty -. 0/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103158
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 0
-total_solve_s: 499
+total_solve_s: 645
 contest_year: 2021
-date: "2026-07-03T16:59:15+07:00"
+date: "2026-07-03T17:09:55+07:00"
 weight: 103158
 draft: false
 ---
 
 # [ACPC Kickoff 2021](https://codeforces.com/contest/103158)
 
-Special | 9 problems | 0/9 verified | Difficulty - | 8m 19s
+Special | 10 problems | 0/10 verified | Difficulty - | 10m 45s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 9 problems | 0/9 verified | Difficulty - | 8m 19s
 | [G](G/) | [Game with Strings](https://codeforces.com/problemset/problem/103158/G) |  |  |  | 29s |  |
 | [H](H/) | [Annoying posts](https://codeforces.com/problemset/problem/103158/H) |  |  |  | 30s |  |
 | [K](K/) | [Helping Eagle](https://codeforces.com/problemset/problem/103158/K) |  |  |  | 2m 11s |  |
+| [L](L/) | [Memable Ace](https://codeforces.com/problemset/problem/103158/L) |  |  |  | 2m 26s |  |
