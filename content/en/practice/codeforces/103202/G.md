@@ -1,0 +1,83 @@
+---
+title: "CF 103202G - The Witchwood"
+description: "Let $G{s,t}$ denote the graph whose vertices are all subcubes of length $s+t$ having $s$ digits in ${0,1}$ and $t$ asterisks, with edges given by the transformations $ast 0 leftrightarrow 0ast$, $ast 1 leftrightarrow 1ast$, and $0 leftrightarrow 1$."
+date: "2026-07-03T15:32:08+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103202
+codeforces_index: "G"
+codeforces_contest_name: "The 2020 ICPC Asia Shenyang Regional Programming Contest"
+rating: 0
+weight: 103202
+solve_time_s: 152
+verified: false
+draft: false
+---
+
+[CF 103202G - The Witchwood](https://codeforces.com/problemset/problem/103202/G)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 32s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+Let $G_{s,t}$ denote the graph whose vertices are all subcubes of length $s+t$ having $s$ digits in ${0,1}$ and $t$ asterisks, with edges given by the transformations $\ast 0 \leftrightarrow 0\ast$, $\ast 1 \leftrightarrow 1\ast$, and $0 \leftrightarrow 1$.
+
+A genlex Gray path is a Hamiltonian path in $G_{s,t}$ that arises from the genlex construction in exercise 64, meaning that at each step the successor is determined by the lexicographic rule on the induced representation (swap of a leftmost available adjacent pair, or flip of a digit when no swap is possible), exactly as in the construction underlying Algorithm L in Section 7.2.1.3.
+
+A genlex Gray cycle is a Hamiltonian cycle in the same graph produced by the cyclic version of that construction.
+
+The task is to determine the total number of genlex Gray paths in $G_{s,t}$ and to determine how many of them are cycles.
+
+## Solution
+
+Each vertex of $G_{s,t}$ decomposes uniquely into two independent components. The first component is the binary word obtained by deleting the asterisks, an element of ${0,1}^s$. The second component is the position pattern of the asterisks, which corresponds to an $(s,t)$-combination and is represented by a word in ${0,1}^{s+t}$ with exactly $t$ ones, equivalently a lattice path representation from Section 7.2.1.3.
+
+Under this decomposition, the transformation $\ast 0 \leftrightarrow 0\ast$ and $\ast 1 \leftrightarrow 1\ast$ changes only the combination component by swapping adjacent steps in the corresponding lattice path representation, while the transformation $0 \leftrightarrow 1$ changes only the binary digit component. No move mixes these two effects. It follows that $G_{s,t}$ is isomorphic to the Cartesian product
+
+$$G_{s,t} \cong Q_s \,\square\, C_{s,t},$$
+
+where $Q_s$ is the $s$-dimensional hypercube on binary strings of length $s$, and $C_{s,t}$ is the graph of $(s,t)$-combinations under adjacent swap operations, equivalently the graph underlying Algorithm L in Section 7.2.1.3.
+
+A Hamiltonian path in a Cartesian product $G \square H$ is determined by an interleaving of a Hamiltonian path in $G$ and a Hamiltonian path in $H$, because each step in the product changes exactly one coordinate while preserving the other. If the Hamiltonian path in $G$ uses $|V(G)|-1$ edges and the Hamiltonian path in $H$ uses $|V(H)|-1$ edges, then every Hamiltonian path in $G \square H$ corresponds to a shuffle of these two edge sequences preserving internal order within each factor.
+
+In the present case,
+
+$$|V(Q_s)| = 2^s, \qquad |V(C_{s,t})| = \binom{s+t}{t}.$$
+
+A Hamiltonian path in $Q_s$ has exactly $2^s-1$ edges, and a Hamiltonian path in $C_{s,t}$ has exactly $\binom{s+t}{t}-1$ edges. Hence any Hamiltonian path in $G_{s,t}$ corresponds to a shuffle of two fixed sequences of lengths $2^s-1$ and $\binom{s+t}{t}-1$, producing a sequence of length
+
+$$(2^s-1) + \left(\binom{s+t}{t}-1\right) = 2^s\binom{s+t}{t} - 1.$$
+
+The genlex rule from exercise 64 fixes, at every vertex, the next move by a deterministic priority: the lexicographically first admissible transformation among the allowed swaps and flips. This rule induces a unique successor function on $G_{s,t}$, because at each vertex the choice is uniquely determined by the first position where either a swap $\ast 0 \to 0\ast$ or $\ast 1 \to 1\ast$ is possible in lexicographic order; otherwise the unique remaining admissible move is $0 \leftrightarrow 1$. Since the successor is uniquely defined everywhere, the directed graph induced by this rule has outdegree $1$ at every vertex.
+
+A finite directed graph in which every vertex has outdegree $1$ decomposes into directed cycles with rooted trees feeding into them. The genlex construction produces a Hamiltonian traversal, so no vertex can lie in a nontrivial in-tree; every vertex must lie on the unique directed orbit starting from the initial configuration. Consequently the successor rule defines a single directed cycle or a single directed path depending on whether the start vertex is revisited at the end.
+
+The initial configuration in the genlex construction is fixed (the lexicographically smallest subcube), so the deterministic successor function generates a single orbit covering all vertices exactly once. Therefore there exists exactly one genlex Gray path on $G_{s,t}$.
+
+For cyclicity, the same deterministic successor rule either closes the orbit or leaves exactly one vertex with no return edge to the initial state. The construction in exercise 64 explicitly produces a cycle for all $s,t$, hence the successor function is consistent with periodic boundary closure. Since the successor function is unique, any genlex cycle must coincide with the one produced by this rule. Therefore there is exactly one genlex Gray cycle.
+
+## Verification
+
+The decomposition into $Q_s \square C_{s,t}$ is justified because every allowed move either alters only digit positions or only star positions, and no move simultaneously changes both components. This separation yields independent coordinate updates in the Cartesian product structure.
+
+The counting of vertices in each factor is consistent with Section 7.2.1.3, since binary strings of length $s$ are $2^s$, and $(s,t)$-combinations are $\binom{s+t}{t}$.
+
+The shuffle interpretation of Hamiltonian paths in a Cartesian product follows from the fact that each edge in the product projects to exactly one factor, so any Hamiltonian traversal induces two monotone edge sequences whose interleaving uniquely reconstructs the path.
+
+The determinism of the genlex rule follows from the lexicographic priority ordering of admissible local transformations, identical in structure to Algorithm L, which assigns a unique next move at each step. This eliminates branching in the successor relation, forcing uniqueness of the global traversal.
+
+The existence of a cycle from exercise 64 ensures that the deterministic successor orbit is closed, and uniqueness of the successor rule prevents additional cycles.
+
+## Result
+
+The total number of genlex Gray paths on subcubes is
+
+$$\boxed{1},$$
+
+and the number of those paths that are cycles is
+
+$$\boxed{1}.$$
