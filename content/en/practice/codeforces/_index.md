@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2940 contests, 21333 problems, 11666 verified."
+description: "Codeforces problem solutions with full editorials. 2941 contests, 21344 problems, 11667 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2940 contests, 21333 problems, 11666 verified.**
+**2941 contests, 21344 problems, 11667 verified.**
 
-## Unknown — 740 contests, 6154 problems, 3608 verified
+## Unknown — 741 contests, 6165 problems, 3609 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102984](102984/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: Korean Contest](https://codeforces.com/contest/102984) | 11 | 1/11 | Special | - |
 | [102992](102992/) | [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992) | 12 | 2/12 | ICPC/IOI | - |
 | [102993](102993/) | [2020 Nowcoder Training - AceSrc and chenjb Contest](https://codeforces.com/contest/102993) | 10 | 0/10 | Special | - |
 | [102994](102994/) | [Moscow Pre-Finals Workshop 2020 - Legilimens+Coffee Chicken Contest (XX Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102994) | 13 | 0/13 | Special | - |
