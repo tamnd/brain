@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2843 contests, 20431 problems, 11468 verified."
+description: "Codeforces problem solutions with full editorials. 2847 contests, 20439 problems, 11469 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2843 contests, 20431 problems, 11468 verified.**
+**2847 contests, 20439 problems, 11469 verified.**
 
-## Unknown — 691 contests, 5706 problems, 3503 verified
+## Unknown — 694 contests, 5706 problems, 3503 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103382](103382/) | [Школьный этап ВСОШ по информатике для 9 - 11 классов (3 группа регионов)](https://codeforces.com/contest/103382) | 0 | 0/0 | Special | - |
+| [103383](103383/) | [Школьный этап ВСОШ по информатике 9-11 класс  2021 (4 группа регионов)](https://codeforces.com/contest/103383) | 0 | 0/0 | Special | - |
+| [103384](103384/) | [Школьный этап ВСОШ по информатике 9-11 класс 2021 (2 группа регионов)](https://codeforces.com/contest/103384) | 0 | 0/0 | Special | - |
 | [103385](103385/) | [Школьный этап ВСОШ по информатике 9-11 класс 2021 (1 группа регионов)](https://codeforces.com/contest/103385) | 0 | 0/0 | Special | - |
 | [103388](103388/) | [2021-2022 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103388) | 11 | 1/11 | ICPC/IOI | - |
 | [103399](103399/) | [Fast modular multiplication](https://codeforces.com/contest/103399) | 4 | 2/4 | Special | - |
@@ -1653,7 +1656,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 162 contests, 1153 problems, 519 verified
+## 2021 — 163 contests, 1161 problems, 520 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1789,6 +1792,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103380](103380/) | [UTPC Contest 10-29-21 Div. 2 (Beginner)](https://codeforces.com/contest/103380) | 8 | 1/8 | Div. 2 | - |
 | [103389](103389/) | [2021年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/103389) | 11 | 8/11 | Special | - |
 | [103401](103401/) | [The 16-th BIT Campus Programming Contest - Online Round](https://codeforces.com/contest/103401) | 13 | 2/13 | Special | - |
 | [103409](103409/) | [The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)](https://codeforces.com/contest/103409) | 12 | 3/12 | Special | - |
