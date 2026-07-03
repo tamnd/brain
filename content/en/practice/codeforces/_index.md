@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2866 contests, 20608 problems, 11524 verified."
+description: "Codeforces problem solutions with full editorials. 2867 contests, 20616 problems, 11524 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2866 contests, 20608 problems, 11524 verified.**
+**2867 contests, 20616 problems, 11524 verified.**
 
 ## Unknown — 705 contests, 5807 problems, 3537 verified
 
@@ -1667,7 +1667,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 171 contests, 1229 problems, 541 verified
+## 2021 — 172 contests, 1237 problems, 541 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1803,6 +1803,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103317](103317/) | [UTPC Contest 10-01-21 Div. 2 (Beginner)](https://codeforces.com/contest/103317) | 8 | 0/8 | Div. 2 | - |
 | [103324](103324/) | [OPEI 2021 - Junior](https://codeforces.com/contest/103324) | 4 | 0/4 | Special | - |
 | [103336](103336/) | [OPEI 2021 - Senior](https://codeforces.com/contest/103336) | 4 | 0/4 | Special | - |
 | [103347](103347/) | [UTPC Contest 10-15-21 Div. 2 (Beginner)](https://codeforces.com/contest/103347) | 10 | 2/10 | Div. 2 | - |
