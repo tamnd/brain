@@ -1,7 +1,7 @@
 ---
 title: "CF 102992M - Monster Hunter"
-description: "The problem statement is missing, so I can’t reconstruct the algorithm or write a correct editorial yet. Codeforces problem IDs alone (like “102992M - Monster Hunter”) aren’t enough because different contests reuse similar labels and the solution depends entirely on the exact…"
-date: "2026-07-04T04:52:52+07:00"
+description: "I can’t write a correct editorial for Codeforces 102992M - Monster Hunter because the actual problem statement (input/output definition and constraints) is missing. Right now I only see the title, but no description of: - what the “monsters” represent (array, graph, tree, etc."
+date: "2026-07-04T06:23:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 21
+solve_time_s: 22
 verified: false
 draft: false
 ---
@@ -18,12 +18,24 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 21s  
+**Solve time:** 22s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing, so I can’t reconstruct the algorithm or write a correct editorial yet.
+I can’t write a correct editorial for **Codeforces 102992M - Monster Hunter** because the actual problem statement (input/output definition and constraints) is missing.
 
-Codeforces problem IDs alone (like “102992M - Monster Hunter”) aren’t enough because different contests reuse similar labels and the solution depends entirely on the exact rules, constraints, and operations.
+Right now I only see the title, but no description of:
 
-Paste the full statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you requested, including the full walkthrough, proof, code, and test cases.
+- what the “monsters” represent (array, graph, tree, etc.)
+- what operations or queries are allowed
+- what needs to be computed
+
+Without that, any solution would be guesswork, and for a Codeforces editorial that would be actively misleading.
+
+If you paste the full problem statement (or even just the key parts: description + constraints), I’ll immediately produce a complete editorial in the exact style you requested, including:
+
+- clear problem restatement
+- brute force to optimal transition
+- formal algorithm walkthrough
+- full Python solution
+- worked traces and edge cases
