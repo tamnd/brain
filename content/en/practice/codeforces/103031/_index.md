@@ -1,25 +1,26 @@
 ---
 title: "Индивидуальная олимпиада школьников по информатике и программированию 2021"
-description: "4 problems from Индивидуальная олимпиада школьников по информатике и программированию 2021 (contest 103031), difficulty -. 0/4 solutions verified against sample I/O."
+description: "5 problems from Индивидуальная олимпиада школьников по информатике и программированию 2021 (contest 103031), difficulty -. 0/5 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103031
 contest_type: "Special"
 rating_range: "-"
-n_problems: 4
+n_problems: 5
 n_verified: 0
-total_solve_s: 234
-date: "2026-07-04T02:12:30+07:00"
+total_solve_s: 257
+date: "2026-07-04T02:19:40+07:00"
 weight: 103031
 draft: false
 ---
 
 # [Индивидуальная олимпиада школьников по информатике и программированию 2021](https://codeforces.com/contest/103031)
 
-Special | 4 problems | 0/4 verified | Difficulty - | 3m 54s
+Special | 5 problems | 0/5 verified | Difficulty - | 4m 17s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u041f\u043e\u0434\u0441\u0447\u0435\u0442 \u0445\u0435\u0448\u0442\u0435\u0433\u043e\u0432](https://codeforces.com/problemset/problem/103031/A) |  |  |  | 23s |  |
 | [B](B/) | [Arranging Utensils](https://codeforces.com/problemset/problem/103031/B) |  |  |  | 32s |  |
 | [C](C/) | [\u0428\u0435\u0441\u0442\u0438\u0437\u043d\u0430\u0447\u043d\u044b\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b](https://codeforces.com/problemset/problem/103031/C) |  |  |  | 2m 26s |  |
 | [D](D/) | [Government Census](https://codeforces.com/problemset/problem/103031/D) |  |  |  | 28s |  |
