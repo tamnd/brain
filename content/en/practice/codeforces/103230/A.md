@@ -1,41 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 104"
-description: "Let $n=s+t$ and let the ground positions be ${0,1,\\dots,n-1}$."
-date: "2026-07-03T08:20:46+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-project"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 104
-rating: "M41"
-category: "math-project"
-recommended: false
+title: "CF 103230A - Torty and Shields"
+description: "Let $n=s+t$ and let the ground positions be ${0,1,dots,n-1}$. A configuration is a word $x0x1cdots x{n-1}$ over ${0,1,ast}$ containing exactly $t$ asterisks. The set of all such configurations has size $2^sbinom{s+t}{t}$."
+date: "2026-07-03T15:15:09+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103230
+codeforces_index: "A"
+codeforces_contest_name: "Moving intervals for packing and covering"
+rating: 0
+weight: 103230
+solve_time_s: 146
 verified: false
-solve_time_s: 291
-weight: 7020103104
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103230A - Torty and Shields](https://codeforces.com/problemset/problem/103230/A)
 
-**Exercise 104.** [*M41*] [M41] The shadow of a binary string a1 . . . an is obtained by deleting one of its
-bits. For example,
-∂110010010 = {10010010, 11010010, 11000010, 11001000, 11001010, 11001001}.
-Find a set PNn such that, if A is any set of N binary strings a1 . . . an, |∂A| ≥|PNn|.
-
-7.2.1.3
-GENERATING ALL COMBINATIONS
-389
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 26s  
 **Verified:** no  
-**Solve time:** 4m51s  
 
----
-
+## Solution
 ## Setup
 
 Let $n=s+t$ and let the ground positions be ${0,1,\dots,n-1}$. A configuration is a word $x_0x_1\cdots x_{n-1}$ over ${0,1,\ast}$ containing exactly $t$ asterisks. The set of all such configurations has size $2^s\binom{s+t}{t}$.
@@ -70,9 +56,7 @@ $X^{(k)}_0, X^{(k)}_1,\dots,X^{(k)}_{2^s-1}.$
 
 Define the global sequence of configurations by concatenation
 
-$$
-(A_k, X^{(k)}_0), (A_k, X^{(k)}_1), \dots, (A_k, X^{(k)}_{2^s-1})
-$$
+$$(A_k, X^{(k)}_0), (A_k, X^{(k)}_1), \dots, (A_k, X^{(k)}_{2^s-1})$$
 
 for $k=0,\dots,m-1$.
 
