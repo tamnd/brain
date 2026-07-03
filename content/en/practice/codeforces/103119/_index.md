@@ -1,22 +1,22 @@
 ---
 title: "The 2020 ICPC Asia Macau Regional Contest"
-description: "8 problems from The 2020 ICPC Asia Macau Regional Contest (contest 103119), difficulty -. 7/8 solutions verified against sample I/O."
+description: "11 problems from The 2020 ICPC Asia Macau Regional Contest (contest 103119), difficulty -. 9/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103119
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 7
-total_solve_s: 580
-date: "2026-07-03T20:10:20+07:00"
+n_problems: 11
+n_verified: 9
+total_solve_s: 858
+date: "2026-07-03T20:11:45+07:00"
 weight: 103119
 draft: false
 ---
 
 # [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119)
 
-ICPC/IOI | 8 problems | 7/8 verified | Difficulty - | 9m 40s
+ICPC/IOI | 11 problems | 9/11 verified | Difficulty - | 14m 18s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,7 @@ ICPC/IOI | 8 problems | 7/8 verified | Difficulty - | 9m 40s
 | [F](F/) | [Fixing Networks](https://codeforces.com/problemset/problem/103119/F) |  |  |  | 49s | ✓ |
 | [G](G/) | [Game on Sequence](https://codeforces.com/problemset/problem/103119/G) |  |  |  | 1m 8s | ✓ |
 | [H](H/) | [Fly Me To The Moon](https://codeforces.com/problemset/problem/103119/H) |  |  |  | 1m 5s | ✓ |
+| [I](I/) | [Nim Cheater](https://codeforces.com/problemset/problem/103119/I) |  |  |  | 2m 39s |  |
 | [J](J/) | [Jewel Grab](https://codeforces.com/problemset/problem/103119/J) |  |  |  | 54s | ✓ |
+| [K](K/) | [Candy Ads](https://codeforces.com/problemset/problem/103119/K) |  |  |  | 58s | ✓ |
+| [L](L/) | [Random Permutation](https://codeforces.com/problemset/problem/103119/L) |  |  |  | 1m 1s | ✓ |
