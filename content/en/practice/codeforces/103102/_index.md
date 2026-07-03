@@ -1,22 +1,22 @@
 ---
 title: "2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)"
-description: "7 problems from 2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020) (contest 103102), difficulty -. 3/7 solutions verified against sample I/O."
+description: "8 problems from 2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020) (contest 103102), difficulty -. 3/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103102
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 3
-total_solve_s: 390
-date: "2026-07-03T21:48:08+07:00"
+total_solve_s: 549
+date: "2026-07-03T22:00:07+07:00"
 weight: 103102
 draft: false
 ---
 
 # [2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)](https://codeforces.com/contest/103102)
 
-ICPC/IOI | 7 problems | 3/7 verified | Difficulty - | 6m 30s
+ICPC/IOI | 8 problems | 3/8 verified | Difficulty - | 9m 9s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,4 @@ ICPC/IOI | 7 problems | 3/7 verified | Difficulty - | 6m 30s
 | [F](F/) | [Fence Job](https://codeforces.com/problemset/problem/103102/F) |  |  |  | 29s |  |
 | [G](G/) | [Simple Hull](https://codeforces.com/problemset/problem/103102/G) |  |  |  | 46s | ✓ |
 | [H](H/) | [AND = OR](https://codeforces.com/problemset/problem/103102/H) |  |  |  | 43s | ✓ |
+| [I](I/) | [Modulo Permutations](https://codeforces.com/problemset/problem/103102/I) |  |  |  | 2m 39s |  |
