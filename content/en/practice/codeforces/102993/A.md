@@ -1,38 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 67"
-description: "Let $S(n,t,r)$ denote the set of Ising configurations from exercise 13 with parameters $n,t,r$ and with the additional restriction $a_0=0$."
-date: "2026-07-03T19:47:47+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "research"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 67
-rating: "46"
-category: "research"
-recommended: false
+title: "CF 102993A - Social Distancing"
+description: "Let $S(n,t,r)$ denote the set of Ising configurations from exercise 13 with parameters $n,t,r$ and with the additional restriction $a0=0$. Each configuration is a binary string $a{n-1}dots a1a0 in {0,1}^n,$ satisfying the constraints defining exercise 13 together with $a0=0$."
+date: "2026-07-04T02:39:50+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102993
+codeforces_index: "A"
+codeforces_contest_name: "2020 Nowcoder Training - AceSrc and chenjb Contest"
+rating: 0
+weight: 102993
+solve_time_s: 134
 verified: false
-solve_time_s: 2556
-weight: 7020103067
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102993A - Social Distancing](https://codeforces.com/problemset/problem/102993/A)
 
-**Exercise 67.** [*46*] [46] Consider the Ising configurations of exercise 13 for which a0 = 0. Given n,
-t, and r, is there a Gray cycle for these configurations in which all transitions have the
-forms 0k1 ↔10k or 01k ↔1k0? For example, in the case n = 9, t = 5, r = 6, there is
-a unique cycle
-(010101110, 010110110, 011010110, 011011010, 011101010, 010111010).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 14s  
 **Verified:** no  
-**Solve time:** 42m36s  
 
----
-
+## Solution
 ## Setup
 
 Let $S(n,t,r)$ denote the set of Ising configurations from exercise 13 with parameters $n,t,r$ and with the additional restriction $a_0=0$. Each configuration is a binary string
