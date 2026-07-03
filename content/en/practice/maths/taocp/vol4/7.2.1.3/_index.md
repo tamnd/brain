@@ -85,8 +85,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 104/111 solved.
 | [65](65.md) |  [*M40*] | math-project | solved | 7m53s |
 | [66](66.md) | &#9654; [*22*] | medium | solved | 16m44s |
 | [67](67.md) |  [*46*] | research | solved | 42m36s |
-| [68](68.md) |  [*M01*] | math-simple | solved | 15m33s |
-| [69](69.md) | &#9654; [*M22*] | math-medium | solved | 32m37s |
+| [68](68.md) |  [*M01*] | math-simple | solved | 10m34s |
+| [69](69.md) | &#9654; [*M22*] | math-medium | solved | 16m44s |
 | [70](70.md) |  [*M25*] | math-medium | solved | 23m25s |
 | [71](71.md) |  [*M20*] | math-medium | solved | 19m42s |
 | [72](72.md) | &#9654; [*M22*] | math-medium | solved | 14m24s |
