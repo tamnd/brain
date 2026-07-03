@@ -52,8 +52,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 89/111 solved.
 | [32](32.md) | &#9654; [*M32*] | math-hard | solved | 5m15s |
 | [33](33.md) |  [*HM33*] | hm-hard | solved | 5m07s |
 | [34](34.md) |  [*M32*] | math-hard | solved | 4m57s |
-| [35](35.md) |  [*M26*] | math-hard | solved | 9m11s |
-| [36](36.md) | &#9654; [*M21*] | math-medium | solved | 6m30s |
+| [35](35.md) |  [*M26*] | math-hard | solved | 9m50s |
+| [36](36.md) | &#9654; [*M21*] | math-medium | solved | 5m06s |
 | [37](37.md) | &#9654; [*27*] | hard | solved | 6m13s |
 | [38](38.md) |  [*26*] | hard | solved | 6m03s |
 | [39](39.md) |  [*M21*] | math-medium | solved | 6m59s |
