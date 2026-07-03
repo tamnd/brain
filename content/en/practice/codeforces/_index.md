@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2912 contests, 21058 problems, 11600 verified."
+description: "Codeforces problem solutions with full editorials. 2913 contests, 21069 problems, 11609 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2912 contests, 21058 problems, 11600 verified.**
+**2913 contests, 21069 problems, 11609 verified.**
 
 ## Unknown — 727 contests, 6019 problems, 3563 verified
 
@@ -1689,7 +1689,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 195 contests, 1467 problems, 591 verified
+## 2021 — 196 contests, 1478 problems, 600 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1825,6 +1825,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103104](103104/) | [2021 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/103104) | 11 | 9/11 | Special | - |
 | [103107](103107/) | [The 16th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103107) | 12 | 2/12 | Special | - |
 | [103112](103112/) | [Шестая Липецкая командная олимпиада школьников по программированию. Финал. 3-7 классы](https://codeforces.com/contest/103112) | 7 | 0/7 | Special | - |
 | [103113](103113/) | [Шестая Липецкая командная олимпиада школьников по программированию. Финал. 8-11 классы](https://codeforces.com/contest/103113) | 11 | 0/11 | Special | - |
