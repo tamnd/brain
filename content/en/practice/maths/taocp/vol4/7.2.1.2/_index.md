@@ -100,10 +100,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [80](80.md) |  [*21*] | medium | solved | 7m22s |
 | [81](81.md) | &#9654; [*22*] | medium | solved | 8m09s |
 | [82](82.md) |  [*M21*] | math-medium | solved | 5m17s |
-| [83](83.md) |  [*22*] | medium | solved | 3m04s |
-| [84](84.md) |  [*20*] | medium | solved | 4m18s |
-| [85](85.md) | &#9654; [*25*] | medium | solved | 2m48s |
-| [86](86.md) |  [*20*] | medium | solved | 5m28s |
+| [83](83.md) |  [*22*] | medium | solved | 4m58s |
+| [84](84.md) |  [*20*] | medium | solved | 4m36s |
+| [85](85.md) | &#9654; [*25*] | medium | solved | 11m43s |
+| [86](86.md) |  [*20*] | medium | solved | 6m42s |
 | [87](87.md) |  [*20*] | medium | solved | 3m10s |
 | [88](88.md) |  [*21*] | medium | solved | 49s |
 | [89](89.md) | &#9654; [*M30*] | math-hard | verified | 1m33s |

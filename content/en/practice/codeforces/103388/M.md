@@ -1,37 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 85"
-description: "Let $\\alpha = a_1 a_2 \\dots a_n$ be a permutation of ${1,\\dots,n}$."
-date: "2026-07-03T05:21:20+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 85
-rating: "25"
-category: "medium"
-recommended: true
+title: "CF 103388M - Monarchy in Vertigo"
+description: "Let $alpha = a1 a2 dots an$ be a permutation of ${1,dots,n}$. Let $pi$ denote the inverse permutation, so $pi(ai)=i$. The inversion table from Section 7.2.1.2 is defined by $cj = {, i : pi(i) pi(j), i < j }, qquad 1 le j le n,$ so $0 le cj < j$."
+date: "2026-07-03T12:19:15+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103388
+codeforces_index: "M"
+codeforces_contest_name: "2021-2022 ACM-ICPC Brazil Subregional Programming Contest"
+rating: 0
+weight: 103388
+solve_time_s: 72
 verified: false
-solve_time_s: 703
-weight: 7020102085
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103388M - Monarchy in Vertigo](https://codeforces.com/problemset/problem/103388/M)
 
-**Exercise 85.** &#9654; [*25*] [25] Assume that n is small enough that n! fits in a computer word. What’s a
-good way to convert a given permutation α = a1 . . . an of {1, . . . , n} into an integer
-k = r(α) in the range 0 ≤k < n!? Both functions k = r(α) and α = r[−1](k) should
-be computable in only O(n) steps.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 12s  
 **Verified:** no  
-**Solve time:** 11m43s  
 
----
-
+## Solution
 ## Solution
 
 Let $\alpha = a_1 a_2 \dots a_n$ be a permutation of ${1,\dots,n}$. Let $\pi$ denote the inverse permutation, so $\pi(a_i)=i$. The inversion table from Section 7.2.1.2 is defined by

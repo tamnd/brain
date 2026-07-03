@@ -1,38 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 86"
-description: "Vertices are binary strings $a_{2t-1}\\ldots a_1a_0$ with exactly $t$ ones."
-date: "2026-07-03T05:28:03+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 86
-rating: "20"
-category: "medium"
-recommended: false
+title: "CF 103380B - North Pole Retirement"
+description: "Vertices are binary strings $a{2t-1}ldots a1a0$ with exactly $t$ ones. A move consists of choosing $j in {1,ldots,2t-1}$ and swapping $a0 leftrightarrow aj$. Each move preserves the condition $sum{i=0}^{2t-1} ai = t$, hence maps $(t,t)$-combinations to $(t,t)$-combinations."
+date: "2026-07-03T12:33:16+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103380
+codeforces_index: "B"
+codeforces_contest_name: "UTPC Contest 10-29-21 Div. 2 (Beginner)"
+rating: 0
+weight: 103380
+solve_time_s: 152
 verified: false
-solve_time_s: 402
-weight: 7020102086
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103380B - North Pole Retirement](https://codeforces.com/problemset/problem/103380/B)
 
-**Exercise 86.** [*20*] [20] A partial order relation is supposed to be transitive; that is, x ≺y and y ≺z
-should imply x ≺z. But Algorithm V does not require its input relation to satisfy this
-condition.
-Show that if x ≺y and y ≺z, Algorithm V will produce identical results whether
-or not x ≺z.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 32s  
 **Verified:** no  
-**Solve time:** 6m42s  
 
----
-
+## Solution
 ## Setup
 
 Vertices are binary strings $a_{2t-1}\ldots a_1a_0$ with exactly $t$ ones. A move consists of choosing $j \in {1,\ldots,2t-1}$ and swapping $a_0 \leftrightarrow a_j$. Each move preserves the condition $\sum_{i=0}^{2t-1} a_i = t$, hence maps $(t,t)$-combinations to $(t,t)$-combinations.
