@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2914 contests, 21082 problems, 11613 verified."
+description: "Codeforces problem solutions with full editorials. 2915 contests, 21095 problems, 11618 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,19 +11,20 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2914 contests, 21082 problems, 11613 verified.**
+**2915 contests, 21095 problems, 11618 verified.**
 
-## Unknown — 728 contests, 6032 problems, 3567 verified
+## Unknown — 729 contests, 6044 problems, 3572 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103098](103098/) | [2020-2021 Winter Petrozavodsk Camp, UPC contest](https://codeforces.com/contest/103098) | 11 | 3/11 | Special | - |
 | [103102](103102/) | [2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)](https://codeforces.com/contest/103102) | 13 | 4/13 | ICPC/IOI | - |
 | [103109](103109/) | [mBIT Advanced Spring 2021](https://codeforces.com/contest/103109) | 12 | 0/12 | Special | - |
 | [103110](103110/) | [mBIT Standard Spring 2021](https://codeforces.com/contest/103110) | 12 | 0/12 | Special | - |
 | [103115](103115/) | [2021 Xinjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103115) | 11 | 1/11 | Special | - |
 | [103117](103117/) | [The 2021 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/103117) | 11 | 2/11 | Special | - |
 | [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
-| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
+| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 12 | 11/12 | ICPC/IOI | - |
 | [103134](103134/) | [VI MaratonUSP Freshmen Contest](https://codeforces.com/contest/103134) | 10 | 1/10 | Special | - |
 | [103148](103148/) | [EGOI 2021 Day 1](https://codeforces.com/contest/103148) | 4 | 0/4 | Special | - |
 | [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
@@ -1690,7 +1691,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 196 contests, 1478 problems, 600 verified
+## 2021 — 196 contests, 1479 problems, 600 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1829,7 +1830,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103104](103104/) | [2021 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/103104) | 11 | 9/11 | Special | - |
 | [103107](103107/) | [The 16th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103107) | 12 | 2/12 | Special | - |
 | [103112](103112/) | [Шестая Липецкая командная олимпиада школьников по программированию. Финал. 3-7 классы](https://codeforces.com/contest/103112) | 7 | 0/7 | Special | - |
-| [103113](103113/) | [Шестая Липецкая командная олимпиада школьников по программированию. Финал. 8-11 классы](https://codeforces.com/contest/103113) | 11 | 0/11 | Special | - |
+| [103113](103113/) | [Шестая Липецкая командная олимпиада школьников по программированию. Финал. 8-11 классы](https://codeforces.com/contest/103113) | 12 | 0/12 | Special | - |
 | [103114](103114/) | [The 2021 Hangzhou Normal U Summer Trials](https://codeforces.com/contest/103114) | 10 | 8/10 | Special | - |
 | [103136](103136/) | [Student programming contest in Penza](https://codeforces.com/contest/103136) | 9 | 0/9 | Special | - |
 | [103145](103145/) | [The 15th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/103145) | 13 | 12/13 | Special | - |

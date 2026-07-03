@@ -1,24 +1,24 @@
 ---
-title: "CF 103119I - Nim Cheater"
+title: "CF 103092B - Balls"
 description: "The Takagi function is defined for $0 le x le 1$ by $$tau(x)=sum{k=1}^{infty}int{0}^{x} rk(t),dt, qquad rk(t)=(-1)^{lfloor 2^k trfloor}."
-date: "2026-07-03T22:40:50+07:00"
+date: "2026-07-03T22:53:28+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103119
-codeforces_index: "I"
-codeforces_contest_name: "The 2020 ICPC Asia Macau Regional Contest"
+codeforces_contest: 103092
+codeforces_index: "B"
+codeforces_contest_name: "SDU Open 2021 \u0428\u043a\u043e\u043b\u044b"
 rating: 0
-weight: 103119
-solve_time_s: 143
+weight: 103092
+solve_time_s: 158
 verified: false
 draft: false
 ---
 
-[CF 103119I - Nim Cheater](https://codeforces.com/problemset/problem/103119/I)
+[CF 103092B - Balls](https://codeforces.com/problemset/problem/103092/B)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 23s  
+**Solve time:** 2m 38s  
 **Verified:** no  
 
 ## Solution
