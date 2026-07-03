@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2823 contests, 20236 problems, 11394 verified."
+description: "Codeforces problem solutions with full editorials. 2824 contests, 20250 problems, 11395 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2823 contests, 20236 problems, 11394 verified.**
+**2824 contests, 20250 problems, 11395 verified.**
 
-## Unknown — 679 contests, 5594 problems, 3464 verified
+## Unknown — 680 contests, 5608 problems, 3465 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103439](103439/) | [XXII Open Cup, Grand Prix of Southeastern Europe](https://codeforces.com/contest/103439) | 14 | 1/14 | Special | - |
 | [103457](103457/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая командная олимпиада](https://codeforces.com/contest/103457) | 10 | 0/10 | Special | - |
 | [103458](103458/) | [Интернет-олимпиады, Сезон 2021-2022, Третья командная олимпиада](https://codeforces.com/contest/103458) | 10 | 1/10 | Special | - |
 | [103464](103464/) | [The second stage of the Republican Olympiad in Informatics. Mogilev region, 2021.](https://codeforces.com/contest/103464) | 4 | 1/4 | Special | - |
