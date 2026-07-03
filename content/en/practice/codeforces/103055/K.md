@@ -1,7 +1,7 @@
 ---
 title: "CF 103055K - Grammy's Kingdom"
-description: "I can write a full Codeforces-style editorial in exactly this format, but I’m missing the only thing needed to do it correctly: the actual problem statement."
-date: "2026-07-04T01:25:30+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 103055K - Grammy’s Kingdom because the actual problem statement is missing. Right now I don’t have: - what the kingdom structure is (grid, tree, graph, game, etc."
+date: "2026-07-04T05:46:31+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103055
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "The 18th Zhejiang Provincial Collegiate Programming Contest"
 rating: 0
 weight: 103055
-solve_time_s: 27
+solve_time_s: 24
 verified: false
 draft: false
 ---
@@ -18,18 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 24s  
 **Verified:** no  
 
 ## Solution
-I can write a full Codeforces-style editorial in exactly this format, but I’m missing the only thing needed to do it correctly: the actual problem statement.
+I can’t reliably write a correct editorial for **Codeforces 103055K - Grammy’s Kingdom** because the actual problem statement is missing.
 
-Right now, the statement sections are empty (“## Problem Statement”, “Input”, “Output” are blank), so I don’t know what _Grammy’s Kingdom_ is asking for (graph, DP, strings, queries, etc.). Writing a full editorial without that would be guessing and would likely produce a wrong or meaningless solution.
+Right now I don’t have:
 
-Send either:
+- what the kingdom structure is (grid, tree, graph, game, etc.)
+- what operations or queries are involved
+- what needs to be computed
 
-- the full problem statement text, or
-- a link + pasted statement content, or
-- even just input/output description and constraints
+Without that, any “solution” would just be guesswork, and that would break the whole point of a Codeforces editorial.
 
-and I’ll produce the complete editorial exactly in your requested structure and style.
+Paste the full problem statement (or even just the core description + constraints), and I’ll produce a complete, structured editorial exactly in the style you requested.

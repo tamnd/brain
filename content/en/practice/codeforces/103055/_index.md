@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 13
 n_verified: 3
-total_solve_s: 661
-date: "2026-07-04T05:46:07+07:00"
+total_solve_s: 655
+date: "2026-07-04T05:48:04+07:00"
 weight: 103055
 draft: false
 ---
 
 # [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055)
 
-Special | 13 problems | 3/13 verified | Difficulty - | 11m 1s
+Special | 13 problems | 3/13 verified | Difficulty - | 10m 55s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ Special | 13 problems | 3/13 verified | Difficulty - | 11m 1s
 | [G](G/) | [Wall Game](https://codeforces.com/problemset/problem/103055/G) |  |  |  | 40s |  |
 | [H](H/) | [Grammy and HearthStone](https://codeforces.com/problemset/problem/103055/H) |  |  |  | 26s |  |
 | [I](I/) | [Grammy and Ropes](https://codeforces.com/problemset/problem/103055/I) |  |  |  | 27s |  |
-| [J](J/) | [Grammy and Jewelry](https://codeforces.com/problemset/problem/103055/J) |  |  |  | 25s |  |
-| [K](K/) | [Grammy's Kingdom](https://codeforces.com/problemset/problem/103055/K) |  |  |  | 27s |  |
-| [L](L/) | [String Freshman](https://codeforces.com/problemset/problem/103055/L) |  |  |  | 2m 37s |  |
-| [M](M/) | [Game Theory](https://codeforces.com/problemset/problem/103055/M) |  |  |  | 25s |  |
+| [J](J/) | [Grammy and Jewelry](https://codeforces.com/problemset/problem/103055/J) |  |  |  | 2m 24s |  |
+| [K](K/) | [Grammy's Kingdom](https://codeforces.com/problemset/problem/103055/K) |  |  |  | 24s |  |
+| [L](L/) | [String Freshman](https://codeforces.com/problemset/problem/103055/L) |  |  |  | 37s |  |
+| [M](M/) | [Game Theory](https://codeforces.com/problemset/problem/103055/M) |  |  |  | 23s |  |
