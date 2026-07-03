@@ -1,7 +1,7 @@
 ---
 title: "CF 103158E - AKA AKA learns number theory"
-description: "The problem statement for Codeforces 103158E - AKA AKA learns number theory is missing from your prompt, so I can’t reliably reconstruct the solution or write a correct editorial."
-date: "2026-07-03T16:55:41+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. “Codeforces 103158E - AKA AKA learns number theory” isn’t enough on its own to reconstruct the task reliably, and guessing would lead to a completely wrong solution and explanation."
+date: "2026-07-03T17:31:17+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103158
@@ -22,8 +22,8 @@ draft: false
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 103158E - AKA AKA learns number theory** is missing from your prompt, so I can’t reliably reconstruct the solution or write a correct editorial.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-Codeforces problem IDs alone (especially contest-internal ones like 103158E) aren’t sufficient because multiple problems can share similar themes, and the required solution could vary from simple number theory to something much more specific.
+“Codeforces 103158E - AKA AKA learns number theory” isn’t enough on its own to reconstruct the task reliably, and guessing would lead to a completely wrong solution and explanation.
 
-Paste the full statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including brute-force intuition, optimal derivation, proof sketch, implementation, and tests.
+Paste the full statement (or at least input/output format + constraints + sample), and I’ll produce a complete, Codeforces-style editorial in the exact structure you specified.
