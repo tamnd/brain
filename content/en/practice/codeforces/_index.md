@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2836 contests, 20376 problems, 11451 verified."
+description: "Codeforces problem solutions with full editorials. 2838 contests, 20392 problems, 11455 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2836 contests, 20376 problems, 11451 verified.**
+**2838 contests, 20392 problems, 11455 verified.**
 
-## Unknown — 687 contests, 5688 problems, 3500 verified
+## Unknown — 688 contests, 5691 problems, 3500 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103402](103402/) | [Сумасшедший контест (Miston Cats)](https://codeforces.com/contest/103402) | 3 | 0/3 | Special | - |
 | [103411](103411/) | [2020-2021, ICPC, East Siberian Regional Contest](https://codeforces.com/contest/103411) | 12 | 6/12 | ICPC/IOI | - |
 | [103414](103414/) | [2021-2022 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 21)](https://codeforces.com/contest/103414) | 12 | 0/12 | Special | - |
 | [103416](103416/) | [NU Open Fall 2021](https://codeforces.com/contest/103416) | 10 | 1/10 | Special | - |
@@ -1649,7 +1650,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 159 contests, 1116 problems, 505 verified
+## 2021 — 160 contests, 1129 problems, 509 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1785,10 +1786,11 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103409](103409/) | [The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)](https://codeforces.com/contest/103409) | 12 | 3/12 | Special | - |
 | [103415](103415/) | [The 2021 CCPC Guangzhou Onsite](https://codeforces.com/contest/103415) | 12 | 2/12 | Special | - |
 | [103422](103422/) | [Infoleague Autumn 2021 Round 2 Div. 2](https://codeforces.com/contest/103422) | 3 | 1/3 | Div. 2 | - |
 | [103423](103423/) | [Infoleague Autumn 2021 Round 2 Div. 1](https://codeforces.com/contest/103423) | 3 | 1/3 | Div. 1 | - |
-| [103427](103427/) | [The 2021 ICPC Asia Shenyang Regional Contest](https://codeforces.com/contest/103427) | 12 | 12/12 | ICPC/IOI | - |
+| [103427](103427/) | [The 2021 ICPC Asia Shenyang Regional Contest](https://codeforces.com/contest/103427) | 13 | 13/13 | ICPC/IOI | - |
 | [103428](103428/) | [The 2021 CCPC Weihai Onsite](https://codeforces.com/contest/103428) | 13 | 3/13 | Special | - |
 | [103443](103443/) | [The 2021 ICPC Asia Taipei Regional Programming Contest](https://codeforces.com/contest/103443) | 13 | 9/13 | ICPC/IOI | - |
 | [103446](103446/) | [The 2021 ICPC Asia Shanghai Regional Programming Contest](https://codeforces.com/contest/103446) | 13 | 13/13 | ICPC/IOI | - |
