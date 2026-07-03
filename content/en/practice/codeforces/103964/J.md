@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "Let the index set be ${0,1,dots,s}$ with variables $rs,dots,r0$ and constraints $0 le rj le mj$ for $s ge j ge 0$, together with $$rs + cdots + r0 = t."
-date: "2026-07-04T00:40:33+07:00"
+description: "I can write a full editorial in the exact style you want, but I’m missing the actual problem statement for Codeforces 103964J - Walk Around The Campsite. Right now only the title is present, with no input/output specification or constraints."
+date: "2026-07-04T06:26:10+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 153
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,83 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 33s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-## Solution
+I can write a full editorial in the exact style you want, but I’m missing the actual problem statement for **Codeforces 103964J - Walk Around The Campsite**.
 
-Let the index set be ${0,1,\dots,s}$ with variables $r_s,\dots,r_0$ and constraints $0 \le r_j \le m_j$ for $s \ge j \ge 0$, together with
+Right now only the title is present, with no input/output specification or constraints. Without that, I would have to guess the problem structure, which would make the editorial incorrect or hallucinated.
 
-$$r_s + \cdots + r_0 = t.$$
+Please paste the full problem statement (or at least input, output, constraints, and a sample). Once you do, I’ll produce a complete Codeforces-style editorial with:
 
-Write $R_j = r_s + \cdots + r_j$ and let the remaining capacity below level $j$ be
+- Correct restatement of the problem
+- Naive to optimal progression
+- Full algorithm walkthrough
+- Working Python solution
+- Traces, edge cases, and complexity proof
 
-$$M_j = \sum_{k=0}^{j-1} m_k,
-\quad 1 \le j \le s+1,$$
-
-with $M_0 = 0$. Let the remaining sum after fixing $r_s,\dots,r_j$ be
-
-$$T_j = t - R_j.$$
-
-A partial assignment $r_s,\dots,r_j$ is extendable if and only if
-
-$$0 \le T_j \le M_j.$$
-
-### Initialization
-
-The lexicographically first solution is obtained by constructing $r_s,\dots,r_0$ from left to right while maintaining feasibility.
-
-Set $T_{s+1} = t$. For $j = s,s-1,\dots,0$, define
-
-$$r_j = \max\bigl(0,\, T_{j+1} - M_j\bigr).$$
-
-Then set $T_j = T_{j+1} - r_j$. The choice ensures $T_j \le M_j$ and $r_j \le m_j$, since $T_{j+1} \le M_{j+1} + m_j$ whenever a solution exists, and thus the construction remains within bounds. The resulting vector is the first admissible bounded composition in lexicographic order.
-
-Visit this composition.
-
-### Lexicographic successor
-
-Given a valid composition $r_s,\dots,r_0$, the next composition is obtained by modifying the rightmost index that can still be increased without destroying feasibility.
-
-Define $T_0 = t - (r_s + \cdots + r_1)$ during the scan, and maintain $T_j$ consistently as remaining sum after fixing higher indices.
-
-To locate the position $j$, start from $j=0$ and increase $j$ while the current component is forced by maximal suffix constraints. The component $r_j$ is forced if either $r_j = m_j$ or increasing it by $1$ would make completion impossible, that is,
-
-$$T_j - 1 > M_j.$$
-
-Equivalently, $r_j$ is movable if
-
-$$r_j < m_j \quad \text{and} \quad T_j - 1 \le M_j.$$
-
-Let $j$ be the smallest index satisfying this movability condition. Such an index exists unless the current composition is the last one.
-
-### Update step
-
-Increase $r_j$ by one:
-
-$$r_j \leftarrow r_j + 1,$$
-
-so the remaining sum becomes
-
-$$T_j \leftarrow T_j - 1.$$
-
-All components below $j$ are then recomputed in the lexicographically smallest way consistent with feasibility. For $k = j-1, j-2, \dots, 0$, set
-
-$$r_k = \max\bigl(0,\, T_{k+1} - M_k\bigr),$$
-
-and update $T_k = T_{k+1} - r_k$.
-
-### Termination condition
-
-If no index $j$ satisfies the movability condition, then for every $j$ either $r_j = m_j$ or $T_j - 1 > M_j$. The latter implies $T_0 = 0$, hence $r_0 = \cdots = r_s = m_0, \dots, m_s$ would exceed the total $t$ unless already saturated. In this case the current composition is the lexicographically last one and the algorithm terminates.
-
-### Algorithm
-
-The resulting procedure is:
-
-Start with the initialization above, then repeatedly perform the successor step: locate the smallest $j$ such that $r_j < m_j$ and $T_j - 1 \le M_j$, increase $r_j$, and rebuild the suffix greedily by the formula $r_k = \max(0, T_{k+1} - M_k)$.
-
-Each iteration produces the next lexicographic bounded composition, and every feasible composition is produced exactly once, since at each step the prefix $r_s,\dots,r_j$ is the lexicographically smallest possible extension of its prefix, and the choice of $j$ is forced by maximal suffix obstruction.
-
-This completes the construction. ∎
+Just send the statement and I’ll take it from there.
