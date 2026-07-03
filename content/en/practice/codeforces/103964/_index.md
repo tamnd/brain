@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 7
-total_solve_s: 522
-date: "2026-07-02T04:53:51+07:00"
+total_solve_s: 616
+date: "2026-07-02T09:51:15+07:00"
 weight: 103964
 draft: false
 ---
 
 # [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964)
 
-Special | 11 problems | 7/11 verified | Difficulty - | 8m 42s
+Special | 11 problems | 7/11 verified | Difficulty - | 10m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,9 +25,9 @@ Special | 11 problems | 7/11 verified | Difficulty - | 8m 42s
 | [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 43s | ✓ |
 | [D](D/) | [Pick The Sticks](https://codeforces.com/problemset/problem/103964/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [Ba Gua Zhen](https://codeforces.com/problemset/problem/103964/E) |  |  |  | 1m | ✓ |
-| [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 32s |  |
+| [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 40s |  |
 | [G](G/) | [Ancient Go](https://codeforces.com/problemset/problem/103964/G) |  |  |  | 54s | ✓ |
 | [H](H/) | [Sudoku](https://codeforces.com/problemset/problem/103964/H) |  |  |  | 48s | ✓ |
-| [I](I/) | [Mahjong](https://codeforces.com/problemset/problem/103964/I) |  |  |  | 32s |  |
-| [J](J/) | [Walk Around The Campsite](https://codeforces.com/problemset/problem/103964/J) |  |  |  | 30s |  |
-| [K](K/) | [Game Rooms](https://codeforces.com/problemset/problem/103964/K) |  |  |  | 1m 4s |  |
+| [I](I/) | [Mahjong](https://codeforces.com/problemset/problem/103964/I) |  |  |  | 37s |  |
+| [J](J/) | [Walk Around The Campsite](https://codeforces.com/problemset/problem/103964/J) |  |  |  | 2m 12s |  |
+| [K](K/) | [Game Rooms](https://codeforces.com/problemset/problem/103964/K) |  |  |  | 43s |  |
