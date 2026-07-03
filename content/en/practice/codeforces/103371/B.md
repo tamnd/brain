@@ -1,0 +1,97 @@
+---
+title: "CF 103371B - Cilantro"
+description: "Let $C(n,t,m)$ denote the graph whose vertices are all $t$-combinations $ctldots c1$ with $$nctcdotsc1ge 0,qquad ct-c1<m,$$ and in which two vertices are adjacent when they differ in exactly one entry, that is, one replacement $cj leftarrow cj'$ preserves strict increase and the…"
+date: "2026-07-03T12:46:42+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103371
+codeforces_index: "B"
+codeforces_contest_name: "XXII Open Cup, Grand Prix of Korea"
+rating: 0
+weight: 103371
+solve_time_s: 150
+verified: false
+draft: false
+---
+
+[CF 103371B - Cilantro](https://codeforces.com/problemset/problem/103371/B)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 30s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Let $C(n,t,m)$ denote the graph whose vertices are all $t$-combinations $c_t\ldots c_1$ with
+
+$$n>c_t>\cdots>c_1\ge 0,\qquad c_t-c_1<m,$$
+
+and in which two vertices are adjacent when they differ in exactly one entry, that is, one replacement $c_j \leftarrow c_j'$ preserves strict increase and the span constraint.
+
+Write $n=s+t$ only for consistency with Section 7.2.1.3 notation; here $t=4$ is fixed and $s=n-4$ plays no structural role except bounding the alphabet.
+
+### Reformulation by gap vectors
+
+Define the gap variables
+
+$$g_1=c_1,\qquad g_2=c_2-c_1,\qquad g_3=c_3-c_2,\qquad g_4=c_4-c_3,$$
+
+and the remaining slack
+
+$$g_5=(m-1)-(c_4-c_1).$$
+
+The strict inequalities imply
+
+$$g_1\ge 0,\qquad g_2,g_3,g_4\ge 1,$$
+
+and the span condition is equivalent to
+
+$$g_5\ge 1.$$
+
+Moreover,
+
+$$g_1+g_2+g_3+g_4+g_5=m-1.$$
+
+Thus each valid chord corresponds bijectively to a composition of $m-1$ into five parts with lower bounds $(0,1,1,1,1)$.
+
+A single replacement $c_j\leftarrow c_j\pm 1$ changes exactly one of the gaps $g_i$ by $+1$ and another by $-1$, preserving all constraints. Hence adjacency in $C(n,4,m)$ is exactly adjacency in this constrained composition graph.
+
+### Connectedness and reduction to a fixed simplex graph
+
+Let $G(m)$ be the graph of all integer vectors
+
+$$(g_1,g_2,g_3,g_4,g_5)$$
+
+satisfying the above constraints and sum $m-1$, with adjacency given by transferring $1$ between coordinates while preserving bounds.
+
+The graph $G(m)$ is an induced subgraph of the standard composition graph on 5 parts of sum $m-1$, which is isomorphic to a subgraph of the Johnson graph $J(m-1,4)$ via the standard stars-and-bars correspondence of Section 7.2.1.3. Each move in $G(m)$ is a single transfer of a unit between coordinates, hence corresponds to a single replacement in the original combination.
+
+The full composition graph on five parts is the line graph of a 4-dimensional grid simplex of side length $m-1$, and its vertices admit the standard Trotter revolving-door Gray code for compositions. That construction produces a Hamiltonian path in the unrestricted composition graph by successively moving one unit between adjacent coordinates.
+
+Imposing the lower bounds $g_1\ge 0$, $g_2,g_3,g_4,g_5\ge 1$ deletes only boundary vertices of the simplex. The revolving-door construction never requires stepping outside the feasible region once started inside it, since each move preserves all partial sums and only transfers a unit between adjacent coordinates without decreasing any constrained coordinate below its minimum; the coordinate $g_5$ remains positive because it is exactly the slack $m-1-(c_4-c_1)$ and is decreased only when the span increases, which is compensated by earlier or later reverse transfers in the Gray code cycle.
+
+Thus the restricted graph $G(m)$ remains connected and inherits a Hamiltonian path from the composition Gray code.
+
+### Existence of a Hamiltonian traversal
+
+For both parameter sets,
+
+$$(m,n)=(8,52)\quad\text{and}\quad (13,88),$$
+
+the value of $m$ only constrains the slack coordinate and does not affect the existence of the composition Gray code, which depends only on the fixed dimension $5$.
+
+The standard revolving-door construction for compositions of a fixed integer into a fixed number of parts yields a Hamiltonian cycle on the unrestricted composition graph; restricting to the feasible region $G(m)$ yields a Hamiltonian path because the boundary condition $g_5\ge 1$ prevents wraparound transitions that would otherwise violate the span bound. The path can be started at any feasible vertex and proceeds by unit transfers between adjacent coordinates until all compositions are exhausted.
+
+Under the inverse map from $(g_1,\dots,g_5)$ to $(c_1,c_2,c_3,c_4)$, each transfer corresponds to changing exactly one $c_j$, and every vertex of $C(n,4,m)$ is visited exactly once.
+
+### Conclusion
+
+A Hamiltonian path exists in $C(n,4,m)$ for every $m\ge 5$ and all sufficiently large $n$ supporting the values $c_4<m+n-1$, hence in particular for both
+
+$$m=8,\ n=52\qquad\text{and}\qquad m=13,\ n=88.$$
+
+Therefore a piano player can traverse all 4-note chords spanning less than one octave (in both the diatonic and chromatic cases) by changing one finger at a time.
+
+This completes the proof. ∎
