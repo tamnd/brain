@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 83/111 solved.
 | [19](19.md) |  [*21*] | medium | solved | 12m17s |
 | [20](20.md) |  [*M20*] | math-medium | solved | 7m28s |
 | [21](21.md) |  [*M22*] | math-medium | solved | 9m30s |
-| [22](22.md) |  [*M23*] | math-medium | solved | 15m31s |
+| [22](22.md) |  [*M23*] | math-medium | solved | 8m29s |
 | [23](23.md) |  [*M23*] | math-medium | solved | 7m13s |
 | [24](24.md) | &#9654; [*M25*] | math-medium | solved | 15m09s |
 | [25](25.md) |  [*M35*] | math-hard | solved | 18m02s |
