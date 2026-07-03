@@ -1,38 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 109"
-description: "Let the canonical bases be represented in the form $(\\alpha_1,\\dots,\\alpha_t)$ as in exercise 12, where each $\\alpha_i$ is a binary string of length $n$ with exactly one distinguished position equal t..."
-date: "2026-07-03T09:08:04+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-hard"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 109
-rating: "M31"
-category: "math-hard"
-recommended: false
+title: "CF 103186B - \u5c0f A \u7684\u5361\u724c\u6e38\u620f"
+description: "Let the canonical bases be represented in the form $(alpha1,dots,alphat)$ as in exercise 12, where each $alphai$ is a binary string of length $n$ with exactly one distinguished position equal to $1$."
+date: "2026-07-03T16:12:14+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103186
+codeforces_index: "B"
+codeforces_contest_name: "The 2021 Shanghai Collegiate Programming Contest"
+rating: 0
+weight: 103186
+solve_time_s: 56
 verified: false
-solve_time_s: 1140
-weight: 7020103109
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103186B - \u5c0f A \u7684\u5361\u724c\u6e38\u620f](https://codeforces.com/problemset/problem/103186/B)
 
-**Exercise 109.** [*M31*] [M31] Find universal cycles of 3-multicombinations for {0, 1, . . . , n −1} when
-n mod 3 ̸= 0 (namely for combinations d1d2d3 with repetitions permitted). For exam-
-ple,
-(00012241112330222344133340024440113)
-is such a cycle when n = 5.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 56s  
 **Verified:** no  
-**Solve time:** 19m  
 
----
-
+## Solution
 ## Solution
 
 Let the canonical bases be represented in the form $(\alpha_1,\dots,\alpha_t)$ as in exercise 12, where each $\alpha_i$ is a binary string of length $n$ with exactly one distinguished position equal to $1$. Equivalently, each $\alpha_i$ encodes a choice of an element of ${0,1,\dots,n-1}$, so a canonical basis is an ordered $t$-tuple of distinct indices. Writing the chosen indices in increasing order produces a standard representation of the same object as a $t$-subset, but the ordered tuple representation is the one compatible with single-bit moves in the coordinate encoding of each $\alpha_i$.

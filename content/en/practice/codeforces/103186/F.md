@@ -1,36 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 11"
+title: "CF 103186F - \u9e21\u54e5\u7684\u9650\u5e01\u4ee4"
 description: "A World Series scenario in the sense of exercise 10 is a sequence of games between $A$ and $N$ that stops when one side reaches four wins."
-date: "2026-07-03T09:23:04+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 11
-rating: "19"
-category: "medium"
-recommended: false
+date: "2026-07-03T16:14:42+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103186
+codeforces_index: "F"
+codeforces_contest_name: "The 2021 Shanghai Collegiate Programming Contest"
+rating: 0
+weight: 103186
+solve_time_s: 147
 verified: false
-solve_time_s: 898
-weight: 7020103011
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103186F - \u9e21\u54e5\u7684\u9650\u5e01\u4ee4](https://codeforces.com/problemset/problem/103186/F)
 
-**Exercise 11.** [*19*] [19] Which of the scenarios in exercise 10 occurred most often during the 1900s?
-Which of them never occurred? [Hint: World Series scores are easily found on the
-Internet.]
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 27s  
 **Verified:** no  
-**Solve time:** 14m58s  
 
----
-
+## Solution
 ## Solution
 
 A World Series scenario in the sense of exercise 10 is a sequence of games between $A$ and $N$ that stops when one side reaches four wins. Each scenario is completely determined by the order of wins up to the terminal game, since the last game is always the winning fourth game and no continuation is possible afterward.
@@ -43,27 +34,19 @@ More explicitly, if $A$ wins the series, then exactly $3-k$ wins of $A$ occur am
 
 Thus the total number of scenarios is
 
-$$
-2\sum_{k=0}^{3} \binom{k+3}{3}.
-$$
+$$2\sum_{k=0}^{3} \binom{k+3}{3}.$$
 
 Each term is evaluated directly:
 
-$$
-\binom{3}{3}=1,\quad \binom{4}{3}=4,\quad \binom{5}{3}=10,\quad \binom{6}{3}=20.
-$$
+$$\binom{3}{3}=1,\quad \binom{4}{3}=4,\quad \binom{5}{3}=10,\quad \binom{6}{3}=20.$$
 
 The sum becomes
 
-$$
-1+4+10+20=35,
-$$
+$$1+4+10+20=35,$$
 
 and doubling for the two possible winners yields
 
-$$
-2 \cdot 35 = 70.
-$$
+$$2 \cdot 35 = 70.$$
 
 To determine which scenarios occurred most often in the 1900s, each scenario corresponds to a fixed pattern of wins and losses, so the frequency is determined by how often that exact sequence of game outcomes appears in the historical record. Scenarios that end in fewer games correspond to more unbalanced series and are less constrained, while those reaching the full seven games correspond to more balanced sequences.
 

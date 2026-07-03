@@ -1,38 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 109"
-description: "Let the canonical bases be represented in the form $(\\alpha_1,\\dots,\\alpha_t)$ as in exercise 12, where each $\\alpha_i$ is a binary string of length $n$ with exactly one distinguished position equal t..."
-date: "2026-07-03T09:08:04+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-hard"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 109
-rating: "M31"
-category: "math-hard"
-recommended: false
+title: "CF 103194C - \u0418\u0433\u0440\u0430 \u043d\u0430 \u0434\u0435\u0440\u0435\u0432\u0435"
+description: "Let the canonical bases be represented in the form $(alpha1,dots,alphat)$ as in exercise 12, where each $alphai$ is a binary string of length $n$ with exactly one distinguished position equal to $1$."
+date: "2026-07-03T16:07:56+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103194
+codeforces_index: "C"
+codeforces_contest_name: "2020-2021 \u041e\u0442\u043a\u0440\u044b\u0442\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e, \u0437\u0430\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u044d\u0442\u0430\u043f, \u0442\u0443\u0440 1"
+rating: 0
+weight: 103194
+solve_time_s: 151
 verified: false
-solve_time_s: 1140
-weight: 7020103109
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103194C - \u0418\u0433\u0440\u0430 \u043d\u0430 \u0434\u0435\u0440\u0435\u0432\u0435](https://codeforces.com/problemset/problem/103194/C)
 
-**Exercise 109.** [*M31*] [M31] Find universal cycles of 3-multicombinations for {0, 1, . . . , n −1} when
-n mod 3 ̸= 0 (namely for combinations d1d2d3 with repetitions permitted). For exam-
-ple,
-(00012241112330222344133340024440113)
-is such a cycle when n = 5.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 31s  
 **Verified:** no  
-**Solve time:** 19m  
 
----
-
+## Solution
 ## Solution
 
 Let the canonical bases be represented in the form $(\alpha_1,\dots,\alpha_t)$ as in exercise 12, where each $\alpha_i$ is a binary string of length $n$ with exactly one distinguished position equal to $1$. Equivalently, each $\alpha_i$ encodes a choice of an element of ${0,1,\dots,n-1}$, so a canonical basis is an ordered $t$-tuple of distinct indices. Writing the chosen indices in increasing order produces a standard representation of the same object as a $t$-subset, but the ordered tuple representation is the one compatible with single-bit moves in the coordinate encoding of each $\alpha_i$.
