@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2812 contests, 20118 problems, 11331 verified."
+description: "Codeforces problem solutions with full editorials. 2813 contests, 20130 problems, 11343 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2812 contests, 20118 problems, 11331 verified.**
+**2813 contests, 20130 problems, 11343 verified.**
 
 ## Unknown — 677 contests, 5574 problems, 3463 verified
 
@@ -1639,7 +1639,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 145 contests, 972 problems, 422 verified
+## 2021 — 146 contests, 984 problems, 434 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1775,6 +1775,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103462](103462/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2021](https://codeforces.com/contest/103462) | 12 | 12/12 | Special | - |
 | [103470](103470/) | [The 2021 ICPC Asia Nanjing Regional Contest (XXII Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/103470) | 13 | 3/13 | ICPC/IOI | - |
 | [103471](103471/) | [Муниципальный этап ВсОШ по информатике в Липецке 2021 (9-11 классы)](https://codeforces.com/contest/103471) | 0 | 0/0 | Special | - |
 | [103478](103478/) | [The 16-th Beihang University Collegiate Programming Contest (BCPC 2021) - Final](https://codeforces.com/contest/103478) | 9 | 9/9 | Special | - |

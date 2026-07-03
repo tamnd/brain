@@ -1,23 +1,23 @@
 ---
 title: "The Hangzhou Normal U Qualification Trials for ZJPSC 2021"
-description: "10 problems from The Hangzhou Normal U Qualification Trials for ZJPSC 2021 (contest 103462), difficulty -. 10/10 solutions verified against sample I/O."
+description: "12 problems from The Hangzhou Normal U Qualification Trials for ZJPSC 2021 (contest 103462), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103462
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 493
+n_problems: 12
+n_verified: 12
+total_solve_s: 606
 contest_year: 2021
-date: "2026-07-03T07:02:54+07:00"
+date: "2026-07-03T07:05:57+07:00"
 weight: 103462
 draft: false
 ---
 
 # [The Hangzhou Normal U Qualification Trials for ZJPSC 2021](https://codeforces.com/contest/103462)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 8m 13s
+Special | 12 problems | 12/12 verified | Difficulty - | 10m 6s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,8 @@ Special | 10 problems | 10/10 verified | Difficulty - | 8m 13s
 | [E](E/) | [Eaom and Longzhu](https://codeforces.com/problemset/problem/103462/E) |  |  |  | 51s | ✓ |
 | [F](F/) | [Fill the Binary String](https://codeforces.com/problemset/problem/103462/F) |  |  |  | 48s | ✓ |
 | [G](G/) | [Guess Strings](https://codeforces.com/problemset/problem/103462/G) |  |  |  | 1m 1s | ✓ |
+| [H](H/) | [Hsueh- And Treasure](https://codeforces.com/problemset/problem/103462/H) |  |  |  | 1m | ✓ |
 | [I](I/) | [Iaom and Chicken feet](https://codeforces.com/problemset/problem/103462/I) |  |  |  | 45s | ✓ |
 | [J](J/) | [Jew Sorting](https://codeforces.com/problemset/problem/103462/J) |  |  |  | 53s | ✓ |
 | [K](K/) | [K-Clearing II](https://codeforces.com/problemset/problem/103462/K) |  |  |  | 41s | ✓ |
+| [L](L/) | [Little H And Reboot](https://codeforces.com/problemset/problem/103462/L) |  |  |  | 53s | ✓ |
