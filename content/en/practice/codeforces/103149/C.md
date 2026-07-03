@@ -1,54 +1,40 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 22"
-description: "Let the degree-$t$ combinatorial representation (57) of $N$ be written in the form N = \\binom{c_t}{t} + \\binom{c_{t-1}}{t-1} + \\cdots + \\binom{c_1}{1}, where"
-date: "2026-07-03T11:52:14+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 22
-rating: "M23"
-category: "math-medium"
-recommended: false
+title: "CF 103149C - Angry Cows"
+description: "Let the degree-$t$ combinatorial representation (57) of $N$ be written in the form $$N = binom{ct}{t} + binom{c{t-1}}{t-1} + cdots + binom{c1}{1},$$ where $$s+t ct cdots c1 ge 0.$$ Let $$M = binom{s+t}{t} - N."
+date: "2026-07-03T18:46:29+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103149
+codeforces_index: "C"
+codeforces_contest_name: "EGOI 2021 Day 2"
+rating: 0
+weight: 103149
+solve_time_s: 153
 verified: false
-solve_time_s: 509
-weight: 7020103022
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103149C - Angry Cows](https://codeforces.com/problemset/problem/103149/C)
 
-**Exercise 22.** [*M23*] [M23] What is the millionth revolving-door combination visited by Algorithm R
-when t is (a) 2? (b) 3? (c) 4? (d) 5? (e) 1000000?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
 **Verified:** no  
-**Solve time:** 8m29s  
 
----
-
+## Solution
 ## Solution
 
 Let the degree-$t$ combinatorial representation (57) of $N$ be written in the form
 
-$$
-N = \binom{c_t}{t} + \binom{c_{t-1}}{t-1} + \cdots + \binom{c_1}{1},
-$$
+$$N = \binom{c_t}{t} + \binom{c_{t-1}}{t-1} + \cdots + \binom{c_1}{1},$$
 
 where
 
-$$
-s+t > c_t > \cdots > c_1 \ge 0.
-$$
+$$s+t > c_t > \cdots > c_1 \ge 0.$$
 
 Let
 
-$$
-M = \binom{s+t}{t} - N.
-$$
+$$M = \binom{s+t}{t} - N.$$
 
 The complement operation is performed in the full set of all $t$-combinations of ${0,1,\dots,s+t-1}$. Every term $\binom{c_j}{j}$ counts the block of $j$-combinations whose largest element is $c_j$. Subtracting $N$ removes these blocks from the full initial segment, so $M$ is determined by the complementary blocks in the same combinatorial number system.
 
@@ -56,37 +42,27 @@ For a fixed $j$, the block counted by $\binom{c_j}{j}$ occupies exactly the inte
 
 The key identity governing a single shifted level is the telescoping relation
 
-$$
-\binom{x}{j} = \binom{x-1}{j} + \binom{x-1}{j-1},
-$$
+$$\binom{x}{j} = \binom{x-1}{j} + \binom{x-1}{j-1},$$
 
 applied repeatedly to move upper indices from $c_j$ up to $s+t-1$. Iterating this expansion $s+t-1-c_j$ times yields
 
-$$
-\binom{s+t-1}{j} - \binom{c_j}{j}
+$$\binom{s+t-1}{j} - \binom{c_j}{j}
 =
-\sum_{k=0}^{s+t-2-c_j} \binom{c_j+k}{j-1}.
-$$
+\sum_{k=0}^{s+t-2-c_j} \binom{c_j+k}{j-1}.$$
 
 When these expansions are inserted into the expression
 
-$$
-M = \binom{s+t}{t} - \sum_{j=1}^t \binom{c_j}{j},
-$$
+$$M = \binom{s+t}{t} - \sum_{j=1}^t \binom{c_j}{j},$$
 
 the full binomial coefficient $\binom{s+t}{t}$ decomposes as the sum over all layers $j$ in the combinatorial representation. Each layer contributes a cascade of terms with alternating signs produced by repeated use of the identity
 
-$$
-\binom{x}{r} = \binom{x-1}{r} + \binom{x-1}{r-1}.
-$$
+$$\binom{x}{r} = \binom{x-1}{r} + \binom{x-1}{r-1}.$$
 
 After collecting terms at each fixed rank $j$, cancellation occurs between consecutive expansions because each intermediate term appears exactly twice with opposite signs, once from expanding level $j$ and once from level $j-1$. The remaining uncancelled terms are exactly those obtained by alternating the contribution of successive binomial layers.
 
 This produces the alternating combination law (30), which expresses the complement representation entirely in terms of alternating binomial contributions derived from the original digits $c_t,\dots,c_1$:
 
-$$
-M = \sum_{j=1}^t (-1)^{t-j} \, \Phi_j(c_j),
-$$
+$$M = \sum_{j=1}^t (-1)^{t-j} \, \Phi_j(c_j),$$
 
 where $\Phi_j(c_j)$ is the canonical $j$-level contribution obtained by shifting $c_j$ into the full range ${0,\dots,s+t-1}$ via repeated Pascal expansions.
 
