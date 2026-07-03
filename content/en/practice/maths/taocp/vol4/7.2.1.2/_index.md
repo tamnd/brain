@@ -78,8 +78,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [58](58.md) |  [*M21*] | math-medium | solved | 2m51s |
 | [59](59.md) |  [*M20*] | math-medium | solved | 4m40s |
 | [60](60.md) | &#9654; [*21*] | medium | solved | 6m39s |
-| [61](61.md) |  [*21*] | medium | solved | 7m33s |
-| [62](62.md) | &#9654; [*M23*] | math-medium | solved | 5m16s |
+| [61](61.md) |  [*21*] | medium | solved | 4m39s |
+| [62](62.md) | &#9654; [*M23*] | math-medium | solved | 5m |
 | [63](63.md) |  [*M25*] | math-medium | solved | 7m16s |
 | [64](64.md) |  [*23*] | medium | solved | 6m54s |
 | [65](65.md) |  [*M25*] | math-medium | solved | 7m47s |
