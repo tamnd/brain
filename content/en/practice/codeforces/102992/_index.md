@@ -8,15 +8,15 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 3
-total_solve_s: 533
-date: "2026-07-04T04:52:52+07:00"
+total_solve_s: 530
+date: "2026-07-04T05:03:29+07:00"
 weight: 102992
 draft: false
 ---
 
 # [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992)
 
-ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 8m 53s
+ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 8m 50s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,5 +30,5 @@ ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 8m 53s
 | [I](I/) | [Interested in Skiing](https://codeforces.com/problemset/problem/102992/I) |  |  |  | 27s |  |
 | [J](J/) | [Just Another Game of Stones](https://codeforces.com/problemset/problem/102992/J) |  |  |  | 41s |  |
 | [K](K/) | [K Co-prime Permutation](https://codeforces.com/problemset/problem/102992/K) |  |  |  | 23s |  |
-| [L](L/) | [Let's Play Curling](https://codeforces.com/problemset/problem/102992/L) |  |  |  | 30s |  |
+| [L](L/) | [Let's Play Curling](https://codeforces.com/problemset/problem/102992/L) |  |  |  | 27s |  |
 | [M](M/) | [Monster Hunter](https://codeforces.com/problemset/problem/102992/M) |  |  |  | 21s |  |
