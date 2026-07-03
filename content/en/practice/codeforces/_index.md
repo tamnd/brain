@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2814 contests, 20140 problems, 11344 verified."
+description: "Codeforces problem solutions with full editorials. 2815 contests, 20150 problems, 11344 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2814 contests, 20140 problems, 11344 verified.**
+**2815 contests, 20150 problems, 11344 verified.**
 
-## Unknown — 678 contests, 5584 problems, 3464 verified
+## Unknown — 679 contests, 5594 problems, 3464 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103457](103457/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая командная олимпиада](https://codeforces.com/contest/103457) | 10 | 0/10 | Special | - |
 | [103458](103458/) | [Интернет-олимпиады, Сезон 2021-2022, Третья командная олимпиада](https://codeforces.com/contest/103458) | 10 | 1/10 | Special | - |
 | [103464](103464/) | [The second stage of the Republican Olympiad in Informatics. Mogilev region, 2021.](https://codeforces.com/contest/103464) | 4 | 1/4 | Special | - |
 | [103466](103466/) | [The 2019 ICPC Asia Nanjing Regional Contest](https://codeforces.com/contest/103466) | 11 | 6/11 | ICPC/IOI | - |
