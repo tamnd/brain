@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2832 contests, 20330 problems, 11442 verified."
+description: "Codeforces problem solutions with full editorials. 2833 contests, 20340 problems, 11443 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2832 contests, 20330 problems, 11442 verified.**
+**2833 contests, 20340 problems, 11443 verified.**
 
-## Unknown — 684 contests, 5654 problems, 3493 verified
+## Unknown — 685 contests, 5664 problems, 3494 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103416](103416/) | [NU Open Fall 2021](https://codeforces.com/contest/103416) | 10 | 1/10 | Special | - |
 | [103426](103426/) | [Innopolis Open 2021-2022. First qualification round](https://codeforces.com/contest/103426) | 5 | 0/5 | Special | - |
 | [103430](103430/) | [2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)](https://codeforces.com/contest/103430) | 14 | 13/14 | Educational | - |
 | [103433](103433/) | [2018-2019 Russia Team Open, High School Programming Contest (VKOSHP 18)](https://codeforces.com/contest/103433) | 13 | 2/13 | Special | - |
