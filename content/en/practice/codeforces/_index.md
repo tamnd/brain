@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2924 contests, 21195 problems, 11653 verified."
+description: "Codeforces problem solutions with full editorials. 2925 contests, 21208 problems, 11653 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2924 contests, 21195 problems, 11653 verified.**
+**2925 contests, 21208 problems, 11653 verified.**
 
 ## Unknown — 733 contests, 6092 problems, 3604 verified
 
@@ -1696,7 +1696,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 200 contests, 1521 problems, 602 verified
+## 2021 — 201 contests, 1534 problems, 602 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1832,6 +1832,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103059](103059/) | [UTPC Spring 2021 Open Contest](https://codeforces.com/contest/103059) | 13 | 0/13 | Special | - |
 | [103061](103061/) | [Harbin Engineering University Collegiate Programming Contest 2021](https://codeforces.com/contest/103061) | 14 | 0/14 | Special | - |
 | [103074](103074/) | [2021 VI Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/103074) | 8 | 0/8 | Special | - |
 | [103076](103076/) | [UFPE Starters Final Try-Outs 2021](https://codeforces.com/contest/103076) | 10 | 1/10 | Special | - |
