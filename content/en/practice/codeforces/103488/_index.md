@@ -1,29 +1,32 @@
 ---
 title: "The 2021 Zhejiang University City College Freshman Programming Contest"
-description: "9 problems from The 2021 Zhejiang University City College Freshman Programming Contest (contest 103488), difficulty -. 9/9 solutions verified against sample I/O."
+description: "12 problems from The 2021 Zhejiang University City College Freshman Programming Contest (contest 103488), difficulty -. 11/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103488
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 420
+n_problems: 12
+n_verified: 11
+total_solve_s: 664
 contest_year: 2021
-date: "2026-07-03T06:19:00+07:00"
+date: "2026-07-03T09:48:49+07:00"
 weight: 103488
 draft: false
 ---
 
 # [The 2021 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/103488)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 7m
+Special | 12 problems | 11/12 verified | Difficulty - | 11m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [All in!](https://codeforces.com/problemset/problem/103488/A) |  |  |  | 41s | ✓ |
 | [B](B/) | [Boboge and Tall Building](https://codeforces.com/problemset/problem/103488/B) |  |  |  | 45s | ✓ |
 | [C](C/) | [Constructive Problem](https://codeforces.com/problemset/problem/103488/C) |  |  |  | 47s | ✓ |
+| [D](D/) | [Diseased String](https://codeforces.com/problemset/problem/103488/D) |  |  |  | 2m 23s |  |
+| [E](E/) | [Equality](https://codeforces.com/problemset/problem/103488/E) |  |  |  | 50s | ✓ |
+| [F](F/) | [Future Vision](https://codeforces.com/problemset/problem/103488/F) |  |  |  | 51s | ✓ |
 | [G](G/) | [Generate 7 Colors](https://codeforces.com/problemset/problem/103488/G) |  |  |  | 47s | ✓ |
 | [H](H/) | [Hile and Subsequences' MEX](https://codeforces.com/problemset/problem/103488/H) |  |  |  | 44s | ✓ |
 | [I](I/) | [If I Catch You](https://codeforces.com/problemset/problem/103488/I) |  |  |  | 46s | ✓ |

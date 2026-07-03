@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2827 contests, 20289 problems, 11422 verified."
+description: "Codeforces problem solutions with full editorials. 2828 contests, 20307 problems, 11428 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2827 contests, 20289 problems, 11422 verified.**
+**2828 contests, 20307 problems, 11428 verified.**
 
-## Unknown — 683 contests, 5647 problems, 3492 verified
+## Unknown — 683 contests, 5649 problems, 3493 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [103430](103430/) | [2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)](https://codeforces.com/contest/103430) | 12 | 12/12 | Educational | - |
+| [103430](103430/) | [2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)](https://codeforces.com/contest/103430) | 14 | 13/14 | Educational | - |
 | [103433](103433/) | [2018-2019 Russia Team Open, High School Programming Contest (VKOSHP 18)](https://codeforces.com/contest/103433) | 13 | 2/13 | Special | - |
 | [103438](103438/) | [2021 ICPC Southeastern Europe Regional Contest](https://codeforces.com/contest/103438) | 14 | 13/14 | ICPC/IOI | - |
 | [103439](103439/) | [XXII Open Cup, Grand Prix of Southeastern Europe](https://codeforces.com/contest/103439) | 14 | 1/14 | Special | - |
@@ -1645,7 +1645,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 154 contests, 1070 problems, 484 verified
+## 2021 — 155 contests, 1086 problems, 489 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1781,6 +1781,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103428](103428/) | [The 2021 CCPC Weihai Onsite](https://codeforces.com/contest/103428) | 13 | 3/13 | Special | - |
 | [103443](103443/) | [The 2021 ICPC Asia Taipei Regional Programming Contest](https://codeforces.com/contest/103443) | 13 | 9/13 | ICPC/IOI | - |
 | [103446](103446/) | [The 2021 ICPC Asia Shanghai Regional Programming Contest](https://codeforces.com/contest/103446) | 13 | 13/13 | ICPC/IOI | - |
 | [103447](103447/) | [The 2021 China Collegiate Programming Contest (Harbin)](https://codeforces.com/contest/103447) | 12 | 10/12 | Special | - |
@@ -1796,7 +1797,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103480](103480/) | [The 4th Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/103480) | 13 | 13/13 | Special | - |
 | [103485](103485/) | [Copa Do Matão, University Of São Paulo Programming Contest](https://codeforces.com/contest/103485) | 15 | 5/15 | Special | - |
 | [103486](103486/) | [The 15th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/103486) | 13 | 13/13 | Special | - |
-| [103488](103488/) | [The 2021 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/103488) | 9 | 9/9 | Special | - |
+| [103488](103488/) | [The 2021 Zhejiang University City College Freshman Programming Contest](https://codeforces.com/contest/103488) | 12 | 11/12 | Special | - |
 | [103492](103492/) | [China Collegiate Programming Contest 2021, Qualification Round (Online), Rematch](https://codeforces.com/contest/103492) | 11 | 11/11 | Special | - |
 | [103495](103495/) | [2021 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/103495) | 12 | 12/12 | Special | - |
 | [103496](103496/) | [Abakoda 2021 Long Contest](https://codeforces.com/contest/103496) | 13 | 0/13 | Special | - |
