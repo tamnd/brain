@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.3: Generating All Combinations"
-description: "Section 7.2.1.3 exercises: 108/111 solved."
+description: "Section 7.2.1.3 exercises: 109/111 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.3. Generating All Combinations
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 108/111 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 109/111 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -96,10 +96,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 108/111 solved.
 | [76](76.md) |  [*M20*] | math-medium | solved | 13m43s |
 | [77](77.md) | &#9654; [*M26*] | math-hard | solved | 20m02s |
 | [78](78.md) |  [*M22*] | math-medium | solved | 20m34s |
-| [79](79.md) |  [*M23*] | math-medium | solved | 14m51s |
-| [80](80.md) |  [*HM26*] | hm-hard | solved | 26m47s |
-| [81](81.md) | &#9654; [*M27*] | math-hard | solved | 49m57s |
-| [82](82.md) |  [*HM31*] | hm-hard | solved | 32m54s |
+| [79](79.md) |  [*M23*] | math-medium | solved | 12m05s |
+| [80](80.md) |  [*HM26*] | hm-hard | solved | 2m01s |
+| [81](81.md) | &#9654; [*M27*] | math-hard | solved | 2m50s |
+| [82](82.md) |  [*HM31*] | hm-hard | solved | 4m32s |
 | [83](83.md) |  [*HM46*] | hm-research | solved | 47m39s |
 | [84](84.md) |  [*HM27*] | hm-hard | solved | 22m29s |
 | [85](85.md) |  [*HM21*] | hm-medium | solved | 15m36s |
@@ -114,7 +114,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 108/111 solved.
 | [94](94.md) |  [*M20*] | math-medium | solved | 23m34s |
 | [95](95.md) |  [*17*] | medium | solved | 26m56s |
 | [96](96.md) | &#9654; [*M22*] | math-medium | solved | 43m04s |
-| 97 | &#9654; [*M26*] | math-hard | - | - |
+| [97](97.md) | &#9654; [*M26*] | math-hard | solved | 40m12s |
 | 98 |  [*30*] | hard | - | - |
 | 99 |  [*M25*] | math-medium | - | - |
 | [100](100.md) | &#9654; [*M30*] | math-hard | solved | 4m51s |
