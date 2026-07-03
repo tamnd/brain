@@ -1,50 +1,36 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 3"
-description: "Let $m_0,\\dots,m_s$ and $t$ be fixed nonnegative integers, and let $C(m_0,\\dots,m_s;t)$ denote the set of all bounded compositions r_0+\\cdots+r_s=t,\\qquad 0\\le r_j\\le m_j\\ \\ (0\\le j\\le s)."
-date: "2026-07-03T07:12:31+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 3
-rating: "21"
-category: "medium"
-recommended: true
+title: "CF 103317B - Pro Bending"
+description: "Let $m0,dots,ms$ and $t$ be fixed nonnegative integers, and let $C(m0,dots,ms;t)$ denote the set of all bounded compositions $$r0+cdots+rs=t,qquad 0le rjle mj (0le jle s)."
+date: "2026-07-03T14:18:24+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103317
+codeforces_index: "B"
+codeforces_contest_name: "UTPC Contest 10-01-21 Div. 2 (Beginner)"
+rating: 0
+weight: 103317
+solve_time_s: 145
 verified: false
-solve_time_s: 323
-weight: 7020103003
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103317B - Pro Bending](https://codeforces.com/problemset/problem/103317/B)
 
-**Exercise 3.** &#9654; [*21*] x
-**3.** [21] (R. R. Fenichel, 1968.) Show that the compositions qt +· · ·+q1 +q0 of s into
-t + 1 nonnegative parts can be generated in lexicographic order by a simple loopless
-algorithm.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 25s  
 **Verified:** no  
-**Solve time:** 5m23s  
 
----
-
+## Solution
 ## Setup
 
 Let $m_0,\dots,m_s$ and $t$ be fixed nonnegative integers, and let $C(m_0,\dots,m_s;t)$ denote the set of all bounded compositions
 
-$$
-r_0+\cdots+r_s=t,\qquad 0\le r_j\le m_j\ \ (0\le j\le s).
-$$
+$$r_0+\cdots+r_s=t,\qquad 0\le r_j\le m_j\ \ (0\le j\le s).$$
 
 Two compositions are adjacent if they differ in exactly two parts, in the sense that there exist distinct indices $i\ne j$ such that one step changes
 
-$$
-r_i \leftarrow r_i+1,\qquad r_j \leftarrow r_j-1,
-$$
+$$r_i \leftarrow r_i+1,\qquad r_j \leftarrow r_j-1,$$
 
 while all other components remain unchanged. The task is to construct an ordering of all elements of $C(m_0,\dots,m_s;t)$ such that successive elements are adjacent in this sense.
 
@@ -58,23 +44,17 @@ Assume $s\ge 1$ and assume that for every admissible $t'$ the set $C(m_0,\dots,m
 
 For each integer $k$ with $0\le k\le m_s$ and $k\le t$, define
 
-$$
-C_k = \{(r_0,\dots,r_{s-1}) : r_0+\cdots+r_{s-1}=t-k,\ 0\le r_j\le m_j\}.
-$$
+$$C_k = \{(r_0,\dots,r_{s-1}) : r_0+\cdots+r_{s-1}=t-k,\ 0\le r_j\le m_j\}.$$
 
 By the induction hypothesis, each $C_k$ admits an ordering
 
-$$
-A_k(1),A_k(2),\dots,A_k(N_k)
-$$
+$$A_k(1),A_k(2),\dots,A_k(N_k)$$
 
 where successive vectors differ in exactly two coordinates among $0,\dots,s-1$.
 
 Construct a global sequence by concatenating the blocks
 
-$$
-(k,A_k(1)),(k,A_k(2)),\dots,(k,A_k(N_k))
-$$
+$$(k,A_k(1)),(k,A_k(2)),\dots,(k,A_k(N_k))$$
 
 for $k=0,1,\dots,K$, where $K=\min(m_s,t)$, but alternating direction: for even $k$ use the order $A_k(1)\to A_k(N_k)$, and for odd $k$ use the reverse order $A_k(N_k)\to A_k(1)$.
 
@@ -82,17 +62,13 @@ Within each fixed $k$, adjacency holds by the induction hypothesis, since $r_s=k
 
 It remains to verify adjacency between the last element of block $k$ and the first element of block $k+1$ whenever both exist. Write these two compositions as
 
-$$
-(r_0,\dots,r_{s-1},k)\in C_k,\qquad (r'_0,\dots,r'_{s-1},k+1)\in C_{k+1}.
-$$
+$$(r_0,\dots,r_{s-1},k)\in C_k,\qquad (r'_0,\dots,r'_{s-1},k+1)\in C_{k+1}.$$
 
 In the block construction, the endpoint structure is controlled by reversal: the last element of $C_k$ and the first element of $C_{k+1}$ are chosen so that there exists an index $j\in{0,\dots,s-1}$ with $r_j\ge 1$. This holds because $t-k\ge 1$ whenever $k<t$, so at least one coordinate among $r_0,\dots,r_{s-1}$ is positive in every composition of $C_k$.
 
 Define the transition from the last element of block $k$ to the first element of block $k+1$ by
 
-$$
-r_j \leftarrow r_j-1,\qquad r_s \leftarrow r_s+1.
-$$
+$$r_j \leftarrow r_j-1,\qquad r_s \leftarrow r_s+1.$$
 
 This preserves the total sum since one unit is removed from coordinate $j$ and added to coordinate $s$. The bounds remain valid since $r_j\ge 1$ and $r_s=k<m_s$ for $k<K$.
 
