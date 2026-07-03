@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2937 contests, 21304 problems, 11661 verified."
+description: "Codeforces problem solutions with full editorials. 2939 contests, 21324 problems, 11665 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2937 contests, 21304 problems, 11661 verified.**
+**2939 contests, 21324 problems, 11665 verified.**
 
-## Unknown — 739 contests, 6142 problems, 3606 verified
+## Unknown — 740 contests, 6154 problems, 3608 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102992](102992/) | [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992) | 12 | 2/12 | ICPC/IOI | - |
 | [102993](102993/) | [2020 Nowcoder Training - AceSrc and chenjb Contest](https://codeforces.com/contest/102993) | 10 | 0/10 | Special | - |
 | [102994](102994/) | [Moscow Pre-Finals Workshop 2020 - Legilimens+Coffee Chicken Contest (XX Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102994) | 13 | 0/13 | Special | - |
 | [103003](103003/) | [box 2020](https://codeforces.com/contest/103003) | 4 | 0/4 | Special | - |
@@ -1702,7 +1703,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 207 contests, 1580 problems, 608 verified
+## 2021 — 208 contests, 1588 problems, 610 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1838,6 +1839,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [102986](102986/) | [UTPC Contest 03-05-21 Div. 2 (Beginner)](https://codeforces.com/contest/102986) | 8 | 2/8 | Div. 2 | - |
 | [103029](103029/) | [Quick (fast) contest #1](https://codeforces.com/contest/103029) | 4 | 0/4 | Special | - |
 | [103036](103036/) | [UTPC Contest 04-02-21 Div. 2 (Beginner)](https://codeforces.com/contest/103036) | 7 | 2/7 | Div. 2 | - |
 | [103037](103037/) | [UTPC Contest 04-02-21 Div. 1 (Advanced)](https://codeforces.com/contest/103037) | 8 | 0/8 | Div. 1 | - |
