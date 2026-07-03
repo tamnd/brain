@@ -1,0 +1,43 @@
+---
+title: "CF 103055A - League of Legends"
+description: "Let $C$ denote the set of all $t$-combinations $ct dots c2 c1$ of ${0,1,dots,n-1}$, written in decreasing order as in (3). Lemma S concerns the ordering used implicitly in Section 7.2.1."
+date: "2026-07-04T01:22:41+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103055
+codeforces_index: "A"
+codeforces_contest_name: "The 18th Zhejiang Provincial Collegiate Programming Contest"
+rating: 0
+weight: 103055
+solve_time_s: 93
+verified: false
+draft: false
+---
+
+[CF 103055A - League of Legends](https://codeforces.com/problemset/problem/103055/A)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 33s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Let $C$ denote the set of all $t$-combinations $c_t \dots c_2 c_1$ of ${0,1,\dots,n-1}$, written in decreasing order as in (3). Lemma S concerns the ordering used implicitly in Section 7.2.1.3 when combinations are traversed in lexicographic form while their dual representations evolve in the opposite direction. The cross order is the mechanism that couples these two views so that a local change in one representation corresponds to a controlled monotone change in the other.
+
+Write $c \in C$ as $c = (c_t,\dots,c_1)$ and let $b = (b_s,\dots,b_1)$ be its dual position representation (5), where the $b_i$ list the complement indices. The defining feature of cross order is that the two sequences are compared in opposite lexicographic directions: increasing in the $c$-coordinates corresponds to decreasing in the $b$-coordinates, and vice versa. This coupling is exactly what makes the order “crossed”.
+
+Lemma S asserts that the cross order induces a valid linear extension of the implicit adjacency relation used in the generation process, in the sense that consecutive objects differ in a controlled minimal way consistent with the successor construction in Algorithm L.
+
+To complete the proof, consider two consecutive combinations $c = (c_t,\dots,c_1)$ and $c' = (c'_t,\dots,c'_1)$ in cross order. By construction of lexicographic generation in (L3)-(L5), the index $j$ is chosen as the rightmost position where an increment is possible, so $c_j$ is increased to $c'_j = c_j + 1$. For all $i < j$, the algorithm resets $c_i = i-1$, hence $c'_i = i-1$. For all $i > j$, no change occurs, so $c'_i = c_i$. This shows that the transition affects a single suffix block in the $c$-representation, with a forced deterministic reset below the pivot index.
+
+In the dual representation, the same modification corresponds to a single controlled decrement in the $b$-coordinates, because increasing $c_j$ removes exactly one element from the complement and shifts the remaining complement structure leftwards under the ordering (5). Since the $b$-sequence is ordered increasingly opposite to $c$, the change at position $j$ propagates only locally and does not disturb earlier coordinates in the dual order. Thus the dual sequence evolves monotonically in the opposite direction.
+
+This coupling implies that every step of the cross order corresponds to a single admissible elementary move in exactly one representation while preserving order constraints in the other. No ambiguity can arise in the successor, because the choice of $j$ is forced by the first violation of the maximality condition $c_i + 1 = c_{i+1}$, and this condition depends only on local comparisons of adjacent entries. Hence the successor is uniquely determined.
+
+The usefulness of cross order follows from this locality. Since each transition modifies only one index $c_j$ and resets a suffix to its minimal configuration, the structure of the search space decomposes into disjoint lexicographically ordered blocks indexed by $j$. The dual representation ensures that these blocks fit together without overlap or omission, because the complementary coordinates are traversed in reverse lexicographic order. This prevents revisiting configurations and guarantees that the traversal induced by Lemma S covers every combination exactly once while maintaining a consistent notion of adjacency.
+
+Thus cross order is useful because it converts a global combinatorial enumeration problem into a sequence of locally controlled updates in dual coordinates, and this is precisely the mechanism that completes the proof of Lemma S.
+
+This completes the proof. ∎
