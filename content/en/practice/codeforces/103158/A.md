@@ -1,7 +1,7 @@
 ---
 title: "CF 103158A - Sakally Soldier"
-description: "I’m missing the actual problem statement for Codeforces 103158A - Sakally Soldier, so I can’t reliably reconstruct the task, constraints, or intended solution. Right now only the title is available, which isn’t enough to derive a correct algorithm without guessing."
-date: "2026-07-03T16:55:07+07:00"
+description: "I don’t have the actual problem statement for Codeforces 103158A - Sakally Soldier in your prompt, so I can’t correctly reconstruct the logic, constraints, or even the input/output format."
+date: "2026-07-03T17:30:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103158
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "ACPC Kickoff 2021"
 rating: 0
 weight: 103158
-solve_time_s: 33
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement for **Codeforces 103158A - Sakally Soldier**, so I can’t reliably reconstruct the task, constraints, or intended solution.
+I don’t have the actual problem statement for **Codeforces 103158A - Sakally Soldier** in your prompt, so I can’t correctly reconstruct the logic, constraints, or even the input/output format. Writing a proper editorial here without that would force me to guess the task, which would make the entire solution unreliable.
 
-Right now only the title is available, which isn’t enough to derive a correct algorithm without guessing. Any attempt to “fill in” the problem would very likely produce the wrong editorial.
+If you paste the full statement (or even a screenshot / raw text), I’ll immediately produce the full structured editorial in the exact format you requested, including:
 
-If you paste the full statement (or even just the input/output description and constraints), I’ll immediately write the complete Codeforces-style editorial in the format you specified, including the walkthrough, proofs, code, and tests.
+- Clean restatement of the problem in my own words
+- Constraint-driven reasoning
+- Brute force → optimal transition
+- Full algorithm walkthrough
+- Correct Python solution
+- Worked traces and edge case analysis
+- Complexity proof
+
+Send the statement and I’ll take it from there.
