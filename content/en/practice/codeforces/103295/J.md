@@ -1,7 +1,7 @@
 ---
 title: "CF 103295J - The Culk's Incredible Buffet"
-description: "I can’t write a correct editorial for this yet because the actual problem statement (input/output description and constraints) is missing."
-date: "2026-07-03T14:27:04+07:00"
+description: "The problem statement section is empty, so there is no way to reconstruct the task, constraints, or required output. Without that, any editorial would be fabricated rather than derived from the actual problem structure, which defeats the purpose of a Codeforces-style explanation."
+date: "2026-07-03T17:40:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103295
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "UTPC Contest 09-17-21 Div. 1 (Advanced)"
 rating: 0
 weight: 103295
-solve_time_s: 30
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement (input/output description and constraints) is missing.
+The problem statement section is empty, so there is no way to reconstruct the task, constraints, or required output. Without that, any editorial would be fabricated rather than derived from the actual problem structure, which defeats the purpose of a Codeforces-style explanation.
 
-“Codeforces 103295J - The Culk’s Incredible Buffet” is referenced, but without the rules of the buffet, what choices are allowed, or what needs to be computed, any solution I write would be fabricated and very likely wrong.
+If you paste the full statement for **103295J - The Culk's Incredible Buffet** (including input/output format and constraints), I can immediately produce a complete editorial in the exact format you specified, including the algorithm derivation, walkthrough, code, and edge-case analysis.
 
-If you paste the full statement (or even just the key parts: what the buffet model is, what operations/queries exist, and constraints), I’ll produce the complete editorial in the exact format you specified, including the derivation, proof sketch, implementation, and tests.
+Send the statement and I’ll continue from there.

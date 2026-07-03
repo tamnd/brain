@@ -1,7 +1,7 @@
 ---
 title: "CF 103388E - Escalator"
-description: "I can’t reliably write a correct editorial for this without the actual problem statement. “Codeforces 103388E - Escalator” isn’t enough on its own because different mirrors/contests reuse similar IDs, and the solution structure depends entirely on the precise rules (movement…"
-date: "2026-07-03T12:16:32+07:00"
+description: "The problem statement is missing, so I don’t have enough information to write a correct editorial. “Codeforces 103388E - Escalator” could correspond to several different tasks (there are multiple “escalator” style problems involving queues, probabilities, DP, or simulation), and…"
+date: "2026-07-03T17:56:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103388
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "2021-2022 ACM-ICPC Brazil Subregional Programming Contest"
 rating: 0
 weight: 103388
-solve_time_s: 33
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 33s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this without the actual problem statement. “Codeforces 103388E - Escalator” isn’t enough on its own because different mirrors/contests reuse similar IDs, and the solution structure depends entirely on the precise rules (movement, constraints, what is being optimized, etc.).
+The problem statement is missing, so I don’t have enough information to write a correct editorial.
 
-Paste the full statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the exact format you requested, including the algorithm walkthrough, proof sketch, Python solution, and test suite.
+“Codeforces 103388E - Escalator” could correspond to several different tasks (there are multiple “escalator” style problems involving queues, probabilities, DP, or simulation), and the solution approach depends entirely on the exact rules.
+
+Please paste the full problem statement (or at least the input/output description and constraints). Once you provide it, I’ll write the complete editorial in the format you specified, including the derivation, algorithm walkthrough, and full Python solution.

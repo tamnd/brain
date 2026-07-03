@@ -1,7 +1,7 @@
 ---
 title: "CF 103295E - Ratman's Puzzle"
-description: "Let $(a{ij})$ be an $mtimes n$ contingency table with row sums $ri=sum{j=1}^n a{ij}, quad 1le ile m,$ and column sums $cj=sum{i=1}^m a{ij}, quad 1le jle n,$ with $sum{i=1}^m ri=sum{j=1}^n cj$."
-date: "2026-07-03T14:26:57+07:00"
+description: "Let $A$ be a family of $t$-combinations, and let $partial A$ denote its shadow, the family of all $(t-1)$-combinations contained in members of $A$."
+date: "2026-07-03T17:41:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103295
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "UTPC Contest 09-17-21 Div. 1 (Advanced)"
 rating: 0
 weight: 103295
-solve_time_s: 153
+solve_time_s: 140
 verified: false
 draft: false
 ---
@@ -18,175 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 33s  
+**Solve time:** 2m 20s  
 **Verified:** no  
 
 ## Solution
-## Setup
-
-Let $(a_{ij})$ be an $m\times n$ contingency table with row sums
-
-$r_i=\sum_{j=1}^n a_{ij}, \quad 1\le i\le m,$
-
-and column sums
-
-$c_j=\sum_{i=1}^m a_{ij}, \quad 1\le j\le n,$
-
-with $\sum_{i=1}^m r_i=\sum_{j=1}^n c_j$.
-
-Entries are ordered either row-wise as
-
-$(a_{11},a_{12},\ldots,a_{1n},a_{21},\ldots,a_{mn}),$
-
-or column-wise as
-
-$(a_{11},a_{21},\ldots,a_{m1},a_{12},\ldots,a_{mn}).$
-
 ## Solution
 
-### a) $2\times n$ contingency tables and bounded compositions
+Let $A$ be a family of $t$-combinations, and let $\partial A$ denote its shadow, the family of all $(t-1)$-combinations contained in members of $A$. We seek the minimum possible size of $A$ such that $|\partial A| < |A|$.
 
-Write the table as
+The key tool is the Kruskal-Katona theorem, which implies that among all families $A$ of $t$-combinations with a fixed cardinality, the shadow $\partial A$ is minimized by taking $A$ to be an initial segment of the colexicographic order. Therefore, if any family of a given size satisfies $|\partial A| < |A|$, then the same inequality holds for the colex initial segment of that size. It follows that the problem reduces to studying initial segments of the form consisting of all $t$-subsets of ${1,2,\dots,n}$, since the threshold occurs at a binomial layer.
 
-$$\begin{pmatrix}
-a_{11} & a_{12} & \cdots & a_{1n}\\
-a_{21} & a_{22} & \cdots & a_{2n}
-\end{pmatrix}.$$
+For such a full layer family $A = \binom{[n]}{t}$, the shadow consists of all $(t-1)$-subsets of ${1,2,\dots,n}$, hence
 
-Column constraints give
+$$|A| = \binom{n}{t}, \quad |\partial A| = \binom{n}{t-1}.$$
 
-$a_{1j}+a_{2j}=c_j,\quad 1\le j\le n,$
+The ratio between these quantities is
 
-so
+$$\frac{|\partial A|}{|A|} = \frac{\binom{n}{t-1}}{\binom{n}{t}} = \frac{t}{n-t+1}.$$
 
-$a_{2j}=c_j-a_{1j}.$
+The inequality $|\partial A| < |A|$ is therefore equivalent to
 
-Nonnegativity is equivalent to
+$$\frac{t}{n-t+1} < 1,$$
 
-$0\le a_{1j}\le c_j.$
+which simplifies to
 
-The first row sum constraint becomes
+$$t < n - t + 1,$$
 
-$\sum_{j=1}^n a_{1j}=r_1.$
+or equivalently
 
-Thus a $2\times n$ contingency table is equivalent to choosing integers $a_{1j}$ satisfying
+$$n > 2t - 1.$$
 
-$\sum_{j=1}^n a_{1j}=r_1,\quad 0\le a_{1j}\le c_j.$
+The smallest integer $n$ satisfying this condition is $n = 2t$. For this value,
 
-This is exactly a bounded composition of $r_1$ into $n$ parts with upper bounds $c_j$. The second row is then determined uniquely by $a_{2j}=c_j-a_{1j}$. This completes the equivalence. ∎
+$$|A| = \binom{2t}{t}, \quad |\partial A| = \binom{2t}{t-1}.$$
 
-### b) Lexicographically largest table (row-wise order)
+The ratio becomes
 
-The row-wise order compares entries sequentially:
+$$\frac{|\partial A|}{|A|} = \frac{t}{t+1} < 1,$$
 
-$a_{11},a_{12},\ldots,a_{1n},a_{21},\ldots,a_{mn}.$
+so $|\partial A| < |A|$ holds for $A = \binom{[2t]}{t}$.
 
-At each position, the entry should be maximized subject to feasibility with remaining marginals.
+It remains to show minimality of $|A|$. For any $m < \binom{2t}{t}$, consider the colex initial segment $A_m$ of size $m$. The Kruskal-Katona theorem implies that its shadow is at least as large as that of any other family of size $m$. At the level $n = 2t - 1$, one has
 
-For the first entry, $a_{11}$ satisfies
+$$\binom{2t-1}{t-1} = \binom{2t-1}{t},$$
 
-$0\le a_{11}\le \min(r_1,c_1).$
+so the shadow of the full layer is equal in size to the layer itself. This is the last point where equality can occur. Increasing the size beyond this threshold necessarily forces the family to include sets from the next layer structure in the colex ordering, and the binomial ratio above shows that the first strict inequality $|\partial A| < |A|$ occurs exactly when passing to $n = 2t$.
 
-Maximal lexicographic choice gives
+Thus the smallest possible family occurs when $A$ is the full collection of all $t$-subsets of a $2t$-element set.
 
-$a_{11}=\min(r_1,c_1).$
+Therefore the minimum size is
 
-After fixing $a_{11}$, update residual parameters:
+$$|A| = \binom{2t}{t}.$$
 
-$r_1^{(1)}=r_1-a_{11},\quad c_1^{(1)}=c_1-a_{11}.$
+$$\boxed{\binom{2t}{t}}$$
 
-Proceed inductively along row 1. For general $j$,
-
-$a_{1j}=\min\!\Big(r_1-\sum_{k=1}^{j-1}a_{1k},\; c_j\Big).$
-
-After completing row 1, all entries are forced in row 2 by
-
-$a_{2j}=c_j-a_{1j}.$
-
-For later rows $i\ge 2$, the same greedy rule applies with updated remaining row and column sums:
-
-$a_{ij}=\min\!\Big(r_i-\sum_{k<j}a_{ik},\; c_j-\sum_{\ell<i}a_{\ell j}\Big).$
-
-This construction is maximal at each step because any increase at an earlier position would violate either a row sum or a column sum, while any decrease reduces the lexicographic value immediately without enabling a compensating increase earlier in the order.
-
-### c) Lexicographically largest table (column-wise order)
-
-Now the order is
-
-$a_{11},a_{21},\ldots,a_{m1},a_{12},\ldots,a_{mn}.$
-
-The same greedy principle applies in column-major traversal.
-
-For column $1$, entries are chosen top to bottom:
-
-$a_{11}=\min(r_1,c_1),$
-
-then for $i>1$,
-
-$a_{i1}=\min\!\Big(r_i,\; c_1-\sum_{k<i}a_{k1}\Big).$
-
-After column $1$, residual row sums and column sum $c_1$ are updated, and the process repeats for column $2$, etc.
-
-In general,
-
-$a_{ij}=\min\!\Big(r_i-\sum_{k<j}a_{ik},\; c_j-\sum_{\ell<i}a_{\ell j}\Big),$
-
-with traversal in column-major order.
-
-The same feasibility argument as in part (b) shows that any deviation decreasing an earlier entry would worsen the lexicographic value, while any increase is infeasible due to exhausted row or column capacity.
-
-### d) Lexicographically smallest table
-
-For the row-wise order, minimality is obtained by making each early entry as small as possible while preserving feasibility of completing the remaining table.
-
-At position $(i,j)$, the entry must satisfy both:
-
-$a_{ij}\ge 0,$
-
-and remaining sums must be achievable:
-
-$\sum_{\text{remaining}} a_{kl} = \text{remaining row sums} = \text{remaining column sums}.$
-
-Thus we maximize the amount allocated later, so we minimize early entries subject to feasibility constraints.
-
-This yields the reverse greedy rule:
-
-$a_{ij}=\max\!\Big(0,\; r_i^{\text{rem}} + c_j^{\text{rem}} - \text{(maximum fill possible later)}\Big).$
-
-In concrete sequential form, one computes each entry as the smallest value such that all remaining row sums can still be distributed into remaining columns without violating upper bounds.
-
-For the special case structure implicit in contingency tables, this reduces to:
-
-At step $(i,j)$ in row-major order,
-
-$a_{ij}=\max\!\Big(0,\; r_i^{\text{rem}} - \sum_{k>j} c_k^{\max\text{alloc}}\Big),$
-
-where remaining feasibility is ensured by keeping future entries at their column capacities when necessary.
-
-An equivalent constructive interpretation is: fill the table from left to right, top to bottom, always leaving as much as possible for later entries consistent with row and column totals. This uniquely determines the lexicographically smallest feasible table.
-
-The same principle applies in column-major order by symmetry.
-
-### e) Generation of all contingency tables in lexicographic order
-
-A contingency table can be generated by viewing the row-wise sequence
-
-$(a_{11},\ldots,a_{mn})$
-
-as a constrained sequence with dynamic bounds.
-
-At each step $(i,j)$, the variable $a_{ij}$ satisfies a bounded interval determined by remaining marginals:
-
-$0 \le a_{ij} \le \min\!\Big(r_i^{\text{rem}},\; c_j^{\text{rem}}\Big).$
-
-Fixing earlier entries reduces both residual row sums and column sums, producing updated bounds for subsequent entries.
-
-Thus lexicographic generation proceeds exactly as Algorithm L in Section 7.2.1.3, but with variable bounds instead of binary constraints. At each step, one identifies the rightmost position in the current ordering whose value can be increased without violating any residual row or column constraint, increases it by $1$, and resets all later entries to their minimal feasible values, computed greedily from remaining row and column sums.
-
-Feasibility is preserved because each step maintains invariants
-
-$\sum_j a_{ij}=r_i,\quad \sum_i a_{ij}=c_j,$
-
-and boundedness ensures finiteness of the search space. Lexicographic ordering follows from the fact that the first position of difference dominates all later positions in the ordering, so the algorithm mirrors the standard successor construction for bounded compositions extended to a two-dimensional constraint system.
-
-This completes the solution. ∎
+This completes the proof. ∎
