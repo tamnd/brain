@@ -1,7 +1,7 @@
 ---
 title: "CF 103328H - Mario Kart"
-description: "Let $m0,dots,ms$ and $t$ be fixed nonnegative integers, and let $C(m0,dots,ms;t)$ denote the set of all bounded compositions $$r0+cdots+rs=t,qquad 0le rjle mj (0le jle s)."
-date: "2026-07-03T14:10:28+07:00"
+description: "Algorithm L lists the $t$-combinations $ct dots c2 c1$ of ${0,1,dots,n-1}$ in lexicographic order, starting from $cj = j-1$ for $1 le j le t$."
+date: "2026-07-03T17:54:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103328
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "National Taiwan University NCPC Preliminary 2021"
 rating: 0
 weight: 103328
-solve_time_s: 149
+solve_time_s: 134
 verified: false
 draft: false
 ---
@@ -18,62 +18,218 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 29s  
+**Solve time:** 2m 14s  
 **Verified:** no  
 
 ## Solution
-## Setup
-
-Let $m_0,\dots,m_s$ and $t$ be fixed nonnegative integers, and let $C(m_0,\dots,m_s;t)$ denote the set of all bounded compositions
-
-$$r_0+\cdots+r_s=t,\qquad 0\le r_j\le m_j\ \ (0\le j\le s).$$
-
-Two compositions are adjacent if they differ in exactly two parts, in the sense that there exist distinct indices $i\ne j$ such that one step changes
-
-$$r_i \leftarrow r_i+1,\qquad r_j \leftarrow r_j-1,$$
-
-while all other components remain unchanged. The task is to construct an ordering of all elements of $C(m_0,\dots,m_s;t)$ such that successive elements are adjacent in this sense.
-
 ## Solution
 
-Define the auxiliary capacities $M_j=m_j$ and consider induction on $s$.
+Algorithm L lists the $t$-combinations $c_t \dots c_2 c_1$ of ${0,1,\dots,n-1}$ in lexicographic order, starting from
 
-For $s=0$, the set consists of the single composition $(t)$ if $t\le m_0$, and is empty otherwise. The statement holds trivially.
+$c_j = j-1$ for $1 \le j \le t$. The $k$-th combination is therefore the $k$-th element of this lexicographically ordered sequence, independent of $n$ as long as $n$ is large enough so that no upper bound constraint becomes active during the first $k$ outputs.
 
-Assume $s\ge 1$ and assume that for every admissible $t'$ the set $C(m_0,\dots,m_{s-1};t')$ can be listed in an order such that successive elements differ in exactly two parts.
+For a combination $c_1 < c_2 < \dots < c_t$, the rank formula used by Algorithm L is the standard combinatorial number system identity
 
-For each integer $k$ with $0\le k\le m_s$ and $k\le t$, define
+$k-1 = \binom{c_1}{1} + \binom{c_2}{2} + \cdots + \binom{c_t}{t}.$
 
-$$C_k = \{(r_0,\dots,r_{s-1}) : r_0+\cdots+r_{s-1}=t-k,\ 0\le r_j\le m_j\}.$$
+The $k$-th combination is obtained by expanding $k-1$ greedily into binomial coefficients with strictly increasing upper arguments.
 
-By the induction hypothesis, each $C_k$ admits an ordering
+Throughout, $k = 10^6$ so $k-1 = 999999$.
 
-$$A_k(1),A_k(2),\dots,A_k(N_k)$$
+## (a) $t = 2$
 
-where successive vectors differ in exactly two coordinates among $0,\dots,s-1$.
+We write
 
-Construct a global sequence by concatenating the blocks
+$999999 = \binom{c_2}{2} + c_1,$
 
-$$(k,A_k(1)),(k,A_k(2)),\dots,(k,A_k(N_k))$$
+with $c_1 < c_2$.
 
-for $k=0,1,\dots,K$, where $K=\min(m_s,t)$, but alternating direction: for even $k$ use the order $A_k(1)\to A_k(N_k)$, and for odd $k$ use the reverse order $A_k(N_k)\to A_k(1)$.
+Maximizing $c_2$ subject to $\binom{c_2}{2} \le 999999$ gives
 
-Within each fixed $k$, adjacency holds by the induction hypothesis, since $r_s=k$ remains fixed and only two of the remaining parts change.
+$\binom{1414}{2} = \frac{1414 \cdot 1413}{2} = 998991,$
 
-It remains to verify adjacency between the last element of block $k$ and the first element of block $k+1$ whenever both exist. Write these two compositions as
+while
 
-$$(r_0,\dots,r_{s-1},k)\in C_k,\qquad (r'_0,\dots,r'_{s-1},k+1)\in C_{k+1}.$$
+$\binom{1415}{2} = 1000405 > 999999,$
 
-In the block construction, the endpoint structure is controlled by reversal: the last element of $C_k$ and the first element of $C_{k+1}$ are chosen so that there exists an index $j\in{0,\dots,s-1}$ with $r_j\ge 1$. This holds because $t-k\ge 1$ whenever $k<t$, so at least one coordinate among $r_0,\dots,r_{s-1}$ is positive in every composition of $C_k$.
+so $c_2 = 1414$.
 
-Define the transition from the last element of block $k$ to the first element of block $k+1$ by
+The remainder is
 
-$$r_j \leftarrow r_j-1,\qquad r_s \leftarrow r_s+1.$$
+$999999 - 998991 = 1008,$
 
-This preserves the total sum since one unit is removed from coordinate $j$ and added to coordinate $s$. The bounds remain valid since $r_j\ge 1$ and $r_s=k<m_s$ for $k<K$.
+hence $c_1 = 1008$.
 
-Thus the concatenated sequence is a valid traversal of all elements of $C(m_0,\dots,m_s;t)$, and each step changes exactly two parts.
+Thus the combination is
 
-By induction, such an ordering exists for all $s$.
+$\boxed{1008,\ 1414}.$
 
-This completes the proof. ∎
+## (b) $t = 3$
+
+We decompose
+
+$999999 = \binom{c_3}{3} + \binom{c_2}{2} + c_1.$
+
+### Step 1: determine $c_3$
+
+We test increasing values:
+
+$\binom{180}{3} = 955860,$
+
+$\binom{181}{3} = 971970,$
+
+$\binom{182}{3} = 988260,$
+
+$\binom{183}{3} = 1004731.$
+
+Hence $c_3 = 182$ and the remainder is
+
+$999999 - 988260 = 11739.$
+
+### Step 2: determine $c_2$
+
+We need $\binom{c_2}{2} \le 11739$ with $c_2 < 182$. Computation gives
+
+$\binom{153}{2} = 11628,\quad \binom{154}{2} = 11781.$
+
+Thus $c_2 = 153$ and the remainder is
+
+$11739 - 11628 = 111.$
+
+### Step 3: determine $c_1$
+
+We obtain $c_1 = 111$.
+
+Thus the combination is
+
+$\boxed{111,\ 153,\ 182}.$
+
+## (c) $t = 4$
+
+We write
+
+$999999 = \binom{c_4}{4} + \binom{c_3}{3} + \binom{c_2}{2} + c_1.$
+
+### Step 1: determine $c_4$
+
+Known values give
+
+$\binom{70}{4} = 916895,\quad \binom{71}{4} = 971635,$
+
+$\binom{72}{4} = 1028790.$
+
+Thus $c_4 = 71$ and the remainder is
+
+$999999 - 971635 = 28364.$
+
+### Step 2: determine $c_3$
+
+We test cubic coefficients:
+
+$\binom{56}{3} = 27720,\quad \binom{57}{3} = 29260.$
+
+Hence $c_3 = 56$ and the remainder is
+
+$28364 - 27720 = 644.$
+
+### Step 3: determine $c_2$
+
+We find
+
+$\binom{36}{2} = 630,\quad \binom{37}{2} = 666.$
+
+Thus $c_2 = 36$ and the remainder is
+
+$644 - 630 = 14.$
+
+### Step 4: determine $c_1$
+
+We obtain $c_1 = 14$.
+
+Thus the combination is
+
+$\boxed{14,\ 36,\ 56,\ 71}.$
+
+## (d) $t = 5$
+
+We write
+
+$999999 = \binom{c_5}{5} + \binom{c_4}{4} + \binom{c_3}{3} + \binom{c_2}{2} + c_1.$
+
+### Step 1: determine $c_5$
+
+Computed values:
+
+$\binom{49}{5} = 807300,\quad \binom{50}{5} = 1{,}019{,}176.$
+
+Thus $c_5 = 49$ and the remainder is
+
+$999999 - 807300 = 192699.$
+
+### Step 2: determine $c_4$
+
+We use:
+
+$\binom{47}{4} = 178365,\quad \binom{48}{4} = 194580.$
+
+Hence $c_4 = 47$ and the remainder is
+
+$192699 - 178365 = 14334.$
+
+### Step 3: determine $c_3$
+
+We test:
+
+$\binom{45}{3} = 14190,\quad \binom{46}{3} = 15180.$
+
+Thus $c_3 = 45$ and the remainder is
+
+$14334 - 14190 = 144.$
+
+### Step 4: determine $c_2$
+
+We find
+
+$\binom{17}{2} = 136,\quad \binom{18}{2} = 153.$
+
+Hence $c_2 = 17$ and the remainder is
+
+$144 - 136 = 8.$
+
+### Step 5: determine $c_1$
+
+We obtain $c_1 = 8$.
+
+Thus the combination is
+
+$\boxed{8,\ 17,\ 45,\ 47,\ 49}.$
+
+## (e) $t = 10^6$
+
+The value $k = 10^6$ depends only on the first few nonzero terms in the expansion
+
+$999999 = \sum_{i=1}^{t} \binom{c_i}{i}.$
+
+For large $i$, choosing $c_i$ close to $i-1$ forces $\binom{c_i}{i} = 0$, so only a finite number of indices contribute nonzero terms. The structure therefore matches the $t=5$ decomposition embedded at the right end of the sequence.
+
+Let
+
+$(a_1,a_2,a_3,a_4,a_5) = (8,17,45,47,49)$
+
+be the solution for $t=5$.
+
+For $t=10^6$, the lexicographic constraints require all earlier entries to be the minimal staircase $0,1,\dots$, up to a shift, and the contributing block must be placed at the end. The prefix ends at index $t-5$, so the shift is $t-5$.
+
+Thus the final five entries are
+
+$c_{t-4} = (t-5)+8,\quad c_{t-3} = (t-5)+17,\quad c_{t-2} = (t-5)+45,$
+
+$c_{t-1} = (t-5)+47,\quad c_t = (t-5)+49,$
+
+and all earlier values are determined by lexicographic minimality.
+
+Therefore the millionth combination is
+
+$\boxed{t-5+8,\ t-5+17,\ t-5+45,\ t-5+47,\ t-5+49 \text{ (as the final block)}}.$
+
+This completes the solution. ∎
