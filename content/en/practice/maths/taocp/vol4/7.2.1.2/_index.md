@@ -112,8 +112,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [92](92.md) |  [*M18*] | math-medium | solved | 7m53s |
 | [93](93.md) |  [*35*] | hard | solved | 6m09s |
 | [94](94.md) | &#9654; [*25*] | medium | solved | 6m52s |
-| [95](95.md) |  [*21*] | medium | solved | 3m20s |
-| [96](96.md) |  [*21*] | medium | solved | 2m43s |
+| [95](95.md) |  [*21*] | medium | solved | 5m23s |
+| [96](96.md) |  [*21*] | medium | solved | 6m48s |
 | [97](97.md) |  [*21*] | medium | solved | 3m08s |
 | [98](98.md) |  [*HM23*] | hm-medium | solved | 50s |
 | [99](99.md) |  [*M30*] | math-hard | solved | 3m26s |
