@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2894 contests, 20868 problems, 11558 verified."
+description: "Codeforces problem solutions with full editorials. 2895 contests, 20880 problems, 11558 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2894 contests, 20868 problems, 11558 verified.**
+**2895 contests, 20880 problems, 11558 verified.**
 
-## Unknown — 718 contests, 5917 problems, 3546 verified
+## Unknown — 719 contests, 5929 problems, 3546 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
 | [103185](103185/) | [2020-2021 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103185) | 14 | 2/14 | ICPC/IOI | - |
 | [103194](103194/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 1](https://codeforces.com/contest/103194) | 4 | 0/4 | Special | - |
 | [103195](103195/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 2](https://codeforces.com/contest/103195) | 4 | 1/4 | Special | - |
