@@ -1,7 +1,7 @@
 ---
 title: "CF 103102F - Fence Job"
-description: "The problem statement for Codeforces 103102F - Fence Job is missing from your message, so I don’t have the necessary information to write a correct editorial."
-date: "2026-07-03T21:46:38+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now there’s no description of what “Fence Job” asks, what the input/output represent, or what constraints apply."
+date: "2026-07-03T22:31:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103102
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)"
 rating: 0
 weight: 103102
-solve_time_s: 29
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,17 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 103102F - Fence Job** is missing from your message, so I don’t have the necessary information to write a correct editorial.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-To produce a proper Codeforces-style explanation (especially with a full algorithm, proof sketch, and test cases), I need at least:
+Right now there’s no description of what “Fence Job” asks, what the input/output represent, or what constraints apply. Without that, any solution or reasoning would be guesswork and very likely wrong.
 
-- full problem statement (or screenshot/text)
-- input/output format
-- constraints
-- sample tests (if available)
-
-Once you paste that, I’ll write the complete editorial in the exact format you specified.
+If you paste the full statement (or even a screenshot / rough text), I’ll turn it into a complete Codeforces-style editorial in the exact format you requested.
