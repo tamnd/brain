@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2896 contests, 20896 problems, 11561 verified."
+description: "Codeforces problem solutions with full editorials. 2896 contests, 20899 problems, 11562 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2896 contests, 20896 problems, 11561 verified.**
+**2896 contests, 20899 problems, 11562 verified.**
 
-## Unknown — 719 contests, 5932 problems, 3548 verified
+## Unknown — 719 contests, 5935 problems, 3549 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -46,7 +46,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103383](103383/) | [Школьный этап ВСОШ по информатике 9-11 класс  2021 (4 группа регионов)](https://codeforces.com/contest/103383) | 0 | 0/0 | Special | - |
 | [103384](103384/) | [Школьный этап ВСОШ по информатике 9-11 класс 2021 (2 группа регионов)](https://codeforces.com/contest/103384) | 0 | 0/0 | Special | - |
 | [103385](103385/) | [Школьный этап ВСОШ по информатике 9-11 класс 2021 (1 группа регионов)](https://codeforces.com/contest/103385) | 0 | 0/0 | Special | - |
-| [103388](103388/) | [2021-2022 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103388) | 11 | 1/11 | ICPC/IOI | - |
+| [103388](103388/) | [2021-2022 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103388) | 14 | 2/14 | ICPC/IOI | - |
 | [103399](103399/) | [Fast modular multiplication](https://codeforces.com/contest/103399) | 4 | 2/4 | Special | - |
 | [103402](103402/) | [Сумасшедший контест (Miston Cats)](https://codeforces.com/contest/103402) | 3 | 0/3 | Special | - |
 | [103411](103411/) | [2020-2021, ICPC, East Siberian Regional Contest](https://codeforces.com/contest/103411) | 12 | 6/12 | ICPC/IOI | - |
