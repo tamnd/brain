@@ -98,8 +98,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 108/111 solved.
 | [78](78.md) |  [*M22*] | math-medium | solved | 20m34s |
 | [79](79.md) |  [*M23*] | math-medium | solved | 12m05s |
 | [80](80.md) |  [*HM26*] | hm-hard | solved | 2m01s |
-| [81](81.md) | &#9654; [*M27*] | math-hard | solved | 49m57s |
-| [82](82.md) |  [*HM31*] | hm-hard | solved | 32m54s |
+| [81](81.md) | &#9654; [*M27*] | math-hard | solved | 2m50s |
+| [82](82.md) |  [*HM31*] | hm-hard | solved | 4m32s |
 | [83](83.md) |  [*HM46*] | hm-research | solved | 47m39s |
 | [84](84.md) |  [*HM27*] | hm-hard | solved | 22m29s |
 | [85](85.md) |  [*HM21*] | hm-medium | solved | 15m36s |
