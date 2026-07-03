@@ -1,22 +1,22 @@
 ---
 title: "2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)"
-description: "11 problems from 2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117) (contest 103430), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from 2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117) (contest 103430), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103430
 contest_type: "Educational"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 518
-date: "2026-07-03T08:11:51+07:00"
+n_problems: 12
+n_verified: 12
+total_solve_s: 562
+date: "2026-07-03T08:15:37+07:00"
 weight: 103430
 draft: false
 ---
 
 # [2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)](https://codeforces.com/contest/103430)
 
-Educational | 11 problems | 11/11 verified | Difficulty - | 8m 38s
+Educational | 12 problems | 12/12 verified | Difficulty - | 9m 22s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,3 +31,4 @@ Educational | 11 problems | 11/11 verified | Difficulty - | 8m 38s
 | [K](K/) | [Ice Cream Van](https://codeforces.com/problemset/problem/103430/K) |  |  |  | 49s | ✓ |
 | [L](L/) | [Smash the Trash](https://codeforces.com/problemset/problem/103430/L) |  |  |  | 44s | ✓ |
 | [M](M/) | [Distance](https://codeforces.com/problemset/problem/103430/M) |  |  |  | 1m 4s | ✓ |
+| [N](N/) | [Haiku](https://codeforces.com/problemset/problem/103430/N) |  |  |  | 44s | ✓ |
