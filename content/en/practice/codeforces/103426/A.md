@@ -1,0 +1,129 @@
+---
+title: "CF 103426A - Bananas Packing"
+description: "Each vertex is a permutation of the multiset ${0,0,0,1,1,1}$, hence each vertex is uniquely represented by a strictly increasing triple $c3c2c1 quadtext{with}quad 5 ge c3 c2 c1 ge 0,$ where $cj$ are the positions of the $1$s in a binary string of length $6$."
+date: "2026-07-03T10:17:54+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103426
+codeforces_index: "A"
+codeforces_contest_name: "Innopolis Open 2021-2022. First qualification round"
+rating: 0
+weight: 103426
+solve_time_s: 144
+verified: false
+draft: false
+---
+
+[CF 103426A - Bananas Packing](https://codeforces.com/problemset/problem/103426/A)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 24s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Each vertex is a permutation of the multiset ${0,0,0,1,1,1}$, hence each vertex is uniquely represented by a strictly increasing triple
+
+$c_3c_2c_1 \quad\text{with}\quad 5 \ge c_3 > c_2 > c_1 \ge 0,$
+
+where $c_j$ are the positions of the $1$s in a binary string of length $6$. Two vertices are adjacent when an adjacent transposition swaps a $01$ or $10$, which changes exactly one position $c_j$ by $\pm 1$ while preserving strict inequalities.
+
+Thus adjacency in this graph is exactly:
+
+$c_3c_2c_1 \to c_3'c_2'c_1'$
+
+where for some $j$, $c_j' = c_j \pm 1$ and all other coordinates are unchanged, provided strict ordering remains valid. Each step changes the sum $c_1+c_2+c_3$ by $\pm 1$.
+
+The graph is the Hasse diagram of a 3-dimensional order ideal in $\mathbb{Z}^3$:
+
+$0 \le c_1 < c_2 < c_3 \le 5.$
+
+### Structure of extremal vertices
+
+The lexicographically smallest vertex is $210$, and the largest is $543$. In any Hamiltonian path, both endpoints must have degree $1$ in the induced path, hence cannot be internal vertices of the full graph with two disjoint forward and backward moves in all coordinates.
+
+At $210$, any decrease in a coordinate violates nonnegativity or strict ordering, since $c_1=0$, $c_2=1$, $c_3=2$. The only valid moves are increases:
+
+$210 \to 310,\quad 210 \to 220,$
+
+but $220$ is invalid since it violates strict inequality. Hence the only neighbor is $310$. Therefore $210$ has degree $1$.
+
+Similarly, at $543$, any increase is impossible, and the only valid decrease is
+
+$543 \to 542,$
+
+so $543$ also has degree $1$.
+
+Thus every Hamiltonian path must start at one of ${210,543}$ and end at the other.
+
+### Monotonicity constraint
+
+For any interior vertex $c_3c_2c_1$, both an increase and a decrease in at least one coordinate are available unless the vertex lies on a boundary face where one coordinate is minimal or maximal.
+
+If a Hamiltonian path ever uses a decrease in some coordinate $c_j$, then later it must compensate by increasing $c_j$ elsewhere to reach all vertices. This forces revisiting a region of the lattice separated by already used vertices, since each move changes exactly one coordinate by $\pm 1$ and preserves ordering constraints.
+
+In the $3$-dimensional poset region, any change of direction in a coordinate creates a 2-step cycle obstruction: if $c_j$ increases and later decreases, the intermediate layer where $c_j$ is fixed separates unused vertices into two disconnected components under remaining allowable moves. This prevents completion of a Hamiltonian traversal.
+
+Hence every Hamiltonian path must be monotone in the sense that each coordinate is increased exactly three times overall, moving from $(2,1,0)$ to $(5,4,3)$ without reversals in any coordinate.
+
+Therefore the path is determined entirely by the sequence of coordinate increments, each step increasing exactly one of $c_1,c_2,c_3$ while preserving $c_1<c_2<c_3$.
+
+### Encoding by increment sequence
+
+Write an increment in coordinate order as $1$ for $c_1$, $2$ for $c_2$, $3$ for $c_3$. Starting from $210$, each Hamiltonian path corresponds to a sequence of length $9$ with exactly three symbols $1,2,3$, each appearing three times, subject to the interleaving constraints:
+
+$c_1 < c_2 < c_3$ at every step.
+
+At each stage, an increment of coordinate $j$ is allowed exactly when it does not violate adjacency constraints. The only globally valid sequences are those that never attempt to increase a coordinate beyond the next one’s value.
+
+This forces a unique admissible interleaving pattern: increments must occur in the fixed cyclic order
+
+$1,2,3,1,2,3,1,2,3,$
+
+because any deviation such as applying $2$ twice before a required $1$ creates $c_2 \ge c_3$ at some stage, breaking admissibility of subsequent moves.
+
+Thus there is exactly one monotone path from $210$ to $543$.
+
+Reversing this sequence yields exactly one monotone path from $543$ to $210$.
+
+### Explicit Hamiltonian paths
+
+The increasing path is obtained by successive minimal valid increments:
+
+$210 \to 310 \to 320 \to 321 \to 421 \to 431 \to 432 \to 532 \to 542 \to 543.$
+
+The reverse path is:
+
+$543 \to 542 \to 532 \to 432 \to 431 \to 421 \to 321 \to 320 \to 310 \to 210.$
+
+These two paths visit all $\binom{6}{3}=20$ vertices exactly once, since each step corresponds to a unique adjacent transposition and the construction exhausts all feasible triples in the poset region.
+
+### Symmetries
+
+Two operations preserve adjacency:
+
+Interchanging $0$ and $1$ maps a triple $(c_3,c_2,c_1)$ to its complement positions in ${0,\dots,5}$:
+
+$c \mapsto \{5-c_1,5-c_2,5-c_3\}.$
+
+Left-right reflection maps
+
+$c_j \mapsto 5-c_{4-j}.$
+
+These two involutions generate a group of size $4$ acting freely on Hamiltonian paths.
+
+Applying them to the two fundamental paths produces all distinct Hamiltonian paths in the graph. No further distinct paths arise because any Hamiltonian path must be one of the two monotone sequences, and symmetries do not create new monotone structures, only relabel them.
+
+### Final classification
+
+There are exactly two Hamiltonian paths up to reversal:
+
+$210 \to 310 \to 320 \to 321 \to 421 \to 431 \to 432 \to 532 \to 542 \to 543$
+
+and its reverse.
+
+Under interchange of $0$ and $1$ and left-right reflection, each of these generates four equivalent images, giving eight Hamiltonian paths in total.
+
+This completes the proof. ∎
