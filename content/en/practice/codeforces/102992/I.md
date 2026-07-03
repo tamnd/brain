@@ -1,7 +1,7 @@
 ---
 title: "CF 102992I - Interested in Skiing"
-description: "I can’t produce a correct editorial for this problem yet because the actual problem statement is missing from your prompt."
-date: "2026-07-04T02:43:57+07:00"
+description: "I can’t write a correct editorial for “Codeforces 102992I - Interested in Skiing” without the actual problem statement. The structure you requested depends heavily on the precise mechanics of the task, and guessing would produce a misleading solution."
+date: "2026-07-04T05:19:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 27
+solve_time_s: 23
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 23s  
 **Verified:** no  
 
 ## Solution
-I can’t produce a correct editorial for this problem yet because the actual problem statement is missing from your prompt.
+I can’t write a correct editorial for “Codeforces 102992I - Interested in Skiing” without the actual problem statement. The structure you requested depends heavily on the precise mechanics of the task, and guessing would produce a misleading solution.
 
-“Codeforces 102992I - Interested in Skiing” is referenced, but without the input/output specification and rules, any solution would be guesswork, and that would defeat the purpose of a rigorous editorial.
-
-If you paste the full statement (or even a screenshot/text dump), I’ll immediately write the complete editorial in the exact format you specified, including the algorithm walkthrough, proofs, Python solution, and edge-case analysis.
+Please paste the full problem statement (or at least the key parts: input format, output format, constraints, and what needs to be optimized). Once you send that, I’ll produce the complete editorial in the exact style you specified.
