@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2943 contests, 21361 problems, 11670 verified."
+description: "Codeforces problem solutions with full editorials. 2943 contests, 21363 problems, 11672 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,22 +11,22 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2943 contests, 21361 problems, 11670 verified.**
+**2943 contests, 21363 problems, 11672 verified.**
 
-## Unknown — 743 contests, 6182 problems, 3612 verified
+## Unknown — 743 contests, 6184 problems, 3614 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [102979](102979/) | [2020-2021 Winter Petrozavodsk Camp, Day 9 Contest (XXI Open Cup, Grand Prix of Suwon)](https://codeforces.com/contest/102979) | 12 | 2/12 | Special | - |
 | [102980](102980/) | [Интернет-олимпиады, Сезон 2020-2021, Первая личная олимпиада](https://codeforces.com/contest/102980) | 4 | 0/4 | Special | - |
 | [102984](102984/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: Korean Contest](https://codeforces.com/contest/102984) | 11 | 1/11 | Special | - |
-| [102992](102992/) | [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992) | 12 | 3/12 | ICPC/IOI | - |
+| [102992](102992/) | [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992) | 13 | 4/13 | ICPC/IOI | - |
 | [102993](102993/) | [2020 Nowcoder Training - AceSrc and chenjb Contest](https://codeforces.com/contest/102993) | 10 | 0/10 | Special | - |
 | [102994](102994/) | [Moscow Pre-Finals Workshop 2020 - Legilimens+Coffee Chicken Contest (XX Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102994) | 13 | 0/13 | Special | - |
 | [103003](103003/) | [box 2020](https://codeforces.com/contest/103003) | 4 | 0/4 | Special | - |
 | [103031](103031/) | [Индивидуальная олимпиада школьников по информатике и программированию 2021](https://codeforces.com/contest/103031) | 5 | 0/5 | Special | - |
 | [103034](103034/) | [April Fools Contest 2021 Archive (ZS)](https://codeforces.com/contest/103034) | 7 | 0/7 | April Fools | - |
-| [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 12 | 2/12 | Special | - |
+| [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 13 | 3/13 | Special | - |
 | [103064](103064/) | [Вузовско-академическая олимпиада по информатике 2021](https://codeforces.com/contest/103064) | 7 | 6/7 | Special | - |
 | [103069](103069/) | [2020 ICPC Asia East Continent Final](https://codeforces.com/contest/103069) | 13 | 11/13 | ICPC/IOI | - |
 | [103081](103081/) | [2020-2021 ICPC Southwestern European Regional Contest (SWERC 2020)](https://codeforces.com/contest/103081) | 13 | 12/13 | ICPC/IOI | - |
