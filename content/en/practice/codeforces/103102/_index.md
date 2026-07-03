@@ -1,26 +1,26 @@
 ---
 title: "2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)"
-description: "12 problems from 2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020) (contest 103102), difficulty -. 4/12 solutions verified against sample I/O."
+description: "13 problems from 2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020) (contest 103102), difficulty -. 4/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103102
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
+n_problems: 13
 n_verified: 4
-total_solve_s: 814
-date: "2026-07-03T22:31:50+07:00"
+total_solve_s: 578
+date: "2026-07-03T22:33:01+07:00"
 weight: 103102
 draft: false
 ---
 
 # [2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)](https://codeforces.com/contest/103102)
 
-ICPC/IOI | 12 problems | 4/12 verified | Difficulty - | 13m 34s
+ICPC/IOI | 13 problems | 4/13 verified | Difficulty - | 9m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Archeologists](https://codeforces.com/problemset/problem/103102/A) |  |  |  | 32s |  |
+| [A](A/) | [Archeologists](https://codeforces.com/problemset/problem/103102/A) |  |  |  | 2m 32s |  |
 | [B](B/) | [Reverse Game](https://codeforces.com/problemset/problem/103102/B) |  |  |  | 31s |  |
 | [C](C/) | [3-colorings](https://codeforces.com/problemset/problem/103102/C) |  |  |  | 57s | ✓ |
 | [D](D/) | [Disk Sort](https://codeforces.com/problemset/problem/103102/D) |  |  |  | 33s |  |
@@ -28,7 +28,8 @@ ICPC/IOI | 12 problems | 4/12 verified | Difficulty - | 13m 34s
 | [F](F/) | [Fence Job](https://codeforces.com/problemset/problem/103102/F) |  |  |  | 28s |  |
 | [G](G/) | [Simple Hull](https://codeforces.com/problemset/problem/103102/G) |  |  |  | 46s | ✓ |
 | [H](H/) | [AND = OR](https://codeforces.com/problemset/problem/103102/H) |  |  |  | 43s | ✓ |
-| [I](I/) | [Modulo Permutations](https://codeforces.com/problemset/problem/103102/I) |  |  |  | 2m 39s |  |
-| [J](J/) | [One Piece](https://codeforces.com/problemset/problem/103102/J) |  |  |  | 1m 31s |  |
-| [L](L/) | [Neo-Robin Hood](https://codeforces.com/problemset/problem/103102/L) |  |  |  | 1m 38s |  |
-| [M](M/) | [Mistake](https://codeforces.com/problemset/problem/103102/M) |  |  |  | 2m 24s |  |
+| [I](I/) | [Modulo Permutations](https://codeforces.com/problemset/problem/103102/I) |  |  |  | 26s |  |
+| [J](J/) | [One Piece](https://codeforces.com/problemset/problem/103102/J) |  |  |  | 28s |  |
+| [K](K/) | [Codenames](https://codeforces.com/problemset/problem/103102/K) |  |  |  | 26s |  |
+| [L](L/) | [Neo-Robin Hood](https://codeforces.com/problemset/problem/103102/L) |  |  |  | 28s |  |
+| [M](M/) | [Mistake](https://codeforces.com/problemset/problem/103102/M) |  |  |  | 28s |  |
