@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2858 contests, 20541 problems, 11502 verified."
+description: "Codeforces problem solutions with full editorials. 2860 contests, 20561 problems, 11503 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2858 contests, 20541 problems, 11502 verified.**
+**2860 contests, 20561 problems, 11503 verified.**
 
-## Unknown — 701 contests, 5768 problems, 3517 verified
+## Unknown — 702 contests, 5778 problems, 3518 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103351](103351/) | [SDU Open 2021 Fall](https://codeforces.com/contest/103351) | 10 | 1/10 | Special | - |
 | [103358](103358/) | [Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада](https://codeforces.com/contest/103358) | 4 | 0/4 | Special | - |
 | [103359](103359/) | [Интернет-олимпиады, Сезон 2020-2021, Третья личная олимпиада](https://codeforces.com/contest/103359) | 4 | 1/4 | Special | - |
 | [103360](103360/) | [Индивидуальная олимпиада школьников по информатике и программированию 2020](https://codeforces.com/contest/103360) | 5 | 0/5 | Special | - |
@@ -1663,7 +1664,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 167 contests, 1201 problems, 539 verified
+## 2021 — 168 contests, 1211 problems, 539 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1799,6 +1800,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103348](103348/) | [UTPC Contest 10-15-21 Div. 1 (Advanced)](https://codeforces.com/contest/103348) | 10 | 0/10 | Div. 1 | - |
 | [103366](103366/) | [2021 Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/103366) | 12 | 8/12 | Special | - |
 | [103369](103369/) | [Moscow team olympiad 2021](https://codeforces.com/contest/103369) | 10 | 2/10 | Special | - |
 | [103373](103373/) | [2021 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/103373) | 10 | 8/10 | ICPC/IOI | - |
