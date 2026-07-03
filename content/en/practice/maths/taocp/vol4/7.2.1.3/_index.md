@@ -83,7 +83,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 100/111 solved.
 | [63](63.md) |  [*M41*] | math-project | solved | 20m11s |
 | [64](64.md) | &#9654; [*M30*] | math-hard | solved | 19m32s |
 | [65](65.md) |  [*M40*] | math-project | solved | 7m53s |
-| [66](66.md) | &#9654; [*22*] | medium | solved | 23m45s |
+| [66](66.md) | &#9654; [*22*] | medium | solved | 16m44s |
 | [67](67.md) |  [*46*] | research | solved | 45m28s |
 | [68](68.md) |  [*M01*] | math-simple | solved | 15m33s |
 | [69](69.md) | &#9654; [*M22*] | math-medium | solved | 32m37s |
