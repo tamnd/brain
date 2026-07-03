@@ -1,24 +1,24 @@
 ---
-title: "CF 103409L - Wiring Engineering"
+title: "CF 103401K - Simple Math"
 description: "Let $a{s+t-1}dots a1a0$ be the binary representation of an $(s,t)$-combination, so each $ai in {0,1}$ and $sum ai = t$. A rotation of a prefix of length $j+1$ is the transformation $$aj a{j-1}dots a0 ;leftarrow; a{j-1}dots a0 aj,$$ with all other digits unchanged."
-date: "2026-07-03T11:54:53+07:00"
+date: "2026-07-03T12:07:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103409
-codeforces_index: "L"
-codeforces_contest_name: "The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)"
+codeforces_contest: 103401
+codeforces_index: "K"
+codeforces_contest_name: "The 16-th BIT Campus Programming Contest - Online Round"
 rating: 0
-weight: 103409
-solve_time_s: 142
+weight: 103401
+solve_time_s: 146
 verified: false
 draft: false
 ---
 
-[CF 103409L - Wiring Engineering](https://codeforces.com/problemset/problem/103409/L)
+[CF 103401K - Simple Math](https://codeforces.com/problemset/problem/103401/K)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 22s  
+**Solve time:** 2m 26s  
 **Verified:** no  
 
 ## Solution

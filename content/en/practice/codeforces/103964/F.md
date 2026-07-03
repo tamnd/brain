@@ -1,7 +1,7 @@
 ---
 title: "CF 103964F - The Battle of Guandu"
-description: "I can’t reliably write an editorial for this problem yet because the actual problem content is missing. Right now I only see the title “The Battle of Guandu” with empty input/output sections, so there’s no way to know what the task is asking, what the constraints are, or what…"
-date: "2026-07-03T09:49:42+07:00"
+description: "I can’t write a correct, meaningful editorial for this problem yet because the actual problem statement is missing from what you provided. Right now I only see the title, input/output placeholders, and metadata, but no description of the task, constraints, or sample cases."
+date: "2026-07-03T11:56:43+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 40
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 40s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for this problem yet because the actual problem content is missing.
+I can’t write a correct, meaningful editorial for this problem yet because the actual problem statement is missing from what you provided.
 
-Right now I only see the title “The Battle of Guandu” with empty input/output sections, so there’s no way to know what the task is asking, what the constraints are, or what algorithmic structure is involved. Any attempt to proceed would just be guesswork, and that would defeat the purpose of a Codeforces-style editorial.
+Right now I only see the title, input/output placeholders, and metadata, but no description of the task, constraints, or sample cases. For Codeforces editorials, those are essential because the entire solution structure depends on the exact operations and constraints (for example whether this is a graph process, string transformation, game theory, DP, etc.).
 
-If you paste the full statement (or even a screenshot / raw text), I can produce the complete senior-level editorial in the exact format you requested, including the reasoning flow, optimal solution derivation, Python implementation, and edge-case analysis.
+If you paste the full statement (or even a screenshot or raw text), I’ll produce the complete editorial in the exact format you requested, including:
+
+- a proper restatement in my own words
+- constraint-driven reasoning
+- brute force vs optimized approach
+- full algorithm walkthrough
+- correct Python solution
+- worked traces, edge cases, and test suite
+
+Send the full problem text and I’ll take it from there.

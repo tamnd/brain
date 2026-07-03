@@ -1,24 +1,24 @@
 ---
-title: "CF 103409L - Wiring Engineering"
+title: "CF 103399A - Fast modular multiplication modulo 32-bit modulus"
 description: "Let $a{s+t-1}dots a1a0$ be the binary representation of an $(s,t)$-combination, so each $ai in {0,1}$ and $sum ai = t$. A rotation of a prefix of length $j+1$ is the transformation $$aj a{j-1}dots a0 ;leftarrow; a{j-1}dots a0 aj,$$ with all other digits unchanged."
-date: "2026-07-03T11:54:53+07:00"
+date: "2026-07-03T12:10:04+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103409
-codeforces_index: "L"
-codeforces_contest_name: "The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)"
+codeforces_contest: 103399
+codeforces_index: "A"
+codeforces_contest_name: "Fast modular multiplication"
 rating: 0
-weight: 103409
-solve_time_s: 142
+weight: 103399
+solve_time_s: 149
 verified: false
 draft: false
 ---
 
-[CF 103409L - Wiring Engineering](https://codeforces.com/problemset/problem/103409/L)
+[CF 103399A - Fast modular multiplication modulo 32-bit modulus](https://codeforces.com/problemset/problem/103399/A)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 22s  
+**Solve time:** 2m 29s  
 **Verified:** no  
 
 ## Solution

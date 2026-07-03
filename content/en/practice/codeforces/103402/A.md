@@ -1,24 +1,24 @@
 ---
-title: "CF 103409L - Wiring Engineering"
+title: "CF 103402A - \u041a\u043e\u043c\u043d\u0430\u0442\u0430 \u044f\u0440\u043e\u0441\u0442\u0438 2"
 description: "Let $a{s+t-1}dots a1a0$ be the binary representation of an $(s,t)$-combination, so each $ai in {0,1}$ and $sum ai = t$. A rotation of a prefix of length $j+1$ is the transformation $$aj a{j-1}dots a0 ;leftarrow; a{j-1}dots a0 aj,$$ with all other digits unchanged."
-date: "2026-07-03T11:54:53+07:00"
+date: "2026-07-03T12:02:21+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103409
-codeforces_index: "L"
-codeforces_contest_name: "The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)"
+codeforces_contest: 103402
+codeforces_index: "A"
+codeforces_contest_name: "\u0421\u0443\u043c\u0430\u0441\u0448\u0435\u0434\u0448\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u0441\u0442 (Miston Cats)"
 rating: 0
-weight: 103409
-solve_time_s: 142
+weight: 103402
+solve_time_s: 156
 verified: false
 draft: false
 ---
 
-[CF 103409L - Wiring Engineering](https://codeforces.com/problemset/problem/103409/L)
+[CF 103402A - \u041a\u043e\u043c\u043d\u0430\u0442\u0430 \u044f\u0440\u043e\u0441\u0442\u0438 2](https://codeforces.com/problemset/problem/103402/A)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 22s  
+**Solve time:** 2m 36s  
 **Verified:** no  
 
 ## Solution
