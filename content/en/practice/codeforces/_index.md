@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2858 contests, 20541 problems, 11502 verified."
+description: "Codeforces problem solutions with full editorials. 2859 contests, 20551 problems, 11503 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2858 contests, 20541 problems, 11502 verified.**
+**2859 contests, 20551 problems, 11503 verified.**
 
-## Unknown — 701 contests, 5768 problems, 3517 verified
+## Unknown — 702 contests, 5778 problems, 3518 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103351](103351/) | [SDU Open 2021 Fall](https://codeforces.com/contest/103351) | 10 | 1/10 | Special | - |
 | [103358](103358/) | [Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада](https://codeforces.com/contest/103358) | 4 | 0/4 | Special | - |
 | [103359](103359/) | [Интернет-олимпиады, Сезон 2020-2021, Третья личная олимпиада](https://codeforces.com/contest/103359) | 4 | 1/4 | Special | - |
 | [103360](103360/) | [Индивидуальная олимпиада школьников по информатике и программированию 2020](https://codeforces.com/contest/103360) | 5 | 0/5 | Special | - |
