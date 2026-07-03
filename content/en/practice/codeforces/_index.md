@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2837 contests, 20388 problems, 11454 verified."
+description: "Codeforces problem solutions with full editorials. 2837 contests, 20389 problems, 11455 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2837 contests, 20388 problems, 11454 verified.**
+**2837 contests, 20389 problems, 11455 verified.**
 
 ## Unknown — 687 contests, 5688 problems, 3500 verified
 
@@ -1649,7 +1649,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 160 contests, 1128 problems, 508 verified
+## 2021 — 160 contests, 1129 problems, 509 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1789,7 +1789,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103415](103415/) | [The 2021 CCPC Guangzhou Onsite](https://codeforces.com/contest/103415) | 12 | 2/12 | Special | - |
 | [103422](103422/) | [Infoleague Autumn 2021 Round 2 Div. 2](https://codeforces.com/contest/103422) | 3 | 1/3 | Div. 2 | - |
 | [103423](103423/) | [Infoleague Autumn 2021 Round 2 Div. 1](https://codeforces.com/contest/103423) | 3 | 1/3 | Div. 1 | - |
-| [103427](103427/) | [The 2021 ICPC Asia Shenyang Regional Contest](https://codeforces.com/contest/103427) | 12 | 12/12 | ICPC/IOI | - |
+| [103427](103427/) | [The 2021 ICPC Asia Shenyang Regional Contest](https://codeforces.com/contest/103427) | 13 | 13/13 | ICPC/IOI | - |
 | [103428](103428/) | [The 2021 CCPC Weihai Onsite](https://codeforces.com/contest/103428) | 13 | 3/13 | Special | - |
 | [103443](103443/) | [The 2021 ICPC Asia Taipei Regional Programming Contest](https://codeforces.com/contest/103443) | 13 | 9/13 | ICPC/IOI | - |
 | [103446](103446/) | [The 2021 ICPC Asia Shanghai Regional Programming Contest](https://codeforces.com/contest/103446) | 13 | 13/13 | ICPC/IOI | - |
