@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 3
-total_solve_s: 573
-date: "2026-07-03T00:26:25+07:00"
+total_solve_s: 623
+date: "2026-07-03T00:37:39+07:00"
 weight: 103098
 draft: false
 ---
 
 # [2020-2021 Winter Petrozavodsk Camp, UPC contest](https://codeforces.com/contest/103098)
 
-Special | 12 problems | 3/12 verified | Difficulty - | 9m 33s
+Special | 12 problems | 3/12 verified | Difficulty - | 10m 23s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,10 +25,10 @@ Special | 12 problems | 3/12 verified | Difficulty - | 9m 33s
 | [C](C/) | [Cartesian MST](https://codeforces.com/problemset/problem/103098/C) |  |  |  | 1m 3s | ✓ |
 | [D](D/) | [Display of Springs](https://codeforces.com/problemset/problem/103098/D) |  |  |  | 31s |  |
 | [E](E/) | [Even Intervals](https://codeforces.com/problemset/problem/103098/E) |  |  |  | 33s |  |
-| [F](F/) | [Friendship Circles](https://codeforces.com/problemset/problem/103098/F) |  |  |  | 27s |  |
+| [F](F/) | [Friendship Circles](https://codeforces.com/problemset/problem/103098/F) |  |  |  | 1m 22s |  |
 | [G](G/) | [Game on a Tree](https://codeforces.com/problemset/problem/103098/G) |  |  |  | 32s |  |
 | [H](H/) | [Hackerman](https://codeforces.com/problemset/problem/103098/H) |  |  |  | 51s | ✓ |
 | [I](I/) | [Interesting Scoring Systems](https://codeforces.com/problemset/problem/103098/I) |  |  |  | 35s |  |
 | [J](J/) | [Joyful Numbers](https://codeforces.com/problemset/problem/103098/J) |  |  |  | 2m 27s |  |
 | [K](K/) | [K\u00f6nigsberg Bridges](https://codeforces.com/problemset/problem/103098/K) |  |  |  | 31s |  |
-| [L](L/) | [Long Grid Covering](https://codeforces.com/problemset/problem/103098/L) |  |  |  | 30s |  |
+| [L](L/) | [Long Grid Covering](https://codeforces.com/problemset/problem/103098/L) |  |  |  | 25s |  |
