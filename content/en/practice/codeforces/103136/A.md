@@ -1,24 +1,24 @@
 ---
-title: "CF 103964F - The Battle of Guandu"
+title: "CF 103136A - \u0411\u0443\u0444\u0435\u0442"
 description: "Let a string $alpha$ consist of symbols from ${+, -, 0}$ with exactly $t$ zeros and $s$ signs, where each nonzero symbol is either $+$ or $-$. An R-block is a substring of the form $-^k+$, $k ge 0$, that is immediately preceded by $0$ and not followed by $-$."
-date: "2026-07-03T19:59:30+07:00"
+date: "2026-07-03T20:03:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103964
-codeforces_index: "F"
-codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
+codeforces_contest: 103136
+codeforces_index: "A"
+codeforces_contest_name: "Student programming contest in Penza"
 rating: 0
-weight: 103964
-solve_time_s: 158
+weight: 103136
+solve_time_s: 161
 verified: false
 draft: false
 ---
 
-[CF 103964F - The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F)
+[CF 103136A - \u0411\u0443\u0444\u0435\u0442](https://codeforces.com/problemset/problem/103136/A)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 38s  
+**Solve time:** 2m 41s  
 **Verified:** no  
 
 ## Solution

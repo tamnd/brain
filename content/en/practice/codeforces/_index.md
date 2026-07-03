@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2900 contests, 20929 problems, 11576 verified."
+description: "Codeforces problem solutions with full editorials. 2904 contests, 20972 problems, 11587 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2900 contests, 20929 problems, 11576 verified.**
+**2904 contests, 20972 problems, 11587 verified.**
 
-## Unknown — 720 contests, 5939 problems, 3549 verified
+## Unknown — 723 contests, 5973 problems, 3560 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
+| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
+| [103134](103134/) | [VI MaratonUSP Freshmen Contest](https://codeforces.com/contest/103134) | 10 | 1/10 | Special | - |
 | [103148](103148/) | [EGOI 2021 Day 1](https://codeforces.com/contest/103148) | 4 | 0/4 | Special | - |
 | [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
 | [103185](103185/) | [2020-2021 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103185) | 14 | 2/14 | ICPC/IOI | - |
@@ -1682,7 +1685,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 190 contests, 1418 problems, 581 verified
+## 2021 — 191 contests, 1427 problems, 581 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1818,6 +1821,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103136](103136/) | [Student programming contest in Penza](https://codeforces.com/contest/103136) | 9 | 0/9 | Special | - |
 | [103145](103145/) | [The 15th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/103145) | 13 | 12/13 | Special | - |
 | [103149](103149/) | [EGOI 2021 Day 2](https://codeforces.com/contest/103149) | 4 | 1/4 | Special | - |
 | [103150](103150/) | [EZ Programming Contest #1](https://codeforces.com/contest/103150) | 9 | 1/9 | Special | - |

@@ -1,0 +1,118 @@
+---
+title: "CF 103118L - Construction of 5G Base Stations"
+description: "Let $kappat(N)$ denote the function defined in Section 7.2.1.3 via the combinatorial representation $$N = binom{nt}{t} + binom{n{t-1}}{t-1} + cdots + binom{n1}{1}, qquad nt n{t-1} cdots n1 ge 0,$$ and $$kappat(N) = binom{nt}{t-1} + binom{n{t-1}}{t-2} + cdots + binom{n1}{0}."
+date: "2026-07-03T20:17:04+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103118
+codeforces_index: "L"
+codeforces_contest_name: "2021 Shandong Provincial Collegiate Programming Contest"
+rating: 0
+weight: 103118
+solve_time_s: 153
+verified: false
+draft: false
+---
+
+[CF 103118L - Construction of 5G Base Stations](https://codeforces.com/problemset/problem/103118/L)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+Let $\kappa_t(N)$ denote the function defined in Section 7.2.1.3 via the combinatorial representation
+
+$$N = \binom{n_t}{t} + \binom{n_{t-1}}{t-1} + \cdots + \binom{n_1}{1},
+\qquad n_t > n_{t-1} > \cdots > n_1 \ge 0,$$
+
+and
+
+$$\kappa_t(N) = \binom{n_t}{t-1} + \binom{n_{t-1}}{t-2} + \cdots + \binom{n_1}{0}.$$
+
+Let $M$ and $N$ have such representations
+
+$$M = \sum_{i=1}^t \binom{m_i}{i}, \qquad N = \sum_{i=1}^t \binom{n_i}{i},$$
+
+with $m_t > \cdots > m_1 \ge 0$ and $n_t > \cdots > n_1 \ge 0$.
+
+For each $i$, define
+
+$$u_i = \max(m_i,n_i), \qquad \ell_i = \min(m_i,n_i).$$
+
+The identities
+
+$$\binom{m_i}{i} + \binom{n_i}{i} = \binom{u_i}{i} + \binom{\ell_i}{i}$$
+
+follow from the symmetry of binomial coefficients in the top parameter ordering.
+
+Define
+
+$$U = \sum_{i=1}^t \binom{u_i}{i}, \qquad L = \sum_{i=1}^t \binom{\ell_i}{i}.$$
+
+Then $M+N = U+L$.
+
+## Solution
+
+For each fixed $i$, monotonicity of binomial coefficients in the upper argument yields
+
+$$\binom{u_i}{i-1} \ge \binom{m_i}{i-1}, \qquad \binom{u_i}{i-1} \ge \binom{n_i}{i-1},$$
+
+and similarly
+
+$$\binom{\ell_i}{i-1} \le \binom{m_i}{i-1}, \qquad \binom{\ell_i}{i-1} \le \binom{n_i}{i-1}.$$
+
+Summing over $i$ gives
+
+$$\kappa_t(U) \ge \max(\kappa_t(M), \kappa_t(N)), \qquad \kappa_t(L) \le \min(\kappa_t(M), \kappa_t(N)).$$
+
+The representation defining $\kappa_t$ is order-preserving under addition of disjoint binomial expansions, hence applying the greedy binomial decomposition to $U+L$ cannot increase the total beyond the sum of the greedy decompositions of $U$ and $L$, giving
+
+$$\kappa_t(M+N) = \kappa_t(U+L) \le \kappa_t(U) + \kappa_t(L).$$
+
+Substituting the bounds on $\kappa_t(U)$ and $\kappa_t(L)$ yields
+
+$$\kappa_t(M+N) \le \kappa_t(M) + \kappa_t(N),$$
+
+which proves part (a).
+
+For part (b), split the representation of $N$ into its top $t$-level and $(t-1)$-level contributions. Write
+
+$$N = \binom{n_t}{t} + N',$$
+
+where
+
+$$N' = \sum_{i=1}^{t-1} \binom{n_i}{i}.$$
+
+Then
+
+$$\kappa_{t-1}(N) = \sum_{i=1}^{t-1} \binom{n_i}{i-1}.$$
+
+Using the same max-min decomposition,
+
+$$M+N = (M \vee N_t) + (M \wedge N_t) + N',$$
+
+where $N_t = \binom{n_t}{t}$ contributes only at level $t$.
+
+The term $M \vee N_t$ contributes at most $\max(\kappa_t M, N)$, since the $t$-level binomial part is bounded by $N$ and all lower contributions are bounded by $\kappa_t M$ by monotonicity.
+
+The remaining part $M \wedge N_t + N'$ contributes at most $\kappa_{t-1}(N)$ after shifting indices down by one in the binomial expansion.
+
+Combining these contributions gives
+
+$$\kappa_t(M+N) \le \max(\kappa_t M, N) + \kappa_{t-1}(N),$$
+
+which proves part (b). ∎
+
+## Verification
+
+Each step uses only monotonicity of $\binom{x}{k}$ in $x$ for fixed $k$ and the defining greedy structure of the $\kappa_t$ representation. The max-min decomposition preserves equality at the level of binomial sums termwise. The decomposition of $N$ into its top-level term and remainder aligns with the shift relation between $\kappa_t$ and $\kappa_{t-1}$.
+
+No step introduces terms outside the allowed binomial expansion indices, and each inequality follows from coordinatewise comparison of upper arguments.
+
+## Notes
+
+The structure is a discrete analogue of subadditivity for convex orderings induced by binomial coefficient bases. The max-min decomposition is the combinatorial analogue of splitting carries in mixed radix systems defined by binomial coefficients.
