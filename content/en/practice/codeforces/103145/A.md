@@ -1,7 +1,7 @@
 ---
 title: "CF 103145A - Matrix"
-description: "Let $mathcal{A}$ be a family of $s$-combinations and $mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,dots,n-1}$ with $nge s+t$."
-date: "2026-07-03T19:03:14+07:00"
+description: "Let κt(N) be the leading parameter in the degree-$t$ combinatorial representation of $N$, so that κt(N) is the unique integer $nt$ satisfying $$binom{nt}{t} le N < binom{nt+1}{t}."
+date: "2026-07-03T19:52:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103145
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "The 15th Chinese Northeast Collegiate Programming Contest"
 rating: 0
 weight: 103145
-solve_time_s: 155
+solve_time_s: 148
 verified: false
 draft: false
 ---
@@ -18,36 +18,58 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 35s  
+**Solve time:** 2m 28s  
 **Verified:** no  
 
 ## Solution
 ## Solution
 
-Let $\mathcal{A}$ be a family of $s$-combinations and $\mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,\dots,n-1}$ with $n\ge s+t$. The cross-intersection hypothesis states that
+Let κ_t(N) be the leading parameter in the degree-$t$ combinatorial representation of $N$, so that κ_t(N) is the unique integer $n_t$ satisfying
 
-$$\alpha \cap \beta \ne \varnothing \quad \text{for all } \alpha \in \mathcal{A}, \ \beta \in \mathcal{B}.$$
+$$\binom{n_t}{t} \le N < \binom{n_t+1}{t}.$$
 
-Theorem K introduces the families $Q^n_{M,s}$ and $Q^n_{N,t}$ as the initial segments of size $M$ and $N$ respectively in the standard ordering of $s$- and $t$-combinations, equivalently the lexicographically first $M$ and $N$ elements in the ordering induced by the binary or colexicographic representation described in Section 7.2.1.3.
+This characterization follows from the greedy construction implicit in Theorem K and the representation in exercise 75, where κ_t(N) is the largest index appearing in the $t$-representation of $N$.
 
-The proof proceeds by showing that the cross-intersection property is preserved under the standard compression (shifting) operations, and that repeated compression transforms any family into the corresponding initial segment without changing its size.
+Write $n_t = \kappa_t(N)$. Then there exists a remainder $R$ such that
 
-Fix indices $0\le i<j\le n-1$. Define the $(i,j)$-shift on an $s$-set $\alpha$ by replacing $j$ with $i$ whenever $j\in \alpha$, $i\notin \alpha$, and the resulting set is not already present in the family. Formally, for a family $\mathcal{A}$, define
+$$N = \binom{n_t}{t} + R, \qquad 0 \le R < \binom{n_t+1}{t} - \binom{n_t}{t}.$$
 
-$$S_{ij}(\mathcal{A}) = \{ S_{ij}(\alpha) : \alpha \in \mathcal{A} \},$$
+In particular, the defining inequality implies
 
-where $S_{ij}(\alpha)= (\alpha \setminus {j}) \cup {i}$ in the shiftable case, and $S_{ij}(\alpha)=\alpha$ otherwise. The same definition applies to $\mathcal{B}$.
+$$0 \le R < \binom{n_t+1}{t} - \binom{n_t}{t},$$
 
-Each shift preserves cardinality, since it replaces sets one-for-one without duplication. It also preserves the uniformity of set sizes.
+and since $\binom{n_t+1}{t} > \binom{n_t}{t}$, the increment $N \mapsto N+1$ changes $n_t$ only when $R$ reaches its maximum possible value before a carry into the next binomial threshold occurs.
 
-To verify preservation of cross-intersection, take $\alpha \in \mathcal{A}$ and $\beta \in \mathcal{B}$. If neither set is shifted, the intersection condition is unchanged. Suppose $\alpha$ is shifted to $\alpha' = S_{ij}(\alpha)$. If $j\notin \beta$, then any intersection point in $\alpha\cap\beta$ remains valid unless it was $j$, in which case $j\notin\beta$ rules this out. If $j\in\beta$, then either $j\in\alpha$, in which case $\alpha\cap\beta$ already contains $j$, or $j\notin\alpha$ but $i\in\beta$ or $i\notin\beta$. In all cases, replacing $j$ by $i$ in $\alpha$ cannot destroy all intersections, because any witness element of $\alpha\cap\beta$ different from $j$ remains unchanged, while if the only potential witness were $j$, then $j$ would lie in both sets and the intersection persists unless both shifts eliminate it simultaneously, which the definition of shifting prevents. The same argument applies symmetrically when $\beta$ is shifted.
+For $N+1$, there are two cases.
 
-Thus each shift $S_{ij}$ preserves cross-intersection of the pair $(\mathcal{A},\mathcal{B})$.
+If $R+1 < \binom{n_t+1}{t} - \binom{n_t}{t}$, then $N+1$ still lies in the same interval
 
-Repeated application of all shifts with $i<j$ eventually produces families that are stable under shifting, since each shift strictly decreases the sum of element values $\sum_{\alpha\in\mathcal{A}}\sum_{x\in\alpha} x$ unless the family is already left-compressed. The same holds for $\mathcal{B}$. Hence the process terminates at a pair of shifted families $(\mathcal{A}^_,\mathcal{B}^_)$ with $|\mathcal{A}^_|=M$ and $|\mathcal{B}^_|=N$, still cross-intersecting.
+$$\binom{n_t}{t} \le N+1 < \binom{n_t+1}{t},$$
 
-A standard characterization of fully shifted families in this setting, consistent with the lexicographic structure of Section 7.2.1.3, identifies $\mathcal{A}^_$ as the initial segment $Q^n_{M,s}$ and $\mathcal{B}^_$ as $Q^n_{N,t}$. Indeed, in the binary representation ordered lexicographically (or equivalently via the ordering of $c_t\cdots c_1$ described in Algorithm L), shifting forces each family to contain the earliest possible $s$- or $t$-combinations compatible with its size, which is exactly the definition of $Q^n_{M,s}$ and $Q^n_{N,t}$ in Theorem K.
+so κ_t(N+1) = n_t and therefore κ_t(N+1) - κ_t(N) = 0.
 
-Since cross-intersection is preserved throughout the shifting process, the terminal families $Q^n_{M,s}$ and $Q^n_{N,t}$ inherit the property that every $s$-combination in $Q^n_{M,s}$ intersects every $t$-combination in $Q^n_{N,t}$.
+If $R$ attains its maximal value compatible with $n_t$, then $N+1$ reaches the next binomial boundary, meaning
 
-This completes the proof. ∎
+$$N+1 = \binom{n_t+1}{t}.$$
+
+In this case the maximality property of κ_t forces
+
+$$\kappa_t(N+1) = n_t+1,$$
+
+since $\binom{n_t+1}{t}$ is the first value requiring a leading index larger than $n_t$ in the combinatorial representation.
+
+No larger jump can occur, since the defining inequality for κ_t shows that increasing $N$ by $1$ can cross at most one binomial threshold of the form $\binom{m}{t}$.
+
+Therefore,
+
+$$\kappa_t(N+1) - \kappa_t(N) =
+\begin{cases}
+1, & \text{if } N+1 = \binom{m}{t} \text{ for some } m,\\[4pt]
+0, & \text{otherwise}.
+\end{cases}$$
+
+Equivalently, the increment occurs exactly when $N+1$ is a $t$-th binomial coefficient in the Pascal triangle enumeration, and in all other cases the leading combinatorial index remains unchanged.
+
+$$\boxed{\kappa_t(N+1)-\kappa_t(N)\in\{0,1\},\ \text{equal to }1 \text{ iff } N+1=\binom{m}{t}\text{ for some }m.}$$
+
+This completes the solution. ∎
