@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2943 contests, 21360 problems, 11670 verified."
+description: "Codeforces problem solutions with full editorials. 2943 contests, 21361 problems, 11670 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2943 contests, 21360 problems, 11670 verified.**
+**2943 contests, 21361 problems, 11670 verified.**
 
-## Unknown — 743 contests, 6181 problems, 3612 verified
+## Unknown — 743 contests, 6182 problems, 3612 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102994](102994/) | [Moscow Pre-Finals Workshop 2020 - Legilimens+Coffee Chicken Contest (XX Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102994) | 13 | 0/13 | Special | - |
 | [103003](103003/) | [box 2020](https://codeforces.com/contest/103003) | 4 | 0/4 | Special | - |
 | [103031](103031/) | [Индивидуальная олимпиада школьников по информатике и программированию 2021](https://codeforces.com/contest/103031) | 5 | 0/5 | Special | - |
-| [103034](103034/) | [April Fools Contest 2021 Archive (ZS)](https://codeforces.com/contest/103034) | 6 | 0/6 | April Fools | - |
+| [103034](103034/) | [April Fools Contest 2021 Archive (ZS)](https://codeforces.com/contest/103034) | 7 | 0/7 | April Fools | - |
 | [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 12 | 2/12 | Special | - |
 | [103064](103064/) | [Вузовско-академическая олимпиада по информатике 2021](https://codeforces.com/contest/103064) | 7 | 6/7 | Special | - |
 | [103069](103069/) | [2020 ICPC Asia East Continent Final](https://codeforces.com/contest/103069) | 13 | 11/13 | ICPC/IOI | - |
