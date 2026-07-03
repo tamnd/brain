@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2903 contests, 20959 problems, 11586 verified."
+description: "Codeforces problem solutions with full editorials. 2904 contests, 20972 problems, 11587 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2903 contests, 20959 problems, 11586 verified.**
+**2904 contests, 20972 problems, 11587 verified.**
 
-## Unknown — 722 contests, 5960 problems, 3559 verified
+## Unknown — 723 contests, 5973 problems, 3560 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
 | [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
 | [103134](103134/) | [VI MaratonUSP Freshmen Contest](https://codeforces.com/contest/103134) | 10 | 1/10 | Special | - |
 | [103148](103148/) | [EGOI 2021 Day 1](https://codeforces.com/contest/103148) | 4 | 0/4 | Special | - |
