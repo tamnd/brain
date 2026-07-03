@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2906 contests, 20994 problems, 11590 verified."
+description: "Codeforces problem solutions with full editorials. 2907 contests, 21004 problems, 11598 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2906 contests, 20994 problems, 11590 verified.**
+**2907 contests, 21004 problems, 11598 verified.**
 
 ## Unknown — 725 contests, 5995 problems, 3563 verified
 
@@ -1687,7 +1687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 191 contests, 1427 problems, 581 verified
+## 2021 — 192 contests, 1437 problems, 589 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1823,6 +1823,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103114](103114/) | [The 2021 Hangzhou Normal U Summer Trials](https://codeforces.com/contest/103114) | 10 | 8/10 | Special | - |
 | [103136](103136/) | [Student programming contest in Penza](https://codeforces.com/contest/103136) | 9 | 0/9 | Special | - |
 | [103145](103145/) | [The 15th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/103145) | 13 | 12/13 | Special | - |
 | [103149](103149/) | [EGOI 2021 Day 2](https://codeforces.com/contest/103149) | 4 | 1/4 | Special | - |
