@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2824 contests, 20250 problems, 11395 verified."
+description: "Codeforces problem solutions with full editorials. 2825 contests, 20264 problems, 11408 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2824 contests, 20250 problems, 11395 verified.**
+**2825 contests, 20264 problems, 11408 verified.**
 
-## Unknown — 680 contests, 5608 problems, 3465 verified
+## Unknown — 681 contests, 5622 problems, 3478 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103438](103438/) | [2021 ICPC Southeastern Europe Regional Contest](https://codeforces.com/contest/103438) | 14 | 13/14 | ICPC/IOI | - |
 | [103439](103439/) | [XXII Open Cup, Grand Prix of Southeastern Europe](https://codeforces.com/contest/103439) | 14 | 1/14 | Special | - |
 | [103457](103457/) | [Интернет-олимпиады, Сезон 2021-2022, Вторая командная олимпиада](https://codeforces.com/contest/103457) | 10 | 0/10 | Special | - |
 | [103458](103458/) | [Интернет-олимпиады, Сезон 2021-2022, Третья командная олимпиада](https://codeforces.com/contest/103458) | 10 | 1/10 | Special | - |
