@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2889 contests, 20811 problems, 11539 verified."
+description: "Codeforces problem solutions with full editorials. 2890 contests, 20818 problems, 11545 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2889 contests, 20811 problems, 11539 verified.**
+**2890 contests, 20818 problems, 11545 verified.**
 
 ## Unknown — 717 contests, 5903 problems, 3544 verified
 
@@ -1679,7 +1679,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 182 contests, 1336 problems, 549 verified
+## 2021 — 183 contests, 1343 problems, 555 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1815,6 +1815,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103192](103192/) | [The 9-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/103192) | 7 | 6/7 | Special | - |
 | [103202](103202/) | [The 2020 ICPC Asia Shenyang Regional Programming Contest](https://codeforces.com/contest/103202) | 13 | 1/13 | ICPC/IOI | - |
 | [103256](103256/) | [2021, XIII Donald Knuth Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/103256) | 8 | 0/8 | Special | - |
 | [103269](103269/) | [UTPC Contest 09-03-21 Div. 2 (Beginner)](https://codeforces.com/contest/103269) | 9 | 0/9 | Div. 2 | - |
