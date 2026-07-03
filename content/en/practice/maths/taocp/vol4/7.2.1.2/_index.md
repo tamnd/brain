@@ -103,7 +103,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [83](83.md) |  [*22*] | medium | solved | 4m58s |
 | [84](84.md) |  [*20*] | medium | solved | 4m36s |
 | [85](85.md) | &#9654; [*25*] | medium | solved | 11m43s |
-| [86](86.md) |  [*20*] | medium | solved | 5m28s |
+| [86](86.md) |  [*20*] | medium | solved | 6m42s |
 | [87](87.md) |  [*20*] | medium | solved | 3m10s |
 | [88](88.md) |  [*21*] | medium | solved | 49s |
 | [89](89.md) | &#9654; [*M30*] | math-hard | verified | 1m33s |
