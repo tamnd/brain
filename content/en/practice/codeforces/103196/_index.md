@@ -1,22 +1,22 @@
 ---
 title: "2020-2021 Открытая олимпиада школьников по программированию, заочный этап"
-description: "9 problems from 2020-2021 Открытая олимпиада школьников по программированию, заочный этап (contest 103196), difficulty -. 1/9 solutions verified against sample I/O."
+description: "10 problems from 2020-2021 Открытая олимпиада школьников по программированию, заочный этап (contest 103196), difficulty -. 2/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103196
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 1
-total_solve_s: 580
-date: "2026-07-03T15:44:11+07:00"
+n_problems: 10
+n_verified: 2
+total_solve_s: 639
+date: "2026-07-03T15:48:40+07:00"
 weight: 103196
 draft: false
 ---
 
 # [2020-2021 Открытая олимпиада школьников по программированию, заочный этап](https://codeforces.com/contest/103196)
 
-Special | 9 problems | 1/9 verified | Difficulty - | 9m 40s
+Special | 10 problems | 2/10 verified | Difficulty - | 10m 39s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 9 problems | 1/9 verified | Difficulty - | 9m 40s
 | [F](F/) | [\u0424\u0443\u0442\u0431\u043e\u043b\u043a\u0438 \u043d\u0430 \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0443](https://codeforces.com/problemset/problem/103196/F) |  |  |  | 2m 27s |  |
 | [G](G/) | [\u0422\u0438\u0440](https://codeforces.com/problemset/problem/103196/G) |  |  |  | 27s |  |
 | [H](H/) | [\u0423\u043a\u0440\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043e\u043c\u0430](https://codeforces.com/problemset/problem/103196/H) |  |  |  | 27s |  |
+| [I](I/) | [\u0414\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u043f\u043e\u0441\u044b\u043b\u043e\u043a](https://codeforces.com/problemset/problem/103196/I) |  |  |  | 59s | ✓ |
 | [J](J/) | [\u0422\u0430\u0440\u0430\u043a\u0430\u043d\u044b \u043e\u0431\u0449\u0435\u0436\u0438\u0442\u0438\u044f](https://codeforces.com/problemset/problem/103196/J) |  |  |  | 47s | ✓ |
