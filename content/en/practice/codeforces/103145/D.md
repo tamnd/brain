@@ -1,43 +1,32 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 24"
-description: "Let $\\mathcal{A}$ be a family of $s$-combinations and $\\mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,\\dots,n-1}$ with $n\\ge s+t$."
-date: "2026-07-03T12:10:32+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 24
-rating: "M25"
-category: "math-medium"
-recommended: true
+title: "CF 103145D - Lowbit"
+description: "Let $mathcal{A}$ be a family of $s$-combinations and $mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,dots,n-1}$ with $nge s+t$."
+date: "2026-07-03T19:14:01+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103145
+codeforces_index: "D"
+codeforces_contest_name: "The 15th Chinese Northeast Collegiate Programming Contest"
+rating: 0
+weight: 103145
+solve_time_s: 151
 verified: false
-solve_time_s: 450
-weight: 7020103024
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103145D - Lowbit](https://codeforces.com/problemset/problem/103145/D)
 
-**Exercise 24.** &#9654; [*M25*] [M25] (W. H. Payne, 1974.) Continuing the previous exercise, let jk be the value
-of j on the kth visit by Algorithm R. Show that |jk+1 −jk| ≤2, and explain how to
-make the algorithm loopless by exploiting this property.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 31s  
 **Verified:** no  
-**Solve time:** 7m30s  
 
----
-
+## Solution
 ## Solution
 
 Let $\mathcal{A}$ be a family of $s$-combinations and $\mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,\dots,n-1}$ with $n\ge s+t$. The cross-intersection hypothesis states that
 
-$$
-\alpha \cap \beta \ne \varnothing \quad \text{for all } \alpha \in \mathcal{A}, \ \beta \in \mathcal{B}.
-$$
+$$\alpha \cap \beta \ne \varnothing \quad \text{for all } \alpha \in \mathcal{A}, \ \beta \in \mathcal{B}.$$
 
 Theorem K introduces the families $Q^n_{M,s}$ and $Q^n_{N,t}$ as the initial segments of size $M$ and $N$ respectively in the standard ordering of $s$- and $t$-combinations, equivalently the lexicographically first $M$ and $N$ elements in the ordering induced by the binary or colexicographic representation described in Section 7.2.1.3.
 
@@ -45,9 +34,7 @@ The proof proceeds by showing that the cross-intersection property is preserved 
 
 Fix indices $0\le i<j\le n-1$. Define the $(i,j)$-shift on an $s$-set $\alpha$ by replacing $j$ with $i$ whenever $j\in \alpha$, $i\notin \alpha$, and the resulting set is not already present in the family. Formally, for a family $\mathcal{A}$, define
 
-$$
-S_{ij}(\mathcal{A}) = \{ S_{ij}(\alpha) : \alpha \in \mathcal{A} \},
-$$
+$$S_{ij}(\mathcal{A}) = \{ S_{ij}(\alpha) : \alpha \in \mathcal{A} \},$$
 
 where $S_{ij}(\alpha)= (\alpha \setminus {j}) \cup {i}$ in the shiftable case, and $S_{ij}(\alpha)=\alpha$ otherwise. The same definition applies to $\mathcal{B}$.
 
