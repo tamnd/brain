@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 7
-total_solve_s: 496
-date: "2026-07-02T22:42:05+07:00"
+total_solve_s: 620
+date: "2026-07-02T22:43:38+07:00"
 weight: 103964
 draft: false
 ---
 
 # [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964)
 
-Special | 11 problems | 7/11 verified | Difficulty - | 8m 16s
+Special | 11 problems | 7/11 verified | Difficulty - | 10m 20s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,5 @@ Special | 11 problems | 7/11 verified | Difficulty - | 8m 16s
 | [G](G/) | [Ancient Go](https://codeforces.com/problemset/problem/103964/G) |  |  |  | 54s | ✓ |
 | [H](H/) | [Sudoku](https://codeforces.com/problemset/problem/103964/H) |  |  |  | 48s | ✓ |
 | [I](I/) | [Mahjong](https://codeforces.com/problemset/problem/103964/I) |  |  |  | 35s |  |
-| [J](J/) | [Walk Around The Campsite](https://codeforces.com/problemset/problem/103964/J) |  |  |  | 33s |  |
+| [J](J/) | [Walk Around The Campsite](https://codeforces.com/problemset/problem/103964/J) |  |  |  | 2m 37s |  |
 | [K](K/) | [Game Rooms](https://codeforces.com/problemset/problem/103964/K) |  |  |  | 30s |  |
