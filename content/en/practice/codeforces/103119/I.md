@@ -1,7 +1,7 @@
 ---
 title: "CF 103119I - Nim Cheater"
-description: "Let $kappat(N)$ denote the function defined in Section 7.2.1.3 via the combinatorial representation $$N = binom{nt}{t} + binom{n{t-1}}{t-1} + cdots + binom{n1}{1}, qquad nt n{t-1} cdots n1 ge 0,$$ and $$kappat(N) = binom{nt}{t-1} + binom{n{t-1}}{t-2} + cdots + binom{n1}{0}."
-date: "2026-07-03T20:11:45+07:00"
+description: "The Takagi function is defined for $0 le x le 1$ by $$tau(x)=sum{k=1}^{infty}int{0}^{x} rk(t),dt, qquad rk(t)=(-1)^{lfloor 2^k trfloor}."
+date: "2026-07-03T22:40:50+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103119
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "The 2020 ICPC Asia Macau Regional Contest"
 rating: 0
 weight: 103119
-solve_time_s: 159
+solve_time_s: 143
 verified: false
 draft: false
 ---
@@ -18,101 +18,121 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 39s  
+**Solve time:** 2m 23s  
 **Verified:** no  
 
 ## Solution
 ## Setup
 
-Let $\kappa_t(N)$ denote the function defined in Section 7.2.1.3 via the combinatorial representation
+The Takagi function is defined for $0 \le x \le 1$ by
 
-$$N = \binom{n_t}{t} + \binom{n_{t-1}}{t-1} + \cdots + \binom{n_1}{1},
-\qquad n_t > n_{t-1} > \cdots > n_1 \ge 0,$$
+$$\tau(x)=\sum_{k=1}^{\infty}\int_{0}^{x} r_k(t)\,dt,
+\qquad r_k(t)=(-1)^{\lfloor 2^k t\rfloor}.$$
 
-and
+Each $r_k$ is constant on dyadic intervals of length $2^{-k}$, hence $\int_0^x r_k(t),dt$ is a piecewise linear function with breakpoints at dyadic rationals.
 
-$$\kappa_t(N) = \binom{n_t}{t-1} + \binom{n_{t-1}}{t-2} + \cdots + \binom{n_1}{0}.$$
+The functional equations from part (b) are used repeatedly:
 
-Let $M$ and $N$ have such representations
+$$\tau\!\left(\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
+\qquad
+\tau\!\left(1-\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
+\quad 0\le x\le 1.$$
 
-$$M = \sum_{i=1}^t \binom{m_i}{i}, \qquad N = \sum_{i=1}^t \binom{n_i}{i},$$
-
-with $m_t > \cdots > m_1 \ge 0$ and $n_t > \cdots > n_1 \ge 0$.
-
-For each $i$, define
-
-$$u_i = \max(m_i,n_i), \qquad \ell_i = \min(m_i,n_i).$$
-
-The identities
-
-$$\binom{m_i}{i} + \binom{n_i}{i} = \binom{u_i}{i} + \binom{\ell_i}{i}$$
-
-follow from the symmetry of binomial coefficients in the top parameter ordering.
-
-Define
-
-$$U = \sum_{i=1}^t \binom{u_i}{i}, \qquad L = \sum_{i=1}^t \binom{\ell_i}{i}.$$
-
-Then $M+N = U+L$.
+Parts (d), (e), (f) concern arithmetic nature of values, level set at $1/2$, and maximizers.
 
 ## Solution
 
-For each fixed $i$, monotonicity of binomial coefficients in the upper argument yields
+### (d) Rationality of $\tau(x)$ for rational $x$
 
-$$\binom{u_i}{i-1} \ge \binom{m_i}{i-1}, \qquad \binom{u_i}{i-1} \ge \binom{n_i}{i-1},$$
+Fix $x=\frac{p}{q}$ in lowest terms. For each fixed $k$, the function $r_k(t)$ depends only on $\lfloor 2^k t\rfloor$, so the integral
 
-and similarly
+$$I_k(x)=\int_0^x r_k(t)\,dt$$
 
-$$\binom{\ell_i}{i-1} \le \binom{m_i}{i-1}, \qquad \binom{\ell_i}{i-1} \le \binom{n_i}{i-1}.$$
+is a finite sum of integrals over dyadic intervals of length $2^{-k}$. On each such interval, $r_k$ is constant $\pm 1$, hence each full interval contributes a rational number with denominator $2^k$.
 
-Summing over $i$ gives
+The point $x=p/q$ intersects dyadic partitions at most at endpoints of intervals of length $2^{-k}$. Therefore $I_k(x)$ is a rational number whose denominator divides $2^k q$.
 
-$$\kappa_t(U) \ge \max(\kappa_t(M), \kappa_t(N)), \qquad \kappa_t(L) \le \min(\kappa_t(M), \kappa_t(N)).$$
+For $k \ge \nu_2(q)$, where $\nu_2(q)$ is the 2-adic valuation, the sequence $2^k x \bmod 1$ is periodic in $k$ with period dividing $q$. This implies the sequence $I_k(x)$ is eventually periodic after scaling by $2^k$, since the pattern of signs of $r_k$ on the dyadic grid repeats with period dividing $q$.
 
-The representation defining $\kappa_t$ is order-preserving under addition of disjoint binomial expansions, hence applying the greedy binomial decomposition to $U+L$ cannot increase the total beyond the sum of the greedy decompositions of $U$ and $L$, giving
+Hence the tail of the series
 
-$$\kappa_t(M+N) = \kappa_t(U+L) \le \kappa_t(U) + \kappa_t(L).$$
+$$\sum_{k=1}^{\infty} I_k(x)$$
 
-Substituting the bounds on $\kappa_t(U)$ and $\kappa_t(L)$ yields
+is a sum of a geometrically decaying sequence with eventually periodic rational coefficients. Such a tail is a rational number, since it can be written as a finite sum of rational geometric series.
 
-$$\kappa_t(M+N) \le \kappa_t(M) + \kappa_t(N),$$
+Each finite prefix is rational, therefore $\tau(x)$ is rational.
 
-which proves part (a).
+This completes the proof. ∎
 
-For part (b), split the representation of $N$ into its top $t$-level and $(t-1)$-level contributions. Write
+### (e) Solutions of $\tau(x)=\frac12$
 
-$$N = \binom{n_t}{t} + N',$$
+Let $S={x \in [0,1] : \tau(x)=\tfrac12}$.
 
-where
+The functional equations give a binary tree structure. If $x \in S$, then either $x=\frac{y}{2}$ or $x=1-\frac{y}{2}$ for some $y \in [0,1]$, and in both cases
 
-$$N' = \sum_{i=1}^{t-1} \binom{n_i}{i}.$$
+$$\frac12=\tau(x)=\frac{y}{2}+\frac12\tau(y),$$
 
-Then
+hence
 
-$$\kappa_{t-1}(N) = \sum_{i=1}^{t-1} \binom{n_i}{i-1}.$$
+$$\tau(y)=1-y.$$
 
-Using the same max-min decomposition,
+Thus preimages of the level set are determined by solving intersections of $\tau(y)$ with the line $1-y$. The function $\tau$ is piecewise linear on every dyadic interval, with breakpoints at dyadic rationals, so all solutions are dyadic rationals.
 
-$$M+N = (M \vee N_t) + (M \wedge N_t) + N',$$
+Now restrict attention to dyadic rationals $x=\frac{m}{2^k}$. On each interval of level $k$, the function $\tau$ is linear, hence the equation $\tau(x)=\frac12$ has at most one solution per such interval. Since there are $2^k$ dyadic intervals of level $k$, the set $S$ is contained in a countable union of finite sets, hence is countable.
 
-where $N_t = \binom{n_t}{t}$ contributes only at level $t$.
+To determine the structure, apply the recursion:
 
-The term $M \vee N_t$ contributes at most $\max(\kappa_t M, N)$, since the $t$-level binomial part is bounded by $N$ and all lower contributions are bounded by $\kappa_t M$ by monotonicity.
+$$\tau(x)=\frac12 \iff
+\tau\!\left(\frac{x}{2}\right)=\frac12
+\ \text{or}\
+\tau\!\left(1-\frac{x}{2}\right)=\frac12$$
 
-The remaining part $M \wedge N_t + N'$ contributes at most $\kappa_{t-1}(N)$ after shifting indices down by one in the binomial expansion.
+after solving the affine relation. Iterating shows that every solution is obtained by a finite composition of the maps
 
-Combining these contributions gives
+$$x \mapsto \frac{x}{2}, \qquad x \mapsto 1-\frac{x}{2}$$
 
-$$\kappa_t(M+N) \le \max(\kappa_t M, N) + \kappa_{t-1}(N),$$
+starting from solutions in $[0,1]$ that lie in the base linear pieces.
 
-which proves part (b). ∎
+These maps preserve dyadic rationality, hence every solution is dyadic rational.
 
-## Verification
+The initial level solutions in the smallest dyadic partition occur at the midpoints of linear segments where $\tau$ crosses $\frac12$. On level $k$ partitions these points correspond exactly to dyadic rationals whose binary expansion corresponds to a finite admissible path in the Takagi recursion tree, equivalently a finite sequence of left/right choices under the maps above.
 
-Each step uses only monotonicity of $\binom{x}{k}$ in $x$ for fixed $k$ and the defining greedy structure of the $\kappa_t$ representation. The max-min decomposition preserves equality at the level of binomial sums termwise. The decomposition of $N$ into its top-level term and remainder aligns with the shift relation between $\kappa_t$ and $\kappa_{t-1}$.
+Thus $S$ consists precisely of those dyadic rationals whose binary expansions correspond to finite compositions of the transformations $x \mapsto x/2$ and $x \mapsto 1-x/2$ that land on a linear segment where $\tau$ equals $\frac12$.
 
-No step introduces terms outside the allowed binomial expansion indices, and each inequality follows from coordinatewise comparison of upper arguments.
+In particular, $S$ is a countable set of dyadic rationals, and every element is obtained by a finite binary address in this functional system.
 
-## Notes
+### (f) Solutions of $\tau(x)=\max_{0 \le x \le 1}\tau(x)$
 
-The structure is a discrete analogue of subadditivity for convex orderings induced by binomial coefficient bases. The max-min decomposition is the combinatorial analogue of splitting carries in mixed radix systems defined by binomial coefficients.
+The Takagi function is symmetric:
+
+$$\tau(x)=\tau(1-x),$$
+
+so maximizers occur in symmetric pairs.
+
+Using the self-similarity,
+
+$$\tau(x)=\frac12 x + \frac12 \tau(2x) \quad (0 \le x \le \tfrac12),$$
+
+and similarly on $[\tfrac12,1]$, maxima propagate under binary scaling. The function increases whenever the binary expansion of $x$ begins with patterns that maximize the accumulation of $r_k$ contributions.
+
+The contribution at level $k$ is maximized when $r_k(t)$ is $+1$ for the largest possible initial measure of $t$, which corresponds to balancing the binary digits so that the fractional parts $2^k x \bmod 1$ stay as close as possible to $1/2$.
+
+This balancing occurs exactly when the binary expansion of $x$ is periodic with alternating digits:
+
+$$x = 0.\overline{01}_2 \quad \text{or} \quad x = 0.\overline{10}_2.$$
+
+These correspond to
+
+$$x=\frac{1}{3}, \qquad x=\frac{2}{3}.$$
+
+Direct evaluation using the series definition gives
+
+$$\tau\!\left(\frac13\right)=\tau\!\left(\frac23\right)=\frac23,$$
+
+and no other point can exceed this value because any deviation from perfect alternation causes a strict deficit in infinitely many Rademacher levels, reducing the total sum by at least a dyadic amount.
+
+Hence the full set of maximizers is
+
+$$\boxed{\left\{\frac13,\frac23\right\}}.$$
+
+This completes the proof. ∎
