@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2901 contests, 20938 problems, 11576 verified."
+description: "Codeforces problem solutions with full editorials. 2905 contests, 20983 problems, 11589 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2901 contests, 20938 problems, 11576 verified.**
+**2905 contests, 20983 problems, 11589 verified.**
 
-## Unknown — 720 contests, 5939 problems, 3549 verified
+## Unknown — 724 contests, 5984 problems, 3562 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103117](103117/) | [The 2021 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/103117) | 11 | 2/11 | Special | - |
+| [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
+| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
+| [103134](103134/) | [VI MaratonUSP Freshmen Contest](https://codeforces.com/contest/103134) | 10 | 1/10 | Special | - |
 | [103148](103148/) | [EGOI 2021 Day 1](https://codeforces.com/contest/103148) | 4 | 0/4 | Special | - |
 | [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
 | [103185](103185/) | [2020-2021 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103185) | 14 | 2/14 | ICPC/IOI | - |
