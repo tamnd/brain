@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2849 contests, 20457 problems, 11478 verified."
+description: "Codeforces problem solutions with full editorials. 2855 contests, 20528 problems, 11501 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,16 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2849 contests, 20457 problems, 11478 verified.**
+**2855 contests, 20528 problems, 11501 verified.**
 
-## Unknown — 694 contests, 5706 problems, 3503 verified
+## Unknown — 698 contests, 5755 problems, 3516 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103361](103361/) | [Открытая Командная Олимпиада ЮМШ по программированию](https://codeforces.com/contest/103361) | 15 | 11/15 | Special | - |
+| [103367](103367/) | [Интернет-олимпиады, Сезон 2021-2022, Первая командная олимпиада](https://codeforces.com/contest/103367) | 10 | 0/10 | Special | - |
+| [103371](103371/) | [XXII Open Cup, Grand Prix of Korea](https://codeforces.com/contest/103371) | 13 | 2/13 | Special | - |
+| [103372](103372/) | [XXII Open Cup, Grand Prix of Korea (Division 2)](https://codeforces.com/contest/103372) | 11 | 0/11 | Special | - |
 | [103382](103382/) | [Школьный этап ВСОШ по информатике для 9 - 11 классов (3 группа регионов)](https://codeforces.com/contest/103382) | 0 | 0/0 | Special | - |
 | [103383](103383/) | [Школьный этап ВСОШ по информатике 9-11 класс  2021 (4 группа регионов)](https://codeforces.com/contest/103383) | 0 | 0/0 | Special | - |
 | [103384](103384/) | [Школьный этап ВСОШ по информатике 9-11 класс 2021 (2 группа регионов)](https://codeforces.com/contest/103384) | 0 | 0/0 | Special | - |
@@ -1656,7 +1660,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 165 contests, 1179 problems, 529 verified
+## 2021 — 167 contests, 1201 problems, 539 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1792,6 +1796,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103366](103366/) | [2021 Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/103366) | 12 | 8/12 | Special | - |
+| [103369](103369/) | [Moscow team olympiad 2021](https://codeforces.com/contest/103369) | 10 | 2/10 | Special | - |
 | [103373](103373/) | [2021 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/103373) | 10 | 8/10 | ICPC/IOI | - |
 | [103379](103379/) | [UTPC Contest 10-29-21 Div. 1 (Advanced)](https://codeforces.com/contest/103379) | 8 | 1/8 | Div. 1 | - |
 | [103380](103380/) | [UTPC Contest 10-29-21 Div. 2 (Beginner)](https://codeforces.com/contest/103380) | 8 | 1/8 | Div. 2 | - |

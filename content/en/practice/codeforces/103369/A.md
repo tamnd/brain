@@ -1,42 +1,32 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 88"
-description: "Let $C(n,t,m)$ denote the graph whose vertices are all $t$-combinations $c_t\\ldots c_1$ with n>c_t>\\cdots>c_1\\ge 0,\\qquad c_t-c_1<m, and in which two vertices are adjacent when they differ in exactly..."
-date: "2026-07-03T05:40:59+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 88
-rating: "21"
-category: "medium"
-recommended: false
+title: "CF 103369A - Frog traveler"
+description: "Let $C(n,t,m)$ denote the graph whose vertices are all $t$-combinations $ctldots c1$ with $$nctcdotsc1ge 0,qquad ct-c1<m,$$ and in which two vertices are adjacent when they differ in exactly one entry, that is, one replacement $cj leftarrow cj'$ preserves strict increase and the…"
+date: "2026-07-03T12:52:00+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103369
+codeforces_index: "A"
+codeforces_contest_name: "Moscow team olympiad 2021"
+rating: 0
+weight: 103369
+solve_time_s: 172
 verified: false
-solve_time_s: 408
-weight: 7020102088
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103369A - Frog traveler](https://codeforces.com/problemset/problem/103369/A)
 
-**Exercise 88.** [*21*] [21] Show that Algorithm V can be used to generate all ways to partition the
-digits {0, 1, . . . , 9} into two 3-element sets and two 2-element sets.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 52s  
 **Verified:** no  
-**Solve time:** 6m48s  
 
----
-
+## Solution
 ## Solution
 
 Let $C(n,t,m)$ denote the graph whose vertices are all $t$-combinations $c_t\ldots c_1$ with
 
-$$
-n>c_t>\cdots>c_1\ge 0,\qquad c_t-c_1<m,
-$$
+$$n>c_t>\cdots>c_1\ge 0,\qquad c_t-c_1<m,$$
 
 and in which two vertices are adjacent when they differ in exactly one entry, that is, one replacement $c_j \leftarrow c_j'$ preserves strict increase and the span constraint.
 
@@ -46,33 +36,23 @@ Write $n=s+t$ only for consistency with Section 7.2.1.3 notation; here $t=4$ is 
 
 Define the gap variables
 
-$$
-g_1=c_1,\qquad g_2=c_2-c_1,\qquad g_3=c_3-c_2,\qquad g_4=c_4-c_3,
-$$
+$$g_1=c_1,\qquad g_2=c_2-c_1,\qquad g_3=c_3-c_2,\qquad g_4=c_4-c_3,$$
 
 and the remaining slack
 
-$$
-g_5=(m-1)-(c_4-c_1).
-$$
+$$g_5=(m-1)-(c_4-c_1).$$
 
 The strict inequalities imply
 
-$$
-g_1\ge 0,\qquad g_2,g_3,g_4\ge 1,
-$$
+$$g_1\ge 0,\qquad g_2,g_3,g_4\ge 1,$$
 
 and the span condition is equivalent to
 
-$$
-g_5\ge 1.
-$$
+$$g_5\ge 1.$$
 
 Moreover,
 
-$$
-g_1+g_2+g_3+g_4+g_5=m-1.
-$$
+$$g_1+g_2+g_3+g_4+g_5=m-1.$$
 
 Thus each valid chord corresponds bijectively to a composition of $m-1$ into five parts with lower bounds $(0,1,1,1,1)$.
 
@@ -82,9 +62,7 @@ A single replacement $c_j\leftarrow c_j\pm 1$ changes exactly one of the gaps $g
 
 Let $G(m)$ be the graph of all integer vectors
 
-$$
-(g_1,g_2,g_3,g_4,g_5)
-$$
+$$(g_1,g_2,g_3,g_4,g_5)$$
 
 satisfying the above constraints and sum $m-1$, with adjacency given by transferring $1$ between coordinates while preserving bounds.
 
@@ -100,9 +78,7 @@ Thus the restricted graph $G(m)$ remains connected and inherits a Hamiltonian pa
 
 For both parameter sets,
 
-$$
-(m,n)=(8,52)\quad\text{and}\quad (13,88),
-$$
+$$(m,n)=(8,52)\quad\text{and}\quad (13,88),$$
 
 the value of $m$ only constrains the slack coordinate and does not affect the existence of the composition Gray code, which depends only on the fixed dimension $5$.
 
@@ -114,9 +90,7 @@ Under the inverse map from $(g_1,\dots,g_5)$ to $(c_1,c_2,c_3,c_4)$, each transf
 
 A Hamiltonian path exists in $C(n,4,m)$ for every $m\ge 5$ and all sufficiently large $n$ supporting the values $c_4<m+n-1$, hence in particular for both
 
-$$
-m=8,\ n=52\qquad\text{and}\qquad m=13,\ n=88.
-$$
+$$m=8,\ n=52\qquad\text{and}\qquad m=13,\ n=88.$$
 
 Therefore a piano player can traverse all 4-note chords spanning less than one octave (in both the diatonic and chromatic cases) by changing one finger at a time.
 
