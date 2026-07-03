@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 72"
-description: "Let the multiset be $\\{s_0 \\cdot 0,\\; s_1 \\cdot 1,\\; \\ldots,\\; s_d \\cdot d\\}, \\qquad s_0 + s_1 + \\cdots + s_d = n.$ Let $V$ be the set of all distinct permutations of this multiset."
-date: "2026-07-03T03:45:27+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 72
-rating: "M21"
-category: "math-medium"
-recommended: false
+title: "CF 103414K - Work or Sleep!"
+description: "Let the multiset be ${s0 cdot 0,; s1 cdot 1,; ldots,; sd cdot d}, qquad s0 + s1 + cdots + sd = n.$ Let $V$ be the set of all distinct permutations of this multiset."
+date: "2026-07-03T10:45:25+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103414
+codeforces_index: "K"
+codeforces_contest_name: "2021-2022 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 21)"
+rating: 0
+weight: 103414
+solve_time_s: 71
 verified: false
-solve_time_s: 261
-weight: 7020102072
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103414K - Work or Sleep!](https://codeforces.com/problemset/problem/103414/K)
 
-**Exercise 72.** [*M21*] [M21] Given a Cayley graph with generators (α1, . . . , αk), assume that each αj
-takes x →
-y. (For example, both σ and τ in exercise 71 take 1 →
-2.) Prove that any
-Hamiltonian path starting at 12 . . . n in G must end at a permutation that takes y →
-x.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 11s  
 **Verified:** no  
-**Solve time:** 4m21s  
 
----
-
+## Solution
 ## Setup
 
 Let the multiset be

@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 73"
-description: "Let $G$ be the Cayley graph whose vertices are the $N$ permutations of the multiset ${s_0\\cdot 0,\\dots,s_d\\cdot d}$ and whose edges correspond to adjacent interchanges $a_{\\delta_k}\\leftrightarrow a_{..."
-date: "2026-07-03T03:52:22+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-hard"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 73
-rating: "M30"
-category: "math-hard"
-recommended: true
+title: "CF 103411B - \u041a\u043e\u0434 \u043e\u0442 \u0441\u0435\u0439\u0444\u0430"
+description: "Let $G$ be the Cayley graph whose vertices are the $N$ permutations of the multiset ${s0cdot 0,dots,sdcdot d}$ and whose edges correspond to adjacent interchanges $a{deltak}leftrightarrow a{deltak-1}$."
+date: "2026-07-03T10:56:44+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103411
+codeforces_index: "B"
+codeforces_contest_name: "2020-2021, ICPC, East Siberian Regional Contest"
+rating: 0
+weight: 103411
+solve_time_s: 94
 verified: false
-solve_time_s: 414
-weight: 7020102073
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103411B - \u041a\u043e\u0434 \u043e\u0442 \u0441\u0435\u0439\u0444\u0430](https://codeforces.com/problemset/problem/103411/B)
 
-**Exercise 73.** &#9654; [*M30*] [M30] Let α, β, and σ be permutations of a set X, where X = A ∪B. Assume
-that xσ = xα when x ∈A and xσ = xβ when x ∈B, and that the order of αβ−is odd.
-a) Prove that all three permutations α, β, σ have the same sign; that is, they are all
-even or all odd. Hint: A permutation has odd order if and only if its cycles all
-have odd length.
-b) Derive Theorem R from part (a).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 34s  
 **Verified:** no  
-**Solve time:** 6m54s  
 
----
-
+## Solution
 Let $G$ be the Cayley graph whose vertices are the $N$ permutations of the multiset ${s_0\cdot 0,\dots,s_d\cdot d}$ and whose edges correspond to adjacent interchanges $a_{\delta_k}\leftrightarrow a_{\delta_k-1}$. Each edge connects two permutations that differ by one adjacent swap, hence changes the inversion number by $\pm 1$, so $G$ is bipartite with bipartition given by even and odd inversion parity.
 
 Let $N_e$ and $N_o$ denote the numbers of even and odd vertices. The hypothesis states
