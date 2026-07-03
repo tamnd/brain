@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2860 contests, 20561 problems, 11503 verified."
+description: "Codeforces problem solutions with full editorials. 2865 contests, 20604 problems, 11524 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2860 contests, 20561 problems, 11503 verified.**
+**2865 contests, 20604 problems, 11524 verified.**
 
-## Unknown — 702 contests, 5778 problems, 3518 verified
+## Unknown — 705 contests, 5807 problems, 3537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
+| [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 11 | 9/11 | Special | - |
+| [103329](103329/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Open Cup, Grand Prix of XiAn)](https://codeforces.com/contest/103329) | 11 | 9/11 | Special | - |
 | [103351](103351/) | [SDU Open 2021 Fall](https://codeforces.com/contest/103351) | 10 | 1/10 | Special | - |
 | [103358](103358/) | [Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада](https://codeforces.com/contest/103358) | 4 | 0/4 | Special | - |
 | [103359](103359/) | [Интернет-олимпиады, Сезон 2020-2021, Третья личная олимпиада](https://codeforces.com/contest/103359) | 4 | 1/4 | Special | - |
@@ -1664,7 +1667,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 168 contests, 1211 problems, 539 verified
+## 2021 — 170 contests, 1225 problems, 541 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1800,6 +1803,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103336](103336/) | [OPEI 2021 - Senior](https://codeforces.com/contest/103336) | 4 | 0/4 | Special | - |
+| [103347](103347/) | [UTPC Contest 10-15-21 Div. 2 (Beginner)](https://codeforces.com/contest/103347) | 10 | 2/10 | Div. 2 | - |
 | [103348](103348/) | [UTPC Contest 10-15-21 Div. 1 (Advanced)](https://codeforces.com/contest/103348) | 10 | 0/10 | Div. 1 | - |
 | [103366](103366/) | [2021 Jiangxi Provincial Collegiate Programming Contest](https://codeforces.com/contest/103366) | 12 | 8/12 | Special | - |
 | [103369](103369/) | [Moscow team olympiad 2021](https://codeforces.com/contest/103369) | 10 | 2/10 | Special | - |
