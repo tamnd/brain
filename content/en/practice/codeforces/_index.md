@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2896 contests, 20892 problems, 11558 verified."
+description: "Codeforces problem solutions with full editorials. 2896 contests, 20894 problems, 11558 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2896 contests, 20892 problems, 11558 verified.**
+**2896 contests, 20894 problems, 11558 verified.**
 
-## Unknown — 719 contests, 5929 problems, 3546 verified
+## Unknown — 719 contests, 5931 problems, 3546 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,8 +22,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103194](103194/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 1](https://codeforces.com/contest/103194) | 4 | 0/4 | Special | - |
 | [103195](103195/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 2](https://codeforces.com/contest/103195) | 4 | 1/4 | Special | - |
 | [103196](103196/) | [2020-2021 Открытая олимпиада школьников по программированию, заочный этап](https://codeforces.com/contest/103196) | 10 | 2/10 | Special | - |
-| [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 4 | 0/4 | Special | - |
-| [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 4 | 0/4 | Special | - |
+| [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 5 | 0/5 | Special | - |
+| [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 5 | 0/5 | Special | - |
 | [103230](103230/) | [Moving intervals for packing and covering](https://codeforces.com/contest/103230) | 2 | 0/2 | Special | - |
 | [103241](103241/) | [Teamscode Summer 2021](https://codeforces.com/contest/103241) | 25 | 2/25 | Special | - |
 | [103260](103260/) | [2020-2021 Winter Petrozavodsk Camp, Day 5: Almost Retired Dandelion Contest (XXI Open Cup, Grand Prix of Nizhny Novgorod)](https://codeforces.com/contest/103260) | 13 | 1/13 | Special | - |

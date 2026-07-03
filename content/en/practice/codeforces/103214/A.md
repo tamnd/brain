@@ -1,24 +1,24 @@
 ---
-title: "CF 103218A - Atrapasuenos"
+title: "CF 103214A - Factorial"
 description: "Let $A$ be a family of $t$-combinations, and let $partial A$ denote its shadow, the family of all $(t-1)$-combinations contained in members of $A$."
-date: "2026-07-03T17:38:55+07:00"
+date: "2026-07-03T17:36:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103218
+codeforces_contest: 103214
 codeforces_index: "A"
-codeforces_contest_name: "XXV Spain Olympiad in Informatics, Day 2"
+codeforces_contest_name: "XXV Spain Olympiad in Informatics, Day 1"
 rating: 0
-weight: 103218
-solve_time_s: 147
+weight: 103214
+solve_time_s: 151
 verified: false
 draft: false
 ---
 
-[CF 103218A - Atrapasuenos](https://codeforces.com/problemset/problem/103218/A)
+[CF 103214A - Factorial](https://codeforces.com/problemset/problem/103214/A)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 27s  
+**Solve time:** 2m 31s  
 **Verified:** no  
 
 ## Solution
