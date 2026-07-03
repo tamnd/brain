@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2854 contests, 20513 problems, 11490 verified."
+description: "Codeforces problem solutions with full editorials. 2855 contests, 20528 problems, 11501 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2854 contests, 20513 problems, 11490 verified.**
+**2855 contests, 20528 problems, 11501 verified.**
 
-## Unknown — 697 contests, 5740 problems, 3505 verified
+## Unknown — 698 contests, 5755 problems, 3516 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103361](103361/) | [Открытая Командная Олимпиада ЮМШ по программированию](https://codeforces.com/contest/103361) | 15 | 11/15 | Special | - |
 | [103367](103367/) | [Интернет-олимпиады, Сезон 2021-2022, Первая командная олимпиада](https://codeforces.com/contest/103367) | 10 | 0/10 | Special | - |
 | [103371](103371/) | [XXII Open Cup, Grand Prix of Korea](https://codeforces.com/contest/103371) | 13 | 2/13 | Special | - |
 | [103372](103372/) | [XXII Open Cup, Grand Prix of Korea (Division 2)](https://codeforces.com/contest/103372) | 11 | 0/11 | Special | - |
