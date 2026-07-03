@@ -1,7 +1,7 @@
 ---
 title: "CF 102992A - Ah, It's Yesterday Once More"
-description: "Let $T(l,m)$ denote the two-dimensional torus with vertex set $mathbb{Z}l times mathbb{Z}m$, where adjacency is defined by $(i,j) sim (i',j') quad text{iff} quad i' equiv i pm 1 pmod l text{and} j'=j, text{or} j' equiv j pm 1 pmod m text{and} i'=i."
-date: "2026-07-04T02:42:57+07:00"
+description: "The representation (57) expresses a positive integer $N$ in degree-$t$ combinatorial form by selecting an index $v$ such that $$binom{n}{t} N ge binom{n}{t} - binom{v}{t},$$ and then writing $N$ as a sum of binomial coefficients with decreasing upper indices."
+date: "2026-07-04T04:42:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 153
+solve_time_s: 152
 verified: false
 draft: false
 ---
@@ -18,58 +18,60 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 33s  
+**Solve time:** 2m 32s  
 **Verified:** no  
 
 ## Solution
 ## Solution
 
-Let $T(l,m)$ denote the two-dimensional torus with vertex set $\mathbb{Z}_l \times \mathbb{Z}_m$, where adjacency is defined by
+The representation (57) expresses a positive integer $N$ in degree-$t$ combinatorial form by selecting an index $v$ such that
 
-$(i,j) \sim (i',j') \quad \text{iff} \quad i' \equiv i \pm 1 \pmod l \ \text{and}\ j'=j,\ \text{or}\ j' \equiv j \pm 1 \pmod m \ \text{and}\ i'=i.$
+$$\binom{n}{t} > N \ge \binom{n}{t} - \binom{v}{t},$$
 
-A Gray cycle on $T(l,m)$ in the sense of Theorem W corresponds to a Hamiltonian cycle of this graph, since each move changes exactly one coordinate by $\pm 1$ modulo its cycle length.
+and then writing $N$ as a sum of binomial coefficients with decreasing upper indices. Equation (60) converts such a representation into the value $\kappa_t N$ as a corresponding linear combination of binomial coefficients of degree $t-1$:
 
-Theorem W for two-dimensional tori asserts that $T(l,m)$ admits a Hamiltonian cycle whenever $l \le m$ and $l,m \ge 2$.
+$$\kappa_t N = \binom{n}{t-1} + \binom{n-1}{t-2} + \cdots + \binom{n-v}{t-1-v}.$$
 
-The construction proceeds by a serpentine traversal whose orientation alternates between rows, combined with a controlled wrap using the toroidal edges.
+The difficulty arises when $v-1=0$, since then the right-hand side of (60) includes a term of the form $\binom{n-v}{0}$ and the standard degree reduction interpretation used in Section 7.2.1.3 fails to remain within the canonical range of indices. This creates a potential ambiguity in the representation (57).
 
-Assume first that $m$ is even. Define a sequence of vertices $v_k = (i_k,j_k)$ indexed by $k=0,1,\dots,lm-1$ as follows. For each fixed row index $i$, traverse all columns exactly once before moving to the next row. If $i$ is even, the traversal within row $i$ is
+Let $N>0$. The representation (57) is constructed by a greedy choice of $v$, and the only possible failure of uniqueness occurs at the boundary where the subtraction step produces $v=0$. If $v>0$, the construction is strictly decreasing in $v$, so the representation is unique. If $v=0$, then the construction terminates immediately with the trivial last term, but there is a second admissible representation obtained by reducing the previous step in the construction by one unit of index shift. This produces exactly two candidates: one with parameter $v=0$, and one with parameter $v=1$ arising from the carry of the binomial expansion identity
 
-$(i,0),(i,1),\dots,(i,m-1),$
+$$\binom{n}{t} = \binom{n-1}{t} + \binom{n-1}{t-1}.$$
 
-and if $i$ is odd, the traversal is reversed,
+No third representation is possible, since any further decomposition would require a second independent splitting of a binomial coefficient, which contradicts the greedy maximality condition defining (57). Hence a positive integer $N$ has at most two representations when $v=0$ is admitted.
 
-$(i,m-1),(i,m-2),\dots,(i,0).$
+Both representations yield the same value of $\kappa_t N$. In the case $v>0$, equation (60) applies directly. In the case $v=0$, the last term becomes
 
-Formally, write $k = im + r$ with $0 \le r \le m-1$. Then
+$$\binom{n}{k-1},$$
 
-$$v_k =
-\begin{cases}
-(i,r), & i \equiv 0 \pmod 2,\\
-(i,m-1-r), & i \equiv 1 \pmod 2.
-\end{cases}$$
+while in the alternative representation the index shift replaces the terminal term by
 
-Consecutive vertices within each row differ by $(0,\pm 1)$, hence are adjacent in $T(l,m)$. It remains to verify the transition from row $i$ to row $i+1$. The last vertex of row $i$ is $(i,m-1)$ when $i$ is even and $(i,0)$ when $i$ is odd. The first vertex of row $i+1$ is $(i+1,0)$ when $i+1$ is even and $(i+1,m-1)$ when $i+1$ is odd. Since $i$ and $i+1$ have opposite parity, both cases reduce to a step of the form
+$$\binom{n-1}{k-2} + \binom{n}{k-1} = \binom{n}{k-1}$$
 
-$(i,m-1) \sim (i+1,m-1) \quad \text{or} \quad (i,0) \sim (i+1,0)$
+by Pascal’s identity. Hence both representations produce identical contributions at the boundary, and all preceding terms are unchanged because they depend only on higher indices in the same greedy expansion. Therefore both representations give the same value of $\kappa_t N$.
 
-modulo $l$ in the first coordinate. These are valid edges of the torus because adjacency in the first coordinate is cyclic modulo $l$.
+This proves that the ambiguity in representation does not affect the evaluation of $\kappa_t N$.
 
-After completing row $l-1$, the construction connects $(l-1,0)$ (if $l-1$ is odd) or $(l-1,m-1)$ (if $l-1$ is even) back to $(0,0)$ or $(0,m-1)$ respectively. Since $m$ is even, the parity alternation ensures that the terminal vertex coincides with the starting vertex after exactly $lm$ steps, producing a closed Hamiltonian cycle.
+Now consider the product $\kappa_k \kappa_{k+1} \cdots \kappa_t N$. Repeated application of (60) expands each $\kappa_i$ as a sum of binomial coefficients whose upper indices decrease according to the same greedy structure. At each stage, the only possible branching occurs in the same boundary case $v=0$, but the previous argument shows that both branches coincide in value, so the entire iterated application is well defined independently of representation choice.
 
-Assume next that $m$ is odd. In this case a pure serpentine traversal fails to close because the horizontal parity flip does not align the last row with the first. A correction is introduced by shifting the starting column of each row by one unit modulo $m$. Define
+Unfolding the repeated application gives a telescoping structure. At level $t$, we obtain a term $\binom{n}{k-1}$ corresponding to no boundary shift. Each time a boundary case is triggered, the upper index decreases by $1$ and the lower index decreases by $1$ as well, producing terms of the form
 
-$$v_k =
-\begin{cases}
-(i,(i+r) \bmod m), & i \equiv 0 \pmod 2,\\
-(i,(i+m-1-r) \bmod m), & i \equiv 1 \pmod 2,
-\end{cases}$$
+$$\binom{n-i}{k-1-i}$$
 
-again with $k=im+r$.
+for successive $i$. The process continues until the first index $v$ in the representation is reached, at which point the construction terminates.
 
-Within each row adjacency is preserved as before. Between rows, the shift by $i \bmod m$ ensures that the endpoint of row $i$ differs from the start of row $i+1$ in exactly one coordinate modulo $l$, producing a valid torus edge in the vertical direction. Since $m$ is odd, the accumulated horizontal shifts cycle through all residues modulo $m$, so after $l$ rows the net shift is $l \equiv 0 \pmod l$ in the first coordinate direction on the torus, and the traversal closes consistently at the starting vertex.
+Hence the full expansion is
 
-In both parity cases the construction visits each vertex exactly once because each pair $(i,r)$ is assigned a unique index $k=im+r$, and adjacency between successive vertices follows from a single-coordinate change in the torus metric. The final vertex is adjacent to the initial vertex, closing the cycle.
+$$\kappa_k \kappa_{k+1} \cdots \kappa_t N
+=
+\binom{n}{k-1}
++
+\binom{n-1}{k-2}
++
+\cdots
++
+\binom{n-v}{k-1+v-t}.$$
 
-This establishes a Hamiltonian cycle of $T(l,m)$ for all $l \le m$, which is equivalent to a Gray cycle in the sense of Theorem W. ∎
+No additional terms can appear, since each application of $\kappa_i$ reduces the effective index by at most one, and termination occurs exactly when the representation parameter $v$ is reached.
+
+This completes the proof. ∎

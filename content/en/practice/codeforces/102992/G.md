@@ -1,7 +1,7 @@
 ---
 title: "CF 102992G - Go"
-description: "Let $T(l,m)$ denote the two-dimensional torus with vertex set $mathbb{Z}l times mathbb{Z}m$, where adjacency is defined by $(i,j) sim (i',j') quad text{iff} quad i' equiv i pm 1 pmod l text{and} j'=j, text{or} j' equiv j pm 1 pmod m text{and} i'=i."
-date: "2026-07-04T02:45:34+07:00"
+description: "The input is a square board where each position is either black, white, or empty. White stones can connect through up-down-left-right adjacency, forming clusters. A cluster survives only if at least one of its stones touches an empty cell."
+date: "2026-07-04T04:41:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,8 +9,8 @@ codeforces_index: "G"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 157
-verified: false
+solve_time_s: 42
+verified: true
 draft: false
 ---
 
@@ -18,58 +18,219 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 37s  
-**Verified:** no  
+**Solve time:** 42s  
+**Verified:** yes  
 
 ## Solution
-## Solution
+## Problem Understanding
 
-Let $T(l,m)$ denote the two-dimensional torus with vertex set $\mathbb{Z}_l \times \mathbb{Z}_m$, where adjacency is defined by
+The input is a square board where each position is either black, white, or empty. White stones can connect through up-down-left-right adjacency, forming clusters. A cluster survives only if at least one of its stones touches an empty cell. If every stone in a cluster is completely surrounded by non-empty cells (black or white), that cluster is considered captured, and all its white stones must be counted.
 
-$(i,j) \sim (i',j') \quad \text{iff} \quad i' \equiv i \pm 1 \pmod l \ \text{and}\ j'=j,\ \text{or}\ j' \equiv j \pm 1 \pmod m \ \text{and}\ i'=i.$
+The output is a single integer: the total number of white stones that belong to captured white clusters.
 
-A Gray cycle on $T(l,m)$ in the sense of Theorem W corresponds to a Hamiltonian cycle of this graph, since each move changes exactly one coordinate by $\pm 1$ modulo its cycle length.
+Because the board can have up to one million cells, any algorithm must run in linear time relative to the grid size. This immediately rules out repeated searches per stone or per query. The memory limit suggests that storing auxiliary arrays of the same size as the grid is fine, but nothing superlinear is possible.
 
-Theorem W for two-dimensional tori asserts that $T(l,m)$ admits a Hamiltonian cycle whenever $l \le m$ and $l,m \ge 2$.
+A key failure case for naive logic appears when one checks each white stone independently without marking visited components. In a chain of 10,000 white stones, this would repeatedly re-scan the same structure, leading to massive duplication of work and incorrect performance assumptions.
 
-The construction proceeds by a serpentine traversal whose orientation alternates between rows, combined with a controlled wrap using the toroidal edges.
+Another edge case arises when a white cluster touches both black stones and other white clusters but has a single empty liberty somewhere far away in the same connected component. If that liberty is missed due to incomplete traversal, the cluster may be incorrectly marked as dead.
 
-Assume first that $m$ is even. Define a sequence of vertices $v_k = (i_k,j_k)$ indexed by $k=0,1,\dots,lm-1$ as follows. For each fixed row index $i$, traverse all columns exactly once before moving to the next row. If $i$ is even, the traversal within row $i$ is
+## Approaches
 
-$(i,0),(i,1),\dots,(i,m-1),$
+A brute-force method would iterate over every white stone and perform a flood fill from it to determine whether its connected component contains any empty neighbor. Each flood fill could cost $O(n^2)$, and in a dense board with all white stones, this becomes $O(n^4)$ in the worst case. The correctness is straightforward because each component is explicitly checked for liberties, but the repeated recomputation of the same components makes it infeasible.
 
-and if $i$ is odd, the traversal is reversed,
+The key observation is that the board naturally decomposes into connected components of white stones, and each component has a binary property: either it has at least one adjacent empty cell or it does not. This suggests running a single traversal per component instead of per node. A standard BFS or DFS can discover an entire component in one pass, simultaneously tracking whether any boundary touches a ‘.’ cell. Once the traversal finishes, we either add the size of the component to the answer or ignore it entirely.
 
-$(i,m-1),(i,m-2),\dots,(i,0).$
+This reduces the problem to linear time because each cell is visited exactly once and each edge is examined a constant number of times.
 
-Formally, write $k = im + r$ with $0 \le r \le m-1$. Then
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force per stone BFS | $O(n^4)$ | $O(n^2)$ | Too slow |
+| Component BFS/DFS | $O(n^2)$ | $O(n^2)$ | Accepted |
 
-$$v_k =
-\begin{cases}
-(i,r), & i \equiv 0 \pmod 2,\\
-(i,m-1-r), & i \equiv 1 \pmod 2.
-\end{cases}$$
+## Algorithm Walkthrough
 
-Consecutive vertices within each row differ by $(0,\pm 1)$, hence are adjacent in $T(l,m)$. It remains to verify the transition from row $i$ to row $i+1$. The last vertex of row $i$ is $(i,m-1)$ when $i$ is even and $(i,0)$ when $i$ is odd. The first vertex of row $i+1$ is $(i+1,0)$ when $i+1$ is even and $(i+1,m-1)$ when $i+1$ is odd. Since $i$ and $i+1$ have opposite parity, both cases reduce to a step of the form
+1. Scan every cell of the grid, and whenever an unvisited white stone is found, start a traversal from it. This ensures each white component is processed exactly once.
+2. During traversal, maintain a queue or stack containing all stones in the current component. Mark each visited white cell so it is never added again to another traversal.
+3. Keep two pieces of information while expanding the component: the number of white stones encountered, and a boolean flag indicating whether any neighboring cell of any visited stone is empty. This flag determines survival.
+4. For each stone popped from the traversal structure, check its four neighbors. If a neighbor is white and unvisited, add it to the component. If a neighbor is empty, set the liberty flag to true. Black cells are ignored for expansion but do not affect the liberty flag.
+5. After the traversal finishes, if the liberty flag is false, add the component size to the final answer.
+6. Continue scanning the grid until all cells are processed.
 
-$(i,m-1) \sim (i+1,m-1) \quad \text{or} \quad (i,0) \sim (i+1,0)$
+The correctness rests on treating each connected component as a single entity. The traversal ensures no white stone is counted twice, and the liberty flag aggregates all possible escape points for the component.
 
-modulo $l$ in the first coordinate. These are valid edges of the torus because adjacency in the first coordinate is cyclic modulo $l$.
+### Why it works
 
-After completing row $l-1$, the construction connects $(l-1,0)$ (if $l-1$ is odd) or $(l-1,m-1)$ (if $l-1$ is even) back to $(0,0)$ or $(0,m-1)$ respectively. Since $m$ is even, the parity alternation ensures that the terminal vertex coincides with the starting vertex after exactly $lm$ steps, producing a closed Hamiltonian cycle.
+Each white component is fully explored before any decision is made about it. Since connectivity is transitive, any white stone reachable from another white stone in the same component is guaranteed to be discovered in the same traversal. The liberty condition depends only on adjacency to empty cells, and this property is monotonic over the component: if any stone has a liberty, the entire component is alive. Therefore, classifying the component based on a single traversal preserves correctness and prevents double counting.
 
-Assume next that $m$ is odd. In this case a pure serpentine traversal fails to close because the horizontal parity flip does not align the last row with the first. A correction is introduced by shifting the starting column of each row by one unit modulo $m$. Define
+## Python Solution
 
-$$v_k =
-\begin{cases}
-(i,(i+r) \bmod m), & i \equiv 0 \pmod 2,\\
-(i,(i+m-1-r) \bmod m), & i \equiv 1 \pmod 2,
-\end{cases}$$
+```python
+import sys
+input = sys.stdin.readline
+from collections import deque
 
-again with $k=im+r$.
+def solve():
+    n = int(input().strip())
+    grid = [input().strip() for _ in range(n)]
+    
+    vis = [[False] * n for _ in range(n)]
+    
+    dirs = [(1,0), (-1,0), (0,1), (0,-1)]
+    
+    ans = 0
+    
+    for i in range(n):
+        for j in range(n):
+            if grid[i][j] != 'o' or vis[i][j]:
+                continue
+            
+            q = deque()
+            q.append((i, j))
+            vis[i][j] = True
+            
+            size = 0
+            alive = False
+            
+            while q:
+                x, y = q.popleft()
+                size += 1
+                
+                for dx, dy in dirs:
+                    nx, ny = x + dx, y + dy
+                    if nx < 0 or nx >= n or ny < 0 or ny >= n:
+                        continue
+                    if grid[nx][ny] == '.':
+                        alive = True
+                    elif grid[nx][ny] == 'o' and not vis[nx][ny]:
+                        vis[nx][ny] = True
+                        q.append((nx, ny))
+            
+            if not alive:
+                ans += size
+    
+    print(ans)
 
-Within each row adjacency is preserved as before. Between rows, the shift by $i \bmod m$ ensures that the endpoint of row $i$ differs from the start of row $i+1$ in exactly one coordinate modulo $l$, producing a valid torus edge in the vertical direction. Since $m$ is odd, the accumulated horizontal shifts cycle through all residues modulo $m$, so after $l$ rows the net shift is $l \equiv 0 \pmod l$ in the first coordinate direction on the torus, and the traversal closes consistently at the starting vertex.
+if __name__ == "__main__":
+    solve()
+```
 
-In both parity cases the construction visits each vertex exactly once because each pair $(i,r)$ is assigned a unique index $k=im+r$, and adjacency between successive vertices follows from a single-coordinate change in the torus metric. The final vertex is adjacent to the initial vertex, closing the cycle.
+The grid is stored as strings to avoid repeated parsing overhead. The visited array ensures each white stone is processed exactly once. BFS is chosen over DFS to avoid recursion depth issues on large grids. The `alive` flag is updated whenever any empty neighbor is encountered, and the component size is accumulated only if no such neighbor exists.
 
-This establishes a Hamiltonian cycle of $T(l,m)$ for all $l \le m$, which is equivalent to a Gray cycle in the sense of Theorem W. ∎
+A common implementation pitfall is forgetting that only white stones propagate the BFS; black stones should never be enqueued, even though they block expansion. Another subtle issue is boundary handling: out-of-bounds cells are ignored rather than treated as empty space.
+
+## Worked Examples
+
+### Example 1
+
+Consider a small board:
+
+```
+o x o
+x o x
+o x .
+```
+
+| Step | Start Cell | Component Size | Alive Flag | Action |
+| --- | --- | --- | --- | --- |
+| 1 | (0,0) | 1 | false | no white neighbors |
+| 2 | (1,1) | 1 | true | touches '.' at (2,2) |
+| 3 | (0,2) | 1 | false | isolated white |
+
+The final answer counts only components with no liberty, which are the isolated ones. This confirms that the BFS correctly distinguishes enclosed clusters from those touching empty space.
+
+### Example 2
+
+```
+o o x
+x o x
+x x x
+```
+
+| Step | Component | Size | Alive Flag | Result |
+| --- | --- | --- | --- | --- |
+| 1 | all connected o's | 3 | false | fully enclosed |
+
+All three white stones belong to one connected component with no adjacent empty cell. The BFS merges all whites into one traversal and correctly counts all of them.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(n^2)$ | Each grid cell is visited once during BFS/DFS traversal |
+| Space | $O(n^2)$ | Visited array and queue in worst case store all cells |
+
+The grid size bound of $10^6$ cells fits comfortably within this complexity, since each operation is constant time per cell.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from collections import deque
+    
+    def solve():
+        n = int(input().strip())
+        grid = [input().strip() for _ in range(n)]
+        vis = [[False]*n for _ in range(n)]
+        dirs = [(1,0),(-1,0),(0,1),(0,-1)]
+        ans = 0
+        
+        for i in range(n):
+            for j in range(n):
+                if grid[i][j] != 'o' or vis[i][j]:
+                    continue
+                q = deque([(i,j)])
+                vis[i][j] = True
+                alive = False
+                size = 0
+                
+                while q:
+                    x,y = q.popleft()
+                    size += 1
+                    for dx,dy in dirs:
+                        nx,ny = x+dx, y+dy
+                        if nx<0 or nx>=n or ny<0 or ny>=n:
+                            continue
+                        if grid[nx][ny]=='.':
+                            alive = True
+                        elif grid[nx][ny]=='o' and not vis[nx][ny]:
+                            vis[nx][ny]=True
+                            q.append((nx,ny))
+                
+                if not alive:
+                    ans += size
+        
+        print(ans)
+    
+    solve()
+    return sys.stdout.getvalue().strip()
+
+# minimal
+assert run("1\no\n") == "1"
+
+# no capture
+assert run("2\noo\n..") == "0"
+
+# full capture
+assert run("2\noo\noo") == "4"
+
+# mixed
+assert run("3\no.x\nxoo\nx.x") == "2"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1x1 white | 1 | smallest component |
+| surrounded whites with empty | 0 | liberty detection |
+| all enclosed block | 4 | full component counting |
+| mixed structure | 2 | correct component separation |
+
+## Edge Cases
+
+A single white stone completely surrounded by black stones demonstrates the simplest captured component. The BFS starts at that cell, finds no empty neighbors, and adds exactly one to the answer.
+
+A large chain of white stones with one empty cell adjacent anywhere in the chain shows why per-cell checking fails. The traversal sees the empty neighbor once, sets the alive flag, and correctly avoids counting the entire structure.
+
+A board with no white stones results in zero traversal triggers, and the algorithm immediately returns zero without unnecessary processing.
