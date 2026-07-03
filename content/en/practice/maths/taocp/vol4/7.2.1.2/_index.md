@@ -52,10 +52,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.2: 113/113 solved.
 | [32](32.md) |  [*M25*] | math-medium | solved | 3m15s |
 | [33](33.md) |  [*25*] | medium | solved | 1m33s |
 | [34](34.md) |  [*M26*] | math-hard | solved | 5m35s |
-| [35](35.md) | &#9654; [*M20*] | math-medium | solved | 4m14s |
-| [36](36.md) |  [*M23*] | math-medium | solved | 4m26s |
-| [37](37.md) | &#9654; [*HM22*] | hm-medium | solved | 4m18s |
-| [38](38.md) |  [*HM21*] | hm-medium | solved | 5m45s |
+| [35](35.md) | &#9654; [*M20*] | math-medium | solved | 5m02s |
+| [36](36.md) |  [*M23*] | math-medium | solved | 2m16s |
+| [37](37.md) | &#9654; [*HM22*] | hm-medium | solved | 1m41s |
+| [38](38.md) |  [*HM21*] | hm-medium | solved | 1m30s |
 | [39](39.md) |  [*16*] | medium | solved | 4m28s |
 | [40](40.md) |  [*M23*] | math-medium | solved | 4m22s |
 | [41](41.md) | &#9654; [*M33*] | math-hard | solved | 4m56s |
