@@ -1,23 +1,23 @@
 ---
 title: "AGM 2021, Final Round, Day 1"
-description: "7 problems from AGM 2021, Final Round, Day 1 (contest 103181), difficulty -. 0/7 solutions verified against sample I/O."
+description: "10 problems from AGM 2021, Final Round, Day 1 (contest 103181), difficulty -. 0/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103181
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 10
 n_verified: 0
-total_solve_s: 360
+total_solve_s: 464
 contest_year: 2021
-date: "2026-07-03T16:27:41+07:00"
+date: "2026-07-03T16:38:30+07:00"
 weight: 103181
 draft: false
 ---
 
 # [AGM 2021, Final Round, Day 1](https://codeforces.com/contest/103181)
 
-Special | 7 problems | 0/7 verified | Difficulty - | 6m
+Special | 10 problems | 0/10 verified | Difficulty - | 7m 44s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,3 +28,6 @@ Special | 7 problems | 0/7 verified | Difficulty - | 6m
 | [E](E/) | [Metrix](https://codeforces.com/problemset/problem/103181/E) |  |  |  | 32s |  |
 | [F](F/) | [Relay Race](https://codeforces.com/problemset/problem/103181/F) |  |  |  | 32s |  |
 | [H](H/) | [Similarities](https://codeforces.com/problemset/problem/103181/H) |  |  |  | 30s |  |
+| [I](I/) | [Starlight](https://codeforces.com/problemset/problem/103181/I) |  |  |  | 34s |  |
+| [J](J/) | [Funny Tree](https://codeforces.com/problemset/problem/103181/J) |  |  |  | 39s |  |
+| [L](L/) | [Hard work](https://codeforces.com/problemset/problem/103181/L) |  |  |  | 31s |  |
