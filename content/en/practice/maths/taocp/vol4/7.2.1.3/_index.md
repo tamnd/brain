@@ -90,8 +90,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 107/111 solved.
 | [70](70.md) |  [*M25*] | math-medium | solved | 15m55s |
 | [71](71.md) |  [*M20*] | math-medium | solved | 15m08s |
 | [72](72.md) | &#9654; [*M22*] | math-medium | solved | 6m29s |
-| [73](73.md) |  [*M23*] | math-medium | solved | 20m04s |
-| [74](74.md) |  [*M21*] | math-medium | solved | 10m21s |
+| [73](73.md) |  [*M23*] | math-medium | solved | 19m45s |
+| [74](74.md) |  [*M21*] | math-medium | solved | 6m27s |
 | [75](75.md) |  [*M20*] | math-medium | solved | 18m42s |
 | [76](76.md) |  [*M20*] | math-medium | solved | 13m03s |
 | [77](77.md) | &#9654; [*M26*] | math-hard | solved | 18m18s |

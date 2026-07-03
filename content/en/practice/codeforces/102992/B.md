@@ -1,7 +1,7 @@
 ---
 title: "CF 102992B - Baby's First Suffix Array Problem"
-description: "The problem statement is missing from your message, so I don’t have the actual task definition, input format, or required output to base an editorial on."
-date: "2026-07-04T02:41:00+07:00"
+description: "I’m missing the actual problem statement for Codeforces 102992B - Baby's First Suffix Array Problem in your prompt, so I can’t reliably reconstruct the intended solution, constraints, or edge cases."
+date: "2026-07-04T04:40:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 36
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 36s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your message, so I don’t have the actual task definition, input format, or required output to base an editorial on.
+I’m missing the actual problem statement for **Codeforces 102992B - Baby's First Suffix Array Problem** in your prompt, so I can’t reliably reconstruct the intended solution, constraints, or edge cases.
 
-For a Codeforces editorial, especially for something like a suffix array problem, the exact definition of what is being computed (and any constraints or special rules) completely determines the solution approach. Without it, anything I write would be guesswork and would likely be wrong or misleading.
+This specific title strongly suggests a suffix-array related task, but there are multiple standard variants (k-th suffix, lexicographic order checks, LCP queries, construction vs verification), and the editorial depends entirely on which one it is.
 
-Send the full statement for Codeforces 102992B (or paste the problem text), and I’ll produce the complete editorial in the exact format and style you specified.
+Paste the full statement (or at least input/output description and constraints), and I’ll write the complete Codeforces-style editorial in the exact format you requested.
