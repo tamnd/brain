@@ -1,22 +1,22 @@
 ---
 title: "2020-2021, ICPC, East Siberian Regional Contest"
-description: "11 problems from 2020-2021, ICPC, East Siberian Regional Contest (contest 103411), difficulty -. 6/11 solutions verified against sample I/O."
+description: "12 problems from 2020-2021, ICPC, East Siberian Regional Contest (contest 103411), difficulty -. 6/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103411
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 6
-total_solve_s: 656
-date: "2026-07-03T10:59:43+07:00"
+total_solve_s: 682
+date: "2026-07-03T11:06:37+07:00"
 weight: 103411
 draft: false
 ---
 
 # [2020-2021, ICPC, East Siberian Regional Contest](https://codeforces.com/contest/103411)
 
-ICPC/IOI | 11 problems | 6/11 verified | Difficulty - | 10m 56s
+ICPC/IOI | 12 problems | 6/12 verified | Difficulty - | 11m 22s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,6 @@ ICPC/IOI | 11 problems | 6/11 verified | Difficulty - | 10m 56s
 | [G](G/) | [\u041a\u0430\u0440\u0442\u044b, \u0447\u0438\u0441\u043b\u0430, \u0434\u0432\u0430 \u0437\u0430\u043a\u043b\u0438\u043d\u0430\u043d\u0438\u044f](https://codeforces.com/problemset/problem/103411/G) |  |  |  | 50s | ✓ |
 | [H](H/) | [\u0413\u0438\u043f\u043d\u043e\u0437](https://codeforces.com/problemset/problem/103411/H) |  |  |  | 53s | ✓ |
 | [I](I/) | [Determine The Lap Length](https://codeforces.com/problemset/problem/103411/I) |  |  |  | 31s |  |
+| [J](J/) | [Juggle Sort](https://codeforces.com/problemset/problem/103411/J) |  |  |  | 26s |  |
 | [K](K/) | [Shark Attack](https://codeforces.com/problemset/problem/103411/K) |  |  |  | 1m 7s | ✓ |
 | [L](L/) | [AGTC Matrix](https://codeforces.com/problemset/problem/103411/L) |  |  |  | 29s |  |
