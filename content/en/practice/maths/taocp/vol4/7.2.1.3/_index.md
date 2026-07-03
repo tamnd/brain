@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 71/111 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*M23*] | math-medium | solved | 4m44s |
+| [1](01.md) |  [*M23*] | math-medium | solved | 7m27s |
 | [2](02.md) |  [*16*] | medium | solved | 6m11s |
 | [3](03.md) | &#9654; [*21*] | medium | solved | 4m21s |
 | [4](04.md) |  [*16*] | medium | solved | 2m29s |
