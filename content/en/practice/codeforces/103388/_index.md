@@ -8,15 +8,15 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 13
 n_verified: 2
-total_solve_s: 588
-date: "2026-07-03T17:57:47+07:00"
+total_solve_s: 548
+date: "2026-07-03T18:08:02+07:00"
 weight: 103388
 draft: false
 ---
 
 # [2021-2022 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103388)
 
-ICPC/IOI | 13 problems | 2/13 verified | Difficulty - | 9m 48s
+ICPC/IOI | 13 problems | 2/13 verified | Difficulty - | 9m 8s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,5 +31,5 @@ ICPC/IOI | 13 problems | 2/13 verified | Difficulty - | 9m 48s
 | [J](J/) | [Just Bootfall](https://codeforces.com/problemset/problem/103388/J) |  |  |  | 26s |  |
 | [K](K/) | [Kathmandu](https://codeforces.com/problemset/problem/103388/K) |  |  |  | 22s |  |
 | [L](L/) | [Listing Passwords](https://codeforces.com/problemset/problem/103388/L) |  |  |  | 42s |  |
-| [M](M/) | [Monarchy in Vertigo](https://codeforces.com/problemset/problem/103388/M) |  |  |  | 1m 12s |  |
+| [M](M/) | [Monarchy in Vertigo](https://codeforces.com/problemset/problem/103388/M) |  |  |  | 32s |  |
 | [N](N/) | [No Luck](https://codeforces.com/problemset/problem/103388/N) |  |  |  | 28s |  |
