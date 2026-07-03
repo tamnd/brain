@@ -1,40 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 101"
-description: "Let $(a_{ij})$ be an $m\\times n$ contingency table with nonnegative integer entries, row sums $r_i=\\sum_{j=1}^n a_{ij},$ and column sums $c_j=\\sum_{i=1}^m a_{ij},$ with $\\sum_{i=1}^m r_i=\\sum_{j=1}^n..."
-date: "2026-07-03T07:58:53+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 101
-rating: "M25"
-category: "math-medium"
-recommended: false
+title: "CF 103260B - Lockout vs tourist"
+description: "Let $(a{ij})$ be an $mtimes n$ contingency table with nonnegative integer entries, row sums $ri=sum{j=1}^n a{ij},$ and column sums $cj=sum{i=1}^m a{ij},$ with $sum{i=1}^m ri=sum{j=1}^n cj$."
+date: "2026-07-03T15:00:08+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103260
+codeforces_index: "B"
+codeforces_contest_name: "2020-2021 Winter Petrozavodsk Camp, Day 5: Almost Retired Dandelion Contest (XXI Open Cup, Grand Prix of Nizhny Novgorod)"
+rating: 0
+weight: 103260
+solve_time_s: 153
 verified: false
-solve_time_s: 292
-weight: 7020103101
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103260B - Lockout vs tourist](https://codeforces.com/problemset/problem/103260/B)
 
-**Exercise 101.** [*M25*] [M25] If f(x1, . . . , xn) is a Boolean formula, let F(p) be the probability that
-f(x1, . . . , xn) = 1 when each variable xj independently is 1 with probability p.
-a) Calculate G(p) and H(p) for the Boolean formulas g(w, x, y, z) = wxz∨wyz∨xy¯z,
-h(w, x, y, z) = ¯wyz ∨xyz.
-b) Show that there is a monotone Boolean function f(w, x, y, z) such that F(p) =
-G(p), but there is no such function with F(p) = H(p). Explain how to test this
-condition in general.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
 **Verified:** no  
-**Solve time:** 4m52s  
 
----
-
+## Solution
 ## Setup
 
 Let $(a_{ij})$ be an $m\times n$ contingency table with nonnegative integer entries, row sums
@@ -51,12 +38,10 @@ We must show that all such tables can be listed in a sequence where successive t
 
 A change affecting exactly four entries means a move supported on a $2\times 2$ submatrix
 
-$$
-\begin{pmatrix}
+$$\begin{pmatrix}
 (i,j) & (i,j')\\
 (i',j) & (i',j')
-\end{pmatrix},
-$$
+\end{pmatrix},$$
 
 where two entries increase by $1$ and the opposite two decrease by $1$, preserving all row and column sums.
 
@@ -64,17 +49,13 @@ where two entries increase by $1$ and the opposite two decrease by $1$, preservi
 
 Fix the spanning tree $T$ of the complete bipartite graph $K_{m,n}$ consisting of all edges incident to vertex $1$ in each part:
 
-$$
-T=\{(i,1)\mid 1\le i\le m\}\cup \{(1,j)\mid 2\le j\le n\}.
-$$
+$$T=\{(i,1)\mid 1\le i\le m\}\cup \{(1,j)\mid 2\le j\le n\}.$$
 
 This is a tree with $m+n-1$ edges.
 
 Every non-tree edge is a pair $(i,j)$ with $i\ge 2$ and $j\ge 2$. For each such edge, adding it to $T$ creates a unique cycle of length $4$:
 
-$$
-(i,j)\to (i,1)\to (1,1)\to (1,j)\to (i,j).
-$$
+$$(i,j)\to (i,1)\to (1,1)\to (1,j)\to (i,j).$$
 
 Hence each non-tree edge determines a $4$-cycle.
 
