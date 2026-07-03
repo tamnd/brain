@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2875 contests, 20694 problems, 11531 verified."
+description: "Codeforces problem solutions with full editorials. 2878 contests, 20712 problems, 11531 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2875 contests, 20694 problems, 11531 verified.**
+**2878 contests, 20712 problems, 11531 verified.**
 
-## Unknown — 705 contests, 5807 problems, 3537 verified
+## Unknown — 708 contests, 5825 problems, 3537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103262](103262/) | [XVII Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103262) | 6 | 0/6 | Special | - |
+| [103264](103264/) | [XVI Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103264) | 6 | 0/6 | Special | - |
+| [103265](103265/) | [XIV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103265) | 6 | 0/6 | Special | - |
 | [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
 | [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 11 | 9/11 | Special | - |
 | [103329](103329/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Open Cup, Grand Prix of XiAn)](https://codeforces.com/contest/103329) | 11 | 9/11 | Special | - |

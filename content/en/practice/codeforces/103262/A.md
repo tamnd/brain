@@ -1,0 +1,120 @@
+---
+title: "CF 103262A - \u0426\u0438\u0432\u0438\u043b\u0438\u0437\u0430\u0446\u0438\u044f"
+description: "Let $(a{ij})$ be an $mtimes n$ contingency table with nonnegative integer entries, row sums $ri=sum{j=1}^n a{ij},$ and column sums $cj=sum{i=1}^m a{ij},$ with $sum{i=1}^m ri=sum{j=1}^n cj$."
+date: "2026-07-03T14:52:11+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103262
+codeforces_index: "A"
+codeforces_contest_name: "XVII \u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u043a\u0435 \u0438\u043c. \u0412. \u0414. \u041b\u0435\u043b\u044e\u0445\u0430"
+rating: 0
+weight: 103262
+solve_time_s: 160
+verified: false
+draft: false
+---
+
+[CF 103262A - \u0426\u0438\u0432\u0438\u043b\u0438\u0437\u0430\u0446\u0438\u044f](https://codeforces.com/problemset/problem/103262/A)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 40s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+Let $(a_{ij})$ be an $m\times n$ contingency table with nonnegative integer entries, row sums
+
+$r_i=\sum_{j=1}^n a_{ij},$
+
+and column sums
+
+$c_j=\sum_{i=1}^m a_{ij},$
+
+with $\sum_{i=1}^m r_i=\sum_{j=1}^n c_j$.
+
+We must show that all such tables can be listed in a sequence where successive tables differ in exactly four entries of the matrix.
+
+A change affecting exactly four entries means a move supported on a $2\times 2$ submatrix
+
+$$\begin{pmatrix}
+(i,j) & (i,j')\\
+(i',j) & (i',j')
+\end{pmatrix},$$
+
+where two entries increase by $1$ and the opposite two decrease by $1$, preserving all row and column sums.
+
+## Solution
+
+Fix the spanning tree $T$ of the complete bipartite graph $K_{m,n}$ consisting of all edges incident to vertex $1$ in each part:
+
+$$T=\{(i,1)\mid 1\le i\le m\}\cup \{(1,j)\mid 2\le j\le n\}.$$
+
+This is a tree with $m+n-1$ edges.
+
+Every non-tree edge is a pair $(i,j)$ with $i\ge 2$ and $j\ge 2$. For each such edge, adding it to $T$ creates a unique cycle of length $4$:
+
+$$(i,j)\to (i,1)\to (1,1)\to (1,j)\to (i,j).$$
+
+Hence each non-tree edge determines a $4$-cycle.
+
+Introduce variables
+
+$x_{ij}=a_{ij}\quad (2\le i\le m,\ 2\le j\le n).$
+
+The remaining entries are determined by the row and column constraints. For $i\ge 2$,
+
+$a_{i1}=r_i-\sum_{j=2}^n x_{ij}.$
+
+For $j\ge 2$,
+
+$a_{1j}=c_j-\sum_{i=2}^m x_{ij}.$
+
+Finally,
+
+$a_{11}=r_1-\sum_{j=2}^n a_{1j}.$
+
+Substituting the expression for $a_{1j}$ gives
+
+$a_{11}=r_1-\sum_{j=2}^n c_j+\sum_{j=2}^n\sum_{i=2}^m x_{ij}.$
+
+Thus every contingency table is uniquely represented by the vector $(x_{ij})_{i\ge 2,j\ge 2}$ subject only to the nonnegativity constraints on the derived entries.
+
+The free variables form a rectangular array of size $(m-1)\times (n-1)$. Each $x_{ij}$ ranges over an interval determined by previously fixed values:
+
+increasing or decreasing $x_{ij}$ by $1$ changes exactly the four dependent entries
+
+$a_{ij},\quad a_{i1},\quad a_{1j},\quad a_{11}.$
+
+Indeed, increasing $x_{ij}$ by $1$ produces the updates
+
+$a_{ij}\leftarrow a_{ij}+1,\quad a_{i1}\leftarrow a_{i1}-1,\quad a_{1j}\leftarrow a_{1j}-1,\quad a_{11}\leftarrow a_{11}+1,$
+
+which preserves all row and column sums because each affected row and column receives one $+1$ and one $-1$ contribution.
+
+Every feasible transition between two tables differing by a single unit in some $x_{ij}$ is therefore realized by exactly four entry changes.
+
+To generate all tables, order the variables $x_{ij}$ lexicographically in the order
+
+$(x_{22},x_{23},\dots,x_{2n},x_{32},\dots,x_{mn}).$
+
+Each $x_{ij}$ has a finite interval of admissible integer values determined by the nonnegativity of $a_{i1}$ and $a_{1j}$. These bounds depend only on previously chosen variables in the lexicographic order, hence the set of feasible $(x_{ij})$ is a product of bounded integer ranges in lexicographic form.
+
+Apply lexicographic generation on this bounded array: at each step, increase the rightmost variable $x_{ij}$ that can be increased while keeping feasibility, and reset all later variables to their minimal admissible values. This produces a Hamiltonian path through all feasible $(x_{ij})$ vectors.
+
+Each step of this process changes exactly one coordinate $x_{ij}$ by $\pm 1$, hence induces exactly four changes in the corresponding matrix entries. Since every feasible table corresponds uniquely to a vector $(x_{ij})$, all contingency tables are generated, and successive tables differ in exactly four entries.
+
+This completes the proof. ∎
+
+## Verification
+
+The spanning tree construction ensures that every non-tree edge $(i,j)$ with $i,j\ge 2$ closes a unique $4$-cycle through $(i,1)$, $(1,1)$, and $(1,j)$. Any unit change along this cycle preserves row sums because row $i$ and row $1$ each receive one increment and one decrement. The same holds for columns $j$ and $1$.
+
+The reconstruction formulas for $a_{i1}$, $a_{1j}$, and $a_{11}$ ensure that every table is determined by the $(m-1)(n-1)$ free variables without redundancy, and every nonnegativity constraint translates into a finite bound on each variable once earlier variables are fixed.
+
+Each lexicographic step changes exactly one variable, so the induced matrix change is confined to the four cells corresponding to the associated $4$-cycle, with no additional entries affected.
+
+## Notes
+
+The structure used here is the standard cycle space of the complete bipartite graph, with basis given by $4$-cycles anchored at vertex $(1,1)$. The argument reduces contingency tables to bounded integer grids, after which lexicographic generation yields a Gray-code-like traversal with constant-size updates in the original matrix representation.
