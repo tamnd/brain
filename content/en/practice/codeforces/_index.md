@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2916 contests, 21105 problems, 11619 verified."
+description: "Codeforces problem solutions with full editorials. 2917 contests, 21119 problems, 11622 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2916 contests, 21105 problems, 11619 verified.**
+**2917 contests, 21119 problems, 11622 verified.**
 
-## Unknown — 729 contests, 6044 problems, 3572 verified
+## Unknown — 730 contests, 6058 problems, 3575 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103091](103091/) | [Stanford ProCo 2021](https://codeforces.com/contest/103091) | 14 | 3/14 | Special | - |
 | [103098](103098/) | [2020-2021 Winter Petrozavodsk Camp, UPC contest](https://codeforces.com/contest/103098) | 11 | 3/11 | Special | - |
 | [103102](103102/) | [2020-2021 ICPC Southeastern European Regional Programming Contest (SEERC 2020)](https://codeforces.com/contest/103102) | 13 | 4/13 | ICPC/IOI | - |
 | [103109](103109/) | [mBIT Advanced Spring 2021](https://codeforces.com/contest/103109) | 12 | 0/12 | Special | - |
