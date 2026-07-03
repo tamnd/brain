@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 36"
-description: "Let $n = s + t$."
-date: "2026-07-03T13:54:48+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 36
-rating: "M21"
-category: "math-medium"
-recommended: true
+title: "CF 103110A - Mountain Climbing"
+description: "Let $n = s + t$. A Chase sequence $C{st}$ is a Gray-code ordering of all $(s,t)$-combinations, in which successive combinations differ by a single unit transfer of a $1$ across a contiguous block of $0$s in the binary representation, equivalently by updating the list…"
+date: "2026-07-03T20:59:51+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103110
+codeforces_index: "A"
+codeforces_contest_name: "mBIT Standard Spring 2021"
+rating: 0
+weight: 103110
+solve_time_s: 149
 verified: false
-solve_time_s: 306
-weight: 7020103036
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103110A - Mountain Climbing](https://codeforces.com/problemset/problem/103110/A)
 
-**Exercise 36.** &#9654; [*M21*] [M21] Prove that method (39) performs the operation j ←j +1 a total of exactly
-s+t
-t
-
-−1 times as it generates all (s, t)-combinations an−1 . . . a1a0, given any genlex
-scheme for combinations in bitstring form.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 29s  
 **Verified:** no  
-**Solve time:** 5m06s  
 
----
-
+## Solution
 ## Setup
 
 Let $n = s + t$. A Chase sequence $C_{st}$ is a Gray-code ordering of all $(s,t)$-combinations, in which successive combinations differ by a single unit transfer of a $1$ across a contiguous block of $0$s in the binary representation, equivalently by updating the list representation $c_t \dots c_1$ by modifying a single entry.

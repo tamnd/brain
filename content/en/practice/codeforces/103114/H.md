@@ -1,37 +1,30 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 33"
-description: "Let $\\mathcal{F}(N,t)$ denote a family of $N$ distinct $t$-combinations, and let $\\kappa_t(N)$ be the extremal quantity defined in Section 7."
-date: "2026-07-03T13:34:51+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "hm-hard"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 33
-rating: "HM33"
-category: "hm-hard"
-recommended: false
+title: "CF 103114H - Hsueh- and Meeting"
+description: "Let $mathcal{F}(N,t)$ denote a family of $N$ distinct $t$-combinations, and let $kappat(N)$ be the extremal quantity defined in Section 7.2.1.3, namely the minimum possible size of the derived family under the Kruskal-Katona construction used in Theorem K."
+date: "2026-07-03T20:40:59+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103114
+codeforces_index: "H"
+codeforces_contest_name: "The 2021 Hangzhou Normal U Summer Trials"
+rating: 0
+weight: 103114
+solve_time_s: 93
 verified: false
-solve_time_s: 307
-weight: 7020103033
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103114H - Hsueh- and Meeting](https://codeforces.com/problemset/problem/103114/H)
 
-**Exercise 33.** [*HM33*] [HM33] How many of the genlex listings in exercise 31(b) are near-perfect?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 33s  
 **Verified:** no  
-**Solve time:** 5m07s  
-
----
 
 ## Solution
+## Solution
 
-Let $\mathcal{F}(N,t)$ denote a family of $N$ distinct $t$-combinations, and let $\kappa_t(N)$ be the extremal quantity defined in Section 7.2.1.3, namely the minimum possible size of the derived family under the Kruskal–Katona construction used in Theorem K.
+Let $\mathcal{F}(N,t)$ denote a family of $N$ distinct $t$-combinations, and let $\kappa_t(N)$ be the extremal quantity defined in Section 7.2.1.3, namely the minimum possible size of the derived family under the Kruskal-Katona construction used in Theorem K.
 
 Let $\partial \mathcal{F}$ denote the family obtained from $\mathcal{F}$ by deleting one element from each set in all possible ways, so that $\kappa_t(N)$ is the minimum possible value of $|\partial \mathcal{F}|$ over all families $\mathcal{F}$ of size $N$.
 
@@ -39,17 +32,13 @@ Let $[0]$ denote the distinguished element used in the hint, and write each $t$-
 
 For any family $A$ of $t$-combinations, define
 
-$$
-A_1 = \{\alpha \in A \mid 0 \notin \alpha\}, \qquad A_{00} = \{\alpha \setminus \{0\} \mid \alpha \in A,\ 0 \in \alpha\}.
-$$
+$$A_1 = \{\alpha \in A \mid 0 \notin \alpha\}, \qquad A_{00} = \{\alpha \setminus \{0\} \mid \alpha \in A,\ 0 \in \alpha\}.$$
 
 Then $A_1$ is a family of $t$-combinations on the ground set without $0$, while $A_{00}$ is a family of $(t-1)$-combinations. The decomposition $A = A_1 + A_{00}$ is disjoint and satisfies $|A| = |A_1| + |A_{00}|$.
 
 The structure of $\partial A$ splits accordingly: removing elements other than $0$ acts independently on $A_1$, while removing $0$ from sets in $A$ contributes exactly the $(t-1)$-shadow of $A_{00}$. This gives the fundamental identity
 
-$$
-\kappa_t(|A|) = \kappa_t(|A_1|) + \kappa_{t-1}(|A_{00}|),
-$$
+$$\kappa_t(|A|) = \kappa_t(|A_1|) + \kappa_{t-1}(|A_{00}|),$$
 
 for extremal configurations under Theorem K.
 
@@ -59,23 +48,17 @@ Assume Theorem K holds. Let $M,N \ge 0$. Take an extremal family $A$ of size $M+
 
 Apply the decomposition $A = A_1 + A_{00}$ as above. Then
 
-$$
-|A_1| \le M+N,\qquad |A_{00}| \le M+N.
-$$
+$$|A_1| \le M+N,\qquad |A_{00}| \le M+N.$$
 
 Since $A_1$ consists of $t$-combinations avoiding $0$, its shadow contributes at most $\kappa_t(|A_1|)$. Since $A_{00}$ consists of $(t-1)$-combinations, its contribution is at most $\kappa_{t-1}(|A_{00}|)$.
 
 The extremal property of $\kappa_t$ under Theorem K implies monotonicity in the form $\kappa_t(k) \le \kappa_t(k')$ for $k \le k'$, and similarly for $\kappa_{t-1}$. Hence
 
-$$
-\kappa_t(M+N) \le \kappa_t(|A_1|) + \kappa_{t-1}(|A_{00}|).
-$$
+$$\kappa_t(M+N) \le \kappa_t(|A_1|) + \kappa_{t-1}(|A_{00}|).$$
 
 Now $|A_1| \le M+N$ and $|A_{00}| \le N$ after relabeling the split so that at most $N$ sets contain $0$. The worst case occurs when all excess mass is placed in the first component up to $\max(\kappa_t M, N)$, giving
 
-$$
-\kappa_t(M+N) \le \max(\kappa_t M, N) + \kappa_{t-1} N.
-$$
+$$\kappa_t(M+N) \le \max(\kappa_t M, N) + \kappa_{t-1} N.$$
 
 This is inequality (b).
 
@@ -89,9 +72,7 @@ Assume the statement holds for all sizes less than $N$. Let $A$ be a family of $
 
 Let $|A_{00}|=m$ and $|A_1|=N-m$. Applying inequality (b) to $M=N-m$ and $N=m$ yields
 
-$$
-\kappa_t(N) \le \max(\kappa_t(N-m), m) + \kappa_{t-1}(m).
-$$
+$$\kappa_t(N) \le \max(\kappa_t(N-m), m) + \kappa_{t-1}(m).$$
 
 By the induction hypothesis, both $\kappa_t(N-m)$ and $\kappa_{t-1}(m)$ are achieved by initial segments in the appropriate colex orderings. The term $\max(\kappa_t(N-m), m)$ forces the optimal configuration to allocate elements so that either the contribution from $A_1$ dominates or is absorbed into the $A_{00}$ term, with no advantage from mixing structures.
 

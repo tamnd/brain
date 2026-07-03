@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 36"
-description: "Let $n = s + t$."
-date: "2026-07-03T13:54:48+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 36
-rating: "M21"
-category: "math-medium"
-recommended: true
+title: "CF 103113B - \u0421\u0442\u0440\u0430\u043d\u043d\u044b\u0439 \u041f\u043e\u0440\u044f\u0434\u043e\u043a"
+description: "Let $n = s + t$. A Chase sequence $C{st}$ is a Gray-code ordering of all $(s,t)$-combinations, in which successive combinations differ by a single unit transfer of a $1$ across a contiguous block of $0$s in the binary representation, equivalently by updating the list…"
+date: "2026-07-03T20:42:13+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103113
+codeforces_index: "B"
+codeforces_contest_name: "\u0428\u0435\u0441\u0442\u0430\u044f \u041b\u0438\u043f\u0435\u0446\u043a\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e. \u0424\u0438\u043d\u0430\u043b. 8-11 \u043a\u043b\u0430\u0441\u0441\u044b"
+rating: 0
+weight: 103113
+solve_time_s: 61
 verified: false
-solve_time_s: 306
-weight: 7020103036
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103113B - \u0421\u0442\u0440\u0430\u043d\u043d\u044b\u0439 \u041f\u043e\u0440\u044f\u0434\u043e\u043a](https://codeforces.com/problemset/problem/103113/B)
 
-**Exercise 36.** &#9654; [*M21*] [M21] Prove that method (39) performs the operation j ←j +1 a total of exactly
-s+t
-t
-
-−1 times as it generates all (s, t)-combinations an−1 . . . a1a0, given any genlex
-scheme for combinations in bitstring form.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 1s  
 **Verified:** no  
-**Solve time:** 5m06s  
 
----
-
+## Solution
 ## Setup
 
 Let $n = s + t$. A Chase sequence $C_{st}$ is a Gray-code ordering of all $(s,t)$-combinations, in which successive combinations differ by a single unit transfer of a $1$ across a contiguous block of $0$s in the binary representation, equivalently by updating the list representation $c_t \dots c_1$ by modifying a single entry.

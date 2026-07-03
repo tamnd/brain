@@ -47,13 +47,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 90/111 solved.
 | [27](27.md) | &#9654; [*25*] | medium | solved | 4m56s |
 | [28](28.md) |  [*M21*] | math-medium | solved | 4m16s |
 | [29](29.md) | &#9654; [*M28*] | math-hard | solved | 21m24s |
-| [30](30.md) |  [*M32*] | math-hard | solved | 8m21s |
-| [31](31.md) |  [*M23*] | math-medium | solved | 6m29s |
-| [32](32.md) | &#9654; [*M32*] | math-hard | solved | 5m14s |
-| [33](33.md) |  [*HM33*] | hm-hard | solved | 8m51s |
-| [34](34.md) |  [*M32*] | math-hard | solved | 10m26s |
-| [35](35.md) |  [*M26*] | math-hard | solved | 9m11s |
-| [36](36.md) | &#9654; [*M21*] | math-medium | solved | 6m30s |
+| [30](30.md) |  [*M32*] | math-hard | solved | 5m18s |
+| [31](31.md) |  [*M23*] | math-medium | solved | 4m54s |
+| [32](32.md) | &#9654; [*M32*] | math-hard | solved | 5m15s |
+| [33](33.md) |  [*HM33*] | hm-hard | solved | 5m07s |
+| [34](34.md) |  [*M32*] | math-hard | solved | 4m57s |
+| [35](35.md) |  [*M26*] | math-hard | solved | 9m50s |
+| [36](36.md) | &#9654; [*M21*] | math-medium | solved | 5m06s |
 | [37](37.md) | &#9654; [*27*] | hard | solved | 6m13s |
 | [38](38.md) |  [*26*] | hard | solved | 6m03s |
 | [39](39.md) |  [*M21*] | math-medium | solved | 6m59s |
