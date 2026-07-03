@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2841 contests, 20420 problems, 11467 verified."
+description: "Codeforces problem solutions with full editorials. 2842 contests, 20431 problems, 11468 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2841 contests, 20420 problems, 11467 verified.**
+**2842 contests, 20431 problems, 11468 verified.**
 
-## Unknown — 689 contests, 5695 problems, 3502 verified
+## Unknown — 690 contests, 5706 problems, 3503 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103388](103388/) | [2021-2022 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103388) | 11 | 1/11 | ICPC/IOI | - |
 | [103399](103399/) | [Fast modular multiplication](https://codeforces.com/contest/103399) | 4 | 2/4 | Special | - |
 | [103402](103402/) | [Сумасшедший контест (Miston Cats)](https://codeforces.com/contest/103402) | 3 | 0/3 | Special | - |
 | [103411](103411/) | [2020-2021, ICPC, East Siberian Regional Contest](https://codeforces.com/contest/103411) | 12 | 6/12 | ICPC/IOI | - |
