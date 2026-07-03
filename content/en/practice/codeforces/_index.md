@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2942 contests, 21348 problems, 11667 verified."
+description: "Codeforces problem solutions with full editorials. 2943 contests, 21360 problems, 11669 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2942 contests, 21348 problems, 11667 verified.**
+**2943 contests, 21360 problems, 11669 verified.**
 
-## Unknown — 742 contests, 6169 problems, 3609 verified
+## Unknown — 743 contests, 6181 problems, 3611 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102979](102979/) | [2020-2021 Winter Petrozavodsk Camp, Day 9 Contest (XXI Open Cup, Grand Prix of Suwon)](https://codeforces.com/contest/102979) | 12 | 2/12 | Special | - |
 | [102980](102980/) | [Интернет-олимпиады, Сезон 2020-2021, Первая личная олимпиада](https://codeforces.com/contest/102980) | 4 | 0/4 | Special | - |
 | [102984](102984/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: Korean Contest](https://codeforces.com/contest/102984) | 11 | 1/11 | Special | - |
 | [102992](102992/) | [2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102992) | 12 | 2/12 | ICPC/IOI | - |
