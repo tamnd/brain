@@ -124,7 +124,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 76/111 solved.
 | [104](104.md) |  [*M41*] | math-project | solved | 4m51s |
 | [105](105.md) |  [*M20*] | math-medium | solved | 8m41s |
 | [106](106.md) |  [*M21*] | math-medium | solved | 4m43s |
-| [107](107.md) |  [*22*] | medium | solved | 5m08s |
+| [107](107.md) |  [*22*] | medium | solved | 10m47s |
 | [108](108.md) |  [*M31*] | math-hard | solved | 4m24s |
 | [109](109.md) |  [*M31*] | math-hard | solved | 5m09s |
 | [110](110.md) | &#9654; [*26*] | hard | solved | 8m58s |
