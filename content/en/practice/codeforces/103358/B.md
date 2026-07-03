@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 96"
-description: "Let $n > c_t > \\cdots > c_1 \\ge 0$ with the constraints from exercise 57 and the additional condition $c_{j+1} > c_j + 1 \\qquad (t > j \\ge 1).$ Define the shifted variables $d_j = c_j - (j-1), \\qquad..."
-date: "2026-07-03T06:32:36+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 96
-rating: "21"
-category: "medium"
-recommended: false
+title: "CF 103358B - Nutty String"
+description: "Let $n ct cdots c1 ge 0$ with the constraints from exercise 57 and the additional condition $c{j+1} cj + 1 qquad (t j ge 1).$ Define the shifted variables $dj = cj - (j-1), qquad 1 le j le t."
+date: "2026-07-03T13:29:19+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103358
+codeforces_index: "B"
+codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2020-2021, \u0412\u0442\u043e\u0440\u0430\u044f \u043b\u0438\u0447\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
+rating: 0
+weight: 103358
+solve_time_s: 164
 verified: false
-solve_time_s: 408
-weight: 7020102096
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103358B - Nutty String](https://codeforces.com/problemset/problem/103358/B)
 
-**Exercise 96.** [*21*] [21] Discuss how to generate all cyclic permutations of {1, . . . , n}, namely those
-a1 . . . an whose cycle representation consists of a single n-cycle.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 44s  
 **Verified:** no  
-**Solve time:** 6m48s  
 
----
-
+## Solution
 ## Solution
 
 Let $n > c_t > \cdots > c_1 \ge 0$ with the constraints from exercise 57 and the additional condition

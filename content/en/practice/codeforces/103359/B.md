@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 94"
-description: "Let $n = s + t$ as in (1), and consider a $t$-combination $c_t \\cdots c_1$ with $n > c_t > \\cdots > c_1 \\ge 0$ together with the additional adjacency restriction $c_{j+1} > c_j + 1 \\qquad (t > j \\ge 1..."
-date: "2026-07-03T06:20:23+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 94
-rating: "25"
-category: "medium"
-recommended: true
+title: "CF 103359B - \u041b\u043e\u0432\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u0414\u0436\u0435\u0440\u0440\u0438"
+description: "Let $n = s + t$ as in (1), and consider a $t$-combination $ct cdots c1$ with $n ct cdots c1 ge 0$ together with the additional adjacency restriction $c{j+1} cj + 1 qquad (t j ge 1).$ Define new integers $c'j = cj - (j-1), qquad 1 le j le t."
+date: "2026-07-03T13:26:06+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103359
+codeforces_index: "B"
+codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2020-2021, \u0422\u0440\u0435\u0442\u044c\u044f \u043b\u0438\u0447\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
+rating: 0
+weight: 103359
+solve_time_s: 70
 verified: false
-solve_time_s: 412
-weight: 7020102094
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103359B - \u041b\u043e\u0432\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u0414\u0436\u0435\u0440\u0440\u0438](https://codeforces.com/problemset/problem/103359/B)
 
-**Exercise 94.** &#9654; [*25*] [25] Show that in the case of perfect matchings, using the relations in (49), all
-topological sorts can be generated with just one transposition per step.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 10s  
 **Verified:** no  
-**Solve time:** 6m52s  
 
----
-
+## Solution
 ## Solution
 
 Let $n = s + t$ as in (1), and consider a $t$-combination $c_t \cdots c_1$ with
@@ -72,7 +64,7 @@ Then $c_{j+1} \ge c'_{j+1} + j \ge (c'_j + 1) + j = (c'_j + (j-1)) + 2 = c_j + 2
 
 so the adjacency condition $c_{j+1} > c_j + 1$ holds, and also $c_t \le n-1$ follows from $c'_t \le n-t$. This reconstruction inverts the transformation, so it is bijective between valid piano-chord combinations and ordinary $t$-combinations on ${0,1,\ldots,n-t}$.
 
-Hence the piano-player problem with adjacency restriction is equivalent to generating all $t$-combinations of an $(n-t+1)$-element set. By (1.2.6–2), their number is
+Hence the piano-player problem with adjacency restriction is equivalent to generating all $t$-combinations of an $(n-t+1)$-element set. By (1.2.6-2), their number is
 
 $\binom{n-t+1}{t},$
 

@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 96"
-description: "Let $n > c_t > \\cdots > c_1 \\ge 0$ with the constraints from exercise 57 and the additional condition $c_{j+1} > c_j + 1 \\qquad (t > j \\ge 1).$ Define the shifted variables $d_j = c_j - (j-1), \\qquad..."
-date: "2026-07-03T06:32:36+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "medium"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 96
-rating: "21"
-category: "medium"
-recommended: false
+title: "CF 103348D - Witches Cauldron I"
+description: "Let $n ct cdots c1 ge 0$ with the constraints from exercise 57 and the additional condition $c{j+1} cj + 1 qquad (t j ge 1).$ Define the shifted variables $dj = cj - (j-1), qquad 1 le j le t."
+date: "2026-07-03T13:40:35+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103348
+codeforces_index: "D"
+codeforces_contest_name: "UTPC Contest 10-15-21 Div. 1 (Advanced)"
+rating: 0
+weight: 103348
+solve_time_s: 119
 verified: false
-solve_time_s: 408
-weight: 7020102096
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103348D - Witches Cauldron I](https://codeforces.com/problemset/problem/103348/D)
 
-**Exercise 96.** [*21*] [21] Discuss how to generate all cyclic permutations of {1, . . . , n}, namely those
-a1 . . . an whose cycle representation consists of a single n-cycle.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 59s  
 **Verified:** no  
-**Solve time:** 6m48s  
 
----
-
+## Solution
 ## Solution
 
 Let $n > c_t > \cdots > c_1 \ge 0$ with the constraints from exercise 57 and the additional condition
