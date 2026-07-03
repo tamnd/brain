@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2827 contests, 20289 problems, 11422 verified."
+description: "Codeforces problem solutions with full editorials. 2828 contests, 20302 problems, 11425 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2827 contests, 20289 problems, 11422 verified.**
+**2828 contests, 20302 problems, 11425 verified.**
 
 ## Unknown — 683 contests, 5647 problems, 3492 verified
 
@@ -1645,7 +1645,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 154 contests, 1070 problems, 484 verified
+## 2021 — 155 contests, 1083 problems, 487 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1781,6 +1781,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103428](103428/) | [The 2021 CCPC Weihai Onsite](https://codeforces.com/contest/103428) | 13 | 3/13 | Special | - |
 | [103443](103443/) | [The 2021 ICPC Asia Taipei Regional Programming Contest](https://codeforces.com/contest/103443) | 13 | 9/13 | ICPC/IOI | - |
 | [103446](103446/) | [The 2021 ICPC Asia Shanghai Regional Programming Contest](https://codeforces.com/contest/103446) | 13 | 13/13 | ICPC/IOI | - |
 | [103447](103447/) | [The 2021 China Collegiate Programming Contest (Harbin)](https://codeforces.com/contest/103447) | 12 | 10/12 | Special | - |

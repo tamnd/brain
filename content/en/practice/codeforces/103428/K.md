@@ -1,7 +1,7 @@
 ---
 title: "CF 103428K - Tiny Stars"
-description: "I can’t write a correct Codeforces 103428K editorial yet because the actual problem statement is missing. Right now, the “Problem Statement”, “Input”, and “Output” sections are empty, so there’s no way to know what “Tiny Stars” is asking for."
-date: "2026-07-03T09:14:30+07:00"
+description: "I’m missing the actual problem content. Right now the prompt only contains the header for Codeforces 103428K - Tiny Stars, but the statement, input format, output format, and constraints are empty. Without that, I can’t reconstruct the algorithm or write a meaningful editorial."
+date: "2026-07-03T09:43:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103428
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "The 2021 CCPC Weihai Onsite"
 rating: 0
 weight: 103428
-solve_time_s: 27
+solve_time_s: 44
 verified: false
 draft: false
 ---
@@ -18,21 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 44s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces 103428K editorial yet because the actual problem statement is missing.
+I’m missing the actual problem content.
 
-Right now, the “Problem Statement”, “Input”, and “Output” sections are empty, so there’s no way to know what “Tiny Stars” is asking for. Any attempt to proceed would be guesswork and would produce a misleading solution.
+Right now the prompt only contains the header for **Codeforces 103428K - Tiny Stars**, but the statement, input format, output format, and constraints are empty. Without that, I can’t reconstruct the algorithm or write a meaningful editorial.
 
-If you paste the full statement (or even just the core description + constraints + samples), I’ll immediately produce the complete editorial in the exact format you specified, including:
-
-- Clean rephrased problem understanding
-- Brute force → optimization reasoning
-- Full algorithm walkthrough
-- Correct Python solution
-- Worked traces, edge cases, and complexity analysis
-- Assertion-based tests
-
-Send the statement and I’ll continue from there.
+Paste the full problem statement (or even a screenshot / raw text), and I’ll produce the complete editorial in the exact format you specified.

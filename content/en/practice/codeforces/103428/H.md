@@ -1,7 +1,7 @@
 ---
 title: "CF 103428H - city safety"
-description: "I can’t write a correct full editorial yet because the actual problem statement for Codeforces 103428H - city safety is missing from your prompt."
-date: "2026-07-03T09:12:52+07:00"
+description: "I can write the full editorial, but I’m missing the actual problem content. The statement section you provided for “Codeforces 103428H - city safety” is empty, so there’s no definition of: what the graph/array/city structure is, what “safety” means, what operations or queries…"
+date: "2026-07-03T09:42:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103428
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "The 2021 CCPC Weihai Onsite"
 rating: 0
 weight: 103428
-solve_time_s: 24
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,27 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct full editorial yet because the actual problem statement for **Codeforces 103428H - city safety** is missing from your prompt.
+I can write the full editorial, but I’m missing the actual problem content.
 
-Right now, only the header is present, so there is no definition of:
+The statement section you provided for “Codeforces 103428H - city safety” is empty, so there’s no definition of:
 
-- what “city safety” means
-- what the input contains
-- what output is required
-- what constraints apply
+what the graph/array/city structure is, what “safety” means, what operations or queries exist, or what needs to be computed.
 
-Without those, any solution would be a guess, and I would risk producing a completely incorrect algorithm and code.
+To produce a correct editorial (especially with algorithm walkthroughs, edge cases, and tests), I need at least one of the following:
 
-If you paste the full statement (or even just the key parts: input format, constraints, and task description), I’ll produce a complete Codeforces-style editorial in the exact format you requested, including:
+1. Full problem statement text
+2. Input/output specification plus constraints
+3. A link or pasted statement content
+4. Even a rough paraphrase of the task
 
-- a proper re-derivation of the solution
-- brute force vs optimized reasoning
-- proof sketch
-- Python implementation
-- worked traces and edge cases
-
-Send the statement and I’ll continue immediately.
+Once you provide that, I’ll write the complete editorial in the exact style you requested, including a derivation of the optimal solution, proof sketch, and full implementation.

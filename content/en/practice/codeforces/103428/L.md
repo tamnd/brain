@@ -1,7 +1,7 @@
 ---
 title: "CF 103428L - shake hands"
-description: "The problem statement for Codeforces 103428L - shake hands isn’t included in your message, so I don’t have enough information to write a correct editorial."
-date: "2026-07-03T09:14:57+07:00"
+description: "The problem statement for Codeforces 103428L - shake hands is missing in your prompt (it’s empty after “Problem Statement / Input / Output”). Without the actual rules of the problem, there’s no way to correctly reconstruct the intended model, constraints, or solution strategy."
+date: "2026-07-03T09:43:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103428
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "The 2021 CCPC Weihai Onsite"
 rating: 0
 weight: 103428
-solve_time_s: 26
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 103428L - shake hands** isn’t included in your message, so I don’t have enough information to write a correct editorial.
+The problem statement for **Codeforces 103428L - shake hands** is missing in your prompt (it’s empty after “Problem Statement / Input / Output”). Without the actual rules of the problem, there’s no way to correctly reconstruct the intended model, constraints, or solution strategy.
 
-To produce the kind of detailed, derivation-style solution you’re asking for, I need at least the full statement (or a link / pasted text), including input format, output format, and constraints.
+For a Codeforces editorial, even small differences in wording can completely change the solution class (graph matching vs greedy vs combinatorics vs simulation), so guessing here would likely produce a wrong or misleading write-up.
 
-Once you send that, I’ll write the complete editorial in the exact structure you specified.
+Please paste the full problem statement (or at least the input/output description and constraints), and I’ll produce a complete, Codeforces-style editorial in the exact format you requested.
