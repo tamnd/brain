@@ -1,7 +1,7 @@
 ---
 title: "CF 103076F - Big Day"
-description: "I can’t reliably write an editorial for this yet because the actual problem statement for Codeforces 103076F - Big Day isn’t included in your message (the “Problem Statement / Input / Output” sections are empty)."
-date: "2026-07-03T23:30:44+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 103076F - Big Day without the actual problem statement."
+date: "2026-07-04T00:21:55+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103076
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "UFPE Starters Final Try-Outs 2021"
 rating: 0
 weight: 103076
-solve_time_s: 32
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for this yet because the actual problem statement for **Codeforces 103076F - Big Day** isn’t included in your message (the “Problem Statement / Input / Output” sections are empty).
+I can’t reliably write a correct editorial for **Codeforces 103076F - Big Day** without the actual problem statement.
 
-Right now there’s no way to know what structure we’re solving (graph, DP, greedy, strings, etc.), so any attempt to proceed would be guesswork rather than a real Codeforces-quality explanation.
+Right now the prompt only contains formatting requirements, but no definition of:
 
-Paste the full statement (or even just the core description and constraints), and I’ll turn it into a complete senior-level editorial in the exact format you specified.
+- what the input represents,
+- what is being optimized/constructed/computed,
+- or even the constraints.
+
+If I try to proceed anyway, I’d be forced to guess the problem, and that would very likely produce a completely incorrect solution and analysis.
+
+Please paste the full problem statement (or even a screenshot/text dump), and I’ll write the complete editorial in the exact style and structure you specified.
