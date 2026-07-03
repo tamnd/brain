@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 54"
-description: "The proposed solution does not address the exercise."
-date: "2026-07-03T16:47:03+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-project"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 54
-rating: "M40"
-category: "math-project"
-recommended: false
+title: "CF 103076D - Lost Archive"
+description: "The proposed solution does not address the exercise. The problem asks for a characterization of values of $s$ and $t$ for which all $(s,t)$-combinations can be generated using adjacent swaps $aj leftrightarrow a{j-1}$ together with an end-around swap $a{n-1} leftrightarrow a0$."
+date: "2026-07-03T23:43:43+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103076
+codeforces_index: "D"
+codeforces_contest_name: "UFPE Starters Final Try-Outs 2021"
+rating: 0
+weight: 103076
+solve_time_s: 146
 verified: false
-solve_time_s: 1227
-weight: 7020103054
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103076D - Lost Archive](https://codeforces.com/problemset/problem/103076/D)
 
-**Exercise 54.** [*M40*] [M40] For what values of s and t can all (s, t)-combinations be generated if we
-allow end-around swaps an−1 ↔a0 in addition to adjacent interchanges aj ↔aj−1?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 26s  
 **Verified:** no  
-**Solve time:** 20m27s  
 
----
-
+## Solution
 ## Correctness
 
 The proposed solution does not address the exercise. The problem asks for a characterization of values of $s$ and $t$ for which all $(s,t)$-combinations can be generated using adjacent swaps $a_j \leftrightarrow a_{j-1}$ together with an end-around swap $a_{n-1} \leftrightarrow a_0$.
@@ -50,4 +42,4 @@ No argument is given relating swap generators to permutations, combination graph
 
 The solution is mathematically unrelated to the exercise and does not engage with the required combinatorial model.
 
-VERDICT: FAIL, the solution is entirely unrelated to the problem and does not analyze the swap-generated combination graph.
+VERDICT: FAIL - the solution is entirely unrelated to the problem and does not analyze the swap-generated combination graph.
