@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 20"
-description: "Let $G$ be a graph with $m = 10^6$ edges, and let $K_t(G)$ denote the number of $t$-cliques in $G$."
-date: "2026-07-03T11:34:13+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 20
-rating: "M20"
-category: "math-medium"
-recommended: false
+title: "CF 103150D - Moving Points"
+description: "Let $G$ be a graph with $m = 10^6$ edges, and let $Kt(G)$ denote the number of $t$-cliques in $G$. The task is to maximize $Kt(G)$ under the constraint $ For a fixed number of edges, the extremal structure is determined by Zykov symmetrization."
+date: "2026-07-03T18:32:09+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103150
+codeforces_index: "D"
+codeforces_contest_name: "EZ Programming Contest #1"
+rating: 0
+weight: 103150
+solve_time_s: 153
 verified: false
-solve_time_s: 448
-weight: 7020103020
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103150D - Moving Points](https://codeforces.com/problemset/problem/103150/D)
 
-**Exercise 20.** [*M20*] [M20] Devise generating functions g and h such that Algorithm F finds exactly
-[zN] g(z) feasible combinations and sets t ←t + 1 exactly [zN] h(z) times.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
 **Verified:** no  
-**Solve time:** 7m28s  
 
----
-
+## Solution
 ## Solution
 
 Let $G$ be a graph with $m = 10^6$ edges, and let $K_t(G)$ denote the number of $t$-cliques in $G$. The task is to maximize $K_t(G)$ under the constraint $|E(G)| = m$.

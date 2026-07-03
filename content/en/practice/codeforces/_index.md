@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2896 contests, 20899 problems, 11562 verified."
+description: "Codeforces problem solutions with full editorials. 2897 contests, 20906 problems, 11562 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2896 contests, 20899 problems, 11562 verified.**
+**2897 contests, 20906 problems, 11562 verified.**
 
 ## Unknown — 719 contests, 5935 problems, 3549 verified
 
@@ -1681,7 +1681,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 187 contests, 1392 problems, 567 verified
+## 2021 — 188 contests, 1399 problems, 567 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1817,6 +1817,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103150](103150/) | [EZ Programming Contest #1](https://codeforces.com/contest/103150) | 7 | 0/7 | Special | - |
 | [103158](103158/) | [ACPC Kickoff 2021](https://codeforces.com/contest/103158) | 12 | 0/12 | Special | - |
 | [103181](103181/) | [AGM 2021, Final Round, Day 1](https://codeforces.com/contest/103181) | 12 | 1/12 | Special | - |
 | [103182](103182/) | [AGM 2021, Final Round, Day 2](https://codeforces.com/contest/103182) | 12 | 0/12 | Special | - |
