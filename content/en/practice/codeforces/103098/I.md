@@ -1,7 +1,7 @@
 ---
 title: "CF 103098I - Interesting Scoring Systems"
-description: "The problem statement is missing from the prompt, so there’s nothing concrete to derive the solution from yet. For a Codeforces editorial, I need at least the full description of what the scoring system is, how the input defines it, and what exactly is being computed."
-date: "2026-07-03T22:48:07+07:00"
+description: "I can’t write a correct Codeforces editorial without the actual problem statement. Right now the “Problem Statement / Input / Output” sections are empty, and for a problem like 103098I - Interesting Scoring Systems, the solution depends entirely on the scoring rules and…"
+date: "2026-07-04T00:26:25+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103098
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2020-2021 Winter Petrozavodsk Camp, UPC contest"
 rating: 0
 weight: 103098
-solve_time_s: 24
+solve_time_s: 35
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 35s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from the prompt, so there’s nothing concrete to derive the solution from yet.
+I can’t write a correct Codeforces editorial without the actual problem statement.
 
-For a Codeforces editorial, I need at least the full description of what the scoring system is, how the input defines it, and what exactly is being computed. Right now only the title and metadata are present.
+Right now the “Problem Statement / Input / Output” sections are empty, and for a problem like **103098I - Interesting Scoring Systems**, the solution depends entirely on the scoring rules and constraints. If I guess, I’d risk producing a completely wrong algorithm and misleading explanation.
 
-Paste the full problem statement (or even a screenshot/text dump), and I’ll produce the complete editorial in the format you specified, including reasoning, optimal approach, walkthrough, code, and tests.
+Send me one of the following and I’ll produce the full editorial in the exact format you requested:
+
+- Full problem statement text, or
+- A screenshot / pasted PDF content, or
+- Even just the core rules and constraints in rough form
+
+Once I have that, I’ll write a complete, derivation-level editorial with brute force → insight → optimal solution → proof → code → edge cases, exactly in your style constraints.
