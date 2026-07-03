@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2862 contests, 20575 problems, 11505 verified."
+description: "Codeforces problem solutions with full editorials. 2865 contests, 20604 problems, 11524 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2862 contests, 20575 problems, 11505 verified.**
+**2865 contests, 20604 problems, 11524 verified.**
 
-## Unknown — 702 contests, 5778 problems, 3518 verified
+## Unknown — 705 contests, 5807 problems, 3537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
+| [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 11 | 9/11 | Special | - |
+| [103329](103329/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Open Cup, Grand Prix of XiAn)](https://codeforces.com/contest/103329) | 11 | 9/11 | Special | - |
 | [103351](103351/) | [SDU Open 2021 Fall](https://codeforces.com/contest/103351) | 10 | 1/10 | Special | - |
 | [103358](103358/) | [Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада](https://codeforces.com/contest/103358) | 4 | 0/4 | Special | - |
 | [103359](103359/) | [Интернет-олимпиады, Сезон 2020-2021, Третья личная олимпиада](https://codeforces.com/contest/103359) | 4 | 1/4 | Special | - |
