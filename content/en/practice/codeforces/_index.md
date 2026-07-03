@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2893 contests, 20856 problems, 11557 verified."
+description: "Codeforces problem solutions with full editorials. 2895 contests, 20880 problems, 11558 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2893 contests, 20856 problems, 11557 verified.**
+**2895 contests, 20880 problems, 11558 verified.**
 
-## Unknown — 718 contests, 5917 problems, 3546 verified
+## Unknown — 719 contests, 5929 problems, 3546 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
 | [103185](103185/) | [2020-2021 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/103185) | 14 | 2/14 | ICPC/IOI | - |
 | [103194](103194/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 1](https://codeforces.com/contest/103194) | 4 | 0/4 | Special | - |
 | [103195](103195/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 2](https://codeforces.com/contest/103195) | 4 | 1/4 | Special | - |
@@ -1680,7 +1681,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 185 contests, 1367 problems, 565 verified
+## 2021 — 186 contests, 1379 problems, 566 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1816,6 +1817,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103181](103181/) | [AGM 2021, Final Round, Day 1](https://codeforces.com/contest/103181) | 12 | 1/12 | Special | - |
 | [103182](103182/) | [AGM 2021, Final Round, Day 2](https://codeforces.com/contest/103182) | 12 | 0/12 | Special | - |
 | [103186](103186/) | [The 2021 Shanghai Collegiate Programming Contest](https://codeforces.com/contest/103186) | 12 | 10/12 | Special | - |
 | [103192](103192/) | [The 9-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/103192) | 7 | 6/7 | Special | - |

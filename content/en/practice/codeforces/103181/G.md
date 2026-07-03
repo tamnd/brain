@@ -1,50 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 110"
-description: "Fix $n,t,r$."
-date: "2026-07-03T09:40:19+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "hard"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 110
-rating: "26"
-category: "hard"
-recommended: true
+title: "CF 103181G - Complicated Schedule"
+description: "Fix $n,t,r$. We consider binary strings $a{n-1}cdots a1a0$ with $a0=0$, containing exactly $t$ ones and decomposable into exactly $r$ maximal alternating runs of $0$’s and $1$’s as in the Ising configurations of Exercise 13."
+date: "2026-07-03T16:39:31+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103181
+codeforces_index: "G"
+codeforces_contest_name: "AGM 2021, Final Round, Day 1"
+rating: 0
+weight: 103181
+solve_time_s: 131
 verified: false
-solve_time_s: 1034
-weight: 7020103110
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103181G - Complicated Schedule](https://codeforces.com/problemset/problem/103181/G)
 
-**Exercise 110.** &#9654; [*26*] [26] Cribbage is a game played with 52 cards, where each card has a suit (♣, ♢,
-♡, or ♠) and a face value (A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, or K). Its players must
-become adept at computing the score of a 5-card combination C = {c1, c2, c3, c4, c5},
-where one card ck is called the starter. The score is the sum of points computed as
-follows, for each subset S of C and each choice of k: Let |S| = s.
-i) Fifteens: If {v(c) | c ∈S} = 15, where (v(A), v(2), v(3), . . . , v(9), v(10), v(J),
-v(Q), v(K)) = (1, 2, 3, . . . , 9, 10, 10, 10, 10), score two points.
-ii) Pairs: If s = 2 and both cards have the same face value, score two points.
-iii) Runs: If s ≥3 and the face values are consecutive, and if C does not contain a
-run of length s + 1, score s points.
-iv) Flushes: If s = 4 and all cards of S have the same suit, and if ck /∈S, score
-4 + [ck has the same suit as the others].
-v) Nobs: If s = 1 and ck /∈S, score 1 if the card is J of the same suit as ck.
-For example, if you hold {J♣, 5♣, 5♢, 6♡} and if 4♣is the starter, you score 4 × 2 for
-fifteens, 2 for a pair, 2 × 3 for runs, plus 1 for nobs, totalling 17.
-Exactly how many combinations and starter choices lead to a score of x points,
-for x = 0, 1, 2, . . . ?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 11s  
 **Verified:** no  
-**Solve time:** 17m14s  
 
----
-
+## Solution
 ## Setup
 
 Fix $n,t,r$. We consider binary strings $a_{n-1}\cdots a_1a_0$ with $a_0=0$, containing exactly $t$ ones and decomposable into exactly $r$ maximal alternating runs of $0$’s and $1$’s as in the Ising configurations of Exercise 13. Adjacent symbols are different inside each run decomposition, and the run structure is fixed throughout the state space.
