@@ -26,8 +26,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 73/111 solved.
 | [6](06.md) |  [*M22*] | math-medium | solved | 4m44s |
 | [7](07.md) |  [*22*] | medium | solved | 9m38s |
 | [8](08.md) |  [*M23*] | math-medium | solved | 4m55s |
-| [9](09.md) |  [*M26*] | math-hard | solved | 7m08s |
-| [10](10.md) | &#9654; [*21*] | medium | verified | 3m09s |
+| [9](09.md) |  [*M26*] | math-hard | solved | 4m40s |
+| [10](10.md) | &#9654; [*21*] | medium | solved | 3m58s |
 | [11](11.md) |  [*19*] | medium | solved | 2m46s |
 | [12](12.md) |  [*HM32*] | hm-hard | solved | 9m48s |
 | [13](13.md) |  [*25*] | medium | solved | 6m58s |
@@ -117,7 +117,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 73/111 solved.
 | 97 | &#9654; [*M26*] | math-hard | - | - |
 | 98 |  [*30*] | hard | - | - |
 | 99 |  [*M25*] | math-medium | - | - |
-| [100](100.md) | &#9654; [*M30*] | math-hard | solved | 4m21s |
+| [100](100.md) | &#9654; [*M30*] | math-hard | solved | 4m51s |
 | [101](101.md) |  [*M25*] | math-medium | verified | 4m43s |
 | [102](102.md) |  [*HM35*] | hm-hard | solved | 6m42s |
 | [103](103.md) | &#9654; [*M38*] | math-project | solved | 6m48s |
