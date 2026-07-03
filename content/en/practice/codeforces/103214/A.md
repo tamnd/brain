@@ -1,24 +1,24 @@
 ---
-title: "CF 103295E - Ratman's Puzzle"
+title: "CF 103214A - Factorial"
 description: "Let $A$ be a family of $t$-combinations, and let $partial A$ denote its shadow, the family of all $(t-1)$-combinations contained in members of $A$."
-date: "2026-07-03T17:41:26+07:00"
+date: "2026-07-03T17:36:15+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103295
-codeforces_index: "E"
-codeforces_contest_name: "UTPC Contest 09-17-21 Div. 1 (Advanced)"
+codeforces_contest: 103214
+codeforces_index: "A"
+codeforces_contest_name: "XXV Spain Olympiad in Informatics, Day 1"
 rating: 0
-weight: 103295
-solve_time_s: 140
+weight: 103214
+solve_time_s: 151
 verified: false
 draft: false
 ---
 
-[CF 103295E - Ratman's Puzzle](https://codeforces.com/problemset/problem/103295/E)
+[CF 103214A - Factorial](https://codeforces.com/problemset/problem/103214/A)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 20s  
+**Solve time:** 2m 31s  
 **Verified:** no  
 
 ## Solution

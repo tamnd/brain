@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2896 contests, 20892 problems, 11558 verified."
+description: "Codeforces problem solutions with full editorials. 2896 contests, 20896 problems, 11561 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2896 contests, 20892 problems, 11558 verified.**
+**2896 contests, 20896 problems, 11561 verified.**
 
-## Unknown — 719 contests, 5929 problems, 3546 verified
+## Unknown — 719 contests, 5932 problems, 3548 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,8 +22,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103194](103194/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 1](https://codeforces.com/contest/103194) | 4 | 0/4 | Special | - |
 | [103195](103195/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 2](https://codeforces.com/contest/103195) | 4 | 1/4 | Special | - |
 | [103196](103196/) | [2020-2021 Открытая олимпиада школьников по программированию, заочный этап](https://codeforces.com/contest/103196) | 10 | 2/10 | Special | - |
-| [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 4 | 0/4 | Special | - |
-| [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 4 | 0/4 | Special | - |
+| [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 5 | 0/5 | Special | - |
+| [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 5 | 0/5 | Special | - |
 | [103230](103230/) | [Moving intervals for packing and covering](https://codeforces.com/contest/103230) | 2 | 0/2 | Special | - |
 | [103241](103241/) | [Teamscode Summer 2021](https://codeforces.com/contest/103241) | 25 | 2/25 | Special | - |
 | [103260](103260/) | [2020-2021 Winter Petrozavodsk Camp, Day 5: Almost Retired Dandelion Contest (XXI Open Cup, Grand Prix of Nizhny Novgorod)](https://codeforces.com/contest/103260) | 13 | 1/13 | Special | - |
@@ -32,7 +32,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103264](103264/) | [XVI Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103264) | 6 | 0/6 | Special | - |
 | [103265](103265/) | [XIV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103265) | 6 | 0/6 | Special | - |
 | [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
-| [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 11 | 9/11 | Special | - |
+| [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 12 | 11/12 | Special | - |
 | [103329](103329/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Open Cup, Grand Prix of XiAn)](https://codeforces.com/contest/103329) | 11 | 9/11 | Special | - |
 | [103351](103351/) | [SDU Open 2021 Fall](https://codeforces.com/contest/103351) | 10 | 1/10 | Special | - |
 | [103358](103358/) | [Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада](https://codeforces.com/contest/103358) | 4 | 0/4 | Special | - |
@@ -1681,7 +1681,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 187 contests, 1391 problems, 566 verified
+## 2021 — 187 contests, 1392 problems, 567 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1829,7 +1829,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103274](103274/) | [2021 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/103274) | 13 | 0/13 | ICPC/IOI | - |
 | [103286](103286/) | [2021 VI IQ PFO](https://codeforces.com/contest/103286) | 8 | 0/8 | Special | - |
 | [103294](103294/) | [UTPC Contest 09-17-21 Div. 2 (Beginner)](https://codeforces.com/contest/103294) | 9 | 0/9 | Div. 2 | - |
-| [103295](103295/) | [UTPC Contest 09-17-21 Div. 1 (Advanced)](https://codeforces.com/contest/103295) | 10 | 3/10 | Div. 1 | - |
+| [103295](103295/) | [UTPC Contest 09-17-21 Div. 1 (Advanced)](https://codeforces.com/contest/103295) | 11 | 4/11 | Div. 1 | - |
 | [103306](103306/) | [2021 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103306) | 11 | 2/11 | ICPC/IOI | - |
 | [103316](103316/) | [UTPC Contest 10-01-21 Div. 1 (Advanced)](https://codeforces.com/contest/103316) | 8 | 1/8 | Div. 1 | - |
 | [103317](103317/) | [UTPC Contest 10-01-21 Div. 2 (Beginner)](https://codeforces.com/contest/103317) | 8 | 0/8 | Div. 2 | - |

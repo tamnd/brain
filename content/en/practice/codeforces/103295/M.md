@@ -1,7 +1,7 @@
 ---
 title: "CF 103295M - Ominous Chess"
-description: "The problem statement section is empty, so there isn’t enough information to reconstruct what Codeforces 103295M - Ominous Chess is asking."
-date: "2026-07-03T14:27:34+07:00"
+description: "I don’t have the actual statement for Codeforces 103295M - Ominous Chess, so I can’t responsibly derive an algorithm, complexity, or implementation details yet."
+date: "2026-07-03T17:50:54+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103295
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "UTPC Contest 09-17-21 Div. 1 (Advanced)"
 rating: 0
 weight: 103295
-solve_time_s: 29
+solve_time_s: 25
 verified: false
 draft: false
 ---
@@ -18,14 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 25s  
 **Verified:** no  
 
 ## Solution
-The problem statement section is empty, so there isn’t enough information to reconstruct what Codeforces 103295M - Ominous Chess is asking.
+I don’t have the actual statement for **Codeforces 103295M - Ominous Chess**, so I can’t responsibly derive an algorithm, complexity, or implementation details yet. Anything I wrote beyond this point would be guesswork, and that would defeat the purpose of the editorial style you asked for.
 
-To write a correct editorial, I need at least:
+If you paste the full problem statement (or even just the core rules and input format), I’ll produce a complete, structured Codeforces editorial in the exact format you specified, including the algorithm derivation, walkthrough, code, and edge-case analysis.
 
-the rules of the chess-like process (board size, pieces, moves, win condition or scoring), and what the input/output represent.
-
-Please paste the full problem statement (or a screenshot/text). Once I have it, I’ll produce the complete editorial in the requested Codeforces style, including the full reasoning, algorithm, proof sketch, and implementation.
+Send the statement and I’ll continue from there.

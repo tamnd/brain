@@ -1,7 +1,7 @@
 ---
 title: "CF 103295G - Spar-Lord's Voyage"
-description: "I can’t reliably reconstruct the full intended solution for Codeforces 103295G - Spar-Lord’s Voyage from the information available here. The problem statement is missing, and the gym/contest link does not expose the actual task content in a usable way for derivation."
-date: "2026-07-03T14:25:46+07:00"
+description: "I can’t produce a correct editorial for this problem yet because the actual problem statement is missing from your prompt. Right now we only have the title “Spar-Lord’s Voyage”, but no description of the graph/array/grid structure, operations, or what needs to be computed."
+date: "2026-07-03T17:39:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103295
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "UTPC Contest 09-17-21 Div. 1 (Advanced)"
 rating: 0
 weight: 103295
-solve_time_s: 29
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,19 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 29s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably reconstruct the full intended solution for **Codeforces 103295G - Spar-Lord’s Voyage** from the information available here. The problem statement is missing, and the gym/contest link does not expose the actual task content in a usable way for derivation. Anything I write as a “complete editorial” without the statement would be guesswork and very likely incorrect.
+I can’t produce a correct editorial for this problem yet because the actual problem statement is missing from your prompt.
 
-If you paste the full problem statement (or even just the key parts: what the grid/graph is, what operations are allowed, and what is being optimized), I can immediately produce the full editorial in the exact format you specified, including:
+Right now we only have the title “Spar-Lord’s Voyage”, but no description of the graph/array/grid structure, operations, or what needs to be computed. Without that, any solution would be guesswork and very likely wrong.
 
-- a clean restatement in my own words
-- constraint-based reasoning
-- brute force vs optimal derivation
-- full algorithm walkthrough with invariants
-- correct Python solution
-- worked traces, edge cases, and test harness
-
-Send the statement and I’ll turn it into a proper Codeforces-style editorial.
+If you paste the full statement (or even a screenshot/text dump), I’ll write the complete Codeforces-style editorial in the exact format you requested, including the full reasoning, algorithm walkthrough, and implementation.

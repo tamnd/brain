@@ -1,7 +1,7 @@
 ---
 title: "CF 103218B - Xor"
-description: "I can’t write a correct Codeforces editorial without the actual problem statement. “103218B - Xor” isn’t enough on its own, and there are multiple problems with similar names where the intended solution is completely different."
-date: "2026-07-03T15:15:55+07:00"
+description: "The problem statement is missing from your prompt, so I can’t reliably reconstruct what “Codeforces 103218B - Xor” is asking."
+date: "2026-07-03T17:37:02+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103218
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "XXV Spain Olympiad in Informatics, Day 2"
 rating: 0
 weight: 103218
-solve_time_s: 35
+solve_time_s: 34
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 35s  
+**Solve time:** 34s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial without the actual problem statement. “103218B - Xor” isn’t enough on its own, and there are multiple problems with similar names where the intended solution is completely different.
+The problem statement is missing from your prompt, so I can’t reliably reconstruct what “Codeforces 103218B - Xor” is asking.
 
-Paste the full statement (or at least input/output format + constraints + sample), and I’ll produce the complete editorial in the exact structure you specified.
+For a Codeforces editorial, even small differences in the statement (array XOR vs tree XOR vs prefix queries vs constructive XOR) completely change the solution, so guessing would risk writing a wrong or misleading explanation.
+
+Send the full problem statement (or even a screenshot / pasted text), and I’ll write the complete editorial in the exact format you specified.
