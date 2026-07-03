@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2919 contests, 21143 problems, 11635 verified."
+description: "Codeforces problem solutions with full editorials. 2921 contests, 21161 problems, 11636 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2919 contests, 21143 problems, 11635 verified.**
+**2921 contests, 21161 problems, 11636 verified.**
 
 ## Unknown — 731 contests, 6072 problems, 3587 verified
 
@@ -1527,7 +1527,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 161 contests, 813 problems, 357 verified
+## 2020 — 162 contests, 823 problems, 358 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1690,10 +1690,11 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [103075](103075/) | [2020 V Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103075) | 10 | 1/10 | Special | - |
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 198 contests, 1499 problems, 602 verified
+## 2021 — 199 contests, 1507 problems, 602 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1829,6 +1830,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103074](103074/) | [2021 VI Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/103074) | 8 | 0/8 | Special | - |
 | [103076](103076/) | [UFPE Starters Final Try-Outs 2021](https://codeforces.com/contest/103076) | 10 | 1/10 | Special | - |
 | [103092](103092/) | [SDU Open 2021 Школы](https://codeforces.com/contest/103092) | 10 | 1/10 | Special | - |
 | [103104](103104/) | [2021 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/103104) | 11 | 9/11 | Special | - |

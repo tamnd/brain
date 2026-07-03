@@ -1,7 +1,7 @@
 ---
 title: "CF 103964J - Walk Around The Campsite"
-description: "The Takagi function is defined for $0 le x le 1$ by $$tau(x)=sum{k=1}^{infty}int{0}^{x} rk(t),dt, qquad rk(t)=(-1)^{lfloor 2^k trfloor}."
-date: "2026-07-03T22:43:38+07:00"
+description: "Let the index set be ${0,1,dots,s}$ with variables $rs,dots,r0$ and constraints $0 le rj le mj$ for $s ge j ge 0$, together with $$rs + cdots + r0 = t."
+date: "2026-07-04T00:40:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 157
+solve_time_s: 153
 verified: false
 draft: false
 ---
@@ -18,121 +18,83 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 37s  
+**Solve time:** 2m 33s  
 **Verified:** no  
 
 ## Solution
-## Setup
-
-The Takagi function is defined for $0 \le x \le 1$ by
-
-$$\tau(x)=\sum_{k=1}^{\infty}\int_{0}^{x} r_k(t)\,dt,
-\qquad r_k(t)=(-1)^{\lfloor 2^k t\rfloor}.$$
-
-Each $r_k$ is constant on dyadic intervals of length $2^{-k}$, hence $\int_0^x r_k(t),dt$ is a piecewise linear function with breakpoints at dyadic rationals.
-
-The functional equations from part (b) are used repeatedly:
-
-$$\tau\!\left(\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
-\qquad
-\tau\!\left(1-\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
-\quad 0\le x\le 1.$$
-
-Parts (d), (e), (f) concern arithmetic nature of values, level set at $1/2$, and maximizers.
-
 ## Solution
 
-### (d) Rationality of $\tau(x)$ for rational $x$
+Let the index set be ${0,1,\dots,s}$ with variables $r_s,\dots,r_0$ and constraints $0 \le r_j \le m_j$ for $s \ge j \ge 0$, together with
 
-Fix $x=\frac{p}{q}$ in lowest terms. For each fixed $k$, the function $r_k(t)$ depends only on $\lfloor 2^k t\rfloor$, so the integral
+$$r_s + \cdots + r_0 = t.$$
 
-$$I_k(x)=\int_0^x r_k(t)\,dt$$
+Write $R_j = r_s + \cdots + r_j$ and let the remaining capacity below level $j$ be
 
-is a finite sum of integrals over dyadic intervals of length $2^{-k}$. On each such interval, $r_k$ is constant $\pm 1$, hence each full interval contributes a rational number with denominator $2^k$.
+$$M_j = \sum_{k=0}^{j-1} m_k,
+\quad 1 \le j \le s+1,$$
 
-The point $x=p/q$ intersects dyadic partitions at most at endpoints of intervals of length $2^{-k}$. Therefore $I_k(x)$ is a rational number whose denominator divides $2^k q$.
+with $M_0 = 0$. Let the remaining sum after fixing $r_s,\dots,r_j$ be
 
-For $k \ge \nu_2(q)$, where $\nu_2(q)$ is the 2-adic valuation, the sequence $2^k x \bmod 1$ is periodic in $k$ with period dividing $q$. This implies the sequence $I_k(x)$ is eventually periodic after scaling by $2^k$, since the pattern of signs of $r_k$ on the dyadic grid repeats with period dividing $q$.
+$$T_j = t - R_j.$$
 
-Hence the tail of the series
+A partial assignment $r_s,\dots,r_j$ is extendable if and only if
 
-$$\sum_{k=1}^{\infty} I_k(x)$$
+$$0 \le T_j \le M_j.$$
 
-is a sum of a geometrically decaying sequence with eventually periodic rational coefficients. Such a tail is a rational number, since it can be written as a finite sum of rational geometric series.
+### Initialization
 
-Each finite prefix is rational, therefore $\tau(x)$ is rational.
+The lexicographically first solution is obtained by constructing $r_s,\dots,r_0$ from left to right while maintaining feasibility.
 
-This completes the proof. ∎
+Set $T_{s+1} = t$. For $j = s,s-1,\dots,0$, define
 
-### (e) Solutions of $\tau(x)=\frac12$
+$$r_j = \max\bigl(0,\, T_{j+1} - M_j\bigr).$$
 
-Let $S={x \in [0,1] : \tau(x)=\tfrac12}$.
+Then set $T_j = T_{j+1} - r_j$. The choice ensures $T_j \le M_j$ and $r_j \le m_j$, since $T_{j+1} \le M_{j+1} + m_j$ whenever a solution exists, and thus the construction remains within bounds. The resulting vector is the first admissible bounded composition in lexicographic order.
 
-The functional equations give a binary tree structure. If $x \in S$, then either $x=\frac{y}{2}$ or $x=1-\frac{y}{2}$ for some $y \in [0,1]$, and in both cases
+Visit this composition.
 
-$$\frac12=\tau(x)=\frac{y}{2}+\frac12\tau(y),$$
+### Lexicographic successor
 
-hence
+Given a valid composition $r_s,\dots,r_0$, the next composition is obtained by modifying the rightmost index that can still be increased without destroying feasibility.
 
-$$\tau(y)=1-y.$$
+Define $T_0 = t - (r_s + \cdots + r_1)$ during the scan, and maintain $T_j$ consistently as remaining sum after fixing higher indices.
 
-Thus preimages of the level set are determined by solving intersections of $\tau(y)$ with the line $1-y$. The function $\tau$ is piecewise linear on every dyadic interval, with breakpoints at dyadic rationals, so all solutions are dyadic rationals.
+To locate the position $j$, start from $j=0$ and increase $j$ while the current component is forced by maximal suffix constraints. The component $r_j$ is forced if either $r_j = m_j$ or increasing it by $1$ would make completion impossible, that is,
 
-Now restrict attention to dyadic rationals $x=\frac{m}{2^k}$. On each interval of level $k$, the function $\tau$ is linear, hence the equation $\tau(x)=\frac12$ has at most one solution per such interval. Since there are $2^k$ dyadic intervals of level $k$, the set $S$ is contained in a countable union of finite sets, hence is countable.
+$$T_j - 1 > M_j.$$
 
-To determine the structure, apply the recursion:
+Equivalently, $r_j$ is movable if
 
-$$\tau(x)=\frac12 \iff
-\tau\!\left(\frac{x}{2}\right)=\frac12
-\ \text{or}\
-\tau\!\left(1-\frac{x}{2}\right)=\frac12$$
+$$r_j < m_j \quad \text{and} \quad T_j - 1 \le M_j.$$
 
-after solving the affine relation. Iterating shows that every solution is obtained by a finite composition of the maps
+Let $j$ be the smallest index satisfying this movability condition. Such an index exists unless the current composition is the last one.
 
-$$x \mapsto \frac{x}{2}, \qquad x \mapsto 1-\frac{x}{2}$$
+### Update step
 
-starting from solutions in $[0,1]$ that lie in the base linear pieces.
+Increase $r_j$ by one:
 
-These maps preserve dyadic rationality, hence every solution is dyadic rational.
+$$r_j \leftarrow r_j + 1,$$
 
-The initial level solutions in the smallest dyadic partition occur at the midpoints of linear segments where $\tau$ crosses $\frac12$. On level $k$ partitions these points correspond exactly to dyadic rationals whose binary expansion corresponds to a finite admissible path in the Takagi recursion tree, equivalently a finite sequence of left/right choices under the maps above.
+so the remaining sum becomes
 
-Thus $S$ consists precisely of those dyadic rationals whose binary expansions correspond to finite compositions of the transformations $x \mapsto x/2$ and $x \mapsto 1-x/2$ that land on a linear segment where $\tau$ equals $\frac12$.
+$$T_j \leftarrow T_j - 1.$$
 
-In particular, $S$ is a countable set of dyadic rationals, and every element is obtained by a finite binary address in this functional system.
+All components below $j$ are then recomputed in the lexicographically smallest way consistent with feasibility. For $k = j-1, j-2, \dots, 0$, set
 
-### (f) Solutions of $\tau(x)=\max_{0 \le x \le 1}\tau(x)$
+$$r_k = \max\bigl(0,\, T_{k+1} - M_k\bigr),$$
 
-The Takagi function is symmetric:
+and update $T_k = T_{k+1} - r_k$.
 
-$$\tau(x)=\tau(1-x),$$
+### Termination condition
 
-so maximizers occur in symmetric pairs.
+If no index $j$ satisfies the movability condition, then for every $j$ either $r_j = m_j$ or $T_j - 1 > M_j$. The latter implies $T_0 = 0$, hence $r_0 = \cdots = r_s = m_0, \dots, m_s$ would exceed the total $t$ unless already saturated. In this case the current composition is the lexicographically last one and the algorithm terminates.
 
-Using the self-similarity,
+### Algorithm
 
-$$\tau(x)=\frac12 x + \frac12 \tau(2x) \quad (0 \le x \le \tfrac12),$$
+The resulting procedure is:
 
-and similarly on $[\tfrac12,1]$, maxima propagate under binary scaling. The function increases whenever the binary expansion of $x$ begins with patterns that maximize the accumulation of $r_k$ contributions.
+Start with the initialization above, then repeatedly perform the successor step: locate the smallest $j$ such that $r_j < m_j$ and $T_j - 1 \le M_j$, increase $r_j$, and rebuild the suffix greedily by the formula $r_k = \max(0, T_{k+1} - M_k)$.
 
-The contribution at level $k$ is maximized when $r_k(t)$ is $+1$ for the largest possible initial measure of $t$, which corresponds to balancing the binary digits so that the fractional parts $2^k x \bmod 1$ stay as close as possible to $1/2$.
+Each iteration produces the next lexicographic bounded composition, and every feasible composition is produced exactly once, since at each step the prefix $r_s,\dots,r_j$ is the lexicographically smallest possible extension of its prefix, and the choice of $j$ is forced by maximal suffix obstruction.
 
-This balancing occurs exactly when the binary expansion of $x$ is periodic with alternating digits:
-
-$$x = 0.\overline{01}_2 \quad \text{or} \quad x = 0.\overline{10}_2.$$
-
-These correspond to
-
-$$x=\frac{1}{3}, \qquad x=\frac{2}{3}.$$
-
-Direct evaluation using the series definition gives
-
-$$\tau\!\left(\frac13\right)=\tau\!\left(\frac23\right)=\frac23,$$
-
-and no other point can exceed this value because any deviation from perfect alternation causes a strict deficit in infinitely many Rademacher levels, reducing the total sum by at least a dyadic amount.
-
-Hence the full set of maximizers is
-
-$$\boxed{\left\{\frac13,\frac23\right\}}.$$
-
-This completes the proof. ∎
+This completes the construction. ∎
