@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 106"
-description: "Let $G_{s,t}$ denote the graph whose vertices are all subcubes of length $s+t$ having $s$ digits in ${0,1}$ and $t$ asterisks, with edges given by the transformations $\\ast 0 \\leftrightarrow 0\\ast$, $..."
-date: "2026-07-03T08:34:12+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 106
-rating: "M21"
-category: "math-medium"
-recommended: false
+title: "CF 103202G - The Witchwood"
+description: "Let $G{s,t}$ denote the graph whose vertices are all subcubes of length $s+t$ having $s$ digits in ${0,1}$ and $t$ asterisks, with edges given by the transformations $ast 0 leftrightarrow 0ast$, $ast 1 leftrightarrow 1ast$, and $0 leftrightarrow 1$."
+date: "2026-07-03T15:32:08+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103202
+codeforces_index: "G"
+codeforces_contest_name: "The 2020 ICPC Asia Shenyang Regional Programming Contest"
+rating: 0
+weight: 103202
+solve_time_s: 152
 verified: false
-solve_time_s: 283
-weight: 7020103106
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103202G - The Witchwood](https://codeforces.com/problemset/problem/103202/G)
 
-**Exercise 106.** [*M21*] [M21] (L. Poinsot, 1809.) Find a “nice” universal cycle of 2-combinations for
-{0, 1, . . . , 2m}. Hint: Consider the differences of consecutive elements, mod (2m + 1).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 32s  
 **Verified:** no  
-**Solve time:** 4m43s  
 
----
-
+## Solution
 ## Setup
 
 Let $G_{s,t}$ denote the graph whose vertices are all subcubes of length $s+t$ having $s$ digits in ${0,1}$ and $t$ asterisks, with edges given by the transformations $\ast 0 \leftrightarrow 0\ast$, $\ast 1 \leftrightarrow 1\ast$, and $0 \leftrightarrow 1$.
@@ -46,9 +38,7 @@ Each vertex of $G_{s,t}$ decomposes uniquely into two independent components. Th
 
 Under this decomposition, the transformation $\ast 0 \leftrightarrow 0\ast$ and $\ast 1 \leftrightarrow 1\ast$ changes only the combination component by swapping adjacent steps in the corresponding lattice path representation, while the transformation $0 \leftrightarrow 1$ changes only the binary digit component. No move mixes these two effects. It follows that $G_{s,t}$ is isomorphic to the Cartesian product
 
-$$
-G_{s,t} \cong Q_s \,\square\, C_{s,t},
-$$
+$$G_{s,t} \cong Q_s \,\square\, C_{s,t},$$
 
 where $Q_s$ is the $s$-dimensional hypercube on binary strings of length $s$, and $C_{s,t}$ is the graph of $(s,t)$-combinations under adjacent swap operations, equivalently the graph underlying Algorithm L in Section 7.2.1.3.
 
@@ -56,15 +46,11 @@ A Hamiltonian path in a Cartesian product $G \square H$ is determined by an inte
 
 In the present case,
 
-$$
-|V(Q_s)| = 2^s, \qquad |V(C_{s,t})| = \binom{s+t}{t}.
-$$
+$$|V(Q_s)| = 2^s, \qquad |V(C_{s,t})| = \binom{s+t}{t}.$$
 
 A Hamiltonian path in $Q_s$ has exactly $2^s-1$ edges, and a Hamiltonian path in $C_{s,t}$ has exactly $\binom{s+t}{t}-1$ edges. Hence any Hamiltonian path in $G_{s,t}$ corresponds to a shuffle of two fixed sequences of lengths $2^s-1$ and $\binom{s+t}{t}-1$, producing a sequence of length
 
-$$
-(2^s-1) + \left(\binom{s+t}{t}-1\right) = 2^s\binom{s+t}{t} - 1.
-$$
+$$(2^s-1) + \left(\binom{s+t}{t}-1\right) = 2^s\binom{s+t}{t} - 1.$$
 
 The genlex rule from exercise 64 fixes, at every vertex, the next move by a deterministic priority: the lexicographically first admissible transformation among the allowed swaps and flips. This rule induces a unique successor function on $G_{s,t}$, because at each vertex the choice is uniquely determined by the first position where either a swap $\ast 0 \to 0\ast$ or $\ast 1 \to 1\ast$ is possible in lexicographic order; otherwise the unique remaining admissible move is $0 \leftrightarrow 1$. Since the successor is uniquely defined everywhere, the directed graph induced by this rule has outdegree $1$ at every vertex.
 
@@ -90,12 +76,8 @@ The existence of a cycle from exercise 64 ensures that the deterministic success
 
 The total number of genlex Gray paths on subcubes is
 
-$$
-\boxed{1},
-$$
+$$\boxed{1},$$
 
 and the number of those paths that are cycles is
 
-$$
-\boxed{1}.
-$$
+$$\boxed{1}.$$
