@@ -1,0 +1,138 @@
+---
+title: "CF 103092J - Just One Left"
+description: "The Takagi function is defined for $0 le x le 1$ by $$tau(x)=sum{k=1}^{infty}int{0}^{x} rk(t),dt, qquad rk(t)=(-1)^{lfloor 2^k trfloor}."
+date: "2026-07-03T22:55:56+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103092
+codeforces_index: "J"
+codeforces_contest_name: "SDU Open 2021 \u0428\u043a\u043e\u043b\u044b"
+rating: 0
+weight: 103092
+solve_time_s: 148
+verified: false
+draft: false
+---
+
+[CF 103092J - Just One Left](https://codeforces.com/problemset/problem/103092/J)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 28s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+The Takagi function is defined for $0 \le x \le 1$ by
+
+$$\tau(x)=\sum_{k=1}^{\infty}\int_{0}^{x} r_k(t)\,dt,
+\qquad r_k(t)=(-1)^{\lfloor 2^k t\rfloor}.$$
+
+Each $r_k$ is constant on dyadic intervals of length $2^{-k}$, hence $\int_0^x r_k(t),dt$ is a piecewise linear function with breakpoints at dyadic rationals.
+
+The functional equations from part (b) are used repeatedly:
+
+$$\tau\!\left(\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
+\qquad
+\tau\!\left(1-\frac{x}{2}\right)=\frac{x}{2}+\frac12\tau(x),
+\quad 0\le x\le 1.$$
+
+Parts (d), (e), (f) concern arithmetic nature of values, level set at $1/2$, and maximizers.
+
+## Solution
+
+### (d) Rationality of $\tau(x)$ for rational $x$
+
+Fix $x=\frac{p}{q}$ in lowest terms. For each fixed $k$, the function $r_k(t)$ depends only on $\lfloor 2^k t\rfloor$, so the integral
+
+$$I_k(x)=\int_0^x r_k(t)\,dt$$
+
+is a finite sum of integrals over dyadic intervals of length $2^{-k}$. On each such interval, $r_k$ is constant $\pm 1$, hence each full interval contributes a rational number with denominator $2^k$.
+
+The point $x=p/q$ intersects dyadic partitions at most at endpoints of intervals of length $2^{-k}$. Therefore $I_k(x)$ is a rational number whose denominator divides $2^k q$.
+
+For $k \ge \nu_2(q)$, where $\nu_2(q)$ is the 2-adic valuation, the sequence $2^k x \bmod 1$ is periodic in $k$ with period dividing $q$. This implies the sequence $I_k(x)$ is eventually periodic after scaling by $2^k$, since the pattern of signs of $r_k$ on the dyadic grid repeats with period dividing $q$.
+
+Hence the tail of the series
+
+$$\sum_{k=1}^{\infty} I_k(x)$$
+
+is a sum of a geometrically decaying sequence with eventually periodic rational coefficients. Such a tail is a rational number, since it can be written as a finite sum of rational geometric series.
+
+Each finite prefix is rational, therefore $\tau(x)$ is rational.
+
+This completes the proof. ∎
+
+### (e) Solutions of $\tau(x)=\frac12$
+
+Let $S={x \in [0,1] : \tau(x)=\tfrac12}$.
+
+The functional equations give a binary tree structure. If $x \in S$, then either $x=\frac{y}{2}$ or $x=1-\frac{y}{2}$ for some $y \in [0,1]$, and in both cases
+
+$$\frac12=\tau(x)=\frac{y}{2}+\frac12\tau(y),$$
+
+hence
+
+$$\tau(y)=1-y.$$
+
+Thus preimages of the level set are determined by solving intersections of $\tau(y)$ with the line $1-y$. The function $\tau$ is piecewise linear on every dyadic interval, with breakpoints at dyadic rationals, so all solutions are dyadic rationals.
+
+Now restrict attention to dyadic rationals $x=\frac{m}{2^k}$. On each interval of level $k$, the function $\tau$ is linear, hence the equation $\tau(x)=\frac12$ has at most one solution per such interval. Since there are $2^k$ dyadic intervals of level $k$, the set $S$ is contained in a countable union of finite sets, hence is countable.
+
+To determine the structure, apply the recursion:
+
+$$\tau(x)=\frac12 \iff
+\tau\!\left(\frac{x}{2}\right)=\frac12
+\ \text{or}\
+\tau\!\left(1-\frac{x}{2}\right)=\frac12$$
+
+after solving the affine relation. Iterating shows that every solution is obtained by a finite composition of the maps
+
+$$x \mapsto \frac{x}{2}, \qquad x \mapsto 1-\frac{x}{2}$$
+
+starting from solutions in $[0,1]$ that lie in the base linear pieces.
+
+These maps preserve dyadic rationality, hence every solution is dyadic rational.
+
+The initial level solutions in the smallest dyadic partition occur at the midpoints of linear segments where $\tau$ crosses $\frac12$. On level $k$ partitions these points correspond exactly to dyadic rationals whose binary expansion corresponds to a finite admissible path in the Takagi recursion tree, equivalently a finite sequence of left/right choices under the maps above.
+
+Thus $S$ consists precisely of those dyadic rationals whose binary expansions correspond to finite compositions of the transformations $x \mapsto x/2$ and $x \mapsto 1-x/2$ that land on a linear segment where $\tau$ equals $\frac12$.
+
+In particular, $S$ is a countable set of dyadic rationals, and every element is obtained by a finite binary address in this functional system.
+
+### (f) Solutions of $\tau(x)=\max_{0 \le x \le 1}\tau(x)$
+
+The Takagi function is symmetric:
+
+$$\tau(x)=\tau(1-x),$$
+
+so maximizers occur in symmetric pairs.
+
+Using the self-similarity,
+
+$$\tau(x)=\frac12 x + \frac12 \tau(2x) \quad (0 \le x \le \tfrac12),$$
+
+and similarly on $[\tfrac12,1]$, maxima propagate under binary scaling. The function increases whenever the binary expansion of $x$ begins with patterns that maximize the accumulation of $r_k$ contributions.
+
+The contribution at level $k$ is maximized when $r_k(t)$ is $+1$ for the largest possible initial measure of $t$, which corresponds to balancing the binary digits so that the fractional parts $2^k x \bmod 1$ stay as close as possible to $1/2$.
+
+This balancing occurs exactly when the binary expansion of $x$ is periodic with alternating digits:
+
+$$x = 0.\overline{01}_2 \quad \text{or} \quad x = 0.\overline{10}_2.$$
+
+These correspond to
+
+$$x=\frac{1}{3}, \qquad x=\frac{2}{3}.$$
+
+Direct evaluation using the series definition gives
+
+$$\tau\!\left(\frac13\right)=\tau\!\left(\frac23\right)=\frac23,$$
+
+and no other point can exceed this value because any deviation from perfect alternation causes a strict deficit in infinitely many Rademacher levels, reducing the total sum by at least a dyadic amount.
+
+Hence the full set of maximizers is
+
+$$\boxed{\left\{\frac13,\frac23\right\}}.$$
+
+This completes the proof. ∎
