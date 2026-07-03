@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2920 contests, 21153 problems, 11636 verified."
+description: "Codeforces problem solutions with full editorials. 2921 contests, 21161 problems, 11636 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2920 contests, 21153 problems, 11636 verified.**
+**2921 contests, 21161 problems, 11636 verified.**
 
 ## Unknown — 731 contests, 6072 problems, 3587 verified
 
@@ -1694,7 +1694,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 198 contests, 1499 problems, 602 verified
+## 2021 — 199 contests, 1507 problems, 602 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1830,6 +1830,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103074](103074/) | [2021 VI Интеллектуальная олимпиада ПФО среди школьников](https://codeforces.com/contest/103074) | 8 | 0/8 | Special | - |
 | [103076](103076/) | [UFPE Starters Final Try-Outs 2021](https://codeforces.com/contest/103076) | 10 | 1/10 | Special | - |
 | [103092](103092/) | [SDU Open 2021 Школы](https://codeforces.com/contest/103092) | 10 | 1/10 | Special | - |
 | [103104](103104/) | [2021 Hubei Provincial Collegiate Programming Contest](https://codeforces.com/contest/103104) | 11 | 9/11 | Special | - |
