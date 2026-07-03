@@ -59,7 +59,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 91/111 solved.
 | [39](39.md) |  [*M21*] | math-medium | solved | 4m03s |
 | [40](40.md) |  [*M22*] | math-medium | solved | 5m16s |
 | [41](41.md) |  [*M27*] | math-hard | solved | 5m04s |
-| [42](42.md) |  [*HM34*] | hm-hard | solved | 11m19s |
+| [42](42.md) |  [*HM34*] | hm-hard | solved | 4m08s |
 | [43](43.md) |  [*20*] | medium | solved | 4m24s |
 | [44](44.md) | &#9654; [*M21*] | math-medium | solved | 3m40s |
 | [45](45.md) |  [*32*] | hard | solved | 1m40s |
