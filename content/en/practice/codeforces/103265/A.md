@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 8"
-description: "An $(s,t)$-combination in dual form is a strictly decreasing sequence $b_s > b_{s-1} > \\cdots > b_1 \\ge 0,$ where ${b_1,\\dots,b_s}$ are exactly the positions of the $0$’s in a binary string of length..."
-date: "2026-07-03T07:40:26+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 8
-rating: "M23"
-category: "math-medium"
-recommended: false
+title: "CF 103265A - \u0423\u0434\u043e\u0431\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445"
+description: "An $(s,t)$-combination in dual form is a strictly decreasing sequence $bs b{s-1} cdots b1 ge 0,$ where ${b1,dots,bs}$ are exactly the positions of the $0$’s in a binary string of length $n=s+t$. Lexicographic order on tuples $(bs,dots,b1)$ compares entries from left to right."
+date: "2026-07-03T14:46:39+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103265
+codeforces_index: "A"
+codeforces_contest_name: "XIV \u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432 \u043f\u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u043a\u0435 \u0438\u043c. \u0412. \u0414. \u041b\u0435\u043b\u044e\u0445\u0430"
+rating: 0
+weight: 103265
+solve_time_s: 131
 verified: false
-solve_time_s: 295
-weight: 7020103008
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103265A - \u0423\u0434\u043e\u0431\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445](https://codeforces.com/problemset/problem/103265/A)
 
-**Exercise 8.** [*M23*] [M23] Design an algorithm that generates all (s, t)-combinations an−1 . . . a1a0
-lexicographically in bitstring form. The total running time should be O(
-n
-t
-), assuming
-that st > 0.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 11s  
 **Verified:** no  
-**Solve time:** 4m55s  
 
----
-
+## Solution
 ## Solution
 
 An $(s,t)$-combination in dual form is a strictly decreasing sequence

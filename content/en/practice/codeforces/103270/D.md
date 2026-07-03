@@ -1,39 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 8"
-description: "An $(s,t)$-combination in dual form is a strictly decreasing sequence $b_s > b_{s-1} > \\cdots > b_1 \\ge 0,$ where ${b_1,\\dots,b_s}$ are exactly the positions of the $0$’s in a binary string of length..."
-date: "2026-07-03T07:40:26+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 8
-rating: "M23"
-category: "math-medium"
-recommended: false
+title: "CF 103270D - Tallest Dogpark"
+description: "An $(s,t)$-combination in dual form is a strictly decreasing sequence $bs b{s-1} cdots b1 ge 0,$ where ${b1,dots,bs}$ are exactly the positions of the $0$’s in a binary string of length $n=s+t$. Lexicographic order on tuples $(bs,dots,b1)$ compares entries from left to right."
+date: "2026-07-03T14:41:30+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103270
+codeforces_index: "D"
+codeforces_contest_name: "UTPC Contest 09-03-21 Div. 1 (Advanced)"
+rating: 0
+weight: 103270
+solve_time_s: 148
 verified: false
-solve_time_s: 295
-weight: 7020103008
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103270D - Tallest Dogpark](https://codeforces.com/problemset/problem/103270/D)
 
-**Exercise 8.** [*M23*] [M23] Design an algorithm that generates all (s, t)-combinations an−1 . . . a1a0
-lexicographically in bitstring form. The total running time should be O(
-n
-t
-), assuming
-that st > 0.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 28s  
 **Verified:** no  
-**Solve time:** 4m55s  
 
----
-
+## Solution
 ## Solution
 
 An $(s,t)$-combination in dual form is a strictly decreasing sequence

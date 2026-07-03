@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2868 contests, 20624 problems, 11525 verified."
+description: "Codeforces problem solutions with full editorials. 2878 contests, 20712 problems, 11531 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,15 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2868 contests, 20624 problems, 11525 verified.**
+**2878 contests, 20712 problems, 11531 verified.**
 
-## Unknown — 705 contests, 5807 problems, 3537 verified
+## Unknown — 708 contests, 5825 problems, 3537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103262](103262/) | [XVII Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103262) | 6 | 0/6 | Special | - |
+| [103264](103264/) | [XVI Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103264) | 6 | 0/6 | Special | - |
+| [103265](103265/) | [XIV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103265) | 6 | 0/6 | Special | - |
 | [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
 | [103328](103328/) | [National Taiwan University NCPC Preliminary 2021](https://codeforces.com/contest/103328) | 11 | 9/11 | Special | - |
 | [103329](103329/) | [2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Open Cup, Grand Prix of XiAn)](https://codeforces.com/contest/103329) | 11 | 9/11 | Special | - |
@@ -1667,7 +1670,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 173 contests, 1245 problems, 542 verified
+## 2021 — 180 contests, 1315 problems, 548 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1803,6 +1806,13 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103269](103269/) | [UTPC Contest 09-03-21 Div. 2 (Beginner)](https://codeforces.com/contest/103269) | 9 | 0/9 | Div. 2 | - |
+| [103270](103270/) | [UTPC Contest 09-03-21 Div. 1 (Advanced)](https://codeforces.com/contest/103270) | 10 | 1/10 | Div. 1 | - |
+| [103274](103274/) | [2021 ICPC Gran Premio de Mexico 1ra Fecha](https://codeforces.com/contest/103274) | 13 | 0/13 | ICPC/IOI | - |
+| [103286](103286/) | [2021 VI IQ PFO](https://codeforces.com/contest/103286) | 8 | 0/8 | Special | - |
+| [103294](103294/) | [UTPC Contest 09-17-21 Div. 2 (Beginner)](https://codeforces.com/contest/103294) | 9 | 0/9 | Div. 2 | - |
+| [103295](103295/) | [UTPC Contest 09-17-21 Div. 1 (Advanced)](https://codeforces.com/contest/103295) | 10 | 3/10 | Div. 1 | - |
+| [103306](103306/) | [2021 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103306) | 11 | 2/11 | ICPC/IOI | - |
 | [103316](103316/) | [UTPC Contest 10-01-21 Div. 1 (Advanced)](https://codeforces.com/contest/103316) | 8 | 1/8 | Div. 1 | - |
 | [103317](103317/) | [UTPC Contest 10-01-21 Div. 2 (Beginner)](https://codeforces.com/contest/103317) | 8 | 0/8 | Div. 2 | - |
 | [103324](103324/) | [OPEI 2021 - Junior](https://codeforces.com/contest/103324) | 4 | 0/4 | Special | - |

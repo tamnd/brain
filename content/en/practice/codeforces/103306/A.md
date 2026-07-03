@@ -1,38 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 6"
-description: "Let $(a_{ij})$ be an $m\\times n$ contingency table with row sums $r_i=\\sum_{j=1}^n a_{ij}, \\quad 1\\le i\\le m,$ and column sums $c_j=\\sum_{i=1}^m a_{ij}, \\quad 1\\le j\\le n,$ with $\\sum_{i=1}^m r_i=\\sum..."
-date: "2026-07-03T07:25:50+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 6
-rating: "M22"
-category: "math-medium"
-recommended: false
+title: "CF 103306A - Alice Birthday"
+description: "Let $(a{ij})$ be an $mtimes n$ contingency table with row sums $ri=sum{j=1}^n a{ij}, quad 1le ile m,$ and column sums $cj=sum{i=1}^m a{ij}, quad 1le jle n,$ with $sum{i=1}^m ri=sum{j=1}^n cj$."
+date: "2026-07-03T14:23:22+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103306
+codeforces_index: "A"
+codeforces_contest_name: "2021 ICPC Gran Premio de Mexico 2da Fecha"
+rating: 0
+weight: 103306
+solve_time_s: 137
 verified: false
-solve_time_s: 284
-weight: 7020103006
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103306A - Alice Birthday](https://codeforces.com/problemset/problem/103306/A)
 
-**Exercise 6.** [*M22*] [M22] How often is each step of Algorithm T performed?
-
-380
-COMBINATORIAL SEARCHING
-7.2.1.3
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 17s  
 **Verified:** no  
-**Solve time:** 4m44s  
 
----
-
+## Solution
 ## Setup
 
 Let $(a_{ij})$ be an $m\times n$ contingency table with row sums
@@ -59,12 +48,10 @@ $(a_{11},a_{21},\ldots,a_{m1},a_{12},\ldots,a_{mn}).$
 
 Write the table as
 
-$$
-\begin{pmatrix}
+$$\begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1n}\\
 a_{21} & a_{22} & \cdots & a_{2n}
-\end{pmatrix}.
-$$
+\end{pmatrix}.$$
 
 Column constraints give
 
