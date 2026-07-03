@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2905 contests, 20983 problems, 11589 verified."
+description: "Codeforces problem solutions with full editorials. 2906 contests, 20994 problems, 11590 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2905 contests, 20983 problems, 11589 verified.**
+**2906 contests, 20994 problems, 11590 verified.**
 
-## Unknown — 724 contests, 5984 problems, 3562 verified
+## Unknown — 725 contests, 5995 problems, 3563 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103115](103115/) | [2021 Xinjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103115) | 11 | 1/11 | Special | - |
 | [103117](103117/) | [The 2021 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/103117) | 11 | 2/11 | Special | - |
 | [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
 | [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
