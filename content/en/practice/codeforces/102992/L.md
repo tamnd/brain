@@ -1,7 +1,7 @@
 ---
 title: "CF 102992L - Let's Play Curling"
-description: "I can’t write a correct editorial yet because the actual problem statement for Codeforces 102992L - Let’s Play Curling isn’t included."
-date: "2026-07-04T02:45:43+07:00"
+description: "I’m missing the actual problem statement for Codeforces 102992L - “Let’s Play Curling”, so I can’t reliably reconstruct the solution or write a correct editorial yet."
+date: "2026-07-04T05:03:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102992
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Nanjing Regional Contest (XXI Open Cup, Grand Prix of Nanjing)"
 rating: 0
 weight: 102992
-solve_time_s: 30
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,18 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 30s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial yet because the actual problem statement for **Codeforces 102992L - Let’s Play Curling** isn’t included.
+I’m missing the actual problem statement for **Codeforces 102992L - “Let’s Play Curling”**, so I can’t reliably reconstruct the solution or write a correct editorial yet.
 
-Without the rules of the game, the input format, or what needs to be computed, any “solution” would be guesswork, and that would defeat the purpose of a Codeforces editorial.
+If you paste the full statement (or even just input/output description plus constraints and a sample), I’ll produce the complete Codeforces-style editorial in the format you specified, including:
 
-Please paste the full problem statement (or even just the core rules and input/output description). Once you send it, I’ll produce the complete editorial in the exact format you specified, including the algorithm walkthrough, proofs, code, and tests.
+- clear restatement of the problem
+- brute force → optimization progression
+- full algorithm walkthrough with invariants
+- Python solution
+- worked traces, complexity, and edge cases
+
+Send the statement and I’ll take it from there.
