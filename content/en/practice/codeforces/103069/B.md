@@ -1,24 +1,24 @@
 ---
-title: "CF 103964K - Game Rooms"
+title: "CF 103069B - Rectangle Flip 2"
 description: "The operators in this exercise are those introduced earlier in Section 7.2.1.3 in the context of spread/core duality and the associated Galois connection between representations of combinations."
-date: "2026-07-04T00:51:22+07:00"
+date: "2026-07-04T00:59:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103964
-codeforces_index: "K"
-codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
+codeforces_contest: 103069
+codeforces_index: "B"
+codeforces_contest_name: "2020 ICPC Asia East Continent Final"
 rating: 0
-weight: 103964
-solve_time_s: 142
+weight: 103069
+solve_time_s: 159
 verified: false
 draft: false
 ---
 
-[CF 103964K - Game Rooms](https://codeforces.com/problemset/problem/103964/K)
+[CF 103069B - Rectangle Flip 2](https://codeforces.com/problemset/problem/103069/B)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 22s  
+**Solve time:** 2m 39s  
 **Verified:** no  
 
 ## Solution
