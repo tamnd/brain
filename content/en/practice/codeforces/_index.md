@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2934 contests, 21277 problems, 11661 verified."
+description: "Codeforces problem solutions with full editorials. 2935 contests, 21281 problems, 11661 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2934 contests, 21277 problems, 11661 verified.**
+**2935 contests, 21281 problems, 11661 verified.**
 
-## Unknown — 736 contests, 6115 problems, 3606 verified
+## Unknown — 737 contests, 6119 problems, 3606 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103003](103003/) | [box 2020](https://codeforces.com/contest/103003) | 4 | 0/4 | Special | - |
 | [103031](103031/) | [Индивидуальная олимпиада школьников по информатике и программированию 2021](https://codeforces.com/contest/103031) | 5 | 0/5 | Special | - |
 | [103034](103034/) | [April Fools Contest 2021 Archive (ZS)](https://codeforces.com/contest/103034) | 6 | 0/6 | April Fools | - |
 | [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 12 | 2/12 | Special | - |
