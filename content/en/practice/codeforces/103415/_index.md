@@ -1,23 +1,23 @@
 ---
 title: "The 2021 CCPC Guangzhou Onsite"
-description: "11 problems from The 2021 CCPC Guangzhou Onsite (contest 103415), difficulty -. 2/11 solutions verified against sample I/O."
+description: "12 problems from The 2021 CCPC Guangzhou Onsite (contest 103415), difficulty -. 2/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103415
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 2
-total_solve_s: 659
+total_solve_s: 807
 contest_year: 2021
-date: "2026-07-03T10:31:39+07:00"
+date: "2026-07-03T10:41:43+07:00"
 weight: 103415
 draft: false
 ---
 
 # [The 2021 CCPC Guangzhou Onsite](https://codeforces.com/contest/103415)
 
-Special | 11 problems | 2/11 verified | Difficulty - | 10m 59s
+Special | 12 problems | 2/12 verified | Difficulty - | 13m 27s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,5 +30,6 @@ Special | 11 problems | 2/11 verified | Difficulty - | 10m 59s
 | [G](G/) | [Slope](https://codeforces.com/problemset/problem/103415/G) |  |  |  | 33s |  |
 | [H](H/) | [Three Integers](https://codeforces.com/problemset/problem/103415/H) |  |  |  | 27s |  |
 | [I](I/) | [Pudding Store](https://codeforces.com/problemset/problem/103415/I) |  |  |  | 28s |  |
+| [J](J/) | [Cafeteria](https://codeforces.com/problemset/problem/103415/J) |  |  |  | 2m 28s |  |
 | [K](K/) | [Magus Night](https://codeforces.com/problemset/problem/103415/K) |  |  |  | 2m 27s |  |
 | [L](L/) | [Dynamic Convex Hull](https://codeforces.com/problemset/problem/103415/L) |  |  |  | 54s | ✓ |
