@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2888 contests, 20807 problems, 11539 verified."
+description: "Codeforces problem solutions with full editorials. 2889 contests, 20811 problems, 11539 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2888 contests, 20807 problems, 11539 verified.**
+**2889 contests, 20811 problems, 11539 verified.**
 
-## Unknown — 716 contests, 5899 problems, 3544 verified
+## Unknown — 717 contests, 5903 problems, 3544 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103194](103194/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 1](https://codeforces.com/contest/103194) | 4 | 0/4 | Special | - |
 | [103195](103195/) | [2020-2021 Открытая олимпиада школьников по программированию, заключительный этап, тур 2](https://codeforces.com/contest/103195) | 4 | 1/4 | Special | - |
 | [103196](103196/) | [2020-2021 Открытая олимпиада школьников по программированию, заочный этап](https://codeforces.com/contest/103196) | 10 | 2/10 | Special | - |
 | [103214](103214/) | [XXV Spain Olympiad in Informatics, Day 1](https://codeforces.com/contest/103214) | 4 | 0/4 | Special | - |
