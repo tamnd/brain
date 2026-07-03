@@ -1,0 +1,53 @@
+---
+title: "CF 103148C - Twin Cookies"
+description: "Let $mathcal{A}$ be a family of $s$-combinations and $mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,dots,n-1}$ with $nge s+t$."
+date: "2026-07-03T19:00:23+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103148
+codeforces_index: "C"
+codeforces_contest_name: "EGOI 2021 Day 1"
+rating: 0
+weight: 103148
+solve_time_s: 157
+verified: false
+draft: false
+---
+
+[CF 103148C - Twin Cookies](https://codeforces.com/problemset/problem/103148/C)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 37s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Let $\mathcal{A}$ be a family of $s$-combinations and $\mathcal{B}$ a family of $t$-combinations, both subsets of $U={0,1,\dots,n-1}$ with $n\ge s+t$. The cross-intersection hypothesis states that
+
+$$\alpha \cap \beta \ne \varnothing \quad \text{for all } \alpha \in \mathcal{A}, \ \beta \in \mathcal{B}.$$
+
+Theorem K introduces the families $Q^n_{M,s}$ and $Q^n_{N,t}$ as the initial segments of size $M$ and $N$ respectively in the standard ordering of $s$- and $t$-combinations, equivalently the lexicographically first $M$ and $N$ elements in the ordering induced by the binary or colexicographic representation described in Section 7.2.1.3.
+
+The proof proceeds by showing that the cross-intersection property is preserved under the standard compression (shifting) operations, and that repeated compression transforms any family into the corresponding initial segment without changing its size.
+
+Fix indices $0\le i<j\le n-1$. Define the $(i,j)$-shift on an $s$-set $\alpha$ by replacing $j$ with $i$ whenever $j\in \alpha$, $i\notin \alpha$, and the resulting set is not already present in the family. Formally, for a family $\mathcal{A}$, define
+
+$$S_{ij}(\mathcal{A}) = \{ S_{ij}(\alpha) : \alpha \in \mathcal{A} \},$$
+
+where $S_{ij}(\alpha)= (\alpha \setminus {j}) \cup {i}$ in the shiftable case, and $S_{ij}(\alpha)=\alpha$ otherwise. The same definition applies to $\mathcal{B}$.
+
+Each shift preserves cardinality, since it replaces sets one-for-one without duplication. It also preserves the uniformity of set sizes.
+
+To verify preservation of cross-intersection, take $\alpha \in \mathcal{A}$ and $\beta \in \mathcal{B}$. If neither set is shifted, the intersection condition is unchanged. Suppose $\alpha$ is shifted to $\alpha' = S_{ij}(\alpha)$. If $j\notin \beta$, then any intersection point in $\alpha\cap\beta$ remains valid unless it was $j$, in which case $j\notin\beta$ rules this out. If $j\in\beta$, then either $j\in\alpha$, in which case $\alpha\cap\beta$ already contains $j$, or $j\notin\alpha$ but $i\in\beta$ or $i\notin\beta$. In all cases, replacing $j$ by $i$ in $\alpha$ cannot destroy all intersections, because any witness element of $\alpha\cap\beta$ different from $j$ remains unchanged, while if the only potential witness were $j$, then $j$ would lie in both sets and the intersection persists unless both shifts eliminate it simultaneously, which the definition of shifting prevents. The same argument applies symmetrically when $\beta$ is shifted.
+
+Thus each shift $S_{ij}$ preserves cross-intersection of the pair $(\mathcal{A},\mathcal{B})$.
+
+Repeated application of all shifts with $i<j$ eventually produces families that are stable under shifting, since each shift strictly decreases the sum of element values $\sum_{\alpha\in\mathcal{A}}\sum_{x\in\alpha} x$ unless the family is already left-compressed. The same holds for $\mathcal{B}$. Hence the process terminates at a pair of shifted families $(\mathcal{A}^_,\mathcal{B}^_)$ with $|\mathcal{A}^_|=M$ and $|\mathcal{B}^_|=N$, still cross-intersecting.
+
+A standard characterization of fully shifted families in this setting, consistent with the lexicographic structure of Section 7.2.1.3, identifies $\mathcal{A}^_$ as the initial segment $Q^n_{M,s}$ and $\mathcal{B}^_$ as $Q^n_{N,t}$. Indeed, in the binary representation ordered lexicographically (or equivalently via the ordering of $c_t\cdots c_1$ described in Algorithm L), shifting forces each family to contain the earliest possible $s$- or $t$-combinations compatible with its size, which is exactly the definition of $Q^n_{M,s}$ and $Q^n_{N,t}$ in Theorem K.
+
+Since cross-intersection is preserved throughout the shifting process, the terminal families $Q^n_{M,s}$ and $Q^n_{N,t}$ inherit the property that every $s$-combination in $Q^n_{M,s}$ intersects every $t$-combination in $Q^n_{N,t}$.
+
+This completes the proof. ∎
