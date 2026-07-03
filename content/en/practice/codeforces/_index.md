@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2883 contests, 20772 problems, 11535 verified."
+description: "Codeforces problem solutions with full editorials. 2884 contests, 20776 problems, 11535 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2883 contests, 20772 problems, 11535 verified.**
+**2884 contests, 20776 problems, 11535 verified.**
 
-## Unknown — 712 contests, 5877 problems, 3541 verified
+## Unknown — 713 contests, 5881 problems, 3541 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103218](103218/) | [XXV Spain Olympiad in Informatics, Day 2](https://codeforces.com/contest/103218) | 4 | 0/4 | Special | - |
 | [103230](103230/) | [Moving intervals for packing and covering](https://codeforces.com/contest/103230) | 2 | 0/2 | Special | - |
 | [103241](103241/) | [Teamscode Summer 2021](https://codeforces.com/contest/103241) | 25 | 2/25 | Special | - |
 | [103260](103260/) | [2020-2021 Winter Petrozavodsk Camp, Day 5: Almost Retired Dandelion Contest (XXI Open Cup, Grand Prix of Nizhny Novgorod)](https://codeforces.com/contest/103260) | 13 | 1/13 | Special | - |
