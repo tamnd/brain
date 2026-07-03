@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2927 contests, 21225 problems, 11657 verified."
+description: "Codeforces problem solutions with full editorials. 2931 contests, 21262 problems, 11661 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2927 contests, 21225 problems, 11657 verified.**
+**2931 contests, 21262 problems, 11661 verified.**
 
 ## Unknown — 734 contests, 6104 problems, 3606 verified
 
@@ -1697,7 +1697,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 202 contests, 1539 problems, 604 verified
+## 2021 — 206 contests, 1576 problems, 608 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1833,6 +1833,10 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103036](103036/) | [UTPC Contest 04-02-21 Div. 2 (Beginner)](https://codeforces.com/contest/103036) | 7 | 2/7 | Div. 2 | - |
+| [103037](103037/) | [UTPC Contest 04-02-21 Div. 1 (Advanced)](https://codeforces.com/contest/103037) | 8 | 0/8 | Div. 1 | - |
+| [103048](103048/) | [2021 ECNU Campus Invitational Contest](https://codeforces.com/contest/103048) | 11 | 0/11 | Special | - |
+| [103049](103049/) | [2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020)](https://codeforces.com/contest/103049) | 11 | 2/11 | ICPC/IOI | - |
 | [103053](103053/) | [Malaysian Computing Olympiad (MCO) 2021](https://codeforces.com/contest/103053) | 5 | 2/5 | Special | - |
 | [103059](103059/) | [UTPC Spring 2021 Open Contest](https://codeforces.com/contest/103059) | 13 | 0/13 | Special | - |
 | [103061](103061/) | [Harbin Engineering University Collegiate Programming Contest 2021](https://codeforces.com/contest/103061) | 14 | 0/14 | Special | - |

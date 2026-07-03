@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 65"
-description: "Let the $2 \\times 2 \\times 3$ torus be the Cartesian product $C_2 \\times C_2 \\times C_3,$ so its elements are triples $(i,j,k)$ with $i \\in {0,1}$, $j \\in {0,1}$, $k \\in {0,1,2}$, and addition is take..."
-date: "2026-07-03T18:48:24+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-project"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 65
-rating: "M40"
-category: "math-project"
-recommended: false
+title: "CF 103048B - Bracelet"
+description: "Let the $2 times 2 times 3$ torus be the Cartesian product $C2 times C2 times C3,$ so its elements are triples $(i,j,k)$ with $i in {0,1}$, $j in {0,1}$, $k in {0,1,2}$, and addition is taken modulo $2,2,3$ in the respective coordinates."
+date: "2026-07-04T01:50:26+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103048
+codeforces_index: "B"
+codeforces_contest_name: "2021 ECNU Campus Invitational Contest"
+rating: 0
+weight: 103048
+solve_time_s: 75
 verified: false
-solve_time_s: 473
-weight: 7020103065
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103048B - Bracelet](https://codeforces.com/problemset/problem/103048/B)
 
-**Exercise 65.** [*M40*] [M40] Enumerate the total number of genlex Gray paths on subcubes that use
-only the transformations allowed in exercise 64. How many of those paths are cycles?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 15s  
 **Verified:** no  
-**Solve time:** 7m53s  
 
----
-
+## Solution
 ## Solution
 
 Let the $2 \times 2 \times 3$ torus be the Cartesian product
