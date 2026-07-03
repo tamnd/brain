@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2925 contests, 21208 problems, 11653 verified."
+description: "Codeforces problem solutions with full editorials. 2926 contests, 21220 problems, 11655 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2925 contests, 21208 problems, 11653 verified.**
+**2926 contests, 21220 problems, 11655 verified.**
 
-## Unknown — 733 contests, 6092 problems, 3604 verified
+## Unknown — 734 contests, 6104 problems, 3606 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 12 | 2/12 | Special | - |
 | [103064](103064/) | [Вузовско-академическая олимпиада по информатике 2021](https://codeforces.com/contest/103064) | 7 | 6/7 | Special | - |
 | [103069](103069/) | [2020 ICPC Asia East Continent Final](https://codeforces.com/contest/103069) | 13 | 11/13 | ICPC/IOI | - |
 | [103081](103081/) | [2020-2021 ICPC Southwestern European Regional Contest (SWERC 2020)](https://codeforces.com/contest/103081) | 13 | 12/13 | ICPC/IOI | - |
