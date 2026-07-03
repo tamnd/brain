@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2847 contests, 20439 problems, 11469 verified."
+description: "Codeforces problem solutions with full editorials. 2849 contests, 20457 problems, 11478 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2847 contests, 20439 problems, 11469 verified.**
+**2849 contests, 20457 problems, 11478 verified.**
 
 ## Unknown — 694 contests, 5706 problems, 3503 verified
 
@@ -1656,7 +1656,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 163 contests, 1161 problems, 520 verified
+## 2021 — 165 contests, 1179 problems, 529 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1792,6 +1792,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103373](103373/) | [2021 ICPC Asia Taiwan Online Programming Contest](https://codeforces.com/contest/103373) | 10 | 8/10 | ICPC/IOI | - |
+| [103379](103379/) | [UTPC Contest 10-29-21 Div. 1 (Advanced)](https://codeforces.com/contest/103379) | 8 | 1/8 | Div. 1 | - |
 | [103380](103380/) | [UTPC Contest 10-29-21 Div. 2 (Beginner)](https://codeforces.com/contest/103380) | 8 | 1/8 | Div. 2 | - |
 | [103389](103389/) | [2021年中国大学生程序设计竞赛女生专场](https://codeforces.com/contest/103389) | 11 | 8/11 | Special | - |
 | [103401](103401/) | [The 16-th BIT Campus Programming Contest - Online Round](https://codeforces.com/contest/103401) | 13 | 2/13 | Special | - |
