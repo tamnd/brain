@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2914 contests, 21083 problems, 11613 verified."
+description: "Codeforces problem solutions with full editorials. 2914 contests, 21084 problems, 11615 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2914 contests, 21083 problems, 11613 verified.**
+**2914 contests, 21084 problems, 11615 verified.**
 
-## Unknown — 728 contests, 6032 problems, 3567 verified
+## Unknown — 728 contests, 6033 problems, 3569 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103115](103115/) | [2021 Xinjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103115) | 11 | 1/11 | Special | - |
 | [103117](103117/) | [The 2021 Sichuan Provincial Collegiate Programming Contest](https://codeforces.com/contest/103117) | 11 | 2/11 | Special | - |
 | [103118](103118/) | [2021 Shandong Provincial Collegiate Programming Contest](https://codeforces.com/contest/103118) | 13 | 1/13 | Special | - |
-| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 11 | 9/11 | ICPC/IOI | - |
+| [103119](103119/) | [The 2020 ICPC Asia Macau Regional Contest](https://codeforces.com/contest/103119) | 12 | 11/12 | ICPC/IOI | - |
 | [103134](103134/) | [VI MaratonUSP Freshmen Contest](https://codeforces.com/contest/103134) | 10 | 1/10 | Special | - |
 | [103148](103148/) | [EGOI 2021 Day 1](https://codeforces.com/contest/103148) | 4 | 0/4 | Special | - |
 | [103176](103176/) | [La Salle-Pui Ching Programming Challenge 2019](https://codeforces.com/contest/103176) | 12 | 0/12 | Special | - |
