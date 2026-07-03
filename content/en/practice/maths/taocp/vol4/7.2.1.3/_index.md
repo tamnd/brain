@@ -102,7 +102,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.3: 109/111 solved.
 | [82](82.md) |  [*HM31*] | hm-hard | solved | 4m32s |
 | [83](83.md) |  [*HM46*] | hm-research | solved | 4m38s |
 | [84](84.md) |  [*HM27*] | hm-hard | solved | 5m19s |
-| [85](85.md) |  [*HM21*] | hm-medium | solved | 15m36s |
+| [85](85.md) |  [*HM21*] | hm-medium | solved | 12m23s |
 | [86](86.md) |  [*M20*] | math-medium | solved | 14m40s |
 | [87](87.md) |  [*M21*] | math-medium | solved | 17m31s |
 | [88](88.md) |  [*M20*] | math-medium | solved | 28m37s |
