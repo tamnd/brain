@@ -1,35 +1,27 @@
 ---
-title: "TAOCP 7.2.1.2 Exercise 67"
-description: "Each vertex is a permutation of the multiset ${0,0,0,1,1,1}$, hence each vertex is uniquely represented by a strictly increasing triple $c_3c_2c_1 \\quad\\text{with}\\quad 5 \\ge c_3 > c_2 > c_1 \\ge 0,$ w..."
-date: "2026-07-03T03:06:07+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "hard"]
-categories: ["mathematics"]
-section: "7.2.1.2"
-section_title: "Generating All Permutations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "321–355"
-exercise: 67
-rating: "26"
-category: "hard"
-recommended: false
+title: "CF 103422C - Charity"
+description: "Each vertex is a permutation of the multiset ${0,0,0,1,1,1}$, hence each vertex is uniquely represented by a strictly increasing triple $c3c2c1 quadtext{with}quad 5 ge c3 c2 c1 ge 0,$ where $cj$ are the positions of the $1$s in a binary string of length $6$."
+date: "2026-07-03T10:21:55+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103422
+codeforces_index: "C"
+codeforces_contest_name: "Infoleague Autumn 2021 Round 2 Div. 2"
+rating: 0
+weight: 103422
+solve_time_s: 59
 verified: false
-solve_time_s: 419
-weight: 7020102067
 draft: false
 ---
 
-[Section 7.2.1.2: Generating All Permutations](../)
+[CF 103422C - Charity](https://codeforces.com/problemset/problem/103422/C)
 
-**Exercise 67.** [*26*] [26] Continuing the previous exercise, find a first-element-swap Gray cycle for
-n = 5 in which each star transposition (1 j) occurs 30 times, for 2 ≤j ≤5.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 59s  
 **Verified:** no  
-**Solve time:** 6m59s  
 
----
-
+## Solution
 ## Solution
 
 Each vertex is a permutation of the multiset ${0,0,0,1,1,1}$, hence each vertex is uniquely represented by a strictly increasing triple
