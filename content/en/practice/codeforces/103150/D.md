@@ -1,7 +1,7 @@
 ---
 title: "CF 103150D - Moving Points"
-description: "Let $G$ be a graph with $m = 10^6$ edges, and let $Kt(G)$ denote the number of $t$-cliques in $G$. The task is to maximize $Kt(G)$ under the constraint $ For a fixed number of edges, the extremal structure is determined by Zykov symmetrization."
-date: "2026-07-03T18:32:09+07:00"
+description: "I’m missing the actual problem statement for Codeforces 103150D - Moving Points in your prompt. Right now the “Problem Statement / Input / Output” sections are empty, so I don’t have enough information to: - understand what is being computed, - derive the algorithm, - or write a…"
+date: "2026-07-03T19:54:02+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103150
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "EZ Programming Contest #1"
 rating: 0
 weight: 103150
-solve_time_s: 153
+solve_time_s: 31
 verified: false
 draft: false
 ---
@@ -18,52 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 33s  
+**Solve time:** 31s  
 **Verified:** no  
 
 ## Solution
-## Solution
+I’m missing the actual problem statement for **Codeforces 103150D - Moving Points** in your prompt.
 
-Let $G$ be a graph with $m = 10^6$ edges, and let $K_t(G)$ denote the number of $t$-cliques in $G$. The task is to maximize $K_t(G)$ under the constraint $|E(G)| = m$.
+Right now the “Problem Statement / Input / Output” sections are empty, so I don’t have enough information to:
 
-For a fixed number of edges, the extremal structure is determined by Zykov symmetrization. Repeatedly replacing two nonadjacent vertices with identical neighborhoods does not decrease the number of edges and does not decrease the number of $t$-cliques. Iterating this operation forces all vertices in each equivalence class to become pairwise indistinguishable, and the resulting graph is a complete multipartite graph. Among all such graphs with a fixed number of edges, convexity of the function $\binom{x}{2}$ implies that concentrating edges into a single part maximizes higher-order complete subgraphs. Consequently, an optimal graph may be taken to be a complete graph on $k$ vertices plus isolated vertices.
+- understand what is being computed,
+- derive the algorithm,
+- or write a correct editorial + solution.
 
-Let $k$ be the largest integer such that
-
-$\binom{k}{2} \le 10^6.$
-
-This condition expands to
-
-$\frac{k(k-1)}{2} \le 10^6,$
-
-equivalently
-
-$k(k-1) \le 2\cdot 10^6 = 2{,}000{,}000.$
-
-Solving $k^2 - k - 2{,}000{,}000 \le 0$ gives
-
-$k \le \frac{1 + \sqrt{1 + 8{,}000{,}000}}{2}.$
-
-Since $8{,}000{,}001 = 2828^2 + 1$, we obtain $\sqrt{8{,}000{,}001} \in (2828, 2829)$, hence
-
-$k < \frac{1 + 2829}{2} = 1415.$
-
-Therefore $k \le 1414$.
-
-Verification at $k = 1414$ gives
-
-$\binom{1414}{2} = \frac{1414 \cdot 1413}{2} = \frac{1{,}997{,}982}{2} = 998{,}991 \le 10^6,$
-
-while
-
-$\binom{1415}{2} = \frac{1415 \cdot 1414}{2} = \frac{2{,}000{,}810}{2} = 1{,}000{,}405 > 10^6.$
-
-Thus the largest complete graph that fits the edge budget has $k = 1414$ vertices.
-
-In a complete graph $K_k$, every choice of $t$ vertices forms a $t$-clique, so the number of $t$-cliques is $\binom{k}{t}$. Any graph with the same number of edges cannot exceed this value because any deviation from completeness strictly reduces the number of available $t$-vertex subsets that are fully connected, and Zykov symmetrization shows that any extremal configuration can be transformed into a clique without decreasing the clique count while preserving the edge constraint.
-
-Therefore the maximum number of $t$-cliques in a graph with one million edges is achieved by $K_{1414}$, giving
-
-$\boxed{\binom{1414}{t}}.$
-
-This completes the proof. ∎
+Please paste the full problem statement (or at least a summary with constraints and what needs to be computed). Once you do, I’ll produce the complete editorial in the exact format you specified.

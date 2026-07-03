@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2900 contests, 20927 problems, 11575 verified."
+description: "Codeforces problem solutions with full editorials. 2900 contests, 20929 problems, 11576 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2900 contests, 20927 problems, 11575 verified.**
+**2900 contests, 20929 problems, 11576 verified.**
 
 ## Unknown — 720 contests, 5939 problems, 3549 verified
 
@@ -1682,7 +1682,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 190 contests, 1416 problems, 580 verified
+## 2021 — 190 contests, 1418 problems, 581 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1820,7 +1820,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 | [103145](103145/) | [The 15th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/103145) | 13 | 12/13 | Special | - |
 | [103149](103149/) | [EGOI 2021 Day 2](https://codeforces.com/contest/103149) | 4 | 1/4 | Special | - |
-| [103150](103150/) | [EZ Programming Contest #1](https://codeforces.com/contest/103150) | 7 | 0/7 | Special | - |
+| [103150](103150/) | [EZ Programming Contest #1](https://codeforces.com/contest/103150) | 9 | 1/9 | Special | - |
 | [103158](103158/) | [ACPC Kickoff 2021](https://codeforces.com/contest/103158) | 12 | 0/12 | Special | - |
 | [103181](103181/) | [AGM 2021, Final Round, Day 1](https://codeforces.com/contest/103181) | 12 | 1/12 | Special | - |
 | [103182](103182/) | [AGM 2021, Final Round, Day 2](https://codeforces.com/contest/103182) | 12 | 0/12 | Special | - |
