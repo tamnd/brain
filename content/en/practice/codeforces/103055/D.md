@@ -1,7 +1,7 @@
 ---
 title: "CF 103055D - Shortest Path Query"
-description: "I can’t write a correct Codeforces editorial for “103055D - Shortest Path Query” without the actual problem statement."
-date: "2026-07-04T01:22:11+07:00"
+description: "I can’t reliably write a correct editorial for Codeforces 103055D - Shortest Path Query without the actual problem statement."
+date: "2026-07-04T05:34:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103055
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "The 18th Zhejiang Provincial Collegiate Programming Contest"
 rating: 0
 weight: 103055
-solve_time_s: 31
+solve_time_s: 23
 verified: false
 draft: false
 ---
@@ -18,38 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 31s  
+**Solve time:** 23s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct Codeforces editorial for “103055D - Shortest Path Query” without the actual problem statement.
+I can’t reliably write a correct editorial for **Codeforces 103055D - Shortest Path Query** without the actual problem statement.
 
-Right now the prompt only includes the template, so there’s no information about:
+Right now the prompt only gives the title, but the entire solution structure depends on missing details like:
 
-the graph structure (directed/undirected, weighted/unweighted), what a query asks, constraints, or even what “shortest path query” specifically means in this context.
+what the graph looks like, what kind of queries are asked, whether edges change, whether weights exist, and what exactly must be answered per query. Any attempt to “reconstruct” that from the name alone would almost certainly be wrong and would turn the editorial into fiction rather than a learning resource.
 
-Different CF problems with that name pattern can range from:
-
-static shortest path (Dijkstra / Floyd),
-
-dynamic edge updates,
-
-multi-source queries,
-
-offline queries with DSU,
-
-or even bitmask / state-expanded shortest paths.
-
-Each of those leads to a completely different solution and editorial structure, so guessing would likely produce a wrong or misleading write-up.
-
-If you paste the full problem statement (input/output + constraints + queries), I’ll produce the full editorial in the exact style you specified, including:
-
-a clean reduction to a known technique,
-
-a step-by-step derivation of the optimal solution,
-
-correct Python implementation,
-
-worked traces,
-
-and edge-case analysis.
+Paste the full problem statement (or even just the input/output + constraints section), and I’ll produce the complete editorial in the exact format you specified.
