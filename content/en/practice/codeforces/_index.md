@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2944 contests, 21373 problems, 11678 verified."
+description: "Codeforces problem solutions with full editorials. 2945 contests, 21383 problems, 11686 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2944 contests, 21373 problems, 11678 verified.**
+**2945 contests, 21383 problems, 11686 verified.**
 
 ## Unknown — 744 contests, 6194 problems, 3620 verified
 
@@ -1707,7 +1707,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 209 contests, 1597 problems, 611 verified
+## 2021 — 210 contests, 1607 problems, 619 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1843,6 +1843,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [102968](102968/) | [AGM 2021, Qualification Round](https://codeforces.com/contest/102968) | 10 | 8/10 | Special | - |
 | [102985](102985/) | [UTPC Contest 03-05-21 Div. 1 (Advanced)](https://codeforces.com/contest/102985) | 9 | 1/9 | Div. 1 | - |
 | [102986](102986/) | [UTPC Contest 03-05-21 Div. 2 (Beginner)](https://codeforces.com/contest/102986) | 8 | 2/8 | Div. 2 | - |
 | [103029](103029/) | [Quick (fast) contest #1](https://codeforces.com/contest/103029) | 4 | 0/4 | Special | - |
