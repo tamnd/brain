@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2931 contests, 21262 problems, 11661 verified."
+description: "Codeforces problem solutions with full editorials. 2937 contests, 21304 problems, 11661 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,17 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2931 contests, 21262 problems, 11661 verified.**
+**2937 contests, 21304 problems, 11661 verified.**
 
-## Unknown — 734 contests, 6104 problems, 3606 verified
+## Unknown — 739 contests, 6142 problems, 3606 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102993](102993/) | [2020 Nowcoder Training - AceSrc and chenjb Contest](https://codeforces.com/contest/102993) | 10 | 0/10 | Special | - |
+| [102994](102994/) | [Moscow Pre-Finals Workshop 2020 - Legilimens+Coffee Chicken Contest (XX Open Cup, Grand Prix of Nanjing)](https://codeforces.com/contest/102994) | 13 | 0/13 | Special | - |
+| [103003](103003/) | [box 2020](https://codeforces.com/contest/103003) | 4 | 0/4 | Special | - |
+| [103031](103031/) | [Индивидуальная олимпиада школьников по информатике и программированию 2021](https://codeforces.com/contest/103031) | 5 | 0/5 | Special | - |
+| [103034](103034/) | [April Fools Contest 2021 Archive (ZS)](https://codeforces.com/contest/103034) | 6 | 0/6 | April Fools | - |
 | [103055](103055/) | [The 18th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/103055) | 12 | 2/12 | Special | - |
 | [103064](103064/) | [Вузовско-академическая олимпиада по информатике 2021](https://codeforces.com/contest/103064) | 7 | 6/7 | Special | - |
 | [103069](103069/) | [2020 ICPC Asia East Continent Final](https://codeforces.com/contest/103069) | 13 | 11/13 | ICPC/IOI | - |
@@ -1697,7 +1702,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 206 contests, 1576 problems, 608 verified
+## 2021 — 207 contests, 1580 problems, 608 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1833,6 +1838,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103029](103029/) | [Quick (fast) contest #1](https://codeforces.com/contest/103029) | 4 | 0/4 | Special | - |
 | [103036](103036/) | [UTPC Contest 04-02-21 Div. 2 (Beginner)](https://codeforces.com/contest/103036) | 7 | 2/7 | Div. 2 | - |
 | [103037](103037/) | [UTPC Contest 04-02-21 Div. 1 (Advanced)](https://codeforces.com/contest/103037) | 8 | 0/8 | Div. 1 | - |
 | [103048](103048/) | [2021 ECNU Campus Invitational Contest](https://codeforces.com/contest/103048) | 11 | 0/11 | Special | - |
