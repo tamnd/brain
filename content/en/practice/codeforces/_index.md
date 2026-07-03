@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2869 contests, 20635 problems, 11527 verified."
+description: "Codeforces problem solutions with full editorials. 2872 contests, 20662 problems, 11530 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2869 contests, 20635 problems, 11527 verified.**
+**2872 contests, 20662 problems, 11530 verified.**
 
 ## Unknown — 705 contests, 5807 problems, 3537 verified
 
@@ -1667,7 +1667,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 174 contests, 1256 problems, 544 verified
+## 2021 — 177 contests, 1283 problems, 547 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1803,6 +1803,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [103286](103286/) | [2021 VI IQ PFO](https://codeforces.com/contest/103286) | 8 | 0/8 | Special | - |
+| [103294](103294/) | [UTPC Contest 09-17-21 Div. 2 (Beginner)](https://codeforces.com/contest/103294) | 9 | 0/9 | Div. 2 | - |
+| [103295](103295/) | [UTPC Contest 09-17-21 Div. 1 (Advanced)](https://codeforces.com/contest/103295) | 10 | 3/10 | Div. 1 | - |
 | [103306](103306/) | [2021 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103306) | 11 | 2/11 | ICPC/IOI | - |
 | [103316](103316/) | [UTPC Contest 10-01-21 Div. 1 (Advanced)](https://codeforces.com/contest/103316) | 8 | 1/8 | Div. 1 | - |
 | [103317](103317/) | [UTPC Contest 10-01-21 Div. 2 (Beginner)](https://codeforces.com/contest/103317) | 8 | 0/8 | Div. 2 | - |
