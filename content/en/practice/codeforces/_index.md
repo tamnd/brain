@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2877 contests, 20706 problems, 11531 verified."
+description: "Codeforces problem solutions with full editorials. 2878 contests, 20712 problems, 11531 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2877 contests, 20706 problems, 11531 verified.**
+**2878 contests, 20712 problems, 11531 verified.**
 
-## Unknown — 707 contests, 5819 problems, 3537 verified
+## Unknown — 708 contests, 5825 problems, 3537 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [103262](103262/) | [XVII Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103262) | 6 | 0/6 | Special | - |
 | [103264](103264/) | [XVI Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103264) | 6 | 0/6 | Special | - |
 | [103265](103265/) | [XIV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха](https://codeforces.com/contest/103265) | 6 | 0/6 | Special | - |
 | [103325](103325/) | [Сириус.2021.Ноябрь.Очный отбор](https://codeforces.com/contest/103325) | 7 | 1/7 | Special | - |
