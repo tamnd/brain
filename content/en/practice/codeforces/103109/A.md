@@ -1,67 +1,49 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 39"
-description: "Let $\\kappa_t$ be the function defined in the section, with inverse $\\mu_t$ in the sense that M \\ge \\mu_t N \\quad \\Longleftrightarrow \\quad \\kappa_t(M) \\ge N, for $t \\ge 2$."
-date: "2026-07-03T14:17:23+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 39
-rating: "M21"
-category: "math-medium"
-recommended: false
+title: "CF 103109A - Pok\u00e9mon Permutation"
+description: "Let $kappat$ be the function defined in the section, with inverse $mut$ in the sense that $$M ge mut N quad Longleftrightarrow quad kappat(M) ge N,$$ for $t ge 2$."
+date: "2026-07-03T21:13:47+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 103109
+codeforces_index: "A"
+codeforces_contest_name: "mBIT Advanced Spring 2021"
+rating: 0
+weight: 103109
+solve_time_s: 156
 verified: false
-solve_time_s: 243
-weight: 7020103039
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 103109A - Pok\u00e9mon Permutation](https://codeforces.com/problemset/problem/103109/A)
 
-**Exercise 39.** [*M21*] [M21] When s = 12 and t = 14, how many combinations precede the bit string
-11001001000011111101101010 in Chase’s sequence Cst? (See (41).)
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 36s  
 **Verified:** no  
-**Solve time:** 4m03s  
 
----
-
+## Solution
 ## Solution
 
 Let $\kappa_t$ be the function defined in the section, with inverse $\mu_t$ in the sense that
 
-$$
-M \ge \mu_t N \quad \Longleftrightarrow \quad \kappa_t(M) \ge N,
-$$
+$$M \ge \mu_t N \quad \Longleftrightarrow \quad \kappa_t(M) \ge N,$$
 
 for $t \ge 2$. Let $\lambda_{t-1} M$ denote the $(t-1)$-level contribution in the binomial representation of $\kappa_t(M)$, so that the defining decomposition from the construction of $\kappa_t$ gives
 
-$$
-\kappa_t(M) = M + \lambda_{t-1} M.
-$$
+$$\kappa_t(M) = M + \lambda_{t-1} M.$$
 
 This identity follows from the representation of $\kappa_t(M)$ as a sum of binomial contributions in which the top-level term is $M$ and the remaining contribution is exactly the $(t-1)$-structure applied to $M$.
 
 Assume first that $M \ge \mu_t N$. By the defining property of $\mu_t$, this is equivalent to $\kappa_t(M) \ge N$. Substituting the decomposition of $\kappa_t(M)$ yields
 
-$$
-M + \lambda_{t-1} M \ge N.
-$$
+$$M + \lambda_{t-1} M \ge N.$$
 
 Conversely, assume $M + \lambda_{t-1} M \ge N$. Rewriting the left-hand side using the same decomposition gives $\kappa_t(M) \ge N$, hence by the defining equivalence of $\mu_t$,
 
-$$
-M \ge \mu_t N.
-$$
+$$M \ge \mu_t N.$$
 
 Both implications are reversible since each step uses an equality in the decomposition of $\kappa_t(M)$ and the defining equivalence between $\mu_t$ and $\kappa_t$. Therefore,
 
-$$
-M \ge \mu_t N \quad \Longleftrightarrow \quad M + \lambda_{t-1} M \ge N.
-$$
+$$M \ge \mu_t N \quad \Longleftrightarrow \quad M + \lambda_{t-1} M \ge N.$$
 
 This completes the proof. ∎
