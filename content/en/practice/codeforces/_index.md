@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2951 contests, 21452 problems, 11723 verified."
+description: "Codeforces problem solutions with full editorials. 2952 contests, 21457 problems, 11725 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2951 contests, 21452 problems, 11723 verified.**
+**2952 contests, 21457 problems, 11725 verified.**
 
-## Unknown — 746 contests, 6234 problems, 3646 verified
+## Unknown — 747 contests, 6239 problems, 3648 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102951](102951/) | [USACO Guide Problem Submission](https://codeforces.com/contest/102951) | 5 | 2/5 | Special | - |
 | [102956](102956/) | [2020-2021 Winter Petrozavodsk Camp, Belarusian SU Contest (XXI Open Cup, Grand Prix of Belarus)](https://codeforces.com/contest/102956) | 14 | 11/14 | Special | - |
 | [102961](102961/) | [CSES Problem Set: Sorting and Searching](https://codeforces.com/contest/102961) | 26 | 15/26 | Special | - |
 | [102978](102978/) | [XXI Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102978) | 10 | 6/10 | Special | - |
