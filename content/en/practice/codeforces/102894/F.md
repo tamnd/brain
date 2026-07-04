@@ -1,7 +1,7 @@
 ---
 title: "CF 102894F - Hotel Chevalier"
-description: "The problem statement for Codeforces 102894F - Hotel Chevalier is missing from your message, so I can’t reliably reconstruct the task or produce a correct editorial. Please paste the full statement (or at least the input/output description and constraints)."
-date: "2026-07-04T16:14:52+07:00"
+description: "I can’t reliably write a correct Codeforces editorial for “102894F - Hotel Chevalier” without the actual problem statement. Right now the prompt only includes formatting requirements but not the definition of the input, output, or constraints."
+date: "2026-07-05T03:27:09+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102894
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk"
 rating: 0
 weight: 102894
-solve_time_s: 40
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 40s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-The problem statement for **Codeforces 102894F - Hotel Chevalier** is missing from your message, so I can’t reliably reconstruct the task or produce a correct editorial.
+I can’t reliably write a correct Codeforces editorial for **“102894F - Hotel Chevalier”** without the actual problem statement.
 
-Please paste the full statement (or at least the input/output description and constraints). Once you send it, I’ll write the complete Codeforces-style editorial in the format you specified, including algorithm walkthrough, proofs, complexity, and test cases.
+Right now the prompt only includes formatting requirements but not the definition of the input, output, or constraints. Anything I write from here would be guesswork, and that would defeat the purpose of a serious editorial.
+
+Paste the full statement (or a link / screenshot text), and I’ll produce the complete senior-level editorial in the exact format you requested.
