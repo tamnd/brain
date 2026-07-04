@@ -1,7 +1,7 @@
 ---
 title: "CF 102893J - Straight"
-description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only know the title “102893J - Straight”, but there is no description of what the input represents, what transformation or property is being computed, or what the output…"
-date: "2026-07-04T13:51:17+07:00"
+description: "The problem statement is missing from your prompt (both input/output sections are empty), so I don’t have enough information to reconstruct Codeforces 102893J - Straight or derive a correct solution."
+date: "2026-07-04T15:22:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102893
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)"
 rating: 0
 weight: 102893
-solve_time_s: 27
+solve_time_s: 26
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 26s  
 **Verified:** no  
 
 ## Solution
-I can’t write a correct editorial for this yet because the actual problem statement is missing.
+The problem statement is missing from your prompt (both input/output sections are empty), so I don’t have enough information to reconstruct Codeforces 102893J - Straight or derive a correct solution.
 
-Right now I only know the title “102893J - Straight”, but there is no description of what the input represents, what transformation or property is being computed, or what the output should be. Without that, any solution would be guesswork and very likely wrong.
-
-Paste the full problem statement (or even just the key parts: input format, output format, and constraints), and I’ll produce a complete Codeforces-style editorial in the exact structure you requested, including the algorithm derivation, proof sketch, implementation, and edge-case analysis.
+Please paste the full statement (or at least the description, constraints, and samples), and I’ll write the complete editorial in the format you specified.
