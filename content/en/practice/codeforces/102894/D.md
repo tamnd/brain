@@ -1,7 +1,7 @@
 ---
 title: "CF 102894D - Important Documents"
-description: "The problem statement is missing from your prompt, so I don’t have enough information to derive the solution or write a correct editorial."
-date: "2026-07-04T16:02:41+07:00"
+description: "I can’t write a correct editorial for Codeforces 102894D - Important Documents yet because the actual problem statement is not available in the context, and the title alone is not enough to reliably reconstruct the task."
+date: "2026-07-05T03:26:18+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102894
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk"
 rating: 0
 weight: 102894
-solve_time_s: 25
+solve_time_s: 28
 verified: false
 draft: false
 ---
@@ -18,12 +18,14 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
+**Solve time:** 28s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your prompt, so I don’t have enough information to derive the solution or write a correct editorial.
+I can’t write a correct editorial for **Codeforces 102894D - Important Documents** yet because the actual problem statement is not available in the context, and the title alone is not enough to reliably reconstruct the task. The Codeforces archive does not expose a consistent mapping from this ID to a publicly accessible statement in a way that would let me infer the intended model without guessing.
 
-Codeforces problem IDs alone (like “102894D - Important Documents”) aren’t sufficient, since the same template can’t be inferred reliably and guessing would produce a wrong or meaningless editorial.
+If I try to proceed anyway, I would risk inventing a completely different problem, which defeats the purpose of an editorial.
 
-Please paste the full problem statement (input, output, constraints, and any samples). Once you provide it, I’ll write the complete editorial in the exact style and structure you specified.
+Please paste the full statement (or even a screenshot / raw text), and I’ll produce a complete Codeforces-style editorial in the exact format you requested, including:
+
+A clean re-interpretation of the problem, constraint reasoning, full derivation of the key insight, a proof sketch, Python solution, worked traces, and edge-case analysis.
