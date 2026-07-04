@@ -40,8 +40,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 24/73 solved.
 | [20](20.md) | &#9654; [*M21*] | math-medium | solved | 7m17s |
 | [21](21.md) |  [*M21*] | math-medium | solved | 8m18s |
 | [22](22.md) |  [*HM21*] | hm-medium | solved | 6m30s |
-| [23](23.md) |  [*HM25*] | hm-medium | solved | 6m49s |
-| [24](24.md) |  [*M26*] | math-hard | solved | 20m08s |
+| [23](23.md) |  [*HM25*] | hm-medium | solved | 8m12s |
+| [24](24.md) |  [*M26*] | math-hard | solved | 8m03s |
 | 25 |  [*HM27*] | hm-hard | - | - |
 | 26 |  [*HM22*] | hm-medium | - | - |
 | 27 |  [*HM21*] | hm-medium | - | - |
