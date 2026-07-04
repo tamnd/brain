@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2960 contests, 21513 problems, 11745 verified."
+description: "Codeforces problem solutions with full editorials. 2962 contests, 21525 problems, 11755 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2960 contests, 21513 problems, 11745 verified.**
+**2962 contests, 21525 problems, 11755 verified.**
 
-## Unknown — 748 contests, 6239 problems, 3648 verified
+## Unknown — 750 contests, 6251 problems, 3658 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102920](102920/) | [2020-2021 ACM-ICPC, Asia Seoul Regional Contest](https://codeforces.com/contest/102920) | 12 | 10/12 | ICPC/IOI | - |
+| [102935](102935/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/102935) | 0 | 0/0 | Special | - |
 | [102936](102936/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102936) | 0 | 0/0 | Special | - |
 | [102951](102951/) | [USACO Guide Problem Submission](https://codeforces.com/contest/102951) | 5 | 2/5 | Special | - |
 | [102956](102956/) | [2020-2021 Winter Petrozavodsk Camp, Belarusian SU Contest (XXI Open Cup, Grand Prix of Belarus)](https://codeforces.com/contest/102956) | 14 | 11/14 | Special | - |
