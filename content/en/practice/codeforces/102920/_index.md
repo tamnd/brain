@@ -1,22 +1,22 @@
 ---
 title: "2020-2021 ACM-ICPC, Asia Seoul Regional Contest"
-description: "10 problems from 2020-2021 ACM-ICPC, Asia Seoul Regional Contest (contest 102920), difficulty -. 8/10 solutions verified against sample I/O."
+description: "12 problems from 2020-2021 ACM-ICPC, Asia Seoul Regional Contest (contest 102920), difficulty -. 10/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102920
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 8
-total_solve_s: 624
-date: "2026-07-04T07:57:38+07:00"
+n_problems: 12
+n_verified: 10
+total_solve_s: 724
+date: "2026-07-04T07:58:19+07:00"
 weight: 102920
 draft: false
 ---
 
 # [2020-2021 ACM-ICPC, Asia Seoul Regional Contest](https://codeforces.com/contest/102920)
 
-ICPC/IOI | 10 problems | 8/10 verified | Difficulty - | 10m 24s
+ICPC/IOI | 12 problems | 10/12 verified | Difficulty - | 12m 4s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,5 @@ ICPC/IOI | 10 problems | 8/10 verified | Difficulty - | 10m 24s
 | [H](H/) | [Needle](https://codeforces.com/problemset/problem/102920/H) |  |  |  | 48s | ✓ |
 | [I](I/) | [Stock Analysis](https://codeforces.com/problemset/problem/102920/I) |  |  |  | 43s | ✓ |
 | [J](J/) | [Switches](https://codeforces.com/problemset/problem/102920/J) |  |  |  | 41s | ✓ |
+| [K](K/) | [Tiling Polyomino](https://codeforces.com/problemset/problem/102920/K) |  |  |  | 53s | ✓ |
+| [L](L/) | [Two Buildings](https://codeforces.com/problemset/problem/102920/L) |  |  |  | 47s | ✓ |
