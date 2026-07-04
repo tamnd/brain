@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.5: Generating All Set Partitions"
-description: "Section 7.2.1.5 exercises: 4/69 solved."
+description: "Section 7.2.1.5 exercises: 6/69 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.5. Generating All Set Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 4/69 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 6/69 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,8 +22,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 4/69 solved.
 | [2](02.md) | &#9654; [*22*] | medium | solved | 4m22s |
 | [3](03.md) |  [*M23*] | math-medium | solved | 5m29s |
 | [4](04.md) |  [*21*] | medium | solved | 5m31s |
-| 5 |  [*22*] | medium | - | - |
-| 6 |  [*25*] | medium | - | - |
+| [5](05.md) |  [*22*] | medium | solved | 4m12s |
+| [6](06.md) |  [*25*] | medium | solved | 4m23s |
 | 7 |  [*M20*] | math-medium | - | - |
 | 8 |  [*20*] | medium | - | - |
 | 9 |  [*M20*] | math-medium | - | - |
