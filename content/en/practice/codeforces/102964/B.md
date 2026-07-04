@@ -1,43 +1,34 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 86"
-description: "The solution does not address the stated problem at all."
-date: "2026-07-03T23:50:18+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 86
-rating: "M20"
-category: "math-medium"
-recommended: false
+title: "CF 102964B - Krosh and xor of sums"
+description: "The solution does not address the stated problem at all. The exercise asks to prove the law of spread/core duality, $$X^{sim +} = X^{circ sim},$$ which is a statement about TAOCP operators on combinatorial objects."
+date: "2026-07-04T06:46:33+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102964
+codeforces_index: "B"
+codeforces_contest_name: "Krosh Kaliningrad Contest 1"
+rating: 0
+weight: 102964
+solve_time_s: 153
 verified: false
-solve_time_s: 1200
-weight: 7020103086
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102964B - Krosh and xor of sums](https://codeforces.com/problemset/problem/102964/B)
 
-**Exercise 86.** [*M20*] [M20] Prove the law of spread/core duality, X∼+ = X◦∼.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
 **Verified:** no  
-**Solve time:** 20m  
 
----
-
+## Solution
 ## Correctness
 
 The solution does not address the stated problem at all.
 
 The exercise asks to prove the law of spread/core duality,
 
-$$
-X^{\sim +} = X^{\circ \sim},
-$$
+$$X^{\sim +} = X^{\circ \sim},$$
 
 which is a statement about TAOCP operators on combinatorial objects.
 
@@ -61,4 +52,4 @@ All subsequent arguments about feasible size vectors, inclusion constraints, and
 
 The submission does not attempt the stated theorem and instead solves a different combinatorial enumeration problem.
 
-VERDICT: FAIL, the solution does not address the spread/core duality identity $X^{\sim +} = X^{\circ \sim}$.
+VERDICT: FAIL - the solution does not address the spread/core duality identity $X^{\sim +} = X^{\circ \sim}$.

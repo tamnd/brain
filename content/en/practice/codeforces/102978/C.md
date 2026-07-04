@@ -1,24 +1,24 @@
 ---
-title: "CF 103964I - Mahjong"
+title: "CF 102978C - Count Min Ratio"
 description: "Let $T=binom{2t-1}{t}$ and write $x=N/T$. In Section 7.2.1.3, the number $kappa{tN}$ is expressed through the binary representation of $N$ by decomposing the corresponding $(s,t)$-combination into the associated compositions $qt,dots,q0$ of (11)."
-date: "2026-07-04T06:28:18+07:00"
+date: "2026-07-04T06:31:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
-codeforces_contest: 103964
-codeforces_index: "I"
-codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
+codeforces_contest: 102978
+codeforces_index: "C"
+codeforces_contest_name: "XXI Open Cup, Grand Prix of Tokyo"
 rating: 0
-weight: 103964
-solve_time_s: 152
+weight: 102978
+solve_time_s: 113
 verified: false
 draft: false
 ---
 
-[CF 103964I - Mahjong](https://codeforces.com/problemset/problem/103964/I)
+[CF 102978C - Count Min Ratio](https://codeforces.com/problemset/problem/102978/C)
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 32s  
+**Solve time:** 1m 53s  
 **Verified:** no  
 
 ## Solution
