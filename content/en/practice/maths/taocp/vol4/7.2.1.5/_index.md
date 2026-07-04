@@ -18,8 +18,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 55/69 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*20*] | medium | solved | 4m26s |
-| [2](02.md) | &#9654; [*22*] | medium | solved | 4m22s |
+| [1](01.md) |  [*20*] | medium | solved | 5m38s |
+| [2](02.md) | &#9654; [*22*] | medium | solved | 5m39s |
 | [3](03.md) |  [*M23*] | math-medium | solved | 5m29s |
 | [4](04.md) |  [*21*] | medium | solved | 5m31s |
 | [5](05.md) |  [*22*] | medium | solved | 4m12s |
