@@ -1,7 +1,7 @@
 ---
 title: "CF 102890B - Beautiful Necklaces"
-description: "I’m missing the actual problem statement for “Codeforces 102890B - Beautiful Necklaces” (the input/output rules and constraints aren’t provided in your prompt)."
-date: "2026-07-04T13:40:45+07:00"
+description: "I can’t reliably write an editorial yet because the actual problem content for Codeforces 102890B - Beautiful Necklaces is missing from your prompt."
+date: "2026-07-04T14:20:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102890
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "2020 ICPC Gran Premio de Mexico 3ra Fecha"
 rating: 0
 weight: 102890
-solve_time_s: 32
+solve_time_s: 29
 verified: false
 draft: false
 ---
@@ -18,12 +18,23 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 32s  
+**Solve time:** 29s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement for “Codeforces 102890B - Beautiful Necklaces” (the input/output rules and constraints aren’t provided in your prompt).
+I can’t reliably write an editorial yet because the actual problem content for **Codeforces 102890B - Beautiful Necklaces** is missing from your prompt.
 
-Right now I only see the title placeholder, so I can’t reliably reconstruct the problem or write a correct editorial without risking inventing details.
+Right now I only see placeholders (“B”, empty input/output), so there’s no way to reconstruct:
+- what a “necklace” consists of,
+- what makes it “beautiful”,
+- what operations or constraints are involved,
+- or what algorithmic idea the problem is testing.
 
-If you paste the full statement (or even just the key parts: what defines a “beautiful necklace”, input format, constraints, and required output), I’ll produce a complete Codeforces-style editorial in the exact structure you requested.
+If I try to proceed anyway, I would end up hallucinating a problem, which would make the editorial useless for learning or reuse.
+
+Send either:
+1. The full problem statement, or  
+2. A screenshot / copy-paste of the text, or  
+3. At minimum, the input format + what needs to be optimized.
+
+Once you provide that, I’ll produce the full Codeforces-style editorial in the exact format you specified.
