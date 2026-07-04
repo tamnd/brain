@@ -75,10 +75,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 73/73 solved.
 | [55](55.md) | &#9654; [*M37*] | math-project | solved | 13m24s |
 | [56](56.md) | &#9654; [*M32*] | math-hard | solved | 16m20s |
 | [57](57.md) |  [*M22*] | math-medium | solved | 7m03s |
-| [58](58.md) |  [*M23*] | math-medium | solved | 7m57s |
-| [59](59.md) |  [*M22*] | math-medium | solved | 9m10s |
-| [60](60.md) |  [*23*] | medium | solved | 8m08s |
-| [61](61.md) |  [*26*] | hard | solved | 7m56s |
+| [58](58.md) |  [*M23*] | math-medium | solved | 32m07s |
+| [59](59.md) |  [*M22*] | math-medium | solved | 44m15s |
+| [60](60.md) |  [*23*] | medium | solved | 19m50s |
+| [61](61.md) |  [*26*] | hard | solved | 23m04s |
 | [62](62.md) |  [*46*] | research | solved | 8m07s |
 | [63](63.md) |  [*47*] | research | solved | 6m56s |
 | [64](64.md) | &#9654; [*32*] | hard | solved | 6m54s |

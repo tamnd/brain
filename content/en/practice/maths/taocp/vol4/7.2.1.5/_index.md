@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.5: Generating All Set Partitions"
-description: "Section 7.2.1.5 exercises: 20/69 solved."
+description: "Section 7.2.1.5 exercises: 32/69 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.5. Generating All Set Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 20/69 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 32/69 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -38,18 +38,18 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 20/69 solved.
 | [18](18.md) |  [*M6*] | math-simple | solved | 2m29s |
 | [19](19.md) |  [*28*] | hard | solved | 4m22s |
 | [20](20.md) |  [*17*] | medium | solved | 4m18s |
-| 21 |  [*M27*] | math-hard | - | - |
-| 22 |  [*M2*] | math-simple | - | - |
-| 23 |  [*HM30*] | hm-hard | - | - |
-| 24 |  [*HM35*] | hm-hard | - | - |
-| 25 |  [*M32*] | math-hard | - | - |
-| 26 |  [*M2*] | math-simple | - | - |
-| 27 | &#9654; [*M35*] | math-hard | - | - |
-| 28 | &#9654; [*M25*] | math-medium | - | - |
-| 29 |  [*M26*] | math-hard | - | - |
-| 30 |  [*HM30*] | hm-hard | - | - |
-| 31 |  [*HM21*] | hm-medium | - | - |
-| 32 |  [*M22*] | math-medium | - | - |
+| [21](21.md) |  [*M27*] | math-hard | solved | 5m10s |
+| [22](22.md) |  [*M2*] | math-simple | solved | 5m03s |
+| [23](23.md) |  [*HM30*] | hm-hard | solved | 5m11s |
+| [24](24.md) |  [*HM35*] | hm-hard | solved | 5m21s |
+| [25](25.md) |  [*M32*] | math-hard | solved | 5m04s |
+| [26](26.md) |  [*M2*] | math-simple | solved | 5m17s |
+| [27](27.md) | &#9654; [*M35*] | math-hard | solved | 6m40s |
+| [28](28.md) | &#9654; [*M25*] | math-medium | solved | 7m37s |
+| [29](29.md) |  [*M26*] | math-hard | solved | 28m19s |
+| [30](30.md) |  [*HM30*] | hm-hard | solved | 17m24s |
+| [31](31.md) |  [*HM21*] | hm-medium | solved | 11m12s |
+| [32](32.md) |  [*M22*] | math-medium | solved | 7m35s |
 | 33 |  [*M21*] | math-medium | - | - |
 | 34 |  [*14*] | simple | - | - |
 | 35 |  [*M22*] | math-medium | - | - |
