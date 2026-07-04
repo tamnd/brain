@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.4: Generating All Partitions"
-description: "Section 7.2.1.4 exercises: 34/73 solved."
+description: "Section 7.2.1.4 exercises: 37/73 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.4. Generating All Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 34/73 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 37/73 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -52,9 +52,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 34/73 solved.
 | [32](32.md) |  [*M15*] | math-simple | solved | 4m10s |
 | [33](33.md) |  [*HM20*] | hm-medium | solved | 4m15s |
 | [34](34.md) | &#9654; [*HM21*] | hm-medium | solved | 4m18s |
-| 35 |  [*HM21*] | hm-medium | - | - |
-| 36 |  [*HM24*] | hm-medium | - | - |
-| 37 |  [*M22*] | math-medium | - | - |
+| [35](35.md) |  [*HM21*] | hm-medium | solved | 5m19s |
+| [36](36.md) |  [*HM24*] | hm-medium | solved | 4m |
+| [37](37.md) |  [*M22*] | math-medium | solved | 3m36s |
 | 38 |  [*M20*] | math-medium | - | - |
 | 39 |  [*M20*] | math-medium | - | - |
 | 40 | &#9654; [*M25*] | math-medium | - | - |
