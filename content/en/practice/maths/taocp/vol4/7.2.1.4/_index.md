@@ -58,8 +58,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 63/73 solved.
 | [38](38.md) |  [*M20*] | math-medium | solved | 19m15s |
 | [39](39.md) |  [*M20*] | math-medium | solved | 8m18s |
 | [40](40.md) | &#9654; [*M25*] | math-medium | solved | 8m36s |
-| [41](41.md) |  [*HM42*] | hm-project | solved | 4m17s |
-| [42](42.md) |  [*HM42*] | hm-project | solved | 4m13s |
+| [41](41.md) |  [*HM42*] | hm-project | solved | 8m49s |
+| [42](42.md) |  [*HM42*] | hm-project | solved | 8m11s |
 | [43](43.md) |  [*M18*] | math-medium | solved | 4m04s |
 | [44](44.md) | &#9654; [*M22*] | math-medium | solved | 3m57s |
 | [45](45.md) |  [*HM21*] | hm-medium | solved | 4m11s |
