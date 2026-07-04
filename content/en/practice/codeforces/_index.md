@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2976 contests, 21666 problems, 11837 verified."
+description: "Codeforces problem solutions with full editorials. 2977 contests, 21671 problems, 11842 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2976 contests, 21666 problems, 11837 verified.**
+**2977 contests, 21671 problems, 11842 verified.**
 
 ## Unknown — 755 contests, 6299 problems, 3682 verified
 
@@ -1552,7 +1552,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 169 contests, 890 problems, 398 verified
+## 2020 — 170 contests, 895 problems, 403 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1715,6 +1715,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102889](102889/) | [The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Final](https://codeforces.com/contest/102889) | 5 | 5/5 | Special | - |
 | [102890](102890/) | [2020 ICPC Gran Premio de Mexico 3ra Fecha](https://codeforces.com/contest/102890) | 14 | 11/14 | ICPC/IOI | - |
 | [102891](102891/) | [2020 NHSPC (Taiwan National High School Programming Contest) Mock Contest - Day 2 (Div. 1)](https://codeforces.com/contest/102891) | 8 | 4/8 | Div. 1 | - |
 | [102892](102892/) | [CodeRams Algorithm Contest #1](https://codeforces.com/contest/102892) | 0 | 0/0 | Special | - |
