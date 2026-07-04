@@ -1,7 +1,7 @@
 ---
 title: "CF 102894E - The Curious Case Of Vasya"
-description: "The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial."
-date: "2026-07-05T02:17:36+07:00"
+description: "I don’t have the statement for Codeforces 102894E - The Curious Case Of Vasya in context, and I can’t reliably reconstruct it from the ID alone."
+date: "2026-07-05T03:26:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102894
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk"
 rating: 0
 weight: 102894
-solve_time_s: 37
+solve_time_s: 23
 verified: false
 draft: false
 ---
@@ -18,12 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 37s  
+**Solve time:** 23s  
 **Verified:** no  
 
 ## Solution
-The problem statement is missing from your prompt, so I don’t have enough information to write a correct editorial.
+I don’t have the statement for **Codeforces 102894E - The Curious Case Of Vasya** in context, and I can’t reliably reconstruct it from the ID alone.
 
-Right now I only see the title and formatting scaffold for “102894E - The Curious Case Of Vasya”, but no actual description, input/output definition, or constraints. Without that, any editorial would be guesswork and would almost certainly be wrong.
+To write a correct editorial (especially one with a full algorithm walkthrough, correctness argument, and test suite), I need at least one of the following:
 
-Paste the full problem statement (or even a screenshot/text dump), and I’ll produce a complete Codeforces-style editorial in the exact format you requested.
+- the full problem statement, or  
+- a link + pasted text, or  
+- a short summary of rules, input/output, and constraints.
+
+Once you provide that, I’ll produce the full Codeforces-style editorial in the format you specified.
