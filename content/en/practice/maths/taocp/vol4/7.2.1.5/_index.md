@@ -42,8 +42,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 69/69 solved.
 | [22](22.md) |  [*M2*] | math-simple | solved | 5m40s |
 | [23](23.md) |  [*HM30*] | hm-hard | solved | 5m36s |
 | [24](24.md) |  [*HM35*] | hm-hard | solved | 5m37s |
-| [25](25.md) |  [*M32*] | math-hard | solved | 5m04s |
-| [26](26.md) |  [*M2*] | math-simple | solved | 5m17s |
+| [25](25.md) |  [*M32*] | math-hard | solved | 5m43s |
+| [26](26.md) |  [*M2*] | math-simple | solved | 5m43s |
 | [27](27.md) | &#9654; [*M35*] | math-hard | solved | 6m40s |
 | [28](28.md) | &#9654; [*M25*] | math-medium | solved | 7m37s |
 | [29](29.md) |  [*M26*] | math-hard | solved | 28m19s |
