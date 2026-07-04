@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2949 contests, 21438 problems, 11712 verified."
+description: "Codeforces problem solutions with full editorials. 2951 contests, 21452 problems, 11723 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2949 contests, 21438 problems, 11712 verified.**
+**2951 contests, 21452 problems, 11723 verified.**
 
-## Unknown — 745 contests, 6220 problems, 3635 verified
+## Unknown — 746 contests, 6234 problems, 3646 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102956](102956/) | [2020-2021 Winter Petrozavodsk Camp, Belarusian SU Contest (XXI Open Cup, Grand Prix of Belarus)](https://codeforces.com/contest/102956) | 14 | 11/14 | Special | - |
 | [102961](102961/) | [CSES Problem Set: Sorting and Searching](https://codeforces.com/contest/102961) | 26 | 15/26 | Special | - |
 | [102978](102978/) | [XXI Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102978) | 10 | 6/10 | Special | - |
 | [102979](102979/) | [2020-2021 Winter Petrozavodsk Camp, Day 9 Contest (XXI Open Cup, Grand Prix of Suwon)](https://codeforces.com/contest/102979) | 12 | 2/12 | Special | - |
@@ -1708,7 +1709,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 213 contests, 1636 problems, 630 verified
+## 2021 — 214 contests, 1636 problems, 630 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1844,6 +1845,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [102953](102953/) | [CodeRams Algorithm Contest #2](https://codeforces.com/contest/102953) | 0 | 0/0 | Special | - |
 | [102962](102962/) | [Innopolis Open in Informatics, 2020-2021, the final](https://codeforces.com/contest/102962) | 5 | 4/5 | Special | - |
 | [102964](102964/) | [Krosh Kaliningrad Contest 1](https://codeforces.com/contest/102964) | 10 | 3/10 | Special | - |
 | [102966](102966/) | [2020-2021 ICPC - Gran Premio de Mexico - Repechaje](https://codeforces.com/contest/102966) | 14 | 4/14 | ICPC/IOI | - |
