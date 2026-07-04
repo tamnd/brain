@@ -1,7 +1,7 @@
 ---
 title: "CF 102894F - Hotel Chevalier"
-description: "I can’t reliably write a correct editorial for this yet because the actual problem statement for Codeforces 102894F - Hotel Chevalier is not included in your prompt, and it is not accessible from standard problem indices in a way that lets me reconstruct it safely."
-date: "2026-07-04T12:08:07+07:00"
+description: "The problem statement for Codeforces 102894F - Hotel Chevalier is missing from your message, so I can’t reliably reconstruct the task or produce a correct editorial. Please paste the full statement (or at least the input/output description and constraints)."
+date: "2026-07-04T16:14:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102894
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk"
 rating: 0
 weight: 102894
-solve_time_s: 28
+solve_time_s: 40
 verified: false
 draft: false
 ---
@@ -18,19 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 28s  
+**Solve time:** 40s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct editorial for this yet because the actual problem statement for **Codeforces 102894F - Hotel Chevalier** is not included in your prompt, and it is not accessible from standard problem indices in a way that lets me reconstruct it safely. What I _did_ find in search is a different “Hotelier” problem (CF 1200A), which is unrelated to 102894F, and using that as a substitute would produce a completely wrong solution and editorial.
+The problem statement for **Codeforces 102894F - Hotel Chevalier** is missing from your message, so I can’t reliably reconstruct the task or produce a correct editorial.
 
-If you paste the full statement (or even just input/output + constraints + a short description), I can immediately produce the full Codeforces-style editorial in the exact format you requested, including:
-
-- clean restatement of the problem
-- constraint-driven insight
-- optimal algorithm derivation
-- proof of correctness
-- full Python solution
-- worked traces and edge cases
-
-Send the statement and I’ll take it from there.
+Please paste the full statement (or at least the input/output description and constraints). Once you send it, I’ll write the complete Codeforces-style editorial in the format you specified, including algorithm walkthrough, proofs, complexity, and test cases.
