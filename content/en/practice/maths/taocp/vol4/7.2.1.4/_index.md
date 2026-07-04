@@ -80,7 +80,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 73/73 solved.
 | [60](60.md) |  [*23*] | medium | solved | 19m50s |
 | [61](61.md) |  [*26*] | hard | solved | 23m04s |
 | [62](62.md) |  [*46*] | research | solved | 22m36s |
-| [63](63.md) |  [*47*] | research | solved | 6m56s |
+| [63](63.md) |  [*47*] | research | solved | 21m27s |
 | [64](64.md) | &#9654; [*32*] | hard | solved | 6m54s |
 | [65](65.md) |  [*23*] | medium | solved | 8m04s |
 | [66](66.md) | &#9654; [*M25*] | math-medium | solved | 7m11s |
