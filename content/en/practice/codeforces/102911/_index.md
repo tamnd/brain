@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 4
-total_solve_s: 468
+total_solve_s: 596
 contest_year: 2021
-date: "2026-07-04T10:17:58+07:00"
+date: "2026-07-04T10:21:53+07:00"
 weight: 102911
 draft: false
 ---
 
 # [2021 Ateneo de Manila Senior High School Dagitab Programming Contest (Mirror)](https://codeforces.com/contest/102911)
 
-Special | 11 problems | 4/11 verified | Difficulty - | 7m 48s
+Special | 11 problems | 4/11 verified | Difficulty - | 9m 56s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,9 +26,9 @@ Special | 11 problems | 4/11 verified | Difficulty - | 7m 48s
 | [D](D/) | [Dancing Queen](https://codeforces.com/problemset/problem/102911/D) |  |  |  | 57s | ✓ |
 | [E](E/) | [Experiment!](https://codeforces.com/problemset/problem/102911/E) |  |  |  | 31s |  |
 | [F](F/) | [Folklore](https://codeforces.com/problemset/problem/102911/F) |  |  |  | 46s | ✓ |
-| [G](G/) | [Gamer Girl Gauntlet](https://codeforces.com/problemset/problem/102911/G) |  |  |  | 28s |  |
+| [G](G/) | [Gamer Girl Gauntlet](https://codeforces.com/problemset/problem/102911/G) |  |  |  | 25s |  |
 | [H](H/) | [Heavy Sort](https://codeforces.com/problemset/problem/102911/H) |  |  |  | 30s |  |
 | [I](I/) | [Implementation Problem](https://codeforces.com/problemset/problem/102911/I) |  |  |  | 25s |  |
 | [J](J/) | [Junior Prom](https://codeforces.com/problemset/problem/102911/J) |  |  |  | 45s | ✓ |
 | [K](K/) | [Kallipolis](https://codeforces.com/problemset/problem/102911/K) |  |  |  | 34s | ✓ |
-| [L](L/) | [L Textiles](https://codeforces.com/problemset/problem/102911/L) |  |  |  | 24s |  |
+| [L](L/) | [L Textiles](https://codeforces.com/problemset/problem/102911/L) |  |  |  | 2m 35s |  |
