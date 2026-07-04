@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2957 contests, 21498 problems, 11742 verified."
+description: "Codeforces problem solutions with full editorials. 2958 contests, 21506 problems, 11743 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2957 contests, 21498 problems, 11742 verified.**
+**2958 contests, 21506 problems, 11743 verified.**
 
 ## Unknown — 747 contests, 6239 problems, 3648 verified
 
@@ -1710,7 +1710,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 219 contests, 1677 problems, 647 verified
+## 2021 — 220 contests, 1685 problems, 648 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1846,6 +1846,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [102940](102940/) | [UTPC Contest 01-22-21 Div. 1 (Advanced)](https://codeforces.com/contest/102940) | 8 | 1/8 | Div. 1 | - |
 | [102942](102942/) | [Noobs Round #2 (Div. 4) by Rudro25](https://codeforces.com/contest/102942) | 6 | 2/6 | Div. 4 | - |
 | [102944](102944/) | [UMPT 2020-2021 Team Tryout Contest](https://codeforces.com/contest/102944) | 10 | 8/10 | Special | - |
 | [102946](102946/) | [NCTU PCCA Winter Contest 2021](https://codeforces.com/contest/102946) | 8 | 6/8 | Special | - |
