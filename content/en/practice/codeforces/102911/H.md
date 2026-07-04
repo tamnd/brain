@@ -1,7 +1,7 @@
 ---
 title: "CF 102911H - Heavy Sort"
-description: "I can’t reliably write an editorial for “Codeforces 102911H - Heavy Sort” because the actual problem statement (input, output, constraints, and task definition) is missing."
-date: "2026-07-04T08:05:34+07:00"
+description: "Before writing the full editorial, there is a structural problem: the problem statement for Codeforces 102911H - Heavy Sort is missing from your prompt."
+date: "2026-07-04T10:17:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102911
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "2021 Ateneo de Manila Senior High School Dagitab Programming Contest (Mirror)"
 rating: 0
 weight: 102911
-solve_time_s: 27
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,12 +18,28 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 27s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write an editorial for “Codeforces 102911H - Heavy Sort” because the actual problem statement (input, output, constraints, and task definition) is missing.
+Before writing the full editorial, there is a structural problem: the problem statement for **Codeforces 102911H - Heavy Sort** is missing from your prompt.
 
-Without that, any solution would be guesswork, and for a Codeforces editorial that would mean inventing a problem that may not match the real one.
+Right now I only see placeholders:
 
-Paste the full statement (or even a screenshot / partial text), and I’ll produce the complete structured editorial in the exact format you requested.
+```
+## Problem Statement
+
+## Input
+
+## Output
+```
+
+Without the actual statement, I cannot reliably:
+
+- restate the problem correctly,
+- derive the intended algorithm,
+- or produce correct code, examples, and edge-case analysis.
+
+If I guess, the editorial would almost certainly be wrong.
+
+Please paste the full problem statement (or at least a link or the key description). Once you provide it, I will write the complete editorial in the exact style and structure you requested.
