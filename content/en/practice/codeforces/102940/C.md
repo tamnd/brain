@@ -1,34 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 90"
-description: "Algorithm H generates all integer partitions $a_1 \\ge \\cdots \\ge a_m \\ge 1$ of $n$ by maintaining a weakly decreasing sequence whose entries are positive and whose sum is always $n$."
-date: "2026-07-04T00:48:15+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 90
-rating: "M22"
-category: "math-medium"
-recommended: false
+title: "CF 102940C - Robot Snowman"
+description: "Algorithm H generates all integer partitions $a1 ge cdots ge am ge 1$ of $n$ by maintaining a weakly decreasing sequence whose entries are positive and whose sum is always $n$."
+date: "2026-07-04T07:45:14+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102940
+codeforces_index: "C"
+codeforces_contest_name: "UTPC Contest 01-22-21 Div. 1 (Advanced)"
+rating: 0
+weight: 102940
+solve_time_s: 153
 verified: false
-solve_time_s: 470
-weight: 7020103090
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102940C - Robot Snowman](https://codeforces.com/problemset/problem/102940/C)
 
-**Exercise 90.** [*M22*] [M22] Prove the basic compression lemma, (85).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 33s  
 **Verified:** no  
-**Solve time:** 7m50s  
 
----
-
+## Solution
 ## Solution
 
 Algorithm H generates all integer partitions $a_1 \ge \cdots \ge a_m \ge 1$ of $n$ by maintaining a weakly decreasing sequence whose entries are positive and whose sum is always $n$. To obtain partitions of $n$ into at most $m$ parts, the correct model is to allow trailing zeros and to interpret a partition with $k \le m$ parts as a sequence $a_1 \ge \cdots \ge a_k \ge 1$ extended by zeros to length $m$.
@@ -41,9 +34,7 @@ The revised initialization replaces the requirement that all parts except possib
 
 The modified step H1 is therefore:
 
-$$
-a_1 \leftarrow n,\quad a_j \leftarrow 0 \text{ for } 2 \le j \le m,\quad a_{m+1} \leftarrow -1.
-$$
+$$a_1 \leftarrow n,\quad a_j \leftarrow 0 \text{ for } 2 \le j \le m,\quad a_{m+1} \leftarrow -1.$$
 
 All other steps H2 through H6 are unchanged.
 
