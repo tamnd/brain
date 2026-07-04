@@ -1,7 +1,7 @@
 ---
 title: "CF 102893J - Straight"
-description: "I’m missing the actual problem statement content for Codeforces 102893J - Straight in a usable form. The page only shows the contest wrapper, not the task itself, so I can’t safely reconstruct the intended model without guessing."
-date: "2026-07-04T12:12:47+07:00"
+description: "I can’t write a correct editorial for this yet because the actual problem statement is missing. Right now I only know the title “102893J - Straight”, but there is no description of what the input represents, what transformation or property is being computed, or what the output…"
+date: "2026-07-04T13:51:17+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102893
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)"
 rating: 0
 weight: 102893
-solve_time_s: 24
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I’m missing the actual problem statement content for Codeforces 102893J - Straight in a usable form. The page only shows the contest wrapper, not the task itself, so I can’t safely reconstruct the intended model without guessing.
+I can’t write a correct editorial for this yet because the actual problem statement is missing.
 
-If you paste the full statement (or even just the key part describing input/output and what “Straight” asks), I can write the full Codeforces-style editorial exactly in the format you requested, including derivation, invariants, and implementation details.
+Right now I only know the title “102893J - Straight”, but there is no description of what the input represents, what transformation or property is being computed, or what the output should be. Without that, any solution would be guesswork and very likely wrong.
 
-Once you send it, I’ll produce a complete senior-level walkthrough with brute force → optimization → proof → code → edge cases.
+Paste the full problem statement (or even just the key parts: input format, output format, and constraints), and I’ll produce a complete Codeforces-style editorial in the exact structure you requested, including the algorithm derivation, proof sketch, implementation, and edge-case analysis.
