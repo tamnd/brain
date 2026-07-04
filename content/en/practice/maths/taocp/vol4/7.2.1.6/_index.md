@@ -1,0 +1,143 @@
+---
+title: "TAOCP 7.2.1.6: Generating All Trees"
+description: "Section 7.2.1.6 exercises: 1/123 solved."
+tags: ["taocp", "mathematics", "algorithms"]
+categories: ["mathematics"]
+section: "7.2.1.6"
+section_title: "Generating All Trees"
+chapter: 7
+chapter_title: "Combinatorial Searching"
+volume: 4
+weight: 7020106
+draft: false
+---
+
+# Section 7.2.1.6. Generating All Trees
+
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 1/123 solved.
+
+| # | Rating | Category | Status | Time |
+|---|--------|----------|--------|------|
+| [1](01.md) |  [*15*] | simple | solved | 5m07s |
+| 2 |  [*20*] | medium | - | - |
+| 3 | &#9654; [*23*] | medium | - | - |
+| 4 |  [*20*] | medium | - | - |
+| 5 |  [*15*] | simple | - | - |
+| 6 | &#9654; [*20*] | medium | - | - |
+| 7 |  [*16*] | medium | - | - |
+| 8 |  [*15*] | simple | - | - |
+| 9 |  [*M26*] | math-hard | - | - |
+| 10 |  [*M20*] | math-medium | - | - |
+| 11 |  [*11*] | simple | - | - |
+| 12 |  [*15*] | simple | - | - |
+| 13 |  [*20*] | medium | - | - |
+| 14 | &#9654; [*21*] | medium | - | - |
+| 15 |  [*20*] | medium | - | - |
+| 16 |  [*20*] | medium | - | - |
+| 17 |  [*M16*] | math-medium | - | - |
+| 18 |  [*30*] | hard | - | - |
+| 19 |  [*28*] | hard | - | - |
+| 20 |  [*25*] | medium | - | - |
+| 21 | &#9654; [*26*] | hard | - | - |
+| 22 | &#9654; [*20*] | medium | - | - |
+| 23 |  [*25*] | medium | - | - |
+| 24 |  [*22*] | medium | - | - |
+| 25 | &#9654; [*20*] | medium | - | - |
+| 26 |  [*M31*] | math-hard | - | - |
+| 27 | &#9654; [*M35*] | math-hard | - | - |
+| 28 |  [*M26*] | math-hard | - | - |
+| 29 |  [*HM31*] | hm-hard | - | - |
+| 30 |  [*M26*] | math-hard | - | - |
+| 31 | &#9654; [*M28*] | math-hard | - | - |
+| 32 | &#9654; [*M30*] | math-hard | - | - |
+| 33 | &#9654; [*M27*] | math-hard | - | - |
+| 34 |  [*M25*] | math-medium | - | - |
+| 35 |  [*HM37*] | hm-project | - | - |
+| 36 | &#9654; [*M25*] | math-medium | - | - |
+| 37 |  [*M40*] | math-project | - | - |
+| 38 |  [*M22*] | math-medium | - | - |
+| 39 |  [*22*] | medium | - | - |
+| 40 |  [*M25*] | math-medium | - | - |
+| 41 |  [*M21*] | math-medium | - | - |
+| 42 |  [*M22*] | math-medium | - | - |
+| 43 |  [*M11*] | math-simple | - | - |
+| 44 | &#9654; [*M27*] | math-hard | - | - |
+| 45 |  [*M26*] | math-hard | - | - |
+| 46 |  [*M30*] | math-hard | - | - |
+| 48 |  [*M28*] | math-hard | - | - |
+| 49 |  [*17*] | medium | - | - |
+| 50 |  [*20*] | medium | - | - |
+| 51 |  [*M23*] | math-medium | - | - |
+| 52 |  [*M23*] | math-medium | - | - |
+| 53 |  [*M28*] | math-hard | - | - |
+| 54 |  [*HM29*] | hm-hard | - | - |
+| 55 |  [*M33*] | math-hard | - | - |
+| 56 |  [*M25*] | math-medium | - | - |
+| 57 |  [*M28*] | math-hard | - | - |
+| 58 |  [*HM34*] | hm-hard | - | - |
+| 59 |  [*HM29*] | hm-hard | - | - |
+| 60 | &#9654; [*M26*] | math-hard | - | - |
+| 61 | &#9654; [*M26*] | math-hard | - | - |
+| 62 |  [*22*] | medium | - | - |
+| 63 |  [**] |  | - | - |
+| 64 |  [*20*] | medium | - | - |
+| 65 |  [*38*] | project | - | - |
+| 66 |  [*21*] | medium | - | - |
+| 67 |  [*M22*] | math-medium | - | - |
+| 68 |  [*10*] | simple | - | - |
+| 69 |  [*20*] | medium | - | - |
+| 70 | &#9654; [*20*] | medium | - | - |
+| 71 |  [*M21*] | math-medium | - | - |
+| 72 |  [*M38*] | math-project | - | - |
+| 73 |  [*15*] | simple | - | - |
+| 74 |  [*M26*] | math-hard | - | - |
+| 75 | &#9654; [*HM29*] | hm-hard | - | - |
+| 76 |  [*HM46*] | hm-research | - | - |
+| 77 |  [*21*] | medium | - | - |
+| 78 |  [*20*] | medium | - | - |
+| 79 |  [*M26*] | math-hard | - | - |
+| 80 |  [*30*] | hard | - | - |
+| 81 |  [*M30*] | math-hard | - | - |
+| 82 | &#9654; [*M26*] | math-hard | - | - |
+| 83 |  [*M20*] | math-medium | - | - |
+| 84 | &#9654; [*HM27*] | hm-hard | - | - |
+| 85 |  [*HM35*] | hm-hard | - | - |
+| 86 |  [*15*] | simple | - | - |
+| 87 |  [*M30*] | math-hard | - | - |
+| 88 |  [*M20*] | math-medium | - | - |
+| 89 |  [*M46*] | math-research | - | - |
+| 90 | &#9654; [*M37*] | math-project | - | - |
+| 91 |  [*M37*] | math-project | - | - |
+| 92 |  [*15*] | simple | - | - |
+| 93 |  [*20*] | medium | - | - |
+| 94 |  [*22*] | medium | - | - |
+| 95 |  [*26*] | hard | - | - |
+| 96 | &#9654; [*28*] | hard | - | - |
+| 97 |  [*15*] | simple | - | - |
+| 98 |  [*16*] | medium | - | - |
+| 99 |  [*30*] | hard | - | - |
+| 100 |  [*40*] | project | - | - |
+| 101 |  [*46*] | research | - | - |
+| 102 |  [*46*] | research | - | - |
+| 103 | &#9654; [*HM39*] | hm-project | - | - |
+| 104 | &#9654; [*HM21*] | hm-medium | - | - |
+| 105 |  [*HM18*] | hm-medium | - | - |
+| 106 | &#9654; [*HM7*] | hm-simple | - | - |
+| 107 |  [*M24*] | math-medium | - | - |
+| 108 |  [*HM40*] | hm-project | - | - |
+| 109 |  [*M46*] | math-research | - | - |
+| 110 | &#9654; [*M27*] | math-hard | - | - |
+| 111 |  [*05*] | simple | - | - |
+| 112 |  [*15*] | simple | - | - |
+| 113 | &#9654; [*20*] | medium | - | - |
+| 114 |  [*15*] | simple | - | - |
+| 115 |  [*20*] | medium | - | - |
+| 116 | &#9654; [*28*] | hard | - | - |
+| 117 |  [*21*] | medium | - | - |
+| 118 |  [*M28*] | math-hard | - | - |
+| 119 |  [*21*] | medium | - | - |
+| 120 |  [*22*] | medium | - | - |
+| 121 |  [*M34*] | math-hard | - | - |
+| 122 | &#9654; [*31*] | hard | - | - |
+| 123 |  [*21*] | medium | - | - |
+| 124 | &#9654; [*40*] | project | - | - |
