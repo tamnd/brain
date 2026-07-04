@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.6: Generating All Trees"
-description: "Section 7.2.1.6 exercises: 15/123 solved."
+description: "Section 7.2.1.6 exercises: 17/123 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.6. Generating All Trees
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 15/123 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 17/123 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -121,8 +121,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 15/123 solved.
 | [102](102.md) |  [*46*] | research | solved | 4m54s |
 | [103](103.md) | &#9654; [*HM39*] | hm-project | solved | 5m17s |
 | [104](104.md) | &#9654; [*HM21*] | hm-medium | solved | 4m50s |
-| 105 |  [*HM18*] | hm-medium | - | - |
-| 106 | &#9654; [*HM7*] | hm-simple | - | - |
+| [105](105.md) |  [*HM18*] | hm-medium | solved | 4m49s |
+| [106](106.md) | &#9654; [*HM7*] | hm-simple | solved | 5m02s |
 | 107 |  [*M24*] | math-medium | - | - |
 | 108 |  [*HM40*] | hm-project | - | - |
 | 109 |  [*M46*] | math-research | - | - |
