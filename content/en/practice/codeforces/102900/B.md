@@ -1,36 +1,27 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 93"
-description: "Let $n \\ge m \\ge 1$ and let $a_1 \\ge a_2 \\ge \\cdots \\ge a_m \\ge 1$ be a partition of $n$ such that $|a_i - a_j| \\le 1$ for all $i,j$."
-date: "2026-07-04T01:19:56+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 93
-rating: "M25"
-category: "math-medium"
-recommended: false
+title: "CF 102900B - Mine Sweeper II"
+description: "Let $n ge m ge 1$ and let $a1 ge a2 ge cdots ge am ge 1$ be a partition of $n$ such that $ Indeed, if $a1$ is the maximum part and $am$ is the minimum part, the condition gives $a1 - am le 1$, hence $am in {a1, a1 - 1}$. Therefore every part equals either $a1$ or $a1 - 1$."
+date: "2026-07-04T08:16:05+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102900
+codeforces_index: "B"
+codeforces_contest_name: "2020 ICPC Shanghai Site"
+rating: 0
+weight: 102900
+solve_time_s: 161
 verified: false
-solve_time_s: 1027
-weight: 7020103093
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102900B - Mine Sweeper II](https://codeforces.com/problemset/problem/102900/B)
 
-**Exercise 93.** [*M25*] [M25] (a) Find an N for which the conclusion of Theorem W is false when the
-parameters m1, m2, . . . , mn have not been sorted into nondecreasing order. (b) Where
-does the proof of that theorem use the hypothesis that m1 ≤m2 ≤· · · ≤mn?
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 41s  
 **Verified:** no  
-**Solve time:** 17m07s  
 
----
-
+## Solution
 ## Solution
 
 Let $n \ge m \ge 1$ and let $a_1 \ge a_2 \ge \cdots \ge a_m \ge 1$ be a partition of $n$ such that $|a_i - a_j| \le 1$ for all $i,j$. Then the set of distinct part values contains at most two consecutive integers.
@@ -39,62 +30,46 @@ Indeed, if $a_1$ is the maximum part and $a_m$ is the minimum part, the conditio
 
 Let $k$ denote the number of parts equal to $a_1$. Then $m-k$ parts equal $a_1 - 1$, and the sum condition becomes
 
-$$
-n = k a_1 + (m-k)(a_1 - 1).
-$$
+$$n = k a_1 + (m-k)(a_1 - 1).$$
 
 Expanding gives
 
-$$
-n = k a_1 + m a_1 - k a_1 - m + k = m(a_1 - 1) + k.
-$$
+$$n = k a_1 + m a_1 - k a_1 - m + k = m(a_1 - 1) + k.$$
 
 Hence
 
-$$
-k = n - m(a_1 - 1).
-$$
+$$k = n - m(a_1 - 1).$$
 
 Since $0 \le k \le m$, the integer $a_1$ is constrained by
 
-$$
-m(a_1 - 1) \le n \le m(a_1 - 1) + m,
-$$
+$$m(a_1 - 1) \le n \le m(a_1 - 1) + m,$$
 
 which is equivalent to
 
-$$
-a_1 - 1 \le \frac{n}{m} \le a_1.
-$$
+$$a_1 - 1 \le \frac{n}{m} \le a_1.$$
 
 Thus $a_1 = \left\lceil \frac{n}{m} \right\rceil$. Writing $n = qm + r$ with $0 \le r < m$, this yields $q = \left\lfloor \frac{n}{m} \right\rfloor$ and
 
-$$
-a_1 =
+$$a_1 =
 \begin{cases}
 q, & r = 0,\\
 q+1, & r > 0.
-\end{cases}
-$$
+\end{cases}$$
 
 If $r = 0$, then $k = n - m(q-1) = mq - m(q-1) = m$, so all parts equal $q$.
 
 If $r > 0$, then $a_1 = q+1$, and
 
-$$
-k = n - m q = r.
-$$
+$$k = n - m q = r.$$
 
 Thus exactly $r$ parts equal $q+1$, and the remaining $m-r$ parts equal $q$.
 
 Because the partition is nonincreasing, the first $r$ parts are $q+1$ and the remaining $m-r$ parts are $q$, so the $j$th part is
 
-$$
-a_j =
+$$a_j =
 \begin{cases}
 q+1, & 1 \le j \le r,\\
 q, & r < j \le m.
-\end{cases}
-$$
+\end{cases}$$
 
 Any optimally balanced partition must have this form since the number of parts equal to the larger value is uniquely determined by the sum constraint, and no other choice of values differing by at most $1$ can satisfy the required total. This completes the proof. ∎

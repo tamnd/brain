@@ -1,81 +1,58 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 92"
-description: "Let $a_1 \\ge a_2 \\ge \\cdots \\ge a_m \\ge 1$ be a partition of $n$ into $m$ parts that is optimally balanced, meaning $|a_i-a_j|\\le 1$ for all $1\\le i,j\\le m$."
-date: "2026-07-04T01:02:47+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-hard"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 92
-rating: "M28"
-category: "math-hard"
-recommended: false
+title: "CF 102916C - Cyclically Shifted Maze"
+description: "Let $a1 ge a2 ge cdots ge am ge 1$ be a partition of $n$ into $m$ parts that is optimally balanced, meaning $ Let $t$ be the number of parts equal to $x$ and $m-t$ the number of parts equal to $x-1$. The partition has total sum $$n = tx + (m-t)(x-1) = mx - (m-t)."
+date: "2026-07-04T08:01:11+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102916
+codeforces_index: "C"
+codeforces_contest_name: "Samara Farewell Contest 2020 (XXI Open Cup, Grand Prix of Samara)"
+rating: 0
+weight: 102916
+solve_time_s: 158
 verified: false
-solve_time_s: 488
-weight: 7020103092
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102916C - Cyclically Shifted Maze](https://codeforces.com/problemset/problem/102916/C)
 
-**Exercise 92.** [*M28*] [M28] Let x = x1 . . . xn−1 be the Nth element of the torus T(m1, . . . , mn−1), and
-let S be the set of all elements of T(m1, . . . , mn−1, m) that are ⪯x1 . . . xn−1(m−1)
-in cross order. If Na elements of S have final component a, for 0 ≤a < m, prove
-that Nm−1 = N and Na−1 = αNa for 1 ≤a < m, where α is the spread function for
-standard sets in T(m1, . . . , mn−1).
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 2m 38s  
 **Verified:** no  
-**Solve time:** 8m08s  
 
----
-
+## Solution
 ## Solution
 
 Let $a_1 \ge a_2 \ge \cdots \ge a_m \ge 1$ be a partition of $n$ into $m$ parts that is optimally balanced, meaning $|a_i-a_j|\le 1$ for all $1\le i,j\le m$. The condition is equivalent to requiring that the largest and smallest parts differ by at most $1$, so if $a_1 = x$, then every part satisfies $a_m \in {x, x-1}$ and no other value is possible.
 
 Let $t$ be the number of parts equal to $x$ and $m-t$ the number of parts equal to $x-1$. The partition has total sum
 
-$$
-n = tx + (m-t)(x-1) = mx - (m-t).
-$$
+$$n = tx + (m-t)(x-1) = mx - (m-t).$$
 
 Solving for $x$ gives
 
-$$
-mx = n + m - t,\quad x = \frac{n+m-t}{m}.
-$$
+$$mx = n + m - t,\quad x = \frac{n+m-t}{m}.$$
 
 Since $x$ is an integer, $n+m-t \equiv 0 \pmod m$, hence $t \equiv n \pmod m$. Write
 
-$$
-n = mq + r,\quad 0 \le r < m,
-$$
+$$n = mq + r,\quad 0 \le r < m,$$
 
 so $q = \lfloor n/m \rfloor$ and $r = n \bmod m$.
 
 Substituting into the expression for $n$,
 
-$$
-n = m q + r.
-$$
+$$n = m q + r.$$
 
 An optimally balanced partition must use parts differing by at most $1$, so the only possible values are $q$ and $q+1$. Let $t$ be the number of parts equal to $q+1$, and $m-t$ the number of parts equal to $q$. Then the sum constraint becomes
 
-$$
-n = t(q+1) + (m-t)q = mq + t.
-$$
+$$n = t(q+1) + (m-t)q = mq + t.$$
 
 Comparing with $n = mq + r$ gives $t = r$. Hence exactly $r$ parts are $q+1$ and the remaining $m-r$ parts are $q$.
 
 This determines a unique partition since the sequence is forced to be nonincreasing, with all larger parts placed first:
 
-$$
-a_1 = \cdots = a_r = q+1,\quad a_{r+1} = \cdots = a_m = q.
-$$
+$$a_1 = \cdots = a_r = q+1,\quad a_{r+1} = \cdots = a_m = q.$$
 
 To verify optimal balance, any pair of parts differs by either $0$ or $1$ since the only values present are $q$ and $q+1$, so $|a_i-a_j|\le 1$ holds. Any other partition into $m$ parts must deviate from this distribution of quotients and remainders, which would force some part to be at least $q+2$ or at most $q-1$, contradicting either the sum constraint or the nonincreasing condition with minimal spread.
 
@@ -83,12 +60,10 @@ Thus there is exactly one optimally balanced partition.
 
 The $j$th part is therefore
 
-$$
-a_j =
+$$a_j =
 \begin{cases}
 \left\lfloor \frac{n}{m} \right\rfloor + 1 & \text{if } 1 \le j \le n \bmod m,\\[6pt]
 \left\lfloor \frac{n}{m} \right\rfloor & \text{if } n \bmod m < j \le m.
-\end{cases}
-$$
+\end{cases}$$
 
 This completes the proof. ∎
