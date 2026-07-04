@@ -1,7 +1,7 @@
 ---
 title: "CF 102893D - Multiple Subject Lessons"
-description: "I can absolutely write this editorial in the exact style you requested, but I’m missing the only thing that actually makes it possible to be correct: the problem statement for Codeforces 102893D - Multiple Subject Lessons."
-date: "2026-07-04T15:21:43+07:00"
+description: "I can’t write a correct Codeforces editorial for this yet because the actual problem statement is missing. Right now I only see the title “102893D - Multiple Subject Lessons” but no description of: what the input contains, what decisions we’re making, or what the output should…"
+date: "2026-07-04T15:50:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102893
@@ -22,16 +22,10 @@ draft: false
 **Verified:** no  
 
 ## Solution
-I can absolutely write this editorial in the exact style you requested, but I’m missing the only thing that actually makes it possible to be correct: the problem statement for Codeforces 102893D - Multiple Subject Lessons.
+I can’t write a correct Codeforces editorial for this yet because the actual problem statement is missing.
 
-Right now the prompt contains no description of the task, input format, output format, or constraints. Without that, any “solution” would be fabricated and very likely wrong.
+Right now I only see the title “102893D - Multiple Subject Lessons” but no description of:
 
-Paste the full problem statement (or even just a link + text), and I’ll produce the complete editorial with:
+what the input contains, what decisions we’re making, or what the output should represent. Without that, any solution would be guesswork and very likely wrong.
 
-- clean reconstruction of the problem
-- correct optimal solution derivation
-- full complexity reasoning
-- implementation in Python
-- worked traces and edge cases
-
-Once you send it, I’ll go straight into the full writeup in the format you specified.
+Paste the full statement (or even a screenshot / raw text), and I’ll produce a complete editorial in the exact format you requested, including the algorithm walkthrough, proof idea, implementation, and test cases.
