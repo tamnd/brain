@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2973 contests, 21642 problems, 11820 verified."
+description: "Codeforces problem solutions with full editorials. 2974 contests, 21642 problems, 11820 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2973 contests, 21642 problems, 11820 verified.**
+**2974 contests, 21642 problems, 11820 verified.**
 
 ## Unknown — 755 contests, 6297 problems, 3680 verified
 
@@ -1552,7 +1552,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 166 contests, 868 problems, 383 verified
+## 2020 — 167 contests, 868 problems, 383 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1715,6 +1715,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102892](102892/) | [CodeRams Algorithm Contest #1](https://codeforces.com/contest/102892) | 0 | 0/0 | Special | - |
 | [102894](102894/) | [Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk](https://codeforces.com/contest/102894) | 4 | 0/4 | Special | - |
 | [102896](102896/) | [Northern Eurasia Finals Online 2020](https://codeforces.com/contest/102896) | 15 | 9/15 | Special | - |
 | [102897](102897/) | [The 3rd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102897) | 13 | 11/13 | Special | - |
