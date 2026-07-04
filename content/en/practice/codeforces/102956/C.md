@@ -1,44 +1,34 @@
 ---
-title: "TAOCP 7.2.1.3 Exercise 87"
-description: "The solution does not address the stated problem at all."
-date: "2026-07-04T00:06:23+07:00"
-tags: ["taocp", "mathematics", "algorithms", "volume-4", "math-medium"]
-categories: ["mathematics"]
-section: "7.2.1.3"
-section_title: "Generating All Combinations"
-chapter: 7
-chapter_title: "Combinatorial Searching"
-volume: 4
-book_pages: "355–390"
-exercise: 87
-rating: "M21"
-category: "math-medium"
-recommended: false
+title: "CF 102956C - Brave Seekers of Unicorns"
+description: "The solution does not address the stated problem at all. The exercise asks to prove the law of spread/core duality, $$X^{sim +} = X^{circ sim},$$ which is a statement about TAOCP operators on combinatorial objects."
+date: "2026-07-04T07:07:14+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102956
+codeforces_index: "C"
+codeforces_contest_name: "2020-2021 Winter Petrozavodsk Camp, Belarusian SU Contest (XXI Open Cup, Grand Prix of Belarus)"
+rating: 0
+weight: 102956
+solve_time_s: 70
 verified: false
-solve_time_s: 964
-weight: 7020103087
 draft: false
 ---
 
-[Section 7.2.1.3: Generating All Combinations](../)
+[CF 102956C - Brave Seekers of Unicorns](https://codeforces.com/problemset/problem/102956/C)
 
-**Exercise 87.** [*M21*] [M21] True or false: (a) X ⊆Y ◦if and only if Y ∼⊆X∼◦; (b) X◦+◦= X◦;
-(c) αM ≤N if and only if M ≤βN.
-
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 10s  
 **Verified:** no  
-**Solve time:** 16m04s  
 
----
-
+## Solution
 ## Correctness
 
 The solution does not address the stated problem at all.
 
 The exercise asks to prove the law of spread/core duality,
 
-$$
-X^{\sim +} = X^{\circ \sim},
-$$
+$$X^{\sim +} = X^{\circ \sim},$$
 
 which is a statement about TAOCP operators on combinatorial objects.
 
@@ -62,4 +52,4 @@ All subsequent arguments about feasible size vectors, inclusion constraints, and
 
 The submission does not attempt the stated theorem and instead solves a different combinatorial enumeration problem.
 
-VERDICT: FAIL, the solution does not address the spread/core duality identity $X^{\sim +} = X^{\circ \sim}$.
+VERDICT: FAIL - the solution does not address the spread/core duality identity $X^{\sim +} = X^{\circ \sim}$.
