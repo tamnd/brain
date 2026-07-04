@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2962 contests, 21525 problems, 11755 verified."
+description: "Codeforces problem solutions with full editorials. 2963 contests, 21539 problems, 11767 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2962 contests, 21525 problems, 11755 verified.**
+**2963 contests, 21539 problems, 11767 verified.**
 
-## Unknown — 750 contests, 6251 problems, 3658 verified
+## Unknown — 751 contests, 6265 problems, 3670 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102916](102916/) | [Samara Farewell Contest 2020 (XXI Open Cup, Grand Prix of Samara)](https://codeforces.com/contest/102916) | 14 | 12/14 | Special | - |
 | [102920](102920/) | [2020-2021 ACM-ICPC, Asia Seoul Regional Contest](https://codeforces.com/contest/102920) | 12 | 10/12 | ICPC/IOI | - |
 | [102935](102935/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/102935) | 0 | 0/0 | Special | - |
 | [102936](102936/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102936) | 0 | 0/0 | Special | - |
