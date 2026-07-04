@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.5: Generating All Set Partitions"
-description: "Section 7.2.1.5 exercises: 62/69 solved."
+description: "Section 7.2.1.5 exercises: 68/69 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.5. Generating All Set Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 62/69 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 68/69 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,11 +22,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 62/69 solved.
 | [2](02.md) | &#9654; [*22*] | medium | solved | 5m39s |
 | [3](03.md) |  [*M23*] | math-medium | solved | 5m42s |
 | [4](04.md) |  [*21*] | medium | solved | 5m39s |
-| [5](05.md) |  [*22*] | medium | solved | 4m12s |
-| [6](06.md) |  [*25*] | medium | solved | 4m23s |
-| [7](07.md) |  [*M20*] | math-medium | solved | 5m22s |
-| [8](08.md) |  [*20*] | medium | solved | 6m26s |
-| [9](09.md) |  [*M20*] | math-medium | solved | 5m18s |
+| [5](05.md) |  [*22*] | medium | solved | 10m05s |
+| [6](06.md) |  [*25*] | medium | solved | 5m42s |
+| [7](07.md) |  [*M20*] | math-medium | solved | 5m41s |
+| [8](08.md) |  [*20*] | medium | solved | 5m39s |
+| [9](09.md) |  [*M20*] | math-medium | solved | 9m31s |
 | [10](10.md) |  [*25*] | medium | solved | 5m21s |
 | [11](11.md) | &#9654; [*28*] | hard | solved | 5m24s |
 | [12](12.md) |  [*M31*] | math-hard | solved | 5m05s |
@@ -80,10 +80,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 62/69 solved.
 | [73](73.md) |  [*M33*] | math-hard | solved | 5m07s |
 | [74](74.md) |  [*M46*] | math-research | solved | 5m08s |
 | [75](75.md) |  [*HM21*] | hm-medium | solved | 4m52s |
-| 76 |  [*HM16*] | hm-medium | - | - |
-| 77 |  [*HM46*] | hm-research | - | - |
-| 78 |  [*20*] | medium | - | - |
-| 79 | &#9654; [*22*] | medium | - | - |
-| 80 |  [*M25*] | math-medium | - | - |
-| 81 |  [*29*] | hard | - | - |
+| [76](76.md) |  [*HM16*] | hm-medium | solved | 4m05s |
+| [77](77.md) |  [*HM46*] | hm-research | solved | 5m11s |
+| [78](78.md) |  [*20*] | medium | solved | 4m40s |
+| [79](79.md) | &#9654; [*22*] | medium | solved | 4m52s |
+| [80](80.md) |  [*M25*] | math-medium | solved | 4m42s |
+| [81](81.md) |  [*29*] | hard | solved | 5m06s |
 | 82 |  [*22*] | medium | - | - |
