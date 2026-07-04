@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2976 contests, 21665 problems, 11837 verified."
+description: "Codeforces problem solutions with full editorials. 2976 contests, 21666 problems, 11837 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2976 contests, 21665 problems, 11837 verified.**
+**2976 contests, 21666 problems, 11837 verified.**
 
-## Unknown — 755 contests, 6298 problems, 3682 verified
+## Unknown — 755 contests, 6299 problems, 3682 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [102893](102893/) | [2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)](https://codeforces.com/contest/102893) | 11 | 4/11 | Special | - |
+| [102893](102893/) | [2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)](https://codeforces.com/contest/102893) | 12 | 4/12 | Special | - |
 | [102898](102898/) | [Innopolis Open 2020-2021, qualification, contest 2](https://codeforces.com/contest/102898) | 5 | 1/5 | Special | - |
 | [102904](102904/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Пятая командная олимпиада](https://codeforces.com/contest/102904) | 10 | 2/10 | Special | - |
 | [102906](102906/) | [Russian Olympiad in Informatics 2020—2021, Municipal Stage, Saint Petersburg](https://codeforces.com/contest/102906) | 6 | 4/6 | Special | - |
