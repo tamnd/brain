@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.4: Generating All Partitions"
-description: "Section 7.2.1.4 exercises: 7/73 solved."
+description: "Section 7.2.1.4 exercises: 8/73 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.4. Generating All Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 7/73 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 8/73 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -25,7 +25,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.4: 7/73 solved.
 | [5](05.md) | &#9654; [*23*] | medium | solved | 38m10s |
 | [6](06.md) |  [*20*] | medium | solved | 19m59s |
 | [7](07.md) |  [*M20*] | math-medium | solved | 30m07s |
-| 8 |  [*15*] | simple | - | - |
+| [8](08.md) |  [*15*] | simple | solved | 16m07s |
 | 9 |  [*22*] | medium | - | - |
 | 10 |  [*21*] | medium | - | - |
 | 11 |  [*M22*] | math-medium | - | - |

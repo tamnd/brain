@@ -1,7 +1,7 @@
 ---
 title: "CF 103964K - Game Rooms"
-description: "I don’t have the actual problem statement for Codeforces 103964K - Game Rooms, only the title. Right now there’s no information about what the input describes, what operations are allowed, or what needs to be computed."
-date: "2026-07-04T06:26:37+07:00"
+description: "The problem statement for Codeforces 103964K - Game Rooms is not included in your prompt (it only shows a placeholder with empty Input/Output sections). Without the actual rules of the problem, any “editorial” would be guesswork and would very likely be wrong."
+date: "2026-07-04T10:54:04+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 103964
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
 rating: 0
 weight: 103964
-solve_time_s: 26
+solve_time_s: 27
 verified: false
 draft: false
 ---
@@ -18,20 +18,16 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 27s  
 **Verified:** no  
 
 ## Solution
-I don’t have the actual problem statement for **Codeforces 103964K - Game Rooms**, only the title.
+The problem statement for **Codeforces 103964K - Game Rooms** is not included in your prompt (it only shows a placeholder with empty Input/Output sections). Without the actual rules of the problem, any “editorial” would be guesswork and would very likely be wrong.
 
-Right now there’s no information about what the input describes, what operations are allowed, or what needs to be computed. Without that, any “editorial” would be guesswork and would almost certainly be wrong.
+To write a proper Codeforces-style editorial, I need at least one of the following:
 
-If you paste the full statement (even just the Input/Output + description), I’ll write the complete structured editorial exactly in the style you requested, including:
+- Full problem statement text, or
+- A clear paraphrase of the rules (what a “game room” is, what operations are allowed, and what must be computed), or
+- Input/output format + constraints + sample cases
 
-- clean re-interpretation of the problem
-- brute force → optimization story
-- full algorithm walkthrough with invariants
-- working Python solution
-- traced examples and edge cases
-
-Send the statement and I’ll continue from there.
+Once you provide that, I can produce the complete structured editorial exactly in the style you requested.
