@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2977 contests, 21671 problems, 11842 verified."
+description: "Codeforces problem solutions with full editorials. 2977 contests, 21673 problems, 11842 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2977 contests, 21671 problems, 11842 verified.**
+**2977 contests, 21673 problems, 11842 verified.**
 
 ## Unknown — 755 contests, 6299 problems, 3682 verified
 
@@ -1552,7 +1552,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 170 contests, 895 problems, 403 verified
+## 2020 — 170 contests, 897 problems, 403 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1719,7 +1719,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102890](102890/) | [2020 ICPC Gran Premio de Mexico 3ra Fecha](https://codeforces.com/contest/102890) | 14 | 11/14 | ICPC/IOI | - |
 | [102891](102891/) | [2020 NHSPC (Taiwan National High School Programming Contest) Mock Contest - Day 2 (Div. 1)](https://codeforces.com/contest/102891) | 8 | 4/8 | Div. 1 | - |
 | [102892](102892/) | [CodeRams Algorithm Contest #1](https://codeforces.com/contest/102892) | 0 | 0/0 | Special | - |
-| [102894](102894/) | [Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk](https://codeforces.com/contest/102894) | 4 | 0/4 | Special | - |
+| [102894](102894/) | [Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk](https://codeforces.com/contest/102894) | 6 | 0/6 | Special | - |
 | [102896](102896/) | [Northern Eurasia Finals Online 2020](https://codeforces.com/contest/102896) | 15 | 9/15 | Special | - |
 | [102897](102897/) | [The 3rd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102897) | 13 | 11/13 | Special | - |
 | [102900](102900/) | [2020 ICPC Shanghai Site](https://codeforces.com/contest/102900) | 13 | 5/13 | ICPC/IOI | - |
