@@ -1,7 +1,7 @@
 ---
 title: "CF 102890L - Let's count words"
-description: "I can write the full Codeforces-style editorial in exactly that format, but I’m missing the actual problem statement. “Codeforces 102890L - Let’s count words” isn’t included in your message, so I don’t know what the input/output rules or constraints are."
-date: "2026-07-04T12:31:58+07:00"
+description: "I don’t have the actual statement of Codeforces 102890L in the prompt (the input/output sections are empty), so I can’t reliably reconstruct the task or derive a correct solution without guessing."
+date: "2026-07-04T13:01:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102890
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "2020 ICPC Gran Premio de Mexico 3ra Fecha"
 rating: 0
 weight: 102890
-solve_time_s: 23
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 23s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can write the full Codeforces-style editorial in exactly that format, but I’m missing the actual problem statement.
+I don’t have the actual statement of Codeforces 102890L in the prompt (the input/output sections are empty), so I can’t reliably reconstruct the task or derive a correct solution without guessing.
 
-“Codeforces 102890L - Let’s count words” isn’t included in your message, so I don’t know what the input/output rules or constraints are. Any attempt to proceed would risk inventing a different problem, which would make the editorial useless.
-
-Paste the full statement (or even just input/output + constraints), and I’ll produce the complete deep-dive editorial in the structure you specified.
+If you paste the full problem statement (or even a screenshot/text of it), I’ll produce the complete editorial in the exact style you requested, including the full reasoning, algorithm walkthrough, code, and test cases.
