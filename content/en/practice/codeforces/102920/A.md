@@ -1,0 +1,45 @@
+---
+title: "CF 102920A - Autonomous Vehicle"
+description: "Algorithm H generates all integer partitions $a1 ge cdots ge am ge 1$ of $n$ by maintaining a weakly decreasing sequence whose entries are positive and whose sum is always $n$."
+date: "2026-07-04T07:54:50+07:00"
+tags: ["codeforces", "competitive-programming"]
+categories: ["algorithms"]
+codeforces_contest: 102920
+codeforces_index: "A"
+codeforces_contest_name: "2020-2021 ACM-ICPC, Asia Seoul Regional Contest"
+rating: 0
+weight: 102920
+solve_time_s: 68
+verified: false
+draft: false
+---
+
+[CF 102920A - Autonomous Vehicle](https://codeforces.com/problemset/problem/102920/A)
+
+**Rating:** -  
+**Tags:** -  
+**Solve time:** 1m 8s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Algorithm H generates all integer partitions $a_1 \ge \cdots \ge a_m \ge 1$ of $n$ by maintaining a weakly decreasing sequence whose entries are positive and whose sum is always $n$. To obtain partitions of $n$ into at most $m$ parts, the correct model is to allow trailing zeros and to interpret a partition with $k \le m$ parts as a sequence $a_1 \ge \cdots \ge a_k \ge 1$ extended by zeros to length $m$.
+
+Thus the state space must change from strictly positive parts to weakly decreasing nonnegative parts $a_1 \ge \cdots \ge a_m \ge 0$ with sum $n$. Every partition of $n$ into at most $m$ parts corresponds uniquely to exactly one such $m$-tuple by padding with zeros, and every such $m$-tuple corresponds to a partition by deleting the trailing zeros.
+
+The modification required in Algorithm H is therefore confined to initialization, since all subsequent transformations preserve order and total sum and never rely on the strict positivity of $a_j$ except insofar as positivity was used to describe the initial configuration.
+
+The revised initialization replaces the requirement that all parts except possibly the first are at least $1$ by allowing empty parts from the start. The correct starting configuration for partitions of $n$ into at most $m$ parts is the maximal element in lexicographic order among all weakly decreasing $m$-tuples summing to $n$, namely a single part equal to $n$ followed by zeros.
+
+The modified step H1 is therefore:
+
+$$a_1 \leftarrow n,\quad a_j \leftarrow 0 \text{ for } 2 \le j \le m,\quad a_{m+1} \leftarrow -1.$$
+
+All other steps H2 through H6 are unchanged.
+
+Correctness follows from invariance of the transition rules. Each operation in H2 through H6 preserves the conditions $a_1 \ge \cdots \ge a_m$ and $\sum_{j=1}^m a_j = n$, since every update consists of transferring a unit from one position to earlier positions or redistributing a positive decrement $x = a_j - 1$ across earlier indices while maintaining nonincreasing order as in the original analysis in Section 7.2.1.4. None of these steps requires the constraint $a_j \ge 1$, only that comparisons such as $a_j \ge a_1 - 1$ and decrements $a_q \leftarrow a_q - 1$ remain meaningful, which holds once $a_j$ is allowed to reach $0$.
+
+Every partition of $n$ into at most $m$ parts yields a unique weakly decreasing $m$-tuple of nonnegative integers, and the modified algorithm generates exactly one such tuple for each reachable configuration because the reverse-lexicographic progression in H systematically enumerates all feasible decreases of the leading part while redistributing mass among later components without violating monotonicity. Since the initial state is the unique maximum in this order and every step produces the next admissible configuration, the traversal covers all and only valid $m$-tuples.
+
+Thus the modified initialization extends Algorithm H from partitions into exactly $m$ positive parts to partitions into at most $m$ positive parts, completing the required construction. This completes the proof. ∎
