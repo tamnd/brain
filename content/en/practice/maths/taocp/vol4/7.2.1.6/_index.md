@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.6: Generating All Trees"
-description: "Section 7.2.1.6 exercises: 1/123 solved."
+description: "Section 7.2.1.6 exercises: 3/123 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.6"
@@ -14,13 +14,13 @@ draft: false
 
 # Section 7.2.1.6. Generating All Trees
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 1/123 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 3/123 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*15*] | simple | solved | 5m07s |
-| 2 |  [*20*] | medium | - | - |
-| 3 | &#9654; [*23*] | medium | - | - |
+| [2](02.md) |  [*20*] | medium | solved | 5m27s |
+| [3](03.md) | &#9654; [*23*] | medium | solved | 5m15s |
 | 4 |  [*20*] | medium | - | - |
 | 5 |  [*15*] | simple | - | - |
 | 6 | &#9654; [*20*] | medium | - | - |
