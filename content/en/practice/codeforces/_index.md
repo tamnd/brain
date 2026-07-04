@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2962 contests, 21525 problems, 11755 verified."
+description: "Codeforces problem solutions with full editorials. 2965 contests, 21555 problems, 11774 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2962 contests, 21525 problems, 11755 verified.**
+**2965 contests, 21555 problems, 11774 verified.**
 
-## Unknown — 750 contests, 6251 problems, 3658 verified
+## Unknown — 752 contests, 6271 problems, 3674 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102906](102906/) | [Russian Olympiad in Informatics 2020—2021, Municipal Stage, Saint Petersburg](https://codeforces.com/contest/102906) | 6 | 4/6 | Special | - |
+| [102916](102916/) | [Samara Farewell Contest 2020 (XXI Open Cup, Grand Prix of Samara)](https://codeforces.com/contest/102916) | 14 | 12/14 | Special | - |
 | [102920](102920/) | [2020-2021 ACM-ICPC, Asia Seoul Regional Contest](https://codeforces.com/contest/102920) | 12 | 10/12 | ICPC/IOI | - |
 | [102935](102935/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/102935) | 0 | 0/0 | Special | - |
 | [102936](102936/) | [2020-2021 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102936) | 0 | 0/0 | Special | - |
@@ -1713,7 +1715,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 221 contests, 1692 problems, 650 verified
+## 2021 — 222 contests, 1702 problems, 653 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1849,6 +1851,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1620](1620/) | [Educational Codeforces Round 119 (Rated for Div. 2)](https://codeforces.com/contest/1620) | 7 | 2/7 | Div. 2 | 800-2800 |
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
+| [102911](102911/) | [2021 Ateneo de Manila Senior High School Dagitab Programming Contest (Mirror)](https://codeforces.com/contest/102911) | 10 | 3/10 | Special | - |
 | [102939](102939/) | [UTPC Contest 01-22-21 Div. 2 (Beginner)](https://codeforces.com/contest/102939) | 7 | 2/7 | Div. 2 | - |
 | [102940](102940/) | [UTPC Contest 01-22-21 Div. 1 (Advanced)](https://codeforces.com/contest/102940) | 8 | 1/8 | Div. 1 | - |
 | [102942](102942/) | [Noobs Round #2 (Div. 4) by Rudro25](https://codeforces.com/contest/102942) | 6 | 2/6 | Div. 4 | - |
