@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2970 contests, 21611 problems, 11807 verified."
+description: "Codeforces problem solutions with full editorials. 2970 contests, 21613 problems, 11809 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2970 contests, 21611 problems, 11807 verified.**
+**2970 contests, 21613 problems, 11809 verified.**
 
-## Unknown — 754 contests, 6286 problems, 3677 verified
+## Unknown — 754 contests, 6287 problems, 3678 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -154,7 +154,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103940](103940/) | [2022 ICPC Gran Premio de Mexico 2da Fecha](https://codeforces.com/contest/103940) | 12 | 0/12 | ICPC/IOI | - |
 | [103957](103957/) | [2015 ACM-ICPC Asia EC-Final Contest](https://codeforces.com/contest/103957) | 13 | 10/13 | ICPC/IOI | - |
 | [103960](103960/) | [2022-2023 ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/103960) | 14 | 3/14 | ICPC/IOI | - |
-| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 11 | 7/11 | Special | - |
+| [103964](103964/) | [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964) | 12 | 8/12 | Special | - |
 | [103965](103965/) | [Интернет-олимпиады, Сезон 2022-2023, Первая командная олимпиада](https://codeforces.com/contest/103965) | 10 | 9/10 | Special | - |
 | [103966](103966/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (базовая версия)](https://codeforces.com/contest/103966) | 8 | 1/8 | Special | - |
 | [103967](103967/) | [Интернет-олимпиады, Сезон 2022-2023, Вторая командная олимпиада (продвинутая версия)](https://codeforces.com/contest/103967) | 10 | 1/10 | Special | - |
@@ -1720,7 +1720,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [103463](103463/) | [The Hangzhou Normal U Qualification Trials for ZJPSC 2020](https://codeforces.com/contest/103463) | 13 | 13/13 | Special | - |
 | [103984](103984/) | [Московская командная олимпиада (МКОШП) 2020, Лига А](https://codeforces.com/contest/103984) | 10 | 0/10 | Special | - |
 
-## 2021 — 222 contests, 1704 problems, 656 verified
+## 2021 — 222 contests, 1705 problems, 657 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1868,7 +1868,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102962](102962/) | [Innopolis Open in Informatics, 2020-2021, the final](https://codeforces.com/contest/102962) | 5 | 4/5 | Special | - |
 | [102964](102964/) | [Krosh Kaliningrad Contest 1](https://codeforces.com/contest/102964) | 10 | 3/10 | Special | - |
 | [102966](102966/) | [2020-2021 ICPC - Gran Premio de Mexico - Repechaje](https://codeforces.com/contest/102966) | 14 | 4/14 | ICPC/IOI | - |
-| [102968](102968/) | [AGM 2021, Qualification Round](https://codeforces.com/contest/102968) | 11 | 10/11 | Special | - |
+| [102968](102968/) | [AGM 2021, Qualification Round](https://codeforces.com/contest/102968) | 12 | 11/12 | Special | - |
 | [102985](102985/) | [UTPC Contest 03-05-21 Div. 1 (Advanced)](https://codeforces.com/contest/102985) | 9 | 1/9 | Div. 1 | - |
 | [102986](102986/) | [UTPC Contest 03-05-21 Div. 2 (Beginner)](https://codeforces.com/contest/102986) | 8 | 2/8 | Div. 2 | - |
 | [103029](103029/) | [Quick (fast) contest #1](https://codeforces.com/contest/103029) | 4 | 0/4 | Special | - |

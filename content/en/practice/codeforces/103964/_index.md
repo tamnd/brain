@@ -1,22 +1,22 @@
 ---
 title: "The 2015 China Collegiate Programming Contest (CCPC 2015)"
-description: "11 problems from The 2015 China Collegiate Programming Contest (CCPC 2015) (contest 103964), difficulty -. 8/11 solutions verified against sample I/O."
+description: "12 problems from The 2015 China Collegiate Programming Contest (CCPC 2015) (contest 103964), difficulty -. 8/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 103964
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 8
-total_solve_s: 626
-date: "2026-07-02T10:54:04+07:00"
+total_solve_s: 731
+date: "2026-07-02T11:25:29+07:00"
 weight: 103964
 draft: false
 ---
 
 # [The 2015 China Collegiate Programming Contest (CCPC 2015)](https://codeforces.com/contest/103964)
 
-Special | 11 problems | 8/11 verified | Difficulty - | 10m 26s
+Special | 12 problems | 8/12 verified | Difficulty - | 12m 11s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,9 +25,10 @@ Special | 11 problems | 8/11 verified | Difficulty - | 10m 26s
 | [C](C/) | [The Battle of Chibi](https://codeforces.com/problemset/problem/103964/C) |  |  |  | 43s | ✓ |
 | [D](D/) | [Pick The Sticks](https://codeforces.com/problemset/problem/103964/D) |  |  |  | 53s | ✓ |
 | [E](E/) | [Ba Gua Zhen](https://codeforces.com/problemset/problem/103964/E) |  |  |  | 1m | ✓ |
-| [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 32s |  |
+| [F](F/) | [The Battle of Guandu](https://codeforces.com/problemset/problem/103964/F) |  |  |  | 30s |  |
 | [G](G/) | [Ancient Go](https://codeforces.com/problemset/problem/103964/G) |  |  |  | 54s | ✓ |
 | [H](H/) | [Sudoku](https://codeforces.com/problemset/problem/103964/H) |  |  |  | 48s | ✓ |
 | [I](I/) | [Mahjong](https://codeforces.com/problemset/problem/103964/I) |  |  |  | 2m 32s |  |
 | [J](J/) | [Walk Around The Campsite](https://codeforces.com/problemset/problem/103964/J) |  |  |  | 51s | ✓ |
 | [K](K/) | [Game Rooms](https://codeforces.com/problemset/problem/103964/K) |  |  |  | 27s |  |
+| [L](L/) | [Huatuo's Medicine](https://codeforces.com/problemset/problem/103964/L) |  |  |  | 1m 47s |  |
