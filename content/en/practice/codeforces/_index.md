@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2970 contests, 21613 problems, 11809 verified."
+description: "Codeforces problem solutions with full editorials. 2973 contests, 21642 problems, 11820 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2970 contests, 21613 problems, 11809 verified.**
+**2973 contests, 21642 problems, 11820 verified.**
 
-## Unknown — 754 contests, 6287 problems, 3678 verified
+## Unknown — 755 contests, 6297 problems, 3680 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102893](102893/) | [2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)](https://codeforces.com/contest/102893) | 10 | 2/10 | Special | - |
 | [102898](102898/) | [Innopolis Open 2020-2021, qualification, contest 2](https://codeforces.com/contest/102898) | 5 | 1/5 | Special | - |
 | [102904](102904/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Пятая командная олимпиада](https://codeforces.com/contest/102904) | 10 | 2/10 | Special | - |
 | [102906](102906/) | [Russian Olympiad in Informatics 2020—2021, Municipal Stage, Saint Petersburg](https://codeforces.com/contest/102906) | 6 | 4/6 | Special | - |
@@ -1551,7 +1552,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 164 contests, 849 problems, 374 verified
+## 2020 — 166 contests, 868 problems, 383 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1714,6 +1715,8 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102894](102894/) | [Municipal stage of the Russian Olympiad in Informatics (ROI), Smolensk](https://codeforces.com/contest/102894) | 4 | 0/4 | Special | - |
+| [102896](102896/) | [Northern Eurasia Finals Online 2020](https://codeforces.com/contest/102896) | 15 | 9/15 | Special | - |
 | [102897](102897/) | [The 3rd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102897) | 13 | 11/13 | Special | - |
 | [102900](102900/) | [2020 ICPC Shanghai Site](https://codeforces.com/contest/102900) | 13 | 5/13 | ICPC/IOI | - |
 | [103075](103075/) | [2020 V Интеллектуальная олимпиада ПФО](https://codeforces.com/contest/103075) | 10 | 1/10 | Special | - |

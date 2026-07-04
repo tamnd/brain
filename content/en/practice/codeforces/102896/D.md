@@ -1,7 +1,7 @@
 ---
 title: "CF 102896D - Down We Dig"
-description: "I can’t reliably write a correct Codeforces-style editorial without the actual problem statement. “Codeforces 102896D - Down We Dig” isn’t something I can reconstruct from memory with enough certainty, and guessing would risk inventing the wrong mechanics, which would break the…"
-date: "2026-07-04T11:26:32+07:00"
+description: "The problem statement for Codeforces 102896D - Down We Dig is missing from your prompt, so there is nothing concrete to analyze or solve yet."
+date: "2026-07-04T12:06:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102896
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Northern Eurasia Finals Online 2020"
 rating: 0
 weight: 102896
-solve_time_s: 25
+solve_time_s: 384
 verified: false
 draft: false
 ---
@@ -18,20 +18,17 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 25s  
+**Solve time:** 6m 24s  
 **Verified:** no  
 
 ## Solution
-I can’t reliably write a correct Codeforces-style editorial without the actual problem statement.
+The problem statement for **Codeforces 102896D - Down We Dig** is missing from your prompt, so there is nothing concrete to analyze or solve yet.
 
-“Codeforces 102896D - Down We Dig” isn’t something I can reconstruct from memory with enough certainty, and guessing would risk inventing the wrong mechanics, which would break the editorial entirely (especially for approaches, invariants, and edge cases).
+Without the actual statement (input format, operations, constraints, and required output), any editorial would be speculative and likely incorrect.
 
-If you paste the full statement (or even a screenshot / partial description), I’ll produce the complete editorial in the exact format you requested, including:
+Send either:
 
-- clean problem restatement in my own words
-- brute force → optimization progression
-- formal algorithm walkthrough with invariants
-- full Python solution
-- worked traces, complexity table, and assert-based tests
+- the full problem statement, or
+- a link / pasted text of the task
 
-Send the statement and I’ll take it from there.
+and I will produce the complete Codeforces-style editorial exactly in the format you specified.
