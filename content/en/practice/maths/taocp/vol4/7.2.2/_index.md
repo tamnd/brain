@@ -31,9 +31,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 79/59 solved.
 | [31](31.md) |  [*39*] | project | solved | 4m54s |
 | [32](32.md) |  [*22*] | medium | solved | 5m05s |
 | [33](33.md) |  [*21*] | medium | solved | 2m53s |
-| [34](34.md) |  [*15*] | simple | verified | 2m55s |
-| [35](35.md) | &#9654; [*22*] | medium | verified | 7m41s |
-| [36](36.md) |  [**] |  | verified | 3m23s |
+| [34](34.md) |  [*15*] | simple | solved | 5m56s |
+| [35](35.md) | &#9654; [*22*] | medium | verified | 3m44s |
+| [36](36.md) |  [**] |  | solved | 3m56s |
 | [37](37.md) | &#9654; [**] |  | solved | 7m03s |
 | [38](38.md) |  [*HM28*] | hm-hard | solved | 6m05s |
 | [39](39.md) |  [*18*] | medium | solved | 7m52s |
