@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.6: Generating All Trees"
-description: "Section 7.2.1.6 exercises: 30/123 solved."
+description: "Section 7.2.1.6 exercises: 32/123 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.6. Generating All Trees
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 30/123 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 32/123 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 30/123 solved.
 | [9](09.md) |  [*M26*] | math-hard | solved | 4m56s |
 | [10](10.md) |  [*M20*] | math-medium | solved | 5m11s |
 | [11](11.md) |  [*11*] | simple | solved | 5m20s |
-| 12 |  [*15*] | simple | - | - |
+| [12](12.md) |  [*15*] | simple | solved | 4m54s |
 | 13 |  [*20*] | medium | - | - |
 | 14 | &#9654; [*21*] | medium | - | - |
 | 15 |  [*20*] | medium | - | - |
@@ -135,7 +135,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 30/123 solved.
 | [116](116.md) | &#9654; [*28*] | hard | solved | 4m04s |
 | [117](117.md) |  [*21*] | medium | solved | 3m48s |
 | [118](118.md) |  [*M28*] | math-hard | solved | 5m05s |
-| 119 |  [*21*] | medium | - | - |
+| [119](119.md) |  [*21*] | medium | solved | 4m53s |
 | 120 |  [*22*] | medium | - | - |
 | 121 |  [*M34*] | math-hard | - | - |
 | 122 | &#9654; [*31*] | hard | - | - |
