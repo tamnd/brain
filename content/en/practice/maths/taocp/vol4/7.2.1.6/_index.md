@@ -115,7 +115,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [96](96.md) | &#9654; [*28*] | hard | solved | 4m32s |
 | [97](97.md) |  [*15*] | simple | solved | 5m39s |
 | [98](98.md) |  [*16*] | medium | solved | 4m31s |
-| [99](99.md) |  [*30*] | hard | solved | 5m11s |
+| [99](99.md) |  [*30*] | hard | solved | 5m15s |
 | [100](100.md) |  [*40*] | project | solved | 5m38s |
 | [101](101.md) |  [*46*] | research | solved | 5m42s |
 | [102](102.md) |  [*46*] | research | solved | 5m52s |
