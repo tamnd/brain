@@ -36,8 +36,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 79/59 solved.
 | [36](36.md) |  [**] |  | solved | 3m56s |
 | [37](37.md) | &#9654; [**] |  | solved | 5m10s |
 | [38](38.md) |  [*HM28*] | hm-hard | solved | 5m07s |
-| [39](39.md) |  [*18*] | medium | solved | 7m52s |
-| [40](40.md) | &#9654; [*15*] | simple | verified | 1m53s |
+| [39](39.md) |  [*18*] | medium | solved | 5m06s |
+| [40](40.md) | &#9654; [*15*] | simple | solved | 5m10s |
 | [41](41.md) |  [*17*] | medium | solved | 4m08s |
 | [42](42.md) |  [*18*] | medium | solved | 5m08s |
 | [43](43.md) |  [*20*] | medium | verified | 1m17s |
