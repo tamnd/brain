@@ -19,7 +19,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 74/123 solved.
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*15*] | simple | solved | 5m46s |
-| [2](02.md) |  [*20*] | medium | solved | 5m27s |
+| [2](02.md) |  [*20*] | medium | solved | 5m49s |
 | [3](03.md) | &#9654; [*23*] | medium | solved | 5m15s |
 | [4](04.md) |  [*20*] | medium | solved | 7m59s |
 | [5](05.md) |  [*15*] | simple | solved | 4m49s |
