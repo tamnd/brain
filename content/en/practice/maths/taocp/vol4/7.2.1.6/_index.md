@@ -87,7 +87,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [68](68.md) |  [*10*] | simple | verified | 1m36s |
 | [69](69.md) |  [*20*] | medium | solved | 4m17s |
 | [70](70.md) | &#9654; [*20*] | medium | verified | 1m42s |
-| [71](71.md) |  [*M21*] | math-medium | solved | 5m23s |
+| [71](71.md) |  [*M21*] | math-medium | solved | 2m14s |
 | [72](72.md) |  [*M38*] | math-project | solved | 5m14s |
 | [73](73.md) |  [*15*] | simple | solved | 5m08s |
 | [74](74.md) |  [*M26*] | math-hard | solved | 4m27s |
