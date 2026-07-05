@@ -60,8 +60,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 69/69 solved.
 | [40](40.md) |  [*HM20*] | hm-medium | solved | 5m52s |
 | [41](41.md) |  [*HM21*] | hm-medium | solved | 5m53s |
 | [42](42.md) |  [*HM23*] | hm-medium | solved | 5m36s |
-| [43](43.md) |  [*HM22*] | hm-medium | solved | 5m59s |
-| [44](44.md) |  [*HM22*] | hm-medium | solved | 5m55s |
+| [43](43.md) |  [*HM22*] | hm-medium | solved | 5m26s |
+| [44](44.md) |  [*HM22*] | hm-medium | solved | 5m31s |
 | [45](45.md) | &#9654; [*HM23*] | hm-medium | solved | 4m56s |
 | [59](59.md) | &#9654; [*HM25*] | hm-medium | solved | 5m07s |
 | [60](60.md) |  [*HM21*] | hm-medium | solved | 5m06s |
