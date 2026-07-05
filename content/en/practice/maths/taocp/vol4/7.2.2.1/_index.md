@@ -23,7 +23,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 443/446 solved.
 | [3](03.md) |  [*20*] | medium | solved | 1m16s |
 | [4](04.md) |  [*M30*] | math-hard | solved | 2m22s |
 | [5](05.md) |  [*18*] | medium | solved | 3m31s |
-| [6](06.md) |  [*15*] | simple | verified | 2m25s |
+| [6](06.md) |  [*15*] | simple | solved | 3m57s |
 | [7](07.md) |  [*16*] | medium | verified | 4m29s |
 | [8](08.md) |  [*22*] | medium | verified | 3m32s |
 | [9](09.md) |  [*18*] | medium | verified | 1m07s |
@@ -222,7 +222,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 443/446 solved.
 | [202](202.md) |  [*13*] | simple | verified | 57s |
 | [203](203.md) |  [*M15*] | math-simple | verified | 1m07s |
 | [204](204.md) |  [*M25*] | math-medium | solved | 1m05s |
-| [205](205.md) |  [**] |  | verified | 2m12s |
 | [206](206.md) |  [*29*] | hard | solved | 3m20s |
 | [207](207.md) |  [*35*] | hard | solved | 3m21s |
 | [208](208.md) | &#9654; [*21*] | medium | verified | 1m09s |
@@ -277,7 +276,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 443/446 solved.
 | [257](257.md) | &#9654; [*20*] | medium | solved | 3m07s |
 | [258](258.md) |  [*HM21*] | hm-medium | solved | 4m27s |
 | [259](259.md) |  [*M25*] | math-medium | solved | 2m52s |
-| [260](260.md) |  [*M31*] | math-hard | solved | 1m06s |
 | [261](261.md) | &#9654; [*23*] | medium | solved | 1m50s |
 | [262](262.md) | &#9654; [*M27*] | math-hard | solved | 4m18s |
 | [263](263.md) |  [*24*] | medium | solved | 4m20s |
@@ -319,8 +317,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 443/446 solved.
 | [301](301.md) |  [*25*] | medium | solved | 3m06s |
 | [302](302.md) |  [*26*] | hard | solved | 3m05s |
 | [303](303.md) | &#9654; [*HM25*] | hm-medium | solved | 3m24s |
-| [304](304.md) |  [**] |  | solved | 2m51s |
-| [305](305.md) |  [**] |  | solved | 3m49s |
 | [306](306.md) | &#9654; [*30*] | hard | verified | 1m25s |
 | [307](307.md) |  [*M21*] | math-medium | verified | 1m36s |
 | [308](308.md) |  [*22*] | medium | solved | 3m50s |
