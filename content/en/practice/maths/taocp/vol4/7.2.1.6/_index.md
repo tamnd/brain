@@ -33,7 +33,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 119/123 solved.
 | [13](13.md) |  [*20*] | medium | solved | 5m42s |
 | [14](14.md) | &#9654; [*21*] | medium | solved | 5m37s |
 | [15](15.md) |  [*20*] | medium | solved | 5m56s |
-| [16](16.md) |  [*20*] | medium | solved | 3m50s |
+| [16](16.md) |  [*20*] | medium | solved | 5m59s |
 | [17](17.md) |  [*M16*] | math-medium | solved | 5m13s |
 | [18](18.md) |  [*30*] | hard | solved | 4m04s |
 | [19](19.md) |  [*28*] | hard | solved | 4m50s |
