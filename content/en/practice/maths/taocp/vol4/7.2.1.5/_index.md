@@ -86,4 +86,4 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 69/69 solved.
 | [79](79.md) | &#9654; [*22*] | medium | solved | 5m46s |
 | [80](80.md) |  [*M25*] | math-medium | solved | 5m48s |
 | [81](81.md) |  [*29*] | hard | solved | 6m10s |
-| [82](82.md) |  [*22*] | medium | solved | 5m12s |
+| [82](82.md) |  [*22*] | medium | solved | 5m43s |
