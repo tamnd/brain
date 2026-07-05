@@ -19,11 +19,11 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 79/59 solved.
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [21](21.md) | &#9654; [*M25*] | math-medium | solved | 5m12s |
-| [22](22.md) |  [*M26*] | math-hard | verified | 4m52s |
-| [23](23.md) |  [*17*] | medium | verified | 3m43s |
-| [24](24.md) |  [*20*] | medium | solved | 7m34s |
-| [25](25.md) | &#9654; [*25*] | medium | verified | 1m19s |
-| [26](26.md) |  [*21*] | medium | solved | 9m19s |
+| [22](22.md) |  [*M26*] | math-hard | solved | 4m55s |
+| [23](23.md) |  [*17*] | medium | solved | 3m |
+| [24](24.md) |  [*20*] | medium | verified | 1m42s |
+| [25](25.md) | &#9654; [*25*] | medium | verified | 48s |
+| [26](26.md) |  [*21*] | medium | solved | 45s |
 | [27](27.md) |  [*22*] | medium | verified | 4m39s |
 | [28](28.md) | &#9654; [*23*] | medium | verified | 4m26s |
 | [29](29.md) |  [*20*] | medium | verified | 3m15s |
