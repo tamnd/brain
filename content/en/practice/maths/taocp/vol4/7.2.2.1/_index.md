@@ -173,8 +173,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [153](153.md) |  [*25*] | medium | solved | 5m08s |
 | [154](154.md) |  [*M30*] | math-hard | solved | 4m04s |
 | [155](155.md) |  [*20*] | medium | solved | 3m59s |
-| [156](156.md) | &#9654; [*30*] | hard | solved | 34s |
-| [157](157.md) |  [*22*] | medium | solved | 3m26s |
+| [156](156.md) | &#9654; [*30*] | hard | solved | 5m11s |
+| [157](157.md) |  [*22*] | medium | solved | 5m13s |
 | [158](158.md) |  [*25*] | medium | solved | 1m02s |
 | [159](159.md) | &#9654; [*21*] | medium | solved | 2m19s |
 | [160](160.md) |  [*21*] | medium | solved | 59s |
