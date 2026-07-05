@@ -63,8 +63,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [43](43.md) |  [*M11*] | math-simple | solved | 5m36s |
 | [44](44.md) | &#9654; [*M27*] | math-hard | solved | 5m47s |
 | [45](45.md) |  [*M26*] | math-hard | solved | 5m43s |
-| [46](46.md) |  [*M30*] | math-hard | solved | 4m48s |
-| [48](48.md) |  [*M28*] | math-hard | solved | 5m10s |
+| [46](46.md) |  [*M30*] | math-hard | solved | 6m18s |
+| [48](48.md) |  [*M28*] | math-hard | solved | 6m |
 | [49](49.md) |  [*17*] | medium | solved | 4m56s |
 | [50](50.md) |  [*20*] | medium | solved | 3m07s |
 | [51](51.md) |  [*M23*] | math-medium | solved | 4m49s |
