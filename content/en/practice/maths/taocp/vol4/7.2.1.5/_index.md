@@ -83,7 +83,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 69/69 solved.
 | [76](76.md) |  [*HM16*] | hm-medium | solved | 5m46s |
 | [77](77.md) |  [*HM46*] | hm-research | solved | 5m47s |
 | [78](78.md) |  [*20*] | medium | solved | 5m29s |
-| [79](79.md) | &#9654; [*22*] | medium | solved | 4m52s |
+| [79](79.md) | &#9654; [*22*] | medium | solved | 5m46s |
 | [80](80.md) |  [*M25*] | math-medium | solved | 4m42s |
 | [81](81.md) |  [*29*] | hard | solved | 5m06s |
 | [82](82.md) |  [*22*] | medium | solved | 5m12s |
