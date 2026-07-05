@@ -68,8 +68,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 79/59 solved.
 | [68](68.md) | &#9654; [*28*] | hard | solved | 2m03s |
 | [69](69.md) |  [*41*] | project | solved | 5m18s |
 | [70](70.md) |  [*HM40*] | hm-project | solved | 5m17s |
-| [71](71.md) | &#9654; [*M29*] | math-hard | solved | 3m48s |
-| [72](72.md) |  [*HM28*] | hm-hard | solved | 2m16s |
+| [71](71.md) | &#9654; [*M29*] | math-hard | solved | 5m10s |
+| [72](72.md) |  [*HM28*] | hm-hard | solved | 1m59s |
 | [73](73.md) | &#9654; [*30*] | hard | solved | 3m35s |
 | [74](74.md) |  [*21*] | medium | solved | 4m14s |
 | [75](75.md) | &#9654; [*30*] | hard | solved | 4m59s |
