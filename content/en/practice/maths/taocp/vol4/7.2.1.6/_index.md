@@ -53,8 +53,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [33](33.md) | &#9654; [*M27*] | math-hard | solved | 5m37s |
 | [34](34.md) |  [*M25*] | math-medium | solved | 5m50s |
 | [35](35.md) |  [*HM37*] | hm-project | solved | 5m48s |
-| [36](36.md) | &#9654; [*M25*] | math-medium | solved | 5m06s |
-| [37](37.md) |  [*M40*] | math-project | solved | 4m53s |
+| [36](36.md) | &#9654; [*M25*] | math-medium | solved | 6m03s |
+| [37](37.md) |  [*M40*] | math-project | solved | 5m59s |
 | [38](38.md) |  [*M22*] | math-medium | solved | 4m55s |
 | [39](39.md) |  [*22*] | medium | solved | 5m |
 | [40](40.md) |  [*M25*] | math-medium | solved | 5m |
