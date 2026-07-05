@@ -74,8 +74,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 69/69 solved.
 | [67](67.md) |  [*HM20*] | hm-medium | solved | 5m33s |
 | [68](68.md) |  [*21*] | medium | solved | 4m36s |
 | [69](69.md) |  [*22*] | medium | solved | 4m28s |
-| [70](70.md) |  [*M32*] | math-hard | solved | 5m06s |
-| [71](71.md) |  [*M20*] | math-medium | solved | 4m21s |
+| [70](70.md) |  [*M32*] | math-hard | solved | 5m33s |
+| [71](71.md) |  [*M20*] | math-medium | solved | 5m52s |
 | [72](72.md) |  [*M26*] | math-hard | solved | 4m55s |
 | [73](73.md) |  [*M33*] | math-hard | solved | 5m07s |
 | [74](74.md) |  [*M46*] | math-research | solved | 5m08s |
