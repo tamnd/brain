@@ -131,8 +131,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 103/123 solved.
 | [112](112.md) |  [*15*] | simple | solved | 5m41s |
 | [113](113.md) | &#9654; [*20*] | medium | solved | 3m39s |
 | [114](114.md) |  [*15*] | simple | solved | 5m07s |
-| [115](115.md) |  [*20*] | medium | solved | 5m |
-| [116](116.md) | &#9654; [*28*] | hard | solved | 4m04s |
+| [115](115.md) |  [*20*] | medium | solved | 5m32s |
+| [116](116.md) | &#9654; [*28*] | hard | solved | 5m31s |
 | [117](117.md) |  [*21*] | medium | solved | 3m48s |
 | [118](118.md) |  [*M28*] | math-hard | solved | 5m05s |
 | [119](119.md) |  [*21*] | medium | solved | 4m53s |
