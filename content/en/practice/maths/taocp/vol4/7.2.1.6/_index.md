@@ -107,13 +107,13 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [88](88.md) |  [*M20*] | math-medium | solved | 3m53s |
 | [89](89.md) |  [*M46*] | math-research | solved | 5m41s |
 | [90](90.md) | &#9654; [*M37*] | math-project | solved | 6m13s |
-| [91](91.md) |  [*M37*] | math-project | solved | 5m10s |
-| [92](92.md) |  [*15*] | simple | solved | 5m18s |
-| [93](93.md) |  [*20*] | medium | solved | 4m04s |
-| [94](94.md) |  [*22*] | medium | solved | 5m11s |
-| [95](95.md) |  [*26*] | hard | solved | 5m08s |
-| [96](96.md) | &#9654; [*28*] | hard | solved | 5m04s |
-| [97](97.md) |  [*15*] | simple | solved | 4m52s |
+| [91](91.md) |  [*M37*] | math-project | verified | 1m56s |
+| [92](92.md) |  [*15*] | simple | verified | 1m41s |
+| [93](93.md) |  [*20*] | medium | verified | 1m34s |
+| [94](94.md) |  [*22*] | medium | verified | 2m14s |
+| [95](95.md) |  [*26*] | hard | verified | 2m01s |
+| [96](96.md) | &#9654; [*28*] | hard | solved | 4m32s |
+| [97](97.md) |  [*15*] | simple | solved | 5m39s |
 | [98](98.md) |  [*16*] | medium | solved | 3m06s |
 | [99](99.md) |  [*30*] | hard | solved | 5m11s |
 | [100](100.md) |  [*40*] | project | solved | 5m38s |
