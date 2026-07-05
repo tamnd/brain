@@ -151,8 +151,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [131](131.md) |  [*28*] | hard | solved | 5m14s |
 | [132](132.md) |  [*40*] | project | solved | 5m09s |
 | [133](133.md) |  [*21*] | medium | solved | 5m13s |
-| [134](134.md) |  [*23*] | medium | solved | 3m46s |
-| [135](135.md) |  [*23*] | medium | solved | 4m02s |
+| [134](134.md) |  [*23*] | medium | solved | 4m06s |
+| [135](135.md) |  [*23*] | medium | solved | 5m15s |
 | [136](136.md) | &#9654; [*HM48*] | hm-research | solved | 5m05s |
 | [137](137.md) |  [*22*] | medium | solved | 6m24s |
 | [138](138.md) |  [*25*] | medium | solved | 6m03s |
