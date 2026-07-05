@@ -191,7 +191,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [171](171.md) |  [*25*] | medium | solved | 6m39s |
 | [172](172.md) | &#9654; [*29*] | hard | solved | 5m07s |
 | [173](173.md) | &#9654; [*39*] | project | solved | 4m55s |
-| [174](174.md) |  [*35*] | hard | verified | 6m31s |
+| [174](174.md) |  [*35*] | hard | solved | 3m29s |
 | [175](175.md) | &#9654; [*M21*] | math-medium | verified | 4m59s |
 | [176](176.md) | &#9654; [*M26*] | math-hard | verified | 5m10s |
 | [177](177.md) |  [*M21*] | math-medium | verified | 6m02s |
