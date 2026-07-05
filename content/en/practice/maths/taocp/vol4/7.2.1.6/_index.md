@@ -105,8 +105,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [86](86.md) |  [*15*] | simple | solved | 5m58s |
 | [87](87.md) |  [*M30*] | math-hard | solved | 6m58s |
 | [88](88.md) |  [*M20*] | math-medium | solved | 3m53s |
-| [89](89.md) |  [*M46*] | math-research | solved | 6m53s |
-| [90](90.md) | &#9654; [*M37*] | math-project | solved | 4m01s |
+| [89](89.md) |  [*M46*] | math-research | solved | 5m41s |
+| [90](90.md) | &#9654; [*M37*] | math-project | solved | 6m13s |
 | [91](91.md) |  [*M37*] | math-project | solved | 5m10s |
 | [92](92.md) |  [*15*] | simple | solved | 5m18s |
 | [93](93.md) |  [*20*] | medium | solved | 4m04s |
