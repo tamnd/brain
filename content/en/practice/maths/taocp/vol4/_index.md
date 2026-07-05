@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 4: Combinatorial Algorithms"
-description: "Volume 4: Combinatorial Algorithms. 1927 solved, 401 verified, 2410 total."
+description: "Volume 4: Combinatorial Algorithms. 1929 solved, 401 verified, 2410 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 40
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 4: Combinatorial Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 4. 1927 solved, 401 verified, 2410 total.
+Exercise solutions for [TAOCP](../) Volume 4. 1929 solved, 401 verified, 2410 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -25,4 +25,4 @@ Exercise solutions for [TAOCP](../) Volume 4. 1927 solved, 401 verified, 2410 to
 | [7.2.1.6](7.2.1.6/) | Generating All Trees | 123 | 9 | 123 |
 | [7.2.2](7.2.2/) | Backtracking | 79 | 8 | 121 |
 | [7.2.2.1](7.2.2.1/) | Dancing Links | 446 | 103 | 454 |
-| [7.2.2.2](7.2.2.2/) | Satisfiability | 98 | 47 | 531 |
+| [7.2.2.2](7.2.2.2/) | Satisfiability | 100 | 47 | 531 |
