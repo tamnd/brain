@@ -121,8 +121,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 90/123 solved.
 | [102](102.md) |  [*46*] | research | solved | 5m52s |
 | [103](103.md) | &#9654; [*HM39*] | hm-project | solved | 6m |
 | [104](104.md) | &#9654; [*HM21*] | hm-medium | solved | 5m48s |
-| [105](105.md) |  [*HM18*] | hm-medium | solved | 4m49s |
-| [106](106.md) | &#9654; [*HM7*] | hm-simple | solved | 5m02s |
+| [105](105.md) |  [*HM18*] | hm-medium | solved | 5m34s |
+| [106](106.md) | &#9654; [*HM7*] | hm-simple | solved | 5m34s |
 | [107](107.md) |  [*M24*] | math-medium | solved | 5m02s |
 | [108](108.md) |  [*HM40*] | hm-project | solved | 5m13s |
 | [109](109.md) |  [*M46*] | math-research | solved | 4m55s |
