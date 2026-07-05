@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.6: Generating All Trees"
-description: "Section 7.2.1.6 exercises: 84/123 solved."
+description: "Section 7.2.1.6 exercises: 86/123 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.6. Generating All Trees
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 84/123 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 86/123 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -77,8 +77,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 84/123 solved.
 | [58](58.md) |  [*HM34*] | hm-hard | solved | 4m52s |
 | [59](59.md) |  [*HM29*] | hm-hard | solved | 5m04s |
 | [60](60.md) | &#9654; [*M26*] | math-hard | solved | 4m56s |
-| 61 | &#9654; [*M26*] | math-hard | - | - |
-| 62 |  [*22*] | medium | - | - |
+| [61](61.md) | &#9654; [*M26*] | math-hard | solved | 4m50s |
+| [62](62.md) |  [*22*] | medium | solved | 5m |
 | 63 |  [**] |  | - | - |
 | 64 |  [*20*] | medium | - | - |
 | 65 |  [*38*] | project | - | - |
