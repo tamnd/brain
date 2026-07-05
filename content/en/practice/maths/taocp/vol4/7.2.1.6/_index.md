@@ -116,7 +116,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 84/123 solved.
 | 97 |  [*15*] | simple | - | - |
 | 98 |  [*16*] | medium | - | - |
 | 99 |  [*30*] | hard | - | - |
-| [100](100.md) |  [*40*] | project | solved | 5m01s |
+| [100](100.md) |  [*40*] | project | solved | 5m38s |
 | [101](101.md) |  [*46*] | research | solved | 5m08s |
 | [102](102.md) |  [*46*] | research | solved | 4m54s |
 | [103](103.md) | &#9654; [*HM39*] | hm-project | solved | 5m17s |
