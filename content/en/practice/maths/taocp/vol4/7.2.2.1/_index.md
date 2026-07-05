@@ -31,7 +31,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [11](11.md) | &#9654; [*21*] | medium | solved | 5m11s |
 | [12](12.md) | &#9654; [*23*] | medium | solved | 4m20s |
 | [13](13.md) |  [*16*] | medium | solved | 4m10s |
-| [14](14.md) | &#9654; [*20*] | medium | solved | 5m07s |
+| [14](14.md) | &#9654; [*20*] | medium | solved | 5m08s |
 | [15](15.md) |  [*20*] | medium | verified | 1m28s |
 | [16](16.md) |  [*16*] | medium | solved | 2m24s |
 | [17](17.md) |  [*16*] | medium | solved | 2m27s |
