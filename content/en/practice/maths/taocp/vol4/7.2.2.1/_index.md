@@ -157,8 +157,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [137](137.md) |  [*22*] | medium | solved | 5m12s |
 | [138](138.md) |  [*25*] | medium | solved | 5m |
 | [139](139.md) |  [**] |  | solved | 5m22s |
-| [140](140.md) |  [*29*] | hard | solved | 4m03s |
-| [141](141.md) |  [**] |  | solved | 5m59s |
+| [140](140.md) |  [*29*] | hard | solved | 8m04s |
+| [141](141.md) |  [**] |  | solved | 5m17s |
 | [142](142.md) | &#9654; [**] |  | solved | 4m20s |
 | [143](143.md) | &#9654; [*M25*] | math-medium | solved | 5m51s |
 | [144](144.md) |  [**] |  | solved | 3m34s |
