@@ -169,8 +169,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [149](149.md) |  [*M22*] | math-medium | solved | 2m44s |
 | [150](150.md) |  [*24*] | medium | solved | 2m38s |
 | [151](151.md) | &#9654; [*30*] | hard | solved | 5m12s |
-| [152](152.md) |  [*30*] | hard | solved | 4m13s |
-| [153](153.md) |  [*25*] | medium | solved | 4m05s |
+| [152](152.md) |  [*30*] | hard | solved | 4m15s |
+| [153](153.md) |  [*25*] | medium | solved | 5m08s |
 | [154](154.md) |  [*M30*] | math-hard | solved | 2m14s |
 | [155](155.md) |  [*20*] | medium | solved | 3m08s |
 | [156](156.md) | &#9654; [*30*] | hard | solved | 34s |
