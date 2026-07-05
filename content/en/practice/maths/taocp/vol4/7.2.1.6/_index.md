@@ -29,7 +29,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 105/123 solved.
 | [9](09.md) |  [*M26*] | math-hard | solved | 5m54s |
 | [10](10.md) |  [*M20*] | math-medium | solved | 5m49s |
 | [11](11.md) |  [*11*] | simple | solved | 5m32s |
-| [12](12.md) |  [*15*] | simple | solved | 4m54s |
+| [12](12.md) |  [*15*] | simple | solved | 5m35s |
 | [13](13.md) |  [*20*] | medium | solved | 5m10s |
 | [14](14.md) | &#9654; [*21*] | medium | solved | 4m38s |
 | [15](15.md) |  [*20*] | medium | solved | 4m51s |
@@ -136,7 +136,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 105/123 solved.
 | [117](117.md) |  [*21*] | medium | solved | 5m39s |
 | [118](118.md) |  [*M28*] | math-hard | solved | 5m48s |
 | [119](119.md) |  [*21*] | medium | solved | 5m59s |
-| [120](120.md) |  [*22*] | medium | solved | 5m26s |
+| [120](120.md) |  [*22*] | medium | solved | 6m |
 | [121](121.md) |  [*M34*] | math-hard | solved | 4m57s |
 | [122](122.md) | &#9654; [*31*] | hard | solved | 4m50s |
 | [123](123.md) |  [*21*] | medium | solved | 4m43s |
