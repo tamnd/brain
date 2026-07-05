@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2: 79/59 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [21](21.md) | &#9654; [*M25*] | math-medium | solved | 4m37s |
+| [21](21.md) | &#9654; [*M25*] | math-medium | solved | 5m12s |
 | [22](22.md) |  [*M26*] | math-hard | verified | 4m52s |
 | [23](23.md) |  [*17*] | medium | verified | 3m43s |
 | [24](24.md) |  [*20*] | medium | solved | 7m34s |
