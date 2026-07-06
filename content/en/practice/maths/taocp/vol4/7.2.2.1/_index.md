@@ -271,7 +271,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [252](252.md) | &#9654; [*20*] | medium | solved | 1m56s |
 | [253](253.md) | &#9654; [*21*] | medium | verified | 1m32s |
 | [254](254.md) | &#9654; [*28*] | hard | solved | 2m25s |
-| [255](255.md) |  [*HM29*] | hm-hard | solved | 4m16s |
+| [255](255.md) |  [*HM29*] | hm-hard | solved | 3m05s |
 | [256](256.md) | &#9654; [*M23*] | math-medium | solved | 1m13s |
 | [257](257.md) | &#9654; [*20*] | medium | solved | 3m07s |
 | [258](258.md) |  [*HM21*] | hm-medium | solved | 4m27s |
