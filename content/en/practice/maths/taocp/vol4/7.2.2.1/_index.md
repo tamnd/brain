@@ -203,7 +203,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [183](183.md) |  [*16*] | medium | solved | 4m52s |
 | [184](184.md) | &#9654; [*M22*] | math-medium | solved | 4m51s |
 | [185](185.md) |  [*M22*] | math-medium | solved | 1m31s |
-| [186](186.md) |  [*M24*] | math-medium | solved | 8m50s |
+| [186](186.md) |  [*M24*] | math-medium | solved | 4m16s |
 | [187](187.md) |  [*HM39*] | hm-project | solved | 7m43s |
 | [188](188.md) |  [*M21*] | math-medium | solved | 6m52s |
 | [189](189.md) |  [*HM31*] | hm-hard | solved | 4m28s |
