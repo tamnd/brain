@@ -308,7 +308,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [292](292.md) |  [*20*] | medium | verified | 2m47s |
 | [293](293.md) |  [*41*] | project | solved | 1m55s |
 | [294](294.md) | &#9654; [*30*] | hard | solved | 3m06s |
-| [295](295.md) |  [*41*] | project | verified | 1m02s |
+| [295](295.md) |  [*41*] | project | solved | 2m26s |
 | [296](296.md) |  [*41*] | project | solved | 3m03s |
 | [297](297.md) |  [*46*] | research | solved | 3m39s |
 | [298](298.md) | &#9654; [*22*] | medium | solved | 1m02s |
