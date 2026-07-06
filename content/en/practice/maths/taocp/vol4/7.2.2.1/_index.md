@@ -36,7 +36,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [16](16.md) |  [*16*] | medium | solved | 2m39s |
 | [17](17.md) |  [*16*] | medium | solved | 4m48s |
 | [18](18.md) |  [*10*] | simple | solved | 5m19s |
-| [19](19.md) | &#9654; [*21*] | medium | solved | 7m08s |
+| [19](19.md) | &#9654; [*21*] | medium | solved | 3m12s |
 | [20](20.md) | &#9654; [*25*] | medium | solved | 40s |
 | [21](21.md) |  [*22*] | medium | solved | 4m13s |
 | [22](22.md) | &#9654; [*28*] | hard | solved | 1m20s |
@@ -206,8 +206,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [186](186.md) |  [*M24*] | math-medium | solved | 4m16s |
 | [187](187.md) |  [*HM39*] | hm-project | solved | 6m42s |
 | [188](188.md) |  [*M21*] | math-medium | solved | 4m53s |
-| [189](189.md) |  [*HM31*] | hm-hard | solved | 4m28s |
-| [190](190.md) |  [*HM46*] | hm-research | solved | 7m43s |
+| [189](189.md) |  [*HM31*] | hm-hard | solved | 4m57s |
+| [190](190.md) |  [*HM46*] | hm-research | solved | 3m56s |
 | [191](191.md) |  [*HM22*] | hm-medium | solved | 6m58s |
 | [192](192.md) |  [*M29*] | math-hard | verified | 2m05s |
 | [193](193.md) |  [*M31*] | math-hard | solved | 6m24s |
