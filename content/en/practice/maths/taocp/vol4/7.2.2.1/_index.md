@@ -200,8 +200,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [180](180.md) | &#9654; [*M28*] | math-hard | solved | 4m12s |
 | [181](181.md) |  [*M20*] | math-medium | solved | 3m14s |
 | [182](182.md) |  [*21*] | medium | solved | 5m18s |
-| [183](183.md) |  [*16*] | medium | solved | 6m31s |
-| [184](184.md) | &#9654; [*M22*] | math-medium | verified | 1m54s |
+| [183](183.md) |  [*16*] | medium | solved | 4m52s |
+| [184](184.md) | &#9654; [*M22*] | math-medium | solved | 4m51s |
 | [185](185.md) |  [*M22*] | math-medium | verified | 2m29s |
 | [186](186.md) |  [*M24*] | math-medium | solved | 8m50s |
 | [187](187.md) |  [*HM39*] | hm-project | solved | 7m43s |
