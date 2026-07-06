@@ -303,7 +303,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [287](287.md) | &#9654; [*23*] | medium | solved | 2m24s |
 | [288](288.md) |  [*21*] | medium | solved | 2m02s |
 | [289](289.md) | &#9654; [*29*] | hard | solved | 1m50s |
-| [290](290.md) |  [*21*] | medium | solved | 3m20s |
+| [290](290.md) |  [*21*] | medium | solved | 2m50s |
 | [291](291.md) |  [*21*] | medium | solved | 4m27s |
 | [292](292.md) |  [*20*] | medium | solved | 1m05s |
 | [293](293.md) |  [*41*] | project | solved | 3m12s |
