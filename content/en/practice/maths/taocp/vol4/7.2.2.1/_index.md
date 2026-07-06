@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [19](19.md) | &#9654; [*21*] | medium | solved | 3m12s |
 | [20](20.md) | &#9654; [*25*] | medium | solved | 4m36s |
 | [21](21.md) |  [*22*] | medium | solved | 3m10s |
-| [22](22.md) | &#9654; [*28*] | hard | solved | 1m20s |
+| [22](22.md) | &#9654; [*28*] | hard | solved | 2m27s |
 | [23](23.md) |  [*38*] | project | solved | 3m57s |
 | [24](24.md) |  [*20*] | medium | solved | 2m10s |
 | [25](25.md) |  [*20*] | medium | solved | 1m13s |
