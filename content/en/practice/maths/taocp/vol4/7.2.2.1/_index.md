@@ -312,7 +312,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [296](296.md) |  [*41*] | project | solved | 1m38s |
 | [297](297.md) |  [*46*] | research | solved | 2m04s |
 | [298](298.md) | &#9654; [*22*] | medium | solved | 5m33s |
-| [299](299.md) |  [*39*] | project | solved | 2m09s |
+| [299](299.md) |  [*39*] | project | solved | 2m10s |
 | [300](300.md) | &#9654; [*23*] | medium | solved | 44s |
 | [301](301.md) |  [*25*] | medium | solved | 3m06s |
 | [302](302.md) |  [*26*] | hard | solved | 3m05s |
