@@ -348,7 +348,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [334](334.md) | &#9654; [*M32*] | math-hard | solved | 2m09s |
 | [335](335.md) |  [*30*] | hard | solved | 3m18s |
 | [336](336.md) |  [*21*] | medium | solved | 2m02s |
-| [337](337.md) |  [*29*] | hard | solved | 2m56s |
+| [337](337.md) |  [*29*] | hard | solved | 3m07s |
 | [338](338.md) |  [*22*] | medium | solved | 57s |
 | [339](339.md) |  [*25*] | medium | solved | 1m |
 | [340](340.md) |  [*30*] | hard | solved | 3m08s |
