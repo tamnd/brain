@@ -390,8 +390,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [378](378.md) |  [*M30*] | math-hard | solved | 3m21s |
 | [379](379.md) | &#9654; [*25*] | medium | solved | 4m46s |
 | [380](380.md) |  [*35*] | hard | solved | 5m08s |
-| [381](381.md) | &#9654; [*20*] | medium | verified | 1m12s |
-| [382](382.md) |  [*18*] | medium | solved | 3m42s |
+| [381](381.md) | &#9654; [*20*] | medium | verified | 2m37s |
+| [382](382.md) |  [*18*] | medium | solved | 1m23s |
 | [383](383.md) |  [*29*] | hard | solved | 1m57s |
 | [384](384.md) |  [*34*] | hard | solved | 1m07s |
 | [385](385.md) |  [*M36*] | math-project | solved | 1m09s |
