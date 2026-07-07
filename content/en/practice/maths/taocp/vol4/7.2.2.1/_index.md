@@ -379,7 +379,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [367](367.md) |  [*20*] | medium | solved | 2m27s |
 | [368](368.md) |  [*M21*] | math-medium | solved | 3m07s |
 | [369](369.md) |  [*27*] | hard | solved | 4m03s |
-| [370](370.md) | &#9654; [*23*] | medium | solved | 1m10s |
+| [370](370.md) | &#9654; [*23*] | medium | verified | 11m18s |
 | [371](371.md) |  [*24*] | medium | verified | 1m21s |
 | [372](372.md) | &#9654; [*M35*] | math-hard | solved | 2m24s |
 | [373](373.md) |  [*26*] | hard | solved | 3m19s |
