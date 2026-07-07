@@ -50,7 +50,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [30](30.md) |  [*23*] | medium | solved | 2m29s |
 | [31](31.md) |  [*M21*] | math-medium | verified | 1m23s |
 | [32](32.md) |  [**] |  | solved | 2m53s |
-| [33](33.md) |  [*M16*] | math-medium | solved | 1m12s |
+| [33](33.md) |  [*M16*] | math-medium | verified | 1m45s |
 | [34](34.md) |  [*M25*] | math-medium | solved | 5m40s |
 | [35](35.md) |  [*M21*] | math-medium | solved | 4m18s |
 | [36](36.md) | &#9654; [*25*] | medium | solved | 3m04s |
