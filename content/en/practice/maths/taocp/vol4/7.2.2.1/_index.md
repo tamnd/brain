@@ -415,7 +415,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [403](403.md) | &#9654; [*31*] | hard | solved | 6m24s |
 | [404](404.md) | &#9654; [*25*] | medium | solved | 1m51s |
 | [405](405.md) |  [*21*] | medium | verified | 1m34s |
-| [406](406.md) |  [*16*] | medium | solved | 4m08s |
+| [406](406.md) |  [*16*] | medium | solved | 4m53s |
 | [407](407.md) | &#9654; [*20*] | medium | solved | 3m33s |
 | [408](408.md) |  [*28*] | hard | solved | 1m13s |
 | [409](409.md) | &#9654; [*30*] | hard | verified | 1m13s |
