@@ -366,10 +366,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [352](352.md) |  [*21*] | medium | solved | 4m30s |
 | [353](353.md) |  [*39*] | project | solved | 3m31s |
 | [354](354.md) | &#9654; [*M30*] | math-hard | solved | 5m03s |
-| [355](355.md) |  [*25*] | medium | solved | 1m52s |
-| [356](356.md) |  [*27*] | hard | solved | 3m40s |
-| [357](357.md) |  [*M0*] | math-immediate | verified | 58s |
-| [358](358.md) |  [*HM1*] | hm-simple | solved | 3m42s |
+| [355](355.md) |  [*25*] | medium | solved | 8m48s |
+| [356](356.md) |  [*27*] | hard | solved | 5m41s |
+| [357](357.md) |  [*M0*] | math-immediate | solved | 2m42s |
+| [358](358.md) |  [*HM1*] | hm-simple | solved | 34s |
 | [359](359.md) |  [*29*] | hard | solved | 1m05s |
 | [360](360.md) | &#9654; [*30*] | hard | solved | 5m03s |
 | [361](361.md) |  [*M25*] | math-medium | solved | 5m21s |
