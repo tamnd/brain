@@ -317,7 +317,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [301](301.md) |  [*25*] | medium | solved | 2m23s |
 | [302](302.md) |  [*26*] | hard | solved | 5m04s |
 | [303](303.md) | &#9654; [*HM25*] | hm-medium | solved | 5m37s |
-| [306](306.md) | &#9654; [*30*] | hard | verified | 1m25s |
+| [306](306.md) | &#9654; [*30*] | hard | solved | 2m11s |
 | [307](307.md) |  [*M21*] | math-medium | verified | 1m36s |
 | [308](308.md) |  [*22*] | medium | solved | 3m50s |
 | [309](309.md) |  [**] |  | solved | 2m46s |
