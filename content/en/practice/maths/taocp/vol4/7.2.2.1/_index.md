@@ -111,7 +111,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [91](91.md) |  [*40*] | project | solved | 1m12s |
 | [92](92.md) |  [*22*] | medium | solved | 3m23s |
 | [93](93.md) |  [*22*] | medium | solved | 2m01s |
-| [94](94.md) |  [*20*] | medium | verified | 1m06s |
+| [94](94.md) |  [*20*] | medium | verified | 1m39s |
 | [95](95.md) | &#9654; [*20*] | medium | solved | 3m12s |
 | [96](96.md) |  [*M46*] | math-research | solved | 1m43s |
 | [97](97.md) |  [*M21*] | math-medium | verified | 59s |
