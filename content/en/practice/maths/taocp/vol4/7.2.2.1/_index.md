@@ -76,7 +76,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [56](56.md) |  [*47*] | research | solved | 2m |
 | [57](57.md) |  [*22*] | medium | solved | 6m08s |
 | [58](58.md) | &#9654; [*22*] | medium | solved | 6m20s |
-| [59](59.md) |  [*30*] | hard | solved | 3m12s |
+| [59](59.md) |  [*30*] | hard | solved | 1m59s |
 | [60](60.md) |  [*30*] | hard | solved | 1m28s |
 | [61](61.md) |  [*21*] | medium | solved | 2m07s |
 | [62](62.md) | &#9654; [*24*] | medium | solved | 1m15s |
