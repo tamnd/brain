@@ -94,7 +94,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [74](74.md) |  [*22*] | medium | solved | 6m03s |
 | [75](75.md) | &#9654; [*M24*] | math-medium | solved | 4m17s |
 | [76](76.md) |  [*21*] | medium | solved | 3m21s |
-| [77](77.md) |  [*M21*] | math-medium | verified | 2m35s |
+| [77](77.md) |  [*M21*] | math-medium | solved | 3m05s |
 | [78](78.md) |  [*16*] | medium | verified | 1m59s |
 | [79](79.md) |  [*M20*] | math-medium | solved | 2m14s |
 | [80](80.md) |  [*19*] | medium | solved | 3m15s |
