@@ -23,8 +23,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [3](03.md) | &#9654; [*M21*] | math-medium | verified | 1m30s |
 | [4](04.md) | &#9654; [*22*] | medium | solved | 1m30s |
 | [5](05.md) |  [*M20*] | math-medium | solved | 2m55s |
-| [6](06.md) | &#9654; [*HM27*] | hm-hard | verified | 1m17s |
-| [7](07.md) |  [*25*] | medium | verified | 3m04s |
+| [6](06.md) | &#9654; [*HM27*] | hm-hard | verified | 1m50s |
+| [7](07.md) |  [*25*] | medium | solved | 1m47s |
 | [8](08.md) | &#9654; [*22*] | medium | verified | 1m05s |
 | [9](09.md) |  [*M21*] | math-medium | solved | 3m20s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 4m15s |
