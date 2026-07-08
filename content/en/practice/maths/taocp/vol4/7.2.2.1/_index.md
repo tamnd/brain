@@ -459,4 +459,4 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [447](447.md) |  [*22*] | medium | solved | 2m56s |
 | [448](448.md) |  [*22*] | medium | solved | 4m59s |
 | [449](449.md) |  [*40*] | project | solved | 2m11s |
-| [450](450.md) |  [*42*] | project | solved | 3m23s |
+| [450](450.md) |  [*42*] | project | solved | 2m16s |
