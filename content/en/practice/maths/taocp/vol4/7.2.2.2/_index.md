@@ -123,7 +123,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [107](107.md) | &#9654; [*22*] | medium | solved | 2m17s |
 | [108](108.md) |  [*23*] | medium | solved | 2m07s |
 | [109](109.md) | &#9654; [*20*] | medium | verified | 1m34s |
-| [110](110.md) |  [*19*] | medium | verified | 3m31s |
+| [110](110.md) |  [*19*] | medium | solved | 3m22s |
 | [111](111.md) |  [*40*] | project | verified | 1m03s |
 | [112](112.md) |  [*46*] | research | solved | 2m57s |
 | [113](113.md) | &#9654; [*30*] | hard | solved | 4m31s |
