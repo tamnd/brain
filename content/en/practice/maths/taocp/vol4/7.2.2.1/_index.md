@@ -109,7 +109,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [89](89.md) |  [*21*] | medium | solved | 4m21s |
 | [90](90.md) | &#9654; [*22*] | medium | solved | 2m48s |
 | [91](91.md) |  [*40*] | project | solved | 1m12s |
-| [92](92.md) |  [*22*] | medium | solved | 1m43s |
+| [92](92.md) |  [*22*] | medium | solved | 3m23s |
 | [93](93.md) |  [*22*] | medium | solved | 1m05s |
 | [94](94.md) |  [*20*] | medium | verified | 1m06s |
 | [95](95.md) | &#9654; [*20*] | medium | solved | 3m12s |
