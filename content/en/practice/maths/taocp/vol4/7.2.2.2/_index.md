@@ -128,7 +128,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [112](112.md) |  [*46*] | research | solved | 2m04s |
 | [113](113.md) | &#9654; [*30*] | hard | solved | 2m42s |
 | [114](114.md) |  [*27*] | hard | solved | 2m15s |
-| [115](115.md) |  [*25*] | medium | solved | 3m36s |
+| [115](115.md) |  [*25*] | medium | solved | 2m15s |
 | [116](116.md) |  [*22*] | medium | verified | 4m03s |
 | [117](117.md) |  [*23*] | medium | verified | 1m05s |
 | [118](118.md) |  [*20*] | medium | verified | 3m24s |
