@@ -429,7 +429,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [417](417.md) |  [*M46*] | math-research | solved | 1m50s |
 | [418](418.md) |  [*M29*] | math-hard | solved | 4m26s |
 | [419](419.md) |  [*30*] | hard | solved | 5m26s |
-| [420](420.md) |  [*M22*] | math-medium | solved | 4m15s |
+| [420](420.md) |  [*M22*] | math-medium | solved | 2m42s |
 | [421](421.md) | &#9654; [*20*] | medium | solved | 4m22s |
 | [422](422.md) |  [*21*] | medium | solved | 3m04s |
 | [423](423.md) | &#9654; [*M25*] | math-medium | solved | 1m07s |
