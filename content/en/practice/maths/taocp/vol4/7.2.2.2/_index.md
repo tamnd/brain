@@ -120,7 +120,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [104](104.md) |  [*M21*] | math-medium | solved | 5m50s |
 | [105](105.md) | &#9654; [*M28*] | math-hard | solved | 5m46s |
 | [106](106.md) |  [*M20*] | math-medium | verified | 2m16s |
-| [107](107.md) | &#9654; [*22*] | medium | solved | 6m46s |
+| [107](107.md) | &#9654; [*22*] | medium | solved | 2m17s |
 | [108](108.md) |  [*23*] | medium | solved | 3m26s |
 | [109](109.md) | &#9654; [*20*] | medium | verified | 1m04s |
 | [110](110.md) |  [*19*] | medium | verified | 3m31s |
