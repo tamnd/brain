@@ -172,7 +172,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [156](156.md) |  [*05*] | simple | verified | 1m14s |
 | [157](157.md) |  [*10*] | simple | solved | 1m57s |
 | [158](158.md) |  [*15*] | simple | solved | 2m23s |
-| [159](159.md) |  [*M17*] | math-medium | verified | 1m18s |
+| [159](159.md) |  [*M17*] | math-medium | verified | 1m29s |
 | [160](160.md) |  [*18*] | medium | verified | 1m12s |
 | [161](161.md) | &#9654; [*21*] | medium | verified | 1m17s |
 | [162](162.md) |  [*21*] | medium | verified | 2m42s |
