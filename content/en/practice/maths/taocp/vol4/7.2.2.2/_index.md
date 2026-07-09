@@ -180,8 +180,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [164](164.md) |  [*M30*] | math-hard | solved | 2m06s |
 | [165](165.md) | &#9654; [*26*] | hard | verified | 1m46s |
 | [166](166.md) |  [*30*] | hard | solved | 1m04s |
-| [167](167.md) | &#9654; [*21*] | medium | solved | 5m52s |
-| [168](168.md) |  [*26*] | hard | verified | 1m04s |
+| [167](167.md) | &#9654; [*21*] | medium | solved | 1m44s |
+| [168](168.md) |  [*26*] | hard | verified | 49s |
 | [169](169.md) | &#9654; [*HM30*] | hm-hard | solved | 59s |
 | [170](170.md) |  [*25*] | medium | solved | 1m03s |
 | [171](171.md) |  [*20*] | medium | solved | 1m03s |
