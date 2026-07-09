@@ -145,7 +145,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [129](129.md) |  [*20*] | medium | solved | 2m32s |
 | [130](130.md) |  [*22*] | medium | solved | 2m27s |
 | [131](131.md) | &#9654; [*30*] | hard | solved | 2m06s |
-| [132](132.md) | &#9654; [*32*] | hard | solved | 3m43s |
+| [132](132.md) | &#9654; [*32*] | hard | solved | 4m04s |
 | [133](133.md) | &#9654; [*25*] | medium | solved | 4m16s |
 | [134](134.md) |  [*22*] | medium | verified | 1m05s |
 | [135](135.md) | &#9654; [*16*] | medium | verified | 56s |
