@@ -32,7 +32,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [14](14.md) |  [*22*] | medium | verified | 56s |
 | [15](15.md) |  [*24*] | medium | solved | 1m36s |
 | [16](16.md) |  [*21*] | medium | solved | 2m20s |
-| [17](17.md) |  [*26*] | hard | solved | 3m21s |
+| [17](17.md) |  [*26*] | hard | solved | 2m34s |
 | [18](18.md) | &#9654; [*28*] | hard | solved | 5m49s |
 | 19 | &#9654; [*29*] | hard | - | - |
 | 20 |  [*40*] | project | - | - |
@@ -182,7 +182,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [166](166.md) |  [*30*] | hard | solved | 1m04s |
 | [167](167.md) | &#9654; [*21*] | medium | solved | 1m44s |
 | [168](168.md) |  [*26*] | hard | verified | 49s |
-| [169](169.md) | &#9654; [*HM30*] | hm-hard | solved | 59s |
+| [169](169.md) | &#9654; [*HM30*] | hm-hard | solved | 2m57s |
 | [170](170.md) |  [*25*] | medium | solved | 1m03s |
 | [171](171.md) |  [*20*] | medium | solved | 1m03s |
 | [172](172.md) |  [*21*] | medium | verified | 1m14s |
