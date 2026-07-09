@@ -186,9 +186,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [170](170.md) |  [*25*] | medium | solved | 3m17s |
 | [171](171.md) |  [*20*] | medium | solved | 8m46s |
 | [172](172.md) |  [*21*] | medium | solved | 2m45s |
-| [173](173.md) |  [*40*] | project | verified | 2m08s |
-| [174](174.md) |  [*15*] | simple | solved | 50s |
-| [175](175.md) |  [*32*] | hard | solved | 1m12s |
+| [173](173.md) |  [*40*] | project | solved | 3m28s |
+| [174](174.md) |  [*15*] | simple | verified | 1m13s |
+| [175](175.md) |  [*32*] | hard | solved | 31s |
 | [176](176.md) |  [*M25*] | math-medium | solved | 4m30s |
 | [177](177.md) |  [*HM26*] | hm-hard | solved | 4m |
 | [178](178.md) | &#9654; [*M23*] | math-medium | solved | 2m25s |
