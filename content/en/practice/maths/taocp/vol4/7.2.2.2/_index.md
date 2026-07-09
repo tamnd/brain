@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 125/522 solved."
+description: "Section 7.2.2.2 exercises: 127/522 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 125/522 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 127/522 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -218,8 +218,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 125/522 solved.
 | [202](202.md) |  [*HM21*] | hm-medium | solved | 4m43s |
 | [203](203.md) |  [*HM93*] | hm-research | solved | 2m13s |
 | [204](204.md) | &#9654; [*28*] | hard | solved | 6m06s |
-| 205 |  [*26*] | hard | - | - |
-| 206 |  [*M22*] | math-medium | - | - |
+| [205](205.md) |  [*26*] | hard | verified | 2m48s |
+| [206](206.md) |  [*M22*] | math-medium | solved | 1m32s |
 | 207 |  [*22*] | medium | - | - |
 | 208 |  [*25*] | medium | - | - |
 | 209 |  [*25*] | medium | - | - |
