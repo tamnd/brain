@@ -170,7 +170,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [154](154.md) |  [*20*] | medium | verified | 1m47s |
 | [155](155.md) |  [*32*] | hard | solved | 2m08s |
 | [156](156.md) |  [*05*] | simple | verified | 1m14s |
-| [157](157.md) |  [*10*] | simple | verified | 58s |
+| [157](157.md) |  [*10*] | simple | solved | 1m57s |
 | [158](158.md) |  [*15*] | simple | solved | 1m32s |
 | [159](159.md) |  [*M17*] | math-medium | verified | 1m18s |
 | [160](160.md) |  [*18*] | medium | verified | 1m12s |
