@@ -174,7 +174,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 105/522 solved.
 | [158](158.md) |  [*15*] | simple | solved | 2m23s |
 | [159](159.md) |  [*M17*] | math-medium | verified | 1m29s |
 | [160](160.md) |  [*18*] | medium | verified | 1m33s |
-| [161](161.md) | &#9654; [*21*] | medium | verified | 1m17s |
+| [161](161.md) | &#9654; [*21*] | medium | solved | 2m48s |
 | [162](162.md) |  [*21*] | medium | verified | 2m42s |
 | [163](163.md) |  [*M25*] | math-medium | solved | 1m44s |
 | [164](164.md) |  [*M30*] | math-hard | verified | 1m19s |
