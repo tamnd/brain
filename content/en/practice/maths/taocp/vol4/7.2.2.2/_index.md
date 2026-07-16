@@ -240,8 +240,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [221](221.md) |  [*16*] | medium | solved | 5m52s |
 | [222](222.md) |  [*M30*] | math-hard | solved | 5m53s |
 | [223](223.md) |  [*HM40*] | hm-project | solved | 5m49s |
-| [224](224.md) |  [*M20*] | math-medium | solved | 1m37s |
-| [225](225.md) | &#9654; [*M31*] | math-hard | solved | 3m17s |
+| [224](224.md) |  [*M20*] | math-medium | solved | 5m57s |
+| [225](225.md) | &#9654; [*M31*] | math-hard | solved | 5m59s |
 | [226](226.md) |  [*M30*] | math-hard | verified | 2m10s |
 | [227](227.md) |  [*M27*] | math-hard | solved | 4m14s |
 | [228](228.md) | &#9654; [*M21*] | math-medium | solved | 5m29s |
