@@ -321,7 +321,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [302](302.md) |  [*26*] | hard | solved | 3m48s |
 | [303](303.md) |  [*HM20*] | hm-medium | solved | 3m55s |
 | [304](304.md) |  [*HM34*] | hm-hard | solved | 3m56s |
-| [305](305.md) | &#9654; [*M25*] | math-medium | solved | 4m46s |
+| [305](305.md) | &#9654; [*M25*] | math-medium | solved | 10m30s |
 | [306](306.md) | &#9654; [*HM32*] | hm-hard | solved | 3m47s |
 | [307](307.md) |  [*HM28*] | hm-hard | solved | 10m20s |
 | [308](308.md) |  [*M29*] | math-hard | solved | 10m44s |
