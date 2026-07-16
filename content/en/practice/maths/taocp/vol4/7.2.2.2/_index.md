@@ -287,7 +287,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [268](268.md) |  [*21*] | medium | solved | 13m57s |
 | [269](269.md) |  [*29*] | hard | solved | 12m17s |
 | [270](270.md) |  [*25*] | medium | solved | 13m57s |
-| [271](271.md) | &#9654; [*25*] | medium | solved | 4m23s |
+| [271](271.md) | &#9654; [*25*] | medium | solved | 8m45s |
 | [272](272.md) |  [*30*] | hard | solved | 7m21s |
 | [273](273.md) |  [*27*] | hard | solved | 1m48s |
 | [274](274.md) |  [*35*] | hard | verified | 3m20s |
