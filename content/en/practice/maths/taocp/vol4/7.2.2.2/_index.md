@@ -206,10 +206,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 516/525 solved.
 | [187](187.md) |  [*M20*] | math-medium | verified | 7m01s |
 | [188](188.md) |  [*HM25*] | hm-medium | solved | 6m11s |
 | [189](189.md) |  [*27*] | hard | solved | 3m50s |
-| [190](190.md) |  [*M20*] | math-medium | verified | 1m14s |
-| [191](191.md) |  [*M25*] | math-medium | solved | 6m51s |
-| [192](192.md) | &#9654; [*HM21*] | hm-medium | solved | 3m36s |
-| [193](193.md) |  [*HM48*] | hm-research | solved | 2m04s |
+| [190](190.md) |  [*M20*] | math-medium | solved | 5m51s |
+| [191](191.md) |  [*M25*] | math-medium | solved | 2m07s |
+| [192](192.md) | &#9654; [*HM21*] | hm-medium | solved | 1m58s |
+| [193](193.md) |  [*HM48*] | hm-research | solved | 1m54s |
 | [194](194.md) |  [*HM19*] | hm-medium | verified | 1m30s |
 | [195](195.md) |  [*HM21*] | hm-medium | verified | 1m33s |
 | [196](196.md) | &#9654; [*HM25*] | hm-medium | solved | 2m24s |
