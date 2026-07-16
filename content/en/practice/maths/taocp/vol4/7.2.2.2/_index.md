@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 524/525 solved."
+description: "Section 7.2.2.2 exercises: 525/522 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 524/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/522 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,8 +28,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 524/525 solved.
 | [8](08.md) | &#9654; [*22*] | medium | verified | 1m23s |
 | [9](09.md) |  [*M21*] | math-medium | solved | 2m13s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m53s |
-| [11](11.md) | &#9654; [**] |  | solved | 5m06s |
-| [12](12.md) | &#9654; [**] |  | solved | 2m48s |
 | [13](13.md) |  [*24*] | medium | solved | 2m48s |
 | [14](14.md) |  [*22*] | medium | verified | 56s |
 | [15](15.md) |  [*24*] | medium | solved | 1m36s |
@@ -52,7 +50,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 524/525 solved.
 | [32](32.md) |  [*15*] | simple | solved | 12m25s |
 | [33](33.md) |  [*21*] | medium | solved | 5m47s |
 | [34](34.md) |  [*HM26*] | hm-hard | verified | 3m49s |
-| [36](36.md) | &#9654; [**] |  | verified | 3m52s |
 | [37](37.md) |  [*20*] | medium | solved | 10m29s |
 | [38](38.md) |  [*M25*] | math-medium | solved | 12m37s |
 | [39](39.md) |  [*M46*] | math-research | solved | 6m30s |
@@ -350,7 +347,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 524/525 solved.
 | [331](331.md) |  [*M20*] | math-medium | solved | 5m45s |
 | [332](332.md) |  [*20*] | medium | solved | 5m48s |
 | [333](333.md) | &#9654; [*M20*] | math-medium | solved | 4m37s |
-| 334 |  [*25*] | medium | - | - |
+| [334](334.md) |  [*25*] | medium | solved | 5m54s |
 | [335](335.md) |  [*HM26*] | hm-hard | solved | 5m43s |
 | [336](336.md) | &#9654; [*M20*] | math-medium | solved | 12m21s |
 | [337](337.md) |  [*M20*] | math-medium | solved | 13m17s |
