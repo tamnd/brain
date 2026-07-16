@@ -362,7 +362,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.1: 446/442 solved.
 | [348](348.md) |  [*M41*] | math-project | solved | 4m14s |
 | [349](349.md) | &#9654; [*M27*] | math-hard | verified | 1m53s |
 | [350](350.md) |  [*22*] | medium | solved | 6m08s |
-| [351](351.md) |  [*M46*] | math-research | solved | 3m18s |
+| [351](351.md) |  [*M46*] | math-research | solved | 10m16s |
 | [352](352.md) |  [*21*] | medium | solved | 4m30s |
 | [353](353.md) |  [*39*] | project | solved | 3m31s |
 | [354](354.md) | &#9654; [*M30*] | math-hard | solved | 5m03s |
