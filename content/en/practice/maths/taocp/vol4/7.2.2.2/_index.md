@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 517/525 solved."
+description: "Section 7.2.2.2 exercises: 519/525 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 519/525 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [19](19.md) | &#9654; [*29*] | hard | solved | 5m30s |
 | [20](20.md) |  [*40*] | project | solved | 6m04s |
 | [21](21.md) |  [*22*] | medium | solved | 5m48s |
-| 22 |  [*20*] | medium | - | - |
+| [22](22.md) |  [*20*] | medium | solved | 5m49s |
 | [23](23.md) |  [*20*] | medium | solved | 2m24s |
 | [24](24.md) | &#9654; [*M32*] | math-hard | solved | 3m07s |
 | 25 |  [*21*] | medium | - | - |
@@ -233,8 +233,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [214](214.md) |  [*HM38*] | hm-project | solved | 5m54s |
 | [215](215.md) | &#9654; [*HM23*] | hm-medium | solved | 5m59s |
 | [216](216.md) |  [*HM38*] | hm-project | solved | 5m55s |
-| [217](217.md) |  [*20*] | medium | verified | 2m36s |
-| [218](218.md) |  [*20*] | medium | solved | 1m15s |
+| [217](217.md) |  [*20*] | medium | solved | 5m58s |
+| [218](218.md) |  [*20*] | medium | solved | 5m58s |
 | [219](219.md) | &#9654; [*M20*] | math-medium | solved | 10m41s |
 | [220](220.md) |  [*M24*] | math-medium | solved | 5m51s |
 | 221 |  [*16*] | medium | - | - |
