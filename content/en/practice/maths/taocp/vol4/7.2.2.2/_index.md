@@ -228,8 +228,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [209](209.md) |  [*25*] | medium | solved | 6m10s |
 | [210](210.md) |  [*M36*] | math-project | solved | 6m02s |
 | [211](211.md) |  [*30*] | hard | solved | 5m57s |
-| [212](212.md) |  [*32*] | hard | solved | 2m30s |
-| [213](213.md) | &#9654; [*M26*] | math-hard | verified | 1m47s |
+| [212](212.md) |  [*32*] | hard | solved | 6m06s |
+| [213](213.md) | &#9654; [*M26*] | math-hard | solved | 6m03s |
 | [214](214.md) |  [*HM38*] | hm-project | solved | 4m37s |
 | [215](215.md) | &#9654; [*HM23*] | hm-medium | verified | 3m13s |
 | [216](216.md) |  [*HM38*] | hm-project | solved | 5m16s |
