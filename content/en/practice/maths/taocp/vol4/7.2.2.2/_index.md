@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 517/525 solved."
+description: "Section 7.2.2.2 exercises: 521/522 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 521/522 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,8 +28,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [8](08.md) | &#9654; [*22*] | medium | verified | 1m23s |
 | [9](09.md) |  [*M21*] | math-medium | solved | 2m13s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m53s |
-| [11](11.md) | &#9654; [**] |  | solved | 5m06s |
-| [12](12.md) | &#9654; [**] |  | solved | 2m48s |
 | [13](13.md) |  [*24*] | medium | solved | 2m48s |
 | [14](14.md) |  [*22*] | medium | verified | 56s |
 | [15](15.md) |  [*24*] | medium | solved | 1m36s |
@@ -39,7 +37,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [19](19.md) | &#9654; [*29*] | hard | solved | 5m30s |
 | [20](20.md) |  [*40*] | project | solved | 6m04s |
 | [21](21.md) |  [*22*] | medium | solved | 5m48s |
-| 22 |  [*20*] | medium | - | - |
+| [22](22.md) |  [*20*] | medium | solved | 5m49s |
 | [23](23.md) |  [*20*] | medium | solved | 2m24s |
 | [24](24.md) | &#9654; [*M32*] | math-hard | solved | 3m07s |
 | 25 |  [*21*] | medium | - | - |
@@ -52,7 +50,6 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [32](32.md) |  [*15*] | simple | solved | 12m25s |
 | [33](33.md) |  [*21*] | medium | solved | 5m47s |
 | [34](34.md) |  [*HM26*] | hm-hard | verified | 3m49s |
-| [36](36.md) | &#9654; [**] |  | verified | 3m52s |
 | [37](37.md) |  [*20*] | medium | solved | 10m29s |
 | [38](38.md) |  [*M25*] | math-medium | solved | 12m37s |
 | [39](39.md) |  [*M46*] | math-research | solved | 6m30s |
@@ -237,8 +234,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [218](218.md) |  [*20*] | medium | solved | 1m15s |
 | [219](219.md) | &#9654; [*M20*] | math-medium | solved | 10m41s |
 | [220](220.md) |  [*M24*] | math-medium | solved | 5m51s |
-| 221 |  [*16*] | medium | - | - |
-| 222 |  [*M30*] | math-hard | - | - |
+| [221](221.md) |  [*16*] | medium | solved | 5m49s |
+| [222](222.md) |  [*M30*] | math-hard | solved | 5m52s |
 | 223 |  [*HM40*] | hm-project | - | - |
 | [224](224.md) |  [*M20*] | math-medium | solved | 1m37s |
 | [225](225.md) | &#9654; [*M31*] | math-hard | solved | 3m17s |
