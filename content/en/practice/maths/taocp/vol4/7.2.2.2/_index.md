@@ -217,7 +217,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 517/525 solved.
 | [198](198.md) | &#9654; [*HM30*] | hm-hard | solved | 5m37s |
 | [199](199.md) |  [*M21*] | math-medium | solved | 6m |
 | [200](200.md) | &#9654; [*M21*] | math-medium | solved | 5m54s |
-| [201](201.md) |  [*HM29*] | hm-hard | solved | 2m29s |
+| [201](201.md) |  [*HM29*] | hm-hard | solved | 5m51s |
 | [202](202.md) |  [*HM21*] | hm-medium | solved | 4m43s |
 | [203](203.md) |  [*HM93*] | hm-research | solved | 2m13s |
 | [204](204.md) | &#9654; [*28*] | hard | solved | 6m06s |
