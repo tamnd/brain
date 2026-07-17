@@ -63,7 +63,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [44](44.md) | &#9654; [*30*] | hard | solved | 3m45s |
 | [45](45.md) |  [*20*] | medium | solved | 3m43s |
 | [46](46.md) |  [*30*] | hard | solved | 3m52s |
-| [47](47.md) |  [*30*] | hard | solved | 3m37s |
+| [47](47.md) |  [*30*] | hard | solved | 3m43s |
 | [48](48.md) |  [*20*] | medium | solved | 5m49s |
 | [49](49.md) |  [*21*] | medium | solved | 11m36s |
 | [50](50.md) |  [*24*] | medium | solved | 11m41s |
@@ -484,8 +484,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [465](465.md) |  [*M21*] | math-medium | solved | 3m48s |
 | [466](466.md) |  [*M23*] | math-medium | solved | 3m48s |
 | [467](467.md) |  [*20*] | medium | solved | 3m46s |
-| [468](468.md) |  [*20*] | medium | solved | 4m |
-| [469](469.md) | &#9654; [**] |  | solved | 5m53s |
+| [468](468.md) |  [*20*] | medium | solved | 3m48s |
+| [469](469.md) | &#9654; [**] |  | solved | 3m43s |
 | [470](470.md) | &#9654; [**] |  | solved | 4m59s |
 | [471](471.md) |  [*16*] | medium | solved | 5m40s |
 | [472](472.md) |  [**] |  | solved | 5m42s |
