@@ -508,7 +508,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [489](489.md) |  [*M21*] | math-medium | solved | 3m45s |
 | [490](490.md) |  [*15*] | simple | solved | 3m45s |
 | [491](491.md) |  [*22*] | medium | solved | 3m47s |
-| [492](492.md) |  [*M20*] | math-medium | solved | 11m32s |
+| [492](492.md) |  [*M20*] | math-medium | solved | 3m46s |
 | [493](493.md) |  [*20*] | medium | solved | 11m36s |
 | [494](494.md) |  [*21*] | medium | solved | 11m34s |
 | [495](495.md) |  [*M22*] | math-medium | solved | 11m33s |
