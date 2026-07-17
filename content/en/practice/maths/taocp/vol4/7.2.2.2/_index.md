@@ -486,9 +486,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [467](467.md) |  [*20*] | medium | solved | 3m46s |
 | [468](468.md) |  [*20*] | medium | solved | 3m48s |
 | [469](469.md) | &#9654; [**] |  | solved | 3m43s |
-| [470](470.md) | &#9654; [**] |  | solved | 4m59s |
-| [471](471.md) |  [*16*] | medium | solved | 5m40s |
-| [472](472.md) |  [**] |  | solved | 5m42s |
+| [470](470.md) | &#9654; [**] |  | solved | 3m45s |
+| [471](471.md) |  [*16*] | medium | solved | 3m44s |
+| [472](472.md) |  [**] |  | solved | 3m54s |
 | [473](473.md) | &#9654; [**] |  | solved | 12m01s |
 | [474](474.md) |  [**] |  | solved | 13m29s |
 | [475](475.md) |  [**] |  | solved | 4m43s |
