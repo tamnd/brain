@@ -388,9 +388,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [369](369.md) | &#9654; [**] |  | solved | 3m53s |
 | [370](370.md) |  [*20*] | medium | solved | 3m55s |
 | [371](371.md) |  [*24*] | medium | solved | 3m50s |
-| [372](372.md) |  [*25*] | medium | solved | 3m49s |
-| [373](373.md) |  [*35*] | hard | solved | 5m51s |
-| [374](374.md) | &#9654; [*32*] | hard | solved | 3m52s |
+| [372](372.md) |  [*25*] | medium | solved | 3m46s |
+| [373](373.md) |  [*35*] | hard | solved | 3m46s |
+| [374](374.md) | &#9654; [*32*] | hard | solved | 3m48s |
 | [375](375.md) |  [*21*] | medium | solved | 3m47s |
 | [376](376.md) | &#9654; [*32*] | hard | solved | 3m48s |
 | [377](377.md) |  [*22*] | medium | solved | 3m42s |
