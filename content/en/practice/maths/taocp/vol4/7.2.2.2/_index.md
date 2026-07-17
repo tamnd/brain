@@ -359,9 +359,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [340](340.md) | &#9654; [*M20*] | math-medium | solved | 3m52s |
 | [341](341.md) |  [*M25*] | math-medium | solved | 3m45s |
 | [342](342.md) |  [*HM25*] | hm-medium | solved | 3m42s |
-| [343](343.md) | &#9654; [*M25*] | math-medium | verified | 3m47s |
-| [344](344.md) |  [*M33*] | math-hard | verified | 3m43s |
-| [345](345.md) |  [*M30*] | math-hard | verified | 3m50s |
+| [343](343.md) | &#9654; [*M25*] | math-medium | solved | 3m47s |
+| [344](344.md) |  [*M33*] | math-hard | solved | 3m56s |
+| [345](345.md) |  [*M30*] | math-hard | solved | 3m43s |
 | [346](346.md) | &#9654; [*HM28*] | hm-hard | verified | 3m49s |
 | [347](347.md) | &#9654; [*M28*] | math-hard | verified | 3m49s |
 | [348](348.md) |  [*HM26*] | hm-hard | verified | 3m49s |
