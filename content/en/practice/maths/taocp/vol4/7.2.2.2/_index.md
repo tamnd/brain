@@ -70,8 +70,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [51](51.md) |  [*40*] | project | solved | 2m45s |
 | [52](52.md) |  [*15*] | simple | solved | 3m47s |
 | [53](53.md) | &#9654; [*M20*] | math-medium | solved | 3m50s |
-| [54](54.md) | &#9654; [*29*] | hard | solved | 10m32s |
-| [55](55.md) |  [*21*] | medium | solved | 12m04s |
+| [54](54.md) | &#9654; [*29*] | hard | solved | 4m07s |
+| [55](55.md) |  [*21*] | medium | solved | 3m45s |
 | [56](56.md) | &#9654; [*22*] | medium | solved | 12m02s |
 | [57](57.md) |  [*29*] | hard | solved | 12m05s |
 | [58](58.md) | &#9654; [*20*] | medium | solved | 12m01s |
