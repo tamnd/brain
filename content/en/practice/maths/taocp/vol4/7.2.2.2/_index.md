@@ -441,9 +441,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [422](422.md) |  [*11*] | simple | solved | 3m58s |
 | [423](423.md) |  [*22*] | medium | solved | 3m57s |
 | [424](424.md) | &#9654; [*20*] | medium | solved | 3m53s |
-| [425](425.md) |  [*18*] | medium | solved | 10m32s |
-| [426](426.md) | &#9654; [*M20*] | math-medium | solved | 11m35s |
-| [427](427.md) |  [*M30*] | math-hard | solved | 9m16s |
+| [425](425.md) |  [*18*] | medium | solved | 3m59s |
+| [426](426.md) | &#9654; [*M20*] | math-medium | solved | 3m54s |
+| [427](427.md) |  [*M30*] | math-hard | solved | 3m56s |
 | [428](428.md) |  [*M27*] | math-hard | solved | 3m46s |
 | [429](429.md) |  [*22*] | medium | solved | 3m48s |
 | [430](430.md) |  [*25*] | medium | solved | 3m51s |
