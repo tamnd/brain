@@ -413,7 +413,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [394](394.md) |  [*25*] | medium | solved | 2m36s |
 | [395](395.md) |  [*20*] | medium | solved | 9m10s |
 | [396](396.md) | &#9654; [*23*] | medium | solved | 12m48s |
-| [397](397.md) |  [*22*] | medium | solved | 3m51s |
+| [397](397.md) |  [*22*] | medium | solved | 12m31s |
 | [398](398.md) |  [*18*] | medium | solved | 3m53s |
 | [399](399.md) |  [*23*] | medium | solved | 3m48s |
 | [400](400.md) |  [*25*] | medium | solved | 3m49s |
