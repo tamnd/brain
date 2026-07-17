@@ -539,7 +539,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [520](520.md) | &#9654; [*24*] | medium | solved | 3m43s |
 | [521](521.md) |  [*30*] | hard | solved | 3m45s |
 | [522](522.md) | &#9654; [*26*] | hard | solved | 3m45s |
-| [523](523.md) |  [*20*] | medium | solved | 11m49s |
-| [524](524.md) | &#9654; [*22*] | medium | solved | 11m52s |
+| [523](523.md) |  [*20*] | medium | solved | 3m46s |
+| [524](524.md) | &#9654; [*22*] | medium | solved | 3m42s |
 | [525](525.md) | &#9654; [*40*] | project | solved | 11m48s |
 | [526](526.md) |  [*M25*] | math-medium | solved | 11m51s |
