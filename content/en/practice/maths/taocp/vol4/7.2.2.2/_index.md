@@ -88,8 +88,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [69](69.md) |  [*23*] | medium | solved | 3m45s |
 | [70](70.md) |  [*21*] | medium | solved | 3m45s |
 | [71](71.md) | &#9654; [*22*] | medium | solved | 3m43s |
-| [72](72.md) |  [*28*] | hard | solved | 12m06s |
-| [73](73.md) | &#9654; [*21*] | medium | solved | 11m17s |
+| [72](72.md) |  [*28*] | hard | solved | 3m42s |
+| [73](73.md) | &#9654; [*21*] | medium | solved | 3m49s |
 | [74](74.md) |  [*M28*] | math-hard | solved | 12m |
 | [75](75.md) |  [*M22*] | math-medium | solved | 11m52s |
 | [76](76.md) |  [*41*] | project | solved | 11m49s |
