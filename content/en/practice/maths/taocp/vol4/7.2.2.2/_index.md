@@ -104,8 +104,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [85](85.md) | &#9654; [*39*] | project | solved | 3m43s |
 | [86](86.md) |  [*M29*] | math-hard | solved | 3m49s |
 | [87](87.md) |  [*21*] | medium | solved | 3m50s |
-| [88](88.md) |  [*15*] | simple | solved | 11m50s |
-| [89](89.md) |  [*21*] | medium | solved | 11m54s |
+| [88](88.md) |  [*15*] | simple | solved | 3m43s |
+| [89](89.md) |  [*21*] | medium | solved | 3m42s |
 | [90](90.md) |  [*20*] | medium | solved | 10m20s |
 | [91](91.md) |  [*M21*] | math-medium | solved | 12m49s |
 | [92](92.md) |  [*20*] | medium | solved | 11m49s |
