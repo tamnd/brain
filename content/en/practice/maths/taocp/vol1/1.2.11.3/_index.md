@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.11.3: Some Asymptotic Calculations"
-description: "Section 1.2.11.3 exercises: 18/20 solved."
+description: "Section 1.2.11.3 exercises: 19/20 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.11.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.11.3. Some Asymptotic Calculations
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.11.3: 18/20 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.11.3: 19/20 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -31,7 +31,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.11.3: 18/20 solved.
 | 11 | &#9654; [*HM35*] | hm-hard | - | - |
 | [12](12.md) |  [*HM20*] | hm-medium | verified | 5m01s |
 | [13](13.md) |  [*HM42*] | hm-project | solved | 1h53m |
-| 14 | &#9654; [*HM39*] | hm-project | - | - |
+| [14](14.md) | &#9654; [*HM39*] | hm-project | verified | 59m23s |
 | [15](15.md) |  [*HM20*] | hm-medium | verified | 1m16s |
 | [16](16.md) |  [*M24*] | math-medium | solved | 4m28s |
 | [17](17.md) |  [*HM29*] | hm-hard | verified | 1m28s |
