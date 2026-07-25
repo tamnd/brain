@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 885 solved, 499 verified, 886 total."
+description: "Volume 2: Seminumerical Algorithms. 886 solved, 500 verified, 886 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 885 solved, 499 verified, 886 total.
+Exercise solutions for [TAOCP](../) Volume 2. 886 solved, 500 verified, 886 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -33,7 +33,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 885 solved, 499 verified, 886 tota
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 6 | 3 | 6 |
 | [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 20 | 9 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 43 | 21 | 43 |
-| [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 4 | 14 |
+| [4.3.2](4.3.2/) | Modular Arithmetic | 15 | 5 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 19 | 7 | 19 |
 | [4.4](4.4/) | Radix Conversion | 19 | 11 | 19 |
 | [4.5.1](4.5.1/) | Fractions | 9 | 5 | 9 |
