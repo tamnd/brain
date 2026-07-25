@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2988 contests, 21801 problems, 11931 verified."
+description: "Codeforces problem solutions with full editorials. 2989 contests, 21813 problems, 11935 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2988 contests, 21801 problems, 11931 verified.**
+**2989 contests, 21813 problems, 11935 verified.**
 
-## Unknown — 757 contests, 6324 problems, 3700 verified
+## Unknown — 758 contests, 6336 problems, 3704 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102859](102859/) | [mBIT Standard November 2020](https://codeforces.com/contest/102859) | 12 | 4/12 | Special | - |
 | [102860](102860/) | [2020-2021 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 20)](https://codeforces.com/contest/102860) | 12 | 8/12 | Special | - |
 | [102861](102861/) | [2020-2021 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/102861) | 13 | 10/13 | ICPC/IOI | - |
 | [102893](102893/) | [2020-2021 Russia Team Open, High School Programming Contest (VKOSHP 20)](https://codeforces.com/contest/102893) | 12 | 4/12 | Special | - |
