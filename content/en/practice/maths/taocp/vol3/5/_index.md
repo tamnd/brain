@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5: Introduction to Sorting"
-description: "Section 5 exercises: 10/25 solved."
+description: "Section 5 exercises: 12/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5. Introduction to Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5: 10/25 solved.
+Exercises from [TAOCP Volume 3](../) Section 5: 12/25 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -25,11 +25,11 @@ Exercises from [TAOCP Volume 3](../) Section 5: 10/25 solved.
 | [5](05.md) | &#9654; [*M28*] | math-hard | verified | 15m14s |
 | [6](06.md) |  [*15*] | simple | verified | 7m41s |
 | [7](07.md) |  [*17*] | medium | verified | 31m04s |
-| 8 | &#9654; [*30*] | hard | - | - |
+| [8](08.md) | &#9654; [*30*] | hard | verified | 1h07m |
 | [9](09.md) |  [*M27*] | math-hard | verified | 6m33s |
 | [10](10.md) |  [*15*] | simple | verified | 10m07s |
 | [11](11.md) |  [*18*] | medium | verified | 14m32s |
-| 12 |  [*M25*] | math-medium | - | - |
+| [12](12.md) |  [*M25*] | math-medium | verified | 19m11s |
 | 13 |  [*M26*] | math-hard | - | - |
 | 14 |  [*20*] | medium | - | - |
 | 15 |  [*18*] | medium | - | - |
