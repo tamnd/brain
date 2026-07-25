@@ -1,20 +1,20 @@
 ---
 title: "TAOCP 3.2.2: Other Methods"
-description: "Section 3.2.2 exercises: 36/36 solved."
+description: "Section 3.2.2 exercises: 37/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.2.2"
 section_title: "Other Methods"
 chapter: 3
 chapter_title: "Random Numbers"
-volume: 1
+volume: 2
 weight: 3020200
 draft: false
 ---
 
 # Section 3.2.2. Other Methods
 
-Exercises from [TAOCP Volume 1](../) Section 3.2.2: 36/36 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.2.2: 37/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,6 +26,7 @@ Exercises from [TAOCP Volume 1](../) Section 3.2.2: 36/36 solved.
 | [6](06.md) |  [*10*] | simple | verified | 32m35s |
 | [7](07.md) |  [*20*] | medium | solved | 28m26s |
 | [8](08.md) |  [*M39*] | math-project | verified | 9m15s |
+| [9](09.md) |  [*M24*] | math-medium | verified | 31m29s |
 | [10](10.md) |  [*M29*] | math-hard | solved | 24m08s |
 | [11](11.md) |  [*M36*] | math-project | verified | 17m45s |
 | [12](12.md) | &#9654; [*M28*] | math-hard | verified | 18m59s |
