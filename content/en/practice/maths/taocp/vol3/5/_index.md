@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5: Introduction to Sorting"
-description: "Section 5 exercises: 17/25 solved."
+description: "Section 5 exercises: 18/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5. Introduction to Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5: 17/25 solved.
+Exercises from [TAOCP Volume 3](../) Section 5: 18/25 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -38,7 +38,7 @@ Exercises from [TAOCP Volume 3](../) Section 5: 17/25 solved.
 | [18](18.md) |  [*M25*] | math-medium | verified | 9m07s |
 | [19](19.md) | &#9654; [*24*] | medium | verified | 7m57s |
 | 20 | &#9654; [*25*] | medium | - | - |
-| 21 |  [*22*] | medium | - | - |
+| [21](21.md) |  [*22*] | medium | verified | 9m08s |
 | 22 |  [*M28*] | math-hard | - | - |
 | 23 |  [*30*] | hard | - | - |
 | 24 | &#9654; [*30*] | hard | - | - |
