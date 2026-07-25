@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 895 solved, 490 verified, 898 total."
+description: "Volume 1: Fundamental Algorithms. 896 solved, 491 verified, 898 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 895 solved, 490 verified, 898 total.
+Exercise solutions for [TAOCP](../) Volume 1. 896 solved, 491 verified, 898 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 895 solved, 490 verified, 898 tota
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 27 | 30 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 44 | 46 |
 | [1.2.4](1.2.4/) | Integer Functions and Elementary Number Theory | 46 | 41 | 46 |
-| [1.2.5](1.2.5/) | Permutations and Factorials | 24 | 7 | 25 |
+| [1.2.5](1.2.5/) | Permutations and Factorials | 25 | 8 | 25 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 68 | 52 | 68 |
 | [1.2.7](1.2.7/) | Harmonic Numbers | 25 | 19 | 25 |
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 42 | 35 | 42 |
