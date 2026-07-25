@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.5: Permutations and Factorials"
-description: "Section 1.2.5 exercises: 22/25 solved."
+description: "Section 1.2.5 exercises: 24/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.5. Permutations and Factorials
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.5: 22/25 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.5: 24/25 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -31,7 +31,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.5: 22/25 solved.
 | [11](11.md) |  [*M15*] | math-simple | solved | 3m24s |
 | [12](12.md) | &#9654; [*M22*] | math-medium | verified | 4m39s |
 | [13](13.md) |  [*M23*] | math-medium | solved | 14m48s |
-| 14 | &#9654; [*M28*] | math-hard | - | - |
+| [14](14.md) | &#9654; [*M28*] | math-hard | verified | 13m59s |
 | [15](15.md) |  [*HM15*] | hm-simple | solved | 14m33s |
 | [16](16.md) |  [*HM15*] | hm-simple | solved | 4m46s |
 | [17](17.md) |  [*HM20*] | hm-medium | solved | 9m10s |
@@ -39,7 +39,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.5: 22/25 solved.
 | [19](19.md) |  [*HM22*] | hm-medium | solved | 7m47s |
 | [20](20.md) |  [*HM21*] | hm-medium | solved | 5m27s |
 | [21](21.md) |  [*HM25*] | hm-medium | solved | 7m05s |
-| 22 | &#9654; [*HM20*] | hm-medium | - | - |
+| [22](22.md) | &#9654; [*HM20*] | hm-medium | verified | 17m21s |
 | [23](23.md) |  [*HM20*] | hm-medium | solved | 7m14s |
 | 24 | &#9654; [*HM21*] | hm-medium | - | - |
 | [25](25.md) |  [*M20*] | math-medium | solved | 8m04s |
