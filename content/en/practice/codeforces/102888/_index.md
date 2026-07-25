@@ -1,28 +1,30 @@
 ---
 title: "The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Preliminary"
-description: "12 problems from The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Preliminary (contest 102888), difficulty -. 7/12 solutions verified against sample I/O."
+description: "14 problems from The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Preliminary (contest 102888), difficulty -. 8/14 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102888
 contest_type: "Special"
 rating_range: "-"
-n_problems: 12
-n_verified: 7
-total_solve_s: 661
+n_problems: 14
+n_verified: 8
+total_solve_s: 741
 contest_year: 2020
-date: "2026-07-05T12:23:19+07:00"
+date: "2026-07-25T12:24:43+07:00"
 weight: 102888
 draft: false
 ---
 
 # [The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Preliminary](https://codeforces.com/contest/102888)
 
-Special | 12 problems | 7/12 verified | Difficulty - | 11m 1s
+Special | 14 problems | 8/14 verified | Difficulty - | 12m 21s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u4e09\u89d2\u5f62\u5207\u534a](https://codeforces.com/problemset/problem/102888/A) |  |  |  | 56s | ✓ |
 | [B](B/) | [\u8fde\u63a5\u7f8e\u56fd](https://codeforces.com/problemset/problem/102888/B) |  |  |  | 2m 16s | ✓ |
 | [C](C/) | [\u6570\u7801\u7ba1](https://codeforces.com/problemset/problem/102888/C) |  |  |  | 46s | ✓ |
+| [D](D/) | [\u98a4\u5f26\u877e\u8788\u4e0ePCPC](https://codeforces.com/problemset/problem/102888/D) |  |  |  | 24s |  |
 | [E](E/) | [\u6e38\u620f\u5206\u7ec4](https://codeforces.com/problemset/problem/102888/E) |  |  |  | 53s | ✓ |
 | [F](F/) | [\u63a8\u7bb1\u5b50](https://codeforces.com/problemset/problem/102888/F) |  |  |  | 49s | ✓ |
 | [G](G/) | [easy segment problem](https://codeforces.com/problemset/problem/102888/G) |  |  |  | 46s | ✓ |
