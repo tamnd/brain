@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 896 solved, 491 verified, 898 total."
+description: "Volume 1: Fundamental Algorithms. 897 solved, 492 verified, 898 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 896 solved, 491 verified, 898 total.
+Exercise solutions for [TAOCP](../) Volume 1. 897 solved, 492 verified, 898 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -25,7 +25,7 @@ Exercise solutions for [TAOCP](../) Volume 1. 896 solved, 491 verified, 898 tota
 | [1.2.9](1.2.9/) | Generating Functions | 26 | 22 | 26 |
 | [1.2.10](1.2.10/) | Analysis of an Algorithm | 22 | 21 | 22 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 10 | 9 |
-| [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 12 | 20 |
+| [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 15 | 13 | 20 |
 | [1.3.1](1.3.1/) | Description of MIX | 26 | 14 | 26 |
 | [1.3.2](1.3.2/) | The MIX Assembly Language | 9 | 4 | 9 |
 | [1.3.3](1.3.3/) | Applications to Permutations | 37 | 6 | 37 |
