@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 884 solved, 498 verified, 890 total."
+description: "Volume 2: Seminumerical Algorithms. 884 solved, 498 verified, 886 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 498 verified, 890 total.
+Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 498 verified, 886 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,14 +18,14 @@ Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 498 verified, 890 tota
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 10 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 9 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
-| [3.2.2](3.2.2/) | Other Methods | 36 | 23 | 36 |
+| [3.2.2](3.2.2/) | Other Methods | 36 | 23 | 37 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 25 | 17 | 25 |
-| [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 39 |
+| [3.3.2](3.3.2/) | Empirical Tests | 35 | 23 | 35 |
 | [3.3.3](3.3.3/) | Theoretical Tests | 28 | 12 | 28 |
 | [3.3.4](3.3.4/) | The Spectral Test | 32 | 17 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 15 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 10 | 19 |
-| [3.5](3.5/) | What Is a Random Sequence? | 44 | 17 | 46 |
+| [3.5](3.5/) | What Is a Random Sequence? | 44 | 17 | 44 |
 | [3.6](3.6/) | Summary | 15 | 10 | 15 |
 | [4.1](4.1/) | Positional Number Systems | 34 | 16 | 34 |
 | [4.2.1](4.2.1/) | Single-Precision Calculations | 19 | 13 | 19 |
@@ -39,7 +39,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 884 solved, 498 verified, 890 tota
 | [4.5.1](4.5.1/) | Fractions | 9 | 5 | 9 |
 | [4.5.2](4.5.2/) | The Greatest Common Divisor | 42 | 26 | 42 |
 | [4.5.3](4.5.3/) | Analysis of Euclid's Algorithm | 42 | 22 | 42 |
-| [4.5.4](4.5.4/) | Factoring into Primes | 46 | 28 | 46 |
+| [4.5.4](4.5.4/) | Factoring into Primes | 46 | 28 | 47 |
 | [4.6](4.6/) | Polynomial Arithmetic | 5 | 4 | 5 |
 | [4.6.1](4.6.1/) | Division of Polynomials | 26 | 12 | 26 |
 | [4.6.2](4.6.2/) | Factorization of Polynomials | 40 | 29 | 40 |
