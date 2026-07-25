@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2981 contests, 21729 problems, 11880 verified."
+description: "Codeforces problem solutions with full editorials. 2982 contests, 21735 problems, 11883 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2981 contests, 21729 problems, 11880 verified.**
+**2982 contests, 21735 problems, 11883 verified.**
 
 ## Unknown — 755 contests, 6299 problems, 3682 verified
 
@@ -1552,7 +1552,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 174 contests, 953 problems, 441 verified
+## 2020 — 175 contests, 959 problems, 444 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1715,6 +1715,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102873](102873/) | [Unofficial Div 4 Round #2 by ssense  SlavicG](https://codeforces.com/contest/102873) | 6 | 3/6 | Special | - |
 | [102875](102875/) | [2020 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/102875) | 10 | 5/10 | Special | - |
 | [102878](102878/) | [The 15-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/102878) | 13 | 10/13 | Special | - |
 | [102881](102881/) | [ECPC 2019 Kickoff](https://codeforces.com/contest/102881) | 14 | 11/14 | Special | - |
