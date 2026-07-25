@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 1: Fundamental Algorithms"
-description: "Volume 1: Fundamental Algorithms. 889 solved, 484 verified, 889 total."
+description: "Volume 1: Fundamental Algorithms. 891 solved, 486 verified, 898 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 10
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 1: Fundamental Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 1. 889 solved, 484 verified, 889 total.
+Exercise solutions for [TAOCP](../) Volume 1. 891 solved, 486 verified, 898 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,14 +18,14 @@ Exercise solutions for [TAOCP](../) Volume 1. 889 solved, 484 verified, 889 tota
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 27 | 30 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 44 | 46 |
 | [1.2.4](1.2.4/) | Integer Functions and Elementary Number Theory | 46 | 41 | 46 |
-| [1.2.5](1.2.5/) | Permutations and Factorials | 18 | 1 | 18 |
+| [1.2.5](1.2.5/) | Permutations and Factorials | 20 | 3 | 25 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 68 | 52 | 68 |
 | [1.2.7](1.2.7/) | Harmonic Numbers | 25 | 19 | 25 |
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 42 | 35 | 42 |
 | [1.2.9](1.2.9/) | Generating Functions | 26 | 22 | 26 |
 | [1.2.10](1.2.10/) | Analysis of an Algorithm | 22 | 21 | 22 |
-| [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 10 | 13 |
-| [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 12 | 14 |
+| [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 10 | 9 |
+| [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 12 | 20 |
 | [1.3.1](1.3.1/) | Description of MIX | 26 | 14 | 26 |
 | [1.3.2](1.3.2/) | The MIX Assembly Language | 9 | 4 | 9 |
 | [1.3.3](1.3.3/) | Applications to Permutations | 37 | 6 | 37 |
