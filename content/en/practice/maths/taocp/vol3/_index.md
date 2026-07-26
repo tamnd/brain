@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 577 solved, 263 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 578 solved, 264 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,14 +9,14 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 577 solved, 263 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 578 solved, 264 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [5](5/) | Introduction to Sorting | 23 | 22 | 25 |
 | [5.1](5.1/) | Combinatorial Properties of Permutations | 4 | 2 | 4 |
 | [5.1.1](5.1.1/) | Inversions | 27 | 24 | 29 |
-| [5.1.2](5.1.2/) | Permutations of a Multiset | 13 | 6 | 24 |
+| [5.1.2](5.1.2/) | Permutations of a Multiset | 14 | 7 | 24 |
 | [5.1.3](5.1.3/) | Runs | 14 | 8 | 29 |
 | [5.1.4](5.1.4/) | Tableaux and Involutions | 12 | 6 | 44 |
 | [5.2](5.2/) | Internal Sorting | 5 | 1 | 13 |
