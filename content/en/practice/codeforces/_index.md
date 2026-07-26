@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2996 contests, 21895 problems, 11974 verified."
+description: "Codeforces problem solutions with full editorials. 2997 contests, 21907 problems, 11981 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2996 contests, 21895 problems, 11974 verified.**
+**2997 contests, 21907 problems, 11981 verified.**
 
 ## Unknown — 762 contests, 6384 problems, 3726 verified
 
@@ -1559,7 +1559,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 182 contests, 1034 problems, 491 verified
+## 2020 — 183 contests, 1046 problems, 498 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1722,6 +1722,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102822](102822/) | [2020 China Collegiate Programming Contest - Mianyang Site](https://codeforces.com/contest/102822) | 12 | 7/12 | Special | - |
 | [102829](102829/) | [UTPC Contest 11-06-20 Div. 1 (Tryout)](https://codeforces.com/contest/102829) | 9 | 5/9 | Div. 1 | - |
 | [102830](102830/) | [UTPC Contest 11-06-20 Div. 2 (Beginner)](https://codeforces.com/contest/102830) | 8 | 3/8 | Div. 2 | - |
 | [102832](102832/) | [2020 China Collegiate Programming Contest Changchun Onsite](https://codeforces.com/contest/102832) | 12 | 7/12 | Special | - |
