@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2997 contests, 21907 problems, 11981 verified."
+description: "Codeforces problem solutions with full editorials. 3001 contests, 21939 problems, 12006 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2997 contests, 21907 problems, 11981 verified.**
+**3001 contests, 21939 problems, 12006 verified.**
 
-## Unknown — 762 contests, 6384 problems, 3726 verified
+## Unknown — 764 contests, 6393 problems, 3735 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102806](102806/) | [Интернет-олимпиады, Сезон 2017-2018, Четвёртая личная олимпиада](https://codeforces.com/contest/102806) | 4 | 4/4 | Special | - |
+| [102811](102811/) | [Школьный этап всероссийской олимпиады, 9-11 классы, Москва  (версия CF)](https://codeforces.com/contest/102811) | 5 | 5/5 | Special | - |
 | [102823](102823/) | [2018 China Collegiate Programming Contest - Guilin Site](https://codeforces.com/contest/102823) | 12 | 3/12 | Special | - |
 | [102824](102824/) | [mBIT Advanced November 2020](https://codeforces.com/contest/102824) | 11 | 1/11 | Special | - |
 | [102835](102835/) | [The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest](https://codeforces.com/contest/102835) | 13 | 11/13 | ICPC/IOI | - |
@@ -1394,7 +1396,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 160 contests, 928 problems, 556 verified
+## 2019 — 161 contests, 939 problems, 563 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1557,9 +1559,10 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
+| [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 183 contests, 1046 problems, 498 verified
+## 2020 — 184 contests, 1058 problems, 507 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1722,6 +1725,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102803](102803/) | [The 15th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102803) | 12 | 9/12 | Special | - |
 | [102822](102822/) | [2020 China Collegiate Programming Contest - Mianyang Site](https://codeforces.com/contest/102822) | 12 | 7/12 | Special | - |
 | [102829](102829/) | [UTPC Contest 11-06-20 Div. 1 (Tryout)](https://codeforces.com/contest/102829) | 9 | 5/9 | Div. 1 | - |
 | [102830](102830/) | [UTPC Contest 11-06-20 Div. 2 (Beginner)](https://codeforces.com/contest/102830) | 8 | 3/8 | Div. 2 | - |
