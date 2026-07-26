@@ -1,26 +1,28 @@
 ---
 title: "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest"
-description: "11 problems from The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest (contest 102835), difficulty -. 9/11 solutions verified against sample I/O."
+description: "13 problems from The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest (contest 102835), difficulty -. 11/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102835
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
-n_verified: 9
-total_solve_s: 523
-date: "2026-07-26T15:05:14+07:00"
+n_problems: 13
+n_verified: 11
+total_solve_s: 628
+date: "2026-07-26T15:07:05+07:00"
 weight: 102835
 draft: false
 ---
 
 # [The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest](https://codeforces.com/contest/102835)
 
-ICPC/IOI | 11 problems | 9/11 verified | Difficulty - | 8m 43s
+ICPC/IOI | 13 problems | 11/13 verified | Difficulty - | 10m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Right-Coupled Numbers](https://codeforces.com/problemset/problem/102835/A) |  |  |  | 36s | ✓ |
+| [B](B/) | [Make Numbers](https://codeforces.com/problemset/problem/102835/B) |  |  |  | 56s | ✓ |
+| [C](C/) | [Pyramid](https://codeforces.com/problemset/problem/102835/C) |  |  |  | 49s | ✓ |
 | [D](D/) | [Quality Monitoring](https://codeforces.com/problemset/problem/102835/D) |  |  |  | 27s |  |
 | [E](E/) | [A Color Game](https://codeforces.com/problemset/problem/102835/E) |  |  |  | 42s | ✓ |
 | [F](F/) | [Cable Protection](https://codeforces.com/problemset/problem/102835/F) |  |  |  | 39s | ✓ |
