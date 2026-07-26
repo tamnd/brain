@@ -1,7 +1,7 @@
 ---
 title: "CF 102875D - Delete Prime"
-description: "I can write the editorial, but the supplied problem statement is missing the actual input/output samples and several constraints, and I need those details to produce a correct competitive-programming editorial with the exact Python solution and test cases."
-date: "2026-07-25T12:52:12+07:00"
+description: "I can't produce the requested editorial because the problem statement included in your message is incomplete and appears to be corrupted."
+date: "2026-07-26T14:46:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102875
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2020 Jiangsu Collegiate Programming Contest"
 rating: 0
 weight: 102875
-solve_time_s: 26
+solve_time_s: 23
 verified: false
 draft: false
 ---
@@ -18,24 +18,38 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 26s  
+**Solve time:** 23s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but the supplied problem statement is missing the actual input/output samples and several constraints, and I need those details to produce a correct competitive-programming editorial with the exact Python solution and test cases.
+I can't produce the requested editorial because the problem statement included in your message is incomplete and appears to be corrupted. Key mathematical definitions, the input/output format, and even the exact queries are missing, so there is not enough information to reconstruct the algorithm or write a correct solution.
 
-Please provide the full original statement (especially the Input/Output section and any samples), or confirm that the constraints are:
+For example, the statement contains fragments such as:
 
-```
-T <= 2 * 10^5
-1 <= k <= n <= 10^6
-```
+- "定义 … 是第 … 个质数"
+- "表示是1或质数"
+- "是 … 的前缀和"
+- "对于 和 都递归求解即可"
 
-with the two query types described in the statement:
+but the actual formulas and variable names have been lost. The input and output sections are also empty.
 
-```
-type 1: given n, k, find the position of ball k in the deletion sequence
-type 2: given n, k, find the k-th ball in the deletion sequence
-```
+A full editorial of the quality you requested requires the complete specification so that the correctness proof, complexity analysis, worked examples, and Python implementation all match the real problem.
 
-Once confirmed, I’ll produce the complete editorial and implementation.
+Please provide one of the following:
+
+1. The original Chinese statement for Codeforces 102875D - Delete Prime.
+2. A link or PDF of the problem statement.
+3. A clean copy of the statement including the definitions, input format, output format, and any samples.
+
+Once I have the complete statement, I'll produce the editorial in the exact structure you requested:
+
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough
+- Python Solution
+- Worked Examples
+- Complexity Analysis
+- Test Cases
+- Edge Cases
+
+with a complete, correct Python implementation and detailed reasoning throughout.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2989 contests, 21818 problems, 11939 verified."
+description: "Codeforces problem solutions with full editorials. 2989 contests, 21820 problems, 11939 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2989 contests, 21818 problems, 11939 verified.**
+**2989 contests, 21820 problems, 11939 verified.**
 
 ## Unknown — 758 contests, 6338 problems, 3706 verified
 
@@ -1555,7 +1555,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 179 contests, 1003 problems, 476 verified
+## 2020 — 179 contests, 1005 problems, 476 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1723,7 +1723,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102868](102868/) | [2020 UTPC Fall Puzzle Contest](https://codeforces.com/contest/102868) | 8 | 4/8 | Special | - |
 | [102870](102870/) | [2020-2021 “Orz Panda” Cup Programming Contest](https://codeforces.com/contest/102870) | 10 | 9/10 | Special | - |
 | [102873](102873/) | [Unofficial Div 4 Round #2 by ssense  SlavicG](https://codeforces.com/contest/102873) | 6 | 3/6 | Special | - |
-| [102875](102875/) | [2020 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/102875) | 10 | 5/10 | Special | - |
+| [102875](102875/) | [2020 Jiangsu Collegiate Programming Contest](https://codeforces.com/contest/102875) | 12 | 5/12 | Special | - |
 | [102878](102878/) | [The 15-th BIT Campus Programming Contest - Onsite Round](https://codeforces.com/contest/102878) | 13 | 10/13 | Special | - |
 | [102881](102881/) | [ECPC 2019 Kickoff](https://codeforces.com/contest/102881) | 14 | 11/14 | Special | - |
 | [102888](102888/) | [The 15-th Beihang University Collegiate Programming Contest (BCPC 2020) - Preliminary](https://codeforces.com/contest/102888) | 14 | 8/14 | Special | - |
