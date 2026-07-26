@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.1: Inversions"
-description: "Section 5.1.1 exercises: 11/29 solved."
+description: "Section 5.1.1 exercises: 12/29 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.1.1. Inversions
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.1: 11/29 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.1: 12/29 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,7 +30,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.1: 11/29 solved.
 | [10](10.md) |  [*HM20*] | hm-medium | verified | 11m52s |
 | [11](11.md) |  [*M25*] | math-medium | verified | 8m54s |
 | 12 |  [*M28*] | math-hard | - | - |
-| 13 |  [*M23*] | math-medium | - | - |
+| [13](13.md) |  [*M23*] | math-medium | verified | 6m41s |
 | 14 |  [*M22*] | math-medium | - | - |
 | 15 |  [*M25*] | math-medium | - | - |
 | 16 |  [*M25*] | math-medium | - | - |
