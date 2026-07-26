@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2997 contests, 21907 problems, 11981 verified."
+description: "Codeforces problem solutions with full editorials. 2998 contests, 21918 problems, 11988 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2997 contests, 21907 problems, 11981 verified.**
+**2998 contests, 21918 problems, 11988 verified.**
 
 ## Unknown — 762 contests, 6384 problems, 3726 verified
 
@@ -1394,7 +1394,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 160 contests, 928 problems, 556 verified
+## 2019 — 161 contests, 939 problems, 563 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1557,6 +1557,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
+| [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
 ## 2020 — 183 contests, 1046 problems, 498 verified
