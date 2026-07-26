@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.2: Permutations of a Multiset"
-description: "Section 5.1.2 exercises: 18/24 solved."
+description: "Section 5.1.2 exercises: 20/24 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.1.2. Permutations of a Multiset
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.2: 18/24 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.2: 20/24 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -40,5 +40,5 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.2: 18/24 solved.
 | [20](20.md) | &#9654; [*HM33*] | hm-hard | verified | 1h40m |
 | [21](21.md) |  [*M21*] | math-medium | verified | 2h25m |
 | 22 |  [*M30*] | math-hard | - | - |
-| 23 |  [*M23*] | math-medium | - | - |
-| 24 |  [*27*] | hard | - | - |
+| [23](23.md) |  [*M23*] | math-medium | solved | 2h01m |
+| [24](24.md) |  [*27*] | hard | solved | 1h36m |
