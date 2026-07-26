@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 2991 contests, 21843 problems, 11955 verified."
+description: "Codeforces problem solutions with full editorials. 2992 contests, 21855 problems, 11962 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**2991 contests, 21843 problems, 11955 verified.**
+**2992 contests, 21855 problems, 11962 verified.**
 
 ## Unknown — 760 contests, 6361 problems, 3722 verified
 
@@ -1557,7 +1557,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 179 contests, 1005 problems, 476 verified
+## 2020 — 180 contests, 1017 problems, 483 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1720,6 +1720,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102832](102832/) | [2020 China Collegiate Programming Contest Changchun Onsite](https://codeforces.com/contest/102832) | 12 | 7/12 | Special | - |
 | [102862](102862/) | [LU ICPC Selection Contest 2020 and KFU Open Contest 2020](https://codeforces.com/contest/102862) | 13 | 9/13 | ICPC/IOI | - |
 | [102864](102864/) | [The 15-th BIT Campus Programming Contest - Online Round](https://codeforces.com/contest/102864) | 13 | 10/13 | Special | - |
 | [102868](102868/) | [2020 UTPC Fall Puzzle Contest](https://codeforces.com/contest/102868) | 8 | 4/8 | Special | - |
