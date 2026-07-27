@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.4: Tableaux and Involutions"
-description: "Section 5.1.4 exercises: 20/44 solved."
+description: "Section 5.1.4 exercises: 21/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.1.4. Tableaux and Involutions
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.4: 20/44 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.4: 21/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -42,7 +42,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.4: 20/44 solved.
 | [22](22.md) |  [*M39*] | math-project | verified | 1h12m |
 | 23 | &#9654; [*HM30*] | hm-hard | - | - |
 | 24 |  [*M28*] | math-hard | - | - |
-| 25 |  [*M30*] | math-hard | - | - |
+| [25](25.md) |  [*M30*] | math-hard | verified | 52m41s |
 | 26 |  [*M21*] | math-medium | - | - |
 | 27 |  [*M24*] | math-medium | - | - |
 | 28 |  [*M43*] | math-project | - | - |
