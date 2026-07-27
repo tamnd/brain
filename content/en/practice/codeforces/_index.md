@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3013 contests, 22049 problems, 12078 verified."
+description: "Codeforces problem solutions with full editorials. 3015 contests, 22069 problems, 12097 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3013 contests, 22049 problems, 12078 verified.**
+**3015 contests, 22069 problems, 12097 verified.**
 
-## Unknown — 772 contests, 6469 problems, 3780 verified
+## Unknown — 774 contests, 6489 problems, 3799 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102775](102775/) | [ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102775) | 11 | 10/11 | ICPC/IOI | - |
+| [102777](102777/) | [ICPC Central Russia Regional Contest (CRRC 19), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102777) | 9 | 9/9 | ICPC/IOI | - |
 | [102780](102780/) | [ICPC Central Russia Regional Contest (CRRC 19)](https://codeforces.com/contest/102780) | 9 | 7/9 | ICPC/IOI | - |
 | [102785](102785/) | [ICPC Central Russia Regional Contest (CRRC 18)](https://codeforces.com/contest/102785) | 9 | 6/9 | ICPC/IOI | - |
 | [102786](102786/) | [Открытый чемпионат ЯрГУ им. П.Г. Демидова Demidov Open IT Cup 2019](https://codeforces.com/contest/102786) | 10 | 7/10 | Special | - |
