@@ -1,25 +1,26 @@
 ---
 title: "ICPC Central Russia Regional Contest (CRRC 18)"
-description: "9 problems from ICPC Central Russia Regional Contest (CRRC 18) (contest 102785), difficulty -. 6/9 solutions verified against sample I/O."
+description: "10 problems from ICPC Central Russia Regional Contest (CRRC 18) (contest 102785), difficulty -. 7/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102785
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 9
-n_verified: 6
-total_solve_s: 623
-date: "2026-07-27T19:45:29+07:00"
+n_problems: 10
+n_verified: 7
+total_solve_s: 669
+date: "2026-07-28T03:39:16+07:00"
 weight: 102785
 draft: false
 ---
 
 # [ICPC Central Russia Regional Contest (CRRC 18)](https://codeforces.com/contest/102785)
 
-ICPC/IOI | 9 problems | 6/9 verified | Difficulty - | 10m 23s
+ICPC/IOI | 10 problems | 7/10 verified | Difficulty - | 11m 9s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [B](B/) | [Gremlins attack!](https://codeforces.com/problemset/problem/102785/B) |  |  |  | 46s | ✓ |
 | [C](C/) | [Dimensions](https://codeforces.com/problemset/problem/102785/C) |  |  |  | 1m 36s | ✓ |
 | [D](D/) | [We were trying to share an orange ...](https://codeforces.com/problemset/problem/102785/D) |  |  |  | 1m 15s | ✓ |
 | [E](E/) | [Hanoi Tower](https://codeforces.com/problemset/problem/102785/E) |  |  |  | 1m 22s |  |
