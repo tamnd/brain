@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3008 contests, 22004 problems, 12045 verified."
+description: "Codeforces problem solutions with full editorials. 3009 contests, 22014 problems, 12052 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3008 contests, 22004 problems, 12045 verified.**
+**3009 contests, 22014 problems, 12052 verified.**
 
-## Unknown — 769 contests, 6441 problems, 3760 verified
+## Unknown — 770 contests, 6451 problems, 3767 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102786](102786/) | [Открытый чемпионат ЯрГУ им. П.Г. Демидова Demidov Open IT Cup 2019](https://codeforces.com/contest/102786) | 10 | 7/10 | Special | - |
 | [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 1 | 1/1 | ICPC/IOI | - |
 | [102793](102793/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Вторая командная олимпиада](https://codeforces.com/contest/102793) | 10 | 5/10 | Special | - |
 | [102798](102798/) | [2020 China Collegiate Programming Contest, Weihai Site](https://codeforces.com/contest/102798) | 12 | 9/12 | Special | - |
