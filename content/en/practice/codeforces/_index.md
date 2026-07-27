@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3012 contests, 22040 problems, 12071 verified."
+description: "Codeforces problem solutions with full editorials. 3013 contests, 22049 problems, 12078 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3012 contests, 22040 problems, 12071 verified.**
+**3013 contests, 22049 problems, 12078 verified.**
 
-## Unknown — 771 contests, 6460 problems, 3773 verified
+## Unknown — 772 contests, 6469 problems, 3780 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102780](102780/) | [ICPC Central Russia Regional Contest (CRRC 19)](https://codeforces.com/contest/102780) | 9 | 7/9 | ICPC/IOI | - |
 | [102785](102785/) | [ICPC Central Russia Regional Contest (CRRC 18)](https://codeforces.com/contest/102785) | 9 | 6/9 | ICPC/IOI | - |
 | [102786](102786/) | [Открытый чемпионат ЯрГУ им. П.Г. Демидова Demidov Open IT Cup 2019](https://codeforces.com/contest/102786) | 10 | 7/10 | Special | - |
 | [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 1 | 1/1 | ICPC/IOI | - |
