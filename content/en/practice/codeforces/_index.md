@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3004 contests, 21976 problems, 12025 verified."
+description: "Codeforces problem solutions with full editorials. 3005 contests, 21986 problems, 12030 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3004 contests, 21976 problems, 12025 verified.**
+**3005 contests, 21986 problems, 12030 verified.**
 
-## Unknown — 767 contests, 6430 problems, 3754 verified
+## Unknown — 768 contests, 6440 problems, 3759 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102793](102793/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Вторая командная олимпиада](https://codeforces.com/contest/102793) | 10 | 5/10 | Special | - |
 | [102798](102798/) | [2020 China Collegiate Programming Contest, Weihai Site](https://codeforces.com/contest/102798) | 12 | 9/12 | Special | - |
 | [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 12 | 7/12 | Special | - |
 | [102802](102802/) | [mBIT Varsity November 2019](https://codeforces.com/contest/102802) | 12 | 1/12 | Special | - |
