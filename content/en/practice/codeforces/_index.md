@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3002 contests, 21951 problems, 12007 verified."
+description: "Codeforces problem solutions with full editorials. 3013 contests, 22049 problems, 12078 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,17 +11,24 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3002 contests, 21951 problems, 12007 verified.**
+**3013 contests, 22049 problems, 12078 verified.**
 
-## Unknown — 765 contests, 6405 problems, 3736 verified
+## Unknown — 772 contests, 6469 problems, 3780 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102780](102780/) | [ICPC Central Russia Regional Contest (CRRC 19)](https://codeforces.com/contest/102780) | 9 | 7/9 | ICPC/IOI | - |
+| [102785](102785/) | [ICPC Central Russia Regional Contest (CRRC 18)](https://codeforces.com/contest/102785) | 9 | 6/9 | ICPC/IOI | - |
+| [102786](102786/) | [Открытый чемпионат ЯрГУ им. П.Г. Демидова Demidov Open IT Cup 2019](https://codeforces.com/contest/102786) | 10 | 7/10 | Special | - |
+| [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 1 | 1/1 | ICPC/IOI | - |
+| [102793](102793/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Вторая командная олимпиада](https://codeforces.com/contest/102793) | 10 | 5/10 | Special | - |
+| [102798](102798/) | [2020 China Collegiate Programming Contest, Weihai Site](https://codeforces.com/contest/102798) | 12 | 9/12 | Special | - |
+| [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 12 | 7/12 | Special | - |
 | [102802](102802/) | [mBIT Varsity November 2019](https://codeforces.com/contest/102802) | 12 | 1/12 | Special | - |
 | [102806](102806/) | [Интернет-олимпиады, Сезон 2017-2018, Четвёртая личная олимпиада](https://codeforces.com/contest/102806) | 4 | 4/4 | Special | - |
 | [102811](102811/) | [Школьный этап всероссийской олимпиады, 9-11 классы, Москва  (версия CF)](https://codeforces.com/contest/102811) | 5 | 5/5 | Special | - |
 | [102823](102823/) | [2018 China Collegiate Programming Contest - Guilin Site](https://codeforces.com/contest/102823) | 12 | 3/12 | Special | - |
-| [102824](102824/) | [mBIT Advanced November 2020](https://codeforces.com/contest/102824) | 11 | 1/11 | Special | - |
+| [102824](102824/) | [mBIT Advanced November 2020](https://codeforces.com/contest/102824) | 12 | 3/12 | Special | - |
 | [102835](102835/) | [The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest](https://codeforces.com/contest/102835) | 13 | 11/13 | ICPC/IOI | - |
 | [102836](102836/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Третья командная олимпиада](https://codeforces.com/contest/102836) | 10 | 5/10 | Special | - |
 | [102859](102859/) | [mBIT Standard November 2020](https://codeforces.com/contest/102859) | 12 | 4/12 | Special | - |
@@ -1563,7 +1570,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 184 contests, 1058 problems, 507 verified
+## 2020 — 188 contests, 1092 problems, 534 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1726,6 +1733,10 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102783](102783/) | [UTPC Contest 10-23-20 Div. 2](https://codeforces.com/contest/102783) | 8 | 6/8 | Div. 2 | - |
+| [102784](102784/) | [UTPC Contest 10-23-20 Div. 1](https://codeforces.com/contest/102784) | 9 | 7/9 | Div. 1 | - |
+| [102787](102787/) | [Algorithms Thread Treaps Contest](https://codeforces.com/contest/102787) | 7 | 6/7 | Special | - |
+| [102791](102791/) | [ICPC 2020-2021 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102791) | 10 | 8/10 | ICPC/IOI | - |
 | [102803](102803/) | [The 15th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102803) | 12 | 9/12 | Special | - |
 | [102822](102822/) | [2020 China Collegiate Programming Contest - Mianyang Site](https://codeforces.com/contest/102822) | 12 | 7/12 | Special | - |
 | [102829](102829/) | [UTPC Contest 11-06-20 Div. 1 (Tryout)](https://codeforces.com/contest/102829) | 9 | 5/9 | Div. 1 | - |
