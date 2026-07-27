@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3007 contests, 21997 problems, 12039 verified."
+description: "Codeforces problem solutions with full editorials. 3008 contests, 22004 problems, 12045 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3007 contests, 21997 problems, 12039 verified.**
+**3008 contests, 22004 problems, 12045 verified.**
 
 ## Unknown — 769 contests, 6441 problems, 3760 verified
 
@@ -1567,7 +1567,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 185 contests, 1068 problems, 515 verified
+## 2020 — 186 contests, 1075 problems, 521 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1730,6 +1730,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102787](102787/) | [Algorithms Thread Treaps Contest](https://codeforces.com/contest/102787) | 7 | 6/7 | Special | - |
 | [102791](102791/) | [ICPC 2020-2021 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102791) | 10 | 8/10 | ICPC/IOI | - |
 | [102803](102803/) | [The 15th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102803) | 12 | 9/12 | Special | - |
 | [102822](102822/) | [2020 China Collegiate Programming Contest - Mianyang Site](https://codeforces.com/contest/102822) | 12 | 7/12 | Special | - |
