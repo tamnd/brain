@@ -1,25 +1,26 @@
 ---
 title: "ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд"
-description: "10 problems from ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд (contest 102775), difficulty -. 9/10 solutions verified against sample I/O."
+description: "11 problems from ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд (contest 102775), difficulty -. 10/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102775
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
-n_verified: 9
-total_solve_s: 554
-date: "2026-07-27T20:45:26+07:00"
+n_problems: 11
+n_verified: 10
+total_solve_s: 623
+date: "2026-07-27T20:46:40+07:00"
 weight: 102775
 draft: false
 ---
 
 # [ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102775)
 
-ICPC/IOI | 10 problems | 9/10 verified | Difficulty - | 9m 14s
+ICPC/IOI | 11 problems | 10/11 verified | Difficulty - | 10m 23s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u041a\u0442\u043e \u0431\u043b\u0438\u0436\u0435?](https://codeforces.com/problemset/problem/102775/A) |  |  |  | 1m 9s | ✓ |
 | [B](B/) | [\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u0438](https://codeforces.com/problemset/problem/102775/B) |  |  |  | 56s | ✓ |
 | [D](D/) | [\u0420\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b](https://codeforces.com/problemset/problem/102775/D) |  |  |  | 43s | ✓ |
 | [E](E/) | [\u041a\u0430\u043c\u0435\u043d\u044c, \u043d\u043e\u0436\u043d\u0438\u0446\u044b, \u0431\u0443\u043c\u0430\u0433\u0430...](https://codeforces.com/problemset/problem/102775/E) |  |  |  | 42s | ✓ |
