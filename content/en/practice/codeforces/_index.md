@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3002 contests, 21951 problems, 12007 verified."
+description: "Codeforces problem solutions with full editorials. 3003 contests, 21964 problems, 12016 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,17 +11,18 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3002 contests, 21951 problems, 12007 verified.**
+**3003 contests, 21964 problems, 12016 verified.**
 
-## Unknown — 765 contests, 6405 problems, 3736 verified
+## Unknown — 766 contests, 6418 problems, 3745 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 12 | 7/12 | Special | - |
 | [102802](102802/) | [mBIT Varsity November 2019](https://codeforces.com/contest/102802) | 12 | 1/12 | Special | - |
 | [102806](102806/) | [Интернет-олимпиады, Сезон 2017-2018, Четвёртая личная олимпиада](https://codeforces.com/contest/102806) | 4 | 4/4 | Special | - |
 | [102811](102811/) | [Школьный этап всероссийской олимпиады, 9-11 классы, Москва  (версия CF)](https://codeforces.com/contest/102811) | 5 | 5/5 | Special | - |
 | [102823](102823/) | [2018 China Collegiate Programming Contest - Guilin Site](https://codeforces.com/contest/102823) | 12 | 3/12 | Special | - |
-| [102824](102824/) | [mBIT Advanced November 2020](https://codeforces.com/contest/102824) | 11 | 1/11 | Special | - |
+| [102824](102824/) | [mBIT Advanced November 2020](https://codeforces.com/contest/102824) | 12 | 3/12 | Special | - |
 | [102835](102835/) | [The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest](https://codeforces.com/contest/102835) | 13 | 11/13 | ICPC/IOI | - |
 | [102836](102836/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Третья командная олимпиада](https://codeforces.com/contest/102836) | 10 | 5/10 | Special | - |
 | [102859](102859/) | [mBIT Standard November 2020](https://codeforces.com/contest/102859) | 12 | 4/12 | Special | - |
