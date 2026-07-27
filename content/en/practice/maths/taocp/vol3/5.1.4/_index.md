@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.4: Tableaux and Involutions"
-description: "Section 5.1.4 exercises: 12/12 solved."
+description: "Section 5.1.4 exercises: 22/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.4"
@@ -14,19 +14,51 @@ draft: false
 
 # Section 5.1.4. Tableaux and Involutions
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.4: 12/12 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.4: 22/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 43m18s |
-| [2](02.md) |  [**] |  | verified | 14m53s |
-| [3](03.md) |  [**] |  | verified | 1m26s |
-| [4](04.md) |  [**] |  | verified | 2m42s |
-| [5](05.md) |  [**] |  | solved | 3m41s |
-| [6](06.md) |  [*20*] | medium | verified | 1m17s |
-| [7](07.md) |  [*M24*] | math-medium | solved | 42m04s |
-| [8](08.md) |  [*M28*] | math-hard | verified | 56m28s |
-| [9](09.md) |  [*M43*] | math-project | solved | 11m30s |
+| [1](01.md) |  [*16*] | medium | verified | 43m18s |
+| [2](02.md) |  [*M21*] | math-medium | verified | 14m53s |
+| [3](03.md) | &#9654; [*M25*] | math-medium | verified | 1m26s |
+| [4](04.md) | &#9654; [*M30*] | math-hard | verified | 2m42s |
+| [5](05.md) | &#9654; [*M22*] | math-medium | solved | 3m41s |
+| [6](06.md) |  [*M26*] | math-hard | verified | 1m17s |
+| [7](07.md) |  [*M20*] | math-medium | solved | 42m04s |
+| [8](08.md) |  [*M18*] | math-medium | verified | 56m28s |
+| [9](09.md) |  [*M32*] | math-hard | solved | 11m30s |
 | [10](10.md) |  [*M20*] | math-medium | solved | 16m42s |
-| [11](11.md) |  [*M08*] | math-simple | solved | 46m42s |
-| [12](12.md) |  [*HM25*] | hm-medium | solved | 10m59s |
+| [11](11.md) |  [*20*] | medium | solved | 46m42s |
+| [12](12.md) |  [*M32*] | math-hard | solved | 10m59s |
+| 13 |  [*M28*] | math-hard | - | - |
+| 14 |  [*M43*] | math-project | - | - |
+| [15](15.md) |  [*M29*] | math-hard | verified | 44m12s |
+| [16](16.md) |  [*M08*] | math-simple | verified | 36m57s |
+| [17](17.md) |  [*HM25*] | hm-medium | solved | 2h14m |
+| [18](18.md) |  [*HM30*] | hm-hard | verified | 1h24m |
+| [19](19.md) |  [*M40*] | math-project | verified | 1h01m |
+| [20](20.md) | &#9654; [*M25*] | math-medium | verified | 12m53s |
+| [21](21.md) |  [*HM91*] | hm-research | solved | 2h10m |
+| [22](22.md) |  [*M39*] | math-project | verified | 1h12m |
+| 23 | &#9654; [*HM30*] | hm-hard | - | - |
+| 24 |  [*M28*] | math-hard | - | - |
+| [25](25.md) |  [*M30*] | math-hard | verified | 52m41s |
+| [26](26.md) |  [*M21*] | math-medium | verified | 14m10s |
+| 27 |  [*M24*] | math-medium | - | - |
+| 28 |  [*M43*] | math-project | - | - |
+| 29 |  [*HM25*] | hm-medium | - | - |
+| 30 |  [*M41*] | math-project | - | - |
+| 31 |  [*HM30*] | hm-hard | - | - |
+| 32 |  [*HM21*] | hm-medium | - | - |
+| 33 |  [*M25*] | math-medium | - | - |
+| 34 |  [*25*] | medium | - | - |
+| 35 | &#9654; [*30*] | hard | - | - |
+| 36 |  [*HM27*] | hm-hard | - | - |
+| 37 |  [*M20*] | math-medium | - | - |
+| 38 | &#9654; [*M30*] | math-hard | - | - |
+| 39 |  [*M38*] | math-project | - | - |
+| 40 |  [*HM43*] | hm-project | - | - |
+| 41 |  [*25*] | medium | - | - |
+| 42 | &#9654; [*30*] | hard | - | - |
+| 43 |  [*35*] | hard | - | - |
+| 44 |  [*M37*] | math-project | - | - |
