@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.1: Sorting by Insertion"
-description: "Section 5.2.1 exercises: 16/37 solved."
+description: "Section 5.2.1 exercises: 18/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.1. Sorting by Insertion
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.1: 16/37 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.1: 18/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -36,9 +36,9 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.1: 16/37 solved.
 | 16 |  [*M2*] | math-simple | - | - |
 | [17](17.md) |  [*M21*] | math-medium | solved | 9m01s |
 | [18](18.md) |  [*HM2*] | hm-simple | solved | 7m44s |
-| 19 | &#9654; [*M25*] | math-medium | - | - |
+| [19](19.md) | &#9654; [*M25*] | math-medium | solved | 20m21s |
 | 20 |  [*M22*] | math-medium | - | - |
-| 21 |  [*M25*] | math-medium | - | - |
+| [21](21.md) |  [*M25*] | math-medium | solved | 1m51s |
 | 22 |  [*M30*] | math-hard | - | - |
 | 23 | &#9654; [*M22*] | math-medium | - | - |
 | 24 |  [*M43*] | math-project | - | - |
