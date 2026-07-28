@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2: Internal Sorting"
-description: "Section 5.2 exercises: 6/13 solved."
+description: "Section 5.2 exercises: 7/13 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2. Internal Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.2: 6/13 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2: 7/13 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,7 +24,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.2: 6/13 solved.
 | [4](04.md) |  [*16*] | medium | solved | 10m07s |
 | [5](05.md) |  [*22*] | medium | solved | 7m43s |
 | [6](06.md) |  [*18*] | medium | verified | 8m10s |
-| 7 |  [*13*] | simple | - | - |
+| [7](07.md) |  [*13*] | simple | verified | 5m28s |
 | 8 |  [*18*] | medium | - | - |
 | 9 |  [*29*] | hard | - | - |
 | 10 |  [*25*] | medium | - | - |
