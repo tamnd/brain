@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.3: Sorting by Selection"
-description: "Section 5.2.3 exercises: 27/38 solved."
+description: "Section 5.2.3 exercises: 29/38 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.3. Sorting by Selection
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.3: 27/38 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.3: 29/38 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -48,9 +48,9 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.3: 27/38 solved.
 | [28](28.md) |  [*35*] | hard | solved | 13m24s |
 | [29](29.md) |  [*26*] | hard | solved | 1m33s |
 | 30 | &#9654; [*HM25*] | hm-medium | - | - |
-| 31 |  [*37*] | project | - | - |
+| [31](31.md) |  [*37*] | project | solved | 8m57s |
 | 32 |  [*M33*] | math-hard | - | - |
-| 33 |  [*21*] | medium | - | - |
+| [33](33.md) |  [*21*] | medium | solved | 54s |
 | 34 |  [*M41*] | math-project | - | - |
 | 35 |  [*26*] | hard | - | - |
 | 36 |  [*18*] | medium | - | - |
