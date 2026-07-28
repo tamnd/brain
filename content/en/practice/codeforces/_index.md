@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3016 contests, 22091 problems, 12108 verified."
+description: "Codeforces problem solutions with full editorials. 3016 contests, 22093 problems, 12111 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3016 contests, 22091 problems, 12108 verified.**
+**3016 contests, 22093 problems, 12111 verified.**
 
-## Unknown — 775 contests, 6509 problems, 3810 verified
+## Unknown — 775 contests, 6511 problems, 3813 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 4 | 1/4 | ICPC/IOI | - |
 | [102793](102793/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Вторая командная олимпиада](https://codeforces.com/contest/102793) | 10 | 5/10 | Special | - |
 | [102798](102798/) | [2020 China Collegiate Programming Contest, Weihai Site](https://codeforces.com/contest/102798) | 12 | 9/12 | Special | - |
-| [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 12 | 7/12 | Special | - |
+| [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 14 | 10/14 | Special | - |
 | [102802](102802/) | [mBIT Varsity November 2019](https://codeforces.com/contest/102802) | 12 | 1/12 | Special | - |
 | [102806](102806/) | [Интернет-олимпиады, Сезон 2017-2018, Четвёртая личная олимпиада](https://codeforces.com/contest/102806) | 4 | 4/4 | Special | - |
 | [102811](102811/) | [Школьный этап всероссийской олимпиады, 9-11 классы, Москва  (версия CF)](https://codeforces.com/contest/102811) | 5 | 5/5 | Special | - |
