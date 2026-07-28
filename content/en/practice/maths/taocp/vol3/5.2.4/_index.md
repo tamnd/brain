@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.4: Sorting by Merging"
-description: "Section 5.2.4 exercises: 22/23 solved."
+description: "Section 5.2.4 exercises: 23/23 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.4. Sorting by Merging
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.4: 22/23 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.4: 23/23 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -36,7 +36,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.4: 22/23 solved.
 | [16](16.md) |  [*20*] | medium | solved | 4m56s |
 | [17](17.md) |  [*20*] | medium | solved | 2m47s |
 | [18](18.md) |  [*40*] | project | solved | 14m27s |
-| 19 |  [*26*] | hard | - | - |
+| [19](19.md) |  [*26*] | hard | solved | 23m50s |
 | [20](20.md) |  [*47*] | research | solved | 7m42s |
 | [21](21.md) |  [*22*] | medium | solved | 4m06s |
 | [22](22.md) |  [*28*] | hard | solved | 10m27s |
