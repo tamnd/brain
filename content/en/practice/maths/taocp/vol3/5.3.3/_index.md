@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.3: Minimum-Comparison Selection"
-description: "Section 5.3.3 exercises: 19/27 solved."
+description: "Section 5.3.3 exercises: 23/27 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.3.3. Minimum-Comparison Selection
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.3: 19/27 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.3: 23/27 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,10 +37,10 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.3: 19/27 solved.
 | [17](17.md) |  [*20*] | medium | solved | 15m12s |
 | [18](18.md) |  [*M20*] | math-medium | solved | 6m20s |
 | [19](19.md) |  [*M42*] | math-project | solved | 4m38s |
-| 20 |  [*M42*] | math-project | - | - |
-| 21 |  [*32*] | hard | - | - |
-| 22 |  [*24*] | medium | - | - |
-| 23 |  [*M42*] | math-project | - | - |
+| [20](20.md) |  [*M42*] | math-project | solved | 20m17s |
+| [21](21.md) |  [*32*] | hard | solved | 17m31s |
+| [22](22.md) |  [*24*] | medium | solved | 18m53s |
+| [23](23.md) |  [*M42*] | math-project | solved | 12m31s |
 | 24 |  [*HM40*] | hm-project | - | - |
 | 25 | &#9654; [*M35*] | math-hard | - | - |
 | 26 |  [*M32*] | math-hard | - | - |
