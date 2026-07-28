@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.3: Sorting by Selection"
-description: "Section 5.2.3 exercises: 17/38 solved."
+description: "Section 5.2.3 exercises: 19/38 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.3. Sorting by Selection
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.3: 17/38 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.3: 19/38 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,8 +35,8 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.3: 17/38 solved.
 | [15](15.md) | &#9654; [*M22*] | math-medium | verified | 8m12s |
 | [16](16.md) |  [*20*] | medium | solved | 5m10s |
 | [17](17.md) |  [*20*] | medium | solved | 2m21s |
-| 18 | &#9654; [*21*] | medium | - | - |
-| 19 |  [*21*] | medium | - | - |
+| [18](18.md) | &#9654; [*21*] | medium | solved | 5m19s |
+| [19](19.md) |  [*21*] | medium | solved | 10m17s |
 | 20 |  [*M20*] | math-medium | - | - |
 | 21 |  [*M24*] | math-medium | - | - |
 | 22 | &#9654; [*20*] | medium | - | - |
