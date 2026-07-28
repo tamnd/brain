@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.4: Networks for Sorting"
-description: "Section 5.3.4 exercises: 6/6 solved."
+description: "Section 5.3.4 exercises: 7/68 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.4"
@@ -14,13 +14,75 @@ draft: false
 
 # Section 5.3.4. Networks for Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.4: 6/6 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.4: 7/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 3m26s |
-| [2](02.md) |  [**] |  | solved | 2m16s |
-| [3](03.md) |  [**] |  | solved | 2m14s |
-| [4](04.md) |  [**] |  | solved | 3m28s |
-| [5](05.md) |  [**] |  | verified | 1m05s |
-| [6](06.md) |  [**] |  | solved | 3m39s |
+| [1](01.md) |  [*30*] | hard | verified | 3m26s |
+| [2](02.md) |  [*22*] | medium | solved | 2m16s |
+| [3](03.md) |  [*M20*] | math-medium | solved | 2m14s |
+| [4](04.md) | &#9654; [*M23*] | math-medium | solved | 3m28s |
+| [5](05.md) |  [*M16*] | math-medium | verified | 1m05s |
+| [6](06.md) |  [*28*] | hard | solved | 3m39s |
+| [7](07.md) |  [*25*] | medium | solved | 8m55s |
+| 8 |  [*M20*] | math-medium | - | - |
+| 9 |  [*M25*] | math-medium | - | - |
+| 10 |  [*M22*] | math-medium | - | - |
+| 11 |  [*M23*] | math-medium | - | - |
+| 12 |  [*M20*] | math-medium | - | - |
+| 13 | &#9654; [*24*] | medium | - | - |
+| 14 | &#9654; [*M27*] | math-hard | - | - |
+| 15 |  [*20*] | medium | - | - |
+| 16 |  [*M22*] | math-medium | - | - |
+| 17 |  [*M25*] | math-medium | - | - |
+| 18 | &#9654; [*M20*] | math-medium | - | - |
+| 19 |  [*M22*] | math-medium | - | - |
+| 20 |  [*28*] | hard | - | - |
+| 21 |  [*21*] | medium | - | - |
+| 22 |  [*M17*] | math-medium | - | - |
+| 23 |  [*M18*] | math-medium | - | - |
+| 24 | &#9654; [*M21*] | math-medium | - | - |
+| 25 |  [*M30*] | math-hard | - | - |
+| 26 |  [*M24*] | math-medium | - | - |
+| 27 | &#9654; [*M20*] | math-medium | - | - |
+| 28 | &#9654; [*M20*] | math-medium | - | - |
+| 29 |  [*M20*] | math-medium | - | - |
+| 30 |  [*HM22*] | hm-medium | - | - |
+| 31 |  [*M24*] | math-medium | - | - |
+| 32 |  [*M28*] | math-hard | - | - |
+| 33 | &#9654; [*M22*] | math-medium | - | - |
+| 34 |  [*23*] | medium | - | - |
+| 35 |  [*20*] | medium | - | - |
+| 36 | &#9654; [*22*] | medium | - | - |
+| 37 |  [*M22*] | math-medium | - | - |
+| 38 | &#9654; [*43*] | project | - | - |
+| 39 |  [*25*] | medium | - | - |
+| 40 |  [*HM44*] | hm-project | - | - |
+| 41 |  [*M47*] | math-research | - | - |
+| 42 | &#9654; [*25*] | medium | - | - |
+| 43 |  [*48*] | research | - | - |
+| 44 |  [*50*] | research | - | - |
+| 45 |  [*M20*] | math-medium | - | - |
+| 46 | &#9654; [*30*] | hard | - | - |
+| 47 |  [*47*] | research | - | - |
+| 48 | &#9654; [*26*] | hard | - | - |
+| 49 |  [*M23*] | math-medium | - | - |
+| 50 |  [*HM46*] | hm-research | - | - |
+| 51 | &#9654; [*M25*] | math-medium | - | - |
+| 52 | &#9654; [*32*] | hard | - | - |
+| 53 |  [*30*] | hard | - | - |
+| 54 |  [*42*] | project | - | - |
+| 55 |  [*23*] | medium | - | - |
+| 56 | &#9654; [*25*] | medium | - | - |
+| 57 |  [*M35*] | math-hard | - | - |
+| 58 |  [*21*] | medium | - | - |
+| 59 | &#9654; [*30*] | hard | - | - |
+| 60 |  [*26*] | hard | - | - |
+| 61 |  [*34*] | hard | - | - |
+| 62 |  [*49*] | research | - | - |
+| 63 |  [*23*] | medium | - | - |
+| 64 |  [*24*] | medium | - | - |
+| 65 |  [*M38*] | math-project | - | - |
+| 66 |  [*M29*] | math-hard | - | - |
+| 67 |  [*M48*] | math-research | - | - |
+| 68 |  [*25*] | medium | - | - |
