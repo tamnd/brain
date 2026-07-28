@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.3: Runs"
-description: "Section 5.1.3 exercises: 25/29 solved."
+description: "Section 5.1.3 exercises: 26/29 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.1.3. Runs
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.3: 25/29 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.3: 26/29 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -33,7 +33,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.3: 25/29 solved.
 | [13](13.md) |  [*05*] | simple | solved | 1m48s |
 | [14](14.md) |  [*M18*] | math-medium | solved | 4m24s |
 | [15](15.md) | &#9654; [*M21*] | math-medium | verified | 10m41s |
-| 16 |  [*M30*] | math-hard | - | - |
+| [16](16.md) |  [*M30*] | math-hard | solved | 18m |
 | [17](17.md) |  [*M25*] | math-medium | verified | 17m |
 | [18](18.md) |  [*M28*] | math-hard | verified | 38m47s |
 | [19](19.md) | &#9654; [*M26*] | math-hard | verified | 27m39s |
