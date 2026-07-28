@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.5: Sorting by Distribution"
-description: "Section 5.2.5 exercises: 14/18 solved."
+description: "Section 5.2.5 exercises: 15/18 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.5. Sorting by Distribution
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.5: 14/18 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.5: 15/18 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,4 +35,4 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.5: 14/18 solved.
 | 15 |  [*22*] | medium | - | - |
 | 16 | &#9654; [*25*] | medium | - | - |
 | [17](17.md) |  [*15*] | simple | solved | 1m41s |
-| 18 |  [*HM26*] | hm-hard | - | - |
+| [18](18.md) |  [*HM26*] | hm-hard | solved | 7m35s |
