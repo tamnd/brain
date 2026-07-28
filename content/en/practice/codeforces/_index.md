@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3018 contests, 22113 problems, 12123 verified."
+description: "Codeforces problem solutions with full editorials. 3019 contests, 22123 problems, 12127 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3018 contests, 22113 problems, 12123 verified.**
+**3019 contests, 22123 problems, 12127 verified.**
 
 ## Unknown — 776 contests, 6521 problems, 3819 verified
 
@@ -1574,7 +1574,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 189 contests, 1104 problems, 540 verified
+## 2020 — 190 contests, 1114 problems, 544 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1737,6 +1737,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102769](102769/) | [2020 China Collegiate Programming Contest Qinhuangdao Site](https://codeforces.com/contest/102769) | 10 | 4/10 | Special | - |
 | [102783](102783/) | [UTPC Contest 10-23-20 Div. 2](https://codeforces.com/contest/102783) | 8 | 6/8 | Div. 2 | - |
 | [102784](102784/) | [UTPC Contest 10-23-20 Div. 1](https://codeforces.com/contest/102784) | 9 | 7/9 | Div. 1 | - |
 | [102787](102787/) | [Algorithms Thread Treaps Contest](https://codeforces.com/contest/102787) | 7 | 6/7 | Special | - |

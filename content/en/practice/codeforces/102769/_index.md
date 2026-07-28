@@ -1,27 +1,28 @@
 ---
 title: "2020 China Collegiate Programming Contest Qinhuangdao Site"
-description: "9 problems from 2020 China Collegiate Programming Contest Qinhuangdao Site (contest 102769), difficulty -. 4/9 solutions verified against sample I/O."
+description: "10 problems from 2020 China Collegiate Programming Contest Qinhuangdao Site (contest 102769), difficulty -. 4/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102769
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 4
-total_solve_s: 572
+total_solve_s: 636
 contest_year: 2020
-date: "2026-07-28T23:26:50+07:00"
+date: "2026-07-28T23:27:55+07:00"
 weight: 102769
 draft: false
 ---
 
 # [2020 China Collegiate Programming Contest Qinhuangdao Site](https://codeforces.com/contest/102769)
 
-Special | 9 problems | 4/9 verified | Difficulty - | 9m 32s
+Special | 10 problems | 4/10 verified | Difficulty - | 10m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [A Greeting from Qinhuangdao](https://codeforces.com/problemset/problem/102769/A) |  |  |  | 55s |  |
+| [B](B/) | [Bounding Wall](https://codeforces.com/problemset/problem/102769/B) |  |  |  | 1m 4s |  |
 | [E](E/) | [Exam Results](https://codeforces.com/problemset/problem/102769/E) |  |  |  | 42s |  |
 | [F](F/) | [Friendly Group](https://codeforces.com/problemset/problem/102769/F) |  |  |  | 56s | ✓ |
 | [G](G/) | [Good Number](https://codeforces.com/problemset/problem/102769/G) |  |  |  | 1m 9s | ✓ |
