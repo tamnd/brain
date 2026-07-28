@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 781 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 783 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 781 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 783 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -25,7 +25,7 @@ Exercise solutions for [TAOCP](../) Volume 3. 781 solved, 302 verified, 943 tota
 | [5.2.3](5.2.3/) | Sorting by Selection | 37 | 13 | 38 |
 | [5.2.4](5.2.4/) | Sorting by Merging | 23 | 5 | 23 |
 | [5.2.5](5.2.5/) | Sorting by Distribution | 18 | 6 | 18 |
-| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 27 | 5 | 36 |
+| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 29 | 5 | 36 |
 | [5.3.2](5.3.2/) | Minimum-Comparison Merging | 20 | 10 | 21 |
 | [5.3.3](5.3.3/) | Minimum-Comparison Selection | 16 | 4 | 27 |
 | [5.3.4](5.3.4/) | Networks for Sorting | 6 | 2 | 68 |
