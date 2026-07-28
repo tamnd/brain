@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.4: Networks for Sorting"
-description: "Section 5.3.4 exercises: 12/68 solved."
+description: "Section 5.3.4 exercises: 15/68 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.3.4. Networks for Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.4: 12/68 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.4: 15/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,11 +30,11 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.4: 12/68 solved.
 | [10](10.md) |  [*M22*] | math-medium | solved | 15m |
 | [11](11.md) |  [*M23*] | math-medium | solved | 6m25s |
 | [12](12.md) |  [*M20*] | math-medium | solved | 1m45s |
-| 13 | &#9654; [*24*] | medium | - | - |
+| [13](13.md) | &#9654; [*24*] | medium | solved | 6m07s |
 | 14 | &#9654; [*M27*] | math-hard | - | - |
-| 15 |  [*20*] | medium | - | - |
+| [15](15.md) |  [*20*] | medium | solved | 12m15s |
 | 16 |  [*M22*] | math-medium | - | - |
-| 17 |  [*M25*] | math-medium | - | - |
+| [17](17.md) |  [*M25*] | math-medium | solved | 3m32s |
 | 18 | &#9654; [*M20*] | math-medium | - | - |
 | 19 |  [*M22*] | math-medium | - | - |
 | 20 |  [*28*] | hard | - | - |
