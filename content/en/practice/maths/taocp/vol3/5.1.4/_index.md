@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.1.4: Tableaux and Involutions"
-description: "Section 5.1.4 exercises: 38/44 solved."
+description: "Section 5.1.4 exercises: 40/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.1.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.1.4. Tableaux and Involutions
 
-Exercises from [TAOCP Volume 3](../) Section 5.1.4: 38/44 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.1.4: 40/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -41,10 +41,10 @@ Exercises from [TAOCP Volume 3](../) Section 5.1.4: 38/44 solved.
 | [21](21.md) |  [*HM91*] | hm-research | solved | 2h10m |
 | [22](22.md) |  [*M39*] | math-project | verified | 1h12m |
 | [23](23.md) | &#9654; [*HM30*] | hm-hard | solved | 9m15s |
-| 24 |  [*M28*] | math-hard | - | - |
+| [24](24.md) |  [*M28*] | math-hard | solved | 28m07s |
 | [25](25.md) |  [*M30*] | math-hard | verified | 52m41s |
 | [26](26.md) |  [*M21*] | math-medium | verified | 14m10s |
-| 27 |  [*M24*] | math-medium | - | - |
+| [27](27.md) |  [*M24*] | math-medium | solved | 28m46s |
 | [28](28.md) |  [*M43*] | math-project | solved | 9m32s |
 | [29](29.md) |  [*HM25*] | hm-medium | verified | 1h15m |
 | [30](30.md) |  [*M41*] | math-project | verified | 1h23m |
