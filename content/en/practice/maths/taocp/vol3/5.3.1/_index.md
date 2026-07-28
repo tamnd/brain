@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.1: Minimum-Comparison Sorting"
-description: "Section 5.3.1 exercises: 11/36 solved."
+description: "Section 5.3.1 exercises: 14/36 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.3.1. Minimum-Comparison Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.1: 11/36 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.1: 14/36 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,11 +28,11 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.1: 11/36 solved.
 | [8](08.md) |  [*26*] | hard | solved | 4m19s |
 | [9](09.md) |  [*M20*] | math-medium | solved | 27m14s |
 | [10](10.md) | &#9654; [*M25*] | math-medium | solved | 19m50s |
-| 11 |  [*HM22*] | hm-medium | - | - |
+| [11](11.md) |  [*HM22*] | hm-medium | solved | 25m02s |
 | [12](12.md) | &#9654; [*M25*] | math-medium | solved | 3m41s |
-| 13 |  [*M28*] | math-hard | - | - |
+| [13](13.md) |  [*M28*] | math-hard | solved | 15m49s |
 | 14 |  [*M24*] | math-medium | - | - |
-| 15 |  [*M21*] | math-medium | - | - |
+| [15](15.md) |  [*M21*] | math-medium | solved | 13m12s |
 | 16 |  [*HM26*] | hm-hard | - | - |
 | 17 |  [*M20*] | math-medium | - | - |
 | 18 |  [*20*] | medium | - | - |
