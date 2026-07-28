@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3019 contests, 22123 problems, 12127 verified."
+description: "Codeforces problem solutions with full editorials. 3020 contests, 22130 problems, 12130 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3019 contests, 22123 problems, 12127 verified.**
+**3020 contests, 22130 problems, 12130 verified.**
 
-## Unknown — 776 contests, 6521 problems, 3819 verified
+## Unknown — 777 contests, 6528 problems, 3822 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102767](102767/) | [Codedigger Training Contest -Number Theory](https://codeforces.com/contest/102767) | 7 | 3/7 | Special | - |
 | [102770](102770/) | [The 17th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102770) | 10 | 6/10 | Special | - |
 | [102772](102772/) | [Цикл Интернет-олимпиад для школьников, Сезон 2020-21, Первая командная олимпиада](https://codeforces.com/contest/102772) | 10 | 1/10 | Special | - |
 | [102775](102775/) | [ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102775) | 12 | 12/12 | ICPC/IOI | - |
