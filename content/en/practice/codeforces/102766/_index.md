@@ -1,25 +1,30 @@
 ---
 title: "Codedigger Training Contest -String"
-description: "2 problems from Codedigger Training Contest -String (contest 102766), difficulty -. 2/2 solutions verified against sample I/O."
+description: "7 problems from Codedigger Training Contest -String (contest 102766), difficulty -. 5/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102766
 contest_type: "Special"
 rating_range: "-"
-n_problems: 2
-n_verified: 2
-total_solve_s: 140
+n_problems: 7
+n_verified: 5
+total_solve_s: 638
 contest_year: 2020
-date: "2026-07-28T23:38:06+07:00"
+date: "2026-07-28T23:46:31+07:00"
 weight: 102766
 draft: false
 ---
 
 # [Codedigger Training Contest -String](https://codeforces.com/contest/102766)
 
-Special | 2 problems | 2/2 verified | Difficulty - | 2m 20s
+Special | 7 problems | 5/7 verified | Difficulty - | 10m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Singhal and Swap](https://codeforces.com/problemset/problem/102766/A) |  |  |  | 1m 4s | ✓ |
 | [C](C/) | [Regular Bracket Sequence](https://codeforces.com/problemset/problem/102766/C) |  |  |  | 1m 24s | ✓ |
 | [D](D/) | [Regular Bracket Sequence Again?](https://codeforces.com/problemset/problem/102766/D) |  |  |  | 56s | ✓ |
+| [E](E/) | [Singhal and Missing Number](https://codeforces.com/problemset/problem/102766/E) |  |  |  | 1m 14s | ✓ |
+| [F](F/) | [Singhal and Broken Keyboard (easy version)](https://codeforces.com/problemset/problem/102766/F) |  |  |  | 1m 15s | ✓ |
+| [G](G/) | [Singhal and Broken Keyboard (hard version)](https://codeforces.com/problemset/problem/102766/G) |  |  |  | 3m 27s |  |
+| [H](H/) | [Singhal and String](https://codeforces.com/problemset/problem/102766/H) |  |  |  | 1m 18s |  |
