@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.1: Minimum-Comparison Sorting"
-description: "Section 5.3.1 exercises: 32/36 solved."
+description: "Section 5.3.1 exercises: 34/36 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.3.1. Minimum-Comparison Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.1: 32/36 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.1: 34/36 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -51,6 +51,6 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.1: 32/36 solved.
 | [31](31.md) |  [*M38*] | math-project | solved | 11m50s |
 | [32](32.md) |  [*M42*] | math-project | solved | 4m51s |
 | [33](33.md) |  [*M30*] | math-hard | solved | 10m19s |
-| 34 |  [*M50*] | math-research | - | - |
-| 35 |  [*29*] | hard | - | - |
+| [34](34.md) |  [*M50*] | math-research | solved | 20m40s |
+| [35](35.md) |  [*29*] | hard | solved | 15m31s |
 | [36](36.md) |  [*M50*] | math-research | solved | 1m34s |
