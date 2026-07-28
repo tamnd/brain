@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.4: Sorting by Merging"
-description: "Section 5.2.4 exercises: 11/23 solved."
+description: "Section 5.2.4 exercises: 15/23 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.4. Sorting by Merging
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.4: 11/23 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.4: 15/23 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,12 +29,12 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.4: 11/23 solved.
 | [9](09.md) |  [*24*] | medium | solved | 12m38s |
 | [10](10.md) |  [*25*] | medium | solved | 4m18s |
 | [11](11.md) |  [*21*] | medium | solved | 2m14s |
-| 12 | &#9654; [*22*] | medium | - | - |
+| [12](12.md) | &#9654; [*22*] | medium | solved | 8m13s |
 | 13 | &#9654; [*M32*] | math-hard | - | - |
-| 14 |  [*M24*] | math-medium | - | - |
-| 15 |  [*20*] | medium | - | - |
+| [14](14.md) |  [*M24*] | math-medium | solved | 7m45s |
+| [15](15.md) |  [*20*] | medium | solved | 2m51s |
 | 16 |  [*20*] | medium | - | - |
-| 17 |  [*20*] | medium | - | - |
+| [17](17.md) |  [*20*] | medium | solved | 2m47s |
 | 18 |  [*40*] | project | - | - |
 | 19 |  [*26*] | hard | - | - |
 | 20 |  [*47*] | research | - | - |
