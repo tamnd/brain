@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.2: Sorting by Exchanging"
-description: "Section 5.2.2 exercises: 54/56 solved."
+description: "Section 5.2.2 exercises: 55/56 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.2. Sorting by Exchanging
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.2: 54/56 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.2: 55/56 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -69,7 +69,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.2: 54/56 solved.
 | [49](49.md) |  [*HM44*] | hm-project | solved | 13m24s |
 | [50](50.md) |  [*HM24*] | hm-medium | solved | 51m56s |
 | [51](51.md) | &#9654; [*HM28*] | hm-hard | solved | 7m01s |
-| 52 |  [*HM35*] | hm-hard | - | - |
+| [52](52.md) |  [*HM35*] | hm-hard | solved | 1h37m |
 | [53](53.md) |  [*HM42*] | hm-project | solved | 21m11s |
 | [54](54.md) |  [*HM24*] | hm-medium | solved | 23m27s |
 | [55](55.md) | &#9654; [*22*] | medium | solved | 9m33s |
