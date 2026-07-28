@@ -1,7 +1,7 @@
 ---
 title: "CF 102800I - World Tree"
-description: "I can absolutely write that editorial, but I don't have enough information to produce a correct solution. The statement you've pasted is incomplete and appears to be corrupted."
-date: "2026-07-27T17:41:26+07:00"
+description: "I can't write a correct editorial or provide a correct solution for this problem from the statement alone because the statement is incomplete and internally corrupted."
+date: "2026-07-28T22:48:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102800
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "The 14th Jilin Provincial Collegiate Programming Contest"
 rating: 0
 weight: 102800
-solve_time_s: 48
+solve_time_s: 37
 verified: false
 draft: false
 ---
@@ -18,19 +18,28 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 48s  
+**Solve time:** 37s  
 **Verified:** no  
 
 ## Solution
-I can absolutely write that editorial, but I don't have enough information to produce a correct solution.
+I can't write a correct editorial or provide a correct solution for this problem from the statement alone because the statement is incomplete and internally corrupted.
 
-The statement you've pasted is incomplete and appears to be corrupted. Most importantly, the rule describing PP's movement is ambiguous:
+The critical ambiguity is the movement rule:
 
 > "PP only considers the directions that he is able to get more energy. That is to say, PP will only return to the previous energy point when there is no more energy points in other directions."
 
-This does not formally specify the traversal order. It sounds similar to a depth first search, but it does not define how PP chooses between multiple unvisited neighbors, and the sample in the prompt is also corrupted.
+This appears to describe a DFS traversal order, but it never defines what "more energy" means when choosing among multiple children. Several different interpretations are possible, for example:
 
-The sample input appears as:
+- always perform a standard DFS, with arbitrary child order,
+- choose the child with maximum immediate reward,
+- choose the subtree with maximum obtainable reward,
+- choose children in decreasing `b`,
+- choose children in decreasing `a`,
+- some other ordering.
+
+Those interpretations lead to different optimization problems and different algorithms.
+
+The sample included in the prompt is also corrupted. It appears as:
 
 ```
 1 2 3
@@ -39,26 +48,25 @@ The sample input appears as:
 1 3
 ```
 
-which is missing `n` and cannot be parsed unambiguously, while the sample output is omitted entirely.
+with no visible `n`, and the sample output is missing entirely, so it cannot be used to infer the intended traversal rule.
 
-Without the missing parts, I cannot derive the intended algorithm, prove its correctness, or write an accepted implementation. Any editorial I produced would necessarily be speculation.
+Because of that missing information, any editorial or implementation I wrote would necessarily invent part of the problem and could easily be incorrect.
 
-If you provide either:
+If you can provide any of the following, I can produce the complete editorial in the exact format you requested:
 
-1. the complete Codeforces statement (or PDF),
-2. the original sample input and output,
-3. or simply the Codeforces link to 102800I,
+1. the original Codeforces PDF or statement,
+2. the Codeforces problem link,
+3. the missing sample input/output,
+4. or simply the sentence describing exactly how PP chooses among multiple available neighbors.
 
-then I can produce the full editorial in exactly the requested format, including:
+Once the full statement is available, I'll provide a complete editorial including:
 
 - Problem Understanding
 - Approaches
 - Algorithm Walkthrough
-- Correctness proof
-- Complete Python solution
+- Proof of correctness
+- Full Python 3 solution
 - Worked examples
 - Complexity analysis
 - Assert-based test cases
-- Edge case discussion
-
-using the writing style and formatting you requested.
+- Detailed edge case discussion
