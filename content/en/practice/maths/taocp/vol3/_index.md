@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 863 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 867 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 863 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 867 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -28,12 +28,12 @@ Exercise solutions for [TAOCP](../) Volume 3. 863 solved, 302 verified, 943 tota
 | [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 34 | 5 | 36 |
 | [5.3.2](5.3.2/) | Minimum-Comparison Merging | 21 | 10 | 21 |
 | [5.3.3](5.3.3/) | Minimum-Comparison Selection | 27 | 4 | 27 |
-| [5.3.4](5.3.4/) | Networks for Sorting | 65 | 2 | 68 |
+| [5.3.4](5.3.4/) | Networks for Sorting | 68 | 2 | 68 |
 | [5.4](5.4/) | External Sorting | 4 | 0 | 4 |
 | [5.4.1](5.4.1/) | Multiway Merging and Replacement Selection | 27 | 11 | 28 |
 | [5.4.2](5.4.2/) | The Polyphase Merge | 30 | 6 | 31 |
 | [5.4.3](5.4.3/) | The Cascade Merge | 11 | 3 | 11 |
-| 5.4.4 |  | — | — | 22 |
+| [5.4.4](5.4.4/) | Reading Tape Backwards | 1 | 0 | 22 |
 | [5.4.5](5.4.5/) | The Oscillating Sort | 2 | 0 | 2 |
 | [5.4.6](5.4.6/) | Practical Considerations for Tape Merging | 14 | 3 | 14 |
 | [5.4.7](5.4.7/) | External Radix Sorting | 6 | 1 | 7 |
