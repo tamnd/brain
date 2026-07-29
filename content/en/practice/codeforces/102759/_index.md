@@ -8,25 +8,25 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 4
-total_solve_s: 997
-date: "2026-07-29T00:21:53+07:00"
+total_solve_s: 650
+date: "2026-07-29T07:46:30+07:00"
 weight: 102759
 draft: false
 ---
 
 # [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759)
 
-Special | 10 problems | 4/10 verified | Difficulty - | 16m 37s
+Special | 10 problems | 4/10 verified | Difficulty - | 10m 50s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [C](C/) | [Economic One-way Roads](https://codeforces.com/problemset/problem/102759/C) |  |  |  | 1m 15s | ✓ |
-| [D](D/) | [Just Meeting](https://codeforces.com/problemset/problem/102759/D) |  |  |  | 5m 26s |  |
-| [E](E/) | [Chemistry](https://codeforces.com/problemset/problem/102759/E) |  |  |  | 55s |  |
-| [F](F/) | [Interval Graph](https://codeforces.com/problemset/problem/102759/F) |  |  |  | 59s |  |
+| [D](D/) | [Just Meeting](https://codeforces.com/problemset/problem/102759/D) |  |  |  | 35s |  |
+| [E](E/) | [Chemistry](https://codeforces.com/problemset/problem/102759/E) |  |  |  | 35s |  |
+| [F](F/) | [Interval Graph](https://codeforces.com/problemset/problem/102759/F) |  |  |  | 55s |  |
 | [G](G/) | [LCS 8](https://codeforces.com/problemset/problem/102759/G) |  |  |  | 1m 1s | ✓ |
-| [H](H/) | [Alchemy](https://codeforces.com/problemset/problem/102759/H) |  |  |  | 1m 57s |  |
+| [H](H/) | [Alchemy](https://codeforces.com/problemset/problem/102759/H) |  |  |  | 38s |  |
 | [I](I/) | [Query On A Tree 17](https://codeforces.com/problemset/problem/102759/I) |  |  |  | 1m 28s | ✓ |
-| [J](J/) | [Remote Control](https://codeforces.com/problemset/problem/102759/J) |  |  |  | 1m 33s |  |
+| [J](J/) | [Remote Control](https://codeforces.com/problemset/problem/102759/J) |  |  |  | 2m 20s |  |
 | [K](K/) | [Sewing Graph](https://codeforces.com/problemset/problem/102759/K) |  |  |  | 1m 5s | ✓ |
 | [L](L/) | [Steel Slicing 2](https://codeforces.com/problemset/problem/102759/L) |  |  |  | 58s |  |
