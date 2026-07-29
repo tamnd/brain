@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.9: Disks and Drums"
-description: "Section 5.4.9 exercises: 30/31 solved."
+description: "Section 5.4.9 exercises: 31/31 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.9"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.9. Disks and Drums
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.9: 30/31 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.9: 31/31 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -46,6 +46,6 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.9: 30/31 solved.
 | [26](26.md) |  [*26*] | hard | verified | 1m29s |
 | [27](27.md) |  [*HM27*] | hm-hard | solved | 4m52s |
 | [28](28.md) |  [*HM47*] | hm-research | solved | 4m17s |
-| 29 | &#9654; [*M30*] | math-hard | - | - |
+| [29](29.md) | &#9654; [*M30*] | math-hard | solved | 25m48s |
 | [30](30.md) |  [*HM30*] | hm-hard | verified | 1m14s |
 | [31](31.md) |  [*HM48*] | hm-research | solved | 4m42s |
