@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 718 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 817 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 718 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 817 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -21,14 +21,14 @@ Exercise solutions for [TAOCP](../) Volume 3. 718 solved, 302 verified, 943 tota
 | [5.1.4](5.1.4/) | Tableaux and Involutions | 43 | 24 | 44 |
 | [5.2](5.2/) | Internal Sorting | 13 | 5 | 13 |
 | [5.2.1](5.2.1/) | Sorting by Insertion | 36 | 8 | 37 |
-| [5.2.2](5.2.2/) | Sorting by Exchanging | 53 | 4 | 56 |
-| [5.2.3](5.2.3/) | Sorting by Selection | 19 | 13 | 38 |
-| [5.2.4](5.2.4/) | Sorting by Merging | 8 | 5 | 23 |
-| [5.2.5](5.2.5/) | Sorting by Distribution | 9 | 6 | 18 |
-| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 8 | 5 | 36 |
-| [5.3.2](5.3.2/) | Minimum-Comparison Merging | 20 | 10 | 21 |
-| [5.3.3](5.3.3/) | Minimum-Comparison Selection | 16 | 4 | 27 |
-| [5.3.4](5.3.4/) | Networks for Sorting | 6 | 2 | 68 |
+| [5.2.2](5.2.2/) | Sorting by Exchanging | 55 | 4 | 56 |
+| [5.2.3](5.2.3/) | Sorting by Selection | 37 | 13 | 38 |
+| [5.2.4](5.2.4/) | Sorting by Merging | 23 | 5 | 23 |
+| [5.2.5](5.2.5/) | Sorting by Distribution | 18 | 6 | 18 |
+| [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 34 | 5 | 36 |
+| [5.3.2](5.3.2/) | Minimum-Comparison Merging | 21 | 10 | 21 |
+| [5.3.3](5.3.3/) | Minimum-Comparison Selection | 27 | 4 | 27 |
+| [5.3.4](5.3.4/) | Networks for Sorting | 23 | 2 | 68 |
 | 5.4 |  | — | — | 4 |
 | [5.4.1](5.4.1/) | Multiway Merging and Replacement Selection | 27 | 11 | 28 |
 | [5.4.2](5.4.2/) | The Polyphase Merge | 30 | 6 | 31 |

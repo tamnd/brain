@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.3: Sorting by Selection"
-description: "Section 5.2.3 exercises: 19/38 solved."
+description: "Section 5.2.3 exercises: 37/38 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.3. Sorting by Selection
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.3: 19/38 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.3: 37/38 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,22 +37,22 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.3: 19/38 solved.
 | [17](17.md) |  [*20*] | medium | solved | 2m21s |
 | [18](18.md) | &#9654; [*21*] | medium | solved | 5m19s |
 | [19](19.md) |  [*21*] | medium | solved | 10m17s |
-| 20 |  [*M20*] | math-medium | - | - |
-| 21 |  [*M24*] | math-medium | - | - |
-| 22 | &#9654; [*20*] | medium | - | - |
-| 23 |  [*M28*] | math-hard | - | - |
-| 24 |  [*M32*] | math-hard | - | - |
-| 25 |  [*M20*] | math-medium | - | - |
+| [20](20.md) |  [*M20*] | math-medium | solved | 11m52s |
+| [21](21.md) |  [*M24*] | math-medium | solved | 25m31s |
+| [22](22.md) | &#9654; [*20*] | medium | solved | 5m54s |
+| [23](23.md) |  [*M28*] | math-hard | solved | 18m29s |
+| [24](24.md) |  [*M32*] | math-hard | solved | 1h15m |
+| [25](25.md) |  [*M20*] | math-medium | solved | 25m10s |
 | 26 |  [*M30*] | math-hard | - | - |
-| 27 |  [*M25*] | math-medium | - | - |
-| 28 |  [*35*] | hard | - | - |
-| 29 |  [*26*] | hard | - | - |
-| 30 | &#9654; [*HM25*] | hm-medium | - | - |
-| 31 |  [*37*] | project | - | - |
-| 32 |  [*M33*] | math-hard | - | - |
-| 33 |  [*21*] | medium | - | - |
-| 34 |  [*M41*] | math-project | - | - |
-| 35 |  [*26*] | hard | - | - |
-| 36 |  [*18*] | medium | - | - |
-| 37 |  [*HM32*] | hm-hard | - | - |
-| 38 |  [*M21*] | math-medium | - | - |
+| [27](27.md) |  [*M25*] | math-medium | solved | 57s |
+| [28](28.md) |  [*35*] | hard | solved | 13m24s |
+| [29](29.md) |  [*26*] | hard | solved | 1m33s |
+| [30](30.md) | &#9654; [*HM25*] | hm-medium | solved | 21m32s |
+| [31](31.md) |  [*37*] | project | solved | 8m57s |
+| [32](32.md) |  [*M33*] | math-hard | solved | 25m47s |
+| [33](33.md) |  [*21*] | medium | solved | 54s |
+| [34](34.md) |  [*M41*] | math-project | solved | 49m33s |
+| [35](35.md) |  [*26*] | hard | solved | 13m47s |
+| [36](36.md) |  [*18*] | medium | solved | 17s |
+| [37](37.md) |  [*HM32*] | hm-hard | solved | 16m56s |
+| [38](38.md) |  [*M21*] | math-medium | solved | 14m22s |
