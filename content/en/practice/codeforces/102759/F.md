@@ -1,7 +1,7 @@
 ---
 title: "CF 102759F - Interval Graph"
-description: "I can't write a correct editorial or provide a correct solution for this problem because the actual problem statement is missing."
-date: "2026-07-29T07:43:28+07:00"
+description: "I don't have enough information to write a correct editorial for this problem. The prompt only provides the problem title, \"Codeforces 102759F - Interval Graph\", but the actual problem statement, input format, output format, and constraints are missing."
+date: "2026-07-30T04:02:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102759
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "XXI Open Cup, Grand Prix of Korea"
 rating: 0
 weight: 102759
-solve_time_s: 55
+solve_time_s: 44
 verified: false
 draft: false
 ---
@@ -18,36 +18,40 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 55s  
+**Solve time:** 44s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial or provide a correct solution for this problem because the actual problem statement is missing.
+I don't have enough information to write a correct editorial for this problem.
 
-The prompt only includes the title, "Codeforces 102759F - Interval Graph", but all of the essential sections are empty:
+The prompt only provides the problem title, "Codeforces 102759F - Interval Graph", but the actual problem statement, input format, output format, and constraints are missing. A solution editorial requires knowing exactly:
 
-- Problem Statement
-- Input
-- Output
+- what the graph represents,
+- what must be computed,
+- the precise input format,
+- the constraints on the input sizes,
+- whether there are multiple test cases,
+- and the expected output.
 
-Without knowing what the graph represents, what the input format is, what needs to be computed, or the constraints, any algorithm, proof, complexity analysis, Python solution, worked examples, or test cases would be fabricated and very likely incorrect.
+Without that information, I would have to invent the algorithm, complexity, implementation, worked examples, and test cases, which would almost certainly be incorrect for the actual Codeforces problem.
 
-Please provide one of the following:
+Please provide either:
 
-1. The full problem statement (preferred).
-2. The Codeforces link to the problem.
-3. The complete Input and Output specification together with the constraints.
+1. the full problem statement (preferred), or
+2. a link to the Codeforces problem, or
+3. the input/output specification and constraints.
 
-Once I have the actual statement, I'll produce the complete editorial in the exact format you requested, including:
+Once I have the actual problem, I'll produce a complete editorial matching your requested format, including:
 
 - Problem Understanding
 - Approaches
-- Algorithm Walkthrough with proof sketch
+- Algorithm Walkthrough
+- Correctness proof
 - Complete Python 3 solution
-- Line-by-line implementation explanation
-- Worked examples with state tables
+- Detailed implementation explanation
+- Worked examples with trace tables
 - Complexity Analysis
 - Assert-based test cases
 - Edge case discussion
 
-All of it will follow your requested writing style and formatting rules.
+following all of your formatting and style requirements.
