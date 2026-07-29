@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 934 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 936 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 934 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 936 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -20,9 +20,9 @@ Exercise solutions for [TAOCP](../) Volume 3. 934 solved, 302 verified, 943 tota
 | [5.1.3](5.1.3/) | Runs | 29 | 19 | 29 |
 | [5.1.4](5.1.4/) | Tableaux and Involutions | 43 | 24 | 44 |
 | [5.2](5.2/) | Internal Sorting | 13 | 5 | 13 |
-| [5.2.1](5.2.1/) | Sorting by Insertion | 36 | 8 | 37 |
+| [5.2.1](5.2.1/) | Sorting by Insertion | 37 | 8 | 37 |
 | [5.2.2](5.2.2/) | Sorting by Exchanging | 55 | 4 | 56 |
-| [5.2.3](5.2.3/) | Sorting by Selection | 37 | 13 | 38 |
+| [5.2.3](5.2.3/) | Sorting by Selection | 38 | 13 | 38 |
 | [5.2.4](5.2.4/) | Sorting by Merging | 23 | 5 | 23 |
 | [5.2.5](5.2.5/) | Sorting by Distribution | 18 | 6 | 18 |
 | [5.3.1](5.3.1/) | Minimum-Comparison Sorting | 34 | 5 | 36 |
