@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.4: Reading Tape Backwards"
-description: "Section 5.4.4 exercises: 10/22 solved."
+description: "Section 5.4.4 exercises: 13/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.4. Reading Tape Backwards
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.4: 10/22 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.4: 13/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,11 +29,11 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.4: 10/22 solved.
 | [9](09.md) |  [*M22*] | math-medium | solved | 13m23s |
 | 10 |  [*41*] | project | - | - |
 | [11](11.md) | &#9654; [*20*] | medium | solved | 10m09s |
-| 12 |  [*22*] | medium | - | - |
+| [12](12.md) |  [*22*] | medium | solved | 11m33s |
 | 13 |  [*16*] | medium | - | - |
-| 14 |  [*40*] | project | - | - |
+| [14](14.md) |  [*40*] | project | solved | 6m07s |
 | 15 |  [*M39*] | math-project | - | - |
-| 16 |  [*M46*] | math-research | - | - |
+| [16](16.md) |  [*M46*] | math-research | solved | 1m40s |
 | 17 | &#9654; [*28*] | hard | - | - |
 | 18 | &#9654; [*M38*] | math-project | - | - |
 | 19 | &#9654; [*22*] | medium | - | - |
