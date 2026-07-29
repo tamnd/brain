@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 904 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 909 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 904 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 909 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -41,10 +41,10 @@ Exercise solutions for [TAOCP](../) Volume 3. 904 solved, 302 verified, 943 tota
 | [5.4.9](5.4.9/) | Disks and Drums | 30 | 4 | 31 |
 | [5.5](5.5/) | Summary, History, and Bibliography | 6 | 4 | 4 |
 | [6.1](6.1/) | Sequential Searching | 22 | 9 | 22 |
-| [6.2.1](6.2.1/) | Searching an Ordered Table | 29 | 12 | 30 |
-| [6.2.2](6.2.2/) | Binary Tree Searching | 46 | 20 | 49 |
+| [6.2.1](6.2.1/) | Searching an Ordered Table | 30 | 12 | 30 |
+| [6.2.2](6.2.2/) | Binary Tree Searching | 49 | 20 | 49 |
 | [6.2.3](6.2.3/) | Balanced Trees | 33 | 8 | 33 |
-| [6.2.4](6.2.4/) | Multiway Trees | 9 | 2 | 10 |
+| [6.2.4](6.2.4/) | Multiway Trees | 10 | 2 | 10 |
 | [6.3](6.3/) | Digital Searching | 40 | 19 | 45 |
 | [6.4](6.4/) | Hashing | 62 | 25 | 78 |
 | [6.5](6.5/) | Retrieval on Secondary Keys | 15 | 7 | 20 |
