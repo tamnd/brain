@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 6.5: Retrieval on Secondary Keys"
-description: "Section 6.5 exercises: 16/20 solved."
+description: "Section 6.5 exercises: 18/20 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "6.5"
@@ -14,11 +14,11 @@ draft: false
 
 # Section 6.5. Retrieval on Secondary Keys
 
-Exercises from [TAOCP Volume 3](../) Section 6.5: 16/20 solved.
+Exercises from [TAOCP Volume 3](../) Section 6.5: 18/20 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 | &#9654; [*M27*] | math-hard | - | - |
+| [1](01.md) | &#9654; [*M27*] | math-hard | solved | 15m57s |
 | [2](02.md) |  [*M25*] | math-medium | solved | 5m25s |
 | [3](03.md) |  [*19*] | medium | solved | 3m30s |
 | [4](04.md) |  [*M30*] | math-hard | verified | 3m46s |
@@ -37,4 +37,4 @@ Exercises from [TAOCP Volume 3](../) Section 6.5: 16/20 solved.
 | 17 | &#9654; [*M30*] | math-hard | - | - |
 | 18 | &#9654; [*M35*] | math-hard | - | - |
 | [19](19.md) |  [*M22*] | math-medium | verified | 3m54s |
-| 20 |  [*M47*] | math-research | - | - |
+| [20](20.md) |  [*M47*] | math-research | solved | 9m38s |
