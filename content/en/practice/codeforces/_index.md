@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3029 contests, 22205 problems, 12185 verified."
+description: "Codeforces problem solutions with full editorials. 3029 contests, 22206 problems, 12188 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3029 contests, 22205 problems, 12185 verified.**
+**3029 contests, 22206 problems, 12188 verified.**
 
-## Unknown — 780 contests, 6558 problems, 3838 verified
+## Unknown — 780 contests, 6559 problems, 3841 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102759](102759/) | [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759) | 12 | 4/12 | Special | - |
 | [102760](102760/) | [2020 KAIST 10th ICPC Mock Contest (XXI Open Cup. Grand Prix of Korea. Division 2)](https://codeforces.com/contest/102760) | 12 | 9/12 | ICPC/IOI | - |
 | [102767](102767/) | [Codedigger Training Contest -Number Theory](https://codeforces.com/contest/102767) | 7 | 3/7 | Special | - |
-| [102770](102770/) | [The 17th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102770) | 10 | 6/10 | Special | - |
+| [102770](102770/) | [The 17th Zhejiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102770) | 11 | 9/11 | Special | - |
 | [102772](102772/) | [Цикл Интернет-олимпиад для школьников, Сезон 2020-21, Первая командная олимпиада](https://codeforces.com/contest/102772) | 10 | 1/10 | Special | - |
 | [102775](102775/) | [ICPC Central Russia Regional Contest (CRRC 20), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102775) | 12 | 12/12 | ICPC/IOI | - |
 | [102777](102777/) | [ICPC Central Russia Regional Contest (CRRC 19), Чемпионат Центральной России, квалификационный раунд](https://codeforces.com/contest/102777) | 11 | 11/11 | ICPC/IOI | - |
