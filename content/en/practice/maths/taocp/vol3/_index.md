@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 890 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 891 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 890 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 891 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -38,7 +38,7 @@ Exercise solutions for [TAOCP](../) Volume 3. 890 solved, 302 verified, 943 tota
 | [5.4.6](5.4.6/) | Practical Considerations for Tape Merging | 14 | 3 | 14 |
 | [5.4.7](5.4.7/) | External Radix Sorting | 7 | 1 | 7 |
 | [5.4.8](5.4.8/) | Two-Tape Sorting | 9 | 3 | 10 |
-| [5.4.9](5.4.9/) | Disks and Drums | 24 | 4 | 31 |
+| [5.4.9](5.4.9/) | Disks and Drums | 25 | 4 | 31 |
 | [5.5](5.5/) | Summary, History, and Bibliography | 5 | 4 | 4 |
 | [6.1](6.1/) | Sequential Searching | 16 | 9 | 22 |
 | [6.2.1](6.2.1/) | Searching an Ordered Table | 29 | 12 | 30 |
