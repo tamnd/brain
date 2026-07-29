@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.3.4: Networks for Sorting"
-description: "Section 5.3.4 exercises: 37/68 solved."
+description: "Section 5.3.4 exercises: 49/68 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.3.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.3.4. Networks for Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.3.4: 37/68 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.3.4: 49/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -50,25 +50,25 @@ Exercises from [TAOCP Volume 3](../) Section 5.3.4: 37/68 solved.
 | [30](30.md) |  [*HM22*] | hm-medium | solved | 1m20s |
 | [31](31.md) |  [*M24*] | math-medium | solved | 1m15s |
 | [32](32.md) |  [*M28*] | math-hard | solved | 17m12s |
-| 33 | &#9654; [*M22*] | math-medium | - | - |
+| [33](33.md) | &#9654; [*M22*] | math-medium | solved | 1h20m |
 | [34](34.md) |  [*23*] | medium | solved | 8m34s |
 | [35](35.md) |  [*20*] | medium | solved | 3m09s |
 | [36](36.md) | &#9654; [*22*] | medium | solved | 5m20s |
 | [37](37.md) |  [*M22*] | math-medium | solved | 18m43s |
 | [38](38.md) | &#9654; [*43*] | project | solved | 5m54s |
-| 39 |  [*25*] | medium | - | - |
-| 40 |  [*HM44*] | hm-project | - | - |
-| 41 |  [*M47*] | math-research | - | - |
-| 42 | &#9654; [*25*] | medium | - | - |
-| 43 |  [*48*] | research | - | - |
-| 44 |  [*50*] | research | - | - |
-| 45 |  [*M20*] | math-medium | - | - |
+| [39](39.md) |  [*25*] | medium | solved | 46m06s |
+| [40](40.md) |  [*HM44*] | hm-project | solved | 32m43s |
+| [41](41.md) |  [*M47*] | math-research | solved | 29m54s |
+| [42](42.md) | &#9654; [*25*] | medium | solved | 17m18s |
+| [43](43.md) |  [*48*] | research | solved | 2m51s |
+| [44](44.md) |  [*50*] | research | solved | 1m07s |
+| [45](45.md) |  [*M20*] | math-medium | solved | 13m09s |
 | 46 | &#9654; [*30*] | hard | - | - |
-| 47 |  [*47*] | research | - | - |
+| [47](47.md) |  [*47*] | research | solved | 11m37s |
 | 48 | &#9654; [*26*] | hard | - | - |
-| 49 |  [*M23*] | math-medium | - | - |
-| 50 |  [*HM46*] | hm-research | - | - |
-| 51 | &#9654; [*M25*] | math-medium | - | - |
+| [49](49.md) |  [*M23*] | math-medium | solved | 6m04s |
+| [50](50.md) |  [*HM46*] | hm-research | solved | 5m06s |
+| [51](51.md) | &#9654; [*M25*] | math-medium | solved | 5m35s |
 | 52 | &#9654; [*32*] | hard | - | - |
 | 53 |  [*30*] | hard | - | - |
 | 54 |  [*42*] | project | - | - |
