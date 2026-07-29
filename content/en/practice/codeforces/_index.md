@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3029 contests, 22198 problems, 12177 verified."
+description: "Codeforces problem solutions with full editorials. 3029 contests, 22199 problems, 12177 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3029 contests, 22198 problems, 12177 verified.**
+**3029 contests, 22199 problems, 12177 verified.**
 
 ## Unknown — 780 contests, 6554 problems, 3836 verified
 
@@ -1578,7 +1578,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 196 contests, 1156 problems, 577 verified
+## 2020 — 196 contests, 1157 problems, 577 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1742,7 +1742,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 | [102740](102740/) | [UTPC Contest 9-25-20 Div. 2](https://codeforces.com/contest/102740) | 8 | 6/8 | Div. 2 | - |
-| [102741](102741/) | [UTPC Contest 9-25-20 Div. 1](https://codeforces.com/contest/102741) | 8 | 7/8 | Div. 1 | - |
+| [102741](102741/) | [UTPC Contest 9-25-20 Div. 1](https://codeforces.com/contest/102741) | 9 | 7/9 | Div. 1 | - |
 | [102747](102747/) | [Пригласительный этап. Сириус-2020](https://codeforces.com/contest/102747) | 5 | 3/5 | Special | - |
 | [102756](102756/) | [UTPC Contest 10-09-20 Div. 1](https://codeforces.com/contest/102756) | 7 | 7/7 | Div. 1 | - |
 | [102757](102757/) | [UTPC Contest 10-09-20 Div. 2](https://codeforces.com/contest/102757) | 7 | 5/7 | Div. 2 | - |
