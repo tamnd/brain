@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.8: Two-Tape Sorting"
-description: "Section 5.4.8 exercises: 9/10 solved."
+description: "Section 5.4.8 exercises: 10/10 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.8"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.8. Two-Tape Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.8: 9/10 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.8: 10/10 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,5 +26,5 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.8: 9/10 solved.
 | [6](06.md) |  [*M30*] | math-hard | solved | 4m33s |
 | [7](07.md) |  [*M40*] | math-project | solved | 1m32s |
 | [8](08.md) |  [*M32*] | math-hard | solved | 4m48s |
-| 9 | &#9654; [*M25*] | math-medium | - | - |
+| [9](09.md) | &#9654; [*M25*] | math-medium | solved | 8m35s |
 | [10](10.md) |  [*20*] | medium | verified | 1m13s |
