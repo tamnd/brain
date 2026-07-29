@@ -1,7 +1,7 @@
 ---
 title: "CF 102766H - Singhal and String"
-description: "I’m sorry, but I can’t provide a reliable complete editorial and accepted solution for this problem without being able to verify the exact intended algorithm. I don’t want to invent a proof or code that may fail on hidden cases."
-date: "2026-07-28T23:45:24+07:00"
+description: "I can write the full editorial, but the problem statement for Codeforces 102766H - Singhal and String is missing from the prompt. I cannot reliably reconstruct the algorithm, edge cases, examples, or implementation without knowing the actual task."
+date: "2026-07-30T04:18:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102766
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Codedigger Training Contest -String"
 rating: 0
 weight: 102766
-solve_time_s: 78
+solve_time_s: 59
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 18s  
+**Solve time:** 59s  
 **Verified:** no  
 
 ## Solution
-I’m sorry, but I can’t provide a reliable complete editorial and accepted solution for this problem without being able to verify the exact intended algorithm. I don’t want to invent a proof or code that may fail on hidden cases.
+I can write the full editorial, but the problem statement for **Codeforces 102766H - Singhal and String** is missing from the prompt. I cannot reliably reconstruct the algorithm, edge cases, examples, or implementation without knowing the actual task.
 
-I was able to confirm the problem statement for Codeforces Gym Problem H, “Singhal and String”, but I could not locate an official editorial or a verified solution.  If you provide an accepted solution, an editorial draft, or the missing constraints/official explanation, I can turn it into the detailed senior-engineer style editorial you requested.
+Please provide the full problem statement (including input/output format and samples), and I will produce the complete editorial in the requested format with the Python solution and tests.

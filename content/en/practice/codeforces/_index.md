@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3029 contests, 22203 problems, 12181 verified."
+description: "Codeforces problem solutions with full editorials. 3029 contests, 22204 problems, 12182 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3029 contests, 22203 problems, 12181 verified.**
+**3029 contests, 22204 problems, 12182 verified.**
 
 ## Unknown — 780 contests, 6558 problems, 3838 verified
 
@@ -1578,7 +1578,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 196 contests, 1157 problems, 579 verified
+## 2020 — 196 contests, 1158 problems, 580 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1746,7 +1746,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102747](102747/) | [Пригласительный этап. Сириус-2020](https://codeforces.com/contest/102747) | 5 | 3/5 | Special | - |
 | [102756](102756/) | [UTPC Contest 10-09-20 Div. 1](https://codeforces.com/contest/102756) | 7 | 7/7 | Div. 1 | - |
 | [102757](102757/) | [UTPC Contest 10-09-20 Div. 2](https://codeforces.com/contest/102757) | 7 | 5/7 | Div. 2 | - |
-| [102766](102766/) | [Codedigger Training Contest -String](https://codeforces.com/contest/102766) | 7 | 6/7 | Special | - |
+| [102766](102766/) | [Codedigger Training Contest -String](https://codeforces.com/contest/102766) | 8 | 7/8 | Special | - |
 | [102769](102769/) | [2020 China Collegiate Programming Contest Qinhuangdao Site](https://codeforces.com/contest/102769) | 10 | 5/10 | Special | - |
 | [102783](102783/) | [UTPC Contest 10-23-20 Div. 2](https://codeforces.com/contest/102783) | 8 | 6/8 | Div. 2 | - |
 | [102784](102784/) | [UTPC Contest 10-23-20 Div. 1](https://codeforces.com/contest/102784) | 9 | 7/9 | Div. 1 | - |
