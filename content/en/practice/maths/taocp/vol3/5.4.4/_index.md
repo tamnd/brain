@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.4: Reading Tape Backwards"
-description: "Section 5.4.4 exercises: 21/22 solved."
+description: "Section 5.4.4 exercises: 22/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.4. Reading Tape Backwards
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.4: 21/22 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.4: 22/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -27,7 +27,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.4: 21/22 solved.
 | [7](07.md) |  [*16*] | medium | solved | 8m49s |
 | [8](08.md) |  [*23*] | medium | solved | 16m46s |
 | [9](09.md) |  [*M22*] | math-medium | solved | 13m23s |
-| 10 |  [*41*] | project | - | - |
+| [10](10.md) |  [*41*] | project | solved | 29m26s |
 | [11](11.md) | &#9654; [*20*] | medium | solved | 10m09s |
 | [12](12.md) |  [*22*] | medium | solved | 11m33s |
 | [13](13.md) |  [*16*] | medium | solved | 14m28s |

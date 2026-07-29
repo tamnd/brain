@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 940 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 941 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 940 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 941 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -33,7 +33,7 @@ Exercise solutions for [TAOCP](../) Volume 3. 940 solved, 302 verified, 943 tota
 | [5.4.1](5.4.1/) | Multiway Merging and Replacement Selection | 27 | 11 | 28 |
 | [5.4.2](5.4.2/) | The Polyphase Merge | 31 | 6 | 31 |
 | [5.4.3](5.4.3/) | The Cascade Merge | 11 | 3 | 11 |
-| [5.4.4](5.4.4/) | Reading Tape Backwards | 21 | 0 | 22 |
+| [5.4.4](5.4.4/) | Reading Tape Backwards | 22 | 0 | 22 |
 | [5.4.5](5.4.5/) | The Oscillating Sort | 2 | 0 | 2 |
 | [5.4.6](5.4.6/) | Practical Considerations for Tape Merging | 14 | 3 | 14 |
 | [5.4.7](5.4.7/) | External Radix Sorting | 7 | 1 | 7 |
