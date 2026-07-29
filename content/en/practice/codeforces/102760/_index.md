@@ -8,15 +8,15 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 9
-total_solve_s: 891
-date: "2026-07-30T04:12:33+07:00"
+total_solve_s: 976
+date: "2026-07-30T04:14:59+07:00"
 weight: 102760
 draft: false
 ---
 
 # [2020 KAIST 10th ICPC Mock Contest (XXI Open Cup. Grand Prix of Korea. Division 2)](https://codeforces.com/contest/102760)
 
-ICPC/IOI | 12 problems | 9/12 verified | Difficulty - | 14m 51s
+ICPC/IOI | 12 problems | 9/12 verified | Difficulty - | 16m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ ICPC/IOI | 12 problems | 9/12 verified | Difficulty - | 14m 51s
 | [D](D/) | [Fix Wiring](https://codeforces.com/problemset/problem/102760/D) |  |  |  | 1m 6s | ✓ |
 | [E](E/) | [Min-hashing](https://codeforces.com/problemset/problem/102760/E) |  |  |  | 1m 5s | ✓ |
 | [F](F/) | [Square, Not Rectangle](https://codeforces.com/problemset/problem/102760/F) |  |  |  | 58s | ✓ |
-| [G](G/) | [LCS 8](https://codeforces.com/problemset/problem/102760/G) |  |  |  | 57s |  |
+| [G](G/) | [LCS 8](https://codeforces.com/problemset/problem/102760/G) |  |  |  | 2m 22s |  |
 | [H](H/) | [Mock Competition Marketing](https://codeforces.com/problemset/problem/102760/H) |  |  |  | 1m 17s | ✓ |
 | [I](I/) | [Query On A Tree 17](https://codeforces.com/problemset/problem/102760/I) |  |  |  | 1m 54s | ✓ |
 | [J](J/) | [Remote Control](https://codeforces.com/problemset/problem/102760/J) |  |  |  | 1m 17s | ✓ |
