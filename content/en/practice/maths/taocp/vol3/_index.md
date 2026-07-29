@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 3: Sorting and Searching"
-description: "Volume 3: Sorting and Searching. 919 solved, 302 verified, 943 total."
+description: "Volume 3: Sorting and Searching. 923 solved, 302 verified, 943 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 30
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 3: Sorting and Searching
 
-Exercise solutions for [TAOCP](../) Volume 3. 919 solved, 302 verified, 943 total.
+Exercise solutions for [TAOCP](../) Volume 3. 923 solved, 302 verified, 943 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -46,5 +46,5 @@ Exercise solutions for [TAOCP](../) Volume 3. 919 solved, 302 verified, 943 tota
 | [6.2.3](6.2.3/) | Balanced Trees | 33 | 8 | 33 |
 | [6.2.4](6.2.4/) | Multiway Trees | 10 | 2 | 10 |
 | [6.3](6.3/) | Digital Searching | 44 | 19 | 45 |
-| [6.4](6.4/) | Hashing | 68 | 25 | 78 |
+| [6.4](6.4/) | Hashing | 72 | 25 | 78 |
 | [6.5](6.5/) | Retrieval on Secondary Keys | 15 | 7 | 20 |
