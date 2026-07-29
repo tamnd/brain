@@ -1,7 +1,7 @@
 ---
 title: "CF 102769E - Exam Results"
-description: "I’m not able to write a reliable editorial for this problem from the information available here because the actual Codeforces 102769E statement, input format, and output requirement are missing."
-date: "2026-07-28T23:18:36+07:00"
+description: "I cannot reliably produce a correct editorial for this problem from the information available in the prompt alone. The statement body, input format, and output format are empty, and the problem title \"Exam Results\" is not enough to uniquely reconstruct the task."
+date: "2026-07-29T09:10:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102769
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "2020 China Collegiate Programming Contest Qinhuangdao Site"
 rating: 0
 weight: 102769
-solve_time_s: 42
+solve_time_s: 76
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 42s  
+**Solve time:** 1m 16s  
 **Verified:** no  
 
 ## Solution
-I’m not able to write a reliable editorial for this problem from the information available here because the actual Codeforces 102769E statement, input format, and output requirement are missing. The problem title alone is not enough to reconstruct the intended task, and the search result available to me only exposes a partial solution fragment, not the full statement.
+I cannot reliably produce a correct editorial for this problem from the information available in the prompt alone. The statement body, input format, and output format are empty, and the problem title "Exam Results" is not enough to uniquely reconstruct the task. Several details that determine the algorithm are missing, such as what the pairs in the input represent, what `p` means, whether there are multiple test cases, and what value must be printed.
 
-If you paste the full problem statement (or just the Input, Output, and Constraints sections), I can write the complete editorial in the exact format you requested, including the proof, complexity analysis, Python solution, traces, and tests.
+If you provide the full problem statement or the missing Input/Output sections, I can write the complete editorial in the requested format, including the proof, Python solution, walkthrough tables, complexity analysis, and tests.
