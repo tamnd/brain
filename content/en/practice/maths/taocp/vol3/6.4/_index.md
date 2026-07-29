@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 6.4: Hashing"
-description: "Section 6.4 exercises: 67/78 solved."
+description: "Section 6.4 exercises: 68/78 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "6.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 6.4. Hashing
 
-Exercises from [TAOCP Volume 3](../) Section 6.4: 67/78 solved.
+Exercises from [TAOCP Volume 3](../) Section 6.4: 68/78 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -50,7 +50,7 @@ Exercises from [TAOCP Volume 3](../) Section 6.4: 67/78 solved.
 | [30](30.md) |  [*M38*] | math-project | solved | 1m12s |
 | 31 |  [*M40*] | math-project | - | - |
 | 32 |  [*M27*] | math-hard | - | - |
-| 33 | &#9654; [*M23*] | math-medium | - | - |
+| [33](33.md) | &#9654; [*M23*] | math-medium | solved | 4m19s |
 | 34 | &#9654; [*M23*] | math-medium | - | - |
 | 35 |  [*M24*] | math-medium | - | - |
 | 36 |  [*M23*] | math-medium | - | - |
