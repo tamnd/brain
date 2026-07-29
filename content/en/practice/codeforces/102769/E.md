@@ -1,7 +1,7 @@
 ---
 title: "CF 102769E - Exam Results"
-description: "I cannot reliably produce a correct editorial for this problem from the information available in the prompt alone. The statement body, input format, and output format are empty, and the problem title \"Exam Results\" is not enough to uniquely reconstruct the task."
-date: "2026-07-29T09:10:36+07:00"
+description: "I can write the editorial, but I need the actual statement details for Codeforces 102769E - Exam Results. The problem statement section in your prompt is empty, and the available references only expose partial solution code, not the full description of what the variables a, b…"
+date: "2026-07-30T04:21:54+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102769
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "2020 China Collegiate Programming Contest Qinhuangdao Site"
 rating: 0
 weight: 102769
-solve_time_s: 76
+solve_time_s: 58
 verified: false
 draft: false
 ---
@@ -18,10 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 16s  
+**Solve time:** 58s  
 **Verified:** no  
 
 ## Solution
-I cannot reliably produce a correct editorial for this problem from the information available in the prompt alone. The statement body, input format, and output format are empty, and the problem title "Exam Results" is not enough to uniquely reconstruct the task. Several details that determine the algorithm are missing, such as what the pairs in the input represent, what `p` means, whether there are multiple test cases, and what value must be printed.
+I can write the editorial, but I need the actual statement details for Codeforces 102769E - Exam Results. The problem statement section in your prompt is empty, and the available references only expose partial solution code, not the full description of what the variables `a`, `b`, and `p` represent.
 
-If you provide the full problem statement or the missing Input/Output sections, I can write the complete editorial in the requested format, including the proof, Python solution, walkthrough tables, complexity analysis, and tests.
+From the partial information I can infer that the solution involves finding the value that maximizes the number of students satisfying an interval condition using coordinate compression and a difference array, but I do not have enough information to accurately restate the problem, explain the edge cases, or produce a trustworthy editorial and implementation.
+
+Please provide the full problem statement (including input and output formats), and I will write the complete editorial in the requested format.
