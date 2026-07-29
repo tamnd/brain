@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.5: Generating All Set Partitions"
-description: "Section 7.2.1.5 exercises: 75/82 solved."
+description: "Section 7.2.1.5 exercises: 78/82 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.5. Generating All Set Partitions
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 75/82 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 78/82 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -69,10 +69,10 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.5: 75/82 solved.
 | [49](49.md) | &#9654; [*HM35*] | hm-hard | solved | 2m06s |
 | [50](50.md) | &#9654; [*HM21*] | hm-medium | solved | 3m03s |
 | [51](51.md) |  [*HM27*] | hm-hard | solved | 5m17s |
-| 52 |  [*HM22*] | hm-medium | - | - |
-| 53 | &#9654; [*HM30*] | hm-hard | - | - |
+| [52](52.md) |  [*HM22*] | hm-medium | solved | 14m29s |
+| [53](53.md) | &#9654; [*HM30*] | hm-hard | solved | 6m20s |
 | 54 |  [*HM20*] | hm-medium | - | - |
-| 55 |  [*HM20*] | hm-medium | - | - |
+| [55](55.md) |  [*HM20*] | hm-medium | solved | 6m03s |
 | 56 | &#9654; [*HM26*] | hm-hard | - | - |
 | 57 |  [*HM22*] | hm-medium | - | - |
 | 58 |  [*HM31*] | hm-hard | - | - |
