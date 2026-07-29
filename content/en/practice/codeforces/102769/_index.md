@@ -8,22 +8,22 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 4
-total_solve_s: 636
+total_solve_s: 673
 contest_year: 2020
-date: "2026-07-28T23:27:55+07:00"
+date: "2026-07-28T09:10:39+07:00"
 weight: 102769
 draft: false
 ---
 
 # [2020 China Collegiate Programming Contest Qinhuangdao Site](https://codeforces.com/contest/102769)
 
-Special | 10 problems | 4/10 verified | Difficulty - | 10m 36s
+Special | 10 problems | 4/10 verified | Difficulty - | 11m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [A Greeting from Qinhuangdao](https://codeforces.com/problemset/problem/102769/A) |  |  |  | 55s |  |
-| [B](B/) | [Bounding Wall](https://codeforces.com/problemset/problem/102769/B) |  |  |  | 1m 4s |  |
-| [E](E/) | [Exam Results](https://codeforces.com/problemset/problem/102769/E) |  |  |  | 42s |  |
+| [B](B/) | [Bounding Wall](https://codeforces.com/problemset/problem/102769/B) |  |  |  | 1m 7s |  |
+| [E](E/) | [Exam Results](https://codeforces.com/problemset/problem/102769/E) |  |  |  | 1m 16s |  |
 | [F](F/) | [Friendly Group](https://codeforces.com/problemset/problem/102769/F) |  |  |  | 56s | ✓ |
 | [G](G/) | [Good Number](https://codeforces.com/problemset/problem/102769/G) |  |  |  | 1m 9s | ✓ |
 | [H](H/) | [Holy Sequence](https://codeforces.com/problemset/problem/102769/H) |  |  |  | 1m 16s |  |
