@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.2: The Polyphase Merge"
-description: "Section 5.4.2 exercises: 30/30 solved."
+description: "Section 5.4.2 exercises: 31/31 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.2. The Polyphase Merge
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.2: 30/30 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.2: 31/31 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,8 +29,9 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.2: 30/30 solved.
 | [9](09.md) |  [*M20*] | math-medium | solved | 53s |
 | [10](10.md) |  [*M27*] | math-hard | solved | 1m03s |
 | [11](11.md) |  [*M24*] | math-medium | solved | 4m |
-| [12](12.md) |  [*M18*] | math-medium | solved | 5m |
-| [13](13.md) |  [*22*] | medium | solved | 4m09s |
+| [12](12.md) | &#9654; [*M18*] | math-medium | solved | 5m |
+| [13](13.md) | &#9654; [*22*] | medium | solved | 4m09s |
+| [14](14.md) |  [*M35*] | math-hard | solved | 16m27s |
 | [15](15.md) |  [*M43*] | math-project | verified | 1m43s |
 | [16](16.md) |  [*HM43*] | hm-project | verified | 3m53s |
 | [17](17.md) |  [*32*] | hard | solved | 2m26s |
@@ -39,8 +40,8 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.2: 30/30 solved.
 | [20](20.md) |  [*M24*] | math-medium | solved | 1m02s |
 | [21](21.md) |  [*11*] | simple | verified | 1m23s |
 | [22](22.md) |  [*M21*] | math-medium | solved | 1m21s |
-| [23](23.md) |  [*29*] | hard | solved | 4m15s |
-| [24](24.md) |  [**] |  | solved | 3m48s |
+| [23](23.md) | &#9654; [*29*] | hard | solved | 4m15s |
+| [24](24.md) |  [*HM41*] | hm-project | solved | 3m48s |
 | [25](25.md) |  [*19*] | medium | verified | 2m53s |
 | [26](26.md) |  [*M21*] | math-medium | solved | 1m08s |
 | [27](27.md) |  [*23*] | medium | solved | 4m56s |

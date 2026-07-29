@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.1.6: Generating All Trees"
-description: "Section 7.2.1.6 exercises: 123/123 solved."
+description: "Section 7.2.1.6 exercises: 124/124 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.1.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.2.1.6. Generating All Trees
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 124/124 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -64,22 +64,23 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.1.6: 123/123 solved.
 | [44](44.md) | &#9654; [*M27*] | math-hard | solved | 5m47s |
 | [45](45.md) |  [*M26*] | math-hard | solved | 5m43s |
 | [46](46.md) |  [*M30*] | math-hard | solved | 6m18s |
+| [47](47.md) |  [*M27*] | math-hard | solved | 25m34s |
 | [48](48.md) |  [*M28*] | math-hard | solved | 6m |
 | [49](49.md) |  [*17*] | medium | solved | 5m52s |
 | [50](50.md) |  [*20*] | medium | solved | 5m57s |
-| [51](51.md) |  [*M23*] | math-medium | solved | 6m05s |
+| [51](51.md) |  [*M22*] | math-medium | solved | 6m05s |
 | [52](52.md) |  [*M23*] | math-medium | solved | 6m02s |
 | [53](53.md) |  [*M28*] | math-hard | solved | 5m51s |
 | [54](54.md) |  [*HM29*] | hm-hard | solved | 5m52s |
-| [55](55.md) |  [*M33*] | math-hard | solved | 5m38s |
-| [56](56.md) |  [*M25*] | math-medium | solved | 6m42s |
+| [55](55.md) |  [*HM33*] | hm-hard | solved | 5m38s |
+| [56](56.md) |  [*M23*] | math-medium | solved | 6m42s |
 | [57](57.md) |  [*M28*] | math-hard | solved | 6m08s |
 | [58](58.md) |  [*HM34*] | hm-hard | solved | 7m21s |
 | [59](59.md) |  [*HM29*] | hm-hard | solved | 5m51s |
 | [60](60.md) | &#9654; [*M26*] | math-hard | solved | 5m57s |
 | [61](61.md) | &#9654; [*M26*] | math-hard | solved | 6m07s |
 | [62](62.md) |  [*22*] | medium | solved | 6m11s |
-| [63](63.md) |  [**] |  | verified | 2m09s |
+| [63](63.md) | &#9654; [*16*] | medium | verified | 2m09s |
 | [64](64.md) |  [*20*] | medium | solved | 3m16s |
 | [65](65.md) |  [*38*] | project | solved | 4m55s |
 | [66](66.md) |  [*21*] | medium | solved | 6m02s |

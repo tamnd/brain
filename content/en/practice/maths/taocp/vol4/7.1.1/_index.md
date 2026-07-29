@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.1.1: Boolean Basics"
-description: "Section 7.1.1 exercises: 132/132 solved."
+description: "Section 7.1.1 exercises: 133/133 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 7.1.1. Boolean Basics
 
-Exercises from [TAOCP Volume 4](../) Section 7.1.1: 132/132 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.1.1: 133/133 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -45,7 +45,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 132/132 solved.
 | [25](25.md) |  [*M21*] | math-medium | solved | 5m29s |
 | [26](26.md) |  [*M25*] | math-medium | solved | 6m23s |
 | [27](27.md) |  [*M31*] | math-hard | solved | 5m45s |
-| [28](28.md) |  [**] |  | verified | 4m |
+| [28](28.md) |  [*2\dagger*] | other | verified | 4m |
 | [29](29.md) |  [*22*] | medium | solved | 28s |
 | [30](30.md) | &#9654; [*27*] | hard | solved | 4m30s |
 | [31](31.md) | &#9654; [*28*] | hard | solved | 4m29s |
@@ -115,17 +115,18 @@ Exercises from [TAOCP Volume 4](../) Section 7.1.1: 132/132 solved.
 | [95](95.md) |  [*M25*] | math-medium | verified | 2m30s |
 | [96](96.md) |  [*HM25*] | hm-medium | verified | 3m52s |
 | [97](97.md) |  [*10*] | simple | verified | 1m05s |
-| [98](98.md) |  [*M25*] | math-medium | solved | 4m09s |
+| [98](98.md) |  [*M23*] | math-medium | solved | 4m09s |
 | [99](99.md) | &#9654; [*20*] | medium | solved | 3m43s |
 | [100](100.md) |  [*20*] | medium | verified | 2m |
-| [101](101.md) |  [*M25*] | math-medium | verified | 7m52s |
-| [102](102.md) |  [*M31*] | math-hard | solved | 4m34s |
+| [101](101.md) |  [*M23*] | math-medium | verified | 7m52s |
+| [102](102.md) |  [*M21*] | math-medium | solved | 4m34s |
 | [103](103.md) |  [*HM25*] | hm-medium | solved | 7m12s |
 | [104](104.md) |  [*25*] | medium | solved | 8m17s |
 | [105](105.md) |  [*M25*] | math-medium | solved | 8m47s |
-| [106](106.md) | &#9654; [*M35*] | math-hard | solved | 9m42s |
-| [107](107.md) |  [*7*] | simple | verified | 4m48s |
+| [106](106.md) | &#9654; [*M25*] | math-medium | solved | 9m42s |
+| [107](107.md) |  [*17*] | medium | verified | 4m48s |
 | [108](108.md) |  [*M21*] | math-medium | verified | 12m31s |
+| [109](109.md) |  [*M25*] | math-medium | solved | 14m18s |
 | [110](110.md) |  [*M23*] | math-medium | solved | 6m48s |
 | [111](111.md) |  [*M36*] | math-project | solved | 6m07s |
 | [112](112.md) | &#9654; [*M97*] | math-research | solved | 8m03s |

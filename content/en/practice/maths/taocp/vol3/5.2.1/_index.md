@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.2.1: Sorting by Insertion"
-description: "Section 5.2.1 exercises: 36/37 solved."
+description: "Section 5.2.1 exercises: 37/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.2.1. Sorting by Insertion
 
-Exercises from [TAOCP Volume 3](../) Section 5.2.1: 36/37 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.2.1: 37/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -53,5 +53,5 @@ Exercises from [TAOCP Volume 3](../) Section 5.2.1: 36/37 solved.
 | [33](33.md) |  [*25*] | medium | solved | 43m30s |
 | [34](34.md) |  [*M10*] | math-simple | solved | 22m |
 | [35](35.md) |  [*21*] | medium | solved | 7m11s |
-| 36 |  [*18*] | medium | - | - |
+| [36](36.md) |  [*18*] | medium | solved | 29m30s |
 | [37](37.md) |  [*M25*] | math-medium | solved | 11m18s |

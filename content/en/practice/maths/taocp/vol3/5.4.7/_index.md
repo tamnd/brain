@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.7: External Radix Sorting"
-description: "Section 5.4.7 exercises: 6/6 solved."
+description: "Section 5.4.7 exercises: 7/7 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.7"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.7. External Radix Sorting
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.7: 6/6 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.7: 7/7 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,4 +23,5 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.7: 6/6 solved.
 | [3](03.md) |  [*M35*] | math-hard | solved | 4m11s |
 | [4](04.md) |  [*M23*] | math-medium | solved | 4m49s |
 | [5](05.md) |  [*15*] | simple | solved | 3m47s |
+| [6](06.md) | &#9654; [*20*] | medium | solved | 12m23s |
 | [7](07.md) |  [*21*] | medium | verified | 1m02s |
