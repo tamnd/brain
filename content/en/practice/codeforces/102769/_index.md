@@ -1,23 +1,23 @@
 ---
 title: "2020 China Collegiate Programming Contest Qinhuangdao Site"
-description: "10 problems from 2020 China Collegiate Programming Contest Qinhuangdao Site (contest 102769), difficulty -. 4/10 solutions verified against sample I/O."
+description: "10 problems from 2020 China Collegiate Programming Contest Qinhuangdao Site (contest 102769), difficulty -. 5/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102769
 contest_type: "Special"
 rating_range: "-"
 n_problems: 10
-n_verified: 4
-total_solve_s: 673
+n_verified: 5
+total_solve_s: 737
 contest_year: 2020
-date: "2026-07-28T09:10:39+07:00"
+date: "2026-07-28T09:15:14+07:00"
 weight: 102769
 draft: false
 ---
 
 # [2020 China Collegiate Programming Contest Qinhuangdao Site](https://codeforces.com/contest/102769)
 
-Special | 10 problems | 4/10 verified | Difficulty - | 11m 13s
+Special | 10 problems | 5/10 verified | Difficulty - | 12m 17s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,8 +26,8 @@ Special | 10 problems | 4/10 verified | Difficulty - | 11m 13s
 | [E](E/) | [Exam Results](https://codeforces.com/problemset/problem/102769/E) |  |  |  | 1m 16s |  |
 | [F](F/) | [Friendly Group](https://codeforces.com/problemset/problem/102769/F) |  |  |  | 56s | ✓ |
 | [G](G/) | [Good Number](https://codeforces.com/problemset/problem/102769/G) |  |  |  | 1m 9s | ✓ |
-| [H](H/) | [Holy Sequence](https://codeforces.com/problemset/problem/102769/H) |  |  |  | 1m 16s |  |
+| [H](H/) | [Holy Sequence](https://codeforces.com/problemset/problem/102769/H) |  |  |  | 1m 51s |  |
 | [I](I/) | [Interstellar Hunter](https://codeforces.com/problemset/problem/102769/I) |  |  |  | 1m 18s | ✓ |
 | [J](J/) | [Jewel Splitting](https://codeforces.com/problemset/problem/102769/J) |  |  |  | 1m 8s | ✓ |
-| [K](K/) | [Kingdom's Power](https://codeforces.com/problemset/problem/102769/K) |  |  |  | 1m 3s |  |
-| [L](L/) | [Lost Temple](https://codeforces.com/problemset/problem/102769/L) |  |  |  | 1m 5s |  |
+| [K](K/) | [Kingdom's Power](https://codeforces.com/problemset/problem/102769/K) |  |  |  | 1m 22s | ✓ |
+| [L](L/) | [Lost Temple](https://codeforces.com/problemset/problem/102769/L) |  |  |  | 1m 15s |  |
