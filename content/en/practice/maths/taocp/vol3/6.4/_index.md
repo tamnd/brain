@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 6.4: Hashing"
-description: "Section 6.4 exercises: 63/78 solved."
+description: "Section 6.4 exercises: 67/78 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "6.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 6.4. Hashing
 
-Exercises from [TAOCP Volume 3](../) Section 6.4: 63/78 solved.
+Exercises from [TAOCP Volume 3](../) Section 6.4: 67/78 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,17 +30,17 @@ Exercises from [TAOCP Volume 3](../) Section 6.4: 63/78 solved.
 | [10](10.md) |  [*M38*] | math-project | solved | 6m14s |
 | [11](11.md) |  [*16*] | medium | solved | 3m47s |
 | [12](12.md) | &#9654; [*21*] | medium | solved | 6m48s |
-| 13 | &#9654; [*24*] | medium | - | - |
+| [13](13.md) | &#9654; [*24*] | medium | solved | 9m12s |
 | [14](14.md) |  [*24*] | medium | solved | 5m15s |
 | [15](15.md) |  [*16*] | medium | verified | 1m19s |
 | [16](16.md) |  [*10*] | simple | verified | 1m02s |
 | [17](17.md) |  [*15*] | simple | solved | 1m19s |
-| 18 | &#9654; [*21*] | medium | - | - |
+| [18](18.md) | &#9654; [*21*] | medium | solved | 7m01s |
 | [19](19.md) |  [*40*] | project | solved | 2m34s |
 | [20](20.md) |  [*M25*] | math-medium | verified | 4m18s |
-| 21 | &#9654; [*20*] | medium | - | - |
+| [21](21.md) | &#9654; [*20*] | medium | solved | 1m46s |
 | [22](22.md) |  [*27*] | hard | solved | 2m58s |
-| 23 | &#9654; [*33*] | hard | - | - |
+| [23](23.md) | &#9654; [*33*] | hard | solved | 2m33s |
 | [24](24.md) |  [*M20*] | math-medium | verified | 1m05s |
 | [25](25.md) |  [*M19*] | math-medium | verified | 1m09s |
 | [26](26.md) |  [*M20*] | math-medium | solved | 1m10s |

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 6.3: Digital Searching"
-description: "Section 6.3 exercises: 43/45 solved."
+description: "Section 6.3 exercises: 44/45 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "6.3"
@@ -14,14 +14,14 @@ draft: false
 
 # Section 6.3. Digital Searching
 
-Exercises from [TAOCP Volume 3](../) Section 6.3: 43/45 solved.
+Exercises from [TAOCP Volume 3](../) Section 6.3: 44/45 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*00*] | immediate | solved | 4m |
 | [2](02.md) |  [*30*] | hard | solved | 3m25s |
 | [3](03.md) |  [*21*] | medium | verified | 1m40s |
-| 4 | &#9654; [*21*] | medium | - | - |
+| [4](04.md) | &#9654; [*21*] | medium | solved | 27m50s |
 | [5](05.md) | &#9654; [*M26*] | math-hard | solved | 10m53s |
 | [6](06.md) |  [*15*] | simple | solved | 4m02s |
 | [7](07.md) | &#9654; [*M26*] | math-hard | solved | 9m29s |
