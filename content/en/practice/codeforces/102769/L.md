@@ -1,7 +1,7 @@
 ---
 title: "CF 102769L - Lost Temple"
-description: "I can write the editorial, but the problem statement content is missing from the prompt. The sections under “Problem Statement”, “Input”, and “Output” are empty, and I do not want to invent the rules or produce an incorrect solution for a contest editorial."
-date: "2026-07-29T09:15:13+07:00"
+description: "I can write the editorial, but the problem statement section in your prompt is empty, so I do not have the exact rules, input format, and required output details needed to produce a correct algorithm and implementation."
+date: "2026-07-30T04:25:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102769
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "2020 China Collegiate Programming Contest Qinhuangdao Site"
 rating: 0
 weight: 102769
-solve_time_s: 75
+solve_time_s: 110
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 15s  
+**Solve time:** 1m 50s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but the problem statement content is missing from the prompt. The sections under “Problem Statement”, “Input”, and “Output” are empty, and I do not want to invent the rules or produce an incorrect solution for a contest editorial.
+I can write the editorial, but the problem statement section in your prompt is empty, so I do not have the exact rules, input format, and required output details needed to produce a correct algorithm and implementation.
 
-Please paste the full statement for Codeforces 102769L - Lost Temple (including the input format and examples if available), and I’ll write the complete editorial in the requested format with the algorithm, proof, Python solution, tests, and edge cases.
+Please paste the full statement for Codeforces 102769L - Lost Temple (including the constraints and samples), and I will write the complete editorial with the requested sections, proof, complexity analysis, and Python solution.
