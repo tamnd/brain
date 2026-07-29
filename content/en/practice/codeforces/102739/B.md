@@ -1,7 +1,7 @@
 ---
 title: "CF 102739B - \u041d\u0430\u0440\u0443\u0442\u043e"
-description: "I can't write a correct editorial for this problem because the actual problem statement is missing. The prompt only includes the title, \"Codeforces 102739B - Наруто\", with empty Problem Statement, Input, and Output sections."
-date: "2026-07-29T07:14:31+07:00"
+description: "I can't write a correct editorial for this problem because the essential information is missing. The prompt only includes the problem title, \"Codeforces 102739B - Наруто\", while the sections for the statement, input, and output are empty."
+date: "2026-07-29T21:18:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102739
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "\u0421\u0438\u0440\u0438\u0443\u0441.2020.\u041d\u043e\u044f\u0431\u0440\u044c.\u041e\u0447\u043d\u044b\u0439 \u043e\u0442\u0431\u043e\u0440"
 rating: 0
 weight: 102739
-solve_time_s: 235
+solve_time_s: 84
 verified: false
 draft: false
 ---
@@ -18,39 +18,40 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 55s  
+**Solve time:** 1m 24s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial for this problem because the actual problem statement is missing.
+I can't write a correct editorial for this problem because the essential information is missing.
 
-The prompt only includes the title, "Codeforces 102739B - Наруто", with empty **Problem Statement**, **Input**, and **Output** sections. Without the statement, I do not know:
+The prompt only includes the problem title, "Codeforces 102739B - Наруто", while the sections for the statement, input, and output are empty. Without the actual problem specification, it is impossible to determine:
 
-- what the input represents,
-- what must be computed,
-- the constraints,
-- whether there are multiple test cases,
-- the required algorithm,
-- the expected output format.
+- What the input represents.
+- What the required output is.
+- The constraints.
+- The intended algorithm.
+- The correct Python implementation.
+- Valid worked examples.
+- Correct test cases.
 
-Writing an editorial anyway would require inventing the problem, algorithm, proof, implementation, examples, and test cases, which would almost certainly be incorrect.
+Producing an editorial, proof, or solution in this situation would require inventing the problem, which would almost certainly be incorrect.
 
-If you provide any of the following, I can produce the complete editorial in the exact format you requested:
+Please provide one of the following:
 
-1. The full problem statement, or
-2. A link to the problem, or
-3. The input/output specification together with the constraints.
+1. The full problem statement, including Input, Output, and Constraints.
+2. A link to the Codeforces/Gym problem.
+3. The sample input/output if that's all you have.
 
-Once I have the actual problem, I'll write a complete editorial containing:
+Once I have the actual statement, I can produce a complete editorial with:
 
 - Problem Understanding
-- Approaches (brute force and optimal)
+- Approaches, including brute force and optimal solution
 - Algorithm Walkthrough with correctness proof
-- Complete Python 3 solution
-- Detailed implementation explanation
-- Worked examples with trace tables
-- Complexity Analysis
+- Complete Python 3 solution using fast I/O
+- Detailed code explanation
+- Worked examples with state tables
+- Complexity analysis
 - Assert-based test cases
-- Edge case discussion
+- Edge case analysis
 
-all following your requested writing style and formatting rules.
+all in the exact style and formatting you requested.
