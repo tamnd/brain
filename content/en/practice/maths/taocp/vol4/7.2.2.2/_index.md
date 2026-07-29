@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 7.2.2.2: Satisfiability"
-description: "Section 7.2.2.2 exercises: 525/525 solved."
+description: "Section 7.2.2.2 exercises: 526/526 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "7.2.2.2"
@@ -14,22 +14,22 @@ draft: false
 
 # Section 7.2.2.2. Satisfiability
 
-Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
+Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 526/526 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 51s |
 | [2](02.md) |  [*20*] | medium | solved | 58s |
-| [3](03.md) | &#9654; [*M21*] | math-medium | verified | 1m30s |
-| [4](04.md) | &#9654; [*22*] | medium | solved | 1m30s |
-| [5](05.md) |  [*M20*] | math-medium | solved | 2m55s |
-| [6](06.md) | &#9654; [*HM27*] | hm-hard | verified | 1m50s |
-| [7](07.md) |  [*25*] | medium | solved | 1m47s |
-| [8](08.md) | &#9654; [*22*] | medium | verified | 1m23s |
-| [9](09.md) |  [*M21*] | math-medium | solved | 2m13s |
+| [3](03.md) |  [*M21*] | math-medium | verified | 1m30s |
+| [4](04.md) |  [*22*] | medium | solved | 1m30s |
+| [5](05.md) |  [*M46*] | math-research | solved | 2m55s |
+| [6](06.md) | &#9654; [*HM37*] | hm-project | verified | 1m50s |
+| [7](07.md) |  [*21*] | medium | solved | 1m47s |
+| [8](08.md) | &#9654; [*20*] | medium | verified | 1m23s |
+| [9](09.md) |  [*24*] | medium | solved | 2m13s |
 | [10](10.md) | &#9654; [*21*] | medium | solved | 1m53s |
-| [11](11.md) | &#9654; [**] |  | solved | 5m06s |
-| [12](12.md) | &#9654; [**] |  | solved | 2m48s |
+| [11](11.md) |  [*27*] | hard | solved | 5m06s |
+| [12](12.md) |  [*21*] | medium | solved | 2m48s |
 | [13](13.md) |  [*24*] | medium | solved | 2m48s |
 | [14](14.md) |  [*22*] | medium | verified | 56s |
 | [15](15.md) |  [*24*] | medium | solved | 1m36s |
@@ -52,7 +52,8 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [32](32.md) |  [*15*] | simple | solved | 3m55s |
 | [33](33.md) |  [*21*] | medium | solved | 3m28s |
 | [34](34.md) |  [*HM26*] | hm-hard | solved | 3m52s |
-| [36](36.md) | &#9654; [**] |  | solved | 3m56s |
+| [35](35.md) | &#9654; [*22*] | medium | solved | 11m41s |
+| [36](36.md) | &#9654; [*22*] | medium | solved | 3m56s |
 | [37](37.md) |  [*20*] | medium | solved | 4m03s |
 | [38](38.md) |  [*M25*] | math-medium | solved | 3m45s |
 | [39](39.md) |  [*M46*] | math-research | solved | 3m56s |
@@ -83,7 +84,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [64](64.md) |  [*26*] | hard | solved | 3m40s |
 | [65](65.md) | &#9654; [*28*] | hard | solved | 2m21s |
 | [66](66.md) |  [*24*] | medium | solved | 3m44s |
-| [67](67.md) |  [**] |  | solved | 3m41s |
+| [67](67.md) |  [*2\frac{1}{2}*] | other | solved | 3m41s |
 | [68](68.md) |  [*39*] | project | solved | 3m40s |
 | [69](69.md) |  [*23*] | medium | solved | 3m45s |
 | [70](70.md) |  [*21*] | medium | solved | 3m45s |
@@ -266,7 +267,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [247](247.md) |  [*18*] | medium | solved | 6m01s |
 | [248](248.md) |  [*M20*] | math-medium | solved | 5m55s |
 | [249](249.md) |  [*18*] | medium | solved | 5m51s |
-| [250](250.md) |  [**] |  | solved | 5m56s |
+| [250](250.md) |  [*§5*] | other | solved | 5m56s |
 | [251](251.md) | &#9654; [*30*] | hard | solved | 6m05s |
 | [252](252.md) |  [*M26*] | math-hard | solved | 5m59s |
 | [253](253.md) | &#9654; [*18*] | medium | solved | 7m15s |
@@ -385,7 +386,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [366](366.md) | &#9654; [*18*] | medium | solved | 3m56s |
 | [367](367.md) | &#9654; [*20*] | medium | solved | 3m55s |
 | [368](368.md) |  [*76*] | research | solved | 3m52s |
-| [369](369.md) | &#9654; [**] |  | solved | 3m53s |
+| [369](369.md) | &#9654; [*MEA*] | math-other | solved | 3m53s |
 | [370](370.md) |  [*20*] | medium | solved | 3m55s |
 | [371](371.md) |  [*24*] | medium | solved | 3m50s |
 | [372](372.md) |  [*25*] | medium | solved | 3m46s |
@@ -399,9 +400,9 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [380](380.md) |  [*21*] | medium | solved | 3m48s |
 | [381](381.md) |  [*22*] | medium | solved | 3m58s |
 | [382](382.md) |  [*30*] | hard | solved | 3m50s |
-| [383](383.md) | &#9654; [*23*] | medium | solved | 3m52s |
+| [383](383.md) |  [*23*] | medium | solved | 3m52s |
 | [384](384.md) |  [*25*] | medium | solved | 3m19s |
-| [385](385.md) |  [**] |  | solved | 5m46s |
+| [385](385.md) |  [*22*] | medium | solved | 5m46s |
 | [386](386.md) | &#9654; [*M25*] | math-medium | solved | 5m48s |
 | [387](387.md) |  [*21*] | medium | solved | 4m58s |
 | [388](388.md) |  [*20*] | medium | solved | 3m08s |
@@ -459,7 +460,7 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [440](440.md) |  [*M33*] | math-hard | solved | 3m46s |
 | [441](441.md) |  [*M35*] | math-hard | solved | 3m45s |
 | [442](442.md) | &#9654; [*M27*] | math-hard | solved | 3m45s |
-| [443](443.md) |  [**] |  | solved | 3m47s |
+| [443](443.md) |  [*M2\frac{1}{4}*] | math-other | solved | 3m47s |
 | [444](444.md) |  [*M26*] | math-hard | solved | 3m45s |
 | [445](445.md) | &#9654; [*22*] | medium | solved | 3m46s |
 | [446](446.md) |  [*M10*] | math-simple | solved | 3m48s |
@@ -485,14 +486,14 @@ Exercises from [TAOCP Volume 4](../) Section 7.2.2.2: 525/525 solved.
 | [466](466.md) |  [*M23*] | math-medium | solved | 3m48s |
 | [467](467.md) |  [*20*] | medium | solved | 3m46s |
 | [468](468.md) |  [*20*] | medium | solved | 3m48s |
-| [469](469.md) | &#9654; [**] |  | solved | 3m43s |
-| [470](470.md) | &#9654; [**] |  | solved | 3m45s |
+| [469](469.md) | &#9654; [*M25*] | math-medium | solved | 3m43s |
+| [470](470.md) | &#9654; [*M22*] | math-medium | solved | 3m45s |
 | [471](471.md) |  [*16*] | medium | solved | 3m44s |
-| [472](472.md) |  [**] |  | solved | 3m54s |
-| [473](473.md) | &#9654; [**] |  | solved | 3m44s |
-| [474](474.md) |  [**] |  | solved | 3m45s |
-| [475](475.md) |  [**] |  | solved | 3m44s |
-| [476](476.md) |  [**] |  | solved | 3m46s |
+| [472](472.md) |  [*M25*] | math-medium | solved | 3m54s |
+| [473](473.md) | &#9654; [*M23*] | math-medium | solved | 3m44s |
+| [474](474.md) |  [*M20*] | math-medium | solved | 3m45s |
+| [475](475.md) |  [*M22*] | math-medium | solved | 3m44s |
+| [476](476.md) |  [*M23*] | math-medium | solved | 3m46s |
 | [477](477.md) | &#9654; [*23*] | medium | solved | 3m44s |
 | [478](478.md) | &#9654; [*23*] | medium | solved | 3m42s |
 | [479](479.md) | &#9654; [*25*] | medium | solved | 6m02s |
