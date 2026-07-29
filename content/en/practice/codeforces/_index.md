@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3029 contests, 22206 problems, 12188 verified."
+description: "Codeforces problem solutions with full editorials. 3029 contests, 22207 problems, 12191 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3029 contests, 22206 problems, 12188 verified.**
+**3029 contests, 22207 problems, 12191 verified.**
 
 ## Unknown — 780 contests, 6559 problems, 3841 verified
 
@@ -1578,7 +1578,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 196 contests, 1159 problems, 583 verified
+## 2020 — 196 contests, 1160 problems, 586 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1752,7 +1752,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102784](102784/) | [UTPC Contest 10-23-20 Div. 1](https://codeforces.com/contest/102784) | 9 | 7/9 | Div. 1 | - |
 | [102787](102787/) | [Algorithms Thread Treaps Contest](https://codeforces.com/contest/102787) | 7 | 6/7 | Special | - |
 | [102791](102791/) | [ICPC 2020-2021 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102791) | 12 | 8/12 | ICPC/IOI | - |
-| [102801](102801/) | [The 14th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/102801) | 10 | 6/10 | Special | - |
+| [102801](102801/) | [The 14th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/102801) | 11 | 9/11 | Special | - |
 | [102803](102803/) | [The 15th Heilongjiang Provincial Collegiate Programming Contest](https://codeforces.com/contest/102803) | 12 | 9/12 | Special | - |
 | [102822](102822/) | [2020 China Collegiate Programming Contest - Mianyang Site](https://codeforces.com/contest/102822) | 12 | 7/12 | Special | - |
 | [102829](102829/) | [UTPC Contest 11-06-20 Div. 1 (Tryout)](https://codeforces.com/contest/102829) | 9 | 5/9 | Div. 1 | - |
