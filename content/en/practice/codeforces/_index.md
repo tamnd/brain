@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3028 contests, 22192 problems, 12174 verified."
+description: "Codeforces problem solutions with full editorials. 3029 contests, 22198 problems, 12177 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3028 contests, 22192 problems, 12174 verified.**
+**3029 contests, 22198 problems, 12177 verified.**
 
-## Unknown — 779 contests, 6548 problems, 3833 verified
+## Unknown — 780 contests, 6554 problems, 3836 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102739](102739/) | [Сириус.2020.Ноябрь.Очный отбор](https://codeforces.com/contest/102739) | 6 | 3/6 | Special | - |
 | [102759](102759/) | [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759) | 10 | 4/10 | Special | - |
 | [102760](102760/) | [2020 KAIST 10th ICPC Mock Contest (XXI Open Cup. Grand Prix of Korea. Division 2)](https://codeforces.com/contest/102760) | 10 | 7/10 | ICPC/IOI | - |
 | [102767](102767/) | [Codedigger Training Contest -Number Theory](https://codeforces.com/contest/102767) | 7 | 3/7 | Special | - |
