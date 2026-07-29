@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 5.4.1: Multiway Merging and Replacement Selection"
-description: "Section 5.4.1 exercises: 27/27 solved."
+description: "Section 5.4.1 exercises: 28/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "5.4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 5.4.1. Multiway Merging and Replacement Selection
 
-Exercises from [TAOCP Volume 3](../) Section 5.4.1: 27/27 solved.
+Exercises from [TAOCP Volume 3](../) Section 5.4.1: 28/28 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,7 +24,7 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.1: 27/27 solved.
 | [4](04.md) |  [*16*] | medium | solved | 4m38s |
 | [5](05.md) |  [*00*] | immediate | verified | 1m28s |
 | [6](06.md) |  [*15*] | simple | verified | 3m50s |
-| [7](07.md) |  [**] |  | verified | 1m23s |
+| [7](07.md) |  [*17*] | medium | verified | 1m23s |
 | [8](08.md) |  [*20*] | medium | verified | 1m05s |
 | [9](09.md) |  [*23*] | medium | verified | 1m17s |
 | [10](10.md) |  [*26*] | hard | solved | 4m |
@@ -37,11 +37,12 @@ Exercises from [TAOCP Volume 3](../) Section 5.4.1: 27/27 solved.
 | [17](17.md) |  [*20*] | medium | verified | 1m34s |
 | [18](18.md) |  [*22*] | medium | solved | 1m41s |
 | [19](19.md) |  [*HM22*] | hm-medium | solved | 3m59s |
-| [20](20.md) |  [**] |  | solved | 4m40s |
+| [20](20.md) |  [*HM24*] | hm-medium | solved | 4m40s |
 | [21](21.md) |  [*HM23*] | hm-medium | solved | 4m17s |
-| [23](23.md) |  [**] |  | solved | 4m13s |
-| [24](24.md) |  [**] |  | solved | 2m45s |
+| [22](22.md) |  [*HM40*] | hm-project | solved | 1h41m |
+| [23](23.md) |  [*HM35*] | hm-hard | solved | 4m13s |
+| [24](24.md) |  [*HM39*] | hm-project | solved | 2m45s |
 | [25](25.md) |  [*HM40*] | hm-project | solved | 4m59s |
 | [26](26.md) |  [*M33*] | math-hard | solved | 4m21s |
-| [27](27.md) |  [*HM30*] | hm-hard | solved | 2m28s |
+| [27](27.md) | &#9654; [*HM30*] | hm-hard | solved | 2m28s |
 | [28](28.md) |  [*25*] | medium | verified | 3m49s |
