@@ -1,22 +1,22 @@
 ---
 title: "Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур."
-description: "6 problems from Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур. (contest 102591), difficulty -. 0/6 solutions verified against sample I/O."
+description: "7 problems from Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур. (contest 102591), difficulty -. 1/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102591
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
-n_verified: 0
-total_solve_s: 551
-date: "2026-07-31T06:20:49+07:00"
+n_problems: 7
+n_verified: 1
+total_solve_s: 907
+date: "2026-07-31T06:26:47+07:00"
 weight: 102591
 draft: false
 ---
 
 # [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591)
 
-Special | 6 problems | 0/6 verified | Difficulty - | 9m 11s
+Special | 7 problems | 1/7 verified | Difficulty - | 15m 7s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,4 @@ Special | 6 problems | 0/6 verified | Difficulty - | 9m 11s
 | [F](F/) | [\u0420\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u043f\u0430\u0440\u044b](https://codeforces.com/problemset/problem/102591/F) |  |  |  | 58s |  |
 | [G](G/) | [\u0421\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u0438](https://codeforces.com/problemset/problem/102591/G) |  |  |  | 48s |  |
 | [H](H/) | [With love from A(rr)(b)ay](https://codeforces.com/problemset/problem/102591/H) |  |  |  | 54s |  |
+| [I](I/) | [\u0413\u0440\u043e\u043c\u043a\u043e\u0441\u0442\u044c \u0434\u0438\u043d\u0430\u043c\u0438\u043a\u0430](https://codeforces.com/problemset/problem/102591/I) |  |  |  | 5m 56s | ✓ |
