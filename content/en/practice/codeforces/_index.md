@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3042 contests, 22246 problems, 12203 verified."
+description: "Codeforces problem solutions with full editorials. 3043 contests, 22249 problems, 12204 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3042 contests, 22246 problems, 12203 verified.**
+**3043 contests, 22249 problems, 12204 verified.**
 
-## Unknown — 783 contests, 6576 problems, 3845 verified
+## Unknown — 784 contests, 6579 problems, 3846 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 3 | 1/3 | Special | - |
 | [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 8 | 0/8 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 2 | 2/2 | Special | - |
