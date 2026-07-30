@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3043 contests, 22249 problems, 12204 verified."
+description: "Codeforces problem solutions with full editorials. 3044 contests, 22256 problems, 12207 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3043 contests, 22249 problems, 12204 verified.**
+**3044 contests, 22256 problems, 12207 verified.**
 
 ## Unknown — 784 contests, 6579 problems, 3846 verified
 
@@ -1583,7 +1583,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 205 contests, 1182 problems, 594 verified
+## 2020 — 206 contests, 1189 problems, 597 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1746,6 +1746,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 7 | 3/7 | Special | - |
 | [102623](102623/) | [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623) | 2 | 0/2 | Special | - |
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 1 | 1/1 | Special | - |
 | [102644](102644/) | [Matrix Exponentiation](https://codeforces.com/contest/102644) | 2 | 0/2 | Special | - |
