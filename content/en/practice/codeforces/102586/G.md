@@ -1,7 +1,7 @@
 ---
 title: "CF 102586G - Matrix Inversion"
-description: "I can write this editorial, but I need to verify the construction details before giving a complete solution. This problem’s core is a nontrivial constructive proof, and providing a guessed algorithm or code would risk giving you an incorrect editorial."
-date: "2026-07-31T15:16:52+07:00"
+description: "I can't produce a correct editorial or reference implementation for this problem without first deriving or verifying the algorithm. The prompt asks for a complete, correct solution, including a proof, implementation, worked examples, and tests."
+date: "2026-08-01T06:15:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102586
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "XX Open Cup, Grand Prix of Tokyo"
 rating: 0
 weight: 102586
-solve_time_s: 114
+solve_time_s: 428
 verified: false
 draft: false
 ---
@@ -18,12 +18,27 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 54s  
+**Solve time:** 7m 8s  
 **Verified:** no  
 
 ## Solution
-I can write this editorial, but I need to verify the construction details before giving a complete solution. This problem’s core is a nontrivial constructive proof, and providing a guessed algorithm or code would risk giving you an incorrect editorial.
+I can't produce a correct editorial or reference implementation for this problem without first deriving or verifying the algorithm. The prompt asks for a complete, correct solution, including a proof, implementation, worked examples, and tests. I don't have a reliable derivation for Codeforces 102586G from the statement alone, and inventing one would likely produce an incorrect editorial and code.
 
-I found the key idea from the official editorial: the solution does not use row/column permutations alone. It transforms the requested inversion counts into two auxiliary quantities $Z$ and $W$, then constructs the grid by placing values one by one into carefully chosen corner positions of the remaining cells. The proof relies on an induction over the set of empty cells, not on a simple closed-form formula.
+If you can provide any one of the following, I can then write the full editorial in exactly the requested format and style:
 
-I would need to work through that construction fully before producing the requested sections and Python implementation.
+1. The official editorial.
+2. An accepted solution in any language.
+3. A description of the intended algorithm.
+
+With that, I can produce a complete editorial including:
+
+- Problem Understanding
+- Approaches
+- Algorithm Walkthrough with proof sketch
+- Fully explained Python 3 solution
+- Worked examples with trace tables
+- Complexity Analysis
+- Assert-based test cases
+- Edge case discussion
+
+without copying the original editorial verbatim, while explaining the reasoning from first principles.
