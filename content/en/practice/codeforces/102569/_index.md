@@ -1,23 +1,23 @@
 ---
 title: "2020, XIII Samara Regional Intercollegiate Programming Contest"
-description: "9 problems from 2020, XIII Samara Regional Intercollegiate Programming Contest (contest 102569), difficulty -. 5/9 solutions verified against sample I/O."
+description: "12 problems from 2020, XIII Samara Regional Intercollegiate Programming Contest (contest 102569), difficulty -. 6/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102569
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 5
-total_solve_s: 1063
+n_problems: 12
+n_verified: 6
+total_solve_s: 1429
 contest_year: 2020
-date: "2026-07-31T05:53:10+07:00"
+date: "2026-07-31T06:03:10+07:00"
 weight: 102569
 draft: false
 ---
 
 # [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569)
 
-Special | 9 problems | 5/9 verified | Difficulty - | 17m 43s
+Special | 12 problems | 6/12 verified | Difficulty - | 23m 49s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,10 @@ Special | 9 problems | 5/9 verified | Difficulty - | 17m 43s
 | [C](C/) | [Manhattan Distance](https://codeforces.com/problemset/problem/102569/C) |  |  |  | 2m 39s |  |
 | [D](D/) | [Lexicographically Minimal Shortest Path](https://codeforces.com/problemset/problem/102569/D) |  |  |  | 2m 58s |  |
 | [E](E/) | [Fluctuations of Mana](https://codeforces.com/problemset/problem/102569/E) |  |  |  | 1m 19s | ✓ |
-| [G](G/) | [Nuts and Bolts](https://codeforces.com/problemset/problem/102569/G) |  |  |  | 2m 11s |  |
+| [G](G/) | [Nuts and Bolts](https://codeforces.com/problemset/problem/102569/G) |  |  |  | 6m 36s |  |
 | [H](H/) | [Tree Painting](https://codeforces.com/problemset/problem/102569/H) |  |  |  | 1m 31s | ✓ |
-| [J](J/) | [The Battle of Mages](https://codeforces.com/problemset/problem/102569/J) |  |  |  | 1m 31s |  |
+| [I](I/) | [Sorting Colored Array](https://codeforces.com/problemset/problem/102569/I) |  |  |  | 39s |  |
+| [J](J/) | [The Battle of Mages](https://codeforces.com/problemset/problem/102569/J) |  |  |  | 45s |  |
 | [K](K/) | [Table](https://codeforces.com/problemset/problem/102569/K) |  |  |  | 2m 38s | ✓ |
+| [L](L/) | [The Dragon Land](https://codeforces.com/problemset/problem/102569/L) |  |  |  | 38s |  |
+| [M](M/) | [Notifications](https://codeforces.com/problemset/problem/102569/M) |  |  |  | 1m 10s | ✓ |
