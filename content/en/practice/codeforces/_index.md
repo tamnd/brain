@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3046 contests, 22267 problems, 12209 verified."
+description: "Codeforces problem solutions with full editorials. 3047 contests, 22269 problems, 12210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3046 contests, 22267 problems, 12209 verified.**
+**3047 contests, 22269 problems, 12210 verified.**
 
-## Unknown — 786 contests, 6590 problems, 3848 verified
+## Unknown — 787 contests, 6592 problems, 3849 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 2 | 1/2 | Special | - |
 | [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 4 | 1/4 | Special | - |
 | [102591](102591/) | [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591) | 7 | 1/7 | Special | - |
 | [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 3 | 1/3 | Special | - |
