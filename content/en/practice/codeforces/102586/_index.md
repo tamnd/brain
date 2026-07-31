@@ -1,25 +1,26 @@
 ---
 title: "XX Open Cup, Grand Prix of Tokyo"
-description: "7 problems from XX Open Cup, Grand Prix of Tokyo (contest 102586), difficulty -. 2/7 solutions verified against sample I/O."
+description: "8 problems from XX Open Cup, Grand Prix of Tokyo (contest 102586), difficulty -. 2/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102586
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 2
-total_solve_s: 1165
-date: "2026-07-31T15:22:33+07:00"
+total_solve_s: 1208
+date: "2026-08-01T06:04:22+07:00"
 weight: 102586
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586)
 
-Special | 7 problems | 2/7 verified | Difficulty - | 19m 25s
+Special | 8 problems | 2/8 verified | Difficulty - | 20m 8s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Cookies](https://codeforces.com/problemset/problem/102586/A) |  |  |  | 43s |  |
 | [C](C/) | [Sum Modulo](https://codeforces.com/problemset/problem/102586/C) |  |  |  | 1m 29s |  |
 | [D](D/) | [Xor Sum](https://codeforces.com/problemset/problem/102586/D) |  |  |  | 5m 7s |  |
 | [E](E/) | [Count Modulo 2](https://codeforces.com/problemset/problem/102586/E) |  |  |  | 2m | ✓ |
