@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22296 problems, 12227 verified."
+description: "Codeforces problem solutions with full editorials. 3049 contests, 22306 problems, 12230 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22296 problems, 12227 verified.**
+**3049 contests, 22306 problems, 12230 verified.**
 
-## Unknown — 788 contests, 6610 problems, 3859 verified
+## Unknown — 788 contests, 6620 problems, 3862 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 4 | 1/4 | Special | - |
 | [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 7 | 2/7 | Special | - |
 | [102591](102591/) | [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591) | 8 | 2/8 | Special | - |
-| [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 3 | 1/3 | Special | - |
+| [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 13 | 4/13 | Special | - |
 | [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 8 | 0/8 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 2 | 2/2 | Special | - |
