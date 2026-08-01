@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22357 problems, 12263 verified."
+description: "Codeforces problem solutions with full editorials. 3049 contests, 22359 problems, 12266 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22357 problems, 12263 verified.**
+**3049 contests, 22359 problems, 12266 verified.**
 
-## Unknown — 788 contests, 6629 problems, 3872 verified
+## Unknown — 788 contests, 6631 problems, 3875 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 10 | 2/10 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 5 | 3/5 | Special | - |
-| [102739](102739/) | [Сириус.2020.Ноябрь.Очный отбор](https://codeforces.com/contest/102739) | 6 | 3/6 | Special | - |
+| [102739](102739/) | [Сириус.2020.Ноябрь.Очный отбор](https://codeforces.com/contest/102739) | 8 | 6/8 | Special | - |
 | [102759](102759/) | [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759) | 12 | 4/12 | Special | - |
 | [102760](102760/) | [2020 KAIST 10th ICPC Mock Contest (XXI Open Cup. Grand Prix of Korea. Division 2)](https://codeforces.com/contest/102760) | 12 | 9/12 | ICPC/IOI | - |
 | [102767](102767/) | [Codedigger Training Contest -Number Theory](https://codeforces.com/contest/102767) | 7 | 3/7 | Special | - |
