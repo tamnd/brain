@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 7
-total_solve_s: 3757
+total_solve_s: 3956
 contest_year: 2020
-date: "2026-07-31T07:08:04+07:00"
+date: "2026-07-31T06:43:03+07:00"
 weight: 102599
 draft: false
 ---
 
 # [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599)
 
-Special | 10 problems | 7/10 verified | Difficulty - | 1h 2m
+Special | 10 problems | 7/10 verified | Difficulty - | 1h 5m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u0414\u043e\u043b\u0433\u0430\u044f \u0438\u0433\u0440\u0430](https://codeforces.com/problemset/problem/102599/A) |  |  |  | 4m 26s | ✓ |
 | [B](B/) | [\u041b\u0438\u043f\u0435\u0446\u043a\u043e\u0435 \u043c\u0435\u0442\u0440\u043e](https://codeforces.com/problemset/problem/102599/B) |  |  |  | 2m 2s | ✓ |
 | [C](C/) | [\u041d\u0430\u0447\u0438\u043d\u0430\u044e\u0449\u0438\u0439 \u043c\u0430\u0433](https://codeforces.com/problemset/problem/102599/C) |  |  |  | 1m 2s |  |
-| [D](D/) | [Young Explorers](https://codeforces.com/problemset/problem/102599/D) |  |  |  | 3m 2s |  |
+| [D](D/) | [Young Explorers](https://codeforces.com/problemset/problem/102599/D) |  |  |  | 6m 21s |  |
 | [E](E/) | [M~--- \u043c\u043d\u043e\u0433\u043e\u043c\u0435\u0440\u043d\u043e\u0441\u0442\u044c](https://codeforces.com/problemset/problem/102599/E) |  |  |  | 10m 37s | ✓ |
 | [G](G/) | [Sequence with Digits](https://codeforces.com/problemset/problem/102599/G) |  |  |  | 6m 36s | ✓ |
 | [H](H/) | [\u041a\u0430\u0440\u0430\u043d\u0442\u0438\u043d](https://codeforces.com/problemset/problem/102599/H) |  |  |  | 4m 49s | ✓ |
