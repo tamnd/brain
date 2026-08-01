@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 3
-total_solve_s: 1895
-date: "2026-08-01T06:03:03+07:00"
+total_solve_s: 1676
+date: "2026-08-01T06:12:45+07:00"
 weight: 102586
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586)
 
-Special | 9 problems | 3/9 verified | Difficulty - | 31m 35s
+Special | 9 problems | 3/9 verified | Difficulty - | 27m 56s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Special | 9 problems | 3/9 verified | Difficulty - | 31m 35s
 | [D](D/) | [Xor Sum](https://codeforces.com/problemset/problem/102586/D) |  |  |  | 2m 16s |  |
 | [E](E/) | [Count Modulo 2](https://codeforces.com/problemset/problem/102586/E) |  |  |  | 2m | ✓ |
 | [F](F/) | [Robots](https://codeforces.com/problemset/problem/102586/F) |  |  |  | 3m 19s | ✓ |
-| [G](G/) | [Matrix Inversion](https://codeforces.com/problemset/problem/102586/G) |  |  |  | 7m 8s |  |
-| [J](J/) | [Median Replace Hard](https://codeforces.com/problemset/problem/102586/J) |  |  |  | 6m 11s |  |
+| [G](G/) | [Matrix Inversion](https://codeforces.com/problemset/problem/102586/G) |  |  |  | 8m 54s |  |
+| [J](J/) | [Median Replace Hard](https://codeforces.com/problemset/problem/102586/J) |  |  |  | 46s |  |
 | [K](K/) | [Game and Queries](https://codeforces.com/problemset/problem/102586/K) |  |  |  | 1m 23s | ✓ |
 | [L](L/) | [Yosupo's Algorithm](https://codeforces.com/problemset/problem/102586/L) |  |  |  | 6m 21s |  |
