@@ -1,7 +1,7 @@
 ---
 title: "CF 102617E - Genotypes"
-description: "I can write the full editorial, but the problem statement section in your prompt is empty. I need the actual statement, input format, output format, and samples for Codeforces 102617E - Genotypes to produce a correct editorial with the right algorithm, proof, code, and test…"
-date: "2026-07-31T17:34:22+07:00"
+description: "I can write the editorial, but the actual problem statement for Codeforces 102617E - Genotypes is missing from your prompt. I do not have enough information to determine the required algorithm, constraints, samples, or edge cases without risking inventing details."
+date: "2026-08-01T07:10:13+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102617
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "mBIT Rookie November 2019"
 rating: 0
 weight: 102617
-solve_time_s: 353
+solve_time_s: 38
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 53s  
+**Solve time:** 38s  
 **Verified:** no  
 
 ## Solution
-I can write the full editorial, but the problem statement section in your prompt is empty. I need the actual statement, input format, output format, and samples for Codeforces 102617E - Genotypes to produce a correct editorial with the right algorithm, proof, code, and test cases.
+I can write the editorial, but the actual problem statement for Codeforces 102617E - Genotypes is missing from your prompt. I do not have enough information to determine the required algorithm, constraints, samples, or edge cases without risking inventing details.
 
-Please paste the full problem statement (or at least the constraints, required output, and samples), and I’ll write the complete editorial in the requested format.
+Please provide the full problem statement (including input, output, constraints, and samples), and I’ll produce the complete editorial in the requested format with the Python solution and tests.
