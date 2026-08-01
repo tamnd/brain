@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22335 problems, 12252 verified."
+description: "Codeforces problem solutions with full editorials. 3049 contests, 22338 problems, 12254 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22335 problems, 12252 verified.**
+**3049 contests, 22338 problems, 12254 verified.**
 
 ## Unknown — 788 contests, 6629 problems, 3872 verified
 
@@ -1587,7 +1587,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 207 contests, 1218 problems, 616 verified
+## 2020 — 207 contests, 1221 problems, 618 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1756,7 +1756,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 3 | 3/3 | Special | - |
 | [102644](102644/) | [Matrix Exponentiation](https://codeforces.com/contest/102644) | 8 | 4/8 | Special | - |
 | [102646](102646/) | [Testing Round #XVII](https://codeforces.com/contest/102646) | 4 | 3/4 | Special | - |
-| [102687](102687/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 1](https://codeforces.com/contest/102687) | 2 | 0/2 | Special | - |
+| [102687](102687/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 1](https://codeforces.com/contest/102687) | 5 | 2/5 | Special | - |
 | [102688](102688/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 2](https://codeforces.com/contest/102688) | 5 | 0/5 | Special | - |
 | [102700](102700/) | [2020 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102700) | 3 | 2/3 | ICPC/IOI | - |
 | [102709](102709/) | [UTPC Contest 9-11-20 Div. 2](https://codeforces.com/contest/102709) | 1 | 1/1 | Div. 2 | - |
