@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22314 problems, 12238 verified."
+description: "Codeforces problem solutions with full editorials. 3049 contests, 22316 problems, 12240 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22314 problems, 12238 verified.**
+**3049 contests, 22316 problems, 12240 verified.**
 
-## Unknown — 788 contests, 6622 problems, 3867 verified
+## Unknown — 788 contests, 6624 problems, 3869 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 4 | 1/4 | Special | - |
 | [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 9 | 3/9 | Special | - |
 | [102591](102591/) | [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591) | 8 | 6/8 | Special | - |
-| [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 13 | 4/13 | Special | - |
+| [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 15 | 6/15 | Special | - |
 | [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 8 | 0/8 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 2 | 2/2 | Special | - |
