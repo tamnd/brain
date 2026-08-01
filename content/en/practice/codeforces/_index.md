@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22346 problems, 12254 verified."
+description: "Codeforces problem solutions with full editorials. 3049 contests, 22352 problems, 12257 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22346 problems, 12254 verified.**
+**3049 contests, 22352 problems, 12257 verified.**
 
 ## Unknown — 788 contests, 6629 problems, 3872 verified
 
@@ -1587,7 +1587,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 207 contests, 1229 problems, 618 verified
+## 2020 — 207 contests, 1235 problems, 621 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1759,7 +1759,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102687](102687/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 1](https://codeforces.com/contest/102687) | 5 | 2/5 | Special | - |
 | [102688](102688/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 2](https://codeforces.com/contest/102688) | 5 | 0/5 | Special | - |
 | [102700](102700/) | [2020 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102700) | 11 | 2/11 | ICPC/IOI | - |
-| [102709](102709/) | [UTPC Contest 9-11-20 Div. 2](https://codeforces.com/contest/102709) | 1 | 1/1 | Div. 2 | - |
+| [102709](102709/) | [UTPC Contest 9-11-20 Div. 2](https://codeforces.com/contest/102709) | 7 | 4/7 | Div. 2 | - |
 | [102726](102726/) | [UTPC Contest 9-11-20 Div. 1](https://codeforces.com/contest/102726) | 2 | 1/2 | Div. 1 | - |
 | [102740](102740/) | [UTPC Contest 9-25-20 Div. 2](https://codeforces.com/contest/102740) | 8 | 6/8 | Div. 2 | - |
 | [102741](102741/) | [UTPC Contest 9-25-20 Div. 1](https://codeforces.com/contest/102741) | 9 | 7/9 | Div. 1 | - |
