@@ -1,7 +1,7 @@
 ---
 title: "CF 102770J - Just an Old Problem"
-description: "I can write the editorial, but I do not have enough confidence in the core algorithm for this problem to produce a correct competitive-programming solution."
-date: "2026-07-28T23:13:46+07:00"
+description: "I can write this editorial, but I do not have a verified derivation of the intended algorithm for Codeforces 102770J - Just an Old Problem from the information provided alone."
+date: "2026-08-01T22:28:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102770
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 17th Zhejiang Provincial Collegiate Programming Contest"
 rating: 0
 weight: 102770
-solve_time_s: 54
+solve_time_s: 78
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 54s  
+**Solve time:** 1m 18s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but I do not have enough confidence in the core algorithm for this problem to produce a correct competitive-programming solution. The difficult part is not the MST observation itself, but the required fast counting of MSTs under the “no simple path with 8 vertices” restriction. A generic Kruskal plus Matrix-Tree Theorem approach is exactly what the statement says is too slow, and I do not want to invent a fake optimization or provide code that would fail hidden tests.
+I can write this editorial, but I do not have a verified derivation of the intended algorithm for Codeforces 102770J - Just an Old Problem from the information provided alone. The key missing piece is the specialized way to count the number of MSTs under the “no simple path with 8 vertices” restriction. A generic solution would require the Matrix-Tree Theorem and is too slow for the constraints, so inventing a replacement algorithm or code here would risk giving you an incorrect editorial.
 
-If you can provide either the intended idea, an accepted solution, or a link to the official editorial/source, I can turn it into the detailed senior-engineer style editorial you requested, including the proof, walkthrough, Python implementation, traces, and tests.
+If you provide the official solution, a trusted code submission, or the intended idea (for example, the structure used to count spanning trees of the restricted graph), I can turn it into the full senior-engineer style editorial with the requested sections, proof, complexity analysis, and Python implementation.
