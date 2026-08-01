@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3049 contests, 22362 problems, 12270 verified."
+description: "Codeforces problem solutions with full editorials. 3050 contests, 22368 problems, 12275 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3049 contests, 22362 problems, 12270 verified.**
+**3050 contests, 22368 problems, 12275 verified.**
 
 ## Unknown — 788 contests, 6633 problems, 3877 verified
 
@@ -1587,7 +1587,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 207 contests, 1241 problems, 629 verified
+## 2020 — 208 contests, 1247 problems, 634 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1758,6 +1758,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102646](102646/) | [Testing Round #XVII](https://codeforces.com/contest/102646) | 4 | 3/4 | Special | - |
 | [102687](102687/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 1](https://codeforces.com/contest/102687) | 5 | 2/5 | Special | - |
 | [102688](102688/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 2](https://codeforces.com/contest/102688) | 5 | 0/5 | Special | - |
+| [102694](102694/) | [AlgorithmsThread Tree Basics Contest](https://codeforces.com/contest/102694) | 6 | 5/6 | Special | - |
 | [102700](102700/) | [2020 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102700) | 11 | 2/11 | ICPC/IOI | - |
 | [102709](102709/) | [UTPC Contest 9-11-20 Div. 2](https://codeforces.com/contest/102709) | 7 | 4/7 | Div. 2 | - |
 | [102726](102726/) | [UTPC Contest 9-11-20 Div. 1](https://codeforces.com/contest/102726) | 7 | 7/7 | Div. 1 | - |
