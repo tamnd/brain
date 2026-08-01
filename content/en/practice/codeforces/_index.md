@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3051 contests, 22375 problems, 12280 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22381 problems, 12283 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3051 contests, 22375 problems, 12280 verified.**
+**3052 contests, 22381 problems, 12283 verified.**
 
-## Unknown — 789 contests, 6640 problems, 3882 verified
+## Unknown — 790 contests, 6645 problems, 3885 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,6 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 10 | 2/10 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 5 | 3/5 | Special | - |
+| [102672](102672/) | [Selection of tasks from Internet olympiads season 2019-20](https://codeforces.com/contest/102672) | 5 | 3/5 | Special | - |
 | [102680](102680/) | [Brookfield Computer Programming Challenge 1](https://codeforces.com/contest/102680) | 7 | 5/7 | Special | - |
 | [102739](102739/) | [Сириус.2020.Ноябрь.Очный отбор](https://codeforces.com/contest/102739) | 8 | 6/8 | Special | - |
 | [102759](102759/) | [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759) | 12 | 4/12 | Special | - |
@@ -1588,7 +1589,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 208 contests, 1247 problems, 634 verified
+## 2020 — 208 contests, 1248 problems, 634 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1751,7 +1752,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
-| [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 12 | 6/12 | Special | - |
+| [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 13 | 6/13 | Special | - |
 | [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 10 | 7/10 | Special | - |
 | [102623](102623/) | [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623) | 8 | 3/8 | Special | - |
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 3 | 3/3 | Special | - |
