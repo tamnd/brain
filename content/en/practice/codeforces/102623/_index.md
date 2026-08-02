@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 6
-total_solve_s: 2371
+total_solve_s: 2477
 contest_year: 2020
-date: "2026-08-01T03:16:01+07:00"
+date: "2026-08-01T03:19:25+07:00"
 weight: 102623
 draft: false
 ---
 
 # [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623)
 
-Special | 12 problems | 6/12 verified | Difficulty - | 39m 31s
+Special | 12 problems | 6/12 verified | Difficulty - | 41m 17s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,6 @@ Special | 12 problems | 6/12 verified | Difficulty - | 39m 31s
 | [H](H/) | [Hay Mower](https://codeforces.com/problemset/problem/102623/H) |  |  |  | 4m 20s |  |
 | [I](I/) | [Immortal Trees](https://codeforces.com/problemset/problem/102623/I) |  |  |  | 3m 12s |  |
 | [J](J/) | [JXC!!](https://codeforces.com/problemset/problem/102623/J) |  |  |  | 2m 14s |  |
-| [K](K/) | [K-Shift Array](https://codeforces.com/problemset/problem/102623/K) |  |  |  | 1m 35s |  |
+| [K](K/) | [K-Shift Array](https://codeforces.com/problemset/problem/102623/K) |  |  |  | 3m 21s |  |
 | [L](L/) | [Lottery Tickets](https://codeforces.com/problemset/problem/102623/L) |  |  |  | 1m 5s | ✓ |
 | [M](M/) | [MITE](https://codeforces.com/problemset/problem/102623/M) |  |  |  | 1m 16s |  |
