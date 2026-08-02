@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3052 contests, 22383 problems, 12283 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22388 problems, 12286 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,18 +11,18 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3052 contests, 22383 problems, 12283 verified.**
+**3052 contests, 22388 problems, 12286 verified.**
 
-## Unknown — 790 contests, 6646 problems, 3885 verified
+## Unknown — 790 contests, 6651 problems, 3888 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [102576](102576/) | [2020 Petrozavodsk Winter Camp, Jagiellonian U Contest](https://codeforces.com/contest/102576) | 12 | 8/12 | Special | - |
 | [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 4 | 1/4 | Special | - |
-| [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 9 | 3/9 | Special | - |
+| [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 12 | 4/12 | Special | - |
 | [102591](102591/) | [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591) | 9 | 6/9 | Special | - |
 | [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 15 | 6/15 | Special | - |
-| [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 7 | 2/7 | Special | - |
+| [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 9 | 4/9 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 10 | 2/10 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 5 | 3/5 | Special | - |
 | [102672](102672/) | [Selection of tasks from Internet olympiads season 2019-20](https://codeforces.com/contest/102672) | 5 | 3/5 | Special | - |
