@@ -1,7 +1,7 @@
 ---
 title: "CF 102620J - Zoo Tour"
-description: "I can write the editorial, but the problem statement content is missing. I could find the Codeforces page for 102620J - Zoo Tour, but the statement text itself is not available in the prompt, so I do not have enough information to determine the exact input format, constraints…"
-date: "2026-08-02T07:09:48+07:00"
+description: "I need the actual problem details to write a correct editorial and solution, because the statement section is empty and the problem ID alone is not enough to safely reconstruct all requirements. Waiting for your answer"
+date: "2026-08-02T13:48:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102620
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "mBIT Standard June 2020"
 rating: 0
 weight: 102620
-solve_time_s: 34
+solve_time_s: 45
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 45s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but the problem statement content is missing. I could find the Codeforces page for **102620J - Zoo Tour**, but the statement text itself is not available in the prompt, so I do not have enough information to determine the exact input format, constraints, algorithm, or edge cases without guessing.
+I need the actual problem details to write a correct editorial and solution, because the statement section is empty and the problem ID alone is not enough to safely reconstruct all requirements.
 
-Please paste the full problem statement (including Input, Output, and examples), and I’ll produce the complete editorial in the requested format with the Python solution and tests.
+Waiting for your answer

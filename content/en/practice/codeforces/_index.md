@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3052 contests, 22389 problems, 12286 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22392 problems, 12287 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3052 contests, 22389 problems, 12286 verified.**
+**3052 contests, 22392 problems, 12287 verified.**
 
-## Unknown — 790 contests, 6651 problems, 3888 verified
+## Unknown — 790 contests, 6654 problems, 3889 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 12 | 4/12 | Special | - |
 | [102591](102591/) | [Открытая предметная олимпиада МУИТ по спортивному программированию 2020. Финальный тур.](https://codeforces.com/contest/102591) | 9 | 6/9 | Special | - |
 | [102617](102617/) | [mBIT Rookie November 2019](https://codeforces.com/contest/102617) | 15 | 6/15 | Special | - |
-| [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 9 | 4/9 | Special | - |
+| [102620](102620/) | [mBIT Standard June 2020](https://codeforces.com/contest/102620) | 12 | 5/12 | Special | - |
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 10 | 2/10 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 5 | 3/5 | Special | - |
 | [102672](102672/) | [Selection of tasks from Internet olympiads season 2019-20](https://codeforces.com/contest/102672) | 5 | 3/5 | Special | - |
