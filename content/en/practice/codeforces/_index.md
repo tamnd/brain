@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3052 contests, 22408 problems, 12299 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22409 problems, 12302 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3052 contests, 22408 problems, 12299 verified.**
+**3052 contests, 22409 problems, 12302 verified.**
 
-## Unknown — 790 contests, 6661 problems, 3894 verified
+## Unknown — 790 contests, 6662 problems, 3897 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102621](102621/) | [mBIT Advanced June 2020](https://codeforces.com/contest/102621) | 12 | 6/12 | Special | - |
 | [102651](102651/) | [Innopolis Open 2020-2021, qualification, contest 1](https://codeforces.com/contest/102651) | 5 | 3/5 | Special | - |
 | [102672](102672/) | [Selection of tasks from Internet olympiads season 2019-20](https://codeforces.com/contest/102672) | 10 | 4/10 | Special | - |
-| [102680](102680/) | [Brookfield Computer Programming Challenge 1](https://codeforces.com/contest/102680) | 7 | 5/7 | Special | - |
+| [102680](102680/) | [Brookfield Computer Programming Challenge 1](https://codeforces.com/contest/102680) | 8 | 8/8 | Special | - |
 | [102739](102739/) | [Сириус.2020.Ноябрь.Очный отбор](https://codeforces.com/contest/102739) | 8 | 6/8 | Special | - |
 | [102759](102759/) | [XXI Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102759) | 12 | 4/12 | Special | - |
 | [102760](102760/) | [2020 KAIST 10th ICPC Mock Contest (XXI Open Cup. Grand Prix of Korea. Division 2)](https://codeforces.com/contest/102760) | 12 | 9/12 | ICPC/IOI | - |
