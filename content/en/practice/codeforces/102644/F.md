@@ -1,7 +1,7 @@
 ---
 title: "CF 102644F - Min Path"
-description: "I can write the editorial, but the problem statement section in your prompt is empty and I need the exact statement details to produce a correct explanation, proof, code, examples, and tests."
-date: "2026-08-01T10:19:54+07:00"
+description: "I can write the editorial, but the problem statement section in your prompt is empty. I found that Codeforces 102644F “Min Path” is a graph problem about finding the minimum total weight of a path with exactly k edges, where k can be as large as 10^9, and the intended solution…"
+date: "2026-08-02T14:48:58+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102644
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Matrix Exponentiation"
 rating: 0
 weight: 102644
-solve_time_s: 34
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,12 +18,12 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 34s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but the problem statement section in your prompt is empty and I need the exact statement details to produce a correct explanation, proof, code, examples, and tests.
+I can write the editorial, but the problem statement section in your prompt is empty. I found that Codeforces 102644F “Min Path” is a graph problem about finding the minimum total weight of a path with exactly `k` edges, where `k` can be as large as `10^9`, and the intended solution uses min-plus matrix exponentiation.
 
-I found that Codeforces 102644F “Min Path” is the problem about finding the minimum weight of a path with exactly `k` edges in a directed weighted graph, where `k` can be as large as `10^9`, and the intended approach is min-plus matrix exponentiation.
+Before I generate the full editorial, I need one clarification: should I write it specifically for the version from the Codeforces Gym page I found (directed weighted graph, exactly `k` edges, output `IMPOSSIBLE` if no such path), or do you have a different statement for this problem?
 
-I can proceed from that statement, but I need the exact samples and any missing details you want included. If you want me to use the official version, reply “use official statement” and I’ll generate the full editorial.
+Once confirmed, I’ll provide the complete sections in your requested format, including the Python solution, walkthroughs, tests, and edge-case analysis.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3052 contests, 22400 problems, 12296 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22401 problems, 12298 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3052 contests, 22400 problems, 12296 verified.**
+**3052 contests, 22401 problems, 12298 verified.**
 
 ## Unknown — 790 contests, 6656 problems, 3893 verified
 
@@ -1589,7 +1589,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 208 contests, 1256 problems, 639 verified
+## 2020 — 208 contests, 1257 problems, 641 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1756,7 +1756,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 12 | 7/12 | Special | - |
 | [102623](102623/) | [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623) | 10 | 6/10 | Special | - |
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 7 | 5/7 | Special | - |
-| [102644](102644/) | [Matrix Exponentiation](https://codeforces.com/contest/102644) | 8 | 4/8 | Special | - |
+| [102644](102644/) | [Matrix Exponentiation](https://codeforces.com/contest/102644) | 9 | 6/9 | Special | - |
 | [102646](102646/) | [Testing Round #XVII](https://codeforces.com/contest/102646) | 4 | 3/4 | Special | - |
 | [102687](102687/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 1](https://codeforces.com/contest/102687) | 5 | 2/5 | Special | - |
 | [102688](102688/) | [2020 National Olympiad in Informatics - Philippines (NOI.PH) Online Finals, Day 2](https://codeforces.com/contest/102688) | 5 | 0/5 | Special | - |
