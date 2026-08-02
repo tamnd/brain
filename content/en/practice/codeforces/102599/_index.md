@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 7
-total_solve_s: 4665
+total_solve_s: 4726
 contest_year: 2020
-date: "2026-07-31T06:54:53+07:00"
+date: "2026-07-31T07:04:51+07:00"
 weight: 102599
 draft: false
 ---
 
 # [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599)
 
-Special | 11 problems | 7/11 verified | Difficulty - | 1h 17m
+Special | 11 problems | 7/11 verified | Difficulty - | 1h 18m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,4 +31,4 @@ Special | 11 problems | 7/11 verified | Difficulty - | 1h 17m
 | [I](I/) | [Count Triangles](https://codeforces.com/problemset/problem/102599/I) |  |  |  | 16m 58s | ✓ |
 | [J](J/) | [Restorer Distance](https://codeforces.com/problemset/problem/102599/J) |  |  |  | 4m 13s | ✓ |
 | [K](K/) | [Guess Divisors Count](https://codeforces.com/problemset/problem/102599/K) |  |  |  | 11m 49s |  |
-| [L](L/) | [\u0421\u0442\u0435\u043a\u043e\u0432\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430](https://codeforces.com/problemset/problem/102599/L) |  |  |  | 8m 52s |  |
+| [L](L/) | [\u0421\u0442\u0435\u043a\u043e\u0432\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430](https://codeforces.com/problemset/problem/102599/L) |  |  |  | 9m 53s |  |
