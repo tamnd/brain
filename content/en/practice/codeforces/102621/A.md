@@ -1,7 +1,7 @@
 ---
 title: "CF 102621A - Zoo Tour"
-description: "I can't write a correct editorial for Codeforces 102621A - Zoo Tour because the actual problem statement is missing."
-date: "2026-07-31T02:59:35+07:00"
+description: "I can write the editorial, but the problem statement content is missing from the prompt. The Codeforces page for “102621A - Zoo Tour” does not include the statement text in the provided context, and I do not have enough information to reconstruct the required algorithm, edge…"
+date: "2026-08-02T13:52:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102621
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "mBIT Advanced June 2020"
 rating: 0
 weight: 102621
-solve_time_s: 316
+solve_time_s: 32
 verified: false
 draft: false
 ---
@@ -18,45 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 16s  
+**Solve time:** 32s  
 **Verified:** no  
 
 ## Solution
-I can't write a correct editorial for **Codeforces 102621A - Zoo Tour** because the actual problem statement is missing.
+I can write the editorial, but the problem statement content is missing from the prompt. The Codeforces page for “102621A - Zoo Tour” does not include the statement text in the provided context, and I do not have enough information to reconstruct the required algorithm, edge cases, or implementation reliably.
 
-The prompt only contains empty sections for:
-
-- Problem Statement
-- Input
-- Output
-
-Without the statement, I do not know:
-
-- what the input represents,
-- what must be computed,
-- the constraints,
-- whether there are multiple test cases,
-- the required algorithm,
-- or even what constitutes a correct output.
-
-A complete editorial with a proof, complexity analysis, implementation, worked examples, and test cases would require inventing the entire problem, which would almost certainly be incorrect.
-
-Please provide one of the following:
-
-1. The full problem statement (preferred).
-2. The Codeforces problem link.
-3. The PDF or contest statement.
-
-Once I have the actual problem, I can produce the full editorial in exactly the requested format, including:
-
-- Problem Understanding
-- Approaches
-- Algorithm Walkthrough with proof sketch
-- Complete Python 3 solution
-- Code explanation
-- Worked examples with trace tables
-- Complexity Analysis
-- Assert-based test cases
-- Detailed Edge Cases
-
-all written in the requested style and formatting.
+Please paste the full problem statement (including input, output, and samples), and I’ll produce the complete editorial in the requested format with the Python solution, walkthroughs, tests, and complexity analysis.

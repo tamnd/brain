@@ -8,19 +8,19 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 2
-total_solve_s: 1110
-date: "2026-07-31T08:53:12+07:00"
+total_solve_s: 826
+date: "2026-08-02T13:52:41+07:00"
 weight: 102621
 draft: false
 ---
 
 # [mBIT Advanced June 2020](https://codeforces.com/contest/102621)
 
-Special | 10 problems | 2/10 verified | Difficulty - | 18m 30s
+Special | 10 problems | 2/10 verified | Difficulty - | 13m 46s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Zoo Tour](https://codeforces.com/problemset/problem/102621/A) |  |  |  | 5m 16s |  |
+| [A](A/) | [Zoo Tour](https://codeforces.com/problemset/problem/102621/A) |  |  |  | 32s |  |
 | [B](B/) | [Leaping Lizards](https://codeforces.com/problemset/problem/102621/B) |  |  |  | 1m 6s | ✓ |
 | [D](D/) | [Raccoon Mischief](https://codeforces.com/problemset/problem/102621/D) |  |  |  | 56s |  |
 | [E](E/) | [Turtle Tribulation](https://codeforces.com/problemset/problem/102621/E) |  |  |  | 5m 17s |  |
