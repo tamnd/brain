@@ -1,7 +1,7 @@
 ---
 title: "CF 102620F - Egg Interception"
-description: "I can write the editorial, but the actual problem statement for Codeforces 102620F - Egg Interception is missing here. The statement fields are empty, and I could not verify the problem details from the available information."
-date: "2026-07-31T03:27:11+07:00"
+description: "I can write the editorial, but the problem statement for Codeforces 102620F - Egg Interception is missing from your prompt."
+date: "2026-08-02T07:07:56+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102620
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "mBIT Standard June 2020"
 rating: 0
 weight: 102620
-solve_time_s: 76
+solve_time_s: 33
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 16s  
+**Solve time:** 33s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but the actual problem statement for **Codeforces 102620F - Egg Interception** is missing here. The statement fields are empty, and I could not verify the problem details from the available information.
+I can write the editorial, but the problem statement for **Codeforces 102620F - Egg Interception** is missing from your prompt. The sections labeled “Problem Statement”, “Input”, and “Output” are empty, and I cannot reliably reconstruct the problem from the title alone without risking inventing the wrong algorithm.
 
-Please paste the full problem statement (including input, output, constraints, and samples), and I’ll produce the complete editorial in the requested format with the algorithm explanation, proof, Python solution, walkthroughs, tests, and edge cases.
+Please provide the full problem statement (or a link to the problem page), including the constraints and examples. I’ll then produce the complete editorial in the exact format and style you requested.
