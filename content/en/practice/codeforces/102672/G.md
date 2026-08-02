@@ -1,7 +1,7 @@
 ---
 title: "CF 102672G - Crazy Arrangements"
-description: "I need the actual problem details to write a correct editorial. The statement section appears to be empty, and I cannot reliably infer the algorithm from the title alone. Please provide the full statement or a link. Waiting for your answer"
-date: "2026-08-01T23:47:05+07:00"
+description: "I can write the editorial, but I’m missing the actual problem details. The statement section in your prompt is empty, and I could not reliably identify Codeforces 102672G “Crazy Arrangements” from available information."
+date: "2026-08-02T14:54:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102672
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Selection of tasks from Internet olympiads season 2019-20"
 rating: 0
 weight: 102672
-solve_time_s: 72
+solve_time_s: 30
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 12s  
+**Solve time:** 30s  
 **Verified:** no  
 
 ## Solution
-I need the actual problem details to write a correct editorial. The statement section appears to be empty, and I cannot reliably infer the algorithm from the title alone. Please provide the full statement or a link.
+I can write the editorial, but I’m missing the actual problem details. The statement section in your prompt is empty, and I could not reliably identify Codeforces 102672G “Crazy Arrangements” from available information.
 
-Waiting for your answer
+Please paste the full problem statement (including input/output format, constraints, and samples), and I’ll produce the complete editorial in the requested structure and style.
