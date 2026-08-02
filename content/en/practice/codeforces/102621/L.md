@@ -1,7 +1,7 @@
 ---
 title: "CF 102621L - Zookeepers Gathering"
-description: "I can write the full editorial, but the problem statement section in your prompt is empty, so I do not have the actual rules, input format, output requirements, constraints, or samples for Codeforces Gym 102621L “Zookeepers Gathering”."
-date: "2026-08-01T08:51:16+07:00"
+description: "I can write the editorial, but the problem details are missing. The prompt only includes the title “Codeforces 102621L - Zookeepers Gathering” and empty sections for the statement, input, and output, so I do not have enough information to determine the algorithm, constraints…"
+date: "2026-08-02T13:59:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102621
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "mBIT Advanced June 2020"
 rating: 0
 weight: 102621
-solve_time_s: 55
+solve_time_s: 36
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 55s  
+**Solve time:** 36s  
 **Verified:** no  
 
 ## Solution
-I can write the full editorial, but the problem statement section in your prompt is empty, so I do not have the actual rules, input format, output requirements, constraints, or samples for Codeforces Gym 102621L “Zookeepers Gathering”.
+I can write the editorial, but the problem details are missing. The prompt only includes the title “Codeforces 102621L - Zookeepers Gathering” and empty sections for the statement, input, and output, so I do not have enough information to determine the algorithm, constraints, examples, or implementation.
 
-Please provide the full problem statement (including Input, Output, Constraints, and Samples), and I’ll produce the complete editorial in the requested format with the algorithm explanation, proof, Python solution, traces, tests, and edge cases.
+Please provide the full problem statement (including constraints and samples), and I’ll write the complete editorial in the requested format with the Python solution, walkthroughs, tests, and edge-case analysis.
