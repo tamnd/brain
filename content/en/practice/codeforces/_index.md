@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3059 contests, 22443 problems, 12321 verified."
+description: "Codeforces problem solutions with full editorials. 3060 contests, 22445 problems, 12321 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3059 contests, 22443 problems, 12321 verified.**
+**3060 contests, 22445 problems, 12321 verified.**
 
-## Unknown — 792 contests, 6674 problems, 3903 verified
+## Unknown — 793 contests, 6676 problems, 3903 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102551](102551/) | [Интернет-олимпиады, Сезон 2019-2020, Третья личная олимпиада](https://codeforces.com/contest/102551) | 2 | 0/2 | Special | - |
 | [102552](102552/) | [Интернет-олимпиады, Сезон 2018-2019, Вторая личная олимпиада](https://codeforces.com/contest/102552) | 4 | 0/4 | Special | - |
 | [102576](102576/) | [2020 Petrozavodsk Winter Camp, Jagiellonian U Contest](https://codeforces.com/contest/102576) | 12 | 8/12 | Special | - |
 | [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 4 | 1/4 | Special | - |
