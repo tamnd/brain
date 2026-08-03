@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3055 contests, 22429 problems, 12318 verified."
+description: "Codeforces problem solutions with full editorials. 3056 contests, 22431 problems, 12319 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3055 contests, 22429 problems, 12318 verified.**
+**3056 contests, 22431 problems, 12319 verified.**
 
 ## Unknown — 791 contests, 6670 problems, 3903 verified
 
@@ -1590,7 +1590,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 210 contests, 1271 problems, 651 verified
+## 2020 — 211 contests, 1273 problems, 652 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1753,6 +1753,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102562](102562/) | [AGM 2020, Final Round, Day 1](https://codeforces.com/contest/102562) | 2 | 1/2 | Special | - |
 | [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 13 | 6/13 | Special | - |
 | [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 12 | 7/12 | Special | - |
 | [102606](102606/) | [2020 ECNU Campus Online Invitational Contest](https://codeforces.com/contest/102606) | 1 | 1/1 | Special | - |
