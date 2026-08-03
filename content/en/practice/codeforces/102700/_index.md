@@ -8,16 +8,16 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 3
-total_solve_s: 1227
+total_solve_s: 1257
 contest_year: 2020
-date: "2026-08-03T14:22:57+07:00"
+date: "2026-08-03T14:25:47+07:00"
 weight: 102700
 draft: false
 ---
 
 # [2020 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102700)
 
-ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 20m 27s
+ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 20m 57s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,6 @@ ICPC/IOI | 12 problems | 3/12 verified | Difficulty - | 20m 27s
 | [I](I/) | [Incredible photography](https://codeforces.com/problemset/problem/102700/I) |  |  |  | 1m 2s |  |
 | [J](J/) | [Java exam](https://codeforces.com/problemset/problem/102700/J) |  |  |  | 1m 11s |  |
 | [K](K/) | [Katastrophic sort](https://codeforces.com/problemset/problem/102700/K) |  |  |  | 47s |  |
-| [L](L/) | [Lonely day](https://codeforces.com/problemset/problem/102700/L) |  |  |  | 2m 19s |  |
+| [L](L/) | [Lonely day](https://codeforces.com/problemset/problem/102700/L) |  |  |  | 2m 49s |  |
 | [M](M/) | [Magic spells](https://codeforces.com/problemset/problem/102700/M) |  |  |  | 2m 1s |  |
 | [N](N/) | [Name this problem](https://codeforces.com/problemset/problem/102700/N) |  |  |  | 3m 29s |  |
