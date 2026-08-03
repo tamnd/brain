@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3057 contests, 22435 problems, 12320 verified."
+description: "Codeforces problem solutions with full editorials. 3058 contests, 22439 problems, 12321 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3057 contests, 22435 problems, 12320 verified.**
+**3058 contests, 22439 problems, 12321 verified.**
 
 ## Unknown — 791 contests, 6670 problems, 3903 verified
 
@@ -1590,7 +1590,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 212 contests, 1277 problems, 653 verified
+## 2020 — 213 contests, 1281 problems, 654 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1753,6 +1753,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102556](102556/) | [2020 Ateneo de Manila University DISCS PrO HS Division](https://codeforces.com/contest/102556) | 4 | 1/4 | Special | - |
 | [102558](102558/) | [Contest for Yandex interns 2019](https://codeforces.com/contest/102558) | 4 | 1/4 | Special | - |
 | [102562](102562/) | [AGM 2020, Final Round, Day 1](https://codeforces.com/contest/102562) | 2 | 1/2 | Special | - |
 | [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 13 | 6/13 | Special | - |
