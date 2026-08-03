@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3058 contests, 22439 problems, 12321 verified."
+description: "Codeforces problem solutions with full editorials. 3059 contests, 22443 problems, 12321 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3058 contests, 22439 problems, 12321 verified.**
+**3059 contests, 22443 problems, 12321 verified.**
 
-## Unknown — 791 contests, 6670 problems, 3903 verified
+## Unknown — 792 contests, 6674 problems, 3903 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102552](102552/) | [Интернет-олимпиады, Сезон 2018-2019, Вторая личная олимпиада](https://codeforces.com/contest/102552) | 4 | 0/4 | Special | - |
 | [102576](102576/) | [2020 Petrozavodsk Winter Camp, Jagiellonian U Contest](https://codeforces.com/contest/102576) | 12 | 8/12 | Special | - |
 | [102583](102583/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая личная олимпиада](https://codeforces.com/contest/102583) | 4 | 1/4 | Special | - |
 | [102586](102586/) | [XX Open Cup, Grand Prix of Tokyo](https://codeforces.com/contest/102586) | 12 | 4/12 | Special | - |
