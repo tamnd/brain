@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3053 contests, 22418 problems, 12309 verified."
+description: "Codeforces problem solutions with full editorials. 3054 contests, 22428 problems, 12317 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3053 contests, 22418 problems, 12309 verified.**
+**3054 contests, 22428 problems, 12317 verified.**
 
 ## Unknown — 791 contests, 6670 problems, 3903 verified
 
@@ -1590,7 +1590,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 208 contests, 1260 problems, 642 verified
+## 2020 — 209 contests, 1270 problems, 650 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1756,6 +1756,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 13 | 6/13 | Special | - |
 | [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 12 | 7/12 | Special | - |
 | [102623](102623/) | [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623) | 12 | 6/12 | Special | - |
+| [102625](102625/) | [IIT(ISM) Virtual Farewell](https://codeforces.com/contest/102625) | 10 | 8/10 | Special | - |
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 7 | 5/7 | Special | - |
 | [102644](102644/) | [Matrix Exponentiation](https://codeforces.com/contest/102644) | 9 | 6/9 | Special | - |
 | [102646](102646/) | [Testing Round #XVII](https://codeforces.com/contest/102646) | 4 | 3/4 | Special | - |
