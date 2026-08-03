@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3052 contests, 22410 problems, 12303 verified."
+description: "Codeforces problem solutions with full editorials. 3052 contests, 22417 problems, 12309 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3052 contests, 22410 problems, 12303 verified.**
+**3052 contests, 22417 problems, 12309 verified.**
 
-## Unknown — 790 contests, 6662 problems, 3897 verified
+## Unknown — 790 contests, 6669 problems, 3903 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -38,7 +38,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102780](102780/) | [ICPC Central Russia Regional Contest (CRRC 19)](https://codeforces.com/contest/102780) | 11 | 10/11 | ICPC/IOI | - |
 | [102785](102785/) | [ICPC Central Russia Regional Contest (CRRC 18)](https://codeforces.com/contest/102785) | 11 | 9/11 | ICPC/IOI | - |
 | [102786](102786/) | [Открытый чемпионат ЯрГУ им. П.Г. Демидова Demidov Open IT Cup 2019](https://codeforces.com/contest/102786) | 10 | 7/10 | Special | - |
-| [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 5 | 2/5 | ICPC/IOI | - |
+| [102788](102788/) | [2017-2018 ICPC Central Quarter Final of Northeastern European Regional Collegiate Programming Contest](https://codeforces.com/contest/102788) | 12 | 8/12 | ICPC/IOI | - |
 | [102793](102793/) | [Цикл Интернет-олимпиад, Сезон 2020-21, Вторая командная олимпиада](https://codeforces.com/contest/102793) | 10 | 5/10 | Special | - |
 | [102798](102798/) | [2020 China Collegiate Programming Contest, Weihai Site](https://codeforces.com/contest/102798) | 12 | 9/12 | Special | - |
 | [102800](102800/) | [The 14th Jilin Provincial Collegiate Programming Contest](https://codeforces.com/contest/102800) | 14 | 10/14 | Special | - |
