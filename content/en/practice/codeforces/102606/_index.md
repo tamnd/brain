@@ -1,27 +1,28 @@
 ---
 title: "2020 ECNU Campus Online Invitational Contest"
-description: "7 problems from 2020 ECNU Campus Online Invitational Contest (contest 102606), difficulty -. 6/7 solutions verified against sample I/O."
+description: "8 problems from 2020 ECNU Campus Online Invitational Contest (contest 102606), difficulty -. 6/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102606
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 6
-total_solve_s: 735
+total_solve_s: 821
 contest_year: 2020
-date: "2026-08-03T17:07:47+07:00"
+date: "2026-08-03T17:09:17+07:00"
 weight: 102606
 draft: false
 ---
 
 # [2020 ECNU Campus Online Invitational Contest](https://codeforces.com/contest/102606)
 
-Special | 7 problems | 6/7 verified | Difficulty - | 12m 15s
+Special | 8 problems | 6/8 verified | Difficulty - | 13m 41s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Amateur Chess Players](https://codeforces.com/problemset/problem/102606/A) |  |  |  | 3m 54s | ✓ |
+| [B](B/) | [Binary String](https://codeforces.com/problemset/problem/102606/B) |  |  |  | 1m 26s |  |
 | [C](C/) | [Coronavirus Battle](https://codeforces.com/problemset/problem/102606/C) |  |  |  | 1m 37s |  |
 | [E](E/) | [Even Degree](https://codeforces.com/problemset/problem/102606/E) |  |  |  | 1m 32s | ✓ |
 | [F](F/) | [Find / -type f -or -type d](https://codeforces.com/problemset/problem/102606/F) |  |  |  | 1m 6s | ✓ |
