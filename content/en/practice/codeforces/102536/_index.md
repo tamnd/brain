@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 3
-total_solve_s: 2674
+total_solve_s: 2583
 contest_year: 2020
-date: "2026-08-04T08:52:02+07:00"
+date: "2026-08-04T08:53:57+07:00"
 weight: 102536
 draft: false
 ---
 
 # [2020 UP ACM Algolympics Final Round](https://codeforces.com/contest/102536)
 
-Special | 12 problems | 3/12 verified | Difficulty - | 44m 34s
+Special | 12 problems | 3/12 verified | Difficulty - | 43m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Special | 12 problems | 3/12 verified | Difficulty - | 44m 34s
 | [D](D/) | [Move to Remove Confidential Blunders](https://codeforces.com/problemset/problem/102536/D) |  |  |  | 10m 41s | ✓ |
 | [E](E/) | [A Floor of Many Doors](https://codeforces.com/problemset/problem/102536/E) |  |  |  | 59s |  |
 | [F](F/) | [One Great Grater](https://codeforces.com/problemset/problem/102536/F) |  |  |  | 5m 6s |  |
-| [G](G/) | [Generic Spy Movies](https://codeforces.com/problemset/problem/102536/G) |  |  |  | 3m 21s |  |
+| [G](G/) | [Generic Spy Movies](https://codeforces.com/problemset/problem/102536/G) |  |  |  | 1m 50s |  |
 | [H](H/) | [Maggie and Dana's Mass Supper](https://codeforces.com/problemset/problem/102536/H) |  |  |  | 1m 39s |  |
 | [I](I/) | [Glory to Algotzka](https://codeforces.com/problemset/problem/102536/I) |  |  |  | 1m 1s |  |
 | [J](J/) | [A Cold Macchiato](https://codeforces.com/problemset/problem/102536/J) |  |  |  | 3m 21s | ✓ |
