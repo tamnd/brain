@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3064 contests, 22505 problems, 12352 verified."
+description: "Codeforces problem solutions with full editorials. 3064 contests, 22506 problems, 12353 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3064 contests, 22505 problems, 12352 verified.**
+**3064 contests, 22506 problems, 12353 verified.**
 
 ## Unknown — 795 contests, 6692 problems, 3911 verified
 
@@ -1594,7 +1594,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 215 contests, 1325 problems, 677 verified
+## 2020 — 215 contests, 1326 problems, 678 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1764,7 +1764,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102562](102562/) | [AGM 2020, Final Round, Day 1](https://codeforces.com/contest/102562) | 12 | 2/12 | Special | - |
 | [102569](102569/) | [2020, XIII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102569) | 13 | 6/13 | Special | - |
 | [102599](102599/) | [The fifth Lipetsk collegiate programming contest. Finals. 8-11 form](https://codeforces.com/contest/102599) | 12 | 7/12 | Special | - |
-| [102606](102606/) | [2020 ECNU Campus Online Invitational Contest](https://codeforces.com/contest/102606) | 8 | 6/8 | Special | - |
+| [102606](102606/) | [2020 ECNU Campus Online Invitational Contest](https://codeforces.com/contest/102606) | 9 | 7/9 | Special | - |
 | [102623](102623/) | [2020 Lenovo Cup USST Campus Online Invitational Contest](https://codeforces.com/contest/102623) | 13 | 11/13 | Special | - |
 | [102625](102625/) | [IIT(ISM) Virtual Farewell](https://codeforces.com/contest/102625) | 10 | 8/10 | Special | - |
 | [102638](102638/) | [Bredor contest](https://codeforces.com/contest/102638) | 7 | 5/7 | Special | - |
