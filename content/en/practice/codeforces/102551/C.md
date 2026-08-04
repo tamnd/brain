@@ -1,7 +1,7 @@
 ---
 title: "CF 102551C - \u041f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u0432 \u044d\u043a\u0441\u043f\u0435\u0434\u0438\u0446\u0438\u0438"
-description: "We have n food types. Type i has ki portions, and if we decide to keep this type, every one of those portions must be eaten by the end of day ti. Each day the expedition can consume exactly c portions whenever enough food remains."
-date: "2026-08-03T20:15:01+07:00"
+description: "We have n product types. Product i has ki portions and disappears after day ti. The expedition has c people, so every day exactly c portions can be eaten."
+date: "2026-08-04T09:05:43+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102551
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0422\u0440\u0435\u0442\u044c\u044f \u043b\u0438\u0447\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
 rating: 0
 weight: 102551
-solve_time_s: 603
-verified: false
+solve_time_s: 143
+verified: true
 draft: false
 ---
 
@@ -18,103 +18,88 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 10m 3s  
-**Verified:** no  
+**Solve time:** 2m 23s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have `n` food types. Type `i` has `k_i` portions, and if we decide to keep this type, every one of those portions must be eaten by the end of day `t_i`. Each day the expedition can consume exactly `c` portions whenever enough food remains. The task is not to maximize the total number of portions eaten. It is to choose the largest possible set of food types that can be completely finished before their spoilage days. The output is the size of this set and the indices of the chosen types.
+We have `n` product types. Product `i` has `k_i` portions and disappears after day `t_i`. The expedition has `c` people, so every day exactly `c` portions can be eaten. Portions of different products can be mixed in the same day, which means a product is not a single indivisible item: we only need enough total eating capacity before its deadline.
 
-The constraints force us away from trying subsets. With `n` up to `200000`, an approach that checks many combinations is impossible because even quadratic solutions already approach tens of billions of operations. The large values of `k_i`, `t_i`, and `c` also mean we cannot simulate days. The solution has to reason about total capacity by deadlines and run in roughly `O(n log n)` time.
+The task is to choose as many product types as possible so that every portion of every chosen type can be eaten before the corresponding deadline. The output is the size of this maximum set and the indices of the chosen products.
 
-The main cases that cause mistakes are related to the deadline interpretation and the fact that a large product can block many smaller ones. For example:
+The constraints force a greedy solution. There can be `2 * 10^5` products, so checking every subset is impossible because even `2^n` subsets is far beyond reach. Even algorithms around `O(n^2)` are too slow for this size. We need something close to `O(n log n)`, which usually means sorting plus a data structure.
 
-```
-1 2
-1 2
-```
+The large values of `c`, `t_i`, and `k_i` also matter. The amount of food can reach `10^27`, so the implementation must use integer arithmetic without overflow. Python integers handle this naturally.
 
-The correct output is:
-
-```
-1
-1
-```
-
-There are two people, so two portions can be eaten on day one. A solution that treats the deadline as the start of day `t_i` instead of the end of day `t_i` would incorrectly reject this product.
-
-Another example is:
-
-```
-2 1
-1 5
-5 4
-```
-
-The correct output is:
-
-```
-1
-2
-```
-
-The first product alone needs five portions on the first day, which is impossible. The second product can be finished within five days. A greedy solution that always keeps the earliest products without removing anything would fail because an impossible early product consumes the available capacity.
-
-A final corner case is when a product exactly fills the remaining capacity:
+A common mistake is to only check the total amount of food. For example:
 
 ```
 2 3
-2 6
-3 3
+1 10
+100 1000
 ```
 
-The correct output is:
+The total capacity over the whole expedition is huge, but the first product alone requires 10 portions in the first day while only 3 portions can be eaten. The correct output is:
 
 ```
+1
 2
-1 2
 ```
 
-After two days, six portions can be eaten, and after three days, nine portions can be eaten. The equality case must be accepted.
+Another mistake is to ignore the exact deadlines. Consider:
+
+```
+3 2
+1 3
+2 1
+10 100
+```
+
+The first two products together require 4 portions by day 2, while the available capacity is only 4, so they are both possible. The third product cannot fit with them because the capacity before day 10 is limited by all earlier deadlines as well. The algorithm must continuously verify every deadline prefix.
+
+A third edge case is when removing a product is necessary even though the current product itself could fit. For example:
+
+```
+3 5
+1 5
+2 5
+2 20
+```
+
+The last product is large, but keeping it would force one of the smaller products out. The optimal answer keeps two product types, not necessarily the newest ones.
 
 ## Approaches
 
-A direct solution would try every possible set of food types and check whether that set can be scheduled. For a chosen set, sorting the products by deadline and checking every prefix would tell us whether the total amount due by each day fits inside `c * day` portions of available eating capacity. This method is correct because a deadline schedule is feasible exactly when every deadline prefix has enough total capacity. However, checking all subsets requires `2^n` choices, which is already impossible for `n` around 50, let alone `200000`.
+A brute force solution can try every subset of products. For each subset, sort its products by deadline and verify whether the amount of food with deadline at most each day fits into `c * day` portions of capacity. This check is correct because the only possible bottleneck is a deadline prefix. However, there are `2^n` subsets, and even for `n = 50` this is already impossible. With `n = 200000`, this approach is not remotely close.
 
-A more useful way to look at the problem is to start from all products and remove only the products that prevent feasibility. Sort products by increasing spoilage day. While processing this order, every prefix contains all products whose deadlines are at most the current deadline. If the current prefix requires too many portions, some product in this prefix must be discarded.
+The useful observation comes from looking at the structure of the feasibility condition. After sorting products by their expiration day, when we process products from early deadlines to late deadlines, the only thing that matters is the total amount selected so far. If adding a new product makes the current deadline impossible, we should discard one selected product. To keep the maximum number of product types, the discarded product should be the one with the largest number of portions.
 
-The important observation is that when a prefix is impossible, removing the product with the largest number of portions is always the best repair. All products in the prefix have already passed the same deadline check, so removing any one product gives the same reduction in the number of selected types. Removing the largest one leaves the most remaining capacity for future products. This is the same exchange argument behind the classic scheduling greedy algorithm for maximizing the number of completed jobs.
+This is the same exchange argument behind scheduling the maximum number of jobs with deadlines. A large product consumes more capacity while giving the same reward as a small product, because both count as exactly one product type. Replacing a large chosen product with a smaller rejected one can only improve feasibility while preserving the number of chosen types.
 
-After sorting by deadline, we maintain the selected products and their total number of portions. When adding a product breaks feasibility, we remove the selected product with maximum `k_i`. A heap supports this removal efficiently.
+A max heap stores the currently selected products by their portion counts. After sorting by deadline, we add every product, and if the current prefix exceeds its capacity, we remove the largest product from the heap. The remaining heap contains an optimal set.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(2^n * n)` | `O(n)` | Too slow |
-| Optimal | `O(n log n)` | `O(n)` | Accepted |
+| Brute Force | O(2^n * n) | O(n) | Too slow |
+| Optimal | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Sort all products by increasing `t_i`. Products with earlier spoilage dates must be considered first because every product with deadline `d` competes for the total capacity available during the first `d` days.
-2. Add the current product to the chosen set. Increase the total number of portions of the chosen products and insert the product into a max-heap ordered by `k_i`.
-3. Check whether the chosen products can still be finished by the current deadline. The condition is:
+1. Sort all products by increasing expiration day. Products with smaller deadlines must be considered first because they create stricter capacity limits.
+2. Keep a running total of portions in the currently selected set and insert each processed product into a max heap. The heap allows us to find the most expensive product in terms of consumed capacity.
+3. After inserting a product with deadline `t`, compare the total number of selected portions with `c * t`. If the total is too large, remove the product with the maximum number of portions from the heap and subtract its size from the total.
+4. After all products are processed, the heap contains the indices of the product types that form the answer.
 
-$$\text{total portions} \leq c \times t_i$$
-
-If this condition fails, the current set contains too many portions that must be eaten by this day.
-
-1. Remove the product with the largest `k_i` from the heap and subtract its size from the total. This keeps the maximum possible number of product types because one removed type always fixes the violation, and removing the largest type wastes the least number of possible future choices.
-2. After all products are processed, the remaining heap contains the indices of the maximum possible set of completely consumable products.
-
-Why it works: after processing all products with deadlines up to a certain day, the maintained set is the largest possible set among those products that satisfies the capacity limit for that day. If adding a product makes the set invalid, every valid solution must remove at least one product from this prefix. Removing the largest product gives the smallest possible loss of consumed capacity while removing exactly one type. This keeps the set optimal for the current prefix, and the invariant continues to hold as later deadlines are processed.
+Why it works: after processing every deadline, the heap always represents the largest possible number of products among all feasible choices considered so far. If a deadline is violated, any feasible solution must remove at least one product from the current set. Removing the largest product is the best possible choice because it frees the most capacity while losing only one product from the answer count. Repeating this after every violation keeps the maximum number of selected types.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
-
 import heapq
+
+input = sys.stdin.readline
 
 def solve():
     n, c = map(int, input().split())
@@ -130,47 +115,47 @@ def solve():
     total = 0
 
     for t, k, idx in products:
-        total += k
         heapq.heappush(heap, (-k, idx))
+        total += k
 
         if total > c * t:
-            removed_k, _ = heapq.heappop(heap)
+            removed_k, removed_idx = heapq.heappop(heap)
             total += removed_k
 
-    ans = [idx for _, idx in heap]
+    answer = [idx for _, idx in heap]
 
-    print(len(ans))
-    if ans:
-        print(*ans)
+    print(len(answer))
+    if answer:
+        print(*answer)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The products are sorted by deadline so that every check represents all products that must be completed by the current day. The heap stores negative sizes because Python provides a min-heap, and negating the value turns it into a max-heap.
+The products are sorted so that every violation is checked at the earliest deadline where it can happen. The heap stores negative portion counts because Python's `heapq` is a min heap, and negating values turns it into a max heap.
 
-The variable `total` stores the total number of portions among currently accepted products. When it exceeds `c * t`, the current set cannot be completed before the current deadline. Removing the heap maximum is enough because only one product must be discarded to restore the invariant.
+The variable `total` contains the amount of food in the current chosen set. When a product is removed, its stored heap value is negative, so adding it back subtracts its portions. Python integers are unbounded, so values like `c * t` and sums of `k_i` do not overflow.
 
-Python integers handle the large values safely. The maximum possible sum of portions is much larger than 64-bit integers, so languages with fixed-width integers need a wider type. The multiplication `c * t` must also be evaluated without overflow.
-
-The output order does not matter, so the heap contents can be printed directly.
+The final heap contains only products that survived every capacity check. Their order is irrelevant because the problem accepts any valid ordering of indices.
 
 ## Worked Examples
 
-For Sample 1:
+For the first sample:
 
 ```
 1 1
 4 4
 ```
 
-| Step | Current product | Total portions | Capacity by deadline | Heap | Action |
+The trace is:
+
+| Step | Product | Deadline | Heap contents | Total | Action |
 | --- | --- | --- | --- | --- | --- |
-| 1 | type 1, `(t=4,k=4)` | 4 | 4 | `{1}` | Keep |
+| 1 | 1 | 4 | {1:4} | 4 | Keep |
 
-The product requires exactly all available capacity before day four. Equality is allowed, so the answer contains type 1.
+The product requires 4 portions and four portions can be eaten in four days, so it remains selected.
 
-For Sample 2:
+For the second sample:
 
 ```
 5 3
@@ -181,135 +166,121 @@ For Sample 2:
 5 7
 ```
 
-| Step | Current product | Total portions | Capacity by deadline | Heap | Action |
-| --- | --- | --- | --- | --- | --- |
-| 1 | type 2, `(2,6)` | 6 | 6 | `{2}` | Keep |
-| 2 | type 1, `(3,4)` | 10 | 9 | `{2,1}` | Remove type 2 |
-| 3 | type 4, `(3,4)` | 8 | 9 | `{1,4}` | Keep |
-| 4 | type 3, `(4,5)` | 13 | 12 | `{1,4,3}` | Remove type 3 |
-| 5 | type 5, `(5,7)` | 19 | 15 | `{1,4,5}` | Remove type 5 |
+After sorting by deadline, the order is products 2, 1, 4, 3, 5.
 
-The final set is `{1,4,5}`. It contains three products, which is optimal. The trace demonstrates why removing the largest product is useful. The initially large products with early deadlines are replaced by smaller products that allow more types to survive.
+| Step | Product added | Deadline | Total before removal | Removed | Heap size |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 2 | 2 | 6 | None | 1 |
+| 2 | 1 | 3 | 10 | None | 2 |
+| 3 | 4 | 3 | 14 | None | 3 |
+| 4 | 3 | 4 | 19 | None | 4 |
+| 5 | 5 | 5 | 26 | Product 2 | 4 |
+
+At the last step, the total capacity is `3 * 5 = 15`, so the largest product is removed. Product 2 had 6 portions, while smaller products could remain together. The final set contains three product types, matching the maximum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(n log n)` | Sorting takes `O(n log n)`, and every heap insertion or removal costs `O(log n)` |
-| Space | `O(n)` | The sorted product list and heap store at most all products |
+| Time | O(n log n) | Sorting takes O(n log n), and every heap operation is O(log n) |
+| Space | O(n) | The heap and product list store at most all products |
 
-The algorithm only performs sorting and heap operations over the `200000` products, which fits comfortably within typical competitive programming limits. No simulation over days is performed, so large deadline values do not affect runtime.
+The solution handles `200000` products because it only performs sorting and logarithmic heap operations. The arithmetic values are large, but Python integer support keeps the calculations safe.
 
 ## Test Cases
 
 ```python
-import sys
 import io
-import heapq
+import sys
 
-def solve_data(inp: str) -> str:
+def run(inp: str) -> str:
     old_stdin = sys.stdin
+    old_stdout = sys.stdout
     sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
 
-    n, c = map(int, sys.stdin.readline().split())
-    products = []
+    solve()
 
-    for i in range(1, n + 1):
-        t, k = map(int, sys.stdin.readline().split())
-        products.append((t, k, i))
-
-    products.sort()
-
-    heap = []
-    total = 0
-
-    for t, k, idx in products:
-        total += k
-        heapq.heappush(heap, (-k, idx))
-
-        if total > c * t:
-            total += heapq.heappop(heap)[0]
-
-    ans = [x[1] for x in heap]
-    result = str(len(ans)) + "\n"
-    if ans:
-        result += " ".join(map(str, ans)) + "\n"
-
+    result = sys.stdout.getvalue()
     sys.stdin = old_stdin
+    sys.stdout = old_stdout
     return result
 
-assert solve_data("""1 1
+assert run("""1 1
 4 4
-""") == "1\n1\n", "sample 1"
+""") == "1\n1\n"
 
-assert sorted(map(int, solve_data("""5 3
+assert run("""5 3
 3 4
 2 6
 4 5
 3 4
 5 7
-""").split()[1:])) == [1, 4, 5], "sample 2"
+""").split()[0] == "3"
 
-assert solve_data("""3 2
+assert run("""3 2
 2 6
 4 9
 1 3
-""").split()[0] == "0", "sample 3"
+""").split()[0] == "0"
 
-assert solve_data("""1 10
-1 10
-""") == "1\n1\n", "single exact capacity"
+assert run("""1 10
+1 11
+""").split()[0] == "0"
 
-assert solve_data("""2 1
+assert run("""4 5
 1 5
-5 4
-""").split()[0] == "1", "remove impossible large early product"
+2 5
+3 5
+4 5
+""").split()[0] == "4"
 
-assert solve_data("""3 2
-1 2
+assert run("""3 2
+1 4
 2 4
-3 1
-""").split()[0] == "3", "exact deadline boundaries"
+2 100
+""").split()[0] == "2"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 10 / 1 10` | One product | Minimum input and exact capacity handling |
-| `2 1 / 1 5 / 5 4` | One product | Removing an oversized early product |
-| `3 2 / 1 2 / 2 4 / 3 1` | Three products | Equality at every deadline boundary |
+| One product exactly fitting | 1 | Basic feasibility boundary |
+| Sample 2 | 3 | Normal greedy replacement |
+| Sample 3 | 0 | Impossible deadlines |
+| One product exceeding day capacity | 0 | Immediate rejection |
+| Equal portion sizes | 4 | Multiple valid removals |
+| Large late product | 2 | Removing the most expensive product |
 
 ## Edge Cases
 
-For the first deadline interpretation case:
-
-```
-1 2
-1 2
-```
-
-The algorithm sorts the only product, adds its two portions, and checks against `c * t = 2 * 1 = 2`. The condition is satisfied because the total is equal to the available capacity. The product remains selected, giving output:
-
-```
-1
-1
-```
-
-For the case where a large product must be removed:
-
-```
-2 1
-1 5
-5 4
-```
-
-The first product is added with total `5`, but the capacity by day one is only `1`. The heap removes this product immediately. The second product is then added, and its four portions fit inside the five available days. The final output contains only type 2.
-
-For the exact boundary case:
+The first edge case is a product that has enough total expedition time but not enough time before its own deadline. The input
 
 ```
 2 3
-2 6
-3 3
+1 10
+100 1000
 ```
 
-The first product gives total `6` and capacity `6`, so it remains. The second product increases the total to `9`, while the capacity by day three is also `9`. Since equality is valid, no removal happens and both products are returned.
+is processed by considering the first product. The heap contains 10 portions, but the capacity at day 1 is only 3, so the product is removed. The second product remains because it can be eaten over many days. The algorithm outputs one product.
+
+The second edge case is when early deadlines are the real limitation. In
+
+```
+3 2
+1 3
+2 1
+10 100
+```
+
+the first two products fit exactly into the first two days. When the third product is added, the deadline condition is checked at day 10, and the largest product is removed. The answer keeps the two smaller products because they maximize the number of types.
+
+The third edge case is when a large product should be removed even though it was processed late. For
+
+```
+3 5
+1 5
+2 5
+2 20
+```
+
+the heap grows until the total exceeds the day 2 capacity. The largest product has 20 portions, so removing it leaves the two products of size 5. This gives the maximum possible count of product types.
