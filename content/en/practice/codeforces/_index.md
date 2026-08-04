@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3064 contests, 22504 problems, 12352 verified."
+description: "Codeforces problem solutions with full editorials. 3064 contests, 22505 problems, 12352 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3064 contests, 22504 problems, 12352 verified.**
+**3064 contests, 22505 problems, 12352 verified.**
 
-## Unknown — 795 contests, 6691 problems, 3911 verified
+## Unknown — 795 contests, 6692 problems, 3911 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [102531](102531/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая личная олимпиада](https://codeforces.com/contest/102531) | 3 | 0/3 | Special | - |
+| [102531](102531/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая личная олимпиада](https://codeforces.com/contest/102531) | 4 | 0/4 | Special | - |
 | [102538](102538/) | [300iq Contest 3](https://codeforces.com/contest/102538) | 10 | 6/10 | Special | - |
 | [102551](102551/) | [Интернет-олимпиады, Сезон 2019-2020, Третья личная олимпиада](https://codeforces.com/contest/102551) | 4 | 2/4 | Special | - |
 | [102552](102552/) | [Интернет-олимпиады, Сезон 2018-2019, Вторая личная олимпиада](https://codeforces.com/contest/102552) | 4 | 0/4 | Special | - |
