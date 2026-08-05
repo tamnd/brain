@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3078 contests, 22583 problems, 12397 verified."
+description: "Codeforces problem solutions with full editorials. 3079 contests, 22588 problems, 12399 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3078 contests, 22583 problems, 12397 verified.**
+**3079 contests, 22588 problems, 12399 verified.**
 
-## Unknown — 798 contests, 6697 problems, 3914 verified
+## Unknown — 799 contests, 6699 problems, 3916 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102470](102470/) | [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470) | 2 | 2/2 | ICPC/IOI | - |
 | [102480](102480/) | [2019-2020 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102480) | 0 | 0/0 | Special | - |
 | [102498](102498/) | [Интернет-олимпиады, Сезон 2019-2020, Первая личная олимпиада](https://codeforces.com/contest/102498) | 3 | 2/3 | Special | - |
 | [102531](102531/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая личная олимпиада](https://codeforces.com/contest/102531) | 4 | 0/4 | Special | - |
@@ -1432,7 +1433,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 6 | 5/6 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 8 | 5/8 | ICPC/IOI | - |
 
-## 2019 — 165 contests, 964 problems, 577 verified
+## 2019 — 165 contests, 967 problems, 577 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1595,7 +1596,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
-| [102471](102471/) | [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471) | 8 | 1/8 | ICPC/IOI | - |
+| [102471](102471/) | [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471) | 11 | 1/11 | ICPC/IOI | - |
 | [102500](102500/) | [2019-2020 ICPC Northwestern European Regional Programming Contest (NWERC 2019)](https://codeforces.com/contest/102500) | 9 | 8/9 | ICPC/IOI | - |
 | [102511](102511/) | [2019 ICPC World Finals](https://codeforces.com/contest/102511) | 8 | 5/8 | ICPC/IOI | - |
 | [102697](102697/) | [CodeRams Practice Problem Archive](https://codeforces.com/contest/102697) | 0 | 0/0 | Special | - |

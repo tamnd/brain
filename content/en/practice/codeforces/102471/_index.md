@@ -1,23 +1,23 @@
 ---
 title: "2019 ICPC Asia-East Continent Final"
-description: "10 problems from 2019 ICPC Asia-East Continent Final (contest 102471), difficulty -. 1/10 solutions verified against sample I/O."
+description: "11 problems from 2019 ICPC Asia-East Continent Final (contest 102471), difficulty -. 1/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102471
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 10
+n_problems: 11
 n_verified: 1
-total_solve_s: 1797
+total_solve_s: 2199
 contest_year: 2019
-date: "2026-08-06T03:44:42+07:00"
+date: "2026-08-06T03:53:41+07:00"
 weight: 102471
 draft: false
 ---
 
 # [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471)
 
-ICPC/IOI | 10 problems | 1/10 verified | Difficulty - | 29m 57s
+ICPC/IOI | 11 problems | 1/11 verified | Difficulty - | 36m 39s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,6 @@ ICPC/IOI | 10 problems | 1/10 verified | Difficulty - | 29m 57s
 | [H](H/) | [King](https://codeforces.com/problemset/problem/102471/H) |  |  |  | 1m 15s |  |
 | [I](I/) | [Moon](https://codeforces.com/problemset/problem/102471/I) |  |  |  | 9m 18s |  |
 | [J](J/) | [Permutation](https://codeforces.com/problemset/problem/102471/J) |  |  |  | 3m 9s |  |
-| [L](L/) | [Travel](https://codeforces.com/problemset/problem/102471/L) |  |  |  | 1m |  |
-| [M](M/) | [Value](https://codeforces.com/problemset/problem/102471/M) |  |  |  | 1m 8s |  |
+| [K](K/) | [All Pair Maximum Flow](https://codeforces.com/problemset/problem/102471/K) |  |  |  | 4m 33s |  |
+| [L](L/) | [Travel](https://codeforces.com/problemset/problem/102471/L) |  |  |  | 2m 11s |  |
+| [M](M/) | [Value](https://codeforces.com/problemset/problem/102471/M) |  |  |  | 2m 6s |  |
