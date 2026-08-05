@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3068 contests, 22525 problems, 12366 verified."
+description: "Codeforces problem solutions with full editorials. 3069 contests, 22528 problems, 12367 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3068 contests, 22525 problems, 12366 verified.**
+**3069 contests, 22528 problems, 12367 verified.**
 
 ## Unknown — 796 contests, 6694 problems, 3912 verified
 
@@ -1595,7 +1595,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 218 contests, 1343 problems, 690 verified
+## 2020 — 219 contests, 1346 problems, 691 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1759,6 +1759,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 | [102512](102512/) | [Valentines Day Contest 2020](https://codeforces.com/contest/102512) | 7 | 1/7 | Special | - |
+| [102534](102534/) | [Innopolis Open 2020 Finals](https://codeforces.com/contest/102534) | 3 | 1/3 | Special | - |
 | [102535](102535/) | [2020 UP ACM Algolympics Elimination Round](https://codeforces.com/contest/102535) | 9 | 7/9 | Special | - |
 | [102536](102536/) | [2020 UP ACM Algolympics Final Round](https://codeforces.com/contest/102536) | 12 | 3/12 | Special | - |
 | [102556](102556/) | [2020 Ateneo de Manila University DISCS PrO HS Division](https://codeforces.com/contest/102556) | 9 | 7/9 | Special | - |
