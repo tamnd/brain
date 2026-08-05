@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3079 contests, 22595 problems, 12405 verified."
+description: "Codeforces problem solutions with full editorials. 3079 contests, 22597 problems, 12406 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3079 contests, 22595 problems, 12405 verified.**
+**3079 contests, 22597 problems, 12406 verified.**
 
 ## Unknown — 799 contests, 6700 problems, 3917 verified
 
@@ -1433,7 +1433,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 10 | 6/10 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 10 | 9/10 | ICPC/IOI | - |
 
-## 2019 — 165 contests, 967 problems, 577 verified
+## 2019 — 165 contests, 969 problems, 578 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1597,7 +1597,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102471](102471/) | [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471) | 11 | 1/11 | ICPC/IOI | - |
-| [102500](102500/) | [2019-2020 ICPC Northwestern European Regional Programming Contest (NWERC 2019)](https://codeforces.com/contest/102500) | 9 | 8/9 | ICPC/IOI | - |
+| [102500](102500/) | [2019-2020 ICPC Northwestern European Regional Programming Contest (NWERC 2019)](https://codeforces.com/contest/102500) | 11 | 9/11 | ICPC/IOI | - |
 | [102511](102511/) | [2019 ICPC World Finals](https://codeforces.com/contest/102511) | 8 | 5/8 | ICPC/IOI | - |
 | [102697](102697/) | [CodeRams Practice Problem Archive](https://codeforces.com/contest/102697) | 0 | 0/0 | Special | - |
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
