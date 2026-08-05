@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3074 contests, 22561 problems, 12386 verified."
+description: "Codeforces problem solutions with full editorials. 3075 contests, 22569 problems, 12391 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3074 contests, 22561 problems, 12386 verified.**
+**3075 contests, 22569 problems, 12391 verified.**
 
 ## Unknown — 797 contests, 6697 problems, 3914 verified
 
@@ -1274,7 +1274,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 150 contests, 691 problems, 430 verified
+## 2018 — 151 contests, 699 problems, 435 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1428,6 +1428,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | 7 | 4/7 | Div. 2 | 800-2400 |
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
+| [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 8 | 5/8 | ICPC/IOI | - |
 
 ## 2019 — 164 contests, 956 problems, 576 verified
 
