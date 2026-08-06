@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 14
 n_verified: 8
-total_solve_s: 5497
+total_solve_s: 5868
 contest_year: 2020
-date: "2026-08-05T04:48:35+07:00"
+date: "2026-08-05T04:56:24+07:00"
 weight: 102503
 draft: false
 ---
 
 # [National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020](https://codeforces.com/contest/102503)
 
-Special | 14 problems | 8/14 verified | Difficulty - | 1h 31m
+Special | 14 problems | 8/14 verified | Difficulty - | 1h 37m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -34,4 +34,4 @@ Special | 14 problems | 8/14 verified | Difficulty - | 1h 31m
 | [N](N/) | [Holy Smokes](https://codeforces.com/problemset/problem/102503/N) |  |  |  | 1m 55s |  |
 | [O](O/) | [Gravity Superfight](https://codeforces.com/problemset/problem/102503/O) |  |  |  | 4m 20s |  |
 | [P](P/) | [Night Gown](https://codeforces.com/problemset/problem/102503/P) |  |  |  | 1m 46s |  |
-| [Q](Q/) | [Og and Ug](https://codeforces.com/problemset/problem/102503/Q) |  |  |  | 1m 36s |  |
+| [Q](Q/) | [Og and Ug](https://codeforces.com/problemset/problem/102503/Q) |  |  |  | 7m 47s |  |
