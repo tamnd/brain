@@ -1,28 +1,29 @@
 ---
 title: "2020 UP ACM Algolympics Elimination Round"
-description: "16 problems from 2020 UP ACM Algolympics Elimination Round (contest 102535), difficulty -. 13/16 solutions verified against sample I/O."
+description: "17 problems from 2020 UP ACM Algolympics Elimination Round (contest 102535), difficulty -. 14/17 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102535
 contest_type: "Special"
 rating_range: "-"
-n_problems: 16
-n_verified: 13
-total_solve_s: 4137
+n_problems: 17
+n_verified: 14
+total_solve_s: 4356
 contest_year: 2020
-date: "2026-08-05T20:08:17+07:00"
+date: "2026-08-05T05:00:36+07:00"
 weight: 102535
 draft: false
 ---
 
 # [2020 UP ACM Algolympics Elimination Round](https://codeforces.com/contest/102535)
 
-Special | 16 problems | 13/16 verified | Difficulty - | 1h 8m
+Special | 17 problems | 14/17 verified | Difficulty - | 1h 12m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Working With Locks](https://codeforces.com/problemset/problem/102535/A) |  |  |  | 10m 40s | ✓ |
 | [B](B/) | [Working with Locks 2](https://codeforces.com/problemset/problem/102535/B) |  |  |  | 1m 14s | ✓ |
+| [C](C/) | [Working with Locks 3](https://codeforces.com/problemset/problem/102535/C) |  |  |  | 3m 39s | ✓ |
 | [E](E/) | [Potent Plants](https://codeforces.com/problemset/problem/102535/E) |  |  |  | 1m 17s | ✓ |
 | [F](F/) | [Go Go ?](https://codeforces.com/problemset/problem/102535/F) |  |  |  | 3m 39s |  |
 | [G](G/) | [007: You Only Live Thrice](https://codeforces.com/problemset/problem/102535/G) |  |  |  | 1m 54s | ✓ |
