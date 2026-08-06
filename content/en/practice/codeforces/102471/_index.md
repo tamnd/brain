@@ -8,16 +8,16 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 1
-total_solve_s: 2424
+total_solve_s: 2377
 contest_year: 2019
-date: "2026-08-06T17:44:53+07:00"
+date: "2026-08-06T17:48:40+07:00"
 weight: 102471
 draft: false
 ---
 
 # [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471)
 
-ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 40m 24s
+ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 39m 37s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,7 +25,7 @@ ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 40m 24s
 | [C](C/) | [Dirichlet $k$-th root](https://codeforces.com/problemset/problem/102471/C) |  |  |  | 1m 47s |  |
 | [D](D/) | [Fire](https://codeforces.com/problemset/problem/102471/D) |  |  |  | 4m 15s |  |
 | [E](E/) | [Flow](https://codeforces.com/problemset/problem/102471/E) |  |  |  | 1m 20s | ✓ |
-| [F](F/) | [Game](https://codeforces.com/problemset/problem/102471/F) |  |  |  | 4m 33s |  |
+| [F](F/) | [Game](https://codeforces.com/problemset/problem/102471/F) |  |  |  | 3m 46s |  |
 | [G](G/) | [Happiness](https://codeforces.com/problemset/problem/102471/G) |  |  |  | 5m 13s |  |
 | [H](H/) | [King](https://codeforces.com/problemset/problem/102471/H) |  |  |  | 1m 15s |  |
 | [I](I/) | [Moon](https://codeforces.com/problemset/problem/102471/I) |  |  |  | 9m 18s |  |
