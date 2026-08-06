@@ -1,23 +1,23 @@
 ---
 title: "2020 UP ACM Algolympics Elimination Round"
-description: "13 problems from 2020 UP ACM Algolympics Elimination Round (contest 102535), difficulty -. 11/13 solutions verified against sample I/O."
+description: "16 problems from 2020 UP ACM Algolympics Elimination Round (contest 102535), difficulty -. 13/16 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102535
 contest_type: "Special"
 rating_range: "-"
-n_problems: 13
-n_verified: 11
-total_solve_s: 3665
+n_problems: 16
+n_verified: 13
+total_solve_s: 4137
 contest_year: 2020
-date: "2026-08-05T19:58:07+07:00"
+date: "2026-08-05T20:08:17+07:00"
 weight: 102535
 draft: false
 ---
 
 # [2020 UP ACM Algolympics Elimination Round](https://codeforces.com/contest/102535)
 
-Special | 13 problems | 11/13 verified | Difficulty - | 1h 1m
+Special | 16 problems | 13/16 verified | Difficulty - | 1h 8m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -31,6 +31,9 @@ Special | 13 problems | 11/13 verified | Difficulty - | 1h 1m
 | [J](J/) | [Aufbau](https://codeforces.com/problemset/problem/102535/J) |  |  |  | 1m 41s | ✓ |
 | [K](K/) | [Kim Possible and the Mooks](https://codeforces.com/problemset/problem/102535/K) |  |  |  | 1m 11s | ✓ |
 | [L](L/) | [Kim Possible and the Mooks and the Swappinator](https://codeforces.com/problemset/problem/102535/L) |  |  |  | 20m 23s | ✓ |
+| [M](M/) | [Kim Possible and the Mooks and the Reversinator](https://codeforces.com/problemset/problem/102535/M) |  |  |  | 1m 24s |  |
+| [N](N/) | [Connect Floors](https://codeforces.com/problemset/problem/102535/N) |  |  |  | 2m 19s | ✓ |
+| [O](O/) | [1\\% Genius](https://codeforces.com/problemset/problem/102535/O) |  |  |  | 2m 48s |  |
 | [P](P/) | [The Only Level](https://codeforces.com/problemset/problem/102535/P) |  |  |  | 8m 8s | ✓ |
 | [Q](Q/) | [The Only Level TOO](https://codeforces.com/problemset/problem/102535/Q) |  |  |  | 2m 16s | ✓ |
-| [R](R/) | [The Only Level 3](https://codeforces.com/problemset/problem/102535/R) |  |  |  | 2m 5s |  |
+| [R](R/) | [The Only Level 3](https://codeforces.com/problemset/problem/102535/R) |  |  |  | 3m 26s | ✓ |
