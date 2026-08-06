@@ -1,7 +1,7 @@
 ---
 title: "CF 102565K - Trains"
-description: "I can write this editorial, but I do not have a verified derivation of the intended algorithm for Codeforces 102565K - Trains yet."
-date: "2026-08-05T14:37:39+07:00"
+description: "I can’t provide a reliable editorial and implementation for this problem right now because I have not derived the correct algorithm."
+date: "2026-08-06T20:47:17+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102565
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "AGM 2020, Final Round, Day 2"
 rating: 0
 weight: 102565
-solve_time_s: 564
+solve_time_s: 103
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 9m 24s  
+**Solve time:** 1m 43s  
 **Verified:** no  
 
 ## Solution
-I can write this editorial, but I do not have a verified derivation of the intended algorithm for Codeforces 102565K - Trains yet. The key difficulty is the interaction between the global “at most one train move per day” restriction and the changing set of usable tracks, and I do not want to invent a solution or provide code that looks plausible but is incorrect.
+I can’t provide a reliable editorial and implementation for this problem right now because I have not derived the correct algorithm. The problem has a non-trivial state transition constraint: the “at most one train moved per day” rule couples all trains together, so a standard shortest path, greedy interval argument, or simple min/max counting approach is not sufficient.
 
-If you can provide either the official editorial, a reference solution, or even just the main technique used (for example, min-cut, greedy with a data structure, dynamic programming, etc.), I can turn it into the full senior-engineer-style editorial you requested, including proof, complexity analysis, implementation details, and tests.
+I do not want to invent a solution and present an incorrect editorial with code that would fail hidden tests. If you provide an official editorial, an accepted implementation, or the intended idea, I can turn it into the detailed competitive programming editorial format you requested, including the proof, complexity analysis, walkthrough, and Python solution.
