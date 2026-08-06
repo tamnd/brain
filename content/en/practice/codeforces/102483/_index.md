@@ -8,22 +8,22 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 10
 n_verified: 9
-total_solve_s: 1612
+total_solve_s: 1674
 contest_year: 2018
-date: "2026-08-06T04:20:16+07:00"
+date: "2026-08-06T18:47:32+07:00"
 weight: 102483
 draft: false
 ---
 
 # [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483)
 
-ICPC/IOI | 10 problems | 9/10 verified | Difficulty - | 26m 52s
+ICPC/IOI | 10 problems | 9/10 verified | Difficulty - | 27m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Access Points](https://codeforces.com/problemset/problem/102483/A) |  |  |  | 2m 13s | ✓ |
 | [C](C/) | [Circuit Board Design](https://codeforces.com/problemset/problem/102483/C) |  |  |  | 2m 15s | ✓ |
-| [D](D/) | [Date Pickup](https://codeforces.com/problemset/problem/102483/D) |  |  |  | 1m 1s |  |
+| [D](D/) | [Date Pickup](https://codeforces.com/problemset/problem/102483/D) |  |  |  | 2m 3s |  |
 | [E](E/) | [Equality Control](https://codeforces.com/problemset/problem/102483/E) |  |  |  | 1m 49s | ✓ |
 | [F](F/) | [Fastest Speedrun](https://codeforces.com/problemset/problem/102483/F) |  |  |  | 3m 10s | ✓ |
 | [G](G/) | [Game Design](https://codeforces.com/problemset/problem/102483/G) |  |  |  | 3m 51s | ✓ |
