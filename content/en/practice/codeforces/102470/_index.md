@@ -1,22 +1,22 @@
 ---
 title: "2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)"
-description: "5 problems from 2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009) (contest 102470), difficulty -. 2/5 solutions verified against sample I/O."
+description: "8 problems from 2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009) (contest 102470), difficulty -. 2/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102470
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 5
+n_problems: 8
 n_verified: 2
-total_solve_s: 790
-date: "2026-08-06T17:22:33+07:00"
+total_solve_s: 1461
+date: "2026-08-06T17:33:52+07:00"
 weight: 102470
 draft: false
 ---
 
 # [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470)
 
-ICPC/IOI | 5 problems | 2/5 verified | Difficulty - | 13m 10s
+ICPC/IOI | 8 problems | 2/8 verified | Difficulty - | 24m 21s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,3 +25,6 @@ ICPC/IOI | 5 problems | 2/5 verified | Difficulty - | 13m 10s
 | [C](C/) | [Lights](https://codeforces.com/problemset/problem/102470/C) |  |  |  | 3m 27s |  |
 | [D](D/) | [Darts](https://codeforces.com/problemset/problem/102470/D) |  |  |  | 1m 25s | ✓ |
 | [F](F/) | [Haunted Graveyard](https://codeforces.com/problemset/problem/102470/F) |  |  |  | 1m 17s |  |
+| [G](G/) | [Slalom](https://codeforces.com/problemset/problem/102470/G) |  |  |  | 4m 54s |  |
+| [H](H/) | [Routing](https://codeforces.com/problemset/problem/102470/H) |  |  |  | 2m 30s |  |
+| [J](J/) | [Stammering Aliens](https://codeforces.com/problemset/problem/102470/J) |  |  |  | 3m 47s |  |
