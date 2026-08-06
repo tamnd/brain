@@ -8,19 +8,19 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 3
 n_verified: 1
-total_solve_s: 657
+total_solve_s: 702
 contest_year: 2020
-date: "2026-08-05T16:08:14+07:00"
+date: "2026-08-05T19:38:58+07:00"
 weight: 102534
 draft: false
 ---
 
 # [Innopolis Open 2020 Finals](https://codeforces.com/contest/102534)
 
-Special | 3 problems | 1/3 verified | Difficulty - | 10m 57s
+Special | 3 problems | 1/3 verified | Difficulty - | 11m 42s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [B](B/) | [Need More T-shirts!](https://codeforces.com/problemset/problem/102534/B) |  |  |  | 9m 12s | ✓ |
-| [D](D/) | [Painting](https://codeforces.com/problemset/problem/102534/D) |  |  |  | 52s |  |
+| [D](D/) | [Painting](https://codeforces.com/problemset/problem/102534/D) |  |  |  | 1m 37s |  |
 | [E](E/) | [Chicken Farm](https://codeforces.com/problemset/problem/102534/E) |  |  |  | 53s |  |
