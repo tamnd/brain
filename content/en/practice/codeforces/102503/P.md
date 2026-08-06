@@ -1,7 +1,7 @@
 ---
 title: "CF 102503P - Night Gown"
-description: "I can write the editorial, but I need the actual intended construction details for Codeforces 102503P - Night Gown to avoid giving a plausible-looking but incorrect solution."
-date: "2026-08-06T19:25:48+07:00"
+description: "I can write the editorial, but I do not have a verified construction for Codeforces 102503P - Night Gown at the moment."
+date: "2026-08-07T04:48:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102503
@@ -9,7 +9,7 @@ codeforces_index: "P"
 codeforces_contest_name: "National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020"
 rating: 0
 weight: 102503
-solve_time_s: 127
+solve_time_s: 106
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 7s  
+**Solve time:** 1m 46s  
 **Verified:** no  
 
 ## Solution
-I can write the editorial, but I need the actual intended construction details for Codeforces 102503P - Night Gown to avoid giving a plausible-looking but incorrect solution. The core arithmetic observation is easy to derive, but the hard part of this problem is the 16×16 grid construction and the exact impossibility conditions. I do not have enough verified information to produce a trustworthy complete editorial and accepted Python implementation for this problem.
+I can write the editorial, but I do not have a verified construction for Codeforces 102503P - Night Gown at the moment. The key part of this problem is the grid-construction argument, and providing a full editorial with a Python implementation without a proven construction would risk giving you a solution that looks plausible but fails hidden tests.
 
-If you provide the official solution idea, an accepted code submission, or even just the construction method, I can turn it into the full senior-engineer style editorial with the requested sections, proof, complexity analysis, walkthroughs, tests, and Python solution.
+If you provide the official editorial, a reference solution, or even the construction idea, I can turn it into the detailed senior-engineer style editorial you requested, including the proof, complexity analysis, walkthrough, and tested Python code.

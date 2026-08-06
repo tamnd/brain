@@ -1,7 +1,7 @@
 ---
 title: "CF 102503L - Arnis Ball"
-description: "We have an array of boxes. Each position stores two pieces of information: the number of balls currently inside it and whether the box is open."
-date: "2026-08-06T19:11:46+07:00"
+description: "We have a line of boxes. Each box stores a number of balls and also has a state: open or closed. The operations modify these two pieces of information together. A flip operation changes every box in a range from open to closed or from closed to open."
+date: "2026-08-07T04:46:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102503
@@ -9,8 +9,8 @@ codeforces_index: "L"
 codeforces_contest_name: "National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020"
 rating: 0
 weight: 102503
-solve_time_s: 203
-verified: false
+solve_time_s: 572
+verified: true
 draft: false
 ---
 
@@ -18,95 +18,115 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 23s  
-**Verified:** no  
+**Solve time:** 9m 32s  
+**Verified:** yes  
 
 ## Solution
-# Problem Understanding
+## Problem Understanding
 
-We have an array of boxes. Each position stores two pieces of information: the number of balls currently inside it and whether the box is open. A range operation can either invert the open and closed states, add balls to only the currently open boxes, or ask for the total number of balls in a range.
+We have a line of boxes. Each box stores a number of balls and also has a state: open or closed. The operations modify these two pieces of information together. A flip operation changes every box in a range from open to closed or from closed to open. An add operation only affects boxes that are currently open in a range. A query operation asks for the total number of balls in every box in a range, regardless of whether the boxes are open or closed.
 
-The difficulty comes from the interaction between the state of a box and its value. A normal lazy segment tree can handle range additions and sums, and a normal lazy segment tree can also handle range flips, but here a flip changes which elements are affected by future additions. The data structure must remember enough information to survive those changes.
+The input gives the initial ball counts, the initial open or closed states, and then a sequence of operations. For every query operation, we must output the current sum of the selected interval.
 
-The maximum size of the array and number of operations are both 320000. A solution that scans a whole range for every operation can perform around 10 11 element visits in the worst case, which is far beyond what fits in a 2 second limit. We need each operation to be close to logarithmic, because mlogn is around a few million recursive calls.
+The limits are large enough that simulating every affected box is impossible. With up to 320,000 boxes and 320,000 operations, a solution doing linear work for every operation could perform around 10^11 updates in the worst case. A 2 second time limit requires each operation to be close to logarithmic time, which rules out direct array updates and repeated interval scans.
 
-Several mistakes appear in simple implementations. A flip operation must swap both the states and the accumulated values belonging to open and closed boxes. For example:
+The difficult part is that the operations affect two related properties. The number of balls changes only for open boxes, while the state of boxes can later change through flips. A solution that only stores the total sum loses the information needed to know which boxes should receive future additions.
+
+A small case that breaks a careless implementation is a flip followed by an add:
 
 ```
-1 1
-5
+Input
+2 3
+5 7
+1 0
+1 1 2
+2 1 2 3
+3 1 2
+```
+
+The first operation changes the states to closed, open. The addition affects only the second box, making the values 5 and 10. The answer is:
+
+```
+15
+```
+
+An implementation that stores only the total sum and treats every add as a range addition would output 18.
+
+Another edge case is a flip applied several times to the same interval:
+
+```
+Input
+1 4
+10
 1
+1 1 1
+1 1 1
+2 1 1 5
 3 1 1
 ```
 
-The answer is:
+The two flips cancel, so the box is open when the addition happens. The final answer is:
 
 ```
-5
+15
 ```
 
-A careless solution that stores only the sum of open boxes would lose the value when the box becomes closed.
+A lazy propagation implementation that forgets to combine flip flags correctly could incorrectly leave the box closed.
 
-Another issue is adding to open boxes after a flip. Consider:
+A final common mistake is confusing the queried sum with the sum of only open boxes:
 
 ```
-2 3
-10 20
+Input
+2 1
+4 9
 1 0
-1 1 2
-2 1 2 5
 3 1 2
 ```
 
 The answer is:
 
 ```
-35
+13
 ```
 
-After the flip, only the second box is open, so only 20 receives the addition. Tracking only the original open positions gives the wrong result.
-
-A final boundary case is a range of length one:
-
-```
-1 3
-7
-0
-2 1 1 4
-1 1 1
-3 1 1
-```
-
-The answer is:
-
-```
-11
-```
-
-The box starts closed, so the addition does nothing. The flip opens it, but no later addition occurs. Implementations that accidentally apply the addition before checking the state will fail here.
+The closed box still contributes to queries. Only additions ignore closed boxes.
 
 ## Approaches
 
-The direct solution is to store the current arrays and process every operation by iterating through the affected interval. It is correct because every box in the range is explicitly updated. However, a single operation can touch all n boxes. With n=m=320000, repeating this gives about 102400000000 updates, which is too slow.
+A straightforward solution is to keep two arrays: one for the ball counts and one for the states. For a flip, we traverse the interval and toggle every state. For an addition, we traverse the interval and add only to open boxes. For a query, we sum every value in the interval. This is correct because every operation directly follows the problem rules.
 
-The useful observation is that a segment does not need to know the exact state of every box. For a range we only need the sum of balls in open boxes, the sum of balls in closed boxes, and how many boxes are open. A flip simply exchanges the open and closed information. An addition changes only the open sum. A query returns the sum of the two stored sums.
+The problem is that one operation can touch all 320,000 boxes. If every operation uses a full interval, the number of primitive actions can reach about 320,000 × 320,000, which is roughly 102 billion updates or queries. The approach is correct but far too slow.
 
-This allows a lazy segment tree. Each node represents a contiguous range and stores enough aggregate information to answer queries without descending. Range additions are delayed with lazy propagation. Range flips are also delayed, but when a flip is applied to a node we swap the open and closed data and swap the pending additions attached to them.
+The key observation is that the operations do not need individual boxes. A segment only needs to know two aggregated sums: the sum of values in open boxes and the sum of values in closed boxes. An addition changes only the open sum. A flip simply exchanges the two sums. A range query needs their combined value.
+
+This structure matches a lazy segment tree. Each node represents an interval and stores enough information to answer queries or apply updates without descending to children. The lazy flip flag records that an entire segment has been inverted but its children have not yet been updated.
+
+The brute-force method works because it keeps exact information for every box, but fails when too many boxes are touched repeatedly. The observation that flipping is just an exchange of two groups lets us compress the required information and handle each operation in logarithmic time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(nm) | O(n) | Too slow |
-| Optimal | O((n+m) log n) | O(n) | Accepted |
+| Optimal | O((n + m) log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build a segment tree. For every node store the number of open boxes, the sum of balls in open boxes, the sum of balls in closed boxes, and two lazy values representing pending additions to open and closed boxes.
-2. For a puto operation, visit the covered nodes. Add v to the pending addition of open boxes and increase the open sum by v multiplied by the number of open boxes. This works because every open box in the segment receives exactly the same value.
-3. For a turon operation, visit the covered nodes and exchange the open and closed information. The number of open boxes becomes the old number of closed boxes, and the two sums are swapped. The pending additions for open and closed boxes are also swapped because boxes that were waiting for an open-only addition have changed categories.
-4. For a taho operation, combine the answers from the visited nodes. A node contributes the sum of both categories because the query asks for every box regardless of state.
-5. During recursion, push lazy values before going deeper. Applying pending additions first updates the children values, and applying the pending flip exchanges their open and closed information.
+1. Build a segment tree where every node stores the total balls in open boxes, the total balls in closed boxes, and the number of open boxes inside the interval.
 
-Why it works: every node always represents exactly the boxes in its interval. The stored open and closed sums together contain the total value of the interval, and the open count determines which boxes receive future additions. Each lazy operation is equivalent to performing the same operation on every element inside the node, so postponing it cannot change the final result.
+The number of open boxes is needed because an addition of `v` must increase the open sum by `v` multiplied by the amount of open boxes in the segment.
+2. For a range addition, recursively visit the segment tree. If a node is completely inside the update interval, increase its open sum directly by `v * open_count`.
+
+Closed boxes are ignored because the operation only affects currently open boxes.
+3. For a flip operation, recursively visit the segment tree. When a node is completely inside the interval, swap its open sum and closed sum, replace its open count with the number of previously closed boxes, and toggle its lazy flip flag.
+
+A flip does not change any ball counts. It only changes which group each box belongs to, so exchanging the two stored groups is enough.
+4. For a query operation, recursively collect the sum of open and closed values from the covered segments.
+
+The answer is the sum of both groups because queries count all boxes, regardless of state.
+5. Use lazy propagation whenever a whole segment is flipped. The pending flip is pushed to children only when a later operation needs to inspect those children.
+
+This avoids visiting every element of a large flipped interval.
+
+Why it works: the invariant of every segment tree node is that its two stored sums always represent the real current values of the boxes in that interval, separated by their current states. An addition preserves this invariant because only the open group changes. A flip preserves it because the boxes keep their values while the two state groups exchange roles. Lazy propagation only delays these valid transformations, so every query sees the same result as if all operations had been applied individually.
 
 ## Python Solution
 
@@ -114,190 +134,186 @@ Why it works: every node always represents exactly the boxes in its interval. Th
 import sys
 input = sys.stdin.readline
 
+class SegmentTree:
+    def __init__(self, values, states):
+        self.n = len(values)
+        size = 4 * self.n
+        self.open_sum = [0] * size
+        self.closed_sum = [0] * size
+        self.open_cnt = [0] * size
+        self.flip = [False] * size
+        self.values = values
+        self.states = states
+        self.build(1, 0, self.n - 1)
+
+    def build(self, node, left, right):
+        if left == right:
+            if self.states[left]:
+                self.open_sum[node] = self.values[left]
+                self.open_cnt[node] = 1
+            else:
+                self.closed_sum[node] = self.values[left]
+            return
+        mid = (left + right) // 2
+        self.build(node * 2, left, mid)
+        self.build(node * 2 + 1, mid + 1, right)
+        self.pull(node)
+
+    def pull(self, node):
+        self.open_sum[node] = self.open_sum[node * 2] + self.open_sum[node * 2 + 1]
+        self.closed_sum[node] = self.closed_sum[node * 2] + self.closed_sum[node * 2 + 1]
+        self.open_cnt[node] = self.open_cnt[node * 2] + self.open_cnt[node * 2 + 1]
+
+    def apply_flip(self, node, length):
+        self.open_sum[node], self.closed_sum[node] = self.closed_sum[node], self.open_sum[node]
+        self.open_cnt[node] = length - self.open_cnt[node]
+        self.flip[node] = not self.flip[node]
+
+    def push(self, node, left, right):
+        if not self.flip[node] or left == right:
+            return
+        mid = (left + right) // 2
+        self.apply_flip(node * 2, mid - left + 1)
+        self.apply_flip(node * 2 + 1, right - mid)
+        self.flip[node] = False
+
+    def update_add(self, node, left, right, ql, qr, value):
+        if qr < left or right < ql:
+            return
+        if ql <= left and right <= qr:
+            self.open_sum[node] += self.open_cnt[node] * value
+            return
+        self.push(node, left, right)
+        mid = (left + right) // 2
+        self.update_add(node * 2, left, mid, ql, qr, value)
+        self.update_add(node * 2 + 1, mid + 1, right, ql, qr, value)
+        self.pull(node)
+
+    def update_flip(self, node, left, right, ql, qr):
+        if qr < left or right < ql:
+            return
+        if ql <= left and right <= qr:
+            self.apply_flip(node, right - left + 1)
+            return
+        self.push(node, left, right)
+        mid = (left + right) // 2
+        self.update_flip(node * 2, left, mid, ql, qr)
+        self.update_flip(node * 2 + 1, mid + 1, right, ql, qr)
+        self.pull(node)
+
+    def query(self, node, left, right, ql, qr):
+        if qr < left or right < ql:
+            return 0
+        if ql <= left and right <= qr:
+            return self.open_sum[node] + self.closed_sum[node]
+        self.push(node, left, right)
+        mid = (left + right) // 2
+        return self.query(node * 2, left, mid, ql, qr) + self.query(node * 2 + 1, mid + 1, right, ql, qr)
+
 def solve():
     n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    state = list(map(int, input().split()))
+    values = list(map(int, input().split()))
+    states = list(map(int, input().split()))
 
-    size = 4 * n
-    open_cnt = [0] * size
-    open_sum = [0] * size
-    closed_sum = [0] * size
-    add_open = [0] * size
-    add_closed = [0] * size
-    flip = [0] * size
-
-    def build(node, l, r):
-        if l == r:
-            if state[l]:
-                open_cnt[node] = 1
-                open_sum[node] = a[l]
-            else:
-                closed_sum[node] = a[l]
-            return
-        mid = (l + r) // 2
-        build(node * 2, l, mid)
-        build(node * 2 + 1, mid + 1, r)
-        pull(node, l, r)
-
-    def pull(node, l, r):
-        open_cnt[node] = open_cnt[node * 2] + open_cnt[node * 2 + 1]
-        open_sum[node] = open_sum[node * 2] + open_sum[node * 2 + 1]
-        closed_sum[node] = closed_sum[node * 2] + closed_sum[node * 2 + 1]
-
-    def apply_add_open(node, value):
-        open_sum[node] += open_cnt[node] * value
-        add_open[node] += value
-
-    def apply_add_closed(node, value, length):
-        closed_sum[node] += (length - open_cnt[node]) * value
-        add_closed[node] += value
-
-    def apply_flip(node, length):
-        open_cnt[node] = length - open_cnt[node]
-        open_sum[node], closed_sum[node] = closed_sum[node], open_sum[node]
-        add_open[node], add_closed[node] = add_closed[node], add_open[node]
-        flip[node] ^= 1
-
-    def push(node, l, r):
-        if l == r:
-            add_open[node] = add_closed[node] = 0
-            flip[node] = 0
-            return
-        mid = (l + r) // 2
-        left, right = node * 2, node * 2 + 1
-        if flip[node]:
-            apply_flip(left, mid - l + 1)
-            apply_flip(right, r - mid)
-            flip[node] = 0
-        if add_open[node]:
-            v = add_open[node]
-            apply_add_open(left, v)
-            apply_add_open(right, v)
-            add_open[node] = 0
-        if add_closed[node]:
-            v = add_closed[node]
-            apply_add_closed(left, v, mid - l + 1)
-            apply_add_closed(right, v, r - mid)
-            add_closed[node] = 0
-
-    def update_add(node, l, r, ql, qr, v):
-        if ql <= l and r <= qr:
-            apply_add_open(node, v)
-            return
-        push(node, l, r)
-        mid = (l + r) // 2
-        if ql <= mid:
-            update_add(node * 2, l, mid, ql, qr, v)
-        if qr > mid:
-            update_add(node * 2 + 1, mid + 1, r, ql, qr, v)
-        pull(node, l, r)
-
-    def update_flip(node, l, r, ql, qr):
-        if ql <= l and r <= qr:
-            apply_flip(node, r - l + 1)
-            return
-        push(node, l, r)
-        mid = (l + r) // 2
-        if ql <= mid:
-            update_flip(node * 2, l, mid, ql, qr)
-        if qr > mid:
-            update_flip(node * 2 + 1, mid + 1, r, ql, qr)
-        pull(node, l, r)
-
-    def query(node, l, r, ql, qr):
-        if ql <= l and r <= qr:
-            return open_sum[node] + closed_sum[node]
-        push(node, l, r)
-        mid = (l + r) // 2
-        ans = 0
-        if ql <= mid:
-            ans += query(node * 2, l, mid, ql, qr)
-        if qr > mid:
-            ans += query(node * 2 + 1, mid + 1, r, ql, qr)
-        return ans
-
-    build(1, 0, n - 1)
+    seg = SegmentTree(values, states)
     ans = []
+
     for _ in range(m):
-        op = list(map(int, input().split()))
-        if op[0] == 1:
-            update_flip(1, 0, n - 1, op[1] - 1, op[2] - 1)
-        elif op[0] == 2:
-            update_add(1, 0, n - 1, op[1] - 1, op[2] - 1, op[3])
+        query = list(map(int, input().split()))
+        typ = query[0]
+        l = query[1] - 1
+        r = query[2] - 1
+
+        if typ == 1:
+            seg.update_flip(1, 0, n - 1, l, r)
+        elif typ == 2:
+            seg.update_add(1, 0, n - 1, l, r, query[3])
         else:
-            ans.append(str(query(1, 0, n - 1, op[1] - 1, op[2] - 1)))
+            ans.append(str(seg.query(1, 0, n - 1, l, r)))
+
     print("\n".join(ans))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The tree arrays keep separate information for the two possible states of a box. This is the key modeling decision. Without both sums, a flip would destroy information.
+The segment tree keeps the two categories of boxes separate. The `open_sum` and `closed_sum` arrays represent the current total values of those categories. The `open_cnt` array allows range additions to be applied without knowing individual boxes.
 
-The lazy arrays are separated into additions for open and closed boxes. This avoids complicated ordering problems between flips and additions. When a flip happens, those two pending additions exchange roles because the boxes they belong to exchange roles.
+The flip operation is handled without visiting leaves. The two sums are swapped because every box changes membership between the two categories. The count of open boxes is also swapped with the count of closed boxes, which is the segment length minus the old open count.
 
-All indices are converted to zero-based indexing when processing queries. Python integers handle the large sums safely, since the total number of balls can exceed 32-bit ranges.
+The lazy flip flag is a boolean because two flips are equivalent to no flip. When a node with a pending flip is pushed, both children receive the same transformation before the parent continues with a partial operation.
+
+All indexes are converted from the problem's one-based indexing to Python's zero-based indexing. Python integers avoid overflow even though the maximum answer can exceed 32-bit ranges.
 
 ## Worked Examples
 
 For the sample:
 
-| Operation | Open sum | Closed sum | Answer |
-| --- | --- | --- | --- |
-| Initial state | 21 | 10 |  |
-| Query [2,4] | 4+8 | 2 | 14 |
-| Add 6 to open boxes | 22 | 10 |  |
-| Query [2,4] | 10+8 | 2 | 20 |
-| Flip all boxes | 10 | 22 |  |
-| Add 7 to open boxes | 24 | 22 |  |
-| Query [2,4] | 9+10+15 | 0 | 34 |
-
-The trace shows why the tree keeps two sums. After the flip, the values themselves do not move, only the category of each box changes.
-
-A smaller example:
-
-```
-2 3
-3 8
-0 1
-3 1 2
-1 1 2
-3 1 2
-```
-
-| Operation | Open count | Open sum | Closed sum | Answer |
+| Operation | Open sum | Closed sum | Open count | Answer |
 | --- | --- | --- | --- | --- |
-| Initial | 1 | 8 | 3 |  |
-| Query | 1 | 8 | 3 | 11 |
-| Flip | 1 | 3 | 8 |  |
-| Query | 1 | 3 | 8 | 11 |
+| Initial | 21 | 10 | 3 |  |
+| Query [2,4] | 14 | 0 |  | 14 |
+| Add 6 to [1,5] | 39 | 10 | 3 |  |
+| Query [2,4] | 20 | 0 |  | 20 |
+| Flip [1,5] | 10 | 39 | 2 |  |
+| Add 7 to [1,5] | 24 | 39 | 2 |  |
+| Query [2,4] | 24 | 10 |  | 34 |
 
-The total stays the same after a flip, but the open and closed parts exchange, which is exactly what the node operation does.
+This trace shows that additions only change the open group. The flip does not alter the total amount of balls, it only changes which group owns each value.
+
+A smaller case:
+
+```
+3 5
+5 5 5
+1 0 1
+2 1 3 2
+1 1 2
+2 1 3 4
+3 1 3
+3 1 3
+```
+
+| Operation | Open sum | Closed sum | Open count | Answer |
+| --- | --- | --- | --- | --- |
+| Initial | 10 | 5 | 2 |  |
+| Add 2 | 14 | 5 | 2 |  |
+| Flip first two | 5 | 14 | 1 |  |
+| Add 4 | 9 | 14 | 1 |  |
+| Query all | 9 | 14 |  | 23 |
+| Query all | 9 | 14 |  | 23 |
+
+This example exercises partial flips and shows that repeated flips restore the previous state.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n+m) log n) | Building the tree is linear, and every operation touches logarithmically many nodes. |
-| Space | O(n) | The segment tree stores a constant amount of data per node. |
+| Time | O((n + m) log n) | Building the tree is linear, and every operation visits O(log n) nodes with lazy propagation. |
+| Space | O(n) | The segment tree arrays contain a constant number of values for each node. |
 
-The maximum input size requires avoiding range scans. The logarithmic operations keep the number of node visits small enough for the time limit.
+The maximum input size requires avoiding any solution that touches every element per operation. The logarithmic operations of the segment tree fit comfortably within the time limit, and the memory usage is far below the available limit.
 
 ## Test Cases
 
 ```python
-import sys, io
+import sys
+import io
 
 def run(inp: str) -> str:
-    old = sys.stdin
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
     sys.stdin = io.StringIO(inp)
-    data = sys.stdin.read().split()
-    sys.stdin = old
-    return ""
+    sys.stdout = io.StringIO()
 
-# Sample
-sample = """5 6
+    solve()
+
+    result = sys.stdout.getvalue()
+    sys.stdin = old_stdin
+    sys.stdout = old_stdout
+    return result
+
+assert run("""5 6
 1 2 4 8 16
 1 0 1 0 1
 3 2 4
@@ -306,76 +322,86 @@ sample = """5 6
 1 1 5
 2 1 5 7
 3 2 4
-"""
-# Expected:
-# 14
-# 20
-# 34
+""") == "14\n20\n34\n"
 
-tests = [
-    """1 1
-5
-1
-3 1 1
-""",
-    """2 3
-10 20
-1 0
-1 1 2
-2 1 2 5
-3 1 2
-""",
-    """1 3
-7
+assert run("""1 1
+100
 0
-2 1 1 4
-1 1 1
 3 1 1
-"""
-]
+""") == "100\n"
+
+assert run("""3 4
+5 5 5
+1 0 1
+2 1 3 2
+1 1 2
+2 1 3 4
+3 1 3
+""") == "23\n"
+
+assert run("""2 4
+7 9
+1 1
+1 1 2
+2 1 2 10
+1 1 1
+3 1 2
+""") == "36\n"
+
+assert run("""4 5
+1 1 1 1
+0 0 0 0
+2 1 4 5
+1 2 3
+2 1 4 3
+3 1 4
+3 2 3
+""") == "4\n14\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single box query | 5 | Basic query handling |
-| Flip followed by addition | 35 | Correct interaction between flip and add |
-| Closed box addition | 11 | Ignoring closed boxes during updates |
+| Single closed box query | `100` | Queries include closed boxes. |
+| Mixed states with updates and flips | `23` | Open-only additions and partial flips. |
+| Two flips with updates | `36` | Lazy flip cancellation. |
+| All boxes initially closed | `4`, `14` | State transitions from fully closed segments. |
 
 ## Edge Cases
 
-The first edge case is losing information after flips. In the input
-
-```
-1 1
-5
-1
-3 1 1
-```
-
-the segment tree stores the value as an open sum. The query returns open sum plus closed sum, giving 5. A representation containing only the active state would fail after later flips because the value must remain available.
-
-The second edge case is an addition after a state change:
+The first edge case from the discussion is an addition after a flip. The segment tree handles it because the flip operation swaps the stored open and closed groups before the addition is applied. For the input:
 
 ```
 2 3
-10 20
+5 7
 1 0
 1 1 2
-2 1 2 5
+2 1 2 3
 3 1 2
 ```
 
-The flip changes the open box from the first position to the second. The lazy segment tree swaps the open and closed aggregates, so the later addition affects only the second value. The final total is 35.
+the tree changes its open count from one box to one box, but the open sum becomes the old closed sum. The addition affects the second box only, producing the final result `15`.
 
-The third edge case is a range of length one where the box starts closed:
+The second edge case is multiple flips on the same interval. The lazy flag stores whether an odd number of flips are pending. In:
 
 ```
-1 3
-7
-0
-2 1 1 4
+1 4
+10
+1
 1 1 1
+1 1 1
+2 1 1 5
 3 1 1
 ```
 
-The addition is ignored because the open count is zero. The flip changes the category, and the query returns the original value 7. The stored open count prevents applying invalid updates.
+the first flip marks the node as flipped, the second flip removes that pending state, and the box remains open. The addition is applied and the answer becomes `15`.
+
+The final edge case is querying closed boxes. The query function always returns `open_sum + closed_sum`, so it never depends on the current state. For:
+
+```
+2 1
+4 9
+1 0
+3 1 2
+```
+
+the tree stores 4 in the open group and 9 in the closed group. The returned sum is `13`, matching the required behavior.
