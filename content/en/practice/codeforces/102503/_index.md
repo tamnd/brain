@@ -1,23 +1,23 @@
 ---
 title: "National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020"
-description: "10 problems from National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020 (contest 102503), difficulty -. 5/10 solutions verified against sample I/O."
+description: "12 problems from National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020 (contest 102503), difficulty -. 6/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102503
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 5
-total_solve_s: 4530
+n_problems: 12
+n_verified: 6
+total_solve_s: 4211
 contest_year: 2020
-date: "2026-08-05T19:08:22+07:00"
+date: "2026-08-05T19:19:14+07:00"
 weight: 102503
 draft: false
 ---
 
 # [National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020](https://codeforces.com/contest/102503)
 
-Special | 10 problems | 5/10 verified | Difficulty - | 1h 15m
+Special | 12 problems | 6/12 verified | Difficulty - | 1h 10m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,7 @@ Special | 10 problems | 5/10 verified | Difficulty - | 1h 15m
 | [H](H/) | [A Sheety Problem](https://codeforces.com/problemset/problem/102503/H) |  |  |  | 1m 28s |  |
 | [I](I/) | [Pakain ng Pahiyas 2](https://codeforces.com/problemset/problem/102503/I) |  |  |  | 2m 29s | ✓ |
 | [K](K/) | [Shoedoku](https://codeforces.com/problemset/problem/102503/K) |  |  |  | 8m 34s |  |
-| [N](N/) | [Holy Smokes](https://codeforces.com/problemset/problem/102503/N) |  |  |  | 15m 7s |  |
-| [Q](Q/) | [Og and Ug](https://codeforces.com/problemset/problem/102503/Q) |  |  |  | 1m |  |
+| [L](L/) | [Arnis Ball](https://codeforces.com/problemset/problem/102503/L) |  |  |  | 3m 23s |  |
+| [M](M/) | [Se\u00f1orita](https://codeforces.com/problemset/problem/102503/M) |  |  |  | 3m 54s | ✓ |
+| [N](N/) | [Holy Smokes](https://codeforces.com/problemset/problem/102503/N) |  |  |  | 1m 55s |  |
+| [Q](Q/) | [Og and Ug](https://codeforces.com/problemset/problem/102503/Q) |  |  |  | 1m 36s |  |
