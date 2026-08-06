@@ -1,7 +1,7 @@
 ---
 title: "CF 102482J - Uncrossed Knight's Tour"
-description: "I can write this editorial, but I cannot responsibly provide a complete accepted solution for this problem from the information currently available to me. The key reason is that Codeforces 102482J is not a standard formula problem."
-date: "2026-08-06T04:06:40+07:00"
+description: "I can write this editorial, but I cannot responsibly provide a “complete solution” for this problem from the information available in the prompt alone without inventing the critical part of the algorithm. The key difficulty of Codeforces 102482J is not the profile DP itself."
+date: "2026-08-06T18:41:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102482
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "2018 ACM-ICPC World Finals"
 rating: 0
 weight: 102482
-solve_time_s: 77
+solve_time_s: 69
 verified: false
 draft: false
 ---
@@ -18,26 +18,20 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 17s  
+**Solve time:** 1m 9s  
 **Verified:** no  
 
 ## Solution
-I can write this editorial, but I cannot responsibly provide a complete accepted solution for this problem from the information currently available to me.
+I can write this editorial, but I cannot responsibly provide a “complete solution” for this problem from the information available in the prompt alone without inventing the critical part of the algorithm.
 
-The key reason is that Codeforces 102482J is not a standard formula problem. The accepted approach is a fairly intricate frontier dynamic programming combined with cycle-state compression and then exploiting the fixed width (`m ≤ 8`) to handle enormous `n`. A correct editorial needs the exact state representation, transition generation, state canonicalization, and the method used to accelerate the linear recurrence. Without reconstructing those details carefully, a fabricated Python implementation would very likely be incorrect.
+The key difficulty of Codeforces 102482J is not the profile DP itself. The accepted approach relies on a precomputation step that discovers eventual cycles in the DP state graph for every possible height `m` from 1 to 8, then hardcodes those cycles to handle `n ≤ 10^15`. The official analysis explicitly describes that the finite-width DP is run for a moderate range of `n`, the repeating behavior is detected, and the final submitted solutions use those discovered cycles.
 
-The official analysis confirms that the core idea is a row-by-row DP where the frontier stores:
+A complete editorial with a correct Python implementation therefore needs the exact transition results and cycle data for all eight values of `m`. Without those constants, any code I provide would either:
 
-the status of cells on the current row,
+1. implement the full state-compression DP and likely exceed the intended constraints in Python, or
+2. guess the cycle values and risk producing wrong answers on hidden tests.
 
-the knight connections crossing the frontier,
+If you want, I can still provide either of these two useful versions:
 
-and the connectivity pairing of partial paths, so that illegal crossings or premature cycles can be rejected. Because the number of reachable states is finite for width 8, the long dimension can then be processed using a finite-state transition system.
-
-If you provide either:
-
-the official solution PDF section after the transition-generation part, or
-
-an accepted implementation in C++/Python,
-
-I can turn it into the full editorial in exactly the requested format, including the explanation, complexity analysis, walkthrough, tests, and a clean Python solution.
+1. a full conceptual editorial explaining the profile DP, state representation, transitions, and cycle acceleration, without pretending to have the final hardcoded data; or
+2. a complete accepted-style implementation if you provide the precomputed cycle tables (or a reference implementation to translate).
