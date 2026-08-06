@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 4
-total_solve_s: 658
-date: "2026-08-01T21:11:34+07:00"
+total_solve_s: 654
+date: "2026-08-01T21:12:37+07:00"
 weight: 102672
 draft: false
 ---
 
 # [Selection of tasks from Internet olympiads season 2019-20](https://codeforces.com/contest/102672)
 
-Special | 10 problems | 4/10 verified | Difficulty - | 10m 58s
+Special | 10 problems | 4/10 verified | Difficulty - | 10m 54s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Special | 10 problems | 4/10 verified | Difficulty - | 10m 58s
 | [E](E/) | [Crazy domino](https://codeforces.com/problemset/problem/102672/E) |  |  |  | 47s |  |
 | [F](F/) | [Arithmetic and blocks](https://codeforces.com/problemset/problem/102672/F) |  |  |  | 1m 36s | ✓ |
 | [G](G/) | [Crazy Arrangements](https://codeforces.com/problemset/problem/102672/G) |  |  |  | 55s |  |
-| [H](H/) | [Road building](https://codeforces.com/problemset/problem/102672/H) |  |  |  | 1m 6s |  |
+| [H](H/) | [Road building](https://codeforces.com/problemset/problem/102672/H) |  |  |  | 1m 2s |  |
 | [I](I/) | [Tennis score](https://codeforces.com/problemset/problem/102672/I) |  |  |  | 44s |  |
 | [J](J/) | [Wedding](https://codeforces.com/problemset/problem/102672/J) |  |  |  | 48s |  |
 | [K](K/) | [Escape from the Abundoned House](https://codeforces.com/problemset/problem/102672/K) |  |  |  | 1m 22s | ✓ |
