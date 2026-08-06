@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3079 contests, 22632 problems, 12436 verified."
+description: "Codeforces problem solutions with full editorials. 3079 contests, 22634 problems, 12438 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3079 contests, 22632 problems, 12436 verified.**
+**3079 contests, 22634 problems, 12438 verified.**
 
-## Unknown — 799 contests, 6707 problems, 3917 verified
+## Unknown — 799 contests, 6709 problems, 3919 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102498](102498/) | [Интернет-олимпиады, Сезон 2019-2020, Первая личная олимпиада](https://codeforces.com/contest/102498) | 4 | 3/4 | Special | - |
 | [102531](102531/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая личная олимпиада](https://codeforces.com/contest/102531) | 4 | 0/4 | Special | - |
 | [102538](102538/) | [300iq Contest 3](https://codeforces.com/contest/102538) | 10 | 6/10 | Special | - |
-| [102550](102550/) | [Интернет-олимпиады, Сезон 2018-2019, Первая личная олимпиада](https://codeforces.com/contest/102550) | 2 | 1/2 | Special | - |
+| [102550](102550/) | [Интернет-олимпиады, Сезон 2018-2019, Первая личная олимпиада](https://codeforces.com/contest/102550) | 4 | 3/4 | Special | - |
 | [102551](102551/) | [Интернет-олимпиады, Сезон 2019-2020, Третья личная олимпиада](https://codeforces.com/contest/102551) | 4 | 2/4 | Special | - |
 | [102552](102552/) | [Интернет-олимпиады, Сезон 2018-2019, Вторая личная олимпиада](https://codeforces.com/contest/102552) | 4 | 0/4 | Special | - |
 | [102576](102576/) | [2020 Petrozavodsk Winter Camp, Jagiellonian U Contest](https://codeforces.com/contest/102576) | 12 | 8/12 | Special | - |

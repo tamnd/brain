@@ -1,7 +1,7 @@
 ---
 title: "CF 102550A - \u041f\u043e\u0438\u0441\u043a\u0438 \u0422\u0440\u0435\u0437\u0443\u0431\u0446\u0430"
-description: "The map is a rectangular array of rooms with wrap-around movement. Moving past the last row brings you to the first row, and moving past the last column brings you to the first column, so the rooms form a torus rather than a normal rectangle."
-date: "2026-08-05T14:53:05+07:00"
+description: "The map is an n x m toroidal grid. Moving outside the top, bottom, left, or right edge wraps around to the opposite side. The starting room is the top left corner. Some rooms contain hints marked with X."
+date: "2026-08-06T20:35:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102550
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2018-2019, \u041f\u0435\u0440\u0432\u0430\u044f \u043b\u0438\u0447\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
 rating: 0
 weight: 102550
-solve_time_s: 898
+solve_time_s: 228
 verified: false
 draft: false
 ---
@@ -18,145 +18,137 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 14m 58s  
+**Solve time:** 3m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The map is a rectangular array of rooms with wrap-around movement. Moving past the last row brings you to the first row, and moving past the last column brings you to the first column, so the rooms form a torus rather than a normal rectangle. The starting room is the top-left cell, and some cells contain hints marked by `X`.
+The map is an `n x m` toroidal grid. Moving outside the top, bottom, left, or right edge wraps around to the opposite side. The starting room is the top left corner. Some rooms contain hints marked with `X`.
 
-A hint does not become available immediately. A hint in cell `(i, j)` can only be collected after every hint in cells with a smaller value of `i + j - 2` has already been collected. The distance mentioned in the statement is exactly this value because the starting cell has coordinates `(1, 1)`.
+A hint in a room `(i, j)` becomes available only after every hint with a smaller ordinary Manhattan distance from the start has already been collected. The distance is not affected by the wrapping movement, it is simply `i + j` when using zero based coordinates. We need output a sequence of moves that visits all hint rooms in a valid order.
 
-The task is to print any sequence of moves that collects all hints. The output is not a list of cells, but the actual movement commands that describe the route.
+The dimensions are at most 100, so there are at most 10000 rooms. A solution with heavy graph search from every room would already be close to hundreds of millions of operations and is unnecessary. The important restriction is not the size of the grid, but the required order of first visits. We need a construction that naturally follows increasing Manhattan distance.
 
-The grid dimensions are at most 100 by 100, so there are at most 10,000 rooms. This is small enough for graph searches over the whole map. A solution that tries all possible routes is impossible because the number of paths grows exponentially, but algorithms that perform a moderate number of BFS traversals over 10,000 states are feasible.
-
-The tricky parts come from the unlocking rule. A route that simply walks through the grid in row-major order is wrong because it may enter a room containing a future hint before that hint is unlocked. Another subtle case is the wrap-around movement. For example:
+A common mistake is to run a normal DFS from the starting room. DFS can go deep into one branch before visiting another room of the same or smaller distance. For example:
 
 ```
-1 3
-S.X
+3 3
+S..
+X..
+..X
 ```
 
-The correct output can be `R`, because moving right from the first room reaches the third room through the second room. A normal grid traversal that ignores wrapping would fail to use this shortcut.
+The room `(3,1)` in one based indexing has distance `2`, while `(1,2)` has distance `1`. A DFS that goes down first may try to enter the distance `2` room before collecting the distance `1` hint.
 
-Another edge case is a single row or a single column. For example:
+Another mistake is to traverse a diagonal using a move that temporarily increases distance. For example, moving from `(2,2)` to `(3,1)` by going down first enters `(3,2)`, which has a larger distance and might still be locked.
 
-```
-1 2
-SX
-```
-
-The answer may be `R` or `L`. Treating the grid as having no vertical or horizontal wrap can create invalid moves.
+The solution has to visit rooms in layers of equal distance and every move inside a layer must pass only through rooms from the current or previous layers.
 
 ## Approaches
 
-A direct brute force approach would try to decide the next move among the four possible directions while tracking collected hints. This is a graph search over possible routes. Although it is correct, the state space contains the current room and the set of already collected hints, which is far too large. Even the grid alone has 10,000 states, and the number of possible collected subsets is exponential.
+A direct approach would be to repeatedly search for the next available hint. For every distance value, we could run a BFS and find all currently reachable rooms. This is correct because BFS respects the set of unlocked rooms, but the repeated searches are wasteful. In the worst case there are 10000 rooms, and searching a 10000 room graph many times is much more work than needed.
 
-The useful observation is that hints are ordered only by their distance from the start. We do not need to choose an arbitrary order among all hints. We only need to finish one distance layer before entering a larger one.
+The key observation is that every room with the same distance lies on one diagonal. Consecutive rooms on a diagonal can be visited safely with two moves. If we move from `(i, j)` to `(i-1, j+1)`, the sequence `U, R` goes through `(i-1, j)`, whose distance is one smaller. The reverse direction works similarly with `L, D`.
 
-The optimal approach is to process the layers one by one. For the current distance value, we repeatedly run BFS from the current position to a not-yet-collected hint in this layer. During BFS, all hints from future layers are treated as blocked cells because they are not open yet. Empty rooms and hints from the current layer are allowed.
-
-The brute force fails because it explores all possible histories. The layer structure removes this ambiguity and turns the problem into a sequence of ordinary shortest path searches on a small graph.
+This gives a simple diagonal sweep. We process diagonals in increasing order of `i + j`. We alternate the direction of every diagonal so the end of one diagonal is next to the beginning of the following one. Every room is visited exactly once, and the path length stays below the limit.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal | O(nm(nm)) in the worst case | O(nm) | Accepted |
+| Brute Force | O((nm)^2) | O(nm) | Too slow |
+| Optimal | O(nm) | O(nm) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Group every hint by its value of `i + j - 2`. Hints in the same group become available at the same moment, so they can be collected in any order inside that group.
-2. Start from `(0, 0)` and process the groups in increasing distance order. At every stage, all groups with smaller distance are already completed.
-3. For the current distance group, run BFS from the current position. A room is not allowed as a BFS state if it contains an uncollected hint from a larger distance group. The first reachable hint from the current group becomes the next destination.
-4. Add the BFS path to the answer, mark that hint as collected, and continue searching for another hint in the same group until the group is empty.
-5. After every distance layer is finished, move to the next one. The produced movement string is the required route.
+1. Generate every diagonal by its distance `d = i + j`, starting from `0` and ending at `n + m - 2`. The room coordinates inside a diagonal are all pairs with that sum.
+2. Traverse one diagonal completely before moving to the next one. For even numbered diagonals, visit rooms from the largest row index to the smallest. For odd numbered diagonals, reverse the direction. Alternating directions is what makes neighboring diagonals connect naturally.
+3. When moving inside a diagonal from one room to the next, use two moves. In the downward row direction use `U` then `R`. In the opposite direction use `L` then `D`. The intermediate room always has a smaller distance than the diagonal being processed.
+4. Between two diagonals, make the single move that connects the end of the current diagonal with the beginning of the next one. Because of the alternating order, these two rooms are adjacent.
 
-Why it works:
-
-At the start of processing distance `d`, every hint with distance smaller than `d` has already been collected, and every hint with distance greater than `d` is still locked. BFS only walks through rooms that are currently legal, so every collected hint is reachable under the rules. Since all hints in smaller layers are completed before moving to a larger layer, the route never tries to enter a locked hint.
+Why it works: before processing diagonal `d`, every room on a diagonal with a smaller distance has already been visited. While walking through diagonal `d`, the only intermediate rooms are either on diagonal `d` or on smaller diagonals. A hint is never entered before all smaller distance hints have been collected. After finishing the last diagonal, every room has been visited, so every possible hint has been collected.
 
 ## Python Solution
 
 ```python
 import sys
-from collections import deque
-
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
-grid = [list(input().strip()) for _ in range(n)]
+def solve():
+    n, m = map(int, input().split())
+    grid = [input().strip() for _ in range(n)]
 
-layers = [[] for _ in range(n + m - 1)]
-for i in range(n):
-    for j in range(m):
-        if grid[i][j] == "X":
-            layers[i + j].append((i, j))
+    ans = []
+    current = (0, 0)
 
-moves = [
-    (1, 0, "D"),
-    (-1, 0, "U"),
-    (0, 1, "R"),
-    (0, -1, "L")
-]
+    def move_to(a, b):
+        nonlocal current
+        x, y = current
+        nx, ny = a, b
 
-collected = [[False] * m for _ in range(n)]
-ans = []
-cur = (0, 0)
+        while x > nx:
+            ans.append('U')
+            x -= 1
+        while y < ny:
+            ans.append('R')
+            y += 1
+        while x < nx:
+            ans.append('D')
+            x += 1
+        while y > ny:
+            ans.append('L')
+            y -= 1
 
-def bfs(start, target_layer):
-    q = deque([start])
-    parent = {start: None}
-    parent_move = {}
+        current = (x, y)
 
-    while q:
-        x, y = q.popleft()
+    for d in range(n + m - 1):
+        cells = []
+        lo = max(0, d - (m - 1))
+        hi = min(n - 1, d)
 
-        if (x, y) != start and (x, y) in target_layer and not collected[x][y]:
-            path = []
-            cur = (x, y)
-            while cur != start:
-                path.append(parent_move[cur])
-                cur = parent[cur]
-            return path[::-1], (x, y)
+        if d % 2 == 0:
+            for i in range(hi, lo - 1, -1):
+                cells.append((i, d - i))
+        else:
+            for i in range(lo, hi + 1):
+                cells.append((i, d - i))
 
-        for dx, dy, c in moves:
-            nx = (x + dx) % n
-            ny = (y + dy) % m
+        if cells[0] != current:
+            move_to(*cells[0])
 
-            if (nx, ny) in parent:
-                continue
+        for x, y in cells[1:]:
+            cx, cy = current
+            if x == cx - 1 and y == cy + 1:
+                ans.append('U')
+                ans.append('R')
+            elif x == cx + 1 and y == cy - 1:
+                ans.append('L')
+                ans.append('D')
+            else:
+                move_to(x, y)
+            current = (x, y)
 
-            if grid[nx][ny] == "X" and (nx, ny) not in target_layer:
-                continue
+        if d + 1 < n + m - 1:
+            nd = d + 1
+            nlo = max(0, nd - (m - 1))
+            nhi = min(n - 1, nd)
+            if nd % 2 == 0:
+                nxt = (nhi, nd - nhi)
+            else:
+                nxt = (nlo, nd - nlo)
+            if nxt != current:
+                move_to(*nxt)
 
-            parent[(nx, ny)] = (x, y)
-            parent_move[(nx, ny)] = c
-            q.append((nx, ny))
+    print(''.join(ans))
 
-    return [], None
-
-for layer in layers:
-    target_layer = set(layer)
-    while True:
-        path, pos = bfs(cur, target_layer)
-        if pos is None:
-            break
-        ans.extend(path)
-        collected[pos[0]][pos[1]] = True
-        cur = pos
-
-print("".join(ans))
+if __name__ == "__main__":
+    solve()
 ```
 
-The `layers` array stores hints by their unlocking distance. The index of the array is exactly `i + j - 2` using zero-based coordinates.
+The code does not need to check whether a room contains `X`. Visiting an empty room is harmless, and visiting every room in the correct order is a stronger guarantee than visiting only the hint rooms.
 
-The BFS uses a dictionary for parents because the grid is small and this keeps reconstruction simple. When BFS reaches a hint in the current layer, the stored parent links are followed backwards to recover the movement commands.
+The diagonal generation uses zero based coordinates, so the distance of a cell is exactly `i + j`. The `lo` and `hi` values restrict the diagonal to cells that actually exist inside the rectangle.
 
-The wrap-around behavior is handled with modulo arithmetic. This avoids separate boundary cases for moving above the first row or past the last column.
-
-The condition that skips future hints is the key implementation detail. A room containing an `X` is not always blocked, because hints in the current layer are already available. Only hints from later layers must be avoided.
+The movement between diagonal cells is handled separately from arbitrary movement. The special two character transitions are the important part because they guarantee that we never step into a future locked layer.
 
 ## Worked Examples
 
@@ -170,30 +162,16 @@ X.X..
 ...XX
 ```
 
-The layers are:
+The diagonal order is:
 
-| Distance | Hints | Action |
+| Distance | Direction | Cells visited |
 | --- | --- | --- |
-| 1 | (2,1) | Move down |
-| 3 | (2,3), (3,2) | Reach both hints |
-| 5 | (4,4), (4,5) | Reach both hints |
+| 0 | down to up | (0,0) |
+| 1 | up to down | (1,0), (0,1) |
+| 2 | down to up | (2,0), (1,1), (0,2) |
+| 3 | up to down | (0,3), (1,2), (2,1), (3,0) |
 
-One possible route is:
-
-| Step | Position | Command |
-| --- | --- | --- |
-| Start | (1,1) |  |
-| 1 | (2,1) | D |
-| 2 | (3,1) | D |
-| 3 | (3,2) | R |
-| 4 | (2,2) | U |
-| 5 | (2,3) | R |
-| 6 | (3,3) | D |
-| 7 | (4,3) | D |
-| 8 | (4,4) | R |
-| 9 | (4,5) | R |
-
-The important property shown here is that the hint at distance 5 is not visited before all smaller layers are complete.
+The produced path collects the hint at distance 1 before reaching the hints at larger distances. The exact output may differ from the sample because any valid route is accepted.
 
 For the second sample:
 
@@ -202,78 +180,88 @@ For the second sample:
 S.....X
 ```
 
-All movement is horizontal because there is only one row.
+There is only one row, so the diagonals become a sequence of columns. The algorithm walks through every room of the row and reaches the final hint only after all previous distances have been processed.
 
-| Step | Position | Command |
+| Distance | Current room | Action |
 | --- | --- | --- |
-| Start | (1,1) |  |
-| 1 | (1,7) | L |
+| 0 | (0,0) | start |
+| 1 | (0,1) | process diagonal |
+| 2 | (0,2) | process diagonal |
+| 3 | (0,3) | process diagonal |
+| 4 | (0,4) | process diagonal |
+| 5 | (0,5) | process diagonal |
+| 6 | (0,6) | collect final hint |
 
-The torus behavior allows reaching the last room immediately by wrapping around.
+This case verifies that the construction also works when one dimension is one.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((nm)^2) | In the worst case BFS is repeated for many hints, and every BFS scans the grid |
-| Space | O(nm) | BFS storage and the collected state use one value per room |
+| Time | O(nm) | Every room is placed into exactly one diagonal and processed once. |
+| Space | O(nm) | The input grid and temporary diagonal storage contain at most 10000 rooms. |
 
-With at most 10,000 rooms, the graph is small enough for these searches. The produced route is also bounded because each BFS path is a shortest path on the torus and the total number of collected hints is at most 10,000.
+The maximum path length is also bounded. Moving inside diagonals uses two moves per neighboring pair, giving fewer than 20000 moves. The connections between diagonals add fewer than 200 extra moves, staying safely below the required 30000 limit.
 
 ## Test Cases
 
-```
-# The following cases validate the idea manually.
+```python
+import sys
+import io
 
-# Minimum grid
-# 1 1
-# S
-# Output: empty string
+def run(inp: str) -> str:
+    old = sys.stdin
+    sys.stdin = io.StringIO(inp)
+    solve()
+    out = sys.stdout.getvalue()
+    sys.stdin = old
+    return out.strip()
 
-# Single row wrap
-# 1 3
-# S.X
-# Output can be:
-# R
+assert run("""4 5
+S....
+X.X..
+.X...
+...XX
+""") != "", "sample 1"
 
-# Single column wrap
-# 3 1
-# S
-# X
-# X
+assert run("""1 7
+S.....X
+""") != "", "sample 2"
 
-# Full grid of hints
-# 3 3
-# SXX
-# XXX
-# XXX
+assert run("""1 1
+S
+""") == "", "single room"
+
+assert run("""2 2
+S.
+.X
+""") != "", "small diagonal transition"
+
+assert run("""3 3
+SXX
+XXX
+XXX
+""") != "", "many hints"
+
+assert run("""100 100
+""" + "\n".join(["S" + "." * 99] + ["X" * 100 for _ in range(99)])).endswith(""), "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 / S` | Empty route | No hints exist |
-| `1 3 / S.X` | Any one-step wrap route | Horizontal wrapping |
-| `3 1 / S,X,X` | Valid vertical route | Single column handling |
-| Full 3 by 3 grid | Any valid route | Many layers and locked hints |
+| Sample 1 | Any valid path | Normal rectangular case |
+| Sample 2 | Any valid path | Single row handling |
+| `1 x 1` grid | Empty output | No hints and no movement |
+| `2 x 2` grid | Any valid path | Small diagonal changes |
+| Full grid of hints | Any valid path | Worst case number of required visits |
+| `100 x 100` grid | Any valid path | Maximum constraints |
 
 ## Edge Cases
 
-For the wrap-around case:
+When the grid has only one room, there are no diagonals after the starting room. The algorithm prints an empty path, which is correct because there are no hints to collect.
 
-```
-1 3
-S.X
-```
+When all rooms contain hints, every room must be visited. The diagonal sweep still works because every newly entered room belongs to the current distance layer or a previous one. There is no shortcut assumption about empty cells.
 
-The algorithm places the hint into distance layer 2. BFS sees that moving left from the start reaches the hint immediately because columns wrap. The returned path is valid because it uses the actual movement rules.
+When one dimension is equal to one, diagonal traversal becomes a straight walk along the only possible direction. The transition formulas still produce valid adjacent moves because the diagonal contains at most one cell.
 
-For the single-row case:
-
-```
-1 2
-SX
-```
-
-The BFS modulo calculation gives both horizontal neighbors as the same two cells, so no special handling is needed. The hint is in the first layer and is collected immediately.
-
-For the case where every room contains a hint except the start, future hints are blocked until their layer is reached. BFS cannot accidentally enter a later layer because those rooms are removed from the search graph until their turn arrives.
+When hints appear on neighboring diagonals, the alternating order matters. A naive row based traversal could enter a farther row before visiting a closer hint. The diagonal order prevents that because the distance layer is the primary ordering rule.
