@@ -8,21 +8,21 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 9
 n_verified: 2
-total_solve_s: 1641
-date: "2026-08-07T12:28:49+07:00"
+total_solve_s: 1923
+date: "2026-08-07T19:20:55+07:00"
 weight: 102470
 draft: false
 ---
 
 # [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470)
 
-ICPC/IOI | 9 problems | 2/9 verified | Difficulty - | 27m 21s
+ICPC/IOI | 9 problems | 2/9 verified | Difficulty - | 32m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Trick or Treat](https://codeforces.com/problemset/problem/102470/A) |  |  |  | 4m 1s |  |
 | [B](B/) | [Working at the Restaurant](https://codeforces.com/problemset/problem/102470/B) |  |  |  | 1m 3s | ✓ |
-| [C](C/) | [Lights](https://codeforces.com/problemset/problem/102470/C) |  |  |  | 2m 33s |  |
+| [C](C/) | [Lights](https://codeforces.com/problemset/problem/102470/C) |  |  |  | 7m 15s |  |
 | [D](D/) | [Darts](https://codeforces.com/problemset/problem/102470/D) |  |  |  | 1m 25s | ✓ |
 | [F](F/) | [Haunted Graveyard](https://codeforces.com/problemset/problem/102470/F) |  |  |  | 2m 51s |  |
 | [G](G/) | [Slalom](https://codeforces.com/problemset/problem/102470/G) |  |  |  | 4m 54s |  |
