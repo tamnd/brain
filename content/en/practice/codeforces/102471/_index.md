@@ -8,20 +8,20 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 1
-total_solve_s: 2728
+total_solve_s: 3109
 contest_year: 2019
-date: "2026-08-06T04:24:16+07:00"
+date: "2026-08-07T13:11:01+07:00"
 weight: 102471
 draft: false
 ---
 
 # [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471)
 
-ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 45m 28s
+ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 51m 49s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [City](https://codeforces.com/problemset/problem/102471/A) |  |  |  | 44s |  |
+| [A](A/) | [City](https://codeforces.com/problemset/problem/102471/A) |  |  |  | 7m 5s |  |
 | [C](C/) | [Dirichlet $k$-th root](https://codeforces.com/problemset/problem/102471/C) |  |  |  | 3m 2s |  |
 | [D](D/) | [Fire](https://codeforces.com/problemset/problem/102471/D) |  |  |  | 3m 15s |  |
 | [E](E/) | [Flow](https://codeforces.com/problemset/problem/102471/E) |  |  |  | 1m 20s | ✓ |
