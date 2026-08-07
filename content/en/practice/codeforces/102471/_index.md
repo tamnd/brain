@@ -8,16 +8,16 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
 n_verified: 1
-total_solve_s: 2834
+total_solve_s: 2645
 contest_year: 2019
-date: "2026-08-07T19:47:41+07:00"
+date: "2026-08-07T19:52:58+07:00"
 weight: 102471
 draft: false
 ---
 
 # [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471)
 
-ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 47m 14s
+ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 44m 5s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ ICPC/IOI | 12 problems | 1/12 verified | Difficulty - | 47m 14s
 | [G](G/) | [Happiness](https://codeforces.com/problemset/problem/102471/G) |  |  |  | 3m 5s |  |
 | [H](H/) | [King](https://codeforces.com/problemset/problem/102471/H) |  |  |  | 1m 15s |  |
 | [I](I/) | [Moon](https://codeforces.com/problemset/problem/102471/I) |  |  |  | 9m 18s |  |
-| [J](J/) | [Permutation](https://codeforces.com/problemset/problem/102471/J) |  |  |  | 4m 2s |  |
-| [K](K/) | [All Pair Maximum Flow](https://codeforces.com/problemset/problem/102471/K) |  |  |  | 4m 21s |  |
+| [J](J/) | [Permutation](https://codeforces.com/problemset/problem/102471/J) |  |  |  | 2m 35s |  |
+| [K](K/) | [All Pair Maximum Flow](https://codeforces.com/problemset/problem/102471/K) |  |  |  | 2m 39s |  |
 | [L](L/) | [Travel](https://codeforces.com/problemset/problem/102471/L) |  |  |  | 4m 53s |  |
 | [M](M/) | [Value](https://codeforces.com/problemset/problem/102471/M) |  |  |  | 2m 52s |  |
