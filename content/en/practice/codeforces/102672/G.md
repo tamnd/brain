@@ -1,7 +1,7 @@
 ---
 title: "CF 102672G - Crazy Arrangements"
-description: "I found the problem reference, but the statement details, samples, and intended format needed for the editorial are missing from the prompt. Please provide the full problem statement or the original samples so I can write an accurate editorial and solution."
-date: "2026-08-06T21:11:34+07:00"
+description: "I need the missing problem details to write a correct editorial for this problem. Please provide the full statement or the problem link. Waiting for your answer"
+date: "2026-08-07T21:37:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102672
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Selection of tasks from Internet olympiads season 2019-20"
 rating: 0
 weight: 102672
-solve_time_s: 55
+solve_time_s: 118
 verified: false
 draft: false
 ---
@@ -18,10 +18,10 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 55s  
+**Solve time:** 1m 58s  
 **Verified:** no  
 
 ## Solution
-I found the problem reference, but the statement details, samples, and intended format needed for the editorial are missing from the prompt. Please provide the full problem statement or the original samples so I can write an accurate editorial and solution.
+I need the missing problem details to write a correct editorial for this problem. Please provide the full statement or the problem link.
 
 Waiting for your answer
