@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3091 contests, 22724 problems, 12524 verified."
+description: "Codeforces problem solutions with full editorials. 3091 contests, 22725 problems, 12525 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,14 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3091 contests, 22724 problems, 12524 verified.**
+**3091 contests, 22725 problems, 12525 verified.**
 
-## Unknown — 805 contests, 6748 problems, 3949 verified
+## Unknown — 805 contests, 6749 problems, 3950 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [102437](102437/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437) | 6 | 3/6 | Special | - |
-| [102440](102440/) | [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440) | 8 | 5/8 | Special | - |
+| [102440](102440/) | [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440) | 9 | 6/9 | Special | - |
 | [102441](102441/) | [2018-2019 9th BSUIR Open Programming Championship. Final](https://codeforces.com/contest/102441) | 9 | 9/9 | Special | - |
 | [102443](102443/) | [2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)](https://codeforces.com/contest/102443) | 6 | 5/6 | Special | - |
 | [102460](102460/) | [2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest](https://codeforces.com/contest/102460) | 7 | 7/7 | ICPC/IOI | - |
