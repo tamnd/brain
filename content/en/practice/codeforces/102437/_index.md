@@ -1,22 +1,22 @@
 ---
 title: "Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация"
-description: "5 problems from Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация (contest 102437), difficulty -. 3/5 solutions verified against sample I/O."
+description: "6 problems from Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация (contest 102437), difficulty -. 3/6 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102437
 contest_type: "Special"
 rating_range: "-"
-n_problems: 5
+n_problems: 6
 n_verified: 3
-total_solve_s: 1217
-date: "2026-08-09T00:28:59+07:00"
+total_solve_s: 1942
+date: "2026-08-09T00:41:05+07:00"
 weight: 102437
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437)
 
-Special | 5 problems | 3/5 verified | Difficulty - | 20m 17s
+Special | 6 problems | 3/6 verified | Difficulty - | 32m 22s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,3 +25,4 @@ Special | 5 problems | 3/5 verified | Difficulty - | 20m 17s
 | [E](E/) | [\u041f\u043e\u0445\u043e\u0436\u0438\u0435 \u0437\u0430\u043a\u0430\u0437\u044b](https://codeforces.com/problemset/problem/102437/E) |  |  |  | 3m 56s |  |
 | [F](F/) | [\u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043f\u0435\u0440\u0435\u0432\u043e\u0434](https://codeforces.com/problemset/problem/102437/F) |  |  |  | 4m 19s |  |
 | [I](I/) | [Road building](https://codeforces.com/problemset/problem/102437/I) |  |  |  | 2m 11s | ✓ |
+| [J](J/) | [Delivery Robot](https://codeforces.com/problemset/problem/102437/J) |  |  |  | 12m 5s |  |
