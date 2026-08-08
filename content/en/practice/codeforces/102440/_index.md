@@ -1,25 +1,26 @@
 ---
 title: "2018-2019 9th BSUIR Open Programming Championship. Junior"
-description: "8 problems from 2018-2019 9th BSUIR Open Programming Championship. Junior (contest 102440), difficulty -. 5/8 solutions verified against sample I/O."
+description: "9 problems from 2018-2019 9th BSUIR Open Programming Championship. Junior (contest 102440), difficulty -. 6/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102440
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 5
-total_solve_s: 1949
-date: "2026-08-08T14:13:45+07:00"
+n_problems: 9
+n_verified: 6
+total_solve_s: 2537
+date: "2026-08-09T00:51:20+07:00"
 weight: 102440
 draft: false
 ---
 
 # [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440)
 
-Special | 8 problems | 5/8 verified | Difficulty - | 32m 29s
+Special | 9 problems | 6/9 verified | Difficulty - | 42m 17s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u0414\u043e\u043c\u0430\u0448\u043d\u044f\u044f \u0430\u043a\u0443\u043b\u0430](https://codeforces.com/problemset/problem/102440/A) |  |  |  | 9m 48s | ✓ |
 | [B](B/) | [\u041f\u0435\u0440\u0435\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0443 \u043d\u0430 \u043f\u0440\u043e\u043a\u0430\u0447\u043a\u0443](https://codeforces.com/problemset/problem/102440/B) |  |  |  | 2m 18s |  |
 | [D](D/) | [\u041f\u0435\u0442\u044f \u0438 \u043c\u0430\u0441\u0441\u0438\u0432](https://codeforces.com/problemset/problem/102440/D) |  |  |  | 2m 46s | ✓ |
 | [E](E/) | [The Hitchhiker's Guide to the Galaxy](https://codeforces.com/problemset/problem/102440/E) |  |  |  | 4m 36s | ✓ |
