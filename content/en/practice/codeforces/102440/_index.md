@@ -1,22 +1,22 @@
 ---
 title: "2018-2019 9th BSUIR Open Programming Championship. Junior"
-description: "6 problems from 2018-2019 9th BSUIR Open Programming Championship. Junior (contest 102440), difficulty -. 3/6 solutions verified against sample I/O."
+description: "8 problems from 2018-2019 9th BSUIR Open Programming Championship. Junior (contest 102440), difficulty -. 5/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102440
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
-n_verified: 3
-total_solve_s: 1097
-date: "2026-08-08T13:59:27+07:00"
+n_problems: 8
+n_verified: 5
+total_solve_s: 1949
+date: "2026-08-08T14:13:45+07:00"
 weight: 102440
 draft: false
 ---
 
 # [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440)
 
-Special | 6 problems | 3/6 verified | Difficulty - | 18m 17s
+Special | 8 problems | 5/8 verified | Difficulty - | 32m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,5 @@ Special | 6 problems | 3/6 verified | Difficulty - | 18m 17s
 | [F](F/) | [Football championship](https://codeforces.com/problemset/problem/102440/F) |  |  |  | 5m 15s |  |
 | [I](I/) | [Shuffle one more time](https://codeforces.com/problemset/problem/102440/I) |  |  |  | 1m 13s |  |
 | [J](J/) | [Delivery in the city of the future](https://codeforces.com/problemset/problem/102440/J) |  |  |  | 2m 9s | ✓ |
+| [K](K/) | [\u0410\u0431\u0441\u043e\u043b\u044e\u0442\u043d\u0430\u044f \u0430\u0431\u0441\u043e\u043b\u044e\u0442\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0441\u0441\u0438\u0432\u0430](https://codeforces.com/problemset/problem/102440/K) |  |  |  | 5m 53s | ✓ |
+| [L](L/) | [\u0420\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u0440\u043e\u043b\u0438\u043a\u043e\u0432](https://codeforces.com/problemset/problem/102440/L) |  |  |  | 8m 19s | ✓ |
