@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest"
-description: "8 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 8/8 solutions verified against sample I/O."
+description: "10 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102460
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 2268
-date: "2026-08-08T02:50:22+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 2741
+date: "2026-08-08T03:03:03+07:00"
 weight: 102460
 draft: false
 ---
 
 # [2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest](https://codeforces.com/contest/102460)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 37m 48s
+ICPC/IOI | 10 problems | 10/10 verified | Difficulty - | 45m 41s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,6 @@ ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 37m 48s
 | [H](H/) | [Mining a](https://codeforces.com/problemset/problem/102460/H) |  |  |  | 3m 55s | ✓ |
 | [I](I/) | [The Spectrum](https://codeforces.com/problemset/problem/102460/I) |  |  |  | 2m 44s | ✓ |
 | [J](J/) | [Automatic Control Machine](https://codeforces.com/problemset/problem/102460/J) |  |  |  | 5m 10s | ✓ |
+| [K](K/) | [Length of Bundle Rope](https://codeforces.com/problemset/problem/102460/K) |  |  |  | 2m 22s | ✓ |
+| [L](L/) | [Largest Quadrilateral](https://codeforces.com/problemset/problem/102460/L) |  |  |  | 5m 31s | ✓ |
 | [M](M/) | [DivModulo](https://codeforces.com/problemset/problem/102460/M) |  |  |  | 8m 44s | ✓ |
