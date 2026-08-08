@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3079 contests, 22658 problems, 12465 verified."
+description: "Codeforces problem solutions with full editorials. 3080 contests, 22658 problems, 12465 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,14 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3079 contests, 22658 problems, 12465 verified.**
+**3080 contests, 22658 problems, 12465 verified.**
 
-## Unknown — 799 contests, 6712 problems, 3920 verified
+## Unknown — 800 contests, 6712 problems, 3920 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [102470](102470/) | [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470) | 9 | 2/9 | ICPC/IOI | - |
+| [102479](102479/) | [2019-2020 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/102479) | 0 | 0/0 | Special | - |
 | [102480](102480/) | [2019-2020 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102480) | 0 | 0/0 | Special | - |
 | [102498](102498/) | [Интернет-олимпиады, Сезон 2019-2020, Первая личная олимпиада](https://codeforces.com/contest/102498) | 4 | 3/4 | Special | - |
 | [102531](102531/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая личная олимпиада](https://codeforces.com/contest/102531) | 4 | 0/4 | Special | - |
