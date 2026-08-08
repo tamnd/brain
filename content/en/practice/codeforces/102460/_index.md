@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest"
-description: "6 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 6/6 solutions verified against sample I/O."
+description: "7 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 7/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102460
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 6
-n_verified: 6
-total_solve_s: 1347
-date: "2026-08-08T10:18:14+07:00"
+n_problems: 7
+n_verified: 7
+total_solve_s: 1871
+date: "2026-08-08T10:26:59+07:00"
 weight: 102460
 draft: false
 ---
 
 # [2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest](https://codeforces.com/contest/102460)
 
-ICPC/IOI | 6 problems | 6/6 verified | Difficulty - | 22m 27s
+ICPC/IOI | 7 problems | 7/7 verified | Difficulty - | 31m 11s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,4 @@ ICPC/IOI | 6 problems | 6/6 verified | Difficulty - | 22m 27s
 | [H](H/) | [Mining a](https://codeforces.com/problemset/problem/102460/H) |  |  |  | 3m 55s | ✓ |
 | [I](I/) | [The Spectrum](https://codeforces.com/problemset/problem/102460/I) |  |  |  | 2m 44s | ✓ |
 | [J](J/) | [Automatic Control Machine](https://codeforces.com/problemset/problem/102460/J) |  |  |  | 5m 10s | ✓ |
+| [M](M/) | [DivModulo](https://codeforces.com/problemset/problem/102460/M) |  |  |  | 8m 44s | ✓ |
