@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3091 contests, 22748 problems, 12553 verified."
+description: "Codeforces problem solutions with full editorials. 3091 contests, 22751 problems, 12555 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3091 contests, 22748 problems, 12553 verified.**
+**3091 contests, 22751 problems, 12555 verified.**
 
 ## Unknown — 805 contests, 6763 problems, 3964 verified
 
@@ -1440,7 +1440,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 170 contests, 1002 problems, 614 verified
+## 2019 — 170 contests, 1005 problems, 616 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1605,7 +1605,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 11 | 11/11 | Special | - |
 | [102436](102436/) | [Innopolis Open 2019-2020, qualification, contest 1](https://codeforces.com/contest/102436) | 5 | 5/5 | Special | - |
-| [102448](102448/) | [UFPE Starters Final Try-Outs 2020](https://codeforces.com/contest/102448) | 6 | 6/6 | Special | - |
+| [102448](102448/) | [UFPE Starters Final Try-Outs 2020](https://codeforces.com/contest/102448) | 9 | 8/9 | Special | - |
 | [102458](102458/) | [Hanoi final contest](https://codeforces.com/contest/102458) | 3 | 3/3 | Special | - |
 | [102461](102461/) | [Innopolis Open 2019-2020, qualification, contest 2](https://codeforces.com/contest/102461) | 4 | 4/4 | Special | - |
 | [102471](102471/) | [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471) | 12 | 5/12 | ICPC/IOI | - |
