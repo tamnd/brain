@@ -1,28 +1,28 @@
 ---
 title: "2019 ICPC Asia-East Continent Final"
-description: "12 problems from 2019 ICPC Asia-East Continent Final (contest 102471), difficulty -. 5/12 solutions verified against sample I/O."
+description: "12 problems from 2019 ICPC Asia-East Continent Final (contest 102471), difficulty -. 6/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102471
 contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 12
-n_verified: 5
-total_solve_s: 2798
+n_verified: 6
+total_solve_s: 2815
 contest_year: 2019
-date: "2026-08-09T04:49:14+07:00"
+date: "2026-08-09T15:42:35+07:00"
 weight: 102471
 draft: false
 ---
 
 # [2019 ICPC Asia-East Continent Final](https://codeforces.com/contest/102471)
 
-ICPC/IOI | 12 problems | 5/12 verified | Difficulty - | 46m 38s
+ICPC/IOI | 12 problems | 6/12 verified | Difficulty - | 46m 55s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [City](https://codeforces.com/problemset/problem/102471/A) |  |  |  | 2m 38s | ✓ |
-| [C](C/) | [Dirichlet $k$-th root](https://codeforces.com/problemset/problem/102471/C) |  |  |  | 3m 23s |  |
+| [C](C/) | [Dirichlet $k$-th root](https://codeforces.com/problemset/problem/102471/C) |  |  |  | 3m 40s | ✓ |
 | [D](D/) | [Fire](https://codeforces.com/problemset/problem/102471/D) |  |  |  | 8m 33s | ✓ |
 | [E](E/) | [Flow](https://codeforces.com/problemset/problem/102471/E) |  |  |  | 1m 20s | ✓ |
 | [F](F/) | [Game](https://codeforces.com/problemset/problem/102471/F) |  |  |  | 2m 23s |  |
