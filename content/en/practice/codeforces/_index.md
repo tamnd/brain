@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3091 contests, 22754 problems, 12563 verified."
+description: "Codeforces problem solutions with full editorials. 3091 contests, 22755 problems, 12564 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3091 contests, 22754 problems, 12563 verified.**
+**3091 contests, 22755 problems, 12564 verified.**
 
 ## Unknown — 805 contests, 6764 problems, 3968 verified
 
@@ -1440,7 +1440,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 170 contests, 1006 problems, 619 verified
+## 2019 — 170 contests, 1007 problems, 620 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1603,7 +1603,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
-| [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 11 | 11/11 | Special | - |
+| [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 12 | 12/12 | Special | - |
 | [102436](102436/) | [Innopolis Open 2019-2020, qualification, contest 1](https://codeforces.com/contest/102436) | 5 | 5/5 | Special | - |
 | [102448](102448/) | [UFPE Starters Final Try-Outs 2020](https://codeforces.com/contest/102448) | 9 | 8/9 | Special | - |
 | [102458](102458/) | [Hanoi final contest](https://codeforces.com/contest/102458) | 3 | 3/3 | Special | - |
