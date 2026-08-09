@@ -1,7 +1,7 @@
 ---
 title: "CF 102437E - \u041f\u043e\u0445\u043e\u0436\u0438\u0435 \u0437\u0430\u043a\u0430\u0437\u044b"
-description: "We have two strings of the same length, (s) and (t). The string (s) describes the current order of boxes from top to bottom, while (t) describes an earlier order. We may transform (s) in two ways."
-date: "2026-08-09T00:22:26+07:00"
+description: "У нас есть две строки длины n. Строка s описывает текущую стопку коробок сверху вниз, а t описывает предыдущую стопку."
+date: "2026-08-09T17:46:42+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102437
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0427\u0435\u0442\u0432\u0451\u0440\u0442\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102437
-solve_time_s: 236
+solve_time_s: 746
 verified: false
 draft: false
 ---
@@ -18,39 +18,29 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 56s  
+**Solve time:** 12m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have two strings of the same length, (s) and (t). The string (s) describes the current order of boxes from top to bottom, while (t) describes an earlier order. We may transform (s) in two ways. First, we can cyclically rotate it by taking its first (k) characters and moving them to the end. Second, every character can be shifted backward by the same Caesar shift (d), with the alphabet wrapping around from `a` to `z`. We need to determine whether some choice of (k) and (d) turns (s) exactly into (t).
+У нас есть две строки длины `n`. Строка `s` описывает текущую стопку коробок сверху вниз, а `t` описывает предыдущую стопку. Разрешено выполнить над `s` две операции с общими параметрами: циклически сдвинуть все буквы на одну и ту же величину по алфавиту и циклически повернуть саму строку. Нужно определить, можно ли получить ровно `t`, и если можно, вывести величину поворота `k` и величину сдвига `d`.
 
-The required output is either `Impossible`, or `Success` followed by one valid pair (k,d). The rotation must satisfy (0 \le k < n), while the shift only needs to be an integer between (-25) and (25). Since shifting by 26 changes nothing, it is enough to use a representative from (0) through (25).
+Поворот на `k` означает, что первые `k` символов `s` перемещаются в конец. Например, `abcdef` при `k = 2` превращается в `cdefab`. После этого каждый символ дополнительно сдвигается назад на `d` позиций по циклическому алфавиту. Если `d = 3`, то `f` превращается в `c`.
 
-The length can reach (200,000), so trying every rotation and comparing all (n) characters would require (O(n^2)) operations, roughly (4\cdot10^{10}) character comparisons in the worst case. That is far beyond what a competitive programming time limit can accommodate. We need an essentially linear solution.
+При `n` до `200000` перебрать все `n` возможных поворотов и для каждого сравнить все `n` символов нельзя. В худшем случае это потребует порядка `n² = 4 * 10^10` сравнений, что слишком много для обычного лимита времени. Нам нужен линейный или близкий к линейному алгоритм.
 
-There are several edge cases that can make a direct implementation fail. For (n=1), there are no adjacent pairs of characters, so any single-character strings can be made equal by an appropriate Caesar shift. For example,
-
-```
-1
-z
-a
-```
-
-has the answer `Success` with (k=0,d=-25), or equivalently (k=0,d=1) if shifts are represented modulo 26. An implementation that constructs an ordinary adjacent-difference array and assumes it contains at least one element can mishandle this case.
-
-A second issue is the cyclic boundary. Consider
+Есть несколько краевых случаев, на которых легко ошибиться. Первый связан с циклическим переходом между последним и первым символом. Например, для
 
 ```
-3
-abc
-bca
+4
+dabc
+abcd
 ```
 
-Here (s=\texttt{abc}) rotated left by one position is `bca`, so (k=1,d=0) works. The pair between the last character and the first character is part of the cyclic structure. If we only compare differences between positions (0) and (1), and (1) and (2), we lose information about that boundary and can incorrectly accept rotations that do not actually match.
+правильный ответ существует: достаточно повернуть `s` на `3`, получив `dabc`, и взять `d = 0`. Если сравнивать только разности соседних символов внутри строки и забыть переход от последнего символа к первому, можно получить неправильный набор кандидатов.
 
-A third issue is that the Caesar shift wraps around the alphabet. For example,
+Второй случай возникает при `n = 1`. Например,
 
 ```
 1
@@ -58,62 +48,75 @@ a
 z
 ```
 
-is solvable even though the ordinary numerical difference between `a` and `z` is not a useful signed shift in the usual integer sense. Alphabet arithmetic has to be performed modulo 26.
+правильный ответ существует, потому что единственный символ можно перевести из `z` в `a` подходящим сдвигом. При использовании массива разностей нужно помнить, что у строки из одного символа циклическая разность равна `0`.
+
+Третий случай связан с переходом через `a` и `z`. Например,
+
+```
+1
+a
+z
+```
+
+требует сдвига, эквивалентного `d = 25`, потому что `z - 25 = a`. Нельзя ограничивать `d` обычным диапазоном от `0` до `25` только в промежуточной арифметике и затем неправильно трактовать знак. В условии разрешены все целые `d` от `-25` до `25`, а одинаковые сдвиги по модулю `26` эквивалентны.
 
 ## Approaches
 
-The direct solution is to try every possible rotation (k). For each rotation, we would construct or inspect the resulting string and check whether there is one Caesar shift that converts every character into the corresponding character of (t). The check itself is linear: once the first character determines the required shift, every remaining character must have exactly the same modular difference. Since there are (n) rotations, this takes (O(n^2)) time. With (n=200,000), the worst case is about (40) billion character comparisons, so although the method is correct, it is unusable.
+Самый прямой способ перебрать все варианты поворота. Для каждого `k` строим строку `s[k:] + s[:k]`. Затем пытаемся подобрать один общий сдвиг `d`. Если первый символ после поворота должен перейти в `t[0]`, значение `d` уже определяется однозначно. После этого остаётся проверить все остальные позиции.
 
-The key observation is that a Caesar shift changes every character by exactly the same amount. Consequently, it does not change the difference between two neighboring characters when those differences are measured modulo 26.
+Такой алгоритм корректен, потому что для фиксированного поворота значение `d` действительно определяется первым символом, а затем вся строка проверяется непосредственно. Но для каждого из `n` поворотов мы можем просмотреть `n` символов. В худшем случае это `n²` операций, то есть около `4 * 10^10` при `n = 200000`. Такой подход слишком медленный.
 
-For a string (x), define its cyclic difference sequence by
+Нужно воспользоваться тем, что Caesar-сдвиг одинаков для всех символов. Рассмотрим не сами символы, а разности между соседними символами по модулю `26`.
 
-[
-\operatorname{diff}(x)_i=(x_{i+1}-x_i)\bmod 26,
-]
+Для строки `abcde` эти разности равны `1, 1, 1, 1`. Если каждый символ сдвинуть на одно и то же значение, например превратить строку в `defgh`, разности останутся `1, 1, 1, 1`. Общий Caesar-сдвиг полностью исчезает из этой информации.
 
-where the index after (n-1) wraps back to (0). If we Caesar-shift every character of (x) by the same amount, both characters in every difference receive the same addition, so the difference cancels.
+Нужно также учитывать циклическую структуру. Для строки `abcd` разности должны быть
 
-Thus, two strings can differ only by a Caesar shift exactly when their cyclic difference sequences are equal. The rotation operation simply rotates this difference sequence by the same amount. The original problem therefore becomes a pattern matching problem: find the difference sequence of (t) inside two consecutive copies of the difference sequence of (s).
+`b - a`, `c - b`, `d - c`, `a - d`.
 
-This is precisely the situation where KMP is useful. We build the difference sequence of (t) as the pattern and search for it in `diff_s + diff_s`. A match beginning at position (k) means that rotating (s) left by (k) gives a string whose cyclic differences are identical to those of (t). Once (k) is known, the Caesar shift is determined by the first character.
+Получается массив из ровно `n` разностей, последняя из которых соединяет конец строки с её началом.
 
-The reason the difference representation is sufficient is stronger than merely being a necessary condition. If two cyclic strings have the same difference at every neighboring position, choose one corresponding character pair. Every next character is then forced by the difference, so all characters are determined up to one common additive constant modulo 26. That constant is exactly the Caesar shift.
+Теперь исходная задача превращается в более простую. Нужно найти такое циклическое положение массива разностей `s`, которое совпадает с массивом разностей `t`. Если такое положение найдено, исходные строки отличаются только одним глобальным Caesar-сдвигом. Этот сдвиг затем легко восстанавливается по одному символу.
+
+Осталось быстро найти один массив внутри циклического массива другого. Для этого построим `diff_s + diff_s` и найдём в нём `diff_t` алгоритмом Кнута, Морриса и Пратта. Любое совпадение, начинающееся в позиции от `0` до `n - 1`, соответствует некоторому циклическому повороту `s`.
+
+Таким образом, задача о двух параметрах, повороте и Caesar-сдвиге, сначала сводится к задаче о совпадении циклических массивов разностей, а затем один параметр восстанавливается напрямую.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n^2)) | (O(n)) | Too slow |
-| Optimal | (O(n)) | (O(n)) | Accepted |
+| Brute Force | O(n²) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert every lowercase letter into a number from (0) to (25). This makes Caesar shifts ordinary arithmetic modulo 26.
-2. Build the cyclic difference array `ds` for (s). For every position (i), store the difference from (s[i]) to the next character, wrapping from the last character back to the first. Build the corresponding array `dt` for (t).
+1. Представим каждую букву числом от `0` до `25`. Для строки `x` построим циклический массив разностей `diff_x`, где
 
-These arrays describe the shape of the strings independently of their absolute alphabet positions. A Caesar shift changes absolute positions but leaves every difference unchanged.
-3. If (n=1), there is no difference information to compare. The only possible rotation is (k=0), and the required Caesar shift is simply the modular difference between (s[0]) and (t[0]).
-4. For (n>1), regard `dt` as a pattern and search for it in `ds + ds`. A cyclic rotation of `ds` is represented by a contiguous segment of this doubled array, exactly as an ordinary cyclic string rotation becomes a substring of two copies.
-5. Use the KMP prefix function to find a match in linear time. Only starting positions (0) through (n-1) correspond to distinct rotations, so once a match is found at such a position, that position is the required rotation (k).
-6. Recover the Caesar shift from the first character. After rotating (s) left by (k), its first character is `s[k]`. If the Caesar transformation shifts backward by (d), then
+```
+diff_x[i] = (x[(i + 1) mod n] - x[i]) mod 26.
+```
 
-[
-t[0]\equiv s[k]-d\pmod{26},
-]
+Так мы сохраняем относительное расположение букв, но полностью убираем общий Caesar-сдвиг.
 
-so
+1. Построим `diff_s + diff_s`. Вторая копия нужна потому, что любой циклический поворот `diff_s` теперь появляется как обычный непрерывный отрезок этой удвоенной последовательности.
+2. Найдём `diff_t` внутри `diff_s + diff_s` алгоритмом KMP. Если первое совпадение начинается в позиции `k < n`, то именно `k` является нужным поворотом исходной строки `s`.
+3. Если совпадения нет, выведем `Impossible`. Отсутствие совпадения означает, что никакой поворот не может сделать циклические разности двух строк одинаковыми, а значит никакой общий Caesar-сдвиг уже не поможет.
+4. Если совпадение найдено, вычислим значение `d` по первым символам. После поворота символ на позиции `0` равен `s[k]`. Нам нужно получить `t[0]`, поэтому
 
-[
-d\equiv s[k]-t[0]\pmod{26}.
-]
+```
+s[k] - d ≡ t[0] (mod 26),
+```
 
-We output this value in the range (0) through (25), which is allowed by the statement.
-7. If KMP finds no valid starting position, no rotation has the same cyclic difference sequence as (t). Since equal cyclic differences are necessary for a common Caesar shift, the answer is `Impossible`.
+откуда
 
-### Why it works
+```
+d ≡ s[k] - t[0] (mod 26).
+```
 
-The invariant is the cyclic difference sequence. A Caesar shift adds the same value to every character, so every adjacent modular difference stays unchanged. A rotation only changes where the cyclic sequence starts, so the difference sequence of a rotated (s) is exactly a cyclic rotation of `ds`.
+Можно вывести остаток от `0` до `25`, потому что весь этот диапазон удовлетворяет условию `-26 < d < 26`.
 
-KMP finds precisely whether `dt` occurs as one of those cyclic rotations. If it does at position (k), the two strings have identical differences after rotating (s) by (k). Starting from their first characters, all subsequent characters are then forced to differ by the same constant modulo 26. Choosing that constant as the Caesar shift produces exactly (t). Conversely, any valid transformation must preserve all cyclic differences, so its rotation must appear as a KMP match. The algorithm can therefore find a valid answer whenever one exists and cannot accept an invalid one.
+1. Для `n = 1` массив разностей состоит из одного нуля. KMP также корректно обработает этот случай, но отдельно рассматривать его не требуется. Найденный поворот будет `k = 0`, а `d` восстановится из единственной пары символов.
+
+Почему это работает: Caesar-сдвиг прибавляет одну и ту же величину ко всем символам, поэтому при вычитании соседних символов эта величина сокращается. Следовательно, если некоторое преобразование переводит `s` в `t`, их циклические массивы разностей обязательно совпадают после соответствующего поворота. Обратно, если два таких массива разностей совпадают, то после выбранного поворота разность между соответствующими символами `s` и `t` одинакова на каждой позиции. Значит, существует один общий Caesar-сдвиг, переводящий всю повернутую `s` в `t`. Алгоритм находит ровно такие повороты и затем восстанавливает этот общий сдвиг по первой позиции.
 
 ## Python Solution
 
@@ -121,92 +124,77 @@ KMP finds precisely whether `dt` occurs as one of those cyclic rotations. If it 
 import sys
 input = sys.stdin.readline
 
-def differences(s):
+def build_diff(s):
     n = len(s)
-    return [
-        (ord(s[(i + 1) % n]) - ord(s[i])) % 26
-        for i in range(n)
-    ]
+    a = [ord(c) - ord('a') for c in s]
+    return [(a[(i + 1) % n] - a[i]) % 26 for i in range(n)]
 
-def prefix_function(pattern):
+def kmp_search(pattern, text, limit):
     m = len(pattern)
+
     pi = [0] * m
-
+    j = 0
     for i in range(1, m):
-        j = pi[i - 1]
-
         while j > 0 and pattern[i] != pattern[j]:
             j = pi[j - 1]
-
         if pattern[i] == pattern[j]:
             j += 1
-
         pi[i] = j
 
-    return pi
+    j = 0
+    for i, value in enumerate(text):
+        while j > 0 and value != pattern[j]:
+            j = pi[j - 1]
+
+        if value == pattern[j]:
+            j += 1
+
+        if j == m:
+            start = i - m + 1
+            if start < limit:
+                return start
+            j = pi[j - 1]
+
+    return -1
 
 def solve():
     n = int(input())
     t = input().strip()
     s = input().strip()
 
-    if n == 1:
-        d = (ord(s[0]) - ord(t[0])) % 26
-        print("Success")
-        print(0, d)
-        return
+    diff_t = build_diff(t)
+    diff_s = build_diff(s)
 
-    ds = differences(s)
-    dt = differences(t)
+    text = diff_s + diff_s
+    k = kmp_search(diff_t, text, n)
 
-    pi = prefix_function(dt)
+    if k == -1:
+        return "Impossible\n"
 
-    # We only need 2*n - 1 elements. A match starting at n
-    # would be the same cyclic rotation as starting at 0.
-    text_length = 2 * n - 1
-    j = 0
+    s_first = ord(s[k]) - ord('a')
+    t_first = ord(t[0]) - ord('a')
 
-    for i in range(text_length):
-        value = ds[i % n]
+    d = (s_first - t_first) % 26
 
-        while j > 0 and value != dt[j]:
-            j = pi[j - 1]
-
-        if value == dt[j]:
-            j += 1
-
-        if j == n:
-            k = i - n + 1
-
-            if k < n:
-                d = (ord(s[k]) - ord(t[0])) % 26
-                print("Success")
-                print(k, d)
-                return
-
-            j = pi[j - 1]
-
-    print("Impossible")
+    return f"Success\n{k} {d}\n"
 
 if __name__ == "__main__":
-    solve()
+    sys.stdout.write(solve())
 ```
 
-The `differences` function constructs the cyclic representation described in the algorithm. The expression `(i + 1) % n` handles the edge from the last character back to the first, which is essential because the rotation is cyclic rather than linear.
+`build_diff` переводит строку в числа и вычисляет циклические разности. Индекс `(i + 1) % n` специально замыкает строку, поэтому последняя разность сравнивает последний символ с первым. Это необходимо для корректного определения циклического поворота.
 
-The prefix function is standard KMP preprocessing. `pi[i]` stores the length of the longest proper prefix of the pattern that is also a suffix ending at position `i`. When a mismatch occurs, this allows the search to reuse information instead of restarting from the beginning.
+В `kmp_search` сначала строится префиксная функция для `diff_t`. Затем шаблон ищется в удвоенном `diff_s`. Параметр `limit = n` запрещает использовать совпадение, начинающееся в позиции `n` или позже, поскольку такие позиции не соответствуют различным поворотам исходной строки.
 
-The search does not physically construct `ds + ds`. Instead, `ds[i % n]` accesses the corresponding character of the conceptual doubled array. This saves one temporary array and makes the cyclic nature explicit. We iterate through `2*n - 1` positions because every rotation can be represented by a length-(n) segment starting at an index from (0) through (n-1). Starting at (n) would duplicate the rotation starting at (0).
+После совпадения значение `k` уже является индексом первого символа повернутой строки. Формула для `d` использует именно `s[k]`, а не `s[0]`. Это частая причина ошибки на задаче: поворот выполняется до Caesar-сдвига, поэтому первым символом после поворота является `s[k]`.
 
-The expression for `d` deserves attention. The transformation is a backward shift, so `t[0]` must equal `s[k] - d` modulo 26. Rearranging gives `d = s[k] - t[0]` modulo 26. Python's `% 26` produces a nonnegative result, so the returned value lies in (0,\ldots,25), all of which satisfy the permitted range.
-
-There is no integer overflow concern because all stored differences are between (0) and (25), while the prefix array contains values between (0) and (n). Python integers also have arbitrary precision.
+Вычисления выполняются по модулю `26`, поэтому переходы вроде `z -> a` обрабатываются обычным остатком. Python не имеет проблемы с переполнением целых чисел, а все значения здесь вообще лежат в небольшом диапазоне.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input is
+Вход:
 
 ```
 3
@@ -214,42 +202,38 @@ abc
 fde
 ```
 
-The numeric values of `s = fde` are (5,3,4), and those of `t = abc` are (0,1,2). Their cyclic differences are
+Для `t = abc` циклические разности равны:
 
-[
-(3-5,4-3,5-4)\bmod26=(24,1,1)
-]
+```
+b - a = 1
+c - b = 1
+a - c = 24
+```
 
-for `s`, and
+Для `s = fde` получаем:
 
-[
-(1-0,2-1,0-2)\bmod26=(1,1,24)
-]
+```
+d - f = 24
+e - d = 1
+f - e = 1
+```
 
-for `t`.
+После удвоения `diff_s` ищем `[1, 1, 24]`.
 
-The search proceeds as follows.
+| i | diff_s + diff_s | KMP prefix length | Событие |
+| --- | --- | --- | --- |
+| 0 | 24 | 0 | Совпадения нет |
+| 1 | 1 | 1 | Совпала первая разность |
+| 2 | 1 | 2 | Совпала вторая разность |
+| 3 | 24 | 3 | Найдено совпадение, `k = 1` |
 
-| Search position | Text value | Pattern index before | Pattern index after | Match |
-| --- | --- | --- | --- | --- |
-| 0 | 24 | 0 | 0 | no |
-| 1 | 1 | 0 | 1 | no |
-| 2 | 1 | 1 | 2 | no |
-| 3 | 24 | 2 | 3 | yes |
+Значит, поворот `s` на `1` даёт `def`. Теперь нужно превратить `d` в `a`, поэтому `d = 3`. Получаем `abc`, то есть ответ `Success`, `1 3`.
 
-The match starts at (k=1). Rotating `fde` left by one position gives `def`. The first character must become `a`, so
-
-[
-d=3-0=3.
-]
-
-Shifting `def` backward by three gives `abc`, producing `Success` with `1 3`.
-
-This trace demonstrates why the doubled cyclic difference array is sufficient. The match begins exactly where the required rotation begins.
+Этот пример показывает, что поворот определяется именно положением циклического массива разностей.
 
 ### Sample 2
 
-The input is
+Вход:
 
 ```
 3
@@ -257,268 +241,234 @@ abc
 aba
 ```
 
-The cyclic differences of `t = abc` are
+Для `t = abc`:
 
-[
-(1,1,24).
-]
+```
+diff_t = [1, 1, 24]
+```
 
-For `s = aba`, they are
+Для `s = aba`:
 
-[
-(1,-1,0)\bmod26=(1,25,0).
-]
+```
+b - a = 1
+a - b = 25
+a - a = 0
+```
 
-The search never obtains the complete pattern.
+Поэтому:
 
-| Search position | Text value | Pattern index before | Pattern index after | Match |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | 0 | 1 | no |
-| 1 | 25 | 1 | 0 | no |
-| 2 | 0 | 0 | 0 | no |
-| 3 | 1 | 0 | 1 | no |
-| 4 | 25 | 1 | 0 | no |
+```
+diff_s = [1, 25, 0]
+```
 
-There is no rotation whose difference sequence equals that of `abc`, so no Caesar shift can repair the mismatch. The correct result is `Impossible`.
+Проверка выглядит так:
 
-The example shows why comparing only character counts would not be enough. Both strings contain two `a`-like positions and one other character, but their cyclic order is different, and Caesar shifts cannot change that order.
+| Позиция начала | Последовательность длины 3 | Совпадает с diff_t |
+| --- | --- | --- |
+| 0 | `[1, 25, 0]` | Нет |
+| 1 | `[25, 0, 1]` | Нет |
+| 2 | `[0, 1, 25]` | Нет |
+
+Совпадения нет, поэтому никакой комбинацией поворота и общего Caesar-сдвига получить `abc` невозможно. Алгоритм выводит `Impossible`.
+
+Здесь хорошо видно, почему сравнивать только частоты букв недостаточно. Обе строки могут иметь похожий набор символов, но порядок относительных переходов между символами не совпадать.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | Difference construction, KMP preprocessing, and KMP search each scan (O(n)) elements |
-| Space | (O(n)) | The two difference arrays and KMP prefix array each use (O(n)) memory |
+| Time | O(n) | Построение разностей и префиксной функции занимает O(n), поиск KMP в удвоенном массиве также занимает O(n) |
+| Space | O(n) | Хранятся два массива разностей, удвоенный текст и префиксная функция |
 
-With (n\le 200,000), a linear algorithm performs only a few passes over roughly two hundred thousand elements. This is comfortably within the scale expected for the constraint, while the quadratic brute-force approach would require tens of billions of comparisons in the worst case.
+При `n = 200000` линейный алгоритм выполняет лишь несколько проходов по массивам длины порядка `n`. Это соответствует ограничению размера входа, тогда как квадратичный перебор потребовал бы десятки миллиардов операций.
 
 ## Test Cases
 
-The test harness below deliberately does not compare the program's output with one fixed `k,d`, because the problem allows multiple valid answers. Instead, it parses the answer and checks that applying the reported transformation really produces (t).
+Для тестов ниже функция `run` содержит ту же логику решения, но принимает строку вместо стандартного ввода. Для задач, где существует несколько правильных ответов, тесты проверяют свойства результата, а не конкретный единственный `k` и `d`.
 
 ```python
 import sys
 import io
 
-def solve_data(inp: str) -> str:
-    old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
+def build_diff(s):
+    n = len(s)
+    a = [ord(c) - ord('a') for c in s]
+    return [(a[(i + 1) % n] - a[i]) % 26 for i in range(n)]
 
-    try:
-        n = int(input())
-        t = input().strip()
-        s = input().strip()
+def kmp_search(pattern, text, limit):
+    m = len(pattern)
 
-        if n == 1:
-            d = (ord(s[0]) - ord(t[0])) % 26
-            return f"Success\n0 {d}\n"
+    pi = [0] * m
+    j = 0
+    for i in range(1, m):
+        while j > 0 and pattern[i] != pattern[j]:
+            j = pi[j - 1]
+        if pattern[i] == pattern[j]:
+            j += 1
+        pi[i] = j
 
-        def differences(x):
-            return [
-                (ord(x[(i + 1) % n]) - ord(x[i])) % 26
-                for i in range(n)
-            ]
+    j = 0
+    for i, value in enumerate(text):
+        while j > 0 and value != pattern[j]:
+            j = pi[j - 1]
 
-        ds = differences(s)
-        dt = differences(t)
+        if value == pattern[j]:
+            j += 1
 
-        pi = [0] * n
+        if j == m:
+            start = i - m + 1
+            if start < limit:
+                return start
+            j = pi[j - 1]
 
-        for i in range(1, n):
-            j = pi[i - 1]
-            while j > 0 and dt[i] != dt[j]:
-                j = pi[j - 1]
-            if dt[i] == dt[j]:
-                j += 1
-            pi[i] = j
+    return -1
 
-        j = 0
+def solve_data(inp):
+    data = inp.strip().split()
+    n = int(data[0])
+    t = data[1]
+    s = data[2]
 
-        for i in range(2 * n - 1):
-            value = ds[i % n]
+    diff_t = build_diff(t)
+    diff_s = build_diff(s)
 
-            while j > 0 and value != dt[j]:
-                j = pi[j - 1]
+    k = kmp_search(diff_t, diff_s + diff_s, n)
 
-            if value == dt[j]:
-                j += 1
+    if k == -1:
+        return "Impossible"
 
-            if j == n:
-                k = i - n + 1
-
-                if k < n:
-                    d = (ord(s[k]) - ord(t[0])) % 26
-                    return f"Success\n{k} {d}\n"
-
-                j = pi[j - 1]
-
-        return "Impossible\n"
-
-    finally:
-        sys.stdin = old_stdin
+    d = (ord(s[k]) - ord(t[0])) % 26
+    return f"Success\n{k} {d}"
 
 def run(inp: str) -> str:
     return solve_data(inp)
 
-def validate(inp: str, output: str) -> bool:
-    lines = output.strip().splitlines()
+def check_success(inp):
+    output = run(inp)
+    assert output.startswith("Success\n")
 
-    first = lines[0]
-    n, t, s = inp.strip().splitlines()
-    n = int(n)
-
-    if first == "Impossible":
-        return True
-
-    assert first == "Success"
+    lines = output.splitlines()
     k, d = map(int, lines[1].split())
+
+    data = inp.strip().split()
+    n = int(data[0])
+    t = data[1]
+    s = data[2]
 
     assert 0 <= k < n
     assert -26 < d < 26
 
     rotated = s[k:] + s[:k]
-
-    result = ''.join(
+    transformed = ''.join(
         chr((ord(c) - ord('a') - d) % 26 + ord('a'))
         for c in rotated
     )
 
-    return result == t
+    assert transformed == t
 
-# Provided sample 1.
-x = run("""3
+# Provided sample 1
+check_success(
+    """3
 abc
 fde
-""")
-assert validate("""3
-abc
-fde
-""", x), "sample 1"
+"""
+)
 
-# Provided sample 2.
-x = run("""3
+# Provided sample 2
+assert run(
+    """3
 abc
 aba
-""")
-assert x.strip() == "Impossible", "sample 2"
+"""
+) == "Impossible"
 
-# Provided sample 3.
-x = run("""1
+# Provided sample 3
+check_success(
+    """1
 z
 a
-""")
-assert validate("""1
-z
-a
-""", x), "sample 3"
+"""
+)
 
-# Minimum-size case with no actual character change.
-x = run("""1
+# Minimum size, equal symbols
+check_success(
+    """1
 a
 a
-""")
-assert validate("""1
-a
-a
-""", x), "single character, equal"
+"""
+)
 
-# Boundary wraparound: z shifted backward by 25 becomes a.
-x = run("""1
-a
-z
-""")
-assert validate("""1
-a
-z
-""", x), "single character, alphabet wrap"
-
-# All characters equal. Every rotation is equivalent, and a common
-# Caesar shift is the only relevant operation.
-x = run("""5
-aaaaa
-zzzzz
-""")
-assert validate("""5
-aaaaa
-zzzzz
-""", x), "all equal characters"
-
-# Rotation at the final possible starting position k = n - 1.
-x = run("""4
-abcd
+# Rotation by n - 1
+check_success(
+    """4
 dabc
-""")
-assert validate("""4
 abcd
-dabc
-""", x), "last possible rotation"
+"""
+)
 
-# Same cyclic differences but a nonzero Caesar shift.
-x = run("""5
-abcde
-efabc
-""")
-assert validate("""5
-abcde
-efabc
-""", x), "rotation plus Caesar shift"
+# All equal values
+check_success(
+    """6
+aaaaaa
+zzzzzz
+"""
+)
 
-# Maximum-size input, all equal characters.
+# Maximum size
 n = 200000
-inp = f"{n}\n" + ("a" * n) + "\n" + ("z" * n) + "\n"
-x = run(inp)
-assert validate(inp, x), "maximum-size input"
+max_case = f"{n}\n" + "a" * n + "\n" + "a" * n + "\n"
+check_success(max_case)
+
+print("All tests passed.")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / a / a` | Any valid `Success` | Minimum size and zero shift |
-| `1 / a / z` | Any valid `Success` | Alphabet wraparound |
-| `5 / aaaaa / zzzzz` | Any valid `Success` | All cyclic differences equal zero |
-| `4 / abcd / dabc` | Any valid `Success` with (k=3) | Boundary rotation (k=n-1) |
-| `5 / abcde / efabc` | Any valid `Success` | Rotation combined with Caesar shift |
-| (n=200000), all `a` versus all `z` | Any valid `Success` | Maximum input size and linear performance |
+| `1 / a / a` | `Success` | Минимальный размер и нулевой сдвиг |
+| `4 / dabc / abcd` | `Success` | Поворот на `n - 1`, циклическая граница |
+| `6 / aaaaaa / zzzzzz` | `Success` | Все разности равны нулю, Caesar-сдвиг определяется независимо от поворота |
+| `200000 / a...a / a...a` | `Success` | Максимальный размер входа и линейную сложность |
 
 ## Edge Cases
 
-The single-character case needs separate handling because the cyclic difference array contains only one difference, namely the difference from the character back to itself, which is always zero. More directly, there is only one possible rotation, (k=0), so for
+При `n = 1` циклический массив разностей имеет единственный элемент `0`, потому что единственный символ сравнивается сам с собой. Например,
 
 ```
 1
-z
 a
+z
 ```
 
-the required backward shift satisfies (a=z-d\pmod{26}), giving (d=25), which is equivalent to the sample's (d=-25) modulo 26. The implementation returns the valid representative `25`.
+даёт `diff_t = [0]` и `diff_s = [0]`, поэтому `k = 0`. Затем `d = (25 - 0) mod 26 = 25`, и преобразование `z - 25` даёт `a`. Ответ `Success`, `0 25` корректен, хотя в условии в качестве эквивалентного варианта можно было бы вывести `0 -1`.
 
-The cyclic boundary is handled when constructing differences. For
-
-```
-3
-abc
-bca
-```
-
-the difference sequence of `abc` is `(1,1,24)`, while `bca` has `(1,24,1)`. The second sequence is the first one rotated left by one position, so KMP finds (k=1). Ignoring the last-to-first difference would lose exactly the information needed to distinguish these cyclic arrangements.
-
-Alphabet wrapping is handled by `% 26`. For example, shifting `z` backward by 25 gives `a`, even though `ord('z') - ord('a')` is 25 in ordinary integer arithmetic. The modular expression converts the alphabet into a cycle, which is the actual structure of the Caesar cipher.
-
-All-equal strings are another useful stress case. For
-
-```
-5
-aaaaa
-zzzzz
-```
-
-every cyclic difference is zero for both strings. Thus every rotation is structurally valid, and only the Caesar shift matters. The algorithm may return (k=0), although any rotation would also be correct.
-
-Finally, a match at (k=n-1) exercises the upper rotation boundary. For
+При повороте через конец строки нужно учитывать последнюю циклическую разность. Для
 
 ```
 4
-abcd
 dabc
+abcd
 ```
 
-the required rotation is exactly three positions. Searching only the first (n-1) positions would miss this valid answer, while searching the full doubled sequence without checking the starting position could count the duplicate rotation at position (n). The implementation searches `2*n-1` positions and accepts only matches with `k < n`, covering every distinct rotation exactly once.
+массив `diff_t` равен `[23, 1, 1, 1]`, а `diff_s` равен `[1, 1, 1, 23]`. В удвоенном массиве `diff_s` шаблон начинается с позиции `3`, поэтому алгоритм находит `k = 3`. Поворот `abcd` на три позиции действительно даёт `dabc`.
+
+При переходе через границу алфавита арифметика по модулю `26` должна выполняться непосредственно. Для
+
+```
+1
+a
+z
+```
+
+разность между `z` и `a` рассматривается как `25`, а не как отрицательное значение вне диапазона букв. Формула `(s_first - t_first) % 26` в Python возвращает `25`, что является допустимым значением `d`.
+
+Когда все символы одинаковые, например
+
+```
+6
+aaaaaa
+zzzzzz
+```
+
+все циклические разности обеих строк равны нулю. KMP сразу находит совпадение при `k = 0`, после чего вычисляется `d = 25`. Поворот здесь не имеет значения, потому что любая его величина оставляет строку неизменной.
+
+Наконец, нельзя считать совпадение в удвоенном массиве с началом в позиции `n` новым поворотом. Позиции `0` и `n` соответствуют одному и тому же циклическому положению, поэтому поиск ограничивается `start < n`. Это одновременно устраняет лишние совпадения и сохраняет требуемый диапазон `0 <= k < n`.
