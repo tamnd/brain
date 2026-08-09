@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)"
-description: "9 problems from 2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19) (contest 102443), difficulty -. 8/9 solutions verified against sample I/O."
+description: "10 problems from 2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19) (contest 102443), difficulty -. 9/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102443
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 8
-total_solve_s: 3155
-date: "2026-08-09T13:39:38+07:00"
+n_problems: 10
+n_verified: 9
+total_solve_s: 3623
+date: "2026-08-09T13:47:27+07:00"
 weight: 102443
 draft: false
 ---
 
 # [2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)](https://codeforces.com/contest/102443)
 
-Special | 9 problems | 8/9 verified | Difficulty - | 52m 35s
+Special | 10 problems | 9/10 verified | Difficulty - | 1h
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 9 problems | 8/9 verified | Difficulty - | 52m 35s
 | [G](G/) | [Too Many Hyphens](https://codeforces.com/problemset/problem/102443/G) |  |  |  | 1m 50s | ✓ |
 | [H](H/) | [Planet Nine](https://codeforces.com/problemset/problem/102443/H) |  |  |  | 14m 27s |  |
 | [I](I/) | [Dates](https://codeforces.com/problemset/problem/102443/I) |  |  |  | 10m 25s | ✓ |
+| [J](J/) | [Factory](https://codeforces.com/problemset/problem/102443/J) |  |  |  | 7m 48s | ✓ |
 | [L](L/) | [Time Travel](https://codeforces.com/problemset/problem/102443/L) |  |  |  | 1m 46s | ✓ |
