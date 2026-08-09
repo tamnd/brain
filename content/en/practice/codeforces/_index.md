@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3091 contests, 22753 problems, 12557 verified."
+description: "Codeforces problem solutions with full editorials. 3091 contests, 22754 problems, 12561 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3091 contests, 22753 problems, 12557 verified.**
+**3091 contests, 22754 problems, 12561 verified.**
 
-## Unknown — 805 contests, 6763 problems, 3964 verified
+## Unknown — 805 contests, 6764 problems, 3968 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102441](102441/) | [2018-2019 9th BSUIR Open Programming Championship. Final](https://codeforces.com/contest/102441) | 11 | 11/11 | Special | - |
 | [102443](102443/) | [2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)](https://codeforces.com/contest/102443) | 11 | 10/11 | Special | - |
 | [102460](102460/) | [2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest](https://codeforces.com/contest/102460) | 10 | 10/10 | ICPC/IOI | - |
-| [102470](102470/) | [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470) | 9 | 2/9 | ICPC/IOI | - |
+| [102470](102470/) | [2009-2010 ACM ICPC Southwestern European Regional Programming Contest (SWERC 2009)](https://codeforces.com/contest/102470) | 10 | 6/10 | ICPC/IOI | - |
 | [102479](102479/) | [2019-2020 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур](https://codeforces.com/contest/102479) | 0 | 0/0 | Special | - |
 | [102480](102480/) | [2019-2020 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур](https://codeforces.com/contest/102480) | 0 | 0/0 | Special | - |
 | [102498](102498/) | [Интернет-олимпиады, Сезон 2019-2020, Первая личная олимпиада](https://codeforces.com/contest/102498) | 4 | 3/4 | Special | - |
