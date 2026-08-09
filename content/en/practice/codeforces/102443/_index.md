@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)"
-description: "10 problems from 2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19) (contest 102443), difficulty -. 9/10 solutions verified against sample I/O."
+description: "11 problems from 2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19) (contest 102443), difficulty -. 10/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102443
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 9
-total_solve_s: 3623
-date: "2026-08-09T13:47:27+07:00"
+n_problems: 11
+n_verified: 10
+total_solve_s: 4520
+date: "2026-08-09T14:02:26+07:00"
 weight: 102443
 draft: false
 ---
 
 # [2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)](https://codeforces.com/contest/102443)
 
-Special | 10 problems | 9/10 verified | Difficulty - | 1h
+Special | 11 problems | 10/11 verified | Difficulty - | 1h 15m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,4 +29,5 @@ Special | 10 problems | 9/10 verified | Difficulty - | 1h
 | [H](H/) | [Planet Nine](https://codeforces.com/problemset/problem/102443/H) |  |  |  | 14m 27s |  |
 | [I](I/) | [Dates](https://codeforces.com/problemset/problem/102443/I) |  |  |  | 10m 25s | ✓ |
 | [J](J/) | [Factory](https://codeforces.com/problemset/problem/102443/J) |  |  |  | 7m 48s | ✓ |
+| [K](K/) | [RotationAlmostSort](https://codeforces.com/problemset/problem/102443/K) |  |  |  | 14m 57s | ✓ |
 | [L](L/) | [Time Travel](https://codeforces.com/problemset/problem/102443/L) |  |  |  | 1m 46s | ✓ |
