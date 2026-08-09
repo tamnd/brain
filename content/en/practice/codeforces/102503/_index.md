@@ -1,26 +1,27 @@
 ---
 title: "National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020"
-description: "16 problems from National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020 (contest 102503), difficulty -. 10/16 solutions verified against sample I/O."
+description: "17 problems from National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020 (contest 102503), difficulty -. 11/17 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102503
 contest_type: "Special"
 rating_range: "-"
-n_problems: 16
-n_verified: 10
-total_solve_s: 7288
+n_problems: 17
+n_verified: 11
+total_solve_s: 7808
 contest_year: 2020
-date: "2026-08-05T05:40:12+07:00"
+date: "2026-08-09T19:06:46+07:00"
 weight: 102503
 draft: false
 ---
 
 # [National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020](https://codeforces.com/contest/102503)
 
-Special | 16 problems | 10/16 verified | Difficulty - | 2h 1m
+Special | 17 problems | 11/17 verified | Difficulty - | 2h 10m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Vincent Adultman](https://codeforces.com/problemset/problem/102503/A) |  |  |  | 8m 40s | ✓ |
 | [B](B/) | [Bogart Gets Disqualified](https://codeforces.com/problemset/problem/102503/B) |  |  |  | 2m | ✓ |
 | [C](C/) | [Partial Reduplication](https://codeforces.com/problemset/problem/102503/C) |  |  |  | 4m 34s | ✓ |
 | [D](D/) | [Union Found](https://codeforces.com/problemset/problem/102503/D) |  |  |  | 37m 16s | ✓ |
