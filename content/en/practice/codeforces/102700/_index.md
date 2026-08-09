@@ -1,27 +1,28 @@
 ---
 title: "2020 ICPC Universidad Nacional de Colombia Programming Contest"
-description: "12 problems from 2020 ICPC Universidad Nacional de Colombia Programming Contest (contest 102700), difficulty -. 8/12 solutions verified against sample I/O."
+description: "13 problems from 2020 ICPC Universidad Nacional de Colombia Programming Contest (contest 102700), difficulty -. 9/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102700
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 8
-total_solve_s: 2138
+n_problems: 13
+n_verified: 9
+total_solve_s: 2639
 contest_year: 2020
-date: "2026-08-08T08:28:53+07:00"
+date: "2026-08-08T05:50:42+07:00"
 weight: 102700
 draft: false
 ---
 
 # [2020 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102700)
 
-ICPC/IOI | 12 problems | 8/12 verified | Difficulty - | 35m 38s
+ICPC/IOI | 13 problems | 9/13 verified | Difficulty - | 43m 59s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Approach](https://codeforces.com/problemset/problem/102700/A) |  |  |  | 3m 48s | ✓ |
+| [C](C/) | [Cipher count](https://codeforces.com/problemset/problem/102700/C) |  |  |  | 8m 21s | ✓ |
 | [D](D/) | [Dice](https://codeforces.com/problemset/problem/102700/D) |  |  |  | 1m 58s | ✓ |
 | [E](E/) | [Enter to the best problem of this contest!](https://codeforces.com/problemset/problem/102700/E) |  |  |  | 1m 21s | ✓ |
 | [F](F/) | [Free restricted flights](https://codeforces.com/problemset/problem/102700/F) |  |  |  | 6m 4s | ✓ |
