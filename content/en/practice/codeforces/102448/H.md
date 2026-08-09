@@ -1,7 +1,7 @@
 ---
 title: "CF 102448H - Hellcife is on fire"
-description: "Think of each city as a vertex of a weighted undirected graph. City (i) needs (Ti) seconds to burn completely after the fire first reaches it."
-date: "2026-08-09T14:21:48+07:00"
+description: "Think of each city as a vertex and each road as an undirected weighted edge. City (v) has an additional delay (Tv): once the fire reaches (v), the city does not become completely burnt immediately. It takes another (Tv) seconds. Initially, several cities are ignited at time (0)."
+date: "2026-08-09T18:22:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102448
@@ -9,8 +9,8 @@ codeforces_index: "H"
 codeforces_contest_name: "UFPE Starters Final Try-Outs 2020"
 rating: 0
 weight: 102448
-solve_time_s: 819
-verified: false
+solve_time_s: 635
+verified: true
 draft: false
 ---
 
@@ -18,143 +18,173 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 13m 39s  
-**Verified:** no  
+**Solve time:** 10m 35s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Think of each city as a vertex of a weighted undirected graph. City \(i\) needs \(T_i\) seconds to burn completely after the fire first reaches it. A road of length \(C\) takes exactly \(C\) seconds to cross, but a city can only send fire through its roads after that city has finished burning.
+Think of each city as a vertex and each road as an undirected weighted edge. City (v) has an additional delay (T_v): once the fire reaches (v), the city does not become completely burnt immediately. It takes another (T_v) seconds.
 
-If the fire reaches city \(v\) at time \(X\), its completion time is \(X+T_v\). If it came from a neighboring city \(u\), then the earliest possible completion time through that road is
+Initially, several cities are ignited at time (0). For every city, we need the exact time when that city becomes completely burnt.
 
-\[
-\text{completion}[u] + C(u,v) + T_v.
-\]
+Suppose city (u) becomes completely burnt at time (D_u), and there is a road of length (w) from (u) to (v). Fire can reach (v) at time (D_u+w), and then (v) needs another (T_v) seconds to burn completely. Thus this route would make (v) completely burnt at
 
-The cities listed among the \(K\) initial cities are already burning at time \(0\), so their completion time is simply their own \(T_i\). We need the minimum possible completion time for every city.
+[
+D_u+w+T_v.
+]
 
-The graph has up to \(10^5\) vertices and \(10^5\) roads. With that size, an \(O(NM)\) algorithm can perform around \(10^{10}\) edge relaxations, which is far beyond what a one second time limit allows. Even algorithms that explicitly enumerate many possible paths are impossible because the number of paths can grow exponentially. We need a near-linear or \(O((N+M)\log N)\) solution.
+For an initially ignited city (s), there is no road traversal before the fire reaches it, so its burning time is simply
 
-The road lengths and burning times are positive. This positivity is exactly what allows a Dijkstra-style greedy algorithm: once a city has the smallest currently known completion time, no later route can reach it earlier.
+[
+D_s=T_s.
+]
 
-There are several edge cases that can make a careless implementation wrong.
+The graph can contain up to (10^5) cities and (10^5) roads. With this size, anything quadratic in the number of cities is already too expensive. Even scanning all roads (10^5) times would require around (10^{10}) adjacency examinations, far beyond a one-second limit. We need an algorithm close to (O((N+M)\log N)).
 
-Consider a single valid two-city graph where only city 1 starts burning:
+The road lengths and all (T_i) values are positive, so all times are nonnegative. The graph is connected, so every city will eventually burn.
 
-```text
+There are several edge cases that can easily lead to incorrect answers.
+
+First, an initially ignited city is not completely burnt at time (0). For example:
+
+```
 2 1 1
 1 2 5
 7 3
 1
 ```
 
-City 1 finishes at time \(7\). Fire then spends \(5\) seconds crossing the road and city 2 needs another \(3\) seconds to burn, so the correct output is
+The correct output is
 
-```text
+```
 7
 15
 ```
 
-An implementation that treats \(T_i\) as the time needed to reach city \(i\), rather than the time needed after arrival, would incorrectly produce \(12\) for city 2.
+City 1 starts burning at time (0), finishes at time (7), and only then does the fire travel for (5) seconds to city 2. City 2 then needs (3) more seconds. An implementation that initializes the source distance to zero would incorrectly obtain (0) and (8).
 
-A second edge case is that a city can have a direct route from an initially burning city and a longer-looking route through other cities. For example:
+Second, the burning delay of every intermediate city matters. Consider:
 
-```text
-3 3 1
-1 2 10
-1 3 1
-3 2 1
-1 100 1
+```
+2 1 1
+1 2 5
+10 1
 1
 ```
 
-City 1 finishes at \(1\). City 2 can be reached directly and finishes at \(1+10+100=111\), but the route through city 3 gives \(1+1+1+100=103\). The correct output is
+The correct output is
 
-```text
-1
-103
-3
+```
+10
+16
 ```
 
-A solution that processes each city only once without comparing alternative routes can miss this improvement.
+The fire spends (10) seconds burning city 1, travels for (5) seconds, and then spends (1) second burning city 2. Treating the problem as an ordinary shortest path and adding only the destination's (T_v) would give (6), which is wrong because city 1 has to finish burning before it can spread fire.
 
-A third edge case occurs when several initially burning cities exist. For
+Third, there can be several initially ignited cities. The earliest one to reach a city determines its answer. For example:
 
-```text
+```
 3 2 2
-1 3 5
+1 2 10
 2 3 1
-4 7 2
-1 2
+1 1 1
+1 3
 ```
 
-cities 1 and 2 finish at times \(4\) and \(7\). City 3 is reached from city 1 at \(4+5\) or from city 2 at \(7+1\), so the answer is
+The correct output is
 
-```text
-4
-7
-8
+```
+1
+3
+1
 ```
 
-The algorithm must initialize all initial cities before processing the priority queue. Treating only the first initial city as a source would give the wrong result.
+City 2 is reached from city 3 after (1) second, and then takes another (1) second to burn, so its answer is (2), actually making the complete output
+
+```
+1
+2
+1
+```
+
+A solution that only starts from the first source would miss this faster route.
+
+Finally, parallel roads must be treated independently. Sample 2 contains multiple roads connecting the same pair of cities with different lengths. The shortest such road can completely change the answer, so an implementation must not collapse parallel edges without retaining the minimum one.
 
 ## Approaches
 
-The most direct correct approach is repeated relaxation. Start with \(T_i\) for every initially burning city and infinity for every other city. For every road \((u,v,w)\), if city \(u\) can finish by time \(d[u]\), then city \(v\) can finish by \(d[u]+w+T_v\). Repeating this process eventually propagates the best values through the graph.
+A direct approach is to process every initially burning city separately. For one source (s), we can run a shortest-path algorithm whose transition from (u) to (v) costs
 
-This is essentially Bellman-Ford on a transformed graph. Every undirected road gives two directed transitions, and the transition from \(u\) to \(v\) has cost \(w+T_v\). Because every useful path has at most \(N-1\) edges after removing cycles, \(N-1\) full relaxation rounds are sufficient. Each round examines all \(M\) roads, giving \(O(NM)\) time. At the maximum scale this is about \(10^5\cdot10^5=10^{10}\) road examinations, which is nowhere close to acceptable.
+[
+w(u,v)+T_v.
+]
 
-The brute-force method works because every relaxation represents a valid way for the fire to move from one completed city to another. It fails when the graph is large because it repeatedly examines edges whose best possible source time is already known.
+The source starts with distance (T_s). This gives the correct burning time from that particular source, and after processing all (K) sources we take the minimum answer for every city.
 
-The key observation is that this problem is exactly a shortest-path problem after changing the meaning of an edge weight. For a road of length \(w\) from \(u\) to \(v\), arriving at \(v\) is not enough. We must also wait \(T_v\) seconds for \(v\) to burn. So the effective directed edge cost is
+This approach is correct, but it repeats almost the entire graph search for every source. A Dijkstra run takes (O((N+M)\log N)), so processing all sources costs
 
-\[
-w+T_v.
-\]
+[
+O(K(N+M)\log N).
+]
 
-For an initially burning city \(s\), the starting cost is \(T_s\), because its fire starts there at time \(0\) and it takes \(T_s\) seconds to finish.
+In the worst case (K=N=M=10^5), the algorithm may examine roughly (2KM=2\cdot10^{10}) adjacency entries before even accounting for heap operations. That is far too much for the time limit.
 
-After this transformation, every valid fire propagation sequence corresponds exactly to a path cost. Since all effective edge costs are positive, ordinary Dijkstra's greedy ordering applies. We can insert every initially burning city into one priority queue and run a multi-source Dijkstra.
+The key observation is that all sources use exactly the same graph and the same transition rule. We do not actually care which source produced the optimal path. We only care about the earliest possible burning time for each city.
 
-The optimal approach therefore processes each road only when its endpoint is removed from the priority queue with its final minimum value. Each edge can participate in a constant number of relaxations, and heap operations add a logarithmic factor.
+This is precisely the situation where Dijkstra can start from multiple sources simultaneously. Instead of running one Dijkstra from every source, initialize every initially burning city with its own value (T_s), put all of them into the same priority queue, and let them compete to reach the remaining cities.
+
+For a current city (u) with finalized burning time (D_u), traversing an edge of length (w) to (v) produces the candidate
+
+[
+D_u+w+T_v.
+]
+
+The quantity (w+T_v) is always positive, so the resulting state graph has nonnegative edge costs and Dijkstra's greedy choice remains valid.
+
+The brute-force method works because each individual source can be handled by Dijkstra, but it fails when there are many sources because it repeats the same work. The observation that all sources can participate in one shortest-path computation lets us replace (K) Dijkstra runs with one multi-source Dijkstra.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-|---|---|---|---|
-| Repeated relaxation | \(O(NM)\) | \(O(N+M)\) | Too slow |
-| Multi-source Dijkstra | \(O((N+M)\log N)\) | \(O(N+M)\) | Accepted |
+| --- | --- | --- | --- |
+| Run Dijkstra once per source | (O(K(N+M)\log N)) | (O(N+M)) | Too slow |
+| Multi-source Dijkstra | (O((N+M)\log N)) | (O(N+M)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Store every road in an adjacency list. Because the roads are undirected, a road \((u,v,w)\) is stored both as \(v,w\) in \(u\)'s list and as \(u,w\) in \(v\)'s list. This lets us consider fire propagation in either direction.
+1. Store every road in an adjacency list. For a road between (u) and (v) with length (w), add ((v,w)) to (u)'s list and ((u,w)) to (v)'s list because the road is undirected.
+2. Create an array (dist), where (dist[v]) represents the earliest time at which city (v) is completely burnt. Initially every value is infinity because we have not found a route to that city.
+3. For every initially ignited city (s), set
 
-2. Create `dist[i]`, representing the earliest time at which city \(i\) is completely burned. Initially set every value to infinity. For every initially burning city \(s\), set `dist[s] = T[s]` and insert \((T[s],s)\) into a min-heap. This models all initial fires starting simultaneously at time zero.
+[
+dist[s]=T_s.
+]
 
-3. Repeatedly remove the heap entry with the smallest completion time. If the value in the heap is larger than the current `dist[u]`, discard it because a better route to \(u\) was discovered after that heap entry was created. This lazy deletion avoids needing a decrease-key operation.
+Push every such city into the priority queue with key (T_s).
 
-4. For every road from \(u\) to \(v\) with length \(w\), compute
+The value is (T_s), rather than zero, because the city starts burning at time zero but becomes completely burnt only after its own burning delay.
 
-\[
-candidate = dist[u] + w + T_v.
-\]
+1. Repeatedly remove the city (u) with the smallest tentative burning time from the priority queue.
 
-The term `dist[u]` is when fire has finished burning \(u\), `w` is the time needed to cross the road, and `T[v]` is the time needed to finish burning \(v\).
+If the extracted value is larger than the current (dist[u]), discard it. This is a stale heap entry created by an earlier, worse relaxation.
 
-5. If `candidate < dist[v]`, replace `dist[v]` with the smaller value and push the new pair into the heap. This is exactly the normal Dijkstra relaxation, with \(w+T_v\) acting as the directed edge weight.
+1. For every road from (u) to (v) with length (w), compute
 
-6. Continue until the heap is empty. Since the graph is connected and every edge has positive length, every city is eventually reachable and every finalized distance is the minimum possible completion time.
+[
+candidate=dist[u]+w+T_v.
+]
+
+The first term is when (u) finishes burning, the second term is the time needed for the fire to cross the road, and the third term is the time needed to burn (v).
+
+1. If the candidate is smaller than (dist[v]), replace (dist[v]) with the candidate and push the new pair into the priority queue.
+2. When the priority queue is empty, every city has its minimum possible burning time because the graph is connected. Output the values in city order.
 
 ### Why it works
 
-Consider any route from an initially burning city \(s\) to a city \(v\). Its completion time is
+The invariant is that whenever Dijkstra permanently processes a city (u), (dist[u]) is the minimum possible complete-burning time for (u) from any initially ignited city.
 
-\[
-T_s + \sum_{\text{roads }(u,x)} C(u,x) + \sum_{\text{visited cities }x\ne s} T_x.
-\]
+Consider any possible route from an initial source to (u). The source contributes its (T) value, every road contributes its length, and every city entered after the source contributes its own (T) value. Thus every route corresponds exactly to a path in an auxiliary directed graph whose transition from (u) to (v) has cost (w(u,v)+T_v), with each source initialized to (T_s).
 
-That is exactly the length of a path in a directed version of the graph where traversing \(u\to v\) costs \(C(u,v)+T_v\), with an initial cost \(T_s\) for every source.
-
-All these costs are positive, so Dijkstra's invariant applies: when the smallest heap entry for a not-yet-finalized city \(u\) is extracted, no path discovered later can have a smaller cost. Any alternative path would have to reach some predecessor of \(u\) first, and that predecessor's completion time would already be at least the extracted value. Adding positive road and burning costs cannot make the alternative route cheaper. Thus every finalized `dist[u]` is the true minimum completion time.
+All these transition costs are positive. Dijkstra therefore finalizes vertices in nondecreasing order of their true shortest-path cost. Since all sources are inserted initially, the shortest path can start at whichever source is best for that city. Consequently, the final (dist[v]) is exactly the earliest time at which (v) can become completely burnt.
 
 ## Python Solution
 
@@ -188,20 +218,20 @@ def solve():
         x -= 1
         if t[x] < dist[x]:
             dist[x] = t[x]
-            heapq.heappush(pq, (dist[x], x))
+            heapq.heappush(pq, (t[x], x))
 
     while pq:
-        du, u = heapq.heappop(pq)
+        cur, u = heapq.heappop(pq)
 
-        if du != dist[u]:
+        if cur != dist[u]:
             continue
 
         for v, w in graph[u]:
-            nd = du + w + t[v]
+            candidate = cur + w + t[v]
 
-            if nd < dist[v]:
-                dist[v] = nd
-                heapq.heappush(pq, (nd, v))
+            if candidate < dist[v]:
+                dist[v] = candidate
+                heapq.heappush(pq, (candidate, v))
 
     sys.stdout.write("\n".join(map(str, dist)))
 
@@ -209,75 +239,113 @@ if __name__ == "__main__":
     solve()
 ```
 
-The adjacency list stores each undirected road twice, which is necessary because fire can travel in either direction. The road length is kept unchanged because it represents only the time spent traveling between cities.
+The adjacency list represents the original road network. Each road is inserted in both directions because the fire can travel along it either way.
 
-The initialization is the multi-source part of the algorithm. A source city does not need to wait for another city, so its completion time is exactly its own \(T_i\). If the input happened to contain the same source more than once, the repeated initialization is harmless.
+The initialization is the main difference from ordinary single-source Dijkstra. Every initial source enters the heap simultaneously, with priority (T_s). If the same city appears more than once among the sources, the repeated initialization has no harmful effect because all occurrences have the same value.
 
-The heap stores `(completion_time, city)`, so Python always gives us the city with the smallest currently known completion time. A city can be inserted multiple times because Python's heap does not support decrease-key. The condition `du != dist[u]` removes stale entries created by older, worse relaxations.
+The relaxation formula is the central part of the implementation:
 
-The expression `du + w + t[v]` is the central detail of the implementation. Adding only `w` would compute the time when the fire reaches \(v\), not the time when \(v\) is completely burned. The \(T_v\) term must be included on every transition into \(v\).
+```
+candidate = cur + w + t[v]
+```
 
-The chosen infinity is much larger than any possible answer. A simple path contains at most \(N-1\) roads, and every road and burning time is at most \(10^5\), so the useful answers are far below \(10^{10}\). Python integers also avoid overflow, but using a large explicit sentinel keeps the algorithm clear.
+Here `cur` is the time when the current city is completely burnt. The fire then spends `w` seconds crossing the road and `t[v]` seconds burning the destination city.
+
+The stale-entry check
+
+```
+if cur != dist[u]:
+    continue
+```
+
+is necessary because Python's `heapq` does not provide a decrease-key operation. When a better distance is discovered, we push another entry instead of modifying the old one. The old entry eventually comes out of the heap and must be ignored.
+
+Python integers have arbitrary precision, so there is no overflow issue. The maximum useful answer is comfortably within ordinary 64-bit integer range anyway, but using `10**30` as infinity keeps the implementation simple.
+
+The graph has at most (10^5) edges, so the adjacency list stores at most (2\cdot10^5) directed adjacency entries. The heap contains at most a linear number of useful or stale entries over the execution, which is appropriate for the memory limit.
 
 ## Worked Examples
 
 ### Sample 1
 
-The graph contains one initial source, city 1. Its completion time is immediately \(T_1=1\). From there, Dijkstra considers the two roads from city 1.
+The input has one initial source, city 1. Its burning delay is (T_1=1), so city 1 is completely burnt at time 1.
 
-| Heap operation | City finalized | `dist` after relaxation |
-|---|---:|---|
-| Initialize | none | `[1, INF, INF, INF, INF]` |
-| Pop 1 | 1 | `[1, 4, INF, INF, 19]` |
-| Pop 2 | 2 | `[1, 4, 11, INF, 19]` |
-| Pop 3 | 3 | `[1, 4, 11, 20, 19]` |
-| Pop 5 | 5 | `[1, 4, 11, 20, 19]` |
-| Pop 4 | 4 | `[1, 4, 11, 20, 19]` |
+The following table shows the meaningful Dijkstra operations.
 
-The transition from city 1 to city 2 costs \(1+T_2=1+2=3\), so city 2 finishes at \(1+3=4\). The direct road from city 1 to city 5 gives \(1+13+5=19\). Later, city 4 is reached through city 3, giving \(11+5+4=20\). The final answer matches the sample.
+| Popped city | `dist[u]` | Edge considered | Candidate | Updated `dist` |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | (1\to2), length 1 | (1+1+2=4) | (dist[2]=4) |
+| 1 | 1 | (1\to5), length 13 | (1+13+5=19) | (dist[5]=19) |
+| 2 | 4 | (2\to3), length 4 | (4+4+3=11) | (dist[3]=11) |
+| 3 | 11 | (3\to4), length 5 | (11+5+4=20) | (dist[4]=20) |
+| 5 | 19 | (5\to4), length 10 | (19+10+4=33) | no change |
+| 4 | 20 | remaining edges | no improvement | no change |
 
-The trace demonstrates why the value in `dist` represents completion time rather than arrival time. Every relaxation adds the destination city's burning duration.
+The final distances are
+
+```
+1
+4
+11
+20
+19
+```
+
+The interesting part is city 5. It can be reached directly from city 1, giving (1+13+5=19), which is faster than reaching it through cities 2, 3, and 4. Dijkstra does not need to know this route in advance. It discovers both possibilities and keeps the smaller value.
 
 ### Sample 2
 
-There is one source, city 2, whose burning duration is \(94560\). The graph has many parallel roads, so several different routes can reach the same city. This is a useful example for the stale-heap-entry logic and for checking that Dijkstra keeps the best route rather than the first route found.
+There is one initial source, city 2, with (T_2=94560). Therefore the initial heap contains
 
-| Heap operation | City finalized | Relevant updated distances |
-|---|---:|---|
-| Initialize | none | `d[2] = 94560` |
-| Pop 2 | 2 | `d[3] = 100674`, `d[1] = 176553`, `d[5] = 191879`, `d[4] = 208102` |
-| Pop 3 | 3 | `d[1] = 151833`, `d[5] = 191879` |
-| Pop 1 | 1 | `d[4] = 160404`, `d[5] = 191879` |
-| Pop 4 | 4 | no better distance |
-| Pop 5 | 5 | no better distance |
+[
+(94560,2).
+]
 
-The first route from city 2 to city 1 is not optimal. A later relaxation through city 3 improves city 1 from \(176553\) to \(151833\), which is then used to improve city 4. This is exactly the situation where a priority queue is useful: cities are processed according to the smallest currently known completion time, not according to the order in which they were first discovered.
+City 2 has several parallel roads to other cities. The best candidate for each neighboring city is calculated independently.
 
-The final distances are \(151833,94560,181774,160404,191879\), matching the sample output.
+| Popped city | `dist[u]` | Best transition | Candidate | Updated city |
+| --- | --- | --- | --- | --- |
+| 2 | 94560 | (2\to1), length 25722 | (94560+25722+31551=151833) | 1 |
+| 2 | 94560 | (2\to3), length 3043 | (94560+3043+84171=181774) | 3 |
+| 2 | 94560 | (2\to4), length 49102 | (94560+49102+16742=160404) | 4 |
+| 2 | 94560 | (2\to5), length 41563 | (94560+41563+55756=191879) | 5 |
+| 1 | 151833 | edges from 1 | all candidates larger | none |
+| 4 | 160404 | edges from 4 | all candidates larger | none |
+| 3 | 181774 | edge (3\to5), length 32836 | (270366) | none |
+| 5 | 191879 | remaining edges | all candidates larger | none |
+
+The final values are
+
+```
+151833
+94560
+181774
+160404
+191879
+```
+
+This example also demonstrates why parallel edges cannot simply be ignored. City 2 has three different roads to city 1, and the road of length (25722) gives a substantially better candidate than the roads of lengths (50743) and (81271).
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-|---|---|---|
-| Time | \(O((N+M)\log N)\) | Each road is examined from both endpoints, and heap insertions and removals cost \(O(\log N)\). |
-| Space | \(O(N+M)\) | The adjacency list stores \(2M\) directed adjacency entries, while the distance array and heap require \(O(N)\) space up to the usual multiple heap entries. |
+| --- | --- | --- |
+| Time | (O((N+M)\log N)) | Each relaxation is processed through a binary heap, and the graph has (O(M)) adjacency entries |
+| Space | (O(N+M)) | The adjacency list, distance array, and priority queue are all linear in the graph size |
 
-With \(N,M\le 10^5\), the optimal method performs on the order of a few hundred thousand graph operations plus logarithmic heap work. That is appropriate for the stated limits, while the \(O(NM)\) repeated-relaxation approach can reach roughly \(10^{10}\) edge examinations.
+With (N,M\le 10^5), the algorithm performs one graph traversal with heap operations rather than up to (10^5) separate traversals. The (O((N+M)\log N)) bound is appropriate for the one-second limit, and the (O(N+M)) memory usage fits comfortably within 256 MB.
 
 ## Test Cases
-
-The following test harness uses the same `solve` logic through a string-based wrapper. The maximum-size case is generated rather than written literally, because printing \(10^5\) roads and \(10^5\) source indices into the editorial would obscure what the test is checking.
 
 ```python
 import sys
 import io
 import heapq
 
-input = sys.stdin.readline
-
 def solve():
-    n, m, k = map(int, input().split())
+    input = sys.stdin.readline
 
+    n, m, k = map(int, input().split())
     graph = [[] for _ in range(n)]
 
     for _ in range(m):
@@ -298,29 +366,36 @@ def solve():
         x -= 1
         if t[x] < dist[x]:
             dist[x] = t[x]
-            heapq.heappush(pq, (dist[x], x))
+            heapq.heappush(pq, (t[x], x))
 
     while pq:
-        du, u = heapq.heappop(pq)
+        cur, u = heapq.heappop(pq)
 
-        if du != dist[u]:
+        if cur != dist[u]:
             continue
 
         for v, w in graph[u]:
-            nd = du + w + t[v]
-            if nd < dist[v]:
-                dist[v] = nd
-                heapq.heappush(pq, (nd, v))
+            candidate = cur + w + t[v]
 
-    return "\n".join(map(str, dist))
+            if candidate < dist[v]:
+                dist[v] = candidate
+                heapq.heappush(pq, (candidate, v))
+
+    sys.stdout.write("\n".join(map(str, dist)))
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
+    old_stdout = sys.stdout
+
     sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
     try:
-        return solve()
+        solve()
+        return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
+        sys.stdout = old_stdout
 
 sample1 = """\
 5 5 1
@@ -332,6 +407,14 @@ sample1 = """\
 1 2 3 4 5
 1
 """
+
+assert run(sample1) == """\
+1
+4
+11
+20
+19
+""", "sample 1"
 
 sample2 = """\
 5 18 1
@@ -357,6 +440,14 @@ sample2 = """\
 2
 """
 
+assert run(sample2) == """\
+151833
+94560
+181774
+160404
+191879
+""", "sample 2"
+
 sample3 = """\
 7 12 2
 6 3 61451
@@ -375,20 +466,6 @@ sample3 = """\
 2 1
 """
 
-assert run(sample1) == """\
-1
-4
-11
-20
-19""", "sample 1"
-
-assert run(sample2) == """\
-151833
-94560
-181774
-160404
-191879""", "sample 2"
-
 assert run(sample3) == """\
 36685
 6614
@@ -396,123 +473,189 @@ assert run(sample3) == """\
 261888
 108625
 221153
-103470""", "sample 3"
+103470
+""", "sample 3"
 
-# Minimum valid connected graph.
-case_min = """\
+# Minimum valid connected graph, source is city 1.
+custom1 = """\
+2 1 1
+1 2 1
+1 1
+1
+"""
+
+assert run(custom1) == """\
+1
+3
+""", "minimum-size case"
+
+# Source has a large burning time. The destination cannot start
+# spreading before the source has completely burnt.
+custom2 = """\
 2 1 1
 1 2 5
-7 3
+10 1
 1
 """
-assert run(case_min) == """\
-7
-15""", "minimum valid input"
 
-# All burning times and road lengths are equal.
-case_equal = """\
-4 3 1
+assert run(custom2) == """\
+10
+16
+""", "intermediate burning time"
+
+# Multiple sources. City 3 is much closer to city 2 than city 1.
+custom3 = """\
+3 2 2
+1 2 10
+2 3 1
+1 1 1
+1 3
+"""
+
+assert run(custom3) == """\
+1
+2
+1
+""", "multiple sources"
+
+# Parallel edges with the same endpoints. The shorter road must win.
+custom4 = """\
+3 3 1
+1 2 100
 1 2 1
 2 3 1
-3 4 1
-5 5 5 5
+1 1 1
 1
 """
-assert run(case_equal) == """\
+
+assert run(custom4) == """\
+1
+3
 5
-11
-17
-23""", "all equal values"
+""", "parallel edges"
 
-# A longer route is better because it reaches a city with a much
-# smaller burning-time contribution before entering the expensive city.
-case_alternative = """\
-3 3 1
-1 2 10
-1 3 1
-3 2 1
-1 100 1
-1
-"""
-assert run(case_alternative) == """\
-1
-103
-3""", "alternative route"
-
-# Maximum-size construction: a path with 100000 vertices and
-# 99999 roads, plus one duplicate road so M = 100000.
-# Every vertex is an initial source, so every answer must be 1.
+# Large boundary case generated programmatically.
 n = 100000
-lines = [f"{n} {n} {n}"]
+parts = [f"{n} {n - 1} 1"]
 for i in range(1, n):
-    lines.append(f"{i} {i + 1} 1")
-lines.append(f"1 {n} 1")
-lines.append(" ".join(["1"] * n))
-lines.append(" ".join(map(str, range(1, n + 1))))
-case_max = "\n".join(lines) + "\n"
+    parts.append(f"{i} {i + 1} 1")
+parts.append(" ".join(["1"] * n))
+parts.append("1")
 
-expected_max = "\n".join(["1"] * n)
-assert run(case_max) == expected_max, "maximum-size input"
+large_input = "\n".join(parts) + "\n"
+large_output = run(large_input)
 
-print("all tests passed")
+expected_large = "\n".join(str(2 * i - 1) for i in range(1, n + 1)) + "\n"
+assert large_output == expected_large, "maximum-size case"
+
+print("All tests passed.")
 ```
 
 | Test input | Expected output | What it validates |
-|---|---|---|
-| `2 1 1`, one road of length 5 | `7`, `15` | Minimum valid graph and correct separation of arrival time from completion time |
-| Four-city path with all values equal to 1 or 5 | `5, 11, 17, 23` | Repeated destination burning costs and straightforward propagation |
-| Three-city graph with two competing routes | `1, 103, 3` | A later-discovered route can improve an existing distance |
-| \(N=M=K=100000\) generated path | \(100000\) lines containing `1` | Maximum-scale input, many sources, heap initialization, and memory behavior |
+| --- | --- | --- |
+| `2 1 1`, one edge of length 1 | `1, 3` | Minimum valid connected graph and source initialization |
+| `2 1 1`, edge 5, (T=[10,1]) | `10, 16` | Burning delay of an intermediate city |
+| Three cities with two initial sources | `1, 2, 1` | Competition between multiple sources |
+| Three cities with parallel edges | `1, 3, 5` | Choosing the shortest parallel road |
+| Chain of (100000) cities | `1, 3, 5, ..., 199999` | Maximum-size graph, unit weights, and performance |
 
 ## Edge Cases
 
-The minimum valid input has two cities because the statement requires at least one road and each road must connect two different cities. For
+The first edge case is an initially ignited city. Consider
 
-```text
+```
+2 1 1
+1 2 1
+1 1
+1
+```
+
+The algorithm initializes `dist[1]` to (T_1=1), not zero. It pops city 1 with time 1 and obtains
+
+[
+1+1+1=3
+]
+
+for city 2. The output is therefore
+
+```
+1
+3
+```
+
+The source initialization directly captures the fact that ignition and complete burning are different events.
+
+The second edge case is an intermediate city with a large burning delay:
+
+```
 2 1 1
 1 2 5
-7 3
+10 1
 1
 ```
 
-the queue starts with `(7, 1)`. City 1 finishes at time 7, and relaxing its only road produces \(7+5+3=15\) for city 2. The output is `7` and `15`. The algorithm never confuses the time when city 2 is reached, which is 12, with the time when it finishes burning, which is 15.
+The only initial distance is (10). When city 1 is processed, the transition to city 2 costs (5+1=6), giving (10+6=16). The output is
 
-The competing-route case is
-
-```text
-3 3 1
-1 2 10
-1 3 1
-3 2 1
-1 100 1
-1
 ```
-
-City 1 finishes at 1. It first gives city 2 a candidate of \(1+10+100=111\), while city 3 gets \(1+1+1=3\). After city 3 is extracted, its road to city 2 gives \(3+1+100=104\). Wait, this is the correct arithmetic for this input, so the expected output is actually `1, 104, 3`. The test harness above intentionally needs the corrected value.
-
-The edge case exposes why manually reasoning about transformed costs is safer than reasoning only about road distances. The destination's \(T_v\) is paid whenever the fire enters \(v\), including when \(v\) is reached through the supposedly longer route.
-
-For multiple initial sources, consider
-
-```text
-3 2 2
-1 3 5
-2 3 1
-4 7 2
-1 2
-```
-
-The initial heap contains `(4,1)` and `(7,2)`. City 1 proposes \(4+5+2=11\) for city 3, while city 2 proposes \(7+1+2=10\). The final output is
-
-```text
-4
-7
 10
+16
 ```
 
-A correct implementation initializes all sources before entering the Dijkstra loop, so the smaller of the two independent fire fronts reaches city 3.
+A shortest-path formulation that charged only road lengths would incorrectly allow city 1 to spread fire immediately at time zero.
 
-Duplicate roads also require no special handling. Sample 2 contains several roads between the same pair of cities with different lengths. Each is simply another candidate transition, and Dijkstra naturally ignores a road whenever its resulting candidate is not better than the current distance.
+The third edge case has multiple sources:
 
-Finally, if the same city appears more than once in the source list, initializing it repeatedly does not change the answer. The source's completion time remains \(T_i\), and the `if t[x] < dist[x]` condition prevents unnecessary duplicate heap entries. The graph's connectivity guarantee means no infinity value remains in the final output.
-:::
+```
+3 2 2
+1 2 10
+2 3 1
+1 1 1
+1 3
+```
+
+The heap starts with `(1, city 1)` and `(1, city 3)`. City 3 reaches city 2 after one second, then city 2 burns for one second, giving `dist[2]=2`. City 1 would reach city 2 much later, at (1+10+1=12), so the second source wins. The final result is
+
+```
+1
+2
+1
+```
+
+The multi-source initialization is exactly what lets Dijkstra choose this better source without running a separate search.
+
+The fourth edge case contains parallel roads:
+
+```
+3 3 1
+1 2 100
+1 2 1
+2 3 1
+1 1 1
+1
+```
+
+From city 1, the road of length 1 gives city 2 a burning time of (1+1+1=3). The road of length 100 is never competitive. City 3 then receives fire from city 2 and finishes at (3+1+1=5). The output is
+
+```
+1
+3
+5
+```
+
+The adjacency list retains both roads, so the shorter one naturally wins during relaxation.
+
+The final boundary case is the chain of (100000) cities with every road length and every (T_i) equal to 1. Starting from city 1 gives
+
+[
+dist[1]=1,
+]
+
+and every subsequent city adds exactly (1+1=2). Thus city (i) has answer
+
+[
+2i-1.
+]
+
+The last city has answer (199999). The algorithm processes this entire graph with one Dijkstra run, demonstrating that the intended complexity remains practical even at the largest input size.
+
+If you'd like, I can also turn this into a more typical Codeforces editorial style with a shorter proof and a more intuitive derivation of the modified Dijkstra state.
