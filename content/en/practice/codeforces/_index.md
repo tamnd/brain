@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3093 contests, 22772 problems, 12590 verified."
+description: "Codeforces problem solutions with full editorials. 3094 contests, 22775 problems, 12593 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3093 contests, 22772 problems, 12590 verified.**
+**3094 contests, 22775 problems, 12593 verified.**
 
-## Unknown — 807 contests, 6779 problems, 3984 verified
+## Unknown — 808 contests, 6782 problems, 3987 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 3 | 3/3 | Div. 1 | - |
 | [102437](102437/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437) | 7 | 4/7 | Special | - |
 | [102439](102439/) | [2018-2019 9th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/102439) | 6 | 6/6 | Special | - |
 | [102440](102440/) | [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440) | 12 | 9/12 | Special | - |
