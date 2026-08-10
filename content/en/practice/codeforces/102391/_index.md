@@ -1,22 +1,22 @@
 ---
 title: "XX Open Cup, Grand Prix of Korea"
-description: "6 problems from XX Open Cup, Grand Prix of Korea (contest 102391), difficulty -. 3/6 solutions verified against sample I/O."
+description: "7 problems from XX Open Cup, Grand Prix of Korea (contest 102391), difficulty -. 3/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102391
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
+n_problems: 7
 n_verified: 3
-total_solve_s: 1971
-date: "2026-08-10T20:59:11+07:00"
+total_solve_s: 2374
+date: "2026-08-10T21:05:56+07:00"
 weight: 102391
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391)
 
-Special | 6 problems | 3/6 verified | Difficulty - | 32m 51s
+Special | 7 problems | 3/7 verified | Difficulty - | 39m 34s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,4 +25,5 @@ Special | 6 problems | 3/6 verified | Difficulty - | 32m 51s
 | [D](D/) | [Container](https://codeforces.com/problemset/problem/102391/D) |  |  |  | 8m 24s |  |
 | [G](G/) | [Lexicographically Minimum Walk](https://codeforces.com/problemset/problem/102391/G) |  |  |  | 2m 48s | ✓ |
 | [H](H/) | [Maximizer](https://codeforces.com/problemset/problem/102391/H) |  |  |  | 3m 40s | ✓ |
+| [I](I/) | [Minimum Diameter Spanning Tree](https://codeforces.com/problemset/problem/102391/I) |  |  |  | 6m 43s |  |
 | [J](J/) | [Parklife](https://codeforces.com/problemset/problem/102391/J) |  |  |  | 3m 13s | ✓ |
