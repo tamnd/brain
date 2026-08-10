@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3098 contests, 22787 problems, 12603 verified."
+description: "Codeforces problem solutions with full editorials. 3099 contests, 22791 problems, 12604 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3098 contests, 22787 problems, 12603 verified.**
+**3099 contests, 22791 problems, 12604 verified.**
 
-## Unknown — 811 contests, 6791 problems, 3996 verified
+## Unknown — 812 contests, 6795 problems, 3997 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102411](102411/) | [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411) | 4 | 1/4 | ICPC/IOI | - |
 | [102412](102412/) | [MEX Foundation Contest (supported by AIM Tech)](https://codeforces.com/contest/102412) | 6 | 6/6 | Special | - |
 | [102420](102420/) | [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420) | 1 | 1/1 | Special | - |
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 2 | 2/2 | ICPC/IOI | - |
