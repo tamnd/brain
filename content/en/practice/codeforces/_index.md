@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3107 contests, 22840 problems, 12646 verified."
+description: "Codeforces problem solutions with full editorials. 3107 contests, 22841 problems, 12647 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3107 contests, 22840 problems, 12646 verified.**
+**3107 contests, 22841 problems, 12647 verified.**
 
 ## Unknown — 816 contests, 6815 problems, 4010 verified
 
@@ -1451,7 +1451,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 175 contests, 1039 problems, 654 verified
+## 2019 — 175 contests, 1040 problems, 655 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1615,7 +1615,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 | [102392](102392/) | [2019-2020 ICPC Southeastern European Regional Programming Contest (SEERC 2019)](https://codeforces.com/contest/102392) | 11 | 11/11 | ICPC/IOI | - |
-| [102394](102394/) | [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394) | 11 | 11/11 | Special | - |
+| [102394](102394/) | [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394) | 12 | 12/12 | Special | - |
 | [102397](102397/) | [Asu Coding Cup 4](https://codeforces.com/contest/102397) | 6 | 6/6 | Special | - |
 | [102409](102409/) | [Semana i 2019](https://codeforces.com/contest/102409) | 1 | 1/1 | Special | - |
 | [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 3 | 1/3 | Special | - |

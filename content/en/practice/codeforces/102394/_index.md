@@ -1,26 +1,27 @@
 ---
 title: "The 2019 China Collegiate Programming Contest Harbin Site"
-description: "11 problems from The 2019 China Collegiate Programming Contest Harbin Site (contest 102394), difficulty -. 11/11 solutions verified against sample I/O."
+description: "12 problems from The 2019 China Collegiate Programming Contest Harbin Site (contest 102394), difficulty -. 12/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102394
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 1686
+n_problems: 12
+n_verified: 12
+total_solve_s: 2038
 contest_year: 2019
-date: "2026-08-10T21:24:10+07:00"
+date: "2026-08-11T04:16:34+07:00"
 weight: 102394
 draft: false
 ---
 
 # [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 28m 6s
+Special | 12 problems | 12/12 verified | Difficulty - | 33m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Artful Paintings](https://codeforces.com/problemset/problem/102394/A) |  |  |  | 5m 52s | ✓ |
 | [B](B/) | [Binary Numbers](https://codeforces.com/problemset/problem/102394/B) |  |  |  | 2m 29s | ✓ |
 | [C](C/) | [Competition in Swiss-system](https://codeforces.com/problemset/problem/102394/C) |  |  |  | 2m 17s | ✓ |
 | [D](D/) | [Driverless Car](https://codeforces.com/problemset/problem/102394/D) |  |  |  | 3m 7s | ✓ |
