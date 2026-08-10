@@ -1,7 +1,7 @@
 ---
 title: "CF 102407K - Crazy Arrangements"
-description: "The tree itself looks like the main object of the problem, but the useful representation does not depend on its shape. Root the tree arbitrarily and let (hv) be the XOR of edge weights on the path from the root to vertex (v)."
-date: "2026-08-10T16:45:21+07:00"
+description: "We have a tree with (n) vertices, and (m) ordered pairs ((ui,vi)). Each pair describes one path in the tree. Every tree edge receives a bit, either (0) or (1). For path (i), we take the XOR of all edge bits on that path and call the result (si)."
+date: "2026-08-11T06:23:23+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102407
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102407
-solve_time_s: 811
+solve_time_s: 1512
 verified: false
 draft: false
 ---
@@ -18,58 +18,34 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 13m 31s  
+**Solve time:** 25m 12s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The tree itself looks like the main object of the problem, but the useful representation does not depend on its shape. Root the tree arbitrarily and let (h_v) be the XOR of edge weights on the path from the root to vertex (v). Then the XOR of the path between vertices (u) and (v) is simply
+We have a tree with (n) vertices, and (m) ordered pairs ((u_i,v_i)). Each pair describes one path in the tree. Every tree edge receives a bit, either (0) or (1). For path (i), we take the XOR of all edge bits on that path and call the result (s_i).
+
+A valid arrangement is one for which
 
 [
-h_u \oplus h_v.
+s_1\le s_2\le\cdots\le s_m.
 ]
 
-Conversely, once (h_{\text{root}}=0) is fixed, every edge weight is uniquely determined by the two endpoint values of (h). Thus counting edge assignments is exactly the same as counting assignments of one binary value (h_v) to every vertex, with one fixed root value. This is the central simplification used by the official editorial.
-
-For query (i), write
+Since every (s_i) is either (0) or (1), every valid sequence has a very simple form. There is some boundary (k), possibly (0) or (m), such that the sequence is
 
 [
-s_i=h_{u_i}\oplus h_{v_i}.
+\underbrace{0,\ldots,0}_{k\text{ values}},
+\underbrace{1,\ldots,1}_{m-k\text{ values}}.
 ]
 
-Because every (s_i) is either (0) or (1), the condition
+So instead of considering arbitrary (2^m) sequences of path XORs, we only have (m+1) possible target sequences. The task becomes counting, for every boundary (k), how many edge assignments produce exactly that sequence.
 
-[
-s_1\le s_2\le\cdots\le s_m
-]
+The input tree is given by (n-1) parent edges. The next (m) lines contain the endpoints of the selected paths. The output is the total number of edge assignments producing a nondecreasing sequence of path XORs, modulo (998244353).
 
-means that the sequence has the form
+The actual constraints are (n,m\le250000), with a 2 second time limit and 512 MB of memory. An algorithm that explicitly considers all edge assignments is hopeless because the tree has (n-1) independent edges, giving (2^{n-1}) assignments. Even an (O(nm)) operation count is already too large at this scale, so the solution needs to be close to (O((n+m)\log m)).
 
-[
-\underbrace{0,0,\ldots,0}_{k}
-\underbrace{1,1,\ldots,1}_{m-k}
-]
-
-for some boundary (k) between (0) and (m). There are only (m+1) possible boundary positions.
-
-For a fixed (k), every query becomes a binary constraint
-
-[
-h_{u_i}\oplus h_{v_i} =
-\begin{cases}
-0,&i\le k,\
-1,&i>k.
-\end{cases}
-]
-
-Think of the (m) queries as edges of a new graph whose vertices are the original tree vertices. Each query edge says whether its two endpoints must receive equal or different colors. The fixed-boundary problem is now just a two-color consistency problem.
-
-If this constraint graph has (c) connected components and all its parity constraints are consistent, there are exactly (2^{c-1}) valid assignments of the (h_v). Every component can independently choose its color, but the component containing the root has its color fixed to (0). If the constraints contain a contradiction, there are zero assignments.
-
-The difficulty is that there are (m+1) boundaries, and solving the parity graph from scratch for every boundary would cost (O(m(n+m))). With (n,m\le250,000), that is far beyond what the two-second limit allows. The official constraints are deliberately large enough to rule out any algorithm that repeatedly traverses the entire constraint graph.
-
-The tree can also contain many vertices that never appear in a query. They still matter because each such vertex contributes an independent binary choice. For example,
+There are several boundary cases that are easy to mishandle. First, (k=0) means every path XOR must be (1), while (k=m) means every path XOR must be (0). Both are legitimate candidates. For example,
 
 ```
 2 2
@@ -78,69 +54,151 @@ The tree can also contain many vertices that never appear in a query. They still
 1 2
 ```
 
-has two identical query edges. The only valid sequences are (00) and (11), so the answer is (2). A careless implementation that treats the two queries independently would incorrectly count four possibilities. The repeated query forms a two-edge cycle, and both copies must receive the same parity.
+has two identical paths. The two path XORs are always equal, so the only valid sequences are (00) and (11). The correct answer is (2). An implementation that only checks boundaries between two different values would miss one or both of these cases.
 
-Another boundary case is that the transition may be before every query or after every query. For example,
-
-```
-3 2
-1 2
-1 2
-2 3
-```
-
-has no cycle in its query graph, so all three sequences (00,01,11) are possible. The answer is (3). Forgetting either (k=0) or (k=m) loses a valid assignment.
-
-Finally, the original tree may have a completely irrelevant shape. For example, in
+Second, the graph formed by the path endpoints can be disconnected even though the original object is a connected tree. For example,
 
 ```
-3 2
+4 2
+1 2 3
 1 2
-1 2
-1 3
+3 4
 ```
 
-the original tree is only used to establish the one-to-one correspondence between edge weights and vertex values (h_v). The actual constraints are the two queried pairs, and they can be solved without traversing the original tree at all.
+has two unrelated endpoint constraints. Every one of the three monotone sequences (00,01,11) is realizable, and there are two independent vertex-label components, giving (3\cdot2=6) assignments. Treating the endpoint graph as connected would give the wrong multiplicative factor.
+
+Third, repeated path pairs are allowed. For example, if the same pair appears several times, the corresponding constraints are parallel edges in the endpoint graph. They can form a parity contradiction depending on their assigned values. The duplicate-path example above is the smallest case: assigning (01) to two identical paths is impossible because both paths necessarily have the same XOR.
+
+Finally, the shape of the original tree does not affect the answer once we change variables. This is easy to overlook because the input spends (n-1) numbers describing the tree. The selected path XOR can be expressed entirely through the two endpoints, so the original tree is needed only to justify the change of variables, not by the final algorithm. The official analysis uses exactly this observation.
 
 ## Approaches
 
-The direct brute-force solution is conceptually simple. For every one of the (m+1) possible boundaries, assign parity (0) to the first queries and parity (1) to the remaining queries. Then run a graph traversal from every unvisited vertex, propagating colors through the query edges. If an edge requires two vertices to have different colors but the traversal already gives them equal colors, the boundary is impossible. Otherwise, if there are (c) connected components, add (2^{c-1}) to the answer.
+The direct approach is to enumerate every assignment of (0/1) values to the (n-1) tree edges. For each assignment, we would calculate every selected path XOR and check whether the resulting sequence is nondecreasing. There are exactly (2^{n-1}) edge assignments. If each path is evaluated by walking through its edges, one assignment can cost (O(nm)) in the worst case, giving
 
-This works because a parity constraint graph is satisfiable exactly when every cycle has XOR (0). A DFS or BFS checks precisely that condition while also finding the number of connected components.
+[
+O(2^{n-1}nm)
+]
 
-The problem is the repetition. One consistency check costs (O(n+m)), and there are (m+1) boundaries, giving (O(m(n+m))) operations. At (n=m=250,000), this is on the order of (1.25\cdot10^{11}) graph operations, so the approach is not remotely viable.
+operations. Even ignoring the cost of evaluating the paths, merely enumerating (2^{249999}) assignments is impossible.
 
-The key observation is that consecutive boundaries differ in only one query constraint. More generally, consider a divide-and-conquer interval of possible boundaries ([L,R]). For every boundary in its left half, all queries strictly to the right of the midpoint are certainly on the (1)-side. For every boundary in its right half, all queries up to the midpoint are certainly on the (0)-side. We can permanently add those known constraints while descending into the corresponding half.
+The first useful observation is to stop thinking about the tree edges individually. Root the tree at any vertex, say vertex (1), and define (h_v) as the XOR of the edge values on the path from the root to (v). Then the XOR on the path between (u) and (v) is simply
 
-This turns the problem into an offline dynamic-connectivity computation. We use a parity DSU that supports rollback. Each recursive level adds constraints that are fixed throughout one child, recursively processes that child, and then restores the previous DSU state. The official editorial describes exactly this divide-and-conquer idea and observes that the straightforward rollback DSU gives an (O(m\log^2 m)) solution, with an additional explicit-compression optimization capable of reducing it to (O(m\log m)).
+[
+h_u\oplus h_v.
+]
 
-The implementation below uses the rollback-DSU version. It is substantially simpler, preserves the core idea, and avoids rebuilding the graph for every boundary. The DSU uses union by size, so every `find` has logarithmic depth, while rollback itself is constant time per recorded operation.
+If we fix (h_1=0), every choice of the other (n-1) values of (h) corresponds to exactly one edge assignment, because for every tree edge ((p,v)),
+
+[
+w_{p,v}=h_p\oplus h_v.
+]
+
+Thus the tree has disappeared from the actual counting problem. We only need to choose binary values (h_1,\ldots,h_n), with (h_1=0), satisfying equations of the form
+
+[
+h_{u_i}\oplus h_{v_i}=s_i.
+]
+
+This is a parity constraint graph.
+
+Now fix a boundary (k). The required path values are
+
+[
+s_i=
+\begin{cases}
+0,&i\le k,\
+1,&i>k.
+\end{cases}
+]
+
+For this particular (k), we have a graph whose vertices are the original tree vertices and whose (i)-th edge is ((u_i,v_i)), carrying the required parity (s_i). A system of equations
+
+[
+h_u\oplus h_v=w
+]
+
+is consistent exactly when the parity accumulated around every cycle is zero. A parity-aware DSU can test this while processing the edges.
+
+If the system is consistent, the number of solutions does not depend on the particular parity values. It only depends on the number (c) of connected components of the endpoint graph. Each component can be flipped completely without changing any XOR equation. Fixing (h_1=0) removes one global degree of freedom, so the number of valid (h)-assignments is
+
+[
+2^{c-1}.
+]
+
+The value (c) is fixed for every boundary because the underlying endpoint graph is always the same. Consequently,
+
+(\text{number of consistent boundaries})\cdot2^{c-1}.
+]
+
+We are left with the hard part: checking all (m+1) boundaries without rebuilding the parity DSU from scratch each time.
+
+A single boundary can be checked in (O(n+m)), so doing that for all (m+1) boundaries would cost (O(m(n+m))), which is too slow. The key structure is that neighboring boundaries differ in exactly one constraint. More generally, for a whole interval of candidate boundaries, many constraints have already become fixed in the same way for every boundary in that interval.
+
+This is exactly where divide and conquer becomes useful. Suppose we are considering all boundaries (k\in[l,r]), and let
+
+[
+mid=\left\lfloor\frac{l+r}{2}\right\rfloor.
+]
+
+For every boundary in the left half ([l,mid]), all constraints with indices (mid+1,\ldots,r) are necessarily on the (1)-side. For every boundary in the right half ([mid+1,r]), all constraints with indices (l,\ldots,mid) are necessarily on the (0)-side.
+
+We add those fixed constraints before descending into the corresponding child. A rollback DSU lets us undo them when returning from that child. This is the standard offline divide-and-conquer pattern used for dynamic connectivity.
+
+Each constraint is added only (O(\log m)) times over the entire recursion, once per relevant recursion level. That gives (O(m\log m)) parity-DSU operations, which is fast enough. The official tutorial describes the same idea, adding the right half with parity (1) while entering the left half, and the left half with parity (0) while entering the right half.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(m(n+m))) | (O(n+m)) | Too slow |
-| Divide and Conquer + Rollback DSU | (O(m\log m\log n)) | (O(n+m)) | Accepted |
-
-There is one further simplification worth keeping in mind. The underlying query graph never changes with (k), only the parity attached to its edges changes. Consequently, the number (c) of connected components is the same for every boundary. We compute it once using an ordinary DSU. The rollback DSU only needs to answer whether the current parity assignment is consistent.
+| Brute Force | (O(2^{n-1}nm)) | (O(n+m)) | Too slow |
+| Check every boundary independently | (O(m(n+m))) | (O(n+m)) | Too slow |
+| Divide and conquer + rollback parity DSU | (O((n+m)\log m)) | (O(n+m)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Root the original tree conceptually and replace each edge-weight assignment by vertex values (h_v). The value at the root is fixed to zero, so every valid (h)-assignment corresponds to exactly one original edge assignment.
-2. Build the auxiliary constraint graph from the (m) queried pairs. Query (i) is an edge between (u_i) and (v_i). Its parity will be (0) when (i\le k), and (1) when (i>k).
-3. Use an ordinary DSU on all query edges to find the number (c) of connected components. This graph is independent of the boundary, so the number of assignments for every consistent boundary is the same value (2^{c-1}).
-4. Consider all possible boundaries (k) as the integer interval ([0,m]). At a leaf (k), the required parity of every query is completely determined.
-5. Recursively split an interval ([L,R]) at (M=(L+R)/2). For every boundary (k\le M), every query with index greater than (M) is necessarily on the (1)-side. Add those queries to the rollback DSU with parity (1), then recurse into ([L,M]).
-6. Roll back those additions. For every boundary (k>M), every query with index at most (M) is necessarily on the (0)-side. Add those queries with parity (0), then recurse into ([M+1,R]).
-7. The rollback operation restores exactly the DSU state that existed before entering a child. This lets the two halves share all constraints fixed by their ancestors without copying the entire data structure.
-8. At a leaf (k), all (m) query constraints have been added exactly once. If the parity DSU has no contradiction, boundary (k) contributes (2^{c-1}) to the answer.
-9. The parity DSU stores, for every vertex, the XOR between its value and the value of its DSU parent. When two components are joined, this relation is chosen so that (h_u\oplus h_v=w), where (w) is the required parity of the query. If (u) and (v) are already connected, their existing XOR relation must agree with (w), otherwise the current boundary is impossible.
-10. If a contradiction is detected anywhere above a leaf, every descendant boundary remains contradictory because adding more constraints can never repair an existing contradiction. The implementation therefore stops descending through such a branch, which can substantially reduce the running time on highly cyclic inputs.
+1. Root the original tree conceptually and introduce a binary value (h_v) for every vertex. Set (h_1=0). For every tree edge ((p,v)), its weight is (h_p\oplus h_v). Hence there is a one-to-one correspondence between tree-edge assignments and binary vertex assignments with (h_1=0).
+
+For a selected path ((u_i,v_i)), its XOR is now exactly (h_{u_i}\oplus h_{v_i}). The actual tree edges never need to be traversed.
+2. Regard every selected pair ((u_i,v_i)) as an edge of a new graph (G). The edge number is its position (i) in the input sequence.
+
+For a fixed boundary (k), assign parity (0) to edges (1,\ldots,k) and parity (1) to edges (k+1,\ldots,m). We need to know whether there exists a binary value (h_v) satisfying every edge equation.
+3. Build an ordinary DSU on (G) once, ignoring parity. Its final number of connected components is (c).
+
+This number determines the multiplicity of every consistent boundary. Once one solution (h) exists, flipping every (h_v) inside any connected component preserves all XOR constraints. There are (2^c) such flips, and fixing (h_1=0) removes one of them, leaving (2^{c-1}) solutions.
+4. Create a rollback DSU for the parity equations. For each vertex, store its parent, component size, and XOR from that vertex to its DSU parent.
+
+If `find(v)` reaches root (r) with accumulated parity (x), then (h_v\oplus h_r=x). When we add a constraint (h_u\oplus h_v=w), the required parity between the two roots is
+
+[
+x_u\oplus x_v\oplus w.
+]
+
+If the roots are different, we merge them and record the change on a rollback stack. If they are already equal, the equation is consistent exactly when
+
+[
+x_u\oplus x_v=w.
+]
+
+Otherwise the current system is contradictory.
+5. Run divide and conquer on the boundary interval ([0,m]). The value (k) means that paths (1,\ldots,k) receive parity (0), while paths (k+1,\ldots,m) receive parity (1).
+
+At a node ([l,r]), calculate `mid`. Before processing the left child ([l,mid]), add every edge with index (mid+1,\ldots,r) using parity (1). Those edges are necessarily on the right side for every boundary in the left child.
+6. Recurse into ([l,mid]), then roll the DSU back to its previous state.
+
+The rollback is what makes the two recursive branches independent. Constraints fixed only because we entered the left branch must not leak into the right branch.
+7. Before processing the right child ([mid+1,r]), add every edge with index (l,\ldots,mid) using parity (0). Those edges are necessarily on the left side for every boundary in the right child.
+
+Recurse into ([mid+1,r]), then roll back again.
+8. When (l=r=k), every edge has acquired exactly the parity required by boundary (k). If the parity DSU has no contradiction, boundary (k) is valid, so increment the number of valid boundaries.
+
+If a contradiction already exists at an internal node, all descendants are also contradictory because recursion only adds more equations. We can skip that entire subtree.
+9. Finally, multiply the number of valid boundaries by (2^{c-1}) modulo (998244353).
 
 ### Why it works
 
-Fix a boundary (k). The divide-and-conquer traversal adds every query (i\le k) with parity (0) and every query (i>k) with parity (1). Thus, at the leaf corresponding to (k), the rollback DSU represents exactly the constraint system for that boundary.
+The vertex transformation preserves every edge assignment exactly, because (h_1=0) uniquely determines every tree-edge weight and every tree-edge assignment uniquely determines all (h_v). Thus counting valid edge assignments is equivalent to counting valid (h)-assignments.
 
-A parity DSU is consistent precisely when every connected component admits a binary coloring satisfying all its edge relations. If the system is consistent, one arbitrary bit can be chosen independently for each connected component. Fixing the root component to (0) removes one of those choices, leaving exactly (2^{c-1}) assignments. If the system is inconsistent, no assignment exists. Since every valid monotone sequence has exactly one boundary (k), summing this contribution over all consistent leaves counts every valid edge assignment exactly once.
+For a boundary (k), the required sequence of path XORs is fixed, so its equations are exactly the parity constraints inserted at the corresponding leaf. The parity DSU reports a contradiction exactly when those equations cannot simultaneously hold. If they are consistent, the solution space has (c-1) independent binary choices, giving (2^{c-1}) assignments.
+
+During divide and conquer, the invariant is that upon entering a node ([l,r]), the DSU contains exactly the constraints that are fixed for every boundary in that interval, together with the constraints inherited from its ancestors. The left and right child additions then fix precisely the additional constraints common to that child. At a leaf, every constraint is fixed, so the consistency result is exactly the consistency of that boundary. Every boundary appears at exactly one leaf, so every valid monotone path-XOR sequence is counted once.
 
 ## Python Solution
 
@@ -153,185 +211,168 @@ MOD = 998244353
 def solve():
     n, m = map(int, input().split())
 
-    # The original tree is irrelevant after the h_v reformulation.
-    input().split()
+    # The original tree is only needed for the potential transformation.
+    # Its actual edges never appear in the algorithm.
+    input()
 
-    U = [0] * m
-    V = [0] * m
-
+    edges = [None] * m
     for i in range(m):
         u, v = map(int, input().split())
-        U[i] = u - 1
-        V[i] = v - 1
+        edges[i] = (u - 1, v - 1)
 
-    # First find the number of connected components
-    # of the fixed query graph.
-    p = list(range(n))
-    sz = [1] * n
-
-    def find_plain(x):
-        while p[x] != x:
-            p[x] = p[p[x]]
-            x = p[x]
-        return x
-
+    # Find the number of connected components of the endpoint graph.
+    base_parent = list(range(n))
+    base_size = [1] * n
     components = n
 
-    for i in range(m):
-        a = find_plain(U[i])
-        b = find_plain(V[i])
-        if a != b:
-            if sz[a] < sz[b]:
-                a, b = b, a
-            p[b] = a
-            sz[a] += sz[b]
+    def base_find(x):
+        while base_parent[x] != x:
+            base_parent[x] = base_parent[base_parent[x]]
+            x = base_parent[x]
+        return x
+
+    for u, v in edges:
+        ru = base_find(u)
+        rv = base_find(v)
+        if ru != rv:
+            if base_size[ru] < base_size[rv]:
+                ru, rv = rv, ru
+            base_parent[rv] = ru
+            base_size[ru] += base_size[rv]
             components -= 1
 
-    ways = pow(2, components - 1, MOD)
-
     # Rollback parity DSU.
-    #
-    # parent[x] is the DSU parent.
-    # xr[x] is h[x] xor h[parent[x]].
-    # size[x] is meaningful only for roots.
     parent = list(range(n))
     size = [1] * n
+    parity = [0] * n
 
-    xr = [0] * n
-
-    # History encoding:
-    #   0  = successful/consistent union of already connected vertices
-    #  -1  = contradiction
-    #  >0 = merged root, encoded as child_root + 1
+    # A history item is:
+    # -1 for a contradictory equation
+    # otherwise (old_size_of_root << BITS) | child_root
+    BITS = 18
+    MASK = (1 << BITS) - 1
     history = []
+
     bad = 0
 
     def find(x):
-        parity = 0
+        xr = 0
         while parent[x] != x:
-            parity ^= xr[x]
+            xr ^= parity[x]
             x = parent[x]
-        return x, parity
+        return (x << 1) | xr
 
-    def unite(a, b, w):
+    def add_constraint(u, v, w):
         nonlocal bad
 
-        ra, xa = find(a)
-        rb, xb = find(b)
+        a = find(u)
+        b = find(v)
 
-        if ra == rb:
-            if (xa ^ xb) != w:
-                history.append(-1)
+        ru = a >> 1
+        xu = a & 1
+        rv = b >> 1
+        xv = b & 1
+
+        if ru == rv:
+            history.append(-1)
+            if (xu ^ xv) != w:
                 bad += 1
-            else:
-                history.append(0)
             return
 
-        if size[ra] < size[rb]:
-            ra, rb = rb, ra
+        need = xu ^ xv ^ w
 
-        # h[rb] xor h[ra] must be xa xor xb xor w.
-        parent[rb] = ra
-        xr[rb] = xa ^ xb ^ w
-        size[ra] += size[rb]
+        if size[ru] < size[rv]:
+            ru, rv = rv, ru
 
-        history.append(rb + 1)
+        history.append((size[ru] << BITS) | rv)
+
+        parent[rv] = ru
+        parity[rv] = need
+        size[ru] += size[rv]
 
     def rollback(snapshot):
         nonlocal bad
 
         while len(history) > snapshot:
-            op = history.pop()
+            item = history.pop()
 
-            if op == 0:
-                continue
-
-            if op == -1:
+            if item == -1:
                 bad -= 1
                 continue
 
-            rb = op - 1
-            ra = parent[rb]
+            rv = item & MASK
+            old_size = item >> BITS
+            ru = parent[rv]
 
-            size[ra] -= size[rb]
-            parent[rb] = rb
-            xr[rb] = 0
+            parent[rv] = rv
+            parity[rv] = 0
+            size[ru] = old_size
 
-    answer = 0
+    valid_boundaries = 0
 
-    sys.setrecursionlimit(1_000_000)
-
-    def dfs(l, r):
-        nonlocal answer
+    def divide(l, r):
+        nonlocal valid_boundaries
 
         if bad:
             return
 
         if l == r:
-            answer += ways
-            if answer >= MOD:
-                answer -= MOD
+            valid_boundaries += 1
             return
 
         mid = (l + r) >> 1
 
-        # Boundaries k in [l, mid].
-        # Queries with index > mid are necessarily 1.
+        # For every k in [l, mid], indices mid+1..r are on the
+        # right side, so their required parity is 1.
         snapshot = len(history)
+        for i in range(mid + 1, r + 1):
+            u, v = edges[i - 1]
+            add_constraint(u, v, 1)
 
-        for i in range(mid, r):
-            unite(U[i], V[i], 1)
-            if bad:
-                break
-
-        dfs(l, mid)
+        divide(l, mid)
         rollback(snapshot)
 
         if bad:
             return
 
-        # Boundaries k in [mid + 1, r].
-        # Queries with index <= mid are necessarily 0.
+        # For every k in [mid+1, r], indices l..mid are on the
+        # left side, so their required parity is 0.
         snapshot = len(history)
+        for i in range(l, mid + 1):
+            u, v = edges[i - 1]
+            add_constraint(u, v, 0)
 
-        for i in range(l, mid):
-            unite(U[i], V[i], 0)
-            if bad:
-                break
-
-        dfs(mid + 1, r)
+        divide(mid + 1, r)
         rollback(snapshot)
 
-    # There are m+1 possible boundaries: 0, 1, ..., m.
-    dfs(0, m)
+    # Boundaries are 0, 1, ..., m.
+    divide(0, m)
 
-    print(answer % MOD)
+    multiplier = pow(2, components - 1, MOD)
+    answer = valid_boundaries * multiplier % MOD
+    print(answer)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first DSU only sees the query graph without parity labels. Its purpose is to compute the fixed number of connected components (c). Path compression is safe there because this DSU never needs to be undone.
+The first input line gives (n) and (m). The next line describes the original tree, but the solution deliberately reads and discards it. This is not an optimization that changes the mathematics. The potential transformation proves that the answer depends only on the selected endpoint pairs.
 
-The second DSU is different. It stores the relative XOR between every vertex and its representative. Path compression is deliberately avoided because changing parent pointers would make rollback expensive. Union by size keeps the parent chains logarithmic.
+The `edges` array stores those endpoint pairs in their original order. Their indices are crucial because the parity assigned to an edge depends on whether its index lies before or after the boundary.
 
-The expression
+The first DSU calculates `components`, the number of connected components in the endpoint graph. It ignores parity because connectivity is the same for every boundary. Its only purpose is to obtain the factor (2^{c-1}).
 
-```
-xr[rb] = xa ^ xb ^ w
-```
+The rollback DSU uses `parity[v]` to store (h_v\oplus h_{\text{parent}[v]}). Path compression is intentionally absent. Compression would modify many parent pointers during one `find`, making rollback expensive. Union by component size keeps the DSU trees shallow, so a find costs (O(\log n)) in the worst case.
 
-is the key parity calculation. Here `xa` means (h_a\oplus h_{r_a}), and `xb` means (h_b\oplus h_{r_b}). After attaching (r_b) below (r_a), the required relation is
+The `history` encoding is a Python-specific memory optimization. Each successful merge stores the child root and the old size of the parent root in one integer. A contradiction is represented by `-1`. Python tuples for millions of rollback operations would consume substantially more memory.
 
-[
-h_{r_b}\oplus h_{r_a}=x_a\oplus x_b\oplus w.
-]
+The divide-and-conquer interval uses boundaries from (0) through (m), not (1) through (m-1). This is why the leaf condition is `l == r` and the initial call is `divide(0, m)`. Those two boundary values correspond to the all-(1) and all-(0) path-XOR sequences.
 
-The divide-and-conquer indices are slightly subtle. The leaf `k` means that the first `k` queries have parity zero. Query `i` is stored at zero-based index `i-1`. Thus, when processing the left child `[l, mid]`, the queries stored in indices `[mid, r)` are exactly the queries whose one-based indices are greater than every possible boundary in that child. They must all have parity one. Symmetrically, the right child receives queries stored in `[l, mid)` with parity zero.
+The loop bounds also deserve attention. In the left child, indices `mid + 1` through `r` must be assigned parity (1). In the right child, indices `l` through `mid` must be assigned parity (0). The endpoint index (i) in the mathematical description is one-based, while Python's `edges` array is zero-based, hence `edges[i - 1]`.
 
-The history encoding avoids allocating a tuple for every rollback operation. A positive value represents a successful component merge, zero represents a redundant but consistent constraint, and `-1` represents a contradiction. Because rollback is strictly LIFO, the parent of a merged root is still the root to which it was attached when that operation is undone.
+The `bad` counter is preferable to returning immediately from `add_constraint`. A contradictory equation must still occupy one history entry so that the rollback stack remains synchronized. The recursive function can skip a whole subtree once `bad` becomes nonzero, because adding further equations can never repair an already inconsistent system.
 
-The original tree's parent list is read and discarded. This is intentional, not an omission. Once the values (h_v) are introduced, the original tree only provides the bijection between edge weights and vertex values.
+Python integers do not overflow, and every modular multiplication is performed after the exponentiation and boundary count are known. The exponentiation uses Python's built-in modular `pow`, which computes (2^{c-1}\bmod998244353) efficiently.
 
 ## Worked Examples
 
@@ -347,18 +388,20 @@ The input is
 1 3
 ```
 
-The query graph is a triangle, so it has one connected component. Every consistent boundary contributes (2^{1-1}=1).
+The endpoint graph is a triangle, so it has one connected component. The multiplicative factor is consequently (2^{1-1}=1).
 
-| Boundary (k) | Query parities | Cycle XOR | Consistent | Contribution |
-| --- | --- | --- | --- | --- |
-| 0 | 111 | 1 | No | 0 |
-| 1 | 011 | 0 | Yes | 1 |
-| 2 | 001 | 1 | No | 0 |
-| 3 | 000 | 0 | Yes | 1 |
+There are four possible boundaries.
 
-The valid boundaries are (k=1) and (k=3), giving an answer of (2).
+| Boundary (k) | Required path XORs | Cycle XOR | Consistent |
+| --- | --- | --- | --- |
+| 0 | 111 | (1\oplus1\oplus1=1) | No |
+| 1 | 011 | (0\oplus1\oplus1=0) | Yes |
+| 2 | 001 | (0\oplus0\oplus1=1) | No |
+| 3 | 000 | (0\oplus0\oplus0=0) | Yes |
 
-This example demonstrates why the constraints cannot be checked independently. The three query edges form a cycle, and the XOR of their required parities must be zero.
+The valid boundaries are (k=1) and (k=3), so there are two valid edge assignments in total.
+
+The example demonstrates why we must consider every boundary, including (k=m). It also shows why simply checking whether the endpoint graph is connected is not enough. The actual parity around its cycle determines which boundaries work.
 
 ### Sample 2
 
@@ -373,156 +416,250 @@ The input is
 1 4
 ```
 
-The query graph is a four-cycle and again has one connected component.
+The endpoint graph is a four-cycle, again with one connected component. Its only cycle contains all four edges.
 
-| Boundary (k) | Query parities | Cycle XOR | Consistent | Contribution |
-| --- | --- | --- | --- | --- |
-| 0 | 1111 | 0 | Yes | 1 |
-| 1 | 0111 | 1 | No | 0 |
-| 2 | 0011 | 0 | Yes | 1 |
-| 3 | 0001 | 1 | No | 0 |
-| 4 | 0000 | 0 | Yes | 1 |
+| Boundary (k) | Required path XORs | Cycle XOR | Consistent |
+| --- | --- | --- | --- |
+| 0 | 1111 | (4\bmod2=0) | Yes |
+| 1 | 0111 | (3\bmod2=1) | No |
+| 2 | 0011 | (2\bmod2=0) | Yes |
+| 3 | 0001 | (1\bmod2=1) | No |
+| 4 | 0000 | (0\bmod2=0) | Yes |
 
-The three consistent boundaries contribute one assignment each, so the result is (3).
+There are three valid boundaries, and the component factor is (1), so the answer is (3).
 
-The trace also shows why the two extreme boundaries must be included. Both the all-zero and all-one query sequences are valid here.
+This trace demonstrates why valid boundaries do not have to form one continuous interval. Here (k=0,2,4) work while (k=1,3) fail. That is precisely why a simple binary search or a two-pointer sweep cannot replace the divide-and-conquer consistency checks.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O((n+m)\alpha(n)+m\log m\log n)) | Every query constraint is inserted into (O(\log m)) divide-and-conquer states, and rollback DSU operations cost (O(\log n)) with union by size |
-| Space | (O(n+m)) | Query arrays, two DSUs, recursion state, and rollback history |
+| Time | (O((n+m)\log m)) | The endpoint graph is built once, and every selected pair participates in (O(\log m)) rollback-DSU additions |
+| Space | (O(n+m)) | The selected pairs, DSU arrays, and rollback history all use linear space |
 
-The largest input has (250,000) vertices and (250,000) queries. The algorithm never performs a full graph traversal for every boundary. Instead, each query participates in only logarithmically many recursive states, which is the reduction that makes the problem tractable. The official editorial gives the same rollback-DSU divide-and-conquer formulation and also describes a more optimized (O(m\log m)) implementation based on explicit graph compression.
+At (n,m\le250000), the logarithmic factor is about 18, so every selected pair is processed only a small number of times. The algorithm never walks along an original tree path, which is the main reason the large value of (n) is manageable. The official analysis gives the same divide-and-conquer direction and (O(m\log m)) target for the parity consistency checks.
 
 ## Test Cases
 
-The following harness assumes that the solution above is saved as `solution.py`. The maximum-size case uses a query graph that is itself a tree, which deliberately exercises the worst case for the rollback traversal because every boundary is consistent.
+The following test harness contains the three official samples and four additional cases. The maximum-size case deliberately repeats one path, which keeps its expected answer easy to derive while forcing the implementation to process (250000) constraints.
 
-```
+```python
+import sys
 import io
-import contextlib
-import solution as sol
+
+MOD = 998244353
+
+def solve_data(data: str) -> str:
+    it = iter(map(int, data.split()))
+
+    n = next(it)
+    m = next(it)
+
+    # Consume the original tree.
+    for _ in range(n - 1):
+        next(it)
+
+    edges = [(next(it) - 1, next(it) - 1) for _ in range(m)]
+
+    # Number of connected components in the endpoint graph.
+    base_parent = list(range(n))
+    base_size = [1] * n
+    components = n
+
+    def find_base(x):
+        while base_parent[x] != x:
+            base_parent[x] = base_parent[base_parent[x]]
+            x = base_parent[x]
+        return x
+
+    for u, v in edges:
+        ru = find_base(u)
+        rv = find_base(v)
+        if ru != rv:
+            if base_size[ru] < base_size[rv]:
+                ru, rv = rv, ru
+            base_parent[rv] = ru
+            base_size[ru] += base_size[rv]
+            components -= 1
+
+    parent = list(range(n))
+    size = [1] * n
+    parity = [0] * n
+
+    BITS = 18
+    MASK = (1 << BITS) - 1
+    history = []
+    bad = 0
+
+    def find(x):
+        xr = 0
+        while parent[x] != x:
+            xr ^= parity[x]
+            x = parent[x]
+        return (x << 1) | xr
+
+    def add(u, v, w):
+        nonlocal bad
+
+        a = find(u)
+        b = find(v)
+
+        ru = a >> 1
+        xu = a & 1
+        rv = b >> 1
+        xv = b & 1
+
+        if ru == rv:
+            history.append(-1)
+            if (xu ^ xv) != w:
+                bad += 1
+            return
+
+        need = xu ^ xv ^ w
+
+        if size[ru] < size[rv]:
+            ru, rv = rv, ru
+
+        history.append((size[ru] << BITS) | rv)
+        parent[rv] = ru
+        parity[rv] = need
+        size[ru] += size[rv]
+
+    def rollback(snap):
+        nonlocal bad
+
+        while len(history) > snap:
+            item = history.pop()
+            if item == -1:
+                bad -= 1
+            else:
+                rv = item & MASK
+                old_size = item >> BITS
+                ru = parent[rv]
+                parent[rv] = rv
+                parity[rv] = 0
+                size[ru] = old_size
+
+    valid = 0
+
+    def divide(l, r):
+        nonlocal valid
+
+        if bad:
+            return
+
+        if l == r:
+            valid += 1
+            return
+
+        mid = (l + r) >> 1
+
+        snap = len(history)
+        for i in range(mid + 1, r + 1):
+            u, v = edges[i - 1]
+            add(u, v, 1)
+
+        divide(l, mid)
+        rollback(snap)
+
+        if bad:
+            return
+
+        snap = len(history)
+        for i in range(l, mid + 1):
+            u, v = edges[i - 1]
+            add(u, v, 0)
+
+        divide(mid + 1, r)
+        rollback(snap)
+
+    divide(0, m)
+
+    return str(valid * pow(2, components - 1, MOD) % MOD)
 
 def run(inp: str) -> str:
-    old_input = sol.input
-    output = io.StringIO()
+    return solve_data(inp).strip()
 
-    sol.input = io.StringIO(inp).readline
-
-    try:
-        with contextlib.redirect_stdout(output):
-            sol.solve()
-    finally:
-        sol.input = old_input
-
-    return output.getvalue().strip()
-
-# Sample 1
-assert run(
-    """\
+# Provided samples.
+assert run("""\
 3 3
-1 2
 1 2
 1 2
 2 3
 1 3
-"""
-) == "2", "sample 1"
+""") == "2", "sample 1"
 
-# Sample 2
-assert run(
-    """\
+assert run("""\
 4 4
 1 1 1
 1 2
 2 3
 3 4
 1 4
-"""
-) == "3", "sample 2"
+""") == "3", "sample 2"
 
-# Sample 3
-assert run(
-    """\
+assert run("""\
 4 2
 1 2 3
 1 2
 3 4
-"""
-) == "6", "sample 3"
+""") == "6", "sample 3"
 
-# Minimum-size input.
-# Two identical query edges form a 2-cycle.
-# Only 00 and 11 are possible.
-assert run(
-    """\
+# Minimum-size case. Both paths are identical, so 01 is impossible.
+assert run("""\
 2 2
 1
 1 2
 1 2
-"""
-) == "2", "minimum size with duplicate constraints"
+""") == "2", "minimum size and repeated path"
 
-# A query graph that is a tree has no cycle constraints.
-# Every boundary is valid, so there are m+1 = 3 valid boundaries.
-assert run(
-    """\
-3 2
+# A forest of endpoint constraints. Every boundary is consistent.
+# There are three boundaries and two connected components.
+assert run("""\
+4 2
+1 2 3
 1 2
-1 2
-1 3
-"""
-) == "3", "all boundaries valid"
+3 4
+""") == "6", "all boundaries and disconnected graph"
 
-# Triangle plus one isolated vertex.
-# Valid boundaries are k=1 and k=3.
-# The query graph has two components, so each valid boundary
-# contributes 2^(2-1) = 2.
-assert run(
-    """\
-4 3
-1 1 1
+# Parallel edges form a two-edge cycle.
+# Constraints at positions 3 and 4 must have equal parity.
+# Valid boundaries are 0, 1, 2, and 4, giving 4 * 2 = 8.
+assert run("""\
+5 4
+1 2 3 4
 1 2
 2 3
-1 3
-"""
-) == "4", "cycle parity and isolated vertex"
+4 5
+4 5
+""") == "8", "parallel-edge parity cycle"
 
 # Maximum-size stress case.
-# The query graph is a tree:
-# 1-2, 2-3, ..., 249999-250000.
-# There are 250000 valid boundaries and exactly one query component,
-# so each contributes one assignment.
+# Every selected path is the same edge, so all path XORs are equal.
+# Only the all-zero and all-one sequences are possible.
 n = 250000
-m = 249999
+m = 250000
+parts = [f"{n} {m}", " ".join(str(i) for i in range(1, n))]
+parts.extend(["1 2"] * m)
+max_input = "\n".join(parts) + "\n"
 
-parents = " ".join(["1"] * (n - 1))
-queries = "\n".join(
-    f"{i} {i + 1}"
-    for i in range(1, n)
-)
+assert run(max_input) == "2", "maximum-size repeated-path case"
 
-maximum_input = (
-    f"{n} {m}\n"
-    f"{parents}\n"
-    f"{queries}\n"
-)
-
-assert run(maximum_input) == "250000", "maximum-size tree query graph"
+print("all tests passed")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 2` with two copies of `1 2` | `2` | Minimum size and repeated constraints |
-| `3 2` with query edges `1 2`, `1 3` | `3` | Acyclic query graph and all (m+1) boundaries |
-| `4 3` with a triangle | `4` | Cycle parity, isolated vertex, and component factor |
-| (n=250000,m=249999) with a chain of query edges | `250000` | Maximum-size input and worst-case consistent traversal |
+| (n=2,m=2), two copies of ((1,2)) | 2 | Minimum size, duplicate constraints, (k=0) and (k=m) |
+| (n=4,m=2), disjoint pairs | 6 | Disconnected endpoint graph and all three boundaries |
+| (n=5,m=4), duplicate pair at positions 3 and 4 | 8 | Parallel-edge parity cycle and nontrivial component factor |
+| (n=m=250000), every pair ((1,2)) | 2 | Maximum input size and repeated constraints |
 
 ## Edge Cases
 
-The duplicate-edge case
+### Both extreme boundaries
+
+Consider
 
 ```
 2 2
@@ -531,29 +668,72 @@ The duplicate-edge case
 1 2
 ```
 
-has two query constraints on the same pair of vertices. For (k=0), both constraints require (h_1\oplus h_2=1), which is consistent. For (k=1), the constraints become (0,1), which contradict each other. For (k=2), both require zero. The rollback DSU detects the middle contradiction when the two copies become simultaneously active with different parity, and the answer is (1+1=2).
+At (k=0), both constraints have parity (1), so the equations are
 
-The extreme-boundary case
+[
+h_1\oplus h_2=1,\qquad h_1\oplus h_2=1,
+]
+
+which are consistent. At (k=1), the required parities are (0,1), which contradict the fact that both pairs are identical. At (k=2), both parities are (0), which is again consistent.
+
+The divide-and-conquer leaves for (k=0,1,2) consequently produce the states valid, invalid, valid. The endpoint graph has one component, so each valid boundary contributes (2^{1-1}=1), giving the answer (2).
+
+### Disconnected endpoint graph
+
+Consider
 
 ```
-3 2
+4 2
+1 2 3
 1 2
+3 4
+```
+
+The endpoint graph has components ({1,2}) and ({3,4}), so (c=2). There are no cycles, meaning every parity assignment is consistent. The three monotone sequences are (00), (01), and (11), so there are three valid boundaries.
+
+For each boundary, (h_1) is fixed to zero, but the component containing vertices (3,4) can be flipped independently. Hence every boundary contributes (2^{2-1}=2), producing (3\cdot2=6).
+
+The original tree is still connected, but that is irrelevant. The multiplicity is determined by the endpoint graph created by the selected pairs.
+
+### Repeated paths
+
+Consider
+
+```
+5 4
+1 2 3 4
 1 2
+2 3
+4 5
+4 5
+```
+
+The last two constraints use exactly the same pair. They form a two-edge cycle in the endpoint graph. A parity system on those two edges is consistent precisely when their required parities are equal.
+
+For (k=0,1,2), both positions 3 and 4 are on the (1)-side, so they agree. For (k=3), their required parities are (1,0), so the two identical equations contradict each other. For (k=4), both are (0), so they agree again.
+
+Thus four boundaries are valid. The endpoint graph has two connected components, giving two assignments per boundary and a final answer of (8).
+
+The rollback DSU catches the contradiction when the second copy of the pair is added with the opposite parity. Because the contradiction is stored in the rollback history, returning from that branch restores exactly the previous consistent state.
+
+### The original tree is irrelevant after reparameterization
+
+Consider any tree on four vertices, for example
+
+```
+4 2
+1 1 3
+1 4
 2 3
 ```
 
-has a query graph consisting of two independent edges. There is no cycle, so every assignment of the two query parities is realizable. The three monotone sequences are (00), (01), and (11), corresponding to (k=2,1,0). The query graph is connected, so each boundary contributes one assignment, giving (3). The recursion explicitly contains both leaves (k=0) and (k=m), so neither extreme is lost.
+The root-to-vertex XOR values (h_v) completely describe the original edge assignment. For every original tree edge, its weight is the XOR of the (h)-values at its endpoints. The selected path XORs are then determined only by the endpoint pairs:
 
-The isolated-vertex case
+[
+s_1=h_1\oplus h_4,\qquad
+s_2=h_2\oplus h_3.
+]
 
-```
-4 3
-1 1 1
-1 2
-2 3
-1 3
-```
+Changing the shape of the original tree changes how the (h)-values translate back into edge weights, but it does not change the number of possible (h)-assignments. Consequently, the algorithm correctly reads the tree description and then never traverses it.
 
-has a triangle on vertices (1,2,3) and an isolated vertex (4). The triangle allows boundaries (k=1) and (k=3). The fourth vertex belongs to a separate component, so after fixing the root component there is one additional free bit. Each valid boundary consequently contributes (2), giving (4). This is why the component count must be taken over all (n) vertices, not only vertices that occur in queries.
-
-The maximum-size chain has no cycles at all. Its query graph contains all (250,000) vertices in one connected component and (249,999) edges, so every one of the (250,000) possible boundaries is consistent. Since there is only one connected component, each boundary corresponds to exactly one vertex labeling, and the final answer is (250,000). This case exercises the branch where the rollback DSU cannot prune contradictions and must process essentially the full divide-and-conquer workload.
+This is the conceptual step that turns a problem that initially looks like path processing on a large tree into a parity-constraint problem on an arbitrary graph. Once that transformation is made, the rest of the solution is an offline consistency problem over the (m+1) possible monotone boundaries.
