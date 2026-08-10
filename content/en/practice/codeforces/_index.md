@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3096 contests, 22780 problems, 12596 verified."
+description: "Codeforces problem solutions with full editorials. 3097 contests, 22781 problems, 12597 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3096 contests, 22780 problems, 12596 verified.**
+**3097 contests, 22781 problems, 12597 verified.**
 
-## Unknown — 809 contests, 6784 problems, 3989 verified
+## Unknown — 810 contests, 6785 problems, 3990 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102420](102420/) | [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420) | 1 | 1/1 | Special | - |
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 2 | 2/2 | ICPC/IOI | - |
 | [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 3 | 3/3 | Div. 1 | - |
 | [102437](102437/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437) | 7 | 4/7 | Special | - |
