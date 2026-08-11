@@ -1,7 +1,7 @@
 ---
 title: "CF 102407E - \u0421\u0442\u0440\u0430\u043d\u043d\u0430\u044f \u0438\u0433\u0440\u0430 \u043d\u0430 \u0433\u0440\u0430\u0444\u0435"
-description: "The graph is undirected, and every original edge is an object that can be erased. Arthur starts by erasing any edge. After that, the next player must erase an edge sharing at least one endpoint with the previously erased edge. An erased edge can never be used again."
-date: "2026-08-11T05:55:19+07:00"
+description: "The board is an undirected simple graph. A move does not remove a vertex, it removes an edge, and the next move has to use an edge sharing an endpoint with the edge removed immediately before it. An edge can be used only once because it disappears after being selected."
+date: "2026-08-11T16:14:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102407
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0412\u0442\u043e\u0440\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102407
-solve_time_s: 240
-verified: false
+solve_time_s: 148
+verified: true
 draft: false
 ---
 
@@ -18,105 +18,83 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m  
-**Verified:** no  
+**Solve time:** 2m 28s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The graph is undirected, and every original edge is an object that can be erased. Arthur starts by erasing any edge. After that, the next player must erase an edge sharing at least one endpoint with the previously erased edge. An erased edge can never be used again. A player with no legal edge to erase loses.
+The board is an undirected simple graph. A move does not remove a vertex, it removes an edge, and the next move has to use an edge sharing an endpoint with the edge removed immediately before it. An edge can be used only once because it disappears after being selected.
 
-The key detail is that the game is played on edges, but the adjacency relation between game objects is exactly the adjacency relation in the line graph of the original graph. In the line graph, every original edge becomes a vertex, and two such vertices are adjacent when the corresponding original edges have a common endpoint. The first move is special because Arthur may choose any vertex of this line graph, after which the usual game of moving to an unvisited adjacent vertex begins.
+A useful way to reinterpret the game is to forget the original vertices for a moment. Create a new graph whose vertices are the original edges. Connect two new vertices exactly when the corresponding original edges share an endpoint. This is the **line graph** of the original graph. The game is now the following: the first player chooses any vertex of the line graph, and every subsequent move chooses an unused adjacent vertex. This is the undirected vertex version of Geography. The first player wins if they can choose the initial vertex so that optimal play eventually leaves the second player without a move. The matching characterization of this game says that the second player wins from every possible starting vertex exactly when the line graph has a perfect matching.
 
-The input contains up to \(10^4\) vertices and \(10^4\) edges. The official contest limits are 2 seconds and 512 MB. citeturn5search0 An algorithm quadratic in \(m\) might still be usable in some languages, but the structure of the problem allows a linear solution, so there is no reason to construct the line graph explicitly. A brute-force search is completely infeasible because the number of possible play sequences can be factorial in \(m\).
+The input contains at most (10^4) original vertices and (10^4) original edges. The official limits are 2 seconds and 512 MB. A direct construction of the line graph is already suspicious because a single high-degree vertex in the original graph creates a clique containing all of its incident edges. With (10^4) edges, that clique can contain nearly (10^4) vertices and around (5\cdot10^7) adjacency pairs. More importantly, brute-force game search is exponential or worse, so the intended solution has to exploit the structure of the line graph rather than enumerate game states.
 
-There are several cases that easily fool a parity-only implementation. With a single edge, for example,
+There are several edge cases that expose common incorrect interpretations. First, the parity of the **total** number of edges is not enough. Consider
 
-```text
-2 1
-1 2
 ```
-
-the correct answer is `YES`. Arthur erases the only edge and his opponent immediately has no move. Looking only at whether the total number of edges is even would miss this.
-
-Disconnected graphs are another source of mistakes. Consider
-
-```text
 4 2
 1 2
 3 4
 ```
 
-The correct answer is `YES`. Each connected component contains one edge, so Arthur chooses an edge from either component and the game ends immediately. A careless solution that checks only the parity of the total number of edges would incorrectly output `NO`, because the total is two.
+The total number of edges is 2, but each connected component contains one edge. The two edges are not adjacent, so after the first player chooses either one, the second player has no move. The answer is `YES`. A solution checking only `m % 2` would incorrectly print `NO`.
 
-The opposite situation is
+Second, isolated vertices have no effect. For
 
-```text
-6 4
+```
+4 1
 1 2
-2 3
-4 5
-5 6
 ```
 
-where each connected component contains two edges. The correct answer is `NO`. Each component of the corresponding line graph has an even number of vertices and admits a perfect matching, which gives the second player a pairing strategy. Counting only whether there is an even total number of edges would again give the wrong conclusion.
+vertices 3 and 4 cannot participate in any move. The only edge forms a one-vertex component in the line graph, so Arthur wins immediately and the answer is `YES`. Counting vertices instead of edges, or requiring every original vertex to belong to a nontrivial component, would give the wrong result.
+
+Third, a connected component with an even number of edges gives the opposite outcome. For
+
+```
+4 3
+1 2
+1 3
+1 4
+```
+
+the three original edges are all mutually adjacent, so the line graph is (K_3). Arthur chooses one edge, his opponent chooses another, and Arthur chooses the last one, so Arthur wins. The answer is `YES`. A careless argument based only on the fact that every connected component is connected would miss the parity of its edge count.
 
 ## Approaches
 
-A direct solution can treat every possible game position as a state. From the last erased edge, enumerate all still available adjacent edges, erase one of them, and recursively determine whether the opponent can win. Since every edge is erased at most once, the recursion is finite and the minimax result is correct.
+The brute-force approach is to treat the current erased edge and the set of already erased edges as the complete game state. For every legal next edge, recursively determine whether the opponent can win, and declare the current state winning if at least one move leads to a losing state for the opponent. This is correct because the game is finite and every possible continuation is considered.
 
-The problem is the number of states. Take a complete original graph with \(m\) edges. Its line graph is also complete, so essentially every ordering of distinct edges is a legal play sequence. The search tree then has \(\Theta(m!)\) leaves and exponentially more total nodes. With \(m\) as large as \(10^4\), even an extremely optimistic interpretation of factorial growth makes this approach unusable.
+The problem is the number of continuations. Take an original star with (m) edges. Every two edges of the star share its center, so its line graph is (K_m). After the first edge is selected, any remaining edge is legal, then any remaining edge after that, and so on. The recursion can consequently examine on the order of (m!) different play sequences. With (m) close to (10^4), this is completely infeasible. Even memoization does not make the general state space practical, because a state is essentially a subset of used edges together with the current edge, giving (O(m2^m)) possible states.
 
-The useful observation is that the game is not an arbitrary game on edges. It is vertex geography on the line graph of the original graph. For undirected vertex geography, maximum matchings determine the winner. We only need a particularly simple consequence of that theorem.
+The key observation is that this particular undirected game has a matching characterization. In undirected vertex Geography, a graph with a perfect matching gives the second player a simple response strategy. Whenever the first player enters a vertex, the second player moves to its partner in the fixed perfect matching. Conversely, if a maximum matching leaves some vertex unmatched, the first player can start there and use the matching edges as a response strategy. If the strategy ever failed because an unmatched vertex became reachable at the wrong time, the alternating path would be an augmenting path, contradicting maximality of the matching. This is the standard matching characterization of undirected vertex Geography.
 
-Suppose the line graph \(H\) has a perfect matching. After Arthur chooses any vertex \(v\), the second player answers with the unique vertex paired with \(v\). Whenever Arthur later chooses some vertex, its matched partner has not been chosen before, because otherwise that pair would already have been used. The second player can keep responding this way until Arthur has no move. Thus a perfect matching gives the second player a winning strategy. The general matching characterization of undirected vertex geography is consistent with this pairing strategy. citeturn1search0turn1search17
+Our first player is allowed to choose the starting vertex freely. Consequently, the line graph is losing for the first player exactly when it has a perfect matching. We therefore only need to decide whether the line graph of the given graph has a perfect matching.
 
-Now suppose \(H\) has no perfect matching. of \(M\) without creating an augmenting path for \(M\), contradicting its maximality. Arthur can consequently answer every opponent move by taking its matching partner in \(M\). Hence Arthur wins.
+There is another structural simplification. Consider one connected component of the original graph containing (k) edges. Its line graph is connected and has exactly (k) vertices. A connected line graph with an even number of vertices always has a perfect matching. Equivalently, the edges of every connected graph with an even number of edges can be partitioned into pairs such that the two edges in each pair share a vertex. This is a standard property of line graphs.
 
-So the original game has a remarkably clean characterization:
+The converse is immediate because a perfect matching can exist only in a graph with an even number of vertices. Thus a connected component of the original graph produces a perfectly matchable component of the line graph exactly when its number of original edges is even.
 
-\[
-\text{Arthur wins} \iff H\text{ has no perfect matching}.
-\]
-
-We still have to avoid explicitly constructing \(H\). This is where the fact that \(H\) is a line graph becomes decisive.
-
-A connected component of the original graph containing \(k\) edges becomes a connected component of the line graph containing exactly \(k\) vertices. A connected line graph with an even number of vertices always has a perfect matching. Equivalently, the edges of a connected graph with an even number of edges can be partitioned into pairs of adjacent edges. This is a standard consequence of the perfect-matching theorem for connected claw-free graphs, since every line graph is claw-free. citeturn6search0turn7search12
-
-There obtained from any orientation by repeatedly reversing a path between two vertices with odd outdegree. Once every outdegree is even, pair the outgoing edges at every vertex. Every pair consists of two original edges sharing that vertex, and all edges belong to exactly one pair. Each pair becomes one matching edge in the line graph.
-
-If a connected component of the original graph contains an odd number of edges, its corresponding line-graph component has an odd number of vertices, so it cannot have a perfect matching.
-
-Consequently, the whole line graph has a perfect matching exactly when every nontrivial connected component of the original graph contains an even number of edges. Arthur wins exactly when at least one connected component contains an odd number of edges.
-
-The entire problem has thus been reduced to finding the number of edges in every connected component.
+So the entire game reduces to a very simple condition: Arthur loses exactly when **every connected component of the original graph contains an even number of edges**. If at least one connected component has an odd number of edges, its line-graph component has odd size and no perfect matching, giving Arthur a winning starting edge.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-|---|---|---|---|
-| Brute Force | \(\Theta(m!)\) leaves in the worst case | \(O(m)\) recursion state, ignoring the search tree | Too slow |
-| Optimal | \(O(n+m)\) | \(O(n+m)\) | Accepted |
+| --- | --- | --- | --- |
+| Brute Force | (O(m!)) | (O(m)) recursion depth | Too slow |
+| Optimal | (O(n+m)) | (O(n)) | Accepted |
+
+The optimal algorithm does not need to construct the line graph and does not need to know the actual winning sequence of erased edges. It only needs the parity of the number of edges in each connected component.
 
 ## Algorithm Walkthrough
 
-1. Build an adjacency list of the original undirected graph. We only need the original graph because constructing its line graph could create far more than \(m\) edges when some vertex has high degree.
-
-2. Run a DFS or BFS over the original vertices. For every connected component, accumulate the sum of the degrees of all its vertices.
-
-3. Divide the accumulated degree sum by two to obtain the number of original edges in that component. Every internal edge contributes exactly two to the degree sum, once at each endpoint.
-
-4. Ignore isolated vertices. Their components contain zero edges, which is even and cannot affect the game.
-
-5. If any component has an odd number of edges, print `YES`. Its line-graph component has an odd number of vertices, so the whole line graph has no perfect matching. Arthur can choose a vertex left unmatched by a maximum matching and use the matching strategy to win.
-
-6. If every component has an even number of edges, print `NO`. Every corresponding line-graph component has a perfect matching, and the union of those matchings is a perfect matching of the entire line graph. The second player can pair every move with its matching partner.
+1. Build the connected components of the original graph with a Disjoint Set Union structure. For every input edge ((u,v)), unite (u) and (v). The only information needed from the component structure is which component contains each edge.
+2. After all unions are finished, scan the original edges once more. For an edge ((u,v)), find the representative of (u), which is also the representative of (v), and increment the edge count of that component. Counting edges after all unions avoids any dependence on the order in which the input edges appeared.
+3. Check every component that contains at least one edge. If its edge count is odd, print `YES`. Such a component produces a line-graph component with an odd number of vertices, so that component cannot have a perfect matching. Arthur can start with an edge from it and has a winning strategy.
+4. If every nonempty component has an even number of edges, print `NO`. Each corresponding line-graph component has an even number of vertices and therefore has a perfect matching. The disjoint union of these perfect matchings is a perfect matching of the entire line graph, so the second player can answer every initial choice using the matching strategy.
 
 ### Why it works
 
-The central invariant is the existence of a matching that pairs game positions. If the line graph has a perfect matching, every vertex belongs to exactly one pair, so after Arthur chooses the first edge, his opponent can always erase the paired edge. The same response works after every later move, and Arthur is the first player who eventually has no legal move.
+The central invariant is the correspondence between the original graph's connected components and the line graph's connected components. Two original edges can be connected through a sequence of adjacent original edges exactly when they belong to the same connected component, so no game move can cross from one original component to another.
 
-If the line graph has no perfect matching, a maximum matching leaves at least one vertex unmatched. Arthur starts with such a vertex. If the opponent could eventually reach another unmatched vertex while Arthur always responds along matching edges, the resulting alternating sequence would form an augmenting path, contradicting the maximality of the matching. Thus Arthur can maintain the response strategy and wins.
-
-For a connected component of the original graph, its line graph has exactly as many vertices as the original graph has edges. An even-sized connected line graph has a perfect matching, while an odd-sized component cannot have one. Hence the entire game is losing for Arthur exactly when every original connected component has an even number of edges.
+Inside one connected component with (k) edges, the line graph has (k) vertices. If (k) is odd, it cannot have a perfect matching, so the free-start undirected Geography game on that component is winning for the first player. If (k) is even, the line graph has a perfect matching, so the second player can always reply along the matching edge. The global line graph has a perfect matching precisely when every nonempty original component has an even edge count. Hence the algorithm prints `YES` exactly when Arthur has a winning component to start in.
 
 ## Python Solution
 
@@ -127,37 +105,43 @@ input = sys.stdin.readline
 def solve():
     n, m = map(int, input().split())
 
-    graph = [[] for _ in range(n)]
+    parent = list(range(n))
+    size = [1] * n
+    edges = []
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        a = find(a)
+        b = find(b)
+        if a == b:
+            return
+
+        if size[a] < size[b]:
+            a, b = b, a
+
+        parent[b] = a
+        size[a] += size[b]
 
     for _ in range(m):
         u, v = map(int, input().split())
         u -= 1
         v -= 1
-        graph[u].append(v)
-        graph[v].append(u)
+        edges.append((u, v))
+        union(u, v)
 
-    visited = [False] * n
+    edge_count = [0] * n
 
-    for start in range(n):
-        if visited[start]:
-            continue
+    for u, _ in edges:
+        root = find(u)
+        edge_count[root] += 1
 
-        stack = [start]
-        visited[start] = True
-        degree_sum = 0
-
-        while stack:
-            v = stack.pop()
-            degree_sum += len(graph[v])
-
-            for to in graph[v]:
-                if not visited[to]:
-                    visited[to] = True
-                    stack.append(to)
-
-        edges_in_component = degree_sum // 2
-
-        if edges_in_component % 2 == 1:
+    for v in range(n):
+        if edge_count[v] % 2 == 1:
             print("YES")
             return
 
@@ -167,110 +151,128 @@ if __name__ == "__main__":
     solve()
 ```
 
-The input is stored as an adjacency list. Each undirected edge is inserted twice, so when the DFS visits a component, the total length of all adjacency lists in that component is exactly twice its number of edges.
+The first loop stores every edge and joins its endpoints in the DSU. Path compression in `find` and union by component size make the total DSU work effectively linear for these constraints.
 
-The `visited` array guarantees that every vertex belongs to exactly one DFS traversal. Isolated vertices produce a degree sum of zero and are harmless.
+The second loop counts edges by their final component representative. Using the first endpoint is sufficient because every edge was already united, so both endpoints belong to the same DSU component. We deliberately perform this counting after all unions. If it were done while reading the input, an edge could initially be assigned to a representative that later gets merged into another component.
 
-The division by two is exact because the input graph has no loops. A loop would contribute differently to a degree sum, but loops are explicitly forbidden. Multiple edges are also forbidden, although the argument itself would not need their absence.
+The final loop checks parity only at DSU representatives that have a nonzero count. Non-representatives have count zero because every edge is assigned using its final representative. Isolated vertices also have count zero, which correctly makes them irrelevant to the game.
 
-The parity check is performed immediately after finishing a component. As soon as an odd component is found, the answer is known and the function returns without processing the remaining vertices.
-
-Python integers have no overflow issue here, and the largest possible degree sum is only \(2m\), at most \(2\cdot10^4\).
+There is no integer-overflow issue in Python, and the largest possible component count is only (10^4). The indexing is converted from the problem's one-based vertices to zero-based Python arrays immediately, so the DSU has exactly (n) elements.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input graph is
+The graph is
 
-```text
-1 -- 2 -- 3
-     |
-     4
-     |
-     5 -- 6
+```
+7 5
+1 2
+5 1
+5 6
+3 2
+2 4
 ```
 
-More precisely, the five edges form one connected tree. The DFS therefore sees all five edges in a single component.
+All five edges belong to the same connected component. The DSU operations merge all vertices that appear in the graph, and the final edge count of that component is 5.
 
-| Component | Degree sum | Number of edges | Parity | Answer |
-|---|---:|---:|---|---|
-| `{1,2,3,4,5,6}` | 10 | 5 | odd | YES |
+| Component representative | Edge count | Parity | Decision |
+| --- | --- | --- | --- |
+| component containing 1 | 5 | odd | `YES` |
 
-The component has five edges, so its line graph has five vertices. No graph with an odd number of vertices can have a perfect matching. Arthur can exploit a maximum matching that leaves one line-graph vertex unmatched, so the answer is `YES`.
-
-This example also demonstrates why checking only individual vertex degrees would not work. The tree contains several vertices of different degrees, but the decisive quantity is the number of edges in the connected component.
+The corresponding line graph has five vertices. Since its number of vertices is odd, it cannot have a perfect matching. Arthur can choose an edge in this component as his first move and force a win. This matches the sample output `YES`.
 
 ### Sample 2
 
-The graph is a path with two edges.
+The graph is
 
-| Component | Degree sum | Number of edges | Parity | Answer |
-|---|---:|---:|---|---|
-| `{1,2,3}` | 4 | 2 | even | NO |
+```
+3 2
+1 2
+2 3
+```
 
-The line graph is a path with two vertices. Those two vertices form a perfect matching. Arthur must choose one of them first, and the second player chooses the other one immediately. Arthur then has no move.
+Both edges belong to the same connected component, whose edge count is 2.
 
-The trace demonstrates why the initial move must be handled carefully. Arthur does not start from a predetermined graph vertex. His first action chooses a game vertex, and a perfect matching gives the second player the exact response to that first choice.
+| Component representative | Edge count | Parity | Decision |
+| --- | --- | --- | --- |
+| component containing 1 | 2 | even | continue |
+| all components | even | even | `NO` |
+
+The two original edges share vertex 2, so the line graph contains two adjacent vertices. The first player selects one, and the second player selects the other. The first player then has no move. Thus Arthur loses and the answer is `NO`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-|---|---|---|
-| Time | \(O(n+m)\) | Every vertex is visited once and every adjacency-list entry is processed once. |
-| Space | \(O(n+m)\) | The adjacency list and the DFS state use linear memory. |
+| --- | --- | --- |
+| Time | (O(n+m)) | DSU operations and the two linear scans over vertices and edges |
+| Space | (O(n+m)) | DSU arrays plus storage for the original edges |
 
-With \(n,m\le10^4\), the algorithm performs only a constant amount of work per vertex and per edge. It does not construct the line graph, whose number of edges could be much larger than \(m\), and it does not perform any matching algorithm explicitly.
+With (n,m\le 10^4), this is comfortably inside the official 2-second and 512 MB limits. More significantly, the algorithm never constructs the potentially dense line graph and never explores game states.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys
 import io
 
-def solve_data(inp: str) -> str:
-    data = inp.split()
-    it = iter(data)
+def solve():
+    input = sys.stdin.readline
 
-    n = int(next(it))
-    m = int(next(it))
+    n, m = map(int, input().split())
+    parent = list(range(n))
+    size = [1] * n
+    edges = []
 
-    graph = [[] for _ in range(n)]
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        a = find(a)
+        b = find(b)
+
+        if a == b:
+            return
+
+        if size[a] < size[b]:
+            a, b = b, a
+
+        parent[b] = a
+        size[a] += size[b]
 
     for _ in range(m):
-        u = int(next(it)) - 1
-        v = int(next(it)) - 1
-        graph[u].append(v)
-        graph[v].append(u)
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        edges.append((u, v))
+        union(u, v)
 
-    visited = [False] * n
+    edge_count = [0] * n
 
-    for start in range(n):
-        if visited[start]:
-            continue
+    for u, _ in edges:
+        edge_count[find(u)] += 1
 
-        stack = [start]
-        visited[start] = True
-        degree_sum = 0
-
-        while stack:
-            v = stack.pop()
-            degree_sum += len(graph[v])
-
-            for to in graph[v]:
-                if not visited[to]:
-                    visited[to] = True
-                    stack.append(to)
-
-        if (degree_sum // 2) % 2 == 1:
+    for count in edge_count:
+        if count % 2 == 1:
             return "YES"
 
     return "NO"
 
-# Provided sample 1
-assert solve_data(
-    """\
-7 5
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    sys.stdin = io.StringIO(inp)
+    try:
+        return solve()
+    finally:
+        sys.stdin = old_stdin
+
+# Provided samples
+assert run(
+    """7 5
 1 2
 5 1
 5 6
@@ -279,38 +281,33 @@ assert solve_data(
 """
 ) == "YES", "sample 1"
 
-# Provided sample 2
-assert solve_data(
-    """\
-3 2
+assert run(
+    """3 2
 1 2
 2 3
 """
 ) == "NO", "sample 2"
 
-# Minimum-size graph: one edge, so Arthur wins immediately.
-assert solve_data(
-    """\
-2 1
+# Minimum-size graph: one edge is an odd component.
+assert run(
+    """2 1
 1 2
 """
-) == "YES", "single edge"
+) == "YES", "minimum-size graph"
 
-# Two disconnected single-edge components.
-# Each component has one odd number of edges.
-assert solve_data(
-    """\
-4 2
+# Two separate one-edge components. Total m is even, but
+# each component is odd, so checking only m % 2 would fail.
+assert run(
+    """4 2
 1 2
 3 4
 """
-) == "YES", "two odd components"
+) == "YES", "disconnected odd components"
 
-# A star with four edges.
-# The whole connected component has an even number of edges.
-assert solve_data(
-    """\
-5 4
+# Four edges incident to the same center. The line graph is K4,
+# which has a perfect matching.
+assert run(
+    """5 4
 1 2
 1 3
 1 4
@@ -318,60 +315,72 @@ assert solve_data(
 """
 ) == "NO", "even star"
 
-# Two separate paths, each containing two edges.
-# Every nontrivial component has an even number of edges.
-assert solve_data(
-    """\
-6 4
+# Three edges incident to the same center. The line graph is K3,
+# which has odd size and no perfect matching.
+assert run(
+    """4 3
 1 2
-2 3
-4 5
-5 6
+1 3
+1 4
 """
-) == "NO", "two even components"
+) == "YES", "odd star"
 
-# Maximum-size boundary case.
-# A path with 10000 vertices has 9999 edges, which is odd.
+# Maximum-size instance: n = m = 10000.
+# A path with 9999 edges plus edge (1, 3) has 10000 edges
+# and remains connected, so the answer is NO.
 n = 10000
-lines = [f"{n} {n - 1}"]
-for i in range(1, n):
-    lines.append(f"{i} {i + 1}")
+edges = [(i, i + 1) for i in range(1, n)]
+edges.append((1, 3))
 
-assert solve_data("\n".join(lines)) == "YES", "maximum-size odd component"
+inp = f"{n} {len(edges)}\n"
+inp += "\n".join(f"{u} {v}" for u, v in edges) + "\n"
+
+assert run(inp) == "NO", "maximum-size connected even-edge graph"
 ```
 
 | Test input | Expected output | What it validates |
-|---|---|---|
-| `2 1` with edge `1 2` | `YES` | Minimum-size case and the fact that one move can already win |
-| Two disconnected single edges | `YES` | Components must be considered separately |
-| Four-edge star | `NO` | An even connected component gives the second player a perfect matching |
-| Two paths of two edges | `NO` | Multiple even components still produce a global perfect matching |
-| Path on 10000 vertices | `YES` | Maximum-size input and an odd edge count near the constraint boundary |
+| --- | --- | --- |
+| `2 1 / 1 2` | `YES` | Minimum possible graph and odd component |
+| `4 2 / 1 2 / 3 4` | `YES` | Disconnected components and the fact that global edge parity is insufficient |
+| `5 4 / 1 2 / 1 3 / 1 4 / 1 5` | `NO` | Four mutually adjacent edges and an even component |
+| `4 3 / 1 2 / 1 3 / 1 4` | `YES` | Odd component with many adjacent edges |
+| `10000 10000` connected construction | `NO` | Maximum bounds and large connected component |
 
 ## Edge Cases
 
-The single-edge graph
+For the disconnected case
 
-```text
-2 1
-1 2
 ```
-
-has one connected component with degree sum \(2\), hence one edge. The component is odd, so the algorithm prints `YES`. This matches the game directly: Arthur erases the only available edge and the opponent cannot move.
-
-The disconnected graph
-
-```text
 4 2
 1 2
 3 4
 ```
 
-has two components, each with one edge. The DFS processes the first component, obtains degree sum \(2\), and immediately detects one odd edge count. The answer is `YES`. The existence of a second disconnected component does not help the opponent because the next move must be adjacent to the previously erased edge, so the game can never jump between components.
+the DSU produces two components. The first contains one edge and the second also contains one edge, so their counts are `1` and `1`. The algorithm encounters an odd count immediately and prints `YES`. This is exactly the situation where checking only the parity of `m` fails, because (1+1=2) is even while neither component has a perfect matching in its line graph.
 
-The four-edge star
+For isolated vertices, consider
 
-```text
+```
+4 1
+1 2
+```
+
+The DSU creates one component containing vertices 1 and 2 with one edge, while vertices 3 and 4 remain isolated with edge count zero. The nonzero component has odd size, so the algorithm prints `YES`. The zero-edge components do not matter because there is no edge to select from them and consequently no game position associated with them.
+
+For the odd star
+
+```
+4 3
+1 2
+1 3
+1 4
+```
+
+all three edges are in one component, so the edge count is 3. The line graph is (K_3). Arthur can erase any edge first, his opponent can erase one of the two remaining edges, and Arthur erases the last one. The algorithm prints `YES` without ever constructing that triangle.
+
+For the even star
+
+```
 5 4
 1 2
 1 3
@@ -379,29 +388,22 @@ The four-edge star
 1 5
 ```
 
-has one component with degree sum \(8\), giving four edges. Its line graph is \(K_4\), which has a perfect matching. Arthur chooses one game vertex, and the second player chooses its matched partner. The remaining two vertices are similarly paired, so Arthur eventually has no move. The algorithm correctly prints `NO`.
+the component contains four edges, and every pair of those edges is adjacent. The line graph is (K_4), whose perfect matching can pair the four vertices into two pairs. The second player can always answer the first player's chosen edge with its matching partner, so Arthur loses and the algorithm prints `NO`.
 
-The graph
+The most dangerous implementation mistake is to count edges before the DSU has finished merging components. For example,
 
-```text
-6 4
+```
+4 2
 1 2
 2 3
-4 5
-5 6
 ```
 
-contains two separate two-edge paths. Each component contributes an even number of edges, so each line-graph component has a perfect matching. Their union is a perfect matching of the entire line graph. The DFS finds edge counts \(2\) and \(2\), never sees an odd component, and prints `NO`.
+first joins 1 with 2, then joins 2 with 3. Both edges ultimately belong to one component, whose count is 2, so the answer is `NO`. Counting against stale representatives during input processing can split those two edges between temporary component IDs and produce the wrong parity. The solution avoids that by storing the edges and counting them only after all unions are complete.
 
-The maximum-size path contains \(9999\) edges:
+The final boundary case is a graph with (10^4) vertices and (10^4) edges. A connected construction is obtained from the path
 
-```text
-10000 9999
-1 2
-2 3
-...
-9999 10000
+```
+1-2-3-...-10000
 ```
 
-The graph is connected, so the DFS computes one degree sum of \(19998\), corresponding to \(9999\) edges. Since that number is odd, the algorithm prints `YES`. This case confirms that the implementation does not confuse the number of vertices with the number of edges, which is the central parity distinction in the problem.
-:::
+with one extra edge `1 3`. It has exactly 10000 edges, all in one connected component, so the component parity is even and the answer is `NO`. The DSU processes the entire instance with the same linear structure as a small graph, which is why the solution remains fast at the upper bound.
