@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3107 contests, 22853 problems, 12659 verified."
+description: "Codeforces problem solutions with full editorials. 3107 contests, 22855 problems, 12661 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3107 contests, 22853 problems, 12659 verified.**
+**3107 contests, 22855 problems, 12661 verified.**
 
-## Unknown — 816 contests, 6824 problems, 4019 verified
+## Unknown — 816 contests, 6826 problems, 4021 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102399](102399/) | [2019 Московская командная олимпиада школьников, лига A](https://codeforces.com/contest/102399) | 7 | 6/7 | Special | - |
 | [102407](102407/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102407) | 7 | 4/7 | Special | - |
 | [102411](102411/) | [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411) | 6 | 5/6 | ICPC/IOI | - |
-| [102412](102412/) | [MEX Foundation Contest (supported by AIM Tech)](https://codeforces.com/contest/102412) | 6 | 6/6 | Special | - |
+| [102412](102412/) | [MEX Foundation Contest (supported by AIM Tech)](https://codeforces.com/contest/102412) | 8 | 8/8 | Special | - |
 | [102420](102420/) | [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420) | 1 | 1/1 | Special | - |
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 2 | 2/2 | ICPC/IOI | - |
 | [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 3 | 3/3 | Div. 1 | - |
