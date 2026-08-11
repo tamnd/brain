@@ -1,26 +1,27 @@
 ---
 title: "Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация"
-description: "7 problems from Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация (contest 102420), difficulty -. 5/7 solutions verified against sample I/O."
+description: "8 problems from Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация (contest 102420), difficulty -. 5/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102420
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 5
-total_solve_s: 2916
-date: "2026-08-10T01:06:53+07:00"
+total_solve_s: 5445
+date: "2026-08-10T04:37:56+07:00"
 weight: 102420
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420)
 
-Special | 7 problems | 5/7 verified | Difficulty - | 48m 36s
+Special | 8 problems | 5/8 verified | Difficulty - | 1h 30m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u0417\u0430 \u0433\u0440\u043e\u0431\u043e\u0446\u0432\u0435\u0442\u0430\u043c\u0438](https://codeforces.com/problemset/problem/102420/A) |  |  |  | 19m 1s | ✓ |
+| [C](C/) | [\u041b\u043e\u0432\u0443\u0448\u043a\u0430 \u0441\u043e \u0441\u0432\u0435\u0447\u043a\u0430\u043c\u0438](https://codeforces.com/problemset/problem/102420/C) |  |  |  | 42m 9s |  |
 | [D](D/) | [Spell](https://codeforces.com/problemset/problem/102420/D) |  |  |  | 3m 2s | ✓ |
 | [E](E/) | [\u041b\u0435\u043d\u0438\u0432\u044b\u0435 \u043b\u0435\u0441\u043e\u0440\u0443\u0431\u044b](https://codeforces.com/problemset/problem/102420/E) |  |  |  | 2m 2s | ✓ |
 | [F](F/) | [Arithmetic and blocks](https://codeforces.com/problemset/problem/102420/F) |  |  |  | 4m 36s | ✓ |
