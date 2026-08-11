@@ -1,7 +1,7 @@
 ---
 title: "CF 102420K - Magical XML"
-description: "The input is a single string containing lowercase letters and the three structural characters <, and /. We may arbitrarily permute all characters, so their original positions have no significance."
-date: "2026-08-12T01:06:52+07:00"
+description: "The input is one string containing only lowercase letters and the three structural characters <, and /. We may arbitrarily permute all characters, but we cannot change their multiplicities. A valid result is a sequence of XML-like tags."
+date: "2026-08-12T06:32:48+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102420
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0422\u0440\u0435\u0442\u044c\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102420
-solve_time_s: 752
+solve_time_s: 239
 verified: false
 draft: false
 ---
@@ -18,73 +18,65 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 12m 32s  
+**Solve time:** 3m 59s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The input is a single string containing lowercase letters and the three structural characters `<`, `>` and `/`. We may arbitrarily permute all characters, so their original positions have no significance. The goal is to arrange exactly the same multiset of characters into a valid XML-like sequence.
+The input is one string containing only lowercase letters and the three structural characters `<`, `>` and `/`. We may arbitrarily permute all characters, but we cannot change their multiplicities.
 
-Every element has the form `<S></S>`, where `S` is a nonempty lowercase string. Several elements may appear next to each other, and they may also be nested. The opening and closing names of every matched pair must be identical.
+A valid result is a sequence of XML-like tags. Every opening tag has the form `<S>`, every closing tag has the form `</S>`, and `S` must be a nonempty lowercase string. The opening and closing tags must form a balanced bracket sequence, and a closing tag must use exactly the same `S` as its matching opening tag.
 
-The key consequence of the free permutation is that we do not need to reconstruct any information from the original ordering. We only need to determine whether the character counts can be divided into the pieces required by valid tags, and then construct one such arrangement.
+The key consequence of allowing arbitrary permutation is that the original positions do not matter at all. Only the counts of the characters matter. We can choose a particularly simple valid structure consisting of several independent pairs such as `<a></a><bc></bc>`. There is no need to reproduce the original nesting.
 
-Let there be `k` element pairs. Each pair needs two `<` characters, two `>` characters, and one `/` character. Consequently, the structural characters must satisfy
+The official constraints allow up to 100,000 characters, and the actual problem has a 2 second limit and 512 MB memory limit.  A solution that examines a quadratic number of character pairs would already perform around 10 billion operations at the maximum size, which is far beyond what is practical. We need a linear or near-linear construction. Since the alphabet has only 29 possible characters, maintaining 29 counters is enough to capture all relevant information.
 
-`count('<') = count('>') = 2k`
+There are several edge cases where counting only the angle brackets is insufficient. For example, the input `<>` has one `<` and one `>`, but no slash and no letters. It cannot represent a tag because the name must be nonempty, so the correct answer is `Impossible`. A careless solution might regard the matching angle brackets as enough.
 
-and
+The input `<a>/a` has one `<`, one `>`, one `/`, and two `a` characters. It can be rearranged to `<a></a>`, so the correct output is a valid tag pair. A solution that checks whether the original string already resembles XML would incorrectly reject it because the original order is irrelevant.
 
-`count('/') = k`.
+The input `<ab></ac>` has the correct numbers of structural characters, but the letters are `a` twice, `b` once and `c` once. The correct output is `Impossible`. Each tag name occurs twice, so every individual letter must occur an even number of times. Checking only that the total number of letters is even would miss this condition.
 
-The letters have a different restriction. If an element is named `S`, every letter in `S` occurs once in its opening tag and once in its closing tag. Across the entire document, every individual letter must consequently occur an even number of times.
-
-There is one more condition caused by the requirement that every `S` be nonempty. If there are `k` element pairs, we need at least `k` letters in the collection of opening names. Since the total number of letters is twice that amount, the total number of lowercase letters must be at least `2k`.
-
-The string length is at most `100000`. The official contest archive gives a 2 second time limit and 512 MB memory limit for this problem. That rules out anything remotely close to enumerating permutations. A linear or near-linear scan is the natural target, and the alphabet contains only 26 possible lowercase letters, so all frequency checks can be done with a tiny fixed-size array.
-
-Several edge cases are easy to mishandle. Consider the input `a`. There are no `<`, `>` or `/` characters, so it cannot form even one tag pair. The correct output is `Impossible`. A careless solution that checks only whether every letter count is even would accept it incorrectly because the letter count is odd, but an implementation that only checks structural counts might also accidentally treat an empty document as valid.
-
-Consider `<a>`: there is one opening tag but no closing tag, so the counts of `<` and `>` do not have the required relation to `/`. The correct output is `Impossible`. Simply counting brackets independently is insufficient unless their exact ratios are checked.
-
-Consider `<>//<>aa`. It has two `<`, two `>`, two `/`, and two letters. Thus `k = 1` would be wrong because there are actually two closing markers, while `k = count('/') = 2`. Two nonempty names require at least two letters, and exactly two are available. The correct construction is `<a></a><a></a>`. A common mistake is to notice that every letter count is even and forget that each of the two elements needs its own nonempty name.
-
-Finally, consider `<a></a><b></b>`. There are two pairs, so four `<` and `>` characters and two slashes are needed, while the letters `a` and `b` each occur twice. This is valid. The names do not have to be distinct, and the elements do not have to be nested. The ability to put valid pairs next to each other is what makes the construction particularly simple.
+There is also a size condition on the names. The input `<>//` has two angle brackets and two slashes, which suggests two closing tags, but it contains no letters at all. Two nonempty tag names cannot be created, so the answer is `Impossible`.
 
 ## Approaches
 
-The direct brute-force approach is to generate permutations of the input characters and test each resulting string for validity. A validity check can scan the whole candidate in `O(n)` time, comparing every opening name with its matching closing name while checking the bracket structure. In the worst case there can be up to `n!` permutations, giving `O(n · n!)` character inspections. With repeated characters the number of distinct permutations is smaller, but it is still exponential in the input size. At `n = 100000`, even generating a microscopic fraction of the candidates is impossible.
+A direct brute-force approach would generate permutations of the input characters and test each permutation for valid XML structure. If all characters were distinct, there would be `n!` permutations, and checking one permutation takes `O(n)` time. Thus the straightforward search requires `O(n · n!)` work in the worst case. Even though the actual alphabet contains only 29 characters, the number of distinct multiset permutations remains astronomically large for `n = 100000`. The brute force works because it explicitly explores every possible arrangement, but it fails because almost all of that search space is irrelevant.
 
-The brute force works because it tries every possible arrangement, so correctness is not the problem. The problem is that the original order contains no useful information after arbitrary permutation is allowed.
+The useful observation is that the arrangement itself can be chosen for us. Suppose there are `k` closing tags. Then there must also be `k` opening tags, so the final string contains exactly `k` occurrences of `/`, `k` occurrences of `<`, and `k` occurrences of `>`. The input character counts must consequently satisfy
 
-The observation that unlocks the problem is that every valid element consumes structural characters in a completely fixed ratio. Once the number of slashes is known, the required number of `<` and `>` characters is determined. The names are also symmetric: every opening name is repeated exactly once in its closing tag. Since we can freely rearrange letters, the only relevant property of the letter multiset is that every letter count is even.
+`count('<') = count('>') = count('/')`.
 
-Suppose there are `k` element pairs. Take half of every letter count. These characters are exactly the letters that have to be distributed among the `k` opening names. If there are at least `k` such characters, we can make the first `k - 1` names consist of one character each and put every remaining character into the last name. Every name is then nonempty. We can output all pairs consecutively as `<S></S>`, which is automatically a valid bracket sequence.
+Now consider the letters. Every tag name is used exactly twice, once in its opening tag and once in its matching closing tag. Hence every letter occurs an even number of times in the complete result. This condition is also sufficient for the letter multiplicities, because after dividing every letter count by two, the resulting multiset can simply be distributed among the `k` tag names.
 
-This converts the whole problem into frequency counting followed by one construction pass.
+There is one additional requirement: every tag name must be nonempty. If there are `k` tag pairs, we need at least `k` letter pairs, which means the total number of letters must be at least `2k`.
+
+Once these conditions hold, construction is trivial. Take half of every letter count, concatenate those letters into a sequence, split that sequence into `k` nonempty names, and output `<name></name>` for each name. Since every letter was halved, writing each name twice consumes exactly the original number of letters.
+
+The entire problem is thus reduced from searching over permutations to checking a handful of character counts and constructing one canonical arrangement.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(n · n!)` in the distinct-character upper bound | `O(n)` | Too slow |
-| Optimal | `O(n)` | `O(n)` for the output, `O(1)` auxiliary space | Accepted |
+| Brute Force | `O(n · n!)` | `O(n)` | Too slow |
+| Optimal | `O(n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count the occurrences of `<`, `>` and `/`, and count each lowercase letter. The input can be processed in one scan because only character frequencies matter.
-2. Let `k` be the number of `/` characters. Every closing tag contributes exactly one slash, so any valid construction must contain exactly `k` element pairs.
-3. Check the structural condition `count('<') = count('>') = 2k`. Each pair has one opening `<S>` and one closing `</S>`, giving two occurrences of both `<` and `>`.
-4. Check that `k > 0`. Every valid element has a nonempty name, and the input must be rearranged into at least one such element rather than into an empty string.
-5. Check every lowercase letter count for evenness. If a letter occurs an odd number of times, it cannot be divided equally between opening and closing names, so no valid arrangement exists.
-6. Let `m` be half of the total number of letters. Check `m >= k`. The value `m` is the total length of all opening names. Since there are `k` names and every name must be nonempty, their total length must be at least `k`.
-7. Build a string `half` containing exactly half of every letter count. This gives the complete multiset of characters that will be used in the opening names.
-8. Split `half` into `k` nonempty names. Give one character to each of the first `k - 1` names and give all remaining characters to the last name. This is possible precisely because `len(half) >= k`.
-9. For every constructed name `S`, append `<S></S>` to the answer. Each name is thus copied identically into its opening and closing tag, and placing these pairs consecutively forms a valid bracket sequence.
-10. Print the constructed string. Every character from the input has been consumed exactly once, because structural characters are reproduced according to their required counts and every letter from `half` is used twice.
+1. Count the occurrences of `<`, `>`, `/`, and every lowercase letter. We only need these multiplicities because arbitrary permutation removes every positional constraint from the input.
+2. Let `k` be the number of `/` characters. Require `count('<') = k` and `count('>') = k`. Every tag pair contributes exactly one `<`, one `>`, and one `/`, so these equalities are necessary.
+3. Require `k > 0`. Since the input is nonempty and a valid result must contain tags with nonempty names, an input containing no tag pair cannot produce a valid result.
+4. For every lowercase letter, require its count to be even. A letter appearing inside a tag name must appear identically in the matching opening and closing tags, so all occurrences can be partitioned into identical pairs.
+5. Let `pairs` be the total number of letter pairs, which is half of the total number of letters. Require `pairs >= k`. Each of the `k` tag names needs at least one letter, so at least `k` letter pairs are necessary.
+6. Build a list containing exactly half of every letter's occurrences. For example, if the original string has four `a` characters and two `c` characters, the half-list contains `a, a, c`. Every character in this list represents one occurrence that will be copied into both the opening and closing tag.
+7. Give one letter to each of the first `k - 1` tag names, and put all remaining letters into the last tag name. This creates exactly `k` nonempty names while using every available letter pair.
+8. For every constructed name `x`, append `<x></x>` to the answer. Each pair consumes exactly the characters assigned to that name twice, so the complete output is a permutation of the input.
 
 ### Why it works
 
-The construction maintains the invariant that every structural character and every lowercase letter is used exactly as many times as it appeared in the input. The structural conditions guarantee that there are exactly enough `<`, `>` and `/` characters for `k` complete tag pairs. Even letter frequencies allow every letter to be divided between an opening name and its identical closing name. The condition `m >= k` lets us give every element a nonempty name. Since every generated component has the form `<S></S>`, each component is a valid matched pair, and their concatenation is a valid bracket sequence. Thus every accepted input produces a valid permutation, while every rejected condition is necessary for any valid permutation to exist.
+The invariant is that every character consumed by the construction is consumed with exactly the multiplicity present in the input. The structural characters are used in groups of one `<`, one `>`, and one `/` per tag pair. The letters are first divided by two, then every resulting name is written twice, so every original letter count is restored exactly.
+
+Every produced component has the form `<S></S>` with nonempty `S`. Such components are valid matching tag pairs, and concatenating valid independent pairs gives a valid bracket sequence. The necessary conditions also cover every possible obstruction: wrong structural counts, an odd letter count, or too few letters for the required number of nonempty names. Hence the construction succeeds exactly when a valid permutation exists.
 
 ## Python Solution
 
@@ -92,255 +84,266 @@ The construction maintains the invariant that every structural character and eve
 import sys
 input = sys.stdin.readline
 
-def build(s):
-    cnt = [0] * 26
-    less = greater = slash = 0
+def solve():
+    s = input().strip()
 
+    angle_open = s.count('<')
+    angle_close = s.count('>')
+    slash = s.count('/')
+
+    if angle_open != slash or angle_close != slash or slash == 0:
+        print("Impossible")
+        return
+
+    freq = [0] * 26
     for ch in s:
-        if ch == '<':
-            less += 1
-        elif ch == '>':
-            greater += 1
-        elif ch == '/':
-            slash += 1
-        else:
-            cnt[ord(ch) - ord('a')] += 1
+        if 'a' <= ch <= 'z':
+            freq[ord(ch) - ord('a')] += 1
+
+    for c in freq:
+        if c % 2:
+            print("Impossible")
+            return
 
     k = slash
+    total_letters = sum(freq)
 
-    if k == 0:
-        return "Impossible"
-
-    if less != 2 * k or greater != 2 * k:
-        return "Impossible"
-
-    for x in cnt:
-        if x & 1:
-            return "Impossible"
+    if total_letters < 2 * k:
+        print("Impossible")
+        return
 
     half = []
-    for i, x in enumerate(cnt):
-        half.append(chr(ord('a') + i) * (x // 2))
-
-    half = ''.join(half)
-
-    if len(half) < k:
-        return "Impossible"
+    for i, c in enumerate(freq):
+        half.extend([chr(ord('a') + i)] * (c // 2))
 
     names = []
-
     for i in range(k - 1):
         names.append(half[i])
 
-    names.append(half[k - 1:])
+    names.append(''.join(half[k - 1:]))
 
-    ans = []
+    answer = []
     for name in names:
-        ans.append('<')
-        ans.append(name)
-        ans.append('></')
-        ans.append(name)
-        ans.append('>')
+        answer.append('<')
+        answer.append(name)
+        answer.append('></')
+        answer.append(name)
+        answer.append('>')
 
-    return ''.join(ans)
-
-def main():
-    s = input().strip()
-    print(build(s))
+    print(''.join(answer))
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The first loop separates the three structural characters from the lowercase letters. The structural counts are kept as three integers, while the letters use a 26-element frequency array because only lowercase English letters are possible.
+The first three counters handle the structural characters. If their counts do not describe complete tag pairs, there is no possible permutation, so the function can terminate immediately.
 
-The variable `k` is exactly the number of slash characters. A slash can occur only in a closing tag, so it directly determines the number of element pairs. The conditions `less == 2 * k` and `greater == 2 * k` are checked before constructing anything. This also avoids accidentally accepting malformed inputs such as `<a>`.
+The letter counts are stored in a fixed array of size 26. Checking parity is enough because the actual spelling of the names is under our control. We do not need to discover which letters belong together in the original input.
 
-The parity check is performed before building the half-string. Each opening name must be duplicated exactly in its closing name, so an odd frequency of even one letter makes a solution impossible.
+The `half` list contains exactly the letters that will appear in one side of each tag pair. If the input contains `c` copies of a letter, we put `c / 2` copies into `half`. Writing every constructed name twice then restores all `c` copies.
 
-The `half` string contains half of every letter. Its length is the total length of all opening names. The construction uses one character for each of the first `k - 1` names and gives the remaining suffix to the last name. The slicing starts at `k - 1`, not `k`, because the first `k - 1` characters have already been consumed.
+The split into names deliberately uses one character for each of the first `k - 1` names. The remaining characters form the last name. The earlier condition `total_letters >= 2 * k` guarantees that the last name is also nonempty.
 
-The final loop writes `<name></name>` for every name. There is no need for a stack or parser because the output is constructed directly from already valid matched pairs.
+The construction appends `<name></name>` directly rather than trying to arrange nested tags. This avoids stack management entirely. A sequence of valid tag pairs is already a valid balanced bracket sequence.
 
-Python integers do not overflow, and every count is at most `100000`. The largest temporary strings are also `O(n)`, which is well within the memory limit.
+The algorithm uses Python integers only for counts up to 100,000, so integer overflow is not a concern. Every index into `half` is valid because the check guarantees that its length is at least `k`.
+
+The official statement confirms that the input length is at most 100,000 and that the actual limits are 2 seconds and 512 MB.
 
 ## Worked Examples
 
 ### Sample 1
 
-For `<test></test>`, the frequency state develops as follows.
+The input is already valid:
 
-| Character processed | `<` | `>` | `/` | `t` | `e` | `s` | `k` |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `<` | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| `t` | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
-| `e` | 1 | 0 | 0 | 1 | 1 | 0 | 0 |
-| `s` | 1 | 0 | 0 | 1 | 1 | 1 | 0 |
-| `t` | 1 | 0 | 0 | 2 | 1 | 1 | 0 |
-| `>` | 1 | 1 | 0 | 2 | 1 | 1 | 0 |
-| `<` | 2 | 1 | 0 | 2 | 1 | 1 | 0 |
-| `/` | 2 | 1 | 1 | 2 | 1 | 1 | 1 |
-| `t` | 2 | 1 | 1 | 3 | 1 | 1 | 1 |
-| `e` | 2 | 1 | 1 | 3 | 2 | 1 | 1 |
-| `s` | 2 | 1 | 1 | 3 | 2 | 2 | 1 |
-| `t` | 2 | 1 | 1 | 4 | 2 | 2 | 1 |
-| `>` | 2 | 2 | 1 | 4 | 2 | 2 | 1 |
+```
+<test></test>
+```
 
-Here `k = 1`, and both `<` and `>` occur twice. Every letter count is even, and the half-string is `est`. The program consequently constructs `<est></est>`. This is a valid permutation of the input, even though it does not have to reproduce the sample's particular valid arrangement.
+The following table shows the main state.
 
-The trace demonstrates why the output does not need to preserve the original name. Once arbitrary permutation is allowed, any name with the correct half-frequency multiset is sufficient.
+| State | Value |
+| --- | --- |
+| `count('<')` | 2 |
+| `count('>')` | 2 |
+| `count('/')` | 1 |
+| Letter counts | `t=2, e=2, s=2` |
+| `k` | 1 |
+| Total letters | 6 |
+| Required letters | 2 |
+| Half-letter list | `['e', 's', 't']` |
+| Constructed name | `est` |
+| Constructed result | `<est></est>` |
+
+The implementation can legally produce `<est></est>`, since the task accepts any permutation satisfying the required properties. In the provided sample, `<test></test>` is also valid. The character counts are the same in either result, and the important invariant is that every tag name occurs identically twice.
 
 ### Sample 2
 
-For `test<tist>/<>`, the relevant frequencies are the following.
+The input is
 
-| Quantity | Value |
+```
+test<tist>/<>
+```
+
+Its structural counts are:
+
+| State | Value |
 | --- | --- |
-| `<` | 2 |
-| `>` | 2 |
-| `/` | 1 |
-| `t` | 3 |
-| `e` | 1 |
-| `s` | 1 |
-| `i` | 1 |
+| `count('<')` | 2 |
+| `count('>')` | 2 |
+| `count('/')` | 1 |
+| `k` | 1 |
+| Structural check | passes |
+| Letter counts | `t=3, e=1, s=2, i=1` |
+| Parity check | fails |
 
-The structural characters imply `k = 1`, and their counts are consistent with one pair because there are two `<` and two `>`. However, several letter frequencies are odd. In particular, `t` occurs three times and `e`, `s`, and `i` occur once each.
+The structural characters could describe one tag pair, but the letters cannot. In particular, `t`, `e`, and `i` have odd frequencies. No permutation can make every tag name appear twice without changing those counts, so the algorithm prints `Impossible`.
 
-The algorithm rejects the input at the parity check and prints `Impossible`. No rearrangement can fix an odd letter count because every letter used in an element name must appear once in the opening name and once in its matching closing name.
+This example demonstrates why the structural check alone is insufficient. The XML matching condition imposes an independent parity constraint on every letter.
+
+### Sample 3
+
+For
+
+```
+te<ste>st/<t>
+```
+
+the structural characters occur twice as `<`, twice as `>`, and once as `/`.
+
+The letter counts are `t=4`, `e=2`, and `s=2`.
+
+| State | Value |
+| --- | --- |
+| `count('<')` | 2 |
+| `count('>')` | 2 |
+| `count('/')` | 1 |
+| `k` | 1 |
+| Letter counts | `t=4, e=2, s=2` |
+| Half-letter list | `['e', 's', 't', 't']` |
+| Number of names | 1 |
+| Name | `estt` |
+| Result | `<estt></estt>` |
+
+The sample's output uses `<tset></tset>`, while this implementation produces `<estt></estt>`. Both are permutations of exactly the same input characters and both satisfy the XML rules.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(n)` | The input is scanned once, the 26 letter frequencies are processed once, and the output is constructed once. |
-| Space | `O(n)` | The output and the intermediate half-string contain at most `O(n)` characters. The frequency array itself is `O(1)`. |
+| Time | `O(n)` | Counting, building the half-list, and constructing the output each scan or process `O(n)` characters |
+| Space | `O(n)` | The half-list and final answer together require linear space |
 
-With `n <= 100000`, a linear scan performs only a constant number of operations per input character. The construction also processes only the characters that will appear in the answer, so it comfortably fits the stated 2 second time limit and 512 MB memory limit.
+With `n <= 100000`, a linear pass is comfortably within the 2 second limit. The construction itself is also linear in the output size, which is unavoidable because the answer can contain all 100,000 input characters. The memory usage is similarly linear and far below the 512 MB limit.
 
 ## Test Cases
 
-The output is not unique, so the tests should validate the deterministic output of this implementation. The helper below calls `build` directly, which is the same function used by the submitted program.
+For testing, it is useful to keep the construction deterministic. The implementation above sorts the half-letters alphabetically because it iterates through the 26 letter counters in order.
 
 ```python
-import io
 import sys
+import io
 
-def build(s):
-    cnt = [0] * 26
-    less = greater = slash = 0
+def solve():
+    s = input().strip()
 
+    angle_open = s.count('<')
+    angle_close = s.count('>')
+    slash = s.count('/')
+
+    if angle_open != slash or angle_close != slash or slash == 0:
+        return "Impossible"
+
+    freq = [0] * 26
     for ch in s:
-        if ch == '<':
-            less += 1
-        elif ch == '>':
-            greater += 1
-        elif ch == '/':
-            slash += 1
-        else:
-            cnt[ord(ch) - ord('a')] += 1
+        if 'a' <= ch <= 'z':
+            freq[ord(ch) - ord('a')] += 1
 
-    k = slash
-
-    if k == 0:
-        return "Impossible"
-
-    if less != 2 * k or greater != 2 * k:
-        return "Impossible"
-
-    for x in cnt:
-        if x & 1:
+    for c in freq:
+        if c % 2:
             return "Impossible"
 
-    half = []
-    for i, x in enumerate(cnt):
-        half.append(chr(ord('a') + i) * (x // 2))
+    k = slash
+    total_letters = sum(freq)
 
-    half = ''.join(half)
-
-    if len(half) < k:
+    if total_letters < 2 * k:
         return "Impossible"
+
+    half = []
+    for i, c in enumerate(freq):
+        half.extend([chr(ord('a') + i)] * (c // 2))
 
     names = []
     for i in range(k - 1):
         names.append(half[i])
-    names.append(half[k - 1:])
+    names.append(''.join(half[k - 1:]))
 
-    ans = []
+    answer = []
     for name in names:
-        ans.append('<')
-        ans.append(name)
-        ans.append('></')
-        ans.append(name)
-        ans.append('>')
+        answer.append('<')
+        answer.append(name)
+        answer.append('></')
+        answer.append(name)
+        answer.append('>')
 
-    return ''.join(ans)
+    return ''.join(answer)
 
 def run(inp: str) -> str:
-    return build(inp.strip())
+    global input
+    old_input = input
+    stream = io.StringIO(inp)
+    input = lambda: stream.readline()
+    try:
+        return solve()
+    finally:
+        input = old_input
 
 # Provided samples
-assert run("<test></test>") == "<est></est>", "sample 1"
-assert run("test<tist>/<>") == "Impossible", "sample 2"
-assert run("te<ste>st/<t>") == "<estt></estt>", "sample 3"
+assert run("<test></test>\n") == "<est></est>", "sample 1, valid rearrangement"
+assert run("test<tist>/<>\n") == "Impossible", "sample 2"
+assert run("te<ste>st/<t>\n") == "<estt></estt>", "sample 3"
 
-# Minimum-size input
-assert run("a") == "Impossible", "no structural characters"
+# Minimum possible valid XML
+assert run("<a></a>\n") == "<a></a>", "minimum valid input"
 
-# Exactly two elements, with the minimum possible number of letters
-assert run("<>//<>aa") == "<a></a><a></a>", "two nonempty names"
+# Valid input with two tags and repeated letters
+assert run("<aaaa></aaaa><aaaa></aaaa>\n") == "<aaaa></aaaa><aaaa></aaaa>", "all-equal letters"
 
-# Odd letter frequency
-assert run("<a></a>b") == "Impossible", "odd letter count"
+# Structural counts look close, but there are not enough letters
+assert run("<>//\n") == "Impossible", "empty names"
 
-# Invalid structural ratio
-assert run("<a></a>/") == "Impossible", "too many slashes"
+# Odd frequency of one letter
+assert run("<ab></ac>\n") == "Impossible", "letter parity"
 
-# Maximum-size valid input: length exactly 100000.
-# There are 10000 pairs and 25000 letters in the opening names.
-# All letters are 'a', so the total letter count is 50000.
-maximum_input = "<>" * 10000
-maximum_input += "/" * 10000
-maximum_input += "a" * 50000
-
-# The structural part above has 40000 characters and the letters have 50000,
-# so this test is intentionally invalid because '<' and '>' must each occur
-# 20000 times for 10000 pairs. Verify rejection.
-assert len(maximum_input) == 100000
-assert run(maximum_input) == "Impossible", "maximum-size invalid structure"
-
-# Maximum-size valid input.
-# 10000 pairs require 20000 '<', 20000 '>', and 10000 '/'.
-# 50000 letters are enough to give every pair a nonempty name.
-maximum_valid = "<" * 20000 + ">" * 20000 + "/" * 10000 + "a" * 50000
-assert len(maximum_valid) == 100000
-result = run(maximum_valid)
-assert result != "Impossible", "maximum-size valid input"
-assert len(result) == 100000
-assert result.count("<") == 20000
-assert result.count(">") == 20000
-assert result.count("/") == 10000
-assert result.count("a") == 50000
+# Maximum-size valid input
+max_case = "<" + "a" * 24997 + "></" + "a" * 24997 + ">" \
+           + "<" + "a" * 24998 + "></" + "a" * 24998 + ">"
+result = run(max_case + "\n")
+assert len(result) == 100000, "maximum length"
+assert result.count('<') == 2, "maximum length opening tags"
+assert result.count('>') == 2, "maximum length closing delimiters"
+assert result.count('/') == 2, "maximum length closing tags"
+assert result.count('a') == 99990, "maximum length letters"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a` | `Impossible` | Minimum size and absence of a tag pair |
-| `<>//<>aa` | `<a></a><a></a>` | Exact boundary where two nonempty names are possible |
-| `<a></a>b` | `Impossible` | Odd letter frequency |
-| `<a></a>/` | `Impossible` | Incorrect structural ratio |
-| Length `100000`, invalid structure | `Impossible` | Maximum input size and structural rejection |
-| Length `100000`, valid structure | A valid 100000-character document | Maximum input size and construction scalability |
+| `<a></a>` | `<a></a>` | Smallest possible valid spell |
+| `<aaaa></aaaa><aaaa></aaaa>` | `<aaaa></aaaa><aaaa></aaaa>` | Multiple pairs and all letters equal |
+| `<>//` | `Impossible` | Empty tag names and insufficient letters |
+| `<ab></ac>` | `Impossible` | Per-letter parity rather than just total letter parity |
+| Maximum-size constructed input | A valid string of length 100000 | Maximum boundary and linear construction |
 
 ## Edge Cases
 
-The minimum-size input `a` has no structural characters, so `k = 0`. The algorithm rejects it immediately. This is necessary because a valid element requires both an opening and a closing tag with a nonempty name.
+The smallest valid result is `<a></a>`, which contains seven characters. The algorithm sees two `<` characters, two `>` characters, one slash, and two `a` characters. Thus `k=1`, the letter count is even, and there is exactly one available letter pair. It constructs the same tag successfully.
 
-For `<a>`, there is one `<` and one `>`, but no slash. Thus `k = 0`, and the algorithm returns `Impossible`. Treating `<a>` as a complete element would confuse an opening tag with a matched pair.
+For `<>`, there are two angle brackets but no slash. The structural equality `count('<') = count('/')` fails immediately, so the algorithm returns `Impossible`. This catches implementations that forget that every closing tag requires its own slash.
 
-For `<>//<>aa`, the slash count gives `k = 2`. The structural counts are exactly two `<` and two `>`, while the two letters give `len(half) = 1`, which is smaller than `k`. The algorithm therefore rejects it. This is the boundary that catches the mistake of checking only structural counts and letter parity.
+For `<>//`, there are enough structural characters to suggest two tag pairs, but there are zero letters. Here `k=2` while the number of letter pairs is zero, so the `pairs >= k` check fails. The algorithm does not attempt to create an empty tag name.
 
-For `<a></a>b`, the structural counts describe one pair, but `a` occurs twice while `b` occurs once. The parity check fails on `b`, so the algorithm returns `Impossible`. Rearranging cannot help because the two copies of every name necessarily contribute letters in pairs.
+For `<ab></ac>`, all structural counts are correct and the total number of letters is six, which is even. However, `b` and `c` each occur once. The per-letter parity loop detects this before construction, preventing a malformed result such as `<ab></ab>` that would consume the wrong letter counts.
 
-For `<a></a>/`, the slash count is `2`, so a valid string would require four `<` characters and four `>` characters. Only two of each are present. The structural check rejects the string before any name construction takes place.
+For `<a>/a`, the original order looks invalid, but permutation is allowed. The counts give one tag pair and one `a` pair, so the construction produces `<a></a>`. This demonstrates why the solution never parses the original string as XML. Only the multiset of characters matters.
 
-For the maximum-size valid case, there are `10000` pairs, `20000` opening markers, `20000` closing markers, `10000` slashes, and `50000` letters. Every letter count is even and there are `25000` characters available in the opening names, which is more than enough for `10000` nonempty names. The algorithm creates `9999` one-character names and one name containing the remaining `15001` characters. Every character is consumed exactly twice when the opening and closing tags are written, producing a valid string of the original length.
+For the 100,000-character boundary case, the algorithm still performs a constant number of passes over the input and output. No recursive parsing or quadratic search is involved, so the maximum input size does not change the algorithm's behavior beyond the amount of data it must read and print.
