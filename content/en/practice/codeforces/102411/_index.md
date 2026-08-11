@@ -1,22 +1,22 @@
 ---
 title: "ICPC 2019-2020 North-Western Russia Regional Contest"
-description: "11 problems from ICPC 2019-2020 North-Western Russia Regional Contest (contest 102411), difficulty -. 10/11 solutions verified against sample I/O."
+description: "12 problems from ICPC 2019-2020 North-Western Russia Regional Contest (contest 102411), difficulty -. 10/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102411
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 11
+n_problems: 12
 n_verified: 10
-total_solve_s: 3664
-date: "2026-08-11T00:23:00+07:00"
+total_solve_s: 4098
+date: "2026-08-11T00:30:17+07:00"
 weight: 102411
 draft: false
 ---
 
 # [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411)
 
-ICPC/IOI | 11 problems | 10/11 verified | Difficulty - | 1h 1m
+ICPC/IOI | 12 problems | 10/12 verified | Difficulty - | 1h 8m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,5 +29,6 @@ ICPC/IOI | 11 problems | 10/11 verified | Difficulty - | 1h 1m
 | [H](H/) | [High Load Database](https://codeforces.com/problemset/problem/102411/H) |  |  |  | 2m 34s | ✓ |
 | [I](I/) | [Ideal Pyramid](https://codeforces.com/problemset/problem/102411/I) |  |  |  | 13m 5s | ✓ |
 | [J](J/) | [Just the Last Digit](https://codeforces.com/problemset/problem/102411/J) |  |  |  | 2m 54s | ✓ |
+| [K](K/) | [King's Children](https://codeforces.com/problemset/problem/102411/K) |  |  |  | 7m 14s |  |
 | [L](L/) | [Lengths and Periods](https://codeforces.com/problemset/problem/102411/L) |  |  |  | 12m 2s | ✓ |
 | [M](M/) | [Managing Difficulties](https://codeforces.com/problemset/problem/102411/M) |  |  |  | 1m 44s | ✓ |
