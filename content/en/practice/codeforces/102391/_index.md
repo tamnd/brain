@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 6
-total_solve_s: 4283
-date: "2026-08-11T23:03:33+07:00"
+total_solve_s: 4421
+date: "2026-08-11T23:12:35+07:00"
 weight: 102391
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391)
 
-Special | 10 problems | 6/10 verified | Difficulty - | 1h 11m
+Special | 10 problems | 6/10 verified | Difficulty - | 1h 13m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,6 @@ Special | 10 problems | 6/10 verified | Difficulty - | 1h 11m
 | [F](F/) | [Hilbert's Hotel](https://codeforces.com/problemset/problem/102391/F) |  |  |  | 3m 42s | ✓ |
 | [G](G/) | [Lexicographically Minimum Walk](https://codeforces.com/problemset/problem/102391/G) |  |  |  | 2m 48s | ✓ |
 | [H](H/) | [Maximizer](https://codeforces.com/problemset/problem/102391/H) |  |  |  | 3m 40s | ✓ |
-| [I](I/) | [Minimum Diameter Spanning Tree](https://codeforces.com/problemset/problem/102391/I) |  |  |  | 6m 43s |  |
+| [I](I/) | [Minimum Diameter Spanning Tree](https://codeforces.com/problemset/problem/102391/I) |  |  |  | 9m 1s |  |
 | [J](J/) | [Parklife](https://codeforces.com/problemset/problem/102391/J) |  |  |  | 3m 13s | ✓ |
 | [K](K/) | [Wind of Change](https://codeforces.com/problemset/problem/102391/K) |  |  |  | 5m 37s | ✓ |
