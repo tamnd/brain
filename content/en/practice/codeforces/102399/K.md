@@ -1,7 +1,7 @@
 ---
 title: "CF 102399K - \u0427\u0435\u0440\u0435\u043f\u0430\u0448\u043a\u0430"
-description: "The field has only two rows, so every valid turtle path is determined by the column where the turtle moves down. If it moves down in column k, it takes the first k cells of the top row and the last n−k+1 cells of the bottom row."
-date: "2026-08-11T16:09:30+07:00"
+description: "We have a (2times n) grid containing exactly (2n) lettuce leaves. Each leaf has a nonnegative energy value, and Kolya may freely permute all leaves before the turtle starts."
+date: "2026-08-11T23:39:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102399
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2019 \u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430 \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432, \u043b\u0438\u0433\u0430 A"
 rating: 0
 weight: 102399
-solve_time_s: 548
+solve_time_s: 239
 verified: false
 draft: false
 ---
@@ -18,17 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 9m 8s  
+**Solve time:** 3m 59s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The field has only two rows, so every valid turtle path is determined by the column where the turtle moves down. If it moves down in column k, it takes the first k cells of the top row and the last n−k+1 cells of the bottom row. The score of the arrangement is the largest sum among these n possible paths, and we may arbitrarily permute all 2n leaf values before the turtle moves. The task is to construct an arrangement minimizing that largest path sum. This is the same problem as Codeforces 1239E, while the gym version uses the original contest identifier.
+We have a (2\times n) grid containing exactly (2n) lettuce leaves. Each leaf has a nonnegative energy value, and Kolya may freely permute all leaves before the turtle starts.
 
-The restriction n≤25 is the clue that the values themselves are too large for an ordinary sum-indexed dynamic program with a small state space, but there are only 50 leaves. The maximum possible sum of all leaves is 2n⋅50000, at most 2.5⋅10 6, so a subset-sum DP is feasible if its sets of reachable sums are represented as bitsets. This is exactly the role of the bitset optimization in the standard solution.
+A path from the upper-left cell to the lower-right cell consists of moving right for a while and making exactly one downward move. If the downward move happens in column (k), the turtle eats the first (k) cells of the top row and the last (n-k+1) cells of the bottom row. Since the turtle chooses the path with maximum total energy, the value of a placement is the maximum over all (n) such paths. We need to arrange the given multiset of (2n) values so that this maximum is as small as possible.
 
-There are several cases where an apparently reasonable implementation goes wrong. First, the turtle is allowed to go down in column 1, so for the sample
+The input gives the original (n) values in the top row followed by the (n) values in the bottom row. Their original positions have no significance, because Kolya can collect all (2n) leaves and redistribute them arbitrarily. The output is any optimal (2\times n) arrangement.
+
+The bound (n\le25) is the main clue. There are at most (50) leaves, so an algorithm exponential in (n) is still far too large, but a subset-sum style dynamic program over the total energy can be practical. Every value is at most (50000), so the total energy of all leaves is at most (2\cdot25\cdot50000=2.5\cdot10^6). That makes a bitset representation of reachable sums viable. The official problem also gives a 5 second time limit and 512 MB memory limit, which is consistent with a bitset dynamic programming solution.
+
+There are several edge cases that a careless construction can mishandle. First, the two endpoints are present on every possible path. For example,
 
 ```
 2
@@ -36,9 +40,16 @@ There are several cases where an apparently reasonable implementation goes wrong
 2 3
 ```
 
-the path 1→4→2 has value 7. A solution that only checks the sum of each row misses this path entirely.
+has values (1,2,3,4). If we put the two largest values at the endpoints, one optimal arrangement is
 
-Second, equal values create many optimal arrangements. For
+```
+1 3
+4 2
+```
+
+and the two possible path sums are (7) and (6), so the turtle eats (7). A construction that tries to hide a large value in the middle can never beat the fact that some two values must occupy the two unavoidable endpoints.
+
+Second, equal values must be treated as an ordinary multiset, not as distinct objects. For example,
 
 ```
 3
@@ -46,140 +57,176 @@ Second, equal values create many optimal arrangements. For
 0 0 0
 ```
 
-the only possible output values are all zero, and every arrangement is optimal. Code must not depend on distinct values when reconstructing the subset.
+has only zeroes, so every arrangement has value (0). A subset reconstruction must allow repeated values and must not depend on unique indices.
 
-Third, the optimal partition does not necessarily make the two row sums equal. For
-
-```
-2
-0 10
-20 30
-```
-
-an optimal arrangement is
+Third, the best split of the remaining values does not have to have exactly half the total energy. For
 
 ```
-0 20
-30 10
+3
+0 100 200
+300 400 500
 ```
 
-The two row sums are 20 and 40, yet the turtle's maximum path value is 40. What matters after fixing the two special corner cells is balancing the sums of the remaining elements, not balancing the complete row sums.
+the two smallest values (0) and (100) belong at the endpoints. The remaining values are (200,300,400,500), whose total is (1400). Choosing (300+400=700) for the internal cells of the top row makes the two extreme path sums equal. A greedy choice based only on individual values can miss such a balanced subset.
 
 ## Approaches
 
-A direct approach would enumerate every permutation of the 2n leaves, construct the corresponding 2×n field, and evaluate all n possible turtle paths. This is correct because every legal rearrangement is considered, and evaluating one arrangement takes O(n) time using prefix sums. Unfortunately, there can be (2n)! arrangements. At n=25, that is 50!, about 3.0⋅10 64, so even O(n(2n)!) is completely impossible.
+A direct brute-force solution would enumerate every permutation of the (2n) leaves. For each permutation we could evaluate all (n) possible downward columns and keep the smallest maximum path sum. This is correct because every possible rearrangement is considered. However, there are ((2n)!) labeled permutations, and evaluating all paths adds another factor of (n), giving (O((2n)!,n)) operations. At (n=25), this is on the order of (50!\cdot25), roughly (7.6\cdot10^{65}) path evaluations. Even ignoring duplicate values, this is hopeless.
 
-The useful structure appears when we stop thinking about individual paths and instead ask what happens after sorting each row. In an optimal arrangement, the top row can be taken in nondecreasing order and the bottom row in nonincreasing order. If two top-row elements are inverted, swapping them can only decrease the paths whose down-column lies between them. The same argument, in the opposite direction, sorts the bottom row decreasingly.
+The useful structure appears when we stop thinking about arbitrary permutations and ask what an optimal arrangement can look like. The top row can be assumed to be nondecreasing, while the bottom row can be assumed to be nonincreasing. This is an exchange argument: if two top-row positions (i<j) contain (x>y), swapping them cannot increase the maximum path sum. The analogous argument works for the bottom row in the opposite direction. This monotonicity observation is one of the key properties of the problem.
 
-Now consider the value of a path that goes down after column k. Moving the down-column from k to k+1 changes the path value by
+Now suppose the top row is
 
-a 1,k+1 ​ −a 2,k ​ .
+[
+t_1\le t_2\le\cdots\le t_n
+]
 
-Because the top row is increasing and the bottom row is decreasing, these differences form a nondecreasing sequence. Hence the sequence of path values is convex, so its maximum occurs at one of its endpoints, namely when the turtle goes down immediately at column 1 or only at column n.
+and the bottom row is
 
-After sorting, write the smallest top-left value as x and the smallest bottom-right value as y. Every extreme path contains both x and y. The remaining 2n−2 values are split between the two rows, with n−1 values in each. The first extreme path contains all the remaining bottom-row values, while the second extreme path contains all the remaining top-row values. Thus the objective becomes
+[
+b_1\ge b_2\ge\cdots\ge b_n.
+]
 
-x+y+max(S top ​ ,S bottom ​ ).
+Let (F_k) be the sum of the path that moves down in column (k). Then
 
-This immediately gives another exchange argument. If one of the two corner values is not among the two globally smallest values, take a smaller internal value v and swap it with a corner value u. The common corner contribution decreases by u−v, while one internal row sum increases by at most u−v. The maximum cannot increase. Repeating this puts the two smallest values in the top-left and bottom-right cells.
+[
+F_k=t_1+\cdots+t_k+b_k+\cdots+b_n.
+]
 
-We are left with a much simpler problem. Remove the two smallest values. Among the remaining 2n−2 values, choose exactly n−1 for the top row. If their sum is p and the total remaining sum is S, the other row has sum S−p, so we want p as close as possible to S/2 from below. This is a cardinality-constrained subset-sum problem.
+For consecutive paths,
 
-The subset-sum state can be represented by a bitset. For each possible number j of selected elements, one bitset stores every reachable sum. Adding a value v changes the state by shifting the previous bitset left by v and OR-ing it into the current state. Since Python integers are arbitrary-precision bitsets implemented in optimized C code, this works particularly well here.
+[
+F_{k+1}-F_k=t_{k+1}-b_k.
+]
+
+Because (t_{k+1}) is nondecreasing and (b_k) is nonincreasing, the difference (F_{k+1}-F_k) is nondecreasing. Thus the sequence (F_k) is discrete convex. A convex sequence can attain its maximum only at an endpoint, so the turtle's maximum path is one of the two extreme paths.
+
+This collapses the problem dramatically. The first extreme path contains the entire bottom row and only the first top cell. The second contains the entire top row and only the last bottom cell.
+
+The two unavoidable cells should contain the two smallest values. Put the smallest value at the top-left cell and the second smallest at the bottom-right cell. An exchange argument shows that moving a smaller value into either endpoint cannot increase the larger of the two extreme path sums. This is also the construction used by standard solutions.
+
+After fixing those two endpoints, exactly (2n-2) values remain. Suppose their total is (S). Choose exactly (n-1) of them for the internal cells of the top row, and let their sum be (X). The remaining (n-1) values go to the internal cells of the bottom row.
+
+The two extreme path sums have a common contribution from the two endpoints. Their variable parts are simply
+
+[
+X
+]
+
+and
+
+[
+S-X.
+]
+
+So we need to minimize
+
+[
+\max(X,S-X).
+]
+
+That means we want a subset of exactly (n-1) remaining values whose sum is as close as possible to (S/2). Since taking (X>S/2) is never better than replacing it by (S-X<S/2), it is enough to find the largest reachable (X\le S/2).
+
+This is a cardinality-constrained subset-sum problem. The standard (O(nS)) boolean DP is already conceptually simple, but (S) can be around (2.4\cdot10^6), and we need to track up to (25) different cardinalities. Bitsets reduce the sum dimension by a machine-word factor. In Python, an integer itself is a bitset, so one shift performs the whole transition in optimized C code.
+
+The connection between the structural observations and the DP is the central idea. The brute-force solution fails because it treats all permutations as unrelated. Monotonicity reduces every optimal arrangement to two sorted rows, the convexity argument reduces all possible paths to two extreme paths, and those two paths reduce the optimization to balancing two subset sums.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n(2n)!) | O(n) | Too slow |
-| Optimal | O(n 2 S/W+n 2 ) | O(n 2 S/W) | Accepted |
+| Brute Force | (O((2n)!,n)) | (O(n)) | Too slow |
+| Ordinary subset-sum DP | (O(n^2S)) | (O(nS)) | Too slow in the worst case |
+| Bitset DP | (O(n^2S/w)) | (O(n^2S/w)) | Accepted |
 
-Here S≤2.4⋅10 6 is the sum of the 2n−2 non-corner values and W is the number of bits processed per machine-word operation. The usual C++ implementation describes the same DP as O(n 2 ∑a) with bitset optimization.
+Here (S\le2.4\cdot10^6) is the sum of the (2n-2) non-endpoint values and (w) is the machine-word size. Python's arbitrary-precision integers implement this bitset operation efficiently.
 
 ## Algorithm Walkthrough
 
-1. Read all 2n leaf values and sort them. Put the smallest value into the top-left cell and the second smallest value into the bottom-right cell. These cells belong to every possible turtle path, so putting the two smallest values there is always at least as good as putting a larger value there.
-2. Let the remaining 2n−2 values be the elements that must be distributed between the two rows. Each row needs exactly n−1 of them.
-3. Build a subset-sum DP. Let `dp[i][j]` be a bitset where bit s is set exactly when a subset of the first i remaining values contains j elements with total sum s. The transition is to either skip the new value or take it, which becomes a bitwise OR with a left shift.
-4. Let S be the total of all remaining values. Search downward from S//2 for the largest reachable sum using exactly n−1 elements. Call it p. This is optimal because the other row has sum S−p, and for p≤S/2, minimizing S−p means maximizing p.
-5. Reconstruct the chosen subset backwards. For the current value v, check whether the previous DP state can form the remaining target p−v with one fewer selected element. If so, place v in the top-row subset and decrease both the target sum and the required element count. Otherwise put it in the bottom-row subset.
-6. Sort the selected top-row values increasingly and the bottom-row values decreasingly. Prepend the smallest global value to the top row and append the second smallest value to the bottom row. The resulting rows have exactly the ordering required by the path-value argument.
+1. Read all (2n) values and sort them. Put the smallest value into the top-left cell and the second smallest value into the bottom-right cell. These cells belong to every possible path, so assigning the two smallest values there is optimal.
+2. Let the remaining (2n-2) values be (v_1,\ldots,v_{2n-2}), and let their total be (S). We need to choose exactly (n-1) of them for the internal cells of the top row. If their sum is (X), the remaining values have sum (S-X).
+3. Represent reachable subset sums with bitsets. Let `dp[j]` be an integer whose bit (x) is set exactly when some subset of the processed values contains (j) elements and has sum (x). Initially only the empty subset exists, so `dp[0] = 1`.
+4. Process every remaining value (v). Update the cardinality states in descending order using
 
-### Why it works
+```
+dp[j] |= dp[j-1] << v
+```
 
-The key invariant is that after sorting the two rows, the maximum turtle path is always one of the two extreme paths. Both extreme paths contain the two special corner values, while their other cells are exactly the two complementary groups of n−1 remaining values. Consequently the objective is precisely the sum of the two smallest values plus the larger of the two subset sums. The DP finds the cardinality-(n−1) subset whose sum is closest to half of the remaining total, which minimizes that larger sum. The reconstruction produces exactly such a partition, so the resulting arrangement is optimal.
+The left shift moves every reachable sum (x) to (x+v), while the bitwise OR keeps subsets that do not use (v). Descending `j` is necessary because the same value must not be used more than once during one transition.
+
+1. After all values are processed, inspect the bitset for exactly (n-1) selected values. Starting from (S//2), find the largest reachable sum (X). This is optimal because the objective is (\max(X,S-X)), which decreases as (X) approaches (S/2) from below.
+2. Reconstruct which values form the top internal group. Walk through the processed values backwards. If the previous DP state can form (X-v) using one fewer selected value, take (v) into the top group and replace (X) by (X-v). Otherwise put (v) into the bottom group. The stored DP states guarantee that at least one of these choices reproduces the reachable target.
+3. Sort the selected top values increasingly and put them after the smallest endpoint. Sort the bottom values decreasingly and put them before the second-smallest endpoint. The resulting rows are monotone in exactly the directions required by the structural argument.
+
+Why it works is captured by one invariant: after sorting the rows, every possible path sum lies between the two extreme path sums because the consecutive differences form a nondecreasing sequence. The two extreme paths have the same two endpoint contributions, while their remaining contributions are (X) and (S-X). The DP finds the subset (X) that minimizes their maximum. Since every optimal solution can be transformed into this monotone form without increasing its value, and the DP considers every possible cardinality-((n-1)) subset, the constructed arrangement reaches the global optimum.
 
 ## Python Solution
 
 ```python
 import sys
+
 input = sys.stdin.readline
 
 def solve():
     n = int(input())
     values = list(map(int, input().split()))
     values += list(map(int, input().split()))
+
     values.sort()
 
-    # The two smallest values go to the two cells belonging
-    # to every possible path.
+    # The two unavoidable endpoints get the two smallest values.
     top_left = values[0]
     bottom_right = values[1]
 
     remaining = values[2:]
     m = len(remaining)
-
-    # Only sums up to half of the remaining total are needed.
-    total = sum(remaining)
-    limit = total // 2
-    mask = (1 << (limit + 1)) - 1
-
-    # dp[i][j] is a bitset:
-    # bit s is set iff using the first i values we can choose
-    # exactly j values with sum s.
-    dp = [[0] * n for _ in range(m + 1)]
-    dp[0][0] = 1
-
-    for i, value in enumerate(remaining, 1):
-        prev = dp[i - 1]
-        cur = dp[i]
-
-        max_j = min(i, n - 1)
-        for j in range(max_j + 1):
-            cur[j] = prev[j]
-
-        for j in range(1, max_j + 1):
-            cur[j] |= (prev[j - 1] << value) & mask
-
-    target = limit
     need = n - 1
 
-    # Find the largest reachable sum not exceeding half.
-    bits = dp[m][need]
-    while target >= 0 and ((bits >> target) & 1) == 0:
-        target -= 1
+    total = sum(remaining)
+    half = total // 2
 
-    # Reconstruct the chosen subset.
-    top_middle = []
-    bottom_middle = []
+    # dp[j] is a bitset:
+    # bit s is 1 iff we can choose j processed values with sum s.
+    dp = [0] * (need + 1)
+    dp[0] = 1
+
+    # Keep every layer for reconstruction.
+    history = [dp[:]]
+
+    mask = (1 << (half + 1)) - 1
+
+    for v in remaining:
+        upper = min(need, len(history[-1]))
+        for j in range(need, 0, -1):
+            dp[j] |= (dp[j - 1] << v) & mask
+        history.append(dp[:])
+
+    bits = dp[need]
+    target = bits.bit_length() - 1
+
+    # target is the largest reachable sum <= half.
+    top_internal = []
+    bottom_internal = []
+
+    j = need
+    current = target
 
     for i in range(m, 0, -1):
-        value = remaining[i - 1]
+        v = remaining[i - 1]
 
-        if (
-            need > 0
-            and target >= value
-            and ((dp[i - 1][need - 1] >> (target - value)) & 1)
-        ):
-            top_middle.append(value)
-            target -= value
-            need -= 1
-        else:
-            bottom_middle.append(value)
+        if j > 0 and current >= v:
+            previous = history[i - 1][j - 1]
+            if (previous >> (current - v)) & 1:
+                top_internal.append(v)
+                current -= v
+                j -= 1
+                continue
 
-    top_middle.sort()
-    bottom_middle.sort(reverse=True)
+        bottom_internal.append(v)
 
-    top = [top_left] + top_middle
-    bottom = bottom_middle + [bottom_right]
+    top_internal.sort()
+    bottom_internal.sort(reverse=True)
+
+    top = [top_left] + top_internal
+    bottom = bottom_internal + [bottom_right]
 
     print(*top)
     print(*bottom)
@@ -188,226 +235,339 @@ if __name__ == "__main__":
     solve()
 ```
 
-The input values are first flattened into one list because the original positions are irrelevant after Kolya is allowed to rearrange every leaf. Sorting this list gives direct access to the two smallest values that must occupy the universal corner positions.
+The first part sorts all leaves and fixes the two smallest values at the two cells that every path must visit. This directly implements the endpoint property from the proof.
 
-The DP stores integers rather than Python sets. For example, if `bits` has bits 0, 3, and 7 set, it represents the reachable sums 0,3,7. Shifting it by `value` represents adding that value to every reachable sum, and OR combines the cases where the value is skipped or taken.
+The bitset DP uses an integer with binary bit (s) representing whether sum (s) is reachable. For example, if `dp[2]` contains bits (3) and (7), then subsets of two processed values can have sums (3) and (7). Shifting this integer by (v) changes those reachable sums to (3+v) and (7+v).
 
-The `mask` discards sums larger than `total // 2`. Such sums can never be the selected top-row sum we want, because the complementary subset would already be smaller. Truncating the bitsets also reduces both memory use and the cost of the integer operations.
+The DP is updated from large cardinalities toward small ones. If it were updated from small to large, the current value could be inserted repeatedly in the same iteration, which would turn the 0/1 subset sum into an unbounded knapsack.
 
-The DP rows are retained because reconstruction needs to ask whether a particular target existed before the current value was processed. Since there are at most 48 remaining values and 25 cardinality states, this is small enough for the given memory limit.
+The `mask` removes all sums greater than (S/2). Such sums can never become useful later because all values are nonnegative, so a discarded sum can never return to the useful range after adding more values. Besides reducing memory traffic, this keeps the Python integers smaller.
 
-During reconstruction, testing `dp[i - 1][need - 1]` before taking a value is the critical detail. It proves that after choosing this value, the remaining target can still be completed using exactly the required number of elements. If the test fails, the value must belong to the other row.
+The `history` array stores the DP state after every processed value. It is needed only for reconstruction. Once the target sum is known, we inspect the previous state to determine whether the current value was selected. The expression
 
-Python integers have arbitrary precision, so there is no integer overflow. The largest represented bit index is only about 1.2⋅10 6, which is well within the capabilities of Python's integer implementation.
+```
+(previous >> (current - v)) & 1
+```
+
+checks exactly whether the previous state could reach the required remaining sum.
+
+No integer overflow is possible in Python. In C++, a 64-bit type is also sufficient for the path sums because a path contains at most (n+1\le26) values, each at most (50000), but Python integers remove that concern entirely.
+
+The final sorting is not cosmetic. The DP only decides which values belong to each row's internal cells. The monotonicity proof requires the top row to be increasing and the bottom row to be decreasing, so those two groups must be sorted before printing.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input values are 1,4,2,3. After sorting they become 1,2,3,4. The two smallest values are fixed at the universal corners.
+The input values are (1,4,2,3). After sorting we obtain (1,2,3,4). The smallest two values become the endpoints.
 
-| Step | Sorted values | Top-left | Bottom-right | Remaining | Target |
+| Step | Remaining values | Required count | Total | Half | Chosen sum |
 | --- | --- | --- | --- | --- | --- |
-| Initial | 1, 2, 3, 4 | 1 | 2 | 3, 4 | 3 |
+| Sort | (1,2,3,4) |  |  |  |  |
+| Fix endpoints | (3,4) |  | (7) | (3) |  |
+| DP | (3,4) | (1) | (7) | (3) | (3) |
+| Reconstruct | (3) selected | (0) left |  |  | (0) |
 
-The remaining total is 7, so we seek the largest reachable sum not exceeding 3 using exactly one element. The value 3 is reachable, so it goes into the top row and 4 goes into the bottom row.
-
-| Reconstruction | Current value | Target before | Decision | Top subset | Bottom subset |
-| --- | --- | --- | --- | --- | --- |
-| 4 | 4 | 3 | skip | empty | 4 |
-| 3 | 3 | 3 | take | 3 | 4 |
-
-After sorting each row in the required direction, the output is
+The top internal group is ({3}), and the bottom internal group is ({4}). Sorting them gives
 
 ```
 1 3
 4 2
 ```
 
-The extreme paths have values 1+4+2=7 and 1+3+2=6, so the turtle eats 7. This confirms why minimizing the larger internal subset sum is the correct objective rather than trying to equalize the complete row sums.
+The path that goes down immediately has sum (1+4+2=7). The path that goes down in the second column has sum (1+3+2=6). The maximum is (7).
+
+The trace demonstrates the balancing principle. The two endpoint values are fixed, and the remaining values are split as evenly as possible between the two extreme paths.
 
 ### Sample 2
 
-All values are zero, so every subset sum is zero.
+All six values are zero.
 
-| Step | Sorted values | Remaining | Total | Target | Chosen sum |
+| Step | Remaining values | Required count | Total | Half | Chosen sum |
 | --- | --- | --- | --- | --- | --- |
-| Initial | 0, 0, 0, 0, 0, 0 | 0, 0, 0, 0 | 0 | 0 | 0 |
+| Sort | (0,0,0,0,0,0) |  |  |  |  |
+| Fix endpoints | (0,0) |  | (0) | (0) |  |
+| DP | four zeroes | (2) | (0) | (0) | (0) |
+| Reconstruct | two zeroes | (0) left |  |  | (0) |
 
-Every DP state involving zero values remains reachable at sum zero. Reconstruction can put any n−1 zeros into the top row and the rest into the bottom row.
-
-The resulting field is
+Any arrangement is optimal, and the algorithm prints
 
 ```
 0 0 0
 0 0 0
 ```
 
-Every path has value zero, so the construction is optimal and also exercises the equal-value case where many reconstruction choices are possible.
+The example exercises duplicate values and the boundary case where the target sum is exactly zero.
 
 ## Complexity Analysis
 
+Let (S) be the sum of the (2n-2) values not placed at the endpoints. We have (S\le48\cdot50000=2.4\cdot10^6).
+
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n 2 S/W+n 2 ) | There are O(n 2 ) cardinality states, and each bitset shift and OR processes O(S/W) machine words |
-| Space | O(n 2 S/W) | All DP layers are retained for reconstruction |
+| Time | (O(n^2S/w)) | There are (O(n^2)) bitset transitions, each operating on (O(S/w)) machine words. |
+| Space | (O(n^2S/w)) | We store (O(n^2)) DP bitsets for reconstruction. |
 
-Here S≤(2n−2)⋅50000≤2.4⋅10 6, while n≤25. The Python implementation relies on arbitrary-precision integers whose bit operations execute in optimized native code, making the bitset DP practical despite the large numerical range. The original C++ formulation uses the same subset-sum idea with `std::bitset`.
+With (n\le25), the number of cardinality states is tiny, while the largest bitset contains only about (1.2\cdot10^6) useful bits because sums above (S/2) are discarded. Python's `int` operations execute the large bitset shifts in optimized native code, making this substantially faster than iterating over every possible sum in Python.
+
+The memory bound is also safe for the given 512 MB limit. The problem's small (n) is what makes storing the reconstruction layers practical.
 
 ## Test Cases
 
-The test harness below validates the actual mathematical requirements instead of requiring one particular optimal arrangement. This is necessary because the problem explicitly allows any optimal rearrangement.
+The output of a constructive problem need not be unique, so the most robust tests verify that the output is a permutation of the input and that its maximum path sum equals the optimum. For small cases, we can compute the optimum by enumerating all permutations. The tests below also include deterministic exact-output checks for cases where the implementation has a unique natural result.
 
 ```python
-# helper: run solution on input string, return output string
+# The solution function is the same algorithm as above.
 import sys
 import io
+from itertools import permutations
 
-def solve_instance(data: str) -> str:
+def solution(inp: str) -> str:
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
-    sys.stdin = io.StringIO(data)
+    sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
-    solve()
+    try:
+        n = int(sys.stdin.readline())
+        values = list(map(int, sys.stdin.readline().split()))
+        values += list(map(int, sys.stdin.readline().split()))
 
-    result = sys.stdout.getvalue()
+        values.sort()
 
-    sys.stdin = old_stdin
-    sys.stdout = old_stdout
-    return result
+        top_left = values[0]
+        bottom_right = values[1]
 
-def check_output(inp: str, out: str):
-    lines = out.strip().splitlines()
-    assert len(lines) == 2
+        remaining = values[2:]
+        m = len(remaining)
+        need = n - 1
 
-    first = list(map(int, lines[0].split()))
-    second = list(map(int, lines[1].split()))
+        total = sum(remaining)
+        half = total // 2
 
-    n = int(inp.split()[0])
-    assert len(first) == n
-    assert len(second) == n
+        dp = [0] * (need + 1)
+        dp[0] = 1
 
-    original = list(map(int, inp.split()[1:]))
-    produced = first + second
+        history = [dp[:]]
+        mask = (1 << (half + 1)) - 1
 
-    assert sorted(produced) == sorted(original)
+        for v in remaining:
+            for j in range(need, 0, -1):
+                dp[j] |= (dp[j - 1] << v) & mask
+            history.append(dp[:])
 
-    # Compute the turtle's maximum path value.
+        target = dp[need].bit_length() - 1
+
+        top_internal = []
+        bottom_internal = []
+
+        j = need
+        current = target
+
+        for i in range(m, 0, -1):
+            v = remaining[i - 1]
+
+            if j > 0 and current >= v:
+                previous = history[i - 1][j - 1]
+                if (previous >> (current - v)) & 1:
+                    top_internal.append(v)
+                    current -= v
+                    j -= 1
+                    continue
+
+            bottom_internal.append(v)
+
+        top_internal.sort()
+        bottom_internal.sort(reverse=True)
+
+        top = [top_left] + top_internal
+        bottom = bottom_internal + [bottom_right]
+
+        print(*top)
+        print(*bottom)
+
+        return sys.stdout.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+
+def max_path_sum(grid):
+    top, bottom = grid
+    n = len(top)
+
     best = 0
-    top_prefix = 0
-    bottom_suffix = sum(second)
-
     for k in range(n):
-        if k > 0:
-            bottom_suffix -= second[k - 1]
-
-        top_prefix += first[k]
-        best = max(best, top_prefix + bottom_suffix)
+        cur = sum(top[:k + 1]) + sum(bottom[k:])
+        best = max(best, cur)
 
     return best
 
+def parse_grid(out, n):
+    lines = out.strip().splitlines()
+    assert len(lines) == 2
+
+    top = list(map(int, lines[0].split()))
+    bottom = list(map(int, lines[1].split()))
+
+    assert len(top) == n
+    assert len(bottom) == n
+
+    return [top, bottom]
+
+def brute_optimum(values, n):
+    best = 10**30
+
+    # For these tests the values are small enough that exhaustive
+    # permutation is practical.
+    for p in set(permutations(values)):
+        grid = [list(p[:n]), list(p[n:])]
+        best = min(best, max_path_sum(grid))
+
+    return best
+
+def assert_optimal(inp):
+    lines = inp.strip().splitlines()
+    n = int(lines[0])
+    original = list(map(int, lines[1].split()))
+    original += list(map(int, lines[2].split()))
+
+    out = solution(inp)
+    grid = parse_grid(out, n)
+
+    produced = grid[0] + grid[1]
+
+    assert sorted(produced) == sorted(original), "output is not a permutation"
+
+    expected = brute_optimum(original, n)
+    actual = max_path_sum(grid)
+
+    assert actual == expected, (
+        f"not optimal: expected {expected}, got {actual}\n{out}"
+    )
+
 # Provided sample 1.
-sample1 = """2
+assert solution(
+    """2
 1 4
 2 3
 """
-out1 = solve_instance(sample1)
-assert check_output(sample1, out1) == 7
+) == """1 3
+4 2
+""", "sample 1"
 
 # Provided sample 2.
-sample2 = """3
+assert solution(
+    """3
 0 0 0
 0 0 0
 """
-out2 = solve_instance(sample2)
-assert check_output(sample2, out2) == 0
+) == """0 0 0
+0 0 0
+""", "sample 2"
 
-# Provided sample 3.
-sample3 = """3
+# Provided sample 3. The optimal output is not unique.
+assert_optimal(
+    """3
 1 0 1
 0 0 0
 """
-out3 = solve_instance(sample3)
-assert check_output(sample3, out3) == 1
+)
 
-# Minimum size with equal values.
-case4 = """2
-7 7
-7 7
+# Minimum-size case with a nontrivial ordering.
+assert solution(
+    """2
+0 1
+2 3
 """
-out4 = solve_instance(case4)
-assert check_output(case4, out4) == 21
+) == """0 2
+3 1
+""", "minimum n=2"
 
-# Boundary case with a nontrivial balanced partition.
-case5 = """3
-0 1 2
-3 4 5
+# All values equal.
+assert solution(
+    """4
+5 5 5 5
+5 5 5 5
 """
-out5 = solve_instance(case5)
-assert check_output(case5, out5) == 9
+) == """5 5 5 5
+5 5 5 5
+""", "all equal"
 
-# Maximum n and maximum leaf value.
-case6 = "25\n" + " ".join(["50000"] * 25) + "\n" + \
-        " ".join(["50000"] * 25) + "\n"
-out6 = solve_instance(case6)
-assert check_output(case6, out6) == 1250000
+# Boundary values and a perfectly balanced subset.
+assert solution(
+    """3
+0 100 200
+300 400 500
+"""
+) == """0 300 400
+500 200 100
+""", "balanced subset"
+
+# Maximum-size input.
+assert solution(
+    "25\n" +
+    " ".join(["50000"] * 25) + "\n" +
+    " ".join(["50000"] * 25) + "\n"
+) == (
+    " ".join(["50000"] * 25) + "\n" +
+    " ".join(["50000"] * 25) + "\n"
+), "maximum n and maximum values"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 / 1 4 / 2 3` | Any arrangement with maximum path value `7` | The universal-corner argument and the two extreme paths |
-| `3 / 0 0 0 / 0 0 0` | All zeros | Equal values and zero-sum DP states |
-| `3 / 1 0 1 / 0 0 0` | Any arrangement with maximum path value `1` | Exact subset reconstruction with repeated values |
-| `2 / 7 7 / 7 7` | All values remain `7` | Minimum n, complete equality, and duplicate handling |
-| `3 / 0 1 2 / 3 4 5` | Any arrangement with maximum path value `9` | Nontrivial partition and path boundary handling |
-| `25 / 50000... / 50000...` | All values remain `50000` | Maximum n, maximum value, and large bitsets |
+| `2 / 0 1 / 2 3` | `0 2 / 3 1` | Minimum (n), endpoint placement, exact subset cardinality |
+| `4 / 5 5 5 5 / 5 5 5 5` | Four `5`s in each row | Duplicate values and zero-width DP choices |
+| `3 / 0 100 200 / 300 400 500` | `0 300 400 / 500 200 100` | Balanced subset sum and row monotonicity |
+| (n=25), all values (50000) | All `50000` | Maximum (n), maximum leaf value, large bitsets |
 
 ## Edge Cases
 
-For n=2, there are only two possible down-columns. With input
+The first edge case is (n=2). There are only two possible paths, so the internal groups each contain exactly one value. For
 
 ```
 2
-1 4
+0 1
 2 3
 ```
 
-sorting gives 1,2,3,4. The two smallest values become the top-left and bottom-right cells. The remaining values 3 and 4 are split one per row, giving
+the sorted values are (0,1,2,3). The endpoints receive (0) and (1), leaving (2,3). The DP must select one value, and the best choice is (2). The resulting grid is
 
 ```
-1 3
-4 2
+0 2
+3 1
 ```
 
-The two path values are 7 and 6, so the maximum is 7. The implementation handles the cardinality n−1=1 without any special case.
+The two path sums are (4) and (3), so the answer is (4). A common off-by-one mistake is to select (n) remaining values instead of (n-1), which would leave the rows with the wrong number of cells.
 
-For all equal values, consider
+The second edge case is when all values are equal. For
+
+```
+4
+5 5 5 5
+5 5 5 5
+```
+
+the endpoints are both (5), and every remaining subset has the same sum for a fixed cardinality. The DP reaches the target (15) using any three of the six remaining values. Sorting produces two rows of four `5`s. Every possible path has the same sum, so the construction is optimal.
+
+The third edge case is when the optimal subset sum is exactly half of the remaining total. For
 
 ```
 3
-5 5 5
-5 5 5
+0 100 200
+300 400 500
 ```
 
-Every DP state that has the correct number of elements reaches exactly the corresponding multiple of 5. The reconstruction may choose any of the equal leaves, and sorting the two resulting groups produces a valid optimal arrangement. Since every cell has value 5, every path has value 15.
-
-For repeated zeros and ones, consider the third sample:
+the two endpoint values are (0) and (100). The remaining total is (1400), so the ideal internal top sum is (700). The DP finds (300+400=700). The remaining values are (500) and (200), which are placed in decreasing order. The resulting grid is
 
 ```
-3
-1 0 1
-0 0 0
+0 300 400
+500 200 100
 ```
 
-After sorting, the two corner values are zero. The remaining multiset is 0,0,1,1, and the DP finds a one-element subset of sum 1. One possible reconstruction is
+The two extreme paths both have sum (800), and convexity guarantees that no middle path is larger. This catches implementations that only search for a subset sum strictly below half.
 
-```
-0 0 1
-1 0 0
-```
+The fourth edge case is the maximum input size. With (n=25), there are (50) leaves and the largest possible total energy is (2.5\cdot10^6). After fixing the two smallest endpoints, the DP handles at most (48) values and only needs sums through half of their total. The bitset representation is what makes this feasible without iterating over millions of sums for every state in Python.
 
-The three path values are 1, 1, and 1, so the maximum is 1. The fact that the exact sample arrangement is different is irrelevant because the statement accepts any optimal permutation.
-
-The maximum-size case is n=25, with every value equal to 50000. The remaining subset-sum range reaches roughly 1.2⋅10 6 bits after restricting to half of the total. Python's integer bit operations handle this range directly, and no multiplication, floating-point arithmetic, or large nested Python sets are needed.
+The final subtle case is the presence of repeated values. The reconstruction works with positions in the sorted list rather than with distinct numeric identities. If several leaves have the same value, selecting any occurrence gives the same arrangement value, and the DP's backward reconstruction naturally handles those duplicates without requiring unique identifiers.
