@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3107 contests, 22900 problems, 12703 verified."
+description: "Codeforces problem solutions with full editorials. 3107 contests, 22901 problems, 12705 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3107 contests, 22900 problems, 12703 verified.**
+**3107 contests, 22901 problems, 12705 verified.**
 
 ## Unknown — 816 contests, 6857 problems, 4049 verified
 
@@ -1451,7 +1451,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 175 contests, 1057 problems, 672 verified
+## 2019 — 175 contests, 1058 problems, 674 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1618,7 +1618,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102394](102394/) | [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394) | 12 | 12/12 | Special | - |
 | [102397](102397/) | [Asu Coding Cup 4](https://codeforces.com/contest/102397) | 10 | 10/10 | Special | - |
 | [102409](102409/) | [Semana i 2019](https://codeforces.com/contest/102409) | 10 | 9/10 | Special | - |
-| [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 7 | 6/7 | Special | - |
+| [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 8 | 8/8 | Special | - |
 | [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 12 | 12/12 | Special | - |
 | [102436](102436/) | [Innopolis Open 2019-2020, qualification, contest 1](https://codeforces.com/contest/102436) | 5 | 5/5 | Special | - |
 | [102448](102448/) | [UFPE Starters Final Try-Outs 2020](https://codeforces.com/contest/102448) | 9 | 9/9 | Special | - |
