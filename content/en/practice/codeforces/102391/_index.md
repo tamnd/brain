@@ -1,28 +1,28 @@
 ---
 title: "XX Open Cup, Grand Prix of Korea"
-description: "10 problems from XX Open Cup, Grand Prix of Korea (contest 102391), difficulty -. 6/10 solutions verified against sample I/O."
+description: "10 problems from XX Open Cup, Grand Prix of Korea (contest 102391), difficulty -. 7/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102391
 contest_type: "Special"
 rating_range: "-"
 n_problems: 10
-n_verified: 6
-total_solve_s: 4421
-date: "2026-08-11T23:12:35+07:00"
+n_verified: 7
+total_solve_s: 4503
+date: "2026-08-11T02:01:22+07:00"
 weight: 102391
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391)
 
-Special | 10 problems | 6/10 verified | Difficulty - | 1h 13m
+Special | 10 problems | 7/10 verified | Difficulty - | 1h 15m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [6789](https://codeforces.com/problemset/problem/102391/A) |  |  |  | 22m 30s | ✓ |
 | [B](B/) | [Bigger Sokoban 40k](https://codeforces.com/problemset/problem/102391/B) |  |  |  | 5m 24s |  |
-| [C](C/) | [Cleaning](https://codeforces.com/problemset/problem/102391/C) |  |  |  | 9m 22s |  |
+| [C](C/) | [Cleaning](https://codeforces.com/problemset/problem/102391/C) |  |  |  | 10m 44s | ✓ |
 | [D](D/) | [Container](https://codeforces.com/problemset/problem/102391/D) |  |  |  | 8m 24s |  |
 | [F](F/) | [Hilbert's Hotel](https://codeforces.com/problemset/problem/102391/F) |  |  |  | 3m 42s | ✓ |
 | [G](G/) | [Lexicographically Minimum Walk](https://codeforces.com/problemset/problem/102391/G) |  |  |  | 2m 48s | ✓ |
