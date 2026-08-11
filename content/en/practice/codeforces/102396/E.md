@@ -1,7 +1,7 @@
 ---
 title: "CF 102396E - Unique Solution"
-description: "We are given a target coefficient array (a), where every entry is (-1), (0), or (1), and at least one entry is nonzero."
-date: "2026-08-12T02:39:17+07:00"
+description: "We are given a nonzero ternary vector a, where every a i ​ is −1, 0, or 1. We have to construct another integer array x and a modulus m such that, among all nonzero ternary vectors c, the divisibility condition i=1 ∑ n ​ c i ​ x i ​ ≡0(modm) holds for exactly two vectors, namely…"
+date: "2026-08-12T05:42:06+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102396
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)"
 rating: 0
 weight: 102396
-solve_time_s: 633
+solve_time_s: 886
 verified: false
 draft: false
 ---
@@ -18,141 +18,95 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 10m 33s  
+**Solve time:** 14m 46s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a target coefficient array (a), where every entry is (-1), (0), or (1), and at least one entry is nonzero. We must construct another integer array (x) and a modulus (m) such that, among all nonzero ternary arrays (c), the congruence
+We are given a nonzero ternary vector a, where every a i ​ is −1, 0, or 1. We have to construct another integer array x and a modulus m such that, among all nonzero ternary vectors c, the divisibility condition
 
-[
-\sum_{i=1}^{n} c_i x_i \equiv 0 \pmod m
-]
+i=1 ∑ n ​ c i ​ x i ​ ≡0(modm)
 
-holds exactly for (c=a) and (c=-a).
+holds for exactly two vectors, namely the prescribed vector a and its negation −a. The construction itself is the answer, so there is no input modulus or array x to process.
 
-The challenge is that the output is completely under our control. We do not need to search for a modulus that happens to distinguish the target. We can deliberately encode the target into the binary structure of the (x_i)'s.
+The restriction n≤30 is the central numerical constraint. It allows powers of two up to 2 29, which still fit strictly below the required 2 30 bound for every x i ​. At the same time, the modulus must be smaller than 2 n, so a construction based on the binary number 2 n −1 is especially natural. Brute-forcing all ternary vectors would require 3 n −1 candidates, which is about 2.06×10 14 candidates when n=30. Even checking each candidate in constant time would be hopeless, and checking its dot product in O(n) is worse.
 
-The bound (n\le 30) is the key numerical constraint. It lets us use powers of two up to (2^{29}), which still satisfy the strict requirement (|x_i|<2^{30}). At the same time, (m) must be smaller than (2^n), so a construction whose largest relevant value is around (2^n) is exactly what we want. Since there is only one test case, even a linear construction is far below the one-second limit.
+There are two edge cases that a careless construction can mishandle. For example, with
 
-There are two edge cases that are easy to mishandle. First, zero entries of (a) still correspond to coordinates in (x), and setting their (x_i) to zero would immediately create extra solutions. For example, with
+```
+1
+1
+```
+
+the only nonzero ternary vectors are 1 and −1, so m=1, x 1 ​ =1 is already valid. A construction that insists on m>1 would unnecessarily fail here.
+
+Zeros in the target vector are more subtle. For
 
 ```
 2
 1 0
 ```
 
-the correct construction can be
+we must distinguish (1,0) from (1,1) and (1,−1). Simply setting x i ​ =a i ​ 2 i gives x 2 ​ =0, which makes every choice of the second coefficient irrelevant and creates many unwanted solutions. The construction must give zero positions their own weights while still preventing them from participating in a divisible sum.
 
-```
-2
-1 2
-```
-
-because the only nonzero ternary vectors whose dot product with (x) is divisible by (2) are ((0,1)) and ((0,-1)) if that construction is used for the target ((0,1)), but for the target ((1,0)) we instead assign the larger power to its nonzero coordinate:
-
-```
-2
-1 2
-```
-
-gives the target dot product (1), so this particular assignment would be wrong. The construction must put the zero coordinates on the low powers and the nonzero target coordinates on the high powers. For ((1,0)), the correct output is
-
-```
-2
-2 1
-```
-
-Here the target gives (2), while every nonzero signed combination has absolute value at most (3), so divisibility by (2) forces the value to be (2) or (-2), and only the target and its negation achieve those values.
-
-The second edge case is (n=1). For input
-
-```
-1
--1
-```
-
-we may output
-
-```
-1
--1
-```
-
-Since the modulus is (1), every integer is divisible by it, but the only allowed nonzero ternary vectors of length one are (1) and (-1), which are exactly (a) and (-a). A construction must not assume that the modulus is greater than (1).
+The official problem allows any valid construction, not necessarily the sample construction.
 
 ## Approaches
 
-A direct approach is to try every possible student answer (c). Each coordinate has three choices, so there are (3^n-1) nonzero candidates. For every candidate we would compute its dot product with (x) and test divisibility by (m). This is correct as a verifier, but it is useless as a construction method at the maximum size. There are (3^{30}=205891132094649) ternary vectors, and examining up to (30) coordinates for each one gives roughly (6.18\cdot10^{15}) elementary coefficient operations.
+A direct approach would enumerate every vector c∈{−1,0,1} n except the all-zero vector, compute ∑c i ​ x i ​, and test divisibility by m. There are exactly 3 n −1 such vectors. For n=30, this is roughly 2.06×10 14 possibilities, so brute force is completely infeasible.
 
-The brute-force approach works because it explicitly distinguishes every possible coefficient vector, but it fails because the ternary search space grows exponentially. The useful observation is that we can make the possible sums themselves uniquely decodable instead of examining the vectors individually.
+The useful observation is that we do not actually need to search for x. The coefficient set {−1,0,1} interacts very cleanly with powers of two. If we give the coordinates weights 1,2,4,…, every signed sum has a rigid binary structure. In particular, the only way to obtain 2 k −1 using coefficients from {−1,0,1} on the weights 1,2,…,2 k−1 is to use every coefficient as +1, and the only way to obtain its negative is to use every coefficient as −1.
 
-Powers of two give us exactly the structure we need. Give every coordinate a distinct power of two, with the zero entries of the target receiving the smallest powers and the nonzero entries receiving all the larger powers. For a nonzero target entry (a_i), choose the sign of (x_i) so that (a_i x_i) is positive. Consequently, the target dot product becomes a sum of consecutive high powers of two.
+The remaining difficulty is that some target coefficients may be zero. The trick is to separate zero positions from nonzero positions by magnitude. Give all zero positions the smallest powers of two, and give all nonzero positions the larger powers. Then the target vector uses exactly all of the larger weights, so its dot product becomes a carefully chosen modulus.
 
-Suppose the target contains (z) zero entries. Then the nonzero entries occupy powers
+Let z be the number of zero entries and k=n−z the number of nonzero entries. Assign the zero positions the weights
 
-[
-2^z,2^{z+1},\ldots,2^{n-1}.
-]
+1,2,…,2 z−1 ,
 
-Their sum is
+and assign the nonzero positions
 
-[
-m=2^z+2^{z+1}+\cdots+2^{n-1}
-=2^n-2^z.
-]
+2 z ,2 z+1 ,…,2 n−1 .
 
-This modulus is always positive and strictly smaller than (2^n).
+For a nonzero target entry, multiply its assigned weight by a i ​, so the target signs are built directly into x i ​. For a zero target entry, use the assigned positive weight.
 
-The consecutive block of high powers is the crucial detail. If another ternary vector gives a multiple of (m), first look modulo (2^z). Every high power is divisible by (2^z), while the low powers have total absolute value less than (2^z). Thus all coefficients belonging to the low powers must be zero. After dividing by (2^z), the remaining problem asks for a signed ternary representation of (2^{n-z}-1). Its absolute value is the maximum possible sum of the remaining powers, so the only ways to reach it are to take every coefficient as (+1) or every coefficient as (-1).
+The target dot product is then
+
+a i ​  =0 ∑ ​ a i ​ (a i ​ 2 j )= j=z ∑ n−1 ​ 2 j =2 n −2 z .
+
+We choose exactly this value as m. It is positive because k≥1, and it is smaller than 2 n, as required.
+
+The construction works because the total absolute value of any ternary combination is at most
+
+1+2+⋯+2 n−1 =2 n −1.
+
+Our modulus satisfies m≥2 n−1, so the only possible multiples of m in this range are 0, m, and −m. The low z bits then force every zero-position coefficient to vanish, after which the remaining problem reduces to the unique binary representation of 2 k −1.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n3^n)) | (O(n)) | Too slow |
-| Optimal | (O(n)) | (O(n)) | Accepted |
+| Brute Force | O(n3 n ) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count the number (z) of zero entries in the target array. The zero coordinates need to receive the low binary powers, because they must not affect the target sum.
-2. Set the modulus to
+1. Count how many entries of the target vector are zero. Let this number be z. The other k=n−z entries are nonzero, and k≥1.
+2. Set
 
-[
-m=2^n-2^z.
-]
+m=2 n −2 z .
 
-This is exactly the sum of the powers from (2^z) through (2^{n-1}), so the target will produce either (m) or (-m).
+This is exactly the sum of the powers 2 z ,2 z+1 ,…,2 n−1, which will be the weights assigned to the nonzero target positions. Since k≥1, we have m≥1, and clearly m<2 n.
 
-1. Assign the powers (2^0,2^1,\ldots,2^{z-1}) to the zero positions of (a). Their corresponding (x_i) values can simply be those positive powers. These coordinates cannot participate in a nonzero solution because their total possible contribution is smaller than (2^z).
-2. Assign the powers (2^z,2^{z+1},\ldots,2^{n-1}) to the nonzero positions of (a). For a position with (a_i=1), use the corresponding positive power. For a position with (a_i=-1), use its negative.
-3. Consider any nonzero ternary vector (c) satisfying the divisibility condition. Rewrite every product (c_i x_i) as a signed power of two. The total is a signed sum of all the distinct powers (2^0,\ldots,2^{n-1}).
-4. Reduce that sum modulo (2^z). The high-power part vanishes, while the low-power part has absolute value at most
-
-[
-1+2+\cdots+2^{z-1}=2^z-1.
-]
-
-Since the entire sum is divisible by (m), and (m) itself is divisible by (2^z), the low-power part must be zero. A nonzero signed combination of distinct powers below (2^z) cannot be zero, so every low-power coefficient is zero.
-
-1. Divide the remaining sum by (2^z). We are left with a signed sum of (L=n-z) consecutive powers,
-
-[
-1,2,\ldots,2^{L-1},
-]
-
-and it must be divisible by
-
-[
-2^L-1.
-]
-
-Its absolute value is at most (2^L-1), so the only possible nonzero multiples are (2^L-1) and (-(2^L-1)). Reaching the positive maximum requires every coefficient to be (+1), while reaching the negative maximum requires every coefficient to be (-1).
-
-1. Undo the sign used when constructing (x_i). For every nonzero position this means (c_i=a_i) in the positive case and (c_i=-a_i) in the negative case. All zero positions remain zero, so the only solutions are (a) and (-a).
+1. Traverse the target array. For every zero entry, assign the next unused low power of two, starting from 1. Thus the zero positions receive 2 0 ,2 1 ,…,2 z−1.
+2. For every nonzero entry a i ​, assign the next unused high power of two and multiply it by a i ​. Thus a target value 1 gets a positive weight and a target value −1 gets the corresponding negative weight.
+3. The resulting target dot product is exactly m. Its negation has dot product −m, so both prescribed solutions are valid.
+4. Consider any nonzero ternary vector c satisfying the divisibility condition. Its absolute dot product is at most 2 n −1, while m≥2 n−1. Hence its dot product must be one of 0,m,−m.
+5. If the dot product is zero, look at the largest power of two whose coefficient is nonzero. That power is strictly larger than the sum of all smaller powers, so cancellation is impossible. Thus every coefficient must be zero, contradicting the requirement that c be nonzero.
+6. Suppose the dot product is m or −m. Reduce the equation modulo 2 z. Every high weight is divisible by 2 z, while the zero-position weights are exactly 1,2,…,2 z−1. Their signed sum has absolute value below 2 z, so it must actually equal zero. The uniqueness of signed binary representation forces every coefficient on a zero target position to be zero.
+7. After removing those zero positions and dividing the remaining equation by 2 z, the weights become 1,2,…,2 k−1, and the required absolute sum is 2 k −1. The only possible ternary representation is all +1, or all −1, depending on the sign of the original sum. Undoing the signs stored in x i ​, the only solutions are a and −a.
 
 ### Why it works
 
-The invariant is that the target's nonzero coordinates correspond exactly to one consecutive block of the largest powers of two. Any divisible signed sum must first have zero contribution from all smaller powers, because their total magnitude is less than the lowest target power. Once those coordinates disappear, the remaining target modulus is the maximum possible absolute value of the remaining signed sum. Only the all-(+1) and all-(-1) coefficient choices can attain that maximum. Restoring the original signs of (a) gives precisely (a) and (-a).
+The key invariant is that the low powers of two belong exclusively to coordinates where the desired answer is zero, while every nonzero target coordinate receives a multiple of 2 z. Any divisible combination must first have its low part equal to zero, forcing all zero-target coefficients to disappear. The remaining high powers form a complete binary sequence whose only ternary representations of 2 k −1 and −(2 k −1) are the all-positive and all-negative choices. The signs stored in x i ​ convert those choices exactly into a and −a.
 
 ## Python Solution
 
@@ -160,34 +114,27 @@ The invariant is that the target's nonzero coordinates correspond exactly to one
 import sys
 input = sys.stdin.readline
 
-def build(a):
-    n = len(a)
-    z = a.count(0)
-
-    # The target's nonzero coordinates use powers
-    # 2^z, 2^(z+1), ..., 2^(n-1).
-    m = (1 << n) - (1 << z)
-
-    x = [0] * n
-
-    low = 0
-    high = z
-
-    for i in range(n):
-        if a[i] == 0:
-            x[i] = 1 << low
-            low += 1
-        else:
-            x[i] = a[i] * (1 << high)
-            high += 1
-
-    return m, x
-
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
 
-    m, x = build(a)
+    z = a.count(0)
+
+    # Sum of powers 2^z, ..., 2^(n-1).
+    m = (1 << n) - (1 << z)
+
+    x = [0] * n
+
+    low_power = 0
+    high_power = z
+
+    for i in range(n):
+        if a[i] == 0:
+            x[i] = 1 << low_power
+            low_power += 1
+        else:
+            x[i] = a[i] * (1 << high_power)
+            high_power += 1
 
     print(m)
     print(*x)
@@ -196,187 +143,219 @@ if __name__ == "__main__":
     solve()
 ```
 
-The `build` function first counts the zero entries. If there are (z) of them, the target's nonzero coordinates must receive the powers beginning at (2^z). The modulus is the sum of those powers, computed directly as `(1 << n) - (1 << z)`.
+The first line of `solve` reads the target vector, and `z` records how many coordinates must eventually have coefficient zero. This count determines where the boundary between low and high powers of two lies.
 
-The `low` pointer assigns powers starting from (2^0) to zero positions. The `high` pointer starts at (z), so every nonzero position receives one of the consecutive high powers. Multiplying by `a[i]` gives the required sign without changing the magnitude of the power.
+The modulus is computed as `(1 << n) - (1 << z)`. This is the sum of every power from 2 z through 2 n−1, so it is exactly the absolute dot product obtained by the desired vector.
 
-The largest magnitude assigned to an (x_i) is (2^{n-1}), which is at most (2^{29}) because (n\le30). Thus the strict output bound (|x_i|<2^{30}) is satisfied. Python integers also have arbitrary precision, so the calculation of (2^{30}-1) and the associated sums requires no special overflow handling.
+The two counters have different roles. `low_power` starts at zero and is used only for target zeros. `high_power` starts at `z` and is used only for nonzero target entries. Consequently, the two groups occupy disjoint ranges of binary positions.
 
-There is no off-by-one issue in the exponent range. There are exactly (z) zero positions and they consume exponents (0) through (z-1). The remaining (n-z) positions consume (z) through (n-1), giving exactly (n) distinct powers.
+For a nonzero `a[i]`, the expression `a[i] * (1 << high_power)` stores the desired sign directly into `x[i]`. If the target coefficient is −1, the corresponding `x[i]` is negative. When the student chooses the target coefficient −1, their product with `x[i]` is positive, contributing the required power of two to the target sum.
+
+The largest assigned absolute value is 2 n−1. Since n≤30, it is at most 2 29, strictly below 2 30. Python integers also have arbitrary precision, so there is no overflow issue.
+
+There is no multiple-test-case loop because the original input contains exactly one instance. The construction uses only integer shifts and one linear pass through the array.
 
 ## Worked Examples
 
-For Sample 1, the input is
+### Example 1
+
+Consider the provided sample.
 
 ```
 2
 1 -1
 ```
 
-There are no zero entries, so (z=0). The two coordinates receive (2^0) and (2^1), with the second one negated because the target coefficient is (-1).
+There are no zero entries, so z=0. The modulus is
 
-| Variable | Value |
-| --- | --- |
-| (n) | 2 |
-| (z) | 0 |
-| (m=2^2-2^0) | 3 |
-| (x_1) | 1 |
-| (x_2) | -2 |
-| (a\cdot x) | 3 |
+m=2 2 −2 0 =3.
 
-The output is
+The two target entries receive weights 1 and 2, with their signs included in x.
+
+| Index | a i ​ | Power | x i ​ |
+| --- | --- | --- | --- |
+| 1 | 1 | 2 0 =1 | 1 |
+| 2 | -1 | 2 1 =2 | -2 |
+
+The target gives
+
+1⋅1+(−1)⋅(−2)=3,
+
+so it is divisible by 3. Its negation gives −3.
+
+Any nonzero ternary combination has absolute value at most 1+2=3. The only possible divisible values are 0,±3. Zero has only the all-zero representation, while 3 and −3 have only the all-positive and all-negative representations. Thus the only solutions are (1,−1) and (−1,1).
+
+The sample output uses a different valid choice, x=(1,4), but the problem accepts any valid construction.
+
+### Example 2
+
+Consider the custom input
 
 ```
 3
-1 -2
+1 0 -1
 ```
 
-The target gives (3), while its negation gives (-3). Any other ternary choice produces a signed combination of (1) and (2), whose absolute value is at most (3), but the only ways to reach either extreme are ((1,-1)) and ((-1,1)).
+There is one zero, so z=1. The modulus is
 
-The official sample uses a different valid construction, `3` with `1 4`, but the problem permits any valid output.
+m=2 3 −2 1 =6.
 
-For a second example, consider
+The zero position gets 2 0 =1, while the nonzero positions get 2 1 =2 and 2 2 =4.
 
-```
-4
-0 1 -1 0
-```
+| Index | a i ​ | Assigned power | x i ​ |
+| --- | --- | --- | --- |
+| 1 | 1 | 2 1 =2 | 2 |
+| 2 | 0 | 2 0 =1 | 1 |
+| 3 | -1 | 2 2 =4 | -4 |
 
-There are (z=2) zero entries, so the zero positions receive (1) and (2), while the two nonzero positions receive (4) and (-8).
+For the target,
 
-| Variable | Value |
-| --- | --- |
-| (n) | 4 |
-| (z) | 2 |
-| (m=2^4-2^2) | 12 |
-| (x_1) | 1 |
-| (x_2) | 4 |
-| (x_3) | -8 |
-| (x_4) | 2 |
-| (a\cdot x) | 12 |
+1⋅2+0⋅1+(−1)⋅(−4)=6.
 
-The target produces (4+8=12). Any divisible signed combination must first have zero contribution from (1) and (2), because their combined magnitude is at most (3<4). The remaining coefficients must then produce (12) or (-12), which forces them to be exactly ((1,-1)) or ((-1,1)). Thus the only solutions are ((0,1,-1,0)) and its negation.
+The negation gives −6.
+
+Now consider any other ternary vector. Its absolute dot product is at most 1+2+4=7, so a divisible value can only be 0,±6. A zero value is impossible for a nonzero vector because powers of two have unique signed representations.
+
+For 6, reducing modulo 2 immediately forces the coefficient of the weight 1 to be zero. The remaining equation is 2u+4v=6, or u+2v=3, whose only ternary solution is u=v=1. This recovers exactly (1,0,−1).
+
+The trace demonstrates why zero coordinates cannot simply be assigned weight zero. They need the low binary weights so that divisibility itself forces their student coefficients to vanish.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | We scan the target array a constant number of times. |
-| Space | (O(n)) | The constructed array (x) contains (n) integers. |
+| Time | O(n) | The array is scanned once and every operation is constant time. |
+| Space | O(n) | The input and constructed array both contain n integers. |
 
-For (n\le30), the algorithm performs only a few dozen operations and uses a few dozen integers. The largest power used is (2^{29}), so every output value satisfies the required bound, and the modulus is at most (2^{30}-1). The construction is comfortably within both the one-second time limit and the 512 MB memory limit.
+With n≤30, the algorithm performs only a few dozen arithmetic operations and stays far below the one-second time limit. Every output value also satisfies the required bounds because all absolute values are powers of two below 2 30, while m=2 n −2 z <2 n.
 
 ## Test Cases
 
-Because the problem accepts any valid construction, tests should validate the mathematical property of the produced output rather than compare against one fixed output. The following harness uses the same `build` function as the solution, checks the output bounds, and exhaustively verifies every ternary vector for small cases.
+The test harness below does not compare against one fixed output, because this is a constructive problem and many different outputs are valid. Instead, it runs the construction and independently checks that exactly the two required ternary vectors satisfy the produced congruence.
 
 ```python
-# helper: run solution on input string, return output string
 import sys
 import io
 from itertools import product
 
-def build(a):
-    n = len(a)
-    z = a.count(0)
+def solution(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
 
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    input = sys.stdin.readline
+
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    z = a.count(0)
     m = (1 << n) - (1 << z)
 
     x = [0] * n
-    low = 0
-    high = z
+    low_power = 0
+    high_power = z
 
     for i in range(n):
         if a[i] == 0:
-            x[i] = 1 << low
-            low += 1
+            x[i] = 1 << low_power
+            low_power += 1
         else:
-            x[i] = a[i] * (1 << high)
-            high += 1
+            x[i] = a[i] * (1 << high_power)
+            high_power += 1
 
-    return m, x
+    print(m)
+    print(*x)
 
-def solve_data(inp: str) -> str:
-    data = inp.strip().split()
-    n = int(data[0])
-    a = list(map(int, data[1:1 + n]))
+    out = sys.stdout.getvalue()
 
-    m, x = build(a)
-    return f"{m}\n" + " ".join(map(str, x)) + "\n"
+    sys.stdin = old_stdin
+    sys.stdout = old_stdout
+    return out
 
-def run(inp: str) -> str:
-    return solve_data(inp)
+def validate(inp: str) -> str:
+    out = solution(inp).split()
+    data = list(map(int, out))
 
-def verify(inp: str):
-    data = inp.strip().split()
-    n = int(data[0])
-    a = list(map(int, data[1:1 + n]))
+    n = int(inp.split()[0])
+    a = list(map(int, inp.split()[1:n + 1]))
 
-    m, x = build(a)
+    m = data[0]
+    x = data[1:]
 
+    assert len(x) == n
     assert 1 <= m < (1 << n)
+    assert all(-(1 << 30) < v < (1 << 30) for v in x)
 
-    for value in x:
-        assert -(1 << 30) < value < (1 << 30)
+    found = []
 
-    expected = {tuple(a), tuple(-v for v in a)}
-
-    # Exhaustive verification is practical for these small tests.
     for c in product((-1, 0, 1), repeat=n):
         if all(v == 0 for v in c):
             continue
 
         s = sum(c[i] * x[i] for i in range(n))
         if s % m == 0:
-            assert c in expected, (a, m, x, c)
+            found.append(c)
 
-# Provided sample.
-verify("2\n1 -1\n")
+    expected = {tuple(a), tuple(-v for v in a)}
+    assert set(found) == expected
 
-# Custom case 1: minimum size.
-verify("1\n-1\n")
+    return out
 
-# Custom case 2: zero entries must receive the low powers.
-verify("4\n0 1 -1 0\n")
+# Provided sample
+validate("""\
+2
+1 -1
+""")
 
-# Custom case 3: all entries equal and nonzero.
-verify("5\n1 1 1 1 1\n")
+# Minimum-size input
+validate("""\
+1
+1
+""")
 
-# Custom case 4: only one nonzero entry, the strongest boundary case.
-verify("5\n0 0 0 0 -1\n")
+# A zero coordinate, catching constructions that accidentally set x_i = 0
+validate("""\
+2
+1 0
+""")
 
-# The maximum-size case is checked structurally, since exhaustive
-# enumeration of 3^30 vectors would be intentionally infeasible.
-n = 30
-a = [1 if i % 2 == 0 else -1 for i in range(n)]
-m, x = build(a)
+# Mixed signs and zeros
+validate("""\
+6
+0 -1 1 0 1 -1
+""")
 
-assert m == (1 << 30) - 1
-assert max(abs(v) for v in x) == (1 << 29)
-assert sum(a[i] * x[i] for i in range(n)) == m
+# Maximum-size input
+validate("30\n" + " ".join(["1"] * 30) + "\n")
 
-print("All tests passed.")
+# All nonzero values with mixed signs
+validate("""\
+8
+1 -1 1 -1 -1 1 -1 1
+""")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 / 1 -1` | `3 / 1 -2` | Provided sample, with a different valid construction |
-| `1 / -1` | `1 / -1` | Minimum (n), including (m=1) |
-| `4 / 0 1 -1 0` | `12 / 1 4 -8 2` | Zero coordinates and separated low powers |
-| `5 / 1 1 1 1 1` | `31 / 1 2 4 8 16` | All target entries nonzero |
-| `5 / 0 0 0 0 -1` | `16 / 1 2 4 8 -16` | Only one nonzero entry and the largest possible zero prefix |
-| Alternating length-30 array | (m=2^{30}-1), powers through (2^{29}) | Maximum (n) and output-value boundary |
+| `2 / 1 -1` | Any valid construction | Provided sample and mixed signs |
+| `1 / 1` | `m=1`, `x_1=1` is valid | Minimum size and modulus boundary |
+| `2 / 1 0` | Any valid construction, such as `m=2, x=(2,1)` | Zero-coordinate handling |
+| `6 / 0 -1 1 0 1 -1` | Any valid construction | Separation of low and high powers |
+| `30 / 1 1 ... 1` | Any valid construction | Maximum n and largest power 2 29 |
+| `8 / 1 -1 1 -1 -1 1 -1 1` | Any valid construction | Sign handling across many coordinates |
 
 ## Edge Cases
 
-For the minimum-size case
+For the minimum case
 
 ```
 1
--1
+1
 ```
 
-we have (z=0), so (m=2^1-1=1) and (x_1=-1). The only nonzero ternary coefficient is either (1) or (-1), so both possible solutions are exactly (a) and (-a). The fact that (m=1) makes every integer divisible is harmless because there are no other nonzero ternary vectors of length one.
+we have z=0, so m=2 1 −1=1 and x 1 ​ =1. Both possible nonzero choices, 1 and −1, have sums divisible by 1, and there are no other nonzero ternary vectors. The construction deliberately permits m=1, which is legal.
 
 For a target containing zeros, consider
 
@@ -385,36 +364,35 @@ For a target containing zeros, consider
 1 0
 ```
 
-There is one zero, so (z=1), (m=4-2=2), and the construction produces
+Here z=1, so m=4−2=2. The zero position receives weight 1, and the nonzero position receives weight 2, giving
 
 ```
 2
 2 1
 ```
 
-The target gives (1\cdot2+0\cdot1=2). A careless construction that simply used (x_i=a_i2^i) would produce a zero coordinate with (x_i=0), and the vector selecting only that coordinate would immediately become an unwanted solution. Moving the zero coordinate to the low power avoids that problem.
+The target has sum 2, while its negation has sum −2. A vector using the zero position has a contribution of ±1, so it cannot be divisible by 2 unless another contribution cancels it. The only other available weight is 2, which cannot cancel an odd contribution. Thus the zero coefficient is forced to remain zero.
 
-For the case with many zeros,
-
-```
-5
-0 0 0 0 -1
-```
-
-we have (z=4), so (m=32-16=16) and
+For a target with several zeros, consider
 
 ```
-x = [1, 2, 4, 8, -16].
+4
+0 0 1 -1
 ```
 
-The target gives (16). A solution divisible by (16) must first have zero contribution from the first four coordinates, because their total signed contribution has absolute value at most (15). The final coordinate must then have coefficient (1) or (-1), giving exactly the target and its negation.
+There are z=2 zeros, so
 
-For the maximum size (n=30), when every entry is nonzero we have (z=0). The modulus becomes
+m=2 4 −2 2 =12.
 
-[
-2^{30}-1,
-]
+The zero positions receive 1 and 2, while the nonzero positions receive 4 and 8, with the sign of the last weight reversed:
 
-and the largest (x_i) has magnitude (2^{29}), still strictly below (2^{30}). The target uses every power from (2^0) through (2^{29}), so its dot product has magnitude exactly (2^{30}-1). No larger multiple of the modulus can occur because the absolute value of any ternary combination of all these powers is at most (2^{30}-1).
+```
+12
+1 2 4 -8
+```
 
-The most delicate boundary is when exactly one target entry is nonzero. If that entry is assigned the highest power (2^{n-1}), then (m=2^{n-1}). All other coordinates use smaller powers whose total is (2^{n-1}-1). A divisible combination must have zero contribution from those smaller powers before it can reach (m), so the highest-power coefficient is forced to be (1) or (-1). This is precisely why the nonzero target coordinates must occupy the high-power suffix rather than simply receiving powers according to their original positions.
+Any divisible sum must lie between −15 and 15, so it can only be 0,±12. Modulo 4, the low part is a combination of 1 and 2 whose absolute value is at most 3, so it must be exactly zero. The coefficients of both low weights are consequently zero. The remaining equation is based on weights 4 and 8, and only the required signs can produce 12 or −12.
+
+At the maximum size n=30, the largest weight is 2 29 =536870912, which is safely below 2 30. The modulus is at most 2 30 −1, so both output restrictions remain satisfied exactly at the boundary.
+
+The all-nonzero case is also worth checking because then z=0. The construction reduces to the cleanest form, with weights 1,2,4,…,2 n−1 and modulus 2 n −1. The signs of the target vector are placed directly into x i ​, so the only two divisible ternary vectors are the prescribed vector and its negation.
