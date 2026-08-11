@@ -1,22 +1,22 @@
 ---
 title: "Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация"
-description: "6 problems from Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация (contest 102420), difficulty -. 5/6 solutions verified against sample I/O."
+description: "7 problems from Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация (contest 102420), difficulty -. 5/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102420
 contest_type: "Special"
 rating_range: "-"
-n_problems: 6
+n_problems: 7
 n_verified: 5
-total_solve_s: 2164
-date: "2026-08-10T00:54:19+07:00"
+total_solve_s: 2916
+date: "2026-08-10T01:06:53+07:00"
 weight: 102420
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420)
 
-Special | 6 problems | 5/6 verified | Difficulty - | 36m 4s
+Special | 7 problems | 5/7 verified | Difficulty - | 48m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,4 @@ Special | 6 problems | 5/6 verified | Difficulty - | 36m 4s
 | [F](F/) | [Arithmetic and blocks](https://codeforces.com/problemset/problem/102420/F) |  |  |  | 4m 36s | ✓ |
 | [G](G/) | [Tennis score](https://codeforces.com/problemset/problem/102420/G) |  |  |  | 5m 37s |  |
 | [J](J/) | [\u041c\u0430\u043b\u0435\u0444\u0438\u0441\u0443\u043c\u043c\u0430](https://codeforces.com/problemset/problem/102420/J) |  |  |  | 1m 46s | ✓ |
+| [K](K/) | [Magical XML](https://codeforces.com/problemset/problem/102420/K) |  |  |  | 12m 32s |  |
