@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 7
-total_solve_s: 3741
-date: "2026-08-11T16:19:40+07:00"
+total_solve_s: 2712
+date: "2026-08-11T16:27:46+07:00"
 weight: 102407
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2019-2020, Вторая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102407)
 
-Special | 9 problems | 7/9 verified | Difficulty - | 1h 2m
+Special | 9 problems | 7/9 verified | Difficulty - | 45m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,4 @@ Special | 9 problems | 7/9 verified | Difficulty - | 1h 2m
 | [H](H/) | [\u042d\u0442\u0430\u0436\u0438](https://codeforces.com/problemset/problem/102407/H) |  |  |  | 15m 48s | ✓ |
 | [I](I/) | [\u0412\u044b\u0440\u0432\u0430\u0442\u044c\u0441\u044f \u0438\u0437 \u043e\u043a\u0440\u0443\u0436\u0435\u043d\u0438\u044f](https://codeforces.com/problemset/problem/102407/I) |  |  |  | 1m 28s | ✓ |
 | [J](J/) | [\u0423\u0431\u0438\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430](https://codeforces.com/problemset/problem/102407/J) |  |  |  | 2m 50s | ✓ |
-| [K](K/) | [Crazy Arrangements](https://codeforces.com/problemset/problem/102407/K) |  |  |  | 25m 12s |  |
+| [K](K/) | [Crazy Arrangements](https://codeforces.com/problemset/problem/102407/K) |  |  |  | 8m 3s |  |
