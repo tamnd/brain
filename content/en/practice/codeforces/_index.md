@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3107 contests, 22892 problems, 12694 verified."
+description: "Codeforces problem solutions with full editorials. 3107 contests, 22896 problems, 12700 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3107 contests, 22892 problems, 12694 verified.**
+**3107 contests, 22896 problems, 12700 verified.**
 
-## Unknown — 816 contests, 6854 problems, 4046 verified
+## Unknown — 816 contests, 6854 problems, 4047 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [102391](102391/) | [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391) | 10 | 6/10 | Special | - |
+| [102391](102391/) | [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391) | 10 | 7/10 | Special | - |
 | [102396](102396/) | [2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)](https://codeforces.com/contest/102396) | 9 | 8/9 | Special | - |
 | [102399](102399/) | [2019 Московская командная олимпиада школьников, лига A](https://codeforces.com/contest/102399) | 12 | 10/12 | Special | - |
 | [102407](102407/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102407) | 10 | 8/10 | Special | - |
@@ -1451,7 +1451,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 175 contests, 1052 problems, 666 verified
+## 2019 — 175 contests, 1056 problems, 671 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1618,7 +1618,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102394](102394/) | [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394) | 12 | 12/12 | Special | - |
 | [102397](102397/) | [Asu Coding Cup 4](https://codeforces.com/contest/102397) | 10 | 10/10 | Special | - |
 | [102409](102409/) | [Semana i 2019](https://codeforces.com/contest/102409) | 9 | 8/9 | Special | - |
-| [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 3 | 1/3 | Special | - |
+| [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 7 | 6/7 | Special | - |
 | [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 12 | 12/12 | Special | - |
 | [102436](102436/) | [Innopolis Open 2019-2020, qualification, contest 1](https://codeforces.com/contest/102436) | 5 | 5/5 | Special | - |
 | [102448](102448/) | [UFPE Starters Final Try-Outs 2020](https://codeforces.com/contest/102448) | 9 | 9/9 | Special | - |
