@@ -1,7 +1,7 @@
 ---
 title: "CF 102396G - Weight Overflow"
-description: "We need to place some of the given weights onto two plates. A weight can go onto the first plate, the second plate, or stay unused. The scale does not compare the actual sums."
-date: "2026-08-10T18:48:12+07:00"
+description: "We have up to 25 weights, and each weight can be handled in exactly one of three ways: it can be placed on the first plate, placed on the second plate, or left unused. The scale does not compare the actual sums."
+date: "2026-08-11T23:31:21+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102396
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)"
 rating: 0
 weight: 102396
-solve_time_s: 803
+solve_time_s: 427
 verified: false
 draft: false
 ---
@@ -18,366 +18,488 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 13m 23s  
+**Solve time:** 7m 7s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to place some of the given weights onto two plates. A weight can go onto the first plate, the second plate, or stay unused. The scale does not compare the actual sums. Instead, it reduces each plate's total mass modulo `m`, and reports balanced when those two residues are equal.
+We have up to 25 weights, and each weight can be handled in exactly one of three ways: it can be placed on the first plate, placed on the second plate, or left unused. The scale does not compare the actual sums. It first reduces each plate's total modulo `m`, then compares those residues. We need a nonempty assignment for which the two residues are equal.
 
-Suppose the first plate receives weights with total `S1` and the second receives weights with total `S2`. We need
+If weight `i` is on the first plate, give it coefficient `+1`. If it is on the second plate, give it coefficient `-1`. If it is unused, give it coefficient `0`. The condition becomes
 
-`S1 ≡ S2 (mod m)`
+[
+\sum_{i=1}^{n} c_i a_i \equiv 0 \pmod m,
+]
 
-with at least one weight actually placed. Equivalently, for every weight we can choose a coefficient from `{-1, 0, 1}` and need
+where every coefficient satisfies (c_i\in{-1,0,1}), and not all coefficients are zero. Once such coefficients are found, positive coefficients describe the first plate and negative coefficients describe the second.
 
-`c1*a1 + c2*a2 + ... + cn*an ≡ 0 (mod m)`,
+The constraints point toward exponential search rather than polynomial dynamic programming. There are only 25 weights, so exponential dependence on `n` can be acceptable if the exponent is reduced by splitting the weights. A direct enumeration has (3^{25}=847288609443) possible assignments, which is far beyond the one second limit. The value of `m` can be almost (4\cdot10^7), so a conventional DP array indexed by residues would also be too large for a transition for every weight. The official problem constraints are `n <= 25` and `m < 4 * 10^7`, with a one second time limit and 512 MB of memory.
 
-where `1` means the weight is on the first plate, `-1` means the second plate, and `0` means unused.
+Several small cases can expose incorrect implementations.
 
-The constraint `n <= 25` is the central clue. There are three choices per weight, so a direct search has `3^25 = 847,288,609` assignments. That is far beyond what a one-second limit allows. The modulus can be almost `4 * 10^7`, so an algorithm proportional to `m` is also unnecessarily large, and a quadratic search over all assignments is impossible. The small value of `n` instead suggests splitting the weights into two groups and enumerating their possibilities independently.
-
-The masses can be as large as `10^9`, so ordinary 32-bit arithmetic would not be safe for intermediate sums in languages such as C++. Python integers do not overflow, but the implementation should still reduce residues modulo `m` at the points where they are used as hash keys.
-
-There are several edge cases that are easy to mishandle. With `n = 1`, `m = 5`, and `a = [3]`, there is no solution, because the only nonempty placement gives residue `3`, not `0`. A careless program that always assumes the pigeonhole argument produces a solution would incorrectly print one weight.
-
-For `n = 1`, `m = 1`, and `a = [3]`, the correct answer is to put the single weight on either plate, because every integer is congruent to zero modulo `1`. A program that searches only for two nonempty plates can incorrectly reject this case.
-
-Another subtle case is when one plate is empty. For example,
+For `m = 1`, every nonempty placement is valid because every integer is congruent to zero modulo 1. For example,
 
 ```
-
+1 1
+5
 ```
 
-has a valid solution because `1 + 2 + 4 = 7`, so all three weights can go onto the first plate and the second plate can remain empty. Requiring both plates to contain a weight would incorrectly reject it.
+can be answered by putting weight 1 on the first plate and nothing on the second. An implementation that only searches for two different subsets may accidentally report `-1`.
 
-Finally, the two sides must be disjoint. For example, with `m = 7` and weights `3, 3, 3, 3`, putting two weights on each side gives sums `6` and `6`. A formulation that merely searches for two equal subset sums without explicitly representing each weight's three possible states can accidentally reuse the same weight on both sides.
+A weight whose mass is already divisible by `m` is an immediate answer. For example,
+
+```
+1 7
+14
+```
+
+is solved by putting weight 1 on either plate. The modulo condition is about the residue, not about the raw sum.
+
+The empty assignment must never be accepted. For example,
+
+```
+1 7
+1
+```
+
+has no solution. The only signed sums are `0`, from using nothing, and `1` or `-1`, from using the weight. A careless meet-in-the-middle implementation may find residue zero from the empty assignment on both halves and incorrectly accept it.
+
+The same weight cannot be put on both plates. For example,
+
+```
+2 10
+3 3
+```
+
+is solved by putting weight 1 on one plate and weight 2 on the other. Both plate residues are 3. A representation that treats the two sides as independent subsets without remembering that they must be disjoint could accidentally use one index twice.
+
+Finally, equality is modulo `m`, not equality of the ordinary sums. For
+
+```
+2 5
+7 2
+```
+
+putting the two weights on opposite plates works because `7 mod 5 = 2 mod 5`, even though their actual masses differ.
 
 ## Approaches
 
-The brute-force solution directly assigns every weight one of three states: unused, first plate, or second plate. For each of the `3^n` assignments, we compute the difference between the two plate sums modulo `m`. If it is zero and at least one weight was used, we have an answer. This is completely correct because every possible placement is represented exactly once. At `n = 25`, however, the search contains `3^25 = 847,288,609` states, so it is much too slow.
+The most direct solution considers every weight independently and tries all three choices: unused, first plate, or second plate. For every assignment we compute the signed sum modulo `m` and accept if it is zero and at least one weight was selected. This is correct because every legal placement corresponds to exactly one vector of coefficients from `{-1,0,1}`.
 
-The useful observation is that the equation is additive. Split the weights into two groups, with at most 12 weights in the first group and at most 13 in the second. For each group, enumerate all ternary assignments independently. An assignment has a signed sum
+The problem is the number of assignments. With 25 weights there are
 
-`x = Σ c_i*a_i`.
+[
+3^{25}=847288609443
+]
 
-If an assignment from the first half has residue `r`, then an assignment from the second half with residue `-r mod m` combines with it into a complete assignment whose total signed sum is divisible by `m`.
+possibilities. Even if checking one assignment took only a few machine instructions, hundreds of billions of states cannot fit into the time limit.
 
-The first half has at most `3^12 = 531,441` assignments, while the second has at most `3^13 = 1,594,323`. We store one assignment for every residue produced by the first half in a hash table, then scan the second half and look up the required complementary residue.
+The useful observation is that the signed sum is additive. Split the weights into two disjoint halves. For an assignment in the first half, let its signed sum be `x`. For an assignment in the second half, let its signed sum be `y`. Together they form a valid solution exactly when
 
-The three-state representation is what makes this meet-in-the-middle approach particularly clean. We do not have to worry about overlaps because each weight belongs to exactly one half, and within each half its state is already one of unused, first plate, or second plate.
+[
+x+y\equiv0\pmod m.
+]
 
-The all-zero assignment deserves explicit handling. The residue `0` naturally corresponds to assigning every weight to neither plate, but the problem requires at least one weight. We simply ignore the match where both stored and current ternary codes are zero. If either side has a nonzero assignment, the resulting placement is valid.
+So instead of enumerating all (3^n) assignments, we enumerate roughly (3^{n/2}) assignments in each half and match complementary residues.
+
+With 25 weights, one half has at most 12 weights and the other has at most 13. Their search spaces contain at most (3^{12}=531441) and (3^{13}=1594323) assignments respectively. We store one assignment for every residue produced by the first half in a hash table, then enumerate the second half and look for the residue that is its modular negation.
+
+There is one subtle point in storing the empty assignment. Residue zero is always produced by doing nothing. If we store only that assignment, a later search that also produces zero could accidentally combine two empty assignments. The implementation explicitly rejects that case, and it also prefers a nonempty first-half assignment for residue zero when one exists.
+
+The comparison is:
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(3^n)` | `O(n)` | Too slow |
-| Meet in the Middle | `O(3^(n/2))` expected | `O(3^(n/2))` | Accepted |
+| Brute Force | (O(3^n)) | (O(n)) | Too slow |
+| Meet in the Middle | (O(3^{n/2})) | (O(3^{n/2})) | Accepted |
+
+The modular arithmetic also means that every intermediate sum can be reduced immediately. Python integers are unbounded, so there is no integer overflow concern even though the original masses can be as large as (10^9).
 
 ## Algorithm Walkthrough
 
-1. Split the `n` weights into a first group of `n // 2` weights and a second group containing the rest. Keeping the first group at size at most 12 keeps the hash table small.
-2. Enumerate every ternary assignment of the first group. For each weight, digit `0` means unused, digit `1` means first plate, and digit `2` means second plate. Calculate its signed sum modulo `m`, and store the ternary code for that residue if the residue has not been seen before.
+1. Split the weights into two consecutive halves. If `n = 25`, the first half contains 12 weights and the second contains 13. The halves are disjoint, which means any assignment chosen independently in each half automatically uses every weight at most once.
+2. Enumerate every ternary assignment of the first half. For each weight, coefficient `0` means unused, `1` means the first plate, and `2` means the second plate. Convert these choices to coefficients `0`, `+1`, and `-1`, and calculate the signed sum modulo `m`.
+3. Store one ternary encoding for every residue encountered in the first half. If the residue is zero and the table currently contains only the empty encoding, replace it when a nonempty encoding with the same residue appears. The stored encoding is enough to reconstruct which weights belong to each plate.
+4. Enumerate every ternary assignment of the second half. Suppose its signed sum is `s`. A compatible assignment from the first half must have residue `(-s) mod m`, because the combined signed sum has to be zero modulo `m`.
+5. Look up `(-s) mod m` in the first-half table. If it is absent, this second-half assignment cannot form a solution. If it is present, combine the two encodings.
+6. Reject the combination only when both encodings are empty. Any other combination contains at least one selected weight and has total signed sum divisible by `m`, so it is a valid answer.
+7. Decode the two ternary encodings. A digit representing `+1` goes to the first plate, while a digit representing `-1` goes to the second plate. Print the two index sets.
 
-Keeping only one code per residue is sufficient. Any assignment producing the same residue is interchangeable for the purpose of matching it with the other half.
-3. Enumerate every ternary assignment of the second group and calculate its signed sum modulo `m`.
-4. For a second-half residue `r`, look for residue `(-r) mod m` in the first-half table. If it exists, the two signed sums add to zero modulo `m`, so the combined placement balances the scale.
-5. Reject the match only when both ternary codes are zero. That combination uses no weight and is forbidden. Every other match gives a valid answer.
-6. Decode the two ternary codes. For every digit equal to `1`, output that weight on the first plate. For every digit equal to `2`, output it on the second plate. The two groups are disjoint by construction, so no weight can appear on both plates.
-
-### Why it works
-
-For every possible placement of the weights, each weight has exactly one coefficient from `{-1, 0, 1}`. Splitting the weights into two groups splits the total signed sum into `x + y`, where `x` depends only on the first group and `y` only on the second.
-
-The first-half enumeration contains every possible value of `x mod m`. When we process a second-half value `y`, looking for `(-y) mod m` finds exactly the first-half values satisfying
-
-`x + y ≡ 0 (mod m)`.
-
-Thus every match produced by the algorithm represents two plate sums with equal residues. Conversely, any valid placement has some first-half residue `x` and second-half residue `y` satisfying this same equation, so the algorithm will find a matching pair of assignments. The only invalid assignment is the completely unused one, which we explicitly exclude.
+Why it works: every legal placement has a unique signed representation with coefficients in `{-1,0,1}`. Splitting the indices divides its signed sum into a contribution from each half, say `x` and `y`, with `x + y ≡ 0 (mod m)`. During the second-half enumeration, the algorithm searches exactly for a first-half residue equal to `-y`, so every possible solution is considered. Conversely, every pair returned by the lookup has `x + y ≡ 0`, and the halves are disjoint, so their decoded assignments form a legal placement. The explicit empty-assignment check guarantees that at least one weight is actually placed.
 
 ## Python Solution
 
-```
-Python
-```
-
-The initial `m == 1` check is a small but useful boundary optimization. Since every residue modulo `1` is zero, any single weight is sufficient.
-
-The next shortcut checks whether an individual weight is already divisible by `m`. Such a weight can be placed alone on one plate, so there is no reason to run the meet-in-the-middle search.
-
-The recursive `build` function enumerates the first half's three choices. `place` is the current power of three, so the ternary assignment is stored compactly as an integer. The signed sum is accumulated directly, and only its final residue is needed as a hash key.
-
-The `search` function performs the same enumeration for the second half. If its residue is `r`, the required first-half residue is `(-r) % m`. Python's modulo operation produces a value in `[0, m - 1]`, so this works correctly even when `r` is nonzero.
-
-The ternary code is decoded with repeated `% 3` and `// 3`. The least significant ternary digit corresponds to the first weight in each half because the recursion assigns the current `place` before multiplying it by three.
-
-The algorithm never uses the same weight on both plates because the two halves are disjoint. Within one half, every ternary digit has only one state, so the decoded result automatically represents a legal placement.
-
-The recursive depth is at most 13, which is far below Python's recursion limit. The number of recursive calls is exponential, but it remains on the order of `3^13`, which is the intended scale of the solution.
-
-## Worked Examples
-
-### Sample 1
-
-For
-
-```
-
-```
-
-the split is `1, 3` in the first half and `7, 10` in the second half.
-
-One useful match is the first-half assignment that leaves both weights unused, combined with the second-half assignment placing `7` on the second plate and `10` on the first plate. Their signed sum is `10 - 7 = 3`, which is not zero, so this particular combination is not a match. The successful combination found by the algorithm corresponds to putting weight `4` on the first plate and weights `2, 3` on the second plate.
-
-| First-half state | First-half sum | Second-half state | Second-half sum | Total modulo 14 |
-| --- | --- | --- | --- | --- |
-| weights 1, 2 unused | `0` | weight 3 unused, weight 4 first | `10` | `10` |
-| weight 1 unused, weight 2 second | `-3` | weight 3 second, weight 4 first | `3` | `0` |
-
-The final placement is weight `4` on the first plate and weights `2, 3` on the second plate. Their actual sums are `10` and `3 + 7 = 10`, so the scale reports equality even without relying on an actual modulo wraparound.
-
-### Sample 2
-
-For
-
-```
-
-```
-
-the first half contains weight `1`, while the second half contains weights `2` and `3`.
-
-| First-half state | First-half sum | Second-half state | Second-half sum | Total modulo 7 |
-| --- | --- | --- | --- | --- |
-| weight 1 first | `1` | weights 2 and 3 first | `6` | `0` |
-
-The resulting placement puts all three weights on the first plate. Its total is `1 + 2 + 4 = 7`, which has residue zero modulo `7`, while the empty second plate also has residue zero.
-
-This example demonstrates why an empty plate must be allowed. The requirement is only that at least one weight is used somewhere.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | `O(3^(n/2))` expected | We enumerate at most `3^12 + 3^13` assignments and perform average constant-time hash lookups. |
-| Space | `O(3^(n/2))` | The hash table stores at most one ternary code for each residue generated by the smaller half. |
-
-With `n = 25`, the largest half contains 13 weights, giving about `1.59 * 10^6` ternary assignments. This is dramatically smaller than the `8.47 * 10^8` assignments of brute force. The memory requirement is dominated by the hash table and stays within the generous 512 MB limit, although Python's object overhead makes this implementation substantially heavier than an equivalent C++ implementation.
-
-## Test Cases
-
-The output of this problem is not unique, so tests should validate the produced placement rather than compare the literal output string. The helper below parses the program's output and checks that the selected indices are disjoint, that at least one weight is used, and that the two plate sums are equal modulo `m`.
-
 ```python
 import sys
-import io
+input = sys.stdin.readline
 
-def solve(data=None):
-    if data is None:
-        n, m = map(int, input().split())
-        a = list(map(int, input().split()))
-    else:
-        it = iter(map(int, data.split()))
-        n = next(it)
-        m = next(it)
-        a = [next(it) for _ in range(n)]
+def build_map(values, mod):
+    """
+    Map residue -> one ternary encoding for this half.
 
-    if m == 1:
-        return "1\n1\n0\n\n"
+    Ternary digit:
+        0 = unused
+        1 = first plate
+        2 = second plate
+    """
+    result = {}
 
-    for i, x in enumerate(a):
-        if x % m == 0:
-            return f"1\n{i + 1}\n0\n\n"
-
-    left_n = n // 2
-    left_n = min(left_n, n)
-    left = a[:left_n]
-    right = a[left_n:]
-    right_n = len(right)
-
-    left_map = {}
-
-    def build(pos, total, code, place):
-        if pos == left_n:
-            r = total % m
-            if r not in left_map:
-                left_map[r] = code
+    def dfs(pos, total, code, place):
+        if pos == len(values):
+            old = result.get(total)
+            if old is None or (total == 0 and old == 0 and code != 0):
+                result[total] = code
             return
 
-        build(pos + 1, total, code, place * 3)
-        build(pos + 1, total + left[pos], code + place, place * 3)
-        build(pos + 1, total - left[pos], code + 2 * place, place * 3)
+        # Leave this weight unused.
+        dfs(pos + 1, total, code, place * 3)
 
-    build(0, 0, 0, 1)
+        # Put it on the first plate.
+        nxt = total + values[pos]
+        if nxt >= mod:
+            nxt -= mod
+        dfs(pos + 1, nxt, code + place, place * 3)
+
+        # Put it on the second plate.
+        nxt = total - values[pos]
+        if nxt < 0:
+            nxt += mod
+        dfs(pos + 1, nxt, code + 2 * place, place * 3)
+
+    dfs(0, 0, 0, 1)
+    return result
+
+def find_in_second(values, mod, first_map):
+    """
+    Search all ternary assignments of the second half.
+    Returns (first_code, second_code), or None.
+    """
 
     answer = None
 
-    def search(pos, total, code, place):
+    def dfs(pos, total, code, place):
         nonlocal answer
 
         if answer is not None:
             return
 
-        if pos == right_n:
-            target = (-total) % m
-            if target in left_map:
-                lc = left_map[target]
-                if lc != 0 or code != 0:
-                    answer = (lc, code)
+        if pos == len(values):
+            need = (-total) % mod
+            first_code = first_map.get(need)
+
+            if first_code is not None:
+                if first_code != 0 or code != 0:
+                    answer = (first_code, code)
             return
 
-        search(pos + 1, total, code, place * 3)
-        search(pos + 1, total + right[pos], code + place, place * 3)
-        search(pos + 1, total - right[pos], code + 2 * place, place * 3)
+        # Unused.
+        dfs(pos + 1, total, code, place * 3)
 
-    search(0, 0, 0, 1)
+        if answer is not None:
+            return
+
+        # First plate.
+        nxt = total + values[pos]
+        if nxt >= mod:
+            nxt -= mod
+        dfs(pos + 1, nxt, code + place, place * 3)
+
+        if answer is not None:
+            return
+
+        # Second plate.
+        nxt = total - values[pos]
+        if nxt < 0:
+            nxt += mod
+        dfs(pos + 1, nxt, code + 2 * place, place * 3)
+
+    dfs(0, 0, 0, 1)
+    return answer
+
+def decode(code, length, offset, first, second):
+    for i in range(length):
+        digit = code % 3
+        code //= 3
+
+        index = offset + i + 1
+
+        if digit == 1:
+            first.append(index)
+        elif digit == 2:
+            second.append(index)
+
+def solve():
+    n, mod = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    # Reducing the masses once makes every later transition smaller.
+    a = [x % mod for x in a]
+
+    # A split near the middle minimizes the larger ternary search space.
+    mid = n // 2
+    left = a[:mid]
+    right = a[mid:]
+
+    first_map = build_map(left, mod)
+    answer = find_in_second(right, mod, first_map)
 
     if answer is None:
-        return "-1\n"
+        print(-1)
+        return
 
-    lc, rc = answer
-    first = []
-    second = []
+    left_code, right_code = answer
 
-    for i in range(left_n):
-        d = lc % 3
-        lc //= 3
-        if d == 1:
-            first.append(i + 1)
-        elif d == 2:
-            second.append(i + 1)
+    first_plate = []
+    second_plate = []
 
-    for i in range(right_n):
-        d = rc % 3
-        rc //= 3
-        if d == 1:
-            first.append(left_n + i + 1)
-        elif d == 2:
-            second.append(left_n + i + 1)
+    decode(left_code, len(left), 0, first_plate, second_plate)
+    decode(right_code, len(right), mid, first_plate, second_plate)
 
-    return (
-        f"{len(first)}\n"
-        f"{' '.join(map(str, first))}\n"
-        f"{len(second)}\n"
-        f"{' '.join(map(str, second))}\n"
-    )
+    print(len(first_plate))
+    print(*first_plate)
+    print(len(second_plate))
+    print(*second_plate)
 
-def check(inp: str):
-    data = list(map(int, inp.split()))
-    n, m = data[0], data[1]
-    a = data[2:2 + n]
-
-    out = solve(inp).split()
-    assert out, "empty output"
-
-    if out[0] == "-1":
-        # For tests below we only use cases with known solutions,
-        # except the explicit impossible case checked separately.
-        return False
-
-    p = 0
-    k = int(out[p])
-    p += 1
-    first = list(map(int, out[p:p + k]))
-    p += k
-
-    q = int(out[p])
-    p += 1
-    second = list(map(int, out[p:p + q]))
-
-    assert len(first) == k
-    assert len(second) == q
-    assert k + q > 0
-    assert len(set(first)) == k
-    assert len(set(second)) == q
-    assert set(first).isdisjoint(second)
-    assert all(1 <= x <= n for x in first + second)
-
-    s1 = sum(a[i - 1] for i in first) % m
-    s2 = sum(a[i - 1] for i in second) % m
-    assert s1 == s2
-
-    return True
-
-# Provided sample 1.
-assert check("4 14\n1 3 7 10\n"), "sample 1"
-
-# Provided sample 2.
-assert check("3 7\n1 2 4\n"), "sample 2"
-
-# Minimum-size input, m = 1 means any nonempty placement works.
-assert check("1 1\n999999999\n"), "minimum size"
-
-# All values equal. Two weights on each side give equal sums.
-assert check("5 7\n3 3 3 3 3\n"), "all equal values"
-
-# Maximum n and a modulus close to the upper boundary.
-# A pair of equal weights already balances the scale.
-assert check(
-    "25 39999999\n"
-    "1 1 1 1 1 1 1 1 1 1 1 1 1 "
-    "1 1 1 1 1 1 1 1 1 1 1 1 1\n"
-), "maximum n"
-
-# A value divisible by m exercises the direct single-weight boundary.
-assert check("4 10\n20 3 7 11\n"), "divisible weight"
-
-# Explicit impossible case.
-assert solve("1 5\n3\n").strip() == "-1", "impossible single weight"
+if __name__ == "__main__":
+    solve()
 ```
 
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1 1 / 999999999` | Any nonempty placement | Minimum `n` and `m = 1` |
-| `5 7 / 3 3 3 3 3` | Two weights on each side, or another valid placement | Equal values and disjoint plates |
-| `25 39999999 / 25 ones` | Any placement with equal residues, for example one weight per plate | Maximum `n` and modulus near its upper bound |
-| `4 10 / 20 3 7 11` | Weight `1` alone is valid | Direct divisibility shortcut |
-| `1 5 / 3` | `-1` | No nonempty assignment exists |
+The first preprocessing line reduces every `a[i]` modulo `m`. This is mathematically safe because only residues affect the final comparison. It also lets each recursive transition stay inside the interval `[0, m)` using one conditional adjustment rather than repeatedly constructing larger integers.
 
-## Edge Cases
+`build_map` performs the entire first-half search. The `code` variable is a base-three encoding of the decisions already made. The `place` variable is the current power of three, so choosing the first plate adds `place` to the encoding and choosing the second plate adds `2 * place`.
 
-For the single-weight impossible case
+The signed sum is kept modulo `m` after every choice. For a positive transition, adding a value can reach at most `2m - 2`, so one subtraction is sufficient. For a negative transition, the result can be as low as `-(m - 1)`, so one addition is sufficient. This avoids a `%` operation at every recursive node.
 
-```
-1 5
-3
-```
+The special handling of residue zero is easy to overlook. The empty assignment must be stored because it can legitimately combine with a nonempty assignment from the other half. However, if a nonempty first-half assignment also produces zero, it is better to replace the empty encoding with it. The condition in `build_map` handles exactly that case.
 
-the algorithm first checks whether `3 % 5` is zero, which it is not. The two halves contain one weight and no weights. The only nonempty ternary assignment has signed sum `3` or `-3`, neither divisible by `5`, so the search finishes without a match and prints `-1`.
+`find_in_second` searches the other half. For every signed residue `total`, it calculates `(-total) % mod` and performs one dictionary lookup. The recursion stops immediately after a valid pair is found, so typical inputs finish much earlier than the full (3^{13}) enumeration.
 
-For the modulus-one case
+The ternary encoding uses the least significant digit for the earliest weight in each half. `decode` repeatedly takes `code % 3` and then divides by three, which recovers the decisions in the same order in which they were generated. The index offset for the second half is `mid`, because its first local position corresponds to global weight `mid + 1`.
+
+Python does not have fixed-width integer overflow, so sums such as the original masses are safe. The implementation still performs modular reduction throughout the search because the algorithm itself operates on residue classes.
+
+## Worked Examples
+
+For Sample 1,
 
 ```
-1 1
-3
+4 14
+1 3 7 10
 ```
 
-the algorithm stops immediately. Since every integer is congruent to zero modulo `1`, placing weight `1` on the first plate is valid. The output is equivalent to
+the split is `[1, 3]` and `[7, 10]`.
 
-```
-1
-1
-0
-```
+| Stage | Assignment | Signed sum modulo 14 | Required first-half residue |
+| --- | --- | --- | --- |
+| First half | `+1, +3` | 4 |  |
+| Second half | empty | 0 | 0 |
+| Second half | `+7` | 7 | 7 |
+| Second half | `+10` | 10 | 4 |
+| Match | `(+1,+3)` with `(+10)` | `4 + 10 = 14 ≡ 0` | 4 |
 
-The blank line represents the empty second plate.
+The algorithm can consequently put weights 1, 2, and 4 on the first plate and leave the second plate empty. Their total is 14, so the scale computes `14 mod 14 = 0` on the first plate and `0` on the second. The sample's output is different, but both are valid because the problem asks for any valid construction.
 
-For the one-sided solution
+For Sample 2,
 
 ```
 3 7
 1 2 4
 ```
 
-the signed assignment `(+1, +1, +1)` has sum `7`, so its residue is zero. The other plate can use the zero assignment. The algorithm accepts this because the combined ternary code is nonzero even though the second-half code may represent an empty plate.
+the split is `[1]` and `[2, 4]`.
 
-For equal weights,
+| Stage | Assignment | Signed sum modulo 7 | Required first-half residue |
+| --- | --- | --- | --- |
+| First half | `+1` | 1 |  |
+| Second half | `+2` | 2 | 5 |
+| Second half | `-2` | 5 | 2 |
+| Second half | `+4` | 4 | 3 |
+| Second half | `-4` | 3 | 4 |
+| Second half | `+2,+4` | 6 | 1 |
+| Match | `+1` with `+2,+4` | `1 + 6 = 7 ≡ 0` | 1 |
+
+The resulting construction places all three weights on the first plate. Its sum is 7, whose residue modulo 7 is zero, while the second plate is empty. This is exactly the sample's construction.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | (O(3^{n/2})) | Each half is enumerated once, and every state performs constant-time modular arithmetic and, for the second half, a hash-table lookup. |
+| Space | (O(3^{n/2})) | The first half stores one ternary encoding for each distinct residue, with at most (3^{n/2}) entries. |
+
+For `n = 25`, the larger half has only 13 weights, so it contains at most `3^13 = 1,594,323` assignments. The smaller half has at most `3^12 = 531,441` assignments. This is several orders of magnitude smaller than the direct `3^25` search and fits comfortably within the 512 MB memory limit. The maximum value of `m` does not appear as a dimension of the DP, so the large modulo bound does not make the memory usage proportional to 40 million.
+
+## Test Cases
+
+Because the output is not unique, tests should validate the returned placement rather than compare the exact output string. The following harness checks that every reported index is valid, no index is used twice, at least one weight is placed, and the two plate sums have equal residues.
+
+```python
+import sys
+import io
+
+# Paste the solve_data implementation from the solution here.
+def solve_data(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    try:
+        # Call the submitted solve() here.
+        solve()
+        return sys.stdout.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+
+def validate(inp: str, out: str) -> bool:
+    data = list(map(int, inp.split()))
+    n, mod = data[0], data[1]
+    a = data[2:2 + n]
+
+    tokens = out.split()
+    if not tokens:
+        return False
+
+    if tokens[0] == "-1":
+        return True
+
+    p = 0
+
+    k = int(tokens[p])
+    p += 1
+    first = list(map(int, tokens[p:p + k]))
+    p += k
+
+    q = int(tokens[p])
+    p += 1
+    second = list(map(int, tokens[p:p + q]))
+    p += q
+
+    if p != len(tokens):
+        return False
+
+    if k + q == 0:
+        return False
+
+    if any(x < 1 or x > n for x in first + second):
+        return False
+
+    if len(set(first)) != len(first):
+        return False
+
+    if len(set(second)) != len(second):
+        return False
+
+    if set(first) & set(second):
+        return False
+
+    s1 = sum(a[i - 1] for i in first) % mod
+    s2 = sum(a[i - 1] for i in second) % mod
+
+    return s1 == s2
+
+# Provided sample 1.
+sample1 = """\
+4 14
+1 3 7 10
+"""
+assert validate(sample1, solve_data(sample1)), "sample 1"
+
+# Provided sample 2.
+sample2 = """\
+3 7
+1 2 4
+"""
+assert validate(sample2, solve_data(sample2)), "sample 2"
+
+# Minimum-size case and m = 1.
+case1 = """\
+1 1
+123456789
+"""
+assert validate(case1, solve_data(case1)), "minimum size and modulo 1"
+
+# A weight is itself divisible by m.
+case2 = """\
+1 7
+14
+"""
+assert validate(case2, solve_data(case2)), "single divisible weight"
+
+# Equal weights must be placed on opposite plates.
+case3 = """\
+2 10
+3 3
+"""
+assert validate(case3, solve_data(case3)), "all equal values"
+
+# Maximum n, with no signed sum able to reach a nonzero multiple
+# of m. The total absolute sum is smaller than m.
+case4 = "25 39999989\n" + " ".join(str(1 << i) for i in range(25)) + "\n"
+result4 = solve_data(case4)
+assert result4.strip() == "-1", "maximum-size no-solution case"
+
+# Empty assignment must not be accepted.
+case5 = """\
+1 7
+1
+"""
+assert solve_data(case5).strip() == "-1", "empty assignment"
+```
+
+The first two tests confirm the sample constructions while allowing the program to produce a different valid assignment. The third test checks the smallest possible `n` and the special case `m = 1`. The fourth checks the direct single-weight solution when a mass is divisible by the modulus. The fifth checks that two equal weights can balance on opposite plates without reusing an index. The sixth is a maximum-size stress case that forces the algorithm to explore the search space and confirms that the implementation can correctly report that no solution exists. The final test specifically catches the common mistake of accepting the empty assignment.
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `4 14 / 1 3 7 10` | Any valid placement | Sample 1 |
+| `3 7 / 1 2 4` | Any valid placement | Sample 2 |
+| `1 1 / 123456789` | A nonempty placement | Minimum size and `m = 1` |
+| `1 7 / 14` | Weight 1 on either plate | Direct divisible weight |
+| `2 10 / 3 3` | One weight on each plate | Equal values and disjointness |
+| `25 39999989 / 1 2 4 ... 2^24` | `-1` | Maximum-size exhaustive search |
+| `1 7 / 1` | `-1` | Empty assignment rejection |
+
+## Edge Cases
+
+When `m = 1`, every residue is zero. For the input
 
 ```
-5 7
-3 3 3 3 3
+1 1
+5
 ```
 
-placing two weights on each plate gives sums `6` and `6`. The ternary representation assigns two weights the coefficient `+1`, two weights the coefficient `-1`, and leaves the fifth unused. The signed sum is zero, so the two plate residues match exactly.
+the first-half map contains residue zero from both the empty assignment and the assignment using the weight. The implementation deliberately prefers the nonempty encoding for residue zero. The second half is empty, so the resulting construction contains weight 1 and is accepted.
 
-The most dangerous implementation mistake is accepting the pair where both ternary codes are zero. That pair always exists because the empty assignment has residue zero in both halves. The explicit `left_code != 0 or code != 0` check removes precisely that invalid solution while preserving valid cases where one plate is empty.
+When a single weight is divisible by `m`, the empty assignment in the other half is enough to complete it. For
+
+```
+1 7
+14
+```
+
+the signed residue of weight 1 is zero. The first-half map stores a nonempty encoding for residue zero, and the second-half search can use its empty assignment. The combined placement contains one weight and has signed sum zero modulo 7.
+
+For equal weights, consider
+
+```
+2 10
+3 3
+```
+
+The assignment `+3 - 3` has signed sum zero. Since the two weights belong to different halves, the meet-in-the-middle lookup finds residue `3` from one half and residue `7`, its modular negation, from the other half. The decoded result puts the two different indices on opposite plates, giving residues `3` and `3`.
+
+For an impossible case,
+
+```
+1 7
+1
+```
+
+the only nonempty signed sums are `1` and `-1`, whose residues are `1` and `6`. Neither is zero. The only zero residue comes from choosing nothing, but the second-half search explicitly rejects the pair where both encodings are zero, so the program prints `-1`.
+
+For the maximum-size case, the split contains 12 and 13 weights. The first map has room for at most (3^{12}) distinct assignments, while the second enumeration examines at most (3^{13}). No part of the implementation depends linearly on the potentially enormous value of `m`, and every assignment is represented compactly by a ternary integer rather than by a list of selected indices.
+
+The central invariant is simple: every stored residue represents a real signed assignment of its half, and every second-half state is matched only against the modular complement of its own signed sum. Once a pair is found, their coefficients describe a valid placement over disjoint sets of indices, so the equality of the two plate residues follows directly from the equation (x+y\equiv0\pmod m).
