@@ -8,20 +8,20 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 7
-total_solve_s: 4503
-date: "2026-08-11T02:01:22+07:00"
+total_solve_s: 4343
+date: "2026-08-11T05:13:23+07:00"
 weight: 102391
 draft: false
 ---
 
 # [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391)
 
-Special | 10 problems | 7/10 verified | Difficulty - | 1h 15m
+Special | 10 problems | 7/10 verified | Difficulty - | 1h 12m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [6789](https://codeforces.com/problemset/problem/102391/A) |  |  |  | 22m 30s | ✓ |
-| [B](B/) | [Bigger Sokoban 40k](https://codeforces.com/problemset/problem/102391/B) |  |  |  | 5m 24s |  |
+| [B](B/) | [Bigger Sokoban 40k](https://codeforces.com/problemset/problem/102391/B) |  |  |  | 2m 44s |  |
 | [C](C/) | [Cleaning](https://codeforces.com/problemset/problem/102391/C) |  |  |  | 10m 44s | ✓ |
 | [D](D/) | [Container](https://codeforces.com/problemset/problem/102391/D) |  |  |  | 8m 24s |  |
 | [F](F/) | [Hilbert's Hotel](https://codeforces.com/problemset/problem/102391/F) |  |  |  | 3m 42s | ✓ |
