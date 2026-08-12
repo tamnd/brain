@@ -1,23 +1,23 @@
 ---
 title: "North American Southeast Regional 2019 (Div 1)"
-description: "9 problems from North American Southeast Regional 2019 (Div 1) (contest 102423), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from North American Southeast Regional 2019 (Div 1) (contest 102423), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102423
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 1471
+n_problems: 10
+n_verified: 10
+total_solve_s: 3225
 contest_year: 2019
-date: "2026-08-12T06:39:26+07:00"
+date: "2026-08-12T07:08:45+07:00"
 weight: 102423
 draft: false
 ---
 
 # [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 24m 31s
+Special | 10 problems | 10/10 verified | Difficulty - | 53m 45s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Special | 9 problems | 9/9 verified | Difficulty - | 24m 31s
 | [H](H/) | [Levenshtein Distance](https://codeforces.com/problemset/problem/102423/H) |  |  |  | 1m 19s | ✓ |
 | [I](I/) | [Maze Connect](https://codeforces.com/problemset/problem/102423/I) |  |  |  | 3m 7s | ✓ |
 | [J](J/) | [One of Each](https://codeforces.com/problemset/problem/102423/J) |  |  |  | 1m 23s | ✓ |
+| [K](K/) | [Windmill Pivot](https://codeforces.com/problemset/problem/102423/K) |  |  |  | 29m 14s | ✓ |
