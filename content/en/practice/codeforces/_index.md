@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3125 contests, 23039 problems, 12833 verified."
+description: "Codeforces problem solutions with full editorials. 3126 contests, 23044 problems, 12838 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3125 contests, 23039 problems, 12833 verified.**
+**3126 contests, 23044 problems, 12838 verified.**
 
-## Unknown — 824 contests, 6936 problems, 4122 verified
+## Unknown — 825 contests, 6941 problems, 4127 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102318](102318/) | [UCF Locals 2017](https://codeforces.com/contest/102318) | 5 | 5/5 | Special | - |
 | [102323](102323/) | [UCF Locals 2014](https://codeforces.com/contest/102323) | 8 | 8/8 | Special | - |
 | [102330](102330/) | [Сириус.2019.Ноябрь.Очный отбор](https://codeforces.com/contest/102330) | 5 | 5/5 | Special | - |
 | [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 7 | 7/7 | Special | - |
