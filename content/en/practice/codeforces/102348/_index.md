@@ -1,23 +1,23 @@
 ---
 title: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
-description: "5 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 3/5 solutions verified against sample I/O."
+description: "8 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 6/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102348
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 5
-n_verified: 3
-total_solve_s: 1064
+n_problems: 8
+n_verified: 6
+total_solve_s: 1641
 contest_year: 2019
-date: "2026-08-13T01:06:07+07:00"
+date: "2026-08-13T01:15:51+07:00"
 weight: 102348
 draft: false
 ---
 
 # [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348)
 
-ICPC/IOI | 5 problems | 3/5 verified | Difficulty - | 17m 44s
+ICPC/IOI | 8 problems | 6/8 verified | Difficulty - | 27m 21s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,6 @@ ICPC/IOI | 5 problems | 3/5 verified | Difficulty - | 17m 44s
 | [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 3m 12s |  |
 | [F](F/) | [The Number of Products](https://codeforces.com/problemset/problem/102348/F) |  |  |  | 3m 25s |  |
 | [I](I/) | [Radio Stations](https://codeforces.com/problemset/problem/102348/I) |  |  |  | 6m 2s | ✓ |
+| [J](J/) | [Monocarp and T-Shirts](https://codeforces.com/problemset/problem/102348/J) |  |  |  | 3m 42s | ✓ |
+| [K](K/) | [Moonbound](https://codeforces.com/problemset/problem/102348/K) |  |  |  | 2m 38s | ✓ |
+| [L](L/) | [Printer](https://codeforces.com/problemset/problem/102348/L) |  |  |  | 3m 17s | ✓ |
