@@ -1,22 +1,22 @@
 ---
 title: "2019-2020 ACM-ICPC Latin American Regional Programming Contest"
-description: "9 problems from 2019-2020 ACM-ICPC Latin American Regional Programming Contest (contest 102428), difficulty -. 9/9 solutions verified against sample I/O."
+description: "11 problems from 2019-2020 ACM-ICPC Latin American Regional Programming Contest (contest 102428), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102428
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 1506
-date: "2026-08-12T07:23:47+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 1755
+date: "2026-08-12T07:28:04+07:00"
 weight: 102428
 draft: false
 ---
 
 # [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428)
 
-ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 25m 6s
+ICPC/IOI | 11 problems | 11/11 verified | Difficulty - | 29m 15s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,5 +27,7 @@ ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 25m 6s
 | [G](G/) | [Gluing Pictures](https://codeforces.com/problemset/problem/102428/G) |  |  |  | 1m 58s | ✓ |
 | [H](H/) | [Hold or Continue?](https://codeforces.com/problemset/problem/102428/H) |  |  |  | 2m 55s | ✓ |
 | [I](I/) | [Improve SPAM](https://codeforces.com/problemset/problem/102428/I) |  |  |  | 1m 47s | ✓ |
+| [J](J/) | [Jumping Grasshoper](https://codeforces.com/problemset/problem/102428/J) |  |  |  | 2m 29s | ✓ |
+| [K](K/) | [Know your Aliens](https://codeforces.com/problemset/problem/102428/K) |  |  |  | 1m 40s | ✓ |
 | [L](L/) | [Leverage MDT](https://codeforces.com/problemset/problem/102428/L) |  |  |  | 2m 5s | ✓ |
 | [M](M/) | [Mountain Ranges](https://codeforces.com/problemset/problem/102428/M) |  |  |  | 1m 7s | ✓ |
