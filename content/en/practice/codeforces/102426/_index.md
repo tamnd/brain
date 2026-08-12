@@ -1,23 +1,23 @@
 ---
 title: "The 7-th BIT Campus Programming Contest for Junior Grade Group"
-description: "8 problems from The 7-th BIT Campus Programming Contest for Junior Grade Group (contest 102426), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from The 7-th BIT Campus Programming Contest for Junior Grade Group (contest 102426), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102426
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 1744
+n_problems: 9
+n_verified: 9
+total_solve_s: 2366
 contest_year: 2018
-date: "2026-08-12T19:44:08+07:00"
+date: "2026-08-12T19:54:35+07:00"
 weight: 102426
 draft: false
 ---
 
 # [The 7-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/102426)
 
-Special | 8 problems | 8/8 verified | Difficulty - | 29m 4s
+Special | 9 problems | 9/9 verified | Difficulty - | 39m 26s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 8 problems | 8/8 verified | Difficulty - | 29m 4s
 | [I](I/) | [Integer Factorization](https://codeforces.com/problemset/problem/102426/I) |  |  |  | 5m 30s | ✓ |
 | [J](J/) | [\u673a\u623f\u7684\u5723\u8bde\u793c\u7269](https://codeforces.com/problemset/problem/102426/J) |  |  |  | 2m 36s | ✓ |
 | [K](K/) | [X-Window System](https://codeforces.com/problemset/problem/102426/K) |  |  |  | 9m 25s | ✓ |
+| [L](L/) | [Bonus quiz](https://codeforces.com/problemset/problem/102426/L) |  |  |  | 10m 22s | ✓ |
 | [M](M/) | [\u957f\u5b89\u8857\u7684\u534e\u706f](https://codeforces.com/problemset/problem/102426/M) |  |  |  | 1m 12s | ✓ |
