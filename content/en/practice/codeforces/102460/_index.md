@@ -1,25 +1,26 @@
 ---
 title: "2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest"
-description: "12 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 12/12 solutions verified against sample I/O."
+description: "13 problems from 2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest (contest 102460), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102460
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 12
-total_solve_s: 3459
-date: "2026-08-08T18:34:32+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 3565
+date: "2026-08-12T08:39:30+07:00"
 weight: 102460
 draft: false
 ---
 
 # [2019-2020 ICPC Asia Taipei-Hsinchu Regional Contest](https://codeforces.com/contest/102460)
 
-ICPC/IOI | 12 problems | 12/12 verified | Difficulty - | 57m 39s
+ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 59m 25s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Rush Hour Puzzle](https://codeforces.com/problemset/problem/102460/A) |  |  |  | 1m 46s | ✓ |
 | [B](B/) | [The Power Monitor System](https://codeforces.com/problemset/problem/102460/B) |  |  |  | 3m 8s | ✓ |
 | [C](C/) | [Are They All Integers?](https://codeforces.com/problemset/problem/102460/C) |  |  |  | 6m 54s | ✓ |
 | [D](D/) | [Tapioka](https://codeforces.com/problemset/problem/102460/D) |  |  |  | 3m 14s | ✓ |
