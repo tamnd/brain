@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3107 contests, 22925 problems, 12729 verified."
+description: "Codeforces problem solutions with full editorials. 3107 contests, 22929 problems, 12733 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3107 contests, 22925 problems, 12729 verified.**
+**3107 contests, 22929 problems, 12733 verified.**
 
-## Unknown — 816 contests, 6878 problems, 4070 verified
+## Unknown — 816 contests, 6882 problems, 4074 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 11 | 11/11 | ICPC/IOI | - |
 | [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 11 | 11/11 | Div. 1 | - |
 | [102437](102437/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437) | 8 | 5/8 | Special | - |
-| [102439](102439/) | [2018-2019 9th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/102439) | 6 | 6/6 | Special | - |
+| [102439](102439/) | [2018-2019 9th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/102439) | 10 | 10/10 | Special | - |
 | [102440](102440/) | [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440) | 12 | 9/12 | Special | - |
 | [102441](102441/) | [2018-2019 9th BSUIR Open Programming Championship. Final](https://codeforces.com/contest/102441) | 11 | 11/11 | Special | - |
 | [102443](102443/) | [2019-2020 Russia Team Open, High School Programming Contest (VKOSHP 19)](https://codeforces.com/contest/102443) | 12 | 12/12 | Special | - |

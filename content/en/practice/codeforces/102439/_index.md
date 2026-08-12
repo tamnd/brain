@@ -1,22 +1,22 @@
 ---
 title: "2018-2019 9th BSUIR Open Programming Championship. Semifinal"
-description: "9 problems from 2018-2019 9th BSUIR Open Programming Championship. Semifinal (contest 102439), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from 2018-2019 9th BSUIR Open Programming Championship. Semifinal (contest 102439), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102439
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 2155
-date: "2026-08-10T08:14:46+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 2310
+date: "2026-08-10T08:17:22+07:00"
 weight: 102439
 draft: false
 ---
 
 # [2018-2019 9th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/102439)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 35m 55s
+Special | 10 problems | 10/10 verified | Difficulty - | 38m 30s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 9 problems | 9/9 verified | Difficulty - | 35m 55s
 | [H](H/) | [Nonfibonacci numbers](https://codeforces.com/problemset/problem/102439/H) |  |  |  | 3m 21s | ✓ |
 | [I](I/) | [Equal Mod Segments](https://codeforces.com/problemset/problem/102439/I) |  |  |  | 6m 26s | ✓ |
 | [J](J/) | [Boedium](https://codeforces.com/problemset/problem/102439/J) |  |  |  | 2m 30s | ✓ |
+| [K](K/) | [Innovations](https://codeforces.com/problemset/problem/102439/K) |  |  |  | 2m 35s | ✓ |
 | [L](L/) | [The only winner](https://codeforces.com/problemset/problem/102439/L) |  |  |  | 2m 18s | ✓ |
