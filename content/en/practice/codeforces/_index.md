@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3111 contests, 22957 problems, 12762 verified."
+description: "Codeforces problem solutions with full editorials. 3112 contests, 22961 problems, 12765 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3111 contests, 22957 problems, 12762 verified.**
+**3112 contests, 22961 problems, 12765 verified.**
 
-## Unknown — 816 contests, 6887 problems, 4079 verified
+## Unknown — 817 contests, 6891 problems, 4082 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102386](102386/) | [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386) | 4 | 3/4 | Special | - |
 | [102391](102391/) | [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391) | 10 | 7/10 | Special | - |
 | [102396](102396/) | [2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)](https://codeforces.com/contest/102396) | 10 | 8/10 | Special | - |
 | [102399](102399/) | [2019 Московская командная олимпиада школьников, лига A](https://codeforces.com/contest/102399) | 12 | 10/12 | Special | - |
