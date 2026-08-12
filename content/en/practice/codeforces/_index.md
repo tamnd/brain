@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3116 contests, 22981 problems, 12781 verified."
+description: "Codeforces problem solutions with full editorials. 3117 contests, 22989 problems, 12789 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3116 contests, 22981 problems, 12781 verified.**
+**3117 contests, 22989 problems, 12789 verified.**
 
-## Unknown — 819 contests, 6902 problems, 4089 verified
+## Unknown — 820 contests, 6910 problems, 4097 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102361](102361/) | [2019 China Collegiate Programming Contest Qinhuangdao Onsite](https://codeforces.com/contest/102361) | 8 | 8/8 | Special | - |
 | [102373](102373/) | [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373) | 6 | 4/6 | Special | - |
 | [102375](102375/) | [Квалификационный раунд Чемпионата Северо-Запада России и Москвы ICPC 2019](https://codeforces.com/contest/102375) | 5 | 3/5 | ICPC/IOI | - |
 | [102386](102386/) | [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386) | 4 | 3/4 | Special | - |
