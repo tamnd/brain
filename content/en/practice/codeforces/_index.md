@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3117 contests, 22989 problems, 12789 verified."
+description: "Codeforces problem solutions with full editorials. 3118 contests, 22994 problems, 12793 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3117 contests, 22989 problems, 12789 verified.**
+**3118 contests, 22994 problems, 12793 verified.**
 
 ## Unknown — 820 contests, 6910 problems, 4097 verified
 
@@ -1641,7 +1641,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102821](102821/) | [2019 Sichuan Province Programming Contest](https://codeforces.com/contest/102821) | 11 | 7/11 | Special | - |
 | [102899](102899/) | [The 2nd Hangzhou Normal University Freshman Programming Contest](https://codeforces.com/contest/102899) | 13 | 11/13 | Special | - |
 
-## 2020 — 221 contests, 1404 problems, 753 verified
+## 2020 — 222 contests, 1409 problems, 757 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1804,6 +1804,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1466](1466/) | [Good Bye 2020](https://codeforces.com/contest/1466) | 9 | 7/9 | Special | 800-3400 |
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
+| [102354](102354/) | [2018-2019 Summer Petrozavodsk Camp, Oleksandr Kulkov Contest 2](https://codeforces.com/contest/102354) | 5 | 4/5 | Special | - |
 | [102501](102501/) | [2019-2020 ICPC Southwestern European Regional Programming Contest (SWERC 2019-20)](https://codeforces.com/contest/102501) | 12 | 12/12 | ICPC/IOI | - |
 | [102503](102503/) | [National Olympiad in Informatics - Philippines (NOI.PH) Online Eliminations 2020](https://codeforces.com/contest/102503) | 17 | 13/17 | Special | - |
 | [102512](102512/) | [Valentines Day Contest 2020](https://codeforces.com/contest/102512) | 7 | 1/7 | Special | - |
