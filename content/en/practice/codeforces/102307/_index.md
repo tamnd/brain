@@ -1,23 +1,23 @@
 ---
 title: "2019 ICPC Universidad Nacional de Colombia Programming Contest"
-description: "6 problems from 2019 ICPC Universidad Nacional de Colombia Programming Contest (contest 102307), difficulty -. 6/6 solutions verified against sample I/O."
+description: "8 problems from 2019 ICPC Universidad Nacional de Colombia Programming Contest (contest 102307), difficulty -. 8/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102307
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 6
-n_verified: 6
-total_solve_s: 1110
+n_problems: 8
+n_verified: 8
+total_solve_s: 1382
 contest_year: 2019
-date: "2026-08-13T07:25:29+07:00"
+date: "2026-08-13T07:30:07+07:00"
 weight: 102307
 draft: false
 ---
 
 # [2019 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102307)
 
-ICPC/IOI | 6 problems | 6/6 verified | Difficulty - | 18m 30s
+ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 23m 2s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,5 @@ ICPC/IOI | 6 problems | 6/6 verified | Difficulty - | 18m 30s
 | [H](H/) | [Hardest Challenge](https://codeforces.com/problemset/problem/102307/H) |  |  |  | 3m 13s | ✓ |
 | [I](I/) | [Integer Prefix](https://codeforces.com/problemset/problem/102307/I) |  |  |  | 1m 5s | ✓ |
 | [J](J/) | [Jail Destruction](https://codeforces.com/problemset/problem/102307/J) |  |  |  | 1m 46s | ✓ |
+| [K](K/) | [Kernel Of Love](https://codeforces.com/problemset/problem/102307/K) |  |  |  | 1m 19s | ✓ |
+| [L](L/) | [Liquid X](https://codeforces.com/problemset/problem/102307/L) |  |  |  | 3m 13s | ✓ |
