@@ -1,7 +1,7 @@
 ---
 title: "CF 102373J - Transformations"
-description: "We have two permutations of the same set of friends. The first permutation a is the current order, and the second permutation b is the required order. A single operation chooses any nonempty set of friends."
-date: "2026-08-12T23:22:49+07:00"
+description: "We have two permutations of the same set of friends. The array a describes their current order, while b describes the required final order."
+date: "2026-08-14T03:19:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102373
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "\u0426\u0438\u043a\u043b \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434 \u0434\u043b\u044f \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
 rating: 0
 weight: 102373
-solve_time_s: 546
+solve_time_s: 424
 verified: false
 draft: false
 ---
@@ -18,142 +18,114 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 9m 6s  
+**Solve time:** 7m 4s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have two permutations of the same set of friends. The first permutation `a` is the current order, and the second permutation `b` is the required order.
+We have two permutations of the same set of friends. The array `a` describes their current order, while `b` describes the required final order. One allowed operation chooses any nonempty subset of friends, removes those friends from their current positions, reverses their current relative order, and puts the resulting sequence at the front. Everyone who was not chosen keeps their relative order.
 
-A single operation chooses any nonempty set of friends. The chosen friends are removed from their current positions, their relative order is reversed, and the resulting sequence is placed at the very front. The friends that were not chosen keep their relative order.
+The output is not required to be unique. We only need to print at most 15 subsets whose operations transform `a` into `b`. The order in which the chosen friend numbers are printed inside one operation does not matter, because the operation uses their positions in the current line, not their printed order.
 
-For example, if the current sequence is
+The main constraint is `n <= 10000`. A construction that needs `O(n)` operations is useless because the limit is only 15 operations. Conversely, `O(n log n)` or even `O(15n)` computation is easily fast enough. The real challenge is not the running time of simulating an operation, but finding a representation that makes a logarithmic number of operations sufficient. Since `2^13 = 8192` and `2^14 = 16384`, fourteen binary decisions are enough to distinguish all 10000 friends.
 
-`1 2 3 4 5`
+There are several edge cases that can expose a careless construction. If `n = 1`, there is already only one possible order, so the correct output is simply `0`. For example,
 
-and we choose `{2, 4}`, the selected friends occur as `2, 4`, so after reversing them and moving them to the front we obtain
-
-`4 2 1 3 5`.
-
-We do not need the minimum number of operations. We only need some sequence of at most 15 operations that changes `a` into `b`. The output contains the number of operations followed by the set of friend numbers selected in every operation.
-
-The value `n` is at most 10000. This is large enough that explicitly trying permutations is impossible, since there are `n!` possible orders. Even considering every subset for one operation already gives `2^n - 1` possibilities, which is hopeless at `n = 10000`. The useful part of the constraints is the limit of 15 operations. Since `2^14 = 16384 > 10000`, a construction based on 14 binary decisions is enough.
-
-There are two subtle cases that are easy to mishandle. First, when `n = 1`, there is only one possible permutation. For example,
-
-```text
+```
 1
 1
 1
 ```
 
-already satisfies the target, so the correct output is simply `0`. A construction that blindly computes `ceil(log2(n))` and then assumes at least one operation exists can accidentally create an invalid empty operation.
+must produce
 
-Second, the input permutations are guaranteed to contain distinct values. Thus a test such as
-
-```text
-3
-1 1 2
-1 2 1
+```
+0
 ```
 
-is not a valid test case at all. There is no need to handle repeated values, and any construction relying on every friend having a unique target position is justified by the input.
+A construction that blindly creates at least one operation would still be valid in terms of transformation, but would violate the intended minimal bound only if it produced an unnecessary operation with a nonempty subset. More importantly, the clean construction should recognize that zero bits are enough.
 
-Another boundary case is a power of two. For
+For two friends, a single operation is enough to reverse them. For example,
 
-```text
-4
-4 3 2 1
-1 2 3 4
+```
+2
+1 2
+2 1
 ```
 
-we need exactly two bits to distinguish all four target positions. The construction uses four distinct two-bit codes, so no extra operation is needed merely because `n` reaches the capacity of the code space.
+can be solved by
 
-For a non-power of two, such as `n = 5`, we use the first five codes from a suitable ordering of all eight three-bit codes. The unused codes simply never belong to any friend, so they have no effect on the resulting permutation.
+```
+1
+1 2
+```
+
+because selecting friend `2` moves it to the front. A construction based on ordinary binary sorting can easily get the direction wrong because a selected group is reversed rather than stably moved.
+
+The input elements are guaranteed to be distinct. Consequently, an alleged test containing all-equal values is not a legal test for this problem. A program that assumes duplicates are possible may accidentally rely on equal elements being interchangeable, which would hide ordering errors. Our construction assigns a distinct code to every position, so distinctness is exactly what we need.
+
+Another boundary case occurs at `n = 8193`. Thirteen bits provide only 8192 distinct codes, so using `ceil(log2(n - 1))` or an off-by-one loop would fail exactly here. Fourteen operations are sufficient because `2^14 = 16384`.
 
 ## Approaches
 
-A direct approach would try to search through possible operations. There are `2^n - 1` nonempty subsets that can be selected in one operation. Applying one candidate to a sequence costs `O(n)` if the sequence is explicitly rebuilt, so even examining all possible first operations costs `O(n 2^n)`. Searching several levels deep is much worse, with a branching factor of roughly `2^n`. A shortest-path search over permutations is also impossible because the state space has `n!` states.
+A direct brute-force approach would consider every possible subset as a candidate operation. There are `2^n - 1` nonempty subsets. If we try all sequences of at most 15 operations, the number of sequences is on the order of `(2^n - 1)^15`, which is `O(2^(15n))`. Even considering only one operation already gives exponentially many possibilities, so this approach is unusable for `n = 10000`.
 
-The brute force works conceptually because every legal move is explicitly represented among those subsets. Its failure is entirely caused by the huge number of possible subsets and resulting permutations.
+The brute force works because every legal operation is explicitly represented, and testing a candidate sequence would tell us exactly where it ends. It fails because the operation space is enormous, not because simulating an individual operation is difficult.
 
-The key observation is that an operation can be described using a single binary decision for every friend. Give every friend a bit saying whether that friend participates in the operation. The selected friends are moved before all unselected friends, and the selected part is reversed.
+The key observation is that an operation can be interpreted as assigning one binary decision to every friend. A friend belongs to the selected group if its bit is `1`, and to the unselected group if its bit is `0`. The selected group is moved in front, but its internal order is reversed.
 
-Suppose we perform several operations and assign every friend a binary code consisting of its participation bits. The final order is determined by those codes. The interesting part is that the order of the codes is not ordinary binary order. Because every selected group is reversed, the natural code ordering is a reflected Gray-code ordering.
+The reversal changes the usual binary sorting picture. If we perform operations from bit `0` through bit `k - 1`, the last operation has the highest priority, but a selected group is reversed. The resulting order of binary codes is exactly a reversed Gray-code ordering.
 
-For `k` operations, there are `2^k` possible binary codes. If all friends receive different codes, their original order becomes irrelevant. We only need to assign the codes so that the operation sequence produces the desired target order.
+For `k = 3`, the resulting code order is
 
-Let `G_k` be the usual binary reflected Gray-code sequence. For three bits it is
+```
+100, 101, 111, 110, 010, 011, 001, 000
+```
 
-`000, 001, 011, 010, 110, 111, 101, 100`.
+This is the descending order of the standard Gray code. The important property is that this ordering is generated by exactly the same recursive rule as our operation.
 
-The order produced by our operations is the reverse of this sequence:
+The standard Gray-code sequence of `k` bits is obtained by taking the `(k-1)`-bit sequence and then its reversed copy with a leading `1`. Reversing the entire sequence gives the ordering needed by our transformations. Thus, instead of trying to discover operations one by one, we assign every target position a distinct code from this known ordering.
 
-`100, 101, 111, 110, 010, 011, 001, 000`.
+For target position `i`, with zero-based `i`, we take
 
-There is a direct formula for the code at target position `r`:
+```
+x = 2^k - 1 - i
+code = x XOR (x >> 1)
+```
 
-`code[r] = gray(2^k - 1 - r)`,
+The expression `x XOR (x >> 1)` is the usual binary-to-Gray-code conversion. Taking `x` in descending order gives the required descending Gray-code sequence.
 
-where
-
-`gray(x) = x XOR (x >> 1)`.
-
-We assign these codes to the friends in the order in which they appear in `b`. Then operation `i` selects exactly those friends whose assigned code has bit `i` set.
-
-The construction needs only `ceil(log2 n)` operations. Since `n <= 10000`, this is at most 14, comfortably below the required limit of 15.
+Operation `j` selects exactly the friends whose assigned code has bit `j` set. We output these operations in increasing order of `j`. The highest bit is consequently used last, which matches the recursive definition of the ordering.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-|---|---|---|---|
-| Brute Force | `O(n 2^n)` just for one search level | `O(n)` per state | Too slow |
-| Optimal | `O(n log n)` | `O(n log n)` in the straightforward representation | Accepted |
-
-The actual implementation can use only `O(n)` additional memory because every code is generated when needed, so the practical space usage is even smaller than the table's general bound.
+| --- | --- | --- | --- |
+| Brute Force | `O(2^(15n))` | `O(n)` | Too slow |
+| Optimal | `O(n log n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. If `a` is already equal to `b`, output zero operations. This is not required for correctness of the general construction, but it gives the simplest possible answer and handles `n = 1` naturally.
+1. If `a` and `b` are identical, output zero operations. No transformation is needed, and this also handles `n = 1` naturally.
+2. Choose the smallest `k` such that `2^k >= n`. Since `n <= 10000`, we always have `k <= 14`, so the operation limit of 15 is respected.
+3. Traverse the desired permutation `b` from left to right. For the friend that must occupy target position `i`, assign the Gray-code value
 
-2. Choose the smallest `k` such that `2^k >= n`. There are enough different `k`-bit codes to give every target position a unique code. Because `n <= 10000`, we always have `k <= 14`.
+```
+code[i] = gray(2^k - 1 - i)
+```
 
-3. Number the positions of the desired permutation from `0` through `n - 1`. For position `r`, compute
+where `gray(x) = x XOR (x >> 1)`.
 
-   `x = 2^k - 1 - r`
+The target positions receive the Gray codes in exactly the order that the operations will produce. Every friend gets a different code because the values of `x` are different and Gray-code conversion is bijective.
 
-   and then assign the code
+1. For every bit `j` from `0` through `k - 1`, collect every friend whose assigned code has bit `j` equal to `1`. If this subset is nonempty, output it as one operation.
 
-   `x XOR (x >> 1)`.
+The subsets can be collected in any order because the operation determines the selected friends from the current line, not from the order in which their identifiers are printed.
 
-   These are precisely the first `n` codes of the reverse binary reflected Gray-code ordering.
-
-4. For every bit `i` from `0` through `k - 1`, construct one operation. Scan the target permutation `b`. If the assigned code of `b[r]` has bit `i` set, put friend `b[r]` into operation `i`.
-
-   The order in which the selected friend numbers are printed does not matter. The operation itself recovers their current relative order before reversing them.
-
-5. Output all `k` operations in increasing bit order, from bit `0` to bit `k - 1`.
-
-   The order of these operations is essential. The last operation has the highest influence on the final grouping, and the recursive reversal caused by the operations is exactly what gives the reverse Gray-code order.
+1. Apply the operations conceptually from low bit to high bit. After all operations, the friends appear in descending Gray-code order. Since the codes were assigned to `b[0], b[1], ..., b[n-1]` in that same order, the resulting permutation is exactly `b`.
 
 ### Why it works
 
-Consider all `2^k` possible codes. After the first operation, codes with bit `0` equal to `1` move to the front in reverse order, while codes with bit `0` equal to `0` remain afterward. After the next operation, the same process happens according to bit `1`, with the selected part reversed. Continuing this way gives the recursive sequence
-
-`C_k = 1 + reverse(C_{k-1}), 0 + C_{k-1}`
-
-when the high bit is written first. The base sequence is `C_1 = [1, 0]`.
-
-The standard reflected Gray code satisfies
-
-`G_k = 0 + G_{k-1}, 1 + reverse(G_{k-1})`.
-
-Reversing this identity gives
-
-`reverse(G_k) = 1 + G_{k-1}, 0 + reverse(G_{k-1})`,
-
-which is exactly the sequence generated by our operations. Thus the final order of distinct codes is `reverse(G_k)`.
-
-We assign the first `n` codes of this sequence to the elements of `b` in target order. Consequently, after all operations, the friends appear exactly in the order `b`. Since every assigned code is distinct, no pair of friends ever needs its original relative order to break a tie.
+The proof follows directly from the recursive structure of Gray codes. Assume that after operations for the lower `k - 1` bits, the friends are ordered according to the descending `(k - 1)`-bit Gray sequence. The final operation examines bit `k - 1`. Friends with this bit equal to `1` are moved to the front and their previous order is reversed. Reversing the descending Gray sequence produces the ascending Gray sequence, so the first part of the result is the `1`-prefixed ascending Gray sequence. Friends with bit `k - 1` equal to `0` stay behind in the old descending order, giving the `0`-prefixed reversed Gray sequence. Together these are precisely the descending `k`-bit Gray sequence. By induction, the final order is independent of the initial permutation and depends only on the assigned codes. Since the target permutation receives those codes from left to right, it is obtained exactly.
 
 ## Python Solution
 
@@ -161,46 +133,42 @@ We assign the first `n` codes of this sequence to the elements of `b` in target 
 import sys
 input = sys.stdin.readline
 
-def build_operations(a, b):
-    n = len(a)
-
-    if a == b:
-        return []
-
-    k = 0
-    while (1 << k) < n:
-        k += 1
-
-    operations = []
-
-    # code[r] is the r-th code in reverse Gray-code order.
-    # We only need the codes for the n target positions.
-    codes = [0] * n
-    full = (1 << k) - 1
-
-    for r in range(n):
-        x = full - r
-        codes[r] = x ^ (x >> 1)
-
-    for bit in range(k):
-        mask = 1 << bit
-        selected = []
-
-        for r in range(n):
-            if codes[r] & mask:
-                selected.append(b[r])
-
-        if selected:
-            operations.append(selected)
-
-    return operations
-
 def solve():
     n = int(input())
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
 
-    operations = build_operations(a, b)
+    if a == b:
+        print(0)
+        return
+
+    k = 0
+    while (1 << k) < n:
+        k += 1
+
+    # code[friend] is the code assigned to that friend.
+    code = [0] * (n + 1)
+
+    limit = 1 << k
+
+    # Target position i receives the i-th code in descending Gray order.
+    for i, friend in enumerate(b):
+        x = limit - 1 - i
+        code[friend] = x ^ (x >> 1)
+
+    operations = []
+
+    # Operations are performed from the lowest bit to the highest bit.
+    for bit in range(k):
+        mask = 1 << bit
+        selected = []
+
+        for friend in b:
+            if code[friend] & mask:
+                selected.append(friend)
+
+        if selected:
+            operations.append(selected)
 
     print(len(operations))
     for op in operations:
@@ -210,25 +178,17 @@ if __name__ == "__main__":
     solve()
 ```
 
-The `build_operations` function first handles the already-sorted case. This avoids producing unnecessary operations and also means that `n = 1` immediately produces zero operations.
+The first check handles the case where no transformation is necessary. It is not required for correctness of the Gray-code construction, but it avoids producing unnecessary operations.
 
-The loop computing `k` finds the smallest number of bits capable of representing at least `n` different values. For `n = 10000`, it stops at `k = 14` because `2^13 = 8192` is too small while `2^14 = 16384` is sufficient.
+The loop computing `k` uses the condition `2^k < n`, so it stops at the smallest value with `2^k >= n`. For `n = 8192`, this gives `k = 13`; for `n = 8193`, it gives `k = 14`. There is no case requiring 15 operations.
 
-The expression
+The `code` array is indexed by friend number rather than target position. This makes the later operation construction straightforward because every operation must contain friend identifiers. Since every friend appears exactly once in `b`, assigning codes while scanning `b` is sufficient.
 
-```python
-x ^ (x >> 1)
-```
+The expression `x ^ (x >> 1)` converts binary `x` to Gray code. The subtraction `limit - 1 - i` is what reverses the Gray-code sequence. Using `i` directly would produce the opposite ordering and would not match the reversal performed by the operations.
 
-is the standard binary-to-Gray-code conversion. We use `full - r` rather than `r` because the required ordering is the reverse Gray-code order.
+For every bit, we scan `b` and collect the corresponding friends. Scanning `b` rather than `a` is convenient because every friend is encountered exactly once and the target order already gives a compact representation of the assigned codes. The printed order inside an operation has no semantic effect.
 
-The `codes` array stores one integer for every target position. Since `b[r]` is the friend that must occupy target position `r`, the code stored at `r` belongs to `b[r]`.
-
-The final nested loop constructs the actual operations. A friend is selected in operation `bit` exactly when its code has that bit set. The operation does not require us to know the current position of the friend, which is the main implementation advantage of the construction.
-
-There is no integer-overflow issue in Python. Even in languages with fixed-width integers, the largest value here is below `2^14`, so ordinary 32-bit integers are more than sufficient.
-
-The printed friend numbers can appear in any order because the statement asks only for the subset. The judge reconstructs the selected subsequence using the current permutation, then reverses it.
+Python integers have arbitrary precision, so there is no overflow concern. Here all codes are below `2^14`, making the arithmetic particularly small anyway.
 
 ## Worked Examples
 
@@ -236,278 +196,270 @@ The printed friend numbers can appear in any order because the statement asks on
 
 The input is
 
-```text
+```
 5
 5 4 3 2 1
 3 4 5 1 2
 ```
 
-We need `k = 3` because `2^2 < 5 <= 2^3`. The reverse Gray-code sequence for three bits begins
+We need `k = 3`, because `2^2 < 5 <= 2^3`. The descending three-bit Gray sequence starts with `100, 101, 111, 110, 010`.
 
-`100, 101, 111, 110, 010, ...`
+The target positions therefore receive these codes as follows.
 
-so the target positions receive the following codes.
+| Target position | Friend | `x` | Gray code |
+| --- | --- | --- | --- |
+| 0 | 3 | 7 | `100` |
+| 1 | 4 | 6 | `101` |
+| 2 | 5 | 5 | `111` |
+| 3 | 1 | 4 | `110` |
+| 4 | 2 | 3 | `010` |
 
-| Target position | Friend | Code | Bit 0 | Bit 1 | Bit 2 |
-|---:|---:|---:|---:|---:|---:|
-| 0 | 3 | `100` | 0 | 0 | 1 |
-| 1 | 4 | `101` | 1 | 0 | 1 |
-| 2 | 5 | `111` | 1 | 1 | 1 |
-| 3 | 1 | `110` | 0 | 1 | 1 |
-| 4 | 2 | `010` | 0 | 1 | 0 |
+The resulting operations are:
 
-The operations are consequently
+| Bit | Selected friends | Current order after operation |
+| --- | --- | --- |
+| 0 | `4 5` | `4 5 3 2 1` |
+| 1 | `1 2 4 5` | `1 2 5 4 3` |
+| 2 | `1 3 4 5` | `3 4 5 1 2` |
 
-| Operation | Selected friends | Current order after operation |
-|---:|---|---|
-| 1 | `4 5` | `5 4 3 2 1` transformed according to bit 0 |
-| 2 | `5 1 2` | transformed according to bit 1 |
-| 3 | `3 4 5 1` | `3 4 5 1 2` |
+The first operation selects friends `4` and `5`. They occur as `5, 4` in the original line, so they are reversed to `4, 5`. The later operations recursively refine this ordering. After the third operation, the line is exactly the requested `3, 4, 5, 1, 2`.
 
-The exact intermediate orders are not needed by the construction, because the code argument proves the final order. The important point is that the final code order is
-
-`100, 101, 111, 110, 010`,
-
-which maps to
-
-`3, 4, 5, 1, 2`.
-
-The sample output uses four operations, but minimizing the number is not required. A different valid construction using three operations is completely acceptable.
+The sample output uses four operations, but our construction uses only three. The task does not require the minimum number of operations, so both are valid.
 
 ### Sample 2
 
 The input is
 
-```text
+```
 7
 3 4 7 6 2 5 1
 2 6 3 4 5 7 1
 ```
 
-Again `k = 3`. The first seven reverse Gray codes are
+Again, `k = 3`, since seven friends fit into eight codes. The first seven codes of the descending Gray sequence are assigned to the desired positions.
 
-`100, 101, 111, 110, 010, 011, 001`.
+| Target position | Friend | `x` | Gray code |
+| --- | --- | --- | --- |
+| 0 | 2 | 7 | `100` |
+| 1 | 6 | 6 | `101` |
+| 2 | 3 | 5 | `111` |
+| 3 | 4 | 4 | `110` |
+| 4 | 5 | 3 | `010` |
+| 5 | 7 | 2 | `011` |
+| 6 | 1 | 1 | `001` |
 
-| Target position | Friend | Code |
-|---:|---:|---:|
-| 0 | 2 | `100` |
-| 1 | 6 | `101` |
-| 2 | 3 | `111` |
-| 3 | 4 | `110` |
-| 4 | 5 | `010` |
-| 5 | 7 | `011` |
-| 6 | 1 | `001` |
+The corresponding operations are:
 
-The selected sets are obtained by looking at each column of bits.
+| Bit | Selected friends | Current order after operation |
+| --- | --- | --- |
+| 0 | `6 3 7 1` | `1 5 7 3 4 6 2` |
+| 1 | `3 4 7 5` | `5 4 3 7 1 6 2` |
+| 2 | `2 6 3 4` | `2 6 3 4 5 7 1` |
 
-| Operation | Selected friends |
-|---:|---|
-| 1 | `6 3 7 1` |
-| 2 | `3 4 5 7` |
-| 3 | `2 6 3 4` |
-
-Starting from
-
-`3 4 7 6 2 5 1`,
-
-the first operation gives
-
-`1 6 7 3 4 2 5`.
-
-The second operation gives
-
-`5 4 3 7 1 6 2`.
-
-The third operation gives
-
-`2 6 3 4 5 7 1`.
-
-The result is exactly the requested permutation. The sample uses another sequence of three operations, which is also valid.
+The final state is exactly the desired permutation. This example also shows why ordinary binary sorting is not the right mental model. The selected group is reversed, so Gray-code order captures the extra reversal naturally.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-|---|---|---|
-| Time | `O(n log n)` | There are `k = O(log n)` operations, and every operation scans the `n` target positions |
-| Space | `O(n)` | The code array and the output operations contain at most `O(n log n)` integers in the worst representation, while the implementation can store the selected sets directly |
+| --- | --- | --- |
+| Time | `O(n log n)` | There are at most 14 operations, and each scans at most `n` friends |
+| Space | `O(n)` | The friend-to-code array and the generated operation lists contain `O(n)` integers |
 
-For `n <= 10000`, `k <= 14`, so the construction performs at most about 140000 basic position checks. This is easily within the given 2 second limit, and the number of operations is strictly below the required maximum of 15.
+For `n <= 10000`, the algorithm performs only about 140,000 basic friend-bit checks in the worst case, apart from input and output handling. The number of operations is at most 14, which is strictly below the allowed 15.
 
 ## Test Cases
 
-The output of a constructive problem is not unique, so checking the output against one fixed string would be incorrect. The following test harness parses the produced operations, simulates them, and verifies that the final permutation equals `b`. It also checks that every operation is nonempty, every friend is selected at most once per operation, and no more than 15 operations are printed.
+The output of this problem is not unique, so tests should verify the produced operations rather than compare the output text byte for byte. The following harness runs the same construction, parses its output, simulates every operation, and checks that the final permutation equals the target.
+
+The original statement's "all-equal values" category cannot be represented by a legal input because every permutation element must be distinct. The test suite consequently uses the closest meaningful cases, including repeated structural patterns and the smallest and largest legal permutations.
 
 ```python
 import sys
 import io
 
-def build_operations(a, b):
-    n = len(a)
+def solution(inp: str) -> str:
+    data = inp.split()
+    it = iter(data)
+
+    n = int(next(it))
+    a = [int(next(it)) for _ in range(n)]
+    b = [int(next(it)) for _ in range(n)]
 
     if a == b:
-        return []
+        return "0\n"
 
     k = 0
     while (1 << k) < n:
         k += 1
 
-    full = (1 << k) - 1
-    codes = [0] * n
+    code = [0] * (n + 1)
+    limit = 1 << k
 
-    for r in range(n):
-        x = full - r
-        codes[r] = x ^ (x >> 1)
+    for i, friend in enumerate(b):
+        x = limit - 1 - i
+        code[friend] = x ^ (x >> 1)
 
     operations = []
 
     for bit in range(k):
         mask = 1 << bit
         selected = []
-
-        for r in range(n):
-            if codes[r] & mask:
-                selected.append(b[r])
-
+        for friend in b:
+            if code[friend] & mask:
+                selected.append(friend)
         if selected:
             operations.append(selected)
 
-    return operations
-
-def solve_string(inp):
-    data = io.StringIO(inp)
-
-    n = int(data.readline())
-    a = list(map(int, data.readline().split()))
-    b = list(map(int, data.readline().split()))
-
-    operations = build_operations(a, b)
-
     out = [str(len(operations))]
     for op in operations:
-        out.append("{} {}".format(len(op), " ".join(map(str, op))))
+        out.append(str(len(op)) + " " + " ".join(map(str, op)))
 
     return "\n".join(out) + "\n"
 
 def run(inp: str) -> str:
-    return solve_string(inp)
+    return solution(inp)
 
-def validate(inp: str):
-    lines = inp.strip().splitlines()
-    n = int(lines[0])
-    a = list(map(int, lines[1].split()))
-    b = list(map(int, lines[2].split()))
+def verify(inp: str) -> None:
+    tokens = inp.split()
+    it = iter(tokens)
 
-    output = run(inp)
-    tokens = output.split()
-    ptr = 0
+    n = int(next(it))
+    a = [int(next(it)) for _ in range(n)]
+    b = [int(next(it)) for _ in range(n)]
 
-    k = int(tokens[ptr])
-    ptr += 1
+    out = run(inp).split()
+    jt = iter(out)
 
+    k = int(next(jt))
     assert 0 <= k <= 15
 
-    current = a[:]
+    cur = a[:]
 
     for _ in range(k):
-        c = int(tokens[ptr])
-        ptr += 1
-
+        c = int(next(jt))
         assert 1 <= c <= n
 
-        chosen = list(map(int, tokens[ptr:ptr + c]))
-        ptr += c
+        selected = {int(next(jt)) for _ in range(c)}
+        assert len(selected) == c
+        assert all(1 <= x <= n for x in selected)
 
-        assert len(chosen) == c
-        assert len(set(chosen)) == c
-        assert all(1 <= x <= n for x in chosen)
-
-        chosen_set = set(chosen)
-
-        selected = []
+        chosen = []
         remaining = []
 
-        for x in current:
-            if x in chosen_set:
-                selected.append(x)
+        for x in cur:
+            if x in selected:
+                chosen.append(x)
             else:
                 remaining.append(x)
 
-        current = selected[::-1] + remaining
+        chosen.reverse()
+        cur = chosen + remaining
 
-    assert ptr == len(tokens)
-    assert current == b
+    assert cur == b
 
+# Provided sample 1
 sample1 = """\
 5
 5 4 3 2 1
 3 4 5 1 2
 """
+verify(sample1)
 
+# Provided sample 2
 sample2 = """\
 7
 3 4 7 6 2 5 1
 2 6 3 4 5 7 1
 """
+verify(sample2)
 
-validate(sample1)
-validate(sample2)
-
-custom1 = """\
+# Minimum-size case
+case1 = """\
 1
 1
 1
 """
-validate(custom1)
+verify(case1)
 
-custom2 = """\
+# Two elements, maximum possible reversal
+case2 = """\
 2
-2 1
 1 2
+2 1
 """
-validate(custom2)
+verify(case2)
 
-custom3 = """\
-8
-8 7 6 5 4 3 2 1
-1 2 3 4 5 6 7 8
-"""
-validate(custom3)
-
-n = 10000
-custom4 = "{}\n{}\n{}\n".format(
-    n,
-    " ".join(map(str, range(n, 0, -1))),
-    " ".join(map(str, range(1, n + 1)))
+# Boundary where 13 bits are no longer enough.
+n = 8193
+a = list(range(1, n + 1))
+b = list(range(n, 0, -1))
+case3 = (
+    str(n) + "\n" +
+    " ".join(map(str, a)) + "\n" +
+    " ".join(map(str, b)) + "\n"
 )
-validate(custom4)
+verify(case3)
 
-print("all tests passed")
+# Maximum-size legal input, already in the target order.
+n = 10000
+a = list(range(1, n + 1))
+b = list(range(1, n + 1))
+case4 = (
+    str(n) + "\n" +
+    " ".join(map(str, a)) + "\n" +
+    " ".join(map(str, b)) + "\n"
+)
+verify(case4)
 ```
 
 | Test input | Expected output | What it validates |
-|---|---|---|
-| `1 / 1 / 1` | Any valid output with `0` operations | Minimum size and zero-operation handling |
-| `2 / 2 1 / 1 2` | Any valid output with at most `15` operations | Smallest nontrivial binary code space |
-| `8 / 8 7 6 5 4 3 2 1 / 1 2 3 4 5 6 7 8` | Any valid output | Exact power-of-two boundary, where every three-bit code is available |
-| `10000 / 10000 ... 1 / 1 ... 10000` | Any valid output with at most `15` operations | Maximum `n`, performance, and the `k = 14` boundary |
+| --- | --- | --- |
+| `1 / 1 / 1` | `0` operations | Minimum size and zero-operation handling |
+| `2 / 1 2 / 2 1` | One valid operation selecting `2` | Smallest nontrivial reversal |
+| `n = 8193`, identity to reverse | At most 14 operations | Exact `2^13` boundary and bit-count calculation |
+| `n = 10000`, identity to identity | `0` operations | Maximum size and already-correct input |
 
-The requested "all-equal values" case cannot be a valid test because the problem explicitly requires both arrays to be permutations, so every value occurs exactly once. The validator instead checks uniqueness inside every operation, which catches the implementation errors that repeated input values would otherwise expose.
+The verifier deliberately does not require a particular subset ordering. Since the statement allows friend numbers inside an operation to be printed arbitrarily, requiring one exact representation would reject correct solutions for irrelevant formatting differences.
 
 ## Edge Cases
 
-For `n = 1`, the only possible permutation is `[1]`. Since `a` and `b` must both contain the only value, they are equal and `build_operations` immediately returns an empty list. The output is `0`, which is valid because no operation is necessary.
+For `n = 1`, the input
 
-For `n = 2`, one bit is enough. The reverse Gray-code sequence is `[1, 0]`. If the target is `[1, 2]`, friend `1` receives code `1` and friend `2` receives code `0`. The only operation selects friend `1`, producing the target order regardless of the initial permutation.
+```
+1
+1
+1
+```
 
-For `n = 4`, the two-bit reverse Gray-code sequence is `[2, 3, 1, 0]`, corresponding to binary strings `10, 11, 01, 00`. All four codes are distinct, so the construction works exactly at the capacity boundary. There are no unused codes to worry about.
+has the same initial and target permutation. The first branch detects equality and prints `0`. No code assignment or operation generation is necessary.
 
-For `n = 5`, three bits are required. The assigned codes are `111, 110, 101, 100, 000` in the appropriate reverse Gray ordering after applying the formula. The remaining three codes are unused. They do not influence any operation because no friend owns them.
+For two friends,
 
-For `n = 10000`, `k = 14` because `2^13 = 8192` is insufficient while `2^14 = 16384` is enough. Every friend receives a unique 14-bit code, so the construction needs only 14 operations, leaving one operation of margin under the limit of 15.
+```
+2
+1 2
+2 1
+```
 
-The most common off-by-one error is using `gray(r)` instead of `gray(2^k - 1 - r)`. The former produces the ordinary Gray-code order, while the operations produce its reverse. The subtraction by one from `2^k` is also essential. Using `2^k - r` would produce a value outside the intended `k`-bit range for the first position.
+we have `k = 1`. The target positions receive codes `1` and `0`, respectively. Bit zero is set only for friend `2`, so the single operation is
 
-Another common mistake is applying the operations from the highest bit to the lowest bit. The construction relies on operations being performed in increasing bit order. The last operation reverses selected groups created by all previous operations, and that recursive reversal is exactly what generates the reflected Gray-code structure.
+```
+1
+1 2
+```
 
-Finally, the original permutation `a` does not appear in the code construction after the operations have been chosen. This is intentional. The assigned codes are all distinct, and the sequence of operations forces every pair of friends into the relative order determined by their codes. The initial relative order can affect intermediate permutations, but it cannot affect the final order after all `k` operations.
-:::
+The selected friend moves to the front, producing `2 1`. This confirms that the construction has the correct orientation even in the smallest nontrivial case.
+
+At `n = 8193`, thirteen bits cannot distinguish all target positions because there are only 8192 possible codes. The loop therefore computes `k = 14`. The construction has 16384 available Gray codes and uses only the first 8193 in descending order, so every friend still receives a unique code and at most 14 operations are generated.
+
+An input containing equal values, such as
+
+```
+3
+1 1 1
+1 1 1
+```
+
+is not a valid test because the statement requires every array to be a permutation of `1..n`. The algorithm relies on this property when assigning one distinct code to every friend. There is no need to define behavior for duplicate identifiers.
+
+Finally, when `a` already equals `b` for a large input, the algorithm immediately prints zero rather than constructing all 14 possible operations. For example, with `n = 10000` and both arrays equal to `1, 2, ..., 10000`, the answer is simply `0`. This avoids unnecessary output and confirms that the construction does not depend on performing a fixed number of transformations.
