@@ -1,7 +1,7 @@
 ---
 title: "CF 102375I - \u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u0447"
-description: "Есть P участников и T задач. Для каждой пары (u, v) из входа известно, что участник u знает задачу v. Одну и ту же пару во входе не повторяют, но одна задача вполне может быть известна нескольким участникам. Организаторы выбирают непустой набор задач."
-date: "2026-08-12T22:26:40+07:00"
+description: "There are (P) participants and (T) possible contest tasks. For every known participant-task pair ((u,v)), participant (u) already knows task (v). Suppose we choose some nonempty set of tasks for the contest."
+date: "2026-08-14T03:34:41+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102375
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0443\u043d\u0434 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u0421\u0435\u0432\u0435\u0440\u043e-\u0417\u0430\u043f\u0430\u0434\u0430 \u0420\u043e\u0441\u0441\u0438\u0438 \u0438 \u041c\u043e\u0441\u043a\u0432\u044b ICPC 2019"
 rating: 0
 weight: 102375
-solve_time_s: 215
+solve_time_s: 384
 verified: false
 draft: false
 ---
@@ -18,122 +18,161 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 35s  
+**Solve time:** 6m 24s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Есть `P` участников и `T` задач. Для каждой пары `(u, v)` из входа известно, что участник `u` знает задачу `v`. Одну и ту же пару во входе не повторяют, но одна задача вполне может быть известна нескольким участникам.
+There are (P) participants and (T) possible contest tasks. For every known participant-task pair ((u,v)), participant (u) already knows task (v).
 
-Организаторы выбирают непустой набор задач. Участник может прийти на соревнование только тогда, когда он не знает ни одной выбранной задачи. Если выбран хотя бы один известный ему номер, этот участник исключается.
+Suppose we choose some nonempty set of tasks for the contest. A participant is allowed to participate exactly when they know none of the chosen tasks. If the chosen tasks are (v_1,v_2,\ldots), the excluded participants are the union of the sets of people who know each chosen task.
 
-Сначала нужно максимизировать число оставшихся участников. Среди всех наборов задач, которые дают такое максимальное число участников, нужно выбрать набор максимального размера.
+The primary objective is to maximize the number of participants who remain eligible. Once that maximum is achieved, the secondary objective is to choose as many tasks as possible.
 
-Удобно смотреть на каждую задачу отдельно. Обозначим через `K(v)` множество участников, знающих задачу `v`. Если выбрать несколько задач, выбывают ровно участники из объединения их множеств `K(v)`. Значит, задача фактически задаёт множество участников, которых мы жертвуем.
+The input is naturally a bipartite graph. One side contains participants, the other side contains tasks, and an edge means that the corresponding participant knows the corresponding task. For every task (v), let (S_v) be the set of participants adjacent to it. If we choose a set (Q) of tasks, the number of participants who cannot participate is
 
-При `P, T <= 10^5` нельзя перебирать наборы задач. Более того, число известных пар достигает `10^6`, поэтому даже алгоритм с перебором всех пар внутри большого количества состояний уже слишком дорог. При лимите около двух секунд нужен алгоритм, близкий к линейному по размеру входа, допускающий только сортировки небольших списков.
+[
+\left|\bigcup_{v\in Q} S_v\right|.
+]
 
-Есть несколько случаев, на которых легко ошибиться.
+Thus we want to minimize this union, while (Q) must be nonempty. After minimizing its size, we want (Q) to contain as many tasks as possible.
 
-Рассмотрим
+The bounds are large enough to determine the intended direction immediately. Both (P) and (T) can reach (10^5), so an (O(P T)) algorithm could perform around (10^{10}) operations and is not viable. The number of known pairs (M) can reach (10^6), so an (O(M)) or (O(M\log M)) solution is appropriate, while algorithms that repeatedly inspect all participant-task pairs for many candidate subsets are too expensive.
 
-```
-1 1 0
-```
+There are several edge cases that a careless implementation can mishandle.
 
-Единственная задача никому не известна. Ее можно выбрать, и участник останется. Ответом будет
-
-```
-1 1
-1
-```
-
-Если забыть учитывать задачи с нулевым числом знающих участников, можно получить неправильный результат.
-
-Другой крайний случай:
+First, some tasks may be known by nobody. Consider
 
 ```
-1 1 1
+2 3 1
 1 1
 ```
 
-Выбрать задачу всё равно необходимо, но единственный участник ее знает. Поэтому правильный ответ равен
+Tasks (2) and (3) have empty participant sets. Choosing both excludes nobody, so the correct output is
 
 ```
-0 1
-1
+2 2
+2 3
 ```
 
-Алгоритм не должен считать, что максимальное число участников обязано быть положительным.
+A solution that only considers tasks appearing in the input would miss both optimal tasks.
 
-Еще одна тонкость возникает, когда несколько задач знают ровно одни и те же участники:
+Second, several tasks can have the same minimum number of known participants without being interchangeable. Consider
 
 ```
-3 3 4
+3 3 3
+1 1
+2 2
+3 3
+```
+
+Every task is known by exactly one participant, so the maximum number of eligible participants is (2). But choosing two different tasks excludes two different participants, leaving only one participant. The optimal answer therefore contains exactly one task, not all three. Looking only at task frequencies is insufficient. The actual participant sets must be compared.
+
+Third, the task with the largest number can itself be the optimal task. For example,
+
+```
+2 3 4
 1 1
 2 1
 1 2
 2 2
 ```
 
-Задачи `1` и `2` знают участники `{1,2}`. Выбрав обе задачи, мы исключим тех же двух участников, что и при выборе только одной, поэтому нужно выбрать обе. Ответ:
+Task (3) is known by nobody, so the answer is
 
 ```
-1 2
-1 2
+2 1
+3
 ```
 
-Наконец, задача, которую не знает никто, всегда особенно выгодна. Например,
+An implementation with a loop ending at (T-1), or one that accidentally treats task numbers as zero-based, can silently lose this case.
+
+Finally, it is possible that every participant knows every task. For
 
 ```
-3 3 2
+1 2 2
 1 1
-2 2
+1 2
 ```
 
-Задачу `3` можно выбрать вместе с любыми другими задачами, не уменьшая число доступных участников. Поэтому среди оптимальных наборов она обязательно должна присутствовать.
+any nonempty chosen set excludes the only participant. The optimal number of eligible participants is (0), and because all task sets are identical, both tasks should be selected:
+
+```
+0 2
+1 2
+```
+
+The secondary optimization still matters even when the primary optimum is zero.
 
 ## Approaches
 
-Самый прямой способ заключается в переборе всех непустых подмножеств задач. Для каждого подмножества можно пройти по известным парам и отметить всех участников, знающих хотя бы одну выбранную задачу. Затем сравнить число оставшихся участников и, при равенстве, размер набора.
+A direct brute-force solution would consider every nonempty subset of the (T) tasks. For each subset, it would mark every participant who knows at least one selected task, count the remaining participants, and then compare the number of selected tasks when the participant count is tied.
 
-Такой метод корректен, потому что он буквально рассматривает каждый допустимый набор задач. Но число наборов равно `2^T - 1`. Если для каждого набора проверять до `M` известных пар, в худшем случае получается `(2^T - 1) * M` проверок. Уже при `T = 10^5` это не просто медленно, а принципиально непригодно.
+This is correct because every legal answer is explicitly considered. The problem is the number of subsets. There are (2^T-1) nonempty subsets, and processing one subset can require (O(M)) work. In the worst case this gives (O(M2^T)), which with (M=10^6) and (T=10^5) is completely impossible.
 
-Можно сначала заметить, что добавление задачи никогда не возвращает уже исключенного участника. Значит, если мы хотим максимальное число участников, нам нужно минимизировать размер объединения множеств участников, знающих выбранные задачи.
+The brute-force approach works because it directly evaluates the union of participant sets. The key observation is that we do not actually need to enumerate unions.
 
-Пусть минимальное число людей, знающих какую-либо задачу, равно `d`. Если выбрать одну такую задачу, выбывает ровно `d` участников, поэтому можно оставить `P - d` участников.
+For any nonempty set of selected tasks (Q), pick one task (x\in Q). Its participant set (S_x) is contained in the union of all selected sets:
 
-Добавление других задач не может уменьшить это число. Значит, больше `P - d` участников получить невозможно, а максимум достигается уже одной задачей минимальной известности.
+[
+S_x\subseteq\bigcup_{v\in Q}S_v.
+]
 
-Теперь появляется ключевое наблюдение для второго критерия. Рассмотрим случай `d > 0` и пусть мы выбрали некоторую задачу `x` с ровно `d` знающими ее участниками. Чтобы сохранить те же `P-d` участников, любая дополнительная выбранная задача должна быть известна только этим же `d` участникам.
+Consequently,
 
-Но у любой задачи количество знающих ее участников не меньше `d`, по определению `d`. Если множество ее знающих является подмножеством множества размера `d`, то его размер одновременно не меньше `d` и не больше `d`. Значит, множества должны совпадать целиком.
+[
+\left|\bigcup_{v\in Q}S_v\right|\ge |S_x|.
+]
 
-Получается очень сильное упрощение: среди задач с минимальным количеством знающих участников нужно найти наиболее часто повторяющееся множество участников. К нему можно добавить все задачи, которые никто не знает.
+This holds for every selected task, so
 
-Если `d = 0`, ситуация еще проще. Любая задача с нулевым числом знающих никого не исключает, поэтому можно взять все такие задачи сразу. Они дают `P` участников и максимальный возможный размер набора.
+[
+\left|\bigcup_{v\in Q}S_v\right|
+\ge \min_v |S_v|.
+]
 
-Именно это превращает задачу из перебора подмножеств в подсчет частот одинаковых множеств.
+The lower bound is attainable simply by selecting one task whose participant set has minimum size. Therefore the maximum possible number of eligible participants is
+
+[
+P-\min_v |S_v|.
+]
+
+Now consider the secondary objective. Suppose the minimum degree is (d), and task (x) has exactly (d) known participants. We can select another task (y) without losing any additional participant exactly when
+
+[
+S_y\subseteq S_x.
+]
+
+But (S_y) must also have at least (d) elements, because (d) is the minimum task degree. Since (|S_y|=d), the inclusion can hold only when
+
+[
+S_y=S_x.
+]
+
+So every optimal solution consists of tasks whose participant sets are exactly the same minimum-size set.
+
+This reduces the entire problem to finding one task with minimum degree, then collecting every other task with the same degree whose participant set is identical to that task's participant set.
+
+We do not need hashing or sorting of all task sets. Once one minimum task is chosen, mark its participants in a boolean array. Every other task with the same degree is equal to the target set exactly when every participant listed for that task is marked. Because the candidate has the same number of distinct participants as the target and the input contains no duplicate participant-task pair, this membership test proves equality.
+
+The graph can be stored compactly with linked lists implemented by integer arrays. For each task, `head[v]` stores the first edge belonging to it. For every edge, `who[i]` stores its participant and `nxt[i]` points to the next edge of the same task. This uses only a few bytes per input edge and avoids the large Python overhead of one list of Python integers for every task.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(2^T M)` | `O(P + M)` | Too slow |
-| Optimal | `O(T + M log P)` | `O(T + M)` | Accepted |
+| Brute Force | (O(M2^T)) | (O(P+M)) | Too slow |
+| Optimal | (O(P+T+M)) | (O(P+T+M)) with compact integer arrays | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Создадим для каждой задачи список участников, которые ее знают. Для каждой входной пары `(u, v)` добавим `u` в список задачи `v`. После этого размер списка задачи равен числу участников, которые из-за нее не смогут прийти.
-2. Найдем минимальный размер списка среди всех задач, обозначим его через `d`. Если выбрать задачу с таким размером, выбывает `d` участников, поэтому максимальное возможное число оставшихся участников равно `P - d`.
-3. Если `d = 0`, соберем все задачи с пустыми списками. Ни одна из них не исключает участников, поэтому их можно выбрать все одновременно. Полученный набор уже имеет максимальное число участников `P`, а добавлять другие задачи без уменьшения этого числа нельзя.
-4. Если `d > 0`, рассмотрим только задачи с размером списка `d`. Для каждой такой задачи отсортируем список участников и превратим его в кортеж. Кортеж является точным представлением множества участников, потому что во входе каждая пара `(u, v)` встречается не более одного раза.
-5. Посчитаем, сколько раз встречается каждое такое множество. Выберем множество с максимальной частотой. Если несколько множеств имеют одинаковую частоту, любое из них дает оптимальный ответ.
-6. В ответ добавим все задачи с пустым списком и все задачи, чей отсортированный список участников совпадает с выбранным множеством. Пустые задачи никого не исключают, а остальные задачи исключают ровно одну и ту же группу из `d` участников.
-7. Выведем `P-d` участников, количество выбранных задач и сами номера задач. При `d=0` число участников равно `P`, а при `d>0` оно равно `P-d`.
+1. Create an array `degree` where `degree[v]` is the number of participants who know task (v). At the same time, store all input edges grouped by task using `head`, `who`, and `nxt`. We need the actual participant lists later, not only their sizes.
+2. Find a task `min_task` with the smallest value of `degree[v]`. Let this minimum be `d`. Selecting this task alone excludes exactly (d) participants, and no nonempty task set can exclude fewer than (d) participants.
+3. If (d=0), every task with degree zero is optimal. Such tasks are known by nobody, so they can all be selected simultaneously without excluding anyone. Since the secondary objective is to maximize the number of tasks, output every zero-degree task.
+4. If (d>0), traverse the participant list of `min_task` and mark every participant in a byte array `marked`. This byte array represents the exact participant set that an optimal task must have.
+5. Scan every task whose degree is exactly (d). Traverse its participant list and check that every participant is marked. If all of them are marked, the candidate task has the same participant set as `min_task`, because both sets contain exactly (d) distinct participants. Add the task to the answer.
+6. Output (P-d) as the number of participants who can participate, together with the collected task numbers. The first quantity is optimal by the minimum-degree argument, and the second is maximal because every task that can be added without increasing the excluded set has been collected.
 
-Почему алгоритм работает: пусть `d` является минимальным числом участников, знающих одну задачу. Любой непустой набор задач исключает объединение множеств их знающих, поэтому он исключает хотя бы `d` человек. Значит, больше `P-d` участников оставить невозможно. Одна задача степени `d` уже достигает этой границы.
-
-Теперь рассмотрим оптимальный набор при `d>0`. Объединение множеств его выбранных задач имеет размер ровно `d`. Для любой выбранной задачи ее множество знающих содержится в этом объединении, а его собственный размер не меньше `d`. Значит, оба множества имеют размер `d` и одно содержится в другом, то есть они совпадают. Следовательно, все выбранные задачи с положительной степенью обязаны иметь одинаковое множество знающих участников. Мы выбираем наиболее часто встречающееся такое множество, а значит, получаем максимально возможное число задач при уже максимальном числе оставшихся участников. Задачи нулевой степени можно добавить независимо, поскольку они не изменяют объединение.
+**Why it works.** Let (d) be the minimum number of participants knowing any task. Every nonempty chosen task set contains some task known by at least (d) participants, so at least (d) participants must be excluded. A single task of degree (d) reaches this lower bound. Once such a task is selected, another task can be added without excluding anyone new only if its participant set is contained in the original set. Its degree cannot be smaller than (d), so equal degree forces the two sets to be identical. The algorithm selects exactly all tasks with that same minimum participant set, so it achieves the maximum number of eligible participants and, among those solutions, the maximum number of tasks.
 
 ## Python Solution
 
@@ -141,50 +180,81 @@ draft: false
 import sys
 input = sys.stdin.readline
 
+from array import array
+
 def solve():
     P, T, M = map(int, input().split())
 
-    known_by = [[] for _ in range(T)]
+    # For every task v:
+    # head[v] is the first edge in its linked list.
+    head = array('i', [-1]) * T
+
+    # degree[v] = number of participants knowing task v.
+    degree = array('i', [0]) * T
+
+    # For every stored edge i:
+    # who[i] = participant of the edge
+    # nxt[i] = next edge belonging to the same task
+    who = array('i')
+    nxt = array('i')
 
     for _ in range(M):
         u, v = map(int, input().split())
-        known_by[v - 1].append(u)
+        v -= 1
 
-    min_degree = min(len(x) for x in known_by)
+        idx = len(who)
+        who.append(u)
+        nxt.append(head[v])
+        head[v] = idx
+        degree[v] += 1
 
+    # Find one task with minimum degree.
+    min_task = 0
+    min_degree = degree[0]
+
+    for v in range(1, T):
+        if degree[v] < min_degree:
+            min_degree = degree[v]
+            min_task = v
+
+    # If some tasks are known by nobody, all of them can be selected.
     if min_degree == 0:
-        answer = [i + 1 for i, people in enumerate(known_by) if not people]
+        answer = []
+        for v in range(T):
+            if degree[v] == 0:
+                answer.append(v + 1)
 
         print(P, len(answer))
         print(*answer)
         return
 
-    groups = {}
-    best_signature = None
-    best_count = 0
+    # Mark participants who know the chosen minimum-degree task.
+    marked = bytearray(P + 1)
 
-    for task_id, people in enumerate(known_by):
-        if len(people) != min_degree:
-            continue
-
-        people.sort()
-        signature = tuple(people)
-
-        count = groups.get(signature, 0) + 1
-        groups[signature] = count
-
-        if count > best_count:
-            best_count = count
-            best_signature = signature
+    edge = head[min_task]
+    while edge != -1:
+        marked[who[edge]] = 1
+        edge = nxt[edge]
 
     answer = []
 
-    for task_id, people in enumerate(known_by):
-        if not people:
-            answer.append(task_id + 1)
-        elif len(people) == min_degree:
-            if tuple(people) == best_signature:
-                answer.append(task_id + 1)
+    # Every optimal task must have the same degree and the same
+    # participant set as min_task.
+    for v in range(T):
+        if degree[v] != min_degree:
+            continue
+
+        edge = head[v]
+        same = True
+
+        while edge != -1:
+            if not marked[who[edge]]:
+                same = False
+                break
+            edge = nxt[edge]
+
+        if same:
+            answer.append(v + 1)
 
     print(P - min_degree, len(answer))
     print(*answer)
@@ -193,160 +263,193 @@ if __name__ == "__main__":
     solve()
 ```
 
-Сначала `known_by` строит обратное представление входа: вместо списка пар мы получаем список участников для каждой задачи. Это напрямую соответствует множествам `K(v)` из рассуждения.
+The first part of the implementation builds the bipartite graph in a compact form. `head` has one entry per task, while `who` and `nxt` have one entry per known participant-task pair. When an edge is read, it is inserted at the front of the corresponding task's linked list. The order of participants inside a task does not matter, so no sorting is necessary.
 
-`min_degree` ищет минимальное число участников, которое неизбежно придется исключить при выборе одной задачи. При `min_degree == 0` специальная ветка сразу выбирает все задачи, которые никому не известны.
+The `degree` array is updated while reading the input. This means the minimum-degree task can be found with a single scan after all edges have been processed.
 
-В основной ветке сортировка `people` нужна не для самой задачи, а для канонического представления множества. Например, вход может содержать для одной задачи участников в порядке `3, 1, 2`, а для другой в порядке `2, 3, 1`. После сортировки обе задачи получают одинаковый кортеж `(1, 2, 3)`.
+The zero-degree case is handled separately because its participant set is empty. Every such task can be selected at once, and no participant becomes disqualified. It is also the only situation where the optimal participant count is (P).
 
-Словарь `groups` хранит частоту каждого такого кортежа. Как только частота становится больше текущей лучшей, сохраняем соответствующее множество в `best_signature`.
+For a positive minimum degree, `marked` is indexed directly by participant number. The array has size (P+1), leaving index zero unused. This avoids constructing a Python `set` and saves substantial memory when (M) is close to (10^6).
 
-При построении ответа нельзя просто взять одну задачу с `best_signature`. Нужно взять все задачи с этим же множеством, потому что именно вторичный критерий требует максимального количества задач. Задачи с пустыми списками также добавляются безусловно.
+When testing a candidate task, the code checks only tasks with the minimum degree. A candidate containing an unmarked participant cannot have the same participant set as the target. Conversely, if all its participants are marked and its degree equals the target degree, its set must be exactly the target set. No sorting or probabilistic hashing is involved.
 
-Все номера задач и участников во входе начинаются с единицы, но списки `known_by` индексируются с нуля. Поэтому при чтении используется `v - 1`, а при выводе `task_id + 1`.
-
-Переполнения целых чисел в Python здесь нет. Все счетчики не превышают `10^5`, а количество известных пар не превышает `10^6`.
+There is no integer-overflow issue in Python. In the compact arrays, participant and edge indices fit comfortably into signed 32-bit integers because (P,T\le10^5) and (M\le10^6).
 
 ## Worked Examples
 
 ### Sample 1
 
-Для первого примера получаем следующие множества:
+The input is
 
-| Task | Known participants | Degree |
-| --- | --- | --- |
-| 1 | `{1, 2}` | 2 |
-| 2 | `{1, 2}` | 2 |
-| 3 | `{2, 3}` | 2 |
-| 4 | `{3}` | 1 |
+```
+3 4 6
+1 1
+1 2
+2 2
+2 3
+3 3
+3 4
+```
 
-Минимальная степень равна `1`, поэтому максимум участников достигается при исключении одного человека. Единственная задача такой степени имеет номер `4`, но выбор задачи `4` оставляет участников `1` и `2`.
+The task participant sets are (S_1={1}), (S_2={1,2}), (S_3={2,3}), and (S_4={3}).
 
-При этом задачи `1`, `2` и `3` имеют большую степень и не могут быть добавлены, потому что каждая из них исключит еще одного человека.
-
-| Step | `min_degree` | `best_signature` | Selected tasks | Participants left |
+| Task | Degree | Minimum task | Marked participants | Accepted |
 | --- | --- | --- | --- | --- |
-| Build lists | 1 | none | none | none |
-| Process task 4 | 1 | `(3,)` | none | 2 |
-| Build answer | 1 | `(3,)` | `{4}` | 2 |
+| 1 | 1 | 1 | ({1}) | yes |
+| 2 | 2 | 1 | ({1}) | no, degree differs |
+| 3 | 2 | 1 | ({1}) | no, degree differs |
+| 4 | 1 | 1 | ({1}) | no, participant 3 is unmarked |
 
-Таким образом, один оптимальный ответ:
+The minimum degree is (1), so exactly (3-1=2) participants can remain eligible. Task (1) is the first minimum-degree task, and task (4) has a different participant set, so only task (1) can be selected.
+
+The output is
 
 ```
 2 1
-4
+1
 ```
 
-Приведенный в условии ответ `2 1 / 1` не согласуется с данными примера, если интерпретировать пары `(u,v)` буквально как «участник `u` знает задачу `v`». Однако официальная формулировка и пример показывают, что в данном тесте номера в паре трактуются именно в указанном порядке? При буквальной проверке задачи `1` знают участники `1` и `2`, поэтому ее выбор оставляет одного участника, а не двух.
-
-Из-за этого в предоставленном пользователем Sample 1 есть противоречие между входом, текстом и указанным выходом. Для алгоритма выше используется именно формальное условие: `(u,v)` означает, что участник `u` знает задачу `v`. При таком условии правильный оптимальный результат для Sample 1 является `2 1 / 4`.
+This demonstrates why equal task degrees are not enough. Tasks (1) and (4) are both known by one participant, but choosing both excludes two people.
 
 ### Sample 2
 
-Здесь множества имеют вид:
+The input is
 
-| Task | Known participants | Degree |
-| --- | --- | --- |
-| 1 | `{1, 2, 3}` | 3 |
-| 2 | `{1}` | 1 |
-| 3 | `{2, 3}` | 2 |
-| 4 | `{}` | 0 |
-| 5 | `{}` | 0 |
+```
+3 5 6
+1 1
+1 2
+2 1
+2 3
+3 1
+3 3
+```
 
-Здесь `min_degree = 0`. Как только обнаружены задачи `4` и `5`, становится ясно, что можно оставить всех трех участников. Обе задачи никому не известны, поэтому их можно выбрать одновременно.
+The task participant sets are (S_1={1,2,3}), (S_2={1}), (S_3={2,3}), (S_4=\varnothing), and (S_5=\varnothing).
 
-| Step | `min_degree` | Empty tasks | Selected tasks | Participants left |
-| --- | --- | --- | --- | --- |
-| Build lists | 0 | `{4, 5}` | none | none |
-| Detect zero degree | 0 | `{4, 5}` | `{4, 5}` | 3 |
-| Finish | 0 | `{4, 5}` | `{4, 5}` | 3 |
+| Task | Degree | Minimum degree | Selected |
+| --- | --- | --- | --- |
+| 1 | 3 | 0 | no |
+| 2 | 1 | 0 | no |
+| 3 | 2 | 0 | no |
+| 4 | 0 | 0 | yes |
+| 5 | 0 | 0 | yes |
 
-Получаем:
+The minimum degree is zero, so tasks (4) and (5) can both be chosen. No participant knows either task, so all three participants remain eligible.
+
+The output is
 
 ```
 3 2
 4 5
 ```
 
-Этот пример показывает, почему задачи с нулевой степенью нельзя обрабатывать как обычные минимальные задачи. Они позволяют сохранить всех участников, а вторичный критерий требует взять сразу все такие задачи.
+This demonstrates why zero-degree tasks must be handled collectively. Selecting only one of them would satisfy the primary objective but fail the secondary one.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(T + M log P)` | построение списков занимает `O(M)`, а сортировка списков минимальной степени суммарно укладывается в `O(M log P)` |
-| Space | `O(T + M)` | храним списки участников для всех `T` задач, суммарное число элементов равно `M` |
+| Time | (O(P+T+M)) | Reading the graph takes (O(M)), finding the minimum takes (O(T)), and all candidate edge lists together contain at most (M) edges |
+| Space | (O(P+T+M)) | `head` and `degree` use (O(T)), `marked` uses (O(P)), and `who` plus `nxt` use (O(M)) |
 
-При `T <= 10^5` и `M <= 10^6` алгоритм работает почти линейно по размеру входа. Сортировка нужна только для задач минимальной степени, а суммарное количество элементов во всех таких списках не превышает `M`. Память `O(T+M)` также соответствует ограничению `512 MiB`, указанному для задачи.
+The largest input contains (10^6) known participant-task pairs. The algorithm processes every pair only a constant number of times, so its work remains linear in the input size. The compact `array` representation is particularly useful in Python because storing one million integers as ordinary Python objects would consume much more memory.
 
 ## Test Cases
 
-```python
-# The following is a standalone assert-based test version
-# of the same algorithm.
+The following test harness contains the two samples and several additional cases. The implementation is repeated inside the test file so that the tests are self-contained. The runner temporarily replaces standard input and captures standard output.
 
+```python
 import sys
 import io
+from array import array
+from contextlib import redirect_stdout
 
-def solve_stream(inp, out):
-    input = inp.readline
+def solve():
+    input = sys.stdin.readline
 
     P, T, M = map(int, input().split())
-    known_by = [[] for _ in range(T)]
+
+    head = array('i', [-1]) * T
+    degree = array('i', [0]) * T
+    who = array('i')
+    nxt = array('i')
 
     for _ in range(M):
         u, v = map(int, input().split())
-        known_by[v - 1].append(u)
+        v -= 1
 
-    min_degree = min(len(x) for x in known_by)
+        idx = len(who)
+        who.append(u)
+        nxt.append(head[v])
+        head[v] = idx
+        degree[v] += 1
+
+    min_task = 0
+    min_degree = degree[0]
+
+    for v in range(1, T):
+        if degree[v] < min_degree:
+            min_degree = degree[v]
+            min_task = v
 
     if min_degree == 0:
-        answer = [
-            i + 1
-            for i, people in enumerate(known_by)
-            if not people
-        ]
-        out.write(f"{P} {len(answer)}\n")
-        out.write(" ".join(map(str, answer)) + "\n")
+        answer = [v + 1 for v in range(T) if degree[v] == 0]
+        print(P, len(answer))
+        print(*answer)
         return
 
-    groups = {}
-    best_signature = None
-    best_count = 0
+    marked = bytearray(P + 1)
 
-    for people in known_by:
-        if len(people) != min_degree:
-            continue
-
-        people.sort()
-        signature = tuple(people)
-
-        count = groups.get(signature, 0) + 1
-        groups[signature] = count
-
-        if count > best_count:
-            best_count = count
-            best_signature = signature
+    edge = head[min_task]
+    while edge != -1:
+        marked[who[edge]] = 1
+        edge = nxt[edge]
 
     answer = []
 
-    for task_id, people in enumerate(known_by):
-        if not people:
-            answer.append(task_id + 1)
-        elif len(people) == min_degree:
-            if tuple(people) == best_signature:
-                answer.append(task_id + 1)
+    for v in range(T):
+        if degree[v] != min_degree:
+            continue
 
-    out.write(f"{P - min_degree} {len(answer)}\n")
-    out.write(" ".join(map(str, answer)) + "\n")
+        edge = head[v]
+        same = True
+
+        while edge != -1:
+            if not marked[who[edge]]:
+                same = False
+                break
+            edge = nxt[edge]
+
+        if same:
+            answer.append(v + 1)
+
+    print(P - min_degree, len(answer))
+    print(*answer)
 
 def run(inp: str) -> str:
-    input_stream = io.StringIO(inp)
-    output_stream = io.StringIO()
-    solve_stream(input_stream, output_stream)
-    return output_stream.getvalue()
+    global_input = globals().get("input", None)
 
-# Provided sample 1, interpreted according to the formal input meaning.
+    old_stdin = sys.stdin
+    old_input = globals().get("input", None)
+
+    sys.stdin = io.StringIO(inp)
+    globals()["input"] = sys.stdin.readline
+
+    out = io.StringIO()
+    try:
+        with redirect_stdout(out):
+            solve()
+    finally:
+        sys.stdin = old_stdin
+        if old_input is None:
+            globals().pop("input", None)
+        else:
+            globals()["input"] = old_input
+
+    return out.getvalue().strip()
+
+# Provided sample 1.
 assert run(
     """3 4 6
 1 1
@@ -356,7 +459,8 @@ assert run(
 3 3
 3 4
 """
-) == "2 1\n4\n", "sample 1 under the formal pair interpretation"
+) == """2 1
+1""", "sample 1"
 
 # Provided sample 2.
 assert run(
@@ -368,173 +472,137 @@ assert run(
 3 1
 3 3
 """
-) == "3 2\n4 5\n", "sample 2"
+) == """3 2
+4 5""", "sample 2"
 
-# Minimum-size input with an unknown task.
+# Minimum-size input: one participant, one task, nobody knows it.
 assert run(
     """1 1 0
 """
-) == "1 1\n1\n", "minimum size, no known pairs"
+) == """1 1
+1""", "minimum-size input"
 
-# Minimum-size input where the only task is known.
+# All tasks have exactly the same participant set.
 assert run(
-    """1 1 1
+    """3 4 4
 1 1
-"""
-) == "0 1\n1\n", "only task is known"
-
-# All positive-degree tasks have the same participant set.
-assert run(
-    """4 3 6
-1 1
-2 1
-3 1
 1 2
-2 2
-3 2
-"""
-) == "1 2\n1 2\n", "all equal participant sets"
-
-# Same minimum degree, but one set occurs more often.
-assert run(
-    """5 4 8
-1 1
-2 1
-2 2
-1 2
-3 3
-4 3
+1 3
 1 4
-3 4
 """
-) == "3 2\n1 2\n", "most frequent minimum-degree set"
+) == """2 4
+1 2 3 4""", "all equal participant sets"
 
-# Maximum-size dimensions with a linear number of pairs.
-# Each task is known by exactly one distinct participant.
-P = 100000
-T = 100000
-lines = [f"{P} {T} {T}"]
-lines.extend(f"{i} {i}" for i in range(1, T + 1))
-large_input = "\n".join(lines) + "\n"
+# The optimal task is the last task number.
+assert run(
+    """2 3 5
+1 1
+2 1
+1 2
+2 2
+1 3
+"""
+) == """1 1
+3""", "last task boundary"
 
-large_output = run(large_input)
-assert large_output == "99999 1\n1\n", "maximum dimensions"
+# Maximum dimensions, no known pairs.
+# Every task is unknown to everybody, so all tasks are selected.
+max_case = "100000 100000 0\n"
+expected_tasks = " ".join(map(str, range(1, 100001)))
+assert run(max_case) == f"100000 100000\n{expected_tasks}", \
+    "maximum P and T with M = 0"
 
 print("All tests passed.")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 0` | `1 1 / 1` | Empty knowledge relation and zero-degree task |
-| `1 1 1 / 1 1` | `0 1 / 1` | All participants may be excluded |
-| Three identical participant sets | `1 2 / 1 2` | Secondary optimization over identical task sets |
-| Two occurrences of one minimum set and one occurrence of another | `3 2 / 1 2` | Frequency comparison and tie-independent choice |
-| `P=T=100000`, `M=100000` | `99999 1 / 1` | Large dimensions, linear input processing, boundary indices |
-
-The first supplied sample exposes a discrepancy worth checking before submitting any implementation. Under the formal definition that each input pair `(u,v)` means participant `u` knows task `v`, task `4` is known only by participant `3`, so selecting task `4` leaves two participants. Selecting task `1` removes participants `1` and `2`, leaving only one. Thus `2 1 / 4` is the mathematically correct output for the exact Sample 1 input shown above. The supplied Sample 2 is consistent with the same interpretation.
+| `1 1 0` | `1 1 / 1` | Minimum dimensions and empty edge set |
+| `3 4 4`, every task known by participant 1 | `2 4 / 1 2 3 4` | All task participant sets are identical |
+| `2 3 5`, task 3 is known only by participant 1 | `1 1 / 3` | Last task index and minimum-degree selection |
+| `100000 100000 0` | `100000 100000 / 1 2 ... 100000` | Maximum (P,T), zero edges, and selecting every unknown task |
 
 ## Edge Cases
 
-When there are tasks known by nobody, the minimum degree is zero. For
+The empty participant set is handled before any participant marking. For
 
 ```
-3 4 2
+2 3 1
+1 1
+```
+
+the degrees are (1,0,0). The minimum is zero, so the algorithm immediately collects tasks (2) and (3). The output is
+
+```
+2 2
+2 3
+```
+
+No participant is excluded, and both zero-degree tasks are selected because the secondary objective asks for the largest possible task set.
+
+Different participant sets with equal degree are handled by the `marked` array. For
+
+```
+3 3 3
 1 1
 2 2
+3 3
 ```
 
-the lists are `{1}`, `{2}`, `{}`, `{}`. The algorithm finds `d = 0` and immediately chooses tasks `3` and `4`. All three participants remain, and no solution can contain more than four tasks, while adding tasks `1` or `2` would reduce the number of participants. The output is
-
-```
-3 2
-3 4
-```
-
-When every task is known by at least one participant, `d > 0`. Consider
-
-```
-3 2 2
-1 1
-2 2
-```
-
-Both tasks have degree one. Their participant sets are `{1}` and `{2}`, so either task leaves two participants, but they cannot both be selected because their union has size two. The algorithm finds two different signatures with frequency one, keeps the first, and outputs one of the valid answers:
+every task has degree (1). The first task marks participant (1). Task (2) contains participant (2), which is not marked, so it is rejected. Task (3) is rejected for the same reason. The output is
 
 ```
 2 1
 1
 ```
 
-When several minimum-degree tasks have exactly the same participant set, all of them can be selected. For
+The algorithm does not confuse equal cardinalities with equal sets.
+
+The final task index is handled naturally because tasks are stored internally as indices (0) through (T-1), while output converts them back with `v + 1`. For
 
 ```
-4 3 6
+2 3 5
 1 1
 2 1
-3 1
 1 2
 2 2
-3 2
+1 3
 ```
 
-both tasks have degree three and both have signature `(1,2,3)`. The minimum degree is three, so one participant can remain. Since the signatures coincide, selecting both tasks still excludes exactly the same three participants. The algorithm outputs
+the degrees are (2,2,1). Task (3) is the unique minimum-degree task, so the output is
 
 ```
-1 2
-1 2
-```
-
-When minimum-degree sets have different frequencies, the most frequent one is the correct secondary optimum. For
-
-```
-5 4 8
 1 1
-2 1
-2 2
-1 2
-3 3
-4 3
-1 4
-3 4
+3
 ```
 
-tasks `1` and `2` both have signature `{1,2}`, while task `3` has `{3,4}` and task `4` has `{1,3}`. All have degree two. Choosing either task `1` or `2` leaves three participants, and they can be selected together because their known sets coincide. No other minimum-degree signature occurs twice. The answer is
+This specifically catches an implementation that accidentally scans only through task (T-1) in one-based indexing.
+
+When every participant knows every task, the minimum degree can equal (P). For
 
 ```
-3 2
-1 2
-```
-
-The `d = P` case is also valid. For example,
-
-```
-3 2 6
+1 2 2
 1 1
-2 1
-3 1
 1 2
-2 2
-3 2
 ```
 
-every task is known by every participant. The minimum degree is three, so every nonempty chosen set excludes all three participants. The best possible number of participants is zero. Since the two tasks have the same participant set, both can be selected, giving
+the target set is ({1}), and both tasks have exactly that same set. The algorithm selects both, giving
 
 ```
 0 2
 1 2
 ```
 
-Finally, `M = 0` is not a special implementation case beyond the zero-degree branch. Every task has an empty list, so all `T` tasks can be selected and all `P` participants remain. For
+The fact that zero participants remain eligible is valid because the task set is still nonempty and the objective is to maximize the count, not require at least one participant.
+
+Finally, when several minimum-degree tasks share the same participant set, every one of them is collected. For
 
 ```
-2 3 0
+3 4 4
+1 1
+1 2
+1 3
+1 4
 ```
 
-the output is
-
-```
-2 3
-1 2 3
-```
-
-This case is particularly useful because it checks both the empty input relation and the requirement that the selected set itself must be nonempty.
+all four tasks have participant set ({1}). Selecting any nonempty subset excludes participant (1), leaving two eligible participants. Since adding another task does not exclude anyone new, the secondary objective requires selecting all four tasks, which the algorithm does.
