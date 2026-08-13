@@ -1,27 +1,28 @@
 ---
 title: "UCF Locals 2014"
-description: "10 problems from UCF Locals 2014 (contest 102323), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from UCF Locals 2014 (contest 102323), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102323
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 1691
-date: "2026-08-13T00:40:51+07:00"
+n_problems: 11
+n_verified: 11
+total_solve_s: 2518
+date: "2026-08-13T00:54:40+07:00"
 weight: 102323
 draft: false
 ---
 
 # [UCF Locals 2014](https://codeforces.com/contest/102323)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 28m 11s
+Special | 11 problems | 11/11 verified | Difficulty - | 41m 58s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Vowel Count](https://codeforces.com/problemset/problem/102323/A) |  |  |  | 47s | ✓ |
 | [B](B/) | [Soccer Standings](https://codeforces.com/problemset/problem/102323/B) |  |  |  | 1m | ✓ |
+| [C](C/) | [Jumping Frog](https://codeforces.com/problemset/problem/102323/C) |  |  |  | 13m 47s | ✓ |
 | [D](D/) | [Fujiyama Thursday](https://codeforces.com/problemset/problem/102323/D) |  |  |  | 8m 15s | ✓ |
 | [E](E/) | [Chain Email](https://codeforces.com/problemset/problem/102323/E) |  |  |  | 1m 17s | ✓ |
 | [G](G/) | [Dirty Plates](https://codeforces.com/problemset/problem/102323/G) |  |  |  | 4m 8s | ✓ |

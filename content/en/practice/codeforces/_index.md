@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23144 problems, 12935 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23147 problems, 12938 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23144 problems, 12935 verified.**
+**3135 contests, 23147 problems, 12938 verified.**
 
-## Unknown — 830 contests, 6997 problems, 4181 verified
+## Unknown — 830 contests, 7000 problems, 4184 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102284](102284/) | [ЛКШ 2019, Июль, Микс старшей и младшей олимпиад](https://codeforces.com/contest/102284) | 12 | 10/12 | Special | - |
 | [102297](102297/) | [UCF Locals 2015](https://codeforces.com/contest/102297) | 9 | 9/9 | Special | - |
 | [102318](102318/) | [UCF Locals 2017](https://codeforces.com/contest/102318) | 9 | 9/9 | Special | - |
-| [102323](102323/) | [UCF Locals 2014](https://codeforces.com/contest/102323) | 8 | 8/8 | Special | - |
+| [102323](102323/) | [UCF Locals 2014](https://codeforces.com/contest/102323) | 11 | 11/11 | Special | - |
 | [102330](102330/) | [Сириус.2019.Ноябрь.Очный отбор](https://codeforces.com/contest/102330) | 5 | 5/5 | Special | - |
 | [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 7 | 7/7 | Special | - |
 | [102341](102341/) | [Radewoosh+mnbvmar Contest (supported by AIM Tech)](https://codeforces.com/contest/102341) | 6 | 5/6 | Special | - |
