@@ -1,30 +1,31 @@
 ---
 title: "2019-2020 ACM-ICPC Brazil Subregional Programming Contest"
-description: "12 problems from 2019-2020 ACM-ICPC Brazil Subregional Programming Contest (contest 102346), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from 2019-2020 ACM-ICPC Brazil Subregional Programming Contest (contest 102346), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102346
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 3166
+n_problems: 13
+n_verified: 13
+total_solve_s: 3218
 contest_year: 2019
-date: "2026-08-14T02:08:09+07:00"
+date: "2026-08-14T05:25:19+07:00"
 weight: 102346
 draft: false
 ---
 
 # [2019-2020 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/102346)
 
-ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 52m 46s
+ICPC/IOI | 13 problems | 13/13 verified | Difficulty - | 53m 38s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Artwork](https://codeforces.com/problemset/problem/102346/A) |  |  |  | 1m 18s | ✓ |
 | [B](B/) | [Buffoon](https://codeforces.com/problemset/problem/102346/B) |  |  |  | 6m 23s | ✓ |
 | [C](C/) | [Crossings With Danger](https://codeforces.com/problemset/problem/102346/C) |  |  |  | 3m 13s | ✓ |
 | [D](D/) | [Denouncing Mafia](https://codeforces.com/problemset/problem/102346/D) |  |  |  | 1m 20s | ✓ |
-| [E](E/) | [Exhibition of Clownfish](https://codeforces.com/problemset/problem/102346/E) |  |  |  | 5m 49s |  |
+| [E](E/) | [Exhibition of Clownfish](https://codeforces.com/problemset/problem/102346/E) |  |  |  | 5m 23s | ✓ |
 | [F](F/) | [Forests in Danger](https://codeforces.com/problemset/problem/102346/F) |  |  |  | 1m 55s | ✓ |
 | [G](G/) | [Getting Confidence](https://codeforces.com/problemset/problem/102346/G) |  |  |  | 1m 44s | ✓ |
 | [H](H/) | [Hour for a Run](https://codeforces.com/problemset/problem/102346/H) |  |  |  | 1m 5s | ✓ |
