@@ -8,22 +8,22 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 10
 n_verified: 6
-total_solve_s: 2183
+total_solve_s: 2200
 contest_year: 2019
-date: "2026-08-13T02:24:40+07:00"
+date: "2026-08-13T05:29:08+07:00"
 weight: 102348
 draft: false
 ---
 
 # [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348)
 
-ICPC/IOI | 10 problems | 6/10 verified | Difficulty - | 36m 23s
+ICPC/IOI | 10 problems | 6/10 verified | Difficulty - | 36m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [B](B/) | [Interesting Vertices](https://codeforces.com/problemset/problem/102348/B) |  |  |  | 1m 54s | ✓ |
 | [D](D/) | [Ticket Game](https://codeforces.com/problemset/problem/102348/D) |  |  |  | 3m 11s | ✓ |
-| [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 3m 7s |  |
+| [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 3m 24s |  |
 | [F](F/) | [The Number of Products](https://codeforces.com/problemset/problem/102348/F) |  |  |  | 3m 11s |  |
 | [G](G/) | [Swap Letters](https://codeforces.com/problemset/problem/102348/G) |  |  |  | 5m 32s |  |
 | [H](H/) | [Berland Prospect](https://codeforces.com/problemset/problem/102348/H) |  |  |  | 3m 49s |  |

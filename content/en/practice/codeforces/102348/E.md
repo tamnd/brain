@@ -1,7 +1,7 @@
 ---
 title: "CF 102348E - Painting The Fence"
-description: "We have a row of (n) fence planks and (m) colors. Color (i) is available exactly (ai) times, so every occurrence of that color must be used. Since the sum of all (ai) equals (n), the task is to arrange the colors into an array of length (n)."
-date: "2026-08-14T02:11:58+07:00"
+description: "We have a row of (n) fence planks and (m) colors. Color (i) must be used exactly (ai) times, so the array (a) describes the complete multiset of colors that has to appear in the final row."
+date: "2026-08-14T05:29:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102348
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
 rating: 0
 weight: 102348
-solve_time_s: 187
+solve_time_s: 204
 verified: false
 draft: false
 ---
@@ -18,97 +18,117 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 7s  
+**Solve time:** 3m 24s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a row of (n) fence planks and (m) colors. Color (i) is available exactly (a_i) times, so every occurrence of that color must be used. Since the sum of all (a_i) equals (n), the task is to arrange the colors into an array of length (n).
+We have a row of (n) fence planks and (m) colors. Color (i) must be used exactly (a_i) times, so the array (a) describes the complete multiset of colors that has to appear in the final row. The task is to permute these colors so that no maximal consecutive block of equal colors has length greater than (k).
 
-The restriction is local: whenever several consecutive planks have the same color, that run may contain at most (k) planks. The output can be any valid color array, while (-1) means that no such arrangement exists.
+The output is any valid permutation of the color indices (1,\ldots,m), with color (i) appearing exactly (a_i) times. If no such permutation exists, we print (-1).
 
-The upper bound (n\le 2\cdot10^5) rules out anything quadratic in (n). An (O(n^2)) construction could perform around (4\cdot10^{10}) operations in the worst case, far beyond a one-second limit. We want a solution close to linear, or at most (O(n\log n)), because the input itself contains only (O(n)) numbers.
+The main constraint is (n\le 2\cdot10^5). That rules out any method that explores permutations or repeatedly scans the whole remaining array. We need essentially linear or (O(n\log n)) work. The number of colors is also at most (n), so a heap containing one entry per color is small enough, and processing each required color occurrence once is easily affordable.
 
-The most dangerous edge case is a single color. For example,
-
-```
-1 1 1
-1
-```
-
-has the valid output `1`, because the only run has length (1). A careless implementation that always looks for another color as a separator could incorrectly reject it.
-
-The opposite case is when one color has too many planks. For example,
+A first edge case is when one color is too frequent. For example,
 
 ```
 8 2 3
-1 7
+7 1
 ```
 
-must produce `-1`. Seven copies of color (2) need at least three runs, because each run contains at most three copies. Separating three runs requires at least two planks of another color, but only one plank of color (1) exists. A construction that merely cuts color (2) into groups of three can silently leave two groups adjacent.
+is impossible. Color (1) needs seven positions, but each of its consecutive blocks can contain at most three positions. With only one position of color (2), there are only two possible blocks of color (1), whose total capacity is (3+3=6). A construction that merely checks that (a_i\le n) would incorrectly accept this input.
 
-The boundary (a_i=k) also matters. For
-
-```
-4 2 2
-2 2
-```
-
-a valid answer is `1 1 2 2`. A run of exactly (k) planks is allowed. Code that treats (k) as a strict upper bound would reject a valid arrangement.
-
-A final subtle case is when a color needs several runs but its last run is shorter than (k). For
+A second edge case occurs exactly at the capacity boundary. Consider
 
 ```
-5 2 2
-3 2
+7 2 3
+5 2
 ```
 
-the arrangement `1 1 2 2 1` works. Color (1) is split into runs of lengths (2) and (1), not necessarily into equal-sized groups. Any construction that insists every group has exactly (k) elements is unnecessarily restrictive.
+This is possible, for example with
+
+```
+1 1 1 2 2 1 1
+```
+
+The two blocks of color (1) have lengths (3) and (2). A check using (a_i/k) with integer division instead of ceiling would count color (1) as requiring only one block, which loses precisely the information needed to detect the constraint.
+
+A third edge case is (k=1). For
+
+```
+5 2 1
+2 3
+```
+
+every adjacent pair must have different colors, so the only possible pattern up to symmetry is
+
+```
+2 1 2 1 2
+```
+
+A construction that creates arbitrary chunks and then concatenates chunks without checking their colors could accidentally place two equal chunks next to each other, producing an invalid run.
+
+Finally, when there is only one color, the entire fence is one run. Thus
+
+```
+4 1 3
+4
+```
+
+must produce (-1), while
+
+```
+3 1 3
+3
+```
+
+is valid. The equality boundary (a_i=k) must be accepted.
 
 ## Approaches
 
-A direct brute-force approach would try to build the fence from left to right and, at every position, choose one of the colors whose remaining count is positive and whose use would not create a run longer than (k). In the worst case there are (m) possible choices at each of (n) positions, giving roughly (m^n) possible arrays. Even adding memoization over remaining counts does not help, because the state space can still be exponential in the number of colors. A simple backtracking implementation is therefore unusable.
+A brute-force solution can try every possible ordering of the colors, keep the counts that remain, and stop as soon as it finds an ordering whose equal-color runs are all at most (k). The method is correct because every possible painting is considered, and a completed valid permutation is accepted.
 
-The useful observation is that a color with (a_i) planks needs at least
+The problem is the number of possibilities. In the worst case, when all (n) planks have different colors, there are (n!) permutations. Even a weaker recursive formulation that chooses one of at most (m) colors at every position has up to (m^n) branches. With (n=2\cdot10^5), neither is remotely feasible.
 
-[
-r_i=\left\lceil\frac{a_i}{k}\right\rceil
-]
-
-separate runs. We can choose exactly that many runs and give every run at most (k) planks. The problem then becomes much simpler: arrange these runs so that two consecutive runs never have the same color.
-
-Consider the color with the largest (a_i). It also has the largest (r_i), because the ceiling function above is monotonic. If this color needs (r) runs, there must be at least (r-1) planks of other colors to separate them. Consequently, a necessary condition is
+The useful observation is to stop thinking about individual planks first. A single color (i), appearing (a_i) times, must be divided into at least
 
 [
-r-1\le n-a_{\max}.
+c_i=\left\lceil\frac{a_i}{k}\right\rceil
 ]
 
-This condition is also sufficient. We split every color into exactly (\lceil a_i/k\rceil) chunks, then arrange the chunks using the standard greedy strategy for avoiding equal adjacent labels: repeatedly take a color with the largest number of unused chunks, but never choose the same color as the previous chunk when another color is available.
+separate blocks. Each such block can contain at most (k) planks. If we use exactly (c_i) blocks, all but possibly the last can have (k) planks, so this minimum number of blocks is achievable.
 
-Why does this work? The dominant color has the largest number of chunks. The feasibility condition says that the remaining actual planks are sufficient to separate its chunks. Since every other color has no more chunks than the dominant color, the collection of chunks can be interleaved without putting equal colors next to each other.
+Now the problem becomes much simpler. We have (c_i) blocks of each color, and we need to order these blocks so that two blocks of the same color are never adjacent. Once the blocks are separated, every original run has size at most (k).
 
-A max-heap gives a clean implementation. Each heap entry stores a color and its number of remaining chunks. When a color is selected, we output one chunk from it, decrease its chunk count, and temporarily keep it aside so it cannot be selected immediately again. Then we select the next largest color. The chunk itself has size (k), except for the final chunk of a color, whose size is the remaining number of planks.
+Let
 
-The brute-force works because it explicitly explores every possible coloring, but fails when the number of possibilities becomes exponential. The observation that only the separation of color runs matters lets us compress each color into a small number of chunks and solve the resulting arrangement greedily.
+[
+C=\sum_i c_i.
+]
+
+A sequence of (C) blocks can avoid equal adjacent colors exactly when no color contributes more than (\lceil C/2\rceil) blocks. If a color has more than that many blocks, even placing all other blocks between its blocks is insufficient. Conversely, when this condition holds, we can repeatedly take the color with the largest remaining number of blocks, except that the color used immediately before cannot be chosen.
+
+A max-heap gives this greedy choice efficiently. Each heap operation costs (O(\log m)), and we create exactly (C) blocks. Since (c_i\le a_i) and (\sum a_i=n), we have (C\le n), so the total work is (O(n\log m)).
+
+The brute-force works because it explicitly searches the space of possible color arrangements, but fails because that space is enormous. The observation that each color only needs a certain number of bounded-size blocks reduces the problem to scheduling these blocks without equal neighbors, which is exactly what a greedy max-heap handles efficiently.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(m^n)) in the worst case | (O(n+m)) | Too slow |
-| Optimal | (O(n\log m)) | (O(n+m)) | Accepted |
+| Brute Force | (O(n!)) in the worst case | (O(n)) recursion and state | Too slow |
+| Optimal | (O(n\log m)) | (O(n)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the color counts and find the largest count (a_{\max}). Let its color be (c). This color requires (r=\lceil a_{\max}/k\rceil) separate runs. If (r-1>n-a_{\max}), print (-1), because there are not enough non-(c) planks to separate those runs.
-2. For every color (i), compute the minimum number of runs it needs as (r_i=\lceil a_i/k\rceil). Store ((r_i,i)) in a max-heap. We deliberately use the minimum possible number of runs because splitting a color into even more runs only creates extra adjacency constraints and is never needed.
-3. Keep the remaining number of planks for every color. Initially this is exactly (a_i). When one run of color (i) is chosen, its size is (\min(k,\text{remaining}[i])). Append that many copies of (i) to the answer and decrease its remaining plank count.
-4. Repeatedly remove the color with the largest number of unused runs from the heap. If it is different from the color used for the previous run, use it immediately. If it is the same, temporarily remove it and take the next heap entry instead.
-5. After using a different color, put the previously blocked color back into the heap if it still has unused runs. The selected color is also returned if it still has another run. This makes every heap entry represent exactly the number of runs that have not yet been placed.
-6. Continue until every run has been placed. Because consecutive runs always have different colors and every run contains at most (k) planks, the resulting plank array satisfies the required condition.
+1. For every color (i), calculate the minimum number of blocks it needs as (c_i=(a_i+k-1)//k). The value (c_i) is the number of separate places where this color must appear in the final fence.
+2. Compute (C=\sum c_i) and find the largest (c_i). If the largest value is greater than ((C+1)//2), print (-1). Such a color would need more block positions than all other blocks can separate.
+3. Create a max-heap containing every color with its number of remaining blocks. Python's `heapq` is a min-heap, so store the negative count. Keep the previously chosen color separately because it cannot be selected for the next block.
+4. Repeatedly remove the color with the largest remaining block count, skipping the previous color when necessary. If the heap's largest entry is the previous color, temporarily remove it and use the next largest color instead.
+5. For the selected color, create one block. Its size is (k) if at least (k) planks of that color remain, otherwise it is the remaining number of planks. Append that many copies of the color to the answer and decrease its remaining plank count.
+6. Decrease the color's remaining block count and put it back into the heap if more blocks of that color are required. Record the selected color as the previous color.
+7. Continue until every required block has been placed. The result contains exactly (a_i) copies of every color, and consecutive blocks have different colors, so every maximal equal-color segment has size at most (k).
 
-### Why it works
-
-For each color (i), the algorithm divides (a_i) planks into exactly (\lceil a_i/k\rceil) runs, so no individual run can exceed (k). The only remaining danger is two runs of the same color becoming adjacent. The heap always chooses the color with the most remaining runs, except when that color was used immediately before, in which case another available color is selected. The largest run count belongs to the color with the largest (a_i), and the feasibility test guarantees that its required runs can all be separated by planks of other colors. Every other color requires no more runs than this dominant color, so the same separation argument applies to all colors. Thus the greedy arrangement can finish without creating equal adjacent runs.
+The greedy invariant is that after every step, the already constructed prefix consists of valid blocks, no two consecutive blocks have the same color, and the heap contains exactly the blocks that still need to be placed. Choosing the color with the largest remaining block count is safe because it is the color most likely to become impossible to separate later. If the largest available color is the previous one, using the second-largest color preserves the required separation while consuming one block from another color. The feasibility condition guarantees that this choice can continue until every block is placed.
 
 ## Python Solution
 
@@ -122,56 +142,44 @@ def solve():
     n, m, k = map(int, input().split())
     a = list(map(int, input().split()))
 
-    max_a = max(a)
+    blocks = [(x + k - 1) // k for x in a]
+    total_blocks = sum(blocks)
 
-    # The color with max_a planks needs this many runs.
-    max_runs = (max_a + k - 1) // k
-
-    # Its runs need at least max_runs - 1 separating planks.
-    if max_runs - 1 > n - max_a:
+    if max(blocks) > (total_blocks + 1) // 2:
         print(-1)
         return
 
-    # remaining[i] is the number of individual planks of color i
-    # that have not yet been put into the answer.
-    remaining = a[:]
-
-    # runs[i] is the number of chunks still needed for color i.
-    # Python's heap is a min-heap, so store the negative count.
     heap = []
-    for i, cnt in enumerate(a):
-        runs = (cnt + k - 1) // k
-        heapq.heappush(heap, (-runs, i))
+    for color in range(m):
+        if blocks[color] > 0:
+            heapq.heappush(heap, (-blocks[color], color))
 
+    remaining = a[:]
     answer = []
     previous = -1
 
-    while heap:
-        neg_runs, color = heapq.heappop(heap)
+    for _ in range(total_blocks):
+        first_count, first_color = heapq.heappop(heap)
 
-        # We cannot put two runs of the same color next to each other.
-        if color == previous:
+        if first_color == previous:
             if not heap:
                 print(-1)
                 return
 
-            neg_runs2, color2 = heapq.heappop(heap)
+            second_count, second_color = heapq.heappop(heap)
+            heapq.heappush(heap, (first_count, first_color))
+            count, color = second_count, second_color
+        else:
+            count, color = first_count, first_color
 
-            # Put the blocked color back unchanged.
-            heapq.heappush(heap, (neg_runs, color))
+        block_size = min(k, remaining[color])
+        answer.extend([color + 1] * block_size)
 
-            neg_runs, color = neg_runs2, color2
+        remaining[color] -= block_size
+        blocks[color] -= 1
 
-        # Use one complete chunk of this color.
-        take = min(k, remaining[color])
-        answer.extend([color + 1] * take)
-        remaining[color] -= take
-
-        # One run has now been placed.
-        runs_left = -neg_runs - 1
-
-        if runs_left > 0:
-            heapq.heappush(heap, (-runs_left, color))
+        if blocks[color] > 0:
+            heapq.heappush(heap, (-blocks[color], color))
 
         previous = color
 
@@ -181,19 +189,17 @@ if __name__ == "__main__":
     solve()
 ```
 
-The first part computes the largest color count and converts it into the number of runs that color must occupy. The expression `(max_a + k - 1) // k` is the integer form of (\lceil a_{\max}/k\rceil), so it avoids floating-point arithmetic.
+The first calculation transforms plank counts into block counts. The ceiling division `(x + k - 1) // k` is essential because a color with (k+1) planks needs two blocks, not one.
 
-The feasibility check compares the number of required gaps, `max_runs - 1`, with the number of planks belonging to all other colors, `n - max_a`. Equality is allowed because exactly enough separator planks can exist.
+The feasibility check is performed before constructing anything. If a color requires more than half of all blocks, rounded upward, there are not enough blocks of other colors to place between its blocks. This gives an immediate impossibility result.
 
-The heap stores run counts rather than individual planks. This is the key compression in the implementation. A color with (10^5) planks does not need (10^5) heap entries, it needs only (\lceil10^5/k\rceil) runs represented by one entry.
+The heap stores `(-blocks[color], color)` because `heapq` returns the smallest tuple, so negating the block count makes the largest count appear first. The color index is included as a deterministic tie breaker.
 
-When a run is selected, `take = min(k, remaining[color])` handles both full chunks and the final partial chunk. The code decreases the number of remaining runs by exactly one, not by `take`, because a run is the logical unit being arranged.
+When the most frequent color is the same as `previous`, the algorithm temporarily removes it and takes the next color. The first heap entry is immediately restored so that its remaining count is not lost. This is the central detail that prevents two equal blocks from becoming adjacent.
 
-The `previous` variable prevents equal-colored runs from becoming adjacent. If the heap's largest entry has the same color as `previous`, the code takes the next best color and pushes the blocked color back. The feasibility condition guarantees that this situation cannot occur when there is no alternative color unless the construction is genuinely impossible.
+The block size is computed from the remaining plank count, not from the number of blocks. Every block takes at most (k) planks, and the final block may be shorter. Since the number of blocks was computed with a ceiling, exactly enough blocks are created to consume every plank.
 
-All color indices in the internal arrays are zero-based, while the required output uses one-based color indices. The expression `color + 1` performs that conversion only when writing the answer.
-
-No integer overflow is possible in Python. The answer contains exactly (n) integers, and each plank is appended once.
+There is no integer overflow issue in Python. The answer itself contains exactly (n) integers, so its size is linear in the input size.
 
 ## Worked Examples
 
@@ -206,19 +212,17 @@ For
 2 3
 ```
 
-color (2) has three planks and (k=1), so it needs three runs. There are two planks of color (1), exactly enough to separate those three runs.
+each block can contain only one plank. The resulting block counts are (2) for color (1) and (3) for color (2), giving five blocks in total. The largest block count is (3), exactly ((5+1)//2), so the instance is feasible.
 
-The initial chunk counts are (r_1=2) and (r_2=3).
-
-| Step | Heap run counts | Previous | Selected color | Chunk size | Answer prefix |
+| Step | Previous | Heap before choice | Chosen color | Block size | Remaining block counts |
 | --- | --- | --- | --- | --- | --- |
-| 0 | (2:3,\ 1:2) | none | 2 | 1 | 2 |
-| 1 | (1:2,\ 2:2) | 2 | 1 | 1 | 2 1 |
-| 2 | (2:2,\ 1:1) | 1 | 2 | 1 | 2 1 2 |
-| 3 | (1:1,\ 2:1) | 2 | 1 | 1 | 2 1 2 1 |
-| 4 | (2:1) | 1 | 2 | 1 | 2 1 2 1 2 |
+| 1 | none | (2:3,\ 1:2) | 2 | 1 | (2:2,\ 1:2) |
+| 2 | 2 | (1:2,\ 2:2) | 1 | 1 | (2:2,\ 1:1) |
+| 3 | 1 | (2:2,\ 1:1) | 2 | 1 | (2:1,\ 1:1) |
+| 4 | 2 | (1:1,\ 2:1) | 1 | 1 | (2:1,\ 1:0) |
+| 5 | 1 | (2:1) | 2 | 1 | (2:0,\ 1:0) |
 
-Every run has length one, so the maximum run length is exactly (k=1). The construction also uses both copies of color (1) and all three copies of color (2).
+The resulting array is `2 1 2 1 2`. Every block has length one, and each color is used exactly the required number of times.
 
 ### Sample 2
 
@@ -229,249 +233,221 @@ For
 1 7
 ```
 
-color (2) has seven planks. Since (k=3), it requires
+color (1) requires one block, while color (2) requires three blocks because (7) planks cannot fit into two blocks of capacity three.
 
-[
-\left\lceil\frac{7}{3}\right\rceil=3
-]
+| Color | Planks | Maximum block size | Required blocks |
+| --- | --- | --- | --- |
+| 1 | 1 | 3 | 1 |
+| 2 | 7 | 3 | 3 |
 
-runs.
+There are four blocks in total, so a color can contribute at most ((4+1)//2=2) blocks. Color (2) needs three, so the algorithm immediately prints `-1`.
 
-| Value | Meaning |
-| --- | --- |
-| (a_{\max}) | 7 |
-| (k) | 3 |
-| Required runs | 3 |
-| Required separators | 2 |
-| Other-color planks | 1 |
-| Result | (-1) |
-
-The three runs would need at least two non-color-(2) planks between them. Only one such plank exists, so no arrangement can satisfy the run-length limit. The algorithm rejects the instance before constructing anything.
+This example demonstrates why checking only `max(a)` against (k) is insufficient. The count (7) is larger than (k), but the real issue is that there are not enough other-color blocks to separate the required pieces.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n\log m)) | There are at most (n) runs, and each heap operation costs (O(\log m)). |
-| Space | (O(n+m)) | The answer uses (O(n)) space, while the count arrays and heap use (O(m)) space. |
+| Time | (O(n\log m)) | There are at most (n) blocks, and each heap operation costs (O(\log m)). |
+| Space | (O(n)) | The answer uses (O(n)) space, while the heap and count arrays use (O(m)). |
 
-With (n\le2\cdot10^5), the algorithm performs only a logarithmic amount of heap work for each constructed run and scans the input once. This fits comfortably within the (256) MB memory limit and is suitable for the one-second constraint in Python with buffered input and output.
+Because (n\le2\cdot10^5), the algorithm performs only a linear number of block constructions and heap operations. The (O(n\log m)) bound is comfortably within the intended range, and the stored answer plus auxiliary arrays fit well inside the 256 MB memory limit.
 
 ## Test Cases
 
-The output is not unique, so asserting one exact coloring would be incorrect for most valid cases. The test harness below instead parses the program's output and checks the actual requirements: every color count must be correct and no equal-colored run may exceed (k).
+The test helper below validates outputs structurally rather than assuming that every valid answer has the same ordering. This is necessary because the problem accepts any valid painting. The provided samples are still checked by verifying the exact output produced by this deterministic heap implementation.
 
 ```python
 import sys
 import io
 import heapq
 
-def solve_data(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
+def solve():
+    input = sys.stdin.readline
 
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
 
-    try:
-        n, m, k = map(int, sys.stdin.readline().split())
-        a = list(map(int, sys.stdin.readline().split()))
+    blocks = [(x + k - 1) // k for x in a]
+    total_blocks = sum(blocks)
 
-        max_a = max(a)
-        max_runs = (max_a + k - 1) // k
-
-        if max_runs - 1 > n - max_a:
-            print(-1)
-            return sys.stdout.getvalue().strip()
-
-        remaining = a[:]
-        heap = []
-
-        for i, cnt in enumerate(a):
-            runs = (cnt + k - 1) // k
-            heapq.heappush(heap, (-runs, i))
-
-        answer = []
-        previous = -1
-
-        while heap:
-            neg_runs, color = heapq.heappop(heap)
-
-            if color == previous:
-                if not heap:
-                    print(-1)
-                    return sys.stdout.getvalue().strip()
-
-                neg_runs2, color2 = heapq.heappop(heap)
-                heapq.heappush(heap, (neg_runs, color))
-
-                neg_runs, color = neg_runs2, color2
-
-            take = min(k, remaining[color])
-            answer.extend([color + 1] * take)
-            remaining[color] -= take
-
-            runs_left = -neg_runs - 1
-            if runs_left > 0:
-                heapq.heappush(heap, (-runs_left, color))
-
-            previous = color
-
-        print(*answer)
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
-
-def run(inp: str) -> str:
-    return solve_data(inp)
-
-def validate(inp: str, out: str):
-    data = list(map(int, inp.split()))
-    n, m, k = data[:3]
-    a = data[3:3 + m]
-
-    tokens = out.split()
-
-    if tokens == ["-1"]:
-        max_a = max(a)
-        required_runs = (max_a + k - 1) // k
-        assert required_runs - 1 > n - max_a, (
-            "Solution rejected a feasible instance"
-        )
+    if max(blocks) > (total_blocks + 1) // 2:
+        print(-1)
         return
 
-    assert len(tokens) == n, "Wrong number of colors"
-    ans = list(map(int, tokens))
+    heap = []
+    for color in range(m):
+        if blocks[color] > 0:
+            heapq.heappush(heap, (-blocks[color], color))
 
-    assert all(1 <= x <= m for x in ans), "Invalid color index"
-
-    counts = [0] * m
-    for x in ans:
-        counts[x - 1] += 1
-
-    assert counts == a, "Color counts do not match the input"
-
-    run_length = 0
+    remaining = a[:]
+    answer = []
     previous = -1
 
-    for x in ans:
-        if x == previous:
-            run_length += 1
+    for _ in range(total_blocks):
+        first_count, first_color = heapq.heappop(heap)
+
+        if first_color == previous:
+            if not heap:
+                print(-1)
+                return
+
+            second_count, second_color = heapq.heappop(heap)
+            heapq.heappush(heap, (first_count, first_color))
+            count, color = second_count, second_color
         else:
-            previous = x
+            count, color = first_count, first_color
+
+        block_size = min(k, remaining[color])
+        answer.extend([color + 1] * block_size)
+
+        remaining[color] -= block_size
+        blocks[color] -= 1
+
+        if blocks[color] > 0:
+            heapq.heappush(heap, (-blocks[color], color))
+
+        previous = color
+
+    print(*answer)
+
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    sys.stdin = io.StringIO(inp)
+    try:
+        output = io.StringIO()
+        old_stdout = sys.stdout
+        sys.stdout = output
+        try:
+            solve()
+        finally:
+            sys.stdout = old_stdout
+        return output.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+
+def validate(inp: str, out: str) -> bool:
+    data = list(map(int, inp.split()))
+    n, m, k = data[0], data[1], data[2]
+    a = data[3:3 + m]
+
+    if out == "-1":
+        blocks = [(x + k - 1) // k for x in a]
+        return max(blocks) > (sum(blocks) + 1) // 2
+
+    ans = list(map(int, out.split()))
+
+    if len(ans) != n:
+        return False
+
+    counts = [0] * (m + 1)
+    for x in ans:
+        if x < 1 or x > m:
+            return False
+        counts[x] += 1
+
+    if counts[1:] != a:
+        return False
+
+    run_length = 1
+    for i in range(1, n):
+        if ans[i] == ans[i - 1]:
+            run_length += 1
+            if run_length > k:
+                return False
+        else:
             run_length = 1
 
-        assert run_length <= k, "A color run is longer than k"
+    return True
 
-# Provided samples
-sample1 = """\
-5 2 1
-2 3
-"""
-out = run(sample1)
-validate(sample1, out)
+# Provided sample 1.
+sample1 = "5 2 1\n2 3\n"
+assert run(sample1) == "2 1 2 1 2"
 
-sample2 = """\
-8 2 3
-1 7
-"""
-assert run(sample2) == "-1", "sample 2"
+# Provided sample 2.
+sample2 = "8 2 3\n1 7\n"
+assert run(sample2) == "-1"
 
-sample3 = """\
-10 3 2
-5 2 3
-"""
-out = run(sample3)
-validate(sample3, out)
+# Provided sample 3.
+sample3 = "10 3 2\n5 2 3\n"
+assert validate(sample3, run(sample3))
 
-# Minimum-size instance
-case4 = """\
-1 1 1
-1
-"""
-out = run(case4)
-validate(case4, out)
+# Minimum-size input.
+case_min = "1 1 1\n1\n"
+assert run(case_min) == "1"
 
-# Boundary case: a run may have exactly k elements.
-case5 = """\
-4 2 2
-2 2
-"""
-out = run(case5)
-validate(case5, out)
+# All colors have the same amount of paint.
+case_equal = "6 3 2\n2 2 2\n"
+assert validate(case_equal, run(case_equal))
 
-# Large single-color case. It is valid because every run has length at most k.
-case6 = """\
-200000 1 200000
-200000
-"""
-out = run(case6)
-validate(case6, out)
+# Exact feasibility boundary: 5 and 2 with k = 3 is possible.
+case_boundary = "7 2 3\n5 2\n"
+assert validate(case_boundary, run(case_boundary))
 
-# Off-by-one feasibility boundary:
-# 7 copies need exactly 3 runs when k = 3,
-# and two other planks are exactly enough separators.
-case7 = """\
-9 3 3
-7 1 1
-"""
-out = run(case7)
-validate(case7, out)
+# Exact impossibility boundary: 7 and 1 with k = 3 is impossible.
+case_impossible = "8 2 3\n7 1\n"
+assert run(case_impossible) == "-1"
 
-print("All tests passed.")
+# Maximum-size case. Each color needs exactly one block.
+n = 200000
+case_max = f"{n} 2 {n // 2}\n{n // 2} {n // 2}\n"
+out_max = run(case_max)
+assert validate(case_max, out_max)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 1 / 1` | Any valid single `1` | Minimum size and the single-color case |
-| `4 2 2 / 2 2` | Any arrangement such as `1 1 2 2` | A run of exactly (k) is legal |
-| `200000 1 200000 / 200000` | (200000) copies of `1` | Maximum (n), maximum chunk size, and one-color handling |
-| `9 3 3 / 7 1 1` | Any valid arrangement | Exact feasibility boundary, where the dominant color needs exactly two separators |
+| `1 1 1 / 1` | `1` | Minimum size and equality with (k) |
+| `6 3 2 / 2 2 2` | Any valid arrangement | Equal color counts and heap tie handling |
+| `7 2 3 / 5 2` | Any valid arrangement | Feasibility exactly at the block-separation boundary |
+| `8 2 3 / 7 1` | `-1` | Impossibility caused by too many required blocks |
+| `200000 2 100000 / 100000 100000` | Any valid arrangement | Maximum (n), linear output construction, and run length exactly (k) |
 
 ## Edge Cases
 
-For the single-color input
+The single-color case exposes the most basic boundary. With
 
 ```
-1 1 1
-1
+3 1 3
+3
 ```
 
-the maximum color count is (1), so `max_runs` is (1). The required number of separators is (0), and there are (0) other planks. The feasibility test passes, the heap contains one run, and the answer is `1`.
+we have one required block, and the maximum allowed block size is exactly three. The algorithm computes `blocks = [1]`, so the maximum block count is one and the instance is accepted. The heap produces one block of size three, giving `1 1 1`.
 
-For the impossible dominant-color case
+If we increase the input to
+
+```
+4 1 3
+4
+```
+
+the required block count becomes two, but there are only two total blocks and only one color. The separation condition requires at least two different colors between or around repeated blocks, which is impossible. The algorithm computes `blocks = [2]`, while `(2 + 1) // 2` is one, so it prints `-1`.
+
+The (k=1) case is handled naturally by the same block transformation. For
+
+```
+5 2 1
+2 3
+```
+
+the required block counts are (2) and (3). The heap alternates the colors, producing `2 1 2 1 2`. Since every block contains one plank, adjacent equal colors never occur.
+
+The ceiling boundary is handled by explicitly computing `(a_i + k - 1) // k`. For
+
+```
+7 2 3
+5 2
+```
+
+the required block counts are (2) and (1). The heap can arrange them as color (1), color (2), color (1). Their actual sizes are (3), (2), and (2), giving `1 1 1 2 2 1 1`. The first color therefore uses five planks without ever creating a run longer than three.
+
+The corresponding impossible boundary is
 
 ```
 8 2 3
-1 7
+7 1
 ```
 
-the maximum count is (7), giving `max_runs = 3`. The algorithm needs `3 - 1 = 2` separators, but `n - max_a = 1`. Since (2>1), it immediately prints `-1`. No greedy construction is attempted because no construction could possibly succeed.
+where the required block counts are (3) and (1). Four blocks exist in total, but the largest color would need three positions while only two positions can be occupied by alternating placement. The inequality (3>(4+1)//2) detects the failure before construction begins.
 
-For the exact-(k) boundary
-
-```
-4 2 2
-2 2
-```
-
-both colors require one run. The heap can choose either color first and then the other, producing `1 1 2 2`. The first run has length exactly (2), which is allowed, so an implementation must use `<= k`, not `< k`.
-
-For the exact feasibility boundary
-
-```
-9 3 3
-7 1 1
-```
-
-color (1) needs three runs of sizes (3,3,1). The two other colors provide exactly two separating planks. A possible result is `1 1 1 2 1 1 1 3 1`. The three color-(1) runs have lengths (3), (3), and (1), while colors (2) and (3) each appear once. The separator count is exactly sufficient, so the algorithm must accept this instance rather than using a strict inequality.
-
-For a color whose count is not divisible by (k), the final chunk is shorter. With
-
-```
-5 2 2
-3 2
-```
-
-the chunks are (1,1) of sizes (2,1), and (2) of size (2). The heap arranges these chunks without equal adjacent colors, for example as `1 1 2 2 1`. The final chunk of color (1) has size (1), demonstrating why the construction uses `min(k, remaining[color])` rather than always appending exactly (k) planks.
+At the maximum input size, the algorithm never expands a color one plank at a time through the heap. It performs one heap operation per required block, then appends the whole block using `answer.extend`. Since the total number of blocks is at most (n), the algorithm remains (O(n\log m)) even when (n=200000).
