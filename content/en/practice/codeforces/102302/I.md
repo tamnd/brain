@@ -1,7 +1,7 @@
 ---
 title: "CF 102302I - Useless Pokemino"
-description: "Each captured Pokemino is a point ((Ai,Di)), where the first coordinate is attack and the second is defense. A Pokemino is better than another one only when both coordinates are strictly larger."
-date: "2026-08-13T23:23:30+07:00"
+description: "Think of every Pokemino as a point ((A,D)) in the plane, where attack is the horizontal coordinate and defense is the vertical coordinate."
+date: "2026-08-14T04:36:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102302
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2019 USP-ICMC"
 rating: 0
 weight: 102302
-solve_time_s: 419
+solve_time_s: 229
 verified: false
 draft: false
 ---
@@ -18,24 +18,26 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 6m 59s  
+**Solve time:** 3m 49s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Each captured Pokemino is a point ((A_i,D_i)), where the first coordinate is attack and the second is defense. A Pokemino is better than another one only when both coordinates are strictly larger.
+Think of every Pokemino as a point ((A,D)) in the plane, where attack is the horizontal coordinate and defense is the vertical coordinate. A Pokemino is useful if there is no point that Laersh owns, and no point that he can obtain by breeding, whose two coordinates are both strictly larger.
 
-Breeding two Pokeminos does something geometrically useful: for any (0\le c\le1), the child is a point on the line segment joining the two parent points. Repeating breeding lets us obtain every point in the convex hull of all captured Pokeminos. The question after every insertion is thus whether a captured point can be strictly dominated by some point inside the current convex hull. The required answer is the number of captured points that are no longer maximal in this geometric sense.
+Breeding takes a weighted average of two points. Repeated breeding consequently gives exactly the convex hull of all captured points. So the real geometric question is this: among the captured points, which ones are not strictly dominated by any point of their convex hull?
 
-The official statement has (N\le10^5), with coordinates up to (10^9). A quadratic algorithm would perform about (N(N-1)/2), roughly (5\cdot10^9), pair checks at the maximum size, which is far beyond a one-second limit. We need an approach around (O(N\log N)). The coordinate bound also means cross products can reach about (10^{18}), so the implementation needs integer arithmetic capable of representing values of that size. Python integers already provide the required range.
+The answer is described by the upper-right boundary of the convex hull. If we sort points by attack from left to right, the useful points form a convex chain. A new point can make several consecutive points on that chain useless, but it cannot make two separated regions disappear independently. This locality is what makes an online hull maintenance algorithm possible.
 
-Several cases are easy to mishandle. First, equal attack does not imply domination because both coordinates must be strictly larger. For example,
+There are up to (10^5) captures, while attack and defense can each be as large as (10^9). A quadratic algorithm would already require about (10^{10}) operations, far beyond a one-second limit. We need roughly (O(N\log N)) total work. The coordinate size also means geometric tests should be performed with exact integer arithmetic. In C++ this requires 64-bit integers because a cross product can reach around (10^{18}); Python integers handle this range automatically.
+
+Equal attack values need special treatment. Two Pokeminos with the same attack cannot strictly dominate one another because strict improvement is required in attack. For example,
 
 ```
 3
-5 0
 5 1
+5 3
 5 2
 ```
 
@@ -47,18 +49,18 @@ has output
 0
 ```
 
-because all three points lie on the same vertical line and none has strictly larger attack than another.
+A careless implementation that keeps only the highest defense for each attack would incorrectly discard the other two Pokeminos. We sort equal attacks by decreasing defense so that this vertical group is represented correctly.
 
-Equal defense behaves similarly. For
+A second trap is strict inequality. If a Pokemino lies exactly on a decreasing segment joining two others, it is still useful. For example,
 
 ```
 3
-0 5
-1 5
-2 5
+0 10
+5 5
+10 0
 ```
 
-the output is again
+has output
 
 ```
 0
@@ -66,18 +68,37 @@ the output is again
 0
 ```
 
-A solution that uses non-strict comparisons would incorrectly delete points in both examples.
+The middle Pokemino can be bred from the endpoints, but the resulting point is exactly ((5,5)), not strictly better than it. An implementation that removes every collinear point would give the wrong answer.
 
-The more subtle case is domination created by breeding. Consider
+A third trap is that a convex combination can dominate a Pokemino even when neither parent does so individually. For example,
 
 ```
 3
 0 10
 10 0
-4 4
+5 4
 ```
 
-The first two points cannot individually dominate ((4,4)), but their midpoint is ((5,5)), which does. The correct output is
+has output
+
+```
+0
+0
+1
+```
+
+Breeding the first two Pokeminos with equal weights produces ((5,5)), which strictly dominates ((5,4)). Checking only direct pairwise dominance would miss this case.
+
+Finally, a point can be useless simply because a later point dominates it directly. For
+
+```
+3
+0 0
+2 2
+1 1
+```
+
+the output is
 
 ```
 0
@@ -85,342 +106,246 @@ The first two points cannot individually dominate ((4,4)), but their midpoint is
 1
 ```
 
-A solution that only checks captured Pokeminos directly would incorrectly report zero.
-
-Another trap is a newly inserted point dominating an interior point of the current frontier. For
-
-```
-4
-0 10
-3 0
-1 11
-2 12
-```
-
-the outputs are
-
-```
-0
-0
-1
-2
-```
-
-The third Pokemino dominates ((0,10)), and the fourth dominates ((1,11)). The point ((3,0)) remains useful because it has the maximum attack, even though its defense is small. A correct dynamic hull implementation has to handle this kind of interior deletion rather than only checking the newly inserted point.
+When ((1,1)) arrives, ((2,2)) is already owned and dominates it. A hull implementation that only checks the orientation of three points can miss this endpoint case unless it explicitly handles the first point of the maintained chain.
 
 ## Approaches
 
-The direct approach is to compare every captured Pokemino with every other captured Pokemino and also consider every possible pair for breeding. Even deciding whether one point can be beaten by a child of two parents requires examining pairs, so a straightforward implementation quickly becomes quadratic or worse. With (10^5) points, the basic (O(N^2)) comparison already reaches about (5\cdot10^9) pair checks.
+The most direct approach is to rebuild the geometric structure after every capture. For each prefix of the input, we could construct the convex hull of all currently owned Pokeminos, then determine which captured points are strictly dominated by some point of that hull. A standard hull construction costs (O(i\log i)) for a prefix of length (i), followed by a linear scan. Repeating this for every prefix costs (O(N^2\log N)). With (N=10^5), this is on the order of (10^{11}) comparison-level operations, so rebuilding from scratch is nowhere close to the one-second limit.
 
-The key observation removes the need to explicitly consider children. Every child is a convex combination of two existing points, and repeated breeding produces exactly the convex hull of all captured points. Thus we only need to understand which captured points are maximal points of that convex hull.
+The brute-force approach is correct because the convex hull contains every point obtainable through repeated breeding. The problem is that consecutive prefixes differ by only one inserted point, yet the brute-force solution throws away all previous geometric work.
 
-Sort the points conceptually by attack. Along the relevant upper-right boundary of the convex hull, attack increases while defense does not increase, except for vertical segments where attack is equal. A captured point on this boundary cannot be beaten in both coordinates. A point below this boundary can be beaten by a point on the hull, possibly one obtained by breeding.
+The key observation is that the useful points have a very rigid order. Sort them by increasing attack, and for equal attack by decreasing defense. Consider three consecutive candidates (L,P,R). If (P) lies strictly below the segment (LR), then some convex combination of (L) and (R) has exactly the same attack as (P) and strictly larger defense. Hence (P) is useless and can be deleted.
 
-This boundary can be maintained dynamically. Store the useful points ordered by attack, breaking equal attacks by decreasing defense. For an interior point (P), let (L) and (R) be its immediate neighbors. The orientation of these three points tells us whether (P) lies below the convex boundary. Using the cross product
+Using the cross product, this condition is
 
 [
-(L-P)\times(R-P)
+(L-P)\times(R-P)<0.
 ]
 
-a negative value means that (P) lies below the segment (LR), so a point slightly to the right of (P) on that segment has both coordinates larger than (P). Such a point is useless.
+If the point is the first point in the ordered structure, there is no left neighbor. It is useless exactly when its immediate successor has both larger attack and larger defense. If it is the last point, it cannot be useless because no owned point has larger attack.
 
-There is one additional condition for collinear points. If the cross product is zero and (R) has both larger attack and larger defense than (P), then (R) directly dominates (P), so (P) is also useless. If the edge is horizontal, descending, or vertical, the collinear points can remain useful because no point on that edge is strictly better in both coordinates.
+The crucial dynamic property is that inserting one point can only invalidate consecutive neighbors around that insertion position. Once a point is removed, it never needs to return, because future captures only enlarge the convex hull. Thus every Pokemino is inserted once and removed at most once. We can maintain the ordered chain in a balanced binary search tree, giving (O(\log N)) work per insertion or deletion.
 
-After inserting a point, only its immediate neighborhood can violate the boundary condition. We repeatedly remove a redundant predecessor or successor until the chain becomes valid again. Every captured point enters the structure once and can be removed at most once, so the total number of deletions is (O(N)). A balanced search tree supplies insertion, deletion, predecessor, and successor operations in (O(\log N)).
+Python does not provide a built-in balanced ordered set, so the implementation below uses a randomized treap. It supports insertion, deletion, predecessor, and successor in expected (O(\log N)) time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N^2)) or worse | (O(N)) | Too slow |
-| Dynamic convex frontier | (O(N\log N)) expected | (O(N)) | Accepted |
+| Rebuild the hull for every prefix | (O(N^2\log N)) | (O(N)) | Too slow |
+| Dynamic convex chain with treap | (O(N\log N)) expected | (O(N)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Represent every Pokemino as a point ((x,y)=(A,D)), and order points lexicographically by (x) increasing and (y) decreasing. The decreasing defense order for equal attack keeps all points on a vertical frontier in their natural order.
-2. Maintain a balanced binary search tree containing exactly the captured points that currently lie on the useful upper-right frontier of the convex hull. We use a randomized treap in the Python implementation because Python has no built-in ordered set with logarithmic insertion and deletion.
-3. Insert the new point into the treap. Find its immediate predecessor and successor in attack order. These are the only two existing frontier points whose local geometry can be changed directly by the insertion.
-4. Test whether the new point itself is redundant. If it has a successor with both larger attack and larger defense, it is directly dominated. Otherwise, if it has both a predecessor and a successor and the cross product ((L-P)\times(R-P)) is negative, the point lies below the convex boundary and can be beaten by a bred point. Remove it if either condition holds.
-5. If the new point survives, check its predecessor. If the predecessor has become redundant because of the new point, delete it. The new point has now replaced part of the old frontier, so this check can expose another redundant point immediately to the left.
-6. Check the successor in the same way. Removing a successor can expose another redundant point farther to the right.
-7. Repeat the local checks until neither neighbor is redundant. The process terminates because every iteration that changes the structure permanently deletes one captured Pokemino.
-8. If (i) Pokeminos have been captured and the frontier currently contains (h) points, exactly (i-h) captured Pokeminos are useless. Output that value after every insertion.
+1. Represent every Pokemino as a point ((x,y)=(A,D)), and order points by increasing (x). When two points have the same (x), order the one with larger (y) first. The treap uses the key ((x,-y)) to implement exactly this ordering.
 
-### Why it works
+This tie-breaking is necessary because equal-attack Pokeminos cannot strictly dominate one another through attack.
+2. Maintain only the Pokeminos that are currently useful. In this ordered set, a point can have at most one predecessor and one successor, so whether it has become useless can be determined locally.
+3. After inserting a new point (P), first check whether (P) itself is useless. If it is the first point and its successor (R) satisfies (R_x>P_x) and (R_y>P_y), then (R) directly dominates (P), so (P) is removed immediately.
+4. If (P) has both a predecessor (L) and a successor (R), compute
 
-Repeated breeding generates the entire convex hull, so a Pokemino is useful exactly when it is a coordinatewise maximal point of that convex hull. These maximal points form the upper-right boundary of the convex set.
+## (L_x-P_x)(R_y-P_y)
 
-The maintained chain has the invariant that every consecutive pair belongs to this boundary and that no stored point is locally below the chord between its neighbors. For an interior point, a negative cross product means that the chord between its neighbors passes above it. Moving an arbitrarily small distance to the right along that chord gives a point with both coordinates strictly larger, so the point is useless. If the points are collinear, the only way the right neighbor can make the point useless is when it has both coordinates larger.
+(L_y-P_y)(R_x-P_x).
+]
 
-Conversely, when none of these local conditions holds, the point lies on the maximal boundary. A convex boundary point cannot be strictly dominated by another point of the convex hull, because such a point would lie strictly northeast of it and contradict the supporting boundary of the convex set.
+When this value is negative, (P) lies strictly below the segment (LR). The appropriate convex combination of (L) and (R) has the same attack as (P) and greater defense, so (P) is useless.
+5. If the new point survives, repeatedly inspect its predecessor. Whenever that predecessor satisfies the same uselessness test, erase it. The insertion may have made several consecutive points obsolete, so this continues until the predecessor is valid.
+6. Repeatedly inspect the successor in the same way. Erase every successor that has become useless.
+7. After all invalid points have been removed, the treap contains exactly the useful Pokeminos. If (i) Pokeminos have been captured and the treap contains (s) points, the answer is (i-s).
 
-Insertion can only disturb the boundary near the inserted point. Any old point that becomes invalid is encountered by repeatedly moving to an adjacent neighbor and deleting it. Once no local violation remains, the entire chain again satisfies the invariant. Hence its size is exactly the number of useful Pokeminos, making (i-h) the required answer.
+The reason the local test is sufficient is the maintained convex-chain invariant. Consecutive retained points form the relevant upper-right boundary of the convex hull. A point below the segment connecting its two neighbors is reachable by breeding those neighbors and is strictly dominated. Conversely, if every retained interior point is on or above its neighboring chord and the endpoints satisfy the direct-dominance condition, no convex combination from the retained chain can create a strictly better point. Inserting a point can only replace a contiguous portion of this boundary, so deleting invalid predecessors and successors restores the invariant completely.
+
+Collinear points are deliberately retained. A collinear point on a decreasing segment is not strictly dominated by the segment endpoints. Positive-slope collinear configurations are handled by the endpoint dominance test when the dominating point enters the maintained chain.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
 
+input = sys.stdin.readline
 sys.setrecursionlimit(1_000_000)
 
-class Treap:
-    def __init__(self):
-        self.left = [0]
-        self.right = [0]
-        self.prio = [0]
-        self.x = [0]
-        self.y = [0]
+class Node:
+    __slots__ = ("x", "y", "key", "prio", "left", "right")
 
-        self.root = 0
-        self.size = 0
-        self.seed = 88172645463393265
+    def __init__(self, x, y, prio):
+        self.x = x
+        self.y = y
+        self.key = (x, -y)
+        self.prio = prio
+        self.left = None
+        self.right = None
 
-    def rng(self):
-        self.seed ^= (self.seed << 7) & ((1 << 64) - 1)
-        self.seed ^= self.seed >> 9
-        self.seed &= (1 << 64) - 1
-        return self.seed
+seed = 712367821
 
-    def new_node(self, x, y):
-        self.x.append(x)
-        self.y.append(y)
-        self.left.append(0)
-        self.right.append(0)
-        self.prio.append(self.rng())
-        self.size += 1
-        return self.size
+def rng():
+    global seed
+    seed ^= (seed << 13) & 0xFFFFFFFF
+    seed ^= seed >> 17
+    seed ^= (seed << 5) & 0xFFFFFFFF
+    seed &= 0xFFFFFFFF
+    return seed
 
-    def less_idx(self, a, b):
-        if self.x[a] != self.x[b]:
-            return self.x[a] < self.x[b]
-        return self.y[a] > self.y[b]
+def rotate_right(root):
+    child = root.left
+    root.left = child.right
+    child.right = root
+    return child
 
-    def less_key(self, idx, x, y):
-        if self.x[idx] != x:
-            return self.x[idx] < x
-        return self.y[idx] > y
+def rotate_left(root):
+    child = root.right
+    root.right = child.left
+    child.left = root
+    return child
 
-    def split(self, t, x, y):
-        if not t:
-            return 0, 0
-
-        if self.less_key(t, x, y):
-            a, b = self.split(self.right[t], x, y)
-            self.right[t] = a
-            return t, b
-        else:
-            a, b = self.split(self.left[t], x, y)
-            self.left[t] = b
-            return a, t
-
-    def merge(self, a, b):
-        if not a:
-            return b
-        if not b:
-            return a
-
-        if self.prio[a] > self.prio[b]:
-            self.right[a] = self.merge(self.right[a], b)
-            return a
-        else:
-            self.left[b] = self.merge(a, self.left[b])
-            return b
-
-    def insert_rec(self, t, node):
-        if not t:
-            return node
-
-        if self.prio[node] > self.prio[t]:
-            a, b = self.split(t, self.x[node], self.y[node])
-            self.left[node] = a
-            self.right[node] = b
-            return node
-
-        if self.less_idx(node, t):
-            self.left[t] = self.insert_rec(self.left[t], node)
-        else:
-            self.right[t] = self.insert_rec(self.right[t], node)
-
-        return t
-
-    def insert(self, x, y):
-        node = self.new_node(x, y)
-        self.root = self.insert_rec(self.root, node)
+def insert(root, node):
+    if root is None:
         return node
 
-    def erase_rec(self, t, x, y):
-        if not t:
-            return 0
+    if node.key < root.key:
+        root.left = insert(root.left, node)
+        if root.left.prio < root.prio:
+            root = rotate_right(root)
+    else:
+        root.right = insert(root.right, node)
+        if root.right.prio < root.prio:
+            root = rotate_left(root)
 
-        if self.x[t] == x and self.y[t] == y:
-            return self.merge(self.left[t], self.right[t])
+    return root
 
-        if self.less_key(t, x, y):
-            self.right[t] = self.erase_rec(self.right[t], x, y)
+def merge(left, right):
+    if left is None:
+        return right
+    if right is None:
+        return left
+
+    if left.prio < right.prio:
+        left.right = merge(left.right, right)
+        return left
+    else:
+        right.left = merge(left, right.left)
+        return right
+
+def erase(root, key):
+    if root is None:
+        return None
+
+    if key == root.key:
+        return merge(root.left, root.right)
+
+    if key < root.key:
+        root.left = erase(root.left, key)
+    else:
+        root.right = erase(root.right, key)
+
+    return root
+
+def predecessor(root, key):
+    ans = None
+    while root is not None:
+        if root.key < key:
+            ans = root
+            root = root.right
         else:
-            self.left[t] = self.erase_rec(self.left[t], x, y)
+            root = root.left
+    return ans
 
-        return t
+def successor(root, key):
+    ans = None
+    while root is not None:
+        if root.key > key:
+            ans = root
+            root = root.left
+        else:
+            root = root.right
+    return ans
 
-    def erase(self, x, y):
-        self.root = self.erase_rec(self.root, x, y)
-        self.size -= 1
+def cross(a, p, b):
+    return (a.x - p.x) * (b.y - p.y) - \
+           (a.y - p.y) * (b.x - p.x)
 
-    def locate_with_neighbors(self, x, y):
-        """
-        Return (node, predecessor, successor).
-        The predecessor/successor are strict neighbors of (x, y).
-        """
-        t = self.root
-        pred = 0
-        succ = 0
+def inside(root, p):
+    left = predecessor(root, p.key)
+    right = successor(root, p.key)
 
-        while t:
-            if x < self.x[t] or (x == self.x[t] and y > self.y[t]):
-                succ = t
-                t = self.left[t]
-            elif x > self.x[t] or (x == self.x[t] and y < self.y[t]):
-                pred = t
-                t = self.right[t]
-            else:
-                q = self.left[t]
-                while q:
-                    pred = q
-                    q = self.right[q]
-
-                q = self.right[t]
-                while q:
-                    succ = q
-                    q = self.left[q]
-
-                return t, pred, succ
-
-        return 0, pred, succ
-
-def redundant(hull, p, pred, succ):
-    if not succ:
+    if right is None:
         return False
 
-    px = hull.x[p]
-    py = hull.y[p]
-    sx = hull.x[succ]
-    sy = hull.y[succ]
+    if left is None:
+        return right.x > p.x and right.y > p.y
 
-    # Direct domination by the next frontier point.
-    if sx > px and sy > py:
-        return True
-
-    if not pred:
-        return False
-
-    lx = hull.x[pred]
-    ly = hull.y[pred]
-
-    # (L - P) x (R - P)
-    cross = (lx - px) * (sy - py) - (ly - py) * (sx - px)
-
-    return cross < 0
+    return cross(left, p, right) < 0
 
 def solve():
     n = int(input())
-    hull = Treap()
-    out = []
+    root = None
+    useful = 0
+    answer = []
 
-    for i in range(1, n + 1):
+    for _ in range(n):
         x, y = map(int, input().split())
-        hull.insert(x, y)
+        p = Node(x, y, rng())
 
-        while True:
-            p, pred, succ = hull.locate_with_neighbors(x, y)
+        root = insert(root, p)
+        useful += 1
 
-            if p == 0:
-                break
+        if inside(root, p):
+            root = erase(root, p.key)
+            useful -= 1
+        else:
+            while True:
+                left = predecessor(root, p.key)
+                if left is None or not inside(root, left):
+                    break
+                root = erase(root, left.key)
+                useful -= 1
 
-            if redundant(hull, p, pred, succ):
-                hull.erase(x, y)
-                break
+            while True:
+                right = successor(root, p.key)
+                if right is None or not inside(root, right):
+                    break
+                root = erase(root, right.key)
+                useful -= 1
 
-            changed = False
+        answer.append(str(_ + 1 - useful))
 
-            if pred:
-                qx = hull.x[pred]
-                qy = hull.y[pred]
-                q, qpred, qsucc = hull.locate_with_neighbors(qx, qy)
-
-                if redundant(hull, q, qpred, qsucc):
-                    hull.erase(qx, qy)
-                    changed = True
-
-            if changed:
-                continue
-
-            if succ:
-                qx = hull.x[succ]
-                qy = hull.y[succ]
-                q, qpred, qsucc = hull.locate_with_neighbors(qx, qy)
-
-                if redundant(hull, q, qpred, qsucc):
-                    hull.erase(qx, qy)
-                    changed = True
-
-            if not changed:
-                break
-
-        out.append(str(i - hull.size))
-
-    sys.stdout.write("\n".join(out))
+    sys.stdout.write("\n".join(answer))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The treap stores the points in the same order as an ordered set would: attack increases from left to right, and for equal attack, defense decreases. The arrays are used instead of Python objects for the nodes because (10^5) nodes and many tree operations benefit from compact storage.
+The `Node` class stores the two coordinates, the ordering key, a randomized priority, and the two treap children. The key is `(x, -y)`, so smaller keys correspond to smaller attack and, for equal attack, larger defense.
 
-The `split` and `merge` operations are the standard randomized-treap primitives. A node with higher priority becomes the root of the corresponding subtree, giving expected logarithmic height. The `insert` and `erase` methods then provide the ordered-set operations needed by the dynamic hull.
+The treap operations implement the ordered-set operations needed by the geometric algorithm. The rotations maintain the heap property of the randomized priorities while preserving the coordinate ordering.
 
-`locate_with_neighbors` finds the exact node together with its predecessor and successor. The equal-attack ordering is handled by comparing larger defense first, which is equivalent to sorting by `(attack, -defense)`.
+`predecessor` and `successor` find the immediate neighbors of a point without traversing the whole structure. The `inside` function is the geometric core. A last point cannot be useless because nothing has greater attack. A first point needs the direct-dominance test. Every other point is tested using the cross product.
 
-The `redundant` function contains the geometric heart of the solution. The direct-domination test uses strict inequalities, which is necessary because equal attack or equal defense does not constitute domination. The cross product uses only integer arithmetic, so there is no floating-point precision issue. With coordinates up to (10^9), the products are within the range of roughly (10^{18}), and Python integers handle them exactly.
+The insertion procedure first adds the point and increments the number of useful points. If the new point itself is invalid, it is immediately removed. Otherwise, its predecessor and successor may have become invalid because the new point changed the chain. The two while loops remove those consecutive invalid points.
 
-The update loop first checks whether the inserted point itself should disappear. If it survives, it checks its two neighbors and deletes any newly invalid point. Each deletion can reveal another invalid neighbor, so the loop repeats. The inserted point is never reinserted after deletion, and an old point can also be deleted only once.
+The variable `useful` avoids needing a subtree-size field in the treap. Every insertion increments it once, and every deletion decrements it once. Since the total number of deletions is at most (N), the total number of treap operations remains (O(N\log N)) expected.
+
+No floating-point arithmetic is used. The cross product is evaluated directly with integers, which avoids precision errors around collinear points. Python's arbitrary-precision integers also avoid overflow when coordinates are near (10^9).
 
 ## Worked Examples
 
-The sample formatting in the prompt loses the line breaks between coordinates. The original Codeforces statement gives the samples with (N) followed by one coordinate pair per line.
+For the first official sample, the input contains ten points whose geometry keeps every captured Pokemino on the useful boundary. The treap therefore never loses a point.
 
-For Sample 1, the input is
+| Capture | Point | Action | Useful count | Useless count |
+| --- | --- | --- | --- | --- |
+| 1 | (10, 0) | Insert | 1 | 0 |
+| 2 | (10, 1) | Insert | 2 | 0 |
+| 3 | (10, 2) | Insert | 3 | 0 |
+| 4 | (9, 3) | Insert | 4 | 0 |
+| 5 | (8, 4) | Insert | 5 | 0 |
+| 6 | (7, 4) | Insert | 6 | 0 |
+| 7 | (3, 4) | Insert | 7 | 0 |
+| 8 | (2, 4) | Insert | 8 | 0 |
+| 9 | (1, 4) | Insert | 9 | 0 |
+| 10 | (0, 4) | Insert | 10 | 0 |
 
-```
-10
-10 0
-10 1
-10 2
-9 3
-8 4
-7 4
-3 4
-2 4
-1 4
-0 4
-```
+The equal-attack points at (x=10) remain simultaneously useful because none of them can be strictly improved in attack. The rest of the points form a non-increasing defense chain as attack increases, so no convex combination creates a strictly better point. The output is ten zeroes.
 
-The frontier contains every captured point. Equal attack values form a vertical segment, equal defense values form a horizontal segment, and the remaining part slopes downward. None of these points can be strictly improved in both coordinates.
-
-| Step | Inserted | Frontier size | Useless count |
-| --- | --- | --- | --- |
-| 1 | (10, 0) | 1 | 0 |
-| 2 | (10, 1) | 2 | 0 |
-| 3 | (10, 2) | 3 | 0 |
-| 4 | (9, 3) | 4 | 0 |
-| 5 | (8, 4) | 5 | 0 |
-| 6 | (7, 4) | 6 | 0 |
-| 7 | (3, 4) | 7 | 0 |
-| 8 | (2, 4) | 8 | 0 |
-| 9 | (1, 4) | 9 | 0 |
-| 10 | (0, 4) | 10 | 0 |
-
-The key property demonstrated here is that equal coordinates must not be treated as strict domination. The entire boundary survives, giving ten useful Pokeminos at the end.
-
-For Sample 2, the input is
+For the second official sample,
 
 ```
 5
@@ -431,55 +356,59 @@ For Sample 2, the input is
 10 8
 ```
 
-| Step | Inserted | Frontier after cleanup | Frontier size | Useless count |
+the important changes happen when the fourth and fifth points are inserted.
+
+| Capture | Point | Removed points | Useful count | Useless count |
 | --- | --- | --- | --- | --- |
-| 1 | (3, 6) | (3, 6) | 1 | 0 |
-| 2 | (6, 4) | (3, 6), (6, 4) | 2 | 0 |
-| 3 | (6, 9) | (6, 9), (6, 4) | 2 | 1 |
-| 4 | (7, 2) | (6, 9), (7, 2) | 2 | 2 |
-| 5 | (10, 8) | (6, 9), (10, 8) | 2 | 3 |
+| 1 | (3, 6) | none | 1 | 0 |
+| 2 | (6, 4) | none | 2 | 0 |
+| 3 | (6, 9) | none | 3 | 0 |
+| 4 | (7, 2) | (6, 4) | 3 | 1 |
+| 5 | (10, 8) | (7, 2), (3, 6) | 2 | 3 |
 
-When ((6,9)) arrives, it has the same attack as ((6,4)), so the latter is not directly dominated. However, ((6,9)) directly dominates ((3,6)), so the first point disappears.
+At the fourth insertion, `(6,4)` has neighbors `(6,9)` and `(7,2)`. Its cross product is negative, so it lies below their connecting segment and is obtainable with strictly greater defense at the same attack.
 
-When ((7,2)) arrives, the points ((6,9),(6,4),(7,2)) form a downward-bending situation where ((6,4)) lies below the segment joining the other two. A bred point can beat ((6,4)), so it is removed. Finally, ((10,8)) makes ((7,2)) redundant, leaving only ((6,9)) and ((10,8)) on the frontier.
+At the fifth insertion, `(7,2)` becomes invalid first. Once it is removed, `(3,6)` becomes the first point and its successor `(6,9)` directly dominates it. Thus three of the five captured Pokeminos are useless, giving the output
+
+```
+0
+0
+1
+2
+3
+```
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(N\log N)) expected | Each insertion, search, and deletion takes expected (O(\log N)), while every captured point is deleted at most once. |
-| Space | (O(N)) | The treap contains at most one node for every captured Pokemino. |
+| Time | (O(N\log N)) expected | Each point is inserted once and deleted at most once, with treap operations taking expected (O(\log N)). |
+| Space | (O(N)) | The treap contains at most all (N) captured Pokeminos. |
 
-With (N=10^5), the expected (O(N\log N)) bound is suitable for the intended constraints, while the quadratic alternative would require billions of operations. The implementation also avoids floating-point calculations and therefore does not suffer from precision problems when comparing nearly collinear points.
+For (N=10^5), (O(N\log N)) is suitable for the constraint, while rebuilding a hull for every prefix would require roughly quadratic work. The memory usage is linear and stays well below 256 MB.
 
 ## Test Cases
 
-```python
-# This test harness is intended to be placed after the solution above.
-# It rebinds the global input function so solve() can be called repeatedly.
+The following harness assumes the submitted solution is saved as `solution.py`. It executes that exact program, so the tests do not duplicate the implementation.
 
+```python
+# helper: run the submitted solution and return its output
 import sys
 import io
+import subprocess
 
 def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    global input
-    input = sys.stdin.readline
-
-    try:
-        solve()
-        return sys.stdout.getvalue()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
+    result = subprocess.run(
+        [sys.executable, "solution.py"],
+        input=inp,
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    return result.stdout.strip()
 
 # Official sample 1
-assert run("""\
+sample1 = """\
 10
 10 0
 10 1
@@ -491,114 +420,74 @@ assert run("""\
 2 4
 1 4
 0 4
-""") == """\
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-""", "sample 1"
+"""
+assert run(sample1) == "\n".join(["0"] * 10), "sample 1"
 
 # Official sample 2
-assert run("""\
+sample2 = """\
 5
 3 6
 6 4
 6 9
 7 2
 10 8
-""") == """\
-0
-0
-1
-2
-3
-""", "sample 2"
+"""
+assert run(sample2) == "\n".join(["0", "0", "1", "2", "3"]), "sample 2"
 
 # Minimum-size input
-assert run("""\
-1
-0 0
-""") == "0\n", "minimum size"
+assert run("1\n0 0\n") == "0", "single Pokemino"
 
-# Same attack: strict attack comparison means every point survives.
-assert run("""\
-3
+# Equal attack values must all remain useful
+same_attack = """\
+4
 5 0
+5 100
+5 50
 5 1
-5 2
-""") == """\
-0
-0
-0
-""", "equal attack"
+"""
+assert run(same_attack) == "\n".join(["0", "0", "0", "0"]), \
+    "equal attack values"
 
-# A point becomes useless only because of breeding.
-assert run("""\
+# Direct dominance and positive-slope collinearity
+positive_line = """\
+3
+0 0
+2 2
+1 1
+"""
+assert run(positive_line) == "\n".join(["0", "0", "1"]), \
+    "direct dominance and insertion order"
+
+# Convex combination can dominate without either parent doing so
+convex = """\
 3
 0 10
 10 0
-4 4
-""") == """\
-0
-0
-1
-""", "breeding domination"
+5 4
+"""
+assert run(convex) == "\n".join(["0", "0", "1"]), \
+    "convex combination"
 
-# Interior direct domination catches a common local-hull mistake.
-assert run("""\
-4
-0 10
-3 0
-1 11
-2 12
-""") == """\
-0
-0
-1
-2
-""", "interior direct domination"
-
-# Coordinate boundaries, including 0 and 1e9.
-assert run("""\
-4
-0 0
-1000000000 0
-0 1000000000
-1000000000 1000000000
-""") == """\
-0
-0
-0
-1
-""", "coordinate boundaries"
-
-# Maximum N, with all defenses equal.
-# No point can strictly dominate another because all defenses are equal.
-max_n = 100000
-max_input = str(max_n) + "\n" + "\n".join(
-    f"{i} 1000000000" for i in range(max_n)
-) + "\n"
-max_expected = "\n".join("0" for _ in range(max_n)) + "\n"
-
-assert run(max_input) == max_expected, "maximum size"
+# Maximum-size test with boundary coordinates.
+# Every point has attack 0, so no point can have strictly greater attack.
+n = 100000
+lines = [str(n)]
+for i in range(n):
+    lines.append(f"0 {10**9 - i}")
+large = "\n".join(lines) + "\n"
+expected = "\n".join(["0"] * n)
+assert run(large) == expected, "maximum-size equal-attack test"
 
 print("all tests passed")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 0 0` | `0` | Minimum input size and the initial frontier. |
-| Three points with attack `5` | `0 0 0` | Strict attack comparison and vertical frontier handling. |
-| `(0,10), (10,0), (4,4)` | `0 0 1` | A Pokemino made useless only through breeding. |
-| `(0,10), (3,0), (1,11), (2,12)` | `0 0 1 2` | Deleting an interior point that becomes directly dominated. |
-| Four corner points using `0` and `10^9` | `0 0 0 1` | Coordinate boundaries and strict inequalities. |
-| `100000` points with common defense | All zeros | Maximum (N), large coordinates, and a long horizontal frontier. |
+| `1 / 0 0` | `0` | Minimum input and empty-neighbor handling |
+| Four points with attack `5` | `0 0 0 0` | Equal attacks and the custom ordering |
+| `(0,0), (2,2), (1,1)` | `0 0 1` | Direct domination and the first-point boundary case |
+| `(0,10), (10,0), (5,4)` | `0 0 1` | Domination created by breeding two Pokeminos |
+| (100000) points with attack `0` | (100000) zeroes | Maximum input size, boundary coordinate, and performance |
 
 ## Edge Cases
 
@@ -606,55 +495,50 @@ For equal attacks, consider
 
 ```
 3
-5 0
 5 1
+5 3
 5 2
 ```
 
-The treap orders these as ((5,2),(5,1),(5,0)). Every successor has the same attack as its predecessor, so the direct-domination test fails. The cross products on this vertical segment do not produce a negative value either. All three points remain in the frontier and the output is `0 0 0`.
+The ordering inside the treap is `(5,3)`, `(5,2)`, `(5,1)`. No point has attack greater than `5`, so even though the defenses differ, none can be strictly dominated. The last point is automatically safe because it has no successor, while the equal-attack neighbors fail the direct-dominance condition because their successors do not have greater attack. The output is `0 0 0`.
 
-For equal defenses, consider
+For collinear points on a decreasing segment,
 
 ```
 3
-0 5
-1 5
-2 5
+0 10
+5 5
+10 0
 ```
 
-The frontier is horizontal. The cross product is zero for consecutive triples, while no successor has strictly greater defense. The points therefore remain useful. The output is `0 0 0`. This is why using `cross <= 0` blindly would be incorrect.
+the middle point has cross product zero. The algorithm removes points only when the cross product is strictly negative, so `(5,5)` stays in the hull. Breeding the endpoints can reproduce `(5,5)`, but cannot produce a point strictly better in both coordinates. The output is `0 0 0`.
 
-For breeding-only domination, use
+For convex domination,
 
 ```
 3
 0 10
 10 0
-4 4
+5 4
 ```
 
-After the first two insertions, both endpoints are useful. The third point lies strictly below the segment between them. Its cross product with its two neighbors is negative, so the algorithm deletes it. Geometrically, the segment contains points such as ((5,5)), which have both coordinates greater than ((4,4)). The output becomes `0 0 1`.
+the first two points remain useful. When `(5,4)` arrives, its predecessor is `(0,10)` and its successor is `(10,0)`. The cross product is
 
-For an interior point that is directly dominated by a later insertion, use
+[
+(-5)(-4)-(6)(5)=20-30=-10.
+]
 
-```
-4
-0 10
-3 0
-1 11
-2 12
-```
+The point lies strictly below the segment joining its neighbors. Their midpoint is `(5,5)`, which has the same attack and larger defense, so `(5,4)` is removed and the answer becomes `1`.
 
-After three insertions, ((0,10)) is already dominated by ((1,11)), so the answer is `1`. When ((2,12)) arrives, the algorithm checks the predecessor ((1,11)), discovers that the new point has both larger coordinates, and deletes it. The remaining ((3,0)) cannot be deleted because it has the maximum attack. The final answer is `2`.
-
-The maximum-coordinate case
+For direct domination at an endpoint,
 
 ```
-4
+3
 0 0
-1000000000 0
-0 1000000000
-1000000000 1000000000
+2 2
+1 1
 ```
 
-tests both boundary values. The first three points are pairwise non-dominating under strict comparison. The final point ((10^9,10^9)) dominates only ((0,0)), because the other two points share one coordinate with it. The output is `0 0 0 1`, and the cross-product arithmetic remains exact because Python integers do not overflow.
+the point `(0,0)` is removed when `(2,2)` arrives because the successor is larger in both coordinates. The third point `(1,1)` is inserted after `(0,0)` has already disappeared, so `(2,2)` becomes its successor and directly dominates it. The output is `0 0 1`. This case explains why the first-point condition cannot be replaced by the cross-product test alone.
+
+For the maximum-size boundary case, all (100000) points can have attack `0` and distinct defenses between `0` and `10^9`. Since strict domination requires larger attack, every point remains useful regardless of defense. The treap still performs one insertion per point, and no deletion occurs, so the algorithm stays within its expected (O(N\log N)) running time.
