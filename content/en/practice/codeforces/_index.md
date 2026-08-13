@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23149 problems, 12940 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23151 problems, 12941 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23149 problems, 12940 verified.**
+**3135 contests, 23151 problems, 12941 verified.**
 
-## Unknown — 830 contests, 7002 problems, 4186 verified
+## Unknown — 830 contests, 7004 problems, 4187 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102318](102318/) | [UCF Locals 2017](https://codeforces.com/contest/102318) | 9 | 9/9 | Special | - |
 | [102323](102323/) | [UCF Locals 2014](https://codeforces.com/contest/102323) | 11 | 11/11 | Special | - |
 | [102330](102330/) | [Сириус.2019.Ноябрь.Очный отбор](https://codeforces.com/contest/102330) | 7 | 7/7 | Special | - |
-| [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 7 | 7/7 | Special | - |
+| [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 9 | 8/9 | Special | - |
 | [102341](102341/) | [Radewoosh+mnbvmar Contest (supported by AIM Tech)](https://codeforces.com/contest/102341) | 6 | 5/6 | Special | - |
 | [102361](102361/) | [2019 China Collegiate Programming Contest Qinhuangdao Onsite](https://codeforces.com/contest/102361) | 8 | 8/8 | Special | - |
 | [102373](102373/) | [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373) | 6 | 4/6 | Special | - |
