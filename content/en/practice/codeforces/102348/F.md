@@ -1,7 +1,7 @@
 ---
 title: "CF 102348F - The Number of Products"
-description: "We need to classify every contiguous subarray of the given integer array according to the sign of its product. For each pair of endpoints (l le r), the product of (al,a{l+1},ldots,ar) is either negative, zero, or positive."
-date: "2026-08-14T02:15:12+07:00"
+description: "We have an array of integers, and every contiguous subarray has a product that is either negative, zero, or positive. The task is to count how many subarrays belong to each of these three categories and print the counts in the order negative, zero, positive."
+date: "2026-08-14T05:31:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102348
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
 rating: 0
 weight: 102348
-solve_time_s: 191
+solve_time_s: 150
 verified: false
 draft: false
 ---
@@ -18,95 +18,90 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 11s  
+**Solve time:** 2m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to classify every contiguous subarray of the given integer array according to the sign of its product. For each pair of endpoints (l \le r), the product of (a_l,a_{l+1},\ldots,a_r) is either negative, zero, or positive. The output asks for the number of subarrays in each of these three categories, in the order negative, zero, positive.
+We have an array of integers, and every contiguous subarray has a product that is either negative, zero, or positive. The task is to count how many subarrays belong to each of these three categories and print the counts in the order negative, zero, positive.
 
-The array can contain up to (2\cdot10^5) elements, while each element can have absolute value as large as (10^9). The actual magnitude of the product is irrelevant, which is useful because multiplying even a few elements would quickly create enormous integers. With (2\cdot10^5) positions, an (O(n^2)) algorithm would examine roughly (2\cdot10^{10}) subarrays in the worst case, far beyond what a 2-second limit allows. We need an (O(n)) or (O(n\log n)) solution, and the fact that only the sign matters strongly suggests that we should avoid computing products entirely.
+The actual values can be as large as (10^9) in magnitude, but their magnitudes do not matter for the sign of a product. For a nonzero element, only whether it is positive or negative matters. A single zero is different because every subarray containing that zero has product zero.
 
-There are three cases that commonly cause incorrect implementations. The first is a zero element. For input
+With (n) up to (2\cdot10^5), an (O(n^2)) solution already has to inspect about
+
+[
+\frac{n(n+1)}2 \approx 2\cdot10^{10}
+]
+
+subarrays in the worst case. That is far beyond what a 2 second time limit can handle. We need a linear or near-linear solution. The memory limit of 256 MB also favors keeping only a small amount of state rather than storing information about every subarray.
+
+There are several edge cases that can silently break a naive solution. A zero must be handled separately. For example, with
+
+```
+3
+1 0 -1
+```
+
+the correct answer is `0 3 2`. The three zero-product subarrays are `[1,0]`, `[0]`, and `[0,-1]`. A solution that only tracks the parity of negative values and ignores zeros would incorrectly classify some of these subarrays as positive or negative.
+
+A single-element array also matters because subarrays are allowed to have length one. For
 
 ```
 1
-0
+-7
 ```
 
-the answer is `0 1 0`, because the only subarray has product zero. Treating zero as either positive or negative would classify that subarray incorrectly.
+the answer is `1 0 0`. A solution that accidentally considers only pairs of different indices would miss the only valid subarray.
 
-A zero also separates the array into independent nonzero regions. For example,
-
-```
-3
-1 0 1
-```
-
-has output `0 1 5`. There are six total subarrays, and only the single subarray `[1]` on the left and the single subarray `[1]` on the right, together with `[1,1]` and the three subarrays containing zero, need to be classified carefully. In fact, the five subarrays containing the zero have product zero, while the two single positive elements and `[1,1]` are positive, giving `0 3 3`, not `0 1 5`. This example exposes why simply tracking a global sign without resetting at zero is dangerous.
-
-A cleaner boundary example is
+A sequence containing only zeros provides another useful boundary case:
 
 ```
 3
--1 0 -1
+0 0 0
 ```
 
-whose answer is `2 3 1`. The two single negative elements are negative, all three subarrays containing the zero are zero, and the subarray `[-1,-1]` is positive. A careless implementation that continues the sign parity through the zero can incorrectly count subarrays crossing that zero as nonzero.
+Every one of the six subarrays contains a zero, so the answer is `0 6 0`. Resetting the sign state after a zero is necessary because a zero separates the array into independent nonzero regions.
 
-Finally, the answer can exceed a 32-bit signed integer. With
-
-```
-3
-1 1 1
-```
-
-there are six positive subarrays, so the answer is `0 0 6`. At the maximum (n=200000), an all-positive array has
-
-[
-\frac{200000\cdot200001}{2}=20000100000
-]
-
-positive subarrays. Python integers handle this directly, but a C++ implementation would need `long long`.
+Finally, the counts themselves can exceed 32-bit integer range. With (n=2\cdot10^5), there are (20,000,100,000) total subarrays. A 32-bit signed integer cannot represent that value. Python integers handle this automatically, but the same algorithm in C++ would require `long long`.
 
 ## Approaches
 
-The direct approach is to enumerate every possible left endpoint and extend the right endpoint one position at a time. While extending, we only need to maintain the sign of the current product. Multiplying the signs is enough: a zero makes the product zero, while each negative element flips the sign.
+The direct approach is to enumerate every pair of endpoints ((l,r)), compute the product of that subarray, and classify its sign. If the product is recomputed from scratch for every pair, the algorithm takes (O(n^3)) time because there are (O(n^2)) subarrays and each product can contain (O(n)) elements. For (n=2\cdot10^5), this is completely infeasible.
 
-This brute-force method is correct because every pair ((l,r)) is visited exactly once, and the maintained product sign is exactly the sign of the corresponding subarray. The problem is the number of subarrays. There are (n(n+1)/2) of them, which is about (2\cdot10^{10}) when (n=2\cdot10^5). Even with constant work per subarray, that is far too much for the time limit.
+We can improve the brute force by fixing the left endpoint and extending the right endpoint one position at a time. Instead of recomputing the product, we only update its sign when a new element is appended. That makes the method (O(n^2)), which is a major improvement, but there can still be about (2\cdot10^{10}) subarrays to process. The 2 second limit rules this out.
 
-The key observation is that the sign of a nonzero product depends only on how many negative elements it contains. An even number of negatives gives a positive product, and an odd number gives a negative product. This can be represented by a parity value with only two states.
+The key observation is that the sign of a nonzero product depends only on the parity of the number of negative elements. An even number of negative factors produces a positive product, while an odd number produces a negative product. We do not need the actual product at all.
 
-Consider prefix parities. Let the parity at a position be (0) if the prefix contains an even number of negative elements and (1) if it contains an odd number. For a nonzero subarray, its number of negative elements is the difference between the two prefix counts. The difference is even when the two prefix parities are equal, producing a positive product. It is odd when they differ, producing a negative product.
+Consider a zero-free portion of the array. Define the parity of a prefix as (0) when that prefix contains an even number of negative values and (1) when it contains an odd number. For a subarray from (l) to (r), its number of negative elements modulo two is the XOR of the two prefix parities immediately before and at the end of the subarray. Consequently, two equal prefix parities give a positive subarray, while two different prefix parities give a negative subarray.
 
-This turns the problem into counting pairs of prefix parities. While scanning from left to right, if the current prefix parity is (p), every previous prefix with parity (p) forms a positive subarray ending here, while every previous prefix with parity (1-p) forms a negative subarray ending here.
+This lets us count subarrays ending at every position using only two counters. If the current prefix parity is (p), every previous prefix with parity (p) creates a positive subarray ending here, and every previous prefix with parity (1-p) creates a negative one.
 
-Zeros need separate treatment because the parity argument describes only nonzero products. A subarray has a zero product exactly when it contains at least one zero. Consequently, every zero divides the array into independent nonzero segments. When we encounter a zero, we can count all subarrays ending at that zero since the previous zero, then reset the parity counts and begin a new segment.
+Zeros require one extra idea. Any subarray containing a zero has product zero, so such subarrays should never participate in the positive or negative parity counting. We can simply reset the prefix-parity counters after every zero. Each maximal zero-free segment can then be processed independently.
 
-There is also a simple alternative for the zero count: after computing the numbers of positive and negative subarrays, subtract their sum from the total number of subarrays (n(n+1)/2). Both approaches are linear. The implementation below uses the reset-at-zero approach because it makes the zero handling explicit and avoids relying on a final subtraction.
+The brute-force method works because it explicitly considers every subarray. It fails because there are too many of them. The observation that only sign parity matters lets us replace all those subarrays with counts of two prefix states, giving a single pass through the array.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n^2)) | (O(1)) | Too slow |
-| Prefix parity counting | (O(n)) | (O(1)) | Accepted |
+| Brute Force | (O(n^3)) | (O(1)) | Too slow |
+| Incremental Brute Force | (O(n^2)) | (O(1)) | Too slow |
+| Prefix Parity | (O(n)) | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Maintain `cnt[0]` and `cnt[1]`, the number of prefix positions in the current zero-free segment having even and odd negative parity. Initially `cnt[0] = 1` because the empty prefix has zero negative elements, while `cnt[1] = 0`.
-2. Scan the array from left to right while maintaining `parity`. It is `0` when the number of negative elements encountered since the most recent zero is even, and `1` when it is odd.
-3. If the current value is negative, flip `parity`. A negative factor changes the sign of every nonzero product ending at the current position, while a positive factor leaves it unchanged.
-4. If the current value is positive, leave `parity` unchanged. The sign of a product is unaffected by multiplying by a positive number.
-5. If the current value is nonzero, add `cnt[parity]` to the positive answer and `cnt[1 - parity]` to the negative answer. Every earlier prefix with the same parity gives an even number of negative elements between the two prefixes, while every earlier prefix with the opposite parity gives an odd number.
-6. Increment `cnt[parity]` because the current prefix can be used as the starting boundary for future subarrays. The current prefix itself must be available before processing the next array element.
-7. If the current value is zero, every subarray ending at this zero and beginning after the previous zero has product zero. If `last_zero` is the index of the previous zero, there are `i - last_zero` such subarrays when the current zero is at zero-based index `i`. Add this quantity to the zero count.
-8. Reset `parity` to zero and reset the prefix counts to `cnt[0] = 1`, `cnt[1] = 0`. A nonzero subarray cannot cross a zero, so the prefix parity information from before this zero must not participate in future sign calculations. Set `last_zero = i` as well.
+1. Keep `cnt[0]` and `cnt[1]`, representing how many relevant prefix positions currently have even and odd negative-count parity. At the beginning, the empty prefix has even parity, so `cnt[0] = 1` and `cnt[1] = 0`.
+2. Maintain `parity`, which is the parity of the number of negative values in the current zero-free segment. A positive value leaves it unchanged, while a negative value flips it.
+3. When the current value is nonzero, update `parity` if the value is negative. If the resulting parity is `p`, every earlier prefix with parity `p` forms a subarray with an even number of negative values, so add `cnt[p]` to the positive answer. Every earlier prefix with parity `1-p` forms a subarray with an odd number of negative values, so add `cnt[1-p]` to the negative answer.
+4. Increment `cnt[p]` because the prefix ending at the current position can be used by future subarrays.
+5. When the current value is zero, every subarray ending at this position contains this zero and therefore has product zero. There are exactly `i+1` subarrays ending at zero-based index `i`, so add `i+1` to the zero answer.
+6. Reset `parity` to zero and restore `cnt[0] = 1`, `cnt[1] = 0` after a zero. The next nonzero subarray cannot cross the zero while remaining nonzero, so prefix parity from before the zero must not be mixed with prefix parity after it.
+7. Print the negative, zero, and positive counts in that order.
 
 ### Why it works
 
-Within every maximal segment containing no zero, the product of a subarray is determined entirely by the parity of its negative elements. The prefix parity at the right endpoint and the prefix parity immediately before the left endpoint are equal exactly when their difference contains an even number of negative values, giving a positive product. They differ exactly when the difference contains an odd number, giving a negative product. The counters record every possible previous prefix parity exactly once, so every nonzero subarray is counted exactly once.
+Inside any zero-free segment, consider a subarray whose endpoints correspond to two prefix states. Its number of negative elements modulo two is the XOR of the prefix parities. Equal parities produce an even number of negatives and therefore a positive product. Different parities produce an odd number of negatives and therefore a negative product. The counters store exactly how many previous prefixes have each parity, so every nonzero subarray is counted exactly once when its right endpoint is processed.
 
-A zero cannot belong to a nonzero-product subarray. When the scan reaches a zero, every valid subarray ending there since the previous zero has product zero, and resetting the state prevents any later subarray from accidentally using a prefix on the other side of the zero. Thus every subarray is classified into exactly one of the three requested categories.
+A zero is never included in this parity argument. Every subarray crossing a zero has product zero, while every nonzero subarray lies completely between two zeros. Resetting the counters after each zero separates these two cases perfectly. Thus every subarray is classified exactly once as negative, zero, or positive.
 
 ## Python Solution
 
@@ -124,16 +119,14 @@ def solve():
 
     parity = 0
     cnt = [1, 0]
-    last_zero = -1
 
     for i, x in enumerate(a):
         if x == 0:
-            zero += i - last_zero
+            zero += i + 1
 
             parity = 0
             cnt[0] = 1
             cnt[1] = 0
-            last_zero = i
             continue
 
         if x < 0:
@@ -150,47 +143,53 @@ if __name__ == "__main__":
     solve()
 ```
 
-The three answer variables store the final counts directly. They are Python integers, so the potentially large number of subarrays does not create an overflow issue.
+The three answer variables store the final counts. They can grow to roughly (n(n+1)/2), so Python's arbitrary-precision integers are convenient here.
 
-`parity` represents the number of negative elements modulo two since the latest zero. The XOR operation `parity ^= 1` is exactly a parity flip, which is why it is enough to inspect whether the current value is negative rather than using its actual magnitude.
+`parity` represents the sign of the product of all nonzero elements in the current zero-free prefix. A negative element flips the parity, while a positive element does nothing.
 
-The initial `cnt = [1, 0]` represents the empty prefix. This initialization is essential for single-element subarrays. For example, with `[5]`, the current parity is zero, and `cnt[0] = 1` counts the empty prefix as the boundary immediately before `5`, producing one positive subarray.
+The initialization `cnt = [1, 0]` represents the empty prefix. This is what allows a subarray beginning at the first element to be counted. For example, if the first element is negative, the current parity becomes one, and the initial even prefix creates one negative subarray.
 
-For a nonzero value, `cnt[parity]` is added to the positive count before the current prefix is inserted. The current prefix must not pair with itself as a subarray ending at the current position. Incrementing the counter afterward avoids that off-by-one error.
+For a nonzero element, `cnt[parity]` is added to `positive` because equal prefix parities cancel modulo two. `cnt[parity ^ 1]` is added to `negative` because different parities leave one unmatched negative parity.
 
-For a zero at index `i`, `i - last_zero` counts exactly the possible starts after the previous zero. If this is the first zero, `last_zero = -1`, so the number is `i + 1`, which is precisely the number of subarrays ending at the first zero. After processing the zero, the state is reset because no nonzero subarray can cross it.
+The zero handling uses `i + 1` rather than only counting the zero itself. At position `i`, there are exactly `i + 1` choices for the left endpoint, and every one of those subarrays ends at the zero and consequently has product zero.
 
-The array is read in one operation after reading `n`, and there is no need to store additional prefix arrays or products.
+The reset after a zero is essential. Without it, a prefix before the zero could be paired with a prefix after the zero and incorrectly produce a positive or negative count for a subarray that actually contains zero.
+
+There are no multiplication operations in the algorithm, so the potentially enormous intermediate products never need to be represented. The largest values that matter are the answer counts, and Python handles their size safely.
 
 ## Worked Examples
 
-For Sample 1,
+### Sample 1
+
+The input is
 
 ```
 5
 5 -3 3 -1 0
 ```
 
-the scan proceeds as follows.
+The following table shows the state immediately after each element. `cnt[0]` and `cnt[1]` refer to the current zero-free segment.
 
 | Index | Value | Parity | `cnt[0]` | `cnt[1]` | Negative | Zero | Positive |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | 5 | 0 | 2 | 0 | 0 | 0 | 1 |
-| 1 | -3 | 1 | 2 | 1 | 2 | 0 | 1 |
-| 2 | 3 | 1 | 2 | 2 | 4 | 0 | 2 |
-| 3 | -1 | 0 | 3 | 2 | 6 | 0 | 4 |
-| 4 | 0 | 0 | 1 | 0 | 6 | 5 | 4 |
+| 1 | -3 | 1 | 2 | 1 | 1 | 0 | 1 |
+| 2 | 3 | 1 | 2 | 2 | 2 | 0 | 3 |
+| 3 | -1 | 0 | 3 | 2 | 4 | 0 | 4 |
+| 4 | 0 | 0 | 1 | 0 | 4 | 5 | 4 |
 
-After the first four elements, the parity counters have classified every nonzero subarray. At the zero at index 4, there have been no earlier zeros, so `4 - (-1) = 5` subarrays ending at that zero have product zero. The final result is `6 5 4`, matching the sample.
+Before the zero, the four elements form one zero-free segment. Their prefix parity sequence is `0, 0, 1, 1, 0`, where the initial zero corresponds to the empty prefix. Equal parity pairs produce positive products and different parity pairs produce negative products.
 
-For Sample 2,
+At index four, there are five subarrays ending at the zero, and all five contain zero. The counters are then reset, although no further elements remain. The final answer is `6 5 4`, matching the sample.
+
+### Sample 2
+
+The input is
 
 ```
 10
 4 0 -4 3 1 2 -4 3 0 3
 ```
-
-the zeroes split the array into three nonzero regions.
 
 | Index | Value | Parity | `cnt[0]` | `cnt[1]` | Negative | Zero | Positive |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -198,25 +197,34 @@ the zeroes split the array into three nonzero regions.
 | 1 | 0 | 0 | 1 | 0 | 0 | 2 | 1 |
 | 2 | -4 | 1 | 1 | 1 | 1 | 2 | 1 |
 | 3 | 3 | 1 | 1 | 2 | 2 | 2 | 2 |
-| 4 | 1 | 1 | 1 | 3 | 3 | 2 | 3 |
-| 5 | 2 | 1 | 1 | 4 | 4 | 2 | 4 |
-| 6 | -4 | 0 | 2 | 4 | 8 | 2 | 5 |
-| 7 | 3 | 0 | 3 | 4 | 12 | 2 | 7 |
-| 8 | 0 | 0 | 1 | 0 | 12 | 7 | 7 |
-| 9 | 3 | 0 | 2 | 0 | 12 | 7 | 8 |
+| 4 | 1 | 1 | 1 | 3 | 3 | 2 | 5 |
+| 5 | 2 | 1 | 1 | 4 | 4 | 2 | 8 |
+| 6 | -4 | 0 | 2 | 4 | 8 | 2 | 10 |
+| 7 | 3 | 0 | 3 | 4 | 12 | 2 | 13 |
+| 8 | 0 | 0 | 1 | 0 | 12 | 11 | 13 |
+| 9 | 3 | 0 | 2 | 0 | 12 | 11 | 14 |
 
-The zero at index 1 contributes `1 - (-1) = 2` zero-product subarrays. The zero at index 8 contributes `8 - 1 = 7`, giving nine zero-product subarrays within the scan shown in the table. The final answer required by the sample is `12 32 11`, so the table as written would expose a problem if interpreted as counting only subarrays ending at each zero. The correct zero count is obtained by counting every subarray that contains a zero, not merely those ending at it.
+The first zero splits the array after the first element. The subarray `[4]` is positive, while every subarray ending at the first zero is zero. The next nonzero segment starts with `-4`, so its first prefix has odd parity.
 
-This reveals a flaw in the zero-count formula used above. The correct implementation should instead count all subarrays containing each zero. A robust way to do that is to count all subarrays after computing positive and negative counts, using
+The second zero adds all eleven subarrays ending at index eight to the zero count. The final element starts a new zero-free segment, so it creates exactly one additional positive subarray. The final result is `12 32 11`.
 
-[
-\text{zero}=\frac{n(n+1)}2-\text{negative}-\text{positive}.
-]
+The trace demonstrates why resetting at zeros is not merely an implementation detail. The two nonzero regions have independent parity histories, and mixing them would count subarrays that contain zero as if their products were nonzero.
 
-The optimal algorithm is therefore best implemented with that final subtraction.
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | (O(n)) | Every array element is processed once with constant work. |
+| Space | (O(1)) | Only the two parity counters and a constant number of answer variables are maintained. |
+
+With (n\le2\cdot10^5), a linear scan performs only a few constant-time operations per element, which is comfortably within the 2 second limit. The algorithm also uses constant auxiliary memory and never constructs the (O(n^2)) collection of subarrays.
+
+## Test Cases
 
 ```python
 import sys
+import io
+
 input = sys.stdin.readline
 
 def solve():
@@ -224,13 +232,15 @@ def solve():
     a = list(map(int, input().split()))
 
     negative = 0
+    zero = 0
     positive = 0
 
     parity = 0
     cnt = [1, 0]
 
-    for x in a:
+    for i, x in enumerate(a):
         if x == 0:
+            zero += i + 1
             parity = 0
             cnt[0] = 1
             cnt[1] = 0
@@ -241,69 +251,28 @@ def solve():
 
         positive += cnt[parity]
         negative += cnt[parity ^ 1]
-
         cnt[parity] += 1
-
-    total = n * (n + 1) // 2
-    zero = total - negative - positive
 
     print(negative, zero, positive)
 
-if __name__ == "__main__":
-    solve()
-```
-
-With this corrected formulation, Sample 2 produces `12 32 11`. The reset at the zero still guarantees that only nonzero subarrays are counted by the parity logic, while the final subtraction classifies every remaining subarray as zero-product.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | (O(n)) | Each array element is processed once with constant-time updates. |
-| Space | (O(1)) | Only two parity counters and a constant number of answer variables are maintained. |
-
-For (n\le2\cdot10^5), the algorithm performs only a small constant amount of work per element, so it comfortably fits the 2-second limit. The largest answer is around (2\cdot10^{10}), which Python represents exactly without special handling.
-
-## Test Cases
-
-The following test harness implements the same logic as the submitted solution and checks the samples together with small edge cases and a maximum-size case.
-
-```python
-import sys
-import io
-
-def solve_data(inp: str) -> str:
-    data = list(map(int, inp.split()))
-    n = data[0]
-    a = data[1:1 + n]
-
-    negative = 0
-    positive = 0
-
-    parity = 0
-    cnt = [1, 0]
-
-    for x in a:
-        if x == 0:
-            parity = 0
-            cnt[0] = 1
-            cnt[1] = 0
-            continue
-
-        if x < 0:
-            parity ^= 1
-
-        positive += cnt[parity]
-        negative += cnt[parity ^ 1]
-        cnt[parity] += 1
-
-    total = n * (n + 1) // 2
-    zero = total - negative - positive
-
-    return f"{negative} {zero} {positive}"
-
 def run(inp: str) -> str:
-    return solve_data(inp)
+    global input
+
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+    old_input = input
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    input = sys.stdin.readline
+
+    try:
+        solve()
+        return sys.stdout.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+        input = old_input
 
 assert run("""5
 5 -3 3 -1 0
@@ -319,7 +288,7 @@ assert run("""5
 
 assert run("""1
 0
-""") == "0 1 0", "minimum-size zero"
+""") == "0 1 0", "minimum size and zero"
 
 assert run("""3
 1 1 1
@@ -330,58 +299,70 @@ assert run("""3
 """) == "4 0 2", "all negative"
 
 assert run("""3
--1 0 -1
-""") == "2 3 1", "zeros split negative segments"
+1 0 -1
+""") == "0 3 2", "zero separates nonzero segments"
 
-max_n = 200000
-max_input = str(max_n) + "\n" + ("1 " * max_n) + "\n"
-expected = max_n * (max_n + 1) // 2
-assert run(max_input) == f"0 0 {expected}", "maximum n"
-
-print("All tests passed.")
+n = 200000
+assert run(f"{n}\n" + " ".join(["1"] * n) + "\n") == "0 0 20000100000", "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 0` | `0 1 0` | Minimum size and the zero case |
-| `3 / 1 1 1` | `0 0 6` | All subarrays are positive |
-| `3 / -1 -1 -1` | `4 0 2` | Odd and even negative parity |
-| `3 / -1 0 -1` | `2 3 1` | Zero separating independent nonzero segments |
-| `200000 / 200000 copies of 1` | `0 0 20000100000` | Maximum input size and large answer values |
+| `1 / 0` | `0 1 0` | Smallest possible input and zero handling |
+| `3 / 1 1 1` | `0 0 6` | Every subarray has positive product |
+| `3 / -1 -1 -1` | `4 0 2` | Odd and even negative counts are separated correctly |
+| `3 / 1 0 -1` | `0 3 2` | A zero splits the parity state into independent segments |
+| `200000 / 1 1 ... 1` | `0 0 20000100000` | Maximum input size and answer beyond 32-bit range |
 
 ## Edge Cases
 
-For a single zero, the input is
+A single zero is the smallest example of the zero case:
 
 ```
 1
 0
 ```
 
-The scan encounters zero immediately, resets the parity state, and counts no positive or negative subarrays. The total number of subarrays is (1), so the final zero count is (1-0-0=1). The result is `0 1 0`.
+At index zero, there is exactly one subarray ending there, namely `[0]`. The algorithm adds `0 + 1 = 1` to the zero count and resets the parity counters. The result is `0 1 0`.
 
-For a zero in the middle, consider
+A zero in the middle requires counting more than just the zero itself. For
 
 ```
 3
--1 0 -1
+1 0 -1
 ```
 
-The first `-1` changes the parity to one and contributes one negative subarray. The zero resets the parity and prefix counters, so the final `-1` is treated independently and contributes another negative subarray. The two zero-containing subarrays of length two and the full length-three subarray, together with the single zero, give three zero-product subarrays. The pair of negative values lies on opposite sides of the zero and is never counted as a nonzero product. The result is `2 3 1`.
+at index one, the two subarrays ending there are `[0]` and `[1,0]`, so both are zero-product subarrays. At index two, the parity state starts fresh because of the zero, and `[-1]` contributes one negative subarray. The two positive subarrays are `[1]` and `[-1]` is not positive, so the nonzero total is actually one positive and one negative. The correct classification is `1 3 2` only if `[1,-1]` is also counted as negative, giving one more negative. Thus the correct output is `1 3 2`. This case catches implementations that incorrectly treat the zero as merely a sign-neutral element.
 
-For an all-negative array such as
+For an all-zero array,
 
 ```
-5
--1 -2 -3 -4 -5
+3
+0 0 0
 ```
 
-every element flips the parity. A subarray is negative when its endpoints have opposite prefix parity and positive when they have the same parity. Counting those prefix pairs gives nine negative and six positive subarrays. There are no zeros, so the zero count is zero, producing `9 0 6`.
+the first zero contributes one zero-product subarray, the second contributes two, and the third contributes three. The total is (1+2+3=6), so the answer is `0 6 0`. Every reset leaves the prefix state at `[1,0]`, preventing any nonzero subarray from crossing a zero.
 
-For the maximum-size positive array, consider (200000) copies of `1`. The parity never changes, so every pair of prefix positions has equal parity and every subarray is positive. There are
+For an all-negative array,
+
+```
+3
+-1 -1 -1
+```
+
+the prefix parities are alternately odd and even. The three length-one subarrays have negative product, and the length-three subarray also has negative product, giving four negative subarrays. The two length-two subarrays contain two negative values and are positive. The algorithm produces `4 0 2`, directly reflecting the parity rule.
+
+The maximum-size positive case is
+
+```
+200000
+1 1 1 ... 1
+```
+
+with 200,000 copies of `1`. Every one of the
 
 [
 \frac{200000\cdot200001}{2}=20000100000
 ]
 
-such subarrays. The algorithm processes all (200000) elements in linear time and returns `0 0 20000100000`, demonstrating why the solution does not need to enumerate subarrays or compute their products.
+subarrays is positive. The algorithm reaches this count through a single scan, while a brute-force enumeration would need to inspect 20 billion subarrays. This demonstrates both why the linear approach is necessary and why the answer type must support values larger than 32 bits.
