@@ -1,27 +1,29 @@
 ---
 title: "2019 USP Try-outs"
-description: "9 problems from 2019 USP Try-outs (contest 102299), difficulty -. 9/9 solutions verified against sample I/O."
+description: "11 problems from 2019 USP Try-outs (contest 102299), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102299
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 1049
+n_problems: 11
+n_verified: 11
+total_solve_s: 1696
 contest_year: 2019
-date: "2026-08-13T08:19:33+07:00"
+date: "2026-08-13T23:13:50+07:00"
 weight: 102299
 draft: false
 ---
 
 # [2019 USP Try-outs](https://codeforces.com/contest/102299)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 17m 29s
+Special | 11 problems | 11/11 verified | Difficulty - | 28m 16s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Kolkhozy](https://codeforces.com/problemset/problem/102299/A) |  |  |  | 1m 58s | ✓ |
+| [B](B/) | [Russo's Russian](https://codeforces.com/problemset/problem/102299/B) |  |  |  | 8m 20s | ✓ |
+| [C](C/) | [Crystal Matryoshkas](https://codeforces.com/problemset/problem/102299/C) |  |  |  | 2m 27s | ✓ |
 | [D](D/) | [Buildings and rockets](https://codeforces.com/problemset/problem/102299/D) |  |  |  | 2m 4s | ✓ |
 | [E](E/) | [Lenin's great dream](https://codeforces.com/problemset/problem/102299/E) |  |  |  | 4m 18s | ✓ |
 | [F](F/) | [Forbechenko v Rodvsky](https://codeforces.com/problemset/problem/102299/F) |  |  |  | 1m 13s | ✓ |

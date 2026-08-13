@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23123 problems, 12914 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23125 problems, 12916 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23123 problems, 12914 verified.**
+**3135 contests, 23125 problems, 12916 verified.**
 
 ## Unknown — 830 contests, 6993 problems, 4177 verified
 
@@ -1466,7 +1466,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 187 contests, 1130 problems, 741 verified
+## 2019 — 187 contests, 1132 problems, 743 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1629,7 +1629,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
-| [102299](102299/) | [2019 USP Try-outs](https://codeforces.com/contest/102299) | 9 | 9/9 | Special | - |
+| [102299](102299/) | [2019 USP Try-outs](https://codeforces.com/contest/102299) | 11 | 11/11 | Special | - |
 | [102302](102302/) | [2019 USP-ICMC](https://codeforces.com/contest/102302) | 6 | 5/6 | Special | - |
 | [102307](102307/) | [2019 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102307) | 8 | 8/8 | ICPC/IOI | - |
 | [102309](102309/) | [The 2019 “Orz Panda” Cup Programming Contest](https://codeforces.com/contest/102309) | 4 | 4/4 | Special | - |
