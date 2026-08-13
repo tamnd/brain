@@ -1,26 +1,27 @@
 ---
 title: "2019 ICPC Universidad Nacional de Colombia Programming Contest"
-description: "8 problems from 2019 ICPC Universidad Nacional de Colombia Programming Contest (contest 102307), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from 2019 ICPC Universidad Nacional de Colombia Programming Contest (contest 102307), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102307
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 1382
+n_problems: 9
+n_verified: 9
+total_solve_s: 1448
 contest_year: 2019
-date: "2026-08-13T07:30:07+07:00"
+date: "2026-08-13T23:33:59+07:00"
 weight: 102307
 draft: false
 ---
 
 # [2019 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102307)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 23m 2s
+ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 24m 8s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Amazon](https://codeforces.com/problemset/problem/102307/A) |  |  |  | 1m 6s | ✓ |
 | [B](B/) | [Boring Non-Palindrome](https://codeforces.com/problemset/problem/102307/B) |  |  |  | 6m 4s | ✓ |
 | [D](D/) | [Do Not Try This Problem](https://codeforces.com/problemset/problem/102307/D) |  |  |  | 4m 31s | ✓ |
 | [G](G/) | [Graduation](https://codeforces.com/problemset/problem/102307/G) |  |  |  | 1m 51s | ✓ |
