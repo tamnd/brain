@@ -1,7 +1,7 @@
 ---
 title: "CF 102375L - \u0411\u043b\u0438\u0436\u0430\u0439\u0448\u0438\u0435 \u0442\u043e\u0447\u043a\u0438"
-description: "We have a rectangle whose integer lattice points are all candidates. Among the marked points, the first point (p1) is special. We need to count every integer point ((x,y)) inside the rectangle for which (p1) is at least as close as every other marked point."
-date: "2026-08-14T03:38:16+07:00"
+description: "We care only about the Voronoi cell of the first marked point, restricted to the integer grid points inside the rectangle. A grid point (x, y) is good exactly when its Euclidean distance to p1 is no larger than its distance to every other marked point."
+date: "2026-08-14T13:23:43+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102375
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0443\u043d\u0434 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u0421\u0435\u0432\u0435\u0440\u043e-\u0417\u0430\u043f\u0430\u0434\u0430 \u0420\u043e\u0441\u0441\u0438\u0438 \u0438 \u041c\u043e\u0441\u043a\u0432\u044b ICPC 2019"
 rating: 0
 weight: 102375
-solve_time_s: 214
+solve_time_s: 234
 verified: false
 draft: false
 ---
@@ -18,46 +18,38 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 34s  
+**Solve time:** 3m 54s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a rectangle whose integer lattice points are all candidates. Among the marked points, the first point (p_1) is special. We need to count every integer point ((x,y)) inside the rectangle for which (p_1) is at least as close as every other marked point.
+We care only about the Voronoi cell of the first marked point, restricted to the integer grid points inside the rectangle. A grid point `(x, y)` is good exactly when its Euclidean distance to `p1` is no larger than its distance to every other marked point.
 
-The square root in the Euclidean distance is unnecessary. Comparing squared distances gives, for another marked point (q=(u,v)) and (p_1=(a,b)),
+The rectangle contains `(X + 1)(Y + 1)` integer points. For every candidate point, a direct solution compares its distance to all `K` marked points, so the straightforward method needs roughly `(X + 1)(Y + 1)K` distance comparisons. With all three parameters reaching `2 * 10^5`, that is about `8 * 10^15` comparisons, far beyond what is practical. We need to exploit the fact that comparing squared Euclidean distances makes the quadratic terms in `x` and `y` cancel.
 
-[
-(x-a)^2+(y-b)^2 \le (x-u)^2+(y-v)^2.
-]
-
-After expanding and cancelling (x^2) and (y^2), this becomes
-
-[
-2(u-a)x+2(v-b)y \le u^2+v^2-a^2-b^2.
-]
-
-So every other marked point contributes one linear inequality. The set of good points is exactly the intersection of these half-planes with the rectangle.
-
-The dimensions and the number of marked points are all at most (2\cdot10^5). The rectangle itself can contain about (4\cdot10^{10}) integer points, so enumerating all candidate points is impossible. Checking every candidate against every marked point would require roughly
-
-[
-(2\cdot10^5)^2\cdot2\cdot10^5 \approx 8\cdot10^{15}
-]
-
-distance comparisons. We need something close to (O(K\log K+X)) or (O(K\log K+Y)).
-
-There are several boundary cases that matter because the inequalities are non-strict. First, (p_1) itself is always good, so the answer can never be zero. For example,
+There are several boundary cases that can silently break an implementation. With only one marked point, every grid point is good. For example,
 
 ```
 1 1 1
 0 0
 ```
 
-has answer (4), because all four lattice points belong to the rectangle. A solution that considers only the interior of the rectangle would incorrectly return zero.
+has answer `4`, because all four integer points of the rectangle belong to the first point's region. An implementation that assumes at least one competitor may accidentally build an empty minimum or maximum envelope.
 
-Equal distances must also be accepted. Consider
+Another issue is a bisector passing between integer coordinates. Consider
+
+```
+2 1 2
+2 0
+1 0
+```
+
+The first point is closer whenever `x >= 1.5`, so the only good integer points have `x = 2`. Both possible `y` values are good, giving answer `2`. A careless integer conversion of a rational boundary can incorrectly include `x = 1`.
+
+A symmetric problem occurs when the required bound is a ceiling rather than a floor. For the same input, the lower boundary is `x >= 1.5`, and integer arithmetic must produce `ceil(1.5) = 2`. Python's integer division is useful here, but only after keeping the denominator positive and handling ceiling explicitly.
+
+Marked points can also lie on the rectangle boundary. For example,
 
 ```
 2 1 2
@@ -65,256 +57,163 @@ Equal distances must also be accepted. Consider
 2 0
 ```
 
-The perpendicular bisector is (x=1). Both (x=0) and (x=1) belong to (p_1)'s Voronoi cell, so the answer is (4). Replacing the required `<=` by `<` would incorrectly discard the two points with (x=1).
-
-A bisector can be vertical, so dividing by the coefficient of (y) without handling the zero case is unsafe. For example,
-
-```
-3 3 2
-1 0
-1 1
-```
-
-gives the condition (y\le\frac12), so only (y=0) is allowed and the answer is (4). A sign error when dividing the inequality would reverse the allowed half-plane.
-
-Finally, many marked points can have the same (y)-coordinate. This produces many vertical bisectors and is not a special geometric exception that can be ignored. Sample 2 is exactly such a case: all marked points lie on (y=0), and only the column (x=0) belongs to the cell of (p_1).
+contains points whose nearest marked point changes along the bottom edge, while the same comparison also applies to the row `y = 1`. The rectangle boundaries must be included, not treated as strict inequalities.
 
 ## Approaches
 
-The direct approach is to iterate over every integer (x) and (y) in the rectangle and compare the squared distance to (p_1) with the squared distance to every other marked point. The method is correct because the definition of a good point is checked literally. Its problem is the size of the search space. In the worst case it performs about (8\cdot10^{15}) comparisons, far beyond what is possible.
+The brute-force method examines every integer `(x, y)` with `0 <= x <= X` and `0 <= y <= Y`, computes its squared distance to `p1`, and compares it with the squared distance to every other marked point. This is correct because the definition of a good point is exactly that collection of comparisons. Its worst-case cost is `(X + 1)(Y + 1)(K - 1)`, which is approximately `8 * 10^15` operations at the maximum constraints.
 
-The useful observation is that after expanding the squared distances, every condition is linear. We do not need to construct the whole two-dimensional Voronoi polygon. Instead, fix an integer (x). Every non-vertical boundary can be written as either
+The useful observation comes from expanding one comparison. Let `p1 = (a, b)` and another marked point be `(u, v)`. We need
 
-[
-y\le f(x)
-]
+`(x-a)^2 + (y-b)^2 <= (x-u)^2 + (y-v)^2`.
 
-or
+After cancellation of `x^2` and `y^2`, this becomes
 
-[
-y\ge g(x),
-]
+`2(u-a)x + 2(v-b)y <= u^2 + v^2 - a^2 - b^2`.
 
-where (f) and (g) are rational linear functions. Thus for a fixed column (x), all good integer (y) form one interval:
+Every competitor therefore contributes a half-plane, not a curved condition. The set of good real points is the intersection of all these half-planes with the rectangle.
 
-[
-\left[\left\lceil\max g(x)\right\rceil,
-\left\lfloor\min f(x)\right\rfloor\right].
-]
+For a fixed integer `x`, every non-vertical half-plane gives either an upper bound or a lower bound on `y`. If `v > b`, it has the form
 
-The rectangle itself supplies (0\le y\le Y).
+`y <= (C - A x) / B`
 
-Now the problem has become a lower-envelope and upper-envelope problem for lines. We can construct the lower envelope with the Convex Hull Trick. The slopes are rational rather than necessarily integral, so every comparison is performed by cross multiplication. We also process integer (x)-coordinates from left to right, which lets us store the first integer coordinate where each line becomes optimal and answer all columns in linear time after building the hull.
+with `B > 0`. If `v < b`, it becomes
 
-A constraint with (v=b) does not give a line in (y). It gives a vertical restriction on (x), so these constraints can be processed separately and shrink the interval of columns we have to inspect.
+`y >= (A x - C) / (-B)`.
 
-The brute-force method works because it checks every half-plane at every lattice point. It fails because there are too many lattice points. The observation that each half-plane becomes a line bound on (y) for a fixed (x) lets us replace the two-dimensional enumeration with two one-dimensional envelopes and a sweep over at most (X+1) columns.
+Thus, for each `x`, all competitors can be summarized by just two values: the smallest upper-bound line and the largest lower-bound line. These are lower and upper envelopes of linear functions.
+
+A Li Chao tree lets us maintain such an envelope and query it at every integer `x` in logarithmic time. We keep one tree for minimum upper bounds and another for maximum lower bounds. The coefficients are kept as exact fractions, so no floating-point geometry is needed.
+
+The brute-force works because every candidate can be checked independently, but fails because there are too many candidates. The observation that each distance comparison becomes a linear inequality lets us summarize all competitors by two line envelopes and process only the `X + 1` possible columns.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(XYK)) | (O(K)) | Too slow |
-| Optimal | (O(K\log K+X)) | (O(K)) | Accepted |
+| Brute Force | `O(XYK)` | `O(K)` | Too slow |
+| Optimal | `O(K log X + X log X)` | `O(K + X)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read (p_1=(a,b)), initialize the allowed column interval as (L=0) and (R=X), and prepare two collections of lines. The first collection will represent upper bounds on (y), while the second will represent negated lower bounds.
-2. For every other marked point (q=(u,v)), define
+1. Read `p1 = (a, b)` and regard every other marked point `(u, v)` as a constraint. Squared distances are sufficient because comparing nonnegative distances is equivalent to comparing their squares.
+2. Expand the comparison against `(u, v)` into
 
-[
-dx=u-a,\qquad dy=v-b,
-]
+`A x + B y <= C`,
+
+where `A = 2(u-a)`, `B = 2(v-b)`, and `C = u^2 + v^2 - a^2 - b^2`.
+
+The quadratic terms disappear, which is the key transformation from geometry to linear functions.
+3. If `B > 0`, solve the inequality for `y` and obtain
+
+`y <= (C - A x) / B`.
+
+Store this rational linear function in a minimum Li Chao tree because the strongest upper restriction is the smallest one.
+4. If `B < 0`, solve for `y` in the opposite direction and obtain
+
+`y >= (A x - C) / (-B)`.
+
+Store this function in a maximum Li Chao tree because the strongest lower restriction is the largest one.
+5. If `B = 0`, the constraint contains only `x`. When `A > 0`, it restricts `x` from above with `x <= floor(C / A)`. When `A < 0`, it restricts `x` from below with `x >= ceil(C / A)`. Intersect these restrictions with `[0, X]`.
+
+There is no `A = B = 0` case because the marked points are pairwise distinct.
+6. Build the two Li Chao trees over the integer domain `[0, X]`. The trees compare rational line values by cross multiplication, so every comparison is exact.
+7. For each integer `x` from the allowed left endpoint to the allowed right endpoint, query the minimum upper line and maximum lower line. Start with the rectangle's own limits `0 <= y <= Y`, so
+
+`upper = min(Y, minimum upper constraint)`
 
 and
 
-[
-C=u^2+v^2-a^2-b^2.
-]
+`lower = max(0, maximum lower constraint)`.
+8. Convert the rational bounds to integer bounds. The largest allowed integer `y` is `floor(upper)`, while the smallest allowed integer `y` is `ceil(lower)`. If the lower integer bound does not exceed the upper integer bound, add their difference plus one to the answer.
+9. Output the accumulated number of integer points.
 
-The corresponding condition is
-
-[
-2dx,x+2dy,y\le C.
-]
-
-This is obtained directly by cancelling the quadratic terms from the two squared distances.
-
-1. If (dy=0), the inequality contains no (y). Since the two points are distinct, (dx\ne0), and the condition simplifies to
-
-[
-2dx,x\le dx(u+a).
-]
-
-For (dx>0), this gives
-
-[
-x\le\left\lfloor\frac{u+a}{2}\right\rfloor.
-]
-
-For (dx<0), it gives
-
-[
-x\ge\left\lceil\frac{u+a}{2}\right\rceil.
-]
-
-Update (L) or (R) accordingly.
-
-1. If (dy>0), divide the inequality by the positive value (2dy). The result is
-
-[
-y\le\frac{-2dx,x+C}{2dy}.
-]
-
-Store this rational line in the upper-envelope collection.
-
-1. If (dy<0), division reverses the inequality:
-
-[
-y\ge\frac{2dx,x-C}{-2dy}.
-]
-
-For convenience, negate this bound. Then
-
-[
--y\le\frac{-2dx,x+C}{-2dy}.
-]
-
-So we store the line with numerator (-2dx,x+C) and positive denominator (-2dy) in the second collection. The minimum of these negated lines is exactly the negative of the maximum lower bound.
-
-1. Add the rectangle constraints (y\le Y) and (y\ge0). The first is the constant upper line (Y). The second becomes the constant negated lower line (0). This means the envelopes automatically include the rectangle's horizontal sides.
-2. If (L>R), no integer column can satisfy all vertical restrictions, so the answer is zero. In fact this cannot happen for a valid geometric Voronoi cell containing (p_1), but handling it makes the implementation complete.
-3. Sort each collection by decreasing rational slope. Two slopes (a_1/d_1) and (a_2/d_2) are compared by cross multiplication, so no floating point arithmetic is used. For equal slopes, keep only the line with the smaller value.
-4. Build the lower envelope. Suppose the previous hull line is (f) and the new line is (g), with (g) having the smaller slope. The new line eventually becomes better as (x) increases. Its first integer winning coordinate is the ceiling of their intersection.
-
-For lines
-
-[
-f(x)=\frac{a_f x+b_f}{d_f},
-\qquad
-g(x)=\frac{a_g x+b_g}{d_g},
-]
-
-the intersection satisfies
-
-[
-(a_gd_f-a_fd_g)x=b_fd_g-b_gd_f.
-]
-
-Because the slopes are sorted decreasingly, the coefficient on the left is negative. We compute the exact ceiling with integer arithmetic. If the new line starts no later than the previous line started, the previous line is redundant and is removed.
-
-1. Store, together with every hull line, the first integer (x) where it is optimal. Since these starting coordinates are increasing, a single pointer can answer all queries for (x=L,L+1,\ldots,R). When the next line's starting coordinate is reached, advance the pointer.
-2. For every integer column (x), query the upper hull and obtain a rational upper bound (U(x)). Its largest valid integer (y) is
-
-[
-\left\lfloor U(x)\right\rfloor.
-]
-
-Query the second hull and obtain the minimum value of (-g(x)). If this value is (Q(x)), then the largest original lower bound is (-Q(x)), and the smallest valid integer (y) is
-
-[
-\left\lceil-Q(x)\right\rceil=-\left\lfloor Q(x)\right\rfloor.
-]
-
-1. The number of good points in this column is the upper integer bound minus the lower integer bound plus one, provided the interval is non-empty. Add that number to the answer.
-
-### Why it works
-
-For every other marked point, the condition that (p_1) is no farther away is exactly one linear half-plane. At a fixed (x), a non-vertical half-plane gives one upper or lower bound on (y). Their intersection is consequently an integer interval, whose endpoints are determined by the minimum upper line and maximum lower line.
-
-The Convex Hull Trick keeps exactly those lines that can attain the required minimum. The stored starting coordinate is the first integer column where a hull line is no worse than its predecessor, so the hull pointer always identifies an optimal line for the current (x). Exact cross multiplication and exact floor or ceiling division preserve the non-strict inequalities, including points lying exactly on bisectors.
-
-Thus every integer point counted by the sweep satisfies every original distance inequality, and every integer point satisfying all those inequalities appears in exactly one swept column and is counted.
+The invariant is that after processing all marked points, every query at a fixed integer `x` returns exactly the strongest upper and lower restrictions imposed by every competitor. Intersecting those restrictions with `[0, Y]` gives precisely the integer `y` values satisfying every distance comparison. Since every good point is characterized by those comparisons, every counted point is good and every good point is counted.
 
 ## Python Solution
 
 ```python
 import sys
-from functools import cmp_to_key
-
 input = sys.stdin.readline
+
+def floor_div(a, b):
+    return a // b
 
 def ceil_div(a, b):
     return -((-a) // b)
 
-def slope_cmp(p, q):
-    # Lines are sorted by decreasing slope p[0] / p[2].
-    left = p[0] * q[2]
-    right = q[0] * p[2]
+class LiChao:
+    def __init__(self, left, right, is_min):
+        self.left = left
+        self.right = right
+        self.is_min = is_min
+        self.tree = [None] * (4 * (right - left + 1))
 
-    if left != right:
-        return -1 if left > right else 1
+    @staticmethod
+    def value(line, x):
+        m, b, d = line
+        return m * x + b, d
 
-    # For equal slopes, smaller intercept first.
-    left = p[1] * q[2]
-    right = q[1] * p[2]
+    def better(self, a, b, x):
+        if b is None:
+            return True
 
-    if left != right:
-        return -1 if left < right else 1
+        an, ad = self.value(a, x)
+        bn, bd = self.value(b, x)
 
-    return 0
+        left = an * bd
+        right = bn * ad
 
-def build_hull(lines, left, right):
-    lines.sort(key=cmp_to_key(slope_cmp))
+        if self.is_min:
+            return left < right
+        return left > right
 
-    # Remove equal slopes. Because of the comparator, the first
-    # line among equal slopes has the smallest intercept.
-    unique = []
-    for line in lines:
-        if unique:
-            p = unique[-1]
-            if line[0] * p[2] == p[0] * line[2]:
-                continue
-        unique.append(line)
+    def insert(self, line):
+        self._insert(1, self.left, self.right, line)
 
-    hull = []
-    start = []
+    def _insert(self, node, l, r, line):
+        cur = self.tree[node]
 
-    for line in unique:
-        if not hull:
-            hull.append(line)
-            start.append(left)
-            continue
+        if cur is None:
+            self.tree[node] = line
+            return
 
-        while hull:
-            old = hull[-1]
+        mid = (l + r) // 2
 
-            # Intersection coordinate of old and line:
-            #
-            # (line.a / line.d) * x + line.b / line.d
-            # =
-            # (old.a / old.d) * x + old.b / old.d
-            #
-            # The denominator below is negative because slopes are
-            # strictly decreasing.
-            numerator = old[1] * line[2] - line[1] * old[2]
-            denominator = line[0] * old[2] - old[0] * line[2]
-            first_integer = ceil_div(numerator, denominator)
+        if self.better(line, cur, mid):
+            self.tree[node], line = line, cur
+            cur = self.tree[node]
 
-            if first_integer <= start[-1]:
-                hull.pop()
-                start.pop()
-            else:
-                break
+        if l == r:
+            return
 
-        if not hull:
-            hull.append(line)
-            start.append(left)
+        if self.better(line, cur, l) != self.better(line, cur, mid):
+            self._insert(node * 2, l, mid, line)
         else:
-            if first_integer > right:
-                break
-            hull.append(line)
-            start.append(first_integer)
+            self._insert(node * 2 + 1, mid + 1, r, line)
 
-    return hull, start
+    def query(self, x):
+        return self._query(1, self.left, self.right, x)
 
-def query_hull(hull, start, x, ptr):
-    while ptr + 1 < len(hull) and start[ptr + 1] <= x:
-        ptr += 1
+    def _query(self, node, l, r, x):
+        cur = self.tree[node]
 
-    line = hull[ptr]
-    numerator = line[0] * x + line[1]
-    denominator = line[2]
+        if l == r:
+            return cur
 
-    return numerator, denominator, ptr
+        mid = (l + r) // 2
+
+        if x <= mid:
+            other = self._query(node * 2, l, mid, x)
+        else:
+            other = self._query(node * 2 + 1, mid + 1, r, x)
+
+        if cur is None:
+            return other
+        if other is None:
+            return cur
+
+        if self.better(other, cur, x):
+            return other
+        return cur
 
 def solve():
     X, Y, K = map(int, input().split())
@@ -322,74 +221,56 @@ def solve():
 
     a, b = points[0]
 
-    left = 0
-    right = X
+    lower_x = 0
+    upper_x = X
 
-    # Upper lines have the form
-    #     y <= (A*x+B)/D
-    #
-    # Lower lines are stored after negating the lower bound, so they
-    # also have the form
-    #     -y <= (A*x+B)/D.
-    upper = [(0, Y, 1)]
-    lower = [(0, 0, 1)]
+    upper_tree = LiChao(0, X, True)
+    lower_tree = LiChao(0, X, False)
 
-    aa = a * a + b * b
+    base = a * a + b * b
 
     for u, v in points[1:]:
-        dx = u - a
-        dy = v - b
-        c = u * u + v * v - aa
+        A = 2 * (u - a)
+        B = 2 * (v - b)
+        C = u * u + v * v - base
 
-        if dy == 0:
-            # 2*dx*x <= dx*(u+a)
-            if dx > 0:
-                right = min(right, (u + a) // 2)
-            else:
-                left = max(left, ceil_div(u + a, 2))
-            continue
+        if B > 0:
+            # y <= (C - A*x) / B
+            upper_tree.insert((-A, C, B))
 
-        if dy > 0:
-            # y <= (-2*dx*x + c) / (2*dy)
-            upper.append((-2 * dx, c, 2 * dy))
+        elif B < 0:
+            # y >= (A*x - C) / (-B)
+            lower_tree.insert((A, -C, -B))
+
         else:
-            # y >= (2*dx*x - c) / (-2*dy)
-            #
-            # Equivalently:
-            # -y <= (-2*dx*x + c) / (-2*dy)
-            lower.append((-2 * dx, c, -2 * dy))
+            # A*x <= C
+            if A > 0:
+                upper_x = min(upper_x, floor_div(C, A))
+            else:
+                lower_x = max(lower_x, ceil_div(C, A))
 
-    if left > right:
+    if lower_x > upper_x:
         print(0)
         return
 
-    upper_hull, upper_start = build_hull(upper, left, right)
-    lower_hull, lower_start = build_hull(lower, left, right)
-
-    up_ptr = 0
-    low_ptr = 0
     answer = 0
 
-    for x in range(left, right + 1):
-        un, ud, up_ptr = query_hull(
-            upper_hull, upper_start, x, up_ptr
-        )
-        upper_y = un // ud
+    for x in range(lower_x, upper_x + 1):
+        low = 0
+        high = Y
 
-        ln, ld, low_ptr = query_hull(
-            lower_hull, lower_start, x, low_ptr
-        )
+        line = lower_tree.query(x)
+        if line is not None:
+            m, c, d = line
+            low = max(low, ceil_div(m * x + c, d))
 
-        # ln / ld is the minimum value of -lower_bound(x).
-        # Hence lower_bound(x) = -ln / ld, and
-        # ceil(lower_bound(x)) = -(ln // ld).
-        lower_y = -(ln // ld)
+        line = upper_tree.query(x)
+        if line is not None:
+            m, c, d = line
+            high = min(high, floor_div(m * x + c, d))
 
-        lower_y = max(lower_y, 0)
-        upper_y = min(upper_y, Y)
-
-        if lower_y <= upper_y:
-            answer += upper_y - lower_y + 1
+        if low <= high:
+            answer += high - low + 1
 
     print(answer)
 
@@ -397,34 +278,31 @@ if __name__ == "__main__":
     solve()
 ```
 
-The first part of the implementation converts every distance comparison into a line. The constant `aa` stores (a^2+b^2), so the right side of every inequality can be formed without recomputing it.
+The input is read once into the list of marked points because every competitor has to be converted into one linear constraint. The first point is separated as `(a, b)`, since all constraints compare directly against it.
 
-The `dy == 0` branch is separate because the corresponding bisector is vertical. Dividing by `dy` in that case would be invalid. The formulas use integer floor and ceiling operations so that the boundary point is retained when equality holds.
+The values `A`, `B`, and `C` are stored with the factor `2` included. This avoids introducing half-integer constants during the transformation. For an upper constraint, the stored line represents `(C - A*x) / B`, so its numerator has slope `-A`. For a lower constraint, the denominator is made positive by multiplying the inequality by `-1`, giving `(A*x - C) / (-B)`.
 
-The `build_hull` function first orders lines by decreasing rational slope. Cross multiplication is used for every comparison, which avoids floating-point errors near almost coincident slopes. Equal slopes need special treatment because only the line with the smaller intercept can ever be part of a minimum envelope.
+The Li Chao tree never converts these values to floating point. If two fractions `n1 / d1` and `n2 / d2` have positive denominators, comparing them is equivalent to comparing `n1*d2` with `n2*d1`. Python integers also have arbitrary precision, so the cross products cannot overflow.
 
-The intersection calculation also stays entirely in integer arithmetic. The denominator is negative because the new line has a smaller slope than the previous one. `ceil_div` works with negative denominators as well, which matters because intersection coordinates can be negative even though our actual queries are inside the rectangle.
+The rectangle contributes the initial bounds `low = 0` and `high = Y`. A missing lower envelope means there is no competitor restricting `y` from below, and similarly for the upper envelope. This is what makes the `K = 1` case work without a special geometric case.
 
-The hull stores `start[i]`, the first integer (x) at which line `i` becomes optimal. Since these values are increasing, the sweep does not need binary search. The pointer only moves forward, so all (X+1) column queries together take (O(X)).
-
-The lower hull stores the negative of every lower bound. This turns the required maximum into another minimum problem, allowing the same hull implementation to be reused. The expression `-(ln // ld)` is the exact ceiling of the original lower bound and correctly handles negative rational values.
-
-Python integers have arbitrary precision, so all cross products are exact. With the given coordinate bounds, the products are already within the range that a 64-bit signed integer can almost cover, but using Python integers removes any overflow concern.
+The final `+ 1` in `high - low + 1` is necessary because both endpoints are allowed. The problem uses a non-strict distance comparison, so points exactly on a bisector must be counted.
 
 ## Worked Examples
 
-### Sample 1
+For Sample 1, `p1 = (2, 2)`. The four competitors produce the following relevant bounds:
 
-The first point is (p_1=(2,2)). The four other points produce the following bounds:
+`(1, 1)` gives `y >= 3 - x`.
 
-[
-y\ge3-x,\qquad y\le x+1,\qquad
-y\le5-x,\qquad y\ge x-1.
-]
+`(1, 3)` gives `y <= x + 1`.
 
-The rectangle contributes (0\le y\le4).
+`(3, 3)` gives `y <= 5 - x`.
 
-| (x) | Lower bound | Upper bound | Good integer (y) | Added |
+`(3, 1)` gives `y >= x - 1`.
+
+Together with `0 <= y <= 4`, the query results are:
+
+| x | Lower bound | Upper bound | Good y values | Added |
 | --- | --- | --- | --- | --- |
 | 0 | 3 | 1 | none | 0 |
 | 1 | 2 | 2 | 2 | 1 |
@@ -432,194 +310,185 @@ The rectangle contributes (0\le y\le4).
 | 3 | 2 | 2 | 2 | 1 |
 | 4 | 3 | 1 | none | 0 |
 
-The sweep counts (1+3+1=5) points, giving the required output `5`. The trace shows the central Voronoi cell as a discrete diamond. The equality cases on its boundary are included.
+The total is `1 + 3 + 1 = 5`. The trace demonstrates why several half-planes must be combined: one competitor controls the lower boundary on the left, another controls it on the right, and the same happens for the upper boundary.
 
-### Sample 2
+For Sample 2, `p1 = (0, 0)` and all other points are `(1,0)`, `(2,0)`, ..., `(5,0)`. Every competitor gives an upper bound on `x`, with the closest competitor `(1,0)` producing the tightest one:
 
-Here (p_1=(0,0)), while every other point is on the same horizontal line (y=0). The first competitor ((1,0)) already gives
+`2x <= 1`, hence `x <= 1/2`.
 
-[
-x\le0
-]
+All integer columns except `x = 0` are rejected.
 
-for (p_1)'s cell. The remaining points only strengthen this restriction. Thus the valid column interval becomes (L=0,R=0).
-
-| (x) | Vertical interval after processing sites | Lower (y) | Upper (y) | Added |
+| x | Lower bound | Upper bound | Good y values | Added |
 | --- | --- | --- | --- | --- |
-| 0 | only valid column | 0 | 6 | 7 |
+| 0 | 0 | 0 | 0 | 1 |
+| 1 | 0 | 0 | none | 0 |
+| 2 | 0 | 0 | none | 0 |
+| 3 | 0 | 0 | none | 0 |
+| 4 | 0 | 0 | none | 0 |
+| 5 | 0 | 0 | none | 0 |
+| 6 | 0 | 0 | none | 0 |
 
-Every (y) from (0) through (6) is good at (x=0), so the answer is (7). This demonstrates why vertical bisectors must be handled independently from the line envelopes.
+The table shows the vertical restriction after the constraints are processed. For the only allowed column `x = 0`, the rectangle still permits all `7` integer values of `y`, so the answer is `7`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(K\log K+X)) | Each of the two line sets is sorted once, hull construction is linear after sorting, and the column sweep is (O(X)). |
-| Space | (O(K)) | The two line collections and their hulls contain (O(K)) lines. |
+| Time | `O(K log X + X log X)` | Each competitor is inserted into one Li Chao tree, then every allowed integer `x` is queried |
+| Space | `O(K + X)` | The trees store `O(X)` nodes and there are `O(K)` stored lines |
 
-With (K,X\le2\cdot10^5), the sorting dominates the running time and the final sweep examines only (2\cdot10^5+1) possible columns. The algorithm never enumerates the potentially (4\cdot10^{10}) lattice points of the rectangle, so it fits the stated limits.
+With `K <= 2 * 10^5` and `X <= 2 * 10^5`, the algorithm performs only logarithmically many operations per constraint and per column. The largest intermediate arithmetic values are handled by Python's arbitrary-precision integers, so there is no fixed-width overflow issue. The memory usage is linear in the input size and the number of possible columns.
 
 ## Test Cases
 
-The following harness is intended to be appended to the solution above. It temporarily replaces standard input and output and calls the same `solve()` function.
+The following harness assumes the submitted solution is saved as `solution.py`. It temporarily replaces the module's input and output streams, so each assertion executes the actual `solve()` function.
 
 ```python
-# helper: run solution on input string, return output string
 import sys
 import io
+import solution
 
 def run(inp: str) -> str:
-    global input
-
     old_stdin = sys.stdin
     old_stdout = sys.stdout
+    old_input = solution.input
 
     sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
     sys.stdout = io.StringIO()
+    solution.input = sys.stdin.readline
 
     try:
-        solve()
-        result = sys.stdout.getvalue().strip()
+        solution.solve()
+        return sys.stdout.getvalue().strip()
     finally:
+        solution.input = old_input
         sys.stdin = old_stdin
         sys.stdout = old_stdout
-        input = sys.stdin.readline
 
-    return result
-
-# Provided sample 1
-assert run("""\
-4 4 5
+# Provided samples
+assert run(
+    """4 4 5
 2 2
 1 1
 1 3
 3 3
 3 1
-""") == "5", "sample 1"
+"""
+) == "5", "sample 1"
 
-# Provided sample 2
-assert run("""\
-6 6 6
+assert run(
+    """6 6 6
 0 0
 1 0
 2 0
 3 0
 4 0
 5 0
-""") == "7", "sample 2"
+"""
+) == "7", "sample 2"
 
-# Minimum-size case. With only p1, every lattice point is good.
-assert run("""\
-1 1 1
+# Minimum-size instance, only p1 exists.
+assert run(
+    """1 1 1
 0 0
-""") == "4", "minimum size"
+"""
+) == "4", "single marked point"
 
-# Equality on a perpendicular bisector must be accepted.
-assert run("""\
-2 1 2
-0 0
+# Boundary and ceiling handling.
+assert run(
+    """2 1 2
 2 0
-""") == "4", "tie boundary"
-
-# All marked points have the same x-coordinate, producing a horizontal
-# bisector. Only y=0 is good.
-assert run("""\
-3 3 2
 1 0
-1 1
-""") == "4", "horizontal bisector"
+"""
+) == "2", "half-integer lower boundary"
 
-# All marked points have the same y-coordinate. The first point is
-# in the middle, so its Voronoi cell is x in [1, 3], with all three
-# possible y values.
-assert run("""\
-4 2 3
+# All marked points share the same y-coordinate.
+# p1=(2,1), competitors are (0,1) and (4,1).
+# Good x are 1,2,3, for both y=0..3.
+assert run(
+    """4 3 3
 2 1
 0 1
 4 1
-""") == "9", "same y coordinates"
+"""
+) == "12", "horizontal Voronoi strip"
 
-# Maximum-size stress case.
-# X = Y = K = 200000.
-# All sites lie on y=0 and p1=(0,0), so only x=0 is good,
-# while every y from 0 to 200000 is allowed.
-points = "\n".join(f"{i} 0" for i in range(200000))
-max_case = f"200000 200000 200000\n{points}\n"
-assert run(max_case) == "200001", "maximum-size case"
+# Horizontal bounds around p1.
+# p1=(1,1), competitors immediately above and below.
+# Only y=1 survives, for all four x coordinates.
+assert run(
+    """3 2 3
+1 1
+1 0
+1 2
+"""
+) == "4", "upper and lower horizontal restrictions"
+
+# Maximum-size construction.
+# p1=(0,0), followed by 199999 points on y=0.
+# Only x=0 is good, while every y from 0 through 200000 is allowed.
+points = ["200000 200000 200000"]
+points.append("0 0")
+for x in range(1, 200000):
+    points.append(f"{x} 0")
+
+max_case = "\n".join(points) + "\n"
+assert run(max_case) == "200001", "maximum-size input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 1 / 0 0` | 4 | Minimum dimensions, (K=1), rectangle boundaries |
-| `2 1 2 / 0 0 / 2 0` | 4 | Non-strict equality on a bisector |
-| `3 3 2 / 1 0 / 1 1` | 4 | Horizontal bisector and inequality direction |
-| `4 2 3 / 2 1 / 0 1 / 4 1` | 9 | Multiple vertical bisectors and equal coordinates |
-| (200000\times200000), (200000) points on (y=0) | 200001 | Maximum input sizes and large integer arithmetic |
+| `1 1 1 / 0 0` | `4` | Minimum dimensions and the `K = 1` case |
+| `2 1 2 / 2 0 / 1 0` | `2` | Exact handling of a half-integer lower boundary |
+| `4 3 3 / 2 1 / 0 1 / 4 1` | `12` | Multiple constraints with identical `y` coordinates |
+| `3 2 3 / 1 1 / 1 0 / 1 2` | `4` | Simultaneous lower and upper restrictions on `y` |
+| `200000 200000 200000` with points `(0,0), (1,0), ..., (199999,0)` | `200001` | Maximum values of `X`, `Y`, and `K`, plus a tight vertical envelope |
 
 ## Edge Cases
 
-The case with only (p_1) is handled by the initial constant lines. For
+The single-point case
 
 ```
 1 1 1
 0 0
 ```
 
-the upper hull contains (y\le1), the lower hull contains (y\ge0), and the sweep visits (x=0) and (x=1). Each column contributes two points, giving (4). The implementation never relies on the existence of a competitor.
+creates no competitor lines at all. Both Li Chao trees remain empty, so every column starts with `low = 0` and `high = 1`. Each of the two columns contributes two points, giving `4`. The algorithm does not need to special-case this situation because an empty envelope naturally means that no additional restriction exists.
 
-The equality case
+For the half-integer boundary
 
 ```
 2 1 2
-0 0
 2 0
-```
-
-produces the vertical condition (x\le1). The sweep therefore examines (x=0) and (x=1). At both columns the vertical restriction is satisfied, and the horizontal bounds give (y=0,1). The result is (4). The use of `<=` in the original inequality is preserved by the integer floor and ceiling calculations.
-
-For a horizontal bisector,
-
-```
-3 3 2
 1 0
-1 1
 ```
 
 the comparison is
 
-[
-y^2+x'^2\le y-1)^2+x'^2,
-]
+`(x-2)^2 + y^2 <= (x-1)^2 + y^2`,
 
-which simplifies to (y\le\frac12). Integer (y) can only be (0). Since (x) has four possible values, the answer is (4). In the implementation, this competitor becomes the upper line (y\le\frac12), and the hull returns `1 // 2 = 0` for every column.
+which simplifies to `x >= 1.5`. The lower Li Chao tree stores the exact fraction `3/2`. At `x = 1`, the integer lower bound becomes `ceil(3/2) = 2`, exceeding the rectangle's `x` value, so no `y` is counted. At `x = 2`, the lower bound is still `2`, and both `y = 0` and `y = 1` are valid. The answer is `2`.
 
-When all marked points have the same (y)-coordinate,
+For the horizontal strip
 
 ```
-4 2 3
+4 3 3
 2 1
 0 1
 4 1
 ```
 
-the first point is equidistant from the two outer sites at (x=1) and (x=3). Its cell is
+the competitor `(0,1)` gives `x >= 1`, while `(4,1)` gives `x <= 3`. There are no restrictions on `y`, so the columns `1`, `2`, and `3` each contribute the four integer rows `0`, `1`, `2`, and `3`. The result is `12`. This exercises the case where the two envelopes are effectively horizontal constraints and verifies that the rectangle boundaries are included.
 
-[
-1\le x\le3,
-]
-
-and every (y\in{0,1,2}) has the same horizontal displacement comparison. The sweep counts three columns with three points each, giving (9).
-
-The maximum-size case uses
+For
 
 ```
-200000 200000 200000
-0 0
+3 2 3
+1 1
 1 0
-2 0
-...
-199999 0
+1 2
 ```
 
-The first competitor already forces (x\le0), so only (x=0) survives. Every (y) from (0) through (200000) is equally good because all marked points have (y=0). The answer is (200001). This test exercises the largest allowed (X), (Y), and (K) simultaneously while also checking that the algorithm does not accidentally scale with the number of lattice points.
+the point `(1,0)` gives `y >= 1/2`, while `(1,2)` gives `y <= 3/2`. On integer coordinates, only `y = 1` survives. Every `x` from `0` through `3` is allowed, so the algorithm adds one point for each of four columns and returns `4`. This checks both `ceil` and `floor` on rational bounds.
+
+For the maximum-size case, the first point is `(0,0)` and all other marked points are `(x,0)` for `1 <= x <= 199999`. The closest competitor `(1,0)` already forces `x <= 1/2`, so among integer columns only `x = 0` remains. The rectangle contains `200001` possible values of `y`, from `0` through `200000`, and all of them are equally closest to `p1` because every competitor has the same `y` coordinate. The answer is consequently `200001`, confirming that the implementation handles the largest input without scanning all `K` competitors for every grid point.

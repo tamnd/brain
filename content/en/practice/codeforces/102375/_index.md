@@ -8,15 +8,15 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 10
 n_verified: 4
-total_solve_s: 3912
-date: "2026-08-12T13:05:17+07:00"
+total_solve_s: 4250
+date: "2026-08-12T13:23:44+07:00"
 weight: 102375
 draft: false
 ---
 
 # [Квалификационный раунд Чемпионата Северо-Запада России и Москвы ICPC 2019](https://codeforces.com/contest/102375)
 
-ICPC/IOI | 10 problems | 4/10 verified | Difficulty - | 1h 5m
+ICPC/IOI | 10 problems | 4/10 verified | Difficulty - | 1h 10m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,6 @@ ICPC/IOI | 10 problems | 4/10 verified | Difficulty - | 1h 5m
 | [F](F/) | [\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u0434\u043c\u043d\u043e\u0433\u043e\u0443\u0433\u043e\u043b\u044c\u043d\u0438\u043a](https://codeforces.com/problemset/problem/102375/F) |  |  |  | 2m 10s |  |
 | [G](G/) | [\u0415\u0441\u0442\u044c \u043b\u0438 \u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c?](https://codeforces.com/problemset/problem/102375/G) |  |  |  | 2m 34s |  |
 | [I](I/) | [\u0421\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u0447](https://codeforces.com/problemset/problem/102375/I) |  |  |  | 2m 37s | ✓ |
-| [J](J/) | [\u041f\u043e\u0440\u0442\u0430\u043b\u044b](https://codeforces.com/problemset/problem/102375/J) |  |  |  | 9m 8s |  |
+| [J](J/) | [\u041f\u043e\u0440\u0442\u0430\u043b\u044b](https://codeforces.com/problemset/problem/102375/J) |  |  |  | 14m 26s |  |
 | [K](K/) | [<<\u041a\u043e\u043d\u0442\u0430\u043a\u0442>> \u0434\u043b\u044f \u0434\u0432\u043e\u0438\u0445](https://codeforces.com/problemset/problem/102375/K) |  |  |  | 7m 37s | ✓ |
-| [L](L/) | [\u0411\u043b\u0438\u0436\u0430\u0439\u0448\u0438\u0435 \u0442\u043e\u0447\u043a\u0438](https://codeforces.com/problemset/problem/102375/L) |  |  |  | 3m 34s |  |
+| [L](L/) | [\u0411\u043b\u0438\u0436\u0430\u0439\u0448\u0438\u0435 \u0442\u043e\u0447\u043a\u0438](https://codeforces.com/problemset/problem/102375/L) |  |  |  | 3m 54s |  |
