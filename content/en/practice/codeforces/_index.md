@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23207 problems, 12979 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23211 problems, 12980 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23207 problems, 12979 verified.**
+**3135 contests, 23211 problems, 12980 verified.**
 
 ## Unknown — 830 contests, 7037 problems, 4210 verified
 
@@ -1466,7 +1466,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 187 contests, 1167 problems, 773 verified
+## 2019 — 187 contests, 1171 problems, 774 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1644,7 +1644,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102397](102397/) | [Asu Coding Cup 4](https://codeforces.com/contest/102397) | 10 | 10/10 | Special | - |
 | [102409](102409/) | [Semana i 2019](https://codeforces.com/contest/102409) | 11 | 10/11 | Special | - |
 | [102416](102416/) | [Edinburgh Competition 2019](https://codeforces.com/contest/102416) | 5 | 3/5 | Special | - |
-| [102419](102419/) | [SPC 2019](https://codeforces.com/contest/102419) | 4 | 4/4 | Special | - |
+| [102419](102419/) | [SPC 2019](https://codeforces.com/contest/102419) | 8 | 5/8 | Special | - |
 | [102423](102423/) | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/contest/102423) | 10 | 10/10 | Special | - |
 | [102431](102431/) | [2019 China Collegiate Programming Contest Final (CCPC-Final 2019)](https://codeforces.com/contest/102431) | 12 | 12/12 | Special | - |
 | [102436](102436/) | [Innopolis Open 2019-2020, qualification, contest 1](https://codeforces.com/contest/102436) | 5 | 5/5 | Special | - |
