@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 8
-total_solve_s: 5363
-date: "2026-08-10T14:22:40+07:00"
+total_solve_s: 4889
+date: "2026-08-10T14:29:34+07:00"
 weight: 102396
 draft: false
 ---
 
 # [2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)](https://codeforces.com/contest/102396)
 
-Special | 11 problems | 8/11 verified | Difficulty - | 1h 29m
+Special | 11 problems | 8/11 verified | Difficulty - | 1h 21m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -24,7 +24,7 @@ Special | 11 problems | 8/11 verified | Difficulty - | 1h 29m
 | [B](B/) | [Cash Gap](https://codeforces.com/problemset/problem/102396/B) |  |  |  | 10m 58s | ✓ |
 | [C](C/) | [Jet Trains](https://codeforces.com/problemset/problem/102396/C) |  |  |  | 4m 51s |  |
 | [D](D/) | [Cutting Pizza](https://codeforces.com/problemset/problem/102396/D) |  |  |  | 11m 2s | ✓ |
-| [E](E/) | [Unique Solution](https://codeforces.com/problemset/problem/102396/E) |  |  |  | 14m 46s |  |
+| [E](E/) | [Unique Solution](https://codeforces.com/problemset/problem/102396/E) |  |  |  | 6m 52s |  |
 | [F](F/) | [Metro 2345](https://codeforces.com/problemset/problem/102396/F) |  |  |  | 3m 11s | ✓ |
 | [G](G/) | [Weight Overflow](https://codeforces.com/problemset/problem/102396/G) |  |  |  | 3m 16s |  |
 | [H](H/) | [Checking Answers to Test](https://codeforces.com/problemset/problem/102396/H) |  |  |  | 14m 30s | ✓ |
