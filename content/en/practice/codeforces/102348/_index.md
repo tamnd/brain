@@ -1,29 +1,29 @@
 ---
 title: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
-description: "10 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 6/10 solutions verified against sample I/O."
+description: "10 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 7/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102348
 contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 10
-n_verified: 6
-total_solve_s: 2159
+n_verified: 7
+total_solve_s: 2799
 contest_year: 2019
-date: "2026-08-13T05:31:39+07:00"
+date: "2026-08-13T11:51:43+07:00"
 weight: 102348
 draft: false
 ---
 
 # [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348)
 
-ICPC/IOI | 10 problems | 6/10 verified | Difficulty - | 35m 59s
+ICPC/IOI | 10 problems | 7/10 verified | Difficulty - | 46m 39s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [B](B/) | [Interesting Vertices](https://codeforces.com/problemset/problem/102348/B) |  |  |  | 1m 54s | ✓ |
 | [D](D/) | [Ticket Game](https://codeforces.com/problemset/problem/102348/D) |  |  |  | 3m 11s | ✓ |
-| [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 3m 24s |  |
+| [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 14m 4s | ✓ |
 | [F](F/) | [The Number of Products](https://codeforces.com/problemset/problem/102348/F) |  |  |  | 2m 30s |  |
 | [G](G/) | [Swap Letters](https://codeforces.com/problemset/problem/102348/G) |  |  |  | 5m 32s |  |
 | [H](H/) | [Berland Prospect](https://codeforces.com/problemset/problem/102348/H) |  |  |  | 3m 49s |  |
