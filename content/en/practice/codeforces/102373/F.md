@@ -1,7 +1,7 @@
 ---
 title: "CF 102373F - \u041e\u043d\u0438"
-description: "We have a line of (n) positions. Position (i) contains (ai) children. The old Pennywise takes a prefix of the array, positions (1) through (l), while the modern Pennywise takes a suffix, positions (r) through (n). The two parts must not overlap, so (l<r)."
-date: "2026-08-14T03:12:04+07:00"
+description: "We have an array a[1..n], where a[i] is the number of children at position i. The old Pennywise takes a prefix, positions 1 through l, while the modern Pennywise takes a suffix, positions r through n. The two segments must not overlap, so l < r."
+date: "2026-08-14T12:41:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102373
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "\u0426\u0438\u043a\u043b \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434 \u0434\u043b\u044f \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
 rating: 0
 weight: 102373
-solve_time_s: 188
+solve_time_s: 123
 verified: false
 draft: false
 ---
@@ -18,95 +18,107 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 8s  
+**Solve time:** 2m 3s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a line of (n) positions. Position (i) contains (a_i) children. The old Pennywise takes a prefix of the array, positions (1) through (l), while the modern Pennywise takes a suffix, positions (r) through (n). The two parts must not overlap, so (l<r).
+We have an array `a[1..n]`, where `a[i]` is the number of children at position `i`. The old Pennywise takes a prefix, positions `1` through `l`, while the modern Pennywise takes a suffix, positions `r` through `n`. The two segments must not overlap, so `l < r`.
 
-If (P_k=a_1+a_2+\dots+a_k) is a prefix sum and (T=P_n) is the total number of children, then the two frightened counts are
+For a chosen pair `(l, r)`, the two scores are
 
-[
-S_1=P_l,
-\qquad
-S_2=T-P_{r-1}.
-]
-
-The goal is to choose valid (l,r) so that (|S_1-S_2|) is as small as possible, and output that minimum together with any pair achieving it.
-
-The array can contain up to (10^6) elements, and each element can be as large as (10^9). The official statement gives a 2 second time limit and 512 MB memory limit. An (O(n^2)) algorithm would examine roughly (5\cdot10^{11}) pairs at the maximum size, so it is far beyond what the time limit allows. We need a linear or near-linear solution. The sums can reach (10^{15}), so a fixed-width implementation needs 64-bit integers. Python integers already handle this range safely.
-
-There are several boundary cases that can make an otherwise reasonable implementation fail. With (n=2) and input `7 7`, the only valid choice is (l=1,r=2), giving output `0 1 2`. Code that requires two different prefix-sum indices would incorrectly reject this case, because the transformation below permits the same prefix sum to be used twice.
-
-An initially perfect answer must also be checked before moving either pointer. For `4` and `5 1 1 5`, choosing (l=1,r=4) gives (S_1=S_2=5), so the correct output can be `0 1 4`. If an implementation moves a pointer before recording the current pair, it can silently lose the optimum.
-
-The best pair can also be adjacent. For `3` and `1 2 3`, choosing (l=2,r=3) gives (3) children to each Pennywise, so the answer is `0 2 3`. Any loop that stops while (l+1=r) without evaluating that state misses a valid solution.
-
-Finally, the sums can be very large. With (n=2) and `1000000000 1000000000`, the total is (2\cdot10^9), and for (n=10^6) it can reach (10^{15}). Using 32-bit arithmetic would overflow in languages with fixed-width integers.
-
-## Approaches
-
-The direct approach is to try every valid pair ((l,r)). There are
-
-[
-(n-1)+(n-2)+\dots+1=\frac{n(n-1)}2
-]
-
-such pairs. With prefix sums, each pair can be evaluated in (O(1)), so this gives (O(n^2)) time. It is correct because every possible choice is explicitly examined, but for (n=10^6) it means exactly (499{,}999{,}500{,}000) candidate pairs, which is much too slow.
-
-The useful observation comes from rewriting the difference. Since
-
-[
-S_1=P_l
-]
+`S1 = a[1] + ... + a[l]`
 
 and
 
-[
-S_2=T-P_{r-1},
-]
+`S2 = a[r] + ... + a[n]`.
 
-we have
+The task is to find any valid pair that minimizes `|S1 - S2|`, and print that minimum difference together with the corresponding `l` and `r`.
 
-# |P_l-(T-P_{r-1})|
+The constraint `n <= 10^6` is the main algorithmic signal. There can be roughly one million positions, so an `O(n^2)` search is completely infeasible. Even an `O(n log n)` approach is unnecessary here because the positive array values give us a monotonic structure that permits a linear scan. The values themselves can be as large as `10^9`, so a sum can reach `10^15`. C++ needs a 64 bit integer type for these sums, while Python integers already handle them safely.
 
-|P_l+P_{r-1}-T|.
-]
+There are several boundary cases where an implementation can silently fail. With `n = 2`, the only legal pair is `l = 1, r = 2`. For input
 
-Now introduce
+```
+2
+8 3
+```
 
-[
-i=l,\qquad j=r-1.
-]
+the correct result is
 
-The condition (l<r) becomes simply (i\le j). Thus the original problem is equivalent to choosing two prefix sums (P_i) and (P_j), with (1\le i\le j\le n-1), whose sum is as close as possible to (T).
+```
+5 1 2
+```
 
-This is exactly a closest two-sum problem on a sorted array. Because every (a_i) is positive, prefix sums are strictly increasing. We can put one pointer at the smallest usable prefix sum, (P_1), and another at the largest usable prefix sum, (P_{n-1}).
+because the two scores are `8` and `3`. An implementation that moves one pointer before evaluating the initial pair can miss the only valid answer.
 
-If their sum is smaller than (T), the only way to get closer to (T) is to increase the smaller pointer. If their sum is larger than (T), the only way to get closer is to decrease the larger pointer. Each pointer moves only in one direction, so the complete search takes (O(n)).
+A second edge case occurs when the two initial segments already have equal sums. For
 
-The connection with the brute-force solution is now clear. Brute force considers every pair of prefix sums, while the monotonicity of the prefix sums lets us discard an entire row or column of impossible-to-improve pairs after each comparison.
+```
+4
+7 1 1 7
+```
+
+the pair `l = 1, r = 4` gives scores `7` and `7`, so the answer is
+
+```
+0 1 4
+```
+
+A careless implementation that always performs a pointer movement before checking the difference can miss the optimum of zero.
+
+The opposite pointer boundary matters as well. Consider
+
+```
+3
+1 2 3
+```
+
+Starting with the first and last elements gives scores `1` and `3`. The left score is smaller, so the left pointer moves to position `2`, giving `3` and `3`. The correct result is
+
+```
+0 2 3
+```
+
+If the condition is written incorrectly so that equality or the final valid position causes an extra movement, the pair `(2, 3)` can be skipped.
+
+## Approaches
+
+The direct approach considers every pair `(l, r)` satisfying `l < r`. For each pair, we could compute the prefix and suffix sums using precomputed prefix sums, so each candidate takes `O(1)` time. There are `n(n-1)/2` valid pairs, which is `O(n^2)`. For `n = 10^6`, that is about `5 * 10^11` pairs, far beyond what any competitive programming time limit can handle.
+
+The structure of the two sums gives us a much better way to search. Suppose the current left score is `S1` and the current right score is `S2`. Every array element is positive. If `S1 < S2`, extending the prefix by moving `l` one position to the right strictly increases `S1`, while keeping the right suffix unchanged. Moving the right boundary in this situation would make `S2` smaller, but we can reason more directly by viewing the two boundaries as a competition between increasing the smaller side and decreasing the larger side.
+
+A convenient two pointer process starts with the widest possible pair, `l = 1` and `r = n`. If the prefix sum is smaller, advance `l`, because only then can the smaller sum catch up. If the suffix sum is smaller, decrease `r`, because only then can that sum catch up. After every state, we check the absolute difference and keep the best one.
+
+Why is this enough? The prefix sum grows monotonically as `l` moves right, and the suffix sum shrinks monotonically as `r` moves right. The optimal pair must occur at or around the point where these two monotone quantities cross. The two pointer process moves directly toward that crossing and evaluates every state needed around it.
+
+The brute-force method works because it examines every possible boundary pair. It fails because there are quadratically many such pairs. The observation that one sum can only move upward while the other can only move downward lets us discard whole regions of candidate pairs after each comparison, reducing the search to `O(n)` states.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n^2)) | (O(n)) | Too slow |
-| Optimal | (O(n)) | (O(n)) | Accepted |
+| Brute Force | `O(n^2)` | `O(n)` with prefix sums | Too slow |
+| Two Pointers | `O(n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array and convert it into prefix sums in place. After this transformation, `a[k]` represents (P_{k+1}), the sum of the first (k+1) original elements. The final prefix sum is the total (T).
-2. Set the left pointer `i = 0`. This represents (P_1), so it corresponds to (l=1). Set the right pointer `j = n-2`. This represents (P_{n-1}), so it corresponds to (r=n). These are exactly the smallest and largest prefix sums that can participate in a valid pair.
-3. Compute `a[i] + a[j]` and compare it with the total (T). Record the absolute difference if it improves the best answer found so far. The current pair must be checked before changing either pointer because it can already be optimal.
-4. If `a[i] + a[j] < T`, increment `i`. Increasing a prefix sum is the only pointer movement that can make the current sum larger. Decreasing `j` would make the sum even smaller, so it cannot improve the current candidate.
-5. If `a[i] + a[j] >= T`, decrement `j`. When the sum is too large, decreasing the right prefix sum is the only movement that can bring the pair toward the target. If the sum is exactly (T), the difference is zero and the optimum has already been found, although the loop may safely continue.
-6. Stop when `i > j`. Every valid pair has (i\le j), so no unexamined valid pair remains.
-7. Convert the prefix-sum indices back to the required positions. Since zero-based `i` represents (P_{i+1}), we have (l=i+1). Since zero-based `j` represents (P_{j+1}=P_{r-1}), we have (r=j+2).
+1. Read the array and initialize `l = 0` and `r = n - 1`. These are zero based internally, so they represent positions `1` and `n` in the required output. Set `left_sum = a[l]` and `right_sum = a[r]`.
+
+This starting state is always valid because `n >= 2`, so `l < r`.
+2. Initialize the best answer with the difference between these two initial sums. Storing the corresponding pointers immediately is necessary because the initial pair can already be optimal.
+3. While `l < r`, compare `left_sum` and `right_sum`. If `left_sum <= right_sum`, advance `l` and add `a[l]` to the left sum. Otherwise, decrease `r` and add `a[r]` to the right sum.
+
+When the left sum is smaller, increasing the prefix is the only movement that makes that side larger. When the right sum is smaller, decreasing `r` is the movement that adds another element to the suffix and makes that side larger.
+4. After every pointer movement, compare the new absolute difference with the best difference found so far. If it is smaller, save the current pointers.
+
+The state after a movement can be the first point where the two sums become equal or cross, so checking only the initial state would not be sufficient.
+5. Stop when `l == r`. At that point the two selected segments would share a position, so the pair is no longer valid. Convert the stored zero based indices to one based indices and print the difference, `l + 1`, and `r + 1`.
 
 ### Why it works
 
-The invariant is that every pair discarded by moving a pointer cannot contain a better answer than the candidates still represented by the two pointers. Suppose (P_i+P_j<T). For this fixed (j), every prefix sum (P_k) with (k<i) is even smaller, so (P_k+P_j) is farther below (T). Such values can never produce a better pair, so increasing (i) safely discards them. The case (P_i+P_j>T) is symmetric: for this fixed (i), every (P_k) with (k>j) produces an even larger sum and is farther above (T). Since all prefix sums are strictly increasing, these discarded regions can never contain a better solution. Each pointer moves monotonically, so when the pointers cross, every relevant pair has either been evaluated or safely discarded.
+At every valid state, `left_sum` is the sum of a prefix ending at `l`, and `right_sum` is the sum of a suffix starting at `r`. Because all `a[i]` are positive, moving `l` right strictly increases the left sum, while moving `r` left strictly increases the right sum.
+
+If the left sum is smaller, any useful attempt to reduce the difference must increase the left side until it catches the right side. The algorithm does exactly that. Symmetrically, if the right sum is smaller, it extends the right segment. Thus the pointers always move toward the point where the two monotone sums are closest. The algorithm checks the difference at every state along this path, including the state before crossing and the state after crossing. The minimum among those states is consequently the global minimum over all valid boundary pairs.
 
 ## Python Solution
 
@@ -118,147 +130,106 @@ def solve():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # Turn the array into prefix sums in place.
-    total = 0
-    for i in range(n):
-        total += a[i]
-        a[i] = total
+    l = 0
+    r = n - 1
 
-    # a[i] represents P_{i+1}.
-    # We need P_l and P_{r-1}, with l < r,
-    # so their zero-based indices satisfy i <= j.
-    i = 0
-    j = n - 2
+    left_sum = a[l]
+    right_sum = a[r]
 
-    best = 10**30
-    best_i = i
-    best_j = j
+    best_diff = abs(left_sum - right_sum)
+    best_l = l
+    best_r = r
 
-    while i <= j:
-        current = a[i] + a[j]
-        diff = abs(current - total)
-
-        if diff < best:
-            best = diff
-            best_i = i
-            best_j = j
-
-        if current < total:
-            i += 1
+    while l < r:
+        if left_sum <= right_sum:
+            l += 1
+            left_sum += a[l]
         else:
-            j -= 1
+            r -= 1
+            right_sum += a[r]
 
-    l = best_i + 1
-    r = best_j + 2
+        if l >= r:
+            break
 
-    print(best, l, r)
+        diff = abs(left_sum - right_sum)
+        if diff < best_diff:
+            best_diff = diff
+            best_l = l
+            best_r = r
+
+    print(best_diff, best_l + 1, best_r + 1)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first loop converts the original array into prefix sums without allocating a second (O(n)) array. After processing position `i`, `a[i]` is the sum of the original elements from position (1) through (i+1). The final value stored in `a[-1]` is the total number of children.
+The array is stored because the right pointer can move toward the left, so the algorithm needs random access to the newly included element. The initial sums use `a[0]` and `a[n - 1]`, representing the smallest possible prefix and suffix.
 
-The two pointers operate on `a[0]` through `a[n-2]`. The last prefix sum cannot be used because (P_n) would correspond to (r-1=n), or (r=n+1), which is outside the array. The zero-based mapping is easy to get wrong: `i` becomes (l=i+1), while `j` becomes (r=j+2).
+The comparison uses `<=` for the left side. If the sums are equal, either pointer could technically be moved, but choosing the left pointer is enough because the current state has already been recorded as the best possible difference of zero.
 
-The comparison uses `current < total` rather than `current <= total`. An exact equality is already the best possible difference, but either pointer movement after recording it is harmless. Keeping equality in the `else` branch gives a simple loop that always makes progress.
+After moving a pointer, the code first checks `l >= r`. This prevents evaluating an invalid pair where the prefix and suffix overlap. The initial pair is evaluated separately before entering the loop, so the only legal pair for `n = 2` is handled correctly.
 
-The best candidate is updated before moving a pointer. This handles cases where the initial pair is already optimal, including an exact zero difference. Python integers need no special overflow handling, even though the total can reach (10^{15}).
+Python's arbitrary precision integers safely store sums up to `10^15`. The algorithm performs only a constant amount of work for every pointer movement, and each pointer moves at most `n` positions.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input is
+For
 
 ```
 5
 5 1 1 1 1
 ```
 
-The prefix sums are (5,6,7,8,9), and the total is (9).
+the initial prefix contains `5`, while the suffix contains the final `1`. Since the left sum is larger, the right pointer moves left and gradually enlarges the suffix until the best difference is found.
 
-| i | j | (P_{i+1}) | (P_{j+1}) | Pair sum | Difference | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 3 | 5 | 8 | 13 | 4 | decrease `j` |
-| 0 | 2 | 5 | 7 | 12 | 3 | decrease `j` |
-| 0 | 1 | 5 | 6 | 11 | 2 | decrease `j` |
-| 0 | 0 | 5 | 5 | 10 | 1 | decrease `j` |
+| `l` | `r` | `left_sum` | `right_sum` | `diff` | Best |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 5 | 5 | 1 | 4 | `4 1 5` |
+| 1 | 4 | 5 | 2 | 3 | `3 1 4` |
+| 1 | 3 | 5 | 3 | 2 | `2 1 3` |
+| 1 | 2 | 5 | 4 | 1 | `1 1 2` |
 
-The best pair is `P_1=5` and `P_1=5`, giving (l=1) and (r=2). The corresponding suffix is the second position through the fifth, whose sum is (4), so the difference is (1). The trace also demonstrates why (i=j) is valid.
+The next movement would make `l = r`, so the algorithm stops. The best valid state is `l = 1, r = 2`, with difference `1`, matching the sample.
 
 ### Sample 2
 
-The input is
+For
 
 ```
 4
 1 2 3 4
 ```
 
-The prefix sums are (1,3,6,10), and the total is (10).
+the left side starts smaller, so the left pointer advances. It reaches equality at the second position.
 
-| i | j | (P_{i+1}) | (P_{j+1}) | Pair sum | Difference | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 2 | 1 | 6 | 7 | 3 | increase `i` |
-| 1 | 2 | 3 | 6 | 9 | 1 | increase `i` |
-| 2 | 2 | 6 | 6 | 12 | 2 | decrease `j` |
+| `l` | `r` | `left_sum` | `right_sum` | `diff` | Best |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 4 | 1 | 4 | 3 | `3 1 4` |
+| 2 | 4 | 3 | 4 | 1 | `1 2 4` |
+| 3 | 4 | 6 | 4 | 2 | `1 2 4` |
 
-The best state is `i=1`, `j=2`. It represents (P_2=3) and (P_3=6), so (l=2) and (r=4). The modern Pennywise gets (10-P_3=4), producing the required difference of (1).
-
-The trace demonstrates the central two-pointer rule. While the current sum is below the target, only the left prefix sum should increase. Once the sum passes the target, the right prefix sum decreases.
+The best state is `(2, 4)`, where the scores are `3` and `4`. The later state is worse, so the stored answer remains `1 2 4`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | Building prefix sums takes (O(n)), and each pointer moves at most (n) times. |
-| Space | (O(n)) | The input array is reused to store prefix sums. |
+| Time | `O(n)` | Each pointer only moves toward the other pointer, so there are at most `n - 1` movements. |
+| Space | `O(n)` | The input array is stored so that either pointer can access the next element. |
 
-With (n\le10^6), a linear scan is appropriate for the 2 second limit, while the quadratic brute-force approach would require about (5\cdot10^{11}) candidate pairs in the largest case. The in-place prefix-sum construction also keeps memory comfortably below the 512 MB limit.
+With `n` up to `10^6`, a linear scan is appropriate. The algorithm performs only a few integer operations per array element, while the brute-force alternative would require roughly `5 * 10^11` candidate pairs at the maximum size. The stored array is linear in `n`, and the sums require values up to `10^15`, which Python handles natively.
 
 ## Test Cases
 
+The custom tests below use exact expected output where the optimal pair is uniquely determined or the algorithm's initial state is clearly optimal. The maximum-size case uses one million equal values, so the initial pair is already optimal and the test also exercises the required input scale.
+
 ```python
-# Complete assert-based tests for the solution above.
 import sys
 import io
 
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    total = 0
-    for i in range(n):
-        total += a[i]
-        a[i] = total
-
-    i = 0
-    j = n - 2
-
-    best = 10**30
-    best_i = i
-    best_j = j
-
-    while i <= j:
-        current = a[i] + a[j]
-        diff = abs(current - total)
-
-        if diff < best:
-            best = diff
-            best_i = i
-            best_j = j
-
-        if current < total:
-            i += 1
-        else:
-            j -= 1
-
-    print(best, best_i + 1, best_j + 2)
-
-def run(inp: str) -> str:
+def solution(inp: str) -> str:
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
@@ -266,37 +237,75 @@ def run(inp: str) -> str:
     sys.stdout = io.StringIO()
 
     try:
-        solve()
+        input = sys.stdin.readline
+
+        n = int(input())
+        a = list(map(int, input().split()))
+
+        l = 0
+        r = n - 1
+
+        left_sum = a[l]
+        right_sum = a[r]
+
+        best_diff = abs(left_sum - right_sum)
+        best_l = l
+        best_r = r
+
+        while l < r:
+            if left_sum <= right_sum:
+                l += 1
+                left_sum += a[l]
+            else:
+                r -= 1
+                right_sum += a[r]
+
+            if l >= r:
+                break
+
+            diff = abs(left_sum - right_sum)
+            if diff < best_diff:
+                best_diff = diff
+                best_l = l
+                best_r = r
+
+        print(best_diff, best_l + 1, best_r + 1)
         return sys.stdout.getvalue().strip()
     finally:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
 
-# Provided samples
-assert run("5\n5 1 1 1 1\n") == "1 1 2", "sample 1"
-assert run("4\n1 2 3 4\n") == "1 2 4", "sample 2"
+assert solution("""5
+5 1 1 1 1
+""") == "1 1 2", "sample 1"
 
-# Minimum-size input
-assert run("2\n7 7\n") == "0 1 2", "minimum size"
+assert solution("""4
+1 2 3 4
+""") == "1 2 4", "sample 2"
 
-# All values equal, with several optimal pairs
-assert run("5\n4 4 4 4 4\n") == "0 1 5", "all equal"
+assert solution("""2
+8 3
+""") == "5 1 2", "minimum-size input"
 
-# Optimum occurs at the adjacent boundary l + 1 = r
-assert run("3\n1 2 3\n") == "0 2 3", "adjacent optimum"
+assert solution("""4
+7 1 1 7
+""") == "0 1 4", "equal initial sums"
 
-# Maximum-size input, also testing a large number of iterations
-max_n = 10**6
-max_input = str(max_n) + "\n" + ("1 " * (max_n - 1)) + "1\n"
-assert run(max_input) == "0 1 1000000", "maximum size"
+assert solution("""3
+1 2 3
+""") == "0 2 3", "off-by-one boundary"
+
+n = 1_000_000
+maximum_input = str(n) + "\n" + ("1 " * (n - 1)) + "1\n"
+assert solution(maximum_input) == "0 1 1000000", "maximum-size input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 / 7 7` | `0 1 2` | Minimum size and the valid case (i=j) |
-| `5 / 4 4 4 4 4` | `0 1 5` | All equal values and an initially exact match |
-| `3 / 1 2 3` | `0 2 3` | Adjacent boundaries and correct index conversion |
-| `1000000 / 1 1 ... 1` | `0 1 1000000` | Maximum (n), linear runtime, and large input handling |
+| `2 / 8 3` | `5 1 2` | The smallest legal array and the only possible pair |
+| `4 / 7 1 1 7` | `0 1 4` | The initial state can already be optimal |
+| `3 / 1 2 3` | `0 2 3` | The optimum can appear immediately after moving the left boundary |
+| `1000000 / all ones` | `0 1 1000000` | Maximum input size, linear processing, and large input handling |
 
 ## Edge Cases
 
@@ -304,34 +313,29 @@ For the minimum-size case
 
 ```
 2
-7 7
+8 3
 ```
 
-the prefix array is `[7, 14]`, with total (14). The usable prefix-sum range contains only (P_1=7), so the pointers start at `i=0,j=0`. Their sum is (14), giving difference (0). The conversion produces (l=1) and (r=2). This confirms that (i=j) must be allowed.
+the algorithm starts with `l = 0` and `r = 1`, giving sums `8` and `3` and difference `5`. The loop condition is true, but the larger left sum causes `r` to move from `1` to `0`. Since `l >= r`, the new state is rejected and the previously stored pair remains `(1, 2)`. The output is `5 1 2`. This is why the boundary check must happen before evaluating the moved state.
 
-For an initially exact match,
+For equal initial sums,
 
 ```
 4
-5 1 1 5
+7 1 1 7
 ```
 
-the prefix sums are `[5, 6, 7, 12]`, with total (12). The initial pointer state uses (5+7=12), so the algorithm immediately records difference (0), corresponding to (l=1,r=4). It does not matter that the loop later moves a pointer, because the best answer has already been stored. This is why updating the answer before pointer movement is necessary.
+the starting state has `left_sum = 7` and `right_sum = 7`, so `best_diff` becomes zero immediately. The loop may later move a pointer because the implementation uses `<=`, but no later state can improve a zero difference. The stored answer remains `0 1 4`.
 
-For an optimum at adjacent positions,
+For the boundary-crossing case
 
 ```
 3
 1 2 3
 ```
 
-the prefix sums are `[1, 3, 6]` and the total is (6). The initial pair gives (1+3=4), which is below the target, so `i` increases. The next pair is (3+3=6), giving difference (0). The two prefix indices are equal, which maps to (l=2,r=3). The two Pennywises therefore occupy positions `1..2` and `3..3`, exactly the required adjacent split.
+the initial state has sums `1` and `3`. The left side is smaller, so `l` becomes `2` in one based indexing and `left_sum` becomes `3`. The sums are now equal, giving difference zero. The next movement would make the boundaries overlap, so it is not evaluated. The result is `0 2 3`.
 
-For the large-value case,
+The maximum-size case can be represented by one million ones. Both initial sums are already `1`, so the algorithm records difference zero without needing to traverse the entire array. The output is `0 1 1000000`. This case confirms that the implementation handles the largest permitted `n` and that storing the array does not change the asymptotic complexity.
 
-```
-2
-1000000000 1000000000
-```
-
-the prefix sums are `[1000000000, 2000000000]`, and the total is (2000000000). The only usable prefix sum is (10^9), and using it twice gives exactly the total. The answer is `0 1 2`. At the maximum input size, the total can instead reach (10^{15}), which is still safely represented by Python's integer type and requires a 64-bit integer in languages with fixed-width arithmetic.
+A final implementation detail is that all array values are positive. The monotonic two pointer argument depends on this property. If zero or negative values were allowed, moving a boundary would no longer guarantee that the corresponding sum changes in a predictable direction, and this particular proof would no longer apply.

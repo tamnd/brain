@@ -1,7 +1,7 @@
 ---
 title: "CF 102373E - Checkered Pattern"
-description: "We have an (n times m) rectangular grid, where every cell is either black or white. Two black cells are adjacent when they share a side, so the black cells form an undirected grid graph. We may flip any cells, each at most once."
-date: "2026-08-14T03:08:54+07:00"
+description: "We have an (n times m) rectangular board whose cells are either black or white. After changing any number of cells, the black cells must form a nonempty connected graph, where cells sharing a side are adjacent, and that graph must contain no cycle."
+date: "2026-08-14T12:39:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102373
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "\u0426\u0438\u043a\u043b \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434 \u0434\u043b\u044f \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430"
 rating: 0
 weight: 102373
-solve_time_s: 348
+solve_time_s: 587
 verified: false
 draft: false
 ---
@@ -18,651 +18,604 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 48s  
+**Solve time:** 9m 47s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an (n \times m) rectangular grid, where every cell is either black or white. Two black cells are adjacent when they share a side, so the black cells form an undirected grid graph.
+We have an (n \times m) rectangular board whose cells are either black or white. After changing any number of cells, the black cells must form a nonempty connected graph, where cells sharing a side are adjacent, and that graph must contain no cycle. In graph terms, the final set of black cells must induce exactly one tree.
 
-We may flip any cells, each at most once. The final black-cell graph must contain at least one vertex, must be connected, and must contain no simple cycle. A connected acyclic graph is a tree, so the task is exactly to find a black-cell pattern whose induced graph is a tree and whose Hamming distance from the original pattern is minimum.
+Every changed cell contributes one unit to the cost, so the task is to find a minimum Hamming-distance transformation of the original board into a board whose black-cell graph is a tree.
 
-The objective counts both kinds of changes equally. Keeping an original black cell costs zero, deleting it costs one, keeping a white cell costs zero, and turning it black costs one.
+The dimensions are deliberately asymmetric. The height can reach (100), but the width is at most (10). A state that describes everything relevant about a horizontal boundary can consequently depend exponentially on (m), while remaining practical because (m) is only (10). An algorithm exponential in (n m) is impossible, since there can be (1000) cells, while an algorithm whose exponential part depends only on (m) is the natural target.
 
-The dimensions are asymmetric: (n) can reach (100), while (m) is at most (10). The board can contain (1000) cells, so enumerating all (2^{nm}) final patterns is completely impossible. The small width is the useful part of the constraint. When we process the grid row by row, only the last (m) cells can still interact with cells that have not been processed. This gives us a bounded-width dynamic programming problem.
-
-There are several edge cases that are easy to mishandle. For a (1 \times 1) all-white board,
+The first edge case is an entirely white board. For example,
 
 ```
 .
 ```
 
-the correct result is
+cannot be left unchanged, because the required black graph must be nonempty. The correct result is
 
 ```
 #
 ```
 
-because the empty black graph is forbidden. A solution that simply tries to preserve the original pattern would incorrectly accept the empty graph.
+with one change. A solution that only checks connectivity and cycles might accidentally accept the empty graph.
 
-For a (1 \times 3) board
+The second edge case is a disconnected forest. For example,
 
 ```
 #.#
 ```
 
-the optimal result is, for example,
+already has no cycle, but its two black cells are separate components. One change is necessary, and
 
 ```
-#..
+###
 ```
 
-with one change. Turning the middle cell black would cost two changes, so an approach that always tries to connect all original black cells is not optimal.
+is a valid optimal result. Checking only for cycles is insufficient because the final graph must also have exactly one component.
 
-For a (2 \times 2) board containing only black cells,
+The third edge case is a cycle that does not contain a completely black (2 \times 2) square. Consider
 
 ```
-##
-##
+###
+#.#
+###
 ```
 
-there is a cycle around the square. Removing one corner gives a three-vertex path, so the optimum is one change. A connectivity-only check would incorrectly keep all four cells.
+The eight black boundary cells form one cycle around the white center. Removing one boundary cell breaks that cycle and gives the optimum of one change. A test that only looks for full (2 \times 2) black squares would miss this cycle.
 
-The opposite phenomenon also occurs. Original black cells may be disconnected, and adding a white cell can be better than deleting an entire component. The algorithm must consequently allow both adding and removing cells instead of assuming that only black cells should be deleted.
+Finally, a single black cell in a larger board is always a valid tree. For example, a (100 \times 10) all-white board needs only one change. This is useful because it checks both the large height boundary and the requirement that at least one black cell exists.
 
 ## Approaches
 
-The direct brute-force solution considers every possible final coloring. There are (2^{nm}) such colorings. For each one, we can run a graph traversal over the black cells and count edges to determine whether the black graph is nonempty, connected, and acyclic. Checking one coloring takes (O(nm)), so the total complexity is
+A direct solution would enumerate every possible final coloring. There are (2^{nm}) possible subsets of cells that could be black. For each subset we can construct its induced graph, test connectivity and acyclicity, and calculate its distance from the input. This is correct because every possible final pattern is explicitly considered, but its worst-case work is (O(nm2^{nm})). At the maximum (nm=1000), that is roughly (1000\cdot2^{1000}) operations, far beyond anything feasible.
 
-[
-O(nm,2^{nm}).
-]
+The useful observation is that we do not need to remember the entire already processed board. Scan the board row by row, and within each row from left to right. Once a cell is behind the scan boundary, the only way its black component can still interact with unprocessed cells is through the current boundary between processed and unprocessed cells.
 
-At the maximum board size this contains (2^{1000}) possibilities, which is far beyond any practical computation.
+For every column we therefore remember whether the frontier cell is black and, if it is black, which connected component it belongs to. Two frontier positions with the same label belong to the same component in the processed part of the board. The labels themselves have no meaning, so they are canonicalized, for example ((4,4,0,7)) becomes ((1,1,0,2)).
 
-The useful observation is that the grid has small width. Process cells in row-major order. When we are about to decide the color of a cell, all cells to its left and all cells in earlier rows have already been fixed. Among those processed cells, only the current frontier can still have edges to future cells. The frontier contains at most (m) cells.
+When a new black cell is inserted, it has at most two already processed neighbors, its left neighbor and its upper neighbor. If both exist and belong to the same component, adding the new cell creates a cycle. If they belong to different components, the new cell merges those components. If neither exists, it starts a new component.
 
-For every black frontier cell, we need to know which already-built connected component it belongs to. This is enough information because a future cell can only connect to its left neighbor and its upper neighbor. We never need to remember the complete shape of an old component.
+Connectivity requires one additional piece of state. If a component disappears completely from the frontier, no future cell can ever touch it. Such a component is permanently finished. A valid final solution can have at most one finished component, and once it is finished no further black cell may be selected. This lets us reject disconnected partial solutions immediately instead of carrying useless states.
 
-The state is thus a connectivity profile of at most ten frontier positions. Components are represented by canonical labels such as
-
-```
-1 1 0 2 2 0
-```
-
-where equal positive labels mean that the corresponding frontier cells belong to the same black component and zero means white.
-
-When a new black cell has two black neighbors belonging to the same component, adding it creates a cycle immediately, so that transition is forbidden. When the two neighbors belong to different components, the new cell merges them. When it has at most one black neighbor, it simply extends that component or starts a new one.
-
-There is one more subtlety. If a component disappears completely from the frontier, no future cell can reach it. If another component is still alive, the final graph would permanently contain two disconnected components, so the state is invalid. If it was the only component, the whole black graph is finished. From that point onward every remaining cell must stay white.
-
-The brute force works because it explicitly examines every possible final graph. It fails because there are exponentially many graphs. The small width lets us replace the complete history by the connectivity of only the frontier, reducing the exponential part to a function of (m), which is at most (10).
+The dynamic programming value of a state is the minimum number of recolorings needed to reach it. Because future decisions depend only on the frontier connectivity state and not on the exact history, keeping only the cheapest way to reach each state is sufficient.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(nm,2^{nm})) | (O(nm)) | Too slow |
-| Frontier DP | (O(nm,S_m,m)) | (O(nm,S_m)) with reconstruction | Accepted |
+| Brute Force | (O(nm2^{nm})) | (O(nm)) | Too slow |
+| Frontier DP | (O(nm^2S_m)) | (O(nS_m)) with reconstruction | Accepted |
 
-Here (S_m) is the number of reachable canonical frontier profiles for width (m). Since (m\le10), this is a width-dependent constant for the problem.
+Here (S_m) denotes the number of reachable frontier signatures for width (m). Since (m\le10), this is a width-dependent constant for this problem. The actual reachable states are much fewer than all arbitrary labelings because the components arise from a planar grid forest.
 
 ## Algorithm Walkthrough
 
-1. Process the board in row-major order. Before processing a cell in column (c), the frontier position (c) represents the cell directly above it, while position (c-1) represents the cell directly to its left.
-2. Represent each DP state by the labels of the (m) frontier positions and a `done` flag. A zero label means that the frontier cell is white. Positive equal labels identify frontier cells belonging to the same black component.
-3. For every state, first consider making the current cell white. Replace the frontier position by zero. If removing this position makes a black component disappear, reject the transition when another component remains alive. If no component remains, mark the state as `done`, meaning that a complete valid black component has already been finished.
-4. Consider making the current cell black. Look at its left and upper neighbors. If both are black and have the same component label, reject the transition because the new cell would connect two vertices already connected by a path, creating a cycle.
-5. If the two black neighbors have different labels, merge their components through the new cell. If exactly one neighbor is black, attach the new cell to that component. If neither neighbor is black, create a new component.
-6. Canonicalize the labels after a merge. Renumber components according to their first occurrence from left to right. This makes states representing the same connectivity structure identical, so they can share one DP entry.
-7. Add one to the transition cost exactly when the chosen color differs from the original cell. For every resulting state, retain only the minimum cost.
-8. Store the predecessor state and the chosen color whenever a state receives a better cost. The implementation stores encoded states in compact integer arrays so the whole reconstruction history does not require Python objects for every cell.
-9. After all (nm) cells have been processed, accept a state if it represents exactly one finished black component. At the end of the board an unfinished component is also acceptable, because it may simply touch the final frontier. What is forbidden is an empty graph or more than one component.
-10. Follow the stored predecessors backwards from the cheapest accepting state. The recorded color at every cell reconstructs an optimal final grid.
+1. Scan cells in row-major order and maintain a frontier of exactly (m) positions. Position (c) represents the processed black component touching the current boundary in column (c). A zero means that the frontier cell is white or there is no black component touching the boundary there.
+2. Canonicalize all component labels after every transition. For example, states ((7,7,0,3)) and ((1,1,0,2)) describe exactly the same connectivity, so they must be stored as the same DP state. Without canonicalization, the number of equivalent states would grow unnecessarily.
+3. For every cell, try making it white. Its cost is (0) if it was already white and (1) if it was originally black. Replace the frontier position by zero. If this removes the last frontier occurrence of a component, that component has become permanently closed. Keep this transition only when there are no other active components, because a closed component can never connect to anything later.
+4. Try making the cell black. Its cost is (0) when the original cell was black and (1) otherwise. If a previously finished component exists, reject this transition because the new black cell would create a separate component.
+5. Look at the upper and left frontier labels. If both are nonzero and equal, the new cell joins two already connected vertices of the same component, so the new edge closes a cycle. Reject the transition.
+6. If the upper and left labels are different nonzero values, merge their components and assign the merged component to the new cell. If exactly one exists, attach the new cell to that component. If neither exists, create a new component.
+7. After processing all cells, accept a state if there is exactly one active component or exactly one previously finished component. The completely empty state is rejected because at least one black cell is required.
+8. Store, for every row, the predecessor state and the chosen black-cell mask whenever a state obtains a better cost. After finding the optimal final state, walk these predecessor records backwards to recover every row of the output board.
 
 ### Why it works
 
-The invariant is that every DP state represents exactly the black graph induced by all processed cells, with its connectivity restricted to the current frontier. Every processed component that no longer touches the frontier can never interact with an unprocessed cell again. Consequently, such a component may disappear only when it is the unique remaining component.
+The central invariant is that every nonzero frontier label represents exactly one connected component of the black cells processed so far, and every processed component that no longer touches the frontier has been permanently closed. The only edges introduced when processing a cell are its edges to the already processed left and upper neighbors. Consequently, a cycle can be created exactly when both exist and belong to the same component, which is precisely the transition we reject.
 
-When a black cell has two neighbors in the same component, there is already a path between those neighbors, and the two new edges close a cycle. Rejecting this transition is exactly the condition required to maintain acyclicity. Every other black transition preserves a forest, because it either creates a new component, attaches a vertex to one component, or merges two distinct components.
+A component that disappears from the frontier has no edge to any unprocessed cell, so it can never connect to a component created later. Rejecting a transition that closes one component while another remains is thus necessary for the final graph to be connected. At the end, one remaining component means the black cells are connected, while every accepted insertion avoided creating a cycle. The final black graph is consequently a tree.
 
-At the end, the accepted state has exactly one nonempty component and no cycle, so its black graph is a nonempty tree. Conversely, every valid final tree can be followed cell by cell by the DP. Its cells never create a cycle, and its unique component never disappears while another component remains. Thus every valid coloring is represented by some DP path, and taking the minimum transition cost gives the minimum number of recolorings.
+For optimality, each DP state keeps the minimum number of changes among all partial boards with the same frontier information. All future possibilities depend only on that information, so a more expensive way to reach the same state can never lead to a better final answer. The minimum-cost accepted final state is therefore globally optimal.
 
 ## Python Solution
 
 ```python
 import sys
-from array import array
-
 input = sys.stdin.readline
 
-INF = 10 ** 9
-
-def encode_state(state, m):
-    code = state[m] << (4 * m)
-    for c in range(m):
-        code |= state[c] << (4 * c)
-    return code
-
-def normalize(labels):
+def normalize(a):
     mp = {}
     nxt = 1
-    res = list(labels)
+    for i, x in enumerate(a):
+        if x:
+            y = mp.get(x)
+            if y is None:
+                y = nxt
+                mp[x] = y
+                nxt += 1
+            a[i] = y
+    return tuple(a)
 
-    for i, x in enumerate(res):
-        if x == 0:
-            continue
-        if x not in mp:
-            mp[x] = nxt
-            nxt += 1
-        res[i] = mp[x]
-
-    return tuple(res)
-
-def solve_grid(grid):
+def solve_case(grid):
     n = len(grid)
     m = len(grid[0])
-    total = n * m
 
-    initial = (0,) * m + (0,)
+    start_state = (0,) * m
+    start_key = (start_state, 0)
 
-    # cur[state] = (minimum cost, index in the current layer)
-    cur = {initial: (0, 0)}
+    # dp[(frontier, finished)] = minimum number of changes
+    dp = {start_key: 0}
 
-    state_layers = []
-    parent_layers = []
-    choice_layers = []
+    # parents[r][state] = (previous_state, row_mask)
+    parents = []
 
-    for pos in range(total):
-        r = pos // m
-        c = pos % m
+    INF = 10 ** 9
 
-        nxt = {}
-        parents = array('Q')
-        choices = array('B')
+    for r in range(n):
+        # value = (cost, state_before_this_row, row_mask)
+        cur = {
+            key: (cost, key, 0)
+            for key, cost in dp.items()
+        }
 
-        original_black = grid[r][c] == '#'
+        for c in range(m):
+            nxt = {}
 
-        for state, (cost, _) in cur.items():
-            done = state[m]
+            for (state, finished), (cost, prev_key, row_mask) in cur.items():
+                old = state[c]
+                left = state[c - 1] if c > 0 else 0
+                up = old
 
-            # Once the only component has disappeared, all remaining
-            # cells must stay white.
-            allowed_black = not done
+                # Choose white.
+                white_cost = cost + (grid[r][c] == '#')
+                a = list(state)
+                a[c] = 0
 
-            labels = state[:m]
+                new_finished = finished
 
-            # Transition 1: make the cell white.
-            new_labels = list(labels)
-            old = new_labels[c]
-            new_labels[c] = 0
+                if old:
+                    still_alive = old in a
+                    if not still_alive:
+                        # A component disappeared from the frontier.
+                        # It is safe only if it is the only component.
+                        if any(a):
+                            still_alive = False
+                            new_finished = -1
+                        else:
+                            new_finished = 1
 
-            if old != 0:
-                # If this was the last frontier occurrence of the
-                # component, it disappears from the processed graph.
-                if old not in new_labels:
-                    if all(x == 0 for x in new_labels):
-                        new_state = tuple(new_labels) + (1,)
-                        new_cost = cost + (1 if original_black else 0)
+                if new_finished != -1:
+                    ns = normalize(a)
+                    nk = (ns, new_finished)
 
-                        idx_info = nxt.get(new_state)
-                        prev_code = encode_state(state, m)
+                    if white_cost < nxt.get(nk, (INF, None, None))[0]:
+                        nxt[nk] = (
+                            white_cost,
+                            prev_key,
+                            row_mask
+                        )
 
-                        if idx_info is None:
-                            idx = len(parents)
-                            nxt[new_state] = (new_cost, idx)
-                            parents.append(prev_code)
-                            choices.append(0)
-                        elif new_cost < idx_info[0]:
-                            idx = idx_info[1]
-                            nxt[new_state] = (new_cost, idx)
-                            parents[idx] = prev_code
-                            choices[idx] = 0
-                    # Otherwise a finished component would be
-                    # disconnected from another live component.
-                else:
-                    new_state = tuple(new_labels) + (0,)
-                    new_cost = cost + (1 if original_black else 0)
+                # Choose black.
+                if not finished:
+                    # If left and up belong to the same component,
+                    # the two edges from the new cell close a cycle.
+                    if not (left and up and left == up):
+                        a = list(state)
 
-                    idx_info = nxt.get(new_state)
-                    prev_code = encode_state(state, m)
+                        if up and left and up != left:
+                            # Merge left's component into up's component.
+                            for i in range(m):
+                                if a[i] == left:
+                                    a[i] = up
+                            new_label = up
+                        elif up:
+                            new_label = up
+                        elif left:
+                            new_label = left
+                        else:
+                            new_label = max(a) + 1
 
-                    if idx_info is None:
-                        idx = len(parents)
-                        nxt[new_state] = (new_cost, idx)
-                        parents.append(prev_code)
-                        choices.append(0)
-                    elif new_cost < idx_info[0]:
-                        idx = idx_info[1]
-                        nxt[new_state] = (new_cost, idx)
-                        parents[idx] = prev_code
-                        choices[idx] = 0
-            else:
-                new_state = tuple(new_labels) + (done,)
-                new_cost = cost + (1 if original_black else 0)
+                        a[c] = new_label
+                        ns = normalize(a)
 
-                idx_info = nxt.get(new_state)
-                prev_code = encode_state(state, m)
+                        black_cost = cost + (grid[r][c] == '.')
+                        nk = (ns, finished)
+                        nmask = row_mask | (1 << c)
 
-                if idx_info is None:
-                    idx = len(parents)
-                    nxt[new_state] = (new_cost, idx)
-                    parents.append(prev_code)
-                    choices.append(0)
-                elif new_cost < idx_info[0]:
-                    idx = idx_info[1]
-                    nxt[new_state] = (new_cost, idx)
-                    parents[idx] = prev_code
-                    choices[idx] = 0
+                        if black_cost < nxt.get(
+                            nk, (INF, None, None)
+                        )[0]:
+                            nxt[nk] = (
+                                black_cost,
+                                prev_key,
+                                nmask
+                            )
 
-            # Transition 2: make the cell black.
-            if not allowed_black:
-                continue
+            cur = nxt
 
-            left = labels[c - 1] if c > 0 else 0
-            up = labels[c]
+        ndp = {}
+        par = {}
 
-            # Two edges from the new cell to the same component create
-            # a cycle.
-            if left != 0 and left == up:
-                continue
+        for key, (cost, prev_key, row_mask) in cur.items():
+            ndp[key] = cost
+            par[key] = (prev_key, row_mask)
 
-            new_labels = list(labels)
+        dp = ndp
+        parents.append(par)
 
-            if left != 0 and up != 0:
-                # Merge up into left.
-                for j in range(m):
-                    if new_labels[j] == up:
-                        new_labels[j] = left
-                new_labels[c] = left
-                new_labels = normalize(new_labels)
-            elif left != 0:
-                new_labels[c] = left
-            elif up != 0:
-                new_labels[c] = up
-            else:
-                new_labels[c] = max(new_labels, default=0) + 1
-
-            new_state = tuple(new_labels) + (0,)
-            new_cost = cost + (0 if original_black else 1)
-            prev_code = encode_state(state, m)
-
-            idx_info = nxt.get(new_state)
-
-            if idx_info is None:
-                idx = len(parents)
-                nxt[new_state] = (new_cost, idx)
-                parents.append(prev_code)
-                choices.append(1)
-            elif new_cost < idx_info[0]:
-                idx = idx_info[1]
-                nxt[new_state] = (new_cost, idx)
-                parents[idx] = prev_code
-                choices[idx] = 1
-
-        cur = nxt
-
-        state_layers.append(
-            array('Q', (encode_state(state, m) for state in cur))
-        )
-        parent_layers.append(parents)
-        choice_layers.append(choices)
-
-    best_state = None
+    best_key = None
     best_cost = INF
-    best_index = -1
 
-    for state, (cost, idx) in cur.items():
-        if state[m]:
+    for (state, finished), cost in dp.items():
+        if finished:
             if cost < best_cost:
                 best_cost = cost
-                best_state = state
-                best_index = idx
-            continue
+                best_key = (state, finished)
+        else:
+            components = len({x for x in state if x})
+            if components == 1 and cost < best_cost:
+                best_cost = cost
+                best_key = (state, finished)
 
-        components = {x for x in state[:m] if x != 0}
+    # A one-cell black tree always exists, so best_key must exist.
+    row_masks = [0] * n
 
-        if len(components) == 1 and cost < best_cost:
-            best_cost = cost
-            best_state = state
-            best_index = idx
+    key = best_key
+    for r in range(n - 1, -1, -1):
+        prev_key, mask = parents[r][key]
+        row_masks[r] = mask
+        key = prev_key
 
-    if best_state is None:
-        raise RuntimeError("No valid pattern exists")
+    answer = []
+    for r in range(n):
+        row = []
+        for c in range(m):
+            row.append('#' if (row_masks[r] >> c) & 1 else '.')
+        answer.append(''.join(row))
 
-    answer = [list(row) for row in grid]
+    return answer
 
-    idx = best_index
+def main():
+    n, m = map(int, input().split())
+    grid = [input().strip() for _ in range(n)]
 
-    for pos in range(total - 1, -1, -1):
-        r = pos // m
-        c = pos % m
-
-        chosen = choice_layers[pos][idx]
-        answer[r][c] = '#' if chosen else '.'
-
-        if pos > 0:
-            prev_code = parent_layers[pos][idx]
-            idx = state_layers[pos - 1].index(prev_code)
-
-    return '\n'.join(''.join(row) for row in answer)
-
-def solve(data=None):
-    if data is None:
-        n, m = map(int, input().split())
-        grid = [input().strip() for _ in range(n)]
-    else:
-        lines = data.strip().splitlines()
-        n, m = map(int, lines[0].split())
-        grid = lines[1:1 + n]
-
-    return solve_grid(grid)
+    answer = solve_case(grid)
+    sys.stdout.write('\n'.join(answer))
 
 if __name__ == "__main__":
-    print(solve())
+    main()
 ```
 
-The DP dictionary contains the minimum cost for each canonical frontier state. The extra final element of the state is the `done` flag. A state with `done = 1` means that its only black component has already disappeared from the frontier, so no later black cell can be selected.
+The DP key consists of the frontier tuple and the `finished` flag. The tuple contains only connectivity information, not the number of black cells or the exact coordinates of old components, because neither affects future transitions.
 
-The white transition removes the current frontier label. If that removal eliminates the last occurrence of a component while another component remains, the transition is discarded because the disconnected component can never be joined again. If it eliminates the only component, the state becomes `done`.
+The white transition replaces the current frontier position by zero. The subtle part is detecting a component that disappears. If the old label is absent afterward and another nonzero label remains, the partial graph has become permanently disconnected, so that transition is discarded. If no other component remains, the single component has simply finished, and the `finished` flag records that no future black cell may be added.
 
-The black transition uses only the left and upper labels. Equal nonzero labels are the cycle case. Distinct labels are merged, while one or zero neighbors require no merge. The `normalize` function is necessary because labels themselves have no meaning. For example, profiles `(1, 1, 0, 2)` and `(5, 5, 0, 9)` describe exactly the same connectivity and must become the same DP state.
+For the black transition, `up` is the old value at the current column and `left` is the already updated value at the previous column. This ordering is essential. At the moment cell ((r,c)) is processed, these are exactly its already processed neighbors.
 
-The predecessor is encoded into a 64-bit integer. Four bits per frontier position are sufficient because there are at most ten columns and hence at most ten simultaneous component labels. One additional bit stores `done`. The use of `array` for the reconstruction history avoids the large Python-object overhead that would result from storing every state tuple for every cell.
+The test `left and up and left == up` detects every newly created cycle. If both neighbors belong to the same component, the new cell provides a second route between them. If they belong to different components, the new cell safely joins the two trees into a larger tree.
 
-The reconstruction uses the encoded predecessor directly. Python's `array.index` performs the search in native code, so there is no need to retain a large dictionary for every layer.
+The row mask stored in each parent record is sufficient for reconstruction because all choices within a row are represented by that mask. The DP itself only needs the resulting frontier state, while the predecessor record remembers which row was selected to obtain it.
 
-No integer-overflow issue exists in Python. The maximum DP cost is only (nm), at most (1000).
+Python integers are unbounded, but the costs are at most (nm), so there is no overflow concern. The bit mask has at most ten bits because (m\le10).
 
 ## Worked Examples
 
-For Sample 1, the input is
+For Sample 1, one optimal final pattern is `##.`, `#.#`, `###`. It changes only the top-right cell. The following trace uses canonical component labels, where equal labels mean that the corresponding frontier cells are connected.
 
-```
-###
-#.#
-###
-```
+| Processed row | Chosen row | Frontier after row | Finished |
+| --- | --- | --- | --- |
+| Start | none | `(0,0,0)` | 0 |
+| 1 | `##.` | `(1,1,0)` | 0 |
+| 2 | `#.#` | `(1,0,2)` | 0 |
+| 3 | `###` | `(1,1,1)` | 0 |
+| End | `##./#.#/###` | one component | 0 |
 
-One optimal answer is
+After the first row, the two black cells form one component. In the second row, the middle cell is white, so the left and right black groups are temporarily separate. In the last row, the middle cell joins those two different components. Since the labels are different when that happens, no cycle is created. Seven black cells and six edges remain, so the result is a tree. The cost is one.
 
-```
-###
-#.#
-##.
-```
+For Sample 2, the sample output itself can be used as the traced optimal pattern.
 
-The following table traces that answer. The profile contains the component labels on the current frontier after the processed cell.
+| Processed row | Chosen row | Frontier after row | Finished |
+| --- | --- | --- | --- |
+| Start | none | `(0,0,0)` | 0 |
+| 1 | `##.` | `(1,1,0)` | 0 |
+| 2 | `.##` | `(0,1,1)` | 0 |
+| 3 | `#.#` | `(2,1,1)` | 0 |
+| 4 | `###` | `(1,1,1)` | 0 |
+| End | `##./.##/#.#/###` | one component | 0 |
 
-| Cell | Original | Chosen | Frontier | Cost |
-| --- | --- | --- | --- | --- |
-| (1,1) | # | # | 1 0 0 | 0 |
-| (1,2) | # | # | 1 1 0 | 0 |
-| (1,3) | # | # | 1 1 1 | 0 |
-| (2,1) | # | # | 1 1 1 | 0 |
-| (2,2) | . | . | 1 0 1 | 0 |
-| (2,3) | # | # | 1 0 1 | 0 |
-| (3,1) | # | # | 1 0 1 | 0 |
-| (3,2) | # | # | 1 1 1 | 0 |
-| (3,3) | # | . | 1 1 0 | 1 |
-
-At the fifth cell, the center is kept white. Its upper and left neighbors belong to the same component, but because the cell is white, no cycle is created. The existing top-left and top-right paths remain part of one component. At the final cell, removing the upper frontier position does not disconnect the component because two other frontier positions still carry label 1. The final graph is a tree with eight vertices and seven edges.
-
-For Sample 2, the input is
-
-```
-##.
-.##
-###
-##.
-```
-
-An optimal answer is
-
-```
-##.
-.##
-#.#
-###
-```
-
-| Cell | Original | Chosen | Frontier | Cost |
-| --- | --- | --- | --- | --- |
-| (1,1) | # | # | 1 0 0 | 0 |
-| (1,2) | # | # | 1 1 0 | 0 |
-| (1,3) | . | . | 1 1 0 | 0 |
-| (2,1) | . | . | 0 1 0 | 0 |
-| (2,2) | # | # | 0 1 0 | 0 |
-| (2,3) | # | # | 0 1 1 | 0 |
-| (3,1) | # | # | 2 1 1 | 1 |
-| (3,2) | # | . | 2 0 1 | 2 |
-| (3,3) | # | # | 2 0 1 | 2 |
-| (4,1) | # | # | 2 0 1 | 2 |
-| (4,2) | # | # | 2 2 1 | 2 |
-| (4,3) | . | # | 2 2 2 | 2 |
-
-The interesting part starts at cell ((3,1)). That cell initially creates a second component, represented by label 2. The white center cell then leaves two separate components on the frontier. The last row connects them: the cell at ((4,3)) sees the left component through ((4,2)) and the upper component through ((3,3)), so their distinct labels are merged. The final profile has only label 2, proving that all black cells belong to one component.
+The third row temporarily creates two components. The first cell of the fourth row extends the left component, and the second cell extends it again. The last cell sees a left neighbor from one component and an upper neighbor from the other component, so it merges them rather than creating a cycle. Exactly two cells differ from the input, matching the stated optimum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(nm,S_m,m)) | Each of the (nm) cells processes every reachable frontier state, and a merge can inspect the (m) frontier positions |
-| Space | (O(nm,S_m)) | The current DP uses (O(S_m)) states, while compact predecessor arrays are retained for all cells |
+| Time | (O(nm^2S_m)) | Each of the (nm) cells processes every reachable frontier state, and canonicalization plus component merging costs (O(m)). |
+| Space | (O(nS_m)) | The current DP uses (O(S_m)) states, while row predecessor records use (O(nS_m)) space for reconstruction. |
 
-Here (S_m) depends only on the width. The width is bounded by (10), so the exponential part is confined to a very small dimension while the height can be (100). This is exactly the setting where frontier DP is useful. The implementation also stores reconstruction data in packed arrays rather than Python tuples, keeping memory proportional to the number of DP states.
+Here (S_m) depends only on the width. The width is capped at (10), while the height is only (100), which is exactly the regime where frontier dynamic programming is useful. The algorithm never enumerates the (2^{nm}) complete boards.
 
 ## Test Cases
 
-The following harness assumes the submitted solution is saved as `solution.py` and exposes the `solve(data)` function shown above. The small cases are checked against an independent brute-force optimum, while the (100\times10) case checks the known optimum for an all-white board.
+The tests below validate the output structurally rather than comparing the exact text, because the problem allows any optimal pattern. The checker verifies that the output is a tree and that its number of recolorings equals the known optimum.
 
 ```python
-from solution import solve
+import sys
+import io
+from collections import deque
 
-def parse_grid(text):
-    lines = text.strip().splitlines()
-    n, m = map(int, lines[0].split())
-    return n, m, lines[1:1 + n]
+def normalize(a):
+    mp = {}
+    nxt = 1
+    for i, x in enumerate(a):
+        if x:
+            y = mp.get(x)
+            if y is None:
+                y = nxt
+                mp[x] = y
+                nxt += 1
+            a[i] = y
+    return tuple(a)
 
-def run(inp: str) -> str:
-    return solve(inp).strip()
+def solve_case(grid):
+    n = len(grid)
+    m = len(grid[0])
 
-def valid_and_cost(inp, out):
-    n, m, original = parse_grid(inp)
-    result = out.splitlines()
-
-    assert len(result) == n
-    assert all(len(row) == m for row in result)
-
-    black = []
-    edges = 0
-    total_black = 0
-    cost = 0
+    dp = {((0,) * m, 0): 0}
+    parents = []
+    INF = 10 ** 9
 
     for r in range(n):
+        cur = {
+            key: (cost, key, 0)
+            for key, cost in dp.items()
+        }
+
         for c in range(m):
-            assert result[r][c] in '.#'
+            nxt = {}
 
-            if result[r][c] != original[r][c]:
-                cost += 1
+            for (state, finished), (cost, prev, mask) in cur.items():
+                old = state[c]
+                left = state[c - 1] if c else 0
+                up = old
 
-            if result[r][c] == '#':
-                black.append((r, c))
-                total_black += 1
+                # White
+                a = list(state)
+                a[c] = 0
+                nf = finished
 
-                if r > 0 and result[r - 1][c] == '#':
-                    edges += 1
-                if c > 0 and result[r][c - 1] == '#':
-                    edges += 1
+                if old and old not in a:
+                    if any(a):
+                        nf = -1
+                    else:
+                        nf = 1
 
-    assert total_black > 0
+                if nf != -1:
+                    ns = normalize(a)
+                    key = (ns, nf)
+                    value = cost + (grid[r][c] == '#')
+                    if value < nxt.get(key, (INF, None, None))[0]:
+                        nxt[key] = (value, prev, mask)
 
-    seen = set()
-    stack = [black[0]]
-    seen.add(black[0])
+                # Black
+                if not finished and not (
+                    left and up and left == up
+                ):
+                    a = list(state)
 
-    while stack:
-        r, c = stack.pop()
+                    if left and up and left != up:
+                        for i in range(m):
+                            if a[i] == left:
+                                a[i] = up
+                        label = up
+                    elif up:
+                        label = up
+                    elif left:
+                        label = left
+                    else:
+                        label = max(a) + 1
+
+                    a[c] = label
+                    ns = normalize(a)
+                    key = (ns, finished)
+                    value = cost + (grid[r][c] == '.')
+                    nmask = mask | (1 << c)
+
+                    if value < nxt.get(key, (INF, None, None))[0]:
+                        nxt[key] = (value, prev, nmask)
+
+            cur = nxt
+
+        dp = {key: value[0] for key, value in cur.items()}
+        parents.append({
+            key: (value[1], value[2])
+            for key, value in cur.items()
+        })
+
+    best = None
+    best_cost = INF
+
+    for (state, finished), cost in dp.items():
+        if finished or len({x for x in state if x}) == 1:
+            if cost < best_cost:
+                best_cost = cost
+                best = (state, finished)
+
+    masks = [0] * n
+    key = best
+
+    for r in range(n - 1, -1, -1):
+        key, masks[r] = parents[r][key]
+
+    return [
+        ''.join('#' if (masks[r] >> c) & 1 else '.'
+                for c in range(len(grid[0])))
+        for r in range(n)
+    ]
+
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    sys.stdin = io.StringIO(inp)
+    n, m = map(int, input().split())
+    grid = [input().strip() for _ in range(n)]
+    ans = solve_case(grid)
+    sys.stdin = old_stdin
+    return '\n'.join(ans)
+
+def is_tree(board):
+    n = len(board)
+    m = len(board[0])
+
+    cells = [
+        (r, c)
+        for r in range(n)
+        for c in range(m)
+        if board[r][c] == '#'
+    ]
+
+    if not cells:
+        return False
+
+    seen = {cells[0]}
+    q = deque([cells[0]])
+
+    while q:
+        r, c = q.popleft()
         for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nr, nc = r + dr, c + dc
-            if 0 <= nr < n and 0 <= nc < m:
-                if result[nr][nc] == '#' and (nr, nc) not in seen:
-                    seen.add((nr, nc))
-                    stack.append((nr, nc))
+            if (
+                0 <= nr < n and
+                0 <= nc < m and
+                board[nr][nc] == '#'
+                and (nr, nc) not in seen
+            ):
+                seen.add((nr, nc))
+                q.append((nr, nc))
 
-    assert len(seen) == total_black
-    assert edges == total_black - 1
+    if len(seen) != len(cells):
+        return False
 
-    return cost
+    edges = 0
+    for r, c in cells:
+        if r + 1 < n and board[r + 1][c] == '#':
+            edges += 1
+        if c + 1 < m and board[r][c + 1] == '#':
+            edges += 1
 
-def brute_cost(inp):
-    n, m, original = parse_grid(inp)
-    cells = n * m
+    return edges == len(cells) - 1
 
-    best = cells + 1
+def check(inp, expected_cost):
+    first = inp.splitlines()
+    n, m = map(int, first[0].split())
+    original = first[1:n + 1]
 
-    for mask in range(1, 1 << cells):
-        board = [['.' for _ in range(m)] for _ in range(n)]
-        cost = 0
+    output = run(inp)
+    board = output.splitlines()
 
-        for p in range(cells):
-            r, c = divmod(p, m)
-            black = (mask >> p) & 1
+    assert len(board) == n
+    assert all(len(row) == m for row in board)
+    assert all(ch in '.#' for row in board for ch in row)
+    assert is_tree(board)
 
-            if black:
-                board[r][c] = '#'
-
-            original_black = original[r][c] == '#'
-            if black != original_black:
-                cost += 1
-
-        if cost >= best:
-            continue
-
-        vertices = []
-        edges = 0
-
-        for r in range(n):
-            for c in range(m):
-                if board[r][c] == '#':
-                    vertices.append((r, c))
-                    if r > 0 and board[r - 1][c] == '#':
-                        edges += 1
-                    if c > 0 and board[r][c - 1] == '#':
-                        edges += 1
-
-        if not vertices:
-            continue
-
-        seen = {vertices[0]}
-        stack = [vertices[0]]
-
-        while stack:
-            r, c = stack.pop()
-            for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                nr, nc = r + dr, c + dc
-                if 0 <= nr < n and 0 <= nc < m:
-                    if board[nr][nc] == '#' and (nr, nc) not in seen:
-                        seen.add((nr, nc))
-                        stack.append((nr, nc))
-
-        if len(seen) == len(vertices) and edges == len(vertices) - 1:
-            best = cost
-
-    return best
+    cost = sum(
+        original[r][c] != board[r][c]
+        for r in range(n)
+        for c in range(m)
+    )
+    assert cost == expected_cost
 
 # Provided samples
-sample1 = """\
-3 3
+check(
+    """3 3
 ###
 #.#
 ###
-"""
-assert valid_and_cost(sample1, run(sample1)) == 1
+""",
+    1
+)
 
-sample2 = """\
-4 3
+check(
+    """4 3
 ##.
 .##
 ###
 ##.
-"""
-assert valid_and_cost(sample2, run(sample2)) == 2
+""",
+    2
+)
 
-sample3 = """\
-2 3
+check(
+    """2 3
 ...
 ...
-"""
-assert valid_and_cost(sample3, run(sample3)) == 1
+""",
+    1
+)
 
-# Minimum-size input
-case1 = """\
-1 1
+# Minimum-size input, already valid
+check(
+    """1 1
 #
-"""
-assert valid_and_cost(case1, run(case1)) == 0
+""",
+    0
+)
 
-# Maximum-size input, all cells initially white.
-# One black cell is necessary and sufficient.
-case2 = "100 10\n" + "\n".join(["." * 10] * 100) + "\n"
-assert valid_and_cost(case2, run(case2)) == 1
+# Minimum-size input, empty black graph
+check(
+    """1 1
+.
+""",
+    1
+)
 
-# All-black input containing a cycle.
-case3 = """\
-2 2
-##
-##
-"""
-assert valid_and_cost(case3, run(case3)) == 1
-assert valid_and_cost(case3, run(case3)) == brute_cost(case3)
-
-# Boundary case where keeping both black cells is worse than deleting one.
-case4 = """\
-1 3
+# Disconnected forest, one change is enough
+check(
+    """1 3
 #.#
-"""
-assert valid_and_cost(case4, run(case4)) == 1
-assert valid_and_cost(case4, run(case4)) == brute_cost(case4)
+""",
+    1
+)
 
-# Extra small exhaustive-optimality checks.
-case5 = """\
-2 3
-######
-""".replace("\n", "\n")
-assert valid_and_cost(case5, run(case5)) == brute_cost(case5)
+# Maximum-size board, one black cell is optimal
+check(
+    "100 10\n" + "\n".join(["." * 10] * 100) + "\n",
+    1
+)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 / #` | `#` | Minimum dimensions and already-valid tree |
-| `100 10` with every cell `.` | Any pattern with exactly one `#` | Maximum board size and the nonempty requirement |
-| `2 2 / ## / ##` | Any three-cell path | Cycle detection |
-| `1 3 / #.#` | Any single black cell | Deleting a disconnected component can be cheaper than connecting it |
-| `2 3 / ### / ###` | Any optimal induced tree | Larger cycle and frontier merging |
+| `1 x 1` containing `#` | `#` | A single cell is already a valid tree. |
+| `1 x 1` containing `.` | `#` | The black graph must be nonempty. |
+| `1 x 3` containing `#.#` | Any tree at cost (1) | Connectivity must be enforced even when there is no cycle. |
+| `100 x 10` containing only `.` | Any single black cell | Maximum dimensions and the empty-to-singleton case. |
 
 ## Edge Cases
 
-The (1\times1) all-white case is handled by the `done` distinction and the final nonempty check. Starting from the empty profile, the white transition cannot produce an accepted final state. The black transition creates one component, and because the board ends immediately, that single active component is accepted. The output is `#` with cost one.
+For the one-cell input
+
+```
+.
+```
+
+the initial DP state is the empty frontier. Choosing white leaves it empty, but that state is rejected at the end because there is no black component. Choosing black creates one component, and the final state contains exactly one component. Its cost is one, so the output is `#`.
+
+For the already valid one-cell input
+
+```
+#
+```
+
+choosing black has cost zero. The frontier contains one component, and the final state is accepted immediately. Choosing white would create the finished empty state, which is rejected because it contains no black cell. The algorithm consequently returns `#` with zero changes.
 
 For
 
 ```
-1 3
 #.#
 ```
 
-the first black cell creates component 1. The middle cell is optimally kept white, so the right black cell would create a second component. The DP recognizes that this cannot produce a connected final graph unless something later joins the components, but there is no useful future cell. The cheapest accepted state consequently keeps only one of the two original black cells, giving cost one.
+the first black cell creates component (1), the middle white cell leaves component (1) active, and the last black cell starts component (2). The final frontier therefore contains two components, so the unchanged board is rejected. The DP can instead make the middle cell black, merging the two sides into one path, or remove either endpoint. Both choices cost one, so the optimum is one.
 
-For
+For the cycle
 
 ```
-2 2
-##
-##
+###
+#.#
+###
 ```
 
-the first three black cells can form a path. When the fourth cell is considered, its left and upper neighbors already have the same component label. Adding it would create the fourth side of the square, so the transition is rejected immediately. The DP instead chooses one white cell and obtains a three-vertex tree at cost one.
+the first two rows can temporarily contain several frontier components. When the final row closes the shape, any transition that connects two frontier cells already belonging to the same component is rejected as a cycle. A one-cell deletion leaves a connected acyclic set, so the DP retains a solution of cost one. Since the original board itself is cyclic, zero changes cannot be optimal, proving that one is the minimum.
 
-For the maximum-size all-white board, every black cell costs one, so the lower bound is one because the final graph cannot be empty. A single black cell is already a tree, so that lower bound is attainable. The DP finds exactly that solution without needing to explore arbitrary large connected shapes.
-
-The disconnected-component case is handled by the frontier closure rule. Once a component disappears from the frontier, no unprocessed cell can ever touch it. If another component is alive, the state is discarded because the final graph can never become connected. If no other component is alive, the state is marked `done`, and only white cells may follow. This is what prevents the DP from silently accepting a pattern consisting of several disconnected trees.
+For an all-white (100\times10) board, the DP can keep every cell white until it chooses one black cell. That creates a singleton component, which is already a tree. The cost is exactly one, and no solution can cost zero because the unchanged board has no black cells. This handles the largest possible board while exercising the nonempty-tree condition.

@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 5
-total_solve_s: 2946
-date: "2026-08-14T12:29:32+07:00"
+total_solve_s: 3120
+date: "2026-08-14T12:41:24+07:00"
 weight: 102373
 draft: false
 ---
 
 # [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373)
 
-Special | 10 problems | 5/10 verified | Difficulty - | 49m 6s
+Special | 10 problems | 5/10 verified | Difficulty - | 52m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -24,8 +24,8 @@ Special | 10 problems | 5/10 verified | Difficulty - | 49m 6s
 | [B](B/) | [Wooden Castle](https://codeforces.com/problemset/problem/102373/B) |  |  |  | 2m 23s |  |
 | [C](C/) | [Diamonds](https://codeforces.com/problemset/problem/102373/C) |  |  |  | 8m 39s | ✓ |
 | [D](D/) | [Good Subset](https://codeforces.com/problemset/problem/102373/D) |  |  |  | 3m 26s |  |
-| [E](E/) | [Checkered Pattern](https://codeforces.com/problemset/problem/102373/E) |  |  |  | 5m 48s |  |
-| [F](F/) | [\u041e\u043d\u0438](https://codeforces.com/problemset/problem/102373/F) |  |  |  | 3m 8s |  |
+| [E](E/) | [Checkered Pattern](https://codeforces.com/problemset/problem/102373/E) |  |  |  | 9m 47s |  |
+| [F](F/) | [\u041e\u043d\u0438](https://codeforces.com/problemset/problem/102373/F) |  |  |  | 2m 3s |  |
 | [G](G/) | [\u041d\u043e\u0436\u043d\u0438\u0446\u044b](https://codeforces.com/problemset/problem/102373/G) |  |  |  | 5m 50s | ✓ |
 | [H](H/) | [Escape from the Abundoned House](https://codeforces.com/problemset/problem/102373/H) |  |  |  | 7m 36s | ✓ |
 | [I](I/) | [\u0417\u0432\u0443\u043a\u0438 \u0432 \u043f\u043e\u0434\u0432\u0430\u043b\u0435](https://codeforces.com/problemset/problem/102373/I) |  |  |  | 4m 15s | ✓ |
