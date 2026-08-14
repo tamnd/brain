@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23195 problems, 12974 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23196 problems, 12975 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23195 problems, 12974 verified.**
+**3135 contests, 23196 problems, 12975 verified.**
 
-## Unknown — 830 contests, 7029 problems, 4205 verified
+## Unknown — 830 contests, 7030 problems, 4206 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 11 | 11/11 | Special | - |
 | [102341](102341/) | [Radewoosh+mnbvmar Contest (supported by AIM Tech)](https://codeforces.com/contest/102341) | 12 | 12/12 | Special | - |
 | [102361](102361/) | [2019 China Collegiate Programming Contest Qinhuangdao Onsite](https://codeforces.com/contest/102361) | 12 | 12/12 | Special | - |
-| [102373](102373/) | [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373) | 9 | 4/9 | Special | - |
+| [102373](102373/) | [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373) | 10 | 5/10 | Special | - |
 | [102375](102375/) | [Квалификационный раунд Чемпионата Северо-Запада России и Москвы ICPC 2019](https://codeforces.com/contest/102375) | 10 | 3/10 | ICPC/IOI | - |
 | [102386](102386/) | [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386) | 4 | 3/4 | Special | - |
 | [102391](102391/) | [XX Open Cup, Grand Prix of Korea](https://codeforces.com/contest/102391) | 10 | 7/10 | Special | - |
