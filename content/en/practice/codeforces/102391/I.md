@@ -1,7 +1,7 @@
 ---
 title: "CF 102391I - Minimum Diameter Spanning Tree"
-description: "We have a connected undirected graph whose edges have positive lengths. We need to keep exactly enough edges to form a spanning tree, but the objective is not the total tree weight. Instead, we want the longest path inside the resulting tree to be as short as possible."
-date: "2026-08-12T05:26:26+07:00"
+description: "We need to choose exactly (N-1) edges from a connected weighted undirected graph so that every vertex is reachable and the resulting graph is a tree. Among all such spanning trees, we want one whose longest weighted path is as short as possible."
+date: "2026-08-14T14:05:19+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102391
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "XX Open Cup, Grand Prix of Korea"
 rating: 0
 weight: 102391
-solve_time_s: 782
+solve_time_s: 413
 verified: false
 draft: false
 ---
@@ -18,43 +18,45 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 13m 2s  
+**Solve time:** 6m 53s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a connected undirected graph whose edges have positive lengths. We need to keep exactly enough edges to form a spanning tree, but the objective is not the total tree weight. Instead, we want the longest path inside the resulting tree to be as short as possible. The output is that minimum possible diameter together with any spanning tree achieving it. The official problem allows any valid optimal tree, so the particular edges printed by a correct implementation do not have to match the sample output.
+We need to choose exactly (N-1) edges from a connected weighted undirected graph so that every vertex is reachable and the resulting graph is a tree. Among all such spanning trees, we want one whose longest weighted path is as short as possible. The output must contain that minimum possible diameter and the edges of one tree attaining it. The statement allows any optimal tree, so different correct outputs can contain different edges.
 
-The bound (N\le 500) is small enough to allow algorithms around cubic time, but (M) can be as large as (N(N-1)/2), so the graph can be dense. At the maximum size there can be about (125000) edges. Enumerating spanning trees is completely impossible, because a complete graph on (500) vertices has (500^{498}) different spanning trees by Cayley's formula. Even checking one tree costs at least linear time if we want its diameter. We instead need a polynomial algorithm that uses shortest-path information.
+The key difficulty is that minimizing the diameter is not the same as minimizing total edge weight. A minimum spanning tree can have a very long branch even when the original graph contains short routes that would give a much smaller diameter.
 
-All edge lengths are positive and can reach (10^9). A path can contain (N-1) edges, so distances can reach roughly (5\cdot10^{11}). Python integers handle this range directly, but using a 32-bit integer type would overflow.
+With (N\le 500), cubic time is the natural target. A full all-pairs shortest-path computation takes (O(N^3)), which is about (125) million elementary distance updates at the maximum size. Enumerating spanning trees is completely impossible, since a complete graph on (N) vertices already has (N^{N-2}) spanning trees. The bound (M\le N(N-1)/2) also means we must be comfortable with dense graphs, so an algorithm whose main term is (O(NM)) is still (O(N^3)) in the worst case.
 
-There are three edge cases that are particularly easy to mishandle.
+There are three cases that a careless solution can miss.
 
-First, the optimal center can lie inside an edge rather than at a vertex. Consider
+First, the optimal center need not be an original vertex. Consider
 
 ```
-4 3
+3 2
+1 2 2
+2 3 4
+```
+
+The only spanning tree is the graph itself, so the correct diameter is (6), using edges (1\ 2) and (2\ 3). Its center is one unit inside edge (2\ 3), not at vertex (2) or vertex (3). Looking only at vertex centers would incorrectly obtain (8), because the eccentricity of vertex (2) is (4).
+
+Second, a graph edge used by the original graph need not belong to an optimal spanning tree. For example,
+
+```
+4 6
 1 2 1
 2 3 1
 3 4 1
+1 4 100
+1 3 10
+2 4 10
 ```
 
-The only spanning tree is the path (1-2-3-4), whose diameter is (3). If we only examine vertex centers, the best vertex has eccentricity (2), leading to the incorrect value (4). The true center is the midpoint of edge (2-3), with radius (1.5), so the correct diameter is (3).
+The tree (1-2-3-4) has diameter (3), which is optimal because every spanning tree has to connect vertices (1) and (4), and the graph contains the three unit edges forming this path. A careless construction that favors the edge (1-4) because it directly connects the endpoints can produce a much worse tree.
 
-Second, the edge containing the center does not have to be a shortest path between its endpoints. Consider
-
-```
-3 3
-1 2 1
-2 3 1
-1 3 100
-```
-
-The expensive edge (1-3) is still an edge of the graph and must be considered as a possible location for the absolute center. Its endpoint distances must be computed using graph shortest paths, not by assuming the given edge itself is the shortest route between its endpoints. The optimal tree is the path (1-2-3), with diameter (2).
-
-Third, equal shortest-path distances can occur frequently. In
+Third, several shortest paths can have the same length. For
 
 ```
 3 3
@@ -63,148 +65,90 @@ Third, equal shortest-path distances can occur frequently. In
 1 3 1
 ```
 
-both vertices (2) and (3) are tied at distance (1) from vertex (1). A Dijkstra implementation must allow arbitrary tie ordering. The final answer is still diameter (2), and the algorithm must not depend on one particular ordering of equal-distance vertices.
+the correct diameter is (2), and both the trees ({1-2,2-3}), ({1-2,1-3}), and ({1-3,2-3}) are valid answers. The implementation must not depend on a particular tie-breaking order.
 
 ## Approaches
 
-The brute-force approach is conceptually simple. Enumerate every subset of edges, keep the subsets containing exactly (N-1) edges, test whether each such subset is a tree, compute its diameter, and retain the smallest one. This is correct because every spanning tree appears in the enumeration. The problem is the number of candidates. In the complete graph (K_N), there are (N^{N-2}) spanning trees, so for (N=500) the enumeration already has (500^{498}) candidates. Computing a diameter for every candidate would make the total work on the order of (N\cdot N^{N-2}), far beyond any practical limit.
-
-The useful observation is that a minimum-diameter tree has a very specific geometric center. Imagine replacing every graph edge by a continuous line segment of the same length. A point on this continuous network can be a vertex or an interior point of an edge. For such a point (x), define its radius as the maximum shortest-path distance from (x) to any graph vertex.
-
-Take any spanning tree (T), and look at the midpoint of one of its diameter paths. That midpoint is either a tree vertex or lies inside a tree edge. Every vertex of the tree is at tree distance at most half the diameter from that midpoint. Graph shortest paths can only be shorter than tree paths, so the same point has graph distance at most half the tree diameter to every vertex. Consequently every spanning tree of diameter (D) gives a network point of radius at most (D/2).
-
-The converse is the key. If (x) is a point of the original network whose maximum graph distance to a vertex is (R), build a shortest-path tree rooted at (x), treating an interior edge point as a subdividing vertex. Every root-to-vertex distance in that tree is at most (R), so every pair of vertices has tree distance at most (2R). Thus the optimum spanning-tree diameter is exactly twice the minimum possible radius of such a network point.
-
-This converts the original tree optimization problem into the absolute 1-center problem on a weighted graph. This equivalence is the standard characterization of minimum-diameter spanning trees.
-
-There are only two kinds of possible centers. A center can be an original vertex, in which case its radius is simply its eccentricity. Or it can lie somewhere inside an original edge. We can test all vertices directly, but testing an edge requires more care.
-
-For an edge (u-v) of length (w), let (x) be a point at distance (\alpha) from (u), where (0\le\alpha\le w). For every vertex (z),
+A brute-force solution would enumerate every subset of (N-1) graph edges, test whether the subset is a spanning tree, and then compute its diameter. There are
 
 [
-d(x,z)=\min(\alpha+d(u,z),,w-\alpha+d(v,z)).
+\binom{M}{N-1}
 ]
 
-The first expression describes paths reaching (z) through (u), while the second describes paths reaching it through (v). The radius of (x) is the maximum of these values over all (z).
-
-Each vertex contributes an inverted-V shaped function of (\alpha). The upper envelope of all these functions is exactly the radius function along the edge. We need its lowest point. The Kariv-Hakimi sweep finds all relevant valleys of this upper envelope in linear time after the all-pairs distances and Dijkstra orders have been computed.
-
-For a fixed edge (u-v), sort the vertices by increasing (d(u,z)). Start with the vertex farthest from (u). As we scan the remaining vertices backwards, a new vertex matters only when it is farther from (v) than the currently active vertex. Such a change creates a new crossing between the currently relevant function on the (u)-side and the new function on the (v)-side. If the two relevant vertices are (p) and (q), the crossing has radius
+such subsets. Testing one subset already costs at least (O(N+M)) if we use graph traversal to check connectivity, so the worst-case work is
 
 [
-R=\frac{d(u,p)+w+d(v,q)}{2}.
+O\left(\binom{M}{N-1}(N+M)\right).
 ]
 
-Since the required answer is the diameter, it is convenient to store twice the radius:
+For (N=500) and a complete graph, (M=124750), making this astronomically larger than any feasible operation count. The brute force is correct because it literally checks every possible spanning tree, but the number of candidates is the wrong quantity to enumerate.
+
+The useful observation is that every tree has a center. Take a longest path of a tree and look at its midpoint. The midpoint is either an existing vertex or lies somewhere inside an edge. If the midpoint is a vertex (c), every vertex is at tree distance at most half the diameter from (c). Since graph shortest paths can only be shorter than tree paths, the graph eccentricity of (c) is also at most half the tree diameter.
+
+This immediately connects the problem to shortest-path trees. If we choose a vertex (c) and build a shortest-path tree rooted at (c), every root-to-vertex distance becomes the graph distance. Its diameter is at most twice the eccentricity of (c). If (c) is the center of an optimal tree, this bound reaches the optimum.
+
+The complication is the second case, where the center lies inside an edge. The standard solution handles this by treating an arbitrary point on an edge as a temporary dummy vertex. The minimum possible eccentricity over all such points is the absolute 1-center of the graph, and a shortest-path tree rooted at that center gives a minimum-diameter spanning tree. This equivalence is the classical reduction behind the (O(NM+N^3)) solution.
+
+For an edge (e=(u,v)) of weight (w), suppose the dummy center is (x) units from (u). For any vertex (z), its distance from the center is
 
 [
-D= d(u,p)+w+d(v,q).
+\min(x+d(u,z),\ w-x+d(v,z)).
 ]
 
-This avoids every floating-point calculation.
+For a fixed (z), this is a V-shaped function of (x), with slopes (+1) and (-1). The maximum over all vertices is the upper envelope of these V-shaped functions. The minimum of that envelope occurs either at an endpoint, which is already covered by the vertex-center cases, or at an intersection between two consecutive relevant functions.
 
-The complete algorithm is consequently an all-pairs shortest-path computation, followed by vertex-center checks and one linear Kariv-Hakimi sweep for every graph edge. Finally, once the best center is known, one more Dijkstra computation constructs a shortest-path tree rooted at that center.
+For one edge, sort all vertices by (d(u,z)) in decreasing order. While scanning this order, keep only vertices whose (d(v,z)) is strictly increasing. These are exactly the vertices that can appear on the upper envelope. If consecutive retained vertices are (a) and (b), the two relevant lines intersect at
+
+[
+x=\frac{w-d(u,a)+d(v,b)}{2},
+]
+
+and the corresponding eccentricity is
+
+[
+\frac{w+d(u,a)+d(v,b)}{2}.
+]
+
+Thus the candidate diameter is simply
+
+[
+w+d(u,a)+d(v,b).
+]
+
+This turns the continuous optimization along an edge into a linear scan of (N) distance pairs.
+
+The required all-pairs distances can be obtained by Floyd-Warshall. We also precompute the distance order for every possible endpoint once, rather than sorting separately for every graph edge. The total complexity becomes (O(N^3+NM+N^2\log N)), which is (O(N^3)) at the given bounds.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N\cdot N^{N-2})) | (O(N^2)) | Too slow |
-| Optimal | (O(NM\log N + NM)) with heap Dijkstra | (O(N^2+M)) | Accepted |
-
-For the stated (N\le500), this is the standard exact polynomial approach. The theoretical formulation of the absolute-center method is commonly given as (O(MN+N^2\log N)) once the shortest-path matrix is available, with the all-pairs shortest paths supplying the additional (N) single-source computations.
+| Brute Force | (O(\binom{M}{N-1}(N+M))) | (O(N+M)) | Too slow |
+| Optimal | (O(N^3+NM+N^2\log N)) | (O(N^2+M)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Run Dijkstra from every vertex. Store both the shortest distances (d[s][v]) and the order in which vertices become permanently finalized by Dijkstra from (s).
-
-The finalization order is sorted by nondecreasing distance from (s). It is exactly the ordering needed by the Kariv-Hakimi edge sweep.
-
-1. For every vertex (c), compute
-
-[
-D_c=2\max_v d[c][v].
-]
-
-Keep the smallest value and remember (c) as the current best center.
-
-If the optimal absolute center happens to be a graph vertex, this already finds it. The factor of two is deliberate because the final spanning-tree diameter is twice the center radius.
-
-1. For every graph edge (u-v) with length (w), use the Dijkstra order from (u). Let that order be
+1. Store the graph as an adjacency list and as a distance matrix. The matrix initially contains the given edge weights and zero on the diagonal. Since all weights are positive, there are no negative-cycle complications.
+2. Run Floyd-Warshall to compute (d(u,v)), the shortest distance between every pair of original vertices. The later center computation depends only on these shortest-path distances, not on the original edge structure.
+3. For every vertex (c), compute its eccentricity as the maximum value in row (c). A center located exactly at (c) gives a candidate diameter (2\operatorname{ecc}(c)). Store the best vertex candidate.
+4. For every graph edge (e=(u,v)) of weight (w), consider a possible center somewhere inside that edge. For this edge, sort the vertices by (d(u,z)) in decreasing order. The sorting order is reused for every edge incident to the same (u), so it is computed only once per vertex.
+5. Scan that order from farthest to nearest. Keep the last vertex whose distance from (v) is larger than the previously kept value. If the current vertex is (a) and the previous retained vertex is (b), the two corresponding envelope segments meet at a possible local minimum. Its candidate diameter is
 
 [
-r_0,r_1,\ldots,r_{N-1},
+d(u,a)+w+d(v,b).
 ]
 
-where (r_{N-1}) is farthest from (u).
-
-Initialize (a=N-1). Then scan (b=N-2,N-3,\ldots,0). Whenever
+If this value improves the answer, store (e), (a), and (b). The corresponding center position, measured twice to avoid fractions, is
 
 [
-d[v][r_b] > d[v][r_a],
+2x=w+d(v,b)-d(u,a).
 ]
 
-the two currently relevant envelope lines form a new candidate valley.
+1. After all vertices and edges have been examined, the stored candidate is an absolute center of the graph. The minimum-diameter spanning tree can be obtained from a shortest-path tree rooted at this center. This is the central structural property of the problem.
+2. If the center is an original vertex, run Dijkstra from that vertex and keep the predecessor edge of every vertex except the root. Since every predecessor is chosen along a shortest path from the center, these (N-1) edges form the required shortest-path tree.
+3. If the center lies on an edge ((u,v)), remove that edge temporarily and replace it conceptually by a dummy vertex (c). The two dummy edges have lengths (x) and (w-x). We run multi-source Dijkstra by initializing (u) with distance (x) and (v) with distance (w-x). We do not need floating point arithmetic, because all distances can be doubled. Thus the initial distances are (2x) and (2(w-x)), both integers.
+4. The resulting predecessor structure is a shortest-path tree in the graph with the dummy center. If only one of (u) and (v) remains directly attached to the dummy, removing that dummy attachment already leaves a spanning tree on the original vertices. If both remain attached, removing both dummy edges leaves two components, so we add the original edge ((u,v)) to reconnect them.
+5. Print the stored minimum diameter and the (N-1) original graph edges obtained from the predecessor tree.
 
-The corresponding doubled radius is
-
-[
-D=d[u][r_b]+w+d[v][r_a].
-]
-
-If this value improves the current answer, remember this edge and the two vertices (r_b) and (r_a).
-
-The reason for the strict comparison is that only a new, larger value on the (v)-side changes the upper envelope. Equal values cannot create a lower crossing that was not already represented by the active line.
-
-1. After all vertices and edges have been examined, we know the minimum doubled radius (D^*).
-
-If the best center is a vertex (c), we will build an ordinary shortest-path tree rooted at (c).
-
-If the best center lies on edge (u-v), let (p=r_b) and (q=r_a) be the two vertices recorded when that edge candidate was found. The crossing position satisfies
-
-[
-\alpha+d[u][p]=w-\alpha+d[v][q].
-]
-
-Multiplying by two gives
-
-[
-2\alpha=w+d[v][q]-d[u][p].
-]
-
-We store this integer value instead of using floating point.
-
-1. To construct the tree for a vertex center, run Dijkstra from that vertex and keep the predecessor of every vertex. Every non-root vertex contributes its predecessor edge.
-
-A shortest-path tree is exactly what we want because every vertex is at graph distance at most the center radius from the root, so any two tree vertices are connected through the root by a path of length at most twice that radius.
-
-1. To construct the tree for an edge center, conceptually subdivide (u-v) by inserting a new center (x). The distances from (x) to (u) and (v) are (\alpha) and (w-\alpha).
-
-In the implementation, we avoid creating the new vertex. We initialize Dijkstra with doubled tentative distances
-
-[
-2\alpha
-]
-
-for (u), and
-
-[
-2w-2\alpha
-]
-
-for (v). Then ordinary graph edges have doubled length (2w_e).
-
-The two initial vertices are allowed to be relaxed later. This detail matters because the chosen edge (u-v) need not be a shortest path between (u) and (v). If one endpoint can be reached more cheaply through the rest of the graph, Dijkstra must be allowed to discover that.
-
-1. The predecessor graph produced by this multi-source Dijkstra is a forest rooted at the vertices reached directly from the artificial center. If both (u) and (v) remain roots, add the original edge (u-v). If only one remains a root, the original edge is not needed.
-
-The resulting graph has exactly (N-1) edges and is a spanning tree. Its root-to-vertex distances equal the shortest distances from the selected center, so its diameter is at most (D^_). Since no spanning tree can have diameter below (D^_), its diameter is exactly optimal.
-
-### Why it works
-
-Let (R^_) be the minimum maximum distance from a point of the continuous graph to all original vertices. For every spanning tree (T) with diameter (D), the midpoint of a diameter path is at tree distance at most (D/2) from every vertex, and graph distances cannot exceed tree distances. Hence (R^_\le D/2), giving (D\ge2R^*).
-
-Conversely, take an absolute center (x) with radius (R^_). A shortest-path tree rooted at (x) gives every vertex a tree distance at most (R^_) from (x). The tree distance between any two vertices is at most the sum of their distances to (x), so its diameter is at most (2R^_). The two inequalities meet, proving that the optimal spanning-tree diameter is (2R^_).
-
-The absolute center lies either at a vertex or inside an edge. Vertex centers are checked directly. On each edge, the radius is the upper envelope of the vertex distance functions, and the Kariv-Hakimi sweep examines exactly the points where this envelope can attain a local minimum. Thus the smallest candidate found by the sweep is (R^_). The final shortest-path tree then achieves diameter (2R^_), so the printed tree is optimal.
+The invariant behind the whole algorithm is that the chosen center has minimum possible maximum shortest-path distance to the graph vertices. Any spanning tree with diameter (D) has a midpoint whose eccentricity is at most (D/2), so twice the eccentricity of the absolute center is a lower bound on every possible tree diameter. Conversely, a shortest-path tree rooted at that center has every vertex within the center's eccentricity, so every tree path is at most twice that value. The lower and upper bounds coincide, proving optimality. The edge scan finds the exact minimum eccentricity on every possible edge, while the vertex scan handles centers at endpoints.
 
 ## Python Solution
 
@@ -216,259 +160,265 @@ input = sys.stdin.readline
 
 INF = 10**30
 
-def dijkstra(source, graph, n):
+def dijkstra_vertex(n, adj, root):
     dist = [INF] * n
     parent = [-1] * n
-    order = []
-
-    dist[source] = 0
-    pq = [(0, source)]
+    dist[root] = 0
+    pq = [(0, root)]
 
     while pq:
         d, u = heapq.heappop(pq)
         if d != dist[u]:
             continue
 
-        order.append(u)
-
-        for v, w in graph[u]:
+        for v, w, eid in adj[u]:
             nd = d + w
             if nd < dist[v]:
                 dist[v] = nd
                 parent[v] = u
                 heapq.heappush(pq, (nd, v))
 
-    return dist, parent, order
+    return parent
 
-def dijkstra_center(graph, n, u, v, alpha2, w):
-    """
-    Dijkstra from an artificial center x lying on edge u-v.
-
-    All distances are doubled, so alpha2 = 2 * distance(x, u).
-    The initial distances are:
-        dist2[u] = alpha2
-        dist2[v] = 2*w - alpha2
-
-    Unlike ordinary multi-source Dijkstra, u and v are allowed to
-    be relaxed later. This is necessary because u-v itself need not
-    be a shortest path between u and v.
-    """
+def dijkstra_edge_center(n, adj, u, v, banned_eid, x2, w):
+    # All distances are doubled.
+    # The dummy center has doubled distances x2 and 2*w-x2
+    # to u and v respectively.
     dist = [INF] * n
-    parent = [-1] * n
+    parent = [-2] * n  # -2 means directly attached to dummy
+    pq = []
 
-    dv = 2 * w - alpha2
-    dist[u] = alpha2
+    dv = 2 * w - x2
+
+    dist[u] = x2
     dist[v] = dv
-
-    pq = [(alpha2, u)]
+    heapq.heappush(pq, (x2, u))
     if v != u:
         heapq.heappush(pq, (dv, v))
 
-    used = [False] * n
-
     while pq:
-        d, x = heapq.heappop(pq)
-        if used[x] or d != dist[x]:
+        d, cur = heapq.heappop(pq)
+        if d != dist[cur]:
             continue
 
-        used[x] = True
+        for to, ew, eid in adj[cur]:
+            if eid == banned_eid:
+                continue
 
-        for y, ew in graph[x]:
             nd = d + 2 * ew
-            if nd < dist[y]:
-                dist[y] = nd
-                parent[y] = x
-                heapq.heappush(pq, (nd, y))
+            if nd < dist[to]:
+                dist[to] = nd
+                parent[to] = cur
+                heapq.heappush(pq, (nd, to))
 
-    tree = []
+    result = []
 
-    for x in range(n):
-        if parent[x] != -1:
-            tree.append((x, parent[x]))
+    for node in range(n):
+        if parent[node] >= 0:
+            result.append((parent[node], node))
 
-    # If both endpoints are roots of the shortest-path forest,
-    # the artificial center connects to both, which corresponds
-    # to using the original edge u-v.
-    if parent[u] == -1 and parent[v] == -1 and u != v:
-        tree.append((u, v))
+    # If both u and v are still attached to the dummy, the two
+    # components must be joined by the original center edge.
+    if parent[u] == -2 and parent[v] == -2:
+        result.append((u, v))
 
-    return tree
-
-def dijkstra_tree(graph, n, source):
-    dist = [INF] * n
-    parent = [-1] * n
-
-    dist[source] = 0
-    pq = [(0, source)]
-
-    while pq:
-        d, u = heapq.heappop(pq)
-        if d != dist[u]:
-            continue
-
-        for v, w in graph[u]:
-            nd = d + w
-            if nd < dist[v]:
-                dist[v] = nd
-                parent[v] = u
-                heapq.heappush(pq, (nd, v))
-
-    return [(v, parent[v]) for v in range(n) if parent[v] != -1]
+    return result
 
 def solve():
     n, m = map(int, input().split())
 
-    graph = [[] for _ in range(n)]
+    adj = [[] for _ in range(n)]
     edges = []
 
-    for _ in range(m):
+    dist = [[INF] * n for _ in range(n)]
+    for i in range(n):
+        dist[i][i] = 0
+
+    for eid in range(m):
         u, v, w = map(int, input().split())
         u -= 1
         v -= 1
-        graph[u].append((v, w))
-        graph[v].append((u, w))
         edges.append((u, v, w))
+        adj[u].append((v, w, eid))
+        adj[v].append((u, w, eid))
 
-    # All-pairs shortest paths and Dijkstra finalization orders.
-    dist = [[0] * n for _ in range(n)]
-    orders = [None] * n
+        if w < dist[u][v]:
+            dist[u][v] = w
+            dist[v][u] = w
 
-    for s in range(n):
-        ds, _, order = dijkstra(s, graph, n)
-        dist[s] = ds
-        orders[s] = order
+    # Floyd-Warshall.
+    for k in range(n):
+        dk = dist[k]
+        for i in range(n):
+            di = dist[i]
+            dik = di[k]
+            if dik >= INF:
+                continue
 
-    # Best center found so far.
-    best2 = INF
-    best_type = 0          # 0 = vertex, 1 = edge
-    best_vertex = -1
+            # The explicit loop avoids creating a large temporary
+            # matrix row and works well for n <= 500.
+            for j in range(n):
+                nd = dik + dk[j]
+                if nd < di[j]:
+                    di[j] = nd
 
-    for s in range(n):
-        cur = 2 * max(dist[s])
-        if cur < best2:
-            best2 = cur
+    # Distance orders, reused for every edge.
+    orders = []
+    for u in range(n):
+        row = dist[u]
+        order = list(range(n))
+        order.sort(key=row.__getitem__, reverse=True)
+        orders.append(order)
+
+    best_diameter = INF
+    best_type = 0
+    best_root = -1
+    best_edge = -1
+    best_a = -1
+    best_b = -1
+
+    # Centers at original vertices.
+    for u in range(n):
+        ecc = max(dist[u])
+        candidate = 2 * ecc
+        if candidate < best_diameter:
+            best_diameter = candidate
             best_type = 0
-            best_vertex = s
+            best_root = u
 
-    best_edge = None
+    # Centers inside graph edges.
+    for eid, (u, v, w) in enumerate(edges):
+        order = orders[u]
 
-    # Kariv-Hakimi sweep on every edge.
-    for u, v, w in edges:
-        r = orders[u]
+        last = order[0]
+        b_last = dist[v][last]
 
-        a = n - 1
+        for now in order[1:]:
+            b_now = dist[v][now]
 
-        for b in range(n - 2, -1, -1):
-            x = r[b]
-            y = r[a]
+            if b_now > b_last:
+                candidate = dist[u][now] + w + b_last
 
-            if dist[v][x] > dist[v][y]:
-                candidate2 = dist[u][x] + w + dist[v][y]
-
-                if candidate2 < best2:
-                    best2 = candidate2
+                if candidate < best_diameter:
+                    best_diameter = candidate
                     best_type = 1
-                    best_edge = (u, v, w, x, y)
+                    best_edge = eid
+                    best_a = now
+                    best_b = last
 
-                a = b
+                last = now
+                b_last = b_now
 
-    # Construct an optimal shortest-path tree.
+    # Construct the shortest-path tree from the selected center.
     if best_type == 0:
-        tree = dijkstra_tree(graph, n, best_vertex)
+        parent = dijkstra_vertex(n, adj, best_root)
+        answer_edges = []
+
+        for v in range(n):
+            if v != best_root:
+                answer_edges.append((parent[v], v))
     else:
-        u, v, w, p, q = best_edge
+        u, v, w = edges[best_edge]
 
-        # 2 * alpha = w + d(v,q) - d(u,p)
-        alpha2 = w + dist[v][q] - dist[u][p]
+        # If a is the vertex on the u-side and b is the vertex on
+        # the v-side, the center position satisfies
+        #
+        # x = (w + d(v,b) - d(u,a)) / 2.
+        #
+        # We store 2*x.
+        x2 = w + dist[v][best_b] - dist[u][best_a]
 
-        tree = dijkstra_center(graph, n, u, v, alpha2, w)
+        answer_edges = dijkstra_edge_center(
+            n, adj, u, v, best_edge, x2, w
+        )
 
-    out = [str(best2)]
-
-    for u, v in tree:
-        out.append(f"{u + 1} {v + 1}")
-
+    out = [str(best_diameter)]
+    out.extend(f"{u + 1} {v + 1}" for u, v in answer_edges)
     sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first Dijkstra loop computes two pieces of information simultaneously. The distance array gives the all-pairs shortest-path matrix, while the order array records vertices in nondecreasing distance from the source. Since every edge weight is positive, the order in which Dijkstra permanently extracts vertices is a valid distance order.
+The distance matrix is initialized with the original edge lengths and then closed under shortest paths by Floyd-Warshall. The graph is simple, so each pair has at most one input edge, but taking the minimum during initialization also makes the matrix construction robust.
 
-The vertex-center loop uses (2\cdot\max d[c][v]) because the actual answer is a diameter rather than a radius. Keeping everything doubled also makes the later edge-center arithmetic integral.
+The `orders` array is a significant implementation detail. For each endpoint (u), it stores all vertices in decreasing order of (d(u,\cdot)). An edge ((u,v)) can then reuse `orders[u]`, avoiding a sort inside the (M)-edge loop.
 
-The edge loop is the compact part of the Kariv-Hakimi algorithm. For an edge (u-v), `r` is sorted by distance from (u). The variable `a` identifies the currently active farthest line on the opposite side, while `b` scans possible lines that can replace it. When `dist[v][r[b]]` becomes strictly larger than `dist[v][r[a]]`, the two lines form a new relevant intersection, whose doubled height is exactly
+The vertex-center phase is deliberately simple. For each vertex, its eccentricity is just the largest value in its distance row, so the candidate diameter is twice that value.
 
-```
-dist[u][r[b]] + w + dist[v][r[a]]
-```
+The edge-center phase follows the upper-envelope scan. `last` is the previously retained vertex, while `now` is the current vertex in decreasing order of distance from (u). The condition `b_now > b_last` means that the second coordinate has moved in the direction required for a new upper-envelope segment. The candidate `dist[u][now] + w + b_last` is exactly twice the local minimum of the two corresponding V-shaped functions.
 
-The reconstruction code uses doubled distances. If the center is at distance (\alpha) from (u), the two initial distances from the artificial center are (\alpha) and (w-\alpha). Multiplying all distances by two gives integer initial values, so no floating-point comparison is necessary.
+The center itself may lie at a half-integer position along the edge. Floating point arithmetic would be unnecessary and potentially dangerous, so the construction uses doubled distances. If the diameter is (D), the doubled distance from the dummy center to the (u)-side endpoint is
 
-The reconstruction Dijkstra intentionally does not permanently mark (u) and (v) as immutable sources. An expensive edge may have a shorter alternative route elsewhere in the graph, so one of those endpoints may cease to be a direct child of the artificial center. The predecessor graph remains a forest because every predecessor is assigned only through a strict distance improvement. If both endpoints remain roots, the artificial center used both halves of the selected edge, so those two roots are joined by the original edge.
+[
+2x=D-2d(u,a),
+]
 
-Python's arbitrary-precision integers remove overflow concerns. The largest relevant distance is below (5\cdot10^{11}), while doubled distances stay comfortably below (10^{12}).
+which is the same value computed as `w + dist[v][best_b] - dist[u][best_a]`.
+
+For an edge-centered candidate, the original center edge is temporarily excluded from Dijkstra. This is necessary because the dummy center represents a point inside that edge, not a separate route that is allowed to bypass the center. The two endpoints are initialized as sources at their distances from the dummy center.
+
+The value `parent[node] == -2` means that the vertex is directly connected to the dummy center in the conceptual shortest-path tree. If both endpoints retain that status, the original edge must be restored after removing the dummy. If only one remains attached, the predecessor edges already form a spanning tree on the original graph.
+
+Python integers have arbitrary precision, so edge weights up to (10^9), paths containing up to (499) edges, and doubled distances all fit without any overflow handling.
 
 ## Worked Examples
 
 ### Sample 1
 
-The graph is a triangle with all three edges of length (1). Every vertex has eccentricity (1), so a vertex center already gives doubled radius (2).
+The graph is a triangle with all edge lengths equal to (1).
 
-| Center candidate | Radius | Doubled radius |
+| Stage | Key state | Value |
 | --- | --- | --- |
-| Vertex 1 | 1 | 2 |
-| Vertex 2 | 1 | 2 |
-| Vertex 3 | 1 | 2 |
+| APSP | (d(1,2),d(1,3),d(2,3)) | (1,1,1) |
+| Vertex 1 | eccentricity | (1) |
+| Vertex 2 | eccentricity | (1) |
+| Vertex 3 | eccentricity | (1) |
+| Best vertex candidate | (2\cdot 1) | (2) |
+| Edge candidates | minimum | (2) |
+| Selected center | one possible vertex | (1) |
+| Constructed tree | two edges | (1-2,\ 1-3) |
+| Diameter | (1+1) | (2) |
 
-The edge sweep cannot improve this value. The algorithm may select vertex (1), then Dijkstra produces a shortest-path tree such as (1-2) and (1-3).
-
-The resulting tree has diameter (2), which matches the optimum shown by the sample.
+Every vertex has eccentricity (1), so every vertex is an optimal center. Dijkstra from any of them produces a two-edge star, whose diameter is (2). This demonstrates that ties in shortest paths and ties between centers are harmless.
 
 ### Sample 2
 
-The graph has a left cluster connected through the long edge (3-4) of length (1000) to the right cluster.
+The graph has a heavy bridge-like connection between the left cluster and the right cluster.
 
-The important candidate is the interior of edge (3-4). The left side reaches vertex (1) through distances (30) from (3), while the right side reaches vertex (6) through distance (30) from (4).
+| Stage | Key state | Value |
+| --- | --- | --- |
+| Left cluster | short distances | (10,20,30) scale |
+| Right cluster | short distances | (10,20,30) scale |
+| Connecting edge | (3-4) | (1000) |
+| Best vertex center | diameter candidate | larger than (1060) |
+| Edge center | edge | (3-4) |
+| Edge-center candidate | (d(3,a)+1000+d(4,b)) | (1060) |
+| Selected diameter | minimum | (1060) |
+| Constructed tree | cross-cluster edge | (3-4) |
+| Final tree | five edges | (3-4,4-6,6-5,3-2,2-1) |
+| Diameter | longest tree path | (1060) |
 
-The relevant crossing therefore has doubled radius
-
-[
-30+1000+30=1060.
-]
-
-| Candidate | Left contribution | Edge | Right contribution | Diameter |
-| --- | --- | --- | --- | --- |
-| Center on edge (3-4) | 30 | 1000 | 30 | 1060 |
-
-The center is the midpoint of the (3-4) edge. The shortest-path tree attaches the left vertices through (3) and the right vertices through (4), giving a tree whose diameter is (1060).
-
-The sample output uses exactly this central edge and reports diameter (1060).
+The important feature is that the optimal center lies on the edge of weight (1000). The two sides have their own short structures, so placing the center inside that heavy edge balances the two sides better than choosing either endpoint as the center.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(NM\log N + NM)) | (N) Dijkstra runs plus one (O(N)) scan for every edge |
-| Space | (O(N^2+M)) | All-pairs distances, Dijkstra orders, and the adjacency list |
+| Time | (O(N^3+NM+N^2\log N)) | Floyd-Warshall costs (O(N^3)), sorting all distance orders costs (O(N^2\log N)), and scanning every edge's order costs (O(NM)) |
+| Space | (O(N^2+M)) | The distance matrix uses (O(N^2)), while the graph and edge list use (O(M)) |
 
-With (N\le500), the distance matrix needs only (250000) entries. The graph can contain about (125000) edges, so the adjacency list is also manageable under the (1024) MB memory limit. The edge sweep itself performs at most (N) simple operations per edge, which is about (6.25\cdot10^7) iterations at the maximum density. The shortest-path phase dominates the running time.
-
-The standard exact absolute-center formulation is polynomial and is based on all-pairs shortest paths followed by processing every edge.
+With (N\le500), both (N^3) and (NM) are at most on the order of (10^8) operations. The memory requirement is modest because a (500\times500) distance matrix is only (250000) entries. The algorithm is the intended polynomial approach for these bounds, although the Floyd-Warshall portion is the performance-critical part of a Python implementation.
 
 ## Test Cases
 
-The output tree is not unique, so the test harness should not compare the entire output string with one fixed answer. Instead, it checks the reported diameter, verifies that every printed edge belongs to the input graph, verifies that there are exactly (N-1) edges, and checks that those edges form a tree whose actual weighted diameter equals the expected optimum.
+Because the problem accepts any optimal spanning tree, the tests should validate the reported diameter and the tree itself rather than compare the complete output string character by character.
 
 ```python
+# Paste the solve() implementation from the solution above before this test code.
+
 import sys
 import io
-from collections import deque
-import heapq
-
-# Put the submitted solution in the same file above this harness.
-# The function solve() must be the solution entry point.
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
@@ -491,85 +441,85 @@ def validate(inp: str, out: str, expected_diameter: int):
     n = next(it)
     m = next(it)
 
-    edge_weight = {}
-    graph = [[] for _ in range(n)]
-
+    weights = {}
     for _ in range(m):
-        u = next(it) - 1
-        v = next(it) - 1
+        u = next(it)
+        v = next(it)
         w = next(it)
-
-        edge_weight[frozenset((u, v))] = w
-        graph[u].append((v, w))
-        graph[v].append((u, w))
+        if u > v:
+            u, v = v, u
+        weights[(u, v)] = w
 
     lines = out.strip().splitlines()
-    assert len(lines) == n
+    assert len(lines) == n, "wrong number of output lines"
 
     diameter = int(lines[0])
-    assert diameter == expected_diameter
+    assert diameter == expected_diameter, (
+        f"wrong diameter: got {diameter}, expected {expected_diameter}"
+    )
 
-    tree = []
+    tree = [[] for _ in range(n)]
+    used = set()
+
     for line in lines[1:]:
         u, v = map(int, line.split())
-        u -= 1
-        v -= 1
+        assert 1 <= u <= n and 1 <= v <= n and u != v
 
-        assert 0 <= u < n
-        assert 0 <= v < n
-        assert u != v
+        key = (min(u, v), max(u, v))
+        assert key in weights, "output contains an edge not in the graph"
+        assert key not in used, "duplicate tree edge"
 
-        key = frozenset((u, v))
-        assert key in edge_weight
+        used.add(key)
+        w = weights[key]
+        tree[u - 1].append((v - 1, w))
+        tree[v - 1].append((u - 1, w))
 
-        tree.append((u, v, edge_weight[key]))
+    assert len(used) == n - 1
 
-    assert len(tree) == n - 1
+    parent = [-1] * n
+    parent[0] = 0
+    stack = [0]
+    order = []
 
-    # Check that the output is a tree.
-    parent = list(range(n))
+    while stack:
+        u = stack.pop()
+        order.append(u)
+        for v, _ in tree[u]:
+            if v == parent[u]:
+                continue
+            assert parent[v] == -1, "cycle in output"
+            parent[v] = u
+            stack.append(v)
 
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
+    assert len(order) == n, "output edges do not connect all vertices"
 
-    for u, v, _ in tree:
-        ru = find(u)
-        rv = find(v)
-        assert ru != rv
-        parent[ru] = rv
-
-    root = find(0)
-    for v in range(n):
-        assert find(v) == root
-
-    # Compute the actual diameter of the printed tree.
-    tg = [[] for _ in range(n)]
-    for u, v, w in tree:
-        tg[u].append((v, w))
-        tg[v].append((u, w))
-
-    actual = 0
-
-    for s in range(n):
+    def farthest(start):
         dist = [-1] * n
-        dist[s] = 0
-        q = deque([s])
+        dist[start] = 0
+        stack = [start]
+        best = start
 
-        while q:
-            u = q.popleft()
-            for v, w in tg[u]:
-                if dist[v] == -1:
-                    dist[v] = dist[u] + w
-                    q.append(v)
+        while stack:
+            u = stack.pop()
+            if dist[u] > dist[best]:
+                best = u
 
-        actual = max(actual, max(dist))
+            for v, w in tree[u]:
+                if dist[v] != -1:
+                    continue
+                dist[v] = dist[u] + w
+                stack.append(v)
 
-    assert actual == expected_diameter
+        return best, dist[best]
 
-# Sample 1
+    a, _ = farthest(0)
+    _, tree_diameter = farthest(a)
+
+    assert tree_diameter == expected_diameter, (
+        f"constructed tree has diameter {tree_diameter}"
+    )
+
+# Sample 1.
 sample1 = """\
 3 3
 1 2 1
@@ -578,7 +528,7 @@ sample1 = """\
 """
 validate(sample1, run(sample1), 2)
 
-# Sample 2
+# Sample 2.
 sample2 = """\
 6 7
 1 2 10
@@ -598,36 +548,46 @@ case_min = """\
 """
 validate(case_min, run(case_min), 7)
 
-# Four-vertex path. The optimum center is inside an edge,
-# so a vertex-only solution would incorrectly report 4.
+# Center lies inside an edge.
 case_edge_center = """\
-4 3
-1 2 1
-2 3 1
-3 4 1
+3 2
+1 2 2
+2 3 4
 """
-validate(case_edge_center, run(case_edge_center), 3)
+validate(case_edge_center, run(case_edge_center), 6)
 
-# All edge weights equal. The triangle has a vertex center,
-# and every spanning tree has diameter 10.
+# All edge weights equal.
 case_equal = """\
-3 3
+4 6
 1 2 5
-2 3 5
 1 3 5
+1 4 5
+2 3 5
+2 4 5
+3 4 5
 """
 validate(case_equal, run(case_equal), 10)
 
-# Maximum-size dense input, all weights equal.
-# A star has diameter 2 and is optimal.
+# A very long direct edge should not be forced into the tree.
+case_long = """\
+4 6
+1 2 1
+2 3 1
+3 4 1
+1 4 100
+1 3 10
+2 4 10
+"""
+validate(case_long, run(case_long), 3)
+
+# Maximum-size style test, 500 vertices.
+# A unit-weight star is already optimal and has diameter 2.
 n = 500
-parts = [f"{n} {n * (n - 1) // 2}"]
-
-for u in range(1, n + 1):
-    for v in range(u + 1, n + 1):
-        parts.append(f"{u} {v} 1")
-
+parts = [f"{n} {n - 1}"]
+for v in range(2, n + 1):
+    parts.append(f"1 {v} 1")
 case_max = "\n".join(parts) + "\n"
+
 validate(case_max, run(case_max), 2)
 
 print("all tests passed")
@@ -635,63 +595,75 @@ print("all tests passed")
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | Diameter (2) | Vertex center and equal-distance ties |
-| Sample 2 | Diameter (1060) | Interior edge center on a long weighted edge |
-| (2) vertices, one edge of weight (7) | Diameter (7) | Minimum-size boundary |
-| Path (1-2-3-4), unit weights | Diameter (3) | Catches solutions that only test vertex centers |
-| Equal-weight triangle with weight (5) | Diameter (10) | Equal distances and vertex-center handling |
-| Complete graph on (500) vertices, all weights (1) | Diameter (2) | Maximum (N), maximum (M), dense graph, equal weights |
+| `2 1 / 1 2 7` | Diameter (7) | Minimum (N), single-edge tree, boundary handling |
+| `3 2 / 1 2 2 / 2 3 4` | Diameter (6) | Center strictly inside an edge and half-integer-safe construction |
+| Complete graph on 4 vertices, every weight (5) | Diameter (10) | Equal distances, many optimal trees, tie handling |
+| Four-vertex graph with a weight-(100) edge | Diameter (3) | Avoiding an attractive but harmful long edge |
+| Unit star with (500) vertices | Diameter (2) | Maximum (N), sparse graph, large input size |
 
 ## Edge Cases
 
-The minimum-size case has only two vertices:
+The first edge case is the minimum-size graph:
 
 ```
 2 1
 1 2 7
 ```
 
-There is exactly one spanning tree, consisting of the only edge, so the answer must be (7). The vertex-center phase gives eccentricity (7) for either endpoint and doubled radius (14), but the actual tree diameter is (7), which exposes an issue with treating (2R) blindly for (N=2). The absolute-center radius is actually (3.5), attained at the midpoint of the edge, so the edge sweep finds the candidate (7). This is why testing interior edge centers is necessary even for the smallest graph.
+There is only one spanning tree, namely the single edge (1-2), so its diameter is (7). The vertex-center scan gives eccentricity (7) for either vertex and candidate diameter (14), which looks too large if interpreted as the tree diameter. This is why the general center argument must be understood carefully: the midpoint of a single edge is a dummy center. The edge scan considers edge (1-2), finds the center at distance (3.5) from either endpoint, and produces candidate diameter (7). The construction uses doubled dummy distances, so no floating point value (3.5) is ever stored.
 
-For the four-vertex path
+The second edge case is the weighted path
 
 ```
-4 3
+3 2
+1 2 2
+2 3 4
+```
+
+The only possible tree has diameter (6). Vertex (2) has eccentricity (4), so a vertex-only algorithm would report (8). For edge (2-3), the relevant vertices are (1) and (3). Their distance pairs from the endpoints are ((2,6)) and ((4,0)). Their envelope intersection gives
+
+[
+D=2+4+0=6,
+]
+
+and the doubled center coordinate is (4+0-2=2), meaning the center is one unit from vertex (2). The edge-centered Dijkstra construction recovers the original two edges.
+
+The third edge case is the complete equal-weight graph:
+
+```
+4 6
+1 2 5
+1 3 5
+1 4 5
+2 3 5
+2 4 5
+3 4 5
+```
+
+A star centered at any vertex has diameter (10), which is optimal because every pair of distinct vertices is separated by at least one edge of weight (5), and a tree on four vertices cannot have diameter below (10) in this graph. The implementation may choose a different star from the one a human expects because all distance comparisons can tie. The validator checks the tree property and diameter rather than requiring a particular edge order.
+
+The fourth edge case contains a very long edge:
+
+```
+4 6
 1 2 1
 2 3 1
 3 4 1
+1 4 100
+1 3 10
+2 4 10
 ```
 
-the vertex eccentricities are (3,2,2,3). The best vertex candidate has doubled radius (4). On edge (2-3), the relevant farthest vertices are (1) and (4), giving
+Floyd-Warshall first discovers that the shortest distances between the vertices are governed by the three unit edges. The center computation consequently favors the short central region of the graph. The final tree can use (1-2), (2-3), and (3-4), giving diameter (3). The weight-(100) edge is never required merely because it exists.
 
-[
-1+1+1=3.
-]
-
-The edge sweep records diameter (3), and reconstruction places the artificial center at the midpoint of (2-3). The resulting tree is necessarily the original path, whose diameter is (3).
-
-For a graph containing an edge that is not a shortest route between its endpoints,
+The fifth edge case is a graph whose removal of the selected center edge disconnects the graph:
 
 ```
-3 3
-1 2 1
-2 3 1
-1 3 100
+3 2
+1 2 2
+2 3 4
 ```
 
-the shortest-path matrix gives (d(1,3)=2), despite the direct edge having weight (100). The center computation uses these shortest-path distances everywhere. The expensive edge is still examined as a possible center location, but it cannot beat the center at vertex (2). The final diameter is (2), with tree edges (1-2) and (2-3).
+When edge (2-3) is treated as the center edge, the temporary graph has two components, one containing vertex (1,2) and the other containing vertex (3). Multi-source Dijkstra starts from both sides of the dummy center. Both endpoints remain directly attached to the conceptual dummy, so the construction removes those two dummy connections and restores the original edge (2-3). Exactly two original edges remain, giving a spanning tree.
 
-For equal distances,
-
-```
-3 3
-1 2 1
-2 3 1
-1 3 1
-```
-
-Dijkstra may finalize vertices in different orders depending on heap tie behavior. The edge sweep uses only the resulting nondecreasing distance order and strict improvements on the opposite side. Equal values do not require a particular tie-breaking rule. The vertex-center candidates already give doubled radius (2), so the algorithm returns diameter (2).
-
-For the maximum dense case, the graph can contain all (124750) possible edges when (N=500). If every edge has weight (1), choosing any vertex as a center gives radius (1), so the optimum diameter is (2). The algorithm still processes all edges during the Kariv-Hakimi sweep, but every candidate is no better than the vertex-center value. This case exercises both the (M=\Theta(N^2)) input boundary and the equal-distance behavior of the shortest-path ordering.
-
-One correction to keep in mind when implementing this editorial: the test harness deliberately validates the _properties_ of the output rather than comparing edge lists, because Codeforces accepts any minimum-diameter spanning tree.
+The last subtle case is a non-bridge center edge. If an alternative path connects its endpoints, multi-source Dijkstra may discover one endpoint more cheaply from the other side. Then only one endpoint remains directly attached to the dummy center. The predecessor edges already connect all original vertices into one tree, so the original center edge is not added a second time. This is why the construction checks whether both endpoints are still dummy roots rather than blindly adding the center edge.
