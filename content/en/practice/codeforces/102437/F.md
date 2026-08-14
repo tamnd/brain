@@ -1,7 +1,7 @@
 ---
 title: "CF 102437F - \u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043f\u0435\u0440\u0435\u0432\u043e\u0434"
-description: "This is an interactive problem. There is an unknown nonnegative balance n, with n <= 10^18. We cannot read n directly. Instead, we may ask the terminal to withdraw some positive amount x."
-date: "2026-08-09T12:57:02+07:00"
+description: "This is an interactive problem. There is a hidden nonnegative balance (n), with (n le 10^{18}), and the program does not receive (n) as ordinary input. Instead, it can ask the terminal whether at least (x) dollars remain by issuing withdraw x."
+date: "2026-08-14T15:41:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102437
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0427\u0435\u0442\u0432\u0451\u0440\u0442\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102437
-solve_time_s: 998
+solve_time_s: 247
 verified: false
 draft: false
 ---
@@ -18,259 +18,282 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 16m 38s  
+**Solve time:** 4m 7s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-This is an interactive problem. There is an unknown nonnegative balance `n`, with `n <= 10^18`. We cannot read `n` directly. Instead, we may ask the terminal to withdraw some positive amount `x`. If the current balance is at least `x`, the terminal answers `accepted` and subtracts `x` from the balance. Otherwise it answers `rejected` and the balance stays unchanged.
+This is an interactive problem. There is a hidden nonnegative balance (n), with (n \le 10^{18}), and the program does not receive (n) as ordinary input. Instead, it can ask the terminal whether at least (x) dollars remain by issuing `withdraw x`. An `accepted` answer means (x) dollars are removed from the current balance, while `rejected` means the balance was smaller than (x) and remains unchanged. Once the program believes the balance is zero, it prints `finish`.
 
-The goal is to make the balance exactly zero and then print `finish`. The difficulty is the query limit. If `q` is the smallest integer satisfying `n <= 2^q`, then the terminal allows at most `q + 10` withdrawal attempts. Since `10^18 < 2^60`, a solution that blindly tests all powers of two from `2^59` down to `1` uses 60 attempts, which is too many for small values of `n`.
+The query limit depends on the unknown (n). Let (q) be the smallest integer satisfying (n \le 2^q). The terminal allows at most (q+10) withdrawal attempts. This makes the number of queries the real complexity measure. Since (10^{18}<2^{60}), a fixed strategy using all 60 powers of two is correct, but it can make 60 queries even when (n) is tiny. For example, when (n=0), the limit is only 10 queries, so an unconditional 60-query scan is invalid.
 
-There is no ordinary input containing `n`. The input stream consists of replies from the interactor after our program prints commands. Likewise, the output is a sequence of interactive commands such as `withdraw x` and finally `finish`. Every command must be flushed immediately so that the interactor can answer it.
+The straightforward solution is also sensitive to the distinction between an accepted query and knowing that the balance is zero. If (n=5), querying `withdraw 4` returns `accepted`, but the remaining balance is 1. Printing `finish` immediately would be wrong. A successful withdrawal only tells us that the requested amount was available.
 
-The bound `10^18` is useful because it gives only 60 relevant binary positions. A straightforward binary decomposition would thus take at most 60 successful or rejected withdrawal attempts. The challenge is not computational complexity in the usual sense, but reducing the number of interactions to at most `q + 10`, where `q` depends on the unknown `n`.
+The zero balance is another boundary case. If (n=0), `withdraw 1` must return `rejected`, after which `finish` is correct. If (n=1), the same query returns `accepted`, and `finish` becomes correct only after that withdrawal.
 
-A careless implementation can fail on small balances. For example, if the balance is `0`, the correct interaction is simply `finish`, because `withdraw 1` would be rejected and wastes one of the available attempts. For a balance of `1`, `withdraw 1` must be accepted and then `finish` is correct. A strategy that always performs all 60 power-of-two queries wastes far more than the allowed `q + 10 = 10` attempts.
+Exact powers of two are also useful for checking off-by-one errors. For (n=2^k), the query `withdraw 2^k` succeeds and leaves exactly zero. The algorithm must still be able to continue safely because it cannot generally assume that an accepted query exhausted the account. The largest possible value (10^{18}) is below (2^{60}) but above (2^{59}), so exponent 59 is the largest power of two that can ever be requested. The value (2^{60}) would exceed the allowed withdrawal amount and is unnecessary.
 
-Another subtle case is that an accepted query changes the hidden balance. Suppose the balance is `10` and we ask for `8`. The answer is `accepted`, but the balance is now `2`. Any later reasoning has to use the new balance, not the original one. The optimal method is deliberately designed to tolerate this changing value.
+There is one more subtlety. During the optimization phase, the balance changes after every accepted query, so the answers do not form an ordinary monotone predicate about the original (n). For example, with (n=100), a query for 8 can be accepted and reduce the balance to 92, after which a query for 64 can be rejected even though the original balance was 100. The binary search therefore needs a different correctness argument from ordinary binary search.
 
 ## Approaches
 
-The basic solution is to process the binary representation directly. Starting with `2^59`, ask whether that amount can be withdrawn. If it can, subtract it from the balance. Then continue with `2^58`, `2^57`, and so on down to `1`. At every step, if the corresponding binary bit is set, it is removed. After all 60 powers have been considered, the balance is zero.
+The brute-force approach is to try every power of two from (2^{59}) down to (2^0). Whenever a withdrawal is accepted, that bit is removed from the current balance. This works because every nonnegative integer has a unique binary representation. At the end, every possible bit has been attempted, so nothing remains.
 
-This works because every number up to `10^18` is smaller than `2^60`, so its binary representation contains only powers from `2^59` through `2^0`. The problem is the number of interactions. For a small balance such as `n = 1`, this method still makes 60 attempts, while the terminal allows only 10. The official contest tutorial describes exactly this as the baseline and then reduces the number of queries with a binary search.
+The problem is the number of attempts. There are exactly 60 powers of two from (2^0) through (2^{59}), so the worst case is 60 queries. For (n=0), however, (q=0), and the terminal permits only 10 attempts. The brute-force algorithm can already fail on the smallest possible balance.
 
-The key observation is that we do not actually need to know the exact largest power of two that can currently be withdrawn. We only need a power large enough to bound the remaining balance, because once we have such a bound, processing all smaller powers is enough to finish.
+The key observation is that we do not actually need to identify the highest set bit exactly. We only need to find an exponent (l) small enough that, after a short search, the remaining balance is less than (2^{l+1}). Then the usual descending binary decomposition can start at (l) instead of 59.
 
-We can find a useful starting exponent with a binary search over the 60 possible powers. For a query `2^m`, an `accepted` answer proves that the current balance was at least `2^m`, so `m` is a valid exponent and we move the left boundary to `m`. A `rejected` answer proves that the current balance was below `2^m`, so `m` cannot be used and we move the right boundary to `m`.
+We can obtain such an (l) with binary search over the 60 possible exponents. For a midpoint (m), we try to withdraw (2^m). If it succeeds, we set (l=m). If it fails, we set (r=m). The balance may change during this process, so (l) is not necessarily the highest bit of either the original or current balance. What matters is that when the search finishes with (r=l+1), the final rejected query gives a bound on the current balance. If the last useful accepted query established (l), then every later exponent larger than (l) was rejected, and in particular the boundary exponent (l+1) is too large for the current balance. Thus the current balance is below (2^{l+1}).
 
-The complication is that accepted queries subtract money, so the balance changes during this binary search. Fortunately, this does not break the method. Every exponent ever recorded as accepted corresponds to a power that was actually present in the balance at that moment. Since the balance can only decrease, that power was also no larger than the original balance. Thus the final `l` can never exceed the binary logarithm of the original `n`.
-
-When the binary search finishes with `r = l + 1`, the last rejected boundary tells us that the current balance is smaller than `2^r = 2^(l+1)`. We can now simply try `2^l`, `2^(l-1)`, ..., `1`. These are all the powers that can occur in the binary representation of a number smaller than `2^(l+1)`, so they are sufficient to drain the account completely.
-
-There are at most 6 binary-search queries because there are only 60 possible exponents and `2^6 = 64 > 60`. The cleanup uses at most `l + 1` queries, and `l <= q`, where `q` is the logarithm of the original balance. Thus the total is at most `q + 7`, comfortably below the allowed `q + 10`.
+The search has at most six queries because there are only 60 candidate exponents and (60<2^6). Afterward, at most (l+1) more queries are needed, and (l) never exceeds the logarithmic scale of the original balance. Hence the total is at most (q+7), comfortably below the allowed (q+10). This is the intended optimization.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(60) interactions | O(1) | Too many queries for small `n` |
-| Optimal | O(log n) interactions | O(1) | Accepted |
+| Brute Force | (O(60)) queries | (O(1)) | Too many queries for small (n) |
+| Optimal | (O(q)) queries, at most (q+7) | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Set `l = 0` and `r = 60`. The interval represents all possible binary exponents, from `0` through `59`, and `2^60` is already known to exceed every possible initial balance.
-2. While `r - l > 1`, choose `m = (l + r) // 2` and ask to withdraw `2^m`. This is the binary-search step. An accepted response proves that exponent `m` is achievable, so set `l = m`. A rejected response proves that `2^m` is too large for the current balance, so set `r = m`.
-3. If the interactor ever answers `fail`, terminate immediately. Continuing after `fail` cannot produce a valid verdict.
-4. After the binary search, process exponents from `l` down to `0`. For each exponent `i`, ask to withdraw `2^i`. If the answer is `accepted`, that power is removed from the remaining balance. If it is `rejected`, the bit corresponding to that power is absent, so nothing needs to be changed.
-5. Print `finish` after all powers through `2^0` have been considered. At this point the balance must be zero.
+1. Start with the exponent interval ([l,r)=[0,60)). We use 60 because every allowed balance is below (2^{60}), so every relevant power is (2^0,\ldots,2^{59}).
+2. While (r-l>1), choose (m=(l+r)//2) and issue `withdraw \(2^m\)`. If the terminal answers `accepted`, set (l=m). The withdrawal has actually reduced the balance, but (l) still records a useful exponent that was affordable at that moment. If the answer is `rejected`, set (r=m), because the current balance is certainly below (2^m).
+3. After the binary search, process exponents from (l) down to zero. For every (i), issue `withdraw \(2^i\)`. An accepted response removes that binary bit from the remaining balance. A rejected response simply means that bit is absent.
+4. After all exponents from (l) through zero have been tried, print `finish`. The binary search has guaranteed that the remaining balance was below (2^{l+1}), so every possible remaining bit has now been considered.
 
-### Why it works
+The central invariant is that the balance never increases, and every accepted query removes exactly the amount that was requested. At the end of the binary search, either the search reached (l=59) after successfully withdrawing (2^{59}), in which case the remaining balance is below (2^{59}), or the search has a boundary (r=l+1) created by a rejected query for (2^r). In the latter case the current balance is below (2^{l+1}). Consequently, the final descending scan from (l) to zero is sufficient to remove every remaining dollar.
 
-At the end of the binary search, `r = l + 1`, and the right boundary corresponds to a power that was rejected at some point. The balance can only decrease after that rejection, so the current balance is certainly less than `2^r = 2^(l+1)`. Every nonnegative integer smaller than `2^(l+1)` can be represented using only the powers `2^l, 2^(l-1), ..., 1`. The cleanup phase tests exactly those powers and withdraws every one that is present, so the remaining balance becomes zero.
-
-The query limit follows from a second invariant. Whenever the binary search sets `l = m`, the withdrawal of `2^m` was accepted, which means the original balance was at least `2^m`. Hence `m <= q`. Consequently `l <= q`. The binary search needs at most 6 queries, and the cleanup needs at most `l + 1 <= q + 1` queries, for a total of at most `q + 7`, which is below `q + 10`.
+The query bound follows from the same construction. The binary search uses at most six attempts. The final scan uses at most (l+1) attempts. Since accepted withdrawals only decrease the balance, (l) cannot exceed the logarithmic scale of the original balance. Thus the total is at most (q+7), leaving three attempts of the required (q+10) allowance unused.
 
 ## Python Solution
-
-The problem is interactive, so this program is intended to communicate with the official interactor rather than read a conventional test case.
 
 ```python
 import sys
 input = sys.stdin.readline
 
-def ask(x):
-    print(f"withdraw {x}", flush=True)
-    response = input().strip()
+def solve():
+    def ask(x):
+        print(f"withdraw {x}", flush=True)
+        response = input().strip()
+        if response == "fail":
+            sys.exit(0)
+        return response
 
-    if response == "accepted":
-        return True
-    if response == "rejected":
-        return False
+    l, r = 0, 60
 
-    # The only other possible response is "fail".
-    sys.exit(0)
-
-def main():
-    l = 0
-    r = 60
-
-    # Find an exponent l such that the remaining balance is below 2^(l+1).
     while r - l > 1:
         m = (l + r) // 2
+        response = ask(1 << m)
 
-        if ask(1 << m):
+        if response == "accepted":
             l = m
         else:
             r = m
 
-    # The remaining balance is smaller than 2^(l+1).
-    # Its binary representation therefore uses only these powers.
     for i in range(l, -1, -1):
         ask(1 << i)
 
     print("finish", flush=True)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The `ask` function performs exactly one interactive withdrawal. Using `flush=True` is essential because the interactor cannot respond until it receives the command. The function returns a Boolean for the two normal responses and terminates immediately for `fail`.
+The `ask` function is the only place where communication with the interactor happens. It prints a withdrawal command, flushes immediately as required by the protocol, and reads the response. The `fail` response causes immediate termination because continuing after the terminal has locked is explicitly forbidden.
 
-The binary-search interval uses exponents rather than money amounts. `r = 60` is safe because every possible initial balance is strictly smaller than `2^60`. The loop condition `r - l > 1` leaves consecutive boundaries, so after the loop `r = l + 1`.
+The binary search uses exponents rather than the monetary values themselves. The interval contains the integers from 0 through 59, so every requested amount is at most (2^{59}<10^{18}). Python integers do not overflow, but the same implementation in C++ would also fit comfortably in a signed 64-bit integer for every actual query.
 
-The expression `1 << m` computes `2^m` directly. Python integers have arbitrary precision, so there is no overflow issue. The largest value produced is `2^59`, which is also safely within the allowed withdrawal amount of `10^18`.
+The final loop deliberately starts at `l`, not `l + 1` or 59. Some powers may already have been withdrawn during the binary search, so they can be rejected when queried again. That is harmless. Since the balance only decreases, a previously successful withdrawal can never become successful a second time.
 
-The cleanup loop deliberately goes downward. If we processed smaller powers first, a later accepted larger power could still leave a balance containing smaller bits, making the reasoning less direct. Descending powers mirrors ordinary binary decomposition and guarantees that every remaining bit is handled exactly once.
-
-There is no attempt to skip a rejected cleanup query. A rejected query still counts as an interaction, but it is necessary because we need to determine whether that binary bit is present. The number of such queries is already covered by the `q + 7` bound.
+The program does not try to detect zero from an `accepted` response. There is no way to distinguish between an account containing exactly (x) and one containing more than (x) after an accepted `withdraw x`. Continuing with the predetermined strategy avoids that ambiguity.
 
 ## Worked Examples
 
-### Sample 1
+The interactive samples are transcripts rather than ordinary input files. Sample 1 is consistent with an initial balance of 1: `withdraw 42` is rejected, `withdraw 1` is accepted, and the second `withdraw 1` is rejected because the balance is already zero. Sample 2 is consistent with an initial balance of 0.
 
-The interaction shown in the sample is consistent with an initial balance of `1`.
+For Sample 1, the optimal algorithm does not have to reproduce the sample transcript. Its six queries for (n=1) are shown below.
 
-| Step | Action | Response | Remaining balance | `l` | `r` |
-| --- | --- | --- | --- | --- | --- |
-| 1 | `withdraw 42` | `rejected` | 1 | 0 | 42 |
-| 2 | `withdraw 1` | `accepted` | 0 | 0 | 42 |
-| 3 | `withdraw 1` | `rejected` | 0 | 0 | 42 |
-| 4 | `finish` | accepted by judge | 0 | 0 | 42 |
+| Step | Exponent | Withdrawal | Response | Remaining balance |
+| --- | --- | --- | --- | --- |
+| 1 | 30 | (2^{30}) | rejected | 1 |
+| 2 | 15 | (2^{15}) | rejected | 1 |
+| 3 | 7 | (2^7) | rejected | 1 |
+| 4 | 3 | (2^3) | rejected | 1 |
+| 5 | 1 | (2^1) | rejected | 1 |
+| 6 | 0 | (2^0) | accepted | 0 |
 
-The sample itself is not produced by the optimal algorithm, so its command sequence should not be expected to match the program above. It demonstrates the protocol: a rejected withdrawal changes nothing, an accepted withdrawal subtracts the requested amount, and `finish` succeeds only when the balance is zero.
+The binary search ends with (l=0), and the final scan removes the single dollar. The algorithm then prints `finish`. The sample's shorter transcript is simply another valid interaction for the same hidden balance.
 
-For `n = 1`, the optimal program first performs its binary search. All tested powers greater than `1` are rejected, leaving `l = 0`. The cleanup then asks for `1`, receives `accepted`, and finishes. The total number of withdrawal attempts is at most 7.
+For Sample 2, the initial balance is zero.
 
-### Sample 2
+| Step | Exponent | Withdrawal | Response | Remaining balance |
+| --- | --- | --- | --- | --- |
+| 1 | 30 | (2^{30}) | rejected | 0 |
+| 2 | 15 | (2^{15}) | rejected | 0 |
+| 3 | 7 | (2^7) | rejected | 0 |
+| 4 | 3 | (2^3) | rejected | 0 |
+| 5 | 1 | (2^1) | rejected | 0 |
+| 6 | 0 | (2^0) | rejected | 0 |
 
-This sample is consistent with an initial balance of `0`.
-
-| Step | Action | Response | Remaining balance | `l` | `r` |
-| --- | --- | --- | --- | --- | --- |
-| 1 | `withdraw 1` | `rejected` | 0 | 0 | 1 |
-| 2 | `finish` | accepted by judge | 0 | 0 | 1 |
-
-Again, the sample is illustrating the protocol rather than the exact optimal query sequence. The important edge case is that a rejected withdrawal does not prove the balance is negative. It means only that the requested amount is larger than the current balance, so a balance of zero is possible.
+The search again finishes with (l=0). The final query confirms that no dollar can be withdrawn, and `finish` is correct. Only six attempts are used, below the (q+10=10) limit.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(log n) interactions | At most 6 binary-search queries and at most `q + 1` cleanup queries |
-| Space | O(1) | Only a constant number of integer variables is stored |
+| Time | (O(q)) interactive queries | At most 6 binary-search queries plus at most (q+1) final queries |
+| Space | (O(1)) | Only a constant number of integer variables is stored |
 
-Since `n <= 10^18 < 2^60`, the binary-search phase always needs at most 6 interactions. The cleanup needs at most `q + 1`, where `q` satisfies `n <= 2^q`. Thus the total is at most `q + 7`, leaving three queries of safety under the required `q + 10` limit. The memory usage is constant.
+Since (n\le10^{18}<2^{60}), we always have (q\le60). The algorithm therefore uses at most 67 withdrawal attempts, while the protocol allows (q+10), which is at least 10 and reaches 70 for the largest possible logarithmic range. The implementation uses constant memory.
 
 ## Test Cases
 
-Because this is an interactive problem, ordinary `run(input_string)` tests cannot provide the hidden balance through stdin. A useful offline test harness instead simulates the interactor. The following code uses the same algorithm against a fake terminal, checks that the final balance is zero, and verifies the query limit.
+Because this is interactive, the ordinary Codeforces input cannot be reproduced by a conventional offline `run(input_string)` helper. The useful way to test the logic locally is to replace the interactor with a simulator holding a hidden balance. The same `strategy` function is then used both by the real solution and by the test harness.
 
 ```python
-import io
 import sys
 
-def run_simulation(initial_balance):
-    balance = initial_balance
-    attempts = 0
-    commands = []
-
-    def ask(x):
-        nonlocal balance, attempts
-        attempts += 1
-        commands.append(f"withdraw {x}")
-
-        if balance >= x:
-            balance -= x
-            return True
-        return False
-
-    l = 0
-    r = 60
+def strategy(ask, finish):
+    l, r = 0, 60
 
     while r - l > 1:
         m = (l + r) // 2
+        response = ask(1 << m)
 
-        if ask(1 << m):
+        if response == "accepted":
             l = m
-        else:
+        elif response == "rejected":
             r = m
+        else:
+            raise RuntimeError("unexpected interactor response")
 
     for i in range(l, -1, -1):
         ask(1 << i)
 
-    commands.append("finish")
+    finish()
 
-    q = 0
-    while (1 << q) < initial_balance:
-        q += 1
+def run_hidden(n):
+    balance = n
+    commands = []
+
+    def ask(x):
+        nonlocal balance
+        assert 1 <= x <= 10**18
+
+        commands.append(f"withdraw {x}")
+
+        if balance >= x:
+            balance -= x
+            return "accepted"
+        return "rejected"
+
+    def finish():
+        commands.append("finish")
+        assert balance == 0
+
+    strategy(ask, finish)
+    return commands, balance
+
+def check_sample_transcript(n, commands, replies):
+    balance = n
+
+    assert len(commands) == len(replies)
+
+    for command, reply in zip(commands, replies):
+        parts = command.split()
+
+        if parts[0] == "withdraw":
+            x = int(parts[1])
+            expected = "accepted" if balance >= x else "rejected"
+
+            assert reply == expected
+
+            if expected == "accepted":
+                balance -= x
+
+        elif command == "finish":
+            assert balance == 0
+        else:
+            raise AssertionError("invalid command")
 
     assert balance == 0
-    assert attempts <= q + 10
 
-    return "\n".join(commands)
+# Provided Sample 1.
+sample1_commands = [
+    "withdraw 42",
+    "withdraw 1",
+    "withdraw 1",
+]
+sample1_replies = [
+    "rejected",
+    "accepted",
+    "rejected",
+]
+check_sample_transcript(1, sample1_commands, sample1_replies)
 
-# Provided sample 1 corresponds to an initial balance of 1.
-sample1 = run_simulation(1)
-assert sample1.endswith("finish"), "sample 1"
+# Provided Sample 2.
+sample2_commands = [
+    "withdraw 1",
+]
+sample2_replies = [
+    "rejected",
+]
+check_sample_transcript(0, sample2_commands, sample2_replies)
 
-# Provided sample 2 corresponds to an initial balance of 0.
-sample2 = run_simulation(0)
-assert sample2.endswith("finish"), "sample 2"
+# Minimum balance.
+commands, balance = run_hidden(0)
+assert balance == 0
+assert commands[-1] == "finish"
+assert len(commands) <= 10
 
-# Minimum-size balance.
-assert run_simulation(0).endswith("finish"), "zero balance"
+# Small boundary values.
+commands, balance = run_hidden(1)
+assert balance == 0
+assert commands[-1] == "finish"
 
-# Small boundary values around powers of two.
-for n in [1, 2, 3, 4, 7, 8, 9, 15, 16, 17]:
-    run_simulation(n)
+commands, balance = run_hidden(2)
+assert balance == 0
+assert commands[-1] == "finish"
 
-# A large value close to 2^60.
-assert run_simulation(10**18).endswith("finish"), "maximum allowed balance"
+commands, balance = run_hidden(3)
+assert balance == 0
+assert commands[-1] == "finish"
 
-# Exact powers of two exercise the boundary between q values.
-for n in [2**10, 2**20, 2**30, 2**40, 2**50, 2**59]:
-    run_simulation(n)
+# Exact power of two near the upper range.
+commands, balance = run_hidden(1 << 59)
+assert balance == 0
+assert commands[-1] == "finish"
+assert len(commands) <= 59 + 10
 
-# Values immediately below and above powers of two catch off-by-one errors.
-for n in [2**10 - 1, 2**10, 2**10 + 1]:
-    run_simulation(n)
+# Maximum allowed balance.
+commands, balance = run_hidden(10**18)
+assert balance == 0
+assert commands[-1] == "finish"
+assert len(commands) <= 60 + 10
+
+# Repeated equal hidden balances catch accidental state leakage.
+results = [run_hidden(42) for _ in range(3)]
+assert all(balance == 0 for _, balance in results)
+assert results[0][0] == results[1][0] == results[2][0]
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0` | `finish` | Empty account and smallest possible balance |
-| `1` | `finish` after successful withdrawal | Smallest positive balance |
-| `2^k - 1` | `finish` | Lower boundary of a binary interval |
-| `2^k` | `finish` | Exact power-of-two boundary |
-| `2^k + 1` | `finish` | Upper side of the boundary |
-| `10^18` | `finish` | Maximum permitted balance |
-| `2^59` | `finish` | Largest relevant binary power |
-
-The simulator deliberately does not compare the exact sequence of commands against a fixed expected transcript. Interactive solutions can legitimately make different valid queries, and the correctness conditions are that the final balance is zero and the query limit is respected.
+| Sample 1 transcript, hidden (n=1) | `finish`, balance 0 | Successful withdrawal followed by a redundant rejected query |
+| Sample 2 transcript, hidden (n=0) | `finish`, balance 0 | Minimum balance and immediate zero state |
+| (n=0) | `finish`, balance 0 | Smallest possible (q) and strict query budget |
+| (n=1,2,3) | `finish`, balance 0 | Lowest nonzero balances and bit-boundary behavior |
+| (n=2^{59}) | `finish`, balance 0 | Highest relevant power of two |
+| (n=10^{18}) | `finish`, balance 0 | Maximum allowed balance and (q=60) |
+| (n=42) repeated three times | `finish`, balance 0 each time | State isolation and deterministic interaction |
 
 ## Edge Cases
 
-### Zero balance
+The zero balance is handled by the search naturally. For `withdraw 1` with (n=0), the answer is `rejected`, and every later withdrawal is also rejected. The binary search eventually reaches (l=0), the final scan performs one more `withdraw 1`, and `finish` is valid. The complete interaction uses only six attempts, while the protocol allows ten.
 
-For `n = 0`, the exact input situation is represented by an interactor that rejects every positive withdrawal. The binary search eventually leaves `l = 0`, and the cleanup asks for `1`, which is rejected. The balance remains zero, so `finish` is correct. The algorithm never assumes that an accepted query must occur.
+For (n=1), the binary search rejects every tested power above one. The final scan starts at exponent zero, so `withdraw 1` succeeds and leaves zero. The algorithm then finishes. The crucial boundary is that exponent zero is included in the final loop. Starting from one would miss the only dollar.
 
-### Balance equal to one
+For an exact power such as (n=2^5=32), a binary-search query can successfully withdraw 32 and leave zero. Later queries are all rejected. The final scan remains safe because rejected withdrawals do nothing. This demonstrates why the solution must not assume that an `accepted` response means the balance is now zero.
 
-For `n = 1`, every power greater than one is rejected during the binary search. The resulting `l` is zero, so the cleanup asks for `1`. That query is accepted and leaves zero. This case is especially useful because `q = 0`, making the maximum allowed number of withdrawal attempts only `10`.
+For the maximum balance (n=10^{18}), we have (2^{59}<10^{18}<2^{60}), so (q=60). Every query uses an exponent below 60, and the binary search needs at most six attempts. Even if (l=59), the final scan needs only 60 more attempts, giving at most 66 or 67 total depending on the exact search path, below the allowed 70.
 
-### Exact power of two
-
-Suppose `n = 16`. During the binary search, the query for `16` may be accepted, immediately reducing the balance to zero. The exponent `l = 4` records that `2^4` was available. Later cleanup queries for `16`, `8`, `4`, `2`, and `1` are harmless because the balance is already zero, and all are rejected. The final `finish` is valid. This demonstrates why an accepted binary-search query changing the balance does not invalidate the algorithm.
-
-### Just below a power of two
-
-Suppose `n = 15`. A query for `16` is rejected, so the right boundary becomes the exponent corresponding to `16`. Eventually the binary search establishes a lower exponent whose next power is larger than the current balance. The cleanup checks `8`, `4`, `2`, and `1`, and all four bits are accepted. Their sum is `15`, so the balance reaches zero.
-
-### Just above a power of two
-
-Suppose `n = 17`. A query for `16` can be accepted, leaving balance `1`. The binary search records exponent `4`, and the cleanup subsequently checks powers down from `16`. Since the remaining balance is only `1`, the larger powers are rejected and `1` is accepted. The final balance is zero. This case demonstrates why the cleanup must continue all the way to `2^0`, even after a large power has already been withdrawn.
-
-### Maximum balance
-
-For `n = 10^18`, we have `q = 59` because `2^59 <= 10^18 < 2^60`. The binary search uses at most 6 queries, and `l` is at most 59, so the cleanup uses at most 60 more queries. The total is at most 66, while the terminal permits `q + 10 = 69` attempts. The algorithm therefore remains within the limit even at the largest possible balance.
+The most subtle case is when accepted queries alter the balance during binary search. Suppose (n=100). A query for 8 can succeed, reducing the balance to 92. A later query for 32 can also succeed, reducing it to 60, while a query for 64 is then rejected. The responses cannot be interpreted as comparisons with the original 100. What remains valid is the weaker statement needed by the algorithm: the final rejected boundary proves that the current balance is smaller than the next power above (l). The final descending scan then removes the remaining binary representation without relying on the original balance being unchanged.
