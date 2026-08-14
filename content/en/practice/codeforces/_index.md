@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23212 problems, 12981 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23216 problems, 12985 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23212 problems, 12981 verified.**
+**3135 contests, 23216 problems, 12985 verified.**
 
 ## Unknown — 830 contests, 7037 problems, 4210 verified
 
@@ -1307,7 +1307,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 154 contests, 733 problems, 468 verified
+## 2018 — 154 contests, 737 problems, 472 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1461,7 +1461,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | 7 | 4/7 | Div. 2 | 800-2400 |
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
-| [102426](102426/) | [The 7-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/102426) | 9 | 9/9 | Special | - |
+| [102426](102426/) | [The 7-th BIT Campus Programming Contest for Junior Grade Group](https://codeforces.com/contest/102426) | 13 | 13/13 | Special | - |
 | [102465](102465/) | [2018-2019 ICPC Southwestern European Regional Programming Contest (SWERC 2018)](https://codeforces.com/contest/102465) | 11 | 11/11 | ICPC/IOI | - |
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
