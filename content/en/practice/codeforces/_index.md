@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23218 problems, 12987 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23220 problems, 12989 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23218 problems, 12987 verified.**
+**3135 contests, 23220 problems, 12989 verified.**
 
-## Unknown — 830 contests, 7039 problems, 4212 verified
+## Unknown — 830 contests, 7041 problems, 4214 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -39,7 +39,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102412](102412/) | [MEX Foundation Contest (supported by AIM Tech)](https://codeforces.com/contest/102412) | 10 | 10/10 | Special | - |
 | [102420](102420/) | [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420) | 11 | 8/11 | Special | - |
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 13 | 13/13 | ICPC/IOI | - |
-| [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 11 | 11/11 | Div. 1 | - |
+| [102433](102433/) | [2019-2020 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/contest/102433) | 13 | 13/13 | Div. 1 | - |
 | [102437](102437/) | [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437) | 8 | 5/8 | Special | - |
 | [102439](102439/) | [2018-2019 9th BSUIR Open Programming Championship. Semifinal](https://codeforces.com/contest/102439) | 10 | 10/10 | Special | - |
 | [102440](102440/) | [2018-2019 9th BSUIR Open Programming Championship. Junior](https://codeforces.com/contest/102440) | 12 | 9/12 | Special | - |
