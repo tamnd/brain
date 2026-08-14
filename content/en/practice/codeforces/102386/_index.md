@@ -1,22 +1,22 @@
 ---
 title: "Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019"
-description: "7 problems from Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019 (contest 102386), difficulty -. 5/7 solutions verified against sample I/O."
+description: "8 problems from Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019 (contest 102386), difficulty -. 5/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102386
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 5
-total_solve_s: 2551
-date: "2026-08-12T13:32:51+07:00"
+total_solve_s: 2797
+date: "2026-08-12T13:42:47+07:00"
 weight: 102386
 draft: false
 ---
 
 # [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386)
 
-Special | 7 problems | 5/7 verified | Difficulty - | 42m 31s
+Special | 8 problems | 5/8 verified | Difficulty - | 46m 37s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,4 @@ Special | 7 problems | 5/7 verified | Difficulty - | 42m 31s
 | [G](G/) | [\u0423\u0440\u0430\u043b\u044c\u0441\u043a\u0438\u0435 \u0431\u043b\u0438\u043d\u0447\u0438\u043a\u0438](https://codeforces.com/problemset/problem/102386/G) |  |  |  | 8m 50s | ✓ |
 | [H](H/) | [\u0421\u0432\u0435\u0442\u043e\u0444\u043e\u0440\u044b](https://codeforces.com/problemset/problem/102386/H) |  |  |  | 2m 20s |  |
 | [J](J/) | [\u041a\u0430\u0442\u0430\u043c\u0430\u0440\u0438](https://codeforces.com/problemset/problem/102386/J) |  |  |  | 12m 15s | ✓ |
+| [K](K/) | [\u041c\u0430\u043b\u044b\u0448 \u0438 \u041a\u0430\u0440\u043b\u0441\u043e\u043d](https://codeforces.com/problemset/problem/102386/K) |  |  |  | 4m 6s |  |
