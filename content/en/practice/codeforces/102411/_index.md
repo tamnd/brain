@@ -8,15 +8,15 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 13
 n_verified: 12
-total_solve_s: 4180
-date: "2026-08-11T14:31:35+07:00"
+total_solve_s: 4222
+date: "2026-08-11T14:39:33+07:00"
 weight: 102411
 draft: false
 ---
 
 # [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411)
 
-ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 1h 9m
+ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 1h 10m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,6 @@ ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 1h 9m
 | [H](H/) | [High Load Database](https://codeforces.com/problemset/problem/102411/H) |  |  |  | 2m 34s | ✓ |
 | [I](I/) | [Ideal Pyramid](https://codeforces.com/problemset/problem/102411/I) |  |  |  | 13m 5s | ✓ |
 | [J](J/) | [Just the Last Digit](https://codeforces.com/problemset/problem/102411/J) |  |  |  | 2m 54s | ✓ |
-| [K](K/) | [King's Children](https://codeforces.com/problemset/problem/102411/K) |  |  |  | 7m 14s |  |
+| [K](K/) | [King's Children](https://codeforces.com/problemset/problem/102411/K) |  |  |  | 7m 56s |  |
 | [L](L/) | [Lengths and Periods](https://codeforces.com/problemset/problem/102411/L) |  |  |  | 12m 2s | ✓ |
 | [M](M/) | [Managing Difficulties](https://codeforces.com/problemset/problem/102411/M) |  |  |  | 1m 44s | ✓ |

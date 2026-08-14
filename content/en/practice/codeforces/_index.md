@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23205 problems, 12978 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23206 problems, 12979 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23205 problems, 12978 verified.**
+**3135 contests, 23206 problems, 12979 verified.**
 
-## Unknown — 830 contests, 7036 problems, 4209 verified
+## Unknown — 830 contests, 7037 problems, 4210 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102396](102396/) | [2019-2020 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 19)](https://codeforces.com/contest/102396) | 11 | 8/11 | Special | - |
 | [102399](102399/) | [2019 Московская командная олимпиада школьников, лига A](https://codeforces.com/contest/102399) | 12 | 10/12 | Special | - |
 | [102407](102407/) | [Интернет-олимпиады, Сезон 2019-2020, Вторая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102407) | 11 | 9/11 | Special | - |
-| [102411](102411/) | [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411) | 12 | 11/12 | ICPC/IOI | - |
+| [102411](102411/) | [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411) | 13 | 12/13 | ICPC/IOI | - |
 | [102412](102412/) | [MEX Foundation Contest (supported by AIM Tech)](https://codeforces.com/contest/102412) | 10 | 10/10 | Special | - |
 | [102420](102420/) | [Интернет-олимпиады, Сезон 2019-2020, Третья командная олимпиада, усложненная номинация](https://codeforces.com/contest/102420) | 11 | 8/11 | Special | - |
 | [102428](102428/) | [2019-2020 ACM-ICPC Latin American Regional Programming Contest](https://codeforces.com/contest/102428) | 11 | 11/11 | ICPC/IOI | - |
