@@ -1,25 +1,26 @@
 ---
 title: "Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада"
-description: "9 problems from Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада (contest 102373), difficulty -. 4/9 solutions verified against sample I/O."
+description: "10 problems from Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада (contest 102373), difficulty -. 5/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102373
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 4
-total_solve_s: 2889
-date: "2026-08-14T03:19:12+07:00"
+n_problems: 10
+n_verified: 5
+total_solve_s: 2946
+date: "2026-08-14T12:29:32+07:00"
 weight: 102373
 draft: false
 ---
 
 # [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373)
 
-Special | 9 problems | 4/9 verified | Difficulty - | 48m 9s
+Special | 10 problems | 5/10 verified | Difficulty - | 49m 6s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u041e\u043d\u043e](https://codeforces.com/problemset/problem/102373/A) |  |  |  | 57s | ✓ |
 | [B](B/) | [Wooden Castle](https://codeforces.com/problemset/problem/102373/B) |  |  |  | 2m 23s |  |
 | [C](C/) | [Diamonds](https://codeforces.com/problemset/problem/102373/C) |  |  |  | 8m 39s | ✓ |
 | [D](D/) | [Good Subset](https://codeforces.com/problemset/problem/102373/D) |  |  |  | 3m 26s |  |
