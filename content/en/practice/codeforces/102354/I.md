@@ -1,7 +1,7 @@
 ---
 title: "CF 102354I - From Modular to Rational"
-description: "The interactor hides a positive rational number (x=p/q), where both (p) and (q) are at most (10^9). We cannot read (p) and (q) directly. Instead, for a chosen prime (m) larger than (10^9), the interactor returns the residue of (p q^{-1}) modulo (m)."
-date: "2026-08-14T02:41:21+07:00"
+description: "For every test case, the judge secretly chooses a positive rational number (x=p/q), where both (p) and (q) are at most (10^9). We cannot see (p) and (q) directly."
+date: "2026-08-14T12:28:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102354
@@ -9,7 +9,7 @@ codeforces_index: "I"
 codeforces_contest_name: "2018-2019 Summer Petrozavodsk Camp, Oleksandr Kulkov Contest 2"
 rating: 0
 weight: 102354
-solve_time_s: 295
+solve_time_s: 160
 verified: false
 draft: false
 ---
@@ -18,419 +18,391 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 55s  
+**Solve time:** 2m 40s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The interactor hides a positive rational number (x=p/q), where both (p) and (q) are at most (10^9). We cannot read (p) and (q) directly. Instead, for a chosen prime (m) larger than (10^9), the interactor returns the residue of (p q^{-1}) modulo (m). Since (q<m), the inverse (q^{-1}) exists.
+For every test case, the judge secretly chooses a positive rational number (x=p/q), where both (p) and (q) are at most (10^9). We cannot see (p) and (q) directly. Instead, we can choose a large prime (m), ask for the value of (p q^{-1}\pmod m), and use the returned residue to recover the rational number. The answer may use any positive numerator and denominator at most (10^9) representing the same rational value, so reducing the fraction is always allowed. The problem is interactive, meaning the program must print queries, flush them, read the judge's replies, and finally print the recovered fraction.
 
-The task is to recover any pair of integers (p,q) with (1\le p,q\le10^9) representing the hidden rational number. The original problem is interactive, so a query is printed as `? m`, the answer from the interactor is read, and the final result is printed as `! p q`. The statement allows ten queries, while the solution below needs only two. The official problem is interactive and its key reduction is to modular minimization after combining the queried residues with the Chinese remainder theorem.
+The upper bound (10^9) on both numerator and denominator is the key numerical constraint. It tells us that two different reduced fractions satisfying the bound can have cross products differing by at most (10^{18}). A modulus only slightly larger than (10^9) is not enough to distinguish them, so one query cannot in general provide enough information. The query limit of ten is generous enough to combine two moduli whose product is much larger than (10^{18}). The number of test cases can reach (10^5), so the local computation after each query must be logarithmic in the modulus rather than proportional to (10^9). Two queries and one extended Euclidean computation per test case are easily small enough.
 
-The bound (10^9) is the central part of the problem. A direct search over every possible denominator would require up to (10^9) modular multiplications for one test case. With as many as (10^5) test cases, that becomes (10^{14}) operations, far beyond the six second limit. The modulus supplied by one query is only around (10^9), so one query does not provide enough information to make the rational representation unique. Two such primes have a product slightly larger than (10^{18}), which is exactly what we need because products of two numbers bounded by (10^9) are at most (10^{18}).
+There is another subtlety caused by the fact that the input fraction need not be reduced. Suppose the hidden value is (2/4). The correct mathematical value is (1/2), and returning `! 1 2` is valid. A reconstruction algorithm that searches only for the exact hidden pair (2,4) would be solving a stronger problem than necessary and can produce the wrong answer when it insists on recovering the original representation.
 
-There are several easy ways to make a wrong implementation. First, using only one modulus can leave multiple valid representations. For example, with (m=10^9+7), the value (1/2) produces (500000004), while the same residue can correspond to other bounded numerator-denominator pairs because the modulus is only about (10^9). A solution that assumes one residue uniquely determines (p) and (q) is invalid.
+A second edge case is (p=q=10^9). The fraction is exactly (1), so the correct response can be `! 1 1`, not necessarily `! 1000000000 1000000000`. A careless algorithm that treats the given bounds as requiring the original numerator and denominator would unnecessarily distinguish representations of the same rational number.
 
-Second, the original (p,q) need not be coprime. For example, the hidden value (1/2) can legally be written as (2/4). If reconstruction produces the reduced pair (1,2), that is still a correct answer. A careless implementation that insists on reproducing the exact hidden pair would reject a perfectly valid result.
-
-Third, the modular minimization can return a denominator whose resulting residue is zero only if the hidden numerator is zero modulo the combined modulus. That cannot happen here because (1\le p\le10^9), while the combined modulus is greater than (10^{18}). Thus the valid residue is always positive. An implementation of the continued-fraction helper still needs to handle the trivial (r=0) case defensively, even though the actual interactor cannot produce it.
+A third edge case occurs when the modular residue is very large. For example, for (x=1/2) and an odd prime (m), the returned residue is ((m+1)/2), which is close to (m/2), far above (10^9). Trying to interpret the returned value itself as the numerator therefore fails. The numerator and denominator have to be reconstructed from the congruence (p\equiv rq\pmod M), rather than read directly from the residue.
 
 ## Approaches
 
-The most direct approach is to query a modulus (m), obtain (r\equiv pq^{-1}\pmod m), and try every denominator (q) from (1) through (10^9). For each candidate we calculate (rq\bmod m), and if the result is at most (10^9), it can serve as a candidate numerator. The true denominator certainly succeeds because (rq\equiv p\pmod m). This is correct as a search procedure, but the worst case requires (10^9) modular multiplications for every test case, giving (10^{14}) operations across (10^5) cases.
+A direct approach is to query one modulus and try every possible denominator (q) from (1) through (10^9). For each (q), the congruence determines a candidate numerator as (p=rq\bmod m). If that value lies between (1) and (10^9), we have found a valid representation. This works because the hidden pair is guaranteed to be among those candidates, but the worst case requires (10^9) modular multiplications for one test case. Across (10^5) test cases that becomes (10^{14}) iterations, which is completely impractical.
 
-The first useful observation is that two queries can be treated as one query modulo their product. Take the fixed primes
-
-[
-m_1=1000000007,\qquad m_2=1000000009.
-]
-
-Their product is
-
-[
-M=m_1m_2=1000000016000000063>10^{18}.
-]
-
-Suppose the two responses are (r_1) and (r_2). By the Chinese remainder theorem there is a unique (R\in[0,M)) satisfying
-
-[
-R\equiv r_1\pmod {m_1},
-\qquad
-R\equiv r_2\pmod {m_2}.
-]
-
-The hidden rational number then satisfies
-
-[
-Rq\equiv p\pmod M.
-]
-
-Because (M>10^{18}), this representation is unique as a rational number among all pairs bounded by (10^9). Indeed, if both (p_1/q_1) and (p_2/q_2) were valid and different, then (M) would divide
-
-[
-p_1q_2-p_2q_1.
-]
-
-The absolute value of this difference is at most (10^{18}), so it cannot be a nonzero multiple of (M). This uniqueness argument is the reason two primes are enough.
-
-We are now left with a purely mathematical problem. Find (q\le10^9) such that
-
-[
-Rq\bmod M\le10^9.
-]
-
-Since the true denominator has this property, we could search for the minimum value of (Rq\bmod M) among all (1\le q\le10^9). The minimum is certainly at most (10^9), and the corresponding remainder is a valid numerator. The remaining question is how to find that minimum without trying all (10^9) denominators.
-
-Write
-
-[
-Rq-kM=b,
-]
-
-where (b=Rq\bmod M). Minimizing (b) means finding an integer lattice point ((q,k)) just below the line
-
-[
-k=\frac{R}{M}q.
-]
-
-The best such lattice points are exactly the lower semiconvergents of the continued fraction of (R/M). Instead of enumerating all semiconvergents explicitly, we can generate the continued fraction convergents and identify the final lower-hull segment whose denominator range reaches (10^9). The resulting denominator is a particular semiconvergent and minimizes (Rq\bmod M). This is the continued-fraction reduction used for this problem.
-
-The important distinction from ordinary rational reconstruction is the bound. A textbook convergent-only argument often uses a condition stronger than (M>10^{18}), such as (M>2C^2). Here we only have (M>C^2), so we need lower semiconvergents, not merely ordinary convergents. The official continued-fraction formulation explicitly reduces the task to this modular minimization and checks the relevant lower semiconvergent.
-
-| Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | (O(t\cdot10^9)) | (O(1)) | Too slow |
-| Two queries + CRT + continued fractions | (O(t\log 10^9)) | (O(\log 10^9)) | Accepted |
-
-## Algorithm Walkthrough
-
-1. For every test case, query the prime (m_1=1000000007) and store its response (r_1). Flush immediately because the interactor must receive the query before it can send the response.
-2. Query the second prime (m_2=1000000009) and store its response (r_2). Two queries are sufficient because their product exceeds (10^{18}), while every product (pq) and (p'q') formed from valid bounds is at most (10^{18}).
-3. Combine (r_1) and (r_2) with the Chinese remainder theorem. We obtain a single residue (R) modulo
+The key observation is that several modular answers can be combined. Ask two different primes (m_1,m_2), then use the Chinese Remainder Theorem to turn the two answers into a single residue (r) modulo
 
 [
 M=m_1m_2.
 ]
 
-The implementation uses
+We can choose the two primes so that (M>2\cdot 10^{18}). The values
 
 [
-R=r_1+m_1\left((r_2-r_1)m_1^{-1}\bmod m_2\right).
+m_1=999999999989,\qquad m_2=1000000000039
 ]
 
-The inverse exists because (m_1) and (m_2) are distinct primes.
+are both prime and satisfy the required query range. Their product is about (10^{24}), comfortably above the required bound.
 
-1. Consider the sequence
+Now the problem becomes a standard rational reconstruction problem. We know
 
 [
-R\bmod M,\quad 2R\bmod M,\quad 3R\bmod M,\ldots
+r\equiv pq^{-1}\pmod M,
 ]
 
-and search for the (q\le10^9) producing the smallest remainder. The true denominator is in this range and produces the true numerator, which is also at most (10^9).
-
-1. Compute the continued fraction of (R/M) with the Euclidean algorithm. Keep the numerator and denominator of every convergent. The lower semiconvergents are the lattice points immediately below the line (y=(R/M)x), and one of them gives the minimum modular remainder.
-2. Find the first lower-hull convergent index whose next denominator would exceed (10^9). If the current lower-hull vector is ((q_{i-1},p_{i-1})) and the next direction is ((q_i,p_i)), we can move along that direction as far as the denominator bound allows. Set
+or equivalently,
 
 [
-t=\left\lfloor\frac{10^9-q_{i-1}}{q_i}\right\rfloor
+rq\equiv p\pmod M.
 ]
 
-and take
+The reduced hidden fraction has (1\le p,q\le10^9). If two different reduced fractions (p_1/q_1) and (p_2/q_2) produced the same residue, then
 
 [
-q=q_{i-1}+tq_i.
+p_1q_2-p_2q_1\equiv0\pmod M.
 ]
 
-This is precisely the largest denominator on that lower semiconvergent segment that remains within the allowed range.
+The absolute value of the left side is at most (2\cdot10^{18}), while (M) is larger than that. Hence the difference must actually be zero, so the fractions are identical. This is precisely the uniqueness condition behind rational reconstruction, which can be performed using the extended Euclidean algorithm.
 
-1. Compute
+The Euclidean algorithm gives a sequence of identities
 
 [
-p=Rq\bmod M.
+R_i=A_iM+B_ir.
 ]
 
-By construction, this is the minimum attainable nonnegative remainder, so (p\le10^9). The pair ((p,q)) represents the hidden rational number.
+When the remainder (R_i) first becomes at most (10^9), the corresponding coefficient (B_i) is the denominator of the reconstructed fraction, up to a common sign. The modulus is deliberately much larger than (2N^2), with (N=10^9), so the desired numerator and denominator must appear at this point in the Euclidean sequence.
 
-### Why it works
+The brute-force and optimal approaches can be summarized as follows.
 
-The key invariant is that every valid representation satisfies (Rq\equiv p\pmod M), with (1\le p,q\le10^9). Since (M>10^{18}), there can be only one rational value satisfying these bounds. The continued-fraction step finds the denominator minimizing (Rq\bmod M) over all allowed denominators. The hidden denominator is one of those allowed denominators and produces a remainder at most (10^9), so the minimum is also at most (10^9). The resulting remainder is consequently a valid numerator, and uniqueness forces the reconstructed fraction to equal the hidden rational number.
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | (O(10^9)) per test case | (O(1)) | Too slow |
+| CRT + rational reconstruction | (O(\log M)) per test case | (O(1)) | Accepted |
+
+## Algorithm Walkthrough
+
+1. Ask for the hidden residue modulo (m_1=999999999989). The number is prime and lies strictly between (10^9) and (10^{12}), so it is a legal query.
+2. Ask for the residue modulo (m_2=1000000000039). Using two distinct primes gives two congruences describing the same rational number.
+3. Combine the two answers with the Chinese Remainder Theorem. If the replies are (r_1) and (r_2), write
+
+[
+r=r_1+m_1k.
+]
+
+We choose (k) so that (r\equiv r_2\pmod {m_2}). Thus
+
+[
+k\equiv(r_2-r_1)m_1^{-1}\pmod {m_2}.
+]
+
+The resulting (r) is the unique residue modulo (M=m_1m_2) satisfying both queries.
+
+1. Run the extended Euclidean algorithm on (M) and (r), while tracking the coefficient of (r). Initially the two relevant pairs are
+
+[
+(M,0),\qquad(r,1).
+]
+
+Every Euclidean transition preserves an identity of the form
+
+[
+R=AM+Br.
+]
+
+1. Stop at the first Euclidean remainder (R) with (R\le10^9). The rational reconstruction theorem says that, because (M>2\cdot10^{18}), this remainder and its coefficient of (r) give the unique reduced numerator and denominator within the required bounds.
+2. Make the coefficient positive if necessary by changing both signs. In the valid positive reconstruction for this problem the final pair is positive, but normalizing the sign makes the implementation robust.
+3. Print the reconstructed numerator and denominator as the final answer. The reconstructed fraction is the same rational value as the hidden fraction, even when the judge originally chose a non-reduced representation.
+
+The invariant throughout the Euclidean phase is that every current remainder (R) has a known representation (R=AM+Br). Since (r\equiv pq^{-1}\pmod M), multiplying the latter congruence by (q) gives (rq\equiv p\pmod M). Thus the hidden pair itself is one of the small solutions represented in this Euclidean lattice. The bound (M>2N^2) makes that small reduced solution unique, so when Euclid reaches the first sufficiently small remainder, it cannot be a different valid fraction.
 
 ## Python Solution
+
+The original task is interactive, so the program below is the actual interactive solution. The sample shown in the statement is an interaction transcript rather than ordinary input, so it cannot be executed as a conventional stdin-to-stdout batch test.
 
 ```python
 import sys
 input = sys.stdin.readline
 
-M1 = 1000000007
-M2 = 1000000009
-LIMIT = 1000000000
-M = M1 * M2
+P1 = 999999999989
+P2 = 1000000000039
+N = 10**9
 
-# M1 = -2 (mod M2), so its inverse is -1/2 = (M2 - 1) / 2.
-INV_M1_MOD_M2 = 500000004
+def extended_gcd(a, b):
+    old_r, r = a, b
+    old_s, s = 1, 0
+    old_t, t = 0, 1
+
+    while r:
+        q = old_r // r
+        old_r, r = r, old_r - q * r
+        old_s, s = s, old_s - q * s
+        old_t, t = t, old_t - q * t
+
+    return old_r, old_s, old_t
 
 def crt(r1, r2):
-    """
-    Return R in [0, M) such that
-        R == r1 (mod M1)
-        R == r2 (mod M2)
-    """
-    k = ((r2 - r1) * INV_M1_MOD_M2) % M2
-    return r1 + M1 * k
+    # r = r1 + P1 * k
+    # P1 * k == r2 - r1 (mod P2)
+    _, inv, _ = extended_gcd(P1, P2)
+    inv %= P2
 
-def convergents(num, den):
-    """
-    Return the numerator and denominator arrays of the continued
-    fraction of num / den.
+    k = ((r2 - r1) % P2) * inv % P2
+    return r1 + P1 * k
 
-    The first two entries are the conventional pseudo-convergents:
-        p[-2] / q[-2] = 0 / 1
-        p[-1] / q[-1] = 1 / 0
-    """
-    ps = [0, 1]
-    qs = [1, 0]
+def rational_reconstruct(r, mod):
+    # Euclidean sequence:
+    # remainder = A * mod + B * r
+    old_r, cur_r = mod, r
+    old_b, cur_b = 0, 1
 
-    while den:
-        a = num // den
-        ps.append(ps[-1] * a + ps[-2])
-        qs.append(qs[-1] * a + qs[-2])
-        num, den = den, num % den
+    while cur_r > N:
+        q = old_r // cur_r
 
-    return ps, qs
+        old_r, cur_r = cur_r, old_r - q * cur_r
+        old_b, cur_b = cur_b, old_b - q * cur_b
 
-def mod_min(r, n, m):
-    """
-    Find q, 1 <= q <= n, minimizing (q * r) % m.
+    numerator = cur_r
+    denominator = cur_b
 
-    This is obtained from the lower semiconvergents of r / m.
-    """
-    if r == 0:
-        return 1
+    if denominator < 0:
+        numerator = -numerator
+        denominator = -denominator
 
-    ps, qs = convergents(r, m)
-
-    for i in range(2, len(qs)):
-        if i & 1:
-            if i + 1 == len(qs) or qs[i + 1] > n:
-                t = (n - qs[i - 1]) // qs[i]
-                return qs[i - 1] + t * qs[i]
-
-    # The actual problem always has a valid positive solution.
-    return 1
-
-def reconstruct(r1, r2):
-    R = crt(r1, r2)
-    q = mod_min(R, LIMIT, M)
-    p = (R * q) % M
-    return p, q
+    return numerator, denominator
 
 def ask(m):
     print("?", m, flush=True)
-    return int(input())
+    ans = int(input())
 
-def solve():
+    if ans == -1:
+        sys.exit(0)
+
+    return ans
+
+def main():
     t = int(input())
 
     for _ in range(t):
-        r1 = ask(M1)
-        r2 = ask(M2)
+        r1 = ask(P1)
+        r2 = ask(P2)
 
-        p, q = reconstruct(r1, r2)
+        r = crt(r1, r2)
+        mod = P1 * P2
+
+        p, q = rational_reconstruct(r, mod)
 
         print("!", p, q, flush=True)
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The constants `M1` and `M2` are fixed valid primes, both strictly greater than (10^9). Their product is (1000000016000000063), which is strictly greater than (10^{18}).
+The constants are fixed before processing any test case. Both are valid primes in the permitted interval, so there is no need to spend queries or computation searching for primes. Their product is larger than (2\cdot10^{18}), which is the only size condition needed by rational reconstruction.
 
-The `crt` function performs the Chinese remainder step. Since (M_1\equiv-2\pmod{M_2}), its inverse modulo (M_2) is (500000004). Python integers have arbitrary precision, so the intermediate products around (10^{18}) and (10^{27}) do not overflow.
+The `ask` function prints the query and immediately flushes stdout. Flushing is mandatory in an interactive problem because the judge cannot answer a query it has not received. A reply of `-1` conventionally means that the interaction has failed, so the program terminates immediately rather than sending more output.
 
-The `convergents` function follows the standard recurrence
+The `crt` function follows the direct two-modulus CRT formula. The extended Euclidean algorithm gives the inverse of (P_1) modulo (P_2), and the multiplication is reduced modulo (P_2) before constructing the final residue. Python integers have arbitrary precision, which is useful because (P_1P_2) is around (10^{24}), far beyond signed 64-bit range.
 
-[
-P_i=a_iP_{i-1}+P_{i-2},
-\qquad
-Q_i=a_iQ_{i-1}+Q_{i-2}.
-]
+The `rational_reconstruct` function tracks only the coefficient of the queried residue. There is no need to retain the coefficient of the modulus. When `cur_r` first becomes at most (10^9), the corresponding coefficient gives the denominator and the remainder gives the numerator. The stopping condition uses `>` rather than `>=`, because a remainder equal to (10^9) is already a valid numerator and must be accepted.
 
-The two initial pseudo-convergents are deliberately stored because the semiconvergent selection formula uses their indices. Omitting them and changing the parity tests is a common source of an off-by-one error.
-
-The `mod_min` function is the core of the solution. The condition `i & 1` selects the lower side of the continued-fraction hull. We stop at the first such segment whose next convergent denominator would exceed the allowed denominator. The multiplier `t` then moves as far as possible along the current semiconvergent direction without making the denominator larger than (10^9).
-
-The final multiplication `(R * q) % M` gives the numerator directly. There is no need to divide a rational number or reduce it by a gcd. If the hidden value was originally represented as (2/4), reconstruction may return (1/2), which is equally valid.
-
-The interaction requires `flush=True` after every query and after the final answer. Without flushing, the interactor may wait indefinitely for output that is still buffered.
+The algorithm never divides by the original denominator modulo the combined modulus. The denominator is at most (10^9), while both queried primes are greater than (10^9), so it is automatically invertible modulo each prime. This is what makes the modular representation of the rational number well defined.
 
 ## Worked Examples
 
-The official sample is interactive, so its input and output are a transcript between the contestant and the interactor rather than an ordinary input-output pair. The first sample case has hidden value (1/1), the second has (1/2), and the third has (2/1). For an offline trace, we can supply the same rational values to both fixed moduli and observe the reconstruction.
+The statement's sample uses one modulus and demonstrates three hidden values, (1), (1/2), and (2). Our implementation asks two larger primes instead, but the reconstruction phase behaves in exactly the same way.
 
-For (x=1/1), both residues are (1).
+For the first sample value (x=1), both replies are (1).
 
-| Step | (r_1) | (r_2) | (R) | chosen (q) | (p=Rq\bmod M) |
+| Step | (r_1) | (r_2) | CRT residue (r) | Euclidean remainder | Coefficient of (r) | Result |
+| --- | --- | --- | --- | --- | --- | --- |
+| Query 1 | 1 |  |  |  |  |  |
+| Query 2 | 1 | 1 |  |  |  |  |
+| CRT | 1 | 1 | 1 |  |  |  |
+| Reconstruction |  |  | 1 | 1 | 1 | (1/1) |
+
+The Euclidean algorithm reaches (1) immediately, and the corresponding coefficient is (1). The output `! 1 1` represents the same value as the hidden number.
+
+For the second sample value (x=1/2), the inverse of (2) modulo an odd prime (m) is ((m+1)/2). Thus the two replies are (499999999995) and (500000000020).
+
+| Step | (r_1) | (r_2) | CRT residue (r) | Euclidean remainder | Coefficient of (r) | Result |
+| --- | --- | --- | --- | --- | --- | --- |
+| Query 1 | 499999999995 |  |  |  |  |  |
+| Query 2 | 499999999995 | 500000000020 |  |  |  |  |
+| CRT | 499999999995 | 500000000020 | ((M+1)/2) |  |  |  |
+| Euclid 1 |  |  |  | ((M-1)/2) | (-1) |  |
+| Euclid 2 |  |  |  | 1 | 2 | (1/2) |
+
+The large modular residue is not mistaken for a large numerator. Euclid converts the modular information into the small pair (1,2), which demonstrates why rational reconstruction is the correct abstraction.
+
+As a second custom example, consider the hidden representation (10^9/10^9). Its value is (1), so every query returns the residue (1), exactly as in the first trace. Rational reconstruction returns (1/1).
+
+| Step | Hidden representation | (r_1) | (r_2) | Reconstructed numerator | Reconstructed denominator |
 | --- | --- | --- | --- | --- | --- |
-| Query first prime | 1 |  |  |  |  |
-| Query second prime | 1 | 1 |  |  |  |
-| CRT | 1 | 1 | 1 |  |  |
-| Continued fractions |  |  | 1 | 1 |  |
-| Recover numerator |  |  | 1 | 1 | 1 |
+| Queries | (1000000000/1000000000) | 1 | 1 |  |  |
+| CRT | (1) | 1 | 1 |  |  |
+| Reconstruction | (1) |  |  | 1 | 1 |
 
-The fraction is recovered as (1/1). This also demonstrates the smallest possible numerator and denominator.
-
-For (x=1/2), the residues are
-
-[
-r_1=500000004
-]
-
-and
-
-[
-r_2=500000005.
-]
-
-The second value follows because (2r_2\equiv1\pmod{1000000009}).
-
-| Step | (r_1) | (r_2) | (R) | chosen (q) | (p) |
-| --- | --- | --- | --- | --- | --- |
-| Query first prime | 500000004 |  |  |  |  |
-| Query second prime | 500000004 | 500000005 |  |  |  |
-| CRT | 500000004 | 500000005 | (500000004) |  |  |
-| Continued fractions |  |  | (500000004) | 2 |  |
-| Recover numerator |  |  | (500000004) | 2 | 1 |
-
-The denominator (2) produces remainder (1), which is the minimum possible positive remainder. The algorithm consequently returns (1/2), matching the second case of the official sample.
-
-As another useful trace, take (x=2/3). The two residues are (666666672) modulo (1000000007) and (333333337) modulo (1000000009). CRT reconstructs the residue corresponding to (2/3) modulo (M). The continued-fraction search finds (q=3), and the final modular multiplication gives (p=2). This illustrates that the denominator does not have to be particularly small relative to the modulus, only bounded by (10^9).
+This trace exercises the maximum allowed numerator and denominator while also confirming that the answer is allowed to be reduced.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(t\log 10^9)) | Each test case performs two queries, CRT, and one Euclidean-algorithm continued-fraction computation |
-| Space | (O(\log 10^9)) | The continued fraction contains (O(\log 10^9)) coefficients |
+| Time | (O(\log M)) per test case | CRT uses a constant number of extended Euclidean operations, and rational reconstruction performs one Euclidean algorithm |
+| Space | (O(1)) | Only a constant number of integers are stored |
 
-The continued fraction has only logarithmically many terms because the Euclidean algorithm decreases its arguments according to the same recurrence. For (10^5) test cases this keeps the computational work small enough for the six second limit. The two interactive queries are also comfortably below the allowed ten queries per test case. The original problem allows ten queries, while the construction here deliberately uses only two.
+With (M\approx10^{24}), the Euclidean algorithm needs only a few dozen integer divisions per test case. Even for (10^5) test cases, the number of arithmetic steps is tiny compared with the (10^{14}) iterations required by denominator enumeration. Python's arbitrary-precision integers also handle the (10^{24})-scale CRT modulus directly, so there is no overflow issue.
 
 ## Test Cases
 
-Because this is an interactive problem, the official sample cannot be passed directly to a normal `run(input_string)` harness. Its lines are responses produced by the interactor after the contestant prints queries. For offline testing, the clean approach is to test the deterministic `reconstruct` function by generating the two residues from known rational values.
+Because this is interactive, the literal sample input cannot be fed to the solution as a normal string. The following offline harness tests the deterministic reconstruction core by simulating the judge's two modular replies from a known fraction. The three fractions from the provided sample are included as the first test.
 
 ```python
-# Offline tests for the deterministic reconstruction part.
-# The interactive solve() function itself must be tested with an interactor.
-
 import sys
+import io
+from math import gcd
 
-M1 = 1000000007
-M2 = 1000000009
-LIMIT = 1000000000
-M = M1 * M2
-INV_M1_MOD_M2 = 500000004
+P1 = 999999999989
+P2 = 1000000000039
+N = 10**9
+
+def extended_gcd(a, b):
+    old_r, r = a, b
+    old_s, s = 1, 0
+    old_t, t = 0, 1
+
+    while r:
+        q = old_r // r
+        old_r, r = r, old_r - q * r
+        old_s, s = s, old_s - q * s
+        old_t, t = t, old_t - q * t
+
+    return old_r, old_s, old_t
 
 def crt(r1, r2):
-    k = ((r2 - r1) * INV_M1_MOD_M2) % M2
-    return r1 + M1 * k
+    _, inv, _ = extended_gcd(P1, P2)
+    inv %= P2
+    k = ((r2 - r1) % P2) * inv % P2
+    return r1 + P1 * k
 
-def convergents(num, den):
-    ps = [0, 1]
-    qs = [1, 0]
+def rational_reconstruct(r, mod):
+    old_r, cur_r = mod, r
+    old_b, cur_b = 0, 1
 
-    while den:
-        a = num // den
-        ps.append(ps[-1] * a + ps[-2])
-        qs.append(qs[-1] * a + qs[-2])
-        num, den = den, num % den
+    while cur_r > N:
+        q = old_r // cur_r
+        old_r, cur_r = cur_r, old_r - q * cur_r
+        old_b, cur_b = cur_b, old_b - q * cur_b
 
-    return ps, qs
+    p, q = cur_r, cur_b
 
-def mod_min(r, n, m):
-    if r == 0:
-        return 1
+    if q < 0:
+        p = -p
+        q = -q
 
-    _, qs = convergents(r, m)
-
-    for i in range(2, len(qs)):
-        if i & 1:
-            if i + 1 == len(qs) or qs[i + 1] > n:
-                t = (n - qs[i - 1]) // qs[i]
-                return qs[i - 1] + t * qs[i]
-
-    return 1
-
-def reconstruct(r1, r2):
-    R = crt(r1, r2)
-    q = mod_min(R, LIMIT, M)
-    p = (R * q) % M
     return p, q
 
-def residue(p, q, mod):
-    return (p * pow(q, mod - 2, mod)) % mod
+def solve_fraction(p, q):
+    # Simulate the two interactive replies.
+    r1 = (p * pow(q, -1, P1)) % P1
+    r2 = (p * pow(q, -1, P2)) % P2
 
-def run_case(p, q):
-    r1 = residue(p, q, M1)
-    r2 = residue(p, q, M2)
-    return reconstruct(r1, r2)
+    r = crt(r1, r2)
+    return rational_reconstruct(r, P1 * P2)
 
-# Official sample values, converted into two-modulus offline tests.
-assert run_case(1, 1) == (1, 1), "sample case x = 1"
-assert run_case(1, 2) == (1, 2), "sample case x = 1/2"
-assert run_case(2, 1) == (2, 1), "sample case x = 2"
+def run(inp: str) -> str:
+    out = []
 
-# Minimum-size values.
-assert run_case(1, 1) == (1, 1), "minimum numerator and denominator"
+    for line in inp.strip().splitlines():
+        if not line.strip():
+            continue
 
-# Maximum-size values.
-assert run_case(1000000000, 1000000000) == (1, 1), \
-    "maximum values with a reducible representation"
+        p, q = map(int, line.split())
+        a, b = solve_fraction(p, q)
+        out.append(f"{a} {b}")
 
-# A large irreducible fraction.
-assert run_case(999999999, 1000000000) == (999999999, 1000000000), \
-    "large irreducible fraction"
+    return "\n".join(out) + "\n"
+
+# Provided sample values: 1, 1/2, and 2.
+assert run("""\
+1 1
+1 2
+2 1
+""") == """\
+1 1
+1 2
+2 1
+""", "provided sample values"
+
+# Non-reduced representation. The correct rational value is 1/2.
+assert run("""\
+2 4
+""") == """\
+1 2
+""", "non-reduced fraction"
+
+# Minimum-size fraction.
+assert run("""\
+1 1
+""") == """\
+1 1
+""", "minimum-size values"
+
+# Maximum-size numerator and denominator. The value is exactly 1.
+assert run("""\
+1000000000 1000000000
+""") == """\
+1 1
+""", "maximum-size equal values"
 
 # Boundary numerator and denominator.
-assert run_case(1000000000, 999999999) == (1000000000, 999999999), \
-    "both bounds are active"
+assert run("""\
+1000000000 999999999
+""") == """\
+1000000000 999999999
+""", "values at the upper bound")
 
-# A case where reduction is necessary.
-assert run_case(750000000, 1000000000) == (3, 4), \
-    "non-coprime representation"
+# A fraction whose reduced denominator is large.
+assert run("""\
+999999999 1000000000
+""") == """\
+999999999 1000000000
+""", "large reduced denominator")
+
+print("all tests passed")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| (1/1) | (1/1) | Minimum-size values and trivial continued fraction |
-| (1/2) | (1/2) | Official sample and a small non-integer rational |
-| (2/1) | (2/1) | Integer rational with denominator one |
-| (10^9/10^9) | (1/1) | Maximum bounds and non-coprime representation |
-| (999999999/10^9) | (999999999/10^9) | Large irreducible fraction |
-| (10^9/999999999) | (10^9/999999999) | Both bounds simultaneously active |
-| (750000000/10^9) | (3/4) | Correct handling of reducible input |
+| `1 1`, `1 2`, `2 1` | `1 1`, `1 2`, `2 1` | Values represented in the provided interactive sample |
+| `2 4` | `1 2` | Non-reduced input representation |
+| `1 1` | `1 1` | Minimum allowed values |
+| `1000000000 1000000000` | `1 1` | Maximum values and reduction |
+| `1000000000 999999999` | `1000000000 999999999` | Upper-bound numerator |
+| `999999999 1000000000` | `999999999 1000000000` | Large reduced denominator |
 
 ## Edge Cases
 
-The one-modulus ambiguity is handled by never attempting reconstruction from a single query. For example, the official sample's (1/2) gives (500000004) modulo (1000000007). That modulus is not larger than (10^{18}), so uniqueness cannot be proved. The algorithm immediately obtains a second residue modulo (1000000009), combines them into a modulus larger than (10^{18}), and only then starts rational reconstruction.
-
-The non-coprime case is handled naturally. Consider the concrete input representation (750000000/1000000000). Its actual value is (3/4). The modular responses are generated by the value (3/4), and the reconstruction finds the reduced pair (3/4). Since the requested output denotes a rational number rather than a particular representation, this is correct.
-
-The maximum-boundary case (1000000000/999999999) is also safe. Both values fit exactly at the upper boundary, and their product with another valid candidate can reach (10^{18}). This is precisely why the combined modulus must be strictly greater than (10^{18}), not merely equal to it. Here
+For the non-reduced case, consider the exact input `2 4` in the offline harness. Both primes see the same modular value as (1/2), because
 
 [
-1000000007\cdot1000000009
-=1000000016000000063
-
-> 10^{18}.
-> ]
-
-The denominator boundary is handled by the expression
-
-[
-t=\left\lfloor\frac{10^9-q_{i-1}}{q_i}\right\rfloor.
+2\cdot4^{-1}\equiv1\cdot2^{-1}\pmod m.
 ]
 
-The floor operation is intentional. If the next semiconvergent would exceed (10^9), it is excluded, while a denominator exactly equal to (10^9) remains allowed. Using a strict inequality at this point would incorrectly reject valid boundary solutions.
+CRT combines the two observations into the residue of (1/2), and rational reconstruction returns `1 2`. This is correct because the required output is the rational value, not the original encoding.
 
-Finally, the continued-fraction helper contains an explicit `r == 0` branch. The actual problem cannot reach that branch because the hidden numerator is positive and smaller than the combined modulus, but keeping the case defined makes the helper robust and avoids undefined behavior if it is reused in a standalone modular-minimum test.
+For the maximum-equal case, consider `1000000000 1000000000`. Both modular replies are (1), so CRT gives (r=1). The first Euclidean remainder already satisfies the (10^9) bound, with coefficient (1), giving `1 1`. A solution that attempted to preserve the hidden representation would unnecessarily return the unreduced pair, but the judge accepts any valid representation of the value.
+
+For (x=1/2), the modular replies are around (5\cdot10^{11}), even though both numerator and denominator are at most (10^9). The Euclidean sequence eventually reaches remainder (1) with coefficient (2). This catches the common mistake of assuming the returned modular value itself must be the numerator.
+
+For the upper-bound fraction `1000000000 999999999`, the numerator is exactly at the allowed limit. The combined modulus is still much larger than every relevant cross product, so the rational reconstruction theorem applies without needing any special treatment for equality at the bound. The algorithm returns the same reduced pair, confirming that the stopping condition must accept a remainder equal to (10^9), not only one strictly smaller than it.
+
+The essential idea is to spend two of the ten available queries to manufacture a modulus around (10^{24}), then stop thinking about the interaction and solve a purely arithmetic problem. CRT gives one congruence modulo a sufficiently large modulus, and the extended Euclidean algorithm turns that congruence back into the unique small rational number.
