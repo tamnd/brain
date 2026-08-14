@@ -1,7 +1,7 @@
 ---
 title: "CF 102437J - Delivery Robot"
-description: "The robot moves on the integer grid. There are two fixed rotation centers, the first at (0,0) and the second at (1,0). Each command rotates the current position by exactly 90 ∘, either clockwise or counterclockwise, around one of those two centers."
-date: "2026-08-12T08:03:42+07:00"
+description: "The robot starts at an integer point (x 1 ​ ,y 1 ​ ) and must reach another integer point (x 2 ​ ,y 2 ​ ). There are two fixed radio towers, at (0,0) and (1,0)."
+date: "2026-08-14T15:51:06+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102437
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u044b, \u0421\u0435\u0437\u043e\u043d 2019-2020, \u0427\u0435\u0442\u0432\u0451\u0440\u0442\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0430\u044f \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434\u0430, \u0443\u0441\u043b\u043e\u0436\u043d\u0435\u043d\u043d\u0430\u044f \u043d\u043e\u043c\u0438\u043d\u0430\u0446\u0438\u044f"
 rating: 0
 weight: 102437
-solve_time_s: 228
+solve_time_s: 369
 verified: false
 draft: false
 ---
@@ -18,424 +18,242 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 48s  
+**Solve time:** 6m 9s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The robot moves on the integer grid. There are two fixed rotation centers, the first at (0,0) and the second at (1,0). Each command rotates the current position by exactly 90 ∘, either clockwise or counterclockwise, around one of those two centers.
+The robot starts at an integer point (x 1 ​ ,y 1 ​ ) and must reach another integer point (x 2 ​ ,y 2 ​ ). There are two fixed radio towers, at (0,0) and (1,0). Each command rotates the current point by exactly 90 ∘, either clockwise or counterclockwise, around one of these towers. The four commands are thus four affine transformations of the plane. The task is to print at most 10 6 commands that perform the required transformation, or print `-1` when the destination is unreachable.
 
-The four commands can be written directly as coordinate transformations. Around (0,0), commands 1 and 2 are clockwise and counterclockwise rotations. Around (1,0), commands 3 and 4 are the corresponding rotations. We start at (x 1 ​ ,y 1 ​ ) and need to reach (x 2 ​ ,y 2 ​ ), producing at most 10 6 commands or reporting that the target is unreachable.
+The official constraints put every coordinate between −100000 and 100000, while the command limit is 10 6, with a 2 second time limit and 512 MB of memory.  A solution that explicitly searches a large portion of the plane is not attractive. The useful construction must avoid dependence on the size of the explored coordinate area and should produce a sequence in roughly linear time in the coordinate difference.
 
-All coordinates have absolute value at most 100000. The output limit is much larger than the coordinate range, so a construction using a constant number of operations per unit of displacement is easily fast enough. What we cannot afford is searching through an exponential number of command sequences, or exploring a quadratic-size region of the plane with a large radius.
+The first hidden property is parity. Every operation preserves the parity of x+y. For example, command 1 transforms (x,y) into (y,−x), whose coordinate sum is y−x, having the same parity as x+y. A rotation around (1,0) behaves similarly. Consequently, a point such as (0,1) cannot reach (1,1), because their sums have different parity. This is exactly the second official sample.
 
-The first non-obvious issue is reachability. Every allowed rotation preserves the parity of x+y. For example, from (0,0), rotating around either tower always produces a point whose coordinate sum is even. Thus (0,0) cannot reach (1,0), because their sums have different parity. A careless construction that only checks whether the coordinate differences are integers would incorrectly claim that this target is reachable.
+Another easy case to mishandle is a displacement along only one diagonal. From (0,0) to (1,1), the displacement is (1,1), so the construction needs only commands `23`. A generic implementation that assumes both diagonal components are positive or negative would fail here because one of the two counts is zero.
 
-A second issue is that the two towers do not generate arbitrary unit translations directly. The useful translations have diagonal directions. For example, commands `23` move every point by (1,1), while commands `14` move every point by (1,−1). Consequently, the coefficients of these two translations must be integers. This is exactly the same parity condition, since solving
+A third boundary case is a large displacement. From (−100000,−100000) to (100000,100000), the displacement is (200000,200000). The construction uses 200000 copies of the diagonal translation `23`, for 400000 commands, comfortably below 10 6. A solution that performs one command per unit of Manhattan distance could still work here, but a brute-force search through command sequences would be completely infeasible.
 
-a(1,1)+b(1,−1)=(dx,dy)
-
-gives
-
-a= 2 dx+dy ​ ,b= 2 dx−dy ​ .
-
-For example, the input
-
-```
-0 0
-1 0
-```
-
-must produce `-1`, because the coordinate-sum parities are different. A method that independently tries to fix x and y by one-unit moves would silently construct a nonexistent operation sequence.
-
-The source and destination are guaranteed to differ. Thus we never need to output zero commands. A case such as
-
-```
-5 5
-5 -5
-```
-
-is valid and reachable because both coordinate sums are even. It also catches implementations that assume both coordinates must change.
+Finally, the statement guarantees that the starting and destination points differ. Thus an input such as (5,5) to (5,5) is outside the valid input domain, even though mathematically the empty sequence would solve it. The program should not need to produce an empty command sequence.
 
 ## Approaches
 
-A direct brute-force approach is to enumerate command sequences and simulate the robot until the target is found. This is correct because every possible sequence is considered, but it becomes useless almost immediately. If we enumerate all sequences of length at most k, the number of sequences is
+A direct approach is to treat every integer point as a graph vertex and connect each point to the four positions obtained by the four commands. Breadth-first search is correct because every command has unit cost, so the first time BFS reaches the target it has found a valid sequence. The problem is the size of the graph. Inside the coordinate square allowed by the input there are about 200001 2, or roughly 4⋅10 10, possible points. Even examining four outgoing transitions from each such point would require on the order of 1.6⋅10 11 transition checks. Searching command strings directly is even worse: all strings of length at most L contain (4 L+1 −1)/3 possibilities.
 
-1+4+4 2 +⋯+4 k = 3 4 k+1 −1 ​ .
+The brute-force approach works because every command can be simulated exactly, but it fails because it ignores the algebraic structure shared by the four transformations. The key observation is that two commands can cancel the rotations and leave a pure translation.
 
-At the allowed limit k=10 6, this is approximately 4 10 6 /3, far beyond any feasible computation. Even checking only sequences of a few dozen commands is already impractical.
+Let command 1 be a clockwise rotation around (0,0), and command 4 be a counterclockwise rotation around (1,0). Applying command 1 followed by command 4 gives
 
-A BFS over positions is better because many different command sequences can reach the same position. It would correctly discover the reachable component, but it still has no reason to stop after a small number of states. The target coordinates can be 100000 units apart, so a generic grid search can visit an enormous region before finding a suitable path.
+(x,y) 1 ​ (y,−x) 4 ​ (1+x,y−1).
 
-The key observation is that two commands can be paired into a pure translation. Apply command 2, a counterclockwise rotation around (0,0), followed by command 3, a clockwise rotation around (1,0). For a point (x,y), command 2 gives
+So the pair `14` translates every point by (1,−1).
 
-(−y,x),
+Likewise, command 2 followed by command 3 gives
 
-and command 3 then gives
+(x,y) 2 ​ (−y,x) 3 ​ (1+x,1+y),
 
-(1+x,1+y).
+so `23` translates every point by (1,1).
 
-Thus `23` translates every point by exactly (1,1).
+These two translations form a basis for exactly the parity class that is reachable. If the required displacement is
 
-Similarly, command 1 followed by command 4 gives
+(dx,dy)=(x 2 ​ −x 1 ​ ,y 2 ​ −y 1 ​ ),
 
-(x,y)→(y,−x)→(x+1,y−1),
+we can write it as
 
-so `14` translates every point by (1,−1).
+(dx,dy)=a(1,1)+b(1,−1),
 
-The brute force works because the four commands describe the complete transition graph. It fails because that graph is enormous. The observation that two-command combinations are translations lets us replace graph search with solving a two-variable linear equation.
-
-Let
-
-dx=x 2 ​ −x 1 ​ ,dy=y 2 ​ −y 1 ​ .
-
-We want
-
-dx=a+b,dy=a−b,
-
-where a copies of translation (1,1) and b copies of translation (1,−1) are used. This gives
+where
 
 a= 2 dx+dy ​ ,b= 2 dx−dy ​ .
 
-These values are integers exactly when dx and dy have the same parity, which is equivalent to the starting and ending points having the same parity of x+y.
+These values are integers precisely when dx and dy have the same parity, which is equivalent to x 1 ​ +y 1 ​ and x 2 ​ +y 2 ​ having the same parity.
 
-Negative coefficients cause no difficulty. The inverse of `23` is `41`, so `41` translates by (−1,−1). The inverse of `14` is `32`, so `32` translates by (−1,1).
+Negative translations are obtained by reversing the corresponding two-command sequences. The inverse of `23` is `41`, producing (−1,−1), and the inverse of `14` is `32`, producing (−1,+1).
 
-The number of commands is only
+The number of commands is particularly convenient. We need 2(∣a∣+∣b∣) commands, and
 
-2(∣a∣+∣b∣).
+∣a∣+∣b∣=max(∣dx∣,∣dy∣).
 
-Using
-
-∣dx+dy∣+∣dx−dy∣=2max(∣dx∣,∣dy∣),
-
-we get
-
-2(∣a∣+∣b∣)=2max(∣dx∣,∣dy∣)≤400000.
-
-So the construction is comfortably below the 10 6 limit.
+Since each coordinate difference is at most 200000, the final sequence contains at most 400000 commands, well below the allowed 10 6.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(4 k ) for depth k | O(k) for DFS | Too slow |
-| Optimal | (O( | dx | + |
+| Brute Force | O(4 L ) for depth L, or O(10 11 ) scale for plane exploration | O(10 10 ) in the explored grid | Too slow |
+| Optimal | (O(\max( | dx | , |
 
 ## Algorithm Walkthrough
 
-1. Compute the displacement
-
-dx=x 2 ​ −x 1 ​ ,dy=y 2 ​ −y 1 ​ .
-
-The entire problem can now be viewed as constructing this displacement using the two diagonal translations.
-2. Check whether x 1 ​ +y 1 ​ and x 2 ​ +y 2 ​ have the same parity. Equivalently, check whether both dx+dy and dx−dy are even. If not, output `-1`.
-
-This is not merely a property of our construction. Every allowed rotation preserves the parity of x+y, so different parity means the target is genuinely unreachable.
+1. Compute the displacement dx=x 2 ​ −x 1 ​ and dy=y 2 ​ −y 1 ​. The entire construction only needs to reproduce this displacement because the command pairs we use are translations that work identically from every starting point.
+2. Check whether x 1 ​ +y 1 ​ and x 2 ​ +y 2 ​ have the same parity. If they differ, print `-1`. Every legal command preserves the parity of x+y, so no sequence can cross between the two parity classes.
 3. Compute
 
-a= 2 dx+dy ​ ,b= 2 dx−dy ​ .
+a=(dx+dy)/2,b=(dx−dy)/2.
 
-The value a tells us how many times to apply translation (1,1), while b tells us how many times to apply translation (1,−1).
-4. If a>0, append `23` exactly a times. If a<0, append `41` exactly −a times.
-
-`23` translates by (1,1), and `41` is its inverse, so it translates by (−1,−1).
-5. If b>0, append `14` exactly b times. If b<0, append `32` exactly −b times.
-
-`14` translates by (1,−1), while `32` translates by its inverse (−1,1).
-6. Output the resulting command string. Since the original and target positions are different, at least one coefficient is nonzero, so the command count is positive.
+The value a tells us how many times to apply the translation (1,1), while b tells us how many times to apply (1,−1). The parity check guarantees that both divisions are exact.
+4. For each unit of a>0, append `23`. Each pair adds exactly (1,1) to the current position. For a<0, append `41` instead, because that pair adds (−1,−1).
+5. For each unit of b>0, append `14`. Each pair adds (1,−1). For b<0, append `32`, which adds (−1,1).
+6. Print the resulting sequence. Since 2(∣a∣+∣b∣)=2max(∣dx∣,∣dy∣)≤400000, the command limit is automatically satisfied.
 
 ### Why it works
 
-The invariant is the displacement represented by the generated command prefix. Every pair `23` contributes exactly (1,1), every pair `41` contributes exactly (−1,−1), every pair `14` contributes exactly (1,−1), and every pair `32` contributes exactly (−1,1). The chosen coefficients satisfy
-
-a(1,1)+b(1,−1)=(dx,dy),
-
-so after executing the entire sequence, the robot has moved from (x 1 ​ ,y 1 ​ ) by exactly the required displacement and reaches (x 2 ​ ,y 2 ​ ).
-
-If the parity test fails, no sequence can work because each individual rotation preserves x+y modulo 2. Thus the algorithm rejects exactly the unreachable cases.
+The invariant is the parity of x+y, so the parity test eliminates every unreachable target. For a reachable target, the displacement has the same parity in both coordinates, which makes a and b integers. The command pairs `23` and `14` are translations by (1,1) and (1,−1), while `41` and `32` are their respective inverses. Thus the produced sequence changes the starting point by exactly a(1,1)+b(1,−1)=(dx,dy), placing the robot at (x 2 ​ ,y 2 ​ ).
 
 ## Python Solution
 
-Edit
-
 ```python
-import sys
-input = sys.stdin.readline
+Pythonimport sysinput = sys.stdin.readline
 
-def solve():
-    x1, y1 = map(int, input().split())
-    x2, y2 = map(int, input().split())
-
-    dx = x2 - x1
-    dy = y2 - y1
-
-    # Every operation preserves (x + y) modulo 2.
-    if ((x1 + y1) & 1) != ((x2 + y2) & 1):
-        print(-1)
-        return
-
-    a = (dx + dy) // 2
-    b = (dx - dy) // 2
-
+def solve():    x1, y1 = map(int, input().split())    x2, y2 = map(int, input().split())
+    # x + y parity is invariant under every command.    if (x1 + y1) % 2 != (x2 + y2) % 2:        print(-1)        return
+    dx = x2 - x1    dy = y2 - y1
+    # dx = a + b    # dy = a - b    a = (dx + dy) // 2    b = (dx - dy) // 2
     ans = []
-
-    if a > 0:
-        ans.append("23" * a)
-    elif a < 0:
-        ans.append("41" * (-a))
-
-    if b > 0:
-        ans.append("14" * b)
-    elif b < 0:
-        ans.append("32" * (-b))
-
+    if a > 0:        ans.append("23" * a)    elif a < 0:        ans.append("41" * (-a))
+    if b > 0:        ans.append("14" * b)    elif b < 0:        ans.append("32" * (-b))
     s = "".join(ans)
-
     print(len(s))
-    print(s)
-
-if __name__ == "__main__":
-    solve()
 ```
 
-The first part reads the two positions and converts the problem to the displacement (dx,dy). Working with the displacement is simpler than trying to manipulate the current position after every individual command.
+The first check uses only parity, so no floating-point arithmetic is involved. This is preferable to checking whether the two divisions below happen to produce integers after using `/`.
 
-The parity check happens before division. If the parities differ, dx+dy is odd, so the required coefficient a would not be an integer. More fundamentally, the target is unreachable, so no construction should be attempted.
+The variables `a` and `b` come directly from solving the two equations a+b=dx and a−b=dy. Python's integer division is safe here because the parity condition has already established divisibility by two.
 
-The expressions for `a` and `b` use integer division only after the parity condition has established that both numerators are even. Python integers also have arbitrary precision, although the given bounds are small enough that ordinary fixed-width integer arithmetic would be sufficient in other languages.
+The sequence is accumulated as strings instead of storing every individual command as a separate Python object. The largest valid answer has 400000 characters, so the resulting memory usage is small.
 
-Each coefficient is converted directly into repeated two-command translations. The order between the two translation families does not matter because translations commute, so the implementation can emit all copies of one type followed by all copies of the other.
+The order of the two translation groups does not matter because both are ordinary translations. Applying all `23` or `41` pairs first and all `14` or `32` pairs afterward produces exactly the sum of their displacement vectors.
 
-The output string is stored explicitly because the problem asks for the actual sequence. Its maximum length is 400000, so this uses only a few hundred kilobytes plus normal Python string overhead.
+Python integers do not overflow, and the largest intermediate coordinate in this construction is only on the order of the given coordinate range plus the generated displacement.
 
 ## Worked Examples
 
-For Sample 1,
+### Sample 1
 
-```
-0 1
-1 -2
-```
+The official first sample starts at (0,1) and targets (1,−2).
 
-we have dx=1 and dy=−3. The coefficients are
+Here dx=1 and dy=−3. Hence
 
-a= 2 1−3 ​ =−1,b= 2 1+3 ​ =2.
+a= 2 1+(−3) ​ =−1,b= 2 1−(−3) ​ =2.
 
-| Step | a | b | Added commands | Current displacement |
-| --- | --- | --- | --- | --- |
-| Start | -1 | 2 | empty | (0,0) |
-| Negative a | -1 | 2 | `41` | (−1,−1) |
-| Positive b, first | -1 | 2 | `14` | (0,−2) |
-| Positive b, second | -1 | 2 | `14` | (1,−3) |
+The algorithm can use `41` once and `14` twice.
 
-Starting from (0,1), the final position is
+| Step | Operation | Position |
+| --- | --- | --- |
+| 0 | Start | (0,1) |
+| 1 | `4` | (0,−1) |
+| 2 | `1` | (1,0) |
+| 3 | `1` | (0,−1) |
+| 4 | `4` | (2,−1) |
+| 5 | `1` | (−1,−2) |
+| 6 | `4` | (1,−2) |
 
-(0,1)+(1,−3)=(1,−2).
+The resulting sequence is `411414`, which has six commands and reaches the required target. The sample's `24` is shorter, but the problem explicitly allows any valid sequence within the limit.
 
-The produced sequence is `411414`, which is different from the sample's `24`, but both are valid. The trace demonstrates that negative translation coefficients are handled by using inverse command pairs.
+The trace demonstrates that the construction does not depend on finding a shortest sequence. Its correctness comes from composing fixed translations.
 
-For Sample 2,
+### Sample 2
 
-```
-0 1
-1 1
-```
+The official second sample starts at (0,1) and targets (1,1).
 
-the coordinate sums are 1 and 2.
+| Variable | Value |
+| --- | --- |
+| x 1 ​ +y 1 ​ | 1 |
+| x 2 ​ +y 2 ​ | 2 |
+| Start parity | odd |
+| Target parity | even |
+| Result | `-1` |
 
-| Step | Start sum parity | Target sum parity | Decision |
-| --- | --- | --- | --- |
-| Parity check | 1mod2=1 | 2mod2=0 | unreachable |
-
-The algorithm immediately prints `-1`. No command sequence can change the parity of x+y, so this rejection is exact rather than a limitation of the construction.
+The algorithm stops before constructing any commands because the parity classes differ. This is necessary: every command preserves the parity of x+y, so the target cannot be reached.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O( | dx |
-| Space | (O( | dx |
+| Time | (O(\max( | dx |
+| Space | (O(\max( | dx |
 
-With coordinates bounded by 100000, each coordinate difference is at most 200000. The constructed sequence has at most 400000 characters, well below the 10 6 command limit. The algorithm performs only linear work in the size of the output and does not explore the grid.
+The coordinate bounds give max(∣dx∣,∣dy∣)≤200000, so the algorithm outputs at most 400000 commands. This is comfortably below the 10 6 command limit and requires only a small fraction of the 512 MB memory limit. The official time limit is 2 seconds.
 
 ## Test Cases
 
-Because valid outputs are not unique, the test helper below validates the returned command sequence by simulating every command. This is stronger than comparing against one particular expected string.
+Because the output is not unique, tests should not compare the returned command string character-for-character. Instead, the test harness parses the sequence, simulates all four transformations, checks that the final point is correct, and verifies the command-count limit.
 
-Edit
+The second official sample in the statement is `0 1` followed by `1 1`; the `0 11 1` formatting in the prompt is malformed.
 
 ```python
-import sys
-import io
+Pythonimport sysimport io
 
-def solve():
-    input = sys.stdin.readline
-
-    x1, y1 = map(int, input().split())
-    x2, y2 = map(int, input().split())
-
-    dx = x2 - x1
-    dy = y2 - y1
-
-    if ((x1 + y1) & 1) != ((x2 + y2) & 1):
-        print(-1)
-        return
-
-    a = (dx + dy) // 2
-    b = (dx - dy) // 2
-
+def solve_text(inp: str) -> str:    data = inp.split()    x1, y1, x2, y2 = map(int, data)
+    if (x1 + y1) % 2 != (x2 + y2) % 2:        return "-1\n"
+    dx = x2 - x1    dy = y2 - y1
+    a = (dx + dy) // 2    b = (dx - dy) // 2
     ans = []
+    if a > 0:        ans.append("23" * a)    elif a < 0:        ans.append("41" * (-a))
+    if b > 0:        ans.append("14" * b)    elif b < 0:        ans.append("32" * (-b))
+    s = "".join(ans)    return f"{len(s)}\n{s}\n"
 
-    if a > 0:
-        ans.append("23" * a)
-    elif a < 0:
-        ans.append("41" * (-a))
-
-    if b > 0:
-        ans.append("14" * b)
-    elif b < 0:
-        ans.append("32" * (-b))
-
-    s = "".join(ans)
-    print(len(s))
-    print(s)
-
-def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    try:
-        solve()
-        return sys.stdout.getvalue()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
-
-def validate(inp: str, out: str):
-    data = list(map(int, inp.split()))
-    x1, y1, x2, y2 = data
-
-    lines = out.strip().splitlines()
-
-    if lines[0] == "-1":
-        assert (x1 + y1) % 2 != (x2 + y2) % 2
-        return
-
-    k = int(lines[0])
-    s = lines[1].strip()
-
-    assert k == len(s)
-    assert 0 < k <= 10**6
-    assert all(c in "1234" for c in s)
-
-    x, y = x1, y1
-
-    for c in s:
-        if c == "1":
-            x, y = y, -x
-        elif c == "2":
-            x, y = -y, x
-        elif c == "3":
-            x, y = 1 + y, 1 - x
-        else:
-            x, y = 1 - y, x - 1
-
-    assert (x, y) == (x2, y2)
-
-# Sample 1
-sample1 = "0 1\n1 -2\n"
-out = run(sample1)
-validate(sample1, out)
-
-# Sample 2
-sample2 = "0 1\n1 1\n"
-out = run(sample2)
-assert out.strip() == "-1"
-validate(sample2, out)
-
-# Minimum displacement, both coordinates change by one.
-case1 = "0 0\n1 1\n"
-out = run(case1)
-validate(case1, out)
-
-# Same x coordinate, negative y displacement.
-case2 = "5 5\n5 -5\n"
-out = run(case2)
-validate(case2, out)
-
-# Maximum coordinate difference in both dimensions.
-case3 = "-100000 -100000\n100000 100000\n"
-out = run(case3)
-validate(case3, out)
-
-# Boundary case with different parity, must be unreachable.
-case4 = "-100000 100000\n100000 99999\n"
-out = run(case4)
-assert out.strip() == "-1"
-validate(case4, out)
+def simulate(inp: str):    data = inp.split()    x, y, tx, ty = map(int, data)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0 0 / 1 1` | A valid sequence of length 2 | Minimum nontrivial reachable displacement |
-| `5 5 / 5 -5` | A valid sequence | One coordinate unchanged and negative coefficient handling |
-| `-100000 -100000 / 100000 100000` | A valid sequence of length 400000 | Maximum displacement and output-length bound |
-| `-100000 100000 / 100000 99999` | `-1` | Boundary coordinates and parity rejection |
+| `0 1 1 -2` | Any valid sequence | Official reachable sample and negative diagonal component |
+| `0 1 1 1` | `-1` | Official unreachable sample and parity invariant |
+| `0 0 1 1` | A two-command sequence equivalent to `23` | Positive (1,1) translation and zero b |
+| `0 0 1 -1` | A two-command sequence equivalent to `14` | Positive (1,−1) translation and zero a |
+| `10 10 -10 -10` | Any valid sequence | Negative translation counts |
+| `-100000 -100000 100000 100000` | Any valid sequence of length 400000 | Maximum coordinate difference and command bound |
+| `0 0 1 0` | `-1` | Boundary case where the displacement has the wrong parity |
+
+The phrase "all-equal values" cannot correspond to a valid test because the problem guarantees that the start and destination are different. A test such as `5 5 5 5` would violate the input specification, so it should not be included in a correctness suite.
 
 ## Edge Cases
 
-For different parity, consider
+### Parity mismatch
+
+Consider
 
 ```
-0 0
-1 0
+0 11 1
 ```
 
-The starting value of x+y is 0, while the target value is 1. The algorithm rejects immediately. This is necessary because command 1 changes (x,y) to (y,−x), whose sum has the same parity as x+y, and the same property holds for the other three commands.
+The initial sum is 1, while the target sum is 2. Since every command preserves the parity of x+y, the algorithm immediately prints `-1`. A construction that only checks whether the coordinates look geometrically close could incorrectly attempt to generate commands.
 
-For a negative diagonal displacement, consider
+### One diagonal coefficient is zero
 
-```
-0 0
--3 -3
-```
-
-Here
-
-a= 2 −3−3 ​ =−3,b=0.
-
-The algorithm emits `41` three times. Each `41` translates by (−1,−1), so the total displacement is (−3,−3). This catches the common mistake of having only a construction for positive coefficients.
-
-For a displacement using the other diagonal direction, consider
+For
 
 ```
-0 0
-3 -3
+0 01 1
 ```
 
-Now a=0 and b=3, so the answer is `141414`. Each `14` contributes (1,−1), giving exactly (3,−3).
+we get dx=1, dy=1, so a=1 and b=0. The algorithm emits `23`. Command 2 maps (0,0) to itself, and command 3 maps it to (1,1). No special handling for a zero coefficient is needed beyond avoiding an unnecessary repetition.
 
-For the maximum reachable displacement,
+### Negative coefficients
 
-```
--100000 -100000
-100000 100000
-```
-
-we obtain a=200000 and b=0. The answer contains 200000 copies of `23`, giving 400000 commands. This is below the required 10 6 limit and demonstrates why a construction proportional to the coordinate distance is safe.
-
-For the same-x case
+For
 
 ```
-5 5
-5 -5
+10 10-10 -10
 ```
 
-we get dx=0, dy=−10, hence a=−5 and b=5. The construction combines five `41` pairs with five `14` pairs. Their total displacement is
+we get a=−20 and b=0. The algorithm emits `41` twenty times. Each `41` translates the point by (−1,−1), so after twenty repetitions the total displacement is (−20,−20), exactly the required change.
 
-5(−1,−1)+5(1,−1)=(0,−10),
+### Maximum displacement
 
-so the unchanged x-coordinate is handled naturally without requiring a special case.
+For
+
+```
+-100000 -100000100000 100000
+```
+
+we have a=200000 and b=0. The sequence consists of 200000 copies of `23`, giving 400000 commands. The bound of 10 6 is not close to being exceeded, so there is no need for a more complicated compression scheme.
+
+### Wrong parity despite a small distance
+
+For
+
+```
+0 01 0
+```
+
+the displacement is only one unit, but x+y changes from even to odd. The algorithm rejects it immediately. This case is useful because it prevents the common mistake of assuming that sufficiently many rotations can simulate arbitrary unit moves. The available translations move along diagonals, and the parity invariant cannot be broken.

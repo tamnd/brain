@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 5
-total_solve_s: 2802
-date: "2026-08-09T15:44:57+07:00"
+total_solve_s: 2943
+date: "2026-08-09T15:51:07+07:00"
 weight: 102437
 draft: false
 ---
 
 # [Интернет-олимпиады, Сезон 2019-2020, Четвёртая командная олимпиада, усложненная номинация](https://codeforces.com/contest/102437)
 
-Special | 9 problems | 5/9 verified | Difficulty - | 46m 42s
+Special | 9 problems | 5/9 verified | Difficulty - | 49m 3s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,4 @@ Special | 9 problems | 5/9 verified | Difficulty - | 46m 42s
 | [G](G/) | [Regulated Shortest Path](https://codeforces.com/problemset/problem/102437/G) |  |  |  | 3m 47s |  |
 | [H](H/) | [\u0421\u044d\u043c \u0438 \u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449\u0435](https://codeforces.com/problemset/problem/102437/H) |  |  |  | 2m 49s | ✓ |
 | [I](I/) | [Road building](https://codeforces.com/problemset/problem/102437/I) |  |  |  | 2m 11s | ✓ |
-| [J](J/) | [Delivery Robot](https://codeforces.com/problemset/problem/102437/J) |  |  |  | 3m 48s |  |
+| [J](J/) | [Delivery Robot](https://codeforces.com/problemset/problem/102437/J) |  |  |  | 6m 9s |  |
