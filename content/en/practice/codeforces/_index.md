@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23200 problems, 12978 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23203 problems, 12978 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23200 problems, 12978 verified.**
+**3135 contests, 23203 problems, 12978 verified.**
 
 ## Unknown — 830 contests, 7034 problems, 4209 verified
 
@@ -1466,7 +1466,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 187 contests, 1163 problems, 773 verified
+## 2019 — 187 contests, 1166 problems, 773 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1638,7 +1638,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102348](102348/) | [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348) | 10 | 7/10 | ICPC/IOI | - |
 | [102365](102365/) | [UBC Programming Contest 2019 (UBCPC 2019)](https://codeforces.com/contest/102365) | 8 | 8/8 | Special | - |
 | [102367](102367/) | [Fall 2019 ICPC-style Waterloo Local Contest](https://codeforces.com/contest/102367) | 5 | 5/5 | ICPC/IOI | - |
-| [102388](102388/) | [SUFE ICPC Team Formation Test](https://codeforces.com/contest/102388) | 3 | 3/3 | ICPC/IOI | - |
+| [102388](102388/) | [SUFE ICPC Team Formation Test](https://codeforces.com/contest/102388) | 6 | 3/6 | ICPC/IOI | - |
 | [102392](102392/) | [2019-2020 ICPC Southeastern European Regional Programming Contest (SEERC 2019)](https://codeforces.com/contest/102392) | 11 | 11/11 | ICPC/IOI | - |
 | [102394](102394/) | [The 2019 China Collegiate Programming Contest Harbin Site](https://codeforces.com/contest/102394) | 12 | 12/12 | Special | - |
 | [102397](102397/) | [Asu Coding Cup 4](https://codeforces.com/contest/102397) | 10 | 10/10 | Special | - |
