@@ -1,26 +1,27 @@
 ---
 title: "ICPC 2019-2020 North-Western Russia Regional Contest"
-description: "12 problems from ICPC 2019-2020 North-Western Russia Regional Contest (contest 102411), difficulty -. 11/12 solutions verified against sample I/O."
+description: "13 problems from ICPC 2019-2020 North-Western Russia Regional Contest (contest 102411), difficulty -. 12/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102411
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 12
-n_verified: 11
-total_solve_s: 4097
-date: "2026-08-11T03:32:18+07:00"
+n_problems: 13
+n_verified: 12
+total_solve_s: 4180
+date: "2026-08-11T14:31:35+07:00"
 weight: 102411
 draft: false
 ---
 
 # [ICPC 2019-2020 North-Western Russia Regional Contest](https://codeforces.com/contest/102411)
 
-ICPC/IOI | 12 problems | 11/12 verified | Difficulty - | 1h 8m
+ICPC/IOI | 13 problems | 12/13 verified | Difficulty - | 1h 9m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Accurate Movement](https://codeforces.com/problemset/problem/102411/A) |  |  |  | 5m 32s | ✓ |
+| [B](B/) | [Bad Treap](https://codeforces.com/problemset/problem/102411/B) |  |  |  | 1m 23s | ✓ |
 | [C](C/) | [Cross-Stitch](https://codeforces.com/problemset/problem/102411/C) |  |  |  | 5m 45s | ✓ |
 | [D](D/) | [Double Palindrome](https://codeforces.com/problemset/problem/102411/D) |  |  |  | 7m 29s | ✓ |
 | [E](E/) | [Equidistant](https://codeforces.com/problemset/problem/102411/E) |  |  |  | 2m 47s | ✓ |
