@@ -1,7 +1,7 @@
 ---
 title: "CF 102375F - \u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u0434\u043c\u043d\u043e\u0433\u043e\u0443\u0433\u043e\u043b\u044c\u043d\u0438\u043a"
-description: "We have a regular polygon with (N) vertices. We want to keep some of those vertices so that the selected vertices themselves are the vertices of another regular polygon, and we want this new polygon to have as few vertices as possible. Suppose we select (K) vertices."
-date: "2026-08-14T03:23:28+07:00"
+description: "We have a regular polygon with (N) vertices, and we want to keep some of those vertices so that the kept vertices themselves form a regular polygon. The goal is to minimize the number of kept vertices."
+date: "2026-08-14T13:02:37+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102375
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0443\u043d\u0434 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u0421\u0435\u0432\u0435\u0440\u043e-\u0417\u0430\u043f\u0430\u0434\u0430 \u0420\u043e\u0441\u0441\u0438\u0438 \u0438 \u041c\u043e\u0441\u043a\u0432\u044b ICPC 2019"
 rating: 0
 weight: 102375
-solve_time_s: 126
+solve_time_s: 130
 verified: false
 draft: false
 ---
@@ -18,35 +18,33 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 6s  
+**Solve time:** 2m 10s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a regular polygon with (N) vertices. We want to keep some of those vertices so that the selected vertices themselves are the vertices of another regular polygon, and we want this new polygon to have as few vertices as possible.
+We have a regular polygon with (N) vertices, and we want to keep some of those vertices so that the kept vertices themselves form a regular polygon. The goal is to minimize the number of kept vertices.
 
-Suppose we select (K) vertices. For them to form a regular (K)-gon, the selected vertices must be equally spaced around the original polygon. Moving from one selected vertex to the next therefore has to mean moving the same number of edges of the original polygon each time. If that step is (s), then
+The vertices of the original polygon are equally spaced around its circumference. If we select every (t)-th vertex, the selected vertices are also equally spaced, and we get a regular polygon with (N/t) vertices, provided that (t) divides (N). Equivalently, the number (k) of vertices in the smaller regular polygon must be a divisor of (N).
 
-[
-K \cdot s = N.
-]
+There is one restriction that matters: a polygon must have at least three vertices. So the answer is the smallest divisor of (N) that is at least (3).
 
-Thus (K) must be a divisor of (N). The only extra restriction is that a polygon must have at least three vertices, so (K=2) is not a valid answer.
+The value of (N) can reach (10^{12}). That rules out algorithms that inspect a linear number of candidates, since (10^{12}) iterations is far beyond what a competitive programming solution can afford. On the other hand, (\sqrt{10^{12}}=10^6), so a trial division algorithm that checks only divisors up to the square root is easily practical.
 
-The input contains one integer (N), the number of vertices of the original regular polygon. Its value can reach (10^{12}). That immediately rules out checking every possible number of selected vertices, because an (O(N)) algorithm could perform up to (10^{12}) iterations. We need to exploit the arithmetic structure of the problem. Checking divisors up to (\sqrt N) is easily feasible, since (\sqrt{10^{12}}=10^6).
+There are two edge cases that can fool a straightforward square-root search. First, a prime number such as (N=5) has no proper divisor at all, so the answer is (5), not some nonexistent smaller polygon. Second, an even number such as (N=14) has the divisor (2), but a 2-gon is not allowed. The next possible divisor is (7), which is larger than (\sqrt{14}). A search that only checks (3,4,\ldots,\lfloor\sqrt N\rfloor) would incorrectly return (14). The special role of the divisor (2) must consequently be handled explicitly.
 
-There are several small cases where a careless implementation can fail. For (N=5), the polygon is prime-sized, so it has no proper divisor at least (3), and the answer is (5), not (1) or (2). For (N=6), the divisors are (1,2,3,6), so the answer is (3). A solution that simply returns the smallest divisor would incorrectly return (2). For (N=12), the divisors include (2,3,4), and the answer is (3), not (2). For (N=8), the smallest valid divisor is (4), so the answer is (4). These examples show that the condition is not just "find the smallest divisor", but "find the smallest divisor that is at least (3)".
+For (N=4), the only divisors are (1,2,4), so the answer is (4). This is another boundary case for handling the factor (2), because (N/2=2) is not a valid polygon.
 
 ## Approaches
 
-The direct brute-force approach is to try every possible number (K) of vertices from (3) through (N), and check whether (K) divides (N). This is correct because, as established above, exactly the divisors of (N) can be the number of vertices of a regular subpolygon. However, for a value such as (N=10^{12}), this can require almost (10^{12}) divisibility checks. That is far beyond what a competitive programming time limit can support.
+The direct approach is to try every possible number of selected vertices (k) from (3) through (N), and check whether (k) divides (N). The first divisor found is the answer, because every valid regular subpolygon corresponds exactly to a divisor of (N). This is correct, but for (N=10^{12}) it can perform almost (10^{12}) divisibility checks, which is much too slow.
 
-The key observation is that divisors come in pairs. If (d) divides (N), then (N/d) also divides (N). For every divisor (d>\sqrt N), its paired divisor (N/d) is smaller than (\sqrt N). Consequently, if there is any proper divisor that can give a small polygon, we can discover the smallest one while checking only values up to (\sqrt N).
+The structure of divisors gives us the needed reduction. If an integer (N) has a divisor (d) other than (1) and (N), then it also has the complementary divisor (N/d). At least one of these two is at most (\sqrt N). This means that for odd (N), if there is a valid proper divisor at all, some divisor between (3) and (\sqrt N) must exist. We can search that small range directly.
 
-There is an even simpler way to use this observation. We test candidate polygon sizes starting from (3). As soon as we find a divisor, it is automatically the smallest valid answer. If no value from (3) through (\sqrt N) divides (N), then (N) itself is the answer. The reason is that any divisor smaller than (N) would have a complementary divisor greater than (\sqrt N), but the smaller member of that pair would have been encountered during the search.
+The only complication is the factor (2). If (N) is even, (2) is automatically its smallest prime divisor, but (2) cannot be the answer. Its complementary divisor (N/2) can be the smallest valid divisor and may be larger than (\sqrt N). For example, (14=2\cdot7), and (7>\sqrt{14}). We therefore treat (N/2) as an additional candidate whenever it is at least (3).
 
-For this problem, an (O(\sqrt N)) solution is already more than fast enough. Since (\sqrt{10^{12}}=10^6), at most about one million candidate values need to be examined.
+We scan divisors from (3) upward. The first divisor found is automatically the smallest possible answer. If none is found, then an odd (N) must be prime, so the answer is (N). For even (N), the remaining candidate is (N/2), except when that candidate equals (2), as happens for (N=4).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -55,15 +53,13 @@ For this problem, an (O(\sqrt N)) solution is already more than fast enough. Sin
 
 ## Algorithm Walkthrough
 
-1. Read (N). We are looking for the smallest divisor of (N) that is at least (3), because exactly such a divisor can be the number of vertices of a regular subpolygon.
-2. Check every integer (d) from (3) through (\sqrt N). If (N \bmod d=0), output (d) immediately. Since the candidates are processed in increasing order, the first divisor found is the smallest possible valid polygon size.
-3. If the entire range up to (\sqrt N) has been checked without finding a divisor, output (N). At this point (N) has no divisor between (3) and (\sqrt N). Any proper divisor greater than (\sqrt N) would have a paired divisor smaller than (\sqrt N), so such a divisor cannot exist without having already been detected.
+1. Read (N). We need the smallest divisor of (N) that is at least (3).
+2. If (N=3), immediately return (3). There is no smaller valid polygon, and this also avoids any special handling around the square root.
+3. If (N) is even, set a candidate answer to (N/2) when (N/2\ge3). This handles cases such as (14=2\cdot7), where the smallest valid divisor is larger than (\sqrt N). For (N=4), (N/2=2) is invalid, so the candidate remains (N).
+4. Try every integer (d) from (3) through (\lfloor\sqrt N\rfloor). If (N\bmod d=0), then (d) is a valid polygon size. Since the values are tested in increasing order, the first such (d) is the smallest possible answer, so return it immediately.
+5. If the search finishes without finding a divisor, return the candidate from step 3, or (N) if there was no valid candidate. For odd (N), this means (N) is prime. For even (N), it means that (N/2) is the only possible proper divisor greater than (2) that could be the answer.
 
-### Why it works
-
-A set of vertices from a regular (N)-gon forms a regular (K)-gon exactly when the selected vertices are equally spaced. If the distance between consecutive selected vertices is (s) original edges, then (K s=N), so (K\mid N). Conversely, every divisor (K\ge3) of (N) lets us select every (N/K)-th vertex, producing a regular (K)-gon.
-
-The algorithm checks all possible valid sizes in increasing order up to (\sqrt N). If it finds one, no smaller valid divisor was skipped. If it finds none, every proper divisor is impossible, because any divisor larger than (\sqrt N) would have a complementary divisor smaller than (\sqrt N). Thus returning (N) in that case is correct.
+Why it works: every possible regular subpolygon has a number of vertices dividing (N). Among all valid divisors, the algorithm explicitly considers the only divisor that can be hidden above (\sqrt N), namely (N/2) when (2) divides (N), while every other possible smallest divisor must be at most (\sqrt N). The ascending trial division therefore finds the smallest valid divisor whenever one exists, and the fallback handles the remaining prime or (2)-times-prime cases.
 
 ## Python Solution
 
@@ -71,53 +67,64 @@ The algorithm checks all possible valid sizes in increasing order up to (\sqrt N
 import sys
 input = sys.stdin.readline
 
-n = int(input())
+def solve():
+    n = int(input())
 
-d = 3
-while d * d <= n:
-    if n % d == 0:
-        print(d)
-        break
-    d += 1
-else:
-    print(n)
+    # N itself is always a valid answer.
+    ans = n
+
+    # If 2 divides N, then N / 2 is the only possible
+    # complementary divisor that can remain above sqrt(N).
+    if n % 2 == 0 and n // 2 >= 3:
+        ans = n // 2
+
+    d = 3
+    while d * d <= n:
+        if n % d == 0:
+            ans = d
+            break
+        d += 1
+
+    print(ans)
+
+solve()
 ```
 
-The variable `d` represents the candidate number of vertices in the smaller subpolygon. Starting at `3` directly excludes the invalid two-vertex case.
+The initial value `ans = n` represents the case where the original polygon itself is the smallest valid choice. Every divisor of (N) is a possible number of vertices, and (N) is always a valid one because (N\ge3).
 
-The condition `d * d <= n` is equivalent to (d\le\sqrt N), but it avoids calling a square-root function and keeps all calculations exact. Python integers have arbitrary precision, so there is no overflow concern even at the maximum input.
+The `n % 2 == 0` branch deals with the special divisor (2). We cannot return (2), since a regular polygon needs at least three vertices, but the complementary divisor (n/2) is valid whenever it is at least (3). This is why (N=14) produces (7), even though (7) is greater than (\sqrt{14}).
 
-The `while ... else` construct is useful here. The `else` branch executes only if the loop finishes normally, meaning no divisor was found. If a divisor is found, the program prints it and executes `break`, so the `else` branch is skipped.
+The loop starts at (3), not (2), because (2) is never a valid answer. It continues while `d * d <= n`, which is the integer form of (d\le\sqrt N) and avoids floating-point calculations. Python integers have arbitrary precision, so `d * d` cannot overflow.
 
-There is no need to store divisors or the polygon's vertices. The entire computation uses only the current candidate and (N), giving constant auxiliary space.
+As soon as a divisor is found, the loop stops. Since `d` increases from (3), that divisor is the smallest valid divisor encountered, and hence the answer.
 
 ## Worked Examples
 
-For the first sample, (N=5).
+For (N=5), the polygon is prime, so no proper divisor can represent the number of vertices of a smaller regular polygon.
 
-| Candidate (d) | (d^2 \le N) | (5 \bmod d) | Action |
-| --- | --- | --- | --- |
-| 3 | false | not checked | Stop search |
-| 5 |  |  | Output 5 |
+| (N) | (ans) initially | (d) | (N\bmod d) | Action |
+| --- | --- | --- | --- | --- |
+| 5 | 5 | 3 | 2 | No divisor |
+| 5 | 5 | End |  | Return 5 |
 
-The loop condition already fails for (d=3), because (9>5). No divisor from the required search range exists, so the algorithm outputs (N=5). This corresponds to the fact that a regular pentagon cannot contain a smaller regular polygon formed from its own vertices.
+The loop stops because (3^2>5). No divisor at least (3) was found, so the original pentagon is the smallest possible regular polygon formed by its vertices. This demonstrates the prime-number case.
 
-For the second sample, (N=21).
+For (N=21), the divisors relevant to the answer are (3) and (7). The algorithm finds (3) immediately.
 
-| Candidate (d) | (d^2 \le N) | (21 \bmod d) | Action |
-| --- | --- | --- | --- |
-| 3 | true | 0 | Output 3 |
+| (N) | (ans) initially | (d) | (N\bmod d) | Action |
+| --- | --- | --- | --- | --- |
+| 21 | 21 | 3 | 0 | Return 3 |
 
-The first candidate is already a divisor of (21). Selecting every (21/3=7)-th vertex gives three equally spaced vertices, which form an equilateral triangle. Since `3` is the first valid candidate, no smaller polygon is possible.
+Selecting every seventh vertex of the original 21-gon leaves three equally spaced vertices, so a triangle is possible. Since no polygon with fewer than three vertices is allowed, (3) is optimal. This confirms that the first divisor in ascending order is exactly the desired answer.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(\sqrt N)) | At most (\sqrt N-2) candidate divisors are tested |
-| Space | (O(1)) | Only (N), the candidate divisor, and a few temporary values are stored |
+| Time | (O(\sqrt N)) | At most (\sqrt N) candidate divisors are tested. |
+| Space | (O(1)) | Only a constant number of integer variables are stored. |
 
-With (N\le10^{12}), the loop performs at most roughly (10^6) iterations. That is small enough for a standard competitive programming environment, while the brute-force (O(N)) approach could require up to (10^{12}) iterations.
+With (N\le10^{12}), the loop performs at most about (10^6) iterations. That is small enough for a standard competitive programming time limit, while the (O(N)) brute-force approach could require up to roughly (10^{12}) divisibility checks.
 
 ## Test Cases
 
@@ -130,14 +137,19 @@ def solve():
     input = sys.stdin.readline
     n = int(input())
 
+    ans = n
+
+    if n % 2 == 0 and n // 2 >= 3:
+        ans = n // 2
+
     d = 3
     while d * d <= n:
         if n % d == 0:
-            print(d)
+            ans = d
             break
         d += 1
-    else:
-        print(n)
+
+    print(ans)
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
@@ -147,45 +159,49 @@ def run(inp: str) -> str:
     sys.stdout = io.StringIO()
 
     solve()
-    result = sys.stdout.getvalue()
+    out = sys.stdout.getvalue()
 
     sys.stdin = old_stdin
     sys.stdout = old_stdout
 
-    return result
+    return out
 
-# provided samples
+# Provided samples
 assert run("5\n") == "5\n", "sample 1"
 assert run("21\n") == "3\n", "sample 2"
 
-# minimum-size input
+# Minimum-size input
 assert run("3\n") == "3\n", "minimum N"
 
-# even number with divisor 3
-assert run("6\n") == "3\n", "must not return invalid divisor 2"
+# N = 4 has divisors 1, 2, 4, and 2 is not a valid polygon
+assert run("4\n") == "4\n", "N/2 must not be used when it equals 2"
 
-# smallest divisor is 4
-assert run("8\n") == "4\n", "smallest valid divisor"
+# 14 = 2 * 7, and 7 is larger than sqrt(14)
+assert run("14\n") == "7\n", "even number with answer above sqrt(N)"
 
-# large prime near the upper bound
-assert run("999999999989\n") == "999999999989\n", "large prime"
+# Large boundary value
+assert run("1000000000000\n") == "4\n", "maximum N"
+
+# Odd composite whose smallest valid divisor is found by the loop
+assert run("49\n") == "7\n", "square of a prime"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `3` | `3` | Minimum possible input |
-| `6` | `3` | Rejecting the invalid two-vertex divisor |
-| `8` | `4` | Correct handling when 4 is the smallest valid divisor |
-| `999999999989` | `999999999989` | Large prime input and the (\sqrt N) boundary |
+| `3` | `3` | Minimum allowed polygon size |
+| `4` | `4` | Correct treatment of the invalid divisor (2) |
+| `14` | `7` | Even case where the answer is greater than (\sqrt N) |
+| `1000000000000` | `4` | Maximum input boundary and efficient search |
+| `49` | `7` | Proper divisor found exactly at (\sqrt N) |
 
 ## Edge Cases
 
-For (N=3), the search begins at (d=3), but the loop condition is (3^2\le3), which is false. The algorithm reaches the `else` branch and outputs `3`. The original triangle is already the smallest possible regular polygon, so the result is correct.
+For (N=5), the algorithm starts with `ans = 5` and does not create an even-number candidate. The loop would need to test divisors beginning at (3), but (3^2>5), so it performs no useful divisor test and returns (5). A careless implementation that assumes every polygon has a smaller regular subpolygon could incorrectly search for a nonexistent divisor.
 
-For (N=5), the same mechanism applies. Since (3^2>5), there is no candidate to test, and the algorithm returns `5`. A careless implementation that assumes every polygon has a smaller subpolygon could produce an invalid result here.
+For (N=14), the algorithm first sets `ans = 7`, because (14/2=7). The loop tests (d=3), but (14\bmod3\ne0), and then stops because (4^2>14). The stored answer (7) is returned. This is the critical case showing why checking only up to (\sqrt N) is insufficient when the factor (2) is forbidden as an answer.
 
-For (N=6), the divisors are (1,2,3,6). The algorithm deliberately starts at `3`, so it never considers `2` as an answer. It tests `3`, finds that `6 % 3 == 0`, and immediately outputs `3`. This is the key boundary between a divisor and a valid polygon size.
+For (N=4), `n // 2` equals (2), so the even-number branch deliberately does not update `ans`. The loop has no (d\ge3) satisfying (d^2\le4), and the algorithm returns (4). Returning (N/2) unconditionally would produce (2), which does not describe a polygon.
 
-For (N=8), the first candidate `3` does not divide (8), while `4` does. The algorithm checks `3`, increments to `4`, finds the divisor, and outputs `4`. The selected vertices are every second vertex of the original octagon, producing a square.
+For (N=49), the loop reaches (d=7), and (7^2=49), so the boundary condition `d * d <= n` includes this divisor. Since (7\mid49), the algorithm returns (7). Using `d * d < n` instead would skip the exact-square divisor and incorrectly return (49).
 
-For a large prime such as (N=999999999989), no divisor from `3` through (\sqrt N) exists. The loop eventually terminates when `d * d > n`, and the program outputs (N) itself. This is exactly the situation where the square-root bound matters: checking every number up to (N) would be infeasible, while checking only up to approximately one million candidates remains practical.
+For (N=10^{12}), the algorithm needs only a small number of trial divisions before finding (4). The input itself is huge compared with the number of vertices a linear algorithm could inspect, but its square root is only (10^6), which is precisely why the divisor-based reduction makes the problem tractable.
