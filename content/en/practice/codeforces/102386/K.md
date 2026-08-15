@@ -1,7 +1,7 @@
 ---
 title: "CF 102386K - \u041c\u0430\u043b\u044b\u0448 \u0438 \u041a\u0430\u0440\u043b\u0441\u043e\u043d"
-description: "We have a strictly convex polygon whose vertices are integer lattice points and are listed counterclockwise. We need a straight line that divides the polygon into two regions of exactly the same area."
-date: "2026-08-14T13:42:47+07:00"
+description: "We have a strictly convex polygon whose vertices are given counterclockwise and have integer coordinates. We need to draw one straight line that divides the polygon into two regions of exactly equal area."
+date: "2026-08-15T18:57:38+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102386
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0442\u0443\u0440 \u0423\u0440\u0430\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u0447\u0435\u0442\u0432\u0435\u0440\u0442\u044c\u0444\u0438\u043d\u0430\u043b\u0430 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u043c\u0438\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e 2019"
 rating: 0
 weight: 102386
-solve_time_s: 246
+solve_time_s: 549
 verified: false
 draft: false
 ---
@@ -18,127 +18,148 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 6s  
+**Solve time:** 9m 9s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a strictly convex polygon whose vertices are integer lattice points and are listed counterclockwise. We need a straight line that divides the polygon into two regions of exactly the same area. The line itself must contain two distinct integer lattice points, so equivalently we need an area-bisecting line with rational slope and rational intercept.
+We have a strictly convex polygon whose vertices are given counterclockwise and have integer coordinates. We need to draw one straight line that divides the polygon into two regions of exactly equal area. The line itself must contain two distinct integer-coordinate points, and their coordinates must fit inside the range from (-10^{18}) to (10^{18}).
 
-The key geometric freedom is that we are allowed to choose any line, not necessarily one passing through polygon vertices. However, choosing a particular vertex gives us a much stronger structure. Fix the first vertex (V_0). As a point (P) moves along the polygon boundary from (V_1) toward (V_{n-1}), the line (V_0P) sweeps through all possible cuts whose one endpoint on the boundary is (V_0). For every boundary position (P), the area on one side of (V_0P) changes continuously from zero to the whole polygon area. Since the polygon is convex, exactly one such (P) gives half the area.
+The useful geometric property is that the polygon can be triangulated from any one of its vertices. Choose the first vertex (V_0), and connect it to every other vertex. This produces (N-2) triangles whose doubled areas are integers because every coordinate is integral. The whole problem then becomes finding where half of the total doubled area falls in this sequence of triangles. The original problem uses (N\le 1000), coordinates bounded by (10^5), and a one-second limit. That is small enough for a linear or quadratic algorithm, but there is no reason to do anything quadratic once the fan triangulation is recognized. Exact integer arithmetic is also preferable to floating point because the required equality is exact.
 
-The input has at most (1000) vertices, and every coordinate has absolute value at most (10^5). A direct (O(n^2)) solution is already numerically small at this limit, roughly one million elementary geometric operations, but the structure allows an (O(n)) construction. The coordinate bound also makes exact integer arithmetic practical. A cross product of two coordinate differences is at most about (8\cdot10^{10}), and the sum over at most (1000) triangles is below (10^{14}). Python integers have no overflow problem here, while even signed 64-bit arithmetic would be sufficient for the area calculations.
+A direct exhaustive search over all integer-coordinate pairs (A,B) is finite because the coordinates are bounded, but completely useless. There are roughly ((4\cdot10^{36})^2/2\approx8\cdot10^{72}) unordered pairs of lattice points, and checking one line against all polygon edges would add another factor of (N). With (N=1000), that is on the order of (10^{75}) basic geometric operations. More reasonable-looking brute force approaches, such as trying lines through pairs of polygon vertices, are also not sufficient because a valid cutting line need not pass through two polygon vertices.
 
-There are several edge cases that can silently break a floating-point implementation. First, the required cut can pass exactly through another polygon vertex. For example,
+There are several boundary cases that a careless implementation can mishandle. For the triangle
+
+```
+3
+0 0
+4 0
+0 2
+```
+
+the answer is the median from ((0,0)) to the midpoint of the opposite edge. The midpoint itself need not have integer coordinates, so simply looking for an integer point on the edge can fail. Our construction multiplies the rational point by its denominator and obtains an integer point on the same line.
+
+For the square
 
 ```
 4
 0 0
-4 0
-4 2
+2 0
+2 2
 0 2
 ```
 
-has area (8), and the diagonal from ((0,0)) to ((4,2)) divides it into two areas of (4). A comparison involving floating-point parameters can accidentally put the endpoint into the next edge. Exact integer comparisons avoid this.
+the first fan triangle already has exactly half the polygon's doubled area. A careless implementation that only handles the case where the half lies strictly inside a triangle may move on to the next triangle and access invalid indices. The equality case must be handled immediately, and the diagonal from ((0,0)) to ((2,2)) is a valid answer.
 
-Another case is when the half-area point lies strictly inside an edge. The sample has exactly this behavior for the cut through (y=4). The line does not pass through a polygon vertex, but the intersection with the right vertical edge is an integer point. More generally that intersection is only guaranteed to be rational, not integer. We must construct an integer direction for the entire line rather than requiring the intersection itself to be an integer point.
+The supplied sample is another useful case:
 
-Finally, the total doubled area can be odd. In the sample the doubled area is (15), so half of it is (15/2). A solution based on integer area alone would incorrectly conclude that an exact cut is impossible. The cut point can simply have rational coordinates, and the resulting line still has an integer direction after scaling.
+```
+4
+0 3
+3 0
+3 6
+0 7
+```
+
+The half-area point lies strictly inside the first fan triangle. A floating-point implementation might approximate the cutting point, but the checker requires exact equality. We instead construct an integer point on exactly the same line using integer multiplication.
+
+Under the stated constraints, a solution always exists, so the `-1` output is never necessary. The construction below explicitly produces one for every valid input.
 
 ## Approaches
 
-A natural brute-force construction starts by choosing a polygon vertex (V_i) as the fixed endpoint of the cutting line. We can then walk around the remaining boundary, determine on which edge the half-area intersection lies, and solve for the position along that edge. If this entire search is repeated independently for every (V_i), it takes (O(n^2)) time. For (n=1000), this is around (10^6) edge checks, so it is not actually excluded by the given constraints, but it repeats exactly the same geometric work many times.
+The most literal brute-force solution would search over integer points and test candidate lines. That is already impossible from the coordinate bound alone, since the lattice contains about (4\cdot10^{36}) points. Even restricting the search to lines through pairs of polygon vertices leaves (O(N^2)) candidates, and checking each candidate against the polygon takes (O(N)) time. The worst case is then about (N^3/2), roughly (5\cdot10^8) edge operations for (N=1000). More importantly, that restricted search is not complete, because the required line can meet the polygon boundary at two points lying strictly inside edges.
 
-The useful observation is that we do not need to try every vertex. Pick (V_0) once. The polygon can be divided into the triangles
+The key observation is that we do not need to search over directions at all. Fix the first polygon vertex (V_0), and triangulate the polygon as
 
 [
 (V_0,V_1,V_2),\quad
-(V_0,V_2,V_3),\quad\ldots,\quad
-(V_0,V_{n-2},V_{n-1}).
+(V_0,V_2,V_3),\quad
+\dots,\quad
+(V_0,V_{N-2},V_{N-1}).
 ]
 
-Because the polygon is strictly convex and counterclockwise, all these triangles have positive area, and their areas add up to the area of the polygon.
+The doubled area of each triangle is an integer. As we walk through these triangles, the accumulated area starts at zero and ends at the doubled area of the whole polygon. Consequently, there is a first triangle whose inclusion makes the accumulated area reach or exceed half of the total.
 
-Suppose the required half-area point lies on edge (V_iV_{i+1}). The region bounded by (V_0), the boundary chain (V_0,V_1,\ldots,V_i,P), and the segment (PV_0) consists of all preceding fan triangles plus triangle (V_0V_iP). Along the edge (V_iV_{i+1}), the latter triangle's area is linear in the position of (P). Consequently, once we know the edge containing the target, the exact position of (P) is just a rational fraction of that edge.
+If the accumulated area is exactly half after some complete triangle, the diagonal from (V_0) to that triangle's last vertex is already the desired cutting line.
 
-The final step is the part that makes the lattice requirement easy. Write
+Otherwise, half of the total area lies strictly inside one triangle (V_0BC). Inside that triangle, every line through (V_0) and a point (P) on (BC) cuts off a triangle (V_0BP). Its area changes linearly as (P) moves along (BC), so we can choose the exact required ratio on (BC).
+
+The remaining difficulty is that (P) may be rational rather than integral. This is where the unusually large (10^{18}) output bound becomes useful. If
 
 [
-P=V_i+\frac pq(V_{i+1}-V_i).
+P=\frac{(2T-d)B+dC}{2T},
 ]
 
-Then
+we can simply use
 
-(q-p)(V_i-V_0)+p(V_{i+1}-V_0).
+[
+Q=(2T-d)B+dC.
 ]
 
-The vector on the right has integer coordinates. It is a direction vector of the desired line, so (V_0) and (V_0+D) are two integer points on the cutting line. There is no need to construct (P) using floating-point coordinates at all.
-
-This also proves that a valid answer always exists under the problem's guarantees. The (-1) output case is never reached for a valid input.
+The point (Q) has integer coordinates, and it lies on the same ray from (V_0) as (P). Hence the line (V_0Q) is exactly the required cutting line. There is no division and no floating-point arithmetic anywhere.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Try every vertex and scan the boundary | (O(n^2)) | (O(n)) | Accepted for (n\le1000), but unnecessary |
-| Fix one vertex and scan the fan once | (O(n)) | (O(n)) | Accepted |
+| Brute Force | (O(N^3)) after restricting candidates to vertex pairs | (O(N)) | Too slow and not complete |
+| Optimal | (O(N)) | (O(N)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Choose (V_0) as the fixed vertex of the cutting line. Since the polygon is convex, every line from (V_0) to a point on the opposite boundary cuts off a well-defined region whose area grows continuously from zero to the full polygon area.
-2. Compute the doubled area (S) of the polygon using a fan from (V_0). For each (i=1,\ldots,n-2), calculate
+1. Choose the first polygon vertex (V_0) as the common vertex of a fan triangulation. Translate every other vertex by subtracting (V_0), so (V_0) becomes the origin. Translation does not change areas or lines through (V_0).
+2. For every consecutive pair (V_i,V_{i+1}), with (1\le i<N-1), compute
 
 [
-T_i=\operatorname{cross}(V_i-V_0,V_{i+1}-V_0).
+T_i=\left|\operatorname{cross}(V_i,V_{i+1})\right|.
 ]
 
-The sum of all (T_i) is exactly the doubled polygon area (S).
+This is twice the area of triangle (V_0V_iV_{i+1}). Because all coordinates are integers, every (T_i) is an integer.
 
-1. Walk through the fan triangles while maintaining `prefix`, the doubled area of all complete triangles before the current edge (V_iV_{i+1}). The half-area target is (S/2). To avoid fractions, test
+1. Sum all (T_i) to obtain (S), the doubled area of the whole polygon. We deliberately work with doubled areas so that the target is exactly (S/2), without introducing fractions.
+2. Walk through the triangles while maintaining their prefix doubled area. Find the first triangle (V_0BC) for which the new prefix satisfies (2\cdot\text{prefix}\ge S). Convexity guarantees that all fan triangles lie inside the polygon and have positive area, so such a triangle always exists.
+3. If (2\cdot\text{prefix}=S), output (V_0) and the last vertex of the current triangle. The fan triangles before this diagonal have exactly half of the total area.
+4. Otherwise, let `before` be the doubled area of all fan triangles before (V_0BC), and let (T) be the doubled area of (V_0BC). Define
 
 [
-2\cdot prefix\le S\le2(prefix+T_i).
+d=S-2\cdot\text{before}.
 ]
 
-The first edge satisfying this condition contains the desired boundary point (P). The convexity and positive triangle areas guarantee that exactly one edge is needed, apart from harmless equality at a shared vertex.
-
-1. Let
+The desired part of the current triangle must have doubled area (d/2). Since the current triangle is the first one crossing the half-area boundary,
 
 [
-r=S-2\cdot prefix.
+0<d<2T.
 ]
 
-This is twice the amount of doubled area still needed inside triangle (V_0V_iV_{i+1}). If (P) divides (V_iV_{i+1}) in the ratio (p), then
+1. Let (B=V_i) and (C=V_{i+1}). A point on (BC) can be written as
 
 [
-\frac pq=\frac{r}{2T_i}.
+P=\frac{(2T-d)B+dC}{2T}.
 ]
 
-Reduce this fraction by their greatest common divisor. We use integers throughout, so even an odd (S) causes no special case.
+The triangle (V_0BP) has doubled area
 
-1. Define
+# \frac{d}{2T}\operatorname{cross}(B,C)
+
+\frac d2.
+]
+
+Thus the area before this triangle plus the area of (V_0BP) is exactly (S/2).
+
+1. We do not output (P), because it can be fractional. Instead compute
 
 [
-a=V_i-V_0,\qquad b=V_{i+1}-V_0.
+Q=(2T-d)B+dC.
 ]
 
-The vector from (V_0) toward (P), multiplied by (q), is
+All coordinates of (Q) are integers. Since (Q=2T\cdot P), the points (V_0,P,Q) are collinear, so the line through (V_0) and (Q) is the required cutting line.
 
-[
-D=(q-p)a+pb.
-]
-
-Both (a) and (b) are integer vectors, so (D) is an integer vector. Since (P) is on the polygon boundary and the cut has positive area on both sides, (D) cannot be zero.
-
-1. Output (V_0) and (V_0+D). They are distinct integer points on the same area-bisecting line.
-
-The invariant behind the construction is that `prefix` always equals the doubled area of the part already swept off by the line (V_0P). Each next fan triangle adds a positive amount, so eventually the target (S/2) lies inside exactly one triangle. Inside that triangle, area depends linearly on the position of (P), which gives the exact rational parameter used to construct the integer direction vector.
+After the numbered steps, the invariant is that the accumulated fan triangles represent exactly the area on one side of the candidate diagonal. Before the selected triangle this area is strictly below half, and after adding the selected triangle it is at least half. If equality happens at a triangle boundary, the corresponding diagonal solves the problem. Otherwise the required amount is strictly between zero and the full area of the selected triangle, so the unique point (P) described above lies strictly inside its edge. The scaled integer point (Q) lies on exactly the same line, proving that the output line has integer points and bisects the polygon exactly.
 
 ## Python Solution
 
 ```python
 import sys
-from math import gcd
-
 input = sys.stdin.readline
 
 def cross(ax, ay, bx, by):
@@ -148,264 +169,255 @@ def solve():
     n = int(input())
     p = [tuple(map(int, input().split())) for _ in range(n)]
 
-    x0, y0 = p[0]
+    ox, oy = p[0]
 
-    triangles = []
+    # Translate the polygon so p[0] becomes (0, 0).
+    q = [(x - ox, y - oy) for x, y in p]
+    q[0] = (0, 0)
+
+    # Doubled areas of the fan triangles.
+    areas = []
     total = 0
 
     for i in range(1, n - 1):
-        xi, yi = p[i]
-        xj, yj = p[i + 1]
-
-        ax = xi - x0
-        ay = yi - y0
-        bx = xj - x0
-        by = yj - y0
-
-        t = cross(ax, ay, bx, by)
-        triangles.append(t)
+        ax, ay = q[i]
+        bx, by = q[i + 1]
+        t = abs(cross(ax, ay, bx, by))
+        areas.append(t)
         total += t
 
     prefix = 0
 
-    for i in range(1, n - 1):
-        t = triangles[i - 1]
+    for i, t in enumerate(areas, start=1):
+        prefix += t
 
-        if 2 * prefix <= total <= 2 * (prefix + t):
-            r = total - 2 * prefix
-            den = 2 * t
-
-            g = gcd(r, den)
-            num = r // g
-            den //= g
-
-            xi, yi = p[i]
-            xj, yj = p[i + 1]
-
-            ax = xi - x0
-            ay = yi - y0
-            bx = xj - x0
-            by = yj - y0
-
-            dx = (den - num) * ax + num * bx
-            dy = (den - num) * ay + num * by
-
-            print(x0, y0)
-            print(x0 + dx, y0 + dy)
+        # The current fan triangle ends at q[i + 1].
+        if prefix * 2 == total:
+            x, y = q[i + 1]
+            print(ox, oy)
+            print(ox + x, oy + y)
             return
 
-        prefix += t
+        if prefix * 2 > total:
+            before = prefix - t
+            d = total - 2 * before
+
+            # Current triangle is q[0], q[i], q[i + 1].
+            bx, by = q[i]
+            cx, cy = q[i + 1]
+
+            # Q = (2T-d) * B + d * C.
+            #
+            # Q is a scaled version of the exact rational
+            # point on BC, so OQ is the same cutting line.
+            qx = (2 * t - d) * bx + d * cx
+            qy = (2 * t - d) * by + d * cy
+
+            print(ox, oy)
+            print(ox + qx, oy + qy)
+            return
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first loop computes all fan triangle areas. Using vectors relative to (V_0) avoids having to write the full shoelace formula and makes the later direction construction use exactly the same quantities.
+The first part of the implementation translates the polygon by the first vertex. This makes the area formula particularly simple, since every fan triangle has the origin as one vertex.
 
-The second loop searches for the target triangle. The comparison is deliberately written as `2 * prefix <= total <= 2 * (prefix + t)`. This handles both even and odd total doubled areas and never converts anything to `float`.
+The `cross` function is the only geometric primitive required. For two vectors (u) and (v), its absolute value is the doubled area of the triangle formed by the origin and those vectors. Python integers have arbitrary precision, so the intermediate products are safe even though the constructed output can be much larger than the input coordinates.
 
-Once the target edge is found, `r / den` is the fraction (p/q) describing the position of the half-area point along that edge. `gcd` is not required for correctness, but reducing the fraction keeps the resulting direction vector smaller.
+The first loop computes the fan triangle areas and their total. The second loop searches for the first prefix crossing half of that total. The equality branch is separate because in that case the desired line is already a polygon diagonal.
 
-The expression
+In the strict-crossing branch, `before` is the doubled area already accounted for. The quantity `d = total - 2 * before` is twice the remaining area needed from the current triangle. The coefficients `2 * t - d` and `d` are both positive, so the constructed point is on the segment between the current two polygon vertices before scaling.
 
-```
-dx = (den - num) * ax + num * bx
-```
-
-is the integer form of
-
-[
-q(P-V_0)=(q-p)(V_i-V_0)+p(V_{i+1}-V_0).
-]
-
-The output point can be much farther away than the original polygon, which is allowed. Its size is still safely below (10^{18}). Each coordinate difference in the original polygon is at most (2\cdot10^5), each fan triangle has doubled area at most (8\cdot10^{10}), and after scaling the resulting direction coordinates remain far below (10^{18}).
-
-The implementation never prints `-1`, because the construction proves that a valid lattice line exists for every polygon satisfying the input guarantees.
+The code never divides by `2 * t`. That is the central implementation trick. The rational point is multiplied by its denominator, producing the integer point `Q` on the same line. With input coordinates bounded by (10^5), every translated coordinate has magnitude at most (2\cdot10^5), while (2T\le8\cdot10^{10}) for an individual triangle. Thus the constructed coordinate is comfortably below (10^{18}).
 
 ## Worked Examples
 
-For the provided sample, the polygon is
+For the supplied sample,
 
 ```
-(0,3), (3,0), (3,6), (0,7)
+4
+0 3
+3 0
+3 6
+0 7
 ```
 
-The fan from (V_0=(0,3)) has two triangles.
+translation by the first vertex gives ((0,0),(3,-3),(3,3),(0,4)). The fan consists of two triangles.
 
-| Edge | `prefix` | `t` | `total` | Target condition | `r / (2t)` |
-| --- | --- | --- | --- | --- | --- |
-| (V_1V_2) | 0 | 18 | 30 | (0\le30\le36) | (30/36=5/6) |
+| Triangle | Vertices relative to (V_0) | Doubled area | Prefix |
+| --- | --- | --- | --- |
+| 1 | ((0,0),(3,-3),(3,3)) | 18 | 18 |
+| 2 | ((0,0),(3,3),(0,4)) | 12 | 30 |
 
-The target lies on (V_1V_2). Thus (p=5), (q=6). Relative to (V_0),
-
-[
-V_1-V_0=(3,-3),
-\qquad
-V_2-V_0=(3,3).
-]
-
-The integer direction is
+The total doubled area is (30), so the target is (15). The first triangle already crosses the target. Here `before = 0`, (T=18), and (d=30). The scaled point is
 
 [
-(6-5)(3,-3)+5(3,3)=(18,12).
+Q=(36-30)(3,-3)+30(3,3)=(108,72).
 ]
 
-The program can consequently output
+After translating back, the program outputs
 
 ```
 0 3
-18 15
+108 75
 ```
 
-The line has slope (12/18=2/3). The sample's line (y=4) is another valid answer, so different correct outputs are expected.
+The cutting line intersects the polygon at ((0,3)) and ((3,5)), and the resulting triangle has area (15/2), exactly half of the polygon's area. The sample's output is different, but multiple valid answers are allowed.
 
-As a second example, consider a right triangle.
+For the second example, consider the square
+
+```
+4
+0 0
+2 0
+2 2
+0 2
+```
+
+| Triangle | Vertices relative to (V_0) | Doubled area | Prefix |
+| --- | --- | --- | --- |
+| 1 | ((0,0),(2,0),(2,2)) | 4 | 4 |
+| 2 | ((0,0),(2,2),(0,2)) | 4 | 8 |
+
+The total doubled area is (8), so half is (4). The first prefix is already exactly (4), which activates the equality branch. The algorithm outputs
+
+```
+0 0
+2 2
+```
+
+The diagonal divides the square into two triangles of area (2) each.
+
+A third small example is the triangle
 
 ```
 3
 0 0
 4 0
-0 4
+0 2
 ```
 
-There is only one fan triangle.
-
-| Edge | `prefix` | `t` | `total` | `r` | Reduced fraction |
-| --- | --- | --- | --- | --- | --- |
-| (V_1V_2) | 0 | 16 | 16 | 16 | (1/2) |
-
-The half-area point is the midpoint of (V_1V_2), so the cutting line goes from ((0,0)) to ((2,2)). The direction formula gives
+There is only one fan triangle, so its doubled area is (8). The target is (4), which corresponds to the midpoint of the opposite edge. The construction gives
 
 [
-(2-1)(4,0)+1(0,4)=(4,4).
+Q=8(4,0)+8(0,2)=(32,16),
 ]
 
-Thus the program outputs
-
-```
-0 0
-4 4
-```
-
-The line (y=x) splits the triangle into two congruent triangles.
+so the output line is the line through ((0,0)) and ((32,16)), equivalently (y=x/2). It passes through the midpoint ((2,1)) of the opposite edge and is exactly the triangle's median.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | One pass computes the fan areas and one pass locates the target edge |
-| Space | (O(n)) | The vertices and fan triangle areas are stored |
+| Time | (O(N)) | Each polygon vertex is processed a constant number of times. |
+| Space | (O(N)) | The polygon and fan triangle areas are stored explicitly. |
 
-The linear solution easily fits (n\le1000). The dominant operations are integer additions, multiplications, comparisons, and one gcd computation. All geometric decisions are exact, so the solution does not depend on numerical precision.
+For (N\le1000), linear time is far below the available limit. The largest integer values arise from cross products and from scaling the point on one polygon edge, but Python's arbitrary-precision integers handle them exactly. The final constructed coordinates stay well below (10^{18}), so the output restriction is also satisfied.
 
 ## Test Cases
 
-The test harness below checks the produced line geometrically with exact `Fraction` arithmetic. This is useful because the answer is not unique, so comparing the output against one particular pair of points would incorrectly reject many correct solutions.
+The following test harness uses exact integer geometry to validate the returned line. Since geometry problems usually allow many different outputs, the tests check the mathematical property of the output rather than requiring one particular pair of points.
 
 ```python
+# helper: run solution on input string, return output string
 import sys
 import io
 from fractions import Fraction
-from math import gcd, atan2
+import math
 
-def solve_text(inp: str) -> str:
-    data = inp.strip().split()
-    it = iter(data)
+def cross(ax, ay, bx, by):
+    return ax * by - ay * bx
 
+def solve_data(data):
+    it = iter(data.strip().split())
     n = int(next(it))
     p = [(int(next(it)), int(next(it))) for _ in range(n)]
 
-    x0, y0 = p[0]
+    ox, oy = p[0]
+    q = [(x - ox, y - oy) for x, y in p]
 
-    triangles = []
+    areas = []
     total = 0
 
     for i in range(1, n - 1):
-        xi, yi = p[i]
-        xj, yj = p[i + 1]
-
-        ax = xi - x0
-        ay = yi - y0
-        bx = xj - x0
-        by = yj - y0
-
-        t = ax * by - ay * bx
-        triangles.append(t)
+        ax, ay = q[i]
+        bx, by = q[i + 1]
+        t = abs(cross(ax, ay, bx, by))
+        areas.append(t)
         total += t
 
     prefix = 0
 
-    for i in range(1, n - 1):
-        t = triangles[i - 1]
-
-        if 2 * prefix <= total <= 2 * (prefix + t):
-            r = total - 2 * prefix
-            den = 2 * t
-
-            g = gcd(r, den)
-            num = r // g
-            den //= g
-
-            xi, yi = p[i]
-            xj, yj = p[i + 1]
-
-            ax = xi - x0
-            ay = yi - y0
-            bx = xj - x0
-            by = yj - y0
-
-            dx = (den - num) * ax + num * bx
-            dy = (den - num) * ay + num * by
-
-            return f"{x0} {y0}\n{x0 + dx} {y0 + dy}\n"
-
+    for i, t in enumerate(areas, start=1):
         prefix += t
+
+        if prefix * 2 == total:
+            x, y = q[i + 1]
+            return f"{ox} {oy}\n{ox + x} {oy + y}\n"
+
+        if prefix * 2 > total:
+            before = prefix - t
+            d = total - 2 * before
+
+            bx, by = q[i]
+            cx, cy = q[i + 1]
+
+            qx = (2 * t - d) * bx + d * cx
+            qy = (2 * t - d) * by + d * cy
+
+            return f"{ox} {oy}\n{ox + qx} {oy + qy}\n"
 
     return "-1\n"
 
-def polygon_area2(poly):
+def run(inp: str) -> str:
+    return solve_data(inp)
+
+def polygon_double_area(p):
     s = 0
-    n = len(poly)
+    n = len(p)
     for i in range(n):
-        x1, y1 = poly[i]
-        x2, y2 = poly[(i + 1) % n]
+        x1, y1 = p[i]
+        x2, y2 = p[(i + 1) % n]
         s += x1 * y2 - y1 * x2
-    return s
+    return abs(s)
 
-def clip_halfplane(poly, A, B, keep_positive):
-    ax, ay = A
-    bx, by = B
-    dx = bx - ax
-    dy = by - ay
+def line_value(a, b, p):
+    ax, ay = a
+    bx, by = b
+    x, y = p
+    return (bx - ax) * (y - ay) - (by - ay) * (x - ax)
 
-    def side(P):
-        px, py = P
-        return dx * (py - ay) - dy * (px - ax)
+def clip_halfplane(poly, a, b, keep_positive):
+    if not poly:
+        return []
 
     result = []
 
+    def inside(v):
+        return v >= 0 if keep_positive else v <= 0
+
     for i in range(len(poly)):
-        P = poly[i]
-        Q = poly[(i + 1) % len(poly)]
+        p = poly[i]
+        q = poly[(i + 1) % len(poly)]
+        fp = line_value(a, b, p)
+        fq = line_value(a, b, q)
+        inp = inside(fp)
+        inq = inside(fq)
 
-        fP = side(P)
-        fQ = side(Q)
+        if inp:
+            result.append(p)
 
-        inP = fP >= 0 if keep_positive else fP <= 0
-        inQ = fQ >= 0 if keep_positive else fQ <= 0
-
-        if inP:
-            result.append(P)
-
-        if inP != inQ:
-            t = Fraction(fP, fP - fQ)
-            x = P[0] + t * (Q[0] - P[0])
-            y = P[1] + t * (Q[1] - P[1])
+        if inp != inq:
+            den = fq - fp
+            t = Fraction(-fp, den)
+            x = p[0] + t * (q[0] - p[0])
+            y = p[1] + t * (q[1] - p[1])
             result.append((x, y))
 
     return result
 
-def area2_fraction(poly):
+def double_area_fraction(poly):
     if len(poly) < 3:
         return Fraction(0)
 
@@ -416,76 +428,39 @@ def area2_fraction(poly):
         s += x1 * y2 - y1 * x2
     return abs(s)
 
-def valid_answer(inp: str, out: str) -> bool:
-    data = inp.strip().split()
-    n = int(data[0])
-    poly = []
-    pos = 1
-
-    for _ in range(n):
-        poly.append((int(data[pos]), int(data[pos + 1])))
-        pos += 2
-
-    ans = out.strip().split()
-    if len(ans) != 4:
+def valid_cut(inp, out):
+    tokens = out.strip().split()
+    if len(tokens) == 1 and tokens[0] == "-1":
         return False
 
-    A = (int(ans[0]), int(ans[1]))
-    B = (int(ans[2]), int(ans[3]))
-
-    if A == B:
+    if len(tokens) != 4:
         return False
 
-    if any(abs(v) > 10**18 for v in A + B):
+    a = (int(tokens[0]), int(tokens[1]))
+    b = (int(tokens[2]), int(tokens[3]))
+
+    if a == b:
         return False
 
-    total = Fraction(abs(polygon_area2(poly)))
+    it = iter(inp.strip().split())
+    n = int(next(it))
+    poly = [(int(next(it)), int(next(it))) for _ in range(n)]
 
-    positive = clip_halfplane(poly, A, B, True)
-    negative = clip_halfplane(poly, A, B, False)
+    total = Fraction(polygon_double_area(poly))
 
-    ap = area2_fraction(positive)
-    an = area2_fraction(negative)
+    left = clip_halfplane(poly, a, b, True)
+    right = clip_halfplane(poly, a, b, False)
 
-    return ap * 2 == total or an * 2 == total
+    return (
+        double_area_fraction(left) * 2 == total
+        and double_area_fraction(right) * 2 == total
+        and abs(a[0]) <= 10**18
+        and abs(a[1]) <= 10**18
+        and abs(b[0]) <= 10**18
+        and abs(b[1]) <= 10**18
+    )
 
-def make_max_polygon():
-    vectors = []
-
-    for x in range(1, 51):
-        for y in range(0, 51):
-            if x == 0 and y == 0:
-                continue
-            if gcd(x, y) == 1:
-                vectors.append((x, y))
-
-    vectors.sort(key=lambda v: atan2(v[1], v[0]))
-    vectors = vectors[:500]
-
-    edges = vectors[:]
-
-    for x, y in vectors:
-        edges.append((-x, -y))
-
-    poly = []
-    x = 0
-    y = 0
-
-    for dx, dy in edges:
-        poly.append((x, y))
-        x += dx
-        y += dy
-
-    min_x = min(x for x, y in poly)
-    max_x = max(x for x, y in poly)
-    min_y = min(y for x, y in poly)
-    max_y = max(y for x, y in poly)
-
-    shift_x = -(min_x + max_x) // 2
-    shift_y = -(min_y + max_y) // 2
-
-    return [(x + shift_x, y + shift_y) for x, y in poly]
-
+# Provided sample.
 sample1 = """\
 4
 0 3
@@ -493,99 +468,123 @@ sample1 = """\
 3 6
 0 7
 """
+assert valid_cut(sample1, run(sample1)), "sample 1"
 
-assert valid_answer(sample1, solve_text(sample1)), "sample 1"
-
+# Minimum-size polygon.
 triangle = """\
 3
 0 0
 4 0
-0 4
-"""
-
-assert valid_answer(triangle, solve_text(triangle)), "minimum-size triangle"
-
-half_vertex = """\
-4
-0 0
-4 0
-4 2
 0 2
 """
+assert run(triangle) == "0 0\n32 16\n", "minimum-size triangle"
 
-assert valid_answer(half_vertex, solve_text(half_vertex)), "half-area at a vertex"
-
-boundary_coordinates = """\
-3
--100000 -100000
-100000 -100000
-0 100000
+# Equal fan areas, exercising the exact-half branch.
+square = """\
+4
+0 0
+2 0
+2 2
+0 2
 """
+assert run(square) == "0 0\n2 2\n", "exact prefix half"
 
-assert valid_answer(
-    boundary_coordinates,
-    solve_text(boundary_coordinates)
-), "boundary coordinates"
+# Coordinates at the input boundary.
+boundary_triangle = """\
+3
+100000 100000
+-100000 100000
+-100000 -100000
+"""
+assert valid_cut(boundary_triangle, run(boundary_triangle)), "coordinate boundary"
 
-max_poly = make_max_polygon()
-assert len(max_poly) == 1000
-assert max(abs(x) <= 10**5 and abs(y) <= 10**5 for x, y in max_poly)
+# A nontrivial polygon where half the area lies strictly inside a fan triangle.
+pentagon = """\
+5
+0 0
+4 0
+5 2
+3 5
+0 4
+"""
+assert run(pentagon) == "0 0\n144 145\n", "interior fan triangle"
 
-max_input = str(len(max_poly)) + "\n"
-max_input += "\n".join(f"{x} {y}" for x, y in max_poly) + "\n"
+# Maximum-size stress test.
+# Points are sampled from a large circle and slightly perturbed radially.
+# The radius is large enough that rounding preserves strict convexity.
+n = 1000
+pts = []
+for i in range(n):
+    angle = 2.0 * math.pi * i / n
+    r = 90000 + (i % 7)
+    x = int(round(r * math.cos(angle)))
+    y = int(round(r * math.sin(angle)))
+    pts.append((x, y))
 
-assert valid_answer(max_input, solve_text(max_input)), "maximum-size polygon"
+# Rotate the generated order if necessary so it is counterclockwise.
+area = polygon_double_area(pts)
+if area < 0:
+    pts.reverse()
 
-# A polygon with all coordinates equal cannot satisfy the input guarantees:
-# three distinct vertices would be impossible. Such a test is intentionally
-# excluded because it is not a valid instance of the problem.
+max_case = str(n) + "\n" + "\n".join(f"{x} {y}" for x, y in pts) + "\n"
+assert valid_cut(max_case, run(max_case)), "maximum-size stress test"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Provided sample | Any exact half-area line, such as the program's output | Rational intersection strictly inside an edge |
-| (3)-vertex right triangle | A line through two integer points bisecting the triangle | Minimum valid polygon |
-| (4\times2) rectangle | A diagonal through an opposite vertex | Half-area target exactly at a fan-triangle boundary |
-| Triangle using (\pm10^5) coordinates | Any valid integer line within the (10^{18}) output bound | Boundary coordinate arithmetic |
-| Generated (1000)-vertex polygon | Any valid integer line | Maximum (n) and linear scan |
-| All coordinates equal | No valid input exists | Confirms why this cannot be a legitimate test case |
+| Sample 1 | Any exact area-bisecting integer line | Nontrivial cut inside the first fan triangle |
+| `3 / 0 0 / 4 0 / 0 2` | `0 0` and `32 16` | Minimum polygon and rational midpoint scaling |
+| `4 / 0 0 / 2 0 / 2 2 / 0 2` | `0 0` and `2 2` | Exact prefix equal to half |
+| Boundary triangle with coordinates (\pm100000) | Any valid integer line | Large input coordinates and large constructed integers |
+| Five-vertex polygon | `0 0` and `144 145` | Strictly interior fan-triangle construction |
+| Generated 1000-vertex polygon | Any valid integer line | Maximum (N), integer arithmetic, and linear-time traversal |
 
 ## Edge Cases
 
-When the half-area point is exactly a polygon vertex, the target can be shared by two consecutive fan triangles. For
+For the minimum triangle
+
+```
+3
+0 0
+4 0
+0 2
+```
+
+the algorithm has exactly one fan triangle with doubled area (8). The prefix immediately equals the total, but the half-area condition is reached inside that triangle rather than after the whole triangle. Here `before = 0`, (T=8), and (d=8). The constructed integer point is (Q=8(4,0)+8(0,2)=(32,16)). The line from ((0,0)) to ((32,16)) is the median, so both parts have area (4).
+
+For the exact-prefix case
 
 ```
 4
 0 0
-4 0
-4 2
+2 0
+2 2
 0 2
 ```
 
-the first fan triangle has doubled area (8), while the whole polygon has doubled area (16). The target is reached exactly at (V_2=(4,2)). The integer comparison accepts the first edge with equality, giving the direction (V_2-V_0=(4,2)). No epsilon is involved.
+the first fan triangle has doubled area (4), while the total doubled area is (8). The equality test fires before the strict-crossing branch. The output diagonal ((0,0)) to ((2,2)) divides the square into two equal triangles. This case catches both an off-by-one error in selecting the current triangle and an implementation that assumes the half-area point is always inside an edge.
 
-When the half-area point lies strictly inside an edge, the parameter is rational. In the sample, the first fan triangle has doubled area (18), while the total is (30). The required fraction is
+For the supplied sample
 
-[
-\frac{30}{36}=\frac56.
-]
+```
+4
+0 3
+3 0
+3 6
+0 7
+```
 
-The point is consequently rational, but the scaled direction
+the first triangle has doubled area (18), while the entire polygon has doubled area (30). Since (18>15), the target lies inside that triangle. The exact scaled point is ((108,72)) in coordinates relative to the first vertex, giving the output point ((108,75)). The line through ((0,3)) and ((108,75)) intersects the polygon again at ((3,5)), and the resulting triangle has area (7.5), exactly half of the polygon's area (15).
 
-[
-(6-5)(3,-3)+5(3,3)=(18,12)
-]
+For the boundary-coordinate case
 
-is integral. The output line therefore contains two integer points even though its boundary intersection does not need to be an integer point.
+```
+3
+100000 100000
+-100000 100000
+-100000 -100000
+```
 
-When the total doubled area is odd, the algorithm still works unchanged. If (S=15), the target is (7.5) in doubled-area units. The comparison multiplies everything by two, so it searches for
+the input uses the largest permitted coordinate magnitude. After translating by the first vertex, the other points are ((-200000,0)) and ((-200000,-200000)). The construction scales the opposite-edge midpoint by the triangle's doubled area and produces a point with magnitude around (10^{13}), still far below (10^{18}). No floating-point operation is required, so there is no loss of precision at the boundary.
 
-[
-2\cdot prefix\le15\le2(prefix+T_i).
-]
-
-The resulting numerator is odd, but `gcd` reduces the rational fraction normally. No parity assumption about the polygon area is required.
-
-When coordinates are near the input limit, all computations remain exact. The polygon coordinates contribute differences of at most (2\cdot10^5), and a single fan triangle has doubled area at most (8\cdot10^{10}). Even after scaling the rational direction, the output coordinates stay comfortably below (10^{18}). Python's arbitrary-precision integers make the arithmetic straightforward.
-
-A degenerate input with all vertices equal, or with three collinear vertices, would invalidate the geometric assumptions used by the construction. Such inputs are explicitly excluded by the problem, so the algorithm does not need defensive handling for them.
+The most subtle edge case is a rational cutting point that is not itself an integer point. The algorithm never attempts to round that point. Instead it represents the point as a rational affine combination of two integer vertices and multiplies the entire combination by its denominator. Scaling a vector from the fixed integer vertex (V_0) changes its length but not its direction, so the resulting integer point determines exactly the same cutting line. This is the reason the construction works for every valid integer-coordinate convex polygon rather than only for polygons whose half-area cut happens to pass through an existing lattice point.

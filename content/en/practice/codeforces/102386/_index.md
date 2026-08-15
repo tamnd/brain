@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 11
 n_verified: 5
-total_solve_s: 5772
-date: "2026-08-12T18:48:27+07:00"
+total_solve_s: 6075
+date: "2026-08-12T18:57:39+07:00"
 weight: 102386
 draft: false
 ---
 
 # [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386)
 
-Special | 11 problems | 5/11 verified | Difficulty - | 1h 36m
+Special | 11 problems | 5/11 verified | Difficulty - | 1h 41m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,4 @@ Special | 11 problems | 5/11 verified | Difficulty - | 1h 36m
 | [H](H/) | [\u0421\u0432\u0435\u0442\u043e\u0444\u043e\u0440\u044b](https://codeforces.com/problemset/problem/102386/H) |  |  |  | 12m 10s |  |
 | [I](I/) | [\u041f\u0435\u0440\u0441\u0435\u0430\u043d\u0442\u043e\u0432\u043a\u0430](https://codeforces.com/problemset/problem/102386/I) |  |  |  | 29m 6s |  |
 | [J](J/) | [\u041a\u0430\u0442\u0430\u043c\u0430\u0440\u0438](https://codeforces.com/problemset/problem/102386/J) |  |  |  | 12m 15s | ✓ |
-| [K](K/) | [\u041c\u0430\u043b\u044b\u0448 \u0438 \u041a\u0430\u0440\u043b\u0441\u043e\u043d](https://codeforces.com/problemset/problem/102386/K) |  |  |  | 4m 6s |  |
+| [K](K/) | [\u041c\u0430\u043b\u044b\u0448 \u0438 \u041a\u0430\u0440\u043b\u0441\u043e\u043d](https://codeforces.com/problemset/problem/102386/K) |  |  |  | 9m 9s |  |
