@@ -1,7 +1,7 @@
 ---
 title: "CF 102388F - Shopping"
-description: "We have n coin denominations, and every denomination can be used any number of times. For a target amount m, a way of making change is determined only by how many coins of each denomination are used, not by the order in which those coins are written."
-date: "2026-08-14T13:50:29+07:00"
+description: "We have n coin denominations, and each denomination can be used any number of times. For a target amount m, we need to count how many different multisets of coins sum exactly to m. The order of the coins does not matter, so 2 + 3 and 3 + 2 represent the same way of making change."
+date: "2026-08-15T08:29:52+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102388
@@ -9,8 +9,8 @@ codeforces_index: "F"
 codeforces_contest_name: "SUFE ICPC Team Formation Test"
 rating: 0
 weight: 102388
-solve_time_s: 188
-verified: false
+solve_time_s: 512
+verified: true
 draft: false
 ---
 
@@ -18,93 +18,97 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 8s  
-**Verified:** no  
+**Solve time:** 8m 32s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have `n` coin denominations, and every denomination can be used any number of times. For a target amount `m`, a way of making change is determined only by how many coins of each denomination are used, not by the order in which those coins are written. For example, with denominations `2` and `3`, the amount `6` has two ways: `2 + 2 + 2` and `3 + 3`.
+We have `n` coin denominations, and each denomination can be used any number of times. For a target amount `m`, we need to count how many different multisets of coins sum exactly to `m`. The order of the coins does not matter, so `2 + 3` and `3 + 2` represent the same way of making change. The answer is reported modulo `1,000,000,007`.
 
-For each test case, the input gives the number of denominations, the target amount, and the denomination values themselves. The required output is the number of distinct combinations whose total value is exactly `m`, reduced modulo `10^9 + 7`.
+For example, with denominations `2, 3, 5, 7` and target `10`, the valid combinations are `3 + 7`, `5 + 5`, `2 + 3 + 5`, `2 + 2 + 3 + 3`, and five copies of `2`, giving an answer of `5`.
 
-The constraints point directly toward dynamic programming. There are at most `100` denominations and the target is at most `10000`, so roughly `n * m = 10^6` state transitions per test case are affordable. With at most ten test cases, this is about `10^7` simple operations, which is reasonable in a compiled language and still practical in Python with a compact implementation. Anything exponential in `m` or the number of coin choices is completely out of reach.
+The target is at most `10,000`, while there can be at most `100` denominations. That strongly suggests a dynamic programming solution around `n * m`, which is at most about one million state updates per test case. With at most ten test cases, this remains practical in Python with a compact one-dimensional DP. A solution that enumerates all possible combinations is not remotely feasible, because even a single denomination can be used up to `m` times and the number of combinations grows rapidly as more denominations are added.
 
-The first edge case is a denomination larger than the target. For example,
+The denomination values can also be as large as `10,000`. Any denomination larger than `m` can never participate in a valid combination, so processing it is unnecessary. The statement describes the denominations as different, but deduplicating them in the implementation makes the algorithm robust if repeated values are supplied. Repeated identical denominations should not create different ways, because a way is determined by the values and multiplicities of the coins, not by which input position supplied a coin.
 
-```
-1
-2 3
-4 5
-```
-
-has output `0`. Neither coin can participate in a valid sum, so a DP implementation must not accidentally treat the initial state `dp[0] = 1` as a way to make every target.
-
-The second edge case is when a denomination is exactly equal to the target. For example,
+There are several edge cases where a careless implementation can silently count the wrong thing. With
 
 ```
 1
-1 5
+1 3
 5
 ```
 
-has output `1`. The inner loop must include index `m`; using a range that stops at `m - 1` silently loses this solution.
+the answer is `0`, because the only available coin is already larger than the target. A recurrence that blindly indexes `dp[amount - coin]` without checking the boundary can access an invalid state.
 
-The third edge case is unlimited reuse of a denomination. For example,
+With
 
 ```
 1
-2 6
+2 5
 2 3
 ```
 
-has output `2`, corresponding to `2 + 2 + 2` and `3 + 3`. Treating each denomination like a 0/1 item would miss both combinations because neither denomination can be used more than once.
+the answer is `1`, from `2 + 3`. A common mistake is to update the DP in the wrong order and accidentally count different permutations of the same coins. The two sequences `2 + 3` and `3 + 2` must not become separate answers.
 
-The fourth edge case is that the input order must not affect the answer. For example,
+With
 
 ```
 1
-2 6
-3 2
+2 4
+2 2
 ```
 
-also has output `2`. A correct coin-change DP uses an ascending target loop so that the current denomination can be reused during the same pass. A descending target loop would turn the transition into 0/1 knapsack behavior.
+the answer is `1` if duplicate denominations are interpreted as the same coin value. Treating the two input entries as independent coin types would count the same monetary combination in multiple ways. The original problem promises different denominations, but deduplication avoids that ambiguity.
 
-The formal statement describes the coin values as different. If duplicate values are nevertheless supplied, processing every input entry as a separate coin type counts them separately. For example, three entries of value `2` and target `6` give `10`, because the three types can contribute counts summing to `3` in `C(5,2) = 10` ways. Such an input is outside the stated constraints, but the implementation has a consistent interpretation of it.
+Finally, with
+
+```
+1
+1 1
+1
+```
+
+the answer is `1`. The empty sum is represented by `dp[0] = 1`, and adding the denomination `1` must turn that into exactly one way to form amount `1`. Initializing the DP array with zero everywhere would lose this fundamental base case.
 
 ## Approaches
 
-A direct brute-force approach can recursively try every possible next coin and continue until the running sum reaches or exceeds `m`. To avoid counting different orders as different change combinations, it can keep the chosen coin indices nondecreasing, or equivalently generate all ordered sequences and canonicalize each one before inserting it into a set. This works conceptually because every valid combination can be generated and every invalid partial choice can eventually be rejected.
+A direct brute-force approach is to choose how many copies of every denomination are used and test whether the resulting sum is `m`. For denomination `c_i`, its count can range from zero through `floor(m / c_i)`, so the number of combinations examined is
 
-The problem is the number of candidates. Even the ordered-sequence version becomes enormous with just two denominations. For denominations `1` and `2`, the number of ordered sequences whose sum is `10000` is exactly the Fibonacci number `F_10001`, because a sequence ending in `1` comes from a sequence summing to `9999`, while one ending in `2` comes from a sequence summing to `9998`. `F_10001` has roughly `2090` decimal digits, so a brute-force search would need to generate on the order of `10^2089` terminal sequences before it could finish. Canonicalizing those sequences does not help, because the expensive generation has already happened.
+`product(floor(m / c_i) + 1)`.
 
-The brute force works because every combination can be constructed by choosing coins, but it repeatedly solves the same smaller subproblems. For instance, once we know how many ways can make amount `8` using a certain prefix of the denominations, that result is needed again whenever another solution reaches the same state. The observation that these repeated subproblems are completely described by the amount already formed and the set of denominations allowed lets us store the answers instead of recomputing them.
+This is correct because every possible multiset of coins corresponds to exactly one choice of those counts. The problem is the size of that search space. In the worst case, if all denominations are `1`, there are theoretically `10001^100` choices of counts, although duplicate denominations are not allowed by the original statement. Even with distinct small denominations, the search space becomes enormous. A recursive enumeration therefore fails long before reaching `n = 100` and `m = 10000`.
 
-This gives the standard unbounded coin-change dynamic programming formulation. Let `dp[x]` represent the number of ways to make amount `x` using only the denominations processed so far. When denomination `c` is introduced, every old way to make `x - c` can be extended by adding one `c` coin, giving a way to make `x`. The transition is therefore
+A more subtle brute-force strategy generates every ordered sequence of coins whose sum does not exceed `m`, then keeps only sequences reaching exactly `m`. This is even worse because the same combination appears in many permutations. For instance, `2 + 3 + 5` can be generated in six different orders. The actual problem asks for one answer for that combination, so exploring order creates work that the problem does not need.
 
-`dp[x] += dp[x - c]`.
+The key observation is that the target amount is bounded by `10,000`, so we do not need to remember the entire collection of coins chosen so far. We only need to know how many ways each smaller amount can be formed. Once the denominations have been processed in a fixed order, we can decide whether to append the current denomination to an already counted combination.
 
-The direction of the inner loop is the key detail. We process `x` from `c` upward. Because `dp[x - c]` may already have been updated using the same coin, the current denomination can be used again, exactly matching the fact that there are infinitely many coins of each type.
+Let `dp[x]` be the number of ways to form amount `x` using the denominations processed so far. When processing a coin of value `c`, every way to form `x - c` can be extended by one `c` coin to form `x`. Thus we add `dp[x - c]` to `dp[x]`.
 
-The order of the outer denomination loop also gives us the crucial counting convention. A combination such as `2 + 3 + 5` is generated according to the fixed denomination order, rather than once for every permutation such as `3 + 5 + 2`. Each combination has exactly one representation in the DP state sequence, so it is counted once.
+The order of the loops is what makes this count combinations rather than permutations. We process denominations in the outer loop and amounts in increasing order in the inner loop. Once denomination `c` is being processed, `dp[x - c]` already contains ways that may use `c`, which allows unlimited copies. At the same time, every denomination is introduced in one fixed stage, so the same combination cannot be generated again in a different order.
+
+The brute-force works because it explicitly considers every possible multiplicity of every coin, but fails when there are too many such choices. The observation that two partial solutions with the same current amount have identical future possibilities lets us merge them into one DP state. That reduces the problem to `O(nm)` transitions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential in `m` and the number of choices | Exponential in the number of generated states | Too slow |
+| Brute Force | `O(product(m / c_i + 1))` in the worst case | `O(n)` recursion depth | Too slow |
 | Optimal | `O(nm)` | `O(m)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create an array `dp` of length `m + 1`, where `dp[x]` will eventually mean the number of ways to form amount `x`. Set `dp[0] = 1` and every other entry to zero. The empty selection is exactly one way to make amount zero, and every nonzero amount initially has no known representation.
-2. Process the coin denominations one at a time. After processing a denomination, `dp[x]` counts combinations using only the denominations seen so far. This invariant prevents different orders of the same coins from becoming separate answers.
-3. For a coin of value `c`, iterate `x` from `c` through `m` in increasing order. For every such amount, add `dp[x - c]` to `dp[x]`.
-4. The transition is correct because every combination counted by `dp[x - c]` can receive one additional `c` coin and become a combination for `x`. Since the loop is ascending, `dp[x - c]` may already contain combinations that use `c`, so any number of copies of the current denomination is allowed.
-5. Reduce each update modulo `10^9 + 7`. Only the residue is required by the problem, and reducing during the computation keeps the stored integers small.
-6. After all denominations have been processed, output `dp[m]`. At this point the invariant says that it contains exactly all combinations of the available denominations whose total value is `m`.
+1. Read the denominations and remove duplicate values if any are present. A denomination represents a coin value, so duplicate copies of the same value do not create distinct ways to make change.
+2. Ignore every denomination greater than `m`. Such a coin can never appear in a valid sum equal to `m`, so processing it cannot change the answer.
+3. Create a one-dimensional array `dp` of length `m + 1` and initialize every entry to zero. Set `dp[0] = 1`. There is exactly one way to make amount zero, namely to choose no coins. This base case is what allows the first actual coin to start a combination.
+4. Process each denomination `c` one at a time. For the current denomination, iterate `x` from `c` through `m` in increasing order and perform `dp[x] += dp[x - c]` modulo `1,000,000,007`.
+5. The increasing order of `x` deliberately allows `dp[x - c]` to already include the current denomination. For example, while processing coin `2`, the update for `dp[4]` can use the newly updated `dp[2]`, representing two copies of `2`. If the amounts were processed in decreasing order, each denomination could be used at most once.
+6. After all denominations have been processed, `dp[m]` contains the number of different combinations whose total value is exactly `m`. Print that value modulo `1,000,000,007`.
 
 ### Why it works
 
-The invariant is that after processing the first `k` denominations, `dp[x]` equals the number of combinations that form `x` using only those `k` denominations. Initially, with no denominations, only amount zero can be formed, giving `dp[0] = 1`. When denomination `c` is processed, every new combination using at least one `c` has a unique decomposition into a combination using the already processed denominations plus one final `c`. The ascending loop allows that preceding combination to contain any number of `c` coins, so every valid combination is added exactly once. Existing combinations that use no `c` remain untouched. Thus the invariant survives every denomination, and `dp[m]` at the end is exactly the required count.
+The invariant is that after processing the first `k` denominations, `dp[x]` equals the number of combinations that form exactly `x` using only those `k` denominations. When processing a new denomination `c`, every old combination forming `x` remains available, and every combination that uses at least one `c` can be uniquely obtained by removing one `c`, leaving a combination counted by `dp[x - c]`. Thus the update adds exactly the new combinations introduced by `c`.
+
+Because denominations are processed in a fixed order, a combination has a unique point at which its largest-indexed denomination is introduced. It cannot be counted again through another permutation of the same coins. Because amounts are processed from small to large, the current denomination may be used repeatedly, so all valid multiplicities are included. The invariant consequently holds after every denomination, and `dp[m]` is the required answer.
 
 ## Python Solution
 
@@ -112,168 +116,133 @@ The invariant is that after processing the first `k` denominations, `dp[x]` equa
 import sys
 input = sys.stdin.readline
 
-MOD = 1000000007
+MOD = 1_000_000_007
 
 def solve():
     t = int(input())
+    out = []
 
     for _ in range(t):
         n, m = map(int, input().split())
         coins = list(map(int, input().split()))
 
+        # The original statement has distinct denominations.
+        # Deduplication also makes the implementation robust to repeated values.
+        coins = sorted(set(c for c in coins if c <= m))
+
         dp = [0] * (m + 1)
         dp[0] = 1
 
         for coin in coins:
-            if coin > m:
-                continue
-
             for amount in range(coin, m + 1):
                 dp[amount] += dp[amount - coin]
                 if dp[amount] >= MOD:
                     dp[amount] -= MOD
 
-        print(dp[m])
+        out.append(str(dp[m]))
+
+    sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first part reads each test case and creates one DP array for its target amount. The array has `m + 1` entries because amount zero is a real state and the target `m` must also be represented.
+The input is read once per test case, and the denominations are filtered and deduplicated before the DP starts. Sorting is not required for correctness, but gives the coin set a deterministic order and makes it easy to process denominations consistently.
 
-Setting `dp[0] = 1` is essential. When processing a coin equal to `x`, the transition uses `dp[x - coin] = dp[0]`, thereby creating the first solution consisting of exactly that coin. Without this initialization, every state would remain zero forever.
+The DP array has indices `0` through `m`, so its size is exactly `m + 1`. `dp[0] = 1` represents the unique empty combination. No other initial state should be set to a nonzero value.
 
-The outer loop processes denominations rather than amounts. This is what makes the DP count combinations instead of ordered sequences. Once a denomination has been processed, later denominations can be added, but earlier denominations are never reconsidered in a different order.
+For each coin, the inner loop starts at `coin`, because amounts below the coin value cannot use that denomination. It ends at `m`, because amounts larger than the target cannot contribute to `dp[m]`.
 
-The inner loop starts at `coin`, because smaller amounts cannot contain this coin. It ends at `m`, inclusively, because a coin may itself be the complete target.
+The inner loop moves upward. This is the most important implementation detail. Suppose the current coin is `2`. After computing `dp[2]`, the later update for `dp[4]` reads that updated value, so two copies of `2` are allowed. If the loop moved downward, the current coin would not be visible in the same iteration, turning the recurrence into a zero-or-one usage transition.
 
-The inner loop must move upward. Consider `coin = 2` and `amount = 6`. By the time `dp[6]` is calculated, `dp[4]` has already incorporated the current coin, allowing `2 + 2` to be extended to `2 + 2 + 2`. A descending loop would read only the state from before the current coin was introduced and would incorrectly limit each denomination to one use.
-
-Python integers do not overflow, but the modulo operation is still necessary because the required answer is modulo `10^9 + 7`. The conditional subtraction is enough because both operands are already below the modulus, so their sum is less than `2 * MOD`.
+Python integers do not overflow, but taking every update modulo `MOD` keeps the stored values small and directly implements the required modular arithmetic. Since both operands are already below `MOD`, one subtraction is enough after addition to keep the result in the range `[0, MOD)`.
 
 ## Worked Examples
 
-### Sample testcase 1
+### Sample case: denominations 5, 7, 2, 3, target 10
 
-Consider the first testcase:
+The denominations can be processed in the input order. The following table shows the relevant DP state after each denomination has been fully processed.
 
-```
-1 100
-1
-```
+| Processed coins | `dp[0]` | `dp[2]` | `dp[3]` | `dp[4]` | `dp[5]` | `dp[6]` | `dp[7]` | `dp[8]` | `dp[9]` | `dp[10]` |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| none | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 5 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 |
+| 5, 7 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 1 |
+| 5, 7, 2 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 2 |
+| 5, 7, 2, 3 | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 2 | 3 | 5 |
 
-There is only one denomination, so the only possible representation of `100` is one hundred copies of the coin with value `1`.
+After processing coin `2`, `dp[10] = 2`, representing `5 + 5` and `2 + 2 + 2 + 2 + 2`. When coin `3` is added, the other three combinations appear: `3 + 7`, `2 + 3 + 5`, and `2 + 2 + 3 + 3`. The final value is `5`, matching the sample.
 
-| Processed coin | `dp[0]` | `dp[1]` | `dp[100]` |
-| --- | --- | --- | --- |
-| none | 1 | 0 | 0 |
-| 1 | 1 | 1 | 1 |
+The trace demonstrates both parts of the invariant. Every state represents combinations rather than ordered sequences, while the upward amount loop permits unlimited copies of each denomination.
 
-After processing coin `1`, the ascending loop repeatedly reuses the current denomination. Thus `dp[100] = 1`, and the output is `1`.
+### Sample case: denominations 101, 102, 103, 104, target 100
 
-This trace demonstrates why the problem is an unbounded knapsack problem rather than a 0/1 knapsack problem. The same denomination must be usable one hundred times.
+Every denomination is larger than the target, so filtering leaves no usable coins.
 
-### Sample testcase 2
+| Processed coin | DP initialization | Final `dp[100]` |
+| --- | --- | --- |
+| none | `dp[0] = 1`, all other states `0` | 0 |
+| 101 | ignored | 0 |
+| 102 | ignored | 0 |
+| 103 | ignored | 0 |
+| 104 | ignored | 0 |
 
-Now consider:
-
-```
-4 10
-5 7 2 3
-```
-
-Start with `dp[0] = 1`. The table records selected states after each denomination has been fully processed.
-
-| Processed coins | `dp[2]` | `dp[3]` | `dp[4]` | `dp[5]` | `dp[6]` | `dp[7]` | `dp[8]` | `dp[9]` | `dp[10]` |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| none | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 5 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 |
-| 5, 7 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 1 |
-| 5, 7, 2 | 1 | 0 | 1 | 1 | 1 | 2 | 1 | 2 | 2 |
-| 5, 7, 2, 3 | 1 | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 5 |
-
-The final value `dp[10] = 5` corresponds to the five combinations `5 + 5`, `7 + 3`, `5 + 3 + 2`, `3 + 3 + 2 + 2`, and five copies of `2`.
-
-The state `dp[7]` after processing coin `3` is especially instructive. It contains `7`, `5 + 2`, and `3 + 2 + 2`. When the transition for amount `10` uses that state, it produces `7 + 3`, `5 + 2 + 3`, and `3 + 2 + 2 + 3`. This demonstrates how the current coin can be reused while still counting each unordered combination only once.
-
-### Sample testcase 3
-
-For:
-
-```
-3 100
-1 2 3
-```
-
-the useful target states are:
-
-| Processed coins | `dp[0]` | `dp[1]` | `dp[2]` | `dp[100]` |
-| --- | --- | --- | --- | --- |
-| none | 1 | 0 | 0 | 0 |
-| 1 | 1 | 1 | 1 | 1 |
-| 1, 2 | 1 | 1 | 2 | 51 |
-| 1, 2, 3 | 1 | 1 | 2 | 884 |
-
-After coin `1`, every amount has exactly one representation. Adding coin `2` creates all partitions using only `1` and `2`, giving `51` ways for `100`. Adding coin `3` expands the set again, producing the required `884`.
+The answer is `0`, because no available coin can be placed into a sum of `100`. This exercises the boundary where every denomination exceeds the target and confirms that the DP does not need any special case beyond filtering those coins.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(nm)` | Each of the `n` denominations scans amounts from its value through `m`, with at most `m` transitions. |
-| Space | `O(m)` | Only the one-dimensional DP array of `m + 1` states is stored. |
+| Time | `O(nm)` | Each usable denomination updates at most `m` DP states. |
+| Space | `O(m)` | Only the current one-dimensional DP array is stored. |
 
-With `n <= 100` and `m <= 10000`, one test case performs at most about one million DP updates. Even across ten test cases this is around ten million updates, while the memory usage is only about ten thousand Python integer references plus their integer objects. The solution comfortably avoids the exponential search space of brute force and fits the stated limits.
+With `n <= 100` and `m <= 10000`, there are at most about one million elementary DP transitions per test case. Even with ten test cases, the total is on the order of ten million transitions, which fits the intended constraints. The memory consumption is about `10,001` Python integers for the largest target, well within the 256 MB limit.
 
 ## Test Cases
 
 ```python
 import sys
 import io
-from contextlib import redirect_stdout
 
-MOD = 1000000007
-input = sys.stdin.readline
+MOD = 1_000_000_007
 
 def solve():
+    input = sys.stdin.readline
     t = int(input())
+    out = []
 
     for _ in range(t):
         n, m = map(int, input().split())
         coins = list(map(int, input().split()))
 
+        coins = sorted(set(c for c in coins if c <= m))
+
         dp = [0] * (m + 1)
         dp[0] = 1
 
         for coin in coins:
-            if coin > m:
-                continue
-
             for amount in range(coin, m + 1):
                 dp[amount] += dp[amount - coin]
                 if dp[amount] >= MOD:
                     dp[amount] -= MOD
 
-        print(dp[m])
+        out.append(str(dp[m]))
+
+    sys.stdout.write("\n".join(out))
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
-    old_input = globals()["input"]
+    old_stdout = sys.stdout
 
-    sys.stdin = io.StringIO(inp)
-    globals()["input"] = sys.stdin.readline
-
-    out = io.StringIO()
     try:
-        with redirect_stdout(out):
-            solve()
+        sys.stdin = io.StringIO(inp)
+        sys.stdout = io.StringIO()
+        solve()
+        return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
-        globals()["input"] = old_input
+        sys.stdout = old_stdout
 
-    return out.getvalue()
-
-# Provided sample
 sample = """\
 5
 1 100
@@ -294,93 +263,121 @@ assert run(sample) == """\
 884
 0
 649632988
-""", "provided sample"
+""", "provided samples"
 
-# Minimum-size input
 assert run("""\
 1
 1 1
 1
-""") == "1\n", "minimum-size case"
+""") == "1\n", "minimum target with the only usable coin"
 
-# Maximum n and maximum m, with only one denomination able to reach m
-max_coins = " ".join(map(str, range(9901, 10001)))
-assert run(f"""\
-1
-100 10000
-{max_coins}
-""") == "1\n", "maximum-size case"
-
-# Duplicate values, outside the formal distinct-denomination constraint.
-# Three separate entries of value 2 give C(3 + 3 - 1, 3 - 1) = 10.
-assert run("""\
-1
-3 6
-2 2 2
-""") == "10\n", "all-equal robustness case"
-
-# Boundary case: coin value exactly equals the target.
 assert run("""\
 1
 1 10000
-10000
-""") == "1\n", "coin equal to target"
+9999
+""") == "0\n", "coin is smaller than target but cannot divide it"
 
-# Unbounded reuse and coin-order independence.
-# 6 can be 2+2+2 or 3+3.
 assert run("""\
 1
-2 6
-3 2
-""") == "2\n", "unbounded and reversed order"
+2 5
+2 3
+""") == "1\n", "boundary combination 2 + 3"
+
+assert run("""\
+1
+2 4
+2 2
+""") == "1\n", "duplicate denominations must not multiply the answer"
+
+assert run("""\
+1
+100 10000
+""" + " ".join(["1"] * 100) + "\n") == "1\n", \
+    "maximum n and m with repeated denomination values"
+
+assert run("""\
+1
+3 10
+11 12 13
+""") == "0\n", "every coin exceeds the target"
+
+assert run("""\
+1
+3 6
+2 3 6
+""") == "3\n", "exact target and multiple combination sizes"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1 1 / 1` | `1` | Minimum valid input and the `dp[0]` initialization |
-| `100 10000` with denominations `9901..10000` | `1` | Maximum `n`, maximum `m`, and values larger than most of the target |
-| `3 6 / 2 2 2` | `10` | Robustness when duplicate values are supplied, although duplicates are outside the formal constraint |
-| `1 10000 / 10000` | `1` | Inclusive upper boundary of the inner loop |
-| `2 6 / 3 2` | `2` | Unlimited reuse and independence from input denomination order |
+| `1 / 1 1 / 1` | `1` | Minimum-size input and the `dp[0]` base case |
+| `1 / 1 10000 / 9999` | `0` | A usable-looking denomination that cannot actually reach the target |
+| `1 / 2 5 / 2 3` | `1` | Exact boundary combination and correct inclusive DP endpoint |
+| `1 / 2 4 / 2 2` | `1` | Duplicate denomination handling |
+| `1 / 100 10000 / 100 copies of 1` | `1` | Maximum `n` and maximum `m` |
+| `1 / 3 10 / 11 12 13` | `0` | All denominations larger than the target |
+| `1 / 3 6 / 2 3 6` | `3` | Several different multiplicities reaching the exact target |
 
 ## Edge Cases
 
-A denomination larger than the target is handled by the condition `if coin > m: continue`. For the input
+### A denomination larger than the target
+
+Consider
 
 ```
 1
-2 3
-4 5
-```
-
-both denominations are skipped, so the array remains `dp[0] = 1` and `dp[1..3] = 0`. The algorithm prints `0`, correctly recognizing that no positive amount can be formed.
-
-A denomination exactly equal to the target exercises the upper boundary. For
-
-```
-1
-1 5
+1 3
 5
 ```
 
-the loop runs with `amount = 5` and performs `dp[5] += dp[0]`. Since `dp[0] = 1`, the resulting `dp[5]` is `1`. The inclusive `m + 1` endpoint in `range(coin, m + 1)` is what makes this solution visible.
+The coin `5` is discarded because `5 > 3`. The DP remains `[1, 0, 0, 0]`, so `dp[3] = 0`. The algorithm does not attempt to access `dp[3 - 5]`, avoiding a negative-indexing bug in Python.
 
-Unlimited reuse is handled by the ascending amount loop. For
+### Order must not create different combinations
+
+Consider
 
 ```
 1
-2 6
+2 5
 2 3
 ```
 
-processing coin `2` produces `dp[2] = 1`, then `dp[4] = dp[2] = 1`, then `dp[6] = dp[4] = 1`, representing three copies of `2`. Processing coin `3` subsequently creates `dp[6] += dp[3] = 1`, representing two copies of `3`. The final answer is `2`.
+Initially `dp[0] = 1`. Processing coin `2` produces one way for amounts `2` and `4`, corresponding to `2` and `2 + 2`. Processing coin `3` then uses those states, so `dp[5]` receives one contribution from `dp[2]`, representing `2 + 3`. There is no second contribution corresponding to `3 + 2`, because the denomination `2` was already processed before `3`. The output is exactly `1`.
 
-Finally, changing the input order does not change the combinations. For
+### Repeated denomination values
+
+Consider
 
 ```
 1
-2 6
-3 2
+2 4
+2 2
 ```
 
-coin `3` is processed first and creates the `3 + 3` solution. Coin `2` is then processed and creates `2 + 2 + 2`. Since each denomination is handled in a fixed outer-loop phase and can be reused only through the ascending inner loop, neither solution is duplicated. The result remains `2`.
+After deduplication, the coin list is just `[2]`. The DP produces `dp[4] = 1`, corresponding to `2 + 2`. Without deduplication, treating the two equal values as separate coin types would make the same monetary combination appear through different input positions. The statement guarantees distinct denominations, so this case is outside the official input model, but the implementation handles it safely.
+
+### The empty combination as the DP base case
+
+For
+
+```
+1
+1 1
+1
+```
+
+the initial state is `dp[0] = 1`. Processing coin `1` updates `dp[1]` from `dp[0]`, giving `dp[1] = 1`. The one way is a single `1` coin. If `dp[0]` were initialized to zero, no amount would ever become reachable, because every transition would depend on an unreachable state.
+
+### Exact boundary at the target
+
+Consider
+
+```
+1
+3 6
+2 3 6
+```
+
+Processing `2` gives one way to make `2`, `4`, and `6`. Processing `3` adds `3` and `6`, while the amount `6` also receives the combination `3 + 3`. Finally, coin `6` adds the direct combination `[6]`. The three distinct combinations are `2 + 2 + 2`, `3 + 3`, and `6`, so the answer is `3`.
+
+The loop `range(coin, m + 1)` includes `m` itself. Stopping at `m - 1` would miss every combination whose final update creates the target directly, including the single coin `6` in this example.
