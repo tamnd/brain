@@ -1,7 +1,7 @@
 ---
 title: "CF 102354C - Money Sharing"
-description: "We process a sequence of money-sharing events in chronological order. A positive value means that much money is added to the public account. A negative value represents a borrower asking for the corresponding positive amount."
-date: "2026-08-14T12:17:41+07:00"
+description: "We process one chronological sequence containing two kinds of events. A positive value means that this much money is added to the shared account. A negative value represents a borrowing request whose size is the absolute value of that number."
+date: "2026-08-16T01:42:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102354
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "2018-2019 Summer Petrozavodsk Camp, Oleksandr Kulkov Contest 2"
 rating: 0
 weight: 102354
-solve_time_s: 353
+solve_time_s: 163
 verified: false
 draft: false
 ---
@@ -18,125 +18,133 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 53s  
+**Solve time:** 2m 43s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We process a sequence of money-sharing events in chronological order. A positive value means that much money is added to the public account. A negative value represents a borrower asking for the corresponding positive amount. We must decide which requests to approve so that the account balance never becomes negative.
+We process one chronological sequence containing two kinds of events. A positive value means that this much money is added to the shared account. A negative value represents a borrowing request whose size is the absolute value of that number. The account starts at zero, and an approved request immediately removes its amount from the account. A request can only be approved if the account can pay it at that moment.
 
-Among all valid decisions, the primary objective is to approve as many requests as possible. Equivalently, we want to minimize the number of declined requests. When several optimal decisions exist, any one is accepted.
+The output has one line for every event. A positive event is always printed as `resupplied`. For a request, we print `approved` if we keep that request in the accepted set and `declined` otherwise. The objective is to minimize the total number of declined requests, not the total amount of money borrowed.
 
-The output has one line for every event. A positive event always produces `resupplied`. For a negative event, the output says whether that request was ultimately kept as approved or removed from the chosen set of requests.
+There can be up to (10^5) requests and (10^5) resupplies, so the event sequence can contain (2\cdot10^5) elements. A quadratic algorithm could perform around (4\cdot10^{10}) operations in the worst case, which is far beyond a one-second limit. We need essentially linear or (O(N\log N)) work, where (N=n+m). The amounts can reach (10^9), and their total can reach roughly (2\cdot10^{14}), so the running balance must use an integer type capable of holding values much larger than 32-bit integers. Python integers already provide this safely.
 
-There can be up to (10^5) requests and (10^5) resupplies, so the entire sequence contains up to (2\cdot10^5) events. An algorithm that tries many subsets of requests is immediately impossible, since (2^{100000}) is far beyond any practical bound. Even an (O(n^2)) algorithm would perform around (10^{10}) operations in the worst case, which is too much for a one-second time limit. We need essentially linear or (O(n\log n)) processing.
+The first tricky case is a request that is too large for the account by itself. For example,
 
-The values themselves can have magnitude up to (10^9), and there can be (2\cdot10^5) events, so the total amount of money can reach roughly (2\cdot10^{14}). Python integers handle this safely, while a language with fixed-width integers should use 64-bit arithmetic.
+```
+1 1
+-5
++5
+```
 
-A subtle case occurs when accepting the current request is possible only if we later remove a larger request that was already accepted. For example:
+has output
+
+```
+declined
+resupplied
+```
+
+The first request must be declined because money arriving later cannot retroactively approve it. A careless solution that first computes the total amount of all resupplies and then decides which requests to accept would incorrectly treat the first request as feasible.
+
+Another subtle case is when the current request can be rejected, but rejecting an earlier request is better. Consider,
 
 ```
 3 1
 +5
 -3
+-2
+-1
+```
+
+A correct output is
+
+```
+resupplied
+approved
+approved
+approved
+```
+
+Here the balance after the first two requests is zero, so the final request is impossible and must actually be declined. Thus the correct output is instead
+
+```
+resupplied
+approved
+approved
+declined
+```
+
+A more revealing example is,
+
+```
+3 1
++5
 -4
+-3
++10
+```
+
+At `-3`, the account has only one unit left. We can make the current prefix feasible by declining the earlier request of 4 rather than the current request of 3. The output can be
+
+```
+resupplied
+declined
+approved
+resupplied
+```
+
+A greedy rule that always declines the current request whenever there is insufficient money loses an unnecessary accepted request.
+
+There is also a case where several requests have to be removed at one event. For example,
+
+```
+3 1
++3
+-2
+-2
 -2
 ```
 
-The optimal output is:
-
-```
-resupplied
-declined
-approved
-approved
-```
-
-After accepting `-3`, only 2 units remain, so `-4` cannot be accepted together with it. A careless greedy algorithm might simply decline `-4`, then also decline `-2` because it was looking only at the current balance. The better decision is to replace the earlier request of size 3 with the request of size 4. The total number of approved requests remains one at that point, and the remaining 2 units can then approve the final request.
-
-Another edge case is when the request that causes the balance to become negative is itself the largest accepted request. For example:
-
-```
-1 1
-+3
--5
-```
-
-The only correct output is:
-
-```
-resupplied
-declined
-```
-
-The algorithm must not leave the balance negative after temporarily accepting the request. It should immediately remove the largest accepted request, which here is the current request.
-
-A third case is a request whose amount exactly equals the available balance:
-
-```
-2 1
-+5
--5
--1
-```
-
-The correct output is:
-
-```
-resupplied
-approved
-declined
-```
-
-A condition using `balance <= 0` instead of `balance < 0` would incorrectly reject the request that uses the entire balance. Zero money remaining is completely valid.
-
-Finally, multiple resupplies can appear between requests:
-
-```
-3 2
-+2
-+3
--4
--1
--1
-```
-
-The first two requests can be approved, leaving zero money, while the last one must be declined. A solution that treats each resupply independently rather than maintaining the cumulative balance will make incorrect decisions.
+After accepting the first two requests, the balance would be negative when the third request arrives. Removing the largest accepted request is enough here, but in general several removals may be required. The implementation must keep removing accepted requests until the balance is nonnegative.
 
 ## Approaches
 
-The most direct approach is to consider every subset of requests. For each subset, we simulate the events in chronological order and check whether every selected request can be paid at its position. Among all feasible subsets, we keep one containing the largest number of requests. This is correct because every possible set of approved requests is explicitly considered.
+The direct brute-force approach is to decide independently whether every request is approved or declined. With (n) requests there are (2^n) possible subsets. For each subset, we can scan the complete event sequence and check whether its accepted requests are feasible at every point. That gives (O((n+m)2^n)) operations. With (n=10^5), even (2^n) itself is hopeless, so this approach is useful only for understanding the optimization target.
 
-The problem is the number of subsets. With (n) requests there are (2^n) possible choices, and checking one choice takes (O(n+m)) time. The worst-case operation count is therefore (O((n+m)2^n)), which is already hopeless for even a few dozen requests, let alone (10^5).
+The key observation is that feasibility depends only on the total amount of accepted requests seen so far. Suppose the total resupply received so far is (S), and the accepted requests in the prefix have total amount (C). The prefix is feasible exactly when (C\le S).
 
-The key observation is that every request has exactly the same value for our objective: approving any request contributes one to the answer. The only thing that differs between requests is how much money they consume.
+Now process requests from left to right and tentatively accept every one. If accepting the current request makes the total exceed the available money, at least one accepted request from the processed prefix must be removed. Since the objective counts declined requests, we want to remove exactly one request whenever one removal can restore feasibility. Among all accepted requests, removing the largest one gives the greatest reduction in consumed money while costing the same one rejection.
 
-Suppose at some point the chosen requests require more money than has been supplied so far. We have to remove at least one already accepted request. Since removing any one request decreases the number of approved requests by exactly one, the best possible repair is to remove the request that frees the largest amount of money. Removing a larger request gives us at least as much remaining balance as removing any smaller request, while costing exactly the same one approval.
+This greedy choice also preserves the most money for future requests. Suppose two accepted requests have sizes (a<b). If we must reject one of them, rejecting (b) leaves (b-a) more money available than rejecting (a), while both choices increase the number of rejected requests by exactly one. A larger remaining balance can never make future feasibility worse.
 
-This leads naturally to a greedy strategy. Temporarily accept every request. If doing so makes the balance negative, remove the largest request among all currently accepted requests. A max-heap lets us find that request efficiently.
+That leads naturally to a max-heap containing all currently accepted request sizes. When a request arrives, tentatively accept it and insert it into the heap. If the balance becomes negative, remove the largest accepted request from the heap and mark that request as declined. Repeat until the balance is nonnegative. The heap lets us find the largest accepted request in (O(\log n)).
 
-The important part is that a request removed earlier can be replaced by a later request. This is why simply declining the first request that does not fit is not sufficient. The heap gives us the ability to revise an earlier decision while keeping the maximum possible number of accepted requests.
+The brute-force method considers every possible accepted subset because it has no way to recognize which decisions are interchangeable. The greedy method exploits the fact that every request has the same cost in the objective, namely one rejection, while their monetary sizes differ. Whenever a rejection is forced, the largest accepted request is the most valuable one to discard.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | (O((n+m)2^n)) | (O(n+m)) | Too slow |
-| Greedy with max-heap | (O((n+m)\log n)) | (O(n)) | Accepted |
+| Optimal | (O((n+m)\log n)) | (O(n+m)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the complete event sequence and create an output array initially containing no decision for each event. Keep a variable `balance`, initially zero, representing money currently available after all approved requests processed so far.
-2. For every positive event, add its value to `balance` and write `resupplied` for that event. A resupply never competes with another decision, so it can always be incorporated immediately.
-3. For every negative event, let `cost` be its absolute value. Temporarily approve the request by subtracting `cost` from `balance`. Store this accepted request in a max-heap together with its position.
-4. If the resulting balance is nonnegative, keep the request approved. The current set of accepted requests is feasible at this point, so there is no reason to remove anything.
-5. If the balance is negative, remove the accepted request with the largest cost from the heap. Mark that request as `declined` and add its cost back to `balance`. Because all requests contribute exactly one unit to the objective, removing the largest request is the best possible repair: every possible removal loses one approval, and the largest request gives back the most money.
-6. Continue through the entire event sequence. At the end, every request remaining in the heap is approved, while every request removed from the heap is declined. The output array already records the final status of every request, including requests that were accepted temporarily and later removed.
+1. Read the complete event sequence and create an output array initialized according to the event type. For a positive event, the answer is immediately `resupplied`; for a request, initially mark it `approved` because the greedy algorithm will first try to accept every request.
+2. Maintain `balance`, the amount of money currently left in the account, and a max-heap of accepted requests. Python's `heapq` is a min-heap, so store each request amount as a negative number. Store the event index together with the amount because a later heap removal may reject an earlier request.
+3. When a positive event of value (x) occurs, add (x) to `balance`. Nothing has to be removed from the heap because resupply only increases the available money.
+4. When a negative event of value (-x) occurs, tentatively approve it. Subtract (x) from `balance` and insert (( -x, index)) into the heap.
+5. If `balance` is now negative, repeatedly remove the largest request from the heap. For a heap entry representing amount (x), add (x) back to `balance` and change that request's output from `approved` to `declined`.
+
+The removed request does not have to be the current one. This is the central greedy step: one rejection can recover the largest possible amount of money, leaving the largest possible balance for future requests.
+6. Continue until all events have been processed. Every accepted request remains in the heap, and every request removed from the heap is marked `declined`.
 
 ### Why it works
 
-After processing any prefix of the event sequence, the heap contains a feasible set of approved requests with the maximum possible number of requests among all feasible choices for that prefix.
+After processing any prefix, the heap contains exactly the requests that the algorithm currently accepts. The invariant is that their total cost never exceeds the total resupply received in that prefix, so the account balance is always nonnegative.
 
-When a new request fits, adding it increases the number of approved requests by one, so the new set is optimal for that prefix. When it does not fit, some accepted request must be removed. Every possible removal decreases the number of approvals by one, but removing the largest request leaves the greatest possible balance. Thus the heap contains the best possible feasible set among all choices with the maximum number of approvals. Since future events depend only on the amount of money left and the requests already selected, keeping the largest possible remaining balance among equally large solutions can never hurt future feasibility. This maintains the invariant throughout the sequence and gives a globally optimal number of approved requests.
+When a new request causes a deficit, every feasible solution must reject at least one request from the accepted prefix. The algorithm rejects the largest accepted request. This uses the minimum possible number of new rejections, because one rejection is enough whenever the largest request restores feasibility. If several requests must be removed, each removal chooses the largest remaining request, maximizing the money recovered for every rejection.
+
+More strongly, among all feasible choices having the same number of accepted requests in the processed prefix, keeping the largest possible remaining balance is always at least as good for the future. Rejecting the largest request achieves exactly that. Thus the greedy state never has fewer possibilities for future requests than another solution with the same number of rejections. By induction over the event sequence, the final number of declined requests is minimal.
 
 ## Python Solution
 
@@ -152,27 +160,26 @@ def solve():
 
     events = [int(input()) for _ in range(total)]
 
-    balance = 0
+    answer = []
     heap = []
-    answer = [""] * total
+    balance = 0
 
     for i, x in enumerate(events):
         if x > 0:
             balance += x
-            answer[i] = "resupplied"
-        else:
-            cost = -x
+            answer.append("resupplied")
+            continue
 
-            balance -= cost
-            heapq.heappush(heap, (-cost, i))
-            answer[i] = "approved"
+        amount = -x
+        balance -= amount
+        heapq.heappush(heap, (-amount, i))
+        answer.append("approved")
 
-            if balance < 0:
-                neg_cost, idx = heapq.heappop(heap)
-                removed_cost = -neg_cost
-
-                balance += removed_cost
-                answer[idx] = "declined"
+        while balance < 0:
+            neg_amount, idx = heapq.heappop(heap)
+            amount_removed = -neg_amount
+            balance += amount_removed
+            answer[idx] = "declined"
 
     sys.stdout.write("\n".join(answer))
 
@@ -180,25 +187,25 @@ if __name__ == "__main__":
     solve()
 ```
 
-The `balance` variable represents the actual money left after all currently approved requests. Positive events increase it before any request decision can be made.
+The input is stored first so that every request has a stable event index. This index is necessary because a request accepted earlier can later become the request we decide to decline.
 
-For a request, the code first inserts `(-cost, index)` into Python's min-heap. Negating the cost turns the smallest heap key into the largest original cost, effectively giving us a max-heap.
+For a resupply, the code only increases `balance` and records `resupplied`. There is no reason to modify the heap because existing accepted requests remain accepted when more money arrives.
 
-The request is initially marked `approved` because the greedy algorithm needs to consider it as a candidate. If this creates a negative balance, exactly one request is removed. The popped heap entry tells us both which request to decline and how much money that decision restores.
+For a request, the code first treats it as accepted. This temporarily subtracts its amount from `balance` and inserts it into the heap. If the resulting balance is negative, the current prefix cannot be feasible with all tentative approvals.
 
-The index stored in every heap entry is necessary because the request removed from the heap might not be the current request. Without the index, we could know which amount to remove but could not update the corresponding output line.
+The heap stores `(-amount, index)`. Because Python's heap returns the smallest value, the most negative entry corresponds to the largest request amount. For example, requests of sizes 3, 8, and 5 are stored as `-3`, `-8`, and `-5`, so `-8` is removed first.
 
-The test is `balance < 0`, not `balance <= 0`. A balance of zero is valid because the last approved request can consume the account's entire remaining balance.
+When a request is removed, the code adds its amount back to the balance and changes `answer[idx]` to `declined`. This is why the output cannot simply be decided at the moment a request arrives. A request that was initially approved can become the rejected request later.
 
-There is no integer overflow issue in Python. The largest possible cumulative value is on the order of (10^{14}), comfortably handled by Python's arbitrary-precision integers.
+The `while` condition is necessary rather than an `if`. A single large request can create a deficit greater than every other accepted request, so several accepted requests may have to be discarded. The heap always contains at least the current request while the balance is negative, so the loop cannot run out of elements before restoring feasibility.
 
-The input is read with `sys.stdin.readline`, and all output is assembled into one string. This avoids the overhead of performing many separate output operations for up to (2\cdot10^5) lines.
+Python integers handle the possible balance of roughly (2\cdot10^{14}) without overflow. The heap contains at most (n) requests, and every request is inserted once and removed at most once.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input is:
+The input is
 
 ```
 4 1
@@ -209,19 +216,19 @@ The input is:
 -1
 ```
 
-The trace is:
+The state evolves as follows.
 
-| Event | Balance before | Action | Heap after action | Balance after |
+| Event | Action | Balance | Heap amounts | Output change |
 | --- | --- | --- | --- | --- |
-| `+5` | 0 | resupply | empty | 5 |
-| `-3` | 5 | approve | {3} | 2 |
-| `-2` | 2 | approve | {3, 2} | 0 |
-| `-1` | 0 | temporarily approve, remove 3 | {2, 1} | 2 |
-| `-1` | 2 | approve | {2, 1, 1} | 1 |
+| `+5` | Resupply | 5 | `{}` | `resupplied` |
+| `-3` | Accept | 2 | `{3}` | `approved` |
+| `-2` | Accept | 0 | `{3, 2}` | `approved` |
+| `-1` | Accept | -1 | `{3, 2, 1}` | Remove 3, so request 2 becomes `declined` |
+| `-1` | Accept | 0 | `{2, 1, 1}` | `approved` |
 
-At the fourth event, approving the new request would make the balance negative. The largest accepted request is the earlier request of size 3, so that request is removed. The new request of size 1 survives, and the account is left with 2 units. This is better than declining the current request because both choices would remove one approval, but replacing the request of size 3 with the request of size 1 leaves much more money for future requests.
+The third request in the table is the original `-1` at event index 3. It initially becomes approved, but the heap identifies the earlier request of size 3 as the best one to reject. That leaves enough money for both size-2 and size-1 requests.
 
-The final output is:
+The final output is
 
 ```
 resupplied
@@ -231,34 +238,34 @@ approved
 approved
 ```
 
+The trace demonstrates why the heap must store event indices. The request that becomes declined is not necessarily the request currently being processed.
+
 ### Constructed Example 2
 
-Consider:
+Consider
 
 ```
-4 2
+3 2
 +5
 -4
 -3
 +2
 -2
--2
 ```
 
 The trace is:
 
-| Event | Balance before | Action | Heap after action | Balance after |
+| Event | Action | Balance | Heap amounts | Output change |
 | --- | --- | --- | --- | --- |
-| `+5` | 0 | resupply | empty | 5 |
-| `-4` | 5 | approve | {4} | 1 |
-| `-3` | 1 | temporarily approve, remove 4 | {3} | 2 |
-| `+2` | 2 | resupply | {3} | 4 |
-| `-2` | 4 | approve | {3, 2} | 2 |
-| `-2` | 2 | approve | {3, 2, 2} | 0 |
+| `+5` | Resupply | 5 | `{}` | `resupplied` |
+| `-4` | Accept | 1 | `{4}` | `approved` |
+| `-3` | Accept | -2 | `{4, 3}` | Remove 4, so request 2 becomes `declined` |
+| `+2` | Resupply | 3 | `{3}` | `resupplied` |
+| `-2` | Accept | 1 | `{3, 2}` | `approved` |
 
-The second request cannot coexist with the first request, because their combined cost is 7 while only 5 has been supplied so far. The greedy algorithm replaces the request costing 4 with the request costing 3. Later, the additional resupply makes it possible to accept both remaining requests.
+The algorithm rejects the earlier request of size 4 and keeps the request of size 3. Both choices would involve one rejection at the moment of the deficit, but keeping the smaller request leaves more money available. The later resupply then makes the final request feasible as well.
 
-The final output is:
+The output is
 
 ```
 resupplied
@@ -266,243 +273,181 @@ declined
 approved
 resupplied
 approved
-approved
 ```
 
-This example demonstrates why the algorithm must be allowed to undo an earlier approval. A strategy that permanently commits to every request that fits at its own moment can lose an approval later.
+This example exercises the central exchange argument: when exactly one rejection is required, removing the largest accepted request is always the strongest choice for the remaining sequence.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O((n+m)\log n)) | Each request is inserted into and possibly removed from the heap once. |
-| Space | (O(n+m)) | The event array and output contain the whole sequence, while the heap contains at most (n) requests. |
+| Time | (O((n+m)\log n)) | Every request enters the heap once and can leave it once, with (O(\log n)) cost per heap operation. |
+| Space | (O(n+m)) | The event array, output array, and heap together use linear memory. |
 
-There are at most (2\cdot10^5) events and at most (10^5) heap entries. Each heap operation costs (O(\log n)), giving roughly (2\cdot10^5\log(10^5)) heap-level operations in the worst case. This is easily within the intended complexity for the given constraints, while the brute-force exponential approach is completely infeasible.
+With at most (2\cdot10^5) events, the heap performs only a linear number of insertions and removals, each logarithmic in the number of requests. This is comfortably within the intended complexity for the one-second limit, and the memory usage is linear.
 
 ## Test Cases
 
-The following test harness exposes the solver as a function so that the cases can be checked with ordinary Python assertions.
+The following test harness uses the same algorithm as the submitted solution, but wraps it in a function so that several complete inputs can be checked with assertions.
 
 ```python
-import sys
-import io
 import heapq
+import io
+import sys
 
-def solve_data(inp: str) -> str:
-    data = inp.strip().split()
+def solve_io(inp: str) -> str:
+    data = list(map(int, inp.split()))
     it = iter(data)
 
-    n = int(next(it))
-    m = int(next(it))
-    total = n + m
+    n = next(it)
+    m = next(it)
+    events = [next(it) for _ in range(n + m)]
 
-    events = [int(next(it)) for _ in range(total)]
-
-    balance = 0
+    answer = []
     heap = []
-    answer = [""] * total
+    balance = 0
 
     for i, x in enumerate(events):
         if x > 0:
             balance += x
-            answer[i] = "resupplied"
+            answer.append("resupplied")
         else:
-            cost = -x
+            amount = -x
+            balance -= amount
+            heapq.heappush(heap, (-amount, i))
+            answer.append("approved")
 
-            balance -= cost
-            heapq.heappush(heap, (-cost, i))
-            answer[i] = "approved"
-
-            if balance < 0:
-                neg_cost, idx = heapq.heappop(heap)
-                balance += -neg_cost
+            while balance < 0:
+                neg_amount, idx = heapq.heappop(heap)
+                balance += -neg_amount
                 answer[idx] = "declined"
 
-    return "\n".join(answer) + "\n"
+    return "\n".join(answer)
 
-def run(inp: str) -> str:
-    return solve_data(inp)
-
-assert run("""\
-4 1
+# Provided sample
+assert solve_io(
+    """4 1
 +5
 -3
 -2
 -1
 -1
-""") == """\
-resupplied
+"""
+) == """resupplied
 declined
 approved
 approved
-approved
-""", "sample 1"
+approved""", "sample 1"
 
-assert run("""\
-2 1
-+5
+# Minimum-sized input, request arrives before any money.
+assert solve_io(
+    """1 1
 -5
--1
-""") == """\
-resupplied
-approved
-declined
-""", "exact balance must be accepted"
-
-assert run("""\
-3 1
 +5
--3
+"""
+) == """declined
+resupplied""", "initial empty account"
+
+# A previous larger request must be rejected instead of the current request.
+assert solve_io(
+    """3 1
++5
 -4
--2
-""") == """\
-resupplied
+-3
+-1
+"""
+) == """resupplied
 declined
 approved
-approved
-""", "replace a larger earlier request"
+approved""", "reject largest accepted request"
 
-assert run("""\
-1 1
+# All request and resupply amounts are equal, with exact balance at every request.
+assert solve_io(
+    """3 3
 +1
 -1
-""") == """\
-resupplied
-approved
-""", "minimum-size input"
-
-assert run("""\
-4 2
-+5
--4
--3
-+2
--2
--2
-""") == """\
-resupplied
-declined
++1
+-1
++1
+-1
+"""
+) == """resupplied
 approved
 resupplied
 approved
-approved
-""", "replacement followed by a later resupply"
+resupplied
+approved""", "all equal values"
 
-events = [1] * 100000 + [-1] * 100000
-large_input = "100000 100000\n" + "\n".join(map(str, events)) + "\n"
-large_output = run(large_input)
-large_lines = large_output.splitlines()
+# Maximum-size structure: 100000 resupplies followed by 100000 requests.
+# Every request has exactly one unit available.
+max_n = 100000
+max_m = 100000
+max_input = (
+    f"{max_n} {max_m}\n"
+    + "+1\n" * max_m
+    + "-1\n" * max_n
+)
+max_output = (
+    "resupplied\n" * max_m
+    + "approved\n" * max_n
+).rstrip()
 
-assert len(large_lines) == 200000, "maximum-size case has wrong output length"
-assert all(x == "resupplied" for x in large_lines[:100000]), "all supplies must be processed"
-assert all(x == "approved" for x in large_lines[100000:]), "all unit requests fit"
+assert solve_io(max_input) == max_output, "maximum-size input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `+1, -1` | Both events accepted | Minimum-size case and exact balance |
-| `+5, -5, -1` | First request accepted, second declined | Distinguishes `balance == 0` from an invalid negative balance |
-| `+5, -3, -4, -2` | `-3` declined, `-4` and `-2` accepted | Verifies replacement of a previously accepted request |
-| `+5, -4, -3, +2, -2, -2` | `-4` declined, all later requests accepted | Verifies that replacement decisions interact correctly with future resupplies |
-| 100000 supplies followed by 100000 unit requests | Every event accepted | Maximum-size input and performance |
+| `1 1`, followed by `-5`, `+5` | `declined`, `resupplied` | Initial balance is zero, and future money cannot satisfy a past request. |
+| `+5, -4, -3, -1` | `resupplied`, `declined`, `approved`, `approved` | An earlier larger request must be removed instead of blindly rejecting the current request. |
+| Alternating `+1, -1` events | Every request is `approved` | Exact zero-balance boundaries and equal request sizes. |
+| 100000 `+1` events followed by 100000 `-1` events | Every request is `approved` | Maximum event count, large output, and linear heap usage. |
 
 ## Edge Cases
 
-The first non-obvious case is replacing an earlier request. For
+The first edge case is a request before the first resupply. For
 
 ```
-3 1
-+5
--3
--4
--2
-```
-
-the balance becomes 5 after the resupply. The request of 3 is accepted, leaving 2. The request of 4 is temporarily accepted, taking the balance to -2. The heap contains requests of sizes 3 and 4, so the size 4 request is actually removed, leaving the size 3 request approved and a balance of 2. The final request of size 2 is then accepted. The output is:
-
-```
-resupplied
-approved
-declined
-approved
-```
-
-This is the exact situation in which a simplistic "decline the current request" rule happens to work, but the heap formulation also handles the more difficult reverse situation where the current request is smaller than an earlier one.
-
-Consider instead:
-
-```
-3 1
-+5
--3
--2
--4
-```
-
-After the first two requests, the balance is zero and the heap contains 3 and 2. The request of 4 is temporarily accepted, producing a balance of -4. The largest accepted request is 4 itself, so it is removed. The first two requests remain approved. The output is:
-
-```
-resupplied
-approved
-approved
-declined
-```
-
-This confirms that the current request can be the one removed from the heap.
-
-The exact-zero boundary is handled by
-
-```
-2 1
-+5
+1 1
 -5
--1
++5
 ```
 
-The balance becomes zero after approving `-5`, so no removal occurs. Only the final request is declined. The output is:
+the heap receives the size-5 request, making the balance (-5). The heap immediately removes that request, restores the balance to zero, and marks it declined. The later `+5` only increases the balance afterward. The result is `declined`, `resupplied`, which respects the chronological nature of the account.
+
+The second edge case is a deficit where rejecting the current request is not optimal. For
 
 ```
-resupplied
-approved
-declined
-```
-
-Using `<= 0` in the heap-repair condition would incorrectly remove the size-5 request.
-
-A sequence can also contain several resupplies before any borrowing:
-
-```
-3 2
-+2
-+3
+3 1
++5
 -4
+-3
 -1
+```
+
+after `-4` the balance is 1. Accepting `-3` gives a balance of (-2). The heap contains requests of sizes 4 and 3, so the size-4 request is removed. The balance becomes 2, leaving the size-3 request accepted. The final `-1` then succeeds, leaving balance 1. The output is `resupplied`, `declined`, `approved`, `approved`.
+
+The third edge case is an exact boundary where the balance becomes zero. With
+
+```
+3 1
++5
+-2
+-3
 -1
 ```
 
-The balance reaches 5 before the first request. After approving the request of 4, it is 1, so the request of 1 is also approved and the balance becomes zero. The final request cannot be approved. The output is:
+the first request leaves balance 3, the second leaves balance 0, and the third request would make it negative. The heap contains sizes 2, 3, and 1 after tentative acceptance, so the largest request, size 3, is removed. The balance returns to 2, and the current size-1 request remains approved. The output is `resupplied`, `approved`, `declined`, `approved`. The condition must be `balance < 0`, not `balance <= 0`, because having exactly zero money is still feasible.
+
+The fourth edge case is a request that creates a deficit requiring more than one removal. For example,
 
 ```
-resupplied
-resupplied
-approved
-approved
-declined
+3 1
++3
+-2
+-2
+-2
 ```
 
-The algorithm simply accumulates every positive event in `balance`, so there is no special handling needed for consecutive resupplies.
+after the first request the balance is 1. After the second request it is (-1), so the heap removes one size-2 request and restores the balance to 1. The current request remains approved. The next size-2 request again creates a deficit, so another size-2 request is removed. The algorithm therefore handles multiple removals at one event rather than assuming a single rejection is always sufficient.
 
-Large amounts are another practical edge case. For example:
-
-```
-2 2
-+1000000000
-+1000000000
--1000000000
--1000000000
-```
-
-The balance reaches (2\cdot10^9), and both requests are approved, leaving zero. Python's integer arithmetic handles these values directly, and the heap stores the request costs without any conversion or truncation.
-
-The final subtlety is that a declined request may have occurred many events earlier. Its output line must change when the heap later removes it. That is why every heap entry stores the original event index. Without that index, the algorithm could find the correct request size but would be unable to produce the required per-event output.
+The final edge case is the maximum input size. With (10^5) resupplies of `+1` followed by (10^5) requests of `-1`, every request is immediately feasible. The heap grows to (10^5) elements, but every operation remains (O(\log n)), and the complete sequence still requires only (O((n+m)\log n)) time and (O(n+m)) memory.
