@@ -1,7 +1,7 @@
 ---
 title: "CF 102375C - \u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u044f"
-description: "There are exactly (N) rooms, numbered from (1) to (N), and exactly (N) participants. Participant (i) has passport number (ai). We may choose any one-to-one assignment of participants to rooms."
-date: "2026-08-14T03:25:40+07:00"
+description: "There are exactly (N) rooms, numbered from (1) to (N), and exactly (N) participants. Participant (i) has passport number (ai)."
+date: "2026-08-15T07:02:06+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102375
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0443\u043d\u0434 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u0421\u0435\u0432\u0435\u0440\u043e-\u0417\u0430\u043f\u0430\u0434\u0430 \u0420\u043e\u0441\u0441\u0438\u0438 \u0438 \u041c\u043e\u0441\u043a\u0432\u044b ICPC 2019"
 rating: 0
 weight: 102375
-solve_time_s: 130
+solve_time_s: 338
 verified: false
 draft: false
 ---
@@ -18,99 +18,100 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 10s  
+**Solve time:** 5m 38s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-There are exactly (N) rooms, numbered from (1) to (N), and exactly (N) participants. Participant (i) has passport number (a_i). We may choose any one-to-one assignment of participants to rooms.
+There are exactly (N) rooms, numbered from (1) to (N), and exactly (N) participants. Participant (i) has passport number (a_i). We may choose any one-to-one assignment of participants to rooms, and a participant creates a match when their passport number is equal to the number of the room they receive.
 
-A participant creates a match if their passport number is exactly the number of the room they receive. The task is to maximize the number of such matches.
+The task is to maximize the number of matches. A passport number larger than (N) can never produce a match because there is no room with that number. For a passport number (x) with (1 \le x \le N), only one participant can be placed into room (x), so duplicates of (x) cannot create multiple matches.
 
-The key restriction is that every room can hold only one participant. Suppose passport number (x) appears several times. If (x) is a valid room number, at most one of those participants can contribute a match, because there is only one room numbered (x). On the other hand, if a passport value (x) appears at least once and (1 \le x \le N), we can always place one participant with that passport into room (x). Different passport values correspond to different rooms, so all such values can be matched simultaneously.
+The crucial consequence is that every distinct passport number in the interval ([1,N]) contributes exactly one possible match. We only need to count how many different values from that interval occur in the array.
 
-Thus the answer is exactly the number of distinct passport values that lie in the interval ([1,N]).
+The bound (N \le 10^5) is small enough for linear or (O(N\log N)) algorithms, but it rules out an (O(N^2)) approach under a typical competitive-programming time limit. At (N=10^5), a quadratic scan can perform about (10^{10}) comparisons, which is far beyond what is practical. Passport numbers can reach (10^9), so allocating an array indexed by the passport number would waste enormous memory. A hash set is a natural fit because it stores only the values that actually occur.
 
-The value of (N) can reach (10^5), so an algorithm with quadratic complexity would already require around (10^{10}) operations in the worst case, far beyond what a typical competitive programming time limit can handle. The passport numbers can reach (10^9), so allocating an array indexed by passport number would also be inappropriate. We need a method whose work is close to linear in (N), while storing only the values that actually occur.
+Several cases can make a careless implementation produce the wrong answer. First, duplicates must be counted once. For input
 
-There are several edge cases that can fool a careless implementation. First, duplicate passport numbers must be counted only once. For example,
+```
+5
+1
+3
+5
+7
+5
+```
+
+the answer is (3), not (4), because rooms (1), (3), and (5) can match, while the two participants with passport (5) compete for the same room.
+
+Second, values outside the room range must be ignored. For
 
 ```
 4
-1
-1
-2
-2
+1000000000
+1000000000
+1000000000
+1000000000
 ```
 
-has answer `2`, because only rooms 1 and 2 can be matched, despite having four participants with matching passport values. Counting every passport in the range would incorrectly produce `4`.
-
-Second, passport numbers larger than (N) can never match any room. For example,
-
-```
-3
-1
-3
-100
-```
-
-has answer `2`. The passport `100` cannot match because there is no room 100.
+the answer is (0), since no room has number (10^9).
 
 Third, the boundary value (N) is valid and must be included. For
 
 ```
+3
+1
+2
+3
+```
+
+the answer is (3). An implementation that checks `a[i] < N` instead of `a[i] <= N` would incorrectly return (2).
+
+Finally, the smallest room range must work correctly. For
+
+```
 1
 1
 ```
 
-the answer is `1`. An implementation using a strict condition such as `a_i < N` would incorrectly return zero.
-
-Finally, several participants may all have a passport number outside the room range. For example,
+the answer is (1), while for
 
 ```
-4
-1000000000
-1000000000
-1000000000
-1000000000
+1
+2
 ```
 
-has answer `0`. The duplicates do not matter, and none of the values corresponds to an available room.
+the answer is (0). These cases expose mistakes around the endpoints of the valid interval.
 
 ## Approaches
 
-A direct brute-force approach is to consider every possible assignment of participants to rooms. There are (N!) permutations of the participants, and for each assignment we can inspect the (N) rooms and count how many passport numbers match their room numbers. This is correct because every possible seating arrangement is examined, so the best one must be found. However, the worst-case work is (N \cdot N!). Even at (N=10), this is already (36{,}288{,}000) room checks, while (N=10^5) makes the approach completely infeasible.
+A direct approach is to consider every room and search through all participants for someone whose passport equals that room number. For each room (r), we scan the (N) passport numbers and check whether some participant has passport (r). If such a participant exists, we count one match. This is correct because every room can host exactly one participant, so the existence of at least one participant with passport (r) is sufficient to make room (r) contribute one match.
 
-The structure of the matching condition gives us a much simpler way to think about the problem. A match in room (x) is possible exactly when at least one participant has passport number (x). Since there is exactly one room with number (x), multiple participants having the same passport number do not create multiple possible matches. The only information that matters is whether each room number appears at least once among the passport numbers.
+The problem is the amount of work. There are (N) rooms, and each one may require checking (N) participants, giving (N^2) comparisons. At (N=10^5), that is (10^{10}) comparisons in the worst case, which is too slow.
 
-We therefore scan the passport numbers and collect the distinct values that are between (1) and (N). Every collected value corresponds to one different room, and one participant carrying that passport can be placed there. Conversely, no passport value outside this range can produce a match, and duplicate occurrences of the same value cannot produce additional matches.
+The observation that changes the problem is that the identity of the participant does not matter once we know whether a passport number occurs. For every room number (r) from (1) through (N), the answer gains one exactly when (r) appears at least once among the passport numbers. Multiple occurrences of the same (r) do not help because room (r) can contain only one participant.
 
-Because the passport numbers can be as large as (10^9), a Python `set` is a natural representation. It stores only values that actually occur and gives expected constant-time insertion and membership operations.
+We can represent all passport numbers that have appeared with a set. While reading the input, we insert only values satisfying (1 \le a_i \le N). At the end, the size of the set is exactly the number of rooms for which a matching participant exists.
+
+The two approaches can be summarized as follows.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N \cdot N!)) | (O(N)) | Too slow |
+| Brute Force | (O(N^2)) | (O(1)) | Too slow |
 | Optimal | (O(N)) expected | (O(N)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read (N), the number of rooms and participants.
-2. Create an empty set called `matched`.
-3. Read each passport number (a_i). If (a_i) is between (1) and (N), insert it into `matched`.
+1. Read (N) and create an empty set called `seen`. The set will contain each passport number that can correspond to a room, with duplicates automatically removed.
+2. Read each of the (N) passport numbers. If a value (a_i) satisfies (1 \le a_i \le N), insert it into `seen`. Values greater than (N) can never match any room, so storing them is unnecessary.
+3. After all participants have been processed, output `len(seen)`. Each value in the set corresponds to one distinct room number that can be matched by assigning a participant with that passport number to the corresponding room.
 
-The upper bound is the only interesting check because all passport numbers are already guaranteed to be at least (1). A value larger than (N) has no corresponding room, while a value equal to (N) is valid and must be retained.
-4. After processing all participants, output the size of `matched`.
-
-Each value in this set represents a different room that can be filled by a participant with exactly that passport number. Since all these room numbers are distinct, all of these matches can coexist in one seating arrangement.
+Why can all these matches be achieved simultaneously? Suppose the set contains (k) distinct valid passport numbers. Each one corresponds to a different room number, so we can choose one participant for each distinct passport value and put that participant into its matching room. These participants are different because one participant has only one passport number, and different passport values cannot belong to the same participant. The remaining participants can be assigned arbitrarily to the remaining rooms.
 
 ### Why it works
 
-Consider any passport value (x) in `matched`. It occurs among the participants and satisfies (1 \le x \le N), so there is a room numbered (x). We can place one participant with passport (x) into that room and obtain one match. Since different values in the set correspond to different rooms, doing this for every value in the set is possible simultaneously.
-
-Now consider any seating arrangement. A match can only occur when a participant's passport value is a room number, so that value must be in ([1,N]). If several participants share the same passport value (x), at most one can match because only one room has number (x). Consequently, no arrangement can contain more matches than the number of distinct valid passport values.
-
-The algorithm constructs exactly that set of distinct valid values, so its size is both achievable and an upper bound. It is therefore the maximum possible number of matches.
+The invariant after processing any prefix of the participants is that `seen` contains exactly the distinct passport numbers from that prefix that lie in the room range (1) through (N). At the end, for every room (r), the set contains (r) exactly when at least one participant has passport (r). If (r) is present, one such participant can be assigned to room (r), producing a match. If (r) is absent, no assignment can make room (r) a match. Since different values in `seen` correspond to different rooms, all of these possible matches can be achieved at once. Thus the size of the set is precisely the maximum possible number of matches.
 
 ## Python Solution
 
@@ -120,32 +121,32 @@ input = sys.stdin.readline
 
 def solve():
     n = int(input())
-    matched = set()
+    seen = set()
 
     for _ in range(n):
-        x = int(input())
-        if x <= n:
-            matched.add(x)
+        passport = int(input())
+        if passport <= n:
+            seen.add(passport)
 
-    print(len(matched))
+    print(len(seen))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The `matched` set corresponds directly to the set constructed in step 2 of the algorithm. Each input passport is processed once, and `add` automatically handles duplicates, so there is no separate frequency array or sorting step.
+The first line reads the number of rooms and participants. The set is initially empty, matching the state before any passport numbers have been processed.
 
-The condition `x <= n` is sufficient because the problem guarantees (x \ge 1). Using `x < n` would be an off-by-one error because room (N) exists. Values up to (10^9) are harmless for Python integers, and no arithmetic involving the passport values can overflow.
+For every participant, the code checks `passport <= n`. Passport numbers are guaranteed to be at least (1), so there is no need to test the lower bound explicitly. A passport equal to (n) must be accepted, which is why the comparison is `<=` rather than `<`.
 
-The solution does not need to store the entire input array. Once a passport value has been inserted into the set, its original participant index is irrelevant. This keeps the implementation simple and uses only the information needed to determine the answer.
+Calling `seen.add(passport)` handles duplicates automatically. If five participants have passport (5), the set still contains only one copy of (5), exactly matching the fact that only one of them can occupy room (5).
 
-There is only one test case in the problem, so the program reads exactly (N) passport numbers. The use of `sys.stdin.readline` provides fast input suitable for (N=10^5).
+There is no integer-overflow concern in Python, and the largest passport value, (10^9), is handled directly by the integer type. More importantly, we never try to allocate an array of size (10^9), so the large passport range has no negative effect on memory usage.
+
+The final `len(seen)` is the answer because every stored value corresponds to one distinct achievable room match.
 
 ## Worked Examples
 
-### Sample 1
-
-The input is
+For Sample 1, the input is
 
 ```
 5
@@ -156,21 +157,19 @@ The input is
 5
 ```
 
-The algorithm keeps only passport values that correspond to rooms and stores each such value once.
+The state changes as follows.
 
-| Passport | Condition (x \le N) | Set after insertion |
-| --- | --- | --- |
-| 1 | true | {1} |
-| 3 | true | {1, 3} |
-| 5 | true | {1, 3, 5} |
-| 7 | false | {1, 3, 5} |
-| 5 | true | {1, 3, 5} |
+| Participant | Passport | Valid room number? | `seen` after processing | Current answer |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | Yes | `{1}` | 1 |
+| 2 | 3 | Yes | `{1, 3}` | 2 |
+| 3 | 5 | Yes | `{1, 3, 5}` | 3 |
+| 4 | 7 | No | `{1, 3, 5}` | 3 |
+| 5 | 5 | Yes, already present | `{1, 3, 5}` | 3 |
 
-The final set has three values, so the answer is `3`. We can realize all three matches by putting the participants with passports 1, 3, and 5 into rooms 1, 3, and 5 respectively. The second participant with passport 5 cannot create another match because room 5 is already occupied.
+The final set contains (1), (3), and (5). These correspond to rooms (1), (3), and (5), so three matches can be created. The second occurrence of passport (5) does not increase the answer because room (5) is already occupied by the first participant with that passport.
 
-### Sample 2
-
-The input is
+For Sample 2, the input is
 
 ```
 4
@@ -180,146 +179,148 @@ The input is
 1000000000
 ```
 
-Every passport is larger than (N=4), so none can correspond to a room.
+The trace is:
 
-| Passport | Condition (x \le N) | Set after insertion |
-| --- | --- | --- |
-| 1000000000 | false | {} |
-| 1000000000 | false | {} |
-| 1000000000 | false | {} |
-| 1000000000 | false | {} |
+| Participant | Passport | Valid room number? | `seen` after processing | Current answer |
+| --- | --- | --- | --- | --- |
+| 1 | 1000000000 | No | `{}` | 0 |
+| 2 | 1000000000 | No | `{}` | 0 |
+| 3 | 1000000000 | No | `{}` | 0 |
+| 4 | 1000000000 | No | `{}` | 0 |
 
-The set remains empty and the answer is `0`. This also demonstrates why the absolute size of the passport number does not affect the algorithm. We never try to create an array of size (10^9), we simply compare the value with (N).
+All passport numbers exceed (N=4), so none can match a room. The final set is empty and the answer is (0). This trace also demonstrates why the algorithm does not need to care how many times an impossible passport value occurs.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(N)) expected | Every passport is read once, and set insertion has expected (O(1)) complexity. |
-| Space | (O(N)) | At most (N) distinct valid passport values can be stored. |
+| Time | (O(N)) expected | Each passport is read once and inserted into a hash set in expected constant time. |
+| Space | (O(N)) | At most (N) distinct passport numbers can be stored. |
 
-With (N \le 10^5), linear processing is easily within the intended range. The set contains at most one entry for each participant, so its memory consumption also grows linearly and remains practical.
+With (N \le 10^5), a linear pass performs only a small number of operations per participant. The set contains at most (10^5) integers, so the memory consumption is also well within normal contest limits.
 
 ## Test Cases
 
 ```python
 import sys
 import io
+from contextlib import redirect_stdout
 
 def solve():
-    input = sys.stdin.readline
     n = int(input())
-    matched = set()
+    seen = set()
 
     for _ in range(n):
-        x = int(input())
-        if x <= n:
-            matched.add(x)
+        passport = int(input())
+        if passport <= n:
+            seen.add(passport)
 
-    print(len(matched))
+    print(len(seen))
 
 def run(inp: str) -> str:
+    global input
+
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    input = sys.stdin.readline
+
+    output = io.StringIO()
 
     try:
-        solve()
-        return sys.stdout.getvalue()
+        with redirect_stdout(output):
+            solve()
     finally:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
+        input = sys.stdin.readline
 
-assert run("""5
-1
-3
-5
-7
-5
-""") == "3\n", "sample 1"
+    return output.getvalue().strip()
 
-assert run("""4
-1000000000
-1000000000
-1000000000
-1000000000
-""") == "0\n", "sample 2"
+# Provided samples
+assert run("5\n1\n3\n5\n7\n5\n") == "3", "sample 1"
+assert run("4\n1000000000\n1000000000\n1000000000\n1000000000\n") == "0", "sample 2"
 
-assert run("""1
-1
-""") == "1\n", "minimum size and upper boundary"
+# Minimum-size inputs
+assert run("1\n1\n") == "1", "minimum size, valid passport"
+assert run("1\n2\n") == "0", "minimum size, passport outside room range"
 
-assert run("""5
-1
-1
-1
-1
-1
-""") == "1\n", "all equal and valid"
+# All values are equal, so duplicates must count only once
+assert run("6\n4\n4\n4\n4\n4\n4\n") == "1", "duplicate passports"
 
-assert run("""5
-5
-4
-3
-2
-1
-""") == "5\n", "every room number is present"
+# Boundary condition: both 1 and N are valid
+assert run("3\n1\n2\n3\n") == "3", "upper boundary N must be included"
 
-assert run("""6
-1
-2
-6
-7
-1000000000
-6
-""") == "3\n", "duplicates and values outside the room range"
+# Mixed valid and invalid values
+assert run("6\n1\n6\n7\n2\n2\n1000000000\n") == "3", "valid range and duplicates"
 
-assert run("100000\n" + "\n".join(["1000000000"] * 100000) + "\n") == "0\n", \
-    "maximum size, all values outside the range"
+# Maximum-size input
+maximum_case = "100000\n" + "1\n" * 100000
+assert run(maximum_case) == "1", "maximum N with all equal values"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1` | `1` | Minimum (N) and inclusion of room (N) |
-| `5 / 1 1 1 1 1` | `1` | Duplicate passport values must be counted once |
-| `5 / 5 4 3 2 1` | `5` | Every possible room number can be matched |
-| `6 / 1 2 6 7 1000000000 6` | `3` | Duplicate values mixed with values outside the range |
-| `100000` copies of `1000000000` | `0` | Maximum input size and very large passport numbers |
+| `1\n1\n` | `1` | Minimum input size with the only passport matching room 1 |
+| `1\n2\n` | `0` | Minimum input size with a passport outside the room range |
+| `6\n4\n4\n4\n4\n4\n4\n` | `1` | Duplicate passport numbers must be counted once |
+| `3\n1\n2\n3\n` | `3` | Both endpoints, especially passport (N), are valid |
+| `6\n1\n6\n7\n2\n2\n1000000000\n` | `3` | Mixture of valid values, duplicates, and values larger than (N) |
+| `100000` copies of passport `1` | `1` | Maximum input size and linear-time behavior |
 
 ## Edge Cases
 
-For duplicate passport numbers, consider
+The first edge case is duplicate passport numbers. Consider
+
+```
+5
+1
+3
+5
+7
+5
+```
+
+The algorithm inserts (1), (3), and (5) into the set. Passport (7) is discarded because there is no room (7), and the second passport (5) leaves the set unchanged because (5) is already present. The result is (3). The key property is that the set represents rooms that can be matched, rather than participants who can be matched.
+
+The second edge case is a passport number outside the room range. With
 
 ```
 4
-1
-1
-2
-2
+1000000000
+1000000000
+1000000000
+1000000000
 ```
 
-The algorithm starts with an empty set. The first `1` creates `{1}`, the second `1` leaves it unchanged, the first `2` creates `{1, 2}`, and the final `2` also leaves it unchanged. The result is `2`. This is exactly the maximum because rooms 1 and 2 are the only rooms that can produce matches, and each room can contain only one participant.
+every value fails the `passport <= n` check. The set remains empty, so the result is (0). This avoids both an incorrect match and the unnecessary storage of irrelevant values.
 
-For passport values outside the room range, consider
+The third edge case is the upper boundary. For
 
 ```
 3
 1
+2
 3
-100
 ```
 
-The value `1` is inserted because room 1 exists. The value `3` is inserted because room 3 exists. The value `100` is ignored because the largest room number is 3. The final set is `{1, 3}`, giving answer `2`. A participant with passport 100 cannot match any room regardless of how the participants are arranged.
+the algorithm accepts all three values because (1 \le a_i \le 3). The set becomes `{1, 2, 3}`, giving the answer (3). The condition must include equality with (N), otherwise room (N) would be incorrectly excluded.
 
-For the upper boundary, consider
+The minimum case with a valid match is
 
 ```
 1
 1
 ```
 
-Here (N=1), so passport `1` satisfies `x <= n` and is inserted into the set. Its size is `1`, which means the only participant can be placed into the only room and produce a match. This catches implementations that accidentally use a strict inequality.
+Here (N=1), and passport (1) passes the range check. The set becomes `{1}`, so the answer is (1). For the closely related input
 
-For the largest possible input size, consider 100000 participants whose passport is `1000000000`. Every value fails the condition `x <= n` because (10^9 > 10^5), so the set stays empty throughout the scan. The answer is `0`. The algorithm still performs only one simple check per participant, so increasing (N) to its maximum does not change the asymptotic behavior.
+```
+1
+2
+```
+
+passport (2) is larger than the only room number, so the set stays empty and the answer is (0).
+
+The maximum-size case can contain (100000) identical passport numbers. The set still stores only one value, while the algorithm performs exactly one pass over the input. This demonstrates why the solution remains linear even when the number of participants is at its maximum.
