@@ -1,7 +1,7 @@
 ---
 title: "CF 102375G - \u0415\u0441\u0442\u044c \u043b\u0438 \u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c?"
-description: "We are given a nonempty decimal string without leading zeroes. The digits are not necessarily a decimal representation of the number we care about. Instead, we may choose a base (B), and then interpret exactly the same digit sequence in base (B)."
-date: "2026-08-15T07:12:55+07:00"
+description: "We are given one nonempty decimal string, with no leading zero. The string is not necessarily interpreted in base 10. We may choose a base (B), provided every digit appearing in the string is a valid digit in that base."
+date: "2026-08-15T18:00:53+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102375
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0443\u043d\u0434 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u0421\u0435\u0432\u0435\u0440\u043e-\u0417\u0430\u043f\u0430\u0434\u0430 \u0420\u043e\u0441\u0441\u0438\u0438 \u0438 \u041c\u043e\u0441\u043a\u0432\u044b ICPC 2019"
 rating: 0
 weight: 102375
-solve_time_s: 517
+solve_time_s: 306
 verified: false
 draft: false
 ---
@@ -18,80 +18,64 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 8m 37s  
+**Solve time:** 5m 6s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a nonempty decimal string without leading zeroes. The digits are not necessarily a decimal representation of the number we care about. Instead, we may choose a base (B), and then interpret exactly the same digit sequence in base (B). If the digits are (a_0,a_1,\ldots,a_{n-1}), the resulting value is
+We are given one nonempty decimal string, with no leading zero. The string is not necessarily interpreted in base 10. We may choose a base (B), provided every digit appearing in the string is a valid digit in that base. Interpreting the same sequence of digits in base (B) produces some integer (D).
 
-[
-D=a_0B^{n-1}+a_1B^{n-2}+\cdots+a_{n-1}.
-]
+Our task is to choose (B) and a proper divisor (X) of (D), with (1 < X < D), such that both (B) and (X) are at most (10^9). If no such pair exists, we print (-1).
 
-The base must be at least one more than every digit appearing in the string. We need to find a base (2\le B\le10^9) and a proper divisor (X), with (2\le X<D) and (X\le10^9). If no such pair exists, we print (-1). The original contest statement gives (n\le3\cdot10^6), a 2 second limit, and 512 MiB of memory.
+The length can reach (3\cdot10^6), so the input itself is already millions of characters long. Any solution that repeatedly scans the whole string, tries many bases, or performs integer factorization on the resulting enormous number is unsuitable. We want essentially one linear pass over the digits. The useful fact is that the sum of all digits is at most (9\cdot3\cdot10^6=27\cdot10^6), which is far below (10^9). This gives us a small enough candidate for both the base and the divisor.
 
-The length is the key constraint. With up to three million digits, anything quadratic in the length is impossible, and even algorithms that repeatedly manipulate the whole string many times are undesirable. We want a constant number of linear passes, ideally just one pass to collect a few properties of the digits. The numerical value (D) itself can have millions of digits, so constructing it as an integer is completely unnecessary and would be impossible in ordinary fixed-width arithmetic.
-
-There are several small cases where a tempting construction fails. For input `1`, the represented number is always (1), regardless of the base, so it has no proper divisor and the answer is correctly `-1`. For input `2`, the value is always (2), so choosing (X=2) is invalid because (X<D) is required. The same problem occurs for the one-digit primes `3`, `5`, and `7`. In contrast, input `4` is already composite, so `10 2` works because the represented value is (4) and its proper divisor (2) is valid.
-
-Another boundary case is `10`. Its digit sum is (1), so the construction based directly on the digit sum cannot use (X=1). A valid answer is `4 2`: the string `10` in base (4) represents (4), which is divisible by (2). The same special construction works for every string of the form `100...0` having at least two digits.
+There are several small cases where blindly applying the main construction fails. For input `1`, the represented value is always (1), regardless of the base, so there cannot be a proper divisor and the correct answer is `-1`. For input `4`, the digit sum is (4), but choosing the sum as the divisor would give (X=D=4), which is not a proper divisor. The correct answer can be `10 2`. For input `10`, the digit sum is (1), so the construction based on the digit sum cannot use (X=1). Nevertheless, base (10) gives (D=10), and (X=2) works. These cases explain why the final algorithm separates strings of length one and the case where the digit sum is one.
 
 ## Approaches
 
-A direct approach would try bases starting from the smallest legal base and, for each base, somehow determine whether the resulting number is composite. One could even try every possible divisor (X) from (2) through (10^9), evaluating the represented number modulo (X). That is correct because finding any (X) with zero remainder immediately gives the required certificate, but the search space contains up to (10^9) bases and (10^9) candidate divisors, giving (10^{18}) divisor checks in the worst case. Computing a residue from the whole three-million-character string for every candidate would make the approach even worse.
+A direct approach would try a base (B), construct the corresponding number (D), and search for a divisor (X). Even choosing only among all (10^9) possible bases already gives at least (10^9) candidates. Evaluating one base from a string of length (n) requires processing its digits, so merely examining every possible base costs at least (10^9n) digit operations. At the maximum length this is at least (3\cdot10^{15}) operations, before doing any factorization. Factoring (D) is even worse because (D) can have millions of decimal digits.
 
-The brute force works because the only property we need is divisibility. The crucial observation is that we control the base itself. Suppose we choose
+The brute force works because testing a candidate base and divisor is straightforward, but it fails because the space of possible bases is huge and the represented number is enormous. The key observation is that we do not need to know (D) explicitly at all.
 
-[
-B=X+1.
-]
-
-Then (B\equiv1\pmod X), so every power of (B) is also congruent to (1\pmod X). Consequently,
+For a number written in base (B), reducing it modulo (B-1) replaces every power of (B) by (1), because (B\equiv1\pmod{B-1}). Thus, if the digits are (a_0,a_1,\ldots,a_{n-1}), then
 
 [
-D
-=\sum a_iB^{n-1-i}
-\equiv\sum a_i
-\pmod X.
+D=\sum a_iB^i\equiv\sum a_i\pmod{B-1}.
 ]
 
-The represented number modulo (X) is simply the sum of the decimal digits modulo (X). This lets us choose (X) rather than search for it.
-
-Let (S) be the sum of all digits. If (S\ge2), choose
+Let the digit sum be (S). If we choose
 
 [
-X=S,\qquad B=S+1.
+B=S+1,
 ]
 
-Then (D\equiv S\equiv0\pmod X). Since the largest digit is at most (S), the base (S+1) is legal. Also, (S\le9n\le27\cdot10^6), so both (B) and (X) are far below (10^9).
+then (B-1=S), so (D\equiv S\equiv0\pmod S). Consequently (X=S) is automatically a divisor of (D).
 
-For a string with at least two digits, (D>X) as well. Its leading digit is positive, so (D\ge B=S+1>X). Thus the divisor is proper.
+This is the central construction. Since (S) is at least every individual digit, (B=S+1) is a valid base. Since (S\le27\cdot10^6), both (B) and (X) are comfortably below (10^9).
 
-The only case not covered by (S\ge2) is (S=1). Because the first digit is nonzero, the string must be `1` or `100...0`. The one-character case is the value (1), so no answer exists. If there are at least two characters, choose (B=4) and (X=2). The string represents (4^{n-1}), which is divisible by (2), and its value is at least (4), so (2) is a proper divisor.
+For a string of length at least two and (S\ge2), (X=S) is also strictly smaller than (D). The leading digit is at least one, so (D\ge B=S+1>S=X).
 
-For a one-digit input with value (d>1), changing the base has no effect at all. We simply need to check whether (d) is composite. Since (d\le9), this can be handled directly by looking for a divisor from (2) through (\sqrt d).
+The only remaining situation with at least two digits is (S=1). Since the first digit is nonzero, the string must be `100...0`. Choosing (B=10) gives (D=10^{n-1}), and (X=2) is a proper divisor. Finally, a one-digit string represents exactly that digit, independently of the base. Such a number has a proper divisor only when the digit itself is composite, which among the allowed digits means (4,6,8,9).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(10^{18}n)) in the direct search | (O(1)) apart from input | Too slow |
-| Optimal | (O(n)) | (O(n)) for the input string | Accepted |
+| Brute Force | At least (O(10^9n)), plus factorization | Potentially enormous | Too slow |
+| Optimal | (O(n)) | (O(1)) besides the input string | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the digit string and compute its digit sum (S). We only need the sum, because choosing a base congruent to (1) modulo (S) turns the entire positional representation into that digit sum modulo (S).
-2. If the string has length one, handle the value directly. For `1`, there is no valid divisor. For `2`, `3`, `5`, and `7`, the number is prime. For `4`, `6`, `8`, and `9`, choose base (10) and a proper divisor of the digit.
-3. If the string has at least two digits and (S=1), the string is necessarily `100...0`. Choose (B=4) and (X=2). The represented value is (4^{n-1}), so it is divisible by (2), and because (n\ge2), its value is at least (4).
-4. If the string has at least two digits and (S\ge2), choose (X=S) and (B=S+1). Since every digit is at most (S), all digits are valid in base (B).
-5. The choice in the previous step gives (B\equiv1\pmod X). Hence (B^k\equiv1\pmod X) for every (k), and the represented number satisfies
-[
-D\equiv S\equiv0\pmod X.
-]
-Because the first digit is positive and there are at least two digits, (D\ge B=S+1>X), so (X) is a proper divisor.
-6. Print the constructed pair. Since (S\le9\cdot3\cdot10^6=27\cdot10^6), both (S) and (S+1) satisfy the (10^9) bound.
+1. Read the digit string and compute its length and digit sum (S). Only the sum is needed for the main construction, so there is no reason to build the potentially enormous number (D).
+2. If the string has one digit, handle it separately. A one-digit representation always has value equal to that digit, regardless of the base. If the digit is (4,6,) or (8), choose (B=10) and (X=2). If the digit is (9), choose (B=10) and (X=3). For (1,2,3,5,7), the number is prime, so print (-1).
+3. If the string has at least two digits and (S=1), the string is necessarily `100...0`. Choose (B=10) and (X=2). The represented value is (10^{n-1}), which is divisible by (2) and is greater than (2).
+4. Otherwise (n\ge2) and (S\ge2). Set (X=S) and (B=S+1). The base is valid because every digit is at most (S), hence strictly less than (B).
+5. Output (B) and (X). Since (S\le27\cdot10^6), both values satisfy the (10^9) limit. Also, (D>X), because (D\ge B=S+1).
 
-The invariant behind the construction is the congruence (B\equiv1\pmod X). Once that holds, the positional representation loses all dependence on the powers of (B) modulo (X), leaving exactly the sum of its digits. Choosing (X) equal to that sum makes the represented number divisible by (X). The only situation where this divisor would be (1) is (S=1), and that case is handled separately.
+### Why it works
+
+The invariant behind the main construction is (B\equiv1\pmod{B-1}). For (B=S+1), this becomes (B\equiv1\pmod S). Every positional power (B^k) is consequently congruent to (1) modulo (S), so the whole represented number satisfies (D\equiv S\equiv0\pmod S). Thus (X=S) always divides (D).
+
+The construction also satisfies all bounds. The digit sum is at most (27\cdot10^6), so (B=S+1\le27,000,001) and (X=S\le27,000,000). Because (S) is at least the maximum digit, every digit is valid in base (B). For strings of length at least two, (D\ge B>X), so the divisor is proper. The special cases cover exactly the situations where (S) cannot serve as a valid proper divisor.
 
 ## Python Solution
 
@@ -99,91 +83,86 @@ The invariant behind the construction is the congruence (B\equiv1\pmod X). Once 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
+def solve(s: str) -> str:
     n = len(s)
+    digit_sum = sum(ord(c) - 48 for c in s)
 
     if n == 1:
-        d = ord(s[0]) - ord('0')
+        d = ord(s[0]) - 48
 
-        if d < 4:
-            print(-1)
-            return
-
-        for x in range(2, int(d ** 0.5) + 1):
-            if d % x == 0:
-                print(10, x)
-                return
-
-        print(-1)
-        return
-
-    digit_sum = sum(ord(c) - ord('0') for c in s)
+        if d in (4, 6, 8):
+            return "10 2"
+        if d == 9:
+            return "10 3"
+        return "-1"
 
     if digit_sum == 1:
-        print(4, 2)
-        return
+        return "10 2"
 
-    x = digit_sum
-    b = x + 1
+    return f"{digit_sum + 1} {digit_sum}"
 
-    print(b, x)
-
-if __name__ == "__main__":
-    solve()
+s = input().strip()
+print(solve(s))
 ```
 
-The first branch handles one-digit strings because the base cannot change their numerical value. For a one-digit number (d), a valid divisor exists exactly when (d) is composite. Testing divisors only up to (\sqrt d) is more than enough, although the values are so small that even a hardcoded check would work.
+The first pass computes the digit sum without converting the entire string into an integer. Converting a string with up to three million digits into an integer would be unnecessary and, in many Python environments, subject to additional conversion limits.
 
-For longer strings, the code computes the digit sum in one pass. Python integers can store this sum comfortably because its maximum is only (27\cdot10^6).
+The one-digit branch is separate because the positional base has no effect when there is only one digit. For example, `4` represents (4) in every valid base, so we must actually ask whether (4) itself has a proper divisor.
 
-When the sum is (1), the absence of any other nonzero digit follows from the nonnegative digits and the fact that the first digit is already (1). The base (4), divisor (2) construction then works without ever constructing (D).
+For a multi-digit string whose digit sum is one, the first digit must be one and every other digit must be zero. The fixed construction (B=10,X=2) works because the represented number is a positive power of ten.
 
-For a sum of at least (2), the code sets `x = digit_sum` and `b = x + 1`. There is no need to evaluate the huge number represented by the string. The divisibility proof operates entirely modulo (x).
+In the general branch, `digit_sum + 1` is the base and `digit_sum` is the divisor. The code never calculates (D), which is the main implementation advantage. Python integers are therefore only used for tiny values bounded by (27\cdot10^6+1), regardless of the input length.
 
-There is also no overflow issue in Python. More importantly, the implementation never creates (B^{n-1}) or (D), which would be the wrong implementation strategy even in a language with arbitrary-precision integers because (D) can contain millions of digits.
+There are no overflow concerns in Python, and even in a language with fixed-width integers the constructed (B) and (X) are easily within 32-bit signed integer range. The string is scanned once, so the implementation also avoids any hidden quadratic behavior.
 
 ## Worked Examples
 
-For Sample 1, the input is `1`.
+### Sample 1
 
-| Variable | Value |
-| --- | --- |
-| `s` | `1` |
-| `n` | `1` |
-| `d` | `1` |
-| Result | `-1` |
+For input `1`, the only represented value is (1).
 
-The only value represented by a one-digit `1` is (1), independent of the base. It has no divisor (X>1), so the algorithm correctly rejects it.
+| Input | Length | Digit sum | Chosen base | Chosen divisor | Result |
+| --- | --- | --- | --- | --- | --- |
+| `1` | 1 | 1 | none | none | `-1` |
 
-For Sample 2, the input is `4`.
+The one-digit case is handled before the general construction. Since (1) has no divisor greater than one, no answer exists.
 
-| Variable | Value |
-| --- | --- |
-| `s` | `4` |
-| `n` | `1` |
-| `d` | `4` |
-| Tested divisor | `2` |
-| Result | `10 2` |
+### Sample 2
 
-The represented value is (4) in every base. The divisor (2) is proper, and base (10) is legal because the digit `4` is valid in decimal notation. Thus the output is valid.
+For input `4`, the value is (4) in every valid base.
 
-For completeness, Sample 3 illustrates the main construction. Its digit sum is (1+9=10), so the algorithm chooses (X=10) and (B=11). The value is
+| Input | Length | Digit sum | Chosen base | Chosen divisor | Result |
+| --- | --- | --- | --- | --- | --- |
+| `4` | 1 | 4 | 10 | 2 | `10 2` |
+
+The output means that the digit string `4` is interpreted as (D=4) in base (10), and (2) is a proper divisor of (4). The digit sum construction is deliberately not used here because it would select (X=4=D).
+
+### Sample 3
+
+For input `19`, the digit sum is (10), so the general construction gives (B=11) and (X=10).
+
+In base (11),
 
 [
 D=1\cdot11+9=20,
 ]
 
-and (20) is divisible by (10). The output `11 10` is different from the sample output `11 2`, but both are valid.
+and (20) is divisible by (10).
+
+| Input | Length | Digit sum | Base (B) | Divisor (X) | Value (D) |
+| --- | --- | --- | --- | --- | --- |
+| `19` | 2 | 10 | 11 | 10 | 20 |
+
+The congruence gives (D\equiv10\equiv0\pmod{10}), exactly as predicted.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | The only operation depending on the input length is the digit-sum pass. |
-| Space | (O(n)) | The input string itself occupies (O(n)) memory; the algorithm uses (O(1)) additional space. |
+| Time | (O(n)) | The string is scanned once to compute its digit sum. |
+| Space | (O(n)) for the input, (O(1)) auxiliary | No representation of (D) or other large structures is created. |
 
-With (n\le3\cdot10^6), a single pass over three million characters is easily within the intended scale of the problem. The algorithm performs no factorization of a huge number and never constructs the value represented by the digit string. The official statement specifies a 2 second time limit and 512 MiB memory limit, and this linear scan is designed for those constraints.
+With (n\le3\cdot10^6), a single linear pass is appropriate. The algorithm performs only simple arithmetic on each character and never factors or constructs the potentially millions-of-digits-long value (D), so the constraints are easily within the intended range.
 
 ## Test Cases
 
@@ -192,112 +171,74 @@ With (n\le3\cdot10^6), a single pass over three million characters is easily wit
 import sys
 import io
 
-def solve():
-    s = input().strip()
+def solve(s: str) -> str:
     n = len(s)
+    digit_sum = sum(ord(c) - 48 for c in s)
 
     if n == 1:
-        d = ord(s[0]) - ord('0')
+        d = ord(s[0]) - 48
 
-        if d < 4:
-            print(-1)
-            return
-
-        for x in range(2, int(d ** 0.5) + 1):
-            if d % x == 0:
-                print(10, x)
-                return
-
-        print(-1)
-        return
-
-    digit_sum = sum(ord(c) - ord('0') for c in s)
+        if d in (4, 6, 8):
+            return "10 2"
+        if d == 9:
+            return "10 3"
+        return "-1"
 
     if digit_sum == 1:
-        print(4, 2)
-        return
+        return "10 2"
 
-    x = digit_sum
-    b = x + 1
-    print(b, x)
+    return f"{digit_sum + 1} {digit_sum}"
 
 def run(inp: str) -> str:
-    global input
-    old_stdin = sys.stdin
-    old_input = input
+    s = inp.strip()
+    return solve(s)
 
-    sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
-
-    try:
-        solve()
-        return sys.stdout.getvalue() if False else ""
-    finally:
-        sys.stdin = old_stdin
-        input = old_input
-
-def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-    old_input = input
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    input = sys.stdin.readline
-
-    try:
-        solve()
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
-        input = old_input
-
-# Provided samples.
+# Provided samples
 assert run("1\n") == "-1", "sample 1"
 assert run("4\n") == "10 2", "sample 2"
+assert run("19\n") == "11 10", "sample 3, another valid answer"
 
-# Sample 3 has many valid answers. This implementation returns 11 10.
-assert run("19\n") == "11 10", "sample 3"
+# Minimum-size prime digit
+assert run("2\n") == "-1", "single-digit prime"
 
-# Custom: one-digit prime.
-assert run("7\n") == "-1", "one-digit prime"
+# Single-digit composite at the upper boundary
+assert run("9\n") == "10 3", "single-digit composite"
 
-# Custom: one-digit composite.
-assert run("9\n") == "10 3", "one-digit composite"
+# All digits equal
+assert run("2222\n") == "9 8", "all-equal digits"
 
-# Custom: digit sum is exactly one, with two digits.
-assert run("10\n") == "4 2", "sum-one boundary"
+# Digit sum exactly 1, including the two-digit boundary
+assert run("10\n") == "10 2", "sum-one boundary"
 
-# Custom: all digits equal.
-assert run("999\n") == "28 27", "all equal digits"
-
-# Custom: maximum length.
-assert run("1" * 3_000_000 + "\n") == "3000001 3000000", "maximum length"
+# Maximum possible length
+s = "1" + "0" * (3_000_000 - 1)
+assert run(s) == "10 2", "maximum-size input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `7` | `-1` | One-digit prime cannot be made composite by changing the base. |
-| `9` | `10 3` | One-digit composite handling and divisor search. |
-| `10` | `4 2` | The special (S=1) construction and the strict (X<D) condition. |
-| `999` | `28 27` | Large digit sum and the (B=S+1) construction. |
-| `111...111` with 3,000,000 digits | `3000001 3000000` | Maximum input length and the (10^9) bounds. |
-
-The test helper has to capture standard output because the competitive-programming solution writes directly to `stdout`. The sample with `19` deliberately checks the output produced by this particular implementation, since the task accepts any valid pair rather than requiring the sample pair.
+| `2` | `-1` | Single-digit prime case |
+| `9` | `10 3` | Single-digit composite at the largest digit |
+| `2222` | `9 8` | Repeated digits and the main (B=S+1) construction |
+| `10` | `10 2` | The exact boundary where the digit sum is one |
+| `1` followed by (2,999,999) zeros | `10 2` | Maximum input length and linear processing |
 
 ## Edge Cases
 
-For input `1`, the algorithm enters the one-digit branch immediately. Its value is (1), so the loop looking for a divisor is not even needed, and the answer is `-1`. This catches the most basic mistake, which would be to choose (X) equal to the digit itself without checking (X>1).
+For input `1`, the algorithm immediately enters the one-digit branch. Its value is (1) in every possible base, so there is no (X>1) with (X<D). The output is correctly `-1`.
 
-For input `2`, the same one-digit branch recognizes that the number is not composite and prints `-1`. Choosing `B=3, X=2` would look superficially attractive, but the represented number is still (2), so (X=D), violating the strict inequality.
+For input `4`, the one-digit branch recognizes (4) as composite and chooses (X=2). Base (10) is valid because the digit (4) is smaller than (10), and the represented value remains (4). Thus `10 2` satisfies (2<4) and (2\mid4).
 
-For input `4`, the algorithm finds (2) as a divisor and prints `10 2`. The represented value remains (4), so the result satisfies (2<D). This demonstrates why one-digit inputs need to be treated separately instead of applying the digit-sum construction mechanically.
+For input `9`, the algorithm uses (X=3) instead of (2), because (3\mid9). The output `10 3` represents (D=9), so the divisor is proper.
 
-For input `10`, the digit sum is (1), which cannot be used as a divisor because divisors must be at least (2). Since the string has two digits and sum (1), it must be exactly `10`. The special branch chooses (B=4), giving (D=4), and (X=2). Here (2\mid4) and (2<4), so the construction is valid.
+For input `10`, the digit sum is (1), making the main construction impossible because it would require (X=1). The special branch chooses (B=10), giving (D=10), and (X=2) is a proper divisor. The same reasoning works for every input of the form `100...0` with at least two digits.
 
-For input `1000`, the same reasoning gives (B=4), (X=2). The represented number is (4^3=64), which is divisible by (2). A careless implementation that assumes the digit sum is always at least (2) would instead try to output (X=1), which is forbidden.
+For an input such as `2222`, the digit sum is (8), so the algorithm chooses (B=9) and (X=8). The represented value is
 
-For an input such as `11`, the digit sum is (2), so the algorithm chooses (B=3) and (X=2). The represented value is (1\cdot3+1=4), and (4\equiv0\pmod2). The strict inequality (X<D) also holds. This is the smallest nontrivial example of the general construction.
+[
+2\cdot9^3+2\cdot9^2+2\cdot9+2=1622,
+]
 
-For the maximum-length input consisting of three million `9` digits, the digit sum is (27,000,000). The algorithm outputs (B=27,000,001) and (X=27,000,000). Both are much smaller than (10^9), and (B) is certainly larger than every digit. The represented value is congruent to the digit sum modulo (X), so it is divisible by (X), while its length guarantees that it is much larger than (X). The algorithm never constructs this enormous value, which is the central reason the solution remains linear in the input size.
+and (1622) is divisible by (8). The congruence argument gives this without ever constructing (D).
+
+For the maximum-size input consisting of `1` followed by (2,999,999) zeros, the digit sum is still (1). The algorithm therefore does not attempt to process the enormous represented number. It returns `10 2` immediately after the linear digit-sum pass, and the represented value is (10^{2,999,999}), which is certainly divisible by (2) and greater than (2).
