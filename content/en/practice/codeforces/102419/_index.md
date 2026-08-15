@@ -1,27 +1,28 @@
 ---
 title: "SPC 2019"
-description: "8 problems from SPC 2019 (contest 102419), difficulty -. 5/8 solutions verified against sample I/O."
+description: "9 problems from SPC 2019 (contest 102419), difficulty -. 6/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102419
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 5
-total_solve_s: 4300
+n_problems: 9
+n_verified: 6
+total_solve_s: 5465
 contest_year: 2019
-date: "2026-08-12T15:12:06+07:00"
+date: "2026-08-12T08:49:53+07:00"
 weight: 102419
 draft: false
 ---
 
 # [SPC 2019](https://codeforces.com/contest/102419)
 
-Special | 8 problems | 5/8 verified | Difficulty - | 1h 11m
+Special | 9 problems | 6/9 verified | Difficulty - | 1h 31m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Two Strings](https://codeforces.com/problemset/problem/102419/A) |  |  |  | 10m 29s | ✓ |
+| [B](B/) | [Super Jaber](https://codeforces.com/problemset/problem/102419/B) |  |  |  | 19m 25s | ✓ |
 | [D](D/) | [Xor the graph](https://codeforces.com/problemset/problem/102419/D) |  |  |  | 4m 22s |  |
 | [E](E/) | [Geometry Problem](https://codeforces.com/problemset/problem/102419/E) |  |  |  | 1m 18s |  |
 | [F](F/) | [xor-sum](https://codeforces.com/problemset/problem/102419/F) |  |  |  | 12m 25s | ✓ |
