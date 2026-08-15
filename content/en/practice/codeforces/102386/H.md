@@ -1,7 +1,7 @@
 ---
 title: "CF 102386H - \u0421\u0432\u0435\u0442\u043e\u0444\u043e\u0440\u044b"
-description: "At the intersection there are two countdowns, initially showing A and B. After every second, both values decrease by one simultaneously. We are interested only in the moments when both countdowns are still positive."
-date: "2026-08-14T13:32:51+07:00"
+description: "At the intersection there are two countdowns, initially showing (A) and (B). Every second, both values decrease by one. We only consider moments while both lights are still red, so neither counter has reached zero yet."
+date: "2026-08-15T07:41:29+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102386
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0442\u0443\u0440 \u0423\u0440\u0430\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u0447\u0435\u0442\u0432\u0435\u0440\u0442\u044c\u0444\u0438\u043d\u0430\u043b\u0430 \u0427\u0435\u043c\u043f\u0438\u043e\u043d\u0430\u0442\u0430 \u043c\u0438\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e 2019"
 rating: 0
 weight: 102386
-solve_time_s: 140
+solve_time_s: 161
 verified: false
 draft: false
 ---
@@ -18,74 +18,66 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 20s  
+**Solve time:** 2m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-At the intersection there are two countdowns, initially showing `A` and `B`. After every second, both values decrease by one simultaneously. We are interested only in the moments when both countdowns are still positive. At such a moment, the two displayed numbers are considered special if one is an integer multiple of the other.
+At the intersection there are two countdowns, initially showing (A) and (B). Every second, both values decrease by one. We only consider moments while both lights are still red, so neither counter has reached zero yet.
 
-We need to count every such moment before either countdown reaches zero. Since both counters decrease by exactly the same amount, after `t` seconds their values are `A - t` and `B - t`. The condition is that one of these positive values divides the other.
+At a particular moment (t), the counters show
 
-The bounds allow both `A` and `B` to be as large as `10^9`. A direct simulation can consequently require almost `10^9` iterations, which is far beyond what a competitive programming solution can afford. We need to replace the simulation with arithmetic that examines only about `sqrt(10^9)`, which is roughly `31623`, possibilities.
+[
+A-t,\qquad B-t.
+]
 
-There are several boundary cases that can easily cause an off-by-one error. For example, with input `1 1`, the only state before a counter reaches zero is `(1, 1)`, so the answer is `1`. A loop that simulates until one value becomes zero and checks only after decrementing would incorrectly return `0`.
+We need to count how many such moments have the property that one displayed number is an integer multiple of the other. The initial moment (t=0) is included.
 
-With input `3 30`, the positive states are `(3,30)`, `(2,29)`, and `(1,28)`. The first state has `30` divisible by `3`, and the last has `28` divisible by `1`, so the answer is `2`. The state `(0,27)` must not be considered, because the problem stops as soon as a counter reaches zero.
+Since (A,B\le 10^9), simulating every second can require up to (10^9) iterations. That is far beyond what a typical competitive-programming time limit allows. We need to exploit the fact that both counters decrease by exactly the same amount, so their difference never changes.
 
-Another special case is equal counters. For input `5 5`, every positive state is `(5,5)`, `(4,4)`, `(3,3)`, `(2,2)`, `(1,1)`, and every one satisfies the condition. The answer is `5`. Treating the difference between the counters as a divisor target without handling a zero difference separately would fail here.
+There are several small cases where a direct implementation can go wrong. For (A=B=1), the only red moment is ((1,1)), so the answer is (1). A solution that starts checking only after the first decrement would incorrectly return (0). For (A=1,B=2), the only valid moment is ((1,2)), so the answer is also (1). The moment when the smaller counter becomes zero must not be included. Finally, for (A=B=5), every state ((5,5),(4,4),\ldots,(1,1)) qualifies, giving (5), so equality needs to be handled separately rather than trying to find divisors of a zero difference.
 
 ## Approaches
 
-The most direct solution is to simulate every second. At time `t`, we compute `A - t` and `B - t`, check whether either divides the other, and increment the answer when it does. This is correct because every possible state before a light turns green occurs at exactly one integer time.
+The straightforward approach is to simulate the countdown. At every second, let the current values be (x) and (y), check whether (x) divides (y) or (y) divides (x), then decrement both counters. This is correct because it examines every possible red state exactly once. However, if one counter starts at (10^9), the simulation performs almost (10^9) iterations, which is too slow.
 
-The problem is the number of states. If the smaller initial counter is close to `10^9`, the simulation performs almost `10^9` iterations. Even with constant work per iteration, that is much too slow.
+The useful structure appears when we write the state after (t) seconds as (A-t) and (B-t). Their difference is always
 
-The useful observation is that the difference between the counters never changes. Suppose without loss of generality that `A <= B`. After `t` seconds the counters are
+[
+(B-t)-(A-t)=B-A.
+]
 
-`A - t` and `B - t`.
+Assume for the moment that (A\le B). Put (x=A-t). The other counter is then (x+(B-A)). The condition that the two numbers differ by an integer factor is equivalent to
 
-Their difference is always
+[
+x+(B-A)\equiv 0\pmod{x}.
+]
 
-`(B - t) - (A - t) = B - A`.
+Since (x\equiv0\pmod{x}), this reduces to
 
-Call this fixed difference `d`. At every relevant moment the larger value is therefore the smaller value plus `d`.
+[
+B-A\equiv0\pmod{x}.
+]
 
-Now let the smaller current value be `x`. The condition that the larger value is an integer multiple of the smaller one becomes
+So every valid moment corresponds exactly to a positive divisor (x) of the fixed difference (B-A). During the red period, (x) takes every integer value from (A) down to (1). Consequently, we only need to count divisors of (|A-B|) that are at most (\min(A,B)).
 
-`x + d` is divisible by `x`.
-
-Since `x` already divides itself, this is equivalent to
-
-`x` divides `d`.
-
-As the countdown progresses, `x` takes every integer value from `A` down to `1`. The original simulation has consequently been transformed into a much smaller number-theoretic problem: count the positive divisors of `d` that are at most `A`.
-
-When `A = B`, the difference is zero. Every positive `x` divides zero, so every one of the `A` states is valid. That case is handled directly.
-
-For a nonzero difference, divisors can be enumerated in pairs. If `i` divides `d`, then `d / i` is also a divisor. We only need to try `i` up to `sqrt(d)`, giving a time complexity of `O(sqrt(|A-B|))`.
+If (A=B), the difference is zero and every state has equal counters, so the answer is simply (A). Otherwise, we can enumerate the divisors of (|A-B|) in (O(\sqrt{|A-B|})) time. Whenever (i) divides the difference, both (i) and (|A-B|/i) are divisors, and we count each one if it is at most (\min(A,B)).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(min(A, B)) | O(1) | Too slow |
-| Optimal | O(sqrt( | A-B | )) | O(1) | Accepted |
+| Brute Force | (O(\min(A,B))) | (O(1)) | Too slow |
+| Optimal | (O(\sqrt{ | A-B | })) | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the two initial countdown values and let `m = min(A, B)`. The smaller counter is the one that reaches zero first, so its positive values are exactly `m, m-1, ..., 1`.
-2. If `A == B`, return `A`. Both counters are equal at every moment before zero, so every one of the `A` positive states satisfies the required condition.
-3. Otherwise compute `d = abs(A - B)`. The difference between the two counters stays equal to `d` throughout the countdown.
-4. Enumerate integers `i` from `1` through `floor(sqrt(d))`. Whenever `i` divides `d`, both `i` and `d // i` are divisors of `d`.
-5. Count a divisor only if it is at most `m`. Such a divisor corresponds to exactly one countdown state whose smaller displayed value equals that divisor. Divisors larger than `m` never occur before the first counter reaches zero.
-6. If `i` and `d // i` are different, count them separately. When `i * i == d`, the two values are the same divisor and must be counted only once.
-7. Output the resulting count.
+1. Let (m=\min(A,B)) and (d=|A-B|). The smaller counter starts at (m) and decreases through every value (m,m-1,\ldots,1) while both lights remain red.
+2. If (d=0), return (m). The counters are equal at every red moment, and equal positive numbers are integer multiples of each other with ratio (1).
+3. Otherwise, enumerate integers (i) from (1) through (\lfloor\sqrt d\rfloor). Whenever (i) divides (d), (i) is one divisor and (d/i) is its paired divisor.
+4. Count (i) when (i\le m). Also count (d/i) when (d/i\le m), provided the two divisors are different.
+5. Output the accumulated count. Every counted divisor represents exactly one value of the smaller counter, hence exactly one valid moment.
 
-### Why it works
-
-Assume `A <= B`, with the other case being symmetric. At any valid time, let the smaller displayed value be `x`. The other value is `x + d`, where `d = B - A` is constant. The required condition is that one value divides the other. Since `x + d` is at least `x`, this means exactly that `x` divides `x + d`. Subtracting `x` gives the equivalent condition `x | d`.
-
-During the countdown before either value reaches zero, `x` takes every integer from `A` down to `1` exactly once. Thus there is a one-to-one correspondence between valid moments and divisors of `d` that are at most `A`, which is `m` in the symmetric formulation. The algorithm enumerates exactly those divisors, so its count is exactly the required answer.
+The key invariant is that the smaller counter takes each positive value from (m) down to (1) exactly once. For such a value (x), the larger counter is (x+d), and (x) divides (x+d) exactly when (x) divides (d). Thus the algorithm counts precisely the valid states and no others.
 
 ## Python Solution
 
@@ -108,11 +100,12 @@ def solve():
 
     while i * i <= d:
         if d % i == 0:
+            j = d // i
+
             if i <= m:
                 ans += 1
 
-            other = d // i
-            if other != i and other <= m:
+            if j != i and j <= m:
                 ans += 1
 
         i += 1
@@ -122,50 +115,47 @@ def solve():
 solve()
 ```
 
-The first three assignments identify the smaller countdown and the invariant difference. Using `m = min(A, B)` means the rest of the algorithm does not need to distinguish which original counter was smaller.
+The first three variables reduce the original countdown to the two quantities that matter: the largest possible value of the smaller counter, (m), and the fixed difference (d).
 
-The `d == 0` branch is necessary because divisor enumeration is based on the positive integer divisors of a nonzero difference. When the counters are equal, every positive state is valid, so the answer is simply the number of positive states, `m`.
+The (d=0) branch is necessary because zero does not have a finite set of positive divisors. More importantly, when the counters are equal, every red state is valid, so handling equality directly is both simpler and mathematically correct.
 
-For a nonzero difference, the loop checks only `i * i <= d`. Every divisor below the square root has a complementary divisor above it, so checking both members of each pair covers all divisors without scanning all values up to `d`.
+For (d>0), the loop only reaches (\sqrt d). When (i) divides (d), the paired divisor (j=d/i) is obtained immediately, so there is no need to scan all possible counter values.
 
-The condition `other != i` prevents a perfect square from being counted twice. For example, if `d = 36`, the pair generated by `i = 6` is `(6, 6)`, which represents only one divisor.
+The condition `j != i` prevents a square number from being counted twice. For example, if (d=16) and (i=4), both divisor expressions produce (4), but it represents only one possible counter value.
 
-The comparison with `m` is what enforces the time boundary. A divisor larger than the initial smaller countdown can never appear as the smaller positive countdown value, so it must not contribute to the answer.
-
-Python integers do not overflow, and `i * i` is safe even at the largest possible `d`, which is below `10^9`. There is also no need for any array or other auxiliary structure.
+Python integers do not overflow, and (i*i) is at most roughly (10^9) inside the loop, so the arithmetic is safe. The upper boundary is also correct: if the smaller counter is (m), that initial state is still red and must be considered, while the state after (m) seconds has a zero counter and must not be considered.
 
 ## Worked Examples
 
-For the first sample, `A = 3` and `B = 30`. The smaller initial value is `3`, and the fixed difference is `27`.
+For (A=3,B=30), the fixed difference is (27), and the smaller counter ranges from (3) to (1).
 
-| `i` | `27 % i` | Divisors found | `<= m` | `ans` |
+| (i) | (d/i) | Divisor (i\le m) | Divisor (d/i\le m) | Answer |
 | --- | --- | --- | --- | --- |
-| 1 | 0 | 1, 27 | 1 | 1 |
-| 2 | 1 | none | none | 1 |
-| 3 | 0 | 3, 9 | 3, 9 only 3 | 2 |
-| 4 | 3 | none | none | 2 |
-| 5 | 2 | none | none | 2 |
+| 1 | 27 | Yes | No | 1 |
+| 2 | not a divisor | No | No | 1 |
+| 3 | 9 | Yes | No | 2 |
+| 4 | loop ends |  |  | 2 |
 
-The loop stops once `i * i > 27`. The divisors of `27` that do not exceed `3` are `1` and `3`, giving the answer `2`. They correspond to the states `(1,28)` and `(3,30)`.
+The relevant divisors of (27) are (1,3,9,27), but only (1) and (3) are at most (m=3). They correspond to the states ((1,28)) and ((3,30)). The answer is (2).
 
-For the second sample, `A = 16` and `B = 4`. Now `m = 4` and `d = 12`.
+For (A=16,B=4), the fixed difference is (12), and the smaller counter ranges from (4) down to (1).
 
-| `i` | `12 % i` | Divisors found | `<= m` | `ans` |
+| (i) | (d/i) | Divisor (i\le m) | Divisor (d/i\le m) | Answer |
 | --- | --- | --- | --- | --- |
-| 1 | 0 | 1, 12 | 1 | 1 |
-| 2 | 0 | 2, 6 | 2 | 2 |
-| 3 | 0 | 3, 4 | 3, 4 | 4 |
+| 1 | 12 | Yes | No | 1 |
+| 2 | 6 | Yes | No | 2 |
+| 3 | 4 | Yes | Yes | 4 |
 
-The smaller counter takes the values `4, 3, 2, 1`. All four are divisors of `12`, so all four moments satisfy the condition. The answer is `4`.
+The divisors of (12) not exceeding (4) are (1,2,3,4). They correspond to the four valid states where the smaller counter is (1,2,3,) or (4). The answer is (4).
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(sqrt( | A-B | )) | The non-equal case checks divisors only up to the square root of the fixed difference. |
-| Space | O(1) | Only a constant number of integer variables are stored. |
+| Time | (O(\sqrt{ | A-B | })) | We test divisibility only up to the square root of the nonzero difference. |
+| Space | (O(1)) | Only a constant number of integer variables are stored. |
 
-The largest possible nonzero difference is less than `10^9`, so the loop performs at most about `31623` iterations. That is tiny compared with the nearly `10^9` iterations required by direct simulation. The equal-counter case is even faster because it returns immediately.
+With (A,B\le10^9), the loop executes at most about (31623) iterations. That replaces a possible billion-step simulation with a few tens of thousands of constant-time operations, while using constant memory.
 
 ## Test Cases
 
@@ -173,7 +163,13 @@ The largest possible nonzero difference is less than `10^9`, so the loop perform
 import sys
 import io
 
-def solve():
+def solve_data(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
     A, B = map(int, input().split())
 
     m = min(A, B)
@@ -181,71 +177,60 @@ def solve():
 
     if d == 0:
         print(m)
-        return
+    else:
+        ans = 0
+        i = 1
 
-    ans = 0
-    i = 1
+        while i * i <= d:
+            if d % i == 0:
+                j = d // i
 
-    while i * i <= d:
-        if d % i == 0:
-            if i <= m:
-                ans += 1
+                if i <= m:
+                    ans += 1
 
-            other = d // i
-            if other != i and other <= m:
-                ans += 1
+                if j != i and j <= m:
+                    ans += 1
 
-        i += 1
+            i += 1
 
-    print(ans)
+        print(ans)
+
+    result = sys.stdout.getvalue()
+
+    sys.stdin = old_stdin
+    sys.stdout = old_stdout
+
+    return result
 
 def run(inp: str) -> str:
-    global input
-    old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
+    return solve_data(inp)
 
-    old_stdout = sys.stdout
-    sys.stdout = io.StringIO()
+assert run("3 30\n") == "2\n", "sample 1"
+assert run("16 4\n") == "4\n", "sample 2"
 
-    try:
-        solve()
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
-        input = sys.stdin.readline
-
-assert run("3 30\n") == "2", "sample 1"
-assert run("16 4\n") == "4", "sample 2"
-
-assert run("1 1\n") == "1", "minimum equal counters"
-assert run("5 5\n") == "5", "all states valid when counters are equal"
-assert run("1 1000000000\n") == "1", "only the smaller value 1 can be a divisor"
-assert run("1000000000 1000000000\n") == "1000000000", "maximum equal counters"
-assert run("2 4\n") == "2", "boundary state at value 1 must be counted"
-assert run("6 10\n") == "2", "divisors 1 and 2 are the only valid smaller values"
+assert run("1 1\n") == "1\n", "minimum equal values"
+assert run("1 2\n") == "1\n", "only initial state is valid"
+assert run("5 5\n") == "5\n", "all states are equal"
+assert run("4 7\n") == "2\n", "divisor boundary"
+assert run("2 1000000000\n") == "2\n", "large difference"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1` | `1` | Minimum input and immediate equal-counter case |
-| `5 5` | `5` | Every positive state is valid when the counters are equal |
-| `1 1000000000` | `1` | Very large difference and the fact that only the divisor `1` is reachable |
-| `1000000000 1000000000` | `1000000000` | Maximum input values and the special `d = 0` case |
-| `2 4` | `2` | The final positive state must be counted, while the zero state must not |
-| `6 10` | `2` | Filtering divisors by the initial smaller counter |
+| `1 1` | `1` | Minimum values and the zero-difference branch |
+| `1 2` | `1` | Initial state is included, zero state is excluded |
+| `5 5` | `5` | Every state is valid when the counters are equal |
+| `4 7` | `2` | Divisors at the boundary (x\le\min(A,B)) |
+| `2 1000000000` | `2` | Large values without linear simulation |
 
 ## Edge Cases
 
-For `1 1`, the algorithm sets `m = 1` and `d = 0`. It immediately returns `m`, producing `1`. This avoids trying to enumerate divisors of zero and correctly counts the only positive state, `(1,1)`.
+For `1 1`, we have (m=1) and (d=0). The equality branch immediately returns (m=1). The only red state is `(1, 1)`, so the result is correct.
 
-For `3 30`, the algorithm gets `m = 3` and `d = 27`. The divisors encountered are `1`, `27`, `3`, and `9`. Only `1` and `3` are at most `m`, so the answer is `2`. These correspond to the positive states `(1,28)` and `(3,30)`. The state `(0,27)` never enters the counting logic.
+For `1 2`, we have (m=1) and (d=1). The only divisor of (d) is (1), and it satisfies (1\le m), so the answer is (1). The state after one second would contain a zero and is outside the red period, so no additional state is counted.
 
-For `5 5`, the difference is zero. Every positive smaller value from `5` down to `1` satisfies `x | x`, so returning `m = 5` counts all five valid moments. A generic divisor-of-difference formula without a separate zero case would not represent this situation correctly.
+For `5 5`, (d=0), so the algorithm returns (5). The five red states are `(5,5)`, `(4,4)`, `(3,3)`, `(2,2)`, and `(1,1)`. Treating zero as an ordinary divisor would be mathematically invalid and would also miss the fact that every state qualifies.
 
-For `1 1000000000`, the difference is `999999999` and the smaller counter can only ever show `1` before reaching zero. Although the difference has many divisors, only the divisor `1` is reachable. The algorithm filters every larger divisor out with the `<= m` condition and returns `1`.
+For `4 7`, (m=4) and (d=3). The positive divisors of (3) are (1) and (3), both at most (4), so the answer is (2). They correspond to the states `(4,7)` and `(1,4)`. The divisor (3) is paired with (1), and both must be counted because both values occur among the possible smaller-counter states.
 
-For `2 4`, the difference is `2`, and the reachable smaller values are `2` and `1`. Both divide `2`, so the answer is `2`. This confirms that the value `1`, which occurs immediately before the first counter reaches zero, is included, while the subsequent zero value is excluded.
-
-For `1000000000 1000000000`, the algorithm does not attempt a billion-step simulation. It recognizes equal counters immediately and returns `1000000000`. This is both the correct answer and the reason the equal-counter branch is essential for performance as well as correctness.
+For `2 1000000000`, the difference is (999999998), but the smaller counter can only be (2) or (1). The divisors relevant to those states are (1) and (2), and both divide the difference, giving answer (2). The algorithm finds this without attempting anything close to (10^9) countdown steps.
