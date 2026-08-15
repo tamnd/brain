@@ -1,7 +1,7 @@
 ---
 title: "CF 102354H - Defying Gravity"
-description: "We have an even number of satellites around the origin. Each satellite is described by an integer polar angle, a distance from the origin, and a mass. No two satellites share an angle, so every integer angle position contains at most one satellite."
-date: "2026-08-14T12:25:29+07:00"
+description: "We have a collection of point satellites around the origin. Each satellite has an angular position, a distance from the origin, and a mass."
+date: "2026-08-15T17:51:14+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102354
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "2018-2019 Summer Petrozavodsk Camp, Oleksandr Kulkov Contest 2"
 rating: 0
 weight: 102354
-solve_time_s: 466
+solve_time_s: 357
 verified: false
 draft: false
 ---
@@ -18,21 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 7m 46s  
+**Solve time:** 5m 57s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an even number of satellites around the origin. Each satellite is described by an integer polar angle, a distance from the origin, and a mass. No two satellites share an angle, so every integer angle position contains at most one satellite.
+We have a collection of point satellites around the origin. Each satellite has an angular position, a distance from the origin, and a mass. Elphaba chooses a ray starting at the origin and wants the total gravitational force along that ray to have no component perpendicular to the ray at any point she visits.
 
-Elphaba chooses a ray starting at the origin. She needs every gravitational force along that ray to point exactly along the ray itself, at every positive distance from the origin. The output is the set of all such ray directions, measured in arc seconds. Since a straight line has two opposite rays, one valid symmetry axis gives two output directions separated by 64,800 arc seconds.
+The central observation is that a valid flight line must be a reflection axis of the whole weighted satellite configuration. Reflection across the line has to preserve both the position of every satellite and its mass. This is also the intended geometric reduction for the problem: valid lines are exactly the symmetry axes of the weighted configuration, after which the problem becomes a palindrome problem.
 
-The physics formula looks complicated, but the relevant property is much simpler. For a candidate line through the origin, every satellite on one side of the line must have a matching satellite on the other side, with exactly the same distance from the origin and the same mass. Reflection across the line must preserve the complete weighted satellite configuration. This is the central reduction of the problem. The same symmetry observation is also the intended simplification of the original problem.
+The angle is given in integer arc seconds, with one full revolution containing exactly 129600 positions. This finite angular resolution is unusually useful. We can create an array of length 129600, put the pair `(rho, mass)` at every occupied angle, and use an empty marker elsewhere.
 
-The angle domain contains only 129,600 integer positions. Although the statement permits (n) up to (2\cdot10^5), the uniqueness of the integer angles actually implies (n\le129600). A quadratic algorithm would still require roughly (1.7\cdot10^{10}) comparisons at the largest possible input, far beyond a two second limit. We need a linear or near-linear algorithm in the fixed angular domain.
+The value of `n` can be as large as 200000, but the angular coordinates are distinct integers from 0 through 129599, so a valid input can contain at most 129600 satellites. The time limit of two seconds rules out anything quadratic in `n`. Even 129600 squared is about 16.8 billion comparisons, far beyond what Python could perform in time. A linear or near-linear algorithm over the fixed angular universe is the right target. The official problem has a 256 MiB memory limit, which is enough for a few arrays of size about 260000.
 
-There are three easy places to make a wrong implementation silently fail. First, the axis can lie exactly on a satellite. For
+There are several edge cases that a direct geometric implementation can mishandle. First, a symmetry axis can pass through a satellite, but the corresponding flight ray is then forbidden if the satellite lies in the direction of travel. For example,
 
 ```
 2
@@ -40,7 +40,7 @@ There are three easy places to make a wrong implementation silently fail. First,
 1 64800 1
 ```
 
-the configuration has reflection axes at (0^\circ) and (90^\circ), but the (0^\circ) axis passes through both satellites and is forbidden. Only the (90^\circ) line survives, giving
+has symmetry axes at 0 and 32400 arc seconds modulo 64800. The directions 0 and 64800 are blocked by the satellites, while 32400 and 97200 are clear, so the correct output is
 
 ```
 2
@@ -48,9 +48,9 @@ the configuration has reflection axes at (0^\circ) and (90^\circ), but the (0^\c
 97200.0000000
 ```
 
-A symmetry checker that does not explicitly reject fixed satellites would incorrectly output four directions.
+A careless implementation that reports symmetry axes without checking the actual ray would incorrectly output four directions.
 
-Second, a symmetry axis need not have an integer angle. With
+Second, an axis does not have to lie at an integer angle. Two equal satellites at angles 0 and 1 have a symmetry axis at 0.5 degrees in the problem's arc-second units, more precisely 0.5 arc seconds:
 
 ```
 2
@@ -58,7 +58,7 @@ Second, a symmetry axis need not have an integer angle. With
 1 1 1
 ```
 
-the two satellites are reflected into each other across the line at (0.5) arc seconds. The correct output is
+The correct output is
 
 ```
 2
@@ -66,124 +66,75 @@ the two satellites are reflected into each other across the line at (0.5) arc se
 64800.5000000000
 ```
 
-A solution that stores the answer only as integer arc seconds loses this axis.
+An implementation that only checks integer centers silently misses both answers.
 
-Third, angles wrap around at (129600). With
-
-```
-2
-1 1 1
-1 129599 1
-```
-
-the satellites are symmetric about angle (0), so the answer is
+Third, geometric symmetry is not enough if the masses differ. Consider
 
 ```
-2
-0.0000000000
-64800.0000000000
+4
+1 0 1
+1 64800 2
+1 32400 3
+1 97200 3
 ```
 
-An implementation that treats (1) and (129599) as far apart instead of adjacent on the circle can miss this symmetry.
+The geometric positions are symmetric around the horizontal axis, but the two satellites on that axis have different masses. The configuration is not a weighted reflection symmetry, and the horizontal directions are also blocked. The correct output is
+
+```
+0
+```
+
+Checking only coordinates and ignoring mass would incorrectly accept a direction.
+
+Finally, empty angular positions matter. If two satellites are separated by a large angular gap, reflection must preserve that gap as well as the satellites themselves. Filling the complete 129600-position angular array with an explicit empty symbol handles this automatically. Compressing the input to only occupied positions loses the information about angular distances and can create false symmetries.
 
 ## Approaches
 
-The brute-force approach starts from the geometric characterization. For every possible reflection axis, reflect every satellite and check whether a satellite with the same radius and mass exists at the reflected angle. There are (129600) possible doubled axis positions, and each check can inspect (n) satellites, giving (O(129600n)), which is about (1.7\cdot10^{10}) operations at maximum size. Even generating candidate axes from satellite pairs and checking each candidate directly has the same quadratic bottleneck.
+The brute-force approach is to choose a possible line, reflect every satellite across it, and check whether the reflected configuration is identical, including masses. Since every valid axis is determined by its action on the angular coordinates, there are only O(129600) possible axes, because an axis is determined modulo 180 degrees and may lie at an integer or half-integer arc second. Checking one axis against all `n` satellites takes O(n), giving O(129600n), or about 1.7 × 10^10 comparisons at the largest feasible input. Even before considering Python's overhead, this is far too slow.
 
-The brute-force works because reflection is exactly the condition we need, but it repeatedly checks almost the same configuration. The key observation is that the angular domain is a small fixed circle of length 129,600. We can put the complete satellite information into an array indexed by angle. Each array element contains the pair ((\rho,m)), while an empty angle gets a special marker.
+There is a better way because the angular coordinate is discrete. Put the satellite label `(rho, mass)` at its angle and put an empty value at every other integer angle. Reflection around an axis with doubled angle `k` sends angle `x` to `k-x` modulo 129600. Thus, when the circular array is cut at the appropriate point, the labels on the two sides of the axis must form a palindrome.
 
-Now the problem becomes purely combinatorial. Suppose the reflection axis has doubled angle (s), meaning its actual angle is (s/2). A satellite at angle (x) is reflected to
+The circular boundary is the only complication. We solve it by duplicating the angular array. A symmetry of the original circle becomes a palindrome of length 129600 centered somewhere in the doubled array. Both integer centers and half-integer centers occur, so we use the odd and even palindrome radii from Manacher's algorithm. Manacher computes all maximal palindrome radii in linear time.
 
-[
-s-x \pmod {129600}.
-]
+The physical parameters do not require floating-point calculations at all. Two reflected positions are equal precisely when their `(rho, mass)` pairs are equal. This means tuple comparison is sufficient and avoids hashing collisions entirely.
 
-Thus the configuration is symmetric exactly when
-
-[
-A[x]=A[s-x\bmod129600]
-]
-
-for every angular position (x).
-
-Define a reversed circular array
-
-[
-B[x]=A[-x\bmod129600].
-]
-
-Then the symmetry condition becomes
-
-[
-A[x]=B[x-s\bmod129600].
-]
-
-In other words, (A) must equal a cyclic shift of (B). Finding every cyclic shift where two strings are equal is a standard linear string matching problem. We can duplicate (B), search for (A) inside (B+B) using KMP, and obtain every possible reflection axis in (O(129600+n)) time.
-
-After finding a symmetry axis, we still have to enforce the requirement that the flight line contains no satellite. If (s) is odd, the equation
-
-[
-2x=s\pmod{129600}
-]
-
-has no integer solution, so no satellite can lie on the axis. If (s) is even, the two fixed angular positions are
-
-[
-x=\frac{s}{2}
-]
-
-and
-
-[
-x=\frac{s}{2}+64800.
-]
-
-If either position contains a satellite, that symmetry axis is rejected.
-
-Finally, a valid line with doubled angle (s) represents two flight directions. Their doubled angles are (s) and (s+129600), so their actual angles are (s/2) and (s/2+64800).
+Once every reflection axis has been found, each axis represents two opposite flight directions. A direction is valid only if there is no satellite exactly on that ray. Since all satellite angles are integers, half-integer directions can never contain a satellite, while an integer direction can be checked directly in the angular array.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n\cdot129600)) | (O(n)) | Too slow |
-| Optimal | (O(n+129600)) | (O(129600)) | Accepted |
+| Brute Force | O(129600n) | O(n) | Too slow |
+| Optimal | O(129600 + n + A) | O(129600 + n) | Accepted |
+
+Here `A` is the number of output directions. The final scan is actually O(259200), so the whole solution is effectively linear in the fixed angular universe.
 
 ## Algorithm Walkthrough
 
-1. Create an array (A) of length (L=129600). At position (\varphi_i), store the pair ((\rho_i,m_i)). Store a special empty value at every angle without a satellite. The pair must contain both radius and mass because reflection has to preserve the actual satellite, not merely its angular position.
-2. Construct the circular reverse array (B) by setting
+1. Create an angular array `a` of length `C = 129600`. At position `phi`, store `(rho, mass)` for the satellite with that angle. Every other position stores `None`. The tuple is the complete information that reflection must preserve.
+2. Duplicate this array to obtain `s = a + a`. A reflection axis can cross the artificial boundary between angle 129599 and angle 0, so working on one copy alone would lose valid palindromes. The second copy gives enough room to represent every circular palindrome as an ordinary palindrome.
+3. Run Manacher's algorithm on `s` and compute the odd palindrome radius `d1` and even palindrome radius `d2`. The odd radius `d1[i]` is the number of matching layers including position `i`, while `d2[i]` is the number of matching layers around the gap immediately before `i`.
+4. Represent a possible axis by `k = 2alpha`, where `alpha` is its angle. Because an axis and the same axis rotated by 180 degrees are identical, `k` only needs values from 0 through `C-1`. Even `k` gives an integer axis angle, while odd `k` gives a half-integer axis angle.
+5. For even `k`, the axis is centered at position `C + k/2` in the doubled array. A complete circular reflection requires equality for distances up to `C/2 - 1` from this center. In Manacher's notation this is exactly the condition `d1[C + k/2] >= C/2`.
+6. For odd `k`, the axis lies between two array positions. Its center is represented by the even-palindrome index `C + (k+1)/2`. We need `C/2` matching pairs, so the condition is `d2[C + (k+1)/2] >= C/2`.
+7. Mark every `k` satisfying the corresponding palindrome condition as a valid reflection axis. The palindrome contains the entire angular circle, so this test is not merely checking a local portion of the configuration. It checks every satellite and every empty angular position against its reflected counterpart.
+8. Scan doubled direction angles `x` from 0 through `2C-1`. The actual flight direction is `x/2` arc seconds, and its reflection axis is `k = x mod C`. If that axis is not symmetric, the direction is rejected. If `x` is odd, the direction is a half-integer angle and cannot contain a satellite. If `x` is even, check whether `a[x/2]` is empty. Only empty directions are emitted.
+9. Print the doubled direction angles in increasing order, dividing by two when formatting. Scanning `x` in increasing order already gives the required sorted output, so no separate sort is needed.
+
+### Why it works
+
+For a fixed flight line, decompose each satellite's position into coordinates parallel and perpendicular to the line. The perpendicular component of its gravitational force is proportional to
 
 [
-B[x]=A[-x\bmod L].
+\frac{m_i b_i}
+{(t^2-2a_i t+\rho_i^2)^{3/2}},
 ]
 
-In array form this is (A[0]), followed by (A[L-1]), (A[L-2]), and so on until (A[1]). This exact indexing is what turns reflection into a cyclic shift.
+where `t` is Elphaba's distance from the origin along the ray, `a_i` is the satellite's parallel coordinate, and `b_i` is its perpendicular coordinate. The sum must vanish for every `t > 0`.
 
-1. Build the KMP prefix function for (A). The prefix function lets us find every occurrence of (A) inside another sequence in linear time, without restarting the comparison after a mismatch.
-2. Scan the sequence (B+B), but only consider occurrences starting at positions (0,\ldots,L-1). If (A) starts at position (p), then
+An off-axis satellite has a singular contribution determined by its parallel coordinate, its distance from the origin, and its mass. The only possible cancellation is from its mirror image across the line, because the mirror has the same `a_i` and `rho_i` but the opposite `b_i`. Cancellation requires the masses to be equal as well. A satellite on the axis has `b_i = 0` and contributes no perpendicular force. Thus the weighted satellite configuration must be invariant under reflection across the flight line.
 
-[
-A[x]=B[p+x]=A[-p-x].
-]
+The angular array records exactly this configuration. Reflection around an axis with doubled angle `k` maps position `i` to `k-i` modulo `C`, which is exactly the equality relation defining a circular palindrome. The doubled array converts that circular palindrome into an ordinary palindrome, and Manacher finds whether the required full-length palindrome exists. Hence every marked axis is a genuine symmetry axis, and every genuine symmetry axis is marked.
 
-Comparing this with (A[x]=A[s-x]), we get
-
-[
-s\equiv-p\pmod L.
-]
-
-So every KMP match gives one candidate doubled axis angle (s=(-p)\bmod L).
-
-1. Reject a candidate (s) if it is even and either fixed position (s/2) or (s/2+L/2) contains a satellite. Those are exactly the points that would lie on the proposed flight line.
-2. For every remaining (s), add doubled flight directions (s) and (s+L). Storing angles doubled avoids floating point arithmetic completely during the algorithm and also handles half-arc-second answers exactly.
-3. Sort all doubled directions and print each one divided by two. An even doubled angle is printed as an integer with a fractional part of zero, while an odd doubled angle ends in `.5`.
-
-Why it works: a valid flight line has zero gravitational force component perpendicular to the line for every point on it. Consider coordinates where the candidate line is the (x)-axis. A satellite at ((a,b)) contributes a perpendicular component proportional to
-
-[
-\frac{m b}{((x-a)^2+b^2)^{3/2}}.
-]
-
-For this sum to vanish for every (x), the singular contribution produced by every off-axis satellite must be cancelled by the reflected satellite at ((a,-b)), with the same mass and hence the same radius and mass pair. Thus every valid line is a reflection symmetry axis of the weighted satellite configuration. Conversely, if the configuration is symmetric, every pair of reflected satellites produces equal and opposite perpendicular forces on the axis, so the total force is parallel to the axis everywhere. The KMP step finds exactly those reflection symmetries, and the fixed-position check removes exactly the forbidden axes that contain satellites.
+The final ray check removes precisely those half-lines that contain a satellite. Thus the emitted directions are exactly the physically allowed flight directions.
 
 ## Python Solution
 
@@ -191,265 +142,252 @@ For this sum to vanish for every (x), the singular contribution produced by ever
 import sys
 input = sys.stdin.readline
 
-L = 129600
-EMPTY = (-1, -1)
+C = 129600
+HALF = C // 2
+
+def manacher_odd_even(s):
+    n = len(s)
+
+    d1 = [0] * n
+    l = 0
+    r = -1
+
+    for i in range(n):
+        if i > r:
+            k = 1
+        else:
+            k = min(d1[l + r - i], r - i + 1)
+
+        while i - k >= 0 and i + k < n and s[i - k] == s[i + k]:
+            k += 1
+
+        d1[i] = k
+
+        k -= 1
+        if i + k > r:
+            l = i - k
+            r = i + k
+
+    d2 = [0] * n
+    l = 0
+    r = -1
+
+    for i in range(n):
+        if i > r:
+            k = 0
+        else:
+            k = min(d2[l + r - i + 1], r - i + 1)
+
+        while i - k - 1 >= 0 and i + k < n and s[i - k - 1] == s[i + k]:
+            k += 1
+
+        d2[i] = k
+
+        k -= 1
+        if i + k > r:
+            l = i - k - 1
+            r = i + k
+
+    return d1, d2
 
 def solve():
     n = int(input())
 
-    a = [EMPTY] * L
+    a = [None] * C
 
     for _ in range(n):
         rho, phi, mass = map(int, input().split())
         a[phi] = (rho, mass)
 
-    # B[x] = A[-x mod L].
-    b = [a[0]] + a[:0:-1]
+    s = a + a
+    d1, d2 = manacher_odd_even(s)
 
-    # KMP prefix function for pattern A.
-    pi = [0] * L
-    j = 0
+    good = [False] * C
 
-    for i in range(1, L):
-        while j and a[i] != a[j]:
-            j = pi[j - 1]
-        if a[i] == a[j]:
-            j += 1
-        pi[i] = j
-
-    candidates = []
-
-    # Search A inside B+B.
-    # We only need starts p in [0, L-1], so the text needs 2L-1 elements.
-    j = 0
-
-    for i in range(2 * L - 1):
-        value = b[i] if i < L else b[i - L]
-
-        while j and value != a[j]:
-            j = pi[j - 1]
-
-        if value == a[j]:
-            j += 1
-
-        if j == L:
-            p = i - L + 1
-            if p < L:
-                s = (-p) % L
-
-                # If s is even, these are the two fixed angular positions.
-                if s % 2 == 0:
-                    x = s // 2
-                    y = x + L // 2
-                    if a[x] != EMPTY or a[y] != EMPTY:
-                        j = pi[j - 1]
-                        continue
-
-                candidates.append(s)
-
-            j = pi[j - 1]
-
-    # Each reflection axis gives two opposite flight directions.
-    directions = []
-    for s in candidates:
-        directions.append(s)
-        directions.append(s + L)
-
-    directions.sort()
-
-    out = [str(len(directions))]
-    for d in directions:
-        if d & 1:
-            out.append(f"{d // 2}.5000000000")
+    for k in range(C):
+        if k & 1:
+            center = C + (k + 1) // 2
+            if d2[center] >= HALF:
+                good[k] = True
         else:
-            out.append(f"{d // 2}.0000000000")
+            center = C + k // 2
+            if d1[center] >= HALF:
+                good[k] = True
 
+    out = []
+
+    for x in range(2 * C):
+        k = x % C
+
+        if not good[k]:
+            continue
+
+        if x & 1:
+            out.append(f"{x / 2:.10f}")
+        else:
+            phi = x // 2
+            if a[phi] is None:
+                out.append(f"{phi:.10f}")
+
+    sys.stdout.write(str(len(out)) + "\n")
     sys.stdout.write("\n".join(out))
+    if out:
+        sys.stdout.write("\n")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first part of the implementation stores the entire angular configuration in an array of length 129,600. A tuple ((\rho,m)) is enough to identify the satellite information needed by reflection, because the angle is already represented by the array index.
+The first part of `solve` constructs the complete circular sequence. The use of `None` is deliberate. It means that a reflected empty position must match another empty position, so the palindrome check also verifies all angular gaps.
 
-The construction `a[0] + a[:0:-1]` deserves attention. The desired element at index (x) is (A[-x\bmod L]), so index zero stays at the front and the remaining elements appear in reverse order. A normal `a[::-1]` would put (A[L-1]) at index zero and would represent a shifted reflection instead.
+The `manacher_odd_even` function is the standard linear-time odd and even palindrome computation. Its two arrays are needed because an axis can pass directly through an integer angular position or between two integer positions. The algorithm uses only equality comparisons, so the satellite tuples can be compared directly without converting their large coordinates to floating point.
 
-The KMP prefix function uses tuple equality directly. Python integers can hold the input radii and masses without overflow, and no arithmetic involving (\rho_i) or (m_i) is needed after constructing the array.
+The even-axis case uses `d1`. For `k = 2alpha`, the center in the duplicated array is `C + alpha`, and the required radius is `C/2`. The exact threshold is `HALF`, because `d1` counts the center itself as one layer and therefore a radius of `HALF` covers distances from 0 through `HALF-1`. The pair at distance exactly `HALF` represents the same angular position after one complete revolution and imposes no additional condition.
 
-The KMP scan uses (2L-1) text positions. A full pattern occurrence starting at position (p<L) ends at (p+L-1), so positions through (2L-2) are sufficient. The conversion `s = (-p) % L` follows directly from the relation between a match in the reversed sequence and a reflection.
+The odd-axis case uses `d2`. Here the axis lies between two integer angular positions, and there are exactly `HALF` distinct reflected pairs around a complete circle. Consequently the required even-palindrome radius is exactly `HALF`.
 
-The fixed-point test is separate from the symmetry test. A configuration can genuinely be symmetric around a line while having satellites lying on that line. Such a line cannot be used by Elphaba, so those candidates must be discarded.
+The final scan uses doubled angles. This avoids accumulating floating-point errors and also gives sorted output for free. For an odd doubled angle, the direction is a half-integer arc second and cannot coincide with an input satellite. For an even doubled angle, the corresponding integer position is checked in `a`.
 
-The output is represented using doubled angles until the final formatting. This avoids floating point rounding completely. In particular, an axis at (0.5) arc seconds is represented by doubled angle (1), and prints exactly as `0.5000000000`.
+There is no integer overflow issue in Python. The largest stored integer is only around `10^18`, and Python integers handle it exactly anyway. More importantly, the algorithm never performs trigonometric calculations, so neither `rho` nor `phi` needs to be converted to floating point.
 
 ## Worked Examples
 
 ### Sample 1
 
-For the two satellites at angles (0) and (64800), the angular array contains two identical entries opposite each other. The reversed circular array is identical to the original array, so KMP finds two cyclic matches.
+The two satellites occupy angles 0 and 64800 and have the same `(rho, mass)` pair. The angular sequence is empty everywhere except at those two opposite positions.
 
-| KMP start (p) | Doubled axis (s=(-p)\bmod L) | Fixed satellites | Valid |
-| --- | --- | --- | --- |
-| 0 | 0 | Angles 0 and 64800 | No |
-| 64800 | 64800 | None | Yes |
+The symmetry axis at 0 has doubled angle `k = 0`. Its reflection exchanges neither satellite with a different label, so it is a valid geometric axis. However, both directions of this axis contain satellites and are removed in the final scan.
 
-The candidate (s=0) represents the horizontal axis, but both satellites lie directly on it. The candidate (s=64800) represents the vertical axis, which has no satellite on it. Its two flight directions are (64800/2=32400) and ((64800+129600)/2=97200).
+The perpendicular axis has `k = 64800`, corresponding to angle 32400. It is also symmetric, and neither of its two rays contains a satellite.
 
-### Half-arc-second example
+| State | Value |
+| --- | --- |
+| `C` | `129600` |
+| `HALF` | `64800` |
+| occupied angles | `0`, `64800` |
+| symmetric axis `k` | `0`, `64800` |
+| blocked directions | `0`, `64800` |
+| emitted directions | `32400`, `97200` |
 
-Consider
+The output is consequently
 
 ```
 2
-1 0 1
-1 1 1
+32400.0000000000
+97200.0000000000
 ```
 
-The valid symmetry axis is halfway between the two occupied positions.
+This example demonstrates why finding symmetry axes is not the final step. A symmetric line can still be unusable because one of its rays passes through a satellite.
 
-| KMP start (p) | Doubled axis (s) | Fixed positions | Valid |
-| --- | --- | --- | --- |
-| 129599 | 1 | None | Yes |
+### Custom square
 
-Here (s=1), so the axis angle is (1/2=0.5). Its opposite direction is (0.5+64800=64800.5).
+Consider four equal satellites at the four cardinal directions:
 
-This trace demonstrates why doubled angles are useful. No floating point calculation is necessary to discover or compare the half-integer answer.
+```
+4
+1 0 1
+1 32400 1
+1 64800 1
+1 97200 1
+```
+
+The configuration is a square. Its symmetry axes are the horizontal and vertical axes and the two diagonal axes.
+
+The horizontal and vertical axes are blocked because they contain satellites. The two diagonal axes are clear.
+
+| Axis doubled angle `k` | Axis angle | Symmetric | Direction 1 | Direction 2 | Result |
+| --- | --- | --- | --- | --- | --- |
+| `0` | `0` | yes | `0` blocked | `64800` blocked | reject |
+| `32400` | `16200` | yes | `16200` clear | `81000` clear | accept |
+| `64800` | `32400` | yes | `32400` blocked | `97200` blocked | reject |
+| `97200` | `48600` | yes | `48600` clear | `113400` clear | accept |
+
+The output is
+
+```
+4
+16200.0000000000
+48600.0000000000
+81000.0000000000
+113400.0000000000
+```
+
+The trace demonstrates the distinction between a symmetry axis and an allowed flight ray, as well as the fact that each axis contributes two opposite directions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n+129600)) | Filling the angular array costs (O(n)), while KMP processes arrays of fixed length (129600) in linear time. |
-| Space | (O(129600)) | The angular arrays, prefix function, candidates, and answer all use linear space in the angular domain. |
+| Time | O(C + n + A) | Construct the angular array, run Manacher on `2C` positions, and scan `2C` directions |
+| Space | O(C + n) | Store the angular labels and the two Manacher radius arrays |
 
-The effective maximum (n) is 129,600 because all input angles are distinct integers in a range of exactly 129,600 positions. The algorithm therefore performs only a few hundred thousand array operations plus KMP comparisons, which comfortably fits the two second limit.
+Here `C = 129600` and `A` is the number of reported directions. Since `C` is fixed by the statement and `A <= 200000`, the practical workload is a few hundred thousand array operations plus input and output processing. This fits comfortably within the intended limits, and the implementation does not perform any O(n²) work.
 
 ## Test Cases
 
 ```python
 import sys
 import io
+from contextlib import redirect_stdout
 
-L = 129600
-EMPTY = (-1, -1)
+C = 129600
 
-def solve_case(inp: str) -> str:
-    global input
-
+def run(inp: str) -> str:
     old_stdin = sys.stdin
-    old_input = input
-
     sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
+    out = io.StringIO()
 
-    n = int(input())
-    a = [EMPTY] * L
-
-    for _ in range(n):
-        rho, phi, mass = map(int, input().split())
-        a[phi] = (rho, mass)
-
-    b = [a[0]] + a[:0:-1]
-
-    pi = [0] * L
-    j = 0
-
-    for i in range(1, L):
-        while j and a[i] != a[j]:
-            j = pi[j - 1]
-        if a[i] == a[j]:
-            j += 1
-        pi[i] = j
-
-    candidates = []
-    j = 0
-
-    for i in range(2 * L - 1):
-        value = b[i] if i < L else b[i - L]
-
-        while j and value != a[j]:
-            j = pi[j - 1]
-
-        if value == a[j]:
-            j += 1
-
-        if j == L:
-            p = i - L + 1
-
-            if p < L:
-                s = (-p) % L
-
-                if s % 2 == 0:
-                    x = s // 2
-                    y = x + L // 2
-                    if a[x] != EMPTY or a[y] != EMPTY:
-                        j = pi[j - 1]
-                        continue
-
-                candidates.append(s)
-
-            j = pi[j - 1]
-
-    directions = []
-    for s in candidates:
-        directions.append(s)
-        directions.append(s + L)
-
-    directions.sort()
-
-    out = [str(len(directions))]
-    for d in directions:
-        if d & 1:
-            out.append(f"{d // 2}.5000000000")
-        else:
-            out.append(f"{d // 2}.0000000000")
+    with redirect_stdout(out):
+        solve()
 
     sys.stdin = old_stdin
-    input = old_input
+    return out.getvalue()
 
-    return "\n".join(out)
+def parse_output(out: str):
+    tokens = out.split()
+    count = int(tokens[0])
+    values = list(map(float, tokens[1:]))
+    assert count == len(values)
+    return count, values
 
-# Provided sample.
+# Provided sample
 sample1 = """\
 2
 1 0 1
 1 64800 1
 """
 
-assert solve_case(sample1) == """\
-2
-32400.0000000000
-97200.0000000000
-""", "sample 1"
+assert run(sample1) == (
+    "2\n"
+    "32400.0000000000\n"
+    "97200.0000000000\n"
+), "sample 1"
 
-# Minimum-size input with a half-arc-second symmetry axis.
+# Minimum-size input with a half-integer symmetry axis.
 case2 = """\
 2
 1 0 1
 1 1 1
 """
 
-assert solve_case(case2) == """\
-2
-0.5000000000
-64800.5000000000
-""", "half-arc-second axis"
+count, values = parse_output(run(case2))
+assert count == 2, "half-integer axis count"
+assert abs(values[0] - 0.5) < 1e-9, "half-integer first direction"
+assert abs(values[1] - 64800.5) < 1e-9, "half-integer second direction"
 
-# Boundary wrap-around: angles 1 and 129599 are reflections around angle 0.
+# Weighted configuration with geometric symmetry but no valid weighted symmetry.
 case3 = """\
-2
-1 1 1
-1 129599 1
+4
+1 0 1
+1 64800 2
+1 32400 3
+1 97200 3
 """
 
-assert solve_case(case3) == """\
-2
-0.0000000000
-64800.0000000000
-""", "circular boundary"
+count, values = parse_output(run(case3))
+assert count == 0, "unequal masses must break symmetry"
 
-# Four equally spaced identical satellites.
-# The axes through the satellites are forbidden.
+# Square: cardinal axes are blocked, diagonal axes are clear.
 case4 = """\
 4
 1 0 1
@@ -458,42 +396,55 @@ case4 = """\
 1 97200 1
 """
 
-assert solve_case(case4) == """\
-4
-16200.0000000000
-48600.0000000000
-81000.0000000000
-113400.0000000000
-""", "fourfold symmetry with forbidden axes"
+count, values = parse_output(run(case4))
+expected = [16200.0, 48600.0, 81000.0, 113400.0]
+assert count == 4, "square direction count"
+for got, want in zip(values, expected):
+    assert abs(got - want) < 1e-9, "square directions"
 
-# Maximum possible number of distinct angular positions.
-# Every angle is occupied by an identical satellite.
-# Exactly the odd doubled axes avoid all occupied fixed positions.
+# Maximum feasible number of satellites.
+# Every integer angle is occupied with the same (rho, mass).
+# All half-integer directions are clear, and every such direction
+# is an axis of reflection.
 parts = ["129600"]
-for phi in range(L):
+for phi in range(129600):
     parts.append(f"1 {phi} 1")
+case5 = "\n".join(parts) + "\n"
 
-max_case = "\n".join(parts) + "\n"
-max_out = solve_case(max_case)
-max_lines = max_out.splitlines()
+count, values = parse_output(run(case5))
+assert count == 129600, "maximum feasible input"
+assert abs(values[0] - 0.5) < 1e-9, "first half-integer direction"
+assert abs(values[-1] - 129599.5) < 1e-9, "last half-integer direction"
+assert all(abs(values[i] - (i + 0.5)) < 1e-9 for i in range(count)), \
+    "all half-integer directions"
 
-assert max_lines[0] == "129600", "maximum number of valid directions"
-assert len(max_lines) == 129601, "maximum output size"
-assert max_lines[1] == "0.5000000000", "first maximum-case direction"
-assert max_lines[-1] == "129599.5000000000", "last maximum-case direction"
+# Boundary around angle 129599 and angle 0.
+case6 = """\
+2
+1 129599 7
+1 0 7
+"""
+
+count, values = parse_output(run(case6))
+assert count == 2, "wrap-around symmetry count"
+assert abs(values[0] - 64800.5) < 1e-9
+assert abs(values[1] - 129599.5) < 1e-9
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2` satellites at angles 0 and 64800 | 2 directions | Provided sample and rejection of axes containing satellites |
-| `2` satellites at angles 0 and 1 | 0.5 and 64800.5 | Half-arc-second answers |
-| `2` satellites at angles 1 and 129599 | 0 and 64800 | Circular wrap-around |
-| Four identical satellites at 0, 32400, 64800, 97200 | 16200, 48600, 81000, 113400 | Multiple symmetries and forbidden axes |
-| 129600 identical satellites at every angle | 129600 directions | Maximum angular-domain size and maximum output size |
+| Sample 1 | `32400`, `97200` | Provided example and blocked symmetric axis |
+| `0, 1` with equal labels | `0.5`, `64800.5` | Half-integer axes |
+| Four satellites with unequal opposite masses | `0` | Mass must be part of the reflection label |
+| Four cardinal satellites | `16200`, `48600`, `81000`, `113400` | Several axes and blocked directions |
+| All 129600 integer angles occupied | 129600 half-integer directions | Maximum feasible input and dense symmetry |
+| Angles 129599 and 0 | `64800.5`, `129599.5` | Circular wrap-around |
+
+The maximum-size case is also useful for checking that the algorithm does not accidentally depend on the number of occupied positions being small. The angular universe itself is bounded, so processing all 129600 positions remains practical.
 
 ## Edge Cases
 
-The first edge case is a symmetric configuration whose axis passes through satellites. For
+The first edge case is a symmetric axis that contains satellites. For
 
 ```
 2
@@ -501,9 +452,9 @@ The first edge case is a symmetric configuration whose axis passes through satel
 1 64800 1
 ```
 
-the candidate (s=0) is a true reflection symmetry because both occupied positions are fixed by reflection. The fixed-position check sees satellites at positions (0) and (64800), so the candidate is rejected. The other candidate (s=64800) has no fixed occupied positions and produces the two valid directions (32400) and (97200).
+the axis at 0 is detected because reflection sends angle 0 to itself and 64800 to itself. The corresponding doubled axis index is `k = 0`. During the output scan, direction `x = 0` maps to angle 0, where `a[0]` is occupied, so it is rejected. Direction `x = 129600` maps to angle 64800, where `a[64800]` is also occupied, so it is rejected. The perpendicular axis survives and produces 32400 and 97200.
 
-The second edge case is a half-integer direction. For
+The second edge case is a half-integer axis. For
 
 ```
 2
@@ -511,22 +462,28 @@ The second edge case is a half-integer direction. For
 1 1 1
 ```
 
-the matching cyclic shift gives (s=1). Since (s) is odd, there are no integer angular positions satisfying (2x=s), so no satellite can lie on the axis. The algorithm stores doubled direction (1), then prints (1/2=0.5), and also prints the opposite direction (64800.5).
+reflection around 0.5 exchanges the two satellites. Its doubled axis value is `k = 1`, so the algorithm uses the even-palindrome radius. Because both rays have doubled angles 1 and 129601, they are half-integer directions. No input angle can equal either one, so both directions are safe. The output is 0.5 and 64800.5.
 
-The third edge case is angular wrap-around. For
+The third edge case is unequal mass. For
+
+```
+4
+1 0 1
+1 64800 2
+1 32400 3
+1 97200 3
+```
+
+the positions at 32400 and 97200 have equal labels, but the labels at 0 and 64800 differ. Any reflection that exchanges those two positions changes the mass, so it is not a symmetry of the gravitational field. The only geometric axis that leaves both unequal-mass satellites fixed is the horizontal axis, but both rays of that axis contain satellites. The final answer is empty.
+
+The fourth edge case is a symmetry crossing the circular boundary. For
 
 ```
 2
-1 1 1
-1 129599 1
+1 129599 7
+1 0 7
 ```
 
-the reflected position of angle (1) around axis (0) is
+the two satellites are adjacent across the 0-degree boundary. Their symmetry axis is at 129599.5, represented modulo 180 degrees by 64799.5. The doubled-array construction is what makes this ordinary palindrome visible. Without duplicating the angular sequence, the pair would appear to lie at opposite ends of the data structure and a local palindrome implementation could miss it.
 
-[
-0-1\equiv129599\pmod{129600}.
-]
-
-The circular reverse array and KMP matching operate modulo the complete angular circle, so this symmetry is found without a special case for angles near zero. The resulting directions are (0) and (64800).
-
-The final edge case is a fully occupied angular circle. With one identical satellite at every integer angle, every odd doubled axis (s) is a valid reflection symmetry because it swaps integer positions in pairs and has no fixed integer position. Every even (s) has fixed occupied positions and is forbidden. There are 64,800 odd values of (s) in ([0,129600)), each producing two opposite directions, so the output contains exactly 129,600 directions. This is also the largest possible output allowed by the angular domain.
+The fifth edge case is a completely occupied angular circle. If every integer angle from 0 through 129599 contains the same `(rho, mass)`, every reflection axis is valid as a geometric symmetry. Every integer ray is blocked, while every half-integer ray is clear. There are exactly 129600 valid directions, one at every half-integer angle. The algorithm handles this without any special case because the palindrome test sees a completely uniform sequence and the final ray test removes exactly the occupied integer positions.
