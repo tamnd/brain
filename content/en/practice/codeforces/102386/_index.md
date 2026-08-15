@@ -1,22 +1,22 @@
 ---
 title: "Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019"
-description: "9 problems from Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019 (contest 102386), difficulty -. 5/9 solutions verified against sample I/O."
+description: "10 problems from Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019 (contest 102386), difficulty -. 5/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102386
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 5
-total_solve_s: 3079
-date: "2026-08-12T07:41:29+07:00"
+total_solve_s: 4825
+date: "2026-08-12T08:10:36+07:00"
 weight: 102386
 draft: false
 ---
 
 # [Квалификационный тур Уральского четвертьфинала Чемпионата мира по программированию 2019](https://codeforces.com/contest/102386)
 
-Special | 9 problems | 5/9 verified | Difficulty - | 51m 19s
+Special | 10 problems | 5/10 verified | Difficulty - | 1h 20m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,5 +27,6 @@ Special | 9 problems | 5/9 verified | Difficulty - | 51m 19s
 | [F](F/) | [\u041a\u0443\u0431\u0438\u043a](https://codeforces.com/problemset/problem/102386/F) |  |  |  | 1m 50s | ✓ |
 | [G](G/) | [\u0423\u0440\u0430\u043b\u044c\u0441\u043a\u0438\u0435 \u0431\u043b\u0438\u043d\u0447\u0438\u043a\u0438](https://codeforces.com/problemset/problem/102386/G) |  |  |  | 8m 50s | ✓ |
 | [H](H/) | [\u0421\u0432\u0435\u0442\u043e\u0444\u043e\u0440\u044b](https://codeforces.com/problemset/problem/102386/H) |  |  |  | 2m 41s |  |
+| [I](I/) | [\u041f\u0435\u0440\u0441\u0435\u0430\u043d\u0442\u043e\u0432\u043a\u0430](https://codeforces.com/problemset/problem/102386/I) |  |  |  | 29m 6s |  |
 | [J](J/) | [\u041a\u0430\u0442\u0430\u043c\u0430\u0440\u0438](https://codeforces.com/problemset/problem/102386/J) |  |  |  | 12m 15s | ✓ |
 | [K](K/) | [\u041c\u0430\u043b\u044b\u0448 \u0438 \u041a\u0430\u0440\u043b\u0441\u043e\u043d](https://codeforces.com/problemset/problem/102386/K) |  |  |  | 4m 6s |  |
