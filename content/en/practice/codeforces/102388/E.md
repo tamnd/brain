@@ -1,7 +1,7 @@
 ---
 title: "CF 102388E - Stables"
-description: "We have an undirected graph with up to 50 cities and up to 2500 roads. A road can connect two different cities or connect a city to itself, so loops are allowed. Starting from a city, we must follow exactly (k) roads and finish at the same city."
-date: "2026-08-14T13:55:45+07:00"
+description: "We have an undirected graph with at most 50 cities. A road lets a horse move between its two endpoints in one step, and a road may also be a self-loop. For a fixed city v, we need to decide whether there exists a walk that starts at v, uses exactly k roads, and ends back at v."
+date: "2026-08-16T08:50:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102388
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "SUFE ICPC Team Formation Test"
 rating: 0
 weight: 102388
-solve_time_s: 313
+solve_time_s: 360
 verified: false
 draft: false
 ---
@@ -18,505 +18,290 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 13s  
+**Solve time:** 6m  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an undirected graph with up to 50 cities and up to 2500 roads. A road can connect two different cities or connect a city to itself, so loops are allowed. Starting from a city, we must follow exactly (k) roads and finish at the same city. A city is valid if such a closed walk of length exactly (k) exists.
+We have an undirected graph with at most 50 cities. A road lets a horse move between its two endpoints in one step, and a road may also be a self-loop. For a fixed city v, we need to decide whether there exists a walk that starts at v, uses exactly k roads, and ends back at v. The answer is the number of cities for which such a closed walk exists.
 
-The task is to count all valid starting cities independently. Different cities may use completely different walks, and a walk is allowed to repeat both cities and roads.
+The input contains up to 20 independent graphs. The graph is small in terms of vertices, with n≤50, but k can be as large as 10 9. That combination is the key difficulty. Any algorithm that performs one operation per day or one graph traversal per step cannot survive a billion steps. On the other hand, n=50 is small enough that we can afford algorithms involving roughly n 2 work per bit of k. Since 10 9 has only about 30 binary digits, logarithmic exponentiation is a natural target.
 
-The small value of (n) is the main clue. With only 50 vertices, an (O(n^3)) or even an (O(n^3 \log k)) method would be reasonable in a compiled language, while the huge value (k \le 10^9) rules out anything that processes every day directly. We need to avoid doing work proportional to (k). The fact that there are at most 2500 roads also means that graph traversals and small dynamic programs are cheap.
-
-There are several edge cases that can fool a solution based only on parity.
-
-First, (k=0) means that the horse makes no moves, so every city is already back at itself. For example,
+There are several edge cases that can easily break an implementation. When k=0, every city qualifies because the empty walk already starts and ends at the same city. For example,
 
 ```
-1
-1 0 0
+13 0 0
 ```
 
 has output
 
 ```
-1
+3
 ```
 
-A solution that requires at least one road traversal would incorrectly return zero.
+A solution that requires at least one road would incorrectly return zero.
 
-Second, an isolated vertex cannot make any positive-length walk. For example,
-
-```
-1
-2 0 2
-```
-
-has output
+Self-loops matter especially when k=1. For
 
 ```
-0
+12 1 10 0
 ```
 
-There is no road at either city, so even though 2 is even, the usual "every positive even length works" argument does not apply.
+the answer is `1`, because city 0 can take its self-loop once and return to itself, while city 1 is isolated. A solution that treats the graph as a simple graph without preserving diagonal entries would miss city 0.
 
-Third, a loop creates a closed walk of length one. For example,
-
-```
-1
-1 1 1
-0 0
-```
-
-has output
+Parallel roads do not need special treatment. If two roads connect the same pair of cities, they provide no additional possibility for existence of a walk. We only care whether at least one transition exists. For example,
 
 ```
-1
+12 3 20 10 10 1
 ```
 
-A bipartite check that treats the graph as a simple graph and ignores loops would incorrectly classify this component as bipartite.
+has output `2`. Both cities can go to the other city and immediately return.
 
-Fourth, being in a non-bipartite component is not by itself enough for small odd (k). Consider
-
-```
-1
-3 3 1
-0 1
-1 2
-2 0
-```
-
-The triangle is non-bipartite, but there is no one-step closed walk because there is no loop. The correct output is
+Finally, parity can be deceptive. In a bipartite graph, every closed walk has even length, but the existence of an odd cycle changes the situation. For example,
 
 ```
-0
+13 3 30 11 22 0
 ```
 
-This is why the algorithm handles small (k) exactly before using the eventual parity property.
+has output `3`, since every city lies on the triangle. Trying to solve the problem using only graph bipartiteness would also miss special cases such as a vertex attached to an odd cycle, where sufficiently long odd closed walks may exist but short ones may not. The matrix formulation avoids having to manually characterize all of these cases.
 
 ## Approaches
 
-The direct approach is to simulate walks by dynamic programming. For every starting city (s), keep the set of cities reachable after exactly (t) steps. Initially only (s) is reachable. For every step, follow every incident road from every currently reachable city. After (k) steps, check whether (s) itself is reachable.
+The most direct approach is to simulate possible positions after each step. Fix a starting city s, keep the set of cities reachable after exactly t steps, and repeatedly expand that set through the graph. After k rounds, check whether s is reachable. This is correct because the set after round t represents exactly the endpoints of walks of length t starting from s.
 
-This is correct because the state after (t) steps contains exactly the possible endpoints of all walks of length (t). The problem is the value of (k). In the worst case, the dynamic program performs (O(k n m)) adjacency processing when it is run for every starting city. With (k=10^9), (n=50), and (m=2500), this is on the order of (1.25 \cdot 10^{14}) graph transitions. The large (k) makes this impossible.
+The problem is k. In the worst case, one round may inspect every road, so processing one starting city takes O(km). Repeating this for all n starting cities gives O(knm). At the maximum constraints this is roughly
 
-The key observation is that undirected graphs have a very simple long-term pattern for closed walks. Every positive even length is possible at every non-isolated vertex, because we can traverse any incident edge and immediately traverse it back. Repeating that two-step walk gives every positive even length.
+10 9 ⋅50⋅2500=1.25×10 14
 
-Odd lengths behave differently. A connected component is bipartite exactly when it contains no odd cycle. In a bipartite component, every closed walk has even length, so no odd value of (k) can work. In a non-bipartite component, every vertex eventually has closed walks of both parities. More specifically, every vertex has an odd closed walk of length at most (2n-1). Once one odd closed walk exists, we can add any number of two-step backtracks, so every sufficiently large odd length also exists.
+road examinations, which is far beyond the time limit.
 
-This gives us a clean split. If (k) is at most (2n), we simply compute the answer exactly with a small bitset dynamic program. If (k) is larger than (2n), we no longer need the exact walk structure. For even (k), every non-isolated vertex works. For odd (k), exactly the vertices belonging to non-bipartite components work.
+The graph is small enough to replace step-by-step simulation with matrix exponentiation. Define a Boolean adjacency matrix A, where A[i][j] is true exactly when a road permits a move from i to j. Under Boolean matrix multiplication, the entry (A t )[i][j] tells us whether there exists a walk of exactly t steps from i to j. Consequently, city i is valid exactly when the diagonal entry (A k )[i][i] is true.
 
-The bitset representation makes the exact part particularly cheap. A set of reachable cities is represented by one Python integer, where bit (j) is set when city (j) is reachable. To advance one step, for every reachable city (v), we OR its adjacency bitset into the new reachable set. Since (n\le50), all of this fits inside a few machine-sized Python integers.
+Binary exponentiation reduces the number of matrix multiplications from k to O(logk). A conventional matrix multiplication would cost O(n 3 ), which is already reasonable for n=50, but Python can do even better here by representing each matrix row as a single integer bitset. A row then contains the set of reachable vertices as bits, and multiplying two Boolean matrices becomes a sequence of bitwise OR operations.
+
+For a row i of the left matrix, every set bit j means that i can reach j. The corresponding row B[j] of the right matrix contains all vertices reachable from j. Thus the resulting row is simply the OR of B[j] over all set bits j in row i. This reduces the practical multiplication to O(n 2 ) row operations, with each operation using Python's highly optimized arbitrary-precision integers.
+
+The brute-force method works because it explicitly follows walks one step at a time, but fails because k is enormous. The observation that only the binary representation of k matters lets us jump through exponentially many steps at once.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DP for all (k) steps | (O(k n m)) | (O(n^2)) | Too slow |
-| Exact bitset DP up to (2n), then parity/component analysis | (O(n^2 \min(k,n) + n+m)) | (O(n+m)) | Accepted |
+| Brute Force | O(knm) | O(n) | Too slow |
+| Boolean Matrix Exponentiation with Bitsets | O(n 2 logk) bitset operations | O(n) bitsets | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build both an adjacency list and an adjacency bitset for the graph. The adjacency list is used to determine connected components and bipartiteness. The bitset lets the exact dynamic program update all possible endpoints using fast integer OR operations.
-2. If (k=0), return (n). The empty walk starts and ends at the same city regardless of the graph.
-3. If (k\le2n), compute the answer exactly. For each city (i), the initial reachable set is just ({i}), represented by the integer (1\ll i). After one step, replace the reachable set by the union of the adjacency sets of all currently reachable cities. Repeat this exactly (k) times.
-
-After the (t)-th iteration, the bit at position (j) is set exactly when there exists a walk of length (t) from the original city (i) to city (j). Thus the diagonal bits after (k) iterations tell us exactly which cities have a closed walk of length (k).
-4. If (k>2n), run a BFS or DFS over every connected component while assigning each vertex a binary color. Along every ordinary edge, its endpoints must have opposite colors in a bipartite graph. If an edge joins two vertices with the same color, the component contains an odd cycle and is non-bipartite. A loop immediately creates such a conflict because its two endpoints are the same vertex.
-5. For large even (k), count every vertex whose degree is positive. From such a vertex, choose one incident edge and traverse it back and forth. Repeating this two-step walk produces any positive even length.
-6. For large odd (k), count every vertex whose component was found to be non-bipartite. A non-bipartite component contains an odd cycle. From any vertex, walk to that cycle, traverse the cycle once, and return along the same path. This gives an odd closed walk. The construction has length at most (2n-1), and because (k>2n), the difference between (k) and that odd length is a positive even number. We can fill that difference with repeated two-step backtracks.
+1. Build the adjacency relation as a bitset for every city. Bit j in row i is set when a road exists between i and j. Because the graph is undirected, an input edge (x,y) sets both x→y and y→x. For a self-loop, this naturally sets the diagonal bit.
+2. Represent the identity matrix as bitsets. Its row i contains only bit i, because the identity matrix represents a walk of length zero that stays at the same city.
+3. Maintain two Boolean matrices, `result` and `base`. Initially, `result` is the identity matrix and `base` is the adjacency matrix. The invariant is that `result` represents the product of the powers of the original adjacency matrix already selected from the processed bits of k, while `base` represents the current power A 2 p.
+4. Inspect the binary representation of k from its least significant bit. If the current bit is one, multiply `result` by `base`. This incorporates the corresponding power A 2 p into the answer.
+5. Square `base` to obtain the next power of two. Boolean matrix multiplication is used here because we care whether at least one walk exists, not how many walks exist.
+6. Shift k right by one bit and continue until every bit has been processed. At most 30 bits are needed because k≤10 9.
+7. After exponentiation, inspect the diagonal of `result`. If bit i is set in row i, then there is a walk of exactly k steps from city i back to city i. Count all such cities.
 
 ### Why it works
 
-For the exact part, the invariant is that after (t) iterations, `reach[i]` contains precisely the vertices reachable from (i) by a walk of exactly (t) edges. The update takes every currently reachable vertex and follows one more edge, so it neither misses a possible walk nor introduces an impossible endpoint. Consequently, bit (i) after (k) iterations is set exactly when there is a length-(k) closed walk at (i).
-
-For large (k), consider an even length first. Any non-isolated vertex has a two-edge closed walk, obtained by traversing an incident edge in both directions. Repeating it gives every positive even length. An isolated vertex has no positive walk at all.
-
-For odd lengths, a bipartite component cannot contain an odd closed walk because every edge changes the bipartite side, so after an odd number of edges the walk must be on the opposite side. A non-bipartite component contains an odd cycle. For a vertex (v), take a shortest path of length (d) from (v) to that cycle and let the odd cycle have length (l). The path and cycle can be chosen to meet only at the endpoint, so (d+l\le n). The resulting closed walk has length (2d+l), which is at most (d+n\le2n-1). Adding any number of two-edge backtracks gives every larger odd length. Since the algorithm only uses this argument when (k>2n), the required large odd length is always reachable.
+The central invariant is that after processing some prefix of the binary representation of k, `result` equals the Boolean product of exactly the powers corresponding to the processed one-bits. Since Boolean matrix multiplication composes the existence of walks, A t [i][j] is true exactly when some length-t walk connects i to j. Binary exponentiation eventually constructs A k, so its diagonal contains precisely the cities that admit a closed walk of length k. The bitset implementation changes only how the Boolean multiplication is computed, not what mathematical result it represents.
 
 ## Python Solution
 
 ```python
-import sys
-input = sys.stdin.readline
+Pythonimport sysinput = sys.stdin.readline
 
-def solve_case(n, m, k, edges):
-    graph = [[] for _ in range(n)]
-    adj_bits = [0] * n
-    degree = [0] * n
+def multiply(A, B, n):    """    Boolean matrix multiplication.
+    Each row is a bitset. For every set bit j in A[i],    row B[j] contributes all vertices reachable after the    second part of the walk.    """    C = [0] * n
+    for i in range(n):        mask = A[i]        row = 0
+        while mask:            bit = mask & -mask            j = bit.bit_length() - 1            row |= B[j]            mask ^= bit
+        C[i] = row
+    return C
 
-    for u, v in edges:
-        graph[u].append(v)
-        graph[v].append(u)
+def solve():    T = int(input())    answers = []
+    for _ in range(T):        n, m, k = map(int, input().split())
+        adj = [0] * n
+        for _ in range(m):            x, y = map(int, input().split())            adj[x] |= 1 << y            adj[y] |= 1 << x
+        # A^0 = I.        result = [1 << i for i in range(n)]
+        # A^(2^p), starting with A^1.        base = adj
+        while k:            if k & 1:                result = multiply(result, base, n)
+            k >>= 1
+            if k:                base = multiply(base, base, n)
+        answer = 0        for i in range(n):            if result[i] & (1 << i):                answer += 1
+        answers.append(str(answer))
+    sys.stdout.write("\n".join(answers))
 
-        adj_bits[u] |= 1 << v
-        adj_bits[v] |= 1 << u
-
-        degree[u] += 1
-        degree[v] += 1
-
-    if k == 0:
-        return n
-
-    # Small k: compute the exact set of endpoints after k steps.
-    if k <= 2 * n:
-        reach = [1 << i for i in range(n)]
-
-        for _ in range(k):
-            new_reach = [0] * n
-
-            for start in range(n):
-                bits = reach[start]
-                result = 0
-
-                while bits:
-                    low = bits & -bits
-                    v = low.bit_length() - 1
-                    result |= adj_bits[v]
-                    bits -= low
-
-                new_reach[start] = result
-
-            reach = new_reach
-
-        answer = 0
-        for i in range(n):
-            if (reach[i] >> i) & 1:
-                answer += 1
-
-        return answer
-
-    # Large k: only the parity structure of each component matters.
-    color = [-1] * n
-    component = [-1] * n
-    component_bad = []
-
-    for start in range(n):
-        if color[start] != -1:
-            continue
-
-        cid = len(component_bad)
-        component_bad.append(False)
-
-        color[start] = 0
-        component[start] = cid
-        stack = [start]
-
-        while stack:
-            u = stack.pop()
-
-            for v in graph[u]:
-                if color[v] == -1:
-                    color[v] = color[u] ^ 1
-                    component[v] = cid
-                    stack.append(v)
-                elif color[v] == color[u]:
-                    component_bad[cid] = True
-
-    if k % 2 == 0:
-        return sum(degree[i] > 0 for i in range(n))
-
-    return sum(component_bad[component[i]] for i in range(n))
-
-def solve():
-    t = int(input())
-
-    for _ in range(t):
-        n, m, k = map(int, input().split())
-        edges = [tuple(map(int, input().split())) for _ in range(m)]
-
-        print(solve_case(n, m, k, edges))
-
-if __name__ == "__main__":
-    solve()
+if __name__ == "__main__":    solve()
 ```
 
-The first part of `solve_case` constructs two graph representations. `graph` stores the edges for the later component and bipartiteness traversal. `adj_bits[u]` stores every neighbor of (u) in one integer, so taking one more graph step becomes a sequence of integer OR operations.
+The adjacency construction uses one integer per city. Bit `j` represents city `j`, so setting `1 << j` records the existence of a transition to that city. Setting both directions handles the undirected road, and doing the same operation twice for a parallel edge has no effect, which is exactly what we want.
 
-The exact dynamic program starts with `1 << i` for city (i), because before taking any edges the only reachable city is (i) itself. For every reachable vertex `v`, `adj_bits[v]` contains all possible destinations after one additional step. OR-ing all those masks gives exactly the next reachable set.
+`result = [1 << i for i in range(n)]` creates the identity matrix. This is necessary even when k=0, because A 0 =I, and the diagonal of the identity contains every city. The `while k` loop consequently handles k=0 without any special branch.
 
-The loop is limited to `k <= 2 * n`. This boundary is deliberate. We do not need to know exact walk lengths beyond (2n), because the component structure completely determines the answer there.
+The multiplication routine deserves the most attention. Suppose bit j is set in `A[i]`. That means there is a first-step segment from i to j. Every bit set in `B[j]` represents a second segment from j to some destination. Taking the OR over all such `B[j]` therefore gives exactly the destinations reachable through the concatenated walk.
 
-The bipartite traversal assigns colors `0` and `1`. A loop appears in `graph[u]` as an edge from `u` to itself, so `color[v] == color[u]` immediately marks the component as non-bipartite. Parallel edges cause no problem because repeating the same adjacency check does not change the result.
+The expression `mask & -mask` extracts the lowest set bit. `bit.bit_length() - 1` converts that bit into its vertex index. Removing it with `mask ^= bit` guarantees that every reachable intermediate vertex is processed once.
 
-For even large (k), `degree[i] > 0` is the complete condition. For odd large (k), the component identifier maps each vertex to its bipartite status, so `component_bad[component[i]]` directly tells whether city (i) belongs to a non-bipartite component.
+There is no integer overflow issue. Python integers grow automatically, and the largest bitset has only 50 meaningful bits. The value of k is also handled directly as a Python integer, so the 10 9 bound requires no special arithmetic.
 
-There is no integer overflow issue in Python. The largest bitset has only 50 relevant bits, and (k) is stored as an ordinary Python integer.
+The order of the operations in the exponentiation loop is also deliberate. If the current bit of k is one, the current power must be multiplied into `result`. After that, the current power is squared to prepare the next binary digit. The `if k` guard avoids one unnecessary final squaring.
 
 ## Worked Examples
 
-### Sample 1, first testcase
+The first sample testcase is
 
-The graph is a path of length two, with city 0 in the middle.
+```
+3 2 30 10 2
+```
 
-For (k=3), we are in the exact-DP range because (3\le2n=6).
+The graph is a path of length two, with city 0 in the middle. We want a closed walk of length 3.
 
-| Step | City 0 reachable | City 1 reachable | City 2 reachable |
+The adjacency rows are represented by bitsets. Bit positions 0, 1, and 2 correspond to the three cities.
+
+| Stage | k | `result` rows | `base` represents |
 | --- | --- | --- | --- |
-| 0 | {0} | {1} | {2} |
-| 1 | {1,2} | {0} | {0} |
-| 2 | {0} | {1,2} | {1,2} |
-| 3 | {1,2} | {0} | {0} |
+| Initial | 3 | `001`, `010`, `100` | A 1 |
+| Bit 0 = 1 | 3 | A | A 1 |
+| Shift | 1 | A | A 2 |
+| Bit 1 = 1 | 1 | A 3 | A 2 |
+| Finish | 0 | A 3 | A 2 |
 
-No row contains its starting city after three steps, so the answer is 0.
+There is no odd cycle and no self-loop, so the graph is bipartite and every closed walk has even length. The diagonal of A 3 is entirely false, giving answer `0`.
 
-The graph is bipartite, which also explains why odd closed walks cannot exist at all. The exact DP is still used because the algorithm must handle all small values of (k), including cases where eventual parity alone is insufficient.
+The second sample testcase is
 
-### Sample 1, third testcase
+```
+3 2 40 10 2
+```
 
-The graph contains a triangle (0,1,2), plus the path (3-4-0). Here (n=5) and (k=5), so again (k\le2n) and the exact DP is used.
+This is the same graph, but now k=4.
 
-| Step | City 0 | City 1 | City 2 | City 3 | City 4 |
-| --- | --- | --- | --- | --- | --- |
-| 0 | {0} | {1} | {2} | {3} | {4} |
-| 1 | {1,2,4} | {0,2} | {0,1} | {4} | {0,3} |
-| 2 | {0,2,3,4} | {0,1,4} | {0,1,2,4} | {0,3} | {1,2,4} |
-| 3 | {0,1,2,3,4} | {0,1,2,3} | {0,1,2,3,4} | {4} | {0,1,2,3} |
-| 4 | {0,1,2,3,4} | {0,1,2,3,4} | {0,1,2,3,4} | {0,3} | {0,1,2,4} |
-| 5 | {0,1,2,3,4} | {0,1,2,3,4} | {0,1,2,3,4} | {4} | {0,1,2,3,4} |
+| Stage | k | `result` | `base` |
+| --- | --- | --- | --- |
+| Initial | 4 | I | A |
+| Shift | 2 | I | A 2 |
+| Shift | 1 | I | A 4 |
+| Bit 2 = 1 | 1 | A 4 | A 4 |
+| Finish | 0 | A 4 | A 4 |
 
-Cities 0, 1, 2, and 4 contain themselves after five steps. City 3 does not, so the answer is 4.
+Every city has a length-4 closed walk. From city 1, for example, we can use
 
-The example also shows why connectivity alone is not enough. City 3 is connected to the non-bipartite triangle, yet it has no odd closed walk of length five. The exact computation handles that short-distance restriction correctly.
+1→0→1→0→1.
+
+The same construction works for city 2, while city 0 can alternate with either neighbor. Thus every diagonal entry of A 4 is true and the answer is `3`.
+
+These two traces also show why looking only at reachability without tracking the exact walk length would be insufficient. The graph is connected in both cases, but length 3 produces no closed walk while length 4 produces one at every city.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n^2\min(k,2n)+n+m)) | Each exact DP step processes at most (n) reachable sets, each containing at most (n) vertices. Large (k) requires only one graph traversal. |
-| Space | (O(n+m)) | The adjacency list, bitsets, colors, component IDs, and DP arrays all use at most (O(n+m)) space. |
+| Time | O(n 2 logk) bitset operations | There are O(logk) matrix products, and each product processes at most n 2 set bits |
+| Space | O(n) Python integers | Two n-row Boolean matrices are stored, with each row containing only n relevant bits |
 
-With (n\le50), the exact phase performs at most (2n=100) iterations. Even in a dense graph, each iteration handles only 50 small bitsets, so the amount of work is tiny. The large-(k) phase is just a linear graph traversal. The solution comfortably fits the 3 second and 256 MB limits.
+For n≤50 and k≤10 9, there are at most 30 exponentiation levels. Each Boolean matrix multiplication processes at most 50 2 =2500 row relationships, and each relationship is handled through native integer bit operations. This is comfortably within the 3 second time limit and far below the 256 MB memory limit.
+
+The distinction between this implementation and ordinary O(n 3 logk) matrix multiplication is useful in Python. The bitset representation compresses an entire Boolean row into one integer, so the expensive inner operation is performed by optimized integer arithmetic rather than a Python-level loop over all possible destinations.
 
 ## Test Cases
 
-The following test harness reproduces the algorithm through `solve_case` and checks the samples together with several boundary cases.
-
 ```python
-import io
+Pythonimport sysimport io
 
-def solve_case(n, m, k, edges):
-    graph = [[] for _ in range(n)]
-    adj_bits = [0] * n
-    degree = [0] * n
+def solve_data(inp: str) -> str:    old_stdin = sys.stdin    old_stdout = sys.stdout
+    sys.stdin = io.StringIO(inp)    out = io.StringIO()    sys.stdout = out
+    try:        T = int(sys.stdin.readline())        answers = []
+        def multiply(A, B, n):            C = [0] * n
+            for i in range(n):                mask = A[i]                row = 0
+                while mask:                    bit = mask & -mask                    j = bit.bit_length() - 1                    row |= B[j]                    mask ^= bit
+                C[i] = row
+            return C
+        for _ in range(T):            n, m, k = map(int, sys.stdin.readline().split())            adj = [0] * n
+            for _ in range(m):                x, y = map(int, sys.stdin.readline().split())                adj[x] |= 1 << y                adj[y] |= 1 << x
+            result = [1 << i for i in range(n)]            base = adj
+            while k:                if k & 1:                    result = multiply(result, base, n)
+                k >>= 1
+                if k:                    base = multiply(base, base, n)
+            answer = sum(                1 for i in range(n)                if result[i] & (1 << i)            )            answers.append(str(answer))
+        sys.stdout.write("\n".join(answers))        return out.getvalue()
+    finally:        sys.stdin = old_stdin        sys.stdout = old_stdout
 
-    for u, v in edges:
-        graph[u].append(v)
-        graph[v].append(u)
-        adj_bits[u] |= 1 << v
-        adj_bits[v] |= 1 << u
-        degree[u] += 1
-        degree[v] += 1
+# Provided sampleassert solve_data("""\33 2 30 10 23 2 40 10 25 5 50 11 22 03 44 0""") == "0\n3\n4", "provided sample"
 
-    if k == 0:
-        return n
+# Minimum-size graph, k = 0.# The empty walk is valid at the only city.assert solve_data("""\11 0 0""") == "1", "k = 0"
 
-    if k <= 2 * n:
-        reach = [1 << i for i in range(n)]
+# One vertex with a self-loop.# The loop can be traversed any positive number of times.assert solve_data("""\11 1 10 0""") == "1", "self-loop and k = 1"
 
-        for _ in range(k):
-            new_reach = [0] * n
+# Two isolated vertices, k > 0.# There is no road at all, so no positive-length walk exists.assert solve_data("""\12 0 7""") == "0", "isolated vertices"
 
-            for start in range(n):
-                bits = reach[start]
-                result = 0
+# Parallel edges and an even walk.# Multiplicity does not matter because we only ask whether a walk exists.assert solve_data("""\12 3 20 10 10 1""") == "2", "parallel edges"
 
-                while bits:
-                    low = bits & -bits
-                    v = low.bit_length() - 1
-                    result |= adj_bits[v]
-                    bits -= low
+# A triangle, k = 3.# Every vertex can traverse the triangle once and return.assert solve_data("""\13 3 30 11 22 0""") == "3", "odd cycle"
 
-                new_reach[start] = result
-
-            reach = new_reach
-
-        return sum((reach[i] >> i) & 1 for i in range(n))
-
-    color = [-1] * n
-    component = [-1] * n
-    component_bad = []
-
-    for start in range(n):
-        if color[start] != -1:
-            continue
-
-        cid = len(component_bad)
-        component_bad.append(False)
-
-        color[start] = 0
-        component[start] = cid
-        stack = [start]
-
-        while stack:
-            u = stack.pop()
-
-            for v in graph[u]:
-                if color[v] == -1:
-                    color[v] = color[u] ^ 1
-                    component[v] = cid
-                    stack.append(v)
-                elif color[v] == color[u]:
-                    component_bad[cid] = True
-
-    if k % 2 == 0:
-        return sum(degree[i] > 0 for i in range(n))
-
-    return sum(component_bad[component[i]] for i in range(n))
-
-def run(inp):
-    data = list(map(int, inp.split()))
-    p = 0
-
-    t = data[p]
-    p += 1
-    out = []
-
-    for _ in range(t):
-        n, m, k = data[p], data[p + 1], data[p + 2]
-        p += 3
-
-        edges = []
-        for _ in range(m):
-            u, v = data[p], data[p + 1]
-            p += 2
-            edges.append((u, v))
-
-        out.append(str(solve_case(n, m, k, edges)))
-
-    return "\n".join(out) + "\n"
-
-# Provided sample.
-sample = """\
-3
-3 2 3
-0 1
-0 2
-3 2 4
-0 1
-0 2
-5 5 5
-0 1
-1 2
-2 0
-3 4
-4 0
-"""
-assert run(sample) == "0\n3\n4\n", "sample"
-
-# Minimum-size graph, no edges, k = 0.
-assert run("""\
-1
-1 0 0
-""") == "1\n", "k = 0"
-
-# One vertex with several loops, all endpoints equal.
-# Every positive k is possible.
-assert run("""\
-1
-1 5 1000000000
-0 0
-0 0
-0 0
-0 0
-0 0
-""") == "1\n", "all-equal loop edges"
-
-# Boundary between the exact and large-k phases.
-# A single edge is bipartite, so even lengths work and odd lengths do not.
-assert run("""\
-4
-2 1 4
-0 1
-2 1 5
-0 1
-3 2 6
-0 1
-1 2
-3 2 7
-0 1
-1 2
-""") == "2\n0\n3\n0\n", "parity boundary"
-
-# Large odd k in a non-bipartite component.
-# Triangle plus a leaf. Every vertex belongs to the same non-bipartite component.
-assert run("""\
-1
-4 4 1000000001
-0 1
-1 2
-2 0
-2 3
-""") == "4\n", "large odd non-bipartite"
-
-# Maximum-size graph: complete graph on 50 vertices.
-# There are 50^2 = 2500 roads when loops are included.
-# Every vertex has a loop, so every positive k works.
-n = 50
-edges = [(i, j) for i in range(n) for j in range(n)]
-max_input = "1\n50 2500 1000000000\n"
-max_input += "\n".join(f"{u} {v}" for u, v in edges) + "\n"
-
-assert run(max_input) == "50\n", "maximum-size dense graph"
+# Maximum-size vertex count and a huge k.# Complete graph has a closed walk of every positive length at every vertex.edges = []n = 50for i in range(n):    for j in range(i + 1, n):        edges.append(f"{i} {j}")
+max_case = "1\n50 1225 1000000000\n" + "\n".join(edges) + "\n"assert solve_data(max_case) == "50", "maximum n and huge k"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1 0 0` | `1` | Empty walk and minimum graph size |
-| `1 / 1 5 1000000000 / 0 0 ...` | `1` | Loops and arbitrarily large odd lengths |
-| Single-edge and path cases with (k=4,5,6,7) | `2,0,3,0` | Even versus odd closed walks and the small/large boundary |
-| Triangle with a leaf and huge odd (k) | `4` | Non-bipartite component handling for large odd (k) |
-| Complete graph on 50 vertices with 2500 roads | `50` | Maximum (n), maximum (m), and dense adjacency |
+| `1 0 0` | `1` | Minimum graph and the k=0 boundary |
+| One vertex with one loop, k=1 | `1` | Self-loop and exact one-step return |
+| Two isolated vertices, k=7 | `0` | No positive-length walk |
+| Three parallel edges between two vertices, k=2 | `2` | Parallel edges do not affect existence |
+| Triangle, k=3 | `3` | Odd closed walks |
+| Complete graph on 50 vertices, k=10 9 | `50` | Maximum n, huge k, and binary exponentiation |
 
 ## Edge Cases
 
-For (k=0), consider
+### Zero steps
+
+Consider
 
 ```
-1
-1 0 0
+13 0 0
 ```
 
-The algorithm returns immediately with `n`, which is 1. No adjacency information is needed because the zero-length walk does not require a road. This avoids the common mistake of requiring the starting city to have positive degree.
+The algorithm initializes `result` to the identity matrix and never enters the exponentiation loop because `k` is zero. The identity matrix has every diagonal entry set, so all three cities are counted. This matches the definition of a length-zero walk.
 
-For an isolated vertex with positive even (k), consider
+### Self-loop with one step
 
-```
-1
-2 0 2
-```
-
-The large-(k) shortcut is not used because (2\le2n), so the exact DP starts with `{0}` and `{1}`. After one step both sets become empty because there are no incident edges, and they remain empty. Neither diagonal bit is present, giving 0. If the same case had a much larger even (k), the large-(k) branch would explicitly check `degree[i] > 0`, preventing an isolated city from being accepted.
-
-For a loop, consider
+Consider
 
 ```
-1
-1 1 1
-0 0
+12 1 10 0
 ```
 
-The exact DP starts with bit 0 set. After one step it ORs the adjacency mask of vertex 0, which contains bit 0 because of the loop. The diagonal bit remains set, so the answer is 1. In the large-(k) branch, the same loop makes the bipartite traversal encounter an edge whose endpoints have the same color, marking the component non-bipartite.
+The adjacency row of city 0 contains bit 0, while city 1 has an empty row. Since k=1, `result` becomes the adjacency matrix itself. Its diagonal contains a true value only at city 0, so the answer is `1`.
 
-For a non-bipartite graph with a small odd (k), consider the triangle
+This case catches implementations that accidentally ignore self-loops or only insert an edge when its endpoints are different.
 
-```
-1
-3 3 1
-0 1
-1 2
-2 0
-```
+### Isolated vertices
 
-The graph contains an odd cycle, but there is no loop. With (k=1), no vertex can return to itself in one edge. Since (1\le2n), the exact DP is used and correctly returns 0. This is the reason the large-(k) parity classification cannot simply be applied for every odd (k).
-
-Finally, consider a bipartite graph with a very large odd (k):
+Consider
 
 ```
-1
-3 2 1000000001
-0 1
-1 2
+12 0 7
 ```
 
-Here (k>2n), so the algorithm runs the bipartite check instead of iterating a billion times. The component is bipartite, so `component_bad` is false. Since (k) is odd, no city is counted and the answer is 0. The result follows from the fact that every closed walk in a bipartite graph has even length.
+The adjacency matrix is all zeroes. Every positive power of the zero Boolean matrix remains zero, so no diagonal entry is set. The answer is `0`. The identity matrix does not cause a false positive because it is used only for exponent zero, and here the exponent is positive.
+
+### Parallel roads
+
+Consider
+
+```
+12 3 20 10 10 1
+```
+
+The three input roads all set the same two adjacency bits. After construction, the matrix is exactly the adjacency matrix of a single undirected edge. Squaring it gives a diagonal true at both vertices, corresponding to the walks 0→1→0 and 1→0→1. The answer is `2`.
+
+Treating the input as a multigraph with counts would be unnecessary because the problem asks for existence rather than the number of possible walks.
+
+### Odd cycle
+
+Consider
+
+```
+13 3 30 11 22 0
+```
+
+The first power allows one edge, and cubing the Boolean adjacency matrix detects the triangle walk from every vertex back to itself. The diagonal of A 3 is entirely true, so the answer is `3`.
+
+This is also why a solution based only on even or odd k is insufficient. The graph structure determines which exact lengths are possible, and Boolean matrix powers represent that structure directly.
