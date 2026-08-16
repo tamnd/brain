@@ -9,7 +9,7 @@ rating_range: "-"
 n_problems: 10
 n_verified: 5
 total_solve_s: 2571
-date: "2026-08-09T09:29:32+07:00"
+date: "2026-08-09T09:33:42+07:00"
 weight: 102437
 draft: false
 ---
