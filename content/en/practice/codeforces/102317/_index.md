@@ -1,28 +1,29 @@
 ---
 title: "UCF Locals 2016"
-description: "7 problems from UCF Locals 2016 (contest 102317), difficulty -. 7/7 solutions verified against sample I/O."
+description: "8 problems from UCF Locals 2016 (contest 102317), difficulty -. 8/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102317
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
-n_verified: 7
-total_solve_s: 1580
-date: "2026-08-16T19:08:08+07:00"
+n_problems: 8
+n_verified: 8
+total_solve_s: 1660
+date: "2026-08-16T03:46:59+07:00"
 weight: 102317
 draft: false
 ---
 
 # [UCF Locals 2016](https://codeforces.com/contest/102317)
 
-Special | 7 problems | 7/7 verified | Difficulty - | 26m 20s
+Special | 8 problems | 8/8 verified | Difficulty - | 27m 40s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [B](B/) | [Phoneme Palindromes](https://codeforces.com/problemset/problem/102317/B) |  |  |  | 2m 59s | ✓ |
 | [D](D/) | [Wildest Dreams](https://codeforces.com/problemset/problem/102317/D) |  |  |  | 5m 18s | ✓ |
 | [E](E/) | [Loopy Word Search](https://codeforces.com/problemset/problem/102317/E) |  |  |  | 5m 1s | ✓ |
+| [F](F/) | [Dot the i's and Cross the T's](https://codeforces.com/problemset/problem/102317/F) |  |  |  | 1m 20s | ✓ |
 | [H](H/) | [Count the Dividing Pairs](https://codeforces.com/problemset/problem/102317/H) |  |  |  | 7m 29s | ✓ |
 | [I](I/) | [Lineup the Dominoes](https://codeforces.com/problemset/problem/102317/I) |  |  |  | 1m 59s | ✓ |
 | [J](J/) | [Rising Tides](https://codeforces.com/problemset/problem/102317/J) |  |  |  | 1m 53s | ✓ |
