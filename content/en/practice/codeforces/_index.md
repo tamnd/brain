@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3138 contests, 23260 problems, 13018 verified."
+description: "Codeforces problem solutions with full editorials. 3139 contests, 23269 problems, 13026 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3138 contests, 23260 problems, 13018 verified.**
+**3139 contests, 23269 problems, 13026 verified.**
 
-## Unknown — 832 contests, 7064 problems, 4228 verified
+## Unknown — 833 contests, 7073 problems, 4236 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102277](102277/) | [UCF Locals 2018](https://codeforces.com/contest/102277) | 9 | 8/9 | Special | - |
 | [102280](102280/) | [2010, Тренировка СГАУ aka Контест про маршрутки](https://codeforces.com/contest/102280) | 8 | 8/8 | Special | - |
 | [102281](102281/) | [2011, IV Самарская областная межвузовская олимпиада по программированию](https://codeforces.com/contest/102281) | 13 | 13/13 | Special | - |
 | [102282](102282/) | [2011, Отборочный контест СГАУ на четвертьфинал ACM ICPC](https://codeforces.com/contest/102282) | 10 | 10/10 | ICPC/IOI | - |
