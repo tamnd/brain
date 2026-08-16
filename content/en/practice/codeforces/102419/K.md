@@ -1,7 +1,7 @@
 ---
 title: "CF 102419K - The Dragon and the Kingdom of Trees"
-description: "After (m) years, tree (i) has height (hi). Every time the dragon attacks a tree, that tree's height becomes zero, after which it starts growing again. Thus, if (hi<m), the last attack on that tree must have happened exactly (m-hi) years before the observation."
-date: "2026-08-15T09:10:57+07:00"
+description: "Think about the last time each tree was attacked. If a tree is reset after year t, then it grows for exactly m - t years afterward, so its final height is m - t. Equivalently, define [ ti = m-hi. ] The value ti is the last reset time of tree i."
+date: "2026-08-16T09:18:35+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102419
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "SPC 2019"
 rating: 0
 weight: 102419
-solve_time_s: 894
+solve_time_s: 400
 verified: false
 draft: false
 ---
@@ -18,76 +18,85 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 14m 54s  
+**Solve time:** 6m 40s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-After (m) years, tree (i) has height (h_i). Every time the dragon attacks a tree, that tree's height becomes zero, after which it starts growing again. Thus, if (h_i<m), the last attack on that tree must have happened exactly (m-h_i) years before the observation. Trees with (h_i=m) are special: they never needed to be attacked at all, although they could have been attacked immediately after planting and still finish with height (m).
+Think about the last time each tree was attacked. If a tree is reset after year `t`, then it grows for exactly `m - t` years afterward, so its final height is `m - t`. Equivalently, define
 
-At every attack time, exactly (k) pairwise disjoint intervals must be chosen. Consider the trees whose final height is exactly (h<m). At the time corresponding to their last reset, every such tree must be attacked. A tree with final height smaller than (h) cannot be attacked yet, because it needs a later reset. A tree with final height larger than (h) may be attacked, since its final reset has already happened earlier, and resetting it again at this time would simply make this current time its last reset. Hence, at level (h), the usable positions are precisely those with (h_i\ge h), and every position with (h_i=h) must be covered.
+[
+t_i = m-h_i.
+]
 
-The minimum number of intervals required at height (h) is consequently the number of connected components of positions satisfying (h_i\ge h) that contain at least one position with (h_i=h). Call this number (c(h)). Any valid (k) must satisfy (k\ge c(h)) for every (h<m) that occurs.
+The value `t_i` is the last reset time of tree `i`. A value of `0` means either that the tree was never attacked or that it was attacked immediately after planting. The only global requirement is that at least one attack happens somewhere.
 
-The constraint (n\le10^6) rules out anything close to (O(n^2)). Even an (O(n\log n)) solution deserves scrutiny under a one second limit, so the intended approach needs to process the array in linear time. The value (m) can be as large as (10^9), so iterating through every possible height is also impossible. The solution must depend on the (n) array elements rather than on the numerical range of the heights.
+At a particular reset time `t`, every tree whose final reset time is smaller than `t` is already finished and cannot be included in an interval at time `t`, because doing so would give it a later final reset. Trees with final reset time at least `t` are still available. Among these available positions, all trees whose final reset time is exactly `t` must be covered by the intervals used at time `t`.
 
-There are several edge cases that easily break a careless implementation. If every height equals (m), the answer is still (1), not (0), because Ayoub must have attacked at least once. For example, with input
+This turns the problem into an interval connectivity problem. For each `t`, consider all positions satisfying `t_i >= t`. They form several disjoint contiguous components. If a component contains at least one position with `t_i = t`, at least one attack interval is needed inside that component. Let `c_t` be the number of such components. Then every valid solution must have
 
-```
-4 3
-3 3 3 3
-```
+[
+k \ge \max_t c_t.
+]
 
-the correct answer is (1). An implementation that considers only trees with a mandatory reset would find no such tree and incorrectly print (0).
+There is a second restriction. Every attack at time `t` must contain exactly `k` nonempty intervals, and there are only as many usable positions as there are trees with `t_i >= t`. The smallest such set occurs at the largest reset time, so the strongest restriction is that `k` cannot exceed the number of trees with the maximum `t_i`. Since `t_i=m-h_i`, this is exactly the number of trees having the minimum final height.
 
-Equal heights also need special treatment. With
+Thus, if
 
-```
-4 2
-2 1 2 1
-```
+[
+K=\max_t c_t
+]
 
-the answer is (2). At height (2), the two trees of height (2) are separated by trees that must not be attacked at that time, so two intervals are necessary. A stack implementation that treats equal values as separate components can overcount the number of required intervals.
+and `freq_min` is the number of trees with minimum height, the answer is `K` when `K <= freq_min`, and `-1` otherwise.
 
-Finally, having a sufficiently large lower-level (c(h)) does not by itself guarantee feasibility. There must also be enough trees available at the highest height that actually needs a reset. For example,
+The input size is the main reason the implementation needs to be linear. With up to (10^6) trees, even (O(n\log n)) work is substantially more expensive than a single scan, while (O(n^2)) means up to (10^{12}) elementary operations. The year count can reach (10^9), so an algorithm that iterates through every year is impossible regardless of how small the array operations are. The solution must depend on the positions and their heights, not on the numerical size of `m`.
 
-```
-5 5
-4 0 2 0 2
-```
+There are several cases where a direct interpretation can go wrong. If every height is `m`, for example `n=4, m=3` with heights `3 3 3 3`, the answer is `1`, not `0`. Ayoub is required to attack at least once, and he can attack immediately after planting, so one interval covering all four trees works.
 
-requires (k=2) because the two height-(2) trees form two separate components. But at height (4), only one tree is available for an attack. Two nonempty disjoint intervals cannot be chosen from one available tree, so the correct answer is (-1).
+If the same final reset time appears in two separated positions, they do not necessarily require two intervals. For `n=3, m=2` and heights `1 0 1`, the reset times are `1 2 1`. The two trees reset at time `1` can be covered by one interval containing all three positions. The middle tree is then attacked again at time `2`. The answer is `1`. A careless solution that simply counts runs of equal heights would incorrectly return `2`.
+
+There are also genuinely impossible configurations. Consider `n=5, m=3` with heights `2 1 2 0 2`. The reset times are `1 2 1 3 1`. At time `2`, the two positions with reset time `2` are separated, so two intervals are necessary. Hence `k` must be at least `2`. But at time `3` only one tree can still be attacked, so exactly two nonempty intervals are impossible. The correct answer is `-1`.
 
 ## Approaches
 
-A direct solution would examine every distinct height (h<m). For each one, scan the whole array and count the components of positions with height at least (h) that contain a height-(h) tree. This is correct because those components are exactly the intervals that must be covered at the corresponding reset time. In the worst case there are (n) distinct heights, and each scan costs (O(n)), giving (O(n^2)), which is about (10^{12}) operations when (n=10^6). That is far beyond the time limit.
+A straightforward solution can examine every possible reset time independently. For a fixed `t`, scan the entire array and determine the components consisting only of positions with `t_i >= t`, then count how many of those components contain a position with `t_i=t`. Repeating this for every distinct value of `t` gives all the required `c_t` values. In the worst case there are (n) distinct reset times and each scan costs (O(n)), giving (O(n^2)), or as many as (10^{12}) array inspections for (n=10^6). That is far beyond the one second limit.
 
-The useful observation is that these component counts are naturally represented by a minimum Cartesian tree. A minimum Cartesian tree preserves the array order while making every parent smaller than its child. For a threshold (h), if we keep only nodes with value at least (h), every connected component has a root whose value is the minimum value in that component. A component contributes to (c(h)) exactly when that minimum is (h). Thus, (c(h)) is the number of Cartesian-tree component roots having value (h).
+The brute-force works because the real question is exactly about connected components after applying a threshold. The problem is that explicitly rebuilding those threshold components wastes almost all of the work. When the threshold changes by one value, most of the array structure does not change.
 
-We do not need to construct the actual tree. A monotonic stack can maintain the relevant chain while scanning from left to right. The stack is kept strictly increasing. When a new value (x) arrives, every larger value popped from the stack has just found a smaller value that closes its component, so that popped value contributes one to its height's count. Equal values are different: equal positions belong to the same component at that threshold, so the older equal representative is discarded without increasing the count.
+The key observation is that the threshold components can be represented by a Cartesian tree. It is slightly cleaner to work with the original heights instead of the reset times. For a reset time `t`, the condition `t_i >= t` is equivalent to
 
-The elements left on the stack at the end represent components reaching the right boundary. Every remaining stack element contributes once, including the bottom element, which represents the global minimum component. Heights equal to (m) are excluded from these counts because trees of final height (m) do not require a reset.
+[
+h_i \le m-t.
+]
 
-Let (k) be the maximum frequency obtained for any height below (m). This is the minimum possible number of intervals, provided that (k) can actually be used at every required reset time. The most restrictive time is the largest height (H<m) appearing in the array. At that time, only trees with height at least (H) are available. If their number is smaller than (k), the construction is impossible. If there are at least (k), every lower reset time has at least as many available trees, so the same (k) works everywhere.
+So we need the number of connected components of a subarray-level set `h_i <= H` whose maximum value is exactly `H`. A max Cartesian tree represents precisely these nested components. Every node whose parent has a strictly larger height represents one component whose maximum is the node's height.
+
+A monotonic decreasing stack constructs the relevant Cartesian-tree structure in linear time. When a new height arrives, all smaller heights on the stack become children of the new value. If, after removing those smaller values, the stack is empty or its top is strictly smaller than the new value, the new node begins a new component at its own height, so we increase the count for that height. Equal heights stay together, which is essential because equal-height positions belong to the same threshold component when no smaller height separates them.
+
+The resulting counts give every `c_t` without explicitly constructing a tree. We only need a dictionary from height to its number of component roots. At the same time, we track the minimum height frequency, which supplies the upper bound on `k`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n^2)) | (O(1)) | Too slow |
-| Monotonic Stack | (O(n)) expected | (O(n)) | Accepted |
+| Threshold scan | (O(n^2)) | (O(n)) | Too slow |
+| Monotonic stack | (O(n)) amortized | (O(n)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the heights and keep a strictly increasing stack. At the same time, record the largest height (H<m), the number of occurrences of (H), and the number of trees whose height is exactly (m). The latter two quantities will be used to check whether the final value of (k) is feasible.
-2. For every height (x), first pop while the stack top is strictly greater than (x). Every such popped value (v) has found a smaller value, so its component is now closed and its minimum is (v). Increase the frequency of (v), unless (v=m), since height (m) does not require an attack.
-3. If the stack top equals (x), remove it without increasing any frequency. The old and new positions have the same height and belong to the same component at that height. Keeping both would count one component twice.
-4. Push (x) onto the stack. The strict-increasing property means that the stack represents the current chain of components whose right boundary has not yet been closed by a smaller height.
-5. After the complete scan, add one occurrence to the frequency of every value remaining on the stack, except (m). These components reach the end of the array, so no smaller value appears later to close them.
-6. If there is no height below (m), every tree can remain untouched and Ayoub can make one attack immediately after planting. Return (1).
-7. Otherwise, let (k) be the maximum frequency among heights below (m). This is the minimum number of intervals forced by the most demanding reset time.
-8. Let (H) be the largest height below (m). At the reset time corresponding to (H), the only usable trees are those with height at least (H). Since (H) is the largest height below (m), these are exactly the trees with height (H) together with all trees of height (m). If their count is smaller than (k), return (-1). Otherwise return (k).
+1. Read the final heights and find the minimum height and how many trees have that height. The minimum height corresponds to the maximum reset time, and that is the year where the fewest trees are still eligible to be attacked. Consequently, it gives the upper bound `k <= freq_min`.
+2. Maintain a stack of heights in non-increasing order. The stack represents the right boundary chain of the max Cartesian tree for the prefix processed so far. Equal values are kept on the stack instead of being removed.
+3. For each height `x`, remove every stack value smaller than `x`. Each removed node has just found a strictly larger ancestor, namely `x`. This is exactly the relationship that makes that node the maximum of one threshold component. The counting can be associated with the node when it is pushed, because after removing all smaller values, its current stack parent is the Cartesian-tree parent.
+4. After all smaller values have been removed, check the new stack top. If the stack is empty or its top is strictly smaller than `x`, increment the component count associated with `x`. If the top equals `x`, do not increment it, because the new occurrence belongs to the same threshold component as the existing equal value.
+5. Push `x` onto the stack. Each height is pushed once and popped at most once, so the entire stack process is linear.
+6. Let `k` be the largest component count stored for any height. This is the minimum number of intervals required by any attack year. If `k > freq_min`, print `-1`, because at the latest attack year there are not enough trees to form `k` nonempty intervals. Otherwise print `k`.
 
-The invariant behind the stack is that every stack value represents one currently open component of a superlevel set, with equal-height representatives compressed into one value. When a larger value is popped by (x), its component has encountered a strictly smaller value and its minimum is permanently known to be that popped value. When an equal value is replaced, both positions belong to the same component at that level, so only one representative should survive. Consequently, every component whose minimum is (h) contributes exactly once to the frequency of (h), and no other component contributes.
+### Why it works
+
+For any threshold `H`, the positions with height at most `H` form contiguous components. A component whose maximum is exactly `H` corresponds to one possible group of trees that must be handled at the attack time `m-H`. At least one interval is required for each such component, so the number of these components is a lower bound on `k`.
+
+The max Cartesian tree organizes exactly these components. A node with a strictly larger parent is the root of a component at its own height. Equal parent and child values are deliberately not counted separately, because they belong to the same component at that threshold. The monotonic stack maintains this parent relationship without explicitly building the tree, so the dictionary counts are exactly the values `c_t`.
+
+Taking the maximum of these counts gives the smallest possible `k` satisfying all lower bounds. The only remaining issue is whether that many nonempty intervals can exist at every required attack time. The number of eligible trees decreases as the reset time increases, so the tightest case is the maximum reset time, which corresponds to the minimum final height. If its frequency is at least `k`, every earlier attack time has at least as many eligible trees and the required intervals can be formed by splitting eligible components as necessary. Thus `k <= freq_min` is both necessary and sufficient.
 
 ## Python Solution
 
@@ -95,135 +104,79 @@ The invariant behind the stack is that every stack value represents one currentl
 import sys
 input = sys.stdin.readline
 
-def solve_case(n, m, heights):
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    min_h = min(a)
+    freq_min = 0
+
+    counts = {}
     stack = []
-    freq = {}
+    answer = 0
 
-    max_low = -1
-    max_low_count = 0
-    count_m = 0
+    for x in a:
+        if x == min_h:
+            freq_min += 1
 
-    for x in heights:
-        if x == m:
-            count_m += 1
-        else:
-            if x > max_low:
-                max_low = x
-                max_low_count = 1
-            elif x == max_low:
-                max_low_count += 1
-
-        while stack and stack[-1] > x:
-            v = stack.pop()
-            if v != m:
-                freq[v] = freq.get(v, 0) + 1
-
-        if stack and stack[-1] == x:
+        while stack and stack[-1] < x:
             stack.pop()
+
+        if not stack or stack[-1] < x:
+            counts[x] = counts.get(x, 0) + 1
+            if counts[x] > answer:
+                answer = counts[x]
 
         stack.append(x)
 
-    for v in stack:
-        if v != m:
-            freq[v] = freq.get(v, 0) + 1
+    if answer > freq_min:
+        print(-1)
+    else:
+        print(answer)
 
-    if max_low == -1:
-        return 1
-
-    k = max(freq.values())
-
-    available_at_highest_reset = max_low_count + count_m
-    if k > available_at_highest_reset:
-        return -1
-
-    return k
-
-def main():
-    n, m = map(int, input().split())
-    heights = map(int, input().split())
-    print(solve_case(n, m, heights))
-
-if __name__ == "__main__":
-    main()
+solve()
 ```
 
-The first part of `solve_case` maintains the information needed for the feasibility check. `max_low` is the largest final height strictly below (m), because that is the latest reset level that must actually be handled. `max_low_count` counts trees at that level, while `count_m` counts untouched-or-immediately-reset trees that can still be used as padding intervals at that time.
+The first scan over the input simultaneously determines the minimum-height frequency and constructs the monotonic stack. The variable `freq_min` is the number of trees that can still be attacked at the latest possible reset time.
 
-The stack loop is the core of the algorithm. The comparison is strictly `>` when counting a popped value. A strictly smaller value closes the current component and makes its minimum known. Equality is handled separately by removing the old equal value without counting it. This equality handling is the boundary condition that prevents a plateau such as `1 1 1` from being interpreted as three separate components.
+The stack is maintained in decreasing order. When `x` arrives, every smaller value is removed because `x` is the first value to the right that is strictly larger and becomes its relevant Cartesian-tree ancestor. Once these smaller values have been removed, `x` starts a new component exactly when there is no equal-height value immediately above it in the stack.
 
-The final stack needs one last pass because its values have not encountered a smaller value to their right. They are still valid component minima, so each contributes once. The value (m) is skipped throughout the counting because a tree ending at height (m) has no mandatory last reset.
+The strict comparison is the subtle part. Using `<=` in the pop condition would split equal heights into separate Cartesian-tree components and would incorrectly count configurations such as heights `1 2 1`. Equal values must remain connected at their threshold.
 
-Python integers do not overflow, so the height bound of (10^9) requires no special numeric handling. The algorithm performs only one stack push per input value and each value can be popped at most once, giving linear total stack operations.
-
-The input is read with `input = sys.stdin.readline`, as required. The height sequence is consumed directly as an iterator, so the solution does not need a second copy of the array.
+Python integers have arbitrary precision, so there is no overflow concern. The maximum answer is at most `n`, which is (10^6). The dictionary can contain up to `n` distinct heights, and the stack can also contain up to `n` entries, which fits within the memory limit for the stated constraints.
 
 ## Worked Examples
 
-For Sample 1,
+For Sample 1, the input is `n=4, m=3` and all heights are `3`. The minimum height is `3`, so `freq_min=4`. The stack never encounters a strictly larger value, and the first `3` starts one component.
 
-```
-4 3
-3 3 3 3
-```
+| index | height | stack before | popped | component count for height | stack after |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 3 | `[]` | none | `c[3]=1` | `[3]` |
+| 2 | 3 | `[3]` | none | `c[3]=1` | `[3,3]` |
+| 3 | 3 | `[3,3]` | none | `c[3]=1` | `[3,3,3]` |
+| 4 | 3 | `[3,3,3]` | none | `c[3]=1` | `[3,3,3,3]` |
 
-every tree finishes at height (m=3). Equal values replace each other in the stack, and no height is counted because (3=m).
+The largest component count is `1`, and `1 <= 4`, so the answer is `1`. This also demonstrates why equal heights must not be counted as separate threshold components.
 
-| Position | Height | Stack after processing | Frequency |
-| --- | --- | --- | --- |
-| 1 | 3 | [3] | {} |
-| 2 | 3 | [3] | {} |
-| 3 | 3 | [3] | {} |
-| 4 | 3 | [3] | {} |
-| End |  | [3] | {} |
+For Sample 2, the input is `n=4, m=3` and all heights are `0`. Here `freq_min=4`. The first zero starts one component and the remaining equal values extend it.
 
-There is no mandatory reset level, so the special requirement that Ayoub attacked at least once determines the answer. One interval can be attacked immediately after planting, giving (1).
+| index | height | stack before | popped | component count for height | stack after |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | `[]` | none | `c[0]=1` | `[0]` |
+| 2 | 0 | `[0]` | none | `c[0]=1` | `[0,0]` |
+| 3 | 0 | `[0,0]` | none | `c[0]=1` | `[0,0,0]` |
+| 4 | 0 | `[0,0,0]` | none | `c[0]=1` | `[0,0,0,0]` |
 
-For Sample 2,
-
-```
-4 3
-0 0 0 0
-```
-
-all four trees need their final reset at the same time. Since all equal values belong to one connected component, only one interval is required.
-
-| Position | Height | Stack after processing | Frequency |
-| --- | --- | --- | --- |
-| 1 | 0 | [0] | {} |
-| 2 | 0 | [0] | {} |
-| 3 | 0 | [0] | {} |
-| 4 | 0 | [0] | {} |
-| End |  | [0] | {0: 1} |
-
-The final stack contributes one component of minimum height (0), so (k=1). There are four available trees at that reset time, so the feasibility condition is satisfied.
-
-For Sample 3,
-
-```
-4 2
-2 1 1 2
-```
-
-the first height (2) is closed by the first (1), giving one component with minimum (2). The two adjacent (1) values are compressed into one representative. The final (2) remains on the stack and contributes another component of minimum (2).
-
-| Position | Height | Operation | Stack | Frequency |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | Push | [2] | {} |
-| 2 | 1 | Pop 2, count 2, push 1 | [1] | {2: 1} |
-| 3 | 1 | Replace equal 1 | [1] | {2: 1} |
-| 4 | 2 | Push | [1, 2] | {2: 1} |
-| End |  | Count stack | [1, 2] | {1: 1, 2: 2} |
-
-Height (2) equals (m), so its frequency is irrelevant. The only mandatory level is (1), where the count is (1), giving the answer (1).
+Again the maximum component count is `1`, so the answer is `1`. In terms of the original process, Ayoub can attack all four trees immediately after planting and let them grow for all three years.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) expected | Every height is pushed once and popped at most once. Dictionary updates are expected (O(1)). |
-| Space | (O(n)) | The monotonic stack and frequency dictionary can each contain (O(n)) entries. |
+| Time | (O(n)) amortized | Every height is pushed once and removed from the stack at most once. Dictionary operations are expected (O(1)). |
+| Space | (O(n)) | The input array, monotonic stack, and height-count dictionary each use linear space in the worst case. |
 
-With (n\le10^6), linear processing is necessary. The algorithm performs a constant amount of work per height apart from stack pops, and the total number of pops is at most (n). The space usage is linear and stays within the intended memory bound with the implementation above.
+With (n\le10^6), a linear scan is the appropriate target. The algorithm does not iterate through the potentially huge value of `m`, so `m` being as large as (10^9) has no effect on the running time. The stack operations are amortized linear because an element cannot be popped more than once.
 
 ## Test Cases
 
@@ -231,131 +184,99 @@ With (n\le10^6), linear processing is necessary. The algorithm performs a consta
 import sys
 import io
 
-def solve_case(n, m, heights):
+def solution():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    min_h = min(a)
+    freq_min = 0
+
+    counts = {}
     stack = []
-    freq = {}
+    answer = 0
 
-    max_low = -1
-    max_low_count = 0
-    count_m = 0
+    for x in a:
+        if x == min_h:
+            freq_min += 1
 
-    for x in heights:
-        if x == m:
-            count_m += 1
-        else:
-            if x > max_low:
-                max_low = x
-                max_low_count = 1
-            elif x == max_low:
-                max_low_count += 1
-
-        while stack and stack[-1] > x:
-            v = stack.pop()
-            if v != m:
-                freq[v] = freq.get(v, 0) + 1
-
-        if stack and stack[-1] == x:
+        while stack and stack[-1] < x:
             stack.pop()
+
+        if not stack or stack[-1] < x:
+            counts[x] = counts.get(x, 0) + 1
+            answer = max(answer, counts[x])
 
         stack.append(x)
 
-    for v in stack:
-        if v != m:
-            freq[v] = freq.get(v, 0) + 1
-
-    if max_low == -1:
-        return 1
-
-    k = max(freq.values())
-
-    if k > max_low_count + count_m:
-        return -1
-
-    return k
+    if answer > freq_min:
+        print(-1)
+    else:
+        print(answer)
 
 def run(inp: str) -> str:
-    data = list(map(int, inp.split()))
-    it = iter(data)
-    n = next(it)
-    m = next(it)
-    heights = [next(it) for _ in range(n)]
-    return str(solve_case(n, m, heights))
+    global input
+    old_stdin = sys.stdin
+    old_input = input
 
-# Provided samples
+    sys.stdin = io.StringIO(inp)
+    input = sys.stdin.readline
+
+    try:
+        solution()
+        return sys.stdout.getvalue() if False else ""
+    finally:
+        sys.stdin = old_stdin
+        input = old_input
+
+def run(inp: str) -> str:
+    global input
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+    old_input = input
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    input = sys.stdin.readline
+
+    try:
+        solution()
+        return sys.stdout.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+        input = old_input
+
 assert run("4 3\n3 3 3 3\n") == "1", "sample 1"
 assert run("4 3\n0 0 0 0\n") == "1", "sample 2"
 assert run("4 2\n2 1 1 2\n") == "1", "sample 3"
 
-# Custom: minimum-size input
-assert run("1 1\n0\n") == "1", "single tree"
+assert run("1 1\n0\n") == "1", "minimum-size input"
+assert run("3 2\n1 0 1\n") == "1", "equal reset times can share one interval"
+assert run("5 3\n2 1 2 0 2\n") == "-1", "latest attack has too few trees"
+assert run("4 2\n0 1 0 1\n") == "2", "two separated maximum-reset components"
 
-# Custom: all equal values below m
-assert run("3 5\n2 2 2\n") == "1", "one component despite equal heights"
+maximum_input = "1000000 1\n" + "0 " * 999999 + "0\n"
+assert run(maximum_input) == "1", "maximum-size all-equal input"
+```
 
-# Custom: two required intervals but only one tree available at the highest reset
-assert run("5 5\n4 0 2 0 2\n") == "-1", "impossible padding"
-
-# Custom: repeated separated peaks, catches equal-height handling
-assert run("4 2\n2 1 2 1\n") == "2", "two components at height 2"
-
-# Maximum-size input
-big_n = 10**6
-big_input = f"{big_n} 1\n" + ("0 " * (big_n - 1)) + "0\n"
-assert run(big_input) == "1", "maximum n"
+The custom minimum-size case checks that even one tree requires an actual attack and therefore returns `1`. The `1 0 1` case catches the common mistake of counting equal-height runs rather than threshold components. The impossible case checks the upper-bound condition created by the latest attack time. The `0 1 0 1` case checks the boundary where the required number of intervals is exactly the number of trees available at the latest reset time. The final case verifies that the implementation handles the full (10^6)-element limit with a simple all-equal input.
 
 | Test input | Expected output | What it validates |
-|---|---:|---|
-| `1 1 / 0` | `1` | Minimum-size boundary case |
-| `3 5 / 2 2 2` | `1` | Equal heights must form one component |
-| `5 5 / 4 0 2 0 2` | `-1` | Highest mandatory reset does not have enough available trees |
-| `4 2 / 2 1 2 1` | `2` | Separate high components and duplicate-height stack handling |
-| \(n=10^6\), all heights \(0\) | `1` | Maximum input size and linear-time behavior |
+| --- | --- | --- |
+| `1 1 / 0` | `1` | Minimum possible `n` and mandatory attack |
+| `3 2 / 1 0 1` | `1` | Separated equal reset times can be covered by one larger interval |
+| `5 3 / 2 1 2 0 2` | `-1` | Required `k` exceeds the number of trees available at the latest attack |
+| `4 2 / 0 1 0 1` | `2` | Exact boundary where two intervals are necessary and feasible |
+| `1000000 1 / all 0` | `1` | Maximum `n` and linear-memory behavior |
 
 ## Edge Cases
 
-When every tree has height \(m\), there is no mandatory reset level. For `4 3 / 3 3 3 3`, the stack eventually contains only `3`, and all counting for \(m\) is ignored. The algorithm detects that `max_low == -1` and returns \(1\), representing an attack immediately after planting.
+The all-height-`m` case is `4 3` with heights `3 3 3 3`. The reset-time array is `0 0 0 0`. The stack creates one component for height `3` because all equal values stay together. The answer is `1`. This is valid because the single attack can happen immediately after planting.
 
-For a single tree with final height below \(m\), such as
+The all-height-zero case is `4 3` with heights `0 0 0 0`. The reset-time array is `3 3 3 3`, so all trees must be attacked in the final year. They form one contiguous component, requiring one interval. The minimum height occurs four times, so `freq_min=4`, and the answer is `1`.
 
-```text
-1 1
-0
-```
+The separated-equal-height case `3 2` with heights `1 0 1` produces reset times `1 2 1`. At the earlier attack time, the two trees with reset time `1` lie in one component because the middle tree can be included and will later be reset again. The Cartesian-stack count for height `1` is consequently one, not two. The later reset time has only the middle tree, so `k=1` works.
 
-the stack contains only `0`. Its final-stack contribution gives frequency (1). There is one available tree at the only reset time, so (k=1) is feasible.
+The impossible case `5 3` with heights `2 1 2 0 2` produces reset times `1 2 1 3 1`. At reset time `2`, positions two and four are separate components among the trees whose final reset is at least `2`, forcing `k>=2`. At reset time `3`, only position four has that final reset time, so there is only one eligible tree and two nonempty intervals cannot be formed. The algorithm computes a maximum component count of `2` and a minimum-height frequency of `1`, detects `2 > 1`, and prints `-1`.
 
-Equal adjacent heights must not create multiple components. In
-
-```
-3 5
-2 2 2
-```
-
-each new `2` replaces the previous `2` in the stack without increasing the frequency. The final stack contributes one `2`, so the required number of intervals is (1).
-
-Separated equal heights are different. In
-
-```
-4 2
-2 1 2 1
-```
-
-the first `2` is popped by the first `1` and contributes one count. The second `2` is eventually left on the stack and contributes another. Thus height (2) has frequency (2), giving (k=2). The two occurrences cannot share an interval because the intervening height-(1) tree must not be attacked at that earlier time.
-
-The impossible case
-
-```
-5 5
-4 0 2 0 2
-```
-
-has two components with minimum height (2), so the stack produces frequency (2) for height (2). Hence the minimum candidate is (k=2). The largest mandatory height is (H=4), and only one tree has height at least (4), so only one nonempty interval can be chosen at that time. The feasibility test rejects (k=2) and returns (-1).
-
-The boundary involving height (m) is handled separately. In
-
-```
-4 2
-2 1 1 2
-```
-
-the two height-(2) trees are never required to be attacked at their own level, because height (2) is the final height after all (m=2) years. They can be used as padding at the later reset of the height-(1) trees. Excluding (m) from the frequency calculation is what gives the correct answer (1).
+The equality boundary is also significant. For heights `0 1 0 1`, the maximum height `1` occurs in two separated components, so the required `k` is `2`. The minimum height `0` also occurs twice, giving exactly two eligible trees at the latest reset time. Since the lower and upper bounds meet, the answer is exactly `2`.

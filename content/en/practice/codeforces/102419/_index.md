@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 6
-total_solve_s: 6209
+total_solve_s: 5894
 contest_year: 2019
-date: "2026-08-12T09:02:43+07:00"
+date: "2026-08-12T09:18:39+07:00"
 weight: 102419
 draft: false
 ---
 
 # [SPC 2019](https://codeforces.com/contest/102419)
 
-Special | 12 problems | 6/12 verified | Difficulty - | 1h 43m
+Special | 12 problems | 6/12 verified | Difficulty - | 1h 38m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,6 @@ Special | 12 problems | 6/12 verified | Difficulty - | 1h 43m
 | [G](G/) | [Large array](https://codeforces.com/problemset/problem/102419/G) |  |  |  | 4m 4s | ✓ |
 | [H](H/) | [In-degree](https://codeforces.com/problemset/problem/102419/H) |  |  |  | 4m 47s |  |
 | [I](I/) | [Another Query Problem](https://codeforces.com/problemset/problem/102419/I) |  |  |  | 7m 54s | ✓ |
-| [J](J/) | [Jaber The policeman](https://codeforces.com/problemset/problem/102419/J) |  |  |  | 6m 7s |  |
-| [K](K/) | [The Dragon and the Kingdom of Trees](https://codeforces.com/problemset/problem/102419/K) |  |  |  | 14m 54s |  |
+| [J](J/) | [Jaber The policeman](https://codeforces.com/problemset/problem/102419/J) |  |  |  | 9m 6s |  |
+| [K](K/) | [The Dragon and the Kingdom of Trees](https://codeforces.com/problemset/problem/102419/K) |  |  |  | 6m 40s |  |
 | [L](L/) | [Cheating detection.](https://codeforces.com/problemset/problem/102419/L) |  |  |  | 12m 49s | ✓ |
