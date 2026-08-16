@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3135 contests, 23237 problems, 12995 verified."
+description: "Codeforces problem solutions with full editorials. 3135 contests, 23237 problems, 12996 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3135 contests, 23237 problems, 12995 verified.**
+**3135 contests, 23237 problems, 12996 verified.**
 
 ## Unknown — 830 contests, 7051 problems, 4217 verified
 
@@ -1466,7 +1466,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 187 contests, 1178 problems, 778 verified
+## 2019 — 187 contests, 1178 problems, 779 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1635,7 +1635,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102309](102309/) | [The 2019 “Orz Panda” Cup Programming Contest](https://codeforces.com/contest/102309) | 10 | 10/10 | Special | - |
 | [102319](102319/) | [UBC Summer Contest 2018](https://codeforces.com/contest/102319) | 8 | 8/8 | Special | - |
 | [102346](102346/) | [2019-2020 ACM-ICPC Brazil Subregional Programming Contest](https://codeforces.com/contest/102346) | 13 | 13/13 | ICPC/IOI | - |
-| [102348](102348/) | [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348) | 11 | 7/11 | ICPC/IOI | - |
+| [102348](102348/) | [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348) | 11 | 8/11 | ICPC/IOI | - |
 | [102365](102365/) | [UBC Programming Contest 2019 (UBCPC 2019)](https://codeforces.com/contest/102365) | 8 | 8/8 | Special | - |
 | [102367](102367/) | [Fall 2019 ICPC-style Waterloo Local Contest](https://codeforces.com/contest/102367) | 5 | 5/5 | ICPC/IOI | - |
 | [102388](102388/) | [SUFE ICPC Team Formation Test](https://codeforces.com/contest/102388) | 7 | 5/7 | ICPC/IOI | - |

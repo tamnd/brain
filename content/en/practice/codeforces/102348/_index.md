@@ -1,23 +1,23 @@
 ---
 title: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
-description: "11 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 7/11 solutions verified against sample I/O."
+description: "11 problems from ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier (contest 102348), difficulty -. 8/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102348
 contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 11
-n_verified: 7
-total_solve_s: 4772
+n_verified: 8
+total_solve_s: 4884
 contest_year: 2019
-date: "2026-08-13T16:02:03+07:00"
+date: "2026-08-13T16:08:00+07:00"
 weight: 102348
 draft: false
 ---
 
 # [ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier](https://codeforces.com/contest/102348)
 
-ICPC/IOI | 11 problems | 7/11 verified | Difficulty - | 1h 19m
+ICPC/IOI | 11 problems | 8/11 verified | Difficulty - | 1h 21m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,7 +27,7 @@ ICPC/IOI | 11 problems | 7/11 verified | Difficulty - | 1h 19m
 | [E](E/) | [Painting The Fence](https://codeforces.com/problemset/problem/102348/E) |  |  |  | 14m 4s | ✓ |
 | [F](F/) | [The Number of Products](https://codeforces.com/problemset/problem/102348/F) |  |  |  | 14m 40s |  |
 | [G](G/) | [Swap Letters](https://codeforces.com/problemset/problem/102348/G) |  |  |  | 3m 44s |  |
-| [H](H/) | [Berland Prospect](https://codeforces.com/problemset/problem/102348/H) |  |  |  | 4m 2s |  |
+| [H](H/) | [Berland Prospect](https://codeforces.com/problemset/problem/102348/H) |  |  |  | 5m 54s | ✓ |
 | [I](I/) | [Radio Stations](https://codeforces.com/problemset/problem/102348/I) |  |  |  | 6m 2s | ✓ |
 | [J](J/) | [Monocarp and T-Shirts](https://codeforces.com/problemset/problem/102348/J) |  |  |  | 3m 42s | ✓ |
 | [K](K/) | [Moonbound](https://codeforces.com/problemset/problem/102348/K) |  |  |  | 2m 38s | ✓ |

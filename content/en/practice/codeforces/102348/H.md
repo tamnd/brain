@@ -1,7 +1,7 @@
 ---
 title: "CF 102348H - Berland Prospect"
-description: "We have n lanterns placed at strictly increasing integer coordinates x[0], x[1], ..., x[n-1]. We may switch on any subset of them. The chosen coordinates must form an arithmetic progression, meaning every consecutive chosen coordinate has the same difference."
-date: "2026-08-15T17:27:44+07:00"
+description: "We have n lanterns placed at strictly increasing integer coordinates x[0], x[1], ..., x[n-1]. We may choose any subset of them to leave switched on."
+date: "2026-08-16T16:07:59+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102348
@@ -9,8 +9,8 @@ codeforces_index: "H"
 codeforces_contest_name: "ICPC 2019-2020 NERC (NEERC), Southern and Volga Russia Qualifier"
 rating: 0
 weight: 102348
-solve_time_s: 242
-verified: false
+solve_time_s: 354
+verified: true
 draft: false
 ---
 
@@ -18,62 +18,102 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 2s  
-**Verified:** no  
+**Solve time:** 5m 54s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have `n` lanterns placed at strictly increasing integer coordinates `x[0], x[1], ..., x[n-1]`. We may switch on any subset of them. The chosen coordinates must form an arithmetic progression, meaning every consecutive chosen coordinate has the same difference. Any set of one or two lanterns is automatically valid, so the real task is to find the longest arithmetic-progression subsequence of the sorted coordinate array.
+We have `n` lanterns placed at strictly increasing integer coordinates `x[0], x[1], ..., x[n-1]`. We may choose any subset of them to leave switched on. If at least three lanterns are chosen, their coordinates must form an arithmetic progression, meaning every consecutive chosen pair has the same distance. With zero, one, or two chosen lanterns, there is no restriction.
 
-The original constraints give `n <= 3000` and coordinates up to `10^18`. The large coordinate bound rules out techniques that depend on a small coordinate range, but it does not hurt arithmetic itself because Python integers handle these values exactly. The size `3000` is the key constraint. An `O(n^2)` algorithm performs about 4.5 million pair transitions, which is appropriate for the 2 second limit when implemented carefully. An `O(n^3)` algorithm would already have roughly 27 billion iterations in its loose worst-case bound, far beyond the limit. The official statement confirms these limits and the strictly increasing order of the coordinates.
+The task is to find the largest possible number of lanterns whose coordinates form such an arithmetic progression.
 
-There are several cases where an implementation can silently go wrong. First, three arbitrary lanterns do not necessarily form a valid progression. For example, `3 5 9` has only two equal-free gaps, `2` and `4`, so the answer is `2`, not `3`. A careless implementation that treats every pair extension as automatically valid would overcount.
+The number of lanterns is at most `3000`. A quadratic algorithm performs about `9,000,000` state transitions, which is reasonable for a compiled implementation and can also be made practical in Python with compact storage and constant-time coordinate lookup. A cubic algorithm would perform on the order of `27,000,000,000` elementary transitions in the worst case, which is far beyond the two-second limit. The coordinates can be as large as `10^18`, so a solution must not rely on small-coordinate arrays, but Python integers handle the arithmetic directly.
 
-Second, the best progression can skip many lanterns. For `1 2 4 6 7`, the answer is `3`, using `1, 4, 7`. Looking only at consecutive lanterns would miss this progression because the original gaps are `1, 2, 2, 1`.
+There are several cases where a careless implementation can fail. With exactly three lanterns, for example, the input
 
-Third, the input coordinates can be close to `10^18`. For example, `0 500000000000000000 1000000000000000000` has answer `3`. A fixed-width implementation must use a type wide enough for expressions such as `2*x[i]`, although Python's arbitrary-precision integers make this issue straightforward.
+```
+3
+1 2 4
+```
 
-Finally, the phrase "all-equal values" cannot literally produce a valid test under this problem's input constraints because coordinates are strictly increasing. The meaningful version of that stress case is an array with all equal gaps, such as `0 1 2 3 4`, where every coordinate belongs to one arithmetic progression.
+has answer `2`, because `1, 2, 4` is not an arithmetic progression and any two lanterns are still allowed. A solution that assumes three lanterns must always form a progression would incorrectly print `3`.
+
+The progression does not have to use consecutive lanterns from the input. For
+
+```
+5
+1 2 4 6 7
+```
+
+the answer is `3`, using coordinates `1, 4, 7`. A method that only examines adjacent input coordinates sees gaps `1, 2, 2, 1` and can incorrectly conclude that there is no useful progression.
+
+The required predecessor can also lie outside the coordinate range. For
+
+```
+3
+0 10 20
+```
+
+the answer is `3`, while for
+
+```
+3
+0 10 21
+```
+
+the answer is `2`. When checking whether a pair can be extended, the computed predecessor `2*x[i] - x[j]` may be negative or may exceed `10^18`. Such values simply are not present in the coordinate map, so the lookup must handle absence rather than assuming the coordinate is valid.
+
+The upper coordinate boundary is also harmless. For
+
+```
+3
+0 500000000000000000 1000000000000000000
+```
+
+the answer is `3`. The arithmetic uses values around `10^18`, but there is no need for coordinate-indexed storage.
 
 ## Approaches
 
-A direct brute-force approach can choose a first and second lantern, determine their difference, and then search for every subsequent coordinate that continues the same progression. If we scan all possible next positions naively, there are `O(n^2)` choices of the first two lanterns and up to `O(n)` work for each one, giving `O(n^3)` time. Equivalently, checking every triple already means examining `C(3000, 3) = 4,495,501,000` triples in the worst case. The brute force is correct because every arithmetic progression has a first pair, so trying every pair eventually considers its exact common difference. It simply repeats too much work.
+A direct approach is to choose the first two lanterns of the desired progression. Once their coordinates are `a` and `b`, the common difference is fixed as `d = b - a`, so every later coordinate is forced: `b + d`, then `b + 2d`, and so on. If we search the whole array for every forced next coordinate, we can try all `O(n^2)` starting pairs and spend `O(n)` work extending each one. This gives `O(n^3)` time, roughly `3000^3 = 27 billion` checks in the worst case.
 
-The useful observation is that once the last two selected coordinates are known, the next coordinate is completely determined. Suppose an arithmetic progression currently ends at coordinates `x[h], x[i]`. Its next coordinate must be
+The same cubic bottleneck appears if we formulate a dynamic program but search for a predecessor by scanning all earlier lanterns. For every pair `(i, j)`, we would need to find an index `k` satisfying
 
-`x[j] = x[i] + (x[i] - x[h]) = 2*x[i] - x[h]`.
+`x[k] = 2*x[i] - x[j]`.
 
-That turns the problem into a dynamic program on pairs of endpoints. Let `dp[i][j]` be the maximum length of an arithmetic progression whose last two coordinates are `x[i]` and `x[j]`, with `i < j`. If the required predecessor coordinate `2*x[i] - x[j]` exists at index `h`, then the progression can be extended from the state ending at `(h, i)`:
+The structure of the equation gives the key optimization. The predecessor coordinate is uniquely determined by the two current coordinates. Since all coordinates are distinct, we can build a dictionary from coordinate to its index and find `k` in expected `O(1)` time.
 
-`dp[i][j] = dp[h][i] + 1`.
+Define `dp[i][j]` for `i < j` as the length of the longest arithmetic progression whose final two lanterns are `i` and `j`. If the progression has a previous lantern `k`, then
 
-If that predecessor does not exist, the pair `(i, j)` itself is a valid progression of length `2`, so `dp[i][j] = 2`.
+`x[i] - x[k] = x[j] - x[i]`.
 
-The sorted order gives an additional useful property. Because `j > i`, the required predecessor `2*x[i] - x[j]` is strictly smaller than `x[i]`, so its index `h` must satisfy `h < i`. All information needed by the transition has already been computed when processing `i`.
+Rearranging gives
 
-We can find `h` without a hash table. For a fixed `i`, as `j` increases, `x[j]` increases, so `2*x[i] - x[j]` decreases. A pointer scanning backward through the coordinates therefore moves only backward during the whole inner loop. Across a fixed `i`, the pointer moves at most `i` times, so the total pointer movement over all `i` is `O(n^2)`.
+`x[k] = 2*x[i] - x[j]`.
 
-The DP contains `n(n-1)/2` pair states. In Python, storing each state as a normal integer inside nested lists can consume a substantial amount of memory. The maximum DP value is at most `3000`, so an unsigned 16-bit integer is sufficient. Python's `array('H')` stores each state in two bytes, keeping the roughly 4.5 million states within a small memory footprint.
+Because `x[k] < x[i]`, any such `k` is automatically earlier than `i`. Thus, when computing `dp[i][j]`, the required state `dp[k][i]` has already been computed.
+
+If the predecessor does not exist, the pair `(i, j)` itself is an arithmetic progression of length `2`, so its state is `2`. If the predecessor exists, we extend the best progression ending at `(k, i)` by one lantern.
+
+This turns the problem into `O(n^2)` dynamic programming. The only practical Python-specific issue is memory. A full Python matrix of ordinary integers is unnecessarily large, so the implementation stores the DP values in a compact unsigned-short array. Since the answer can never exceed `3000`, every state fits comfortably in 16 bits.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(n^3)` | `O(1)` or `O(n)` | Too slow |
-| Pair DP with monotone predecessor pointer | `O(n^2)` | `O(n^2)` states, about 2 bytes each | Accepted |
+| Brute Force | `O(n^3)` | `O(n)` | Too slow |
+| Optimal DP | `O(n^2)` | `O(n^2)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the sorted coordinates and initialize the answer to `2`. Every pair of distinct lanterns is a valid choice, so the answer is always at least `2`.
-2. For every index `i`, create a DP row containing the states `dp[i][j]` for all `j > i`. Initialize every state to `2`, because any pair of lanterns forms an arithmetic progression of length two.
-3. Fix the middle endpoint `i` and start a predecessor pointer `k = i - 1`. For every `j > i`, the coordinate required immediately before `x[i]` is `target = 2*x[i] - x[j]`.
-4. Move `k` left while `x[k] > target`. Since `target` only decreases as `j` increases, `k` never needs to move right again. If `x[k] == target`, index `k` is exactly the required predecessor.
-5. When the predecessor exists, read the already computed state ending at `(k, i)` and set `dp[i][j] = dp[k][i] + 1`. The previous state has one fewer element, and appending `x[j]` preserves the common difference because `x[i] - x[k] = x[j] - x[i]`.
-6. Update the global answer with the new state. If the predecessor does not exist, the initialized value `2` remains correct.
-7. Process every possible `i`. At the end, the largest DP value is the longest arithmetic-progression subsequence and is the required answer.
+1. Read the coordinates and create a dictionary `pos` mapping every coordinate to its index. The coordinates are unique, so every lookup has exactly one possible index.
+2. Allocate `dp[i][j]` for every pair `i < j`. Initially, every pair represents an arithmetic progression of length `2`, so its value is `2`.
+3. Process the possible middle index `i` from left to right. For every `j > i`, compute the coordinate that would have to precede `x[i]` if `(x[i], x[j])` were the last two terms of an arithmetic progression. That coordinate is `target = 2*x[i] - x[j]`.
+4. Look up `target` in `pos`. If it is absent, there is no way to extend the pair `(i, j)`, so `dp[i][j]` remains `2`.
+5. If `target` exists at index `k`, then `k < i` because `x[j] > x[i]` implies `2*x[i] - x[j] < x[i]`. The progression ending at `k, i` already has the correct common difference, so set `dp[i][j] = dp[k][i] + 1`.
+6. Keep the maximum DP value seen. That value is the maximum number of lanterns that can be switched on.
 
 ### Why it works
 
-Consider any arithmetic progression ending at `x[i], x[j]`. Its previous coordinate, if it has one, must be exactly `2*x[i] - x[j]`. Because the coordinates are sorted and `j > i`, that predecessor lies before `i`. Thus every progression of length at least three has a unique earlier DP state from which it can be extended. The recurrence considers exactly that predecessor when it exists, and otherwise correctly leaves the pair at length two. By induction on the position of the final endpoint, every DP state stores the maximum valid progression ending at that pair. Taking the maximum over all pairs consequently gives the global optimum.
+The invariant is that after `dp[i][j]` is computed, it is exactly the longest arithmetic progression ending with lanterns `i` and `j`. Any progression ending there must have a previous coordinate equal to `2*x[i] - x[j]`, so there is at most one possible predecessor. If that coordinate is present, every valid progression ending at `(i, j)` is obtained by extending a valid progression ending at `(k, i)`. If it is absent, no progression of length at least three can end at `(i, j)`, leaving the base length `2`. Since `k < i`, the needed state has already been computed. Taking the maximum over all pairs consequently considers every possible arithmetic progression.
 
 ## Python Solution
 
@@ -87,191 +127,229 @@ def solve():
     n = int(input())
     x = list(map(int, input().split()))
 
-    if n <= 2:
-        print(n)
-        return
+    pos = {value: i for i, value in enumerate(x)}
 
-    # rows[i][j - i - 1] stores dp[i][j] for j > i.
-    # Every state starts at 2 because every pair is valid.
-    rows = [None] * n
-    answer = 2
+    # Every pair initially represents a progression of length 2.
+    # n <= 3000, so every answer fits into an unsigned short.
+    dp = array('H', [2]) * (n * n)
 
-    for i in range(n - 1):
-        length = n - i - 1
-        row = array('H', [2]) * length
+    ans = 2
 
-        # For fixed i, target = 2*x[i] - x[j] decreases as j grows.
-        # Hence k only moves to the left.
-        k = i - 1
+    for i in range(n):
         xi = x[i]
+        row = i * n
 
         for j in range(i + 1, n):
             target = 2 * xi - x[j]
+            k = pos.get(target)
 
-            while k >= 0 and x[k] > target:
-                k -= 1
+            if k is not None:
+                length = dp[k * n + i] + 1
+                dp[row + j] = length
+                if length > ans:
+                    ans = length
 
-            if k >= 0 and x[k] == target:
-                value = rows[k][i - k - 1] + 1
-                row[j - i - 1] = value
-
-                if value > answer:
-                    answer = value
-
-        rows[i] = row
-
-    print(answer)
+    print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The `rows` structure stores only states with `i < j`. For a fixed `i`, the state `dp[i][j]` is stored at offset `j - i - 1`, so the row contains exactly `n-i-1` entries.
+The dictionary `pos` is the constant-time lookup structure from the algorithm. The expression `2 * xi - x[j]` is the exact predecessor coordinate forced by the arithmetic-progression condition.
 
-The expression `rows[k][i-k-1]` retrieves `dp[k][i]`. The offset is easy to get wrong because each row begins at its own first valid second endpoint. For example, in row `k`, the state whose second index is `i` is the `(i-k-1)`-th element.
+The DP is flattened into a one-dimensional `array('H')`. The state corresponding to `(i, j)` is stored at `i * n + j`. A flat array avoids the large per-object overhead that a Python list of millions of Python integers would introduce.
 
-The predecessor pointer starts at `i-1`, the largest possible predecessor index. For each new `j`, the required coordinate decreases. The `while` loop moves the pointer until either the exact coordinate is found or every possible predecessor has become too large. It never needs to restart from `i-1`, which is what keeps the search quadratic rather than cubic.
+Every state starts at `2`, because any pair of distinct coordinates is a valid selected set. When a predecessor exists, the state is overwritten with the previous state plus one.
 
-The `array('H')` type is sufficient because no progression can contain more than `n <= 3000` lanterns. A 16-bit unsigned integer can represent values through `65535`, so every DP state fits comfortably. This saves a large amount of memory compared with Python's full integer objects.
+The loop order matters. For the state `(i, j)`, the predecessor is `k < i`, so `dp[k][i]` belongs to an earlier row and has already been calculated. The code does not need to search for `k` manually because `pos` supplies it directly.
 
-Python integers also safely evaluate `2 * x[i]` even when `x[i]` is near `10^18`, so there is no overflow issue.
+There is no integer-overflow issue in Python. The largest intermediate coordinate is only around `2 * 10^18`, which Python integers represent exactly.
 
-The input has exactly one test case, so there is no outer test-case loop.
+The answer is initialized to `2`. Since `n >= 3`, a valid pair always exists, and a progression of length `2` is always allowed.
 
 ## Worked Examples
 
-### Sample 1
+For Sample 1,
 
-The input is `1 2 3`. Initially every pair has DP value `2`. When the pair `(1, 2)` is considered in zero-based indices `(0, 1)`, there is no predecessor. For the pair `(2, 3)`, the required predecessor is `1`, which exists, so the length becomes `dp[0][1] + 1 = 3`.
+```
+3
+1 2 3
+```
 
-| `i` | `j` | `target = 2*x[i]-x[j]` | `k` after search | State | Answer |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 0 | -1 | `2` | `2` |
-| 0 | 2 | -1 | -1 | `2` | `2` |
-| 1 | 2 | 1 | 0 | `dp[0][1]+1 = 3` | `3` |
+the relevant DP transitions are:
 
-The final answer is `3`. The important part of the trace is the transition from the pair `(1, 2)` to `(1, 2, 3)`: the predecessor coordinate is reconstructed algebraically instead of scanning all earlier lanterns.
+| `i` | `j` | `target` | `k` | `dp[i][j]` |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | 0 | absent | 2 |
+| 0 | 2 | -1 | absent | 2 |
+| 1 | 2 | 1 | 0 | 3 |
 
-### Sample 2
+When processing `(1, 2)`, the required predecessor coordinate is `2*2 - 3 = 1`, which is the first lantern. The already computed state `dp[0][1] = 2` extends to length `3`. The answer is consequently `3`.
 
-The coordinates are `1 2 4 6 7`. The optimal progression is `1, 4, 7`, whose common difference is `3`.
+For Sample 2,
 
-| `i` | `j` | `target` | `k` | State | Answer |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 0 | -1 | `2` | `2` |
-| 0 | 2 | -2 | -1 | `2` | `2` |
-| 0 | 3 | -4 | -1 | `2` | `2` |
-| 0 | 4 | -5 | -1 | `2` | `2` |
-| 1 | 2 | 0 | -1 | `2` | `2` |
-| 1 | 3 | -2 | -1 | `2` | `2` |
-| 1 | 4 | -3 | -1 | `2` | `2` |
-| 2 | 3 | 2 | 1 | `dp[1][2]+1 = 3` | `3` |
-| 2 | 4 | 1 | 0 | `dp[0][2]+1 = 3` | `3` |
-| 3 | 4 | 5 | 2 | no exact predecessor | `3` |
+```
+5
+1 2 4 6 7
+```
 
-The state for `(i,j) = (2,4)` corresponds to coordinates `4` and `7`. Its required predecessor is `1`, which is present at index `0`. Since `dp[0][2]` represents the pair `1,4`, the new state correctly represents `1,4,7`.
+the full pair trace is:
+
+| `i` | `j` | `target` | `k` | `dp[i][j]` |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | 0 | absent | 2 |
+| 0 | 2 | -2 | absent | 2 |
+| 0 | 3 | -4 | absent | 2 |
+| 0 | 4 | -5 | absent | 2 |
+| 1 | 2 | 0 | absent | 2 |
+| 1 | 3 | -2 | absent | 2 |
+| 1 | 4 | -3 | absent | 2 |
+| 2 | 3 | 2 | 1 | 3 |
+| 2 | 4 | 1 | 0 | 3 |
+| 3 | 4 | 5 | absent | 2 |
+
+The pair `(2, 4)` corresponds to coordinates `4` and `7`. Its required predecessor is `1`, found at index `0`, so it forms the progression `1, 4, 7` of length `3`. No pair extends to length `4`, giving the required answer `3`.
+
+These traces also demonstrate why the predecessor need not be adjacent to the current pair in the input. The transition uses coordinates rather than neighboring indices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(n^2)` | There are `O(n^2)` pairs, and each predecessor pointer only moves left across its row |
-| Space | `O(n^2)` | There are `n(n-1)/2` pair states, stored as 16-bit integers |
+| Time | `O(n^2)` | Every ordered pair `i < j` is processed once, with an expected `O(1)` dictionary lookup. |
+| Space | `O(n^2)` | The flattened DP contains `n^2` compact 16-bit states, plus the coordinate dictionary. |
 
-For `n = 3000`, there are only about 4.5 million DP states. At two bytes per state, the DP storage itself is about 9 MB, well below the 512 MB memory limit. The number of pair transitions is also about 4.5 million, so the quadratic approach is appropriate for the given 2 second limit.
+For `n = 3000`, there are fewer than `4.5 million` pairs with `i < j`, although the allocated square DP contains `9 million` compact entries. At two bytes per entry, the DP occupies about 18 MB, comfortably below the 512 MB memory limit. The quadratic number of transitions is the intended scale for this constraint, while the cubic alternatives are too expensive.
 
 ## Test Cases
 
 ```python
+# This test harness uses the same solve logic as the submitted solution.
 import sys
 import io
 from array import array
 
-def solve():
-    input = sys.stdin.readline
+def solve_data(inp: str) -> str:
+    data = list(map(int, inp.split()))
+    n = data[0]
+    x = data[1:1 + n]
 
-    n = int(input())
-    x = list(map(int, input().split()))
+    pos = {value: i for i, value in enumerate(x)}
+    dp = array('H', [2]) * (n * n)
 
-    if n <= 2:
-        print(n)
-        return
+    ans = 2
 
-    rows = [None] * n
-    answer = 2
-
-    for i in range(n - 1):
-        length = n - i - 1
-        row = array('H', [2]) * length
-
-        k = i - 1
+    for i in range(n):
         xi = x[i]
+        row = i * n
 
         for j in range(i + 1, n):
             target = 2 * xi - x[j]
+            k = pos.get(target)
 
-            while k >= 0 and x[k] > target:
-                k -= 1
+            if k is not None:
+                length = dp[k * n + i] + 1
+                dp[row + j] = length
+                if length > ans:
+                    ans = length
 
-            if k >= 0 and x[k] == target:
-                value = rows[k][i - k - 1] + 1
-                row[j - i - 1] = value
-                if value > answer:
-                    answer = value
-
-        rows[i] = row
-
-    print(answer)
-
-def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    try:
-        solve()
-        return sys.stdout.getvalue()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
+    return str(ans)
 
 # Provided samples
-assert run("3\n1 2 3\n") == "3\n", "sample 1"
-assert run("5\n1 2 4 6 7\n") == "3\n", "sample 2"
-assert run("10\n5 10 15 20 35 60 80 85 110 120\n") == "5\n", "sample 3"
+assert solve_data("""3
+1 2 3
+""") == "3", "sample 1"
 
-# Minimum-size input with no arithmetic progression of length 3.
-assert run("3\n0 1 3\n") == "2\n", "minimum-size non-AP case"
+assert solve_data("""5
+1 2 4 6 7
+""") == "3", "sample 2"
 
-# Boundary coordinates near both ends of the allowed range.
-assert run("3\n0 500000000000000000 1000000000000000000\n") == "3\n", "large-coordinate arithmetic progression"
+assert solve_data("""10
+5 10 15 20 35 60 80 85 110 120
+""") == "5", "sample 3"
 
-# Long progression with irrelevant gaps around it.
-assert run("5\n0 3 6 9 20\n") == "4\n", "extension through several DP states"
+# Minimum n, but the three coordinates are not an arithmetic progression.
+assert solve_data("""3
+1 2 4
+""") == "2", "minimum size with no 3-term progression"
 
-# Maximum-size stress case, all gaps equal.
+# A progression uses non-consecutive input positions.
+assert solve_data("""7
+0 1 4 7 8 10 13
+""") == "3", "non-consecutive progression"
+
+# Boundary coordinates near 0 and 10^18.
+assert solve_data("""3
+0 500000000000000000 1000000000000000000
+""") == "3", "coordinate boundaries"
+
+# Maximum-size valid input: all 3000 coordinates form one progression.
 n = 3000
-coords = " ".join(map(str, range(n)))
-assert run(f"{n}\n{coords}\n") == "3000\n", "maximum-size all-equal-gap case"
+maximum_case = str(n) + "\n" + " ".join(map(str, range(n))) + "\n"
+assert solve_data(maximum_case) == "3000", "maximum size"
+
+# Equal coordinates are not a valid input because the statement requires
+# x[i] < x[i+1]. The closest meaningful test is equal consecutive gaps.
+assert solve_data("""6
+10 20 30 40 50 60
+""") == "6", "all equal gaps"
+
+print("All tests passed.")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `3 / 0 1 3` | `2` | Minimum-size input and the rule that two arbitrary lanterns are always valid |
-| `3 / 0 500000000000000000 1000000000000000000` | `3` | Large coordinates and exact integer arithmetic |
-| `5 / 0 3 6 9 20` | `4` | Repeated DP extensions and skipping an unrelated final lantern |
-| `3000 / 0 1 2 ... 2999` | `3000` | Maximum `n`, equal gaps, and the maximum possible answer |
+| `3 / 1 2 4` | `2` | Minimum input size and the special rule that two lanterns are always valid. |
+| `7 / 0 1 4 7 8 10 13` | `3` | A progression can skip input positions. |
+| `3 / 0 500000000000000000 1000000000000000000` | `3` | Very large coordinates and the endpoints of the coordinate range. |
+| `3000 / 0 1 2 ... 2999` | `3000` | Maximum `n`, maximum DP answer, and performance. |
+| `6 / 10 20 30 40 50 60` | `6` | Every coordinate belongs to one arithmetic progression and stresses repeated successful transitions. |
+
+The requested "all-equal values" case cannot be a valid test under the problem's input condition, because lantern coordinates are strictly increasing. Using duplicate coordinates would test behavior outside the specification. Equal gaps are the valid interpretation of that edge case, and the final custom test checks exactly that situation.
 
 ## Edge Cases
 
-For `0 1 3`, the only possible three-lantern choice has gaps `1` and `2`, so the answer is `2`. The algorithm starts every pair at value `2`. When it examines the pair `(1,3)`, the required predecessor is `-1`, which is outside the coordinate array, so the state remains `2`. No state reaches `3`, and the final answer stays `2`.
+For the minimum-size case
 
-For `0 500000000000000000 1000000000000000000`, the middle coordinate is exactly the average of the endpoints. When `i` points to the middle coordinate and `j` points to the final coordinate, the target is `2 * 500000000000000000 - 1000000000000000000 = 0`. The predecessor pointer finds coordinate `0`, so the state becomes `3`. This confirms that the calculation remains exact even near the upper coordinate boundary.
+```
+3
+1 2 4
+```
 
-For `0 3 6 9 20`, the progression `0,3,6,9` is built incrementally. The state for `(0,3)` has length `2`. When considering `(3,6)`, the required predecessor is `0`, so its value becomes `3`. Finally, `(6,9)` requires predecessor `3`, whose corresponding state has length `3`, giving length `4`. The final coordinate `20` cannot extend that progression, so the answer is `4`.
+the algorithm initializes every pair to `2`. For the pair `(1, 2)`, the required predecessor is `0`, which is absent. The other pairs also have no valid predecessor, so the maximum remains `2`. This is correct because selecting any two lanterns is always beautiful.
 
-For the maximum-size case `0 1 2 ... 2999`, every pair belongs to a progression that can be extended repeatedly. For example, the states ending at `(0,1)`, `(1,2)`, `(2,3)`, and so on all extend to longer states. The final state reaches length `3000`. This also exercises the 16-bit DP representation, since `3000` is safely below `65535`.
+For a progression that skips lanterns, consider
 
-A literal input containing equal coordinates, such as `1 1 1`, is not a valid test for this problem because the input guarantees strict increase. The implementation relies on that property when it concludes that the required predecessor of `(i,j)` must have an index smaller than `i`. Equal coordinates would introduce zero differences and violate the stated input model.
+```
+5
+1 2 4 6 7
+```
+
+When the algorithm reaches coordinates `4` and `7`, it computes `2*4 - 7 = 1`. The coordinate `1` exists, so `dp[2][4] = dp[0][2] + 1 = 3`. The selected coordinates are `1, 4, 7`. The intermediate input coordinates `2` and `6` do not matter because the problem asks for a subset, not a contiguous segment of the array.
+
+For boundary coordinates,
+
+```
+3
+0 500000000000000000 1000000000000000000
+```
+
+the pair consisting of the last two coordinates has required predecessor `0`. The dictionary finds it immediately, giving length `3`. Python performs the multiplication and subtraction exactly, so the large coordinate values do not require any special arithmetic handling.
+
+For a coordinate that cannot have a predecessor, consider
+
+```
+3
+0 10 21
+```
+
+For the pair `10, 21`, the required predecessor is `-1`, which is not in the dictionary. For the pair `0, 10`, the required predecessor is `-10`, also absent. Every state stays at `2`, so the answer is `2`. The dictionary lookup naturally handles targets outside the allowed coordinate interval.
+
+For the maximum-size progression,
+
+```
+3000
+0 1 2 3 ... 2999
+```
+
+every pair whose difference can be continued has a valid predecessor. The DP repeatedly extends existing states, eventually reaching length `3000`. The compact `array('H')` representation is sufficient because no state can exceed `3000`.
