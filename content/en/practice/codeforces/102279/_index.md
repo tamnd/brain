@@ -1,23 +1,23 @@
 ---
 title: "HCW 19 Team Round (ICPC format)"
-description: "8 problems from HCW 19 Team Round (ICPC format) (contest 102279), difficulty -. 8/8 solutions verified against sample I/O."
+description: "9 problems from HCW 19 Team Round (ICPC format) (contest 102279), difficulty -. 9/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102279
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 8
-n_verified: 8
-total_solve_s: 901
+n_problems: 9
+n_verified: 9
+total_solve_s: 1291
 contest_year: 2019
-date: "2026-08-16T19:23:59+07:00"
+date: "2026-08-16T19:30:32+07:00"
 weight: 102279
 draft: false
 ---
 
 # [HCW 19 Team Round (ICPC format)](https://codeforces.com/contest/102279)
 
-ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 15m 1s
+ICPC/IOI | 9 problems | 9/9 verified | Difficulty - | 21m 31s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@ ICPC/IOI | 8 problems | 8/8 verified | Difficulty - | 15m 1s
 | [E](E/) | [Elevate To Dominate](https://codeforces.com/problemset/problem/102279/E) |  |  |  | 2m 5s | ✓ |
 | [F](F/) | [Flood Season](https://codeforces.com/problemset/problem/102279/F) |  |  |  | 3m 16s | ✓ |
 | [G](G/) | [Get Higher and Higher](https://codeforces.com/problemset/problem/102279/G) |  |  |  | 1m 45s | ✓ |
+| [I](I/) | [Imitater The Potato](https://codeforces.com/problemset/problem/102279/I) |  |  |  | 6m 30s | ✓ |
 | [J](J/) | [Jumpity Digits](https://codeforces.com/problemset/problem/102279/J) |  |  |  | 59s | ✓ |
 | [K](K/) | [Kostly Cueries](https://codeforces.com/problemset/problem/102279/K) |  |  |  | 1m 18s | ✓ |
 | [L](L/) | [Left or Right? How about neither?](https://codeforces.com/problemset/problem/102279/L) |  |  |  | 2m 18s | ✓ |
