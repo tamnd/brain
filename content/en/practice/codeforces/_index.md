@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3140 contests, 23273 problems, 13030 verified."
+description: "Codeforces problem solutions with full editorials. 3140 contests, 23274 problems, 13031 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3140 contests, 23273 problems, 13030 verified.**
+**3140 contests, 23274 problems, 13031 verified.**
 
 ## Unknown — 834 contests, 7077 problems, 4240 verified
 
@@ -1470,7 +1470,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 188 contests, 1187 problems, 788 verified
+## 2019 — 188 contests, 1188 problems, 789 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1633,7 +1633,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
-| [102279](102279/) | [HCW 19 Team Round (ICPC format)](https://codeforces.com/contest/102279) | 9 | 9/9 | ICPC/IOI | - |
+| [102279](102279/) | [HCW 19 Team Round (ICPC format)](https://codeforces.com/contest/102279) | 10 | 10/10 | ICPC/IOI | - |
 | [102299](102299/) | [2019 USP Try-outs](https://codeforces.com/contest/102299) | 11 | 11/11 | Special | - |
 | [102302](102302/) | [2019 USP-ICMC](https://codeforces.com/contest/102302) | 11 | 8/11 | Special | - |
 | [102307](102307/) | [2019 ICPC Universidad Nacional de Colombia Programming Contest](https://codeforces.com/contest/102307) | 12 | 12/12 | ICPC/IOI | - |
