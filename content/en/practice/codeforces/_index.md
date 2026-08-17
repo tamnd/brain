@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3142 contests, 23292 problems, 13048 verified."
+description: "Codeforces problem solutions with full editorials. 3143 contests, 23294 problems, 13048 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3142 contests, 23292 problems, 13048 verified.**
+**3143 contests, 23294 problems, 13048 verified.**
 
 ## Unknown — 835 contests, 7089 problems, 4255 verified
 
@@ -1471,7 +1471,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 189 contests, 1194 problems, 791 verified
+## 2019 — 190 contests, 1196 problems, 791 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1634,6 +1634,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
+| [102270](102270/) | [HCW 19 Individual Day 2](https://codeforces.com/contest/102270) | 2 | 0/2 | Special | - |
 | [102272](102272/) | [HCW 19 Individual Day 1](https://codeforces.com/contest/102272) | 3 | 0/3 | Special | - |
 | [102279](102279/) | [HCW 19 Team Round (ICPC format)](https://codeforces.com/contest/102279) | 12 | 12/12 | ICPC/IOI | - |
 | [102299](102299/) | [2019 USP Try-outs](https://codeforces.com/contest/102299) | 11 | 11/11 | Special | - |
