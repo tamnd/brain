@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3141 contests, 23288 problems, 13044 verified."
+description: "Codeforces problem solutions with full editorials. 3141 contests, 23289 problems, 13045 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3141 contests, 23288 problems, 13044 verified.**
+**3141 contests, 23289 problems, 13045 verified.**
 
-## Unknown — 834 contests, 7085 problems, 4251 verified
+## Unknown — 834 contests, 7086 problems, 4252 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [102275](102275/) | [2019 Facebook Hacker Cup, Round 2](https://codeforces.com/contest/102275) | 3 | 3/3 | Special | - |
+| [102275](102275/) | [2019 Facebook Hacker Cup, Round 2](https://codeforces.com/contest/102275) | 4 | 4/4 | Special | - |
 | [102277](102277/) | [UCF Locals 2018](https://codeforces.com/contest/102277) | 11 | 11/11 | Special | - |
 | [102280](102280/) | [2010, Тренировка СГАУ aka Контест про маршрутки](https://codeforces.com/contest/102280) | 8 | 8/8 | Special | - |
 | [102281](102281/) | [2011, IV Самарская областная межвузовская олимпиада по программированию](https://codeforces.com/contest/102281) | 13 | 13/13 | Special | - |
