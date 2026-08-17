@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3141 contests, 23290 problems, 13046 verified."
+description: "Codeforces problem solutions with full editorials. 3142 contests, 23292 problems, 13048 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3141 contests, 23290 problems, 13046 verified.**
+**3142 contests, 23292 problems, 13048 verified.**
 
-## Unknown — 834 contests, 7087 problems, 4253 verified
+## Unknown — 835 contests, 7089 problems, 4255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102271](102271/) | [Helvetic Coding Contest 2019 (two remaining problems)](https://codeforces.com/contest/102271) | 2 | 2/2 | Special | - |
 | [102275](102275/) | [2019 Facebook Hacker Cup, Round 2](https://codeforces.com/contest/102275) | 4 | 4/4 | Special | - |
 | [102277](102277/) | [UCF Locals 2018](https://codeforces.com/contest/102277) | 11 | 11/11 | Special | - |
 | [102280](102280/) | [2010, Тренировка СГАУ aka Контест про маршрутки](https://codeforces.com/contest/102280) | 8 | 8/8 | Special | - |
