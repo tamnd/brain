@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3146 contests, 23310 problems, 13049 verified."
+description: "Codeforces problem solutions with full editorials. 3147 contests, 23320 problems, 13059 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3146 contests, 23310 problems, 13049 verified.**
+**3147 contests, 23320 problems, 13059 verified.**
 
 ## Unknown — 837 contests, 7098 problems, 4256 verified
 
@@ -1473,7 +1473,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 191 contests, 1203 problems, 791 verified
+## 2019 — 192 contests, 1213 problems, 801 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1636,6 +1636,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
+| [102263](102263/) | [ArabellaCPC 2019](https://codeforces.com/contest/102263) | 10 | 10/10 | Special | - |
 | [102267](102267/) | [The 2019 University of Jordan Collegiate Programming Contest](https://codeforces.com/contest/102267) | 7 | 0/7 | Special | - |
 | [102270](102270/) | [HCW 19 Individual Day 2](https://codeforces.com/contest/102270) | 2 | 0/2 | Special | - |
 | [102272](102272/) | [HCW 19 Individual Day 1](https://codeforces.com/contest/102272) | 3 | 0/3 | Special | - |
