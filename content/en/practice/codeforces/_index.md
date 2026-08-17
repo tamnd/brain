@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3160 contests, 23401 problems, 13107 verified."
+description: "Codeforces problem solutions with full editorials. 3161 contests, 23410 problems, 13116 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3160 contests, 23401 problems, 13107 verified.**
+**3161 contests, 23410 problems, 13116 verified.**
 
 ## Unknown — 842 contests, 7126 problems, 4280 verified
 
@@ -1480,7 +1480,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 198 contests, 1249 problems, 809 verified
+## 2019 — 199 contests, 1258 problems, 818 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1643,6 +1643,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1281](1281/) | [Codeforces Round 607 (Div. 2)](https://codeforces.com/contest/1281) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
+| [102203](102203/) | [Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы)](https://codeforces.com/contest/102203) | 9 | 9/9 | Special | - |
 | [102212](102212/) | [Amazalgo Uni 2019 Practice Contest](https://codeforces.com/contest/102212) | 3 | 0/3 | Special | - |
 | [102215](102215/) | [2019, XII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102215) | 8 | 1/8 | Special | - |
 | [102218](102218/) | [2019, XI Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/102218) | 6 | 0/6 | Special | - |
