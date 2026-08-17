@@ -1,27 +1,28 @@
 ---
 title: "UCF Locals 2019"
-description: "9 problems from UCF Locals 2019 (contest 102343), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from UCF Locals 2019 (contest 102343), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102343
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 2033
-date: "2026-08-16T10:27:29+07:00"
+n_problems: 10
+n_verified: 10
+total_solve_s: 2849
+date: "2026-08-16T18:06:53+07:00"
 weight: 102343
 draft: false
 ---
 
 # [UCF Locals 2019](https://codeforces.com/contest/102343)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 33m 53s
+Special | 10 problems | 10/10 verified | Difficulty - | 47m 29s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Divide the Cash](https://codeforces.com/problemset/problem/102343/A) |  |  |  | 53s | ✓ |
 | [B](B/) | [Sort by Frequency](https://codeforces.com/problemset/problem/102343/B) |  |  |  | 1m 12s | ✓ |
+| [C](C/) | [Fitting on the Bed](https://codeforces.com/problemset/problem/102343/C) |  |  |  | 13m 36s | ✓ |
 | [D](D/) | [Candy Land](https://codeforces.com/problemset/problem/102343/D) |  |  |  | 2m 59s | ✓ |
 | [E](E/) | [Give-a-Gnocchi](https://codeforces.com/problemset/problem/102343/E) |  |  |  | 3m 30s | ✓ |
 | [F](F/) | [More or Less](https://codeforces.com/problemset/problem/102343/F) |  |  |  | 15m 26s | ✓ |
