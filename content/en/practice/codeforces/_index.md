@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3152 contests, 23349 problems, 13082 verified."
+description: "Codeforces problem solutions with full editorials. 3153 contests, 23353 problems, 13086 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3152 contests, 23349 problems, 13082 verified.**
+**3153 contests, 23353 problems, 13086 verified.**
 
-## Unknown — 840 contests, 7114 problems, 4272 verified
+## Unknown — 841 contests, 7118 problems, 4276 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102249](102249/) | [2019 Facebook Hacker Cup, Qualification Round](https://codeforces.com/contest/102249) | 4 | 4/4 | Special | - |
 | [102257](102257/) | [2019 Asia-Pacific Informatics Olympiad (APIO 19)](https://codeforces.com/contest/102257) | 3 | 3/3 | Special | - |
 | [102261](102261/) | [Чемпионат по программированию - квалификация (Яндекс)](https://codeforces.com/contest/102261) | 5 | 5/5 | Special | - |
 | [102262](102262/) | [Чемпионат по программированию - финал (Яндекс)](https://codeforces.com/contest/102262) | 8 | 8/8 | Special | - |
