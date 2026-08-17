@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3151 contests, 23341 problems, 13075 verified."
+description: "Codeforces problem solutions with full editorials. 3152 contests, 23349 problems, 13082 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3151 contests, 23341 problems, 13075 verified.**
+**3152 contests, 23349 problems, 13082 verified.**
 
 ## Unknown — 840 contests, 7114 problems, 4272 verified
 
@@ -1298,7 +1298,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | 5 | 4/5 | Div. 1 | 1500-3200 |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | 2 | 1/2 | Div. 2 | 1100-1600 |
 
-## 2017 — 14 contests, 52 problems, 40 verified
+## 2017 — 15 contests, 60 problems, 47 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1316,6 +1316,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | 6 | 6/6 | Div. 2 | 1000-2500 |
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
+| [102253](102253/) | [2017 Chinese Multi-University Training, BeihangU Contest](https://codeforces.com/contest/102253) | 8 | 7/8 | Special | - |
 
 ## 2018 — 154 contests, 737 problems, 472 verified
 
