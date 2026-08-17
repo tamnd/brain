@@ -1,23 +1,23 @@
 ---
 title: "2019 ICPC Malaysia National"
-description: "6 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/6 solutions verified against sample I/O."
+description: "7 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/7 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102219
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 6
+n_problems: 7
 n_verified: 0
-total_solve_s: 1155
+total_solve_s: 1332
 contest_year: 2019
-date: "2026-08-17T23:03:10+07:00"
+date: "2026-08-17T23:06:10+07:00"
 weight: 102219
 draft: false
 ---
 
 # [2019 ICPC Malaysia National](https://codeforces.com/contest/102219)
 
-ICPC/IOI | 6 problems | 0/6 verified | Difficulty - | 19m 15s
+ICPC/IOI | 7 problems | 0/7 verified | Difficulty - | 22m 12s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,3 +27,4 @@ ICPC/IOI | 6 problems | 0/6 verified | Difficulty - | 19m 15s
 | [F](F/) | [Military Class](https://codeforces.com/problemset/problem/102219/F) |  |  |  | 3m |  |
 | [I](I/) | [To Crash Or Not To Crash](https://codeforces.com/problemset/problem/102219/I) |  |  |  | 5m 12s |  |
 | [J](J/) | [Kitchen Plates](https://codeforces.com/problemset/problem/102219/J) |  |  |  | 3m 11s |  |
+| [K](K/) | [Help The Support Lady](https://codeforces.com/problemset/problem/102219/K) |  |  |  | 2m 57s |  |
