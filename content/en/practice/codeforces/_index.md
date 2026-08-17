@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3140 contests, 23281 problems, 13039 verified."
+description: "Codeforces problem solutions with full editorials. 3140 contests, 23284 problems, 13044 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3140 contests, 23281 problems, 13039 verified.**
+**3140 contests, 23284 problems, 13044 verified.**
 
-## Unknown — 834 contests, 7082 problems, 4246 verified
+## Unknown — 834 contests, 7085 problems, 4251 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -30,7 +30,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102330](102330/) | [Сириус.2019.Ноябрь.Очный отбор](https://codeforces.com/contest/102330) | 7 | 7/7 | Special | - |
 | [102331](102331/) | [2019 Summer Petrozavodsk Camp, Day 2: 300iq Contest 2 (XX Open Cup, Grand Prix of Kazan)](https://codeforces.com/contest/102331) | 11 | 11/11 | Special | - |
 | [102341](102341/) | [Radewoosh+mnbvmar Contest (supported by AIM Tech)](https://codeforces.com/contest/102341) | 12 | 12/12 | Special | - |
-| [102343](102343/) | [UCF Locals 2019](https://codeforces.com/contest/102343) | 6 | 4/6 | Special | - |
+| [102343](102343/) | [UCF Locals 2019](https://codeforces.com/contest/102343) | 9 | 9/9 | Special | - |
 | [102361](102361/) | [2019 China Collegiate Programming Contest Qinhuangdao Onsite](https://codeforces.com/contest/102361) | 12 | 12/12 | Special | - |
 | [102373](102373/) | [Цикл Интернет-олимпиад для школьников, Сезон 2019-2020, Первая командная олимпиада](https://codeforces.com/contest/102373) | 10 | 5/10 | Special | - |
 | [102375](102375/) | [Квалификационный раунд Чемпионата Северо-Запада России и Москвы ICPC 2019](https://codeforces.com/contest/102375) | 12 | 4/12 | ICPC/IOI | - |
