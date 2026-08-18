@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3165 contests, 23467 problems, 13151 verified."
+description: "Codeforces problem solutions with full editorials. 3165 contests, 23470 problems, 13154 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3165 contests, 23467 problems, 13151 verified.**
+**3165 contests, 23470 problems, 13154 verified.**
 
 ## Unknown — 844 contests, 7150 problems, 4301 verified
 
@@ -1482,7 +1482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 201 contests, 1287 problems, 828 verified
+## 2019 — 201 contests, 1290 problems, 831 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1654,7 +1654,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102219](102219/) | [2019 ICPC Malaysia National](https://codeforces.com/contest/102219) | 8 | 0/8 | ICPC/IOI | - |
 | [102220](102220/) | [The 13th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/102220) | 10 | 9/10 | Special | - |
 | [102254](102254/) | [IME++ Starters Try-outs 2019](https://codeforces.com/contest/102254) | 5 | 0/5 | Special | - |
-| [102263](102263/) | [ArabellaCPC 2019](https://codeforces.com/contest/102263) | 10 | 10/10 | Special | - |
+| [102263](102263/) | [ArabellaCPC 2019](https://codeforces.com/contest/102263) | 13 | 13/13 | Special | - |
 | [102267](102267/) | [The 2019 University of Jordan Collegiate Programming Contest](https://codeforces.com/contest/102267) | 7 | 0/7 | Special | - |
 | [102270](102270/) | [HCW 19 Individual Day 2](https://codeforces.com/contest/102270) | 2 | 0/2 | Special | - |
 | [102272](102272/) | [HCW 19 Individual Day 1](https://codeforces.com/contest/102272) | 3 | 0/3 | Special | - |
