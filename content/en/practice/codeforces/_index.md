@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3165 contests, 23434 problems, 13127 verified."
+description: "Codeforces problem solutions with full editorials. 3165 contests, 23436 problems, 13129 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,13 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3165 contests, 23434 problems, 13127 verified.**
+**3165 contests, 23436 problems, 13129 verified.**
 
-## Unknown — 844 contests, 7140 problems, 4290 verified
+## Unknown — 844 contests, 7142 problems, 4292 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [102192](102192/) | [2018 Chinese Multi-University Training, Nanjing U Contest](https://codeforces.com/contest/102192) | 8 | 8/8 | Special | - |
+| [102192](102192/) | [2018 Chinese Multi-University Training, Nanjing U Contest](https://codeforces.com/contest/102192) | 10 | 10/10 | Special | - |
 | [102201](102201/) | [Moscow Pre-Finals Workshop 2019. KAIST Contest](https://codeforces.com/contest/102201) | 6 | 2/6 | Special | - |
 | [102214](102214/) | [Открытое личное первенство ИКИТ СФУ по программированию 2015](https://codeforces.com/contest/102214) | 8 | 4/8 | Special | - |
 | [102249](102249/) | [2019 Facebook Hacker Cup, Qualification Round](https://codeforces.com/contest/102249) | 4 | 4/4 | Special | - |
