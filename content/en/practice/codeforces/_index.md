@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3165 contests, 23466 problems, 13150 verified."
+description: "Codeforces problem solutions with full editorials. 3165 contests, 23467 problems, 13151 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3165 contests, 23466 problems, 13150 verified.**
+**3165 contests, 23467 problems, 13151 verified.**
 
-## Unknown — 844 contests, 7149 problems, 4300 verified
+## Unknown — 844 contests, 7150 problems, 4301 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102214](102214/) | [Открытое личное первенство ИКИТ СФУ по программированию 2015](https://codeforces.com/contest/102214) | 10 | 5/10 | Special | - |
 | [102249](102249/) | [2019 Facebook Hacker Cup, Qualification Round](https://codeforces.com/contest/102249) | 4 | 4/4 | Special | - |
 | [102257](102257/) | [2019 Asia-Pacific Informatics Olympiad (APIO 19)](https://codeforces.com/contest/102257) | 3 | 3/3 | Special | - |
-| [102261](102261/) | [Чемпионат по программированию - квалификация (Яндекс)](https://codeforces.com/contest/102261) | 5 | 5/5 | Special | - |
+| [102261](102261/) | [Чемпионат по программированию - квалификация (Яндекс)](https://codeforces.com/contest/102261) | 6 | 6/6 | Special | - |
 | [102262](102262/) | [Чемпионат по программированию - финал (Яндекс)](https://codeforces.com/contest/102262) | 8 | 8/8 | Special | - |
 | [102264](102264/) | [2019 Facebook Hacker Cup, Round 1](https://codeforces.com/contest/102264) | 2 | 1/2 | Special | - |
 | [102268](102268/) | [300iq Contest 1](https://codeforces.com/contest/102268) | 7 | 0/7 | Special | - |
