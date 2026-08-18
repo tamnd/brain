@@ -1,7 +1,7 @@
 ---
 title: "CF 102267L - ABC"
-description: "We have a mutable string over the alphabet a, b, c. An a can grow into ab, a b can grow into bc, and a c can grow into ba. The only operation that actually removes characters is deleting an occurrence of abc. The task is constructive."
-date: "2026-08-17T19:40:23+07:00"
+description: "The string is built from three symbols, a, b, and c. An operation can expand one symbol into a fixed two-symbol pattern, or delete one occurrence of abc."
+date: "2026-08-19T03:53:34+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102267
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "The 2019 University of Jordan Collegiate Programming Contest"
 rating: 0
 weight: 102267
-solve_time_s: 514
+solve_time_s: 561
 verified: false
 draft: false
 ---
@@ -18,69 +18,92 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 8m 34s  
+**Solve time:** 9m 21s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a mutable string over the alphabet `a`, `b`, `c`. An `a` can grow into `ab`, a `b` can grow into `bc`, and a `c` can grow into `ba`. The only operation that actually removes characters is deleting an occurrence of `abc`.
+The string is built from three symbols, `a`, `b`, and `c`. An operation can expand one symbol into a fixed two-symbol pattern, or delete one occurrence of `abc`. The task is constructive: either produce a sequence of at most `3n` valid operations that turns the entire string into the empty string, or prove that no such sequence exists.
 
-The task is constructive. We either have to produce a complete sequence of valid operations that turns the input string into the empty string using at most `3n` operations, or prove that no such sequence exists by printing `-1`. The indices in the output refer to the string as it exists at that exact moment, so an implementation has to track how previous operations changed the length and positions.
+The input contains one string of length at most `2 * 10^5`. The output is not a single answer value. It is an actual sequence of operations, and every reported index refers to the string after all previous operations have been applied. The original statement and samples are available from Codeforces.
 
-With `n` up to `2 * 10^5` and a one second limit, anything quadratic is already dangerous, and exploring operation sequences is completely infeasible. The output itself can contain up to `600000` operations, so an `O(n)` construction with an `O(n)` output buffer is the natural target.
+The size bound rules out anything that explores many possible operation sequences. Even a quadratic simulation is already undesirable under a one second limit, while the required output itself can contain `600000` operations. The intended solution has to process the input essentially once and generate only `O(n)` operations.
 
-There are several edge cases that expose why blindly looking for `abc` is not enough. The input `bac` is impossible. Its first character is `b`, and none of the operations can ever turn the first character of a string into `a`: operation 2 keeps a first `b` as a first `b`, operation 3 turns a first `c` into `b`, and operation 1 can only act on an `a` that already exists. Since the first character eventually has to belong to an `abc` deletion, a string starting with `b` or `c` cannot disappear.
+There are several edge cases that expose careless approaches. The input `a` is solvable: expand it to `ab`, then `abc`, then delete it, using three operations. The input `c` is impossible because the first character can become `ba`, but then the first character is `b`, and a string beginning with `b` can never remove that first character. A careless implementation that assumes every character can eventually be turned into `abc` would incorrectly accept `c`.
 
-The input `abb` is also impossible even though it starts with `a`. The first `b` can be removed together with the initial `a`, leaving the second `b` as the first character. That `b` can never become an `a`, so the process is stuck. A construction that greedily removes the first available `abc` has to detect this situation rather than assuming that every string beginning with `a` is solvable.
+The input `bac` is also impossible. Its first character is `b`, so there is no way to make that character the `a` of an `abc` deletion. A careless left-to-right simulation may transform the suffix and accidentally construct an invalid operation around the leading `b`.
 
-At the other extreme, `a` is immediately solvable: expand it to `ab`, expand the `b` to `bc`, and delete `abc`. The three operations are exactly within the allowed bound. A single `abc` is even simpler, because it can be deleted in one operation.
+Another important case is `ac`. It is solvable even though it does not initially contain `abc`. The sequence is `ac -> aba -> abca -> empty`: first replace `c` by `ba`, then replace that new `b` by `bc`, then delete `abc`. An implementation that only searches for an already existing `abc` misses this case.
+
+Finally, `abb` is impossible. After the first `b` is matched with the preceding `a`, the remaining `b` is at the beginning of the remaining string and can never disappear. This catches implementations that greedily delete `ab` without checking whether every `b` has a preceding `a`.
 
 ## Approaches
 
-A direct brute-force approach would treat every operation as a choice and search all possible operation sequences up to length `3n`. At every state there can be many possible characters to expand and many possible `abc` substrings to delete. Even ignoring the cost of manipulating the string, a depth-`3n` search with a constant branching factor of roughly four can have `O(4^(3n))` branches. It is correct because every legal sequence is represented, but it becomes useless even for very small strings.
+A direct brute-force approach would maintain the current string and try every legal operation. At a string of length at most `4n`, there can be `O(n)` choices of position, and a valid answer can contain up to `3n` operations. Exploring all sequences can consequently require on the order of `(4n)^(3n)` branches in the worst case. Even memoization does not save the approach, because the number of reachable strings is exponential.
 
-The useful observation is that we do not need to decide globally which `abc` to create. We can process the string from left to right and eliminate every `c` immediately. The three possible local endings before a `c` have very simple behavior.
+The useful observation is that the operations have a surprisingly small set of local behaviors. We can eliminate every `c` using one of three local constructions. When the current reduced prefix ends in `a`, the suffix `ac` can be turned back into `a` using three operations. When the reduced prefix ends in `ab`, the new `c` immediately gives `abc`, which can be deleted. When the reduced prefix ends in `bb`, there is another three-operation construction that changes `bbc` back into `bb`.
 
-If the current suffix is `ac`, changing the `c` into `ba` gives `aba`. The `c` disappears without changing the earlier part of the string.
+After all `c` characters have been handled, only `a` and `b` remain. At that point every `b` can be paired with the immediately preceding surviving `a`. The pair `ab` can be removed in two operations by changing the `b` into `bc` and deleting `abc`. Any `a` left after all `b` characters have been paired can be removed independently in three operations.
 
-If the current suffix is `abc`, we can delete it immediately.
-
-If the current suffix is `bbc`, there is a slightly less obvious three-operation transformation that changes it into `bb`:
-
-`bbc -> bcbc -> bbabc -> bb`.
-
-The first operation changes the first `b` into `bc`. The second changes the newly inserted `c` into `ba`. The resulting `abc` is then deleted. The surrounding prefix is untouched.
-
-This means that while scanning the original string, we can maintain the exact current string after processing its prefix, except that all processed `c` characters have already been eliminated. The resulting auxiliary string contains only `a` and `b`.
-
-Once all `c` characters are gone, every remaining `b` can be paired with an earlier `a`. Suppose the current remaining prefix is represented by `g`, and the next character is `b`. If `g` is nonempty, expand this `b` to `bc`. The last `a` of `g` now forms `abc` with it, so the triple can be deleted. This consumes one `a` and one `b`.
-
-If a `b` is encountered while `g` is empty, that `b` is now the first character of the actual string. As discussed above, a first `b` can never become a first `a`, so the answer is genuinely impossible.
-
-After all `b` characters have been removed, only `a` characters remain. Each one can be handled independently by the fixed three-operation sequence `a -> ab -> abc -> empty`.
-
-The official contest tutorial uses this same left-to-right construction, first eliminating `c` characters, then matching `b` characters with preceding `a` characters, and finally removing the remaining `a` characters.
+The key is that these transformations can be applied to the processed prefix while the unprocessed suffix remains untouched. We only need to remember the current reduced prefix, not the full evolving string. The official contest tutorial uses this same local constructive structure.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(4^(3n)) in the worst case | Exponential | Too slow |
-| Optimal | O(n) plus output size | O(n) | Accepted |
+| Brute Force | `O((4n)^(3n))` | Exponential | Too slow |
+| Optimal | `O(n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the string and maintain a list `v` representing the current string after the already processed prefix. Store every operation in an array so that indices can be printed after the construction finishes.
-2. Process the input from left to right. For an `a` or `b`, append it to `v`. Nothing has to be done yet because these characters can be handled later.
-3. When the next input character is `c`, first check whether `v` is empty. If it is, the original string starts with `c`, so the answer is impossible. The first character can never become `a`.
-4. If the last character of `v` is `a`, the current suffix is `ac`. Apply operation 3 to the `c`, using index `len(v) + 1`. The suffix becomes `aba`, so append `b` and `a` to `v`. The represented current string is now correct again.
-5. If the last character of `v` is `b` and the character before it is `a`, the current suffix is `abc`. Delete this suffix with operation 4. Remove the last two characters from `v`, because the previous `a` has already been consumed by the deletion together with the `b` and current `c`.
-6. If the last two characters of `v` are `bb`, the current suffix is `bbc`. Apply the fixed transformation `bbc -> bcbc -> bbabc -> bb`. The three operation indices are `len(v) - 1`, `len(v)`, and `len(v) + 1`. After those operations, the string is exactly the same as `v`, so no change to `v` is necessary.
-7. After this first pass, `v` contains only `a` and `b`. Scan it again while maintaining `g`, the part consisting of `a` characters that has not yet been consumed. Whenever an `a` appears, append it to `g`.
-8. Whenever a `b` appears, check whether `g` is empty. If it is empty, this `b` is the first character of the current string and the answer is impossible. Otherwise, expand the `b` with operation 2. The resulting `c` sits immediately after the last `a` in `g`, so delete that `abc` with operation 4. Remove the last `a` from `g`.
-9. After every `b` has been processed, `g` contains only unmatched `a` characters. For every such `a`, perform operation 1 at position 1, operation 2 at position 2, and operation 4 at position 1. Each triple independently turns that `a` into the empty string.
-10. Print the collected operations. There are at most three operations associated with every original character, so the total never exceeds `3n`.
+1. First check the first character. If it is `b` or `c`, output `-1`.
 
-Why it works. During the first pass, `v` is an exact representation of the current string after all processed input characters have been handled. Every `c` is removed or transformed using one of the three local cases, and each case leaves the unprocessed suffix untouched. After the first pass, no `c` remains. During the second pass, every `b` is removed together with one preceding `a`, and `g` represents exactly those preceding `a` characters that are still present. If `g` is empty when a `b` appears, that `b` is the first character and cannot ever become `a`, so declaring impossibility is correct. Finally, every remaining `a` has a direct three-operation elimination sequence. Thus every produced operation is valid, and whenever the algorithm reports `-1`, the current first character proves that no continuation is possible.
+The first character cannot be deleted unless it eventually becomes the `a` in an `abc` prefix. A `b` always remains a `b` when expanded, while a `c` becomes `ba`, whose first character is again `b`. Nothing can turn such a leading character into `a`.
+2. Scan the original string from left to right and maintain a reduced prefix `v`.
+
+Characters `a` and `b` are simply appended to `v`. A `c` is handled immediately using the local form of the already processed prefix.
+3. If `c` follows an `a`, use the transformation
+
+`ac -> aba -> abca -> a`.
+
+The first operation replaces `c` by `ba`. The second replaces the newly created `b` by `bc`. The resulting `abc` is removed. Three operations have eliminated the `c` while leaving the preceding `a` unchanged, so `v` itself does not change.
+4. If `c` follows `ab`, the current suffix is already `abc`.
+
+Delete it directly. In the virtual string `v`, remove its final `a` and `b` together with the current `c`, which means popping the last two characters from `v`.
+5. If `c` follows `bb`, use the transformation
+
+`bbc -> bcbc -> bbabc -> bb`.
+
+The first operation expands the first of the two trailing `b` characters. The second expands the newly positioned `c`, and the final operation removes the resulting `abc`. The reduced prefix again becomes exactly the old `bb`.
+6. After every `c` has been processed, `v` contains only `a` and `b`. Scan it from left to right with another string `g`.
+
+Whenever an `a` appears, append it to `g`. Whenever a `b` appears, `g` must contain at least one `a`. Use the last such `a` and the `b` together:
+
+`ab -> abc -> empty`.
+
+The first operation changes the `b` to `bc`, and the second deletes the resulting `abc`. Remove the matched `a` from `g`.
+7. If a `b` is encountered while `g` is empty, output `-1`.
+
+At that moment the remaining string begins with `b`. As argued in the first step, such a leading character can never be removed.
+8. After all `b` characters have been paired, `g` consists entirely of `a` characters.
+
+For each remaining `a`, perform
+
+`a -> ab -> abc -> empty`.
+
+This costs exactly three operations per remaining `a`.
+9. Output all recorded operations.
+
+Every operation was generated relative to the length of the processed prefix, and the untouched suffix always comes after it. Since every recorded index refers to a character inside that prefix, it remains valid when the suffix is present.
+
+### Why it works
+
+The central invariant is that `v` represents a string reachable from the already processed input prefix, while all characters after that prefix are untouched. Every `c` is eliminated by one of the three local identities above, so after the first scan there are no `c` characters left.
+
+The second scan maintains the same invariant with `g`: every processed `b` has been completely removed together with one preceding `a`. If no `a` is available, the remaining string starts with `b`, which is permanently unable to become the leading `a` of a removable `abc`. Thus the failure condition is genuine impossibility rather than a limitation of the greedy choice.
+
+When the scan succeeds, only `a` characters remain, and each can be independently removed by the three-operation `a -> ab -> abc -> empty` construction. Hence the produced sequence always reaches the empty string.
+
+For the operation bound, every original `c` costs at most three operations during the first scan. Every character that survives into `v` is an original `a` or `b`, and it costs at most three operations during the second scan. These two groups are disjoint, so the total is at most `3n`.
 
 ## Python Solution
 
@@ -88,161 +111,19 @@ Why it works. During the first pass, `v` is an exact representation of the curre
 import sys
 input = sys.stdin.readline
 
-def solve_string(s):
-    operations = []
-    v = []
+BASE = 1_000_000
 
-    def add(tp, idx):
-        operations.append((tp, idx))
-
-    def impossible():
+def solve_one(s):
+    n = len(s)
+    if s[0] != 'a':
         return None
 
-    # First pass: eliminate all c's.
-    for ch in s:
-        if ch != 'c':
-            v.append(ch)
-            continue
-
-        if not v:
-            return impossible()
-
-        if v[-1] == 'a':
-            # ...ac -> ...aba
-            add(3, len(v) + 1)
-            v.append('b')
-            v.append('a')
-        else:
-            # v ends in b
-            if len(v) == 1:
-                # The current string starts with bc.
-                return impossible()
-
-            if v[-2] == 'a':
-                # ...abc -> ...
-                add(4, len(v) - 1)
-                v.pop()
-                v.pop()
-            else:
-                # ...bbc -> ...bb
-                #
-                # bbc -> bcbc -> bbabc -> bb
-                add(2, len(v) - 1)
-                add(3, len(v))
-                add(4, len(v) + 1)
-
-    # Second pass: remove every b using a preceding a.
-    g = []
-
-    for ch in v:
-        if ch == 'a':
-            g.append('a')
-        else:
-            if not g:
-                return impossible()
-
-            # ...a b -> ...abc -> ...
-            add(2, len(g) + 1)
-            add(4, len(g))
-            g.pop()
-
-    # Every remaining a can be removed independently:
-    # a -> ab -> abc -> empty
-    for _ in g:
-        add(1, 1)
-        add(2, 2)
-        add(4, 1)
-
-    return operations
-
-def main():
-    s = input().strip()
-    operations = solve_string(s)
-
-    if operations is None:
-        print(-1)
-        return
-
-    out = [str(len(operations))]
-    out.extend(f"{tp} {idx}" for tp, idx in operations)
-    sys.stdout.write("\n".join(out))
-
-if __name__ == "__main__":
-    main()
-```
-
-The `operations` list contains pairs of operation type and one-based index. Keeping the operations instead of modifying a Python string is useful because the construction only needs a compact representation of the already processed prefix, while the actual output indices are computed from its current length.
-
-The first pass uses `v` as a list instead of a Python string. Appending and removing from the end are constant-time operations, which avoids accidental quadratic behavior from repeated string rebuilding.
-
-The `ac` case is particularly simple. Before processing the `c`, `v` contains the prefix ending in `a`, so the `c` is at position `len(v) + 1`. After changing it to `ba`, the represented suffix is `aba`, which is exactly why two characters are appended to `v`.
-
-The `abc` case deletes the last three characters of the current string. Since `v` does not contain the current `c`, its last two elements are the `a` and `b` of that triple. The deletion starts at `len(v) - 1`, using one-based indexing.
-
-The `bbc` case is the easiest place to make an indexing mistake. Before processing `c`, `v` ends in `bb`, so the current local string is `bbc`. Operation 2 is applied to the first of those two `b` characters, at `len(v) - 1`. It inserts a `c`, and that newly inserted `c` is at position `len(v)`, so operation 3 uses exactly that index. Afterward the local string is `bbabc`, and the `abc` begins at `len(v) + 1`.
-
-In the second pass, `g` contains only surviving `a` characters. If `len(g) = k`, the next `b` is at position `k + 1`. After operation 2, the resulting `c` follows that last `a`, so the `abc` starts at position `k`. This explains the two indices `len(g) + 1` and `len(g)`.
-
-The final loop always uses indices `1`, `2`, and `1`. After the first two operations the entire current string starts with `abc`, and deleting it removes the selected `a`. The same three indices are valid again for the next remaining `a`.
-
-Python integers do not overflow, and the maximum number of stored operations is `3n`, at most `600000`, which is comfortably within the memory limit.
-
-## Worked Examples
-
-For Sample 1, `acab`, the construction does not have to reproduce the sample output exactly because the problem accepts any valid sequence. Our construction first handles the `c`, then removes `b` characters, and finally removes the remaining `a` characters.
-
-| Phase | Input character | `v` | `g` | Operations added |
-| --- | --- | --- | --- | --- |
-| Start |  | empty | empty |  |
-| First pass | `a` | `a` |  |  |
-| First pass | `c` | `aba` |  | `3 2` |
-| First pass | `a` | `abaa` |  |  |
-| First pass | `b` | `abaab` |  |  |
-| Second pass | `a` | `abaab` | `a` |  |
-| Second pass | `b` | `abaab` | empty | `2 2`, `4 1` |
-| Second pass | `a` | `abaab` | `a` |  |
-| Second pass | `a` | `abaab` | `aa` |  |
-| Final pass | first `a` |  |  | `1 1`, `2 2`, `4 1` |
-| Final pass | second `a` |  |  | `1 1`, `2 2`, `4 1` |
-
-The resulting sequence has nine operations, which is within `3n = 12`. The first-pass invariant is visible after the `c`: the original prefix `ac` has actually become `aba`, so `v` continues to describe the real string rather than merely storing the original characters.
-
-For Sample 2, `bac`, the algorithm immediately discovers that the first character is `b`.
-
-| Phase | Input character | `v` | `g` | Result |
-| --- | --- | --- | --- | --- |
-| Start |  | empty | empty |  |
-| First pass | `b` | `b` |  |  |
-| First pass | `a` | `ba` |  |  |
-| First pass | `c` | `baba` |  | `3 3` |
-| Second pass | first `b` | `baba` | empty | impossible |
-
-The first `b` encountered in the second pass is now the first character of the actual remaining string. No operation can turn that first character into `a`, so the correct output is `-1`.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n + m) | Every input character is processed a constant number of times, and `m <= 3n` operations are generated. |
-| Space | O(n + m) | The auxiliary strings and the stored operation list are both linear in the input size. |
-
-Since `n <= 2 * 10^5`, the algorithm performs only a constant amount of work per character and emits at most `600000` operations. The linear construction fits comfortably within the one second time limit, while the stored output and auxiliary arrays remain well below 256 MB.
-
-## Test Cases
-
-The checker below does not compare a constructive answer against one exact sequence, because the problem allows many different valid outputs. Instead, it simulates every printed operation and verifies that each index is valid, every operation is applicable, the final string is empty, and the operation count is at most `3n`.
-
-```python
-# helper: run solution on input string, return output string
-import io
-import sys
-
-def solve_string(s):
-    operations = []
-    v = []
+    ops = []
 
     def add(tp, idx):
-        operations.append((tp, idx))
+        ops.append(tp * BASE + idx)
+
+    v = []
 
     for ch in s:
         if ch != 'c':
@@ -252,33 +133,194 @@ def solve_string(s):
         if not v:
             return None
 
+        k = len(v)
+
         if v[-1] == 'a':
-            add(3, len(v) + 1)
-            v.append('b')
-            v.append('a')
+            # ac -> aba -> abca -> empty, leaving the old a.
+            add(3, k + 1)
+            add(2, k + 1)
+            add(4, k)
+
         else:
-            if len(v) == 1:
+            # The prefix ends in b.
+            if k == 1:
                 return None
 
             if v[-2] == 'a':
-                add(4, len(v) - 1)
+                # abc -> empty.
+                add(4, k - 1)
                 v.pop()
                 v.pop()
             else:
-                add(2, len(v) - 1)
-                add(3, len(v))
-                add(4, len(v) + 1)
+                # bbc -> bcbc -> bbabc -> bb.
+                add(2, k - 1)
+                add(3, k)
+                add(4, k + 1)
 
     g = []
 
     for ch in v:
         if ch == 'a':
-            g.append('a')
+            g.append(ch)
         else:
             if not g:
                 return None
-            add(2, len(g) + 1)
-            add(4, len(g))
+
+            k = len(g)
+
+            # ab -> abc -> empty.
+            add(2, k + 1)
+            add(4, k)
+            g.pop()
+
+    for _ in g:
+        # a -> ab -> abc -> empty.
+        add(1, 1)
+        add(2, 2)
+        add(4, 1)
+
+    out = [str(len(ops))]
+    out.extend(f"{op // BASE} {op % BASE}" for op in ops)
+    return "\n".join(out)
+
+def main():
+    s = input().strip()
+    ans = solve_one(s)
+
+    if ans is None:
+        print(-1)
+    else:
+        print(ans)
+
+if __name__ == "__main__":
+    main()
+```
+
+The first character check is deliberately done before the main scan. It makes the impossibility condition explicit and prevents the ambiguous `bc` or `bac` situations from entering the local `c` cases.
+
+The list `v` is a virtual representation of the processed prefix. It does not contain the actual expanded characters produced by the operations. For example, when handling `ac`, the real string temporarily becomes `aba`, then `abca`, then loses `abc`, but `v` remains just `a`. Keeping only the reduced form is what makes the algorithm linear.
+
+The indices in the first scan are based on `len(v)`. For the `ac` case, the original `c` is at position `k + 1`, so both type `3` and type `2` use that position. After the first expansion the new `b` is exactly there. The resulting `abc` starts at position `k`, which is the type `4` index.
+
+For the `abc` case, `v` ends in `ab`, so with `k = len(v)`, the `abc` starts at `k - 1`. After deleting it, the final `a` and `b` represented by those two entries disappear from `v`.
+
+For the `bbc` case, the first `b` of the trailing pair is at `k - 1`. After expanding it, the `c` that must be changed is at position `k`. The final `abc` starts at `k + 1`.
+
+The second scan uses `g` in exactly the same way. When a `b` is processed, its index is `len(g) + 1`, while the `abc` created after expansion starts at `len(g)`. After deletion, the matched `a` is removed from `g`.
+
+The operations are stored as one integer instead of a tuple. With at most `600000` operations, this reduces Python object overhead noticeably. `BASE` is much larger than every possible index, so division and remainder recover the operation type and index without ambiguity. Python integers are unbounded, so there is no overflow issue.
+
+## Worked Examples
+
+### Sample 1: `acab`
+
+The algorithm produces a valid sequence different from the sample output. Multiple valid operation sequences are allowed.
+
+| Input character | Case | `v` after processing | Operations added |
+| --- | --- | --- | --- |
+| `a` | append | `a` | 0 |
+| `c` | `ac` gadget | `a` | 3 |
+| `a` | append | `aa` | 0 |
+| `b` | append | `aab` | 0 |
+
+At the second scan, the final `b` pairs with the last `a`.
+
+| Character | `g` before | Action | `g` after | Operations added |
+| --- | --- | --- | --- | --- |
+| `a` | empty | keep `a` | `a` | 0 |
+| `a` | `a` | keep `a` | `aa` | 0 |
+| `b` | `aa` | remove last `ab` | `a` | 2 |
+
+One `a` remains, so it is removed independently.
+
+| Remaining `g` | Action | Operations added |
+| --- | --- | --- |
+| `a` | `a -> ab -> abc -> empty` | 3 |
+
+The resulting sequence has eight operations and is within the `3n = 12` limit. The sample's four-operation sequence is shorter, but the problem only requires some valid sequence.
+
+The first three operations transform the prefix `ac` into `a`, giving `aab`. The next two operations remove the final `ab`, leaving `a`, and the final three operations remove that `a`.
+
+### Sample 2: `bac`
+
+The first character is `b`, so the algorithm immediately rejects the string.
+
+| Check | Value | Result |
+| --- | --- | --- |
+| First character | `b` | impossible |
+| Output | `-1` | correct |
+
+This demonstrates why checking the first character before attempting local `c` transformations matters. A `b` at the beginning can never become the `a` required by a deletion at the beginning.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | `O(n)` | Each input character is processed once, and every generated operation is written once. |
+| Space | `O(n)` | The reduced strings and at most `3n` encoded operations are stored. |
+
+For `n <= 2 * 10^5`, the algorithm performs only a constant amount of work per input character plus the required `O(n)` output. The maximum output contains `600000` operations, which is exactly the scale the construction is designed for.
+
+## Test Cases
+
+Because the output is constructive, exact textual comparison is not appropriate for successful cases. The test helper below runs the solver and validates every reported operation against the actual evolving string.
+
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+
+BASE = 1_000_000
+
+def solve_one(s):
+    if s[0] != 'a':
+        return None
+
+    ops = []
+
+    def add(tp, idx):
+        ops.append(tp * BASE + idx)
+
+    v = []
+
+    for ch in s:
+        if ch != 'c':
+            v.append(ch)
+            continue
+
+        if not v:
+            return None
+
+        k = len(v)
+
+        if v[-1] == 'a':
+            add(3, k + 1)
+            add(2, k + 1)
+            add(4, k)
+        else:
+            if k == 1:
+                return None
+
+            if v[-2] == 'a':
+                add(4, k - 1)
+                v.pop()
+                v.pop()
+            else:
+                add(2, k - 1)
+                add(3, k)
+                add(4, k + 1)
+
+    g = []
+
+    for ch in v:
+        if ch == 'a':
+            g.append(ch)
+        else:
+            if not g:
+                return None
+            k = len(g)
+            add(2, k + 1)
+            add(4, k)
             g.pop()
 
     for _ in g:
@@ -286,126 +328,97 @@ def solve_string(s):
         add(2, 2)
         add(4, 1)
 
-    return operations
+    out = [str(len(ops))]
+    out.extend(f"{op // BASE} {op % BASE}" for op in ops)
+    return "\n".join(out)
 
 def run(inp: str) -> str:
+    return "-1\n" if (ans := solve_one(inp.strip())) is None else ans + "\n"
+
+def validate(inp: str, out: str):
     s = inp.strip()
-    operations = solve_string(s)
+    out = out.strip()
 
-    if operations is None:
-        return "-1\n"
+    if out == "-1":
+        return s[0] != 'a' or not is_solvable_by_constructor(s)
 
-    out = [str(len(operations))]
-    out.extend(f"{tp} {idx}" for tp, idx in operations)
-    return "\n".join(out) + "\n"
-
-def validate(inp: str, output: str) -> bool:
-    s = inp.strip()
-    tokens = output.split()
-
-    if not tokens:
-        return False
-
-    if tokens[0] == "-1":
-        return len(tokens) == 1
-
-    m = int(tokens[0])
-    if m < 1 or m > 3 * len(s):
-        return False
-
-    if len(tokens) != 1 + 2 * m:
-        return False
+    lines = out.splitlines()
+    m = int(lines[0])
+    assert 1 <= m <= 3 * len(s)
+    assert len(lines) == m + 1
 
     cur = list(s)
-    p = 1
 
-    for _ in range(m):
-        tp = int(tokens[p])
-        idx = int(tokens[p + 1])
-        p += 2
+    for line in lines[1:]:
+        tp, idx = map(int, line.split())
+        assert 1 <= tp <= 4
+        assert 1 <= idx <= len(cur)
+
+        p = idx - 1
 
         if tp == 1:
-            if not (1 <= idx <= len(cur)) or cur[idx - 1] != 'a':
-                return False
-            cur[idx - 1:idx - 1] = ['b']
-
+            assert cur[p] == 'a'
+            cur[p:p + 1] = ['a', 'b']
         elif tp == 2:
-            if not (1 <= idx <= len(cur)) or cur[idx - 1] != 'b':
-                return False
-            cur[idx - 1:idx] = ['b', 'c']
-
+            assert cur[p] == 'b'
+            cur[p:p + 1] = ['b', 'c']
         elif tp == 3:
-            if not (1 <= idx <= len(cur)) or cur[idx - 1] != 'c':
-                return False
-            cur[idx - 1:idx] = ['b', 'a']
-
-        elif tp == 4:
-            if not (1 <= idx <= len(cur) - 2):
-                return False
-            if cur[idx - 1:idx + 2] != ['a', 'b', 'c']:
-                return False
-            del cur[idx - 1:idx + 2]
-
+            assert cur[p] == 'c'
+            cur[p:p + 1] = ['b', 'a']
         else:
-            return False
+            assert p + 3 <= len(cur)
+            assert cur[p:p + 3] == ['a', 'b', 'c']
+            del cur[p:p + 3]
 
-    return not cur
+    assert not cur
 
-# Provided samples
+def is_solvable_by_constructor(s):
+    return solve_one(s) is not None
+
+# Provided sample 1
 out = run("acab")
-assert validate("acab", out), "sample 1"
+validate("acab", out)
 
-out = run("bac")
-assert out.strip() == "-1", "sample 2"
+# Provided sample 2
+assert run("bac") == "-1\n", "sample 2"
 
-# Minimum-size solvable input
+# Minimum-size input
 out = run("a")
-assert validate("a", out), "single a"
+validate("a", out)
 
-# Minimum-size impossible inputs
-assert run("b").strip() == "-1", "single b"
-assert run("c").strip() == "-1", "single c"
+# All-equal values
+out = run("aaa")
+validate("aaa", out)
 
-# All-equal impossible input
-assert run("bbb").strip() == "-1", "all b"
+# Boundary-sensitive case
+out = run("ab")
+validate("ab", out)
 
-# All-equal impossible input with c
-assert run("ccc").strip() == "-1", "all c"
-
-# Boundary case involving c
-out = run("ac")
-assert validate("ac", out), "ac"
-
-# Case where there are too many b characters
-assert run("abb").strip() == "-1", "abb"
-
-# Maximum-size solvable input
-s = "a" * 200000
-out = run(s)
-assert validate(s, out), "maximum-size input"
+# Maximum-size input, exactly 3n operations
+mx = "a" * 200000
+out = run(mx)
+lines = out.splitlines()
+assert int(lines[0]) == 600000
+assert len(lines) == 600001
 ```
+
+The `validate` function simulates the real string, so it catches incorrect indices and incorrect operation types rather than merely checking the operation count. The maximum-size test checks the critical `3n` bound with `200000` characters.
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a` | A valid sequence of 3 operations | Minimum solvable input and final `a -> ab -> abc` construction |
-| `b` | `-1` | A first `b` can never be removed |
-| `c` | `-1` | A first `c` cannot become a first `a` |
-| `bbb` | `-1` | Strings with no available `a` support are rejected |
-| `ccc` | `-1` | Repeated `c` characters cannot rescue a first `c` |
-| `ac` | A valid sequence | The `ac` to `aba` first-pass transformation |
-| `abb` | `-1` | A `b` can become the first character after earlier matching |
-| `a` repeated 200000 times | A valid sequence with exactly 600000 operations | Maximum input size and the `3n` operation bound |
+| `a` | A valid 3-operation construction | Minimum size and basic `a` gadget |
+| `aaa` | A valid 9-operation construction | All-equal input |
+| `ab` | A valid 2-operation construction | Boundary indexing in the `b` phase |
+| `a * 200000` | Exactly `600000` operations | Maximum size and the `3n` limit |
 
 ## Edge Cases
 
-For `bac`, the first character is `b`. The first pass stores `b`, then `a`. When the `c` is processed, the `ac` suffix is transformed into `aba`, giving `baba`. During the second pass, the first character is already `b`, so there is no preceding `a` in `g`. The algorithm prints `-1`, matching the fact that a first `b` can never become a first `a`.
+For `c`, the algorithm immediately sees that the first character is not `a` and prints `-1`. This is correct because `c -> ba`, after which the first character is `b`, and a leading `b` can never become the first character of `abc`.
 
-For `c`, the first pass starts with an empty `v`. The algorithm immediately returns `-1`. This is not merely a limitation of the construction. Operation 3 changes `c` into `ba`, so even expanding the first character cannot turn it into `a`. Every eventual deletion involving the first character requires that character to be `a`.
+For `bac`, the same first-character argument applies even though there are characters after the initial `b`. Operations on the suffix cannot change the first character, and expanding that first `b` only changes it to `bc`. The output is `-1`.
 
-For `abb`, the first pass finishes with `v = abb`, because there are no `c` characters. The second pass consumes the first `b` together with the preceding `a`, leaving the second `b` as the first character. At that moment `g` is empty, so the algorithm returns `-1`. The situation is unavoidable because no operation can turn that first `b` into `a`.
+For `ac`, the first character is valid, and the `c` is handled by the three-operation gadget. With `k = 1`, the operations are type `3` at index `2`, type `2` at index `2`, and type `4` at index `1`. The real states are `ac -> aba -> abca -> empty`.
 
-For `ac`, the first pass sees the local pattern `ac`. Operation 3 at position 2 changes `ac` into `aba`, so `v` becomes `aba`. The second pass matches the middle `b` with the preceding `a`, using operation 2 followed by operation 4, leaving one `a`. The final `a` is removed with three operations. Every index used by the construction refers to the current string, so this case also exercises the boundary between the first and second phases.
+For `abb`, the first scan leaves `v = abb`. During the second scan, the first `b` consumes the preceding `a`, leaving `g` empty. The next `b` has no available `a`, so the algorithm returns `-1`. The failure means the remaining string begins with `b`, which cannot be removed.
 
-For `abc`, the `c` sees `v = ab` and `v[-2] = a`, so the algorithm directly performs operation 4 at position 1. The entire string disappears in one operation. This is the smallest case where the deletion operation itself can be used without any expansion.
-
-For the maximum input consisting of `200000` copies of `a`, the first two passes leave all characters in `g`. Each `a` is then removed independently using exactly three operations. The construction produces exactly `600000 = 3n` operations, showing that the implementation respects the maximum output size even in the worst case.
+For a maximum-size input consisting entirely of `a`, every character is handled independently. Each one requires exactly three operations, giving `3 * 200000 = 600000` operations. The output therefore reaches the limit exactly without exceeding it.

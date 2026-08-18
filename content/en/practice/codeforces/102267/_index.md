@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 0
-total_solve_s: 3410
+total_solve_s: 3652
 contest_year: 2019
-date: "2026-08-17T03:36:55+07:00"
+date: "2026-08-17T03:53:34+07:00"
 weight: 102267
 draft: false
 ---
 
 # [The 2019 University of Jordan Collegiate Programming Contest](https://codeforces.com/contest/102267)
 
-Special | 9 problems | 0/9 verified | Difficulty - | 56m 50s
+Special | 9 problems | 0/9 verified | Difficulty - | 1h
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,5 +28,5 @@ Special | 9 problems | 0/9 verified | Difficulty - | 56m 50s
 | [G](G/) | [Diet](https://codeforces.com/problemset/problem/102267/G) |  |  |  | 16m 37s |  |
 | [H](H/) | [Circle of Polygon](https://codeforces.com/problemset/problem/102267/H) |  |  |  | 3m 14s |  |
 | [I](I/) | [Ultimate Army](https://codeforces.com/problemset/problem/102267/I) |  |  |  | 3m 26s |  |
-| [J](J/) | [Zoo](https://codeforces.com/problemset/problem/102267/J) |  |  |  | 4m 1s |  |
-| [L](L/) | [ABC](https://codeforces.com/problemset/problem/102267/L) |  |  |  | 8m 34s |  |
+| [J](J/) | [Zoo](https://codeforces.com/problemset/problem/102267/J) |  |  |  | 7m 16s |  |
+| [L](L/) | [ABC](https://codeforces.com/problemset/problem/102267/L) |  |  |  | 9m 21s |  |

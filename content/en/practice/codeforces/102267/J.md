@@ -1,7 +1,7 @@
 ---
 title: "CF 102267J - Zoo"
-description: "The zoo is a cycle of n locations. A citizen chooses a starting location a, another location b, and one of the two directions around the cycle that connects them. The chosen simple path has at most k edges."
-date: "2026-08-17T19:31:44+07:00"
+description: "The zoo is a cycle of (n) locations. A citizen chooses a starting location (a), a direction around the cycle, and a simple path of length at most (k). The walk must stay inside that chosen path, return to (a), and visit every location of the path."
+date: "2026-08-19T03:44:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102267
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "The 2019 University of Jordan Collegiate Programming Contest"
 rating: 0
 weight: 102267
-solve_time_s: 241
+solve_time_s: 436
 verified: false
 draft: false
 ---
@@ -18,66 +18,80 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 1s  
+**Solve time:** 7m 16s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The zoo is a cycle of `n` locations. A citizen chooses a starting location `a`, another location `b`, and one of the two directions around the cycle that connects them. The chosen simple path has at most `k` edges. The citizen then makes a walk along that path, starting and ending at `a`, visiting every location of the chosen path, with at most `m` moves.
+The zoo is a cycle of (n) locations. A citizen chooses a starting location (a), a direction around the cycle, and a simple path of length at most (k). The walk must stay inside that chosen path, return to (a), and visit every location of the path. Its number of moves must not exceed (m). The task is to count all possible walks modulo (10^9+7).
 
-The task is to count all such walks modulo `10^9 + 7`.
+The useful way to forget the cycle temporarily is to look at one chosen direction from (a). Label (a) as position (0), the next location as (1), and so on. A valid walk then becomes a walk on the integer segment from (0) to some maximum position (d), where every move changes the current position by (1) or (-1). The walk starts and finishes at (0), never goes below (0), and its maximum position is at most (k).
 
-A useful way to forget the cycle temporarily is to fix the starting location and one direction. Number the locations along that direction as `0, 1, 2, ...`. A walk is then simply a sequence of moves by `+1` or `-1`. It starts at `0`, must never become negative, must never go farther than `k`, and must eventually return to `0`. Since the walk has to visit the chosen endpoint `b`, its maximum reached position determines the endpoint of the selected path.
+There is a subtle point here. We do not have to explicitly choose (d). If a walk reaches maximum position (d), then the chosen path has exactly that length, because the path's last location must be visited. Thus counting walks that stay between (0) and (k) automatically counts every possible chosen path exactly once. The direction and starting location can then be restored by a factor of (2n).
 
-The constraint `n <= 10^5` immediately rules out anything proportional to `n^2`, and the time limit is only one second. The parameter `m <= 2000` is much smaller, which strongly suggests that the actual dynamic programming should depend on `m` rather than on the size of the cycle. Since `k` can be as large as `10^5`, we also cannot afford a state space involving all pairs of cycle locations.
+The constraint (n\le 10^5) rules out anything that iterates over every starting location and every possible walk. More importantly, (m\le2000) is the small parameter that makes dynamic programming possible. Since a walk of length (i) can never be farther than (i) from its starting point, the relevant positions at time (i) are only (0,\ldots,\min(i,k)). Summed over all (i\le m), that gives (O(m^2)) states, at most about four million when (m=2000).
 
-There are several easy ways to miscount. For `2 1 1`, the answer is `0`, because a nonempty walk that starts and ends at the same location has even length. A solution that treats the number of visited locations as the walk length would incorrectly count something here.
+One easy mistake is to count the endpoints rather than moves. For example, with input (4\ 3\ 3), the only possible nonempty closed walk has length (2), namely moving to a neighboring location and immediately returning. There are (4) starting locations and (2) directions, so the answer is (8). Treating that walk as having length (3) would incorrectly discard it. The correct output is (8).
 
-For `2 1 2`, the answer is `8`. There are two starting locations and two choices of direction. For each choice, the only valid walk is `a -> neighbor -> a`. Forgetting the two directions gives `4` instead of `8`.
+Another mistake is to assume that the walk must reach exactly distance (k). For example, with (n=5,k=4,m=4), a walk (0\to1\to0) is valid even though its maximum distance is only (1). Its actual chosen path has length (1), which is allowed because the requirement is at most (k). The DP must therefore count all walks whose maximum is at most (k), not only walks that reach (k).
 
-For `3 2 4`, the answer is `18`. With a fixed starting location and direction, the valid return walks have lengths `2` and `4`. There is one walk of length `2`, and two walks of length `4`, giving three walks for each of the `2n = 6` starting-direction choices. A common mistake is to count every path length independently and accidentally count the same walk according to several possible endpoints.
+A third boundary case occurs when (k=1). The only possible movement is between positions (0) and (1), so a valid walk exists only for even lengths. With (n=2,k=1,m=2), there is exactly one walk for each of the (2n=4) choices of starting point and direction, giving output (4). A recurrence that accidentally allows position (2) would overcount this case.
 
 ## Approaches
 
-A direct brute-force solution can choose the starting location, choose one of the two directions, choose the endpoint distance, and enumerate every sequence of left and right moves up to length `m`. For a fixed path, there are `2^L` possible sequences of exactly `L` moves, so enumerating all lengths up to `m` requires
+A direct brute-force solution can choose a starting location, one of the two directions, and then enumerate every possible sequence of moves up to length (m). Every step has at most two choices, so the number of sequences of lengths from (1) through (m) is
 
-`2 + 4 + ... + 2^m = 2^(m+1) - 2`
+[
+2+2^2+\cdots+2^m=2^{m+1}-2.
+]
 
-sequences. Across all starting locations, directions, and path lengths, the operation count is
+There are (2n) choices of starting location and direction. In the worst case this means roughly
 
-`2 * n * k * (2^(m+1) - 2)`.
+[
+2n(2^{m+1}-2)
+]
 
-At the largest values this contains a factor of roughly `2^2000`, so even the first part of the search space is far beyond what can be processed.
+candidate sequences. With (n=10^5) and (m=2000), this is completely infeasible. The brute force is correct because it explicitly checks every possible walk, but the exponential number of walks is the problem.
 
-The reason the brute force works conceptually is that every walk is just a sequence of two possible moves. The problem is that most of those sequences are irrelevant because they leave the selected path or fail to return to the start. Instead of generating them, we can count only the sequences that are still possible after each number of moves.
+The structure of a walk gives us a much smaller state space. Once the starting point and direction are fixed, the cycle is just a line segment. At time (i), the only information needed to continue the walk is its current distance (j) from the starting point. From (j), the next position is either (j-1) or (j+1). Positions below (0) are forbidden, while positions above (k) are forbidden.
 
-Fix a starting location and a direction. Let `j` be the current distance from the starting location along that direction. The walk can move from `j` to `j-1` or `j+1`. It may never reach a negative position because that would leave the selected path behind the starting point. It may never exceed `k` because the selected path has length at most `k`.
+This leads directly to a dynamic programming recurrence. Let (dp[i][j]) be the number of length-(i) walks that start at (0), never leave ([0,k]), and finish at position (j). The transition is
 
-This gives a small dynamic programming state. After `i` moves, `dp[i][j]` counts all valid prefixes that are currently at distance `j`. A return walk is exactly a state with `j = 0`. Summing those states over all positive lengths up to `m` counts every possible abstract walk for one starting location and one direction.
+[
+dp[i][j]=dp[i-1][j-1]+dp[i-1][j+1].
+]
 
-There is one particularly useful observation behind the final multiplication. Take any nonempty valid return walk for a fixed starting location and direction. Let `h` be the maximum distance it reaches. Because the walk moves one edge at a time, it visits every distance from `0` through `h`. We can choose the endpoint `b` to be the location at distance `h`, so the walk visits the entire selected path. Conversely, every valid walk from the original problem produces exactly one such sequence for its starting location and direction. Thus we do not need to enumerate the endpoint separately.
+At position (0), the first term does not exist because moving to (-1) is forbidden. At position (k), the transition from (k) to (k+1) is forbidden.
 
-There are `n` choices for the starting location and two directions, so after counting the abstract walks we multiply by `2n`. This is the central reduction used by the solution.
+A walk is closed exactly when its final position is (0). We sum (dp[i][0]) over all (1\le i\le m). The starting location has (n) choices and the direction has (2) choices, so the final result is multiplied by (2n).
+
+The apparent (O(mk)) complexity is also better than it first looks. At time (i), a position larger than (i) cannot be reached, so only (\min(i,k)+1) positions are relevant. Since (m\le2000), the total number of transitions is (O(m\min(m,k))=O(m^2)).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(nk2^m)` | `O(m)` for recursion | Too slow |
-| Optimal | `O(m min(m,k))` | `O(min(m,k))` | Accepted |
+| Brute Force | (O(n2^m)) | (O(m)) | Too slow |
+| Optimal DP | (O(m\min(m,k))) | (O(\min(m,k))) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Fix an abstract starting location at position `0` and one direction around the cycle. We only need to count walks in this one-dimensional representation because every real starting location and direction behaves identically.
-2. Define `dp[j]` as the number of valid walks of the current length that are currently at position `j`. Initially the walk has length zero and is at the starting point, so `dp[0] = 1` and every other state is zero.
-3. For each next move, compute a new array `next`. A walk ending at position `j > 0` can have come from `j-1` or `j+1`, so `next[j] = dp[j-1] + dp[j+1]`. A walk ending at `0` can only have come from `1`, so `next[0] = dp[1]`.
-4. Only positions up to `min(i, k)` need to be considered after `i` moves. A walk cannot move more than `i` edges in `i` moves, and the selected path itself has length at most `k`. This limits the DP width to at most `min(m, k)`.
-5. After computing the states for length `i`, add `dp[0]` to the answer. Every nonzero-length walk that returns to `0` is a complete valid walk. We do this for every `i` from `1` through `m`, because the length is bounded above by `m`, not required to equal `m`.
-6. Multiply the accumulated count by `2n`. There are `n` possible starting locations and two possible directions from each starting location. The one-dimensional DP already determines the endpoint implicitly as the maximum distance reached by the walk.
-7. Take every addition and the final multiplication modulo `10^9 + 7`. The number of walks grows exponentially, so modular arithmetic is required throughout the computation.
+1. Read (n,k,m). We will count walks for one fixed starting location and one fixed direction first, then restore the (2n) symmetric choices at the end.
+2. Represent the chosen direction as a one-dimensional coordinate system. The starting location has coordinate (0), moving along the chosen direction increases the coordinate, and moving back decreases it. Because the chosen path has length at most (k), valid coordinates are (0,\ldots,k).
+3. Initialize (dp[0][0]=1). Before making any moves, there is exactly one walk of length zero and it is at the starting location.
+4. For every time (i) from (1) through (m), compute the number of ways to reach every possible position (j). The recurrence is
+[
+dp[i][j]=dp[i-1][j-1]+dp[i-1][j+1].
+]
+A position (j) can only be reached from one of its two neighboring positions at the previous time.
+5. Restrict (j) to (0\le j\le\min(i,k)). A walk of length (i) cannot reach distance greater than (i), so positions beyond (i) are unnecessary. The lower bound (0) prevents the walk from leaving the chosen path at the starting endpoint.
+6. After computing a whole time layer, add (dp[i][0]) to the answer. Ending at (0) means the citizen has returned to the starting location, so every such state is a valid closed walk.
+7. Multiply the accumulated count by (2n). There are (n) possible starting locations and two directions around the cycle. Every counted one-dimensional walk determines exactly one of these choices, and every such choice has the same number of walks.
 
 ### Why it works
 
-The invariant is that after processing exactly `i` moves, `dp[j]` counts precisely the length-`i` move sequences that stay inside the allowed interval and finish at distance `j` from the start. The transition considers exactly the two possible previous positions, while omitting positions outside `[0,k]`, so no invalid walk enters the DP and no valid walk is lost. A complete walk is characterized by ending at `0`, and because every nonempty return walk reaches some positive maximum `h`, that maximum gives a unique endpoint of the chosen path. Hence every DP-counted walk corresponds to exactly one valid walk for the fixed starting location and direction. Multiplying by `2n` then accounts for every actual starting location and direction exactly once.
+For a fixed starting location and direction, the invariant is that (dp[i][j]) counts exactly the length-(i) walks that remain inside the allowed segment and finish at coordinate (j). The recurrence considers precisely the two possible previous coordinates, while the restriction (j\ge0) and (j\le k) removes every move outside the chosen path. Consequently, (dp[i][0]) counts exactly the valid closed walks of length (i).
+
+A counted walk may have maximum coordinate (d<k), but that is correct. Its actual chosen path ends at coordinate (d), which is still within the allowed maximum (k). Since the endpoint of the chosen path must be visited, (d) is uniquely determined by the maximum coordinate reached by the walk. Thus the DP does not count the same walk for several path lengths. Finally, each walk can be placed at any of (n) starting locations and followed in either direction, giving the factor (2n).
 
 ## Python Solution
 
@@ -90,28 +104,30 @@ MOD = 10**9 + 7
 def solve():
     n, k, m = map(int, input().split())
 
-    width = min(k, m)
+    limit = min(k, m)
 
-    # prev[j] = number of valid walks of the previous length
-    # currently at distance j from the starting point.
-    prev = [0] * (width + 2)
+    prev = [0] * (limit + 2)
     prev[0] = 1
 
     ans = 0
 
-    for length in range(1, m + 1):
-        limit = min(length, k)
-        cur = [0] * (width + 2)
+    for i in range(1, m + 1):
+        cur = [0] * (limit + 2)
+        upper = min(i, k)
 
-        # Position 0 can only be reached from position 1.
-        cur[0] = prev[1]
+        for j in range(upper + 1):
+            ways = 0
 
-        for j in range(1, limit + 1):
-            cur[j] = (prev[j - 1] + prev[j + 1]) % MOD
+            if j > 0:
+                ways += prev[j - 1]
+
+            if j + 1 <= limit:
+                ways += prev[j + 1]
+
+            cur[j] = ways % MOD
 
         ans += cur[0]
         ans %= MOD
-
         prev = cur
 
     ans = ans * (2 * n) % MOD
@@ -121,78 +137,56 @@ if __name__ == "__main__":
     solve()
 ```
 
-The first array represents the state before any moves. Setting `prev[0] = 1` means there is exactly one empty walk at the starting location. No other position is reachable before the first move.
+The DP uses two arrays rather than storing all (m) layers. `prev[j]` represents the previous time step and `cur[j]` represents the current one. This reduces memory from (O(m^2)) to (O(m)).
 
-For each length, the code constructs a fresh `cur` array. The transition for positive `j` comes directly from the two neighboring positions. The expression `prev[j + 1]` is safe because the arrays have two extra cells. Those cells remain zero, which conveniently handles the upper boundary without a special case.
+The expression `upper = min(i, k)` is the key boundary optimization. At time (i), coordinate (j>i) is unreachable, while coordinate (j>k) is forbidden by the selected path. No other positions need to be computed.
 
-The lower boundary is handled separately through `cur[0] = prev[1]`. There is no transition from `-1`, because moving below position zero would leave the chosen path.
+For `j > 0`, the previous position may be `j - 1`. For `j + 1 <= limit`, the previous position may be `j + 1`. When `j == 0`, the first transition is deliberately omitted, because a move from (0) to (-1) would leave the selected path.
 
-The loop only reaches `min(length, k)`. This is enough because after `length` moves the walker cannot be farther than `length`, and the selected path cannot extend beyond `k`.
+The extra array slot at `limit + 1` is not used as a valid state. It simply lets the recurrence read `prev[j + 1]` safely when `j == limit`, where that value remains zero.
 
-Only `cur[0]` is added to the answer. This is deliberately done after every length rather than only after `m`, because every even length up to `m` can define a different walk. Odd lengths contribute zero automatically.
-
-Rolling arrays are sufficient because the transition for length `i` depends only on length `i-1`. This reduces memory from a two-dimensional `O(mk)` table to `O(min(m,k))`. Python integers also have object overhead, so this reduction is useful under the 256 MB memory limit.
-
-The multiplication by `2 * n` happens only after the DP count has been accumulated. The value is reduced modulo `10^9 + 7` before and after the multiplication, so Python never needs to construct the enormous exact answer.
+Python integers do not overflow, but reducing each state modulo (10^9+7) keeps the intermediate values small and follows the required output modulus. The final multiplication by (2n) is also performed modulo (10^9+7).
 
 ## Worked Examples
 
-### Sample 1
+For Sample 1, the input is `4 3 3`. Since the maximum walk length is (3), the possible positions at each time are shown below.
 
-For `n = 4`, `k = 3`, and `m = 3`, the DP for one starting location and one direction is:
+| Time (i) | Reachable positions (j) | DP values | (dp[i][0]) | Accumulated count |
+| --- | --- | --- | --- | --- |
+| 0 | 0 | (1) | (1) | (0) |
+| 1 | 0, 1 | (0,1) | (0) | (0) |
+| 2 | 0, 1, 2 | (1,0,1) | (1) | (1) |
+| 3 | 0, 1, 2, 3 | (0,2,0,1) | (0) | (1) |
 
-| Length | Reachable positions | `dp[length][0]` |
-| --- | --- | --- |
-| 0 | `{0: 1}` | 1 |
-| 1 | `{1: 1}` | 0 |
-| 2 | `{0: 1, 2: 1}` | 1 |
-| 3 | `{1: 2, 3: 1}` | 0 |
+Only one closed walk is possible for one fixed starting point and direction within three moves, namely going to the adjacent location and returning. There are (4\cdot2=8) choices of starting point and direction, so the answer is (8).
 
-The only nonempty return walk has length `2`, namely `0 -> 1 -> 0`. Thus the fixed starting-direction count is `1`.
+For Sample 2, the input is `10 5 6`. The upper bound (k=5) does not affect the DP during these six steps because a closed walk of length (6) can reach at most distance (3).
 
-There are `4` starting locations and `2` directions from each, giving `1 * 4 * 2 = 8`.
+| Time (i) | (dp[i][0]) | (dp[i][1]) | (dp[i][2]) | (dp[i][3]) | Accumulated count |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 0 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 0 | 0 | 0 |
+| 2 | 1 | 0 | 1 | 0 | 1 |
+| 3 | 0 | 2 | 0 | 1 | 1 |
+| 4 | 2 | 0 | 3 | 0 | 3 |
+| 5 | 0 | 5 | 0 | 4 | 3 |
+| 6 | 5 | 0 | 9 | 0 | 8 |
 
-```
-8
-```
-
-The example also demonstrates why the answer is not obtained by counting only unordered pairs of endpoints. The direction of the selected path is part of the choice, and the two directions produce different walks.
-
-### Sample 2
-
-For `n = 10`, `k = 5`, and `m = 6`, the relevant return counts are:
-
-| Length | `dp[length][0]` | Cumulative count |
-| --- | --- | --- |
-| 1 | 0 | 0 |
-| 2 | 1 | 1 |
-| 3 | 0 | 1 |
-| 4 | 2 | 3 |
-| 5 | 0 | 3 |
-| 6 | 5 | 8 |
-
-The path limit `k = 5` does not affect any walk of length at most `6`, because a return walk of length `6` can reach at most distance `3`. The fixed starting-direction count is `8`.
-
-There are `10 * 2 = 20` starting-direction choices, so the answer is `8 * 20 = 160`.
-
-```
-160
-```
-
-This example shows why the DP should count return walks directly rather than first choosing the endpoint. The possible endpoint distances are automatically determined by the maximum position reached by each walk.
+For one fixed start and direction there are (1+2+5=8) closed walks of lengths (2,4,6). The factor (2n=20) gives (8\cdot20=160), matching the sample output.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(m min(m,k))` | At length `i`, only positions `0` through `min(i,k)` are processed. |
-| Space | `O(min(m,k))` | Only the previous and current DP layers are stored. |
+| Time | (O(m\min(m,k))) | At time (i), only (0) through (\min(i,k)) can be reached. |
+| Space | (O(\min(m,k))) | Only the previous and current DP layers are stored. |
 
-Since `m <= 2000`, the DP performs at most about two million state transitions. This is small enough for the time limit, even though `n` may be `100000`, because `n` appears only in the final multiplication. The memory usage is also small because the implementation keeps only two one-dimensional arrays.
+Since (m\le2000), the number of state transitions is at most on the order of four million. The algorithm never iterates over all (n) locations individually, so (n) only appears in the final multiplication by (2n). This comfortably fits the (10^5) bound on (n) and the 256 MB memory limit.
 
 ## Test Cases
 
 ```python
+# helper: run the algorithm on an input string and return its output
 import sys
 import io
 
@@ -202,20 +196,22 @@ def solve_data(inp: str) -> str:
     data = list(map(int, inp.split()))
     n, k, m = data
 
-    width = min(k, m)
-    prev = [0] * (width + 2)
+    limit = min(k, m)
+    prev = [0] * (limit + 2)
     prev[0] = 1
 
     ans = 0
 
-    for length in range(1, m + 1):
-        limit = min(length, k)
-        cur = [0] * (width + 2)
+    for i in range(1, m + 1):
+        cur = [0] * (limit + 2)
+        upper = min(i, k)
 
-        cur[0] = prev[1]
-
-        for j in range(1, limit + 1):
-            cur[j] = (prev[j - 1] + prev[j + 1]) % MOD
+        for j in range(upper + 1):
+            if j > 0:
+                cur[j] += prev[j - 1]
+            if j + 1 <= limit:
+                cur[j] += prev[j + 1]
+            cur[j] %= MOD
 
         ans = (ans + cur[0]) % MOD
         prev = cur
@@ -226,44 +222,36 @@ def solve_data(inp: str) -> str:
 assert solve_data("4 3 3") == "8", "sample 1"
 assert solve_data("10 5 6") == "160", "sample 2"
 
-# Minimum possible n and k, but too little length for a return walk.
-assert solve_data("2 1 1") == "0", "minimum size and odd length"
+# Minimum feasible n, and an odd maximum length.
+assert solve_data("2 1 1") == "0", "no nonempty closed walk of odd length"
 
-# One edge is the entire allowed path. The only valid walk has length 2.
-assert solve_data("2 1 2") == "8", "single-edge path"
+# Maximum n with the smallest useful k and m.
+assert solve_data("100000 1 2") == "400000", "maximum n boundary"
 
-# Boundary case where k = 2 and m = 4.
-# One fixed direction has 1 walk of length 2 and 2 walks of length 4.
-assert solve_data("3 2 4") == "18", "path boundary"
+# The path limit is irrelevant here because m=4 cannot reach beyond distance 2.
+assert solve_data("5 4 4") == "30", "Catalan walks of lengths 2 and 4"
 
-# k = 1 prevents every walk from reaching distance 2.
-# Only length 2 contributes, while the odd length 3 contributes nothing.
-assert solve_data("5 1 3") == "20", "k = 1 and odd m"
+# k=2 removes walks that would need to reach distance 3.
+assert solve_data("3 2 6") == "42", "upper-bound restriction"
 
-# Maximum n. With m = 1 no nonempty closed walk can exist.
-assert solve_data("100000 99999 1") == "0", "maximum n boundary"
+print("all tests passed")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1 1` | `0` | Minimum valid graph and odd maximum length |
-| `2 1 2` | `8` | Smallest possible nonempty return walk and the `2n` factor |
-| `3 2 4` | `18` | Endpoint distance and path-length boundary |
-| `5 1 3` | `20` | Tight path bound `k = 1` and an odd unused length |
-| `100000 99999 1` | `0` | Maximum `n` and the fact that no odd-length return walk exists |
-
-The requested idea of an "all-equal values" test cannot literally occur under the problem constraints, because `k < n`, so `n = k = m` is invalid. The closest meaningful boundary is to make the operational limits equal, such as `k = m`, which is covered by the `3 2 4` style of boundary testing and by the samples.
+| `2 1 1` | `0` | Minimum feasible (n), odd length cannot return to the start |
+| `100000 1 2` | `400000` | Maximum (n) and the smallest path width |
+| `5 4 4` | `30` | Multiple valid closed-walk lengths and the fact that (k) is an upper bound |
+| `3 2 6` | `42` | Walks reaching (k+1) must be rejected |
 
 ## Edge Cases
 
-For `2 1 1`, the algorithm starts with `prev[0] = 1`. After one move, the only nonzero state is position `1`, so `cur[0] = 0`. The answer remains zero, which is correct because returning to the starting point requires an even number of moves.
+When the maximum path length is (k=1), the walk can only alternate between positions (0) and (1). For the input `2 1 2`, the DP has `dp[2][0] = 1`, while all odd-length states at position (0) are zero. The accumulated count is (1), and multiplying by (2n=4) gives the output `4`. The upper boundary is respected because the transition from position (1) can only return to position (0).
 
-For `2 1 2`, after the first move the walker is at position `1`. On the second move it can return to position `0`, so `cur[0] = 1`. The fixed starting-direction count is one. Multiplying by `2n = 4` gives `8`. This catches the common mistake of forgetting that clockwise and counterclockwise choices are distinct.
+When the walk length is odd, returning to the starting point is impossible. For `2 1 1`, the first move must go from (0) to (1), so `dp[1][0] = 0` and the answer is `0`. More generally, every move changes the parity of the current coordinate, so a walk beginning at (0) can return to (0) only after an even number of moves.
 
-For `3 2 4`, the length-2 return count is `1`. At length `4`, there are two valid sequences, corresponding to the abstract walks `0 -> 1 -> 0 -> 1 -> 0` and `0 -> 1 -> 2 -> 1 -> 0`. Thus the cumulative count for one starting direction is `3`, and multiplying by `6` gives `18`. The second walk reaches the boundary distance `k = 2`, so this case checks that the upper boundary is allowed rather than treated as forbidden.
+When (k) is larger than every reachable distance, the upper boundary never affects the result. For `5 4 4`, the only closed-walk lengths are (2) and (4). There is one walk of length (2) and two of length (4), giving (3) walks for a fixed start and direction. The factor (2n=10) produces `30`. This also demonstrates why the DP must accept walks whose maximum distance is smaller than (k).
 
-For `5 1 3`, the walker can only use positions `0` and `1`. The only nonempty return walk with length at most three is `0 -> 1 -> 0`. The DP contributes one walk, and the `10` starting-direction choices produce `20`. This catches an off-by-one error where position `k` is accidentally excluded.
+When (k) is restrictive, the DP must remove walks that would cross that boundary. For `3 2 6`, the unrestricted nonnegative closed walks of lengths (2,4,6) number (1,2,5), but among the five length-(6) walks, the walk that reaches position (3) is forbidden because (k=2). Thus only (1+2+4=7) walks remain for a fixed starting point and direction. There are (2n=6) such choices, giving `42`.
 
-For a very large `n`, such as `100000 99999 1`, the DP does not become larger because of `n`. It processes only the possible move lengths, finds no return walk of length one, and then multiplies zero by `200000`. The result is `0`, demonstrating why the cycle size does not appear in the DP state.
-
-The most subtle edge case is when `k` is larger than half the cycle size. The chosen simple path can then be longer than the shorter route between its endpoints, but it is still a valid simple path because `k < n`. The DP does not need to compare the two routes. It fixes a direction first, counts walks in that direction, and the factor of two accounts for the two possible directions from every starting location.
+Finally, the fact that (k<n) is what lets the chosen path be treated as an ordinary line segment rather than accidentally wrapping all the way around the cycle. The DP only tracks the distance along the explicitly chosen direction, and the factor (2n) restores the cycle's rotational and directional symmetry without enumerating its (n) locations.
