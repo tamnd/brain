@@ -1,26 +1,27 @@
 ---
 title: "2019 ICPC Malaysia National"
-description: "7 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/7 solutions verified against sample I/O."
+description: "8 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102219
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 0
-total_solve_s: 1332
+total_solve_s: 1940
 contest_year: 2019
-date: "2026-08-17T23:06:10+07:00"
+date: "2026-08-18T23:24:49+07:00"
 weight: 102219
 draft: false
 ---
 
 # [2019 ICPC Malaysia National](https://codeforces.com/contest/102219)
 
-ICPC/IOI | 7 problems | 0/7 verified | Difficulty - | 22m 12s
+ICPC/IOI | 8 problems | 0/8 verified | Difficulty - | 32m 20s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [Mental Rotation](https://codeforces.com/problemset/problem/102219/A) |  |  |  | 10m 8s |  |
 | [B](B/) | [SpongeBob SquarePants](https://codeforces.com/problemset/problem/102219/B) |  |  |  | 2m 36s |  |
 | [D](D/) | [Ali The Multi-billionaire](https://codeforces.com/problemset/problem/102219/D) |  |  |  | 1m 47s |  |
 | [E](E/) | [Optimal Slots](https://codeforces.com/problemset/problem/102219/E) |  |  |  | 3m 29s |  |
