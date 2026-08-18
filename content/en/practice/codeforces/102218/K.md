@@ -1,7 +1,7 @@
 ---
 title: "CF 102218K - K-th Missing Digit"
-description: "We are given two positive integers (A) and (B), but they can be extremely long because the first line gives their digit counts, not their numeric values within a machine-sized range."
-date: "2026-08-17T23:26:55+07:00"
+description: "We have two positive integers, (A) and (B), but their lengths can be enormous. Their product (A times B) is given as a decimal string with exactly one digit replaced by ."
+date: "2026-08-18T12:50:07+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102218
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2019, XI Annual Programming Contest by ESCOM-IPN"
 rating: 0
 weight: 102218
-solve_time_s: 163
+solve_time_s: 109
 verified: false
 draft: false
 ---
@@ -18,28 +18,30 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 43s  
+**Solve time:** 1m 49s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two positive integers (A) and (B), but they can be extremely long because the first line gives their digit counts, not their numeric values within a machine-sized range. We are also given a decimal string (P) that should equal (A \times B), except that exactly one digit has been replaced by `*`. The missing digit is guaranteed to be one of (1,\dots,9), and we need to print it.
+We have two positive integers, (A) and (B), but their lengths can be enormous. Their product (A \times B) is given as a decimal string with exactly one digit replaced by `*`. The missing digit is guaranteed to be one of (1,\ldots,9), so we need to recover that single digit without necessarily constructing the potentially huge product.
 
-The crucial constraint is that (a), (b), and (p) can be close to (10^6). That means (A), (B), and (P) can contain around a million characters. We cannot convert them to ordinary integers, and even multiplying two million-digit integers with schoolbook multiplication would require roughly (10^{12}) single-digit operations. The 0.5 second time limit makes any quadratic algorithm completely unsuitable. We need a linear scan over the input.
+The first line gives the lengths of (A), (B), and the product representation. The next two lines contain the decimal representations of (A) and (B), and the final line contains the product with one unknown digit. The length bounds are the key detail. (A) and (B) may each contain almost one million digits, so treating them as ordinary machine integers is impossible. Even arbitrary-precision multiplication of two million-digit numbers would be far beyond what this problem needs.
 
-There are several edge cases that can make an apparently reasonable implementation fail. The missing digit can be the digit (9). For example,
+The useful operation must consequently be linear in the number of input digits. Scanning each string once is feasible, while actually multiplying (A) and (B) would require at least quadratic work with ordinary digit multiplication. The product itself can also have nearly two million digits, so storing or recomputing it through general big-integer arithmetic is unnecessary.
+
+There are several edge cases that can break a careless implementation. The first is when the missing digit is `9`. For example,
 
 ```
 1 1 2
-7
+3
 3
 2*
 ```
 
-The product is (21), so the answer is (1), not a residue of (0). More generally, when a calculation modulo (9) produces (0), the only valid missing digit is (9), because (0) itself is forbidden.
+The product is `9`, so the answer is `9`. A solution that only considers digits `1` through `8`, or interprets a remainder of zero as digit `0`, would fail.
 
-The `*` can also be the first character of the product. For example,
+The second edge case is when the missing digit occurs at the beginning of the product. For example,
 
 ```
 2 2 3
@@ -48,70 +50,77 @@ The `*` can also be the first character of the product. For example,
 *00
 ```
 
-The answer is (1). A method that tries to parse the incomplete product as an integer must handle the leading wildcard specially, while a digit-sum method does not care where the wildcard occurs.
+The product is `100`, so the answer is `1`. The position of `*` does not matter to the method because every decimal position contributes its digit to the same modulo-9 value.
 
-The product can also be much larger than standard integer types. For example, if (A) and (B) each have hundreds of thousands of digits, constructing (A \times B) explicitly is infeasible. The solution below never constructs the product and only needs the digit sum of the known part of (P).
+The third case is a missing digit at the end, as in the first sample. The representation `2*` means that the product is `24`, not merely that some intermediate arithmetic has to be performed. Since the missing digit contributes exactly its own value modulo 9, its location also does not affect the calculation.
 
 ## Approaches
 
-A direct brute-force approach would try every possible missing digit from (1) through (9). For each candidate, it would replace `*`, construct the complete product string, and check whether it equals (A \times B). The idea is correct because the statement guarantees that exactly one candidate is the real missing digit.
+A direct brute-force idea would be to replace `*` by each possible nonzero digit from `1` to `9`, then check which completed string is equal to (A\times B). This is logically correct because exactly one candidate represents the real product. The problem is that checking the candidates requires dealing with multiplication of numbers containing up to nearly one million digits. With ordinary long multiplication, one multiplication can require (O(ab)) digit operations, where (a) and (b) are the lengths of (A) and (B). Trying nine candidates therefore costs (O(9ab)=O(ab)), which is on the order of (10^{12}) elementary digit operations near the largest lengths. That is completely impractical.
 
-The problem is the multiplication. If (A) and (B) both contain (10^6) digits, ordinary schoolbook multiplication takes (O(10^{12})) digit operations. Trying nine candidates does not change the asymptotic problem, so this approach is far beyond the time limit.
-
-The key observation is that decimal digit sums preserve the value modulo (9). For every integer (X),
+The key observation is that decimal numbers have a simple relationship with their digit sums modulo 9. For every decimal integer (X),
 
 [
 X \equiv \text{sum of digits of }X \pmod 9.
 ]
 
-Since (P=A\times B), we know
+The same congruence also respects multiplication, so
 
 [
-P \equiv A\times B \pmod 9.
+A\times B \equiv (A\bmod 9)(B\bmod 9)\pmod 9.
 ]
 
-Suppose the known digits of (P) have sum (S), and the missing digit is (d). Then
+We can compute (A\bmod9) and (B\bmod9) by scanning their digits. We can also compute the sum modulo 9 of all known digits in the product. If the missing digit is (d), then
 
 [
-S+d \equiv A\times B \pmod 9.
+d+\text{known digit sum}
+\equiv A\times B
+\pmod9.
 ]
 
-We can compute (A\bmod 9) and (B\bmod 9) by scanning their digits, without ever constructing their numeric values. We can also compute (S\bmod 9) by scanning (P). Thus the missing digit is determined with a single linear pass over all input characters.
+Thus
 
-The guarantee that (d\neq0) removes the only ambiguity. A residue from (1) through (8) directly gives the corresponding digit, while residue (0) must represent digit (9).
+[
+d\equiv (A\bmod9)(B\bmod9)-\text{known digit sum}\pmod9.
+]
+
+There is one small ambiguity because the residues modulo 9 are (0,\ldots,8), while the answer is guaranteed to be (1,\ldots,9). The digit `9` has residue `0`, so whenever the computed residue is zero, the answer must be `9`. Every other residue directly identifies the missing digit.
+
+The brute-force approach works because testing all nine digits exhausts every possible answer, but it fails because it requires huge-number multiplication. The observation that only the product modulo 9 matters reduces the entire problem to three linear scans of the input.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(ab)) | (O(a+b+p)) | Too slow |
-| Optimal | (O(a+b+p)) | (O(a+b+p)) for input storage, (O(1)) auxiliary | Accepted |
+| Brute Force | (O(9ab)) with ordinary multiplication | (O(a+b)) plus product storage | Too slow |
+| Optimal | (O(a+b+p)) | (O(a+b+p)) for the input strings | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the digit counts and the three strings. The counts are not needed for the computation itself, but reading the strings is necessary because the numbers may be far too large for native integer types.
-2. Compute (A\bmod9) by processing every digit of (A). If the current remainder is (r) and the next digit is (x), the new remainder is
+1. Read the lengths and the three decimal strings. The length values are not needed for the mathematics, because the strings themselves tell us exactly which digits must be processed.
+2. Compute (A\bmod9) by scanning every digit of (A). For each character, convert it to its numeric value and update the remainder with
 
 [
-(10r+x)\bmod9.
+r=(10r+d)\bmod9.
 ]
 
-Because (10\equiv1\pmod9), this is equivalent to simply adding the digit modulo (9).
-
-1. Compute (B\bmod9) in the same way.
-2. Scan (P) and add every digit except `*` to a running sum modulo (9). The location of `*` does not matter because only the sum of the remaining digits is needed.
-3. Let (r=(A\bmod9)(B\bmod9)\bmod9). This is the residue of the complete product.
-4. The missing digit must satisfy
+Since (10\equiv1\pmod9), this is equivalent to simply adding all digits modulo 9.
+3. Compute (B\bmod9) in the same way. No conversion to a Python integer is attempted, because these strings may contain hundreds of thousands of digits.
+4. Scan the product string (P) and add every digit except `*` modulo 9. The unknown digit is deliberately excluded because it is the value we are solving for.
+5. Let the missing digit be (d). The completed product must satisfy
 
 [
-d\equiv r-S\pmod9.
+d+\text{known}\equiv (A\bmod9)(B\bmod9)\pmod9.
 ]
 
-Normalize the result to the range (0,\dots,8).
+Rearranging gives
 
-1. If the resulting residue is (0), print (9). Otherwise print the residue itself. Since the missing digit is guaranteed to be nonzero, residue (0) cannot correspond to digit (0), leaving (9) as the unique valid answer.
+[
+d\equiv (A\bmod9)(B\bmod9)-\text{known}\pmod9.
+]
+6. Normalize the result into the range (0,\ldots,8). If it is nonzero, print it directly. If it is zero, print `9`, because the problem guarantees that the missing digit is nonzero and `9` is the only nonzero decimal digit congruent to zero modulo 9.
 
 ### Why it works
 
-The invariant is that every number and the sum of its decimal digits have the same remainder modulo (9). During the scans of (A) and (B), we maintain their exact residues modulo (9). During the scan of (P), we maintain the residue of all known product digits. If the missing digit is (d), the complete digit sum of (P) is (S+d), so it must have the same residue as (A\times B). The computed value (d\equiv A B-S\pmod9) is consequently the only possible missing digit modulo (9). Digits (1) through (9) represent every residue modulo (9) exactly once, with (9) representing residue (0), so the answer is uniquely determined.
+The invariant is that every processed decimal string is represented by its exact value modulo 9. Decimal notation preserves this residue because (10\equiv1\pmod9). Consequently, after scanning (A) and (B), their stored residues are exactly (A\bmod9) and (B\bmod9). After scanning the known product digits, the stored sum is exactly the contribution of every known digit modulo 9. The actual product has residue ((A\bmod9)(B\bmod9)), so the only missing contribution must be the missing digit (d). The resulting congruence determines (d) uniquely among (1,\ldots,9), since those nine digits have distinct residues modulo 9.
 
 ## Python Solution
 
@@ -122,7 +131,8 @@ input = sys.stdin.readline
 def mod9(s):
     r = 0
     for ch in s:
-        r = (r + ord(ch) - ord('0')) % 9
+        if ch != '\n':
+            r = (r + ord(ch) - ord('0')) % 9
     return r
 
 def solve():
@@ -150,15 +160,19 @@ if __name__ == "__main__":
     solve()
 ```
 
-The `mod9` function implements the first two algorithm steps. It never converts the entire string to an integer, so its intermediate value stays below (9). Using the digit sum directly is valid because (10\equiv1\pmod9).
+The `mod9` function implements the first two algorithm steps. It scans a decimal string and accumulates its digit sum modulo 9. Using `ord(ch) - ord('0')` avoids any integer conversion of the entire string and processes each character in constant time.
 
-The product string is scanned separately so that `*` is ignored rather than accidentally treated as a digit. The expression `(ra * rb - known) % 9` uses Python's modulo operation to normalize negative differences automatically.
+The product string is handled separately because it contains `*`. Every ordinary digit contributes to the known part of the product's digit sum, while `*` is skipped. There is no need to remember its position.
 
-There is no integer overflow concern in Python, and even in a fixed-width language the only values used for the modular computation would be at most (8). The only potentially large objects are the three input strings themselves. The declared digit counts are not used to index the strings, so there is no off-by-one issue related to the product length.
+The expression `(ra * rb - known) % 9` is Python-safe even when the subtraction is negative, because Python's modulo operation returns a value in the range (0,\ldots,8). The final conversion from `0` to `9` handles the only residue that corresponds to two decimal digits, `0` and `9`. Since `0` is forbidden by the input guarantee, `9` is the only valid answer.
+
+There is also no integer-overflow issue in this implementation. The only arithmetic performed on values derived from the huge input strings is modulo 9, so the intermediate values remain tiny.
 
 ## Worked Examples
 
-For the first sample,
+### Sample 1
+
+The input is
 
 ```
 1 1 2
@@ -167,19 +181,20 @@ For the first sample,
 2*
 ```
 
-we obtain the following state.
+The scan states are:
 
-| Step | (A\bmod9) | (B\bmod9) | Known product residue | Missing residue |
+| Stage | (A\bmod9) | (B\bmod9) | Known product sum mod 9 | Missing residue |
 | --- | --- | --- | --- | --- |
-| Read (A=3) | 3 |  |  |  |
-| Read (B=8) | 3 | 8 |  |  |
-| Read known digit `2` | 3 | 8 | 2 |  |
-| Compute product residue | 3 | 8 | 2 | (3\cdot8-2=22\equiv4) |
-| Output | 3 | 8 | 2 | 4 |
+| Start | 0 | 0 | 0 | 0 |
+| After `A = 3` | 3 | 0 | 0 | 0 |
+| After `B = 8` | 3 | 8 | 0 | 0 |
+| After product digit `2` | 3 | 8 | 2 | 22 mod 9 = 4 |
 
-The actual product is (24), so the missing digit is (4). The trace demonstrates the central invariant: (24\equiv2+4\equiv6\pmod9).
+The product residue is (3\times8=24\equiv6\pmod9). The known digit contributes `2`, so the missing digit must satisfy (2+d\equiv6\pmod9), giving (d=4). The completed product is `24`.
 
-For the second sample,
+### Sample 2
+
+The input is
 
 ```
 2 2 3
@@ -188,26 +203,28 @@ For the second sample,
 *00
 ```
 
-the trace is:
+The scan proceeds as follows:
 
-| Step | (A\bmod9) | (B\bmod9) | Known product residue | Missing residue |
+| Stage | (A\bmod9) | (B\bmod9) | Known product sum mod 9 | Missing residue |
 | --- | --- | --- | --- | --- |
-| Read (A=10) | 1 |  |  |  |
-| Read (B=10) | 1 | 1 |  |  |
-| Read `*00` | 1 | 1 | 0 |  |
-| Compute product residue | 1 | 1 | 0 | (1\cdot1-0=1) |
-| Output | 1 | 1 | 0 | 1 |
+| Start | 0 | 0 | 0 | 0 |
+| After `A = 10` | 1 | 0 | 0 | 0 |
+| After `B = 10` | 1 | 1 | 0 | 0 |
+| After product `0` | 1 | 1 | 0 | 1 |
+| After product `0` | 1 | 1 | 0 | 1 |
 
-The complete product is (100), so the wildcard is correctly recovered as (1). This example also confirms that a wildcard in the first position requires no special handling.
+The product residue is (1\times1=1). Both known product digits are zero, so the missing digit has residue 1 and is consequently `1`. The completed product is `100`.
+
+This example also demonstrates that a leading `*` needs no special handling. Its position is irrelevant because the digit-sum property treats every decimal position uniformly modulo 9.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(a+b+p)) | Every digit of (A), (B), and (P) is scanned once. |
-| Space | (O(a+b+p)) | The input strings are stored; the algorithm itself uses (O(1)) auxiliary space. |
+| Time | (O(a+b+p)) | Each digit of (A), (B), and (P) is scanned once. |
+| Space | (O(a+b+p)) | The three input strings are stored; the algorithm itself uses (O(1)) additional space. |
 
-With up to roughly one million digits per input number, a linear scan performs only a few million simple operations. That is compatible with the intended constraints, whereas explicitly multiplying the large integers would require quadratic work and is infeasible under the 0.5 second limit.
+With (a) and (b) potentially close to one million, linear processing is the appropriate target. The algorithm performs only a few arithmetic operations per input character and never constructs the enormous product, so its running time and memory usage are both proportional to the input size.
 
 ## Test Cases
 
@@ -215,109 +232,107 @@ With up to roughly one million digits per input number, a linear scan performs o
 import sys
 import io
 
-def solve_data(inp: str) -> str:
-    data = inp.split()
-    a, b, p = map(int, data[:3])
-    A, B, P = data[3], data[4], data[5]
+def solve():
+    input = sys.stdin.readline
 
-    def mod9(s):
-        r = 0
-        for ch in s:
-            if ch != '*':
-                r = (r + ord(ch) - ord('0')) % 9
-        return r
+    a, b, p = map(int, input().split())
+    A = input().strip()
+    B = input().strip()
+    P = input().strip()
 
-    ra = mod9(A)
-    rb = mod9(B)
+    ra = 0
+    for ch in A:
+        ra = (ra + ord(ch) - ord('0')) % 9
+
+    rb = 0
+    for ch in B:
+        rb = (rb + ord(ch) - ord('0')) % 9
 
     known = 0
     for ch in P:
         if ch != '*':
             known = (known + ord(ch) - ord('0')) % 9
 
-    ans = (ra * rb - known) % 9
-    if ans == 0:
-        ans = 9
+    answer = (ra * rb - known) % 9
+    if answer == 0:
+        answer = 9
 
-    return str(ans)
+    print(answer)
 
 def run(inp: str) -> str:
-    return solve_data(inp).strip()
+    global_input = sys.stdin
+    global_output = sys.stdout
 
-# Provided sample 1
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    solve()
+    result = sys.stdout.getvalue().strip()
+
+    sys.stdin = global_input
+    sys.stdout = global_output
+    return result
+
 assert run("""1 1 2
 3
 8
 2*
 """) == "4", "sample 1"
 
-# Provided sample 2
 assert run("""2 2 3
 10
 10
 *00
 """) == "1", "sample 2"
 
-# Minimum-size values: 1 * 1 = 1
 assert run("""1 1 1
-1
-1
-*
-""") == "1", "minimum-size case"
-
-# Missing digit is 9, exercising the residue-zero boundary.
-assert run("""1 1 2
-7
 3
-1*
-""") == "9", "digit 9 / residue zero"
+3
+*
+""") == "9", "minimum-size input and missing 9"
 
-# Wildcard at the beginning.
-assert run("""2 1 3
-99
-1
-*99
-""") == "9", "leading wildcard"
+assert run("""1 1 2
+9
+9
+8*
+""") == "1", "boundary residue calculation"
 
-# All equal digits: 111 * 111 = 12321.
-assert run("""3 3 5
+assert run("""3 3 6
 111
 111
-12*21
-""") == "3", "all-equal inputs"
+12321*
+""") == "9", "all-equal values and missing 9"
 
-# Large input sizes, generated without constructing the product.
-# A = 999...999 (999 digits), B = 1.
-# 999...999 * 1 is the same string, so the missing digit is 9.
-n = 999
-A = "9" * n
-P = "9" * (n - 1) + "*"
-large_input = f"{n} 1 {n}\n{A}\n1\n{P}\n"
-assert run(large_input) == "9", "large-size linear scan"
+assert run("""5 5 10
+99999
+99999
+999980000*
+""") == "1", "large digit strings and trailing missing digit"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 1 / 1 / 1 / *` | `1` | Smallest possible values and a one-digit product |
-| `1 1 2 / 7 / 3 / 1*` | `9` | Residue (0) must map to digit (9) |
-| `2 1 3 / 99 / 1 / *99` | `9` | Wildcard at the first product position |
-| `3 3 5 / 111 / 111 / 12*21` | `3` | Repeated input digits and an internal wildcard |
-| 999-digit `9...9`, multiplied by `1` | `9` | Large input and linear-time behavior |
+| `1 1 1 / 3 / 3 / *` | `9` | Smallest possible input and the special residue-zero case |
+| `1 1 2 / 9 / 9 / 8*` | `1` | Arithmetic near a modulo-9 boundary |
+| `3 3 6 / 111 / 111 / 12321*` | `9` | Repeated digits and the answer `9` |
+| `5 5 10 / 99999 / 99999 / 999980000*` | `1` | Longer strings and a missing digit at the end |
+
+The final custom case uses `99999^2=9999800001`, so the given representation `999980000*` requires the trailing digit `1`. It also confirms that the algorithm does not rely on the missing digit appearing near the beginning of the product.
 
 ## Edge Cases
 
-The residue-zero case is the most subtle. Consider
+A missing digit of `9` is the most important modulo-specific edge case. Consider
 
 ```
-1 1 2
-7
+1 1 1
 3
-1*
+3
+*
 ```
 
-Here (A\bmod9=7), (B\bmod9=3), so the product has residue (21\bmod9=3). The known digit contributes (1), giving (d\equiv3-1\equiv2\pmod9). The algorithm prints (2), matching (7\times3=21). If the required digit were (9), the computed residue would instead be (0), and the final conversion from (0) to (9) handles that case.
+The product is `9`. We calculate (3\times3\equiv0\pmod9), while the known product digit sum is zero because there are no known digits. The computed missing residue is therefore zero. The algorithm converts that residue to `9`, rather than incorrectly printing `0`.
 
-A wildcard at the beginning needs no separate branch. For
+A missing digit at the beginning requires no separate branch. For
 
 ```
 2 2 3
@@ -326,17 +341,17 @@ A wildcard at the beginning needs no separate branch. For
 *00
 ```
 
-the two operands both have residue (1), so their product has residue (1). The known digits sum to (0), giving (d=1). The algorithm never tries to parse `*00`, so there is no leading-character problem.
+we have (10\bmod9=1) for both operands. The product therefore has residue 1. The known digits contribute zero, so the missing digit has residue 1 and the algorithm prints `1`. The same calculation works regardless of whether `*` is the first, middle, or last character.
 
-The same reasoning works when the wildcard is in the middle or at the end. For example, in
+A missing digit at the end is handled identically. For
 
 ```
-3 3 5
-111
-111
-12*21
+1 1 2
+3
+8
+2*
 ```
 
-the operands have residues (3) and (3), giving product residue (0). The known product digits sum to (6), which is also residue (6). Thus the missing digit satisfies (d\equiv0-6\equiv3\pmod9), so the answer is (3). The actual product is (12321).
+the product residue is (3\times8\equiv6\pmod9), while the known digit contributes 2. The missing digit is (6-2\equiv4\pmod9), so the output is `4`. There is no off-by-one issue involving the final character because the algorithm only distinguishes `*` from ordinary digits.
 
-Finally, very long operands do not change the method. If (A) has (999999) digits, the algorithm still performs exactly one modular update per digit. It never stores a million-digit integer as a numeric object and never performs multiplication on those digits. The product itself is represented only indirectly through the congruence modulo (9), which is precisely the information needed to identify the single missing nonzero digit.
+Finally, the huge-input case is handled without converting the numbers to native integers. If (A) contains 999,999 digits, the code still performs only 999,999 small additions and modulo operations. The product is never constructed, so the algorithm remains linear even when the actual multiplication would be far too expensive.
