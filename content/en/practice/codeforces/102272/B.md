@@ -1,7 +1,7 @@
 ---
 title: "CF 102272B - \u0110\u1ebfm Th\u1ecf"
-description: "Ta có một hàng gồm (N) con thỏ, con thứ (i) có giống được biểu diễn bởi số (typi). Với mỗi đoạn liên tiếp ([l,r]), điểm của đoạn là số lượng giống khác nhau xuất hiện trong các con thỏ từ vị trí (l) đến (r). Bài toán không yêu cầu tìm một đoạn tốt nhất."
-date: "2026-08-17T11:13:15+07:00"
+description: "We have an array typ[1..N], where each position represents one rabbit and the value at that position identifies its species. For any contiguous interval [l, r], the score is the number of different species appearing inside that interval."
+date: "2026-08-19T05:27:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102272
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "HCW 19 Individual Day 1"
 rating: 0
 weight: 102272
-solve_time_s: 143
+solve_time_s: 969
 verified: false
 draft: false
 ---
@@ -18,96 +18,108 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 23s  
+**Solve time:** 16m 9s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Ta có một hàng gồm (N) con thỏ, con thứ (i) có giống được biểu diễn bởi số (typ_i). Với mỗi đoạn liên tiếp ([l,r]), điểm của đoạn là số lượng giống khác nhau xuất hiện trong các con thỏ từ vị trí (l) đến (r).
+We have an array `typ[1..N]`, where each position represents one rabbit and the value at that position identifies its species. For any contiguous interval `[l, r]`, the score is the number of different species appearing inside that interval. We need the sum of this score over every possible nonempty contiguous interval.
 
-Bài toán không yêu cầu tìm một đoạn tốt nhất. Ta phải cộng điểm của tất cả các đoạn liên tiếp có thể chọn:
+The input contains up to 10 test cases, and the total number of array elements across all test cases is at most `2 * 10^6`. A single test case can contain `10^6` elements, so an `O(N^2)` method is far beyond the available time. Even for one test case, there are about `N^2 / 2` intervals, which is roughly `5 * 10^11` when `N = 10^6`. An algorithm must be essentially linear, or at most close to linear, in `N`. The species identifiers can be as large as `10^9`, so using an array indexed directly by the identifier is not appropriate in general. A hash map is enough because we only need to remember the latest position of each species.
 
-[
-\sum_{1\le l\le r\le N} f(l,r).
-]
+The answer can also become much larger than a 32-bit integer. If every rabbit has a different species, the answer is the sum of the lengths of all subarrays, which is `N(N+1)(N+2)/6`. For `N = 10^6`, this is `166667166667000000`, so the implementation must use an integer type capable of holding values of this magnitude. Python integers handle this automatically.
 
-Vì vậy, với mỗi đoạn, ta chỉ cần biết bao nhiêu giống khác nhau xuất hiện trong đoạn đó, rồi cộng tất cả các giá trị lại.
+There are several boundary cases that are easy to mishandle. Consider the smallest input
 
-Giới hạn (N) lên tới (10^6), và tổng (N) của toàn bộ test không vượt quá (2\cdot10^6). Số đoạn liên tiếp đã là
+```
+1
+1
+7
+```
 
-[
-\frac{N(N+1)}2,
-]
+There is only one interval, `[1,1]`, and it contains one species, so the answer is `1`. A solution that initializes its previous occurrence to `1` instead of `0`, or that forgets to include the current position, can incorrectly produce zero.
 
-tức khoảng (5\cdot10^{11}) khi (N=10^6). Chỉ riêng việc duyệt qua từng đoạn đã không thể thực hiện trong giới hạn thời gian. Một thuật toán (O(N^2)) cũng quá chậm, còn (O(N^3)) hoàn toàn không khả thi. Ta cần đưa thời gian xuống (O(N)) cho mỗi test, hoặc ít nhất là gần tuyến tính.
+Repeated species also require careful treatment. For
 
-Giá trị (typ_i) có thể lên tới (10^9), nên không thể dùng một mảng có kích thước bằng giá trị giống. Ta cần một cấu trúc ánh xạ giống thỏ sang thông tin liên quan, chẳng hạn như dictionary.
+```
+1
+3
+1 1 1
+```
 
-Kết quả cũng có thể rất lớn. Với (N=10^6) và tất cả các con thỏ có giống khác nhau, mọi đoạn có điểm bằng độ dài của nó. Khi đó tổng là
+every one of the six intervals contains exactly one species, so the answer is `6`. When the third `1` is processed, its previous occurrence is position `2`, not position `1`. Using the first occurrence instead of the most recent occurrence would count too many intervals.
 
-[
-1+2+\cdots+N
-]
+A second boundary case is when every value is different:
 
-theo từng điểm bắt đầu, tương đương
+```
+1
+3
+1 2 3
+```
 
-[
-\frac{N(N+1)(N+2)}6
-=166667166667000000.
-]
+The ten points contributed by all intervals are `1 + 2 + 2 + 3 = 10`. Every occurrence introduces its species for a whole range of possible left endpoints, so treating each position as contributing only once misses many intervals.
 
-Giá trị này vượt xa giới hạn của số nguyên 32 bit. Python dùng số nguyên độ chính xác tùy ý nên không cần xử lý tràn số thủ công.
+Finally, a repeated species does not stop contributing forever. For
 
-Một trường hợp biên khác là (N=1). Với input gồm một con thỏ như `5`, chỉ có đoạn ([1,1]), nên đáp án là (1). Cách triển khai dùng chỉ số sai hoặc khởi tạo tổng từ vị trí (0) có thể tạo ra kết quả sai.
+```
+1
+4
+1 2 1 2
+```
 
-Trường hợp tất cả các con thỏ cùng giống cũng dễ gây nhầm. Với `7 7 7`, có sáu đoạn nhưng mỗi đoạn chỉ chứa một giống, nên đáp án là (6), không phải số lượng phần tử đã được duyệt. Khi một giống xuất hiện lại, lần xuất hiện mới phải thay thế đóng góp của lần xuất hiện cũ.
-
-Một lỗi khác thường xuất hiện ở lần xuất hiện đầu tiên của một giống. Với `1 2 1`, khi xử lý con thỏ thứ ba, giống `1` đã xuất hiện tại vị trí (1). Ta phải thay vị trí cuối của `1` từ (1) thành (3), chứ không cộng thêm một giống mới. Đáp án đúng là (9).
+the correct answer is `15`. A careless method that counts only globally new species would count species `1` and `2` once each and lose the contribution of those species to intervals beginning after their previous occurrences.
 
 ## Approaches
 
-Cách trực tiếp nhất là xét từng đoạn ([l,r]), duyệt các phần tử trong đoạn và đưa giống của chúng vào một set. Kích thước của set sau khi duyệt xong chính là số giống khác nhau của đoạn, nên cách này đúng về mặt logic.
+The direct approach is to enumerate every interval `[l, r]`, maintain a set of species while extending `r`, and add the set size to the answer. This is correct because the set contains exactly the distinct species in the current interval. However, there are `N(N+1)/2` intervals, and even if each extension is made efficient, there are still `Theta(N^2)` operations. At `N = 10^6`, that means about `5 * 10^11` intervals, which is completely infeasible.
 
-Tuy nhiên, tổng số phần tử phải kiểm tra qua tất cả các đoạn là
+A more useful way to think about the problem is to reverse the question. Instead of asking for the number of species inside each interval, ask how many intervals contain a particular occurrence as the representative occurrence of its species.
 
-\frac{N(N+1)(N+2)}6.
-]
+Suppose position `i` contains species `x`. Let `prev[i]` be the previous position containing `x`, or `0` if this is the first occurrence. Let `next[i]` be the next position containing `x`, or `N+1` if this is the last occurrence.
 
-Với (N=10^6), con số này khoảng (1.67\cdot10^{17}). Ngay cả nếu mỗi thao tác set chỉ mất (O(1)), lượng công việc này vẫn quá lớn. Một biến thể tốt hơn là cố định (l), rồi tăng (r) và duy trì set, nhưng vẫn có (O(N^2)) đoạn phải xét, khoảng (5\cdot10^{11}) đoạn trong trường hợp lớn nhất.
+Position `i` represents species `x` in exactly those intervals `[l,r]` satisfying
 
-Ta cần thay đổi cách đếm. Thay vì xét từng đoạn và hỏi đoạn đó có bao nhiêu giống, hãy cố định điểm phải (r) và tính tổng điểm của tất cả các đoạn kết thúc tại (r).
+`prev[i] < l <= i <= r < next[i]`.
 
-Xét một giống cụ thể. Gọi (p) là vị trí xuất hiện cuối cùng của giống đó trong đoạn tiền tố (1,\ldots,r). Một đoạn ([l,r]) chứa giống này khi và chỉ khi (l\le p). Có đúng (p) lựa chọn cho (l), từ (1) đến (p). Vì vậy, giống này đóng góp chính xác (p) vào tổng điểm của tất cả các đoạn kết thúc tại (r).
+The left endpoint has `i - prev[i]` choices, and the right endpoint has `next[i] - i` choices. Thus this occurrence contributes
 
-Đây là mấu chốt của bài toán. Với mỗi (r), nếu biết vị trí xuất hiện cuối cùng của mọi giống đã gặp, tổng điểm của tất cả các đoạn kết thúc tại (r) đơn giản là tổng các vị trí cuối đó.
+`(i - prev[i]) * (next[i] - i)`
 
-Khi chuyển từ (r-1) sang (r), chỉ có giống của con thỏ tại vị trí (r) thay đổi vị trí xuất hiện cuối cùng. Nếu giống này chưa từng xuất hiện, ta thêm (r) vào tổng. Nếu nó từng xuất hiện cuối cùng ở vị trí (p), ta thay (p) bằng (r), tức tổng tăng thêm (r-p). Như vậy mỗi phần tử chỉ được xử lý một lần.
+to the final answer.
+
+There is an even simpler implementation that does not need the next occurrence array. Process the array from left to right. When position `i` with species `x` is reached, let `p` be the previous occurrence of `x`.
+
+For every interval ending at `i`, the new occurrence at `i` increases the distinct count exactly when the left endpoint is greater than `p`. There are `i-p` such left endpoints. Therefore the total distinct-count sum among all intervals ending at `i` increases by `i-p`.
+
+We can maintain `cur`, the total number of distinct species across all intervals ending at the current position. Then
+
+`cur += i - p`
+
+and we add `cur` to the global answer. The crucial point is that intervals whose left endpoint is at most `p` already contained species `x` before position `i`, while intervals beginning after `p` did not.
+
+The two viewpoints are equivalent. The first assigns every species occurrence a rectangle of valid left and right endpoints. The second sweeps the right endpoint and maintains the total contribution of all intervals ending there. The sweep version requires only the latest occurrence of each species and is particularly compact.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N^3)) nếu duyệt lại từng đoạn | (O(N)) | Too slow |
-| Duy trì set cho từng điểm bắt đầu | (O(N^2)) | (O(N)) | Too slow |
-| Optimal | (O(N)) trung bình | (O(N)) | Accepted |
+| Brute Force | `O(N^2)` | `O(N)` | Too slow |
+| Optimal | `O(N)` | `O(N)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Duyệt các con thỏ từ trái sang phải. Dùng dictionary `last` để lưu vị trí xuất hiện cuối cùng của mỗi giống.
-2. Duy trì biến `current`, là tổng vị trí xuất hiện cuối cùng của tất cả các giống đã xuất hiện trong đoạn tiền tố hiện tại.
-
-Nếu đang ở vị trí (r), `current` chính là tổng điểm của mọi đoạn có dạng ([l,r]). Lý do là mỗi giống có vị trí cuối cùng (p), và nó xuất hiện trong đúng (p) đoạn kết thúc tại (r), tương ứng với (l=1,\ldots,p).
-3. Khi gặp giống `x` ở vị trí (r), kiểm tra `last[x]`.
-
-Nếu `x` chưa xuất hiện, giống này chưa có đóng góp trong `current`, nên ta cộng (r).
-
-Nếu `x` đã xuất hiện cuối cùng ở vị trí (p), đóng góp cũ của nó là (p), còn đóng góp mới là (r). Vì vậy ta chỉ cần cộng (r-p) vào `current`.
-4. Cập nhật `last[x] = r`. Sau thao tác này, dictionary phản ánh chính xác vị trí cuối cùng của từng giống trong prefix (1,\ldots,r).
-5. Cộng `current` vào đáp án. `current` là tổng điểm của tất cả các đoạn kết thúc tại (r), nên cộng nó qua mọi (r) sẽ thu được tổng điểm của toàn bộ các đoạn.
-6. Lặp lại cho đến vị trí (N), rồi in đáp án.
+1. Initialize an empty map `last` that stores the latest position at which each species appeared. Use `0` as the previous position for a species that has not appeared before. This gives every first occurrence the correct boundary without a special case.
+2. Initialize `cur = 0` and `answer = 0`. Here `cur` represents the sum of the number of distinct species over all intervals whose right endpoint is the current position. `answer` accumulates this value over every right endpoint.
+3. Scan the array from left to right. At position `i`, read the previous occurrence `p = last.get(typ[i], 0)`.
+4. Increase `cur` by `i - p`. Consider all intervals ending at `i`. Their left endpoints range from `1` through `i`. If the left endpoint is at most `p`, the same species already appeared inside the interval before reaching `i`, so this occurrence does not add a new species. If the left endpoint is in `p+1` through `i`, this is the first occurrence of the species inside the interval, so it adds exactly one distinct species. There are `i-p` such left endpoints.
+5. Add `cur` to `answer`. Every interval has exactly one right endpoint, so after processing position `i`, all intervals ending at `i` have now contributed exactly once.
+6. Set `last[typ[i]] = i`. The current position must become the previous occurrence for all future positions containing the same species. Using an older occurrence here would make the range of affected left endpoints too large.
+7. After the scan finishes, print `answer`. Every nonempty interval has been considered exactly once, grouped according to its right endpoint.
 
 ### Why it works
 
-Sau khi xử lý vị trí (r), với mỗi giống xuất hiện trong prefix (1,\ldots,r), dictionary lưu vị trí xuất hiện cuối cùng (p). Một đoạn ([l,r]) chứa giống đó chính xác khi (l\le p), nên giống đó xuất hiện trong đúng (p) đoạn kết thúc tại (r). Do đó `current` bằng tổng số lần xuất hiện của tất cả các giống trên toàn bộ các đoạn kết thúc tại (r), cũng chính là tổng số giống khác nhau của những đoạn đó. Khi cộng `current` vào đáp án ở mọi (r), mỗi cặp ((l,r)) được tính đúng một lần và mỗi giống trong đoạn được tính đúng một lần.
+The invariant after processing position `i` is that `cur` equals the sum of the number of distinct species over every interval ending at `i`.
+
+When species `x = typ[i]` occurs at position `i`, let its previous occurrence be `p`. For an interval `[l,i]`, the occurrence at `i` introduces a new species exactly when `l > p`. There are precisely `i-p` possible values of `l`, so adding `i-p` to the previous total gives the correct total for all intervals ending at `i`. Updating `last[x]` to `i` preserves the same property for the next occurrence. Since the global answer adds the correct total for every possible right endpoint, every interval contributes exactly its number of distinct species once.
 
 ## Python Solution
 
@@ -117,138 +129,136 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
-    answers = []
+    out = []
 
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
 
         last = {}
-        current = 0
+        cur = 0
         answer = 0
 
-        for r, x in enumerate(a, 1):
-            old = last.get(x)
+        for i, x in enumerate(a, 1):
+            p = last.get(x, 0)
 
-            if old is None:
-                current += r
-            else:
-                current += r - old
+            cur += i - p
+            answer += cur
 
-            last[x] = r
-            answer += current
+            last[x] = i
 
-        answers.append(str(answer))
+        out.append(str(answer))
 
-    sys.stdout.write("\n".join(answers))
+    sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-`last` lưu vị trí xuất hiện cuối cùng của mỗi giống, đúng với bước 1 và bước 3 của thuật toán. Dictionary được dùng vì giá trị giống có thể lên tới (10^9), nên không thể dùng trực tiếp một mảng chỉ số theo `typ`.
+The map `last` corresponds directly to the previous-occurrence value used in the walkthrough. For the first occurrence of a species, `last.get(x, 0)` returns zero, so position `i` contributes `i` new species occurrences among intervals ending there.
 
-Biến `current` được cập nhật trước khi cộng vào `answer`. Ở vị trí (r), nó phải mô tả các đoạn kết thúc đúng tại (r), không phải các đoạn kết thúc tại (r-1).
+The variable `cur` is not the number of distinct species in one particular interval. It is the sum of distinct-species counts over all intervals ending at the current position. This distinction is essential. For `1 2 2`, when processing the second `2`, `cur` becomes `3`, because the intervals ending there are `[2,2]`, containing one species, and `[1,2]`, containing two species.
 
-Biểu thức `current += r - old` là phần dễ sai nhất. Nếu một giống trước đó xuất hiện tại `old`, các đoạn có (l\le old) đã chứa giống này trước khi thêm phần tử thứ (r). Các lựa chọn mới là (l=old+1,\ldots,r), có đúng (r-old) lựa chọn, nên đóng góp tăng đúng lượng đó.
+The order of operations also matters. We read the old position from `last` before updating it. If the map were updated first, every repeated occurrence would incorrectly have itself as its previous occurrence, making its contribution zero.
 
-Với lần xuất hiện đầu tiên, `old` không tồn tại và giống mới đóng góp (r), vì mọi đoạn ([l,r]) với (l\le r) đều chứa nó.
+Python's arbitrary-precision integers are useful here because the answer can reach roughly `1.67 * 10^17` for `N = 10^6`. In C++, a 64-bit integer would be required.
 
-Chỉ số `r` bắt đầu từ (1) nhờ `enumerate(a, 1)`. Điều này làm cho vị trí cuối cùng có thể dùng trực tiếp làm số lượng lựa chọn của (l), tránh phải cộng hoặc trừ (1) ở nhiều nơi.
-
-Python không bị giới hạn số nguyên 64 bit, nên `answer` có thể chứa kết quả lớn nhất mà không cần kiểu dữ liệu đặc biệt.
-
-Một chi tiết về input là đề cho tổng (N) trên tất cả test không quá (2\cdot10^6). Vì vậy việc đọc từng test và xử lý tuyến tính là phù hợp. Dictionary cũng được tạo mới cho từng test để không giữ dữ liệu của test trước.
+The input size can reach two million integers across all test cases, so the implementation stores one array and one dictionary per test case. `sys.stdin.readline` and a single buffered output write keep the Python I/O overhead small.
 
 ## Worked Examples
 
-### Sample case 1
+### Sample 1, first test case
 
-Với mảng `1 2 3`, mỗi con thỏ có một giống riêng. Ta có các trạng thái sau:
+For the array `1 2 3`, every species is new when encountered. The value `i-p` is consequently `1`, `2`, and `3`.
 
-| (r) | `x` | `last` sau cập nhật | `current` | `answer` |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | `{1: 1}` | 1 | 1 |
-| 2 | 2 | `{1: 1, 2: 2}` | 3 | 4 |
-| 3 | 3 | `{1: 1, 2: 2, 3: 3}` | 6 | 10 |
+| Position `i` | Species | Previous `p` | `i-p` | `cur` | `answer` |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | 1 | 1 | 1 |
+| 2 | 2 | 0 | 2 | 3 | 4 |
+| 3 | 3 | 0 | 3 | 6 | 10 |
 
-Ở vị trí 1 có một đoạn kết thúc tại 1 và nó chứa một giống, nên `current = 1`. Sang vị trí 2, có hai giống với vị trí cuối lần lượt là 1 và 2, nên tổng là (3). Sang vị trí 3, tổng là (1+2+3=6). Cộng lại được (1+3+6=10), đúng sample.
+After position `1`, the only interval is `[1,1]`, with one species. After position `2`, the two intervals ending there have scores `1` and `2`, giving `cur = 3`. After position `3`, the three intervals ending there have scores `1`, `2`, and `3`, giving `cur = 6`. The final answer is `1 + 3 + 6 = 10`.
 
-### Sample case 2
+### Sample 1, second test case
 
-Với mảng `1 2 2 3`, trạng thái chi tiết là:
+For `1 2 2 3`, the third position repeats species `2`. Its previous occurrence is position `2`, so only the interval `[3,3]` gains a new species from the occurrence at position `3`.
 
-| (r) | `x` | `old` | `current` sau cập nhật | `answer` |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | chưa có | 1 | 1 |
-| 2 | 2 | chưa có | 3 | 4 |
-| 3 | 2 | 2 | 4 | 8 |
-| 4 | 3 | chưa có | 7 | 15 |
+| Position `i` | Species | Previous `p` | `i-p` | `cur` | `answer` |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | 1 | 1 | 1 |
+| 2 | 2 | 0 | 2 | 3 | 4 |
+| 3 | 2 | 2 | 1 | 4 | 8 |
+| 4 | 3 | 0 | 4 | 8 | 16 |
 
-Ở (r=3), giống `2` xuất hiện lại. Trước đó vị trí cuối của nó là 2, nên đóng góp của giống `2` đổi từ 2 thành 3. Vì vậy `current` tăng đúng (3-2=1), từ 3 thành 4.
+At position `3`, the intervals ending there are `[3,3]`, `[2,3]`, and `[1,3]`, whose scores are `1`, `1`, and `2`. Their total is `4`, matching `cur`. At position `4`, species `3` is new globally, so all four intervals ending there gain one distinct species, increasing `cur` from `4` to `8`. The final result is `16`.
 
-Ở (r=4), giống `3` xuất hiện lần đầu và đóng góp thêm 4. `current` trở thành (1+3+4=8). Tổng cuối cùng là (1+3+4+8=16), đúng kết quả mẫu.
+### Repeated species example
+
+Consider `1 2 1 2`.
+
+| Position `i` | Species | Previous `p` | `i-p` | `cur` | `answer` |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | 1 | 1 | 1 |
+| 2 | 2 | 0 | 2 | 3 | 4 |
+| 3 | 1 | 1 | 2 | 5 | 9 |
+| 4 | 2 | 2 | 2 | 7 | 16 |
+
+At position `3`, species `1` last appeared at position `1`. The left endpoint can be `2` or `3`, so there are two intervals ending at `3` where this occurrence introduces species `1`. This gives the increment `3-1=2`. The final answer is `16`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(N)) trung bình | Mỗi con thỏ thực hiện một lần tra cứu và cập nhật dictionary |
-| Space | (O(N)) | Dictionary có nhiều nhất một phần tử cho mỗi giống khác nhau |
+| Time | `O(N)` | Each array element is processed once and each hash-map operation is expected `O(1)`. |
+| Space | `O(N)` | The array and the map can each contain up to `N` elements. |
 
-Vì tổng (N) của tất cả test không vượt quá (2\cdot10^6), tổng số thao tác là tuyến tính theo kích thước input. Đây là sự khác biệt quyết định so với (O(N^2)), vốn có thể phải xử lý hàng trăm tỷ đoạn khi (N=10^6). Bộ nhớ (O(N)) cũng nằm trong giới hạn 512 MB với cách lưu một vị trí cuối cho mỗi giống.
+Across all test cases, the total `N` is at most `2 * 10^6`, so the total expected running time is linear in the complete input size. The memory usage is also linear in the largest individual test case and remains within the 512 MB limit.
 
 ## Test Cases
 
 ```python
+# The solution is copied into solve() so the tests can replace stdin.
+
 import sys
 import io
 
 def solve():
     input = sys.stdin.readline
-
     t = int(input())
-    answers = []
+    out = []
 
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
 
         last = {}
-        current = 0
+        cur = 0
         answer = 0
 
-        for r, x in enumerate(a, 1):
-            old = last.get(x)
+        for i, x in enumerate(a, 1):
+            p = last.get(x, 0)
+            cur += i - p
+            answer += cur
+            last[x] = i
 
-            if old is None:
-                current += r
-            else:
-                current += r - old
+        out.append(str(answer))
 
-            last[x] = r
-            answer += current
-
-        answers.append(str(answer))
-
-    sys.stdout.write("\n".join(answers))
+    sys.stdout.write("\n".join(out))
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
-    sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-
     try:
+        sys.stdin = io.StringIO(inp)
+        sys.stdout = io.StringIO()
         solve()
-        return output.getvalue()
+        return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
 
-# Provided samples
+# Provided sample
 assert run(
     """2
 3
@@ -256,100 +266,108 @@ assert run(
 4
 1 2 2 3
 """
-) == "10\n16\n", "provided samples"
+) == "10\n16", "provided sample"
 
 # Minimum size
 assert run(
     """1
 1
-5
+7
 """
-) == "1\n", "single rabbit"
+) == "1", "single rabbit"
 
-# All rabbits have the same type
+# All values equal
 assert run(
     """1
-3
-7 7 7
+4
+5 5 5 5
 """
-) == "6\n", "all equal"
+) == "10", "all intervals contain exactly one species"
 
-# Repeated type with a gap
+# Alternating repeated values
 assert run(
     """1
-3
-1 2 1
+4
+1 2 1 2
 """
-) == "9\n", "repeated type"
+) == "16", "repeated species with gaps"
 
-# Large answer and all distinct types
+# Every value is different
 assert run(
     """1
-5
-1 2 3 4 5
+4
+1 2 3 4
 """
-) == "35\n", "all distinct"
+) == "20", "all species are different"
 
-# Maximum-size test, all equal
+# Maximum-size test, all values equal.
+# The answer is the number of nonempty subarrays.
 n = 1_000_000
+inp = "1\n{}\n{}\n".format(n, "1 " * (n - 1) + "1")
 expected = n * (n + 1) // 2
-inp = "1\n" + str(n) + "\n" + ("7 " * (n - 1)) + "7\n"
-assert run(inp) == str(expected) + "\n", "maximum N"
+assert run(inp) == str(expected), "maximum N with all equal values"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1 / 5` | `1` | Kích thước nhỏ nhất và xử lý biên của vị trí đầu tiên |
-| `1 / 3 / 7 7 7` | `6` | Cùng một giống xuất hiện liên tục, kiểm tra việc thay thế vị trí cuối |
-| `1 / 3 / 1 2 1` | `9` | Giống xuất hiện lại sau một khoảng cách, kiểm tra `r - old` |
-| `1 / 5 / 1 2 3 4 5` | `35` | Tất cả giống khác nhau, kiểm tra tổng đóng góp tăng dần |
-| (N=10^6), tất cả bằng `7` | `500000500000` | Giới hạn lớn nhất, thời gian tuyến tính và khả năng xử lý đáp án lớn |
+| `1 / 1 / 7` | `1` | Minimum size and first-occurrence boundary |
+| `1 / 4 / 5 5 5 5` | `10` | Repeated values and latest-occurrence handling |
+| `1 / 4 / 1 2 1 2` | `16` | Repetitions separated by other species |
+| `1 / 4 / 1 2 3 4` | `20` | Every occurrence is globally new |
+| `N = 10^6`, all values `1` | `500000500000` | Maximum input size and large answer |
 
 ## Edge Cases
 
-Với (N=1), input
+For a single rabbit, the input is
 
 ```
 1
 1
-5
+7
 ```
 
-dictionary ban đầu rỗng. Tại (r=1), giống `5` chưa xuất hiện nên `current` tăng từ 0 lên 1. Sau đó `answer` cũng trở thành 1. Chỉ có một đoạn ([1,1]), và nó chứa đúng một giống, nên kết quả là `1`.
+At position `1`, there is no previous occurrence, so `p = 0`. The increment is `1 - 0 = 1`, giving `cur = 1` and `answer = 1`. There is exactly one possible interval, so the result is correct.
 
-Với tất cả các con thỏ cùng giống, chẳng hạn
-
-```
-1
-3
-7 7 7
-```
-
-tại (r=1), `current=1`. Tại (r=2), vị trí cũ của `7` là 1 nên `current` tăng (2-1=1), trở thành 2. Tại (r=3), nó tăng (3-2=1), trở thành 3. Tổng là (1+2+3=6). Mỗi đoạn chỉ có một giống, và có tổng cộng sáu đoạn, nên kết quả khớp.
-
-Với giống xuất hiện lại sau một khoảng cách, xét
+For all equal species,
 
 ```
 1
 3
-1 2 1
+1 1 1
 ```
 
-sau vị trí 1, `current=1`. Sau vị trí 2, hai giống có vị trí cuối là 1 và 2, nên `current=3`. Tại vị trí 3, giống `1` có vị trí cuối cũ là 1 và vị trí mới là 3. Đóng góp của nó tăng từ 1 lên 3, nên `current` tăng thêm 2, thành 5. Tổng đáp án là (1+3+5=9). Điều này cũng tương ứng trực tiếp với các điểm của sáu đoạn, lần lượt là (1,2,2,1,2,1).
+the execution is
 
-Với tất cả giống khác nhau và (N=5),
+| Position | Previous occurrence | Increment | `cur` | `answer` |
+| --- | --- | --- | --- | --- |
+| 1 | 0 | 1 | 1 | 1 |
+| 2 | 1 | 1 | 2 | 3 |
+| 3 | 2 | 1 | 3 | 6 |
+
+Every interval contains exactly one species, and there are six intervals. The key boundary is that each repeated occurrence uses the immediately preceding position as `p`, so it adds exactly one to the total for intervals beginning at that occurrence.
+
+For an array where every species is different,
 
 ```
 1
-5
-1 2 3 4 5
+3
+1 2 3
 ```
 
-`current` lần lượt là (1,3,6,10,15), vì ở mỗi prefix mọi vị trí cuối đều khác nhau. Đáp án là (35), đúng với tổng độ dài của tất cả các đoạn. Trường hợp này kiểm tra rằng thuật toán không vô tình xem các giống mới là chỉ đóng góp 1, trong khi một giống xuất hiện lần đầu tại vị trí (r) thực tế đóng góp (r) đoạn kết thúc tại (r).
+all previous positions are zero. The increments are `1`, `2`, and `3`, producing `cur` values `1`, `3`, and `6`. The global answer is `10`. This verifies that the algorithm counts the contribution across all possible left endpoints instead of treating an occurrence as contributing to only one interval.
 
-Với (N=10^6) và tất cả giống đều bằng `7`, dictionary chỉ chứa một phần tử trong suốt quá trình chạy. Mỗi vị trí chỉ thực hiện một lần tra cứu và một lần cập nhật, nên vẫn là (O(N)). `current` lần lượt tăng 1 ở mỗi bước và đáp án cuối cùng là
+For repeated species separated by other values,
 
-500000500000.
-]
+```
+1
+4
+1 2 1 2
+```
 
-Trường hợp này vừa kiểm tra giới hạn kích thước input, vừa kiểm tra việc không dùng (O(N^2)) bộ nhớ hay thời gian khi số lượng giống khác nhau rất nhỏ.
+the third position has previous occurrence `1`, so its increment is `3-1=2`. The fourth position has previous occurrence `2`, so its increment is `4-2=2`. The resulting `cur` values are `1`, `3`, `5`, and `7`, and the answer is `16`. This catches the common mistake of storing the first occurrence instead of the latest one.
+
+The large-value case also matters. For `N = 10^6` with all values distinct, the answer is
+
+`N(N+1)(N+2)/6 = 166667166667000000`.
+
+A 32-bit integer would overflow badly, while Python's integer representation stores the exact result. The algorithm itself does not need any special handling for this case because the same `i-p` formula applies with `p = 0` at every position.
