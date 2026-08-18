@@ -1,7 +1,7 @@
 ---
 title: "CF 102268D - Dates"
-description: "We have (t) days, where day (d) can host at most (ad) dates. Each girl is represented by an interval ([li,ri]) and a pleasure value (pi). If we choose her, we must assign her exactly one day inside that interval, and no day may receive more than its capacity."
-date: "2026-08-17T18:40:50+07:00"
+description: "We have (t) calendar days, and day (x) can host at most (ax) dates. Each girl can be dated at most once, and girl (i) accepts any day from (li) through (ri). Dating her contributes (pi) to the answer."
+date: "2026-08-19T04:18:45+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102268
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "300iq Contest 1"
 rating: 0
 weight: 102268
-solve_time_s: 279
+solve_time_s: 1010
 verified: false
 draft: false
 ---
@@ -18,314 +18,355 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 39s  
+**Solve time:** 16m 50s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have (t) days, where day (d) can host at most (a_d) dates. Each girl is represented by an interval ([l_i,r_i]) and a pleasure value (p_i). If we choose her, we must assign her exactly one day inside that interval, and no day may receive more than its capacity.
+We have (t) calendar days, and day (x) can host at most (a_x) dates. Each girl can be dated at most once, and girl (i) accepts any day from (l_i) through (r_i). Dating her contributes (p_i) to the answer. The task is to choose a subset of girls and assign every chosen girl a valid, capacity-respecting day so that the total pleasure is maximum.
 
-The task is to choose a subset of girls and assign every chosen girl to a legal day so that the total pleasure is as large as possible. The intervals are already ordered by both their left and right endpoints, although the solution below does not actually need that extra ordering property.
+The unusual structural condition is that both endpoints are sorted:
 
-The bounds (n,t\le 300,000) immediately rule out anything that considers subsets of girls, or even anything quadratic in the number of girls. There can be (300,000) intervals, so the target is roughly (O((n+t)\log(n+t))). The pleasure values can reach (10^9), and there can be (300,000) selected girls, so the answer can be around (3\cdot10^{14}). Python integers handle this automatically, while a C++ implementation would need 64-bit integers.
+[
+l_1\le l_2\le\cdots\le l_n,\qquad
+r_1\le r_2\le\cdots\le r_n.
+]
 
-The first edge case is zero capacity. Consider
+This condition is the key to making the matching constraints compressible. Without it, the natural formulation is a large weighted matching problem, which is far too expensive for (n,t\le 300000).
+
+The bounds leave room for roughly (O((n+t)\log n)) operations, but not for quadratic work. A procedure that checks every pair of girls already has (O(n^2)) operations, around (9\cdot10^{10}) at the maximum size. Enumerating all subsets is obviously impossible, since there are (2^n) of them. The final solution uses sorting plus two lazy segment trees, giving (O((n+t)+n\log n)) time.
+
+Several edge cases are easy to mishandle.
+
+With no available capacity, the answer must be zero:
 
 ```
-1 2
-0 0
-1 2 10
+1 1
+0
+1 1 10
 ```
 
-The answer is (0), because the girl has an available interval but there is no usable day. An implementation that only checks whether every interval is nonempty would incorrectly select her.
+The answer is `0`. A careless solution that only checks whether each interval itself is nonempty would incorrectly select the girl.
 
-The second edge case is several girls competing for the same single slot.
+Several girls can have exactly the same interval, but capacity is still shared. For example:
 
 ```
 2 1
 1
-1 1 10
-1 1 9
+1 1 5
+1 1 4
 ```
 
-Only one girl can be selected, so the answer is (10). A careless algorithm that treats every girl independently, or only checks the total capacity against the number of girls without respecting their intervals, could incorrectly count both girls.
+The answer is `5`, not `9`. Both girls can use only the single available slot.
 
-The third edge case concerns inclusive boundaries and intervals touching the ends of the schedule.
+Checking every selected interval independently is also insufficient. Consider:
+
+```
+2 2
+1 0
+1 1 100
+1 2 99
+```
+
+Each girl individually has an interval containing at least one unit of capacity, but together they cannot be scheduled. The first girl consumes the only slot on day (1), while the second girl can only use day (1) because day (2) has capacity zero. The answer is `100`. This is exactly the kind of global condition captured by Hall's theorem.
+
+Finally, boundaries must be handled inclusively. In
 
 ```
 2 2
 0 1
-1 1 5
-1 2 4
+1 2 5
+2 2 4
 ```
 
-The answer is (4). The first girl can only use day (1), whose capacity is zero. The second girl can use day (2), so she is the only selectable girl. Treating ([l,r]) as a half-open interval, or accidentally shifting one endpoint in the feasibility check, can change this answer.
+both girls can only use day (2), so only one can be selected and the answer is `5`. Treating an interval as half-open by accident would change the matching constraints.
+
+The official statement confirms the endpoint ordering and the (300000) bounds that drive the (O(n\log n)) requirement.
 
 ## Approaches
 
-A direct solution would enumerate every subset of girls, then check whether that subset can be assigned to days. The check itself can be done greedily by processing days from left to right and assigning the available interval with the earliest deadline. That gives a correct brute-force method because every possible choice of girls is explicitly considered.
+The brute-force approach is to enumerate a subset of girls, determine whether those girls can be assigned to distinct available date slots, and keep the maximum pleasure among feasible subsets. It is correct because every possible choice of girls is considered. If the feasibility check itself greedily assigns the selected intervals to available slots, one subset can already require (O(n+t)) work, giving (O(2^n(n+t))) in the worst case. Even ignoring the feasibility cost, (2^{300000}) subsets cannot be processed.
 
-The problem is the number of subsets. There are (2^n) of them, so even an (O(n+t)) feasibility check would lead to (O(2^n(n+t))) work. With (n=300,000), this is not remotely feasible.
+The next natural idea is maximum-cost flow. Create capacity copies of every day and connect each girl to every day in her interval. That models the problem correctly, but the graph can contain (\Theta(nt)) edges, and a general matching or flow algorithm is much too slow.
 
-The key observation is that the feasible subsets have much more structure than an arbitrary collection of subsets. Think of every day as several identical slots, with (a_d) copies of day (d). A girl is connected to all slots belonging to days in her interval. A set of girls is feasible exactly when those girls can be matched to distinct slots.
+The useful observation is that feasible sets of girls form a matroid. Think of every unit of daily capacity as a separate slot. A girl can be matched to any slot corresponding to a day in her interval. A set of girls is feasible exactly when these girls can be matched to distinct slots. Such matchable subsets form a transversal matroid. The weighted greedy theorem for matroids then says that we can process girls in decreasing order of pleasure and accept a girl precisely when adding her keeps the selected set feasible. This is the central optimization step.
 
-The family of subsets that can be matched in a bipartite graph is a transversal matroid. Consequently, if we process girls in decreasing order of pleasure and add a girl whenever the resulting set remains feasible, the accepted set has maximum total weight. The exchange property behind this greedy rule is the reason we do not need dynamic programming over pleasure values. This matroid interpretation and the corresponding Hall-condition reduction are also the core of the known solution for this problem.
+The remaining problem is to test feasibility quickly.
 
-We are left with the real implementation problem: after accepting some high-value girls, how can we test whether another interval can be inserted in (O(\log t))?
+Hall's theorem says that a selected set is schedulable exactly when every collection of girls has at least as many available day slots in its union of allowed days as there are selected girls. Because all allowed sets are intervals and both endpoint sequences are nondecreasing, it is sufficient to check contiguous blocks of girl indices. This turns a matching condition into inequalities over prefixes.
 
-Hall's theorem gives the answer. For any day interval ([L,R]), all selected girls whose entire availability interval is contained in ([L,R]) must fit into the capacity of those days. Thus a selected set (S) is feasible exactly when
+Let (b_i) be (1) if girl (i) has already been accepted and (0) otherwise. Let
 
 [
-#{[l_i,r_i]\in S\ge L,\ r_i\le R}
-\le
-\sum_{d=L}^{R}a_d
+A_x=\sum_{j=1}^{x}a_j
 ]
 
-for every (1\le L\le R\le t).
-
-Let
+be the prefix capacity, and let
 
 [
-s_i=\sum_{d=1}^{i}a_d,\qquad s_0=0.
+B_x=\sum_{j=1}^{x}b_j
 ]
 
-It is convenient to shift the left endpoint by one. Define, for (0\le i\le t),
+be the prefix number of selected girls.
+
+For a block of girls (L,\ldots,R), all of their possible days lie inside ([l_L,r_R]). Hall's condition becomes
 
 [
-p_i=s_i-#{[l,r]\in S\le i}
+B_R-B_{L-1}\le A_{r_R}-A_{l_L-1}.
+]
+
+Rearranging gives
+
+[
+B_R-A_{r_R}\le B_{L-1}-A_{l_L-1}.
+]
+
+Define
+
+[
+c_R=B_R-A_{r_R}
 ]
 
 and
 
 [
-q_i=s_i-#{[l,r]\in S\le i}.
+d_L=B_{L-1}-A_{l_L-1}.
 ]
 
-The Hall condition becomes
+The whole feasible set is characterized by
 
 [
-p_i\le q_j
+c_R\le d_L\qquad\text{for every }L\le R.
 ]
 
-for every (0\le i<j\le t). To see this, the difference (q_j-p_i) is exactly the capacity in days (i+1,\ldots,j), minus the number of selected intervals completely contained there.
+This is exactly the reduction used in the known solution for the problem.
 
-Now suppose we want to insert ([l_0,r_0]). Adding it decreases every (p_i) with (i\ge l_0) by one and every (q_i) with (i\ge r_0) by one. The only potentially violated inequalities have (i<l_0) and (j\ge r_0). All other inequalities either remain unchanged or become easier to satisfy.
-
-Therefore the insertion is feasible precisely when
+Suppose we are considering girl (x). Before accepting her, (b_x=0). Adding her increases every (B_i) with (i\ge x), so every (c_i) with (i\ge x) increases by (1). It also increases (d_i) only when (i>x), because (d_i) contains (B_{i-1}). Thus the only new inequalities that can become harder are those with
 
 [
-\max_{0\le i<l_0}p_i
-<
-\min_{r_0\le j\le t}q_j.
+L\le x\le R.
 ]
 
-A segment tree can maintain the maximum of (p), the minimum of (q), and lazy suffix additions. Every accepted interval performs two suffix decrements, one on (p) starting at (l_0), and one on (q) starting at (r_0).
+For those inequalities, (c_R) increases by (1), while (d_L) does not. Therefore girl (x) can be accepted exactly when
+
+[
+\max_{R\ge x}c_R < \min_{L\le x}d_L.
+]
+
+After accepting her, we add (1) to the suffix (c_x,\ldots,c_n), and add (1) to the suffix (d_{x+1},\ldots,d_n).
+
+So we need one segment tree maintaining suffix maximums with range addition for (c), and another maintaining prefix minimums with range addition for (d).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | (O(2^n(n+t))) | (O(n+t)) | Too slow |
-| Greedy + Hall condition + segment tree | (O(n\log n+n\log t+t)) | (O(n+t)) | Accepted |
+| Weighted matching / flow | At least superlinear in the full interval graph | Potentially (O(nt)) | Too slow |
+| Greedy + two lazy segment trees | (O(t+n+n\log n)) | (O(t+n)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the day capacities and compute their prefix sums (s_0,s_1,\ldots,s_t). The prefix sums let us express the capacity of any consecutive block as one subtraction.
-2. Sort all girls by decreasing pleasure. We will consider the most valuable girl first because the feasible sets form a matroid. The weighted matroid greedy theorem says that accepting the highest-value feasible element at every step produces a maximum-weight feasible set.
-3. Initially no girl is selected, so both arrays satisfy (p_i=q_i=s_i). Build a segment tree whose leaves represent indices (0,\ldots,t). Each node stores the maximum (p_i) and minimum (q_i) in its range, together with lazy values for pending additions to the two arrays.
-4. For a girl with interval ([l,r]), query the maximum (p_i) over (0\le i<l), and the minimum (q_j) over (r\le j\le t). If the first value is strictly smaller than the second, the girl can be added. The strict inequality is necessary because adding the girl decreases the relevant (q) values by exactly one.
-5. If the girl is accepted, decrease (p_i) by one for every (i\ge l), and decrease (q_i) by one for every (i\ge r). Both operations are suffix range additions, so the segment tree handles them in logarithmic time.
-6. Add the girl's pleasure to the answer whenever the insertion succeeds. If the feasibility test fails, leave the segment tree unchanged and continue with the next girl.
+1. Compute the prefix capacities (A_x), where (A_x) is the total number of date slots in days (1) through (x). This lets every capacity interval ([u,v]) be evaluated as (A_v-A_{u-1}) in constant time.
+2. For every girl (i), initially no girl is selected, so (B_i=0). Store
 
-The invariant is that after processing any prefix of the pleasure-sorted girls, the segment tree represents exactly the (p) and (q) values for the accepted girls, and those accepted girls form a feasible set. For an unselected interval ([l,r]), the only Hall inequalities that can become false after inserting it are the pairs with (i<l) and (j\ge r). The segment tree checks the strongest such inequality by comparing the largest possible (p_i) with the smallest possible (q_j). Hence every accepted girl preserves feasibility, while every rejected girl cannot be added to the current set. Since the candidates are processed in decreasing weight and feasible sets form a matroid, the resulting set has maximum total pleasure.
+[
+c_i=-A_{r_i}
+]
+
+and
+
+[
+d_i=-A_{l_i-1}.
+]
+
+These are exactly the previous definitions with all (b_i=0).
+
+1. Sort the girls by decreasing pleasure. The selected sets are independent in a transversal matroid, so accepting every feasible girl in this order produces a maximum-weight feasible set.
+2. Consider the next girl (x). Query
+
+[
+C=\max_{i\ge x}c_i
+]
+
+from the first segment tree and
+
+[
+D=\min_{i\le x}d_i
+]
+
+from the second segment tree.
+
+1. Accept girl (x) if (C<D). The strict inequality is necessary because accepting her increases every relevant (c_i) by exactly one. The old inequality must have at least one unit of slack.
+2. If girl (x) is accepted, add (1) to (c_x,\ldots,c_n). This reflects that every (B_i) with (i\ge x) increases by one.
+3. Also add (1) to (d_{x+1},\ldots,d_n). The value (d_i) contains (B_{i-1}), so it changes only when (i-1\ge x). There is deliberately no update to (d_x).
+4. Add the girl's pleasure to the answer and continue with the next girl. If the girl fails the test, leave both trees unchanged and move on.
+
+The invariant is that after processing any prefix of the pleasure-sorted order, the two trees represent exactly the values of (c_i) and (d_i) for the accepted girls. The condition for every pair (L\le R) is already satisfied. When a new girl is considered, only inequalities with (L\le x\le R) can become tighter. Those inequalities are valid after insertion exactly when the largest old (c_R) on the right is strictly smaller than the smallest old (d_L) on the left. Thus every accepted set is feasible, and every rejected girl would violate Hall's condition if added. Since the feasibility system is a matroid and girls are processed by decreasing weight, the resulting set has maximum total pleasure.
 
 ## Python Solution
 
 ```python
 import sys
+from array import array
+
 input = sys.stdin.readline
 
-from array import array
+INF = 10**30
+
+class SegmentTree:
+    def __init__(self, values, is_max):
+        self.n = len(values)
+        self.is_max = is_max
+        size = 4 * self.n + 5
+        self.val = array('q', [0]) * size
+        self.tag = array('q', [0]) * size
+        self.values = values
+        self._build(1, 0, self.n - 1)
+
+    def _merge(self, x, y):
+        if self.is_max:
+            return x if x > y else y
+        return x if x < y else y
+
+    def _build(self, v, l, r):
+        if l == r:
+            self.val[v] = self.values[l]
+            return
+        m = (l + r) >> 1
+        self._build(v << 1, l, m)
+        self._build(v << 1 | 1, m + 1, r)
+        self.val[v] = self._merge(
+            self.val[v << 1],
+            self.val[v << 1 | 1]
+        )
+
+    def update_suffix(self, pos, delta=1):
+        if pos >= self.n:
+            return
+        self._update(1, 0, self.n - 1, pos, delta)
+
+    def _update(self, v, l, r, pos, delta):
+        if pos <= l:
+            self.val[v] += delta
+            self.tag[v] += delta
+            return
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            self._update(v << 1, l, m, pos, delta)
+        self._update(v << 1 | 1, m + 1, r, pos, delta)
+
+        self.val[v] = self._merge(
+            self.val[v << 1],
+            self.val[v << 1 | 1]
+        ) + self.tag[v]
+
+    def query_suffix(self, pos):
+        if pos >= self.n:
+            return -INF if self.is_max else INF
+        return self._query_suffix(1, 0, self.n - 1, pos)
+
+    def _query_suffix(self, v, l, r, pos):
+        if pos <= l:
+            return self.val[v]
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            left = self._query_suffix(v << 1, l, m, pos)
+            right = self.val[v << 1 | 1]
+            return self._merge(left, right) + self.tag[v]
+
+        return self._query_suffix(v << 1 | 1, m + 1, r, pos) + self.tag[v]
+
+    def query_prefix(self, pos):
+        if pos < 0:
+            return -INF if self.is_max else INF
+        if pos >= self.n - 1:
+            return self.val[1]
+        return self._query_prefix(1, 0, self.n - 1, pos)
+
+    def _query_prefix(self, v, l, r, pos):
+        if r <= pos:
+            return self.val[v]
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            return self._query_prefix(v << 1, l, m, pos) + self.tag[v]
+
+        left = self.val[v << 1]
+        right = self._query_prefix(v << 1 | 1, m + 1, r, pos)
+        return self._merge(left, right) + self.tag[v]
 
 def solve():
     n, t = map(int, input().split())
+
+    pref = [0] * (t + 1)
+    cur = 0
     a = list(map(int, input().split()))
 
-    girls = []
-    for _ in range(n):
-        l, r, p = map(int, input().split())
-        girls.append((l, r, p))
-
-    girls.sort(key=lambda x: x[2], reverse=True)
-
-    # Prefix capacities s[0..t].
-    pref = array('q', [0]) * (t + 1)
-    cur = 0
     for i, x in enumerate(a, 1):
         cur += x
         pref[i] = cur
 
-    # Segment tree over indices 0..t.
-    size = 4 * (t + 1) + 5
+    order = [None] * n
+    c = [0] * n
+    d = [0] * n
 
-    # Maximum p in a node.
-    mxp = array('q', [0]) * size
+    for i in range(n):
+        l, r, p = map(int, input().split())
+        order[i] = (p, i)
+        c[i] = -pref[r]
+        d[i] = -pref[l - 1]
 
-    # Minimum q in a node.
-    mnq = array('q', [0]) * size
+    order.sort(reverse=True)
 
-    # Lazy suffix additions for p and q.
-    lazy_p = array('i', [0]) * size
-    lazy_q = array('i', [0]) * size
+    tree_c = SegmentTree(c, True)
+    tree_d = SegmentTree(d, False)
 
-    def build(v, lo, hi):
-        if lo == hi:
-            x = pref[lo]
-            mxp[v] = x
-            mnq[v] = x
-            return
+    del c
+    del d
+    del pref
+    del a
 
-        mid = (lo + hi) >> 1
-        left = v << 1
-        right = left | 1
+    ans = 0
 
-        build(left, lo, mid)
-        build(right, mid + 1, hi)
+    for p, x in order:
+        right_c = tree_c.query_suffix(x)
+        left_d = tree_d.query_prefix(x)
 
-        mxp[v] = max(mxp[left], mxp[right])
-        mnq[v] = min(mnq[left], mnq[right])
+        if right_c < left_d:
+            tree_c.update_suffix(x)
+            tree_d.update_suffix(x + 1)
+            ans += p
 
-    def push(v):
-        lp = lazy_p[v]
-        lq = lazy_q[v]
-
-        if lp:
-            left = v << 1
-            right = left | 1
-
-            mxp[left] += lp
-            mxp[right] += lp
-            lazy_p[left] += lp
-            lazy_p[right] += lp
-
-            lazy_p[v] = 0
-
-        if lq:
-            left = v << 1
-            right = left | 1
-
-            mnq[left] += lq
-            mnq[right] += lq
-            lazy_q[left] += lq
-            lazy_q[right] += lq
-
-            lazy_q[v] = 0
-
-    def max_prefix(v, lo, hi, qr):
-        if hi <= qr:
-            return mxp[v]
-
-        push(v)
-        mid = (lo + hi) >> 1
-        left = v << 1
-        right = left | 1
-
-        if qr <= mid:
-            return max_prefix(left, lo, mid, qr)
-
-        x = maxp = mxp[left]
-        y = max_prefix(right, mid + 1, hi, qr)
-        return x if x > y else y
-
-    def min_suffix(v, lo, hi, ql):
-        if lo >= ql:
-            return mnq[v]
-
-        push(v)
-        mid = (lo + hi) >> 1
-        left = v << 1
-        right = left | 1
-
-        if ql > mid:
-            return min_suffix(right, mid + 1, hi, ql)
-
-        x = min_suffix(left, lo, mid, ql)
-        y = mnq[right]
-        return x if x < y else y
-
-    def update(v, lo, hi, pl, ql):
-        # No part of this segment belongs to either suffix.
-        if hi < pl:
-            return
-
-        # Both suffixes fully cover this node.
-        if lo >= ql:
-            mxp[v] -= 1
-            mnq[v] -= 1
-            lazy_p[v] -= 1
-            lazy_q[v] -= 1
-            return
-
-        # Only the p suffix fully covers this node.
-        if lo >= pl and hi < ql:
-            mxp[v] -= 1
-            lazy_p[v] -= 1
-            return
-
-        if lo == hi:
-            return
-
-        # If p covers the whole node but q only covers part of it,
-        # apply p here and descend for q.
-        if lo >= pl:
-            mxp[v] -= 1
-            lazy_p[v] -= 1
-
-        push(v)
-
-        mid = (lo + hi) >> 1
-        left = v << 1
-        right = left | 1
-
-        update(left, lo, mid, pl, ql)
-        update(right, mid + 1, hi, pl, ql)
-
-        mxp[v] = max(mxp[left], mxp[right])
-        mnq[v] = min(mnq[left], mnq[right])
-
-    build(1, 0, t)
-
-    answer = 0
-
-    for l, r, pleasure in girls:
-        # The affected Hall inequalities have i < l and j >= r.
-        left_max = max_prefix(1, 0, t, l - 1)
-        right_min = min_suffix(1, 0, t, r)
-
-        if left_max < right_min:
-            answer += pleasure
-            update(1, 0, t, l, r)
-
-    return answer
+    print(ans)
 
 if __name__ == "__main__":
-    print(solve())
+    solve()
 ```
 
-The `pref` array stores (s_i), including (s_0=0). Using indices from (0) through (t) is what makes the Hall condition naturally become (p_i\le q_j) for (i<j). The query for a girl beginning at (l) is therefore exactly the prefix (0,\ldots,l-1), while the query for her ending at (r) is the suffix (r,\ldots,t).
+The prefix array is built first because every girl's initial (c_i) and (d_i) depends only on the total capacity up to her right or just before her left endpoint. Once these values have been initialized, the original (l_i) and (r_i) are no longer needed.
 
-The segment tree stores `mxp` because insertion needs the largest left-side (p), and `mnq` because insertion needs the smallest right-side (q). The two lazy arrays are separate because the two suffixes generally begin at different positions.
+The `order` array stores only `(pleasure, index)`. Sorting it in reverse gives decreasing pleasure, which is exactly the order required by the matroid greedy algorithm. Python integers are arbitrary precision, so the total pleasure and prefix capacities do not risk 32-bit overflow.
 
-The `update` function handles both suffix decrements in one traversal. Since (l\le r), the two update boundaries occur in sorted order. A node can be completely outside both suffixes, completely inside both, completely inside only the (p) suffix, or straddle one of the boundaries. This keeps each insertion logarithmic rather than performing (O(t)) individual decrements.
+The segment tree uses a slightly unusual lazy propagation style. `val[v]` already includes the lazy update belonging to node (v), while `tag[v]` records the amount that has not been incorporated into the children. When descending into a child, the parent's tag is added to the child's returned value. When rebuilding a parent, the merged child value is increased by the parent's tag. This avoids an explicit push operation and makes suffix updates particularly compact.
 
-The comparison uses `<`, not `<=`. Suppose before insertion the strongest affected inequality is (p_i=q_j). Adding the interval decreases (q_j) by one, so the new inequality becomes (p_i\le q_j-1), which fails. Thus equality before insertion means the candidate must be rejected.
+The first tree is a range-add, range-maximum structure for (c). The second is a range-add, range-minimum structure for (d). The candidate test queries exactly the two ranges appearing in
 
-Python integers would safely hold every prefix capacity and the final answer, but the segment tree uses `array('q')` for its large numeric fields to avoid the memory overhead of millions of Python integer objects. The lazy values only range between roughly (-n) and (0), so signed 32-bit storage is sufficient for them.
+[
+\max_{R\ge x}c_R < \min_{L\le x}d_L.
+]
+
+After acceptance, the suffix update on (c) starts at (x), while the suffix update on (d) starts at (x+1). That one-index difference is essential and is the most likely off-by-one mistake in the implementation.
 
 ## Worked Examples
 
 ### Sample 1
 
-The official sample is
+The actual sample input is:
 
 ```
 3 5
@@ -338,200 +379,293 @@ The official sample is
 The prefix capacities are
 
 [
-s=[0,0,1,1,2,2].
+A=[0,0,1,1,2,2].
 ]
 
-The girls are processed in pleasure order: ([3,5]) with pleasure (5), then ([1,2]) with pleasure (2), then ([2,4]) with pleasure (1).
+The initial (c_i=-A_{r_i}) and (d_i=-A_{l_i-1}) are:
 
-| Girl | (l,r) | max (p_i), (i<l) | min (q_j), (j\ge r) | Decision | Answer |
-| --- | --- | --- | --- | --- | --- |
-| pleasure 5 | 3, 5 | 1 | 2 | accept | 5 |
-| pleasure 2 | 1, 2 | 0 | 1 | accept | 7 |
-| pleasure 1 | 2, 4 | 0 | 0 | reject | 7 |
+[
+c=[-1,-2,-2],
+\qquad
+d=[0,0,-1].
+]
 
-After accepting ([3,5]), the (p) values at indices (3,4,5) decrease by one, while only (q_5) decreases. Accepting ([1,2]) then decreases (p_1,\ldots,p_5) and (q_2,\ldots,q_5). For the final interval ([2,4]), the best left-side (p) is already equal to the smallest right-side (q), so inserting it would violate Hall's condition.
+The girls are considered in pleasure order (3,1,2).
 
-The selected girls can be scheduled on day (2) and day (4), giving pleasure (2+5=7). This also demonstrates why the candidate with pleasure (1) must be rejected even though some capacity remains elsewhere.
+| Girl | Pleasure | (x) | (\max c[x..]) | (\min d[..x]) | Decision | Answer |
+| --- | --- | --- | --- | --- | --- | --- |
+| 3 | 5 | 2 | (-2) | (-1) | Accept | 5 |
+| 1 | 2 | 0 | (-1) | (0) | Accept | 7 |
+| 2 | 1 | 1 | (0) | (0) | Reject | 7 |
 
-### Custom contention example
+For girl (3), (-2<-1), so there is enough slack to insert her. After accepting her, (c_3) increases by one. Girl (1) also fits. When girl (2) is considered, the two sides are equal, so inserting her would make some Hall inequality fail by one unit. The final answer is `7`. This demonstrates why the acceptance test is strict.
 
-Consider
+### Boundary-heavy example
+
+Consider:
 
 ```
-2 1
-1
-1 1 10
-1 1 9
+2 2
+1 0
+1 1 100
+1 2 99
 ```
 
-There is only one available date slot.
+The prefix capacities are (A=[0,1,1]). Initially,
 
-| Girl | (l,r) | max (p_i), (i<l) | min (q_j), (j\ge r) | Decision | Answer |
-| --- | --- | --- | --- | --- | --- |
-| pleasure 10 | 1, 1 | 0 | 1 | accept | 10 |
-| pleasure 9 | 1, 1 | 0 | 0 | reject | 10 |
+[
+c=[-1,-1],\qquad d=[0,0].
+]
 
-After the first girl is accepted, both (p_1) and (q_1) become zero. The second insertion would require (0<0), which is false. The data structure therefore captures the exact one-slot capacity constraint without explicitly constructing a matching.
+| Girl | Pleasure | (x) | (\max c[x..]) | (\min d[..x]) | Decision | Answer |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 100 | 0 | (-1) | (0) | Accept | 100 |
+| 2 | 99 | 1 | (0) | (0) | Reject | 100 |
+
+After accepting girl (1), the only capacity slot is consumed. Girl (2) overlaps that same effective capacity because day (2) has zero capacity, so the second candidate fails with equality. The output is `100`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(t+n\log n+n\log t)) | Prefix sums take (O(t)), sorting takes (O(n\log n)), and every girl performs logarithmic segment-tree work |
-| Space | (O(n+t)) | The girls, prefix sums, and segment-tree arrays are all linear in the input size |
+| Time | (O(t+n+n\log n)) | Prefix sums take (O(t)), sorting takes (O(n\log n)), and each girl performs a constant number of (O(\log n)) segment-tree operations |
+| Space | (O(t+n)) | Prefix capacities, sorted candidates, and two segment trees all use linear memory |
 
-With (n,t\le300,000), the solution performs only a logarithmic amount of data-structure work for each girl after sorting. The segment tree contains (O(t)) nodes, and the compact numeric arrays keep its memory usage within the 256 MiB limit stated by the official problem.
+With (n,t\le300000), the dominant term is (O(n\log n)), which is appropriate for the two-second target. The segment trees use compact 64-bit arrays in the Python implementation rather than ordinary Python integer arrays, keeping memory usage controlled.
 
 ## Test Cases
 
-The following harness assumes the `solve()` function from the previous section is in the same Python file. It temporarily replaces `stdin` and the global `input` function so every assertion exercises the actual solution.
-
 ```python
-# Place this harness in the same file as solve().
-
 import sys
 import io
+from array import array
+
+input = sys.stdin.readline
+
+INF = 10**30
+
+class SegmentTree:
+    def __init__(self, values, is_max):
+        self.n = len(values)
+        self.is_max = is_max
+        size = 4 * self.n + 5
+        self.val = array('q', [0]) * size
+        self.tag = array('q', [0]) * size
+        self.values = values
+        self._build(1, 0, self.n - 1)
+
+    def _merge(self, x, y):
+        if self.is_max:
+            return x if x > y else y
+        return x if x < y else y
+
+    def _build(self, v, l, r):
+        if l == r:
+            self.val[v] = self.values[l]
+            return
+        m = (l + r) >> 1
+        self._build(v << 1, l, m)
+        self._build(v << 1 | 1, m + 1, r)
+        self.val[v] = self._merge(
+            self.val[v << 1],
+            self.val[v << 1 | 1]
+        )
+
+    def update_suffix(self, pos):
+        if pos >= self.n:
+            return
+        self._update(1, 0, self.n - 1, pos)
+
+    def _update(self, v, l, r, pos):
+        if pos <= l:
+            self.val[v] += 1
+            self.tag[v] += 1
+            return
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            self._update(v << 1, l, m, pos)
+        self._update(v << 1 | 1, m + 1, r, pos)
+
+        self.val[v] = self._merge(
+            self.val[v << 1],
+            self.val[v << 1 | 1]
+        ) + self.tag[v]
+
+    def query_suffix(self, pos):
+        if pos >= self.n:
+            return -INF if self.is_max else INF
+        return self._query_suffix(1, 0, self.n - 1, pos)
+
+    def _query_suffix(self, v, l, r, pos):
+        if pos <= l:
+            return self.val[v]
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            left = self._query_suffix(v << 1, l, m, pos)
+            right = self.val[v << 1 | 1]
+            return self._merge(left, right) + self.tag[v]
+
+        return self._query_suffix(v << 1 | 1, m + 1, r, pos) + self.tag[v]
+
+    def query_prefix(self, pos):
+        if pos < 0:
+            return -INF if self.is_max else INF
+        if pos >= self.n - 1:
+            return self.val[1]
+        return self._query_prefix(1, 0, self.n - 1, pos)
+
+    def _query_prefix(self, v, l, r, pos):
+        if r <= pos:
+            return self.val[v]
+
+        m = (l + r) >> 1
+
+        if pos <= m:
+            return self._query_prefix(v << 1, l, m, pos) + self.tag[v]
+
+        left = self.val[v << 1]
+        right = self._query_prefix(v << 1 | 1, m + 1, r, pos)
+        return self._merge(left, right) + self.tag[v]
+
+def solve_case(inp):
+    data = iter(inp.split())
+    n = int(next(data))
+    t = int(next(data))
+
+    pref = [0] * (t + 1)
+    for i in range(1, t + 1):
+        pref[i] = pref[i - 1] + int(next(data))
+
+    order = [None] * n
+    c = [0] * n
+    d = [0] * n
+
+    for i in range(n):
+        l = int(next(data))
+        r = int(next(data))
+        p = int(next(data))
+        order[i] = (p, i)
+        c[i] = -pref[r]
+        d[i] = -pref[l - 1]
+
+    order.sort(reverse=True)
+
+    tc = SegmentTree(c, True)
+    td = SegmentTree(d, False)
+
+    ans = 0
+
+    for p, x in order:
+        if tc.query_suffix(x) < td.query_prefix(x):
+            tc.update_suffix(x)
+            td.update_suffix(x + 1)
+            ans += p
+
+    return str(ans)
 
 def run(inp: str) -> str:
-    global input
-
-    old_stdin = sys.stdin
-    old_input = input
-
-    sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
-
-    try:
-        return str(solve()).strip()
-    finally:
-        sys.stdin = old_stdin
-        input = old_input
+    return solve_case(inp)
 
 # Provided sample.
-assert run(
-    """3 5
+assert run("""\
+3 5
 0 1 0 1 0
 1 2 2
 2 4 1
 3 5 5
-"""
-) == "7", "sample 1"
+""") == "7", "sample 1"
 
-# Minimum-size case, with zero capacity.
-assert run(
-    """1 1
+# Minimum-size case with zero capacity.
+assert run("""\
+1 1
 0
-1 1 9
-"""
-) == "0", "minimum size and zero capacity"
-
-# Two girls need the same single day.
-assert run(
-    """2 1
-1
-1 1 10
-1 1 9
-"""
-) == "10", "single-slot contention"
-
-# All capacities, intervals, and pleasures are equal.
-assert run(
-    """3 3
-1 1 1
-1 3 7
-1 3 7
-1 3 7
-"""
-) == "21", "equal values and tie handling"
-
-# Boundary-heavy case.
-assert run(
-    """3 3
-0 1 0
 1 1 5
-2 2 7
-1 3 6
-"""
-) == "7", "inclusive interval boundaries"
+""") == "0", "minimum size and zero capacity"
 
-# Maximum-size structural test.
-N = 300_000
-lines = [
-    f"{N} {N}",
-    " ".join(["1"] * N),
-]
-lines.extend(["1 300000 1"] * N)
+# All girls have the same interval and compete for one slot.
+assert run("""\
+2 1
+1
+1 1 5
+1 1 4
+""") == "5", "shared single capacity"
 
-assert run("\n".join(lines) + "\n") == "300000", "maximum-size case"
+# Boundary case where day 2 has no capacity.
+assert run("""\
+2 2
+1 0
+1 1 100
+1 2 99
+""") == "100", "Hall constraint across a boundary"
+
+# All values equal, with enough total capacity for every girl.
+assert run("""\
+4 2
+2 2
+1 2 10
+1 2 10
+1 2 10
+1 2 10
+""") == "40", "all equal values"
+
+# Maximum-size construction.
+n = 300000
+parts = [f"{n} {n}\n", ("1 " * (n - 1)) + "1\n"]
+for i in range(1, n + 1):
+    parts.append(f"{i} {i} 1\n")
+
+large_input = "".join(parts)
+assert run(large_input) == "300000", "maximum-size instance"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 / 0 / 1 1 9` | 0 | Minimum input and zero capacity |
-| `2 1 / 1 / 1 1 10 / 1 1 9` | 10 | Two intervals competing for one slot |
-| `3 3 / 1 1 1 / 1 3 7` repeated | 21 | Equal capacities, intervals, pleasures, and sorting ties |
-| `3 3 / 0 1 0 / 1 1 5 / 2 2 7 / 1 3 6` | 7 | Inclusive boundaries and unavailable endpoint days |
-| Generated (300000)-girl instance | 300000 | Maximum (n,t), segment-tree performance, and large answer |
+| `1 1 / 0 / 1 1 5` | `0` | Minimum size and zero capacity |
+| `2 1 / 1 / 1 1 5 / 1 1 4` | `5` | Multiple girls competing for one slot |
+| `2 2 / 1 0 / 1 1 100 / 1 2 99` | `100` | Global Hall constraint and endpoint handling |
+| `4 2 / 2 2 / four [1,2] intervals` | `40` | Equal intervals, equal pleasures, sufficient capacity |
+| (n=t=300000), unit capacity and ([i,i]) intervals | `300000` | Maximum input size and linear-memory behavior |
 
 ## Edge Cases
 
-### Zero capacity
-
-For
+When every capacity is zero, every initial (c_i) and (d_i) is zero. For a girl at position (x), the test compares a suffix maximum of zero with a prefix minimum of zero. Since (0<0) is false, nobody is accepted. For
 
 ```
-1 2
-0 0
-1 2 10
+1 1
+0
+1 1 10
 ```
 
-the initial prefix capacities are (s=[0,0,0]), so (p=q=[0,0,0]). For the only girl, the left query gives (p_0=0), while the right query gives (\min(q_2)=0). The required strict inequality (0<0) fails, so the girl is rejected and the answer remains (0).
+the algorithm returns `0`, exactly as required.
 
-The algorithm does not need a special case for zero-capacity days. They simply appear as equal prefix values, and the Hall inequality detects that no date can be assigned.
-
-### Multiple girls competing for one day
-
-For
+When several girls share one day, the first one can be accepted, but the next one must fail. For
 
 ```
 2 1
 1
-1 1 10
-1 1 9
-```
-
-the initial arrays are (p=q=[0,1]). The pleasure (10) girl is accepted because (p_0=0<q_1=1). The suffix update makes both values at index (1) equal to zero.
-
-When the pleasure (9) girl is considered, the test becomes (p_0=0<q_1=0), which fails. The algorithm returns (10), exactly matching the fact that one day has only one slot.
-
-### Inclusive endpoints and zero capacity at a boundary
-
-For
-
-```
-3 3
-0 1 0
 1 1 5
-2 2 7
-1 3 6
+1 1 4
 ```
 
-the highest-value girl is ([2,2]), so she is accepted using the only usable day. The ([1,3]) girl is considered next, but she competes for that same remaining capacity and cannot be added. The ([1,1]) girl can only use day (1), whose capacity is zero, so she is also rejected.
+the first candidate satisfies (-1<0). After accepting her, the relevant (c) value becomes zero. The second candidate then sees (0<0) as false and is rejected. The result is `5`.
 
-The answer is (7). The segment-tree indices (0,\ldots,t) make the left boundary (l=1) correspond to the prefix containing only index (0), while the right boundary (r=3) starts the suffix at index (3). This is exactly the shift needed by the Hall formulation and avoids an off-by-one interpretation of the original day intervals.
-
-### A candidate that is globally possible but locally impossible
-
-Consider
+The global Hall constraint appears in
 
 ```
-3 3
-1 0 1
+2 2
+1 0
 1 1 100
-2 3 60
-1 3 70
+1 2 99
 ```
 
-The first girl has value (100) and can only use day (1), so she is accepted. The second girl has value (70) and can use days (1) through (3), but after the first acceptance she can still use day (3), so she is also accepted. The third girl has value (60) and can use days (2) or (3), but day (2) has no capacity and day (3) is already needed by the flexible (70)-value girl. The Hall test rejects her.
+After accepting the first girl, the second candidate has (x=2) in one-based indexing. The right-side maximum (c) and left-side minimum (d) become equal, so the candidate is rejected. The segment tree is detecting that the two girls collectively require more capacity than the days can provide, even though each girl individually looks feasible.
 
-This illustrates why checking only the total remaining capacity is insufficient. Feasibility depends on where that capacity occurs, and the (p,q) transformation compresses all interval Hall constraints into the two extrema queried by the segment tree.
+For equal intervals, the algorithm does not rely on distinct endpoints. Consider four girls with interval ([1,2]), capacities (2,2), and pleasure (10) each. Every candidate passes because there are exactly four available slots. The suffix updates correctly accumulate four accepted girls, and the answer becomes `40`.
+
+At the right boundary, accepting the last girl must not update (d_n), because (d_n) contains (B_{n-1}), not (B_n). This is why the implementation performs `tree_d.update_suffix(x + 1)` rather than `tree_d.update_suffix(x)`. For a final-position girl, this update is skipped completely. That boundary is what makes the prefix expression (B_{L-1}-A_{l_L-1}) line up with the Hall inequality.
+
+The maximum-size case has (300000) girls and (300000) days, with one unit of capacity on every day and girl (i) restricted to day (i). Every girl is independently schedulable, so all (300000) girls are accepted and the answer is `300000`. The algorithm handles this in (O(n\log n)) time while keeping the segment-tree storage linear.
