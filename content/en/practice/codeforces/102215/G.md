@@ -1,7 +1,7 @@
 ---
 title: "CF 102215G - Akinator"
-description: "The game can be viewed as a binary decision tree. Every question has two possible answers, so after a sequence of answers we arrive at one leaf of a binary tree, and that leaf represents the person Akinator has identified."
-date: "2026-08-18T12:00:51+07:00"
+description: "Think of the questioning strategy as a binary decision tree. Every internal node is one question, its two outgoing edges correspond to the answers \"Yes\" and \"No\", and every leaf identifies exactly one person."
+date: "2026-08-18T22:02:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102215
@@ -9,8 +9,8 @@ codeforces_index: "G"
 codeforces_contest_name: "2019, XII Samara Regional Intercollegiate Programming Contest"
 rating: 0
 weight: 102215
-solve_time_s: 637
-verified: false
+solve_time_s: 451
+verified: true
 draft: false
 ---
 
@@ -18,246 +18,206 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 10m 37s  
-**Verified:** no  
+**Solve time:** 7m 31s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The game can be viewed as a binary decision tree. Every question has two possible answers, so after a sequence of answers we arrive at one leaf of a binary tree, and that leaf represents the person Akinator has identified. If a person is placed at depth (d), Akinator needs exactly (d) questions when that person was chosen.
+Think of the questioning strategy as a binary decision tree. Every internal node is one question, its two outgoing edges correspond to the answers "Yes" and "No", and every leaf identifies exactly one person. Because a question may contain any subset of the currently possible people, any binary partition of the candidates can be used at a node. Thus the original game is exactly the problem of building a binary prefix tree.
 
-The actual question can contain any subset of the currently possible people. Because of that freedom, every binary decision tree can be implemented as a valid questioning strategy. The problem is consequently equivalent to constructing a binary tree with exactly (n) leaves, maximum depth at most (k), and minimum weighted path length
+If person (i) ends up at depth (l_i), Akinator asks exactly (l_i) questions when that person was chosen. Since (p_i=a_i/\sum a_j), the expected number of questions is
 
 [
-\sum_{i=1}^{n} a_i d_i.
+\frac{\sum_i a_i l_i}{\sum_i a_i}.
 ]
 
-The probabilities only differ from the values (a_i) by the same normalization factor, so minimizing the weighted sum above also minimizes the expected number of questions.
+The denominator is fixed, so the real optimization target is the integer
 
-The constraints are small in the number of people, (n\le 100), and the depth limit is also at most 100. That rules out enumerating trees, since even the number of possible binary tree shapes grows superexponentially. At the same time, (O(nk)) or (O(nk\log n)) algorithms are easily fast enough, while a dynamic program with three independent (n)-sized dimensions would already be unnecessarily expensive in Python.
+[
+\sum_i a_i l_i.
+]
 
-There are several edge cases that deserve explicit treatment. With one possible person, no question is necessary. For example,
+The tree must have maximum depth at most (k). A binary tree with (n) leaves and height at most (k) exists exactly when (n\le 2^k). If this fails, no questioning strategy can distinguish all people in the allowed number of questions. The same condition is the Kraft bound for binary prefix codes.
+
+The constraints are small in (n), but they do not permit enumerating trees or subsets. With (n\le100), even (O(n^3)) is harmless, while anything exponential in (n) is completely infeasible. The probabilities are represented by integers as large as (10^{12}), so the implementation should work entirely with exact integers rather than floating point.
+
+There are several boundary cases that can fool a naive implementation. With one possible person, no question is needed. For example,
 
 ```
 1 1
-7
+1000000000000
 ```
 
-has output
+has answer `0/1`. A solution that assumes every person needs at least one question would incorrectly output a positive value.
+
+The depth bound can make an otherwise ordinary Huffman construction impossible. For example,
 
 ```
-0/1
+3 1
+1 2 3
 ```
 
-because Akinator already knows the answer. A solution that blindly assigns every person a positive-depth leaf would incorrectly output `1/1`.
+has output `No solution`, because one binary question has only two possible answer sequences. Running ordinary Huffman coding without checking the height constraint can silently produce a tree of depth two.
 
-A second boundary case is insufficient depth. For
-
-```
-4 1
-8 1 9 2
-```
-
-there are only two leaves available in a binary tree of height one, but four people must be distinguished. The correct output is
+The opposite boundary is when (n=2^k). Then every leaf must be exactly at depth (k), regardless of the weights. For example,
 
 ```
-No solution
+4 2
+1 2 3 4
 ```
 
-A careless implementation that only optimizes an incomplete tree could produce a finite average even though some people cannot be identified.
+has weighted cost (2(1+2+3+4)=20), so the answer is `2/1`. A strategy that tries to give one person a shorter code cannot do so without making another person deeper than two questions.
 
-Equal weights are another subtle case. For
+Finally, equal weights are useful for detecting ordering mistakes. With
 
 ```
-3 3
+3 2
 1 1 1
 ```
 
-the optimal depths are (1,2,2), giving
-
-[
-\frac{1+2+2}{3}=\frac53.
-]
-
-A tie-sensitive implementation of package merging can choose different equally weighted intermediate objects, so its ordering rule must be deterministic and compatible with the package-merge construction.
-
-Finally, the answer is a rational number, not necessarily an integer. For
-
-```
-3 3
-1 2 4
-```
-
-the optimal depths are (2,2,1) after assigning the largest weight to the shallowest leaf, giving
-
-[
-\frac{2+4+4}{7}=\frac{10}{7}.
-]
-
-Using floating point here can lose precision, so the implementation keeps the numerator and denominator as integers and reduces them with `gcd`.
+the optimal depths are (1,2,2), giving total cost (5) and answer `5/3`. The most frequent person is not special here, so any correct tie handling must still produce the same total.
 
 ## Approaches
 
-A direct approach would enumerate possible binary decision trees and calculate their expected cost. For every tree we could assign the largest weights to the shallowest leaves, because swapping two leaves where a larger weight has greater depth can only decrease the cost. This makes the cost calculation straightforward once the tree shape is known.
+A direct approach would try every possible binary decision tree. At a set (S) of currently possible people, a question chooses a nonempty proper subset (A\subset S), with (A) becoming the Yes branch and (S\setminus A) becoming the No branch. A recursive dynamic program over subsets could remember the best cost for every subset and remaining depth.
 
-The problem is the number of trees. Even if we ignore the labels of the people and enumerate only full binary tree shapes, there are ((2n-3)!!) possibilities. At (n=100), this is (197!!), which is greater than (10^{184}). An alternative brute force over every possible depth for every person would have up to (k^n) assignments, which reaches (100^{100}=10^{200}). Either interpretation is completely infeasible.
+This is correct because every possible questioning strategy has exactly such a first partition, and the two resulting subproblems are independent after the first question. Unfortunately, there are (2^n) subsets, and considering all possible splits gives exponential work on top of that. Across all subsets, the number of ordered nontrivial splits is
 
-The useful observation is that this is exactly the binary length-limited Huffman problem. Ordinary Huffman coding minimizes weighted path length without restricting the maximum depth. Here we have the same objective, with the additional condition that every leaf has depth at most (k). The standard package-merge algorithm solves precisely this bounded-depth version in (O(nk)) time. This connection is also reflected in the Codeforces discussion of the problem, where an (O(nk)) solution using optimal length-limited Huffman codes is identified.
+[
+\sum_{S\ne\varnothing} (2^{|S|}-2)
+=3^n-2^{n+1}+1.
+]
 
-The package-merge construction starts with the individual people. At each level it combines adjacent cheapest objects in pairs, producing packages whose weight is the sum of their contents, and then merges those packages back with the original individual people. After (k) levels, selecting the (2n-2) cheapest objects gives exactly the set of length increments needed for an optimal code. This is the classical package-merge formulation of length-limited Huffman coding.
+For (n=100), (3^{100}) is about (5.15\cdot10^{47}), so this approach is not remotely viable.
 
-The reason this works is closely related to the Kraft inequality. If every person initially has code length zero, the Kraft sum is (n). Increasing one code length by one reduces its contribution by a factor of two. Package-merge groups two equal-level choices into one higher-level choice, preserving exactly the structure needed to make the total Kraft sum become one. The selected objects consequently describe a valid full binary tree, while choosing the cheapest possible objects minimizes its weighted path length.
+The useful observation is that we do not actually care which person goes to which exact binary string. We only care about the depths (l_i). A set of depths is realizable by a binary prefix tree exactly when it satisfies the Kraft inequality
+
+[
+\sum_i2^{-l_i}\le1.
+]
+
+For an optimal tree, equality holds, because if the sum were smaller we could shorten some code without violating the constraint. Thus the problem becomes a length-limited Huffman coding problem: minimize (\sum a_i l_i) subject to (1\le l_i\le k) and (\sum 2^{-l_i}=1).
+
+There is a particularly clean way to solve this constrained Huffman problem. Imagine that every person initially has length zero. The Kraft sum is then (n). Increasing person (i)'s length from (l-1) to (l) decreases the Kraft sum by (2^{-l}), and costs exactly (a_i). We need to perform length increases whose total Kraft reduction is (n-1).
+
+This turns the problem into a binary coin-collector problem. For every person (i), create (k) coins with denominations
+
+[
+2^{-1},2^{-2},\ldots,2^{-k},
+]
+
+and give every one of those coins value (a_i). We need a minimum-value collection whose denominations sum to (n-1). If the coin corresponding to level (l) is selected, that represents increasing the person's code length through level (l). This is the standard reduction behind package-merge for length-limited Huffman coding.
+
+Because all denominations are powers of two, the coin problem has a greedy solution. At the smallest denomination, any selected coins must occur in pairs, since every larger denomination is twice as large. The cheapest possible pair is formed from the two cheapest available coins. That pair can then be treated as one coin of the next denomination. If one coin is left over, it can never participate in an exact solution, so the most expensive leftover coin can be discarded. Repeating this process produces the package-merge algorithm.
+
+The brute force works because it explicitly explores all binary partitions. The package-merge observation lets us replace all those trees by only (k) sorted lists containing the cheapest relevant packages. Since (n,k\le100), even the straightforward (O(nk)) implementation is easily fast enough.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(k^n)) or worse | (O(n)) | Too slow |
-| Package Merge | (O(nk)) | (O(nk)) | Accepted |
+| Brute Force | (O(3^n)) | (O(2^n)) | Too slow |
+| Optimal package-merge | (O(nk)) | (O(n)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the weights and sort the people by increasing weight. The order of equal weights can be arbitrary for the final objective, but the package construction needs deterministic tie handling.
-2. If (n=1), return `0/1`. The only person is already known, so the optimal code has length zero.
-3. Check whether (n\le 2^k). A binary tree of height (k) has at most (2^k) leaves. If this condition fails, no strategy can distinguish all people, so print `No solution`.
-4. Create level one as the list of all individual people. Each object stores its weight and whether it is an original leaf.
-5. For every level from two through (k), take the previous level in increasing order of cost and pair consecutive objects. Each pair becomes a package whose weight is the sum of the two child weights. If an odd object remains, it is not packaged.
-6. Merge the newly created packages with another copy of the original people. Packages and individual people are kept sorted by their cost. When costs are equal, packages are placed before individual leaves. This deterministic tie rule keeps the package structure compatible with the backward reconstruction.
-7. At level (k), select the first (2n-2) objects. These are the cheapest possible choices that reduce the Kraft sum from (n) to one.
-8. Move backward from level (k-1) to level one. Count how many selected objects at the next level are packages. If that number is (c), select the first (2c) objects at the current level. A selected package represents two objects at the preceding level, which is why every selected package creates exactly two required choices there.
-9. Initialize every person's code length to zero. Scan the selected sets from the deepest level toward the first level. Whenever a selected object is an original person, increase that person's length by one.
-10. Compute the weighted path length (\sum a_i d_i). Divide it by (\sum a_i), reduce the fraction using the greatest common divisor, and print the result.
+1. Sort the weights (a_i) in nondecreasing order. Equal weights may be placed in any order. The package-merge algorithm always needs items in increasing value order, and a package formed from two adjacent sorted items has a value no smaller than the previous package.
+2. Check whether (n\le2^k). If not, there cannot be (n) different leaves within depth (k), so print `No solution`.
+3. Regard the sorted weights as the initial list of coins of denomination (2^{-k}). These are the smallest coins, so they are the first ones that can be paired.
+4. Repeat the following process (k-1) times. Pair consecutive elements of the current sorted list, starting with the two cheapest. Each pair becomes a package whose value is the sum of its two elements. Then merge the package list with another copy of the original weights, and sort the result.
+
+The original weights represent ordinary coins of the new, twice-as-large denomination. The packages represent two smaller coins that have been combined into exactly that same denomination. Keeping both choices in one sorted list is what lets later decisions choose between a single expensive coin and a cheaper package.
+5. After those (k-1) rounds, pair consecutive elements one final time, but do not merge the resulting packages with the original weights. These packages now have denomination (1).
+6. Select the (n-1) cheapest final packages and add their values. This sum is the minimum possible weighted number of questions.
+7. Divide the resulting integer by (S=\sum a_i). Compute the greatest common divisor of the numerator and (S), divide both by it, and print the reduced fraction.
 
 ### Why it works
 
-The package-merge invariant is that every selected object at a given level represents one legal unit of Kraft-sum reduction at that level. A package represents two lower-level objects, so whenever a package is selected, its two children must also be selected during the backward reconstruction. The final selection of (2n-2) objects reduces the initial Kraft sum from (n) to one, which is exactly the Kraft equality for a complete binary prefix tree. The construction consequently produces valid code lengths with maximum length (k).
+Let (l_i) be the final depth assigned to person (i). Starting with every (l_i=0), the Kraft sum is (n). Increasing (l_i) from (l_i-1) to (l_i) decreases that sum by (2^{-l_i}), while increasing the objective by (a_i). Reaching a valid complete binary tree requires the Kraft sum to become exactly (1), so the selected reductions must have total value (n-1).
 
-For optimality, package-merge always combines the two cheapest currently available objects and keeps the resulting package as a candidate at the next level. If two objects of the same level are both needed in an optimal solution, replacing them by their package preserves the required Kraft contribution while replacing their two weights by their sum. Thus the cheaper pair can be represented without losing an optimal solution. Repeating this argument level by level proves that the final (2n-2) selected objects have minimum possible total weight. Each original person's number of occurrences in the selected objects is exactly its code length, so the resulting weighted path length is minimal. This is the standard optimality argument behind length-limited Huffman package-merge coding.
+The package-merge construction solves precisely this minimum-value selection problem. At every denomination, a valid solution can use the smallest denomination only an even number of times. If it uses (2r) such coins, it is always optimal to use the (2r) cheapest ones, and those can be grouped into (r) consecutive pairs. Replacing each pair by one package preserves both its total denomination and its total value. Thus solving the smaller-denomination layer greedily produces exactly the set of choices needed by the next layer.
+
+At the final layer, every selected item has denomination (1), so choosing (n-1) of them gives total denomination (n-1). Expanding the packages gives one selected coin for every unit increase of every code length, so the total package value is exactly (\sum_i a_i l_i). Since package-merge minimizes that value, the resulting code has minimum expected number of questions. The resulting lengths satisfy Kraft equality and are at most (k), so a binary prefix tree realizing them exists.
 
 ## Python Solution
 
 ```python
 import sys
-from math import gcd
-
 input = sys.stdin.readline
 
-def solve_case(n, k, weights):
-    if n == 1:
-        return "0/1"
+def merge_sorted(a, b):
+    """Merge two already sorted lists."""
+    res = []
+    i = 0
+    j = 0
 
-    if n > (1 << k):
-        return "No solution"
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            res.append(a[i])
+            i += 1
+        else:
+            res.append(b[j])
+            j += 1
 
-    # Item format:
-    # (weight, kind, serial, person)
-    #
-    # kind = 0 for a package, 1 for an original leaf.
-    # Packages are preferred on equal weight. This tie rule is needed
-    # for deterministic and valid package-merge reconstruction.
-    #
-    # For a package, person = -1.
-    # For an original leaf, person is its index.
+    if i < len(a):
+        res.extend(a[i:])
+    if j < len(b):
+        res.extend(b[j:])
 
-    weights_with_id = sorted(
-        [(w, i) for i, w in enumerate(weights)],
-        key=lambda x: (x[0], x[1])
-    )
-
-    serial = 0
-    current = []
-
-    for w, idx in weights_with_id:
-        current.append((w, 1, serial, idx))
-        serial += 1
-
-    levels = [None] * (k + 1)
-    levels[1] = current
-
-    originals = current[:]
-
-    for level in range(2, k + 1):
-        previous = levels[level - 1]
-        packages = []
-
-        for j in range(0, len(previous) - 1, 2):
-            left = previous[j]
-            right = previous[j + 1]
-
-            package_weight = left[0] + right[0]
-            packages.append((package_weight, 0, serial, -1))
-            serial += 1
-
-        # Both lists are sorted. Merge them instead of sorting again.
-        merged = []
-        i = 0
-        j = 0
-
-        while i < len(packages) and j < len(originals):
-            a = packages[i]
-            b = originals[j]
-
-            if (a[0], a[1], a[2]) <= (b[0], b[1], b[2]):
-                merged.append(a)
-                i += 1
-            else:
-                merged.append(b)
-                j += 1
-
-        merged.extend(packages[i:])
-        merged.extend(originals[j:])
-
-        levels[level] = merged
-
-    selected = [None] * (k + 1)
-
-    need = 2 * n - 2
-    selected[k] = levels[k][:need]
-
-    for level in range(k - 1, 0, -1):
-        package_count = 0
-
-        for item in selected[level + 1]:
-            if item[1] == 0:
-                package_count += 1
-
-        take = 2 * package_count
-        selected[level] = levels[level][:take]
-
-    lengths = [0] * n
-
-    for level in range(k, 0, -1):
-        for item in selected[level]:
-            if item[1] == 1:
-                lengths[item[3]] += 1
-
-    numerator = sum(w * d for w, d in zip(weights, lengths))
-    denominator = sum(weights)
-
-    g = gcd(numerator, denominator)
-    numerator //= g
-    denominator //= g
-
-    return f"{numerator}/{denominator}"
+    return res
 
 def solve():
     n, k = map(int, input().split())
     weights = list(map(int, input().split()))
-    print(solve_case(n, k, weights))
+    weights.sort()
+
+    if n > (1 << k):
+        print("No solution")
+        return
+
+    current = weights[:]
+
+    # Move from denomination 2^(-k) up to denomination 2^(-1).
+    # At every intermediate level, packages are merged with
+    # the original coins of the new denomination.
+    for _ in range(k - 1):
+        packages = []
+        for i in range(0, len(current) - 1, 2):
+            packages.append(current[i] + current[i + 1])
+
+        current = merge_sorted(weights, packages)
+
+    # One final packaging step creates denomination-1 items.
+    final_packages = []
+    for i in range(0, len(current) - 1, 2):
+        final_packages.append(current[i] + current[i + 1])
+
+    # final_packages is already sorted.
+    numerator = sum(final_packages[:n - 1])
+    denominator = sum(weights)
+
+    g = __import__("math").gcd(numerator, denominator)
+    numerator //= g
+    denominator //= g
+
+    print(f"{numerator}/{denominator}")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first special case handles the root being a leaf. Without it, the package construction would treat the single person as needing at least one question.
+The input weights are sorted once at the beginning. Sorting is enough because package values are formed by adding adjacent elements of a sorted list, so the resulting package list is also sorted.
 
-The capacity check uses `1 << k` rather than floating-point powers. Python integers have arbitrary precision, so even (2^{100}) is represented exactly.
+The `merge_sorted` function exploits this property. It merges the (n) original weights with the current package list in linear time. Re-sorting the whole list at every level would still pass comfortably for (n,k\le100), but the merge makes the intended (O(nk)) complexity explicit.
 
-Each package contains only its total weight and a marker saying that it is composite. We do not need to store all of its descendants. The backward pass works directly with the selected objects at every level, so the implementation only needs to know whether an object is an original person or a package.
+The loop runs only through the first (k-1) levels. The final level is deliberately handled separately because the final packages have denomination (1), and no original coins of denomination (1) exist. Mixing the original weights into that final list would create an off-by-one error in the denomination structure.
 
-The original list is kept unchanged at every level. The package list and the original list are both sorted, so their union can be formed by a linear merge. This is what keeps the construction at (O(nk)) rather than sorting every level independently.
+The range used when creating pairs is `range(0, len(current) - 1, 2)`. If the current list has an odd number of elements, its last element is left unused. Since the list is sorted, that element is the most expensive one, which is exactly the item that package-merge discards.
 
-The `package_count` calculation is the key part of reconstruction. Every selected package at level `level + 1` represents exactly two selected objects at `level`, so the number of objects needed there is twice the number of selected packages.
+The feasibility check uses `1 << k`, so there is no floating-point logarithm and no rounding issue. Python integers also handle the largest possible intermediate values safely. The largest relevant weighted cost is on the order of (n^2\cdot10^{12}), far below what Python's arbitrary-precision integers can handle comfortably.
 
-The final numerator can reach around (10^{16}), so fixed-width 32-bit arithmetic would be unsafe in languages that use it. Python integers handle this automatically. The denominator is the sum of all input weights, and `gcd` produces the required irreducible fraction.
+The final package list is already sorted because `current` is sorted and the sum of each consecutive pair is nondecreasing. Hence the (n-1) cheapest packages are simply its first (n-1) elements.
+
+For (n=1), that slice is empty, giving numerator zero. The denominator is positive, so the reduced answer is correctly `0/1`.
 
 ## Worked Examples
 
@@ -270,13 +230,16 @@ The input is
 8 1 9 2
 ```
 
-At most (2^1=2) people can be distinguished with one binary question, but there are four possible people.
+There are four people but only one question. A single binary question has only two possible answer sequences, so four different people cannot all be distinguished.
 
-| n | k | Maximum leaves (2^k) | Feasible |
-| --- | --- | --- | --- |
-| 4 | 1 | 2 | No |
+| Variable | Value |
+| --- | --- |
+| (n) | 4 |
+| (k) | 1 |
+| (2^k) | 2 |
+| Feasible? | No |
 
-The algorithm stops before constructing packages and prints `No solution`. This demonstrates why feasibility must be checked before optimizing the expected number of questions.
+The algorithm stops before constructing any packages and prints `No solution`. This confirms that the capacity check is necessary and also avoids meaningless package processing when the tree cannot exist.
 
 ### Sample 2
 
@@ -287,169 +250,122 @@ The input is
 1 2 3 4
 ```
 
-The individual people are ordered by weight as (1,2,3,4).
+The sorted weights are already `[1, 2, 3, 4]`.
 
-| Level | Objects after packaging and merging | Selected | Package count |
-| --- | --- | --- | --- |
-| 1 | 1L, 2L, 3L, 4L | first 4 during reconstruction | 0 |
-| 2 | 1L, 2L, 3P, 3L, 4L, 7P | first 6 | 2 |
+| Stage | Current list | Packages produced |
+| --- | --- | --- |
+| Initial | `[1, 2, 3, 4]` | `[3, 7]` |
+| After merge | `[1, 2, 3, 3, 4, 7]` | `[3, 6, 11]` |
+| Final selection | `[3, 6, 11]` | `3 + 6 + 11 = 20` |
 
-At level two, the packages are ((1,2)) with weight 3 and ((3,4)) with weight 7. There are exactly (2n-2=6) objects, so all of them are selected.
+There are (n-1=3) final packages, so all three are selected. The weighted cost is (20), while the total weight is (1+2+3+4=10). The reduced fraction is (20/10=2/1).
 
-The two selected packages require four objects at level one, so all four original people are selected there. Every person appears once in each level, giving lengths (2,2,2,2). The weighted path length is
-
-[
-2(1+2+3+4)=20.
-]
-
-The total weight is (10), so the answer is
-
-```
-2/1
-```
-
-The trace demonstrates the reconstruction invariant: every selected package at one level demands its two child positions at the preceding level.
+The corresponding optimal lengths are (2,2,2,2). The Kraft sum is (4\cdot2^{-2}=1), and every person is found in exactly two questions.
 
 ### Sample 3
 
-The input is
+For
 
 ```
 4 3
 1 2 3 4
 ```
 
-The first two levels are:
-
-| Level | Sorted objects | Selected objects | Package count |
-| --- | --- | --- | --- |
-| 1 | 1L, 2L, 3L, 4L | reconstructed later | 0 |
-| 2 | 1L, 2L, 3P, 3L, 4L, 7P | reconstructed later | 1 |
-| 3 | 1L, 2L, 3P, 3P, 3L, 4L, 6P, 11P | first 6 | 2 |
-
-At level three, the two cheapest composite objects of weight 3 are selected along with the four cheapest individual leaves. Their two composite objects require four objects at level two.
-
-At level two, the first four objects are `1L, 2L, 3P, 3L`, which contains one package, so level one needs two objects, namely `1L` and `2L`.
-
-The resulting lengths are
-
-| Person weight | Length |
-| --- | --- |
-| 1 | 3 |
-| 2 | 3 |
-| 3 | 2 |
-| 4 | 1 |
-
-The weighted path length is
-
-[
-1\cdot3+2\cdot3+3\cdot2+4\cdot1=19.
-]
-
-The total weight is (10), producing
+the first intermediate list is
 
 ```
-19/10
+[1, 2, 3, 3, 4, 7]
 ```
 
-This is exactly the desired behavior: the most probable person gets the shortest code, while the two least probable people absorb the extra depth imposed by the three-question limit.
+The next packaging step gives `[3, 6, 11]`, which is merged with the original weights:
+
+```
+[1, 2, 3, 3, 4, 6, 7, 11]
+```
+
+The final packages are then `[3, 6, 10, 18]`.
+
+| Stage | Current list | Packages |
+| --- | --- | --- |
+| Initial | `[1, 2, 3, 4]` | `[3, 7]` |
+| Level 2 | `[1, 2, 3, 3, 4, 7]` | `[3, 6, 11]` |
+| Level 3 | `[1, 2, 3, 3, 4, 6, 7, 11]` | `[3, 6, 10, 18]` |
+| Select 3 cheapest | `[3, 6, 10]` | `19` |
+
+The weighted cost is (19), and the total weight is (10), so the answer is `19/10`.
+
+The selected packages correspond to lengths (3,3,3,3) for the weights (1,2,3) and a shorter length for weight (4). The resulting strategy can ask about person 4 first, then person 3 if necessary, and finally distinguish persons 1 and 2, exactly matching the optimal structure described by the sample.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(nk)) | Each of the (k) levels contains (O(n)) objects, and packaging plus merging is linear. |
-| Space | (O(nk)) | All level lists are retained for the backward reconstruction. |
+| Time | (O(nk)) | Each of the (k) levels creates (O(n)) packages and merges two sorted lists of (O(n)) elements. |
+| Space | (O(n)) | Only the original weights, the current list, and one package list are stored. |
 
-With (n,k\le100), the implementation handles only around (10^4) package objects, so both the running time and memory usage are far below the given limits. The package-merge algorithm is specifically designed for length-limited Huffman coding and has (O(nL)) complexity for maximum code length (L).
+With (n,k\le100), the algorithm performs only around (10^4) list-level operations up to constant factors. The integer values are also small enough that exact arbitrary-precision arithmetic is inexpensive, so the solution fits comfortably within the 2 second and 256 MB limits.
 
 ## Test Cases
 
 ```python
 import sys
 import io
-from math import gcd
+import math
 
-def solve_case(n, k, weights):
-    if n == 1:
-        return "0/1"
+def merge_sorted(a, b):
+    res = []
+    i = 0
+    j = 0
 
-    if n > (1 << k):
-        return "No solution"
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            res.append(a[i])
+            i += 1
+        else:
+            res.append(b[j])
+            j += 1
 
-    weights_with_id = sorted(
-        [(w, i) for i, w in enumerate(weights)],
-        key=lambda x: (x[0], x[1])
-    )
+    res.extend(a[i:])
+    res.extend(b[j:])
+    return res
 
-    serial = 0
-    current = []
-
-    for w, idx in weights_with_id:
-        current.append((w, 1, serial, idx))
-        serial += 1
-
-    levels = [None] * (k + 1)
-    levels[1] = current
-    originals = current[:]
-
-    for level in range(2, k + 1):
-        previous = levels[level - 1]
-        packages = []
-
-        for j in range(0, len(previous) - 1, 2):
-            left = previous[j]
-            right = previous[j + 1]
-            packages.append((left[0] + right[0], 0, serial, -1))
-            serial += 1
-
-        merged = []
-        i = j = 0
-
-        while i < len(packages) and j < len(originals):
-            if packages[i][:3] <= originals[j][:3]:
-                merged.append(packages[i])
-                i += 1
-            else:
-                merged.append(originals[j])
-                j += 1
-
-        merged.extend(packages[i:])
-        merged.extend(originals[j:])
-        levels[level] = merged
-
-    selected = [None] * (k + 1)
-    selected[k] = levels[k][:2 * n - 2]
-
-    for level in range(k - 1, 0, -1):
-        package_count = sum(
-            1 for item in selected[level + 1]
-            if item[1] == 0
-        )
-        selected[level] = levels[level][:2 * package_count]
-
-    lengths = [0] * n
-
-    for level in range(k, 0, -1):
-        for item in selected[level]:
-            if item[1] == 1:
-                lengths[item[3]] += 1
-
-    numerator = sum(w * d for w, d in zip(weights, lengths))
-    denominator = sum(weights)
-
-    g = gcd(numerator, denominator)
-    return f"{numerator // g}/{denominator // g}"
-
-def run(inp: str) -> str:
+def solve_text(inp: str) -> str:
     old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
     try:
+        sys.stdin = io.StringIO(inp)
+        input = sys.stdin.readline
+
         n, k = map(int, input().split())
         weights = list(map(int, input().split()))
-        return solve_case(n, k, weights)
+        weights.sort()
+
+        if n > (1 << k):
+            return "No solution"
+
+        current = weights[:]
+
+        for _ in range(k - 1):
+            packages = [
+                current[i] + current[i + 1]
+                for i in range(0, len(current) - 1, 2)
+            ]
+            current = merge_sorted(weights, packages)
+
+        final_packages = [
+            current[i] + current[i + 1]
+            for i in range(0, len(current) - 1, 2)
+        ]
+
+        numerator = sum(final_packages[:n - 1])
+        denominator = sum(weights)
+
+        g = math.gcd(numerator, denominator)
+        return f"{numerator // g}/{denominator // g}"
     finally:
         sys.stdin = old_stdin
+
+def run(inp: str) -> str:
+    return solve_text(inp)
 
 # Provided samples
 assert run("4 1\n8 1 9 2\n") == "No solution", "sample 1"
@@ -457,92 +373,79 @@ assert run("4 2\n1 2 3 4\n") == "2/1", "sample 2"
 assert run("4 3\n1 2 3 4\n") == "19/10", "sample 3"
 
 # Minimum-size input
-assert run("1 1\n7\n") == "0/1", "one possible person needs no question"
+assert run("1 1\n1000000000000\n") == "0/1", "single person needs no questions"
 
-# All equal weights, nontrivial depth distribution
-assert run("3 3\n1 1 1\n") == "5/3", "equal weights"
+# Boundary where exactly 2^k people fit
+assert run("4 2\n1 1 1 1\n") == "2/1", "all leaves must have depth 2"
 
-# Boundary of feasibility: 2^k leaves are possible
-assert run("4 2\n1 1 1 1\n") == "2/1", "exact capacity"
+# Smallest impossible case
+assert run("3 1\n1 2 3\n") == "No solution", "three people cannot fit at depth 1"
 
-# Just beyond the capacity
-assert run("5 2\n1 1 1 1 1\n") == "No solution", "capacity boundary"
+# All equal weights with a non-complete power of two
+assert run("3 2\n1 1 1\n") == "5/3", "optimal lengths are 1, 2, 2"
 
-# Large values and highly unequal weights
-assert run("3 3\n1000000000000 1 1\n") == "1000000000002/1000000000002", \
-    "large weights and fraction reduction"
-```
-
-The last custom assertion deserves a correction if the implementation is tested literally: the optimal lengths for weights (10^{12},1,1) are (1,2,2), so the weighted path length is (10^{12}+4), not (10^{12}+2). The correct assertion is:
-
-```
-assert run("3 3\n1000000000000 1 1\n") == "1000000000004/1000000000002", \
-    "large weights"
+# Maximum-size case
+assert run("100 100\n" + " ".join(["1"] * 100) + "\n") == "168/25", \
+    "100 equal weights require total length 672"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 / 7` | `0/1` | Root can directly be a leaf |
-| `3 3 / 1 1 1` | `5/3` | Equal weights and nonuniform optimal depths |
-| `4 2 / 1 1 1 1` | `2/1` | Exact (2^k) capacity boundary |
-| `5 2 / 1 1 1 1 1` | `No solution` | First impossible case beyond capacity |
-| `3 3 / 1000000000000 1 1` | `1000000000004/1000000000002` | Large integer weights without floating-point arithmetic |
+| `1 1 / 1000000000000` | `0/1` | Minimum-size case and zero-question answer |
+| `4 2 / 1 1 1 1` | `2/1` | Exact (n=2^k) boundary |
+| `3 1 / 1 2 3` | `No solution` | Capacity check and depth boundary |
+| `3 2 / 1 1 1` | `5/3` | Uneven optimal depths and equal weights |
+| `100 100 / 100 ones` | `168/25` | Maximum (n), large (k), and exact integer arithmetic |
 
 ## Edge Cases
 
-For a single possible person,
+For a single person, the input
 
 ```
 1 1
-7
+1000000000000
 ```
 
-the algorithm returns immediately with `0/1`. No decision tree question is needed because the root itself identifies the only possible person.
+passes the capacity check. The initial list contains one value, and there are no pairs to form. The final package list is empty, so selecting the (n-1=0) cheapest packages costs zero. The denominator is positive, giving `0/1`. This matches the fact that Akinator already knows who the person must be.
 
-For insufficient depth,
+For too many people, consider
 
 ```
-4 1
-8 1 9 2
+3 1
+1 2 3
 ```
 
-the capacity is (2^1=2), smaller than four leaves. The feasibility check catches this before package construction and prints `No solution`.
+The algorithm checks (3>2^1) immediately. No binary tree of height one can have three leaves, so it prints `No solution`. This prevents an incomplete final package list from being mistaken for a valid code.
 
-For exact capacity,
+For the exact capacity boundary,
 
 ```
 4 2
 1 1 1 1
 ```
 
-the tree must have four leaves at depth two. Package-merge selects enough objects to give every person length two, so the weighted path length is (8) and the total weight is (4), producing `2/1`.
+the four leaves must occupy all four positions at depth two. The first packaging creates two packages of value (2), the final packaging creates one package of value (4) only after the intermediate list is formed, and the resulting selected cost is (8). Dividing by the total weight (4) gives `2/1`. There is no room for a shorter codeword because shortening one leaf would force another leaf beyond depth two.
 
-For equal weights,
+For equal weights with three people,
 
 ```
-3 3
+3 2
 1 1 1
 ```
 
-the optimal tree has one leaf at depth one and two at depth two. The package tie rule chooses a valid equivalent arrangement, giving lengths (2,2,1) in some order. The total weighted length is (5), so the answer is `5/3`.
+the first package list is `[2]`, which is merged with the original weights to obtain `[1,1,1,2]`. The final packages are `[2,3]`, both of which must be selected. Their total value is (5), while the total probability weight is (3), giving `5/3`. The corresponding lengths are (1,2,2), whose Kraft sum is (1/2+1/4+1/4=1).
 
-For very large weights,
+For the largest input size,
 
 ```
-3 3
-1000000000000 1 1
+100 100
+1 1 1 ... 1
 ```
 
-the largest weight is assigned the shallowest leaf. The two unit weights occupy depth two, giving weighted length
+with one hundred weights equal to one, the generous depth limit does not bind. The optimal equal-weight binary tree has 28 leaves at depth 6 and 72 leaves at depth 7, giving
 
 [
-10^{12}+2+2=1000000000004.
+28\cdot6+72\cdot7=672.
 ]
 
-The total weight is (1000000000002), so the exact answer is
-
-```
-1000000000004/1000000000002
-```
-
-with no precision loss.
+The expected number of questions is (672/100=168/25). The test confirms that the package construction continues correctly for many levels and that the final fraction is reduced exactly.
