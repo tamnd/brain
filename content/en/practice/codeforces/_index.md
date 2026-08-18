@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3166 contests, 23481 problems, 13164 verified."
+description: "Codeforces problem solutions with full editorials. 3167 contests, 23486 problems, 13169 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3166 contests, 23481 problems, 13164 verified.**
+**3167 contests, 23486 problems, 13169 verified.**
 
-## Unknown — 844 contests, 7153 problems, 4304 verified
+## Unknown — 845 contests, 7158 problems, 4309 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102189](102189/) | [12-й открытый турнир по программированию в Абакане](https://codeforces.com/contest/102189) | 5 | 5/5 | Special | - |
 | [102192](102192/) | [2018 Chinese Multi-University Training, Nanjing U Contest](https://codeforces.com/contest/102192) | 12 | 12/12 | Special | - |
 | [102201](102201/) | [Moscow Pre-Finals Workshop 2019. KAIST Contest](https://codeforces.com/contest/102201) | 9 | 7/9 | Special | - |
 | [102214](102214/) | [Открытое личное первенство ИКИТ СФУ по программированию 2015](https://codeforces.com/contest/102214) | 10 | 5/10 | Special | - |
