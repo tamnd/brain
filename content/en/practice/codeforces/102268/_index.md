@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 8
 n_verified: 0
-total_solve_s: 3302
-date: "2026-08-17T04:18:46+07:00"
+total_solve_s: 3795
+date: "2026-08-17T04:33:07+07:00"
 weight: 102268
 draft: false
 ---
 
 # [300iq Contest 1](https://codeforces.com/contest/102268)
 
-Special | 8 problems | 0/8 verified | Difficulty - | 55m 2s
+Special | 8 problems | 0/8 verified | Difficulty - | 1h 3m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,6 +25,6 @@ Special | 8 problems | 0/8 verified | Difficulty - | 55m 2s
 | [D](D/) | [Dates](https://codeforces.com/problemset/problem/102268/D) |  |  |  | 16m 50s |  |
 | [E](E/) | [Expected Value](https://codeforces.com/problemset/problem/102268/E) |  |  |  | 6m 50s |  |
 | [H](H/) | [Hall's Theorem](https://codeforces.com/problemset/problem/102268/H) |  |  |  | 3m 38s |  |
-| [I](I/) | [Interesting Graph](https://codeforces.com/problemset/problem/102268/I) |  |  |  | 6m 7s |  |
+| [I](I/) | [Interesting Graph](https://codeforces.com/problemset/problem/102268/I) |  |  |  | 14m 20s |  |
 | [J](J/) | [Jealous Split](https://codeforces.com/problemset/problem/102268/J) |  |  |  | 5m 25s |  |
 | [K](K/) | [Knowledge](https://codeforces.com/problemset/problem/102268/K) |  |  |  | 4m 35s |  |
