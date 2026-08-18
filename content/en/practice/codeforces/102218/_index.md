@@ -8,20 +8,20 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 1
-total_solve_s: 2800
+total_solve_s: 2773
 contest_year: 2019
-date: "2026-08-18T12:52:36+07:00"
+date: "2026-08-18T22:31:40+07:00"
 weight: 102218
 draft: false
 ---
 
 # [2019, XI Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/102218)
 
-Special | 9 problems | 1/9 verified | Difficulty - | 46m 40s
+Special | 9 problems | 1/9 verified | Difficulty - | 46m 13s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Alan's Birthday](https://codeforces.com/problemset/problem/102218/A) |  |  |  | 10m 20s |  |
+| [A](A/) | [Alan's Birthday](https://codeforces.com/problemset/problem/102218/A) |  |  |  | 9m 53s |  |
 | [B](B/) | [Buying Piles of Stones](https://codeforces.com/problemset/problem/102218/B) |  |  |  | 2m 33s |  |
 | [D](D/) | [Dynamic Network](https://codeforces.com/problemset/problem/102218/D) |  |  |  | 6m 31s |  |
 | [E](E/) | [Environmental Contingency](https://codeforces.com/problemset/problem/102218/E) |  |  |  | 2m 56s |  |

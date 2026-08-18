@@ -1,7 +1,7 @@
 ---
 title: "CF 102218A - Alan's Birthday"
-description: "We are given a string of (N) lowercase English letters. We may freely change the positions of its characters, but we must keep exactly the same multiset of letters. Among all possible rearrangements, we need the one that appears earliest in lexicographic order."
-date: "2026-08-18T12:31:10+07:00"
+description: "We are given a string of lowercase English letters, and we may rearrange its characters in any order. Alan searches his dictionary from the lexicographically smallest string toward the largest one, so the best gift is the rearrangement that appears as early as possible in that…"
+date: "2026-08-18T22:31:39+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102218
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "2019, XI Annual Programming Contest by ESCOM-IPN"
 rating: 0
 weight: 102218
-solve_time_s: 620
+solve_time_s: 593
 verified: false
 draft: false
 ---
@@ -18,177 +18,55 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 10m 20s  
+**Solve time:** 9m 53s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string of (N) lowercase English letters. We may freely change the positions of its characters, but we must keep exactly the same multiset of letters. Among all possible rearrangements, we need the one that appears earliest in lexicographic order.
+We are given a string of lowercase English letters, and we may rearrange its characters in any order. Alan searches his dictionary from the lexicographically smallest string toward the largest one, so the best gift is the rearrangement that appears as early as possible in that ordering.
 
-The dictionary is searched from the lexicographically smallest word toward larger words, so giving Alan a lexicographically smaller rearrangement makes him find the word sooner. The task is consequently to construct the smallest permutation of the characters of (S).
+The lexicographically smallest rearrangement is simply the string with all characters placed in increasing alphabetical order. For example, the characters of `mac` can only be rearranged into strings such as `mac`, `mca`, `amc`, and so on, and `acm` is the first of them lexicographically.
 
-The constraint (N \le 10^7) is the main signal about the intended complexity. Ten million characters already require linear work just to read the input, so an (O(N^2)) algorithm is completely out of range. Even (O(N\log N)), while asymptotically reasonable for many sorting problems, performs substantially more work than necessary here and can also create extra memory pressure under the 64 MB limit. The alphabet contains only 26 possible characters, which gives us a way to process the entire string in linear time without performing a general-purpose sort.
+The length can reach (10^7), which is much larger than the size where expensive algorithms are comfortable under a roughly one-second time limit. An (O(N^2)) algorithm would require around (10^{14}) operations at the upper bound, and an (O(N!)) enumeration is far beyond that. Even a comparison-based (O(N\log N)) sort performs on the order of hundreds of millions of comparisons when (N=10^7). The crucial extra information is that every character belongs to an alphabet of only 26 lowercase letters.
 
-A careless implementation can also fail on repeated characters. For example, with
+The first edge case is a one-character string. For input `1` followed by `z`, the answer is still `z`. There is nothing to rearrange, and an implementation that assumes at least two characters could introduce an unnecessary boundary error.
 
-```
-4
-bbaa
-```
+The second edge case is repeated characters. For input `5` followed by `aaaaa`, the answer is `aaaaa`. A careless implementation that treats equal characters as distinct objects may perform redundant work, although the result must contain exactly the same five copies.
 
-the correct output is
-
-```
-aabb
-```
-
-because both copies of `a` must appear before both copies of `b`. Treating the characters as distinct objects and trying to reason about permutations can accidentally count identical arrangements multiple times, although the final answer is still determined entirely by their frequencies.
-
-The smallest possible input is another simple boundary case. With
-
-```
-1
-z
-```
-
-the only possible rearrangement is
-
-```
-z
-```
-
-An implementation that assumes there are at least two characters could incorrectly access another position or perform unnecessary swapping.
-
-The alphabet boundaries can also expose mistakes in counting or output order. For
-
-```
-2
-za
-```
-
-the answer is
-
-```
-az
-```
-
-The fact that `z` occurs before `a` in the input is irrelevant. The output must follow the fixed alphabet order, not the order in which characters first appear.
-
-Finally, a string such as
-
-```
-5
-aaaaa
-```
-
-must remain exactly the same. A counting implementation has to output every occurrence, not just one copy of each distinct character.
+The third edge case is a mixture where the smallest character occurs several times. For input `6` followed by `zzabca`, the answer is `aabcz z`, or `aabczz` without the space. The two `a` characters must both come before every larger character. An implementation that only moves the smallest character once would produce the wrong ordering.
 
 ## Approaches
 
-The most direct solution is to consider every possible rearrangement of the string, compare them lexicographically, and keep the smallest one. This is correct because the desired answer is defined as the minimum among precisely those rearrangements. The problem is the number of candidates. With (N) characters, there can be (N!) permutations when all characters are distinct, and comparing a candidate with the current best can take (O(N)) time in the worst case. The resulting worst-case operation count is (O(N\cdot N!)), which becomes impossible even for very small values of (N), let alone (10^7).
+A direct brute-force approach would generate every possible rearrangement of the string, compare them, and keep the lexicographically smallest one. There are (N!) permutations when all characters are distinct. Comparing two strings can inspect up to (N) characters, so the worst-case work is (O(N\cdot N!)). At (N=10^7), even writing down the first tiny fraction of these permutations is impossible. Repeated characters reduce the number of distinct permutations, but the worst case still has all characters distinct in principle, and the input alphabet restriction does not rescue permutation enumeration for large (N).
 
-A more practical first idea is to use a standard sorting algorithm. Sorting the characters places the smallest character first, then the next smallest, and so on, producing the lexicographically smallest permutation. This takes (O(N\log N)) time in general.
+A more sensible general-purpose approach is comparison sorting. If we sort the characters in ascending order, the result is exactly the lexicographically smallest rearrangement. That takes (O(N\log N)) comparisons with a standard comparison sort. It is correct, but the constraint (N\le 10^7) makes the extra logarithmic factor unnecessarily expensive, especially under the 1.25 second limit used by the original problem.
 
-The brute-force approach works because it explicitly examines every possible ordering, but fails because the number of orderings grows factorially. The observation that unlocks the problem is that characters come from an alphabet of only 26 letters. We do not need to sort arbitrary values. We only need to know how many `a` characters exist, how many `b` characters exist, and so on through `z`.
+The key observation is that there are only 26 possible characters. We do not need to discover the relative order of millions of individual characters because their alphabetical order is already known. We only need to count how many `a` characters exist, then how many `b` characters exist, and so on through `z`. Once those 26 frequencies are known, the answer is obtained by writing each character its counted number of times in alphabetical order.
 
-Once those frequencies are known, the smallest rearrangement is forced. Every `a` must come first, followed by every `b`, followed by every `c`, and so forth. Counting the letters takes (O(N)), and traversing the 26-letter alphabet takes (O(26)), which is effectively constant. The complete algorithm is therefore (O(N)).
+This is counting sort in its simplest possible form. Instead of paying (O(N\log N)) to compare characters whose ordering is already known, we scan the input once and use a fixed array of 26 counters. Constructing the answer also takes (O(N)), so the entire algorithm is linear.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N\cdot N!)) | (O(N)) | Too slow |
-| Standard Sorting | (O(N\log N)) | (O(N)) | Correct, but unnecessary work |
-| Frequency Counting | (O(N+26)) | (O(26)) besides the input/output | Accepted |
+| Enumerate all rearrangements | (O(N\cdot N!)) | (O(N)) | Too slow |
+| Comparison sort | (O(N\log N)) | (O(N)) | Unnecessarily expensive |
+| Counting characters | (O(N)) | (O(N)) for input/output, (O(26)) auxiliary | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read (N) and the string (S). The value of (N) tells us how many characters should occur, while (S) contains the actual characters whose order we are allowed to change.
-2. Create an array `count` of size 26, initially filled with zeroes. Position 0 represents `a`, position 1 represents `b`, and position 25 represents `z`. A fixed-size frequency array is sufficient because the alphabet never contains more than 26 different characters.
-3. Scan every character of (S`and increment its corresponding frequency. For a character`c`, its position in the array is `ord(c) - ord('a')`. After this scan, `count[i]` exactly equals the number of copies of the corresponding letter in the input.
-4. Traverse the alphabet from `a` through `z`. For each letter, append it exactly `count[i]` times to the answer. We process letters in increasing alphabetic order because any occurrence of a smaller character must precede every occurrence of a larger character in the lexicographically smallest permutation.
-5. Print the resulting string. Since the frequencies sum to (N), the output contains exactly the same characters as the input, only arranged in increasing order.
+1. Read (N) and the string (S). The value of (N) tells us the expected number of characters, while the actual string contains the characters we must rearrange.
+2. Create 26 counters, one for every lowercase letter. For each character in (S), increment the counter corresponding to its alphabet position. Since there are only 26 possible positions, each character can be classified in constant time.
+3. Traverse the 26 counters from `a` through `z`. For a character with frequency (f), append that character exactly (f) times to the result. All copies of a smaller character must precede every copy of a larger character in a lexicographically minimal string.
+4. Write the resulting string. Every input character was counted exactly once and then emitted exactly once, so the output is a rearrangement of the original string.
 
 ### Why it works
 
-After the counting phase, the algorithm knows exactly how many copies of every letter must appear in the answer. Consider any two different letters (x < y). If an occurrence of (y) appears before an occurrence of (x), swapping those two positions makes the string lexicographically smaller at the first position where the two strings differ. Consequently, no lexicographically smallest arrangement can place a larger letter before a smaller one. Applying this argument to every pair of letters forces all `a` characters to come first, then all `b` characters, continuing through `z`. The algorithm constructs exactly that arrangement, so no other valid rearrangement can be lexicographically smaller.
+After counting, the algorithm knows exactly how many copies of every letter occur in the input. Suppose the resulting string had a larger character before a smaller character. Swapping those two positions would make the string lexicographically smaller while preserving all character frequencies. Hence such an inversion cannot occur in the lexicographically smallest rearrangement. The only arrangement with no such inversion is the one where all `a` characters come first, followed by all `b` characters, and so on through `z`. The algorithm constructs exactly that arrangement.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
-
-n = int(input())
-s = input().strip()
-
-count = [0] * 26
-
-for ch in s:
-    count[ord(ch) - 97] += 1
-
-answer = ''.join(chr(97 + i) * count[i] for i in range(26))
-sys.stdout.write(answer + '\n')
-```
-
-The first line reads the declared length, although the length does not otherwise need to be used. The string itself contains all information required to construct the answer.
-
-The frequency array has exactly 26 positions. For each character, `ord(ch) - 97` converts `a` to 0, `b` to 1, and `z` to 25. No sorting is performed, so processing the ten million characters remains linear.
-
-The expression `chr(97 + i) * count[i]` creates the required run of one letter. Joining the 26 runs produces the complete sorted string. There is no off-by-one issue because the loop covers exactly indices 0 through 25.
-
-The input contains only lowercase English letters, so `strip()` does not remove any meaningful character. It only removes the line ending, along with any accidental surrounding whitespace.
-
-Python integers do not overflow, and every frequency is at most (10^7). The output itself necessarily contains (N) characters, so creating a string of that size is unavoidable. The algorithm does not create an additional sorted copy or any data structure proportional to (N) beyond the input and final output strings.
-
-## Worked Examples
-
-### Sample 1
-
-For the input `mac`, the frequency array has one `a`, one `c`, one `m`, and zero copies of every other letter.
-
-| Letter | Count | Output after processing |
-| --- | --- | --- |
-| `a` | 1 | `a` |
-| `b` | 0 | `a` |
-| `c` | 1 | `ac` |
-| `d` through `l` | 0 | `ac` |
-| `m` | 1 | `acm` |
-| `n` through `z` | 0 | `acm` |
-
-The final result is `acm`. The trace demonstrates why the original positions of the characters do not matter. The `a` is emitted first even though it appeared in the middle of the input.
-
-### Sample 2
-
-For `geso`, every character occurs once.
-
-| Letter | Count | Output after processing |
-| --- | --- | --- |
-| `a` through `d` | 0 | `` |
-| `e` | 1 | `e` |
-| `f` through `g` | 0, 1 | `eg` |
-| `h` through `n` | 0 | `eg` |
-| `o` | 1 | `ego` |
-| `p` through `r` | 0 | `ego` |
-| `s` | 1 | `egos` |
-| `t` through `z` | 0 | `egos` |
-
-The final result is `egos`. Since `e < g < o < s`, emitting the letters in alphabetic order produces the earliest possible dictionary position.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | (O(N+26)=O(N)) | Every input character is counted once, then the fixed 26-letter alphabet is traversed. |
-| Space | (O(26)) auxiliary | The frequency array always contains only 26 integers. The input and output strings themselves require (O(N)) memory. |
-
-With (N) as large as (10^7), linear time is the appropriate target because simply reading the input already costs (O(N)). The algorithm performs only one pass over the characters and a constant amount of additional work. It also avoids the extra structures and comparisons associated with general-purpose sorting, which is especially useful under the 64 MB memory limit.
-
-## Test Cases
-
-```python
-import sys
-import io
-
 input = sys.stdin.readline
 
 def solve():
@@ -198,28 +76,105 @@ def solve():
     count = [0] * 26
 
     for ch in s:
-        count[ord(ch) - 97] += 1
+        count[ord(ch) - ord('a')] += 1
 
-    answer = ''.join(chr(97 + i) * count[i] for i in range(26))
-    sys.stdout.write(answer + '\n')
+    result = []
+    for i, freq in enumerate(count):
+        if freq:
+            result.append(chr(ord('a') + i) * freq)
+
+    sys.stdout.write(''.join(result))
+
+if __name__ == "__main__":
+    solve()
+```
+
+The first line reads the declared length, although the algorithm does not need to use it after the input has been read. Keeping the value is useful for matching the input format, while iterating over the actual string avoids assumptions about line boundaries beyond the statement's guarantee.
+
+The expression `ord(ch) - ord('a')` converts a lowercase letter into an index from 0 through 25. For example, `a` becomes 0, `b` becomes 1, and `z` becomes 25. The counter array therefore needs only 26 entries regardless of whether the string contains ten characters or ten million.
+
+The result is built from blocks such as `a * 3` or `m * 2`. This is preferable to repeatedly concatenating one character at a time, because repeated string concatenation can create unnecessary copying. The list contains at most 26 strings, and `''.join(result)` combines them into the final output once.
+
+No integer can overflow in Python. The largest counter is only (10^7), which is easily represented by Python integers.
+
+The `.strip()` call removes the newline produced by `readline()`. Since the input contains only lowercase letters, there are no meaningful spaces that need to be preserved.
+
+## Worked Examples
+
+For Sample 1, the input string is `mac`.
+
+| Character read | Counter state for nonzero letters | Result |
+| --- | --- | --- |
+| `m` | `m: 1` |  |
+| `a` | `a: 1, m: 1` |  |
+| `c` | `a: 1, c: 1, m: 1` |  |
+| Emit `a` | `a: 1, c: 1, m: 1` | `a` |
+| Emit `c` | `a: 1, c: 1, m: 1` | `ac` |
+| Emit `m` | `a: 1, c: 1, m: 1` | `acm` |
+
+The frequency array preserves exactly one copy of each input character. Traversing the alphabet places `a` before `c` and `c` before `m`, giving `acm`, which is the first possible rearrangement in lexicographic order.
+
+For Sample 2, the input string is `geso`.
+
+| Character read | Counter state for nonzero letters | Result |
+| --- | --- | --- |
+| `g` | `g: 1` |  |
+| `e` | `e: 1, g: 1` |  |
+| `s` | `e: 1, g: 1, s: 1` |  |
+| `o` | `e: 1, g: 1, o: 1, s: 1` |  |
+| Emit `e` | `e: 1, g: 1, o: 1, s: 1` | `e` |
+| Emit `g` | `e: 1, g: 1, o: 1, s: 1` | `eg` |
+| Emit `o` | `e: 1, g: 1, o: 1, s: 1` | `ego` |
+| Emit `s` | `e: 1, g: 1, o: 1, s: 1` | `egos` |
+
+Again, the final string contains exactly the same multiset of characters as the input. Its letters are in nondecreasing alphabetical order, so no pair of positions can be swapped to obtain a lexicographically smaller string.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | (O(N)) | The input is scanned once, and the 26 counters are emitted in constant alphabet size. |
+| Space | (O(N)) | The input string and the resulting output occupy linear space, while the frequency array uses only 26 counters. |
+
+With (N) as large as (10^7), linear processing is the appropriate target. The algorithm performs a constant amount of work per input character and never allocates a data structure proportional to the number of possible permutations. The auxiliary counting state remains fixed at 26 entries, which is particularly suitable for the original 64 MB memory limit.
+
+## Test Cases
+
+```python
+import sys
+import io
+
+def solve():
+    input = sys.stdin.readline
+
+    n = int(input())
+    s = input().strip()
+
+    count = [0] * 26
+
+    for ch in s:
+        count[ord(ch) - ord('a')] += 1
+
+    result = []
+    for i, freq in enumerate(count):
+        if freq:
+            result.append(chr(ord('a') + i) * freq)
+
+    sys.stdout.write(''.join(result))
 
 def run(inp: str) -> str:
-    global input
-
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
-    input = sys.stdin.readline
 
     try:
         solve()
-        return sys.stdout.getvalue().rstrip('\n')
+        return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
-        input = sys.stdin.readline
 
 # Provided samples
 assert run("3\nmac\n") == "acm", "sample 1"
@@ -229,73 +184,73 @@ assert run("4\ngeso\n") == "egos", "sample 2"
 assert run("1\nz\n") == "z", "single character"
 
 # All characters are equal
-assert run("5\naaaaa\n") == "aaaaa", "all equal"
+assert run("7\naaaaaaa\n") == "aaaaaaa", "all equal"
 
-# Reverse alphabetic order with duplicates
-assert run("6\nzzbaaa\n") == "aaabzz", "duplicates and reverse order"
-
-# Characters from both alphabet boundaries
-assert run("5\nzayzx\n") == "axyzz", "alphabet boundaries"
+# Boundary alphabet characters and repeated letters
+assert run("8\nzzzzaaaa\n") == "aaaazzzz", "alphabet boundaries"
 
 # Maximum-size input
-s = "z" * 10_000_000
-out = run("10000000\n" + s + "\n")
-assert out == s, "maximum-size input"
+s = "a" * 10_000_000
+assert run(f"{len(s)}\n{s}\n") == s, "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / z` | `z` | Minimum size and single-character handling |
-| `5 / aaaaa` | `aaaaa` | All characters identical |
-| `6 / zzbaaa` | `aaabzz` | Duplicate frequencies and reordering |
-| `5 / zayzx` | `axyzz` | Correct handling of `a` and `z` boundaries |
-| `10000000 / z...z` | Same 10,000,000 `z` characters | Maximum input size and linear processing |
+| `1` / `z` | `z` | Minimum size and no-rearrangement case |
+| `7` / `aaaaaaa` | `aaaaaaa` | Repeated characters and frequency counting |
+| `8` / `zzzzaaaa` | `aaaazzzz` | Smallest and largest alphabet characters, including repeated blocks |
+| `10000000` / ten million `a` characters | The same ten million `a` characters | Maximum input size and linear processing |
 
-The maximum-size test deliberately uses one repeated character. That makes the expected result easy to construct while still exercising the full input bound. The assertion compares the produced string with the already-created input string, avoiding the need to construct another separate ten-million-character expected value.
+The maximum-size assertion is deliberately constructed rather than written as a literal ten-million-character line. In an actual contest submission, only the judge input needs to contain that data, while the test expresses the same boundary condition programmatically.
 
 ## Edge Cases
 
-For the single-character case
+For the one-character case, consider:
 
 ```
 1
 z
 ```
 
-the counting pass increments the frequency of `z` to one. The alphabet traversal reaches `z` and emits it once, producing `z`. Nothing in the algorithm assumes that multiple positions exist.
+The counter for `z` becomes 1 and every other counter remains zero. The emission phase skips the empty letters and outputs one `z`. There is no indexing of a second character, so the boundary at (N=1) is handled naturally.
 
-For repeated characters,
+For repeated characters, consider:
+
+```
+5
+aaaaa
+```
+
+Every iteration increments the same counter, leaving `count['a'] = 5`. The output phase emits `a * 5`, producing `aaaaa`. No distinct-permutation logic is needed because the frequency representation already captures the entire state relevant to the answer.
+
+For repeated smallest characters mixed with larger ones, consider:
+
+```
+6
+zzabca
+```
+
+The counters become `a:2`, `b:1`, `c:1`, and `z:2`. The emission order is `aa`, then `b`, then `c`, then `zz`, producing:
+
+```
+aabczz
+```
+
+A rearrangement beginning with only one `a`, such as `abaczz`, cannot be optimal because another `a` exists and placing it immediately after the first `a` makes the string smaller.
+
+For the alphabet boundary case, consider:
 
 ```
 4
-bbaa
+zaba
 ```
 
-the counts become `a = 2` and `b = 2`. The traversal emits `aa` before `bb`, giving `aabb`. The original order `bbaa` has no influence because the algorithm stores frequencies rather than positions.
-
-For the alphabet boundary case,
+The frequencies are `a:2`, `b:1`, and `z:1`. The algorithm emits the `a` block first, then `b`, then `z`, producing:
 
 ```
-2
-za
+aabz
 ```
 
-the counts are `a = 1` and `z = 1`. Since the output loop starts at `a` and ends at `z`, it emits `a` first and `z` last, producing `az`. This catches implementations that accidentally preserve input order or use an incorrect character comparison.
+This confirms that the algorithm does not depend on the input order and correctly handles both ends of the lowercase alphabet.
 
-For an already sorted string,
-
-```
-3
-abc
-```
-
-the counts are already consistent with the required output order. The algorithm produces `abc` unchanged. This confirms that the procedure is not merely reversing or otherwise applying a fixed permutation.
-
-For an input containing every character equally,
-
-```
-26
-abcdefghijklmnopqrstuvwxyz
-```
-
-each frequency is one, so the output is exactly `abcdefghijklmnopqrstuvwxyz`. The frequency array covers every valid index from 0 through 25, confirming that neither endpoint of the alphabet is skipped.
+The maximum-size case follows exactly the same logic. If all (10^7) characters are `a`, the scan performs (10^7) constant-time counter increments, and the output phase emits one block of (10^7) characters. There is no sorting step and no attempt to enumerate arrangements, so the running time grows linearly with the actual input size.
