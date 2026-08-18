@@ -8,15 +8,15 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 8
 n_verified: 0
-total_solve_s: 3795
-date: "2026-08-17T04:33:07+07:00"
+total_solve_s: 4271
+date: "2026-08-17T04:45:41+07:00"
 weight: 102268
 draft: false
 ---
 
 # [300iq Contest 1](https://codeforces.com/contest/102268)
 
-Special | 8 problems | 0/8 verified | Difficulty - | 1h 3m
+Special | 8 problems | 0/8 verified | Difficulty - | 1h 11m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,4 +27,4 @@ Special | 8 problems | 0/8 verified | Difficulty - | 1h 3m
 | [H](H/) | [Hall's Theorem](https://codeforces.com/problemset/problem/102268/H) |  |  |  | 3m 38s |  |
 | [I](I/) | [Interesting Graph](https://codeforces.com/problemset/problem/102268/I) |  |  |  | 14m 20s |  |
 | [J](J/) | [Jealous Split](https://codeforces.com/problemset/problem/102268/J) |  |  |  | 5m 25s |  |
-| [K](K/) | [Knowledge](https://codeforces.com/problemset/problem/102268/K) |  |  |  | 4m 35s |  |
+| [K](K/) | [Knowledge](https://codeforces.com/problemset/problem/102268/K) |  |  |  | 12m 31s |  |

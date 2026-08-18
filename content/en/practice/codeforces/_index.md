@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3165 contests, 23473 problems, 13156 verified."
+description: "Codeforces problem solutions with full editorials. 3165 contests, 23474 problems, 13156 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3165 contests, 23473 problems, 13156 verified.**
+**3165 contests, 23474 problems, 13156 verified.**
 
-## Unknown — 844 contests, 7151 problems, 4303 verified
+## Unknown — 844 contests, 7152 problems, 4303 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102261](102261/) | [Чемпионат по программированию - квалификация (Яндекс)](https://codeforces.com/contest/102261) | 6 | 6/6 | Special | - |
 | [102262](102262/) | [Чемпионат по программированию - финал (Яндекс)](https://codeforces.com/contest/102262) | 8 | 8/8 | Special | - |
 | [102264](102264/) | [2019 Facebook Hacker Cup, Round 1](https://codeforces.com/contest/102264) | 3 | 3/3 | Special | - |
-| [102268](102268/) | [300iq Contest 1](https://codeforces.com/contest/102268) | 7 | 0/7 | Special | - |
+| [102268](102268/) | [300iq Contest 1](https://codeforces.com/contest/102268) | 8 | 0/8 | Special | - |
 | [102271](102271/) | [Helvetic Coding Contest 2019 (two remaining problems)](https://codeforces.com/contest/102271) | 2 | 2/2 | Special | - |
 | [102275](102275/) | [2019 Facebook Hacker Cup, Round 2](https://codeforces.com/contest/102275) | 4 | 4/4 | Special | - |
 | [102277](102277/) | [UCF Locals 2018](https://codeforces.com/contest/102277) | 11 | 11/11 | Special | - |

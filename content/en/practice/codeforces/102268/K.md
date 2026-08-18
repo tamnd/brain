@@ -1,7 +1,7 @@
 ---
 title: "CF 102268K - Knowledge"
-description: "We have a binary string over the alphabet a, b. The allowed operations insert or delete one of three special blocks: aa, bbb, and ababab."
-date: "2026-08-17T19:02:08+07:00"
+description: "We have a binary string over a and b. The allowed operations insert or remove one of three special blocks: aa, bbb, or ababab. Since every operation can be reversed by performing the corresponding insertion or deletion, the operations define equivalence classes of strings."
+date: "2026-08-19T04:45:40+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102268
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "300iq Contest 1"
 rating: 0
 weight: 102268
-solve_time_s: 275
+solve_time_s: 751
 verified: false
 draft: false
 ---
@@ -18,23 +18,17 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 35s  
+**Solve time:** 12m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a binary string over the alphabet `a, b`. The allowed operations insert or delete one of three special blocks: `aa`, `bbb`, and `ababab`. Since insertion and deletion are both allowed, two strings belong to the same class exactly when one can be transformed into the other using the relations
+We have a binary string over `a` and `b`. The allowed operations insert or remove one of three special blocks: `aa`, `bbb`, or `ababab`. Since every operation can be reversed by performing the corresponding insertion or deletion, the operations define equivalence classes of strings. The task is to determine how many distinct strings of exactly length `x` belong to the same equivalence class as the given string `s`.
 
-[
-a^2 = 1,\qquad b^3 = 1,\qquad (ab)^3 = 1.
-]
+The constraints are deliberately split between a large input string and an enormous target length. The original string can contain 300,000 characters, so processing it must be essentially linear. At the same time, `x` can be `10^9`, which rules out any dynamic programming indexed by length and any simulation that performs one transition per character of the target string. The one second time limit makes even moderately superlinear work on the original string undesirable, so the main challenge is to compress the equivalence relation into a constant number of states. The official statement gives `n <= 300000`, `x <= 10^9`, and a one-second time limit.
 
-The initial string `s` determines one such equivalence class. We do not need to construct the actual strings obtainable from `s`. Instead, for a prescribed length `x`, we need to count how many binary strings of exactly that length belong to the same class as `s`.
-
-The input length `n` is at most (300000), so processing `s` should be linear or close to linear. An algorithm that keeps a state for every substring, or tries to enumerate possible transformed strings, is already too expensive. More seriously, `x` can be as large as (10^9), so any algorithm depending linearly on `x` is impossible. We need to compress the equivalence classes to a constant number of states and then handle the huge length using logarithmic exponentiation.
-
-There are three edge cases that tend to expose incorrect interpretations. First, `x` can be zero. For example,
+There are several edge cases that expose common incorrect interpretations. If the input is
 
 ```
 1
@@ -42,9 +36,9 @@ a
 0
 ```
 
-has answer `0`, because the empty string represents the identity while `a` does not. A solution that assumes the target always has at least one character will get this wrong.
+the answer is `0`. The target is the empty string, but `a` cannot be reduced because neither `aa`, `bbb`, nor `ababab` occurs. A careless implementation that only looks at the length difference could incorrectly assume that removing two characters is always possible.
 
-Second, the starting string can already represent the identity without being empty. For example,
+For
 
 ```
 2
@@ -52,9 +46,19 @@ aa
 0
 ```
 
-has answer `1`, because `aa` can be deleted, leaving the empty string. A solution that compares the literal strings rather than their equivalence classes would incorrectly return zero.
+the answer is `1`, because the given string can be reduced directly to the empty string. This also checks that zero operations are allowed and that length `0` is a legitimate target.
 
-Third, the relations interact across boundaries, so simply greedily deleting an occurrence of `aa` or `bbb` is not a complete normalization strategy. For example, `ababab` represents the identity and the answer for
+For
+
+```
+3
+bbb
+2
+```
+
+the answer is `1`. The source string represents the same equivalence class as the empty string because `bbb` can be deleted, and among length-two strings only `aa` represents that class. A solution that only tracks possible lengths would miss the fact that the actual arrangement of letters matters.
+
+The relation `ababab = empty` also matters independently of the shorter two relations. For
 
 ```
 6
@@ -62,65 +66,55 @@ ababab
 3
 ```
 
-is `1`. The only length-three representative of the identity is `bbb`. A local reduction algorithm that does not account for the third relation can easily miss this equivalence. The official samples confirm these outputs.
+the source is equivalent to the empty string, and the only length-three string in that class is `bbb`, so the answer is `1`. Ignoring the six-character relation would incorrectly classify the source as nonempty. These examples illustrate why the problem is about equivalence classes of words rather than simply which lengths can be reached.
 
 ## Approaches
 
-A direct approach would enumerate every one of the (2^x) binary strings of length `x`, normalize it, and check whether it belongs to the class of `s`. This is correct because every possible target string is explicitly considered. If normalization takes (O(x)) time, the total worst-case work is (\Theta(x2^x)), with (2^x) candidates and (x) characters inspected in each candidate. This is already hopeless for `x = 30`, let alone (10^9).
+A direct approach would enumerate every binary string of length `x`, test whether it can be transformed from `s`, and count the successful ones. There are exactly `2^x` candidate strings, so even before checking equivalence, the worst case requires `2^x` candidates. With `x = 10^9`, this is completely infeasible. Another natural brute-force approach is to perform all possible insertions and deletions, but that is even less useful because insertions can make the intermediate strings arbitrarily long.
 
-The brute force works because the operations define an equivalence relation, but it fails because the number of strings is exponential in the requested length. The key observation is that these three relations do not create infinitely many distinct equivalence classes. They form a finite group with only 12 elements.
+The brute force works because every operation preserves exactly the equivalence relation we care about. The failure is that the strings themselves are enormous objects, while the relations have much more structure than their raw representation suggests.
 
-A convenient way to see the group is to assign permutations to the two letters. Let
+The key observation is that the three relations can be written algebraically as
 
-[
-a=(12)(34),\qquad b=(123).
-]
+`a² = 1`, `b³ = 1`, and `(ab)³ = 1`.
 
-The permutation `a` has order two, `b` has order three, and `ab` has order three, so all three relations from the problem hold. These two permutations generate the rotational symmetry group of a tetrahedron, which is isomorphic to (A_4), and (A_4) has exactly 12 elements.
+These are precisely the defining relations of the rotational symmetry group of a tetrahedron, which is the alternating group `A4`. That group has only 12 elements. Equivalently, all strings split into exactly 12 equivalence classes. A common set of representatives for these classes is the empty string, `a`, `b`, `ab`, `ba`, `bb`, `aba`, `abb`, `bab`, `bba`, `babb`, and `bbab`. This 12-state structure is also the basis of the standard solution to the problem.
 
-Equivalently, the 12 equivalence classes can be represented by the words
+We can make the observation completely concrete by representing the two letters as permutations of four vertices. Let `a` be the permutation `(0 1)(2 3)` and let `b` be `(1 2 3)`. Both are even permutations, so they lie in `A4`. They satisfy `a² = 1`, `b³ = 1`, and `(ab)³ = 1`, and they generate all 12 elements of `A4`.
 
-[
-\epsilon,\ a,\ b,\ ab,\ ba,\ bb,\ aba,\ abb,\ bab,\ bba,\ babb,\ bbab.
-]
+Thus, evaluating a string means multiplying the corresponding permutations. Two strings are equivalent exactly when they evaluate to the same group element. Appending either `a` or `b` then becomes a transition between two of these 12 states.
 
-Every string can be reduced to one of these representatives using the given relations, and the representatives correspond to distinct elements of (A_4). This gives us a finite automaton with exactly 12 states. This same 12-state structure is the central observation used by existing solutions to the problem.
+Starting from the empty string, every binary string of length `x` corresponds to a walk of exactly `x` transitions in this 12-state automaton. We only need to count how many such walks end at the group element represented by `s`. Since `x` can be `10^9`, matrix exponentiation gives the number of walks in `O(12^3 log x)` time.
 
-Once the state of `s` is known, the rest of the problem becomes a walk-counting problem. Start at the identity state, append either `a` or `b` exactly `x` times, and ask how many walks finish at the state represented by `s`. There are only 12 states and two outgoing transitions from every state, so an adjacency matrix handles the counting. Since `x` can reach (10^9), we raise the 12 by 12 matrix to the `x`-th power using binary exponentiation.
-
-The resulting complexity is (O(n+12^3\log x)), which is easily within the constraints. This is also the complexity described by the standard solution approach.
+The original string is processed once to find its group element, giving total complexity `O(n + 12^3 log x)`. The same constant-state matrix approach is described in the known solution for this problem.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (\Theta(x2^x)) | (O(x)) | Too slow |
-| Optimal | (O(n+12^3\log x)) | (O(12^2)) | Accepted |
+| Brute Force | `O(2^x)` candidates, plus equivalence checks | Exponential | Too slow |
+| Optimal | `O(n + 12^3 log x)` | `O(12^2)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Interpret the three deletion operations as group relations. Deleting `aa` means (a^2=1), deleting `bbb` means (b^3=1), and deleting `ababab` means ((ab)^3=1). Because the inverse operations are also allowed, these relations work in both directions.
-2. Represent the two generators as permutations of four objects. Use (a=(12)(34)) and (b=(123)). The identity permutation represents the empty string.
-3. Generate all 12 even permutations of four elements. These are exactly the elements of (A_4), so each equivalence class has one state in our automaton.
-4. Define permutation composition so that appending a character means multiplying the current permutation on the right by the permutation of that character. If the current state is `g` and the next character represents `h`, the new state is (g\circ h).
-5. Scan the original string `s` from left to right. Start with the identity permutation and multiply by the permutation corresponding to each character. After the scan, the resulting permutation is exactly the equivalence class of `s`.
-6. Build a 12 by 12 transition matrix `T`. For every state `u`, append `a` and `b`, compute the resulting states `v`, and increase `T[v][u]` by one. We use this orientation because a column vector of state counts is transformed as (dp' = Tdp).
-7. The vector for the empty string has one count in the identity state and zero elsewhere. After exactly `x` characters, the state-count vector is
+1. Represent each letter by a permutation of four elements. Use `a = (0 1)(2 3)` and `b = (1 2 3)`. A permutation is stored as a tuple of its four images, so permutation composition can be implemented with four array accesses.
 
-[
-T^x e,
-]
+The chosen permutations satisfy the three allowed relations. Since they generate all even permutations of four elements, exactly 12 group states are reachable.
+2. Generate the 12 group elements with a breadth-first search starting from the identity permutation. From every known state, multiply by `a` and by `b`. Store every newly discovered permutation and assign it a state index.
 
-where `e` is the identity-state vector.
+Generating the states instead of hard-coding their names makes the implementation independent of a particular list of reduced strings. The only required fact is that the generated group has 12 elements.
+3. Compute the state corresponding to the input string `s`. Start from the identity and multiply by the permutation associated with each character.
 
-1. Compute (T^x) by binary exponentiation. Each squaring represents doubling the number of appended characters represented by the matrix. Whenever the current bit of `x` is one, multiply the answer matrix by the current power.
-2. Read the entry corresponding to the state of `s` from the identity starting state. That value is the number of length-`x` strings equivalent to `s`.
+This takes `O(n)` time and reduces the entire original string to one of only 12 possible states.
+4. Build a `12 x 12` transition matrix `M`. Set `M[i][j]` to the number of letters that move group state `i` to group state `j`.
 
-### Why it works
+There are only two outgoing transitions from every state, one for appending `a` and one for appending `b`. If both letters happen to lead to the same state, the corresponding matrix entry becomes `2`.
+5. Compute `M^x` using binary exponentiation. For any states `u` and `v`, the entry `(M^x)[u][v]` is the number of length-`x` strings that start at `u` and finish at `v`.
 
-The invariant is that every binary string has exactly one state in the 12-element group, and two strings are transformable into one another if and only if they have the same state. The allowed insertions and deletions preserve the group element because they insert or remove one of (a^2), (b^3), or ((ab)^3), all of which equal the identity.
+We start from the identity state because every binary string is constructed by appending its characters to the empty string.
+6. Let `target` be the state of `s` and let `identity` be the empty-string state. The required answer is `(M^x)[identity][target]`, taken modulo `998244353`.
 
-Conversely, the 12 states are enough to represent every equivalence class. The generators (a=(12)(34)) and (b=(123)) generate (A_4), and the 12 canonical words listed above represent its 12 distinct elements. Thus the group state does not merge two genuinely different equivalence classes.
+This counts strings by their actual letter sequence, not merely by their endpoint. Matrix multiplication counts every distinct sequence of transitions separately.
 
-For the target length, every binary string corresponds to exactly one walk of length `x` starting from the identity, with `a` and `b` selecting the two possible transitions at each position. Matrix multiplication counts these walks, including their multiplicities. Consequently, the matrix entry from the identity to the state of `s` counts exactly the desired target strings.
+Why it works: every allowed insertion or deletion preserves the group element because each inserted or deleted block evaluates to the identity. Conversely, the relations `a² = b³ = (ab)³ = 1` give exactly the 12-element tetrahedral group, so two binary strings are connected by the allowed operations exactly when they represent the same group element. The transition matrix records precisely how appending one character changes that element. Consequently, every length-`x` string in the equivalence class of `s` corresponds to one length-`x` walk from the identity state to `target`, and every such walk corresponds to one binary string in that class. Thus the matrix entry computed by the algorithm is exactly the required count.
 
 ## Python Solution
 
@@ -132,189 +126,163 @@ MOD = 998244353
 K = 12
 
 def compose(p, q):
-    """Return p o q, where permutations are stored by their images."""
-    return tuple(p[q[i]] for i in range(4))
+    # p after q: (p o q)(i) = p(q(i))
+    return (
+        p[q[0]],
+        p[q[1]],
+        p[q[2]],
+        p[q[3]],
+    )
 
-def parity(p):
-    """Return 0 for even and 1 for odd permutation."""
-    inv = 0
-    for i in range(4):
-        for j in range(i + 1, 4):
-            if p[i] > p[j]:
-                inv += 1
-    return inv & 1
+def build_group():
+    identity = (0, 1, 2, 3)
+
+    # a = (0 1)(2 3)
+    a = (1, 0, 3, 2)
+
+    # b = (1 2 3)
+    b = (0, 2, 3, 1)
+
+    generators = (a, b)
+
+    states = [identity]
+    index = {identity: 0}
+
+    head = 0
+    while head < len(states):
+        cur = states[head]
+        head += 1
+
+        for g in generators:
+            nxt = compose(cur, g)
+            if nxt not in index:
+                index[nxt] = len(states)
+                states.append(nxt)
+
+    return states, index, generators
 
 def mat_mul(a, b):
-    n = K
-    c = [[0] * n for _ in range(n)]
+    c = [[0] * K for _ in range(K)]
 
-    for i in range(n):
+    for i in range(K):
         ci = c[i]
         ai = a[i]
-        for k in range(n):
+
+        for k in range(K):
             x = ai[k]
             if x == 0:
                 continue
+
             bk = b[k]
-            for j in range(n):
+            for j in range(K):
                 ci[j] = (ci[j] + x * bk[j]) % MOD
 
     return c
 
 def mat_pow(a, e):
-    n = K
-    r = [[0] * n for _ in range(n)]
-    for i in range(n):
-        r[i][i] = 1
+    result = [[0] * K for _ in range(K)]
+    for i in range(K):
+        result[i][i] = 1
 
     while e:
         if e & 1:
-            r = mat_mul(r, a)
+            result = mat_mul(result, a)
         a = mat_mul(a, a)
         e >>= 1
 
-    return r
+    return result
 
 def solve():
     n = int(input())
     s = input().strip()
     x = int(input())
 
-    # All even permutations of four elements are the 12 states of A4.
-    states = []
-    for p in __import__("itertools").permutations(range(4)):
-        if parity(p) == 0:
-            states.append(p)
+    states, index, generators = build_group()
+    identity = states[0]
 
-    index = {p: i for i, p in enumerate(states)}
+    a, b = generators
 
-    # a = (12)(34), b = (123)
-    a = (1, 0, 3, 2)
-    b = (1, 2, 0, 3)
+    transition = [[0] * K for _ in range(K)]
 
-    generators = {
-        'a': a,
-        'b': b,
-    }
+    for i, state in enumerate(states):
+        to_a = index[compose(state, a)]
+        to_b = index[compose(state, b)]
 
-    identity = (0, 1, 2, 3)
+        transition[i][to_a] += 1
+        transition[i][to_b] += 1
 
-    # Find the group element represented by s.
-    g = identity
+    target = identity
     for ch in s:
-        g = compose(g, generators[ch])
+        if ch == 'a':
+            target = compose(target, a)
+        else:
+            target = compose(target, b)
 
-    target = index[g]
-    start = index[identity]
+    target_index = index[target]
+    powered = mat_pow(transition, x)
 
-    # T[v][u] = number of one-character transitions u -> v.
-    T = [[0] * K for _ in range(K)]
-
-    for u, state in enumerate(states):
-        va = index[compose(state, a)]
-        vb = index[compose(state, b)]
-        T[va][u] += 1
-        T[vb][u] += 1
-
-    T = mat_pow(T, x)
-
-    print(T[target][start] % MOD)
+    print(powered[0][target_index] % MOD)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The permutation construction gives the solution a clean implementation instead of hardcoding a reduction table. The tuple `(p[0], p[1], p[2], p[3])` stores where each of the four points is sent. The identity is `(0, 1, 2, 3)`, while `a = (1, 0, 3, 2)` represents ((12)(34)), and `b = (1, 2, 0, 3)` represents ((123)).
+The `compose` function uses the convention `p` after `q`, so `compose(cur, generator)` represents appending a new letter to the right of the current word. The exact convention is not important as long as it is used consistently for state generation, transition construction, and evaluation of `s`.
 
-The `compose` function implements the mathematical composition (p\circ q). When the current word represents `p` and we append a generator `q`, the new word represents `p q`, which is exactly `compose(p, q)` under this convention. Keeping this order consistent is essential. Reversing it would construct a different automaton and can silently produce incorrect answers.
+`build_group` starts from the identity and repeatedly applies the two generators. The three defining relations guarantee that only 12 states appear. The BFS terminates after discovering those 12 permutations.
 
-The scan over `s` is linear in `n`. There is no need to reduce substrings or maintain a stack. The current permutation contains all information relevant to future transformations.
+The transition matrix uses rows for the current state and columns for the next state. Since each state has two possible next characters, every row has total weight two. Matrix powers preserve the same interpretation: `M^k[i][j]` counts the number of length-`k` strings taking state `i` to state `j`.
 
-The matrix uses `T[new][old]` rather than `T[old][new]`. With this convention, multiplying `T` by a column vector gives the next distribution of states. Thus the identity-to-target count is `T[target][identity]` after exponentiation.
+The input string is evaluated separately rather than being inserted into the matrix process. This is necessary because `n` is only 300,000, while `x` can be one billion. We spend linear time on `s`, then logarithmic time in `x`.
 
-All matrix products are performed modulo (998244353). Python integers do not overflow, but reducing during multiplication also keeps intermediate values small and avoids unnecessary growth.
+The exponentiation loop must start with the identity matrix. This handles `x = 0` automatically because `M^0` is the identity matrix, so the answer is `1` exactly when `s` belongs to the identity class.
 
-The exponent `x` is processed with bit shifts, so only (O(\log x)) matrix multiplications are needed. Since the matrix dimension is fixed at 12, this part is tiny compared with the scan of the original string.
+Python integers do not overflow, but reducing each matrix accumulation modulo `998244353` keeps intermediate values small and avoids unnecessary growth. The matrix has only 12 rows and columns, so the constant factor is tiny.
 
 ## Worked Examples
 
-### Sample 1
+For Sample 1, the input is `s = ababab` and `x = 3`. The six-character relation says that `ababab` represents the identity element. The relevant scalar from the matrix computation is the number of length-`k` walks from the identity back to the identity.
 
-The input is
-
-```
-6
-ababab
-3
-```
-
-The original string represents the identity because ((ab)^3=1). Scanning it character by character gives the following states, using the canonical names of the 12 group elements.
-
-| Position | Character | State of `s` | Identity? |
-| --- | --- | --- | --- |
-| 0 |  | `ε` | Yes |
-| 1 | `a` | `a` | No |
-| 2 | `b` | `ab` | No |
-| 3 | `a` | `aba` | No |
-| 4 | `b` | `bba` | No |
-| 5 | `a` | `bb` | No |
-| 6 | `b` | `ε` | Yes |
-
-We now need the number of length-three walks from the identity back to the identity. At length one, neither `a` nor `b` is the identity. At length two, `aa` is the identity, giving one walk. At length three, `bbb` is the identity, giving one walk.
-
-| Length | Identity count | Relevant representative |
+| Length `k` | State being counted | `dp[identity]` |
 | --- | --- | --- |
-| 0 | 1 | `ε` |
-| 1 | 0 | none |
-| 2 | 1 | `aa` |
-| 3 | 1 | `bbb` |
+| 0 | identity | 1 |
+| 1 | identity | 0 |
+| 2 | identity | 1 |
+| 3 | identity | 1 |
 
-The answer is `1`. This demonstrates why the starting string itself does not need to have the target length. Only its group state matters.
+At length two, `aa` returns to the identity because `a² = 1`. At length three, `bbb` returns to the identity because `b³ = 1`. The resulting count is `1`, matching the sample.
 
-### Sample 2
+For Sample 2, `s = bbb`, so the source again represents the identity. We only need the identity-to-identity entry after two transitions.
 
-The input is
-
-```
-3
-bbb
-2
-```
-
-Here the starting string also represents the identity because (b^3=1).
-
-| Position | Character | State of `s` | Identity? |
-| --- | --- | --- | --- |
-| 0 |  | `ε` | Yes |
-| 1 | `b` | `b` | No |
-| 2 | `b` | `bb` | No |
-| 3 | `b` | `ε` | Yes |
-
-The target length is two, so we count identity walks of length two.
-
-| Length | Identity count | Relevant representative |
+| Length `k` | State being counted | `dp[identity]` |
 | --- | --- | --- |
-| 0 | 1 | `ε` |
-| 1 | 0 | none |
-| 2 | 1 | `aa` |
+| 0 | identity | 1 |
+| 1 | identity | 0 |
+| 2 | identity | 1 |
 
-The answer is `1`. This case exercises the fact that a nonempty starting string can be equivalent to the empty string.
+The only length-two word representing the identity is `aa`. The word `bb` represents `b²`, which is a nonidentity three-cycle, while `ab` and `ba` also represent nonidentity elements. Hence the answer is `1`.
+
+These traces also verify the zero-length convention. At length zero, only the empty word exists, so the identity class contains exactly one word of that length.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n+12^3\log x)) | The string is scanned once, then a constant-size matrix is exponentiated in logarithmic time. |
-| Space | (O(12^2)) | The transition and exponentiation matrices each contain only (12^2) entries. |
+| Time | `O(n + 12^3 log x)` | Evaluating `s` is linear, and matrix exponentiation uses `O(log x)` multiplications of `12 x 12` matrices |
+| Space | `O(12^2)` | Only a constant number of `12 x 12` matrices and the 12 group states are stored |
 
-With (n\le300000), the linear scan is easily feasible. The target length can be (10^9), but it appears only inside the binary exponentiation, so the number of matrix multiplications is about 30. The fixed matrix dimension of 12 makes the exponentiation negligible in practice. The standard analysis for this solution is (O(n+12^3\log x)).
+The largest input string requires only one pass, so the `n = 300000` bound is easily handled. The target length does not appear as a loop bound because exponentiation processes its binary representation, requiring only about 30 matrix squarings for `x <= 10^9`. The constant matrix size makes the method comfortably small enough for the one-second limit and 256 MiB memory limit specified by the official problem.
 
 ## Test Cases
 
+The following test harness assumes the solution above is saved as `solution.py`. It swaps `stdin`, calls the actual `solve()` function, captures `stdout`, and then restores both streams.
+
 ```python
-# This test file assumes solve() is the function from the solution above.
+# Save the editorial solution as solution.py before running this file.
+
 import sys
 import io
+import solution
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
@@ -324,7 +292,7 @@ def run(inp: str) -> str:
     sys.stdout = io.StringIO()
 
     try:
-        solve()
+        solution.solve()
         return sys.stdout.getvalue().strip()
     finally:
         sys.stdin = old_stdin
@@ -335,83 +303,40 @@ assert run("6\nababab\n3\n") == "1", "sample 1"
 assert run("3\nbbb\n2\n") == "1", "sample 2"
 assert run("5\nbabab\n35\n") == "866826000", "sample 3"
 
-# Minimum target length: a is not equivalent to the empty string.
-assert run("1\na\n0\n") == "0", "x = 0 with a non-identity start"
+# Minimum-size input and x = 0.
+assert run("1\na\n0\n") == "0", "single a cannot reduce to empty"
 
-# Identity represented by a nonempty string.
-assert run("2\naa\n0\n") == "1", "aa can be deleted completely"
+# Empty string target from aa.
+assert run("2\naa\n0\n") == "1", "aa reduces to empty"
 
-# Small target length and an all-equal starting string.
-assert run("5\naaaaa\n1\n") == "1", "five a's represent a"
+# Boundary x = 1.
+assert run("1\na\n1\n") == "1", "the original string itself is reachable"
 
-# Boundary between length 0 and length 1.
-assert run("2\naa\n1\n") == "0", "identity has no length-1 representative"
+# Small transition test: the only length-2 word equivalent to ab is ab.
+assert run("2\nab\n2\n") == "1", "exact group-state matching"
 
-# A short case exercising the ab relation structure.
-assert run("2\nab\n2\n") == "1", "only ab among length-2 strings has the same state"
-
-# Maximum input size with an easy-to-check answer.
-big_s = "a" * 300000
-assert run(f"300000\n{big_s}\n0\n") == "1", "maximum n, even number of a's"
+# Maximum n and all-equal characters.
+# 300000 is divisible by 2, so a^300000 is the identity.
+max_input = "300000\n" + "a" * 300000 + "\n0\n"
+assert run(max_input) == "1", "maximum n and all a characters"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / a / 0` | `0` | Target length zero with a non-identity starting state |
-| `2 / aa / 0` | `1` | Nonempty string equivalent to the identity |
-| `5 / aaaaa / 1` | `1` | All-equal input and repeated application of (a^2=1) |
-| `2 / aa / 1` | `0` | Boundary between zero and positive target lengths |
-| `2 / ab / 2` | `1` | Distinguishes group states at a small length |
-| `300000 / a...a / 0` | `1` | Maximum `n` and linear preprocessing |
+| `1 / a / 0` | `0` | Minimum `n`, zero target length, nonidentity source |
+| `2 / aa / 0` | `1` | Direct `aa` cancellation and identity handling |
+| `1 / a / 1` | `1` | Boundary target length and zero-operation reachability |
+| `2 / ab / 2` | `1` | Distinguishing group elements at the same length |
+| `300000 / a...a / 0` | `1` | Maximum `n`, all-equal input, linear scan |
 
 ## Edge Cases
 
-For
+The first edge case is `1 / a / 0`. The algorithm evaluates `a` as the permutation `(0 1)(2 3)`, so its target state is different from the identity. Since `x = 0`, the matrix power is `M^0 = I`, and the identity-to-`a` entry is zero. The output is consequently `0`.
 
-```
-1
-a
-0
-```
+For `2 / aa / 0`, evaluating the two letters gives `a² = 1`, so the source reaches the identity state. Again `M^0` is the identity matrix, but now the requested state is exactly the starting state. The answer is `1`, representing the empty string.
 
-the target is the empty string, whose state is the identity. The initial `a` maps to the permutation `(1, 0, 3, 2)`, which is not the identity. After exponentiating the transition matrix to power zero, the matrix is the identity matrix, so the entry from the identity state to the `a` state is zero. The algorithm prints `0`.
+For `3 / bbb / 2`, the source evaluates to `b³ = 1`. The algorithm asks for the identity-to-identity entry of `M²`. There is one such path, corresponding to `aa`, so the answer is `1`. This catches implementations that confuse the identity class with strings of the same length.
 
-For
+For `2 / ab / 2`, the source state is the product `ab`. Among the four length-two strings, only `ab` reaches that particular state. The matrix therefore returns `1`. This demonstrates that the algorithm counts equivalence classes rather than simply counting all strings of a compatible length.
 
-```
-2
-aa
-0
-```
-
-the scan performs (e\circ a\circ a=e). Thus the target state is the identity. Since (T^0=I), the identity-to-identity entry is one, corresponding to the single empty string. The algorithm prints `1`.
-
-For
-
-```
-3
-bbb
-2
-```
-
-the starting state is (b^3=e). At length two, the identity can be reached through `aa`, while `ab`, `ba`, and `bb` represent the other three length-two possibilities. Hence exactly one target string is valid, and the algorithm prints `1`.
-
-For
-
-```
-6
-ababab
-3
-```
-
-the starting state is also the identity because ((ab)^3=e). The length-three walk count back to the identity is one, represented by `bbb`. This catches solutions that only understand the `aa` and `bbb` relations and forget that `ababab` must also collapse to the identity.
-
-For the maximum-size case
-
-```
-300000
-aaaaaaaa...
-0
-```
-
-the 300000 copies of `a` form an even power, so (a^{300000}=e). The scan still takes only (O(n)) time and never constructs any intermediate string. Since `x=0`, the matrix exponentiation immediately returns the identity matrix, giving answer `1`. This shows why the algorithm remains practical when the input string itself is the dominant part of the input.
+For the maximum-size case with `n = 300000` and `s = a` repeated 300,000 times, the repeated relation `aa = 1` reduces every pair of `a` characters, leaving the identity. With `x = 0`, the answer is `1`. The algorithm processes all 300,000 characters in one pass and then performs no matrix multiplications because the exponent is zero, so this case directly exercises both the large-input boundary and the `x = 0` boundary.
