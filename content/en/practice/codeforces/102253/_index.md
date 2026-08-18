@@ -1,27 +1,28 @@
 ---
 title: "2017 Chinese Multi-University Training, BeihangU Contest"
-description: "8 problems from 2017 Chinese Multi-University Training, BeihangU Contest (contest 102253), difficulty -. 7/8 solutions verified against sample I/O."
+description: "9 problems from 2017 Chinese Multi-University Training, BeihangU Contest (contest 102253), difficulty -. 8/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102253
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
-n_verified: 7
-total_solve_s: 1674
+n_problems: 9
+n_verified: 8
+total_solve_s: 1819
 contest_year: 2017
-date: "2026-08-17T21:49:06+07:00"
+date: "2026-08-17T00:43:20+07:00"
 weight: 102253
 draft: false
 ---
 
 # [2017 Chinese Multi-University Training, BeihangU Contest](https://codeforces.com/contest/102253)
 
-Special | 8 problems | 7/8 verified | Difficulty - | 27m 54s
+Special | 9 problems | 8/9 verified | Difficulty - | 30m 19s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Add More Zero](https://codeforces.com/problemset/problem/102253/A) |  |  |  | 1m 12s | ✓ |
+| [C](C/) | [Colorful Tree](https://codeforces.com/problemset/problem/102253/C) |  |  |  | 2m 25s | ✓ |
 | [D](D/) | [Division Game](https://codeforces.com/problemset/problem/102253/D) |  |  |  | 3m 13s | ✓ |
 | [E](E/) | [Expectation of Division](https://codeforces.com/problemset/problem/102253/E) |  |  |  | 3m 29s | ✓ |
 | [F](F/) | [Function](https://codeforces.com/problemset/problem/102253/F) |  |  |  | 5m 50s | ✓ |
