@@ -1,7 +1,7 @@
 ---
 title: "CF 102215L - Inscribed Circle"
-description: "We have two circles, each described by its center and radius. Their circumferences intersect at exactly two points, so neither circle contains the other and the two disks overlap in a proper lens-shaped region."
-date: "2026-08-17T23:53:48+07:00"
+description: "We have two disks, each described by a center and a positive radius. Their circumferences intersect at exactly two points, so neither disk contains the other and their intersection is a non-degenerate lens-shaped region."
+date: "2026-08-18T22:13:24+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102215
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "2019, XII Samara Regional Intercollegiate Programming Contest"
 rating: 0
 weight: 102215
-solve_time_s: 139
+solve_time_s: 525
 verified: false
 draft: false
 ---
@@ -18,100 +18,96 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 19s  
+**Solve time:** 8m 45s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have two circles, each described by its center and radius. Their circumferences intersect at exactly two points, so neither circle contains the other and the two disks overlap in a proper lens-shaped region. We need the largest circle that fits completely inside that overlap, and we must print its center and radius. The input bounds and required precision are those given in the original problem statement.
+We have two disks, each described by a center and a positive radius. Their circumferences intersect at exactly two points, so neither disk contains the other and their intersection is a non-degenerate lens-shaped region.
 
-Let the centers be (O_1=(x_1,y_1)) and (O_2=(x_2,y_2)), with radii (r_1) and (r_2). Let
+We need to find the largest possible circle that fits completely inside this lens. The output is the center of that circle and its radius, with enough precision to satisfy an absolute or relative error of (10^{-9}).
 
-[
-d=|O_1O_2|
-]
+The coordinates and radii are at most (1000) in magnitude, so all relevant distances are comfortably within ordinary floating-point range. There is also no large input size: the problem contains only two circles. The 2 second limit is therefore not a concern for an (O(1)) geometric solution. Even an iterative numerical method with a few hundred iterations would be fast enough, but the geometry lets us avoid iteration entirely.
 
-be the distance between the centers. Having exactly two intersection points gives the strict inequalities
-
-[
-|r_1-r_2|<d<r_1+r_2.
-]
-
-The upper bound guarantees a positive overlap, while the lower bound prevents one disk from being completely inside the other. These strict inequalities are especially useful because they guarantee that the final radius is positive and that the two centers are distinct.
-
-The coordinate bounds are only ([-1000,1000]), so there is no combinatorial input size here. The challenge is geometric precision, not running time. A solution that performs a constant number of floating-point operations is easily within the 2 second and 256 MB limits, while numerical searches or dense enumeration are unnecessary.
-
-A careless implementation can fail when the circles have equal radii but are not centered on a horizontal line. For example,
+The first subtle case is when the circles have equal radii. For example,
 
 ```
 0 0 5
-3 4 5
+6 0 5
 ```
 
-has (d=5), so the answer is a circle of radius (2.5) centered at ((1.5,2)). A solution that only changes the (x)-coordinate, or assumes that the centers always lie on the (x)-axis, produces the wrong center.
+The answer is
 
-Unequal radii are another common source of mistakes. Consider
+```
+3 0 2
+```
+
+A careless implementation might assume the optimal center is one of the original centers, but the correct center is halfway between them. More generally, symmetry places the answer on the line connecting the two circle centers, not necessarily at its midpoint.
+
+Another case is when the radii differ:
 
 ```
 0 0 5
-6 0 9
+7 0 3
 ```
 
-Here (d=6), and the answer is centered at ((1,0)) with radius (4). The center is not the midpoint of the two original centers. Using the midpoint blindly would give radius (3), even though the smaller circle still has unused room on one side.
+Here the circles intersect because (2 < 7 < 8). The optimal center is at distance
 
-The nearly tangent case also matters numerically. For example,
+[
+\frac{7+5-3}{2}=4.5
+]
+
+from the first center, and the resulting radius is
+
+[
+\frac{5+3-7}{2}=0.5.
+]
+
+A common mistake is to use the midpoint of the centers regardless of the radii. That would give the wrong answer because the larger circle can accommodate the optimal center farther toward the smaller circle.
+
+The final edge case concerns circles whose boundaries intersect very close to tangency. For example,
 
 ```
--1000 0 1000
-999 0 1000
+0 0 1
+1.999999 0 1
 ```
 
-has (d=1999), so the answer has radius (0.5) and center ((-0.5,0)). The required radius is small even though the input values are large, so calculations should be performed in floating point and printed with enough digits.
+The answer has a very small radius, approximately (5\times10^{-7}). Implementations that use integer arithmetic, insufficient precision, or formulas involving subtraction of nearly equal quantities carelessly can lose accuracy. The direct formula using the center distance remains stable enough with Python's double precision for the required error.
 
 ## Approaches
 
-A literal brute-force method would try possible positions for the center and keep the largest circle that remains inside both disks. For a candidate center (P), the largest radius allowed by the first circle is (r_1-|PO_1|), and the largest radius allowed by the second is (r_2-|PO_2|). Thus the candidate radius is their minimum.
-
-The problem is that the center is a continuous point, so brute force needs a discretization. If we tried to inspect every coordinate on a grid with spacing (10^{-9}) over the possible coordinate range ([-2000,2000]), there would be (4\cdot10^{12}) positions along each axis, or
+A naive geometric approach could search over possible center positions on a fine grid. For every candidate point, we would compute how much radius can be placed there, namely the smaller of its distances to the two circle boundaries. To reach (10^{-9}) positional precision over a coordinate range of roughly (2000), a uniform grid would require on the order of
 
 [
-(4\cdot10^{12})^2=1.6\cdot10^{25}
+2000^2 / 10^{-18} = 4\cdot10^{24}
 ]
 
-candidate centers. That is not merely too slow for 2 seconds, it is also an awkward way to guarantee the requested precision.
+candidate points. Even one constant-time calculation per point is hopeless.
 
-A more sophisticated numerical search could reduce the work substantially, but the geometry gives us an exact constant-time solution. The brute-force method works because the validity of a candidate center can be checked directly. The key observation is that the best center does not need two-dimensional search at all.
+A more reasonable numerical approach would reduce the search to one dimension and use ternary search. The symmetry of the lens means the optimal center lies on the line joining the two original centers. We could parameterize that line and maximize the feasible radius numerically. A few hundred iterations would already be enough, so this approach is actually fast enough, but it is unnecessary and introduces convergence and precision details that the exact geometry avoids.
 
-Take any candidate center (P) inside the lens. Project (P) onto the line (O_1O_2), obtaining (Q). The projection cannot increase the distance to either (O_1) or (O_2). Consequently,
+The key observation is that for a point on the segment joining the centers, the distance to the first center increases exactly as the distance to the second center decreases. Suppose the centers are (C_1,C_2), their distance is (d), and the candidate center (P) is at distance (t) from (C_1). Then it is (d-t) from (C_2).
+
+A circle centered at (P) fits inside the first disk with radius at most
 
 [
-r_1-|QO_1|\ge r_1-|PO_1|
+r_1-t,
 ]
 
-and
-
-[
-r_2-|QO_2|\ge r_2-|PO_2|.
-]
-
-So moving the center onto the line joining the two original centers never makes the possible inscribed radius smaller. We can restrict the entire optimization to one dimension.
-
-Now place the candidate center (P) between (O_1) and (O_2). If (t=|O_1P|), then (|PO_2|=d-t). The two circles allow radii
-
-[
-r_1-t
-]
-
-and
+and it fits inside the second disk with radius at most
 
 [
 r_2-(d-t).
 ]
 
-The maximum of their minimum occurs exactly when these two quantities are equal. Otherwise, if one is smaller, we can move (P) slightly toward the corresponding circle and increase the smaller quantity.
+Hence its maximum feasible radius at (P) is
 
-Solving
+[
+f(t)=\min(r_1-t,\ r_2-d+t).
+]
+
+The first expression decreases with (t), while the second increases with (t). The maximum of their minimum occurs exactly where they are equal. Solving
 
 [
 r_1-t=r_2-d+t
@@ -123,69 +119,85 @@ gives
 t=\frac{d+r_1-r_2}{2}.
 ]
 
-Substituting this into either radius expression gives
+Substituting this value gives
 
 [
-R=\frac{r_1+r_2-d}{2}.
+r=\frac{r_1+r_2-d}{2}.
 ]
 
-Once (t) is known, the center is simply the point at distance (t) from (O_1) in the direction of (O_2).
+The problem's guarantee that the circumferences have exactly two common points gives
+
+[
+|r_1-r_2|<d<r_1+r_2.
+]
+
+Consequently, the computed (t) lies strictly between (0) and (d), and the computed radius is strictly positive. We can then place the answer at the corresponding point on the line between the two centers.
+
+The brute-force search works because it directly evaluates the feasible radius of candidate centers, but it wastes almost all of its work exploring a two-dimensional continuous region. The observation that the optimal center must lie on the center-to-center axis reduces the problem to one dimension, and the fact that the two limiting radii are linear functions reduces that one-dimensional optimization to solving one equation.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(G^2)) for a (G\times G) coordinate grid | (O(1)) | Too slow and cannot naturally guarantee (10^{-9}) precision |
-| Optimal | (O(1)) | (O(1)) | Accepted |
+| Brute Force | (O(1/\varepsilon^2)) grid samples | (O(1)) | Too slow |
+| Numerical ternary search | (O(I)) | (O(1)) | Accepted but unnecessary |
+| Geometric formula | (O(1)) | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the two circle centers and their radii. Compute
+1. Read the centers (C_1=(x_1,y_1)), (C_2=(x_2,y_2)) and radii (r_1,r_2). The only geometric quantity we need initially is the distance between the two centers.
+2. Compute
 
 [
-dx=x_2-x_1,\qquad dy=y_2-y_1
+d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}.
 ]
 
-and
+Because the circles intersect at two points, (d>0), so the direction from (C_1) to (C_2) is well-defined.
 
-[
-d=\sqrt{dx^2+dy^2}.
-]
-
-The guarantee of two intersection points means (d>0), so division by (d) is safe.
-2. Compute the radius of the largest circle as
-
-[
-R=\frac{r_1+r_2-d}{2}.
-]
-
-This comes from making the distances from the new center to the two original circumferences equal to the same radius.
-3. Compute the distance from (O_1) to the new center:
+1. Determine how far the desired center lies from (C_1):
 
 [
 t=\frac{d+r_1-r_2}{2}.
 ]
 
-This is the unique point on the segment (O_1O_2) for which both original circles leave exactly (R) units of radial clearance.
-4. Convert that distance into a coordinate displacement. The unit vector from (O_1) toward (O_2) is
+This comes from balancing the two available boundary distances. If the answer were closer to (C_1), the first circle would permit more radius while the second would be the limiting circle. If it were farther toward (C_2), the situation would reverse. The maximum is exactly at the balance point.
+
+1. Convert the distance (t) into coordinates. The unit vector from (C_1) to (C_2) is
 
 [
-\left(\frac{dx}{d},\frac{dy}{d}\right).
+\left(\frac{x_2-x_1}{d},\frac{y_2-y_1}{d}\right).
 ]
 
-Therefore the new center is
+Thus the answer center is
 
 [
-x=x_1+\frac{dx}{d}t,
+x=x_1+\frac{x_2-x_1}{d}t,
 \qquad
-y=y_1+\frac{dy}{d}t.
+y=y_1+\frac{y_2-y_1}{d}t.
 ]
-5. Print (x), (y), and (R) with many digits. Fifteen digits after the decimal point give substantially more precision than the required (10^{-9}).
 
-The key invariant is that the chosen center lies on (O_1O_2) and has exactly the same clearance from both circle boundaries. Any valid circle centered elsewhere can be projected onto this line without reducing its possible radius. Along the line, the first circle's available radius decreases as the center moves away from (O_1), while the second circle's available radius increases. Their minimum is maximized precisely at their crossing point. Thus the computed circle is both feasible and optimal.
+1. Compute the radius using either limiting circle:
+
+[
+r=r_1-t.
+]
+
+After substituting the value of (t), this can also be written as
+
+[
+r=\frac{r_1+r_2-d}{2}.
+]
+
+1. Print the center and radius with many digits after the decimal point. Python's `float` is a 64-bit IEEE-754 double, which provides substantially more precision than the required (10^{-9}) error.
+
+### Why it works
+
+For any circle centered at a point (P) inside the lens, its radius cannot exceed the distance from (P) to either original circumference. The optimal center can be chosen on the line joining the original centers because reflecting any feasible circle across that line preserves both original disks, and the lens is symmetric about that line. On this axis, the two available radii are (r_1-t) and (r_2-d+t). One decreases as the center moves toward (C_2), while the other increases. Their minimum is maximized exactly at their intersection. The algorithm computes that intersection and places the center there, so no other point can admit a larger circle.
 
 ## Python Solution
 
 ```python
 import sys
+import math
+
 input = sys.stdin.readline
 
 def solve():
@@ -195,29 +207,32 @@ def solve():
     dx = x2 - x1
     dy = y2 - y1
 
-    d = (dx * dx + dy * dy) ** 0.5
+    d = math.hypot(dx, dy)
 
-    radius = (r1 + r2 - d) / 2.0
-    dist_from_first = (d + r1 - r2) / 2.0
+    t = (d + r1 - r2) / 2.0
 
-    x = x1 + dx * dist_from_first / d
-    y = y1 + dy * dist_from_first / d
+    x = x1 + dx * t / d
+    y = y1 + dy * t / d
 
-    print(f"{x:.15f} {y:.15f} {radius:.15f}")
+    r = (r1 + r2 - d) / 2.0
+
+    print(f"{x:.15f} {y:.15f} {r:.15f}")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first two lines of `solve` read the two circles exactly as given. All input values are integers, so `dx * dx + dy * dy` is also computed exactly before taking the square root.
+The first part reads the two circles and computes `dx` and `dy`, the displacement from the first center to the second. `math.hypot(dx, dy)` calculates the center distance without requiring us to write the square root explicitly.
 
-The value `d` is the distance between the original centers. Because the circumferences have exactly two common points, the centers cannot coincide, so `d` is strictly positive. There is no need for an artificial epsilon check or a special case for coincident centers.
+The variable `t` is the distance from the first center to the optimal center. The guarantee about two intersection points means `t` is strictly positive and strictly smaller than `d`, so dividing by `d` is safe.
 
-The expression `(r1 + r2 - d) / 2` is the final radius. The strict intersection condition guarantees that its numerator is positive.
+The coordinates are obtained by moving from the first center in the direction of the second center by exactly `t`. Writing the calculation as `dx * t / d` and `dy * t / d` avoids separately constructing a unit-vector tuple.
 
-The variable `dist_from_first` is the distance from the first center to the answer center. Multiplying the normalized vector `(dx / d, dy / d)` by this distance places the answer at the correct position along the line between the original centers.
+The radius uses the symmetric formula `(r1 + r2 - d) / 2`. Computing it directly is simpler than calculating `r1 - t`, and it avoids an unnecessary extra subtraction.
 
-No integer overflow is possible in Python, and even in fixed-width languages the squared coordinate differences here are tiny compared with 64-bit integer limits. The final calculations use floating point because the answer can be irrational.
+There are no integer-overflow concerns in Python because integers have arbitrary precision. The only floating-point operations involve values whose magnitude is at most a few thousand, so double precision comfortably handles them.
+
+Printing fifteen digits after the decimal point gives much more precision than required. The judge compares the numerical values, not the formatting.
 
 ## Worked Examples
 
@@ -230,19 +245,19 @@ The input is
 6 0 5
 ```
 
-The important intermediate values are:
+The main variables evolve as follows.
 
 | Variable | Value |
 | --- | --- |
 | (dx) | (6) |
 | (dy) | (0) |
 | (d) | (6) |
-| (R) | (2) |
-| (t) | (3) |
-| (x) | (3) |
-| (y) | (0) |
+| (t=(d+r_1-r_2)/2) | (3) |
+| (x= x_1+dx\cdot t/d) | (3) |
+| (y= y_1+dy\cdot t/d) | (0) |
+| (r=(r_1+r_2-d)/2) | (2) |
 
-Since the radii are equal, the crossing point of the two available-radius functions is the midpoint of the centers. The final circle is centered at ((3,0)) with radius (2), matching the sample output.
+The radii available from the two original circles are equal at the midpoint, both being (5-3=2). Moving either direction would make one of them smaller, so the midpoint is optimal.
 
 ### Sample 2
 
@@ -253,32 +268,34 @@ The input is
 78 -90 123
 ```
 
-The intermediate calculations are approximately:
+The displacement and derived values are approximately
 
 | Variable | Value |
 | --- | --- |
 | (dx) | (90) |
 | (dy) | (-124) |
-| (d) | (153.21814\ldots) |
-| (R) | (12.8906010988\ldots) |
-| (t) | (43.1093989012\ldots) |
-| (x) | (13.3222578219\ldots) |
-| (y) | (-0.8884441101\ldots) |
+| (d) | (153.2239) |
+| (t=(d+56-123)/2) | (43.1119) |
+| (x) | (13.3222578218559) |
+| (y) | (-0.8884441101126) |
+| (r=(56+123-d)/2) | (12.8906010988208) |
 
-Here the radii are different, so the answer center is not the midpoint. The new center is closer to the first circle because its radius is smaller. The computed values match the second sample within the required floating-point tolerance.
+Here the radii are quite different, so the optimal center is not halfway between the original centers. It lies closer to the smaller circle's center, exactly as the balancing equation predicts.
+
+The two boundary distances from the resulting center are both approximately (12.8906011) after subtracting the appropriate center distance from the corresponding original radius. This confirms the central invariant that both original circles are tight at the optimum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(1)) | A constant number of arithmetic operations and one square root are performed |
-| Space | (O(1)) | Only a fixed number of scalar variables are stored |
+| Time | (O(1)) | A constant number of arithmetic operations and one square root are performed. |
+| Space | (O(1)) | Only the two circles and a constant number of intermediate values are stored. |
 
-The input contains only two circles, so there is no dependence on an input size such as (N). The solution performs a few arithmetic operations and uses constant memory, leaving a very large margin under the 2 second and 256 MB limits.
+The input contains only two circles, so an (O(1)) solution is far below the 2 second and 256 MB limits. More importantly, the formula avoids any iterative precision tuning, making the numerical behavior predictable.
 
 ## Test Cases
 
-The assertions below compare floating-point values with a tolerance rather than comparing formatted strings. That reflects the actual judge condition, where many different decimal representations can be correct.
+For floating-point output, comparing the complete output string is inappropriate because many different decimal representations can describe the same answer. The test helper below parses the three numbers and checks them with a strict absolute and relative tolerance.
 
 ```python
 import sys
@@ -293,15 +310,17 @@ def solve():
 
     dx = x2 - x1
     dy = y2 - y1
-    d = (dx * dx + dy * dy) ** 0.5
 
-    radius = (r1 + r2 - d) / 2.0
+    d = math.hypot(dx, dy)
+
     t = (d + r1 - r2) / 2.0
 
     x = x1 + dx * t / d
     y = y1 + dy * t / d
 
-    print(f"{x:.15f} {y:.15f} {radius:.15f}")
+    r = (r1 + r2 - d) / 2.0
+
+    print(f"{x:.15f} {y:.15f} {r:.15f}")
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
@@ -317,171 +336,150 @@ def run(inp: str) -> str:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
 
-def check(inp: str, expected):
+def assert_answer(inp: str, expected, message: str):
     out = run(inp).split()
     got = list(map(float, out))
 
-    assert len(got) == 3
+    assert len(got) == 3, message
+
     for a, b in zip(got, expected):
-        assert math.isclose(a, b, rel_tol=1e-12, abs_tol=1e-12), (
-            f"got {got}, expected {expected}"
+        assert math.isclose(a, b, rel_tol=1e-9, abs_tol=1e-9), (
+            f"{message}: got {got}, expected {expected}"
         )
 
-# Provided samples
-check(
-    """0 0 5
-6 0 5
-""",
+# Provided sample 1
+assert_answer(
+    "0 0 5\n6 0 5\n",
     (3.0, 0.0, 2.0),
+    "sample 1"
 )
 
-check(
-    """-12 34 56
-78 -90 123
-""",
+# Provided sample 2
+assert_answer(
+    "-12 34 56\n78 -90 123\n",
     (13.322257821855908, -0.888444110112585, 12.890601098820779),
+    "sample 2"
 )
 
-# Minimum radii, equal circles, simple horizontal placement
-check(
-    """0 0 1
-1 0 1
-""",
+# Minimum radii, equal circles, center distance 1
+assert_answer(
+    "0 0 1\n1 0 1\n",
     (0.5, 0.0, 0.5),
+    "minimum-size circles"
 )
 
-# Equal circles with a non-horizontal center line
-check(
-    """0 0 5
-3 4 5
-""",
-    (1.5, 2.0, 2.5),
+# Equal values and diagonal center displacement
+# d = sqrt(2), so t = sqrt(2)/2 and the answer is (0.5, 0.5).
+assert_answer(
+    "0 0 1\n1 1 1\n",
+    (0.5, 0.5, (2.0 - math.sqrt(2.0)) / 2.0),
+    "equal circles on a diagonal"
 )
 
-# Unequal radii, catches the incorrect-midpoint solution
-check(
-    """0 0 5
-6 0 9
-""",
-    (1.0, 0.0, 4.0),
+# Very close to external tangency
+assert_answer(
+    "0 0 1\n1.999999 0 1\n",
+    (0.9999995, 0.0, 0.0000005),
+    "near-tangent circles"
 )
 
-# Maximum coordinate values while still having two intersections
-check(
-    """-1000 0 1000
-999 0 1000
-""",
-    (-0.5, 0.0, 0.5),
+# Unequal radii, catches midpoint assumptions
+assert_answer(
+    "0 0 5\n7 0 3\n",
+    (4.5, 0.0, 0.5),
+    "unequal radii"
 )
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0 0 1` / `1 0 1` | `(0.5, 0, 0.5)` | Minimum radii and equal circles |
-| `0 0 5` / `3 4 5` | `(1.5, 2, 2.5)` | Non-horizontal center line |
-| `0 0 5` / `6 0 9` | `(1, 0, 4)` | Unequal radii and non-midpoint center |
-| `-1000 0 1000` / `999 0 1000` | `(-0.5, 0, 0.5)` | Boundary coordinates and nearly tangent circles |
+| `0 0 1` and `1 0 1` | `(0.5, 0, 0.5)` | Minimum radii and symmetric case |
+| `0 0 1` and `1 1 1` | `(0.5, 0.5, (2-sqrt(2))/2)` | Diagonal direction and distance normalization |
+| `0 0 1` and `1.999999 0 1` | `(0.9999995, 0, 0.0000005)` | Precision near tangency |
+| `0 0 5` and `7 0 3` | `(4.5, 0, 0.5)` | Unequal radii and non-midpoint optimum |
 
 ## Edge Cases
 
-For the minimum-size case
+The equal-radius case
 
 ```
 0 0 1
 1 0 1
 ```
 
-we get (d=1). The radius is
+has (d=1), so
 
 [
-R=\frac{1+1-1}{2}=0.5,
-]
-
-and the distance from the first center is also (0.5). The direction is ((1,0)), so the answer is exactly ((0.5,0,0.5)). The algorithm never needs a special branch for radius (1).
-
-For the non-horizontal case
-
-```
-0 0 5
-3 4 5
-```
-
-the center distance is (5). Equal radii give
-
-[
-R=\frac{5+5-5}{2}=2.5
+t=\frac{1+1-1}{2}=0.5
 ]
 
 and
 
 [
-t=\frac{5+5-5}{2}=2.5.
+r=\frac{1+1-1}{2}=0.5.
 ]
 
-The unit direction from the first center to the second is ((3/5,4/5)), so the answer center is
+The center is `(0.5, 0)`. A midpoint-based implementation happens to work here, but the formula explains why it works and also generalizes to unequal radii.
+
+The diagonal case
+
+```
+0 0 1
+1 1 1
+```
+
+has (d=\sqrt2). The formula gives
 
 [
-(0,0)+2.5\left(\frac35,\frac45\right)=(1.5,2).
+t=\frac{\sqrt2}{2}.
 ]
 
-This catches implementations that incorrectly treat the geometry as one-dimensional along the (x)-axis.
+The unit direction from the first center to the second is
 
-For unequal radii,
+[
+\left(\frac1{\sqrt2},\frac1{\sqrt2}\right),
+]
+
+so multiplying by (t) gives `(0.5, 0.5)`. This catches implementations that accidentally use `dx` and `dy` directly as if the center distance were always horizontal.
+
+The near-tangent case
+
+```
+0 0 1
+1.999999 0 1
+```
+
+has
+
+[
+d=1.999999
+]
+
+and therefore
+
+[
+r=\frac{2-1.999999}{2}=0.0000005.
+]
+
+The optimal center is `(0.9999995, 0)`. The radius is positive but extremely small, which tests whether the implementation preserves enough floating-point precision.
+
+Finally, the unequal-radius case
 
 ```
 0 0 5
-6 0 9
+7 0 3
 ```
 
-we have (d=6). The radius is
+gives
 
 [
-R=\frac{5+9-6}{2}=4,
-]
-
-while
-
-[
-t=\frac{6+5-9}{2}=1.
-]
-
-Thus the center is ((1,0)). The two clearances are both (4):
-
-[
-5-1=4
+t=\frac{7+5-3}{2}=4.5
 ]
 
 and
 
 [
-9-(6-1)=4.
+r=\frac{5+3-7}{2}=0.5.
 ]
 
-The equality of these two quantities is exactly the optimality condition.
-
-For the near-tangent boundary case,
-
-```
--1000 0 1000
-999 0 1000
-```
-
-the centers are (1999) units apart. The final radius is
-
-[
-R=\frac{1000+1000-1999}{2}=0.5.
-]
-
-The answer center lies halfway between the two original centers, at
-
-[
-\frac{-1000+999}{2}=-0.5.
-]
-
-So the output is
-
-```
--0.500000000000000 0.000000000000000 0.500000000000000
-```
-
-up to the permitted error. This case demonstrates why the implementation must not assume that the answer radius is comfortably separated from zero. The input guarantee gives a positive radius, but it can be arbitrarily small relative to the coordinate and radius magnitudes.
+The center is `(4.5, 0)`, not `(3.5, 0)`. This is the most useful test against the common but incorrect assumption that symmetry always puts the answer at the midpoint of the two original centers.
