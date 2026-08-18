@@ -1,7 +1,7 @@
 ---
 title: "CF 102272A - Ch\u01a1i Bi-a"
-description: "We have a rectangular carom table whose lower-left corner is (0, 0) and upper-right corner is (N, M). A ball starts at the integer position (x0, y0) inside the table and moves with constant velocity (vx, vy). Whenever it reaches a vertical wall, the sign of vx changes."
-date: "2026-08-17T11:07:09+07:00"
+description: "We have a rectangular carom table whose horizontal size is (N) and vertical size is (M). The ball starts at the integer position ((x0,y0)), strictly inside the table, and during every second its position changes according to its current velocity ((vx,vy))."
+date: "2026-08-19T05:08:06+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102272
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "HCW 19 Individual Day 1"
 rating: 0
 weight: 102272
-solve_time_s: 222
+solve_time_s: 375
 verified: false
 draft: false
 ---
@@ -18,99 +18,143 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 42s  
+**Solve time:** 6m 15s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a rectangular carom table whose lower-left corner is `(0, 0)` and upper-right corner is `(N, M)`. A ball starts at the integer position `(x0, y0)` inside the table and moves with constant velocity `(vx, vy)`. Whenever it reaches a vertical wall, the sign of `vx` changes. Whenever it reaches a horizontal wall, the sign of `vy` changes. Reaching a corner simply changes both signs.
+We have a rectangular carom table whose horizontal size is (N) and vertical size is (M). The ball starts at the integer position ((x_0,y_0)), strictly inside the table, and during every second its position changes according to its current velocity ((v_x,v_y)). When the ball reaches a vertical wall, the sign of (v_x) changes. When it reaches a horizontal wall, the sign of (v_y) changes. If both happen at the same corner, both signs change.
 
-The task is to find the ball's exact position after `S` seconds. The position is guaranteed to be integral for integer `S`, but directly simulating the motion is far too expensive.
+The task is to find the ball's exact position after (S) seconds. The velocity components can be negative and can be as large as (10^9), while (S) can also be (10^9). There can be up to (10^4) test cases.
 
-The dimensions, velocities, and time can all be as large as `10^9`, while there can be up to `10^4` test cases. A simulation that performs one operation per second could require `10^9` iterations for a single case and up to `10^13` iterations across the whole input. That cannot fit into a one-second time limit. We need a formula whose running time does not depend on `S`.
+The large values immediately rule out simulating the ball one second at a time. A single test could require (10^9) iterations, and (10^4) such tests would give up to (10^{13}) iterations. Even though each iteration is simple, that is far beyond a one second time limit. We need a constant-time calculation for each coordinate.
 
-The two coordinates are also independent. A vertical wall affects only the x-coordinate, while a horizontal wall affects only the y-coordinate. This lets us solve a one-dimensional problem and apply it twice.
+The two coordinates are independent. The horizontal movement only depends on (N,x_0,v_x,S), and the vertical movement only depends on (M,y_0,v_y,S). So the main problem reduces to understanding one-dimensional motion between two reflecting walls at (0) and (L).
 
-Several boundary cases can make a straightforward implementation wrong. Consider the input
-
-```
-1
-5 4 2 1 3 0 1
-```
-
-After one second, the x-coordinate is exactly `5`, so the answer is `(5, 1)`. A careless implementation that immediately reflects whenever the coordinate is greater than or equal to `N` can accidentally move the ball back to `0` or to `2`, depending on how the reflection is coded. The wall itself is a valid position, so the reflected triangular-wave formula must allow exactly `N`.
-
-A second issue is negative velocity. For
+There are several edge cases that can silently break a direct implementation. The first is a ball that lands exactly on a wall. For example,
 
 ```
 1
-5 4 2 1 -3 0 1
+3 4 1 2 2 0 1
 ```
 
-the ball reaches `x = -1` in the unfolded picture. The actual position is `1`, so the answer is `(1, 1)`. Languages where `%` keeps a negative remainder require special handling, while Python's modulo already returns a nonnegative remainder.
+gives the position ((3,2)). The ball reaches the right wall exactly at time (1), so the answer is `3 2`. A careless implementation that immediately changes the position again after detecting a collision can accidentally return `1 2`.
 
-A corner can be reached simultaneously in both coordinates. For example,
-
-```
-1
-3 5 2 4 1 1 1
-```
-
-moves the ball to `(3, 5)`, exactly the upper-right corner. The correct output is
-
-```
-3 5
-```
-
-A method that reflects immediately after detecting the boundary could incorrectly output `(2, 4)` for the requested time. The position at the exact collision time is still the corner.
-
-Finally, one velocity component may be zero. For
+A second case is negative velocity. For example,
 
 ```
 1
-7 6 3 4 0 0 1000000000
+5 4 2 2 -3 -2 1
 ```
 
-the ball never moves, so the answer is simply `(3, 4)`. A formula based on dividing by the velocity or on counting wall collisions must explicitly handle this case, whereas the unfolding formula works without any special mathematical treatment.
+gives the unfolded coordinates (-1) and (0). The reflected positions are (1) and (0), so the correct output is `1 0`. Implementations using a language where `%` keeps the sign of the dividend must normalize negative remainders. Python's `%` already returns a non-negative remainder, so the direct formula is safe.
+
+A third case occurs when both coordinates reach walls at the same time. For example,
+
+```
+1
+3 3 1 1 2 2 1
+```
+
+moves directly to the upper-right corner, giving `3 3`. The corner collision reverses both velocity components, but that reversal affects future movement, not the position at the collision time.
+
+Finally, zero velocity in one coordinate must remain zero. For example,
+
+```
+1
+2 5 1 3 0 2 3
+```
+
+keeps (x=1), while the vertical coordinate moves from (3) to (9) in the unfolded representation. Since (9\bmod 10=9), reflection gives (1), so the answer is `1 1`.
 
 ## Approaches
 
-The most direct solution is to simulate the ball one second at a time. At each second, add `(vx, vy)` to the current position. If the x-coordinate leaves the interval `[0, N]`, reflect it and reverse `vx`; similarly, reflect the y-coordinate and reverse `vy`. This is correct because it follows exactly the physical rules of the table.
+The straightforward solution is to simulate every second. At each step we add the current velocity to the position, check whether either coordinate reached a wall, and reverse the corresponding velocity component. This is correct because it follows exactly the physical rules of the problem.
 
-The problem is the number of iterations. With `S = 10^9`, one test case can require `10^9` simulation steps. With `10^4` test cases, the theoretical worst case is `10^13` steps. Even if each step contains only a few integer operations, that is far beyond the one-second limit.
+The problem is the value of (S). In the worst case, one test requires (10^9) simulated seconds. With (10^4) tests, the worst-case operation count is on the order of (10^{13}), which cannot fit in the time limit.
 
-The key observation is that a bouncing coordinate is just a periodic triangular wave. Consider only the x-coordinate. If the table width is `N`, imagine removing the walls and allowing the ball to continue indefinitely. Its unfolded coordinate after `S` seconds is
+The key observation is that reflection can be removed by imagining a larger, unfolded line. Consider only the (x)-coordinate and let the table width be (N). Instead of reflecting the ball at (0) and (N), imagine that the line continues forever:
 
-`u = x0 + vx * S`.
+[
+\ldots,-2N,-N,0,N,2N,3N,\ldots
+]
 
-The real table can be reconstructed by folding this infinite line back into every interval of length `N`. The pattern repeats every `2N`: the coordinate moves from `0` to `N`, then back from `N` to `0`, and repeats.
+The ball simply travels along this infinite line with its original velocity. Every interval of length (2N) corresponds to one complete back-and-forth motion inside the real table.
 
-Thus we only need
+After (S) seconds, the unfolded coordinate is
 
-`r = u mod (2N)`.
+[
+p=x_0+v_xS.
+]
 
-If `r <= N`, the actual x-coordinate is `r`. If `r > N`, the coordinate is `2N - r`. The same calculation independently gives the y-coordinate using period `2M`.
+Only its position modulo (2N) matters. Let
 
-This eliminates the simulation completely. Large values of `S` and the velocity are handled by integer arithmetic, and the number of wall collisions never needs to be counted.
+[
+r=p\bmod 2N,
+]
+
+with (0\le r<2N). If (r\le N), the real coordinate is (r). If (r>N), the ball is on the reflected half of the unfolded interval, so the real coordinate is (2N-r).
+
+Thus the one-dimensional reflection can be calculated in constant time. The exact same formula works independently for (y), replacing (N) with (M).
+
+This is essentially a periodic triangular wave. The bouncing motion has period (2N) in the unfolded coordinate, so modulo (2N) completely captures every possible number of wall collisions without explicitly simulating any of them.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | `O(S)` per test case | `O(1)` | Too slow |
-| Optimal | `O(1)` per test case | `O(1)` | Accepted |
+| Brute Force | (O(S)) per test | (O(1)) | Too slow |
+| Optimal | (O(1)) per test | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read `N`, `M`, the initial position `(x0, y0)`, the velocity `(vx, vy)`, and the requested time `S`. The x and y motions can be treated independently because a vertical collision never changes the y component and a horizontal collision never changes the x component.
-2. For the x-coordinate, compute the unfolded position `u = x0 + vx * S`. This represents where the ball would be if there were no vertical walls at all.
-3. Reduce `u` modulo `2N`, obtaining `r`. The interval `[0, 2N]` describes one complete back-and-forth cycle of the x-coordinate. Reducing modulo `2N` removes every complete cycle without changing the final position inside the table.
-4. Convert `r` back to the table using the triangular-wave rule. If `r <= N`, the coordinate is `r`, because this is the first half of the cycle. Otherwise, the coordinate is `2N - r`, because the second half is moving back toward zero.
-5. Apply exactly the same calculation to y, replacing `x0`, `vx`, and `N` with `y0`, `vy`, and `M`.
-6. Print the resulting `(x, y)`. Since both coordinates are computed at the same absolute time `S`, a simultaneous corner collision is handled naturally. At a corner, both triangular waves are exactly at their respective boundaries.
+1. Read (N,M,x_0,y_0,v_x,v_y,S). The final position can be calculated independently for the two coordinates, so no collision simulation between them is needed.
+2. For the horizontal coordinate, compute the unfolded position
+
+[
+p_x=x_0+v_xS.
+]
+
+This represents where the ball would be after (S) seconds if the vertical walls did not reflect it.
+
+1. Reduce this position modulo the full unfolded period:
+
+[
+r_x=p_x\bmod 2N.
+]
+
+Using (2N), rather than (N), is necessary because a movement from (0) to (N) and back to (0) forms the complete repeating pattern.
+
+1. Reflect the reduced coordinate back into the actual table. If (r_x\le N), set (x_S=r_x). Otherwise set
+
+[
+x_S=2N-r_x.
+]
+
+The same value appears twice at the two ends of the unfolded interval, which correctly represents a wall position.
+
+1. Repeat the same calculation vertically. Compute
+
+[
+p_y=y_0+v_yS,
+]
+
+then
+
+[
+r_y=p_y\bmod 2M,
+]
+
+and finally use (r_y) when (r_y\le M), otherwise use (2M-r_y).
+
+1. Print (x_S) and (y_S). The two calculations are independent, including when both coordinates hit walls simultaneously.
 
 ### Why it works
 
-For one coordinate, unfolding the table removes every reflection. The ball then follows the simple linear equation `x0 + vx*S`. Folding this line back into `[0, N]` reproduces every reflection because the first interval of length `N` corresponds to motion toward the right wall, while the second interval corresponds to the reflected motion toward the left wall. The complete pattern has period `2N`, so taking modulo `2N` loses no information. The same argument applies independently to y. Consequently, the two reconstructed coordinates are exactly the ball's position after `S` seconds.
+For one coordinate, imagine replacing every reflected copy of the table by another copy placed next to it. The ball then travels forever in a straight line with constant velocity. Folding this infinite line back into the original interval exactly reproduces every reflection: crossing a multiple of (N) reverses the direction after folding.
+
+The unfolded pattern repeats every (2N), so two unfolded positions that differ by a multiple of (2N) always fold to the same table coordinate. Taking the position modulo (2N) therefore removes an arbitrary number of complete back-and-forth trips. Folding the remaining value with (r) for the first half and (2N-r) for the second half gives exactly the physical position.
+
+Since the horizontal and vertical coordinates obey the same independent argument, applying the transformation to both coordinates produces the ball's exact position after (S) seconds.
 
 ## Python Solution
 
@@ -118,69 +162,85 @@ For one coordinate, unfolding the table removes every reflection. The ball then 
 import sys
 input = sys.stdin.readline
 
-def reflected_position(start, velocity, length, time):
+def reflected_position(length, start, velocity, seconds):
     period = 2 * length
-    r = (start + velocity * time) % period
+    pos = (start + velocity * seconds) % period
 
-    if r <= length:
-        return r
-    return period - r
+    if pos <= length:
+        return pos
+    return period - pos
 
 def solve():
     t = int(input())
 
+    out = []
+
     for _ in range(t):
-        N, M, x0, y0, vx, vy, S = map(int, input().split())
+        n, m, x0, y0, vx, vy, s = map(int, input().split())
 
-        x = reflected_position(x0, vx, N, S)
-        y = reflected_position(y0, vy, M, S)
+        x = reflected_position(n, x0, vx, s)
+        y = reflected_position(m, y0, vy, s)
 
-        print(x, y)
+        out.append(f"{x} {y}")
+
+    sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The `reflected_position` function contains the entire one-dimensional solution. `start + velocity * time` computes the unfolded location, and the modulo operation compresses it into one period of the bouncing motion.
+The `reflected_position` function contains the entire one-dimensional transformation from the algorithm. First it forms the unfolded position `start + velocity * seconds`. Python integers have arbitrary precision, so the product can safely reach around (10^{18}) without overflow.
 
-The period is `2 * length`, not `length`. A coordinate takes `length` units of unfolded distance to go from one wall to the other, then another `length` units to return to the starting wall. Using only `length` as the period would incorrectly identify a point on the way to the right wall with the corresponding point on the way back.
+The modulo is taken by `period = 2 * length`. Python guarantees that the result of `%` is in the interval from (0) through `period - 1`, even when the original position is negative. That is why the negative-velocity case needs no special branch.
 
-The comparison `r <= length` is also deliberate. When `r == length`, the ball is exactly on the wall, and that is a valid position at the requested time. Only values strictly larger than `length` belong to the reflected half of the cycle.
+The condition is `pos <= length`, not `pos < length`. If the ball lands exactly on a wall, that coordinate is already the correct physical position. For example, when `pos == length`, returning `length` is exactly right.
 
-Python's modulo operation is particularly convenient for negative velocities. For example, if the unfolded coordinate is `-1` and the period is `10`, Python evaluates `-1 % 10` as `9`, which is exactly the equivalent point in the current period.
+There is no need to update the velocity after finding a collision. We only need the position at one specified time, and the unfolded model has already encoded every velocity reversal through reflection.
 
-There is no risk of integer overflow in Python. The largest product is on the order of `10^18`, which Python integers handle directly. In a fixed-width language, a sufficiently wide integer type would be required for `velocity * S`.
+The input is processed with `sys.stdin.readline`, and answers are accumulated before one final write. With up to (10^4) test cases, this keeps I/O overhead small.
 
 ## Worked Examples
 
-For the first sample test case, the table has width `3` and height `5`, the ball starts at `(2, 2)`, moves with velocity `(2, 1)`, and we need its position after `3` seconds.
+For the first sample case,
 
-| Step | x unfolded | x period | x position | y unfolded | y period | y position |
+```
+3 5 2 2 2 1 3
+```
+
+the horizontal table size is (3), so the unfolded period is (6). The vertical table size is (5), so its period is (10).
+
+| Coordinate | Start | Velocity | Time | Unfolded position | Modulo period | Reflected position |
 | --- | --- | --- | --- | --- | --- | --- |
-| Initial | 2 | 6 | 2 | 2 | 10 | 2 |
-| After 3 seconds | 8 | 2 | 2 | 5 | 5 | 5 |
+| (x) | 2 | 2 | 3 | 8 | 2 | 2 |
+| (y) | 2 | 1 | 3 | 5 | 5 | 5 |
 
-For x, the unfolded coordinate is `2 + 2*3 = 8`. Reducing modulo `6` gives `2`, so the ball has returned to x-coordinate `2`. For y, the unfolded coordinate is `2 + 1*3 = 5`, exactly the upper wall, so the y-coordinate remains `5` at the requested instant. The resulting position is `(2, 5)`, matching the sample.
+The answer is `2 5`. Physically, the ball moves horizontally from (2) to the right wall at (3), back to (1) at time (2), and then to (2) at time (3). The unfolded calculation gets the same result without simulating those collisions.
 
-For the second sample test case, the table is `6 x 8`, the initial position is `(3, 2)`, the velocity is `(5, 1)`, and `S = 1`.
+For the second sample case,
 
-| Step | x unfolded | x period | x position | y unfolded | y period | y position |
+```
+6 8 3 2 5 1 1
+```
+
+the horizontal period is (12), while the vertical period is (16).
+
+| Coordinate | Start | Velocity | Time | Unfolded position | Modulo period | Reflected position |
 | --- | --- | --- | --- | --- | --- | --- |
-| Initial | 3 | 12 | 3 | 2 | 16 | 2 |
-| After 1 second | 8 | 8 | 4 | 3 | 3 | 3 |
+| (x) | 3 | 5 | 1 | 8 | 8 | 4 |
+| (y) | 2 | 1 | 1 | 3 | 3 | 3 |
 
-The unfolded x-coordinate is `8`. Since the table width is `6`, the second half of the period is active, so the actual coordinate is `12 - 8 = 4`. The y-coordinate is `3`, which is still inside the table. The final position is `(4, 3)`.
+The horizontal unfolded position is (8). Since the table ends at (6), the reflected coordinate is (12-8=4). The vertical coordinate has not reached a wall, so it remains (3). The resulting answer is `4 3`.
 
-These two traces demonstrate both sides of the triangular wave. The first test lands exactly on a wall, while the second test reaches the reflected half of the x-coordinate cycle.
+These traces show why the reflection must happen after taking modulo (2L), rather than modulo (L). Modulo (L) would lose the distinction between travelling toward a wall and travelling back from it.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(T)` | Each test case performs a constant number of arithmetic operations. |
-| Space | `O(1)` | Only a fixed number of integer variables are stored for each test case. |
+| Time | (O(T)) | Each test case performs a constant number of arithmetic operations. |
+| Space | (O(T)) | The output strings are stored before being written. The working space per test is (O(1)). |
 
-With at most `10^4` test cases, the algorithm performs only a few integer operations per case. This is easily compatible with the one-second limit, and memory usage does not grow with `S`, the table dimensions, or the number of wall collisions.
+With (T\le10^4), the algorithm performs only a few integer operations per test case. Even though (N,M,v_x,v_y,S) can make the intermediate product very large, Python handles these integers directly, and the number of arithmetic operations remains constant. The solution comfortably avoids the (10^9)-step simulation that the original bounds make impossible.
 
 ## Test Cases
 
@@ -188,25 +248,41 @@ With at most `10^4` test cases, the algorithm performs only a few integer operat
 import sys
 import io
 
-def reflected_position(start, velocity, length, time):
+def reflected_position(length, start, velocity, seconds):
     period = 2 * length
-    r = (start + velocity * time) % period
-    if r <= length:
-        return r
-    return period - r
+    pos = (start + velocity * seconds) % period
 
-def solve_data(data):
-    inp = io.StringIO(data)
-    t = int(inp.readline())
-    out = []
+    if pos <= length:
+        return pos
+    return period - pos
 
-    for _ in range(t):
-        N, M, x0, y0, vx, vy, S = map(int, inp.readline().split())
-        x = reflected_position(x0, vx, N, S)
-        y = reflected_position(y0, vy, M, S)
-        out.append(f"{x} {y}")
+def solve_input(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
 
-    return "\n".join(out) + "\n"
+    try:
+        sys.stdin = io.StringIO(inp)
+        output = io.StringIO()
+        sys.stdout = output
+
+        t = int(sys.stdin.readline())
+        ans = []
+
+        for _ in range(t):
+            n, m, x0, y0, vx, vy, s = map(
+                int, sys.stdin.readline().split()
+            )
+
+            x = reflected_position(n, x0, vx, s)
+            y = reflected_position(m, y0, vy, s)
+
+            ans.append(f"{x} {y}")
+
+        sys.stdout.write("\n".join(ans))
+        return output.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
 
 # Provided sample
 sample = """\
@@ -215,106 +291,95 @@ sample = """\
 6 8 3 2 5 1 1
 100 200 13 45 -20 111 9969
 """
-assert solve_data(sample) == """\
-2 5
-4 3
-33 196
-""", "provided sample"
+assert solve_input(sample) == "2 5\n4 3\n33 196", "provided sample"
 
-# Minimum-size table, exact wall hit, and zero velocity component.
+# Minimum-size table, immediate hit on the right wall.
 case_min = """\
-3
-2 2 1 1 1 0 1
-2 2 1 1 1 0 2
-2 2 1 1 0 0 1000000000
-"""
-assert solve_data(case_min) == """\
-2 1
-1 1
-1 1
-""", "minimum dimensions and zero velocity"
-
-# Negative velocity.
-case_negative = """\
 1
-5 4 2 1 -3 0 1
+2 2 1 1 1 0 1
 """
-assert solve_data(case_negative) == """\
-1 1
-""", "negative velocity"
+assert solve_input(case_min) == "2 1", "minimum-size table"
 
-# Exact corner hit.
+# Both coordinates move equally and hit a corner.
 case_corner = """\
 1
-3 5 2 4 1 1 1
+2 2 1 1 1 1 1
 """
-assert solve_data(case_corner) == """\
-3 5
-""", "corner collision"
+assert solve_input(case_corner) == "2 2", "corner collision"
+
+# Negative velocities, including a coordinate that lands exactly on a wall.
+case_negative = """\
+1
+5 4 2 2 -3 -2 1
+"""
+assert solve_input(case_negative) == "1 0", "negative velocity"
+
+# Zero velocity in one coordinate and multiple reflections in the other.
+case_zero_velocity = """\
+1
+2 5 1 3 0 2 3
+"""
+assert solve_input(case_zero_velocity) == "1 1", "zero velocity"
 
 # Maximum-scale values.
-case_max = """\
+case_maximum = """\
 1
-1000000000 1000000000 1 999999999 1000000000 -1000000000 1000000000
+1000000000 1000000000 999999999 999999999 1000000000 -1000000000 1000000000
 """
-assert solve_data(case_max) == """\
-1 999999999
-""", "maximum values"
-
-# Equal dimensions, equal positions, equal velocities, and repeated reflection.
-case_equal = """\
-1
-10 10 3 3 4 4 3
-"""
-assert solve_data(case_equal) == """\
-8 8
-""", "equal values and reflection"
+assert solve_input(case_maximum) == "999999999 999999999", "maximum values"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 2 1 1 1 0 1` and related cases | `2 1`, `1 1`, `1 1` | Minimum dimensions, exact boundary, and zero velocity |
-| `5 4 2 1 -3 0 1` | `1 1` | Negative modulo and negative velocity |
-| `3 5 2 4 1 1 1` | `3 5` | Simultaneous collision with two walls at a corner |
-| `1000000000 1000000000 1 999999999 1000000000 -1000000000 1000000000` | `1 999999999` | Maximum numeric limits and very large products |
-| `10 10 3 3 4 4 3` | `8 8` | Symmetric x and y motion and repeated reflections |
+| `2 2 1 1 1 0 1` | `2 1` | Minimum table dimensions and an exact wall hit |
+| `2 2 1 1 1 1 1` | `2 2` | Simultaneous collision at a corner |
+| `5 4 2 2 -3 -2 1` | `1 0` | Negative velocities and negative unfolded positions |
+| `2 5 1 3 0 2 3` | `1 1` | Zero velocity and repeated vertical reflections |
+| `1000000000 1000000000 999999999 999999999 1000000000 -1000000000 1000000000` | `999999999 999999999` | Maximum-scale arithmetic and large periods |
 
 ## Edge Cases
 
-A ball landing exactly on a wall must not be reflected before its requested position is reported. For
+An exact wall hit is handled by the `<= length` condition. Consider
 
 ```
 1
-5 4 2 1 3 0 1
+3 4 1 2 2 0 1
 ```
 
-the x unfolded coordinate is `5`, and the period is `10`. Since `5 <= 5`, the reflected coordinate is still `5`. The output is `5 1`. The condition must be `r <= length`, not `r < length`.
+For (x), the unfolded position is (1+2=3). The period is (6), so the reduced position is (3). Since (3\le3), the function returns (3). The vertical coordinate remains (2). The output is `3 2`. No extra reflection is applied at the instant of collision because the question asks for the position at that exact time.
 
-Negative velocity is handled by the same formula. For
-
-```
-1
-5 4 2 1 -3 0 1
-```
-
-the unfolded x-coordinate is `-1`. Its remainder modulo `10` is `9`, and because `9 > 5`, the actual coordinate becomes `10 - 9 = 1`. The output is `1 1`. No separate simulation of moving toward the left wall is needed.
-
-A corner collision is automatically represented by both coordinates reaching their upper boundaries at the same time. For
+Negative velocity requires the modulo operation to normalize the unfolded position. For
 
 ```
 1
-3 5 2 4 1 1 1
+5 4 2 2 -3 -2 1
 ```
 
-the unfolded coordinates are `3` and `5`. Their periods are `6` and `10`, and both remainders equal their respective table lengths. The result is exactly `3 5`. If the calculation were to reflect immediately after reaching a wall, it would answer the position at the next instant instead of the requested position.
+the horizontal unfolded position is (-1). Its normalized value modulo (10) is (9), so the reflected position is (10-9=1). Vertically, the unfolded position is (0), which stays (0). The output is `1 0`. The formula works even though the ball has crossed the left boundary in the unfolded model.
 
-A zero velocity component requires no special branch in the main algorithm. For
+A corner collision does not require special handling. For
 
 ```
 1
-7 6 3 4 0 0 1000000000
+3 3 1 1 2 2 1
 ```
 
-the unfolded coordinates remain `3` and `4` regardless of time. Taking the corresponding modulo and folding leaves them unchanged, producing `3 4`. This is one reason the unfolded-coordinate formula is preferable to collision-counting formulas that may attempt to divide by a velocity.
+both unfolded coordinates become (3). Both periods are (6), and both reduced coordinates are exactly (3), so the answer is `3 3`. The fact that both velocity components reverse afterward has no effect on the position at time (1). The independence of the two one-dimensional transformations naturally handles the corner.
 
-The largest values also require attention to arithmetic. With velocity and time both around `10^9`, their product can reach `10^18`. Python handles this exactly, so the expression `start + velocity * time` is safe. In languages with 32-bit integers, the same expression would overflow, making a 64-bit integer type necessary.
+Zero velocity is also covered without a separate branch. For
+
+```
+1
+2 5 1 3 0 2 3
+```
+
+the horizontal unfolded coordinate remains (1), while the vertical unfolded coordinate becomes (9). The vertical period is (10), so (9) folds to (1). The answer is `1 1`. A simulation might repeatedly inspect the horizontal coordinate even though nothing can happen there, while the formula simply calculates it once.
+
+Finally, large values do not change the algorithm. With
+
+```
+1
+1000000000 1000000000 999999999 999999999 1000000000 -1000000000 1000000000
+```
+
+the horizontal unfolded coordinate is (999999999+10^{18}), and the vertical one is (999999999-10^{18}). Since (10^{18}) is divisible by (2\cdot10^9), both coordinates reduce to (999999999) modulo their respective periods. Both are already in the first half of the unfolded interval, giving `999999999 999999999`. The example demonstrates why the solution must use arithmetic rather than simulation, while also exercising values close to the largest allowed limits.
