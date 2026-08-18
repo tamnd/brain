@@ -1,26 +1,27 @@
 ---
 title: "Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы)"
-description: "9 problems from Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы) (contest 102203), difficulty -. 9/9 solutions verified against sample I/O."
+description: "10 problems from Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы) (contest 102203), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102203
 contest_type: "Special"
 rating_range: "-"
-n_problems: 9
-n_verified: 9
-total_solve_s: 1427
+n_problems: 10
+n_verified: 10
+total_solve_s: 1476
 contest_year: 2019
-date: "2026-08-18T00:59:14+07:00"
+date: "2026-08-18T11:17:28+07:00"
 weight: 102203
 draft: false
 ---
 
 # [Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы)](https://codeforces.com/contest/102203)
 
-Special | 9 problems | 9/9 verified | Difficulty - | 23m 47s
+Special | 10 problems | 10/10 verified | Difficulty - | 24m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u043d\u0430 \u0424\u043b\u043e\u0440\u0438\u043d\u0443!](https://codeforces.com/problemset/problem/102203/A) |  |  |  | 49s | ✓ |
 | [B](B/) | [\u0421\u0440\u043e\u0447\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435](https://codeforces.com/problemset/problem/102203/B) |  |  |  | 1m 13s | ✓ |
 | [D](D/) | [\u041f\u0440\u043e \u043a\u044b\u0440\u0442](https://codeforces.com/problemset/problem/102203/D) |  |  |  | 6m 1s | ✓ |
 | [E](E/) | [\u042d\u043d\u0435\u0440\u0433\u0435\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u043f\u0435\u043a\u0442\u0440](https://codeforces.com/problemset/problem/102203/E) |  |  |  | 4m 5s | ✓ |
