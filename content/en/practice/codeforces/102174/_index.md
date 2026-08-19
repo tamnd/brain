@@ -1,27 +1,28 @@
 ---
 title: "The 14-th BIT Campus Programming Contest"
-description: "10 problems from The 14-th BIT Campus Programming Contest (contest 102174), difficulty -. 10/10 solutions verified against sample I/O."
+description: "11 problems from The 14-th BIT Campus Programming Contest (contest 102174), difficulty -. 11/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102174
 contest_type: "Special"
 rating_range: "-"
-n_problems: 10
-n_verified: 10
-total_solve_s: 1150
+n_problems: 11
+n_verified: 11
+total_solve_s: 1288
 contest_year: 2019
-date: "2026-08-19T07:16:04+07:00"
+date: "2026-08-19T15:18:35+07:00"
 weight: 102174
 draft: false
 ---
 
 # [The 14-th BIT Campus Programming Contest](https://codeforces.com/contest/102174)
 
-Special | 10 problems | 10/10 verified | Difficulty - | 19m 10s
+Special | 11 problems | 11/11 verified | Difficulty - | 21m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u4e24\u53ea\u8111\u65a7](https://codeforces.com/problemset/problem/102174/A) |  |  |  | 1m 5s | ✓ |
+| [B](B/) | [\u70bc\u91d1\u672f](https://codeforces.com/problemset/problem/102174/B) |  |  |  | 2m 18s | ✓ |
 | [D](D/) | [\u789f\u4e2d\u8c0d](https://codeforces.com/problemset/problem/102174/D) |  |  |  | 1m 41s | ✓ |
 | [E](E/) | [\u53ea\u6709\u4e00\u7aef\u5f00\u53e3\u7684\u74f6\u5b50](https://codeforces.com/problemset/problem/102174/E) |  |  |  | 2m 10s | ✓ |
 | [F](F/) | [\u98ce\u738b\u4e4b\u77b3](https://codeforces.com/problemset/problem/102174/F) |  |  |  | 2m | ✓ |
