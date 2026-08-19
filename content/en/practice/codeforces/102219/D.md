@@ -1,7 +1,7 @@
 ---
 title: "CF 102219D - Ali The Multi-billionaire"
-description: "I can write the complete editorial, but the version of the statement you provided is missing the definition of x. The original Codeforces statement also currently renders that definition only as an image, rather than as text, so the web copy does not expose the formula either."
-date: "2026-08-17T22:48:11+07:00"
+description: "I can write the editorial, but the problem statement you supplied is missing the single piece of information that determines the entire solution: the formula defining x from a and b."
+date: "2026-08-20T03:45:33+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102219
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2019 ICPC Malaysia National"
 rating: 0
 weight: 102219
-solve_time_s: 107
+solve_time_s: 86
 verified: false
 draft: false
 ---
@@ -18,18 +18,26 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 47s  
+**Solve time:** 1m 26s  
 **Verified:** no  
 
 ## Solution
-I can write the complete editorial, but the version of the statement you provided is missing the definition of x. The original Codeforces statement also currently renders that definition only as an image, rather than as text, so the web copy does not expose the formula either.
+I can write the editorial, but the problem statement you supplied is missing the single piece of information that determines the entire solution: the formula defining `x` from `a` and `b`.
 
-That formula is essential here. It determines the entire algorithm, because the range updates themselves are straightforward to accumulate with difference arrays, while the difficulty is evaluating the resulting pair (a i ​ ,b i ​ ) according to the missing function. The sample output 16 is not enough to uniquely reconstruct the formula, since many different functions can produce that value.
+The rendered statement literally contains:
 
-Please provide the missing formula, for example in a form such as
+> “These two integer is used to calculate another integer `x` using the following formula:”
 
-```
-x = ...
-```
+followed by an omitted image. The official Codeforces statement has the same formula as an image, so the web copy does not expose it as text either. citeturn5view0
 
-or upload/paste the image containing it. Once that is supplied, I can produce the requested complete editorial with the exact optimal algorithm, Python 3 implementation, worked traces, complexity analysis, and assert-based tests without guessing any part of the problem.
+This is not a cosmetic omission. Different formulas lead to completely different algorithms. For example, using the sample's final values
+
+`a = [3, 6, 6, 5, 5, 2, 3]`
+
+and
+
+`b = [1, 2, 1, 1, 1, 1, 2]`,
+
+a product formula gives a total of `39`, while a power formula `a^b mod 100007` gives `85`, neither of which matches the sample output `16`.
+
+The official page confirms that each friend starts with `a = b = 1`, that updates are inclusive clockwise circular ranges, and that each final `x` is reduced modulo `100005 + 7`; only

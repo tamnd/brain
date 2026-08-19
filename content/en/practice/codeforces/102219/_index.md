@@ -8,21 +8,21 @@ contest_type: "ICPC/IOI"
 rating_range: "-"
 n_problems: 8
 n_verified: 0
-total_solve_s: 2506
+total_solve_s: 2624
 contest_year: 2019
-date: "2026-08-18T23:37:16+07:00"
+date: "2026-08-18T03:44:07+07:00"
 weight: 102219
 draft: false
 ---
 
 # [2019 ICPC Malaysia National](https://codeforces.com/contest/102219)
 
-ICPC/IOI | 8 problems | 0/8 verified | Difficulty - | 41m 46s
+ICPC/IOI | 8 problems | 0/8 verified | Difficulty - | 43m 44s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Mental Rotation](https://codeforces.com/problemset/problem/102219/A) |  |  |  | 10m 8s |  |
-| [B](B/) | [SpongeBob SquarePants](https://codeforces.com/problemset/problem/102219/B) |  |  |  | 2m 36s |  |
+| [B](B/) | [SpongeBob SquarePants](https://codeforces.com/problemset/problem/102219/B) |  |  |  | 4m 34s |  |
 | [D](D/) | [Ali The Multi-billionaire](https://codeforces.com/problemset/problem/102219/D) |  |  |  | 1m 47s |  |
 | [E](E/) | [Optimal Slots](https://codeforces.com/problemset/problem/102219/E) |  |  |  | 3m 29s |  |
 | [F](F/) | [Military Class](https://codeforces.com/problemset/problem/102219/F) |  |  |  | 12m 26s |  |
