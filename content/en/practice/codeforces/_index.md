@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3170 contests, 23508 problems, 13189 verified."
+description: "Codeforces problem solutions with full editorials. 3171 contests, 23519 problems, 13200 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,12 +11,13 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3170 contests, 23508 problems, 13189 verified.**
+**3171 contests, 23519 problems, 13200 verified.**
 
-## Unknown — 845 contests, 7158 problems, 4309 verified
+## Unknown — 846 contests, 7169 problems, 4320 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
+| [102168](102168/) | [Личный чемпионат Самарского университета среди новичков 2018-2019](https://codeforces.com/contest/102168) | 11 | 11/11 | Special | - |
 | [102189](102189/) | [12-й открытый турнир по программированию в Абакане](https://codeforces.com/contest/102189) | 5 | 5/5 | Special | - |
 | [102192](102192/) | [2018 Chinese Multi-University Training, Nanjing U Contest](https://codeforces.com/contest/102192) | 12 | 12/12 | Special | - |
 | [102201](102201/) | [Moscow Pre-Finals Workshop 2019. KAIST Contest](https://codeforces.com/contest/102201) | 9 | 7/9 | Special | - |
