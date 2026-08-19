@@ -1,23 +1,23 @@
 ---
 title: "The 14-th BIT Campus Programming Contest"
-description: "5 problems from The 14-th BIT Campus Programming Contest (contest 102174), difficulty -. 5/5 solutions verified against sample I/O."
+description: "10 problems from The 14-th BIT Campus Programming Contest (contest 102174), difficulty -. 10/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102174
 contest_type: "Special"
 rating_range: "-"
-n_problems: 5
-n_verified: 5
-total_solve_s: 598
+n_problems: 10
+n_verified: 10
+total_solve_s: 1150
 contest_year: 2019
-date: "2026-08-19T07:06:36+07:00"
+date: "2026-08-19T07:16:04+07:00"
 weight: 102174
 draft: false
 ---
 
 # [The 14-th BIT Campus Programming Contest](https://codeforces.com/contest/102174)
 
-Special | 5 problems | 5/5 verified | Difficulty - | 9m 58s
+Special | 10 problems | 10/10 verified | Difficulty - | 19m 10s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,3 +26,8 @@ Special | 5 problems | 5/5 verified | Difficulty - | 9m 58s
 | [E](E/) | [\u53ea\u6709\u4e00\u7aef\u5f00\u53e3\u7684\u74f6\u5b50](https://codeforces.com/problemset/problem/102174/E) |  |  |  | 2m 10s | ✓ |
 | [F](F/) | [\u98ce\u738b\u4e4b\u77b3](https://codeforces.com/problemset/problem/102174/F) |  |  |  | 2m | ✓ |
 | [G](G/) | [\u795e\u5723\u7684 F2 \u8fde\u63a5\u7740\u6211\u4eec](https://codeforces.com/problemset/problem/102174/G) |  |  |  | 3m 2s | ✓ |
+| [H](H/) | [\u76ee\u6807\u662f\u6210\u4e3a\u6570\u8bba\u5927\u5e08](https://codeforces.com/problemset/problem/102174/H) |  |  |  | 1m 47s | ✓ |
+| [I](I/) | [\u51fa\u7ed9 paul-lu \u7684\u6570\u6570\u9898](https://codeforces.com/problemset/problem/102174/I) |  |  |  | 1m 51s | ✓ |
+| [J](J/) | [\u91d1\u8272\u4f20\u8bf4](https://codeforces.com/problemset/problem/102174/J) |  |  |  | 1m 55s | ✓ |
+| [K](K/) | [\u591a\u9879\u5f0f\u6c42\u5bfc](https://codeforces.com/problemset/problem/102174/K) |  |  |  | 1m 48s | ✓ |
+| [L](L/) | [\u65c5\u884c\u7684\u610f\u4e49](https://codeforces.com/problemset/problem/102174/L) |  |  |  | 1m 51s | ✓ |
