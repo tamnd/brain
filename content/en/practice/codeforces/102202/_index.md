@@ -8,9 +8,9 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 8
 n_verified: 2
-total_solve_s: 3970
+total_solve_s: 3967
 contest_year: 2019
-date: "2026-08-18T02:25:54+07:00"
+date: "2026-08-18T02:32:08+07:00"
 weight: 102202
 draft: false
 ---
@@ -28,4 +28,4 @@ Special | 8 problems | 2/8 verified | Difficulty - | 1h 6m
 | [F](F/) | [Eat Economically](https://codeforces.com/problemset/problem/102202/F) |  |  |  | 16m 42s |  |
 | [G](G/) | [Increasing Sequence](https://codeforces.com/problemset/problem/102202/G) |  |  |  | 9m 38s | ✓ |
 | [H](H/) | [Jealous Teachers](https://codeforces.com/problemset/problem/102202/H) |  |  |  | 6m 30s | ✓ |
-| [I](I/) | [Dijkstra Is Playing At My House](https://codeforces.com/problemset/problem/102202/I) |  |  |  | 6m 12s |  |
+| [I](I/) | [Dijkstra Is Playing At My House](https://codeforces.com/problemset/problem/102202/I) |  |  |  | 6m 9s |  |
