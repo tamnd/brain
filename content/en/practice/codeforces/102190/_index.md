@@ -1,26 +1,27 @@
 ---
 title: "2019 ECNU Campus Invitational Contest"
-description: "7 problems from 2019 ECNU Campus Invitational Contest (contest 102190), difficulty -. 7/7 solutions verified against sample I/O."
+description: "8 problems from 2019 ECNU Campus Invitational Contest (contest 102190), difficulty -. 8/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102190
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
-n_verified: 7
-total_solve_s: 2403
+n_problems: 8
+n_verified: 8
+total_solve_s: 2496
 contest_year: 2019
-date: "2026-08-19T16:17:42+07:00"
+date: "2026-08-20T00:42:21+07:00"
 weight: 102190
 draft: false
 ---
 
 # [2019 ECNU Campus Invitational Contest](https://codeforces.com/contest/102190)
 
-Special | 7 problems | 7/7 verified | Difficulty - | 40m 3s
+Special | 8 problems | 8/8 verified | Difficulty - | 41m 36s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
+| [A](A/) | [standard input/output](https://codeforces.com/problemset/problem/102190/A) |  |  |  | 1m 33s | ✓ |
 | [B](B/) | [standard input/output](https://codeforces.com/problemset/problem/102190/B) |  |  |  | 4m 32s | ✓ |
 | [C](C/) | [standard input/output](https://codeforces.com/problemset/problem/102190/C) |  |  |  | 3m 50s | ✓ |
 | [D](D/) | [standard input/output](https://codeforces.com/problemset/problem/102190/D) |  |  |  | 4m 12s | ✓ |
