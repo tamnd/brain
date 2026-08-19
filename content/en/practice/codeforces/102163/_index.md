@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 3
-total_solve_s: 4011
+total_solve_s: 5313
 contest_year: 2019
-date: "2026-08-19T00:02:33+07:00"
+date: "2026-08-19T00:28:21+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 10 problems | 3/10 verified | Difficulty - | 1h 6m
+Special | 10 problems | 3/10 verified | Difficulty - | 1h 28m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,4 +30,4 @@ Special | 10 problems | 3/10 verified | Difficulty - | 1h 6m
 | [J](J/) | [Bashar and daylight saving time](https://codeforces.com/problemset/problem/102163/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 9m 28s |  |
 | [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 10m 13s |  |
-| [M](M/) | [NCD Salary](https://codeforces.com/problemset/problem/102163/M) |  |  |  | 4m 4s |  |
+| [M](M/) | [NCD Salary](https://codeforces.com/problemset/problem/102163/M) |  |  |  | 25m 46s |  |

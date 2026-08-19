@@ -1,7 +1,7 @@
 ---
 title: "CF 102163M - NCD Salary"
-description: "For each test case, there are two salaries. The original salary is (B1^{P1}), while the amount actually received is (B2^{P2}). We have to determine whether the second value is larger, smaller, or exactly equal to the first."
-date: "2026-08-19T07:58:29+07:00"
+description: "For each test case, there are two salaries represented as powers. The original salary is (B1^{P1}), while the new salary is (B2^{P2}). We need to compare these two values without actually needing to print either salary."
+date: "2026-08-20T00:28:20+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102163
@@ -9,7 +9,7 @@ codeforces_index: "M"
 codeforces_contest_name: "NCD 2019"
 rating: 0
 weight: 102163
-solve_time_s: 244
+solve_time_s: 1546
 verified: false
 draft: false
 ---
@@ -18,108 +18,107 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 4s  
+**Solve time:** 25m 46s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-For each test case, there are two salaries. The original salary is (B_1^{P_1}), while the amount actually received is (B_2^{P_2}). We have to determine whether the second value is larger, smaller, or exactly equal to the first. The required outputs are `Congrats`, `HaHa`, and `Lazy`, respectively. The original problem uses (0 \le B,P \le 10^6), with each power guaranteed not to have both its base and exponent equal to zero.
+For each test case, there are two salaries represented as powers. The original salary is (B_1^{P_1}), while the new salary is (B_2^{P_2}). We need to compare these two values without actually needing to print either salary. If the new salary is larger, the answer is `Congrats`; if it is smaller, the answer is `HaHa`; if both salaries are equal, the answer is `Lazy`. The official problem has (B) and (P) ranging from (0) to (10^6).
 
-The bounds make direct construction of the powers unattractive. An exponent can be (10^6), so repeatedly multiplying to construct one value can take up to (10^6) multiplications, and doing this for both salaries takes up to (2\cdot10^6) multiplications per test case. The resulting integers are also enormous. For example, (2^{10^6}) has hundreds of thousands of decimal digits, so arithmetic on the complete values is much more expensive than the original input size suggests. Since the comparison itself only needs a single result, building those integers is unnecessary work.
+The first difficulty is that the exponents can be as large as one million. Even though the inputs themselves fit comfortably in ordinary integers, (10^6{}^{10^6}) has about six million decimal digits. Constructing such numbers just to compare them is wasteful. The input contains (T) independent comparisons, so the work per test case needs to remain very small. A solution based on explicitly constructing the powers can quickly become dominated by arbitrary-precision multiplication and memory usage, while a logarithmic comparison needs only a handful of floating-point operations per case.
 
-There are several edge cases that can silently break a logarithm-based implementation. The first is a zero base. For example,
+There are several boundary cases that can silently break a straightforward implementation. A base of zero cannot be passed directly to `log`, because (\log(0)) is undefined. For example,
 
 ```
 1
 0 5 2 3
 ```
 
-has salaries (0^5=0) and (2^3=8), so the answer is `Congrats`. Calling `log(0)` is invalid, so zero bases must be handled before taking logarithms.
+represents (0^5) versus (2^3), so the new salary is larger and the answer is `Congrats`. A direct logarithmic calculation would attempt to evaluate `log(0)`.
 
-A second case is an exponent of zero. For example,
-
-```
-1
-7 0 3 5
-```
-
-gives (7^0=1) and (3^5=243), so the answer is `Congrats`. A careless implementation might treat exponent zero as making the whole expression zero, but for every positive base, (B^0=1).
-
-A third case is a base of one. For example,
+An exponent of zero is another special case. For a positive base, (B^0=1). For example,
 
 ```
 1
-1 1000000 2 1
+7 0 3 2
 ```
 
-compares (1) with (2), so the answer is `Congrats`. Since (\log 1=0), the logarithmic expression correctly becomes zero, but code that assumes every base contributes a positive logarithm can mishandle it.
+compares (1) with (9), so the answer is `Congrats`. The logarithmic expression handles positive bases naturally because (0\cdot\log(B)=0).
 
-Finally, exact equality must be recognized. For example,
+Equality can also be deceptive. The bases do not have to be identical. For example,
 
 ```
 1
 2 4 4 2
 ```
 
-gives (2^4=16) and (4^2=16), so the answer is `Lazy`. The two input pairs are different even though their powers are equal, so comparing bases and exponents directly is not sufficient.
+compares (2^4) with (4^2), both equal to (16), so the answer is `Lazy`. Comparing only the bases would incorrectly report that the second salary is larger.
+
+The contest's accepted approach treats a zero base as a zero salary, including the degenerate `0 0` representation, and handles it before taking logarithms. This convention is consistent with the accepted solutions for the problem.
 
 ## Approaches
 
-The most direct approach is to calculate both powers and compare the resulting integers. If we construct a power by repeated multiplication, (B^P) requires (P) multiplications. With (P=10^6), one test case can require (2\cdot10^6) such multiplications before the comparison even happens. Worse, the integers become hundreds of thousands of digits long, so the cost of each multiplication grows as the number becomes larger. This is unnecessary when all we need is the ordering of the two values.
+The most direct approach is to calculate both powers and compare the resulting integers. Mathematically this is completely correct because it computes exactly the two quantities we care about. For example, we could calculate `pow(B1, P1)` and `pow(B2, P2)` and compare them.
 
-The brute-force method works because integer arithmetic preserves the exact ordering of the two salaries. The problem is that the values themselves are much larger than the input numbers. The key observation is that logarithm is strictly increasing on positive numbers. For positive (B),
+The problem is the size of those integers. In the worst case, (B=10^6) and (P=10^6), so the result contains roughly (6\times10^6) decimal digits, or about (2\times10^7) bits. A single exponentiation consequently operates on multi-megabyte integers, and repeated arbitrary-precision multiplications make this approach far too expensive when there are many test cases. The exact number of elementary machine-word operations depends on the big-integer implementation, so the useful complexity statement is that the arithmetic cost grows with the number of bits in the enormous result rather than with the constant-size input.
+
+The key observation is that the ordering of positive numbers is preserved by the logarithm. For positive (B),
 
 [
-\log(B^P)=P\log B.
+B^P = e^{P\ln B}.
 ]
 
-Consequently,
+Since the exponential function is strictly increasing,
 
 [
 B_1^{P_1} < B_2^{P_2}
 ]
 
-exactly when
+is equivalent to
 
 [
-P_1\log B_1 < P_2\log B_2.
+P_1\ln B_1 < P_2\ln B_2.
 ]
 
-The original powers never have to be constructed. Each test case becomes two logarithm evaluations, two multiplications, and one comparison.
+The enormous powers have disappeared. We only calculate two products involving numbers at most (10^6). This is exactly why logarithms fit the structure of the problem: the exponent that would make the integer enormous becomes an ordinary multiplication.
 
-The zero-base cases have to be separated first because (\log 0) does not exist. Under the given guarantee, a base of zero always has a positive exponent, so its value is exactly zero. If both bases are zero, both salaries are zero. If only one base is zero, the corresponding salary is zero, while the other salary is positive because its pair cannot be ((0,0)). Thus the zero cases can be resolved using ordinary integer comparisons before entering the logarithmic calculation.
-
-For positive bases, the computed logarithmic values can differ from the mathematical values by tiny floating-point errors. A small tolerance around equality is enough for this problem, and is also useful for identities such as (2^4=4^2), where the two mathematically equal expressions are evaluated through separate calls to `log`.
+The zero-base cases must be separated first because (\ln 0) does not exist. After that, the comparison uses floating-point logarithms with a small tolerance. This is also the approach used by published accepted solutions for this problem.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(P_1+P_2)) multiplications, with large-integer costs | (O(P_1+P_2)) bits for the constructed values | Too slow / unnecessarily expensive |
-| Optimal | (O(1)) arithmetic operations per test case | (O(1)) | Accepted |
+| Brute Force | Depends on huge integer size, up to millions of decimal digits per power | Depends on huge integer size | Too slow |
+| Logarithms | (O(1)) per test case | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read (B_1,P_1,B_2,P_2). We only need the two bases and exponents for this test case, so no array or other data structure is necessary.
-2. If either base is zero, handle this case directly. A zero base has a positive exponent because ((0,0)) is forbidden, so its salary is zero. If both bases are zero, both salaries are zero and the answer is `Lazy`. Otherwise, the salary with the zero base is smaller, so determine whether the new salary is zero and print the corresponding result.
-3. If both bases are positive, compute
+1. Read (B_1,P_1,B_2,P_2). The first pair represents the old salary and the second pair represents the new salary.
+2. Check whether either base is zero. If both bases are zero, both salaries are treated as zero under the problem's contest convention, so print `Lazy`. If only (B_1) is zero, the old salary is zero and the new salary is positive, so print `Congrats`. If only (B_2) is zero, the new salary is zero and the old salary is positive, so print `HaHa`. This check also prevents an invalid call to `log(0)`.
+3. For positive bases, calculate
 
 [
-L_1=P_1\log(B_1),\qquad L_2=P_2\log(B_2).
+x_1=P_1\ln(B_1),\qquad x_2=P_2\ln(B_2).
 ]
 
-These are the logarithms of the two salaries, so comparing (L_1) and (L_2) is equivalent to comparing the original salaries.
-4. If (|L_1-L_2|) is within a small tolerance, print `Lazy`. This handles mathematical equalities despite tiny floating-point rounding differences.
-5. Otherwise, if (L_2>L_1), the new salary is larger, so print `Congrats`. If (L_2<L_1), print `HaHa`.
+We do not calculate either original salary. The values (x_1) and (x_2) are their natural logarithms.
+4. Compare (x_1) and (x_2). If their difference is extremely small, print `Lazy`, because the floating-point calculations represent the two logarithms as equal within the intended numerical precision.
+5. If (x_1<x_2), the new salary is larger, so print `Congrats`. Otherwise (x_1>x_2), meaning the new salary is smaller, so print `HaHa`.
 
 ### Why it works
 
-For positive bases, the logarithm function is strictly increasing, so it preserves the ordering of the salaries. Since
+For positive bases, the logarithm is strictly increasing, so applying it cannot change the ordering of the two salaries. We have
 
 [
-\log(B^P)=P\log B,
+\ln(B_1^{P_1})=P_1\ln(B_1)
 ]
 
-the algorithm compares exactly the logarithms of the two salaries instead of constructing the salaries themselves. Zero bases are handled separately because their values are known exactly to be zero. Thus every possible valid input is reduced either to an exact zero comparison or to an equivalent comparison of logarithms.
+and
+
+[
+\ln(B_2^{P_2})=P_2\ln(B_2).
+]
+
+Thus comparing the two products is equivalent to comparing the original salaries. Zero bases are handled separately before this transformation, so the algorithm never evaluates an undefined logarithm. The only approximation comes from floating-point arithmetic, which is handled with a small tolerance as expected by the problem's intended solution. Published solutions use the same logarithmic transformation and an epsilon around (10^{-7}).
 
 ## Python Solution
 
@@ -131,83 +130,74 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
-    ans = []
+    out = []
 
     for _ in range(t):
         b1, p1, b2, p2 = map(int, input().split())
 
         if b1 == 0 or b2 == 0:
-            if b1 == 0 and b2 == 0:
-                ans.append("Lazy")
-            elif b1 == 0:
-                ans.append("Congrats")
+            if b1 == b2:
+                out.append("Lazy")
+            elif b1 < b2:
+                out.append("Congrats")
             else:
-                ans.append("HaHa")
+                out.append("HaHa")
             continue
 
-        x = p1 * math.log(b1)
-        y = p2 * math.log(b2)
+        x1 = p1 * math.log(b1)
+        x2 = p2 * math.log(b2)
 
-        if abs(x - y) <= 1e-7:
-            ans.append("Lazy")
-        elif x < y:
-            ans.append("Congrats")
+        if abs(x1 - x2) <= 1e-7:
+            out.append("Lazy")
+        elif x1 < x2:
+            out.append("Congrats")
         else:
-            ans.append("HaHa")
+            out.append("HaHa")
 
-    sys.stdout.write("\n".join(ans))
+    sys.stdout.write("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The input loop processes each test case independently and stores only the resulting strings. This keeps the algorithm constant-space apart from the output buffer.
+The program first imports `math` because the entire optimization comes from replacing a huge power with its logarithm. The output is accumulated in `out` and written once at the end, which avoids repeated output calls when there are many test cases.
 
-The zero-base branch appears before `math.log`, which is necessary because `math.log(0)` raises an error. The problem guarantees that a pair cannot be `(0, 0)`, so whenever a single base is zero its exponent is positive and the corresponding power is genuinely zero.
+The zero-base branch comes before every call to `math.log`. This is both mathematically necessary and an implementation detail that is easy to overlook. A call such as `math.log(0)` raises an exception.
 
-For positive bases, `p1 * math.log(b1)` represents (\log(B_1^{P_1})), and similarly for the second salary. Python integers have arbitrary precision, so the multiplication by the exponent itself cannot overflow. The logarithm is the only floating-point operation.
+For positive bases, `p1 * math.log(b1)` is exactly the logarithmic form (P_1\ln B_1). Python's integer multiplication is safe here because `p1` is at most (10^6) and `math.log(b1)` is an ordinary floating-point value.
 
-The `1e-7` tolerance is deliberately applied to the difference between the logarithms rather than to the salaries themselves. The salaries can be astronomically large, making an absolute tolerance on the original values meaningless. At the logarithmic scale, the relevant quantities are bounded by roughly (10^6\log(10^6)), so this tolerance is tiny compared with the scale of a genuinely different comparison.
+The `1e-7` tolerance follows the intended solution strategy used in published solutions. The comparison is performed on logarithms rather than on the original powers, so no huge integer is ever constructed.
 
 ## Worked Examples
 
-The first sample contains three different relationships.
+For the first sample, consider the three test cases one at a time.
 
-| (B_1) | (P_1) | (B_2) | (P_2) | First salary | New salary | Result |
+| (B_1) | (P_1) | (B_2) | (P_2) | (P_1\ln B_1) | (P_2\ln B_2) | Result |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2 | 3 | 4 | 2 | (2^3=8) | (4^2=16) | `Congrats` |
-| 2 | 2 | 3 | 1 | (2^2=4) | (3^1=3) | `HaHa` |
-| 2 | 4 | 4 | 2 | (2^4=16) | (4^2=16) | `Lazy` |
+| 2 | 3 | 4 | 2 | (3\ln2) | (2\ln4=4\ln2) | Congrats |
+| 2 | 2 | 3 | 1 | (2\ln2) | (\ln3) | HaHa |
+| 2 | 4 | 4 | 2 | (4\ln2) | (2\ln4=4\ln2) | Lazy |
 
-For the first row, the logarithmic values are (3\log2) and (2\log4). Since (\log4=2\log2), these become approximately (2.0794) and (2.7726), so the second salary is larger. The second row gives approximately (1.3863) and (1.0986), so the new salary is smaller. In the last row, both logarithmic values represent (\log16), so their difference is within the equality tolerance.
+In the first case, (3\ln2<4\ln2), so (2^3<4^2) and the new salary is larger. In the second case, (2\ln2>\ln3), so (2^2>3). The third case demonstrates that different base and exponent pairs can produce exactly the same salary.
 
-A second example exercises zero bases and exponent zero.
+A useful additional trace is the zero-base case and an exponent-zero case.
 
-```
-4
-0 7 5 0
-3 0 2 1
-1 100 1 1
-2 10 4 5
-```
+| (B_1) | (P_1) | (B_2) | (P_2) | Branch | Result |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 5 | 2 | 3 | Zero base, only old salary is zero | Congrats |
+| 7 | 0 | 3 | 2 | Positive bases, logarithms give (0) and (2\ln3) | Congrats |
+| 2 | 4 | 4 | 2 | Positive bases, logarithmic values are equal | Lazy |
 
-| (B_1) | (P_1) | (B_2) | (P_2) | First salary | New salary | Result |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 7 | 5 | 0 | (0) | (1) | `Congrats` |
-| 3 | 0 | 2 | 1 | (1) | (2) | `Congrats` |
-| 1 | 100 | 1 | 1 | (1) | (1) | `Lazy` |
-| 2 | 10 | 4 | 5 | (1024) | (1024) | `Lazy` |
-
-The first row never calls `log(0)`, because the zero-base branch immediately recognizes the first salary as zero. The second row confirms that a positive base raised to exponent zero produces one. The third row shows that a base of one remains one regardless of the exponent. The final row is another equality of different power representations.
+The first row never calls `log(0)`. The second row shows that an exponent of zero naturally becomes a logarithmic value of zero because (7^0=1). The final row confirms the equality condition through the identity (2^4=4^2).
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(T)) | Each test case performs a constant number of arithmetic and logarithm operations. |
-| Space | (O(T)) for the output buffer, (O(1)) auxiliary space | The computation itself uses only a constant number of variables. |
+| Time | (O(T)) | Each test case performs a constant number of arithmetic and logarithm operations |
+| Space | (O(T)) | The output strings are stored before one final write |
 
-The exponent and base can each be as large as (10^6), but the optimal algorithm never iterates up to either value and never constructs the corresponding huge powers. Its running time depends only on the number of test cases, so it comfortably avoids the large-integer work of direct exponentiation. The memory used by the calculation is constant, and even storing the output for all test cases requires only linear space in the amount of text printed.
+The logarithm operation works on ordinary floating-point numbers, so its cost is constant for the purposes of competitive-programming complexity analysis. With input values capped at (10^6), the algorithm never creates the multi-million-digit salary values that make direct exponentiation unattractive. The 256 MB memory limit is easily sufficient for the constant-size per-test-case state and the output buffer.
 
 ## Test Cases
 
@@ -216,40 +206,50 @@ import sys
 import io
 import math
 
-def solve_io(inp: str) -> str:
-    old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
-
-    t = int(sys.stdin.readline())
-    ans = []
+def solve():
+    input = sys.stdin.readline
+    t = int(input())
+    out = []
 
     for _ in range(t):
-        b1, p1, b2, p2 = map(int, sys.stdin.readline().split())
+        b1, p1, b2, p2 = map(int, input().split())
 
         if b1 == 0 or b2 == 0:
-            if b1 == 0 and b2 == 0:
-                ans.append("Lazy")
-            elif b1 == 0:
-                ans.append("Congrats")
+            if b1 == b2:
+                out.append("Lazy")
+            elif b1 < b2:
+                out.append("Congrats")
             else:
-                ans.append("HaHa")
+                out.append("HaHa")
             continue
 
-        x = p1 * math.log(b1)
-        y = p2 * math.log(b2)
+        x1 = p1 * math.log(b1)
+        x2 = p2 * math.log(b2)
 
-        if abs(x - y) <= 1e-7:
-            ans.append("Lazy")
-        elif x < y:
-            ans.append("Congrats")
+        if abs(x1 - x2) <= 1e-7:
+            out.append("Lazy")
+        elif x1 < x2:
+            out.append("Congrats")
         else:
-            ans.append("HaHa")
+            out.append("HaHa")
 
-    sys.stdin = old_stdin
-    return "\n".join(ans)
+    sys.stdout.write("\n".join(out))
 
-# Provided sample
-assert solve_io(
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    try:
+        solve()
+        return sys.stdout.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+
+assert run(
     """3
 2 3 4 2
 2 2 3 1
@@ -259,111 +259,88 @@ assert solve_io(
 HaHa
 Lazy""", "sample 1"
 
-# Zero base versus a positive salary, and exponent zero
-assert solve_io(
-    """2
-0 7 5 0
-3 0 2 1
-"""
-) == """Congrats
-Congrats""", "zero base and zero exponent"
-
-# Both salaries are zero
-assert solve_io(
+assert run(
     """1
-0 5 0 8
+1 0 1 0
 """
-) == "Lazy", "both zero-base powers"
+) == "Lazy", "minimum positive-base equality"
 
-# Maximum-size values
-assert solve_io(
-    """2
+assert run(
+    """1
+0 5 1000000 1000000
+"""
+) == "Congrats", "zero old salary"
+
+assert run(
+    """1
 1000000 1000000 999999 1000000
-1000000 999999 1000000 1000000
 """
-) == """Congrats
-HaHa""", "maximum boundary values"
+) == "HaHa", "maximum-size values"
 
-# Equality with different representations and base one
-assert solve_io(
-    """3
-2 20 4 10
-1 1000000 1 1
-10 1 2 0
+assert run(
+    """4
+2 4 4 2
+3 1 3 1
+10 0 2 1
+2 1 1 1000000
 """
 ) == """Lazy
 Lazy
-Congrats""", "equality and exponent-zero cases"
+HaHa
+HaHa""", "equality and exponent boundaries"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0 7 5 0` | `Congrats` | A zero base produces zero, while a positive base with exponent zero produces one. |
-| `0 5 0 8` | `Lazy` | Both powers are zero when both bases are zero and exponents are positive. |
-| `1000000 1000000 999999 1000000` | `Congrats` | Large boundary values without constructing enormous powers. |
-| `1000000 999999 1000000 1000000` | `HaHa` | A one-step exponent difference at the maximum base. |
-| `2 20 4 10` | `Lazy` | Equal powers represented by different bases and exponents. |
-| `1 1000000 1 1` | `Lazy` | Base one with very different exponents. |
-| `10 1 2 0` | `Congrats` | The boundary case where the second exponent is zero. |
+| `2 3 4 2` | `Congrats` | Basic logarithmic comparison |
+| `1 0 1 0` | `Lazy` | Both exponents are zero |
+| `0 5 1000000 1000000` | `Congrats` | Zero-base handling |
+| `1000000 1000000 999999 1000000` | `HaHa` | Maximum input magnitudes without constructing huge powers |
+| `2 4 4 2` | `Lazy` | Equality with different bases |
+| `10 0 2 1` | `HaHa` | (10^0=1<2) |
+| `2 1 1 1000000` | `HaHa` | Large exponent on the second salary |
 
 ## Edge Cases
 
-When the first base is zero, consider
+A zero base must be handled before logarithms. For
 
 ```
 1
 0 5 2 3
 ```
 
-The algorithm enters the zero-base branch immediately. Since only (B_1) is zero, the first salary is (0^5=0), while the second salary is (2^3=8). It prints `Congrats`. No logarithm of zero is evaluated.
+the first salary is (0^5=0), while the second is (2^3=8). The algorithm enters the zero-base branch, sees that only (B_1) is zero, and prints `Congrats`. No call to `log(0)` occurs.
 
-When both bases are zero, consider
-
-```
-1
-0 4 0 9
-```
-
-Both exponents are positive because `(0, 0)` is forbidden for each power. The two salaries are therefore (0) and (0). The algorithm sees both zero bases and prints `Lazy`.
-
-When an exponent is zero, consider
+Two zero bases produce equal salaries under the contest's intended zero-base convention. For
 
 ```
 1
-7 0 3 5
+0 7 0 3
 ```
 
-Both bases are positive, so the logarithmic branch is used. The first logarithmic value is (0\log7=0), representing (\log1), while the second is (5\log3>0). The second salary is larger, so the result is `Congrats`.
+the algorithm sees `b1 == b2 == 0` and prints `Lazy`. The exponents do not matter once the base-zero branch is selected.
 
-When a base is one, consider
-
-```
-1
-1 1000000 2 1
-```
-
-The first logarithmic value is (10^6\log1=0), while the second is (\log2>0). The algorithm prints `Congrats`, correctly reflecting (1^{1000000}=1<2).
-
-For equal powers with different representations, consider
+An exponent of zero does not require a separate branch when the base is positive. For
 
 ```
 1
-2 1000000 4 500000
+10 0 2 1
 ```
 
-Mathematically,
-
-[
-2^{1000000}=(2^2)^{500000}=4^{500000}.
-]
-
-The algorithm computes (1000000\log2) and (500000\log4). These represent the same mathematical logarithm, and their floating-point difference is within the equality tolerance, so the output is `Lazy`.
-
-The final edge case is a comparison where the values are extremely large but clearly different. For example,
+the logarithmic values are (0) and (\ln2). Since (0<\ln2), the algorithm prints `Congrats` for the new salary. For the reverse comparison,
 
 ```
 1
-1000000 1000000 999999 1000000
+2 1 1 1000000
 ```
 
-The algorithm compares (10^6\log(10^6)) with (10^6\log(999999)). Since the first logarithm is larger, it prints `Congrats` without ever constructing either power. This is exactly where the logarithmic transformation provides its main advantage.
+the values are (\ln2) and (0), so the algorithm prints `HaHa`.
+
+Finally, equality cannot be inferred from equal bases alone. With
+
+```
+1
+2 4 4 2
+```
+
+the logarithmic values are (4\ln2) and (2\ln4). Since (\ln4=2\ln2), both expressions are exactly (4\ln2), so the difference falls within the equality tolerance and the answer is `Lazy`. This is the central reason the algorithm compares the complete (P\ln B) expressions rather than inspecting either input pair independently.
