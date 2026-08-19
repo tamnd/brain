@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 3
-total_solve_s: 2038
+total_solve_s: 2494
 contest_year: 2019
-date: "2026-08-19T14:47:57+07:00"
+date: "2026-08-19T14:57:28+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 9 problems | 3/9 verified | Difficulty - | 33m 58s
+Special | 9 problems | 3/9 verified | Difficulty - | 41m 34s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,6 @@ Special | 9 problems | 3/9 verified | Difficulty - | 33m 58s
 | [E](E/) | [Adnan and the Burned drivers](https://codeforces.com/problemset/problem/102163/E) |  |  |  | 2m 31s | ✓ |
 | [H](H/) | [Mr. Hamra and his quantum particles](https://codeforces.com/problemset/problem/102163/H) |  |  |  | 4m 17s |  |
 | [J](J/) | [Bashar and daylight saving time](https://codeforces.com/problemset/problem/102163/J) |  |  |  | 1m 28s | ✓ |
-| [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 1m 52s |  |
+| [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 9m 28s |  |
 | [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 1m 42s |  |
 | [M](M/) | [NCD Salary](https://codeforces.com/problemset/problem/102163/M) |  |  |  | 4m 4s |  |

@@ -1,7 +1,7 @@
 ---
 title: "CF 102163K - Masaoud LOVES PIZZAS"
-description: "We have an array of positive integers, where A[i] is the number of pizza slices on the plate of the i-th student. Masaoud must choose a contiguous group of students, so every valid choice corresponds to a subarray of A."
-date: "2026-08-19T07:52:41+07:00"
+description: "We have an array of pizza counts, where A[i] is the number of slices on the i-th student's plate. Masaoud must choose a non-empty contiguous segment of this array, meaning a consecutive group of students, and the sum of the selected values must be strictly smaller than X."
+date: "2026-08-19T14:57:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102163
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "NCD 2019"
 rating: 0
 weight: 102163
-solve_time_s: 112
+solve_time_s: 568
 verified: false
 draft: false
 ---
@@ -18,76 +18,60 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 1m 52s  
+**Solve time:** 9m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an array of positive integers, where `A[i]` is the number of pizza slices on the plate of the `i`-th student. Masaoud must choose a contiguous group of students, so every valid choice corresponds to a subarray of `A`. A choice is valid when the sum of that subarray is strictly smaller than `X`.
+We have an array of pizza counts, where `A[i]` is the number of slices on the `i`-th student's plate. Masaoud must choose a non-empty contiguous segment of this array, meaning a consecutive group of students, and the sum of the selected values must be strictly smaller than `X`.
 
-For example, with `A = [1, 2, 3]`, the group containing positions `1..2` has sum `1 + 2 = 3`. If `X = 4`, that group is valid, while the group `1..3`, whose sum is `6`, is not. The required output is the total number of contiguous subarrays whose sum is less than `X`.
+The task is to count every contiguous subarray whose sum is less than `X`. Different positions define different groups, so even equal values at different positions represent different choices.
 
-The values of `A[i]` and `X` can be as large as `10^9`, while `N` can reach `10^5`. A quadratic algorithm may inspect about `N(N+1)/2`, which is roughly `5 * 10^9` subarrays at the maximum size. That is far beyond what a one-second Codeforces time limit can handle. We need an algorithm whose work grows essentially linearly with the array size. Since all `A[i]` are positive, adding another element always increases a subarray sum, which gives us exactly the monotonicity needed for a sliding-window solution.
+The constraints are large enough to rule out checking every subarray directly. With `N = 10^5`, there are `N(N+1)/2`, or about `5 * 10^9`, possible contiguous groups in the worst case. Even an O(N²) algorithm is far beyond what a 1 second time limit can handle. The positive values in the array are the key structural property that allows the problem to be solved in linear time.
 
-There are several boundary cases that can make an otherwise reasonable implementation wrong. The first is the strict inequality. For the input
+There are several boundary cases that can expose careless implementations. First, the condition is strictly `< X`, not `<= X`. For example, with `N = 1`, `X = 4`, and `A = [4]`, the correct output is `0`, because the only subarray has sum exactly `4`. An implementation using `sum <= X` would incorrectly count it.
 
-```
-1
-1 3
-3
-```
+A second case is when every single element is already too large. For `N = 3`, `X = 5`, and `A = [5, 6, 7]`, the answer is `0`. A sliding window implementation must remove elements until the current sum is below `X` before counting anything.
 
-the answer is `0`, because the only subarray has sum `3`, and `3 < 3` is false. A careless implementation using `while sum > X` would incorrectly count it.
+A third case is when the whole array is valid. For `N = 3`, `X = 10`, and `A = [1, 2, 3]`, every non-empty subarray has sum below `10`, so the answer is `6`. The count must include subarrays of every possible length, not only single elements.
 
-Another edge case occurs when no non-empty subarray can satisfy the condition. For
-
-```
-1
-2 1
-5 6
-```
-
-the answer is `0`. Every individual element already has a sum greater than or equal to `X`. The window must be allowed to become empty after removing elements.
-
-The opposite case is when every subarray is valid. For
-
-```
-1
-3 10
-1 2 3
-```
-
-all `3 * 4 / 2 = 6` non-empty subarrays have sum below `10`. The algorithm must count every possible starting position, not only the longest window ending at each position.
+Finally, the answer itself can be much larger than `N`. With `N = 10^5` and sufficiently large `X`, every subarray is valid, giving `10^5 * 100001 / 2 = 5,000,050,000` valid groups. Python integers handle this naturally, while a language using 32-bit integers would overflow.
 
 ## Approaches
 
-The direct solution is to enumerate every possible pair of endpoints. For each starting position, we can extend the ending position and maintain the current sum. Because every contiguous group is uniquely determined by its left and right endpoints, this examines every possible group and is completely correct.
+The direct approach is to enumerate every possible starting position and every possible ending position, calculate the sum of that subarray, and increment the answer whenever the sum is less than `X`. There are `N(N+1)/2` subarrays. If each sum is calculated by extending the right endpoint and adding one element, the total work is O(N²), about `5 * 10^9` iterations when `N = 10^5`. Prefix sums can make each individual subarray sum O(1), but there are still O(N²) pairs of endpoints, so the overall complexity remains quadratic.
 
-The problem is the number of such groups. An array of length `10^5` has `10^5 * 100001 / 2 = 5,000,050,000` non-empty subarrays. Even if each sum were maintained in constant time, processing several billion candidates is much too slow for a one-second limit. Computing each sum from scratch would be even worse, at `O(N^3)` if implemented literally.
+The brute-force method works because every contiguous group is considered exactly once. The problem is that it spends time considering groups whose validity could have been inferred from groups already examined.
 
-The key observation is that every array element is positive. Fix a right endpoint `r` and suppose we have found the smallest left endpoint `l` such that the window `[l, r]` has sum less than `X`. Because all elements are positive, every shorter suffix ending at `r`, namely `[l+1, r]`, `[l+2, r]`, and so on, also has sum less than `X`. There are exactly `r - l + 1` such subarrays.
+The crucial observation comes from the fact that every `A[i]` is positive. Suppose we fix a right endpoint `r` and consider subarrays ending at `r`. As we move their left endpoint farther to the left, their sums can only increase. Once a particular left endpoint produces a sum that is at least `X`, every earlier left endpoint will also produce a sum at least `X`.
 
-Even better, when we move `r` one position to the right, the previous window can be reused. We add `A[r]` to the sum, and if the sum becomes too large, we repeatedly remove elements from the left until the window is valid again. Since an element is added once and removed at most once, the total number of pointer movements is linear.
+This monotonic behavior allows a two-pointer sliding window. Maintain a window `[left, right]` whose sum is strictly less than `X`. When `right` advances, the new element increases the sum. If the sum reaches or exceeds `X`, move `left` forward and subtract the removed values until the window becomes valid again.
 
-The brute-force method works because it explicitly checks every contiguous group, but fails because there are too many groups. The observation that positive values make the window sum monotonic lets us discard all invalid or redundant choices at once, reducing the computation to a single pass.
+Once `[left, right]` is valid, every subarray ending at `right` and starting anywhere from `left` through `right` is also valid. There are exactly `right - left + 1` such subarrays. Adding that number counts all valid groups ending at the current position without explicitly enumerating them.
+
+The positivity of the array is what makes moving `left` safe. Removing elements can only decrease the sum, and extending the right endpoint can only increase it. If negative values were allowed, this monotonic relationship would disappear and the same sliding-window argument would no longer be valid.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(N²) | O(1) | Too slow |
-| Sliding Window | O(N) | O(1) auxiliary | Accepted |
+| Optimal sliding window | O(N) | O(1) auxiliary space | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize a left pointer `left = 0`, a running window sum `current_sum = 0`, and the answer `answer = 0`. The window `[left, right]` will represent the current contiguous group under consideration.
-2. Move the right endpoint from left to right through the array. Add `A[right]` to `current_sum` because the new right endpoint is now included in the window.
-3. While `current_sum >= X`, remove `A[left]` from the window and increment `left`. The condition is `>=`, rather than `>`, because the problem requires the sum to be strictly less than `X`.
-4. Once the loop stops, the current window `[left, right]` has sum less than `X`. Since all values are positive, every subarray ending at `right` and starting anywhere from `left` through `right` also has sum less than `X`. There are `right - left + 1` such subarrays, so add that number to `answer`.
-5. After processing every right endpoint, print `answer`. Every non-empty contiguous subarray has exactly one right endpoint, so it has been counted exactly once.
+1. Set `left = 0`, `current_sum = 0`, and `answer = 0`. The pointer `left` will represent the smallest starting position that can still produce a valid subarray ending at the current right endpoint.
+2. Move `right` from `0` through `N - 1`. Add `A[right]` to `current_sum`, because the current window has just been extended to include the new student.
+3. While `current_sum >= X`, remove `A[left]` from `current_sum` and increment `left`. The window must be strictly smaller than `X`, so equality with `X` is also invalid. Because every array value is positive, moving `left` forward can only decrease the sum, so eventually the window becomes valid unless even the single element `A[right]` is at least `X`.
+4. After the loop, `[left, right]` has sum strictly less than `X`. Every starting position from `left` through `right` gives another valid subarray ending at `right`. Thus add `right - left + 1` to `answer`.
+5. Repeat until every possible right endpoint has been processed. Print `answer` for the test case.
 
 ### Why it works
 
-The central invariant is that after the shrinking loop finishes, `[left, right]` is the shortest valid suffix of the prefix ending at `right` with respect to the current left boundary. More precisely, every starting position from `left` through `right` gives a valid subarray, while any position before `left` would produce a sum at least `X`, because adding positive elements can only increase the sum. Thus exactly `right - left + 1` valid subarrays end at `right`. As every subarray has one unique right endpoint, summing this quantity over all `right` counts every valid group once and no invalid group.
+The invariant is that after the shrinking phase, `current_sum` is the sum of `[left, right]` and is strictly less than `X`, while every subarray ending at `right` whose starting position is before `left` has sum at least `X`.
+
+When `right` is fixed, removing elements from the left makes the sum smaller because all values are positive. Therefore the first valid `left` divides all possible starting positions into two groups: positions from `0` through `left - 1` are invalid, while positions from `left` through `right` are valid. There are exactly `right - left + 1` valid choices, so the amount added to the answer is exact.
+
+Each pointer only moves forward. The right pointer moves `N` times, and although the inner loop can look like it performs many operations, `left` also moves at most `N` times over the entire test case. That gives linear total work.
 
 ## Python Solution
 
@@ -109,7 +93,7 @@ def solve():
         for right in range(n):
             current_sum += a[right]
 
-            while left <= right and current_sum >= x:
+            while current_sum >= x and left <= right:
                 current_sum -= a[left]
                 left += 1
 
@@ -121,45 +105,61 @@ if __name__ == "__main__":
     solve()
 ```
 
-The input is read with `sys.stdin.readline` so that multiple large test cases can be processed efficiently. The entire array is stored because the input naturally provides it as one line, although the algorithm itself only needs the elements in their original order.
+The input section reads the number of test cases and then the array for each case. Storing the array is convenient because the left pointer may need to subtract values that were added earlier.
 
-For each `right`, `a[right]` is first added to the current sum. Only after adding it do we shrink the window, because the new element may have made an otherwise valid window invalid.
+The main loop extends the window by adding `a[right]`. The `while` condition uses `>= x`, rather than `> x`, because the required condition is strictly less than `X`.
 
-The `while` condition uses `current_sum >= x`. If the sum is exactly `X`, the group is not allowed, so at least one element must be removed. This strict boundary is one of the most common sources of wrong answers for this problem.
+If the newly added element itself is at least `X`, the shrinking loop eventually removes that element as well. Afterward `left` becomes `right + 1`, `current_sum` becomes zero, and `right - left + 1` is zero. This correctly counts no valid subarray ending at that position.
 
-The expression `right - left + 1` counts the valid subarrays ending at `right`. For example, if `left = 2` and `right = 5`, the valid starts are `2, 3, 4, 5`, giving four subarrays.
+The answer is updated only after the window is valid. The expression `right - left + 1` counts all possible starting positions in the valid range `[left, right]`.
 
-The check `left <= right` prevents the implementation from attempting to remove an element from an already empty window. When a single element is itself at least `X`, that element is removed immediately and `left` becomes `right + 1`. The contribution then becomes zero, correctly reflecting that no valid subarray ends at that position.
+Python integers have arbitrary precision, so the answer can safely exceed 32-bit integer range. In fact, with `N = 10^5`, the maximum answer is `5,000,050,000`.
 
-Python integers have arbitrary precision, so there is no overflow issue. In languages with fixed-width integer types, a 64-bit integer is required for the answer because there can be about `N(N+1)/2` valid subarrays, which is around `5 * 10^9` for `N = 10^5`.
+The order of operations also matters. We first add the new right endpoint, then shrink until the strict inequality is satisfied, and only then count valid starts. Counting before shrinking would include invalid subarrays.
 
 ## Worked Examples
 
-The first sample contains the single-element array `[3]` with `X = 4`.
+### Sample 1, test case 1
 
-| right | added value | current_sum before shrinking | left after shrinking | current_sum after shrinking | added to answer | answer |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 3 | 3 | 0 | 3 | 1 | 1 |
+The input is `N = 1`, `X = 4`, and `A = [3]`. The only possible group contains the single student, and its sum is `3`, which is valid.
 
-The only window is `[3]`, whose sum is `3 < 4`. There is one valid subarray, so the answer is `1`. This trace demonstrates the simplest case where the window remains unchanged and contributes exactly one subarray.
+| right | added value | current_sum before shrinking | left after shrinking | valid groups added | answer |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 3 | 3 | 0 | 1 | 1 |
 
-For the second sample, `A = [1, 5]` and `X = 4`.
+The window `[0, 0]` is valid, so there is exactly one valid starting position. The answer is `1`.
 
-| right | added value | current_sum before shrinking | left after shrinking | current_sum after shrinking | added to answer | answer |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 1 | 0 | 1 | 1 | 1 |
-| 1 | 5 | 6 | 2 | 0 | 0 | 1 |
+### Sample 1, test case 2
 
-At `right = 0`, the subarray `[1]` is valid. At `right = 1`, adding `5` gives a sum of `6`, so the algorithm removes `1`, leaving `[5]`, which is still invalid. It then removes `5`, leaving an empty window. Consequently there are no valid subarrays ending at position `1`. The final answer remains `1`, corresponding only to `[1]`.
+Here `N = 2`, `X = 4`, and `A = [1, 5]`. The possible groups are `[1]`, `[5]`, and `[1, 5]`. Only `[1]` has sum below `4`.
+
+| right | added value | current_sum before shrinking | left after shrinking | valid groups added | answer |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 1 | 0 | 1 | 1 |
+| 1 | 5 | 6 | 2 | 0 | 1 |
+
+When `5` is added, the sum becomes `6`. Removing `1` leaves `5`, which is still too large, so `5` itself is removed. The window becomes empty, represented by `left = 2`. There are zero valid subarrays ending at index `1`, so the final answer remains `1`.
+
+### Additional trace, all subarrays valid
+
+Consider `N = 3`, `X = 10`, and `A = [1, 2, 3]`.
+
+| right | added value | current_sum before shrinking | left after shrinking | valid groups added | answer |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 1 | 0 | 1 | 1 |
+| 1 | 2 | 3 | 0 | 2 | 3 |
+| 2 | 3 | 6 | 0 | 3 | 6 |
+
+At each position the entire prefix ending at `right` remains valid. The algorithm adds `1 + 2 + 3 = 6`, which equals the total number of non-empty subarrays.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N) per test case | Each element enters the window once and leaves it at most once |
-| Space | O(N) | The input array is stored; the sliding-window state itself uses O(1) auxiliary space |
+| Time | O(N) per test case | `right` moves from left to right once, and `left` also moves forward at most `N` times |
+| Space | O(N) | The array is stored; the sliding-window state itself uses O(1) auxiliary space |
 
-Across all test cases, the total time is linear in the total number of input elements. With `N <= 10^5`, this is comfortably within the intended complexity for the one-second limit. The stored array uses well below the 256 MB memory limit for the stated input size.
+Across all test cases, the time is O(sum of `N`) and the stored array space is O(N) for the current test case. With `N` up to `10^5`, the algorithm performs only a constant number of operations per element and fits comfortably within the limits. The original quadratic approach would require billions of operations in the worst case.
 
 ## Test Cases
 
@@ -170,6 +170,7 @@ import io
 def solve():
     input = sys.stdin.readline
     t = int(input())
+    out = []
 
     for _ in range(t):
         n, x = map(int, input().split())
@@ -182,29 +183,29 @@ def solve():
         for right in range(n):
             current_sum += a[right]
 
-            while left <= right and current_sum >= x:
+            while current_sum >= x and left <= right:
                 current_sum -= a[left]
                 left += 1
 
             answer += right - left + 1
 
-        print(answer)
+        out.append(str(answer))
+
+    sys.stdout.write("\n".join(out))
 
 def run(inp: str) -> str:
     old_stdin = sys.stdin
     old_stdout = sys.stdout
 
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
     try:
+        sys.stdin = io.StringIO(inp)
+        sys.stdout = io.StringIO()
         solve()
         return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
         sys.stdout = old_stdout
 
-# Provided sample
 assert run("""\
 2
 1 4
@@ -216,85 +217,88 @@ assert run("""\
 1
 """, "provided sample"
 
-# Minimum-size input, and equality with X must not be counted.
 assert run("""\
-2
-1 1
 1
-1 2
-1
+1 4
+4
 """) == """\
 0
-1
-""", "minimum size and strict inequality"
+""", "exactly X must not be counted"
 
-# All subarrays are valid.
 assert run("""\
 1
 3 10
 1 2 3
 """) == """\
 6
-""", "all subarrays valid"
+""", "every subarray is valid"
 
-# All equal values.
-# Valid subarrays have length 1 or 2 because 2 + 2 < 5,
-# while a length-3 subarray has sum 6.
 assert run("""\
 1
-4 5
-2 2 2 2
+3 5
+5 6 7
 """) == """\
-7
-""", "all equal values"
+0
+""", "every individual element is invalid"
 
-# Boundary case where a sum exactly equal to X must be excluded.
 assert run("""\
 1
-3 6
-1 2 3
+4 6
+1 1 1 1
 """) == """\
-4
-""", "exact equality must be excluded"
+10
+""", "all equal values, every subarray is valid"
 
-# Maximum-size input.
-# X = 1 and every element is 1, so no non-empty subarray is valid.
-n = 100000
-max_case = "1\n{} 1\n{}\n".format(n, " ".join(["1"] * n))
-assert run(max_case) == "0\n", "maximum N"
+assert run("""\
+1
+3 3
+1 2 1
+""") == """\
+3
+""", "strict boundary and shrinking"
+
+assert run("""\
+1
+100000 1000000000000
+""" + "1 " * 99999 + "1\n") == """\
+5000050000
+""", "maximum N and maximum answer")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 / [1]` and `1 2 / [1]` | `0`, `1` | Minimum size and strict inequality |
-| `3 10 / [1,2,3]` | `6` | Every possible subarray is valid |
-| `4 5 / [2,2,2,2]` | `7` | Equal values and counting multiple valid lengths |
-| `3 6 / [1,2,3]` | `4` | A sum exactly equal to `X` must not be counted |
-| `N=100000, X=1, all values 1` | `0` | Maximum input size and empty-window behavior |
+| `1 / 1 4 / 4` | `0` | Strict `< X` boundary |
+| `3 / 10 / 1 2 3` | `6` | Every possible subarray is valid |
+| `3 / 5 / 5 6 7` | `0` | Elements individually at or above `X` |
+| `4 / 6 / 1 1 1 1` | `10` | Equal values and counting all lengths |
+| `3 / 3 / 1 2 1` | `3` | Correct shrinking when the sum reaches `X` |
+| `100000 / 10^12 / 1 ... 1` | `5,000,050,000` | Maximum `N` and answer larger than 32-bit range |
+
+The maximum-size test constructs `100000` ones and chooses an `X` larger than their total sum. Consequently every one of the `5,000,050,000` non-empty subarrays is valid. This checks both the linear traversal and the ability to represent a large answer.
 
 ## Edge Cases
 
-When the only element is exactly `X`, the input
+For the strict inequality case, consider:
 
 ```
 1
-1 3
-3
+1 4
+4
 ```
 
-has answer `0`. The algorithm adds `3`, sees that `current_sum >= X`, removes the only element, and advances `left` to `1`. The contribution is `right - left + 1 = 0`, so the equality case is correctly excluded.
+The algorithm adds `4`, sees that `current_sum >= X`, and removes the only element. The resulting window is empty, so `right - left + 1 = 0`. The output is `0`, exactly as required. An implementation using `while current_sum > X` would incorrectly count this subarray.
 
-When every element is already too large, consider
+For the case where every element is invalid, consider:
 
 ```
 1
-2 1
-5 6
+3 5
+5 6 7
 ```
 
-At the first position, the sum becomes `5`, so the element is immediately removed and the contribution is zero. At the second position, the same thing happens with `6`. The final answer is `0`. The `left <= right` condition allows the window to become empty without accessing outside the array.
+At `right = 0`, the sum is `5`, so the element is removed and the contribution is zero. At `right = 1`, the same happens with `6`, and at `right = 2` it happens with `7`. The final answer is `0`. The empty window is a valid internal state because the problem asks for non-empty groups, and the zero contribution correctly excludes it.
 
-When every subarray is valid, consider
+For the case where every subarray is valid, consider:
 
 ```
 1
@@ -302,6 +306,10 @@ When every subarray is valid, consider
 1 2 3
 ```
 
-At `right = 0`, there is one valid subarray. At `right = 1`, both `[2]` and `[1,2]` are valid, contributing two more. At `right = 2`, all three suffixes `[3]`, `[2,3]`, and `[1,2,3]` are valid, contributing three. The total is `1 + 2 + 3 = 6`, which is every possible non-empty subarray.
+The window never needs to shrink. At the three right endpoints, the algorithm contributes `1`, `2`, and `3`, producing `6`. Those contributions correspond to all subarrays ending at each respective position.
 
-The positivity of `A[i]` is what makes the sliding window valid. If negative numbers were allowed, removing an element from the left could increase the sum, and extending the right endpoint could decrease it. The monotonic relationship used by the algorithm would disappear, so this exact technique could no longer be justified.
+For the large-answer case, consider an array of `100000` ones with `X = 10^12`. Since even the entire array has sum only `100000`, no shrinking occurs. At index `r`, exactly `r + 1` subarrays ending there are valid, so the total is
+
+`1 + 2 + ... + 100000 = 5,000,050,000`.
+
+Python stores this value without overflow, and the algorithm still performs only O(N) work.
