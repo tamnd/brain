@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 1
-total_solve_s: 3903
+total_solve_s: 4128
 contest_year: 2019
-date: "2026-08-18T03:24:34+07:00"
+date: "2026-08-18T03:33:49+07:00"
 weight: 102218
 draft: false
 ---
 
 # [2019, XI Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/102218)
 
-Special | 9 problems | 1/9 verified | Difficulty - | 1h 5m
+Special | 9 problems | 1/9 verified | Difficulty - | 1h 8m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,6 @@ Special | 9 problems | 1/9 verified | Difficulty - | 1h 5m
 | [E](E/) | [Environmental Contingency](https://codeforces.com/problemset/problem/102218/E) |  |  |  | 2m 56s |  |
 | [F](F/) | [Freddy and the Chocolate Factory](https://codeforces.com/problemset/problem/102218/F) |  |  |  | 8m 31s | ✓ |
 | [G](G/) | [Generating Problems](https://codeforces.com/problemset/problem/102218/G) |  |  |  | 7m 54s |  |
-| [H](H/) | [Heartbreaker Radio Station](https://codeforces.com/problemset/problem/102218/H) |  |  |  | 2m 27s |  |
-| [J](J/) | [Just an easy task](https://codeforces.com/problemset/problem/102218/J) |  |  |  | 2m 59s |  |
+| [H](H/) | [Heartbreaker Radio Station](https://codeforces.com/problemset/problem/102218/H) |  |  |  | 1m 51s |  |
+| [J](J/) | [Just an easy task](https://codeforces.com/problemset/problem/102218/J) |  |  |  | 7m 20s |  |
 | [K](K/) | [K-th Missing Digit](https://codeforces.com/problemset/problem/102218/K) |  |  |  | 4m 11s |  |

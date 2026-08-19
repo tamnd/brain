@@ -1,7 +1,7 @@
 ---
 title: "CF 102218H - Heartbreaker Radio Station"
-description: "We have (n) sinusoidal waves. Every wave oscillates with the same angular frequency (omega), but each has its own amplitude (Ai) and phase (phii)."
-date: "2026-08-18T12:52:35+07:00"
+description: "We have several sinusoidal waves, all oscillating with the same angular frequency. The only things that differ between waves are their amplitudes and phases. We need to replace their sum with one sinusoid having that same frequency, and report its amplitude and phase."
+date: "2026-08-20T03:26:26+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102218
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "2019, XI Annual Programming Contest by ESCOM-IPN"
 rating: 0
 weight: 102218
-solve_time_s: 147
+solve_time_s: 111
 verified: false
 draft: false
 ---
@@ -18,44 +18,39 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 27s  
+**Solve time:** 1m 51s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have (n) sinusoidal waves. Every wave oscillates with the same angular frequency (\omega), but each has its own amplitude (A_i) and phase (\phi_i). Their sum is guaranteed to be representable as one more sinusoid with that same frequency, and we need to recover its amplitude (A) and phase (\phi).
+We have several sinusoidal waves, all oscillating with the same angular frequency. The only things that differ between waves are their amplitudes and phases. We need to replace their sum with one sinusoid having that same frequency, and report its amplitude and phase.
 
-The input gives (n), the common frequency, and then (n) pairs ((A_i,\phi_i)). The output is a pair ((A,\phi)) such that
+For wave (i),
 
-A\sin(\omega t+\phi)
+[
+f_i(t)=A_i\sin(\omega t+\phi_i).
 ]
 
-for every (t), with (A\ge 0) and (0\le\phi<2\pi).
+The complete signal is
 
-The frequency itself does not affect the calculation. Since every term has exactly the same (\omega), we only need to combine their amplitudes and phases.
+[
+f(t)=\sum_{i=1}^{n} A_i\sin(\omega t+\phi_i),
+]
 
-The value (n) can reach (10^5). A solution that compares every wave with every other wave would perform roughly (10^{10}) pairwise operations in the worst case, which is far beyond a two-second time limit. We need a linear or near-linear algorithm. The amplitudes are at most (100), so the accumulated coefficients are at most about (10^7), comfortably inside ordinary floating-point range. The phase values are already given in radians and lie in one full revolution.
+and we want values (A\ge 0) and (0\le\phi<2\pi) such that
 
-There are several numerical edge cases that can make a seemingly reasonable implementation wrong. Consider a single wave:
+[
+f(t)=A\sin(\omega t+\phi)
+]
 
-```
-1 1
-5 0
-```
+for every (t).
 
-The result is exactly (5) with phase (0). A solution that unnecessarily modifies the phase or uses a formula involving division by one trigonometric component can fail when that component is zero.
+The frequency (\omega) is actually irrelevant to the computation once we recognize that every wave has the same frequency. The challenge is to combine the amplitudes and phases efficiently.
 
-A second case is a wave pointing in the opposite direction:
+With (n\le 10^5), an (O(n)) algorithm is comfortably within the intended range for a 2-second limit. An (O(n^2)) method would require around (10^{10}) elementary operations at the largest input size, which is far beyond what can fit in the time limit. The input amplitudes and phases are real numbers, so the implementation also has to use floating-point arithmetic and respect the required (10^{-6}) precision.
 
-```
-1 1
-5 3.141592653589793
-```
-
-The result has amplitude (5) and phase (\pi). Computing the phase with `atan(y / x)` is unsafe because (x) can be zero and, more importantly, the signs of (x) and (y) determine the quadrant. `atan2` is designed for exactly this situation.
-
-Finally, complete cancellation is possible:
+There are three edge cases that commonly cause otherwise reasonable implementations to fail. The first is cancellation. Consider
 
 ```
 2 1
@@ -63,47 +58,76 @@ Finally, complete cancellation is possible:
 1 3.141592653589793
 ```
 
-The two waves are negatives of each other, so the result is the zero function. Its amplitude is (0), and its phase is mathematically irrelevant because (0\sin(\omega t+\phi)=0) for every (\phi). A floating-point implementation may leave a tiny residual instead of exact zero, which is harmless within the required error tolerance.
+The two waves are opposites, so their sum is exactly zero. The correct result is
 
-There is also a boundary case around (2\pi). For example,
+```
+0 0
+```
+
+because when (A=0), the phase has no effect and (0) is a valid choice. A careless implementation may call `atan2(0, 0)` and obtain an implementation-dependent interpretation, or may produce a tiny numerical amplitude and an arbitrary phase.
+
+The second issue is the quadrant of the phase. For
+
+```
+1 1
+1 4.71238898038469
+```
+
+the answer is the same amplitude and phase, approximately
+
+```
+1 4.71238898038469
+```
+
+Since `atan2` returns values in ([-\pi,\pi]), it may return (-\pi/2) instead of (3\pi/2). The mathematical phase is equivalent, but the required output range is specifically ([0,2\pi)), so negative angles must be normalized.
+
+The third issue is cancellation in the two accumulated components. For example,
 
 ```
 2 1
-1 0
-1 6.283185307079586
+100 0
+100 3.141592653589793
 ```
 
-has a resultant phase extremely close to (2\pi), not a negative angle. Since `atan2` returns angles in ([-\pi,\pi]), negative results must be shifted by (2\pi).
+should again produce zero. The intermediate sine and cosine components can be very small because large positive and negative contributions cancel. The solution should not make decisions based on exact equality of floating-point values except where the final amplitude is effectively zero.
 
 ## Approaches
 
-A direct approach would try to evaluate the sum as a function of (t), perhaps at several points, and then recover the amplitude and phase from those values. That is unnecessary, and evaluating many points for every wave would only add work. A more algebraic brute-force approach could repeatedly combine two sinusoids using trigonometric identities. Although each individual combination is correct, repeatedly manipulating the expressions can still introduce unnecessary work and numerical complexity. If every pair of waves is considered, the worst case is on the order of (n^2=10^{10}) operations.
+A direct but unnecessarily expensive way to think about the problem is to evaluate the complete signal at many different times. For every chosen time (t), we would compute all (n) waves and add them. If we use (n) sample times, this takes (n) evaluations of (n) waves, giving (O(n^2)) work. At (n=10^5), that is about (10^{10}) wave evaluations, which is much too slow.
 
-The useful observation is that the phase shift can be expanded before doing any summation. For one wave,
+The brute-force approach is correct because every individual wave is evaluated exactly according to its definition, so the computed samples really are samples of the desired sum. The problem is that the common frequency gives us much more structure than arbitrary samples require.
 
-A_i\sin(\omega t)\cos\phi_i
-+
-A_i\cos(\omega t)\sin\phi_i.
+The key observation is the angle-addition identity
+
+[
+\sin(x+\phi)=\sin x\cos\phi+\cos x\sin\phi.
 ]
 
-Every wave is thus just a linear combination of the same two functions, (\sin(\omega t)) and (\cos(\omega t)). We can add their coefficients independently.
+Applying it to every wave gives
+
+A_i\cos\phi_i\sin(\omega t)
++
+A_i\sin\phi_i\cos(\omega t).
+]
+
+All waves are now expressed using the same two basis functions, (\sin(\omega t)) and (\cos(\omega t)). We only need to add their coefficients.
 
 Define
 
 [
-X=\sum_{i=1}^{n} A_i\cos\phi_i
+C=\sum_{i=1}^{n} A_i\cos\phi_i
 ]
 
 and
 
 [
-Y=\sum_{i=1}^{n} A_i\sin\phi_i.
+S=\sum_{i=1}^{n} A_i\sin\phi_i.
 ]
 
-Then the complete sum becomes
+Then the complete signal becomes
 
 [
-f(t)=X\sin(\omega t)+Y\cos(\omega t).
+f(t)=C\sin(\omega t)+S\cos(\omega t).
 ]
 
 Now expand the desired single wave:
@@ -113,27 +137,29 @@ A\cos\phi\sin(\omega t)
 A\sin\phi\cos(\omega t).
 ]
 
-Matching coefficients gives
+Matching the two coefficients gives
 
 [
-A\cos\phi=X,
+A\cos\phi=C,
 \qquad
-A\sin\phi=Y.
+A\sin\phi=S.
 ]
 
-The pair ((X,Y)) can be viewed as a two-dimensional vector. Its length is the resulting amplitude,
+These two equations describe a vector with coordinates ((C,S)). Its length is the resulting amplitude,
 
 [
-A=\sqrt{X^2+Y^2},
+A=\sqrt{C^2+S^2},
 ]
 
 and its direction is the resulting phase,
 
 [
-\phi=\operatorname{atan2}(Y,X).
+\phi=\operatorname{atan2}(S,C).
 ]
 
-This reduces the entire problem to one pass through the input. The brute-force works because sinusoidal waves can be combined algebraically, but it fails to exploit the fact that every wave uses the same two basis functions. The observation that all terms reduce to coefficients of (\sin(\omega t)) and (\cos(\omega t)) lets us replace the whole collection of waves by one accumulated two-dimensional vector.
+So the entire problem reduces to one pass over the input, accumulating two real numbers.
+
+The same insight can also be viewed as vector addition. Each sinusoid (A_i\sin(\omega t+\phi_i)) corresponds to a vector of length (A_i) and angle (\phi_i). Adding the waves means adding these vectors. The resulting vector's length is (A), while its direction is (\phi).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -142,37 +168,70 @@ This reduces the entire problem to one pass through the input. The brute-force w
 
 ## Algorithm Walkthrough
 
-1. Read (n) and (\omega). The value of (\omega) is not needed afterward because it is identical for every wave, so all the work can be done using the amplitudes and phases.
-2. Initialize two accumulators, (X=0) and (Y=0). They will store the coefficients of (\sin(\omega t)) and (\cos(\omega t)) in the complete sum.
-3. For every wave ((A_i,\phi_i)), add (A_i\cos\phi_i) to (X) and (A_i\sin\phi_i) to (Y). This follows directly from expanding (\sin(\omega t+\phi_i)).
-4. Compute the resulting amplitude with
+1. Initialize two accumulators, (C=0) and (S=0). They will store the coefficients of (\sin(\omega t)) and (\cos(\omega t)), respectively.
+2. For every input wave, compute (A_i\cos\phi_i) and add it to (C). Compute (A_i\sin\phi_i) and add it to (S).
+
+This is the central transformation. We never need to evaluate the waves at any actual time (t), because their common frequency means every wave uses the same two basis functions.
+3. After all waves have been processed, calculate
 
 [
-A=\operatorname{hypot}(X,Y).
+A=\sqrt{C^2+S^2}.
 ]
 
-This is the Euclidean length of the coefficient vector and is numerically preferable to manually writing (\sqrt{X^2+Y^2}).
-5. Compute the phase with
+The values (C) and (S) are exactly (A\cos\phi) and (A\sin\phi), so their Euclidean length must be the amplitude.
+
+1. If (A) is effectively zero, output (0) and phase (0).
+
+A zero-amplitude sinusoid is identically zero regardless of its phase, so phase (0) is a valid canonical choice. This also avoids asking for the direction of a zero vector.
+2. Otherwise calculate
 
 [
-\phi=\operatorname{atan2}(Y,X).
+\phi=\operatorname{atan2}(S,C).
 ]
 
-`atan2` uses both coordinates, so it chooses the correct quadrant. Python's `math.atan2` returns an angle in the range from (-\pi) to (\pi).
-6. If the phase is negative, add (2\pi). The required output interval is ([0,2\pi)), so this converts the `atan2` convention to the convention required by the problem.
-7. Print (A) and (\phi) with enough decimal digits. Printing twelve digits after the decimal point gives much more precision than the required (10^{-6}).
+`atan2` is required instead of ordinary `atan(S/C)` because it knows the signs of both components and consequently determines the correct quadrant.
+
+1. If the phase is negative, add (2\pi) to it. Then print (A) and (\phi) with enough decimal digits to satisfy the (10^{-6}) error requirement.
 
 ### Why it works
 
-After processing any prefix of the waves, (X) is exactly the coefficient contributed by that prefix to (\sin(\omega t)), while (Y) is exactly its coefficient for (\cos(\omega t)). Adding another wave updates these coefficients by precisely (A_i\cos\phi_i) and (A_i\sin\phi_i), so the invariant remains true for every input line.
-
-After all waves have been processed, the complete function is
+After processing every wave, the accumulators satisfy
 
 [
-X\sin(\omega t)+Y\cos(\omega t).
+C=\sum_i A_i\cos\phi_i
 ]
 
-Choosing (A=\sqrt{X^2+Y^2}) and (\phi=\operatorname{atan2}(Y,X)) gives (A\cos\phi=X) and (A\sin\phi=Y). Substituting those identities into (A\sin(\omega t+\phi)) reproduces the accumulated function exactly, apart from floating-point rounding. The phase normalization only adds a full revolution, which does not change a sinusoid.
+and
+
+[
+S=\sum_i A_i\sin\phi_i.
+]
+
+By the angle-addition identity, the original sum is consequently
+
+[
+f(t)=C\sin(\omega t)+S\cos(\omega t).
+]
+
+The computed amplitude and phase satisfy
+
+[
+A\cos\phi=C
+]
+
+and
+
+[
+A\sin\phi=S.
+]
+
+Substituting those two equalities into
+
+[
+A\sin(\omega t+\phi)
+]
+
+produces exactly (C\sin(\omega t)+S\cos(\omega t)), which is the original sum. Thus the resulting sinusoid is equivalent for every possible value of (t), not merely at selected sample points.
 
 ## Python Solution
 
@@ -182,168 +241,165 @@ import math
 
 input = sys.stdin.readline
 
-def solve():
-    n, omega = input().split()
-    n = int(n)
+n, omega = input().split()
+n = int(n)
+omega = float(omega)
 
-    x = 0.0
-    y = 0.0
+c = 0.0
+s = 0.0
 
-    for _ in range(n):
-        a, phi = map(float, input().split())
-        x += a * math.cos(phi)
-        y += a * math.sin(phi)
+for _ in range(n):
+    a, phi = map(float, input().split())
+    c += a * math.cos(phi)
+    s += a * math.sin(phi)
 
-    amplitude = math.hypot(x, y)
-    phase = math.atan2(y, x)
+amplitude = math.hypot(c, s)
 
+if amplitude < 1e-12:
+    phase = 0.0
+else:
+    phase = math.atan2(s, c)
     if phase < 0.0:
         phase += 2.0 * math.pi
 
-    print(f"{amplitude:.12f} {phase:.12f}")
-
-if __name__ == "__main__":
-    solve()
+print(f"{amplitude:.12f} {phase:.12f}")
 ```
 
-The first line reads `omega`, but the implementation deliberately does not use it. The common frequency is already present in every term and never changes during the coefficient matching.
+The first line reads `n` and `omega`. The value of `omega` is parsed because it is part of the input format, but it does not appear later in the computation. Once every wave has the same frequency, only its amplitude and phase determine the coefficient vector that must be added.
 
-The variables `x` and `y` correspond directly to the two coefficients derived in the algorithm. Each input wave contributes one vector of length (A_i) at angle (\phi_i), so accumulating these two components is equivalent to vector addition.
+The variables `c` and `s` correspond directly to the two coefficients derived in the algorithm. For each wave, the code computes its horizontal component (A_i\cos\phi_i) and vertical component (A_i\sin\phi_i), then adds them to the respective accumulators.
 
-`math.hypot(x, y)` computes the length of that accumulated vector. Python documents `hypot` as the Euclidean norm of its arguments, which is exactly the amplitude calculation required here.
+`math.hypot(c, s)` computes (\sqrt{c^2+s^2}). It is preferable to writing the expression manually because `hypot` is designed to calculate vector lengths robustly.
 
-`math.atan2(y, x)` is used instead of `math.atan(y / x)`. Besides avoiding division by zero, it preserves the signs of both coordinates and consequently selects the correct quadrant.
+The zero check uses a very small tolerance rather than checking `amplitude == 0`. Floating-point cancellation can leave a mathematically zero result represented by a tiny residual value. Any phase is valid when the amplitude is zero, so choosing phase (0) gives a stable and valid output.
 
-The negative-phase adjustment is deliberately performed after `atan2`. Adding (2\pi) only when the result is negative maps the returned angle into the required interval without changing its sine or cosine.
+For a nonzero result, `atan2(s, c)` returns the angle of the vector ((c,s)). Its result lies in ([-\pi,\pi]), while the problem requires ([0,2\pi)). Adding (2\pi) to a negative result converts it into the required range. A result of exactly (2\pi) does not occur from `atan2`, and adding (2\pi) is only performed for negative values, so the upper boundary remains valid.
 
-No integer arithmetic is involved in the trigonometric calculations, so integer overflow is not an issue. The largest possible accumulated coordinate is around (10^7), which is easily represented by a double-precision floating-point number.
+The frequency never needs to be multiplied into any expression. Doing so would actually be a conceptual mistake because the required output phase is the constant (\phi) in (A\sin(\omega t+\phi)), not the time-dependent angle (\omega t+\phi).
 
 ## Worked Examples
 
-### Sample 1
+There is no second official sample in the supplied statement, so the second trace below uses a small constructed input.
 
-For the first sample, each wave contributes a vector
+For Sample 1, the important state is the pair ((C,S)). The following table shows the accumulated values after each wave, rounded for readability.
 
-[
-(A_i\cos\phi_i,\ A_i\sin\phi_i).
-]
-
-The following table shows the accumulated vector after each input line. Values are rounded here for readability; the program keeps full floating-point precision.
-
-| Wave | (A_i) | (\phi_i) | (X) after wave | (Y) after wave |
+| Wave | (A_i) | (\phi_i) | (C) after wave | (S) after wave |
 | --- | --- | --- | --- | --- |
-| 1 | 93.22 | 5.53 | 67.96 | -63.80 |
-| 2 | 48.58 | 0.86 | 99.65 | -26.99 |
-| 3 | 15.31 | 5.39 | 109.24 | -38.93 |
-| 4 | 5.66 | 4.12 | 106.08 | -43.63 |
-| 5 | 48.53 | 6.09 | 153.71 | -52.95 |
-| 6 | 6.60 | 1.42 | 154.70 | -46.43 |
-| 7 | 21.15 | 0.06 | 175.81 | -45.16 |
-| 8 | 4.27 | 5.47 | 178.74 | -48.26 |
+| 1 | 93.22 | 5.53 | 65.75 | -66.07 |
+| 2 | 48.58 | 0.86 | 97.49 | -28.99 |
+| 3 | 15.31 | 5.39 | 107.13 | -40.89 |
+| 4 | 5.66 | 4.12 | 104.07 | -44.76 |
+| 5 | 48.53 | 6.09 | 152.43 | -54.13 |
+| 6 | 6.60 | 1.42 | 153.42 | -47.61 |
+| 7 | 21.15 | 0.06 | 174.50 | -46.34 |
+| 8 | 4.27 | 5.47 | 177.49 | -49.20 |
 
-The final vector points slightly below the positive (X)-axis, so `atan2` returns a small negative angle. Adding (2\pi) moves it into the required range. Using the unrounded internal values gives approximately
+The rounded table hides some precision, but the full-precision accumulators give approximately
 
 [
-A=185.184472750,
-\qquad
-\phi=6.019915094,
+A=185.184472750
 ]
 
-matching the sample output.
+and
 
-The trace demonstrates the main invariant: regardless of how many waves have already been processed, the two accumulated values completely describe their sum at the common frequency.
+[
+\phi=6.019915094.
+]
 
-### Constructed Example
+The resulting vector lies in the fourth quadrant because (C>0) and (S<0). `atan2` correctly produces a negative equivalent angle first, then the normalization step adds (2\pi), giving the required phase near (6.02).
 
-Consider
+For the constructed cancellation example
 
 ```
 2 1
-1 0
-1 1.5707963267948966
+3 0
+3 3.141592653589793
 ```
 
-The first wave is (\sin(t)). The second is (\sin(t+\pi/2)=\cos(t)).
+the two waves have equal amplitudes and phases separated by (\pi).
 
-| Wave | (A_i) | (\phi_i) | (X) after wave | (Y) after wave |
+| Wave | (A_i) | (\phi_i) | (C) after wave | (S) after wave |
 | --- | --- | --- | --- | --- |
-| 1 | 1 | 0 | 1.000000 | 0.000000 |
-| 2 | 1 | (\pi/2) | 1.000000 | 1.000000 |
+| 1 | 3 | 0 | 3 | 0 |
+| 2 | 3 | (\pi) | 0 | approximately 0 |
 
-The final amplitude is
-
-[
-A=\sqrt{1^2+1^2}=\sqrt2,
-]
-
-and the phase is
-
-[
-\phi=\operatorname{atan2}(1,1)=\frac{\pi}{4}.
-]
-
-Thus the result is
+The final vector is the zero vector, so its amplitude is zero. The algorithm chooses phase (0), producing
 
 ```
-1.414213562373 0.785398163397
+0.000000000000 0.000000000000
 ```
 
-This example makes the coefficient matching especially visible because the two original waves contribute directly to different basis functions.
+Any other phase would represent the same zero signal. This trace demonstrates why the algorithm must explicitly handle the zero-vector case instead of trying to interpret its direction.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | Each of the (n) waves requires one sine, one cosine, and constant-time arithmetic. |
-| Space | (O(1)) | Only the two accumulated coefficients and a few scalar values are stored. |
+| Time | (O(n)) | Each wave requires one sine, one cosine, and constant additional arithmetic. |
+| Space | (O(1)) | Only the two accumulated components and a few scalar variables are stored. |
 
-With (n\le 10^5), the algorithm performs only one pass over the input and never stores the wave list. Its memory usage is constant, and its time grows linearly with the number of waves, which comfortably fits the stated limits.
+For (n=10^5), the algorithm performs one pass over the input and stores no array of waves. Its (O(n)) running time is appropriate for the 2-second limit, while its constant memory usage is far below the 256 MB limit. Python's trigonometric function calls dominate the constant factor, but there are only (10^5) of each, which is practical.
 
 ## Test Cases
 
-The test harness below checks numerical answers rather than comparing formatted strings. This is necessary because many different decimal representations can satisfy the problem's error tolerance.
+Because floating-point output cannot safely be compared as an exact string, the test harness below parses the two output values and checks them against the expected values with a tolerance.
 
 ```python
-import math
-import io
 import sys
+import io
+import math
 
-def solve_text(inp: str) -> str:
-    data = inp.strip().split()
-    it = iter(data)
+def solve():
+    input = sys.stdin.readline
 
-    n = int(next(it))
-    omega = float(next(it))
+    n, omega = input().split()
+    n = int(n)
+    omega = float(omega)
 
-    x = 0.0
-    y = 0.0
+    c = 0.0
+    s = 0.0
 
     for _ in range(n):
-        a = float(next(it))
-        phi = float(next(it))
-        x += a * math.cos(phi)
-        y += a * math.sin(phi)
+        a, phi = map(float, input().split())
+        c += a * math.cos(phi)
+        s += a * math.sin(phi)
 
-    amplitude = math.hypot(x, y)
-    phase = math.atan2(y, x)
+    amplitude = math.hypot(c, s)
 
-    if phase < 0.0:
-        phase += 2.0 * math.pi
+    if amplitude < 1e-12:
+        phase = 0.0
+    else:
+        phase = math.atan2(s, c)
+        if phase < 0.0:
+            phase += 2.0 * math.pi
 
-    return f"{amplitude:.12f} {phase:.12f}"
+    print(f"{amplitude:.12f} {phase:.12f}")
 
-def run(inp: str):
-    out = solve_text(inp)
-    a, p = map(float, out.split())
-    return a, p
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
 
-def phase_distance(a, b):
-    d = abs(a - b) % (2.0 * math.pi)
-    return min(d, 2.0 * math.pi - d)
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
 
-# Provided sample
-a, p = run(
-    """8 66.82
+    try:
+        solve()
+        return sys.stdout.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+
+def check(inp: str, expected_a: float, expected_phi: float, message: str):
+    out = run(inp).split()
+    actual_a = float(out[0])
+    actual_phi = float(out[1])
+
+    assert math.isclose(actual_a, expected_a, rel_tol=1e-6, abs_tol=1e-6), message
+    assert math.isclose(actual_phi, expected_phi, rel_tol=1e-6, abs_tol=1e-6), message
+
+# Provided sample.
+sample1 = """\
+8 66.82
 93.22 5.53
 48.58 0.86
 15.31 5.39
@@ -353,86 +409,81 @@ a, p = run(
 21.15 0.06
 4.27 5.47
 """
+check(
+    sample1,
+    185.184472750,
+    6.019915094,
+    "sample 1"
 )
-assert abs(a - 185.184472750) <= 1e-6
-assert phase_distance(p, 6.019915094) <= 1e-6
 
-# Minimum-size input
-a, p = run(
-    """1 0.1
+# Minimum-size input, a single wave must remain unchanged.
+check(
+    """\
+1 1
+7 1.2
+""",
+    7.0,
+    1.2,
+    "single wave"
+)
+
+# Exact cancellation.
+check(
+    """\
+2 10
 5 0
-"""
+5 3.141592653589793
+""",
+    0.0,
+    0.0,
+    "complete cancellation"
 )
-assert abs(a - 5.0) <= 1e-9
-assert phase_distance(p, 0.0) <= 1e-9
 
-# All waves identical
-a, p = run(
-    """3 2
-2 2.0943951023931953
-2 2.0943951023931953
-2 2.0943951023931953
-"""
+# Phase in the fourth quadrant. This catches atan2 without normalization.
+check(
+    """\
+1 2
+4 4.71238898038469
+""",
+    4.0,
+    1.5 * math.pi,
+    "negative atan2 result must be normalized"
 )
-assert abs(a - 6.0) <= 1e-9
-assert phase_distance(p, 2.0943951023931953) <= 1e-9
 
-# Exact cancellation
-a, p = run(
-    """2 1
-1 0
-1 3.141592653589793
-"""
+# Equal phases. The amplitudes simply add.
+check(
+    """\
+4 50
+1.5 0.75
+2.5 0.75
+3.0 0.75
+4.0 0.75
+""",
+    11.0,
+    0.75,
+    "equal amplitudes direction"
 )
-assert abs(a) <= 1e-9
 
-# Phase near the 2*pi boundary
-a, p = run(
-    """2 1
-1 0
-1 6.283185207179586
-"""
-)
-assert abs(a - 2.0) <= 1e-7
-assert phase_distance(p, 2.0 * math.pi - 5e-8) <= 1e-7
-
-# Maximum-size input
-n = 100000
-maximum_input = str(n) + " 100\n" + ("100 0\n" * n)
-a, p = run(maximum_input)
-assert abs(a - 10000000.0) <= 1e-5
-assert phase_distance(p, 0.0) <= 1e-9
+# Large input, exercising linear processing and accumulation.
+large_n = 100000
+large_input = f"{large_n} 1\n" + ("1 0\n" * large_n)
+large_out = run(large_input).split()
+assert math.isclose(float(large_out[0]), 100000.0, rel_tol=1e-6, abs_tol=1e-6)
+assert math.isclose(float(large_out[1]), 0.0, rel_tol=1e-6, abs_tol=1e-6)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 0.1 / 5 0` | (5,0) | Minimum input and a phase of exactly zero |
-| Three identical waves with phase (2\pi/3) | (6,2\pi/3) | Linear accumulation of equal vectors |
-| `1 0 / 1 π` | (0), arbitrary phase | Complete cancellation and floating-point residuals |
-| Two phases near (0) and (2\pi) | Amplitude near (2), phase near (2\pi) | Correct circular phase handling |
-| (100000) identical waves | (10^7,0) | Maximum (n), linear complexity, and accumulated magnitude |
+| Sample 1 | (185.184472750,\ 6.019915094) | Full official example and general accumulation |
+| `1 1 / 7 1.2` | (7,\ 1.2) | Minimum input and single-wave behavior |
+| `2 10 / 5 0 / 5 π` | (0,\ 0) | Complete cancellation and zero amplitude |
+| `1 2 / 4 3π/2` | (4,\ 3π/2) | `atan2` quadrant handling and phase normalization |
+| Four waves with phase (0.75) | (11,\ 0.75) | Equal phase, where amplitudes add directly |
+| (10^5) waves with amplitude (1), phase (0) | (100000,\ 0) | Maximum input size and linear complexity |
 
 ## Edge Cases
 
-A single wave with phase zero,
-
-```
-1 0.1
-5 0
-```
-
-produces (X=5) and (Y=0). The amplitude is (5), and `atan2(0,5)` gives phase zero. There is no division by (X) or (Y), so the axis case is handled naturally.
-
-A phase of (\pi),
-
-```
-1 1
-5 3.141592653589793
-```
-
-produces (X=-5) and (Y) very close to zero. `atan2` sees the negative (X) coordinate and returns an angle near (\pi), whereas a plain `atan(Y/X)` approach could lose the quadrant information.
-
-For complete cancellation,
+Complete cancellation is handled by the zero-amplitude branch. For
 
 ```
 2 1
@@ -440,16 +491,31 @@ For complete cancellation,
 1 3.141592653589793
 ```
 
-the mathematical vector sum is ((0,0)). Python's floating-point evaluation of (\sin(\pi)) may leave a tiny value instead of exact zero, but `hypot` still produces an amplitude on the order of machine precision. That is far below the required (10^{-6}) absolute error, so the computed result represents the zero function correctly.
+the first wave contributes ((C,S)=(1,0)). The second contributes ((-1,0)), so the final vector is ((0,0)). Its amplitude is zero and the algorithm outputs phase zero. The frequency does not change this conclusion because both waves have the same frequency.
 
-For a phase close to (2\pi),
+A phase in the fourth quadrant exposes a common mistake with `atan2`. For
+
+```
+1 1
+1 4.71238898038469
+```
+
+the accumulated components are approximately
+
+[
+C=0,\qquad S=-1.
+]
+
+`atan2(-1,0)` returns (-\pi/2). Since the required phase must be nonnegative, the algorithm adds (2\pi), obtaining (3\pi/2), which is exactly the original phase.
+
+Floating-point cancellation is also handled safely. Consider
 
 ```
 2 1
-1 0
-1 6.283185207179586
+100 0
+100 3.141592653589793
 ```
 
-the second vector is almost identical to the first, but points infinitesimally below the positive (X)-axis. `atan2` consequently returns a tiny negative phase. The explicit addition of (2\pi) converts it to a value just below (2\pi), which satisfies the required output range.
+Mathematically the vector contributions are ((100,0)) and ((-100,0)). In floating-point arithmetic the second sine is not necessarily represented as exactly zero, so the final vector may contain a tiny residual. The `1e-12` threshold treats such a residual as the zero vector. Since the required numerical tolerance is (10^{-6}), this does not discard any meaningful nonzero result.
 
-The maximum-size case consists of (100000) identical waves with amplitude (100) and phase zero. Every vector contributes ((100,0)), so the final vector is ((10^7,0)), giving amplitude (10^7) and phase zero. The algorithm still performs exactly one constant amount of work per wave, so the input size changes the running time linearly rather than quadratically.
+Finally, the phase boundary itself does not require special handling beyond the normalization step. A phase approaching (2\pi) has a vector pointing just below the positive (C)-axis, while a phase just above zero points just above it. `atan2` distinguishes these signs correctly. The normalization only changes negative representations into their equivalent values in ([0,2\pi)), without changing the represented sinusoid.

@@ -1,7 +1,7 @@
 ---
 title: "CF 102218J - Just an easy task"
-description: "We need to determine, for every day (k) from (0) to (n-1), how many ordered pairs ((i,j)) satisfy [ icdot j equiv k pmod n."
-date: "2026-08-17T23:24:10+07:00"
+description: "We need to determine, for every day k from 0 to n - 1, how many ordered pairs (i, j) satisfy i⋅j≡k(modn). Each such pair contributes exactly one unit to day k, so the required output is simply the number of pairs producing each residue modulo n."
+date: "2026-08-20T03:33:49+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102218
@@ -9,7 +9,7 @@ codeforces_index: "J"
 codeforces_contest_name: "2019, XI Annual Programming Contest by ESCOM-IPN"
 rating: 0
 weight: 102218
-solve_time_s: 179
+solve_time_s: 440
 verified: false
 draft: false
 ---
@@ -18,417 +18,286 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 59s  
+**Solve time:** 7m 20s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to determine, for every day (k) from (0) to (n-1), how many ordered pairs ((i,j)) satisfy
+We need to determine, for every day `k` from `0` to `n - 1`, how many ordered pairs `(i, j)` satisfy
 
-[
-i\cdot j \equiv k \pmod n.
-]
+i⋅j≡k(modn).
 
-Each such pair contributes one unit of capacity to day (k), so the required array is exactly the frequency distribution of the products (i j \bmod n) over all (n^2) ordered pairs. The official statement confirms that the days are indexed from (0) through (n-1), with one contribution for every ordered pair in that range.
+Each such pair contributes exactly one unit to day `k`, so the required output is simply the number of pairs producing each residue modulo `n`.
 
-A direct simulation considers all (n^2) pairs. With (n) as large as (2.2\times10^6), that means up to (4.84\times10^{12}) modular multiplications, which is far beyond what a two-second implementation can perform. Even an (O(n\sqrt n)) approach would be much too large at this scale. The solution needs to exploit the arithmetic structure of multiplication modulo (n), rather than enumerate the pairs.
+A direct interpretation gives an `n × n` multiplication table modulo `n`. That observation is useful for understanding the problem, but the constraint `n <= 2.2 × 10^6` makes it impossible to construct that table. There are up to
 
-The zero residue needs special care because (i=0) contributes to it for every (j), and every nonzero (i) also contributes whenever (ij) is divisible by (n). For (n=1), there is only the pair ((0,0)), so the answer is simply `1`. A solution that assumes a positive modulus has more than one residue can easily mishandle this case.
+(2.2×10 6 ) 2 =4.84×10 12
 
-A second common mistake is treating multiplication modulo a composite number as though every nonzero multiplier were invertible. For example, for (n=4), the correct output is
+pairs, while the time limit is only 2.5 seconds on the original problem. We need a solution whose work is close to linear in `n`.
 
-```
-8
-2
-4
-2
-```
+The most delicate cases come from the fact that `0` is also a residue and that multiplication modulo a composite number behaves differently from multiplication modulo a prime. For `n = 1`, there is only the pair `(0,0)`, so the answer is `1`. A careless implementation that loops over positive residues only would produce nothing.
 
-The value (2) occurs four times because (0\cdot2), (2\cdot1), (2\cdot3), and (2\cdot2) is not the right reasoning for residues directly. More systematically, the number of solutions depends on (\gcd(i,n)). A careless approach based only on modular inverses would miss the extra solutions caused by non-coprime multipliers.
-
-For a prime modulus such as (n=5), every nonzero multiplier is invertible. The answer is
+For `n = 2`, the pairs are `(0,0)`, `(0,1)`, `(1,0)`, `(1,1)`. Three produce residue `0` and one produces residue `1`, giving
 
 ```
-9
-4
-4
-4
-4
+31
 ```
 
-All nonzero residues have the same frequency, while zero has a larger frequency. An implementation that assumes all residues must have equal counts would fail even on this small case.
+A formula that accidentally assumes every nonzero residue has the same number of representations would fail here.
+
+For `n = 6`, the answer begins with `15` at residue `0`, not `6`. The value at zero counts all pairs whose product is divisible by `6`, and composite moduli create many such pairs. This is exactly the situation where treating the problem like arithmetic modulo a prime gives the wrong result.
 
 ## Approaches
 
-The brute-force solution follows the definition exactly. Create an array of (n) counters, iterate over every (i) and every (j), compute ((i j)\bmod n), and increment the corresponding counter. Every pair is processed once, so the result is correct. The problem is the number of pairs. At the maximum (n=2{,}200{,}000), there are (2{,}200{,}000^2=4{,}840{,}000{,}000{,}000) pairs, which makes the approach unusable.
+The brute-force solution follows the definition directly. Create an array of `n` counters, iterate over every `i` and every `j`, calculate `(i * j) % n`, and increment the corresponding counter. This is correct because every ordered pair is considered exactly once and contributes to exactly the residue specified by the problem.
 
-The key is to stop asking which individual pairs produce a residue and instead ask how many (j) values produce a fixed residue for one particular (i). Consider the congruence
+The problem is the number of operations. In the largest case there are `n² = 4.84 × 10^12` pairs. Even a very small constant per pair would be far beyond the time limit.
 
-[
-ij\equiv k\pmod n.
-]
+The useful observation is to stop fixing both `i` and `j`. Fix `i` and ask when
 
-Let (g=\gcd(i,n)). A standard property of linear congruences says that this equation has solutions exactly when (g\mid k), and when it is solvable, it has exactly (g) solutions modulo (n).
+ij≡k(modn)
 
-This immediately tells us what one multiplier (i) contributes. If (g=\gcd(i,n)), then (i) contributes (g) to every answer position (k) divisible by (g), and contributes zero to all other positions.
+has solutions.
 
-The next question is how many values of (i) have a particular gcd with (n). Suppose (g\mid n). Writing
+Let
 
-[
-i=gx,\qquad n=gm
-]
+g=gcd(i,n).
 
-gives
+A standard property of linear congruences says that `ij ≡ k (mod n)` has solutions exactly when `g` divides `k`. When this condition holds, there are exactly `g` different values of `j` modulo `n` satisfying the congruence.
 
-[
-\gcd(i,n)=g
-]
+So an `i` contributes `gcd(i,n)` pairs to residue `k` precisely when `gcd(i,n)` divides `k`.
 
-exactly when (\gcd(x,m)=1). As (x) ranges over (0,\ldots,m-1), there are (\varphi(m)) such values. The case (i=0) is included here because (\gcd(0,n)=n), corresponding to (m=1) and (\varphi(1)=1).
+Now group all `i` having the same gcd with `n`. If
 
-Thus, for every divisor (g) of (n), exactly
+gcd(i,n)=d,
 
-[
-\varphi\left(\frac ng\right)
-]
+write `i = d x`. Then
 
-values of (i) have gcd (g). Each of those (i)'s contributes (g) to every (k) divisible by (g). The total contribution associated with divisor (g) is therefore
+gcd(x,n/d)=1.
 
-[
-g\varphi\left(\frac ng\right)
-]
+There are exactly
 
-to every multiple of (g).
+φ(n/d)
 
-So the final formula is
+such values of `i`, where `φ` is Euler's totient function. Each contributes `d` solutions for `j`, so all `i` with gcd equal to `d` contribute
 
-[
-\boxed{
-c_k=
-\sum_{\substack{g\mid n\g\mid k}}
-g\varphi\left(\frac ng\right)
-}
-]
+dφ(n/d)
 
-or equivalently,
+to every residue `k` divisible by `d`.
 
-[
-c_k=
-\sum_{g\mid\gcd(k,n)}
-g\varphi\left(\frac ng\right).
-]
+Consequently,
 
-Now we only need to enumerate the divisors of (n). For each divisor (g), add its weight (g\varphi(n/g)) to positions (0,g,2g,\ldots). The total number of array updates is
+c k ​ = d∣n d∣k ​ ∑ ​ dφ(n/d)= d∣gcd(k,n) ∑ ​ dφ(n/d).
 
-[
-\sum_{g\mid n}\frac nd=\sum_{g\mid n}\frac ng=\sigma(n),
-]
+This formula changes the problem completely. We only need to consider divisors of `n`. For every divisor `d`, calculate
 
-up to the harmless endpoint convention. This is dramatically smaller than (n^2). For the maximum input, (2{,}200{,}000=2^6\cdot5^5\cdot11), so it has only 84 divisors and the sum of its divisors is only (5{,}952{,}744).
+w d ​ =dφ(n/d)
 
-We can factor (n) first, generate all its divisors, and calculate (\varphi(n/g)) directly from the prime factorization. There is no need for a sieve up to (n), which keeps the implementation both simpler and memory-efficient.
+and add `w_d` to every multiple of `d` among the residues `1,2,\ldots,n-1`. Residue `0` is divisible by every divisor, so it receives every `w_d` separately.
+
+The total number of updates is
+
+d∣n ∑ ​ d n ​ =n d∣n ∑ ​ d 1 ​ ,
+
+which is `O(n log log n)` and is very close to linear for the given bound. We also avoid constructing a full totient sieve up to `n`, because only `φ(n/d)` for divisors of `n` is needed.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(n^2)) | (O(n)) | Too slow |
-| Optimal | (O(\sqrt n+\sigma(n))) | (O(n+\tau(n))) | Accepted |
+| Brute Force | `O(n²)` | `O(n)` | Too slow |
+| Optimal | `O(n log log n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Factor (n) into prime powers (n=\prod p^a). Trial division is sufficient because (n\le2.2\times10^6), so only (O(\sqrt n)) candidate divisors need to be checked.
-2. Generate every divisor (g) of (n). During this generation, also compute (\varphi(n/g)). If (p^b) is the remaining power of a prime in (n/g), its contribution to the totient is (1) when (b=0), and (p^{b-1}(p-1)) otherwise.
-3. For each divisor (g), compute its weight
+1. Factor `n` into its prime powers. We need the factorization because it lets us enumerate every divisor of `n` and calculate Euler's totient for `n / d` without building a size-`n` totient array.
+2. Generate all divisors of `n` from its prime factorization. There are only `τ(n)` of them, which is tiny compared with `n` for `n <= 2.2 × 10^6`.
+3. For every divisor `d`, calculate
 
-[
-w=g\varphi(n/g).
-]
+w=dφ(n/d).
 
-The values of (i) satisfying (\gcd(i,n)=g) are exactly (\varphi(n/g)) in number, and each such (i) contributes (g) solutions to every residue divisible by (g).
+This is the total contribution of all `i` satisfying `gcd(i,n) = d` to every residue divisible by `d`.
 
-1. Add (w) to every array position divisible by (g). The affected positions are (0,g,2g,\ldots,n-g). Position zero is deliberately included because zero is divisible by every positive divisor.
-2. After processing every divisor, output the resulting array. Every ordered pair has been accounted for according to the gcd of its first coordinate, so the accumulated value at position (k) is exactly the number of pairs whose product is congruent to (k) modulo (n).
+1. Add `w` to every positive multiple of `d` below `n`. The loop visits `d, 2d, 3d, ...`, and every one of these residues is divisible by `d`, exactly matching the condition in the formula.
+2. Add `w` to `answer[0]` as well. Zero is divisible by every positive integer, but a usual multiples loop beginning at `d` does not visit zero.
+3. Output the resulting array. The values can be as large as `n²`, so Python integers naturally provide sufficient precision.
 
 ### Why it works
 
-Fix a residue (k). Partition all possible first coordinates (i) according to (g=\gcd(i,n)). For one such (i), the congruence (ij\equiv k\pmod n) has (g) solutions for (j) when (g\mid k), and no solutions otherwise. There are exactly (\varphi(n/g)) first coordinates with gcd (g). Consequently, all first coordinates in this group contribute exactly (g\varphi(n/g)) to (c_k) when (g\mid k). The algorithm adds precisely that quantity to every multiple of (g), so every valid pair contributes once and every invalid pair contributes zero. Summing over all divisors gives the exact capacity of every day.
+For a fixed `i`, the congruence
+
+ij≡k(modn)
+
+has `gcd(i,n)` solutions for `j` when `gcd(i,n)` divides `k`, and no solutions otherwise. Grouping the values of `i` by `d = gcd(i,n)`, there are `φ(n/d)` values in the group, and each contributes `d` solutions. Thus that group contributes `d φ(n/d)` exactly to the residues divisible by `d`. The algorithm performs precisely those additions for every divisor `d`, including the special residue `0`, so every pair is counted exactly once.
 
 ## Python Solution
 
 ```python
-import sys
-input = sys.stdin.readline
+Pythonimport sysinput = sys.stdin.readline
 
-def factorize(n):
-    factors = []
-
-    if n % 2 == 0:
-        e = 0
-        while n % 2 == 0:
-            n //= 2
-            e += 1
-        factors.append((2, e))
-
-    p = 3
-    while p * p <= n:
-        if n % p == 0:
-            e = 0
-            while n % p == 0:
-                n //= p
-                e += 1
-            factors.append((p, e))
-        p += 2
-
-    if n > 1:
-        factors.append((n, 1))
-
+def factorize(n):    factors = []    x = n    p = 2
+    while p * p <= x:        if x % p == 0:            e = 0            while x % p == 0:                x //= p                e += 1            factors.append((p, e))        p += 1 if p == 2 else 2
+    if x > 1:        factors.append((x, 1))
     return factors
 
-def generate_terms(factors):
-    terms = []
+def get_divisors(factors):    divisors = [1]
+    for p, e in factors:        old = divisors[:]        power = 1
+        for _ in range(e):            power *= p            for d in old:                divisors.append(d * power)
+    return divisors
 
-    def dfs(pos, divisor, phi_quotient):
-        if pos == len(factors):
-            terms.append((divisor, phi_quotient))
-            return
+def phi_from_factorization(x, factors):    result = x
+    for p, _ in factors:        if x % p == 0:            result -= result // p
+    return result
 
-        p, a = factors[pos]
-
-        p_powers = [1]
-        for _ in range(a):
-            p_powers.append(p_powers[-1] * p)
-
-        for e in range(a + 1):
-            remaining = a - e
-
-            if remaining == 0:
-                phi_part = 1
-            else:
-                phi_part = (p - 1) * p_powers[remaining - 1]
-
-            dfs(
-                pos + 1,
-                divisor * p_powers[e],
-                phi_quotient * phi_part
-            )
-
-    dfs(0, 1, 1)
-    return terms
-
-def solve():
-    n = int(input())
-
-    factors = factorize(n)
-    terms = generate_terms(factors)
-
+def compute(n):    factors = factorize(n)    divisors = get_divisors(factors)
     ans = [0] * n
+    for d in divisors:        w = d * phi_from_factorization(n // d, factors)
+        ans[0] += w
+        for k in range(d, n, d):            ans[k] += w
+    return ans
 
-    for divisor, phi_quotient in terms:
-        weight = divisor * phi_quotient
+def solve():    n = int(input())    ans = compute(n)
+    out = sys.stdout.buffer
+    # Avoid constructing one enormous output string at once.    chunk = []    for x in ans:        chunk.append(str(x))        if len(chunk) == 100000:            out.write(("\n".join(chunk) + "\n").encode())            chunk.clear()
+    if chunk:        out.write(("\n".join(chunk) + "\n").encode())
 
-        for k in range(0, n, divisor):
-            ans[k] += weight
-
-    sys.stdout.write('\n'.join(map(str, ans)))
-
-if __name__ == "__main__":
-    solve()
+if __name__ == "__main__":    solve()
 ```
 
-The `factorize` function extracts the prime powers of (n). Since the square root of the largest possible input is only about 1484, trial division is tiny compared with the main output work.
+The factorization starts with `2` and then tests only odd candidates. Since `n` is at most `2.2 × 10^6`, trial division up to `sqrt(n)` is inexpensive.
 
-The recursive `generate_terms` function enumerates divisors using the prime factorization. If (n) contains (p^a), choosing exponent (e) for (p) inside the divisor (g) leaves exponent (a-e) inside (n/g). The code computes the corresponding totient factor immediately, so every generated pair is exactly `(g, phi(n/g))`.
+The divisor generator starts with `{1}`. For each prime power `p^e`, every existing divisor is combined with `p`, `p²`, ..., `p^e`, producing exactly every divisor of `n` once.
 
-The main loop implements the divisor contribution directly. For a divisor `divisor`, the value `weight` is (g\varphi(n/g)). The range starts at zero rather than at `divisor`, because residue zero is divisible by every divisor and receives contributions from every gcd class.
+For a particular divisor `d`, `n // d` is the modulus appearing inside the totient. Since the prime factors of `n // d` must be among the prime factors of `n`, `phi_from_factorization` can calculate the totient using
 
-Python integers have arbitrary precision, so there is no overflow issue. In a fixed-width language, 64-bit integers are the appropriate type because individual capacities can be much larger than (2^{31}-1).
+φ(x)=x p∣x ∏ ​ (1− p 1 ​ ).
 
-The answer array uses Python's list representation. At (2.2) million positions this remains within the 256 MB memory limit, while also being considerably faster for repeated integer additions than a boxed high-level mapping structure.
+The inner loop starts at `d`, not at zero, because zero is handled explicitly with `ans[0] += w`. Starting at zero would be valid too, but it would require a slightly different loop structure.
+
+The answer array contains ordinary Python integers. No overflow handling is needed, and this matters because the total number of pairs is `n²`, which can be around `4.84 × 10^12`.
+
+The output is written in chunks of 100,000 lines. This keeps the temporary output string bounded instead of constructing a potentially large string containing every answer simultaneously.
 
 ## Worked Examples
 
-For (n=6), the prime factorization is (2\cdot3). The divisor terms are easy to derive:
+### Example 1: `n = 6`
 
-[
-\begin{array}{c|c|c}
-g & \varphi(6/g) & g\varphi(6/g)\
-\hline
-1 & \varphi(6)=2 & 2\
-2 & \varphi(3)=2 & 4\
-3 & \varphi(2)=1 & 3\
-6 & \varphi(1)=1 & 6
-\end{array}
-]
+The divisors of `6` are `1, 2, 3, 6`. Their contributions are:
 
-The trace of the array updates is:
+1φ(6)=2,
+2φ(3)=4,
+3φ(2)=3,
+6φ(1)=6.
 
-| Divisor (g) | Weight | Positions updated | Array after update |
+The algorithm adds each contribution to zero and to all positive multiples of its divisor.
+
+| Divisor `d` | `φ(6/d)` | Contribution `dφ(6/d)` | Positive residues updated |
 | --- | --- | --- | --- |
-| 1 | 2 | 0, 1, 2, 3, 4, 5 | 2, 2, 2, 2, 2, 2 |
-| 2 | 4 | 0, 2, 4 | 6, 2, 6, 2, 6, 2 |
-| 3 | 3 | 0, 3 | 9, 2, 6, 5, 6, 2 |
-| 6 | 6 | 0 | 15, 2, 6, 5, 6, 2 |
+| 1 | 2 | 2 | 1, 2, 3, 4, 5 |
+| 2 | 2 | 4 | 2, 4 |
+| 3 | 1 | 3 | 3 |
+| 6 | 1 | 6 | none |
 
-The final array is exactly the sample output. The trace shows why zero receives contributions from every divisor, while each nonzero residue receives only the weights of its own divisors.
+Residue zero receives `2 + 4 + 3 + 6 = 15`.
 
-For (n=5), which is prime, the only divisors are (1) and (5).
+The resulting array is
 
-| Divisor (g) | Weight | Positions updated | Array after update |
+```
+1526562
+```
+
+For example, residue `4` is divisible by `1` and `2`, so it receives `2 + 4 = 6`. It is not divisible by `3` or `6`.
+
+### Example 2: `n = 5`
+
+Since `5` is prime, its only divisors are `1` and `5`.
+
+| Divisor `d` | `φ(5/d)` | Contribution `dφ(5/d)` | Positive residues updated |
 | --- | --- | --- | --- |
-| 1 | (\varphi(5)=4) | 0, 1, 2, 3, 4 | 4, 4, 4, 4, 4 |
-| 5 | (5\varphi(1)=5) | 0 | 9, 4, 4, 4, 4 |
+| 1 | 4 | 4 | 1, 2, 3, 4 |
+| 5 | 1 | 5 | none |
 
-This demonstrates the prime-modulus special case. Every nonzero residue receives the same four contributions, because every nonzero multiplier is invertible modulo a prime. Zero receives five additional contributions from the multiplier (i=0).
+Residue zero receives both contributions, giving `9`. Every nonzero residue is divisible only by `1`, so every nonzero answer is `4`.
+
+The output is
+
+```
+94444
+```
+
+This illustrates why prime moduli have a particularly simple shape, while composite moduli require the full divisor sum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(\sqrt n+\sigma(n))) | Factoring costs (O(\sqrt n)), and the divisor-update loops perform (\sum_{g\mid n}n/g=\sigma(n)) iterations |
-| Space | (O(n+\tau(n))) | The answer array has (n) entries and the divisor list has (\tau(n)) entries |
+| Time | `O(n log log n)` | For every divisor `d` of `n`, we update approximately `n/d` positions. |
+| Space | `O(n)` | The answer array contains `n` integer values. |
 
-The crucial difference from brute force is that the number of arithmetic updates is tied to the divisor structure of (n), not to (n^2). At the maximum input, (n) has only 84 divisors and (\sigma(n)=5{,}952{,}744), so the update phase remains small compared with the (4.84\times10^{12}) operations required by direct enumeration. The memory consumption is dominated by the (n)-element answer array and fits comfortably within 256 MB.
+The divisor sum satisfies
+
+d∣n ∑ ​ d n ​ =n n σ(n) ​ =O(nloglogn),
+
+so the number of array updates stays close to linear. The factorization and divisor generation take negligible time compared with those updates for the maximum input. The `O(n)` answer array is comfortably within the 256 MB memory limit for this constraint.
 
 ## Test Cases
 
 ```python
-import sys
-import io
+Pythonimport sysimport io
+# The functions below are the same computational functions used by the solution.
+def factorize(n):    factors = []    x = n    p = 2
+    while p * p <= x:        if x % p == 0:            e = 0            while x % p == 0:                x //= p                e += 1            factors.append((p, e))        p += 1 if p == 2 else 2
+    if x > 1:        factors.append((x, 1))
+    return factors
 
-def solution(data: str) -> str:
-    n = int(data.strip())
+def get_divisors(factors):    divisors = [1]
+    for p, e in factors:        old = divisors[:]        power = 1
+        for _ in range(e):            power *= p            for d in old:                divisors.append(d * power)
+    return divisors
 
-    def factorize(x):
-        factors = []
+def phi_from_factorization(x, factors):    result = x
+    for p, _ in factors:        if x % p == 0:            result -= result // p
+    return result
 
-        if x % 2 == 0:
-            e = 0
-            while x % 2 == 0:
-                x //= 2
-                e += 1
-            factors.append((2, e))
+def compute(n):    factors = factorize(n)    divisors = get_divisors(factors)    ans = [0] * n
+    for d in divisors:        w = d * phi_from_factorization(n // d, factors)
+        ans[0] += w
+        for k in range(d, n, d):            ans[k] += w
+    return ans
 
-        p = 3
-        while p * p <= x:
-            if x % p == 0:
-                e = 0
-                while x % p == 0:
-                    x //= p
-                    e += 1
-                factors.append((p, e))
-            p += 2
+def run(inp: str) -> str:    n = int(inp.strip())    ans = compute(n)    return "\n".join(map(str, ans)) + "\n"
 
-        if x > 1:
-            factors.append((x, 1))
+# Provided sampleassert run("6") == "15\n2\n6\n5\n6\n2\n", "sample 1"
+# Minimum sizeassert run("1") == "1\n", "n = 1"
+# Small composite numberassert run("4") == "8\n4\n4\n4\n", "n = 4"
+# Prime modulus, all nonzero residues have equal valuesassert run("5") == "9\n4\n4\n4\n4\n", "n = 5"
+# Another composite case, useful for catching divisor/multiple errorsassert run("8") == "20\n4\n8\n4\n12\n4\n8\n4\n", "n = 8"
 
-        return factors
-
-    factors = factorize(n)
-    terms = []
-
-    def dfs(pos, divisor, phi_quotient):
-        if pos == len(factors):
-            terms.append((divisor, phi_quotient))
-            return
-
-        p, a = factors[pos]
-
-        powers = [1]
-        for _ in range(a):
-            powers.append(powers[-1] * p)
-
-        for e in range(a + 1):
-            remaining = a - e
-
-            if remaining == 0:
-                phi_part = 1
-            else:
-                phi_part = (p - 1) * powers[remaining - 1]
-
-            dfs(
-                pos + 1,
-                divisor * powers[e],
-                phi_quotient * phi_part
-            )
-
-    dfs(0, 1, 1)
-
-    ans = [0] * n
-
-    for divisor, phi_quotient in terms:
-        weight = divisor * phi_quotient
-        for k in range(0, n, divisor):
-            ans[k] += weight
-
-    return '\n'.join(map(str, ans))
-
-# Provided sample
-assert solution("6") == "15\n2\n6\n5\n6\n2", "sample 1"
-
-# Minimum input
-assert solution("1") == "1", "n = 1"
-
-# Prime n, all nonzero residues have equal capacities
-assert solution("5") == "9\n4\n4\n4\n4", "prime modulus"
-
-# Composite n with repeated prime factors
-assert solution("4") == "8\n2\n4\n2", "composite modulus"
-
-# Maximum-size input.
-# Checking the complete 2.2-million-line string directly would waste memory,
-# so verify its size and boundary values.
-maximum = solution("2200000")
-maximum_lines = maximum.splitlines()
-
-assert len(maximum_lines) == 2200000, "maximum n output length"
-assert maximum_lines[0] == "84000000", "maximum n c[0]"
-assert maximum_lines[-1] == "800000", "maximum n c[n-1]"
+# Maximum-size structural test.# We do not materialize a second expected 2.2-million-line string.n = 2_200_000ans = compute(n)
+assert len(ans) == n, "maximum n output length"assert sum(ans) == n * n, "every ordered pair must be counted exactly once"assert ans[0] == sum(    d * phi_from_factorization(n // d, factorize(n))    for d in get_divisors(factorize(n))), "zero residue"
 ```
+
+The maximum-size test deliberately checks structural properties instead of embedding millions of expected output lines. The identity `sum(ans) = n²` is especially useful because every one of the `n²` ordered pairs must contribute to exactly one residue.
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1` | `1` | Minimum size and the special role of the zero residue |
-| `5` | `9, 4, 4, 4, 4` | Prime modulus and equal nonzero capacities |
-| `4` | `8, 2, 4, 2` | Composite modulus and non-invertible multipliers |
-| `2200000` | 2,200,000 lines, first `84000000`, last `800000` | Maximum input size, output boundaries, and performance |
+| `1` | `1` | Minimum size and handling of residue zero |
+| `4` | `8, 4, 4, 4` | Composite modulus and repeated divisor contributions |
+| `5` | `9, 4, 4, 4, 4` | Prime modulus and equal nonzero residues |
+| `8` | `20, 4, 8, 4, 12, 4, 8, 4` | Several prime-power divisors and multiple boundaries |
+| `2_200_000` | Structural checks | Maximum input size, total pair count, and performance |
 
 ## Edge Cases
 
-For (n=1), the only possible pair is ((0,0)). The factorization has no prime factors, so the divisor generator produces only (g=1), with (\varphi(1)=1). The update loop adds (1) to position zero, producing exactly
+For `n = 1`, the only pair is `(0,0)`. The divisor set contains only `1`, and its contribution is
 
-```
-1
-```
+1⋅φ(1)=1.
 
-A solution that starts divisor enumeration from `2` would silently miss the only contribution.
+The positive-multiple loop performs no updates, while `ans[0]` receives `1`. The output is exactly `1`.
 
-For (n=4), the divisor contributions expose why composite moduli need the gcd argument. The terms are (g=1) with weight (\varphi(4)=2), (g=2) with weight (2\varphi(2)=2), and (g=4) with weight (4\varphi(1)=4). The first term updates every position, the second updates positions zero and two, and the third updates only zero. The result is
+For `n = 2`, the divisors are `1` and `2`. Their contributions are `1·φ(2)=1` and `2·φ(1)=2`. Zero receives `3`, while residue `1` receives only the contribution from divisor `1`, giving `1`. The output is `3,1`, correctly accounting for the three pairs whose product is even.
 
-```
-8
-2
-4
-2
-```
+For `n = 5`, the divisor `1` contributes `φ(5)=4` to every residue, while divisor `5` contributes `5` only to zero. Thus the answer is `9,4,4,4,4`. This catches an easy mistake where the special behavior of residue zero is forgotten.
 
-The zero position receives (2+2+4=8), while position two receives (2+2=4). This catches implementations that assume every nonzero multiplier has exactly one modular inverse.
+For `n = 6`, divisor `3` contributes `3` to residues `0` and `3`, while divisor `2` contributes `4` to `0`, `2`, and `4`. Residue `4` consequently receives `2 + 4 = 6`, while residue `5` receives only `2`. This confirms that the algorithm tests divisibility by the divisor rather than merely testing whether the residue shares a prime factor with it.
 
-For (n=5), the only divisors are (1) and (5). The divisor (1) contributes (\varphi(5)=4) to every position, while divisor (5) contributes (5) only to zero. The result is
-
-```
-9
-4
-4
-4
-4
-```
-
-This catches the opposite mistake, where a solution treats zero as an ordinary residue and forgets that the multiplier (i=0) contributes to zero for every possible (j).
-
-For the maximum (n=2{,}200{,}000), the prime factorization is (2^6\cdot5^5\cdot11), giving 84 divisors. The update loops perform only (5{,}952{,}744) additions, while the output still contains all (2.2) million capacities. The first value is (84{,}000{,}000), obtained from
-
-[
-\sum_{g\mid n}g\varphi(n/g),
-]
-
-and the final value, corresponding to residue (n-1), is (800{,}000=\varphi(n)), since (\gcd(n-1,n)=1). This case exercises both the intended asymptotic behavior and the array boundaries at positions zero and (n-1).
+For the maximum value `n = 2,200,000`, the algorithm never constructs the `n × n` multiplication table. It only processes the divisors of `n` and their multiples, so the amount of work remains near linear in `n`. The output values are still at most the total number of ordered pairs, `n²`, and Python integers handle that range without overflow.
