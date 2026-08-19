@@ -1,7 +1,7 @@
 ---
 title: "CF 102163D - Football Cup"
-description: "The match result depends only on the final goal counts. For each test case, X is the number of goals scored by Bashar's team and Y is the number scored by Hamada's team. We must compare these two integers and print the name of the team with more goals."
-date: "2026-08-19T07:43:55+07:00"
+description: "The match result depends only on the final goal counts. For each test case, X is the number of goals scored by Bashar's team and Y is the number scored by Hamada's team."
+date: "2026-08-19T14:43:36+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102163
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "NCD 2019"
 rating: 0
 weight: 102163
-solve_time_s: 136
+solve_time_s: 279
 verified: false
 draft: false
 ---
@@ -18,59 +18,79 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 2m 16s  
+**Solve time:** 4m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The match result depends only on the final goal counts. For each test case, `X` is the number of goals scored by Bashar's team and `Y` is the number scored by Hamada's team. We must compare these two integers and print the name of the team with more goals. If the two values are equal, the result is a draw and we print `Iskandar`.
+The match result depends only on the final goal counts. For each test case, `X` is the number of goals scored by Bashar's team and `Y` is the number scored by Hamada's team. The task is to compare these two integers and print `Bashar` when `X` is larger, `Hamada` when `Y` is larger, and `Iskandar` when they are equal.
 
-The input contains `T` independent matches, so each pair of scores can be processed without knowing anything about the other test cases. The score of either team can be as large as `10^5`, which is tiny for integer comparison. Even if `T` is large, a constant amount of work per test case is easily fast enough for a 1 second limit. There is no need for loops over the possible score values, simulation of the match, or any data structure. Any approach more complicated than linear in the number of test cases is solving information that the problem never asks for.
+The original story contains many details about players, injuries, substitutions, and match duration, but none of those values affect the requested result. Once the two final scores are provided, the entire problem reduces to one comparison.
 
-The main edge cases come from equality and the smallest possible scores. A score of `0 0` must produce `Iskandar`, because neither team has more goals. A careless implementation that checks only whether `X > Y` and otherwise prints `Hamada` would incorrectly report a Hamada win.
+Each score is between `0` and `100000`, so the values fit comfortably in standard integer types. More importantly, the range does not need to be explored at all. Even if there are many test cases, a solution that performs a constant amount of work per case is easily fast enough for a 1 second limit. An approach that spends `O(100000)` operations on every test case would already be unnecessarily expensive, while anything quadratic in the score range would be completely inappropriate.
 
-For example:
+There are a few simple cases where an implementation can go wrong. When Bashar has more goals, such as
+
+```
+1
+6 2
+```
+
+the correct output is `Bashar`. A careless implementation that checks only whether the scores are equal could incorrectly treat every non-draw as the same result.
+
+When Hamada has more goals, such as
+
+```
+1
+1 5
+```
+
+the correct output is `Hamada`. Reversing the comparison would silently produce the wrong winner.
+
+The equality case is also essential:
+
+```
+1
+3 3
+```
+
+The correct output is `Iskandar`. An implementation using only `if X > Y` and `else` would incorrectly print `Hamada`, because equality must be handled separately.
+
+Finally, zero is a valid score for either team. For
 
 ```
 1
 0 0
 ```
 
-The correct output is:
-
-```
-Iskandar
-```
-
-Equality also matters when both teams have positive scores. For `3 3`, the correct result is again `Iskandar`. Treating `X >= Y` as a Bashar win would silently turn this draw into a win for Bashar.
-
-Finally, the comparison must be symmetric. For `1 5`, Hamada wins, while for `5 1`, Bashar wins. An implementation that accidentally reverses the two variables will produce the opposite result on both cases.
+the result is `Iskandar`, so the comparison must work without assuming that either team scored at least once.
 
 ## Approaches
 
-A brute-force approach could simulate the possible outcomes by repeatedly comparing or processing score values until one team is established as the winner. Such a method is unnecessary, but even a simple loop that performs one operation per possible goal would take up to `10^5` operations for one test case. With `T` test cases, that becomes `10^5 T` operations in the worst case. If `T` were also large, this would quickly become excessive, despite the actual problem requiring only one comparison per test case.
+A deliberately brute-force approach could examine score values one by one and try to determine which of the two given scores is larger by scanning through the possible range from `0` to `100000`. This eventually gives the correct answer because every valid score lies inside that range, but it completely ignores the fact that the two actual values are already available. In the worst case, this performs `100001` iterations for one test case. If there were `100000` test cases, that would reach about `10^10` iterations, which is far beyond what a 1 second limit allows.
 
-The reason the brute-force idea works is that eventually it can determine which score is larger. The problem is that the final scores already contain exactly that information. There is no hidden state to reconstruct and no sequence of scoring events that affects the answer. The observation that the result is completely determined by the ordering of `X` and `Y` reduces the entire task to three cases: `X > Y`, `X < Y`, and `X == Y`.
+The brute-force works because it eventually encounters the relevant score values, but fails because it spends time exploring values that have nothing to do with the answer. The key observation is that determining the winner requires no search at all. The relationship between the two given scores is already the complete answer: greater means that team wins, smaller means the other team wins, and equality means a draw.
 
-This gives a constant amount of work for every test case, so the complete algorithm is linear in the number of test cases.
+Thus each test case needs exactly one comparison and one output decision. This reduces the work from depending on the score range to a constant amount per test case.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(T · 10^5) in the worst case | O(1) | Unnecessarily slow |
-| Optimal | O(T) | O(1) auxiliary | Accepted |
+| Brute Force | `O(T * 100000)` | `O(1)` | Too slow and unnecessary |
+| Optimal | `O(T)` | `O(T)` for collected output | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases `T`. We need to process exactly that many score pairs.
-2. For each test case, read `X` and `Y`, representing Bashar's and Hamada's goal counts respectively.
-3. Compare `X` and `Y`. If `X > Y`, Bashar's team has more goals, so print `Bashar`.
-4. If `X < Y`, Hamada's team has more goals, so print `Hamada`.
-5. If neither value is larger, they must be equal. Print `Iskandar` because the match is a draw.
+1. Read the number of test cases `T`. Each following test case contains the final scores of the two teams.
+2. For every test case, read `X` and `Y`. No simulation of the football match is necessary because the input already gives the final result of the scoring process.
+3. Compare `X` and `Y`. If `X > Y`, Bashar's team has more goals, so the answer is `Bashar`.
+4. If `X < Y`, Hamada's team has more goals, so the answer is `Hamada`.
+5. If neither score is larger, they must be equal. In that case, print `Iskandar`.
+6. Store each answer and print all answers after processing the input. Collecting the strings also avoids repeatedly calling `print` for every individual test case.
 
 ### Why it works
 
-For every test case, exactly one of the three relations `X > Y`, `X < Y`, or `X == Y` is true. The algorithm assigns the required output to each of these mutually exclusive cases. Since the final score alone determines the winner, there is no other information that could change the result. Thus every test case receives exactly the correct result.
+For every test case, exactly one of three mutually exclusive relationships holds between `X` and `Y`: `X > Y`, `X < Y`, or `X = Y`. The algorithm maps these three possibilities directly to the three required outcomes, `Bashar`, `Hamada`, and `Iskandar`. Since the winner is defined solely by which final score is greater, the selected result is always correct.
 
 ## Python Solution
 
@@ -80,62 +100,69 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+    answers = []
 
     for _ in range(t):
         x, y = map(int, input().split())
 
         if x > y:
-            print("Bashar")
+            answers.append("Bashar")
         elif x < y:
-            print("Hamada")
+            answers.append("Hamada")
         else:
-            print("Iskandar")
+            answers.append("Iskandar")
+
+    sys.stdout.write("\n".join(answers))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first line gives the number of independent test cases, so the `for` loop executes exactly `T` times. Each iteration reads two integers in the order specified by the problem, with `x` always representing Bashar's score and `y` representing Hamada's score.
+The first line reads `T`, which tells the program exactly how many score pairs follow. The loop then processes one complete match result at a time.
 
-The three branches correspond directly to the three possible relationships between two integers. The equality check is placed in the final `else`, because once both `x > y` and `x < y` are false, the only remaining possibility is `x == y`.
+The three-way `if` structure directly implements the algorithm. The strict comparisons handle the two possible winners, while the final `else` represents equality. There is no need for special handling of zero or the maximum score because ordinary integer comparison already handles both boundaries correctly.
 
-There are no off-by-one concerns because the algorithm does not iterate over score values. Python integers also have no overflow issue for these constraints. The use of `sys.stdin.readline` provides fast input handling, while the output is produced once per test case.
+The scores are at most `100000`, so integer overflow is not a concern in Python. In fact, the program never performs arithmetic on the scores at all, only comparisons.
+
+The answers are accumulated in a list and joined with newline characters at the end. This keeps output handling efficient when the number of test cases is large.
 
 ## Worked Examples
 
-For the first sample test case, the scores are `1` for Bashar and `5` for Hamada.
+Consider the first two test cases from Sample 1.
 
-| Step | X | Y | Comparison | Output |
+| Test case | `X` | `Y` | Comparison | Answer |
 | --- | --- | --- | --- | --- |
 | 1 | 1 | 5 | `1 < 5` | `Hamada` |
+| 2 | 2 | 0 | `2 > 0` | `Bashar` |
 
-Hamada's score is larger, so the second branch is selected. This demonstrates that the variable order matters: `X` is always Bashar's score and `Y` is always Hamada's.
+For the first match, Hamada has five goals against Bashar's one, so the second branch produces `Hamada`. For the second match, Bashar has two goals while Hamada has none, so the first branch produces `Bashar`. These cases demonstrate both directions of the comparison.
 
-For the third and fourth sample cases, both teams have equal scores.
+The equality case from Sample 1 gives another useful trace.
 
-| Step | X | Y | Comparison | Output |
+| Test case | `X` | `Y` | Comparison | Answer |
 | --- | --- | --- | --- | --- |
 | 1 | 0 | 0 | `0 == 0` | `Iskandar` |
 | 2 | 3 | 3 | `3 == 3` | `Iskandar` |
 
-Both cases reach the equality branch. The first uses the minimum possible scores, while the second confirms that equality must also be handled correctly when the scores are positive.
+Neither strict comparison succeeds for either row. The algorithm reaches the equality case and outputs `Iskandar`. This confirms that a zero-zero score and a positive draw are treated identically, as required.
 
-For the final sample case, Bashar scores `6` and Hamada scores `2`.
+The final two rows of Sample 1 exercise both the larger-score boundary direction and another ordinary win.
 
-| Step | X | Y | Comparison | Output |
+| Test case | `X` | `Y` | Comparison | Answer |
 | --- | --- | --- | --- | --- |
 | 1 | 6 | 2 | `6 > 2` | `Bashar` |
+| 2 | 2 | 0 | `2 > 0` | `Bashar` |
 
-The first comparison succeeds, so the algorithm immediately identifies Bashar's team as the winner.
+The invariant throughout every row is that the answer is determined solely by the ordering of the two current scores. No information from another test case affects the current decision.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(T) | Each test case requires one integer comparison and constant additional work. |
-| Space | O(1) auxiliary | Only the current pair of scores and a few control variables are needed. |
+| Time | `O(T)` | Each test case performs one comparison and constant additional work |
+| Space | `O(T)` | The output strings are stored before being printed |
 
-The scores are at most `10^5`, so the integer operations are trivial. More importantly, the algorithm performs only one comparison per test case, making it comfortably fast even when the number of test cases is large. The solution also uses constant auxiliary memory, far below the 256 MB limit.
+The score limit of `100000` does not affect the running time because the algorithm never iterates over possible scores. Even a large number of test cases requires only one constant-time comparison per case, which comfortably fits the 1 second limit. The memory usage is also small because each test case contributes only one short output string.
 
 ## Test Cases
 
@@ -144,43 +171,37 @@ import sys
 import io
 
 def solve():
+    input = sys.stdin.readline
     t = int(input())
-    out = []
+    answers = []
 
     for _ in range(t):
         x, y = map(int, input().split())
 
         if x > y:
-            out.append("Bashar")
+            answers.append("Bashar")
         elif x < y:
-            out.append("Hamada")
+            answers.append("Hamada")
         else:
-            out.append("Iskandar")
+            answers.append("Iskandar")
 
-    print("\n".join(out))
+    sys.stdout.write("\n".join(answers))
 
 def run(inp: str) -> str:
-    global input
-
     old_stdin = sys.stdin
-    old_input = input
+    old_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
 
     try:
-        sys.stdin = io.StringIO(inp)
-        input = sys.stdin.readline
-
-        old_stdout = sys.stdout
-        sys.stdout = io.StringIO()
-
-        try:
-            solve()
-            return sys.stdout.getvalue()
-        finally:
-            sys.stdout = old_stdout
+        solve()
+        return sys.stdout.getvalue()
     finally:
         sys.stdin = old_stdin
-        input = old_input
+        sys.stdout = old_stdout
 
+# Provided sample
 assert run("""5
 1 5
 2 0
@@ -191,87 +212,91 @@ assert run("""5
 Bashar
 Iskandar
 Iskandar
-Bashar
-""", "sample 1"
+Bashar""", "sample 1"
 
+# Minimum-size scores
 assert run("""1
 0 0
-""") == """Iskandar
-""", "minimum scores and draw"
+""") == "Iskandar", "minimum scores"
 
-assert run("""3
-100000 0
-0 100000
-100000 100000
+# Maximum-size scores
+assert run("""2
+100000 99999
+99999 100000
 """) == """Bashar
-Hamada
-Iskandar
-""", "maximum scores and equality"
+Hamada""", "maximum scores"
 
+# Several equal scores
+assert run("""3
+1 1
+50000 50000
+100000 100000
+""") == """Iskandar
+Iskandar
+Iskandar""", "all equal"
+
+# Boundary and near-boundary comparisons
 assert run("""4
-1 2
-2 1
+0 1
+1 0
 99999 100000
 100000 99999
 """) == """Hamada
 Bashar
 Hamada
-Bashar
-""", "boundary comparisons"
-
-assert run("""3
-7 7
-1 1
-99999 99999
-""") == """Iskandar
-Iskandar
-Iskandar
-""", "all equal values"
+Bashar""", "boundary comparisons"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 0 0` | `Iskandar` | Minimum possible scores and equality |
-| `3 / 100000 0 / 0 100000 / 100000 100000` | `Bashar / Hamada / Iskandar` | Maximum score boundary and all three comparison outcomes |
-| `4 / 1 2 / 2 1 / 99999 100000 / 100000 99999` | `Hamada / Bashar / Hamada / Bashar` | Adjacent scores and correct comparison direction |
-| `3 / 7 7 / 1 1 / 99999 99999` | `Iskandar / Iskandar / Iskandar` | Equality for different positive scores |
+| `1 / 0 0` | `Iskandar` | Minimum scores and the equality branch |
+| `2 / 100000 99999 / 99999 100000` | `Bashar / Hamada` | Maximum allowed values and both comparison directions |
+| `3 / 1 1 / 50000 50000 / 100000 100000` | `Iskandar` three times | Equality at several score sizes |
+| `4 / 0 1 / 1 0 / 99999 100000 / 100000 99999` | `Hamada / Bashar / Hamada / Bashar` | Values immediately around the boundaries and reversed comparisons |
 
 ## Edge Cases
 
-The `0 0` case is the smallest possible input for the score values:
-
-```
-1
-0 0
-```
-
-The algorithm first checks `0 > 0`, which is false, then `0 < 0`, which is also false. It reaches the `else` branch and prints `Iskandar`. This prevents the common mistake of treating every non-Bashar result as a Hamada win.
-
-For equal positive scores, consider:
+For equal scores, consider the input
 
 ```
 1
 3 3
 ```
 
-Again, neither strict comparison succeeds. Since both scores are exactly equal, the algorithm prints `Iskandar`. This catches implementations that use `>=` instead of `>` for the Bashar branch.
+The algorithm first checks `3 > 3`, which is false, then checks `3 < 3`, which is also false. The remaining possibility is equality, so it outputs `Iskandar`. The same reasoning works for `0 0` and `100000 100000`.
 
-The maximum-score boundary can be tested with:
-
-```
-2
-100000 0
-0 100000
-```
-
-The first pair satisfies `X > Y`, producing `Bashar`, while the second satisfies `X < Y`, producing `Hamada`. The bound of `10^5` does not require any special handling because ordinary integer comparison is sufficient.
-
-Finally, adjacent scores expose reversed comparison mistakes:
+For a zero score on one side, consider
 
 ```
-2
-1 2
-2 1
+1
+0 7
 ```
 
-The first test prints `Hamada` because `1 < 2`, and the second prints `Bashar` because `2 > 1`. No simulation is needed. The complete problem is exactly the ordering relationship between the two final scores.
+The first comparison, `0 > 7`, is false. The second comparison, `0 < 7`, is true, so the output is `Hamada`. There is no special zero case because zero behaves normally under integer comparison.
+
+The reversed situation is
+
+```
+1
+7 0
+```
+
+Here `7 > 0` is true, so the output is `Bashar`. Testing both `0 7` and `7 0` catches implementations that accidentally swap the two input variables or winner names.
+
+At the upper boundary,
+
+```
+1
+100000 99999
+```
+
+gives `Bashar`, while
+
+```
+1
+99999 100000
+```
+
+gives `Hamada`. The algorithm performs the same two comparisons as it does for smaller values, so there is no off-by-one issue at `100000`.
+
+The central edge case is equality, because a two-branch implementation such as `if X > Y: Bashar else: Hamada` treats equality as a Hamada win. The explicit third outcome is what separates a correct solution from that common mistake.
