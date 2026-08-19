@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3173 contests, 23532 problems, 13207 verified."
+description: "Codeforces problem solutions with full editorials. 3173 contests, 23533 problems, 13209 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3173 contests, 23532 problems, 13207 verified.**
+**3173 contests, 23533 problems, 13209 verified.**
 
 ## Unknown — 846 contests, 7171 problems, 4322 verified
 
@@ -1484,7 +1484,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 207 contests, 1331 problems, 863 verified
+## 2019 — 207 contests, 1332 problems, 865 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1650,7 +1650,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102162](102162/) | [CLG1: сложность алгоритмов](https://codeforces.com/contest/102162) | 0 | 0/0 | Special | - |
 | [102163](102163/) | [NCD 2019](https://codeforces.com/contest/102163) | 9 | 3/9 | Special | - |
 | [102174](102174/) | [The 14-th BIT Campus Programming Contest](https://codeforces.com/contest/102174) | 12 | 12/12 | Special | - |
-| [102180](102180/) | [MSPU Training Contest 2018-2019](https://codeforces.com/contest/102180) | 5 | 4/5 | Special | - |
+| [102180](102180/) | [MSPU Training Contest 2018-2019](https://codeforces.com/contest/102180) | 6 | 6/6 | Special | - |
 | [102185](102185/) | [Southern Russia Open Championship – ContestSFedU 2019, Team Final.](https://codeforces.com/contest/102185) | 7 | 6/7 | Special | - |
 | [102190](102190/) | [2019 ECNU Campus Invitational Contest](https://codeforces.com/contest/102190) | 6 | 6/6 | Special | - |
 | [102191](102191/) | [PSUT Coding Marathon 2019](https://codeforces.com/contest/102191) | 7 | 0/7 | Special | - |
