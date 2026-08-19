@@ -1,26 +1,28 @@
 ---
 title: "Личный чемпионат Самарского университета среди новичков 2018-2019"
-description: "11 problems from Личный чемпионат Самарского университета среди новичков 2018-2019 (contest 102168), difficulty -. 11/11 solutions verified against sample I/O."
+description: "13 problems from Личный чемпионат Самарского университета среди новичков 2018-2019 (contest 102168), difficulty -. 13/13 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102168
 contest_type: "Special"
 rating_range: "-"
-n_problems: 11
-n_verified: 11
-total_solve_s: 1037
-date: "2026-08-19T07:34:30+07:00"
+n_problems: 13
+n_verified: 13
+total_solve_s: 1447
+date: "2026-08-19T15:15:25+07:00"
 weight: 102168
 draft: false
 ---
 
 # [Личный чемпионат Самарского университета среди новичков 2018-2019](https://codeforces.com/contest/102168)
 
-Special | 11 problems | 11/11 verified | Difficulty - | 17m 17s
+Special | 13 problems | 13/13 verified | Difficulty - | 24m 7s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [\u0421\u0440\u0435\u0434\u043d\u0435\u0435 \u0430\u0440\u0438\u0444\u043c\u0435\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435](https://codeforces.com/problemset/problem/102168/A) |  |  |  | 1m 30s | ✓ |
+| [B](B/) | [\u0423\u0434\u0432\u043e\u0435\u043d\u0438\u044f](https://codeforces.com/problemset/problem/102168/B) |  |  |  | 2m 58s | ✓ |
+| [C](C/) | [\u0421\u043a\u043e\u0431\u043e\u0447\u043a\u0438](https://codeforces.com/problemset/problem/102168/C) |  |  |  | 3m 52s | ✓ |
 | [D](D/) | [\u0411\u0435\u0437 \u043e\u0434\u043d\u043e\u0433\u043e \u0441\u0438\u043c\u0432\u043e\u043b\u0430](https://codeforces.com/problemset/problem/102168/D) |  |  |  | 1m 25s | ✓ |
 | [E](E/) | [\u041a\u0443\u0431\u0438\u043a\u0438](https://codeforces.com/problemset/problem/102168/E) |  |  |  | 2m 18s | ✓ |
 | [F](F/) | [\u0424\u0430\u043b\u044c\u0448\u0438\u0432\u0430\u044f \u043c\u043e\u043d\u0435\u0442\u0430](https://codeforces.com/problemset/problem/102168/F) |  |  |  | 2m 6s | ✓ |
