@@ -1,23 +1,23 @@
 ---
 title: "NCD 2019"
-description: "7 problems from NCD 2019 (contest 102163), difficulty -. 2/7 solutions verified against sample I/O."
+description: "8 problems from NCD 2019 (contest 102163), difficulty -. 2/8 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102163
 contest_type: "Special"
 rating_range: "-"
-n_problems: 7
+n_problems: 8
 n_verified: 2
-total_solve_s: 1104
+total_solve_s: 1348
 contest_year: 2019
-date: "2026-08-19T07:54:25+07:00"
+date: "2026-08-19T07:58:29+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 7 problems | 2/7 verified | Difficulty - | 18m 24s
+Special | 8 problems | 2/8 verified | Difficulty - | 22m 28s
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,3 +28,4 @@ Special | 7 problems | 2/7 verified | Difficulty - | 18m 24s
 | [J](J/) | [Bashar and daylight saving time](https://codeforces.com/problemset/problem/102163/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 1m 52s |  |
 | [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 1m 42s |  |
+| [M](M/) | [NCD Salary](https://codeforces.com/problemset/problem/102163/M) |  |  |  | 4m 4s |  |
