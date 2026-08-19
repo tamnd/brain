@@ -1,7 +1,7 @@
 ---
 title: "CF 102191D - Picture Day"
-description: "We have an even number of students, split into fixed pairs of friends. Each pair must occupy two consecutive positions, but we may choose which friend comes first."
-date: "2026-08-18T19:39:43+07:00"
+description: "We have an even number of students, and every two students are tied together as a friendship pair. The final row must be bitonic: heights may stay the same or increase for some prefix, and after that they may stay the same or decrease."
+date: "2026-08-20T01:11:12+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102191
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "PSUT Coding Marathon 2019"
 rating: 0
 weight: 102191
-solve_time_s: 325
+solve_time_s: 448
 verified: false
 draft: false
 ---
@@ -18,80 +18,87 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 5m 25s  
+**Solve time:** 7m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an even number of students, split into fixed pairs of friends. Each pair must occupy two consecutive positions, but we may choose which friend comes first. The task is to order the pairs and orient each pair so that the complete height array first never decreases and, after some peak, never increases. The output may be any valid arrangement, or `-1` if no such arrangement exists. This matches the structure of the official problem statement.
+We have an even number of students, and every two students are tied together as a friendship pair. The final row must be bitonic: heights may stay the same or increase for some prefix, and after that they may stay the same or decrease. The two students belonging to one pair must occupy consecutive positions, but either order inside their pair is allowed.
 
-For every pair, forget its original order and write it as an interval `[l, r]`, where `l` is the shorter height and `r` is the taller height. If the pair appears on the increasing side of the picture, it must be written as `l, r`. If it appears on the decreasing side, it must be written as `r, l`.
+For each friendship pair, sort its two heights internally and represent it as an interval `[l, r]`, where `l` is the shorter student and `r` is the taller student. The task is to order these intervals and choose their orientations so that the resulting sequence is bitonic.
 
-Consider two pairs placed consecutively on the increasing side. If their intervals are `[l1, r1]` and `[l2, r2]`, their four heights become `l1, r1, l2, r2`. For this to be non-decreasing, we need `r1 <= l2`. In other words, the two intervals cannot overlap, although touching at an endpoint is allowed. The same argument applies to pairs on the decreasing side, except that their order is reversed.
+The crucial observation is that a valid picture can be viewed as two independent chains of intervals. One chain is placed on the increasing side, with each interval written as `l, r`. The other chain is placed on the decreasing side, with the intervals taken in reverse order and written as `r, l`.
 
-This gives the central reformulation. We must divide all pair intervals into two groups, where intervals in the same group are pairwise non-overlapping. One group will form the increasing half, and the other will form the decreasing half.
+Two intervals can belong to the same chain exactly when the first one finishes before the second one starts. For `[l1, r1]` followed by `[l2, r2]`, this means `r1 <= l2`. Equality is allowed because the picture is non-decreasing or non-increasing, not strictly monotone.
 
-The bound `n <= 3 * 10^5` means there can be up to `150000` pairs. A quadratic algorithm would already perform roughly `2.25 * 10^10` pair comparisons in the worst case, far beyond what a two-second limit can handle. We need an `O(n log n)` solution, where the logarithmic factor comes from sorting.
+The constraint `n <= 3 * 10^5` gives at most `150000` friendship pairs. A quadratic algorithm would already perform about `2.25 * 10^10` pair comparisons in the worst case, which is far too much for a 2 second limit. We need an `O(n log n)` solution, where the logarithmic factor comes from sorting.
 
-There are several edge cases that can fool an implementation that uses strict inequalities. First, touching intervals are compatible. For example,
+There are several easy-to-miss boundary cases. First, intervals that merely touch are compatible. For example,
+
+```
+3
+1 3
+3 5
+5 7
+```
+
+can produce `1 3 3 5 5 7`, because equal adjacent heights are allowed. A careless implementation using `r < l` would incorrectly reject it.
+
+Second, equal heights cause no special difficulty. For
 
 ```
 4
-1 2
-2 3
+3 3
+3 3
 ```
 
-has the valid arrangement `1 2 2 3`. The two intervals `[1,2]` and `[2,3]` touch at height `2`, and equal adjacent heights are allowed. An implementation using `l > previous_r` instead of `l >= previous_r` would incorrectly reject this case.
+the answer `3 3 3 3` is valid. Code that assumes every interval has positive length would fail unnecessarily.
 
-A second case is when the peak lies inside a pair. For example,
-
-```
-4
-1 4
-2 3
-```
-
-can be arranged as `2 3 4 1`. The first pair is on the increasing side, while the second pair is the pair containing the peak and is written in decreasing order. The intervals `[1,4]` and `[2,3]` overlap, so treating the whole problem as requiring every interval to be disjoint would incorrectly reject it.
-
-A third case is three intervals that overlap at a common height:
+Third, three mutually overlapping pairs cannot be put into only two monotone sides. For example,
 
 ```
 6
-1 5
-2 4
-3 6
+1 10
+2 9
+3 8
 ```
 
-This has no solution. At height `3`, all three pair intervals are active. Since there are only two sides of the mountain, two of these pairs would have to belong to the same side, but overlapping intervals cannot coexist on one monotone side.
-
-Finally, equal heights are completely valid. For example,
-
-```
-4
-3 3
-3 3
-```
-
-can simply produce `3 3 3 3`. A solution must treat an interval `[x,x]` just like every other interval and must allow multiple such intervals to be assigned to different sides.
+is impossible because every pair overlaps every other pair. A greedy algorithm must detect that both available chains are blocked when processing `[3, 8]`.
 
 ## Approaches
 
-The most direct approach is to treat each pair as an indivisible block, try every ordering of the blocks, try both orientations for every block, and check whether the resulting height array is a mountain. With `m = n/2` pairs, there are `m!` ways to order the pairs and `2^m` ways to orient them. Every candidate requires `O(n)` work to check, so the total work is `O(n * m! * 2^m)`. For the maximum input, this is `3 * 10^5 * 150000! * 2^150000`, which is not remotely feasible.
+The brute-force approach treats every friendship pair as a block, tries every permutation of the `n/2` blocks, and tries both orientations for every block. There are `(n/2)! * 2^(n/2)` possible arrangements of the blocks and their orientations. Checking one arrangement takes `O(n)` time, so the total worst-case work is `O(n * (n/2)! * 2^(n/2))`. At the maximum input size this means roughly `300000 * 150000! * 2^150000` height comparisons, which is completely infeasible.
 
-The brute force works because it explicitly explores every possible placement and orientation. The problem is that almost all of those choices are unnecessary. The fact that every pair has exactly two elements gives us a much stronger structure.
+The brute force works because it explicitly explores every possible division between the increasing and decreasing parts. It fails because the number of possible block orders grows factorially.
 
-Sort the two heights in every pair and view the pair as an interval `[l,r]`. On the increasing side, the pair must appear as `l,r`. Two consecutive increasing pairs are valid exactly when the first interval ends before or at the start of the second interval. Thus the increasing side is a chain of non-overlapping intervals. The decreasing side has the same property after reversing the order.
+The useful structural observation is that we do not actually need to decide the peak first. Once every pair is written as an interval `[l, r]`, consider putting several pairs on the increasing side. Their intervals must appear from left to right without overlap, so they form a chain satisfying `r_previous <= l_current`. Exactly the same is true for the decreasing side if we read that side from the peak toward the end.
 
-We have consequently reduced the problem to partitioning the intervals into two chains of non-overlapping intervals. This is the key observation because interval scheduling has a simple greedy structure.
+Thus the whole problem becomes: partition all intervals into at most two non-overlapping chains.
 
-Sort all intervals by their left endpoint. Maintain the rightmost endpoint currently occupied in each of the two chains. For a new interval `[l,r]`, it can be appended to a chain precisely when `l >= end[chain]`. If neither chain is available, the current interval overlaps intervals already occupying both chains, so three intervals overlap at a common point and no solution exists.
+After such a partition is found, suppose one chain is
 
-Once the two chains are obtained, one subtle issue remains. We need to connect the increasing chain to the decreasing chain at the peak. We solve this by forcing the interval with the globally largest right endpoint to belong to the decreasing chain. Then the first interval of the decreasing side, when ordered by decreasing right endpoint, has an endpoint at least as large as the last interval of the increasing side. This makes the transition across the peak valid.
+`[l1, r1], [l2, r2], ...`
 
-If the greedy coloring puts the globally largest interval in the first chain, simply swap the two chain labels. Swapping colors preserves the property that every chain contains only non-overlapping intervals.
+with `r1 <= l2 <= ...`. We write it directly, giving
 
-The resulting comparison is:
+`l1, r1, l2, r2, ...`
+
+which is non-decreasing.
+
+For the other chain, suppose its intervals in increasing order are
+
+`[a1, b1], [a2, b2], ...`.
+
+We reverse the chain and reverse every pair, giving
+
+`b_k, a_k, ..., b2, a2, b1, a1`.
+
+That sequence is non-increasing. At the boundary between the two chains, one value is followed by another. If the left value is smaller, the peak lies on the right; if it is larger, the peak lies on the left. Either way the complete sequence is bitonic.
+
+The remaining problem is to partition the intervals into two chains efficiently. Sort them by their left endpoint. While processing an interval `[l, r]`, each chain is represented by the right endpoint of its last interval. A chain is available if its last right endpoint is at most `l`.
+
+If both chains are available, we put the new interval into the chain whose last right endpoint is larger. This preserves the chain with the smaller endpoint for future intervals, giving future intervals the greatest possible flexibility. If only one chain is available, we must use it. If neither chain is available, three intervals overlap at the current position, so two chains are insufficient and no answer exists.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -100,22 +107,22 @@ The resulting comparison is:
 
 ## Algorithm Walkthrough
 
-1. Convert every friend pair `(a,b)` into an interval `[l,r]`, where `l = min(a,b)` and `r = max(a,b)`. Keep the original pair index so that we can reconstruct its two heights later. The only information relevant to compatibility inside a monotone side is the smaller and larger endpoint.
-2. Find the pair whose right endpoint `r` is globally maximum. This pair will eventually be placed on the decreasing side. Choosing the global maximum is useful because it automatically dominates the last interval on the increasing side at the peak.
-3. Sort all intervals by their left endpoint. Maintain `end[0]` and `end[1]`, the rightmost endpoints of the last intervals currently assigned to the two chains. Initially both chains are empty.
-4. Process the sorted intervals from left to right. If the current left endpoint `l` satisfies `l >= end[0]`, assign the interval to chain `0`. Otherwise, if `l >= end[1]`, assign it to chain `1`. If neither condition holds, report `-1`.
-
-The greedy assignment is valid because the intervals are processed by increasing left endpoint. When both chains are blocked, the current interval overlaps an interval in each chain, so three intervals overlap at the current left endpoint. No partition into two non-overlapping chains can exist.
-5. After all intervals are assigned, check the color of the globally maximum-right-endpoint interval. If it belongs to chain `0`, swap the two chain labels for every interval. This changes only which side of the mountain a chain represents, not the fact that intervals inside each chain are disjoint.
-6. Sort chain `0` by increasing left endpoint and append every pair as `(l,r)`. Since consecutive intervals in this chain satisfy `previous_r <= current_l`, the complete sequence produced by this chain is non-decreasing.
-7. Sort chain `1` by decreasing right endpoint and append every pair as `(r,l)`. Since the intervals are non-overlapping, their left endpoints are also ordered appropriately in the reverse direction, so this sequence is non-increasing.
-8. Concatenate the increasing chain and the decreasing chain. The last value of the increasing chain is the largest endpoint of its final interval. The first value of the decreasing chain is the largest endpoint among all intervals in chain `1`. Since the globally largest right endpoint was deliberately put in chain `1`, the first value on the decreasing side is at least the last value on the increasing side. Thus the entire array has the required mountain shape.
+1. Convert every friendship pair into an interval `[l, r]` with `l <= r`. The original order of the two students is irrelevant, so only the shorter and taller heights matter while constructing the chains.
+2. Sort all intervals by increasing `l`, using `r` as a secondary key if desired. This means that when `[l, r]` is processed, every interval that could precede it in the same chain has already been considered.
+3. Maintain two chains. For each chain, store the right endpoint of its last interval. Initially both endpoints are negative infinity because either chain can accept the first interval.
+4. For the current interval `[l, r]`, check which chains satisfy `last_right <= l`. Such a chain can safely append the interval without breaking monotonicity.
+5. If both chains are available, choose the chain with the larger `last_right`. The smaller endpoint is more useful for future intervals, so keeping it unchanged gives the remaining intervals more room to fit.
+6. If exactly one chain is available, append the interval there. There is no useful alternative because placing it in the other chain would immediately create an overlap.
+7. If neither chain is available, return `-1`. Both chains already end after `l`, so the current interval overlaps an interval in each chain. Three overlapping intervals require three chains, while a valid picture provides only the two sides of the peak.
+8. Store the interval indices assigned to each chain. Once all intervals are assigned, output the first chain in its sorted order as `l, r` for every interval.
+9. Output the second chain in reverse order, writing every interval as `r, l`. Its heights now decrease toward the end of the picture.
+10. Concatenate the two sequences. Each friendship pair remains adjacent, the first part is non-decreasing, and the second part is non-increasing.
 
 ### Why it works
 
-The invariant during the greedy assignment is that every chain already constructed is a valid sequence of non-overlapping intervals. When a new interval is assigned to a chain, its left endpoint is at least that chain's last right endpoint, so the invariant remains true. If both chains reject an interval, there is an interval from each chain whose right endpoint is at least the current left endpoint. Together with the current interval, three intervals overlap at that point, so no two-chain partition can exist.
+The invariant is that after processing any prefix of the intervals sorted by `l`, each maintained chain is a valid non-overlapping chain, and among all greedy choices, the algorithm preserves the smallest possible available chain endpoint. When both chains can accept an interval, assigning it to the chain with the larger endpoint leaves the smaller endpoint untouched, which can only make future intervals easier to place. If neither chain can accept the interval, every possible two-chain partition must already have an interval extending past `l` in both chains, so the current interval cannot be assigned anywhere. Thus the greedy procedure succeeds exactly when a two-chain partition exists.
 
-After the partition, every interval in the increasing chain is written from small to large and every interval in the decreasing chain from large to small. The ordering inside each chain guarantees monotonicity. The globally largest right endpoint is placed in the decreasing chain, so the first value of that chain is at least every right endpoint in the increasing chain. That proves the transition at the peak is also valid.
+A two-chain partition is also exactly what a valid picture needs. Reading the increasing side from left to right gives one non-overlapping interval chain, while reading the decreasing side from the peak outward gives another. Conversely, two such chains can always be combined into a bitonic sequence by writing one forward and the other backward. The boundary between them can either continue increasing or start decreasing, so one of the two positions is necessarily a valid peak.
 
 ## Python Solution
 
@@ -127,64 +134,47 @@ def solve():
     n = int(input())
     m = n // 2
 
-    intervals = []
-    global_max_idx = -1
-    global_max_r = -1
-
-    for i in range(m):
+    pairs = []
+    for idx in range(m):
         a, b = map(int, input().split())
-        l = min(a, b)
-        r = max(a, b)
-        intervals.append((l, r, i))
-
-        if r > global_max_r:
-            global_max_r = r
-            global_max_idx = i
-
-    intervals.sort()
-
-    # end[c] is the right endpoint of the last interval
-    # assigned to chain c.
-    end = [-1, -1]
-    color = [-1] * m
-
-    for l, r, idx in intervals:
-        if l >= end[0]:
-            color[idx] = 0
-            end[0] = r
-        elif l >= end[1]:
-            color[idx] = 1
-            end[1] = r
+        if a <= b:
+            pairs.append((a, b, idx))
         else:
+            pairs.append((b, a, idx))
+
+    pairs.sort()
+
+    chains = [[], []]
+    last = [-1, -1]
+
+    for l, r, idx in pairs:
+        can0 = last[0] <= l
+        can1 = last[1] <= l
+
+        if not can0 and not can1:
             print(-1)
             return
 
-    # The globally largest right endpoint must be on the
-    # decreasing side. If it is currently on chain 0,
-    # swap the two chain labels.
-    if color[global_max_idx] == 0:
-        for i in range(m):
-            color[i] ^= 1
-
-    left = []
-    right = []
-
-    for l, r, idx in intervals:
-        if color[idx] == 0:
-            left.append((l, r, idx))
+        if can0 and can1:
+            if last[0] >= last[1]:
+                c = 0
+            else:
+                c = 1
+        elif can0:
+            c = 0
         else:
-            right.append((l, r, idx))
+            c = 1
 
-    left.sort(key=lambda x: (x[0], x[1]))
-    right.sort(key=lambda x: (-x[1], -x[0]))
+        chains[c].append((l, r))
+        last[c] = r
 
     ans = []
 
-    for l, r, idx in left:
+    for l, r in chains[0]:
         ans.append(l)
         ans.append(r)
 
-    for l, r, idx in right:
+    for l, r in reversed(chains[1]):
         ans.append(r)
         ans.append(l)
 
@@ -194,218 +184,180 @@ if __name__ == "__main__":
     solve()
 ```
 
-The input loop first normalizes each pair into `(l,r)`. The original index is retained because the two chain assignments are made using the normalized interval, while the final output only needs the two original heights. Since the pair can be printed in either order, storing `l` and `r` is sufficient.
+The input loop first normalizes each friendship pair. Keeping the original pair index is unnecessary because the output asks only for heights, not student identities.
 
-The intervals are sorted by `l`. The two `end` values represent the current last interval in each chain. The comparison is `l >= end[c]`, not `l > end[c]`, because equal adjacent heights are legal. The initial value `-1` works because every height is at least `1`.
+After sorting, `last[0]` and `last[1]` are the right endpoints of the final intervals in the two chains. The condition `last[c] <= l` is exactly the non-overlap condition. The use of `<=`, rather than `<`, handles touching intervals such as `[1, 3]` and `[3, 5]`.
 
-When neither chain accepts an interval, there is no possible solution, so the algorithm can terminate immediately. No backtracking is necessary.
+When both chains are available, comparing `last[0]` and `last[1]` chooses the larger endpoint. This is the greedy choice that preserves the smaller endpoint for later intervals. The assignment is stored as actual normalized intervals, so reconstruction does not need to refer back to the sorted input.
 
-The global maximum right endpoint is forced onto chain `1`. If it was assigned to chain `0`, flipping every color is enough. This is simpler than modifying the greedy procedure to force a particular interval during the scan.
+The first chain is emitted directly. Since its intervals are sorted by their left endpoints and are pairwise non-overlapping, its sequence is non-decreasing. The second chain is traversed backwards, and every pair is emitted as taller then shorter. This makes that entire part non-increasing.
 
-The left chain is sorted by increasing `l`. Because the greedy invariant guarantees that each interval starts no earlier than the previous interval's end, writing each pair as `l,r` creates a non-decreasing sequence. The right chain is sorted by decreasing `r` and each pair is written as `r,l`, producing a non-increasing sequence.
-
-Python integers have arbitrary precision, so the height bound of `10^9` needs no special integer type. The main implementation concern is memory: the algorithm stores `O(n)` tuples and the final answer, which comfortably fits within the 256 MB limit for `n <= 3 * 10^5`.
+Python integers have arbitrary precision, so the height limit of `10^9` needs no special integer handling.
 
 ## Worked Examples
 
-The first trace uses the provided sample.
+For the provided sample, the normalized intervals are `[1, 3]`, `[2, 4]`, `[6, 7]`, and `[5, 7]`. They are already sorted by their left endpoint.
 
-```
-8
-1 3
-4 2
-6 7
-5 7
-```
-
-After normalization, the intervals are `[1,3]`, `[2,4]`, `[6,7]`, and `[5,7]`. They are already close to sorted order, so the greedy process is easy to follow.
-
-| Interval | Current end[0] | Current end[1] | Chosen chain |
+| Interval | Chain 0 end | Chain 1 end | Chosen chain |
 | --- | --- | --- | --- |
-| `[1,3]` | `-1` | `-1` | `0` |
-| `[2,4]` | `3` | `-1` | `1` |
-| `[5,7]` | `3` | `4` | `0` |
-| `[6,7]` | `7` | `4` | `1` |
+| `[1, 3]` | `-1` | `-1` | 0 |
+| `[2, 4]` | `3` | `-1` | 1 |
+| `[5, 7]` | `3` | `4` | 1 |
+| `[6, 7]` | `3` | `7` | 0 |
 
-The global maximum right endpoint is `7`, and one of the intervals with this endpoint is already in chain `1`. We can keep the colors as they are. Chain `0` gives `1 3 5 7`, while chain `1`, ordered by decreasing right endpoint, gives `7 6 4 2`. The final sequence is
+The first chain becomes `[[1,3], [6,7]]`, producing `1 3 6 7`. The second becomes `[[2,4], [5,7]]`; reversing it and reversing each pair gives `7 5 4 2`. The combined sequence is `1 3 6 7 7 5 4 2`, which is a valid answer. The sample output uses a different valid partition and is equally acceptable.
 
-```
-1 3 5 7 7 6 4 2
-```
-
-It differs from the sample output, which is allowed because the problem accepts any valid arrangement. It first increases and then decreases, and every original pair remains adjacent.
-
-For the second trace, consider this valid input:
+For the second example, consider
 
 ```
 6
-1 2
-2 4
+1 3
 3 5
+5 7
 ```
 
-The intervals are `[1,2]`, `[2,4]`, and `[3,5]`.
+The intervals are already non-overlapping, so the greedy algorithm can keep all three in one chain.
 
-| Interval | Current end[0] | Current end[1] | Chosen chain |
+| Interval | Chain 0 end | Chain 1 end | Chosen chain |
 | --- | --- | --- | --- |
-| `[1,2]` | `-1` | `-1` | `0` |
-| `[2,4]` | `2` | `-1` | `0` |
-| `[3,5]` | `4` | `-1` | `1` |
+| `[1,3]` | `-1` | `-1` | 0 |
+| `[3,5]` | `3` | `-1` | 0 |
+| `[5,7]` | `5` | `-1` | 0 |
 
-The interval `[3,5]` cannot join chain `0` because `3 < 4`, so it goes into chain `1`. The global maximum right endpoint is `5`, already on chain `1`.
+The result is `1 3 3 5 5 7`. Every pair stays adjacent, and the sequence is non-decreasing. The equality checks are what make the touching endpoints valid.
 
-Chain `0` produces `1 2 2 4`. Chain `1` produces `5 3`. The final result is
+For an impossible case,
 
 ```
-1 2 2 4 5 3
+6
+1 10
+2 9
+3 8
 ```
 
-The sequence increases through `1,2,2,4,5` and then decreases to `3`. This trace also demonstrates why touching intervals are compatible: `[1,2]` and `[2,4]` can share chain `0`.
+the trace is:
+
+| Interval | Chain 0 end | Chain 1 end | Chosen chain |
+| --- | --- | --- | --- |
+| `[1,10]` | `-1` | `-1` | 0 |
+| `[2,9]` | `10` | `-1` | 1 |
+| `[3,8]` | `10` | `9` | none |
+
+At `[3,8]`, both previous intervals extend beyond `3`, so neither chain can accept it. The algorithm prints `-1`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | `O(n log n)` | There are `n/2` intervals, sorting dominates the linear scans. |
-| Space | `O(n)` | The intervals, chain assignments, and output array all use linear memory. |
+| Time | `O(n log n)` | There are `n/2` intervals, sorting dominates the linear greedy pass. |
+| Space | `O(n)` | The normalized intervals, two chains, and output contain `O(n)` values. |
 
-With at most `150000` pairs, sorting requires only a few million comparison-level operations, and the remaining work is linear. The memory usage is also linear in the number of students, so the solution fits comfortably within the 2 second and 256 MB limits.
+With at most `150000` pairs, sorting `150000` intervals is easily within the expected range for a 2 second limit in Python, while the memory usage remains linear and well below 256 MB.
 
 ## Test Cases
 
-The output is not unique, so the test harness should validate the returned arrangement rather than compare it to one exact string. The helper below checks that every input pair remains adjacent, that the output contains exactly the supplied heights, and that the sequence is first non-decreasing and then non-increasing.
+The test harness below uses the same algorithm through a function interface and validates the returned arrangement rather than comparing against one fixed arrangement. This is necessary because the problem accepts any valid picture.
 
 ```python
+# helper: run solution on input string, return output string
 import sys
 import io
 
-def solve_case(inp: str) -> str:
-    data = list(map(int, inp.split()))
+def solve_data(inp: str) -> str:
+    data = inp.split()
     it = iter(data)
 
-    n = next(it)
+    n = int(next(it))
     m = n // 2
 
-    intervals = []
-    global_max_idx = -1
-    global_max_r = -1
-
-    for i in range(m):
-        a = next(it)
-        b = next(it)
-        l = min(a, b)
-        r = max(a, b)
-        intervals.append((l, r, i))
-
-        if r > global_max_r:
-            global_max_r = r
-            global_max_idx = i
-
-    intervals.sort()
-
-    end = [-1, -1]
-    color = [-1] * m
-
-    for l, r, idx in intervals:
-        if l >= end[0]:
-            color[idx] = 0
-            end[0] = r
-        elif l >= end[1]:
-            color[idx] = 1
-            end[1] = r
+    pairs = []
+    for idx in range(m):
+        a = int(next(it))
+        b = int(next(it))
+        if a <= b:
+            pairs.append((a, b, idx))
         else:
+            pairs.append((b, a, idx))
+
+    pairs.sort()
+
+    chains = [[], []]
+    last = [-1, -1]
+
+    for l, r, idx in pairs:
+        can0 = last[0] <= l
+        can1 = last[1] <= l
+
+        if not can0 and not can1:
             return "-1\n"
 
-    if color[global_max_idx] == 0:
-        for i in range(m):
-            color[i] ^= 1
-
-    left = []
-    right = []
-
-    for l, r, idx in intervals:
-        if color[idx] == 0:
-            left.append((l, r, idx))
+        if can0 and can1:
+            c = 0 if last[0] >= last[1] else 1
+        elif can0:
+            c = 0
         else:
-            right.append((l, r, idx))
+            c = 1
 
-    left.sort(key=lambda x: (x[0], x[1]))
-    right.sort(key=lambda x: (-x[1], -x[0]))
+        chains[c].append((l, r))
+        last[c] = r
 
     ans = []
 
-    for l, r, idx in left:
+    for l, r in chains[0]:
         ans.extend((l, r))
 
-    for l, r, idx in right:
+    for l, r in reversed(chains[1]):
         ans.extend((r, l))
 
     return " ".join(map(str, ans)) + "\n"
 
-def validate(inp: str, out: str) -> bool:
-    data = list(map(int, inp.split()))
-    n = data[0]
-    pairs = [tuple(sorted(data[i:i + 2])) for i in range(1, len(data), 2)]
+def run(inp: str) -> str:
+    return solve_data(inp)
+
+def valid_output(inp: str, out: str) -> bool:
+    tokens = inp.split()
+    n = int(tokens[0])
+    vals = list(map(int, tokens[1:]))
 
     if out.strip() == "-1":
-        # Verify that the instance really has no solution by
-        # checking the same two-chain condition.
-        intervals = [(a, b) for a, b in pairs]
-        intervals.sort()
-
-        end = [-1, -1]
-
-        for l, r in intervals:
-            if l >= end[0]:
-                end[0] = r
-            elif l >= end[1]:
-                end[1] = r
-            else:
-                return True
-
         return False
 
     ans = list(map(int, out.split()))
-
     if len(ans) != n:
         return False
 
-    expected = sorted(x for pair in pairs for x in pair)
-    if sorted(ans) != expected:
-        return False
+    # Check that every input pair appears as adjacent heights.
+    pairs = []
+    for i in range(n // 2):
+        a = vals[2 * i]
+        b = vals[2 * i + 1]
+        pairs.append(tuple(sorted((a, b))))
 
-    # Every original pair must appear as two consecutive values.
-    remaining = pairs[:]
-    used = [False] * len(remaining)
-
+    used = [False] * (n // 2)
     for i in range(0, n, 2):
-        cur = tuple(sorted((ans[i], ans[i + 1])))
-
+        p = tuple(sorted((ans[i], ans[i + 1])))
         found = False
-        for j, pair in enumerate(remaining):
-            if not used[j] and pair == cur:
+        for j, q in enumerate(pairs):
+            if not used[j] and p == q:
                 used[j] = True
                 found = True
                 break
-
         if not found:
             return False
 
-    # Check mountain property.
-    phase = 0
+    # Check bitonicity.
+    direction = 1
     for i in range(1, n):
-        if phase == 0:
+        if direction == 1:
             if ans[i] < ans[i - 1]:
-                phase = 1
+                direction = -1
         else:
             if ans[i] > ans[i - 1]:
                 return False
 
     return True
 
-def run(inp: str) -> str:
-    return solve_case(inp)
-
+# Provided sample
 sample1 = """\
 8
 1 3
@@ -413,117 +365,109 @@ sample1 = """\
 6 7
 5 7
 """
+out = run(sample1)
+assert valid_output(sample1, out), "sample 1"
 
-sample2 = """\
-6
-1 2
-2 4
-3 5
-"""
-
-assert validate(sample1, run(sample1)), "sample 1"
-assert validate(sample2, run(sample2)), "sample 2"
-
-# Minimum size.
-case_min = """\
+# Minimum-size input
+case2 = """\
 2
-10 3
+1000000000 1
 """
-assert validate(case_min, run(case_min)), "minimum-size case"
+out = run(case2)
+assert valid_output(case2, out), "minimum size"
 
-# All heights equal.
-case_equal = """\
+# All equal values
+case3 = """\
 8
-7 7
-7 7
-7 7
-7 7
+3 3
+3 3
+3 3
+3 3
 """
-assert validate(case_equal, run(case_equal)), "all-equal case"
+out = run(case3)
+assert valid_output(case3, out), "all equal"
 
-# Touching intervals must be accepted.
-case_touching = """\
+# Touching interval boundaries
+case4 = """\
 6
-1 2
-2 3
-3 4
+1 3
+3 5
+5 7
 """
-assert validate(case_touching, run(case_touching)), "touching intervals"
+out = run(case4)
+assert valid_output(case4, out), "touching boundaries"
 
-# Three mutually overlapping intervals, so no two-chain partition exists.
-case_impossible = """\
+# Three mutually overlapping intervals, impossible
+case5 = """\
 6
-1 5
-2 4
-3 6
+1 10
+2 9
+3 8
 """
-assert validate(case_impossible, run(case_impossible)), "impossible overlap case"
+assert run(case5).strip() == "-1", "three overlapping intervals"
 
-# Maximum-size stress test.
+# Maximum-size input
 m = 150000
 parts = [str(2 * m)]
-for i in range(1, m + 1):
-    parts.append(f"{i} {i + 1}")
-case_max = "\n".join(parts) + "\n"
+for i in range(m):
+    parts.append(f"{2 * i + 1} {2 * i + 2}")
+case6 = "\n".join(parts) + "\n"
 
-result = run(case_max)
-assert validate(case_max, result), "maximum-size case"
-
-print("All tests passed.")
+out = run(case6)
+assert valid_output(case6, out), "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | Any valid mountain arrangement | Basic construction with two nontrivial chains |
-| `6 / 1 2 / 2 4 / 3 5` | Any valid mountain arrangement | A peak formed by switching from one chain to the other |
-| `2 / 10 3` | `3 10` or `10 3` | Minimum possible input and a single pair |
-| Four pairs of `7 7` | Eight `7`s | Equal endpoints and repeated equal heights |
-| `1 2`, `2 3`, `3 4` | Any valid arrangement | Correct use of `>=` for touching intervals |
-| `1 5`, `2 4`, `3 6` | `-1` | Three overlapping intervals requiring more than two chains |
-| `150000` pairs `(i, i+1)` | Any valid arrangement | Maximum input size and `O(n log n)` performance |
+| `2 / 1000000000 1` | Any valid two-element arrangement | Minimum size and reversed input pair |
+| Four pairs of `3 3` | `3 3 3 3 3 3 3 3` in some valid order | Zero-length intervals and equality |
+| `[1,3], [3,5], [5,7]` | Any valid non-decreasing arrangement | `<=` boundary condition |
+| `[1,10], [2,9], [3,8]` | `-1` | Failure when two chains are insufficient |
+| `150000` disjoint pairs | Any valid arrangement of all `300000` heights | Maximum input size and `O(n log n)` performance |
 
 ## Edge Cases
 
-For touching intervals, consider
+For the minimum-size case
 
 ```
-6
-1 2
-2 3
-3 4
+2
+1000000000 1
 ```
 
-The normalized intervals are `[1,2]`, `[2,3]`, and `[3,4]`. The greedy scan can put all three into the same chain because each new left endpoint is exactly the previous right endpoint. The resulting increasing sequence is `1 2 2 3 3 4`, which is valid. The use of `l >= end` is exactly what makes this work.
+there is only one interval, `[1,1000000000]`. The first chain is initially available, so the pair is placed there and emitted as `1 1000000000`. A single pair is always a valid bitonic sequence.
 
-For a peak inside a pair, consider
-
-```
-4
-1 4
-2 3
-```
-
-The intervals overlap, but there are only two of them, so they can be placed on opposite sides. The greedy assignment puts `[1,4]` and `[2,3]` into different chains. The interval with maximum right endpoint is `[1,4]`, so its chain becomes the decreasing side. The other chain produces `2 3`, and `[1,4]` is written as `4 1`, giving `2 3 4 1`. The transition is valid even though the intervals themselves overlap.
-
-For three overlapping intervals, consider
+For equal heights,
 
 ```
-6
-1 5
-2 4
-3 6
-```
-
-After sorting, `[1,5]` occupies the first chain and `[2,4]` occupies the second. When `[3,6]` is processed, `3 < 5` and `3 < 4`, so neither chain is available. At height `3`, all three intervals overlap. Since a valid mountain has only an increasing side and a decreasing side, at least two of these intervals would have to share one side, which is impossible. The algorithm correctly prints `-1`.
-
-For equal pairs, consider
-
-```
-4
+8
+3 3
+3 3
 3 3
 3 3
 ```
 
-Both intervals are `[3,3]`. The first can enter chain `0`, while the second can enter chain `1` because `3 >= 3`. After construction, both pairs produce `3 3`, and the final sequence is `3 3 3 3`. This demonstrates that equal endpoints and equal pair heights require no special case beyond using non-strict comparisons.
+every interval is `[3,3]`. Each interval can be appended to either chain because `3 <= 3`. The greedy procedure keeps placing them into an available chain, and the resulting sequence consists entirely of `3`s. Both the increasing and decreasing conditions hold simultaneously.
 
-For the maximum input size, the generated stress case contains `150000` pairs of the form `(i, i+1)`. Each interval can follow the previous one because its left endpoint equals the previous right endpoint. The greedy scan assigns them efficiently without backtracking, and the two sorting operations remain `O(n log n)`. This is the scale required by the original `n <= 3 * 10^5` constraint.
+For touching intervals,
+
+```
+6
+1 3
+3 5
+5 7
+```
+
+the first interval ends at `3`, which is exactly the left endpoint of the second. The condition `last_right <= l` accepts it, so the intervals form one chain. The generated sequence is `1 3 3 5 5 7`, demonstrating why strict inequality would be incorrect.
+
+For the impossible case,
+
+```
+6
+1 10
+2 9
+3 8
+```
+
+the first pair occupies chain 0, giving it endpoint `10`. The second pair cannot fit chain 0 because `10 > 2`, so it goes to chain 1 and gives it endpoint `9`. When `[3,8]` arrives, both endpoints are larger than `3`. Neither chain can accept it, so the algorithm correctly prints `-1`.
+
+For the maximum-size case, all `150000` intervals are disjoint and sorted by their left endpoints. The greedy pass assigns them to one chain, and the final construction produces all `300000` heights in a valid monotone sequence. The expensive part is sorting, which takes `O(n log n)`, while the construction itself is linear.
