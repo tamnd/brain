@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 3
-total_solve_s: 3669
+total_solve_s: 4011
 contest_year: 2019
-date: "2026-08-19T23:52:33+07:00"
+date: "2026-08-19T00:02:33+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 10 problems | 3/10 verified | Difficulty - | 1h 1m
+Special | 10 problems | 3/10 verified | Difficulty - | 1h 6m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,7 @@ Special | 10 problems | 3/10 verified | Difficulty - | 1h 1m
 | [C](C/) | [Hasan and his lazy students](https://codeforces.com/problemset/problem/102163/C) |  |  |  | 11m 4s |  |
 | [D](D/) | [Football Cup](https://codeforces.com/problemset/problem/102163/D) |  |  |  | 4m 39s |  |
 | [E](E/) | [Adnan and the Burned drivers](https://codeforces.com/problemset/problem/102163/E) |  |  |  | 2m 31s | ✓ |
-| [H](H/) | [Mr. Hamra and his quantum particles](https://codeforces.com/problemset/problem/102163/H) |  |  |  | 4m 17s |  |
+| [H](H/) | [Mr. Hamra and his quantum particles](https://codeforces.com/problemset/problem/102163/H) |  |  |  | 9m 59s |  |
 | [J](J/) | [Bashar and daylight saving time](https://codeforces.com/problemset/problem/102163/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 9m 28s |  |
 | [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 10m 13s |  |

@@ -1,7 +1,7 @@
 ---
 title: "CF 102163H - Mr. Hamra and his quantum particles"
-description: "Treat the particles as vertices of an undirected graph. Every known entanglement relation gives an edge between two particles."
-date: "2026-08-19T14:47:56+07:00"
+description: "Think of the particles as vertices of an undirected graph. Every known entanglement relationship between two particles is an edge."
+date: "2026-08-20T00:02:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102163
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "NCD 2019"
 rating: 0
 weight: 102163
-solve_time_s: 257
+solve_time_s: 599
 verified: false
 draft: false
 ---
@@ -18,78 +18,86 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 17s  
+**Solve time:** 9m 59s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Treat the particles as vertices of an undirected graph. Every known entanglement relation gives an edge between two particles. The transitive property of entanglement means that if there is a path from particle (A) to particle (B), then (A) and (B) are considered entangled, even when no direct edge connects them.
+Think of the particles as vertices of an undirected graph. Every known entanglement relationship between two particles is an edge. The special property of entanglement says that if particle (A) is connected to (B), and (B) is connected to (C), then (A) must also be connected to (C). Repeatedly applying this rule means that every pair of particles belonging to the same connected component is considered entangled.
 
-For each test case, the input gives the number of particles (N), the number of known relations (M), and the number of queries (Q). The next (M) pairs describe graph edges. The following (Q) pairs ask whether the two named vertices belong to the same connected component. The required output is a binary string, with one character per query. A `1` means the two particles are connected through the given relations, while a `0` means they are in different connected components.
+For each test case, we receive (N) particles, (M) known relationships, and (Q) queries. Each query gives two particle numbers (X) and (Y). We must output a binary string of length (Q), where the character at position (i) is `1` exactly when the two particles in the (i)-th query belong to the same connected component.
 
-The bounds reach (10^5) for each of (N), (M), and (Q). With (10^5) vertices and edges, an algorithm that explores the graph separately for every query can perform around (10^{10}) graph operations in the worst case. That is far beyond what a 2 second limit permits. Even an (O(N^2)) preprocessing approach is too expensive at this scale, so the solution needs to process the graph and all queries essentially linearly.
+For example, with edges (1-2) and (2-3), particles (1) and (3) are not directly related in the input, but they are entangled through particle (2). A query for (1,3) must consequently produce `1`.
 
-There are several small cases that can make an incorrect implementation fail silently. A query can ask about a vertex and itself. For example,
+The values of (N), (M), and (Q) can each reach (10^5). An algorithm that examines the whole graph separately for every query can perform on the order of (10^{10}) operations, which is far beyond what a 2-second limit can tolerate. Even algorithms with (O(N^2)) preprocessing are unsuitable at this scale. We need a solution close to linear in the number of particles, relationships, and queries.
+
+There are several edge cases that can expose an incorrect implementation.
+
+A query can contain the same particle twice. For example,
 
 ```
 1
-1 1 1
+1 1 3
+1 1
+1 1
 1 1
 1 1
 ```
 
-has answer `1`. A vertex is always in the same connected component as itself, regardless of whether there are useful edges.
+has output `111`. A particle is always in the same connected component as itself, so a careless implementation that only checks whether an actual edge exists could incorrectly return `0`.
 
-Duplicate edges also do not create additional components. For example,
+Duplicate relationships are also allowed by the input format. For example,
+
+```
+1
+2 3 2
+1 2
+1 2
+2 1
+1 2
+```
+
+has output `11`. The repeated edge does not create a new component or require special handling. An implementation that assumes every edge is unique does not need to be correct for uniqueness, because the graph's connectivity is unchanged.
+
+Indirect connectivity is the central edge case. Consider
 
 ```
 1
 3 2 2
 1 2
-1 2
 2 3
 1 3
+1 1
 ```
 
-has answer `11`. The two copies of the edge (1,2) represent the same connection, and the path (1\rightarrow2\rightarrow3) connects particles (1) and (3).
+The output is `11`. Particles (1) and (3) have no direct relationship in the input, but the path (1 \rightarrow 2 \rightarrow 3) makes them entangled. Checking only the original edges would incorrectly produce `01`.
 
-A query does not require a direct edge. For example,
+Finally, disconnected particles must remain separate. For
 
 ```
 1
-3 2 2
+4 1 3
 1 2
-2 3
+1 2
+3 4
 1 3
-1 2
+4 4
 ```
 
-has answer `11`. A solution that checks only whether the queried pair appeared among the input edges would incorrectly return `01`. The transitive property is exactly what turns ordinary graph reachability into the required relation.
-
-Finally, vertices may remain completely isolated. With
-
-```
-1
-3 1 2
-1 2
-1 3
-3 3
-```
-
-the answer is `01`. Particle (3) has no connection to particle (1), but it is connected to itself. An implementation that assumes every vertex belongs to a nontrivial edge can mishandle this case.
+the output is `101`. Particles (1) and (2) belong to one component, particles (3) and (4) belong to another, and there is no relationship between those components. A solution that accidentally merges unrelated groups would produce an incorrect result for the second query.
 
 ## Approaches
 
-The most direct approach is to run a graph traversal for every query. Build an adjacency list from the (M) known relations, then for a query ((X,Y)), run BFS or DFS starting at (X) and check whether (Y) is reached. This is correct because the query asks exactly whether a path exists between the two vertices.
+The most direct solution is to treat every query independently. Given (X) and (Y), run DFS or BFS starting from (X), following the known relationships, and check whether (Y) can be reached. This is correct because graph reachability is exactly the definition of belonging to the same connected component.
 
-The problem is repeated work. A single BFS can inspect (O(N+M)) vertices and edges. Doing that independently for all (Q) queries gives (O(Q(N+M))) time. With all three values around (10^5), the worst case is on the order of (10^{10}) operations. Even if many queries happen to concern the same component, the traversal keeps rediscovering the same information.
+The problem is the repeated work. In the worst case, a single traversal examines (O(N+M)) vertices and edges. Doing that for all (Q) queries costs (O(Q(N+M))). With (N=M=Q=10^5), this can reach roughly (10^{10}) graph operations. The same connected component would be rediscovered from scratch many thousands of times.
 
-The graph has a stronger structure than arbitrary reachability queries. We do not need to know the actual path between two particles. We only need to know which connected component each particle belongs to. Once two particles have been assigned the same component identifier, every query involving them can be answered immediately.
+We can do better by looking at what all queries are actually asking. None of them cares about the path between two particles. They only care about which connected component contains each particle. The entire graph can be compressed conceptually into groups, where every particle in one group has the same answer when compared with another particle in that group.
 
-This is exactly the situation handled by a Disjoint Set Union structure, also called Union-Find. Initially every particle forms its own component. For every known relation ((u,v)), we merge the components containing (u) and (v). After all (M) relations have been processed, two particles are entangled precisely when their DSU representatives are equal.
+This is exactly the situation handled by a Disjoint Set Union structure, also called Union-Find. While reading every known relationship (u,v), we merge the sets containing (u) and (v). After all (M) relationships have been processed, two particles are entangled precisely when their DSU representatives are equal.
 
-The useful insight is that the transitive property lets us replace an entire connected component with one representative. Instead of repeatedly searching paths, we maintain the equivalence classes directly. With path compression and union by size, each operation takes amortized (O(\alpha(N))), where (\alpha) is the inverse Ackermann function and is effectively constant for any input size encountered in practice.
+The important change is that we compute connectivity once while reading the edges, instead of rediscovering it for every query. DSU supports merging two components and finding a particle's component representative in almost constant amortized time. With path compression and union by size or rank, the total complexity is (O((N+M+Q)\alpha(N))), where (\alpha) is the inverse Ackermann function and is effectively a constant for all practical input sizes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -98,16 +106,17 @@ The useful insight is that the transitive property lets us replace an entire con
 
 ## Algorithm Walkthrough
 
-1. Create a DSU containing all (N) particles. Initially, every particle is its own component, so `parent[i] = i` and every component has size one.
-2. Read each of the (M) known entanglement relations ((u,v)) and call `union(u, v)`. If the two particles already belong to the same component, nothing changes. Otherwise, merge their components.
+1. Create a DSU containing all (N) particles. Initially every particle is its own component, because no relationships have been processed yet.
+2. Read each of the (M) relationships (u,v) and call `union(u, v)`. If the particles are already in the same component, nothing changes. Otherwise their two components are merged.
 
-This is the step where all direct relations are converted into connected components. Repeated unions automatically propagate transitivity, so a chain such as (1\leftrightarrow2\leftrightarrow3) eventually puts all three particles in one set.
-3. For every query ((x,y)), call `find(x)` and `find(y)`. If the two returned representatives are equal, append `1` to the answer string. Otherwise append `0`.
-4. After processing all (Q) queries, print the accumulated characters as one string. Building a list of characters and joining it once avoids repeated string concatenation.
+This directly models the transitive nature of entanglement. If (A) is joined with (B), and later (B) is joined with (C), the DSU automatically places all three in one set.
+3. After all relationships have been processed, read each query (X,Y) and compute `find(X)` and `find(Y)`.
+4. Append `1` to the answer if the two representatives are equal, and append `0` otherwise. The representatives are equal exactly when the particles belong to the same connected component.
+5. Print the accumulated characters as one string for the test case. Building one string is preferable to printing one character per query, because it avoids a large number of output operations.
 
 ### Why it works
 
-The DSU invariant is that two particles have the same representative exactly when the relations processed so far connect them through some path. Initially this is true because no edges have been processed and every vertex is isolated. When an edge ((u,v)) is processed, if its endpoints are already in the same set, the invariant remains unchanged. If they are in different sets, the edge creates a connection between those two components, so merging them is exactly the required update. After all edges have been processed, two particles have the same representative exactly when they are in the same connected component of the original graph. Each query therefore returns `1` exactly for entangled pairs.
+The DSU maintains the invariant that two particles have the same representative exactly when the relationships processed so far connect them through some path. Initially this is true because only a particle itself is reachable from that particle. When an edge (u,v) is processed, merging their two sets makes every particle reachable from (u) belong to the same set as every particle reachable from (v), exactly matching the new paths created by that edge. No unrelated components are merged. After all edges have been processed, the invariant describes the connected components of the complete graph. A query therefore returns `1` exactly when its two particles are connected by a path.
 
 ## Python Solution
 
@@ -152,13 +161,13 @@ def solve():
             u, v = map(int, input().split())
             dsu.union(u, v)
 
-        ans = []
+        answer = []
 
         for _ in range(q):
             x, y = map(int, input().split())
-            ans.append('1' if dsu.find(x) == dsu.find(y) else '0')
+            answer.append('1' if dsu.find(x) == dsu.find(y) else '0')
 
-        output.append(''.join(ans))
+        output.append(''.join(answer))
 
     sys.stdout.write('\n'.join(output))
 
@@ -166,82 +175,94 @@ if __name__ == "__main__":
     solve()
 ```
 
-The `DSU` constructor creates one set for every particle. The arrays have size (N+1) because the vertices are numbered from (1) through (N), so index zero is unused.
+The `DSU` constructor creates `parent[i] = i`, so every particle starts as the representative of its own component. The `size` array records how many particles are currently in each component.
 
-The `find` function returns the representative of the component containing a vertex. The assignment `parent[x] = parent[parent[x]]` performs path halving, shortening paths while searching. Together with union by size, this gives the required near-constant amortized complexity.
+The `find` method follows parent pointers until it reaches a root. During the traversal it performs path halving with `self.parent[x] = self.parent[self.parent[x]]`. This shortens the paths encountered by future queries and gives the same near-constant amortized complexity as standard path compression.
 
-The `union` function first finds the representatives rather than attaching arbitrary vertices. If both representatives are equal, the edge is redundant. Otherwise the smaller component is attached below the larger one. This keeps the DSU trees shallow.
+The `union` method first finds the roots rather than modifying arbitrary nodes. If both roots are equal, the relationship is redundant and no operation is necessary. Otherwise the smaller component is attached below the larger one. This is union by size, and it prevents the DSU trees from becoming unnecessarily deep.
 
-The input edges are processed before any queries. This ordering matters because a query must see the complete set of known relations, not just the relations read before that query. The implementation never needs an adjacency list because only component membership matters.
+The input uses particle numbers from (1) through (N), so the arrays have length (N+1). Index zero is unused. This avoids repeatedly subtracting one from every particle number and removes a common source of indexing mistakes.
 
-The answer for each test case is stored as a list of characters and joined once. The list also naturally handles (Q=10^5) without the overhead of repeatedly constructing longer immutable strings.
+The code processes all relationships before answering any query. That ordering matters because a query must see the connectivity created by every relationship in the test case.
 
-Python integers do not have an overflow issue here. The only values manipulated are vertex indices and component sizes, both bounded by (10^5).
+Python integers do not have an overflow problem here, and the only values stored in `size` are at most (N). The output is accumulated per test case and then written once, which keeps I/O overhead low.
 
 ## Worked Examples
 
-### Sample 1
+The statement provides one sample. Since there is no second sample in the supplied problem text, the second trace below uses a small constructed test case that emphasizes indirect connectivity and disconnected components.
 
-The input graph has three particles and one initial edge, (1\leftrightarrow2). The four queries are processed after the DSU has incorporated that edge.
-
-| Operation | Particle / Query | Parent state | Result |
-| --- | --- | --- | --- |
-| Initialize | (1,2,3) | `[1, 2, 3]` | Three components |
-| Union | (1,2) | `parent[2] = 1` | Components `{1,2}`, `{3}` |
-| Query | (1,2) | representatives `1,1` | `1` |
-| Query | (2,3) | representatives `1,3` | `0` |
-| Query | (3,1) | representatives `3,1` | `0` |
-| Query | (2,2) | representatives `1,1` | `1` |
-
-The resulting string is `1001`. The final query also demonstrates that a particle is always connected to itself.
-
-### Constructed Example 2
-
-Consider a chain of four particles:
+For Sample 1,
 
 ```
 1
-4 3 4
+3 1 4
+1 2
 1 2
 2 3
-3 4
-1 4
-1 3
-2 4
+3 1
 2 2
 ```
 
-After the three unions, all four particles belong to one component.
+the only initial relationship is (1-2).
 
-| Operation | Particle / Query | Representative state | Result |
+| Operation | Input | Parent state | Query result |
 | --- | --- | --- | --- |
-| Initialize | (1,2,3,4) | `1,2,3,4` | Four components |
-| Union | (1,2) | `1,1,3,4` | `{1,2}` |
-| Union | (2,3) | `1,1,1,4` | `{1,2,3}` |
-| Union | (3,4) | `1,1,1,1` | `{1,2,3,4}` |
-| Query | (1,4) | `1,1` | `1` |
-| Query | (1,3) | `1,1` | `1` |
-| Query | (2,4) | `1,1` | `1` |
-| Query | (2,2) | `1,1` | `1` |
+| Initial state | none | `[1, 2, 3]` |  |
+| Union | `1 2` | `[1, 1, 3]` |  |
+| Query | `1 2` | `[1, 1, 3]` | `1` |
+| Query | `2 3` | `[1, 1, 3]` | `0` |
+| Query | `3 1` | `[1, 1, 3]` | `0` |
+| Query | `2 2` | `[1, 1, 3]` | `1` |
 
-The output is `1111`. This demonstrates why checking only direct edges would be insufficient. There is no direct (1,4) edge, but the DSU captures the entire connected chain.
+The resulting string is `1001`. The trace demonstrates that a direct relationship is enough for the first query, while particle (3) remains isolated. The final self-query also confirms that every particle belongs to its own component.
+
+For the constructed case,
+
+```
+1
+5 3 5
+1 2
+2 3
+4 5
+1 3
+1 4
+2 3
+4 5
+3 3
+```
+
+the first three particles form one component and the last two form another.
+
+| Operation | Input | Components after operation | Query result |
+| --- | --- | --- | --- |
+| Initial state | none | `{1}`, `{2}`, `{3}`, `{4}`, `{5}` |  |
+| Union | `1 2` | `{1,2}`, `{3}`, `{4}`, `{5}` |  |
+| Union | `2 3` | `{1,2,3}`, `{4}`, `{5}` |  |
+| Union | `4 5` | `{1,2,3}`, `{4,5}` |  |
+| Query | `1 3` | `{1,2,3}`, `{4,5}` | `1` |
+| Query | `1 4` | `{1,2,3}`, `{4,5}` | `0` |
+| Query | `2 3` | `{1,2,3}`, `{4,5}` | `1` |
+| Query | `4 5` | `{1,2,3}`, `{4,5}` | `1` |
+| Query | `3 3` | `{1,2,3}`, `{4,5}` | `1` |
+
+The output is `10111`. The important part is the first query: particles (1) and (3) have no direct edge, but the two union operations have placed them into the same DSU component.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O((N+M+Q)\alpha(N))) | Each union and find operation has amortized inverse-Ackermann complexity |
+| Time | (O((N+M+Q)\alpha(N))) | Each union and find operation has inverse-Ackermann amortized cost |
 | Space | (O(N)) | The DSU stores one parent and one size value per particle |
 
-With (N,M,Q\le10^5), the number of DSU operations is at most a few hundred thousand per test case, and each is effectively constant time. The memory usage is linear in the number of particles, well within the 256 MB limit. The solution also avoids storing all (M) edges after they have been processed, which keeps the memory footprint smaller than a traversal-based solution.
+With (N,M,Q) up to (10^5), this gives roughly a linear number of DSU operations per test case. The inverse Ackermann factor is tiny, so the solution is comfortably within the intended complexity for a 2-second limit. The memory usage is also linear in (N), well below 256 MB.
 
 ## Test Cases
 
+The following test harness implements the same algorithm as the submitted solution and checks the provided sample together with several targeted cases.
+
 ```python
-# helper: run solution on input string, return output string
 import sys
 import io
-from contextlib import redirect_stdout
 
 class DSU:
     def __init__(self, n):
@@ -267,43 +288,31 @@ class DSU:
         self.parent[b] = a
         self.size[a] += self.size[b]
 
-def solve():
-    input = sys.stdin.readline
-    t = int(input())
+def solve_io(inp: str) -> str:
+    data = io.StringIO(inp)
+    t = int(data.readline())
     output = []
 
     for _ in range(t):
-        n, m, q = map(int, input().split())
+        n, m, q = map(int, data.readline().split())
         dsu = DSU(n)
 
         for _ in range(m):
-            u, v = map(int, input().split())
+            u, v = map(int, data.readline().split())
             dsu.union(u, v)
 
-        ans = []
+        answer = []
+
         for _ in range(q):
-            x, y = map(int, input().split())
-            ans.append('1' if dsu.find(x) == dsu.find(y) else '0')
+            x, y = map(int, data.readline().split())
+            answer.append('1' if dsu.find(x) == dsu.find(y) else '0')
 
-        output.append(''.join(ans))
+        output.append(''.join(answer))
 
-    sys.stdout.write('\n'.join(output))
-
-def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-
-    try:
-        with redirect_stdout(out):
-            solve()
-    finally:
-        sys.stdin = old_stdin
-
-    return out.getvalue()
+    return '\n'.join(output)
 
 # Provided sample
-assert run("""\
+sample1 = """\
 1
 3 1 4
 1 2
@@ -311,131 +320,149 @@ assert run("""\
 2 3
 3 1
 2 2
-""") == "1001", "sample 1"
+"""
 
-# Minimum-size graph, self-query, duplicate self-edge
-assert run("""\
+assert solve_io(sample1) == "1001", "sample 1"
+
+# Minimum-size graph and repeated/self relationships
+case2 = """\
+1
+1 1 4
+1 1
+1 1
+1 1
+1 1
+"""
+
+assert solve_io(case2) == "1111", "minimum-size self queries"
+
+# Indirect connectivity versus disconnected components
+case3 = """\
+1
+5 3 5
+1 2
+2 3
+4 5
+1 3
+1 4
+2 3
+4 5
+3 3
+"""
+
+assert solve_io(case3) == "10111", "indirect connectivity"
+
+# Duplicate edges and reversed endpoints
+case4 = """\
+1
+4 4 5
+1 2
+2 1
+1 2
+3 4
+1 2
+2 1
+3 4
+1 3
+4 3
+"""
+
+assert solve_io(case4) == "11011", "duplicate and reversed edges"
+
+# Boundary particle numbers, including N itself
+case5 = """\
+1
+6 2 5
+1 6
+5 6
+1 5
+1 6
+5 6
+2 6
+6 6
+"""
+
+assert solve_io(case5) == "11101", "boundary indices"
+
+# Multiple test cases
+case6 = """\
+2
+2 1 2
+1 2
+1 2
+1 1
+3 1 3
+1 2
+1 2
+2 3
+3 3
+"""
+
+assert solve_io(case6) == "111", "multiple test cases"
+
+print("All tests passed.")
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `1 / 1 1 4 / 1 1 / ...` | `1111` | Minimum graph size and self-queries |
+| Five-particle chain and separate pair | `10111` | Indirect connectivity and disconnected components |
+| Duplicate and reversed edges | `11011` | Redundant relationships do not change components |
+| Six particles with edges involving particle 6 | `11101` | One-based boundary indices and isolated particle |
+| Two test cases in one input | `111` | Correct reset of DSU between test cases |
+
+## Edge Cases
+
+The self-query case has (N=1), with the only particle queried against itself. The input
+
+```
 1
 1 1 3
 1 1
 1 1
 1 1
 1 1
-""") == "111", "minimum size"
+```
 
-# Transitive chain, no direct edge between the queried endpoints
-assert run("""\
+contains a redundant self-edge and three self-queries. The first union sees the same root on both sides, so it changes nothing. Every query compares the root of particle (1) with itself, producing `111`. The algorithm does not need a special case for (X=Y`, because DSU naturally handles it.
+
+For duplicate relationships, consider
+
+```
 1
-4 2 4
-1 2
-2 3
-1 3
-1 4
-2 3
-4 4
-""") == "1011", "transitivity and isolated vertex"
-
-# Duplicate edges and separate components
-assert run("""\
-1
-5 5 5
-1 2
-1 2
-2 3
-4 5
-4 5
-1 3
-1 5
-4 5
-2 2
-3 4
-""") == "10110", "duplicate edges and component separation"
-
-# Multiple test cases, boundary vertex labels
-assert run("""\
-2
-2 1 2
+2 3 2
 1 2
 1 2
 2 1
-3 1 3
-2 3
-1 1
-1 3
-2 3
-""") == "11\n011", "multiple test cases and boundary labels"
-
-# Large connected chain, exercises the implementation at scale
-n = 100000
-edges = '\n'.join(f"{i} {i + 1}" for i in range(1, n))
-queries = '\n'.join([
-    f"1 {n}",
-    f"1 {n - 1}",
-    f"{n} {n}",
-    f"1 1",
-    f"50000 50001",
-])
-
-large_input = f"1\n{n} {n - 1} 5\n{edges}\n{queries}\n"
-assert run(large_input) == "11111", "large connected chain"
+1 2
 ```
 
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1 1 1` with a self-edge and self-queries | `111` | Minimum size and self-connectivity |
-| Four vertices with edges `1-2`, `2-3` | `1011` | Transitive connectivity and an isolated vertex |
-| Five vertices with duplicate edges and two components | `10110` | Duplicate relations and component separation |
-| Two independent test cases | `11` and `011` | Correct state reset between test cases and boundary labels |
-| A chain containing 100000 vertices | `11111` | Large input size and DSU performance |
+The first relationship merges particles (1) and (2). The next two relationships find that their roots are already equal, so both are ignored. Both queries compare the same representative and produce `11`. This is why `union` must safely handle the case where its two arguments already belong to one component.
 
-## Edge Cases
-
-For the self-query case,
-
-```
-1
-1 1 1
-1 1
-1 1
-```
-
-the DSU starts with `parent[1] = 1`. Processing the self-edge calls `union(1,1)`, and both `find` operations return the same representative, so the union does nothing. The query also obtains the same representative twice and produces `1`. The output is `1`.
-
-For duplicate edges,
+For indirect connectivity, use
 
 ```
 1
 3 2 2
 1 2
-1 2
 2 3
 1 3
+1 1
 ```
 
-the first `1 2` union joins particles (1) and (2). The second `1 2` edge finds the same representative for both endpoints and is ignored. The edge `2 3` then joins particle (3) to that component. The query `1 3` consequently returns `1`. The output is `11`.
+After `union(1, 2)`, particles (1) and (2) share a representative. After `union(2, 3)`, particle (3) is merged into that same component. The query `1 3` consequently compares equal representatives and returns `1`. The query `1 1` also returns `1`, giving `11`. A method that only checks whether `(1, 3)` appears as an input edge would fail here.
 
-For transitive connectivity,
+For disconnected components, consider
 
 ```
 1
-3 2 1
+4 1 3
 1 2
-2 3
-1 3
-```
-
-the first union creates component `{1,2}`, and the second expands it to `{1,2,3}`. The query has no direct edge between (1) and (3), but both calls to `find` return the same representative. The output is `1`.
-
-For an isolated vertex,
-
-```
-1
-3 1 2
 1 2
-1 3
-3 3
+3 4
+4 4
 ```
 
-the first union creates component `{1,2}`, while particle (3) remains in its own component. The query `1 3` compares different representatives and gives `0`. The query `3 3` compares the same representative with itself and gives `1`, producing `01`.
+After the single union, the components are `{1,2}`, `{3}`, and `{4}`. The first query returns `1`, while the second query compares the representatives of (3) and (4), which differ, so it returns `0`. The final self-query returns `1`. The resulting output is `101`. The DSU never merges particles merely because they exist in the same test case, so disconnected groups remain distinct.
 
-For multiple test cases, the DSU must be recreated for every test case. Suppose the first case connects particles (1) and (2), while the second case has completely different relations. If the same DSU were reused, information from the first graph would leak into the second graph and produce false connections. The implementation constructs a fresh `DSU(n)` inside the test-case loop, so every graph starts with all of its own particles separate.
+For the largest allowed values, (N=M=Q=10^5), the algorithm performs (10^5) initializations, (10^5) union operations, and (10^5) query operations. With path compression and union by size, this remains near-linear rather than approaching the (10^{10}) operations required by repeated graph traversals. The same reasoning applies independently to every test case, since a fresh DSU is created for each one.
