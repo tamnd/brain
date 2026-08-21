@@ -8,20 +8,20 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 3
-total_solve_s: 6423
+total_solve_s: 7783
 contest_year: 2019
-date: "2026-08-20T14:18:43+07:00"
+date: "2026-08-21T18:48:21+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 10 problems | 3/10 verified | Difficulty - | 1h 47m
+Special | 10 problems | 3/10 verified | Difficulty - | 2h 9m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Hasan the lazy judge](https://codeforces.com/problemset/problem/102163/A) |  |  |  | 24m 14s |  |
+| [A](A/) | [Hasan the lazy judge](https://codeforces.com/problemset/problem/102163/A) |  |  |  | 46m 54s |  |
 | [B](B/) | [Let me sleep](https://codeforces.com/problemset/problem/102163/B) |  |  |  | 7m 41s | ✓ |
 | [C](C/) | [Hasan and his lazy students](https://codeforces.com/problemset/problem/102163/C) |  |  |  | 11m 4s |  |
 | [D](D/) | [Football Cup](https://codeforces.com/problemset/problem/102163/D) |  |  |  | 4m 39s |  |

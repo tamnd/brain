@@ -1,7 +1,7 @@
 ---
 title: "CF 102163A - Hasan the lazy judge"
-description: "We have horizontal line segments and vertical line segments on an integer coordinate plane. A valid plus sign is formed by choosing one horizontal segment and one vertical segment that intersect at a point C."
-date: "2026-08-20T14:18:42+07:00"
+description: "We have a collection of horizontal line segments and vertical line segments on an integer coordinate plane. A horizontal segment is described by its two x endpoints and its fixed y coordinate. A vertical segment is described by its two y endpoints and its fixed x coordinate."
+date: "2026-08-21T18:48:20+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102163
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "NCD 2019"
 rating: 0
 weight: 102163
-solve_time_s: 1454
+solve_time_s: 2814
 verified: false
 draft: false
 ---
@@ -18,153 +18,152 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24m 14s  
+**Solve time:** 46m 54s  
 **Verified:** no  
 
 ## Solution
-## Problem Understanding
+# Problem Understanding
 
-We have horizontal line segments and vertical line segments on an integer coordinate plane. A valid plus sign is formed by choosing one horizontal segment and one vertical segment that intersect at a point C. The four arms of the plus sign are the distances from C to the two endpoints of the horizontal segment and the two endpoints of the vertical segment.
+We have a collection of horizontal line segments and vertical line segments on an integer coordinate plane. A horizontal segment is described by its two x endpoints and its fixed y coordinate. A vertical segment is described by its two y endpoints and its fixed x coordinate.
 
-For a horizontal segment [x 1 ​ ,x 2 ​ ] and a vertical segment [y 1 ​ ,y 2 ​ ], intersecting at (x,y), its value is
+Choosing one horizontal segment and one vertical segment gives a plus sign only when they intersect. At their intersection point, the horizontal segment contributes a left arm and a right arm, while the vertical segment contributes a downward arm and an upward arm. The value of this plus sign is the shortest of these four arm lengths.
 
-min(x−x 1 ​ , x 2 ​ −x, y−y 1 ​ , y 2 ​ −y).
+For a horizontal segment `[x1, x2]` at height `y`, intersected at x, the horizontal contribution is
 
-We need the maximum value over every possible intersecting pair. The input contains T independent test cases, followed by the horizontal segments and then the vertical segments. Coordinates are at most 10 5.
+`min(x - x1, x2 - x)`.
 
-The tempting solution is to examine every horizontal and every vertical segment. With N,M≤10 5, that means up to 10 10 pairs in one test case. A one-second limit makes such a quadratic approach impossible. We need something close to O((N+M)logC), where C≤10 5 is the coordinate range, or at least a small logarithmic factor more.
+For a vertical segment `[y1, y2]` at coordinate x, intersected at height y, the vertical contribution is
 
-There are several boundary cases that matter. A segment can be too short to contain a plus sign of positive size. For example,
+`min(y - y1, y2 - y)`.
 
-```
+The answer is the maximum possible value of the minimum of all four quantities over every valid intersection.
 
-```
+With up to `10^5` horizontal and `10^5` vertical segments, checking every pair requires up to `10^10` intersections. A quadratic approach is far beyond what a one-second limit can handle. The coordinates are also bounded by `10^5`, which makes logarithmic data structures over the coordinate range practical.
 
-The only two segments intersect, but every arm has length zero, so the answer is `0`. A solution that assumes the answer is always positive would be wrong.
-
-The intersection may also occur exactly at an endpoint. For example,
+There are several boundary cases that can easily break a careless implementation. First, an intersection may happen exactly at an endpoint. For example,
 
 ```
 
 ```
 
-The segments meet at (1,2), but the horizontal segment has no arm to the left of the intersection. The answer is `0`. When checking a candidate length d, the intersection must be allowed at the boundaries of the trimmed segments, so the horizontal condition is inclusive.
+The two segments intersect at `(1, 2)`, so the shortest arm has length `0`, and the answer is `0`. An implementation using strict inequalities instead of inclusive intersection conditions could incorrectly report that there is no intersection.
 
-Duplicate coordinates are another easy source of mistakes. For example,
+A second issue is that a segment may be too short to support a requested answer. For example,
+
+```
+
+```
+
+The segments intersect at `(2, 2)`, but the horizontal segment has length only `1`, so no plus sign of length `1` is possible. The answer is `0`. During a feasibility check for length `1`, the horizontal segment must be discarded because it needs total length at least `2`.
+
+A third boundary case is reversed endpoints. Although the statement describes starting and ending coordinates, a robust implementation should not depend on their order. For example,
 
 ```
 
 ```
 
-The answer is `2`. Two horizontal segments can have exactly the same y-coordinate, and a data structure must count both independently. Using a boolean instead of a frequency can cause an incorrect deletion when one of the duplicate segments stops being active.
+After normalizing both segments, they intersect at `(3, 3)` and the answer is `2`.
 
-Finally, the horizontal and vertical segment endpoints are not necessarily given in increasing order by the statement's wording. A robust implementation normalizes every segment so that its first coordinate is no greater than its second coordinate.
+# Approaches
 
-## Approaches
+The direct approach considers every horizontal segment together with every vertical segment. For each pair, we test whether their x and y coordinates fall inside the corresponding intervals. If they intersect, we calculate the four arm lengths and update the answer. This is correct because every possible plus sign is determined by exactly one horizontal and one vertical segment, so examining every pair cannot miss an optimum.
 
-The brute-force solution follows directly from the geometry. For every horizontal segment and every vertical segment, we test whether their coordinate ranges overlap in the required way. If they intersect at (x,y), we compute the four arm lengths and update the answer.
+The problem is the number of pairs. With `N = M = 10^5`, there can be `N * M = 10^10` pairs. Even a constant-time check for each pair is much too slow, so we need to avoid enumerating intersections.
 
-This is correct because every possible plus sign is determined by exactly one horizontal and one vertical segment, so examining every pair cannot miss a candidate. The problem is the NM pair count. With N=M=10 5, there can be 10 10 pairs in a single test case, far beyond what the time limit permits.
+The key observation is that the answer can be tested instead of constructed directly. Suppose we ask whether a plus sign of length at least `d` exists. For a horizontal segment `[x1, x2]`, the intersection x-coordinate must then satisfy
 
-The useful observation is that we can turn the optimization problem into a decision problem. Suppose we ask whether a plus sign of size at least d exists.
+`x1 + d <= x <= x2 - d`.
 
-For a horizontal segment [x 1 ​ ,x 2 ​ ], the intersection must be at least d units from both horizontal endpoints. Thus its x-coordinate must satisfy
+Thus the horizontal segment can participate only through its reduced interval `[x1 + d, x2 - d]`, and it is usable only when `x2 - x1 >= 2d`.
 
-x 1 ​ +d≤x≤x 2 ​ −d.
+Similarly, a vertical segment `[y1, y2]` can participate only when
 
-This interval is nonempty exactly when
+`y1 + d <= y <= y2 - d`.
 
-x 2 ​ −x 1 ​ ≥2d.
+So the problem for a fixed `d` becomes finding a horizontal segment whose reduced x-interval contains the x-coordinate of some usable vertical segment, while the horizontal segment's y-coordinate lies inside that vertical segment's reduced y-interval.
 
-Likewise, for a vertical segment [y 1 ​ ,y 2 ​ ], a suitable intersection must satisfy
+This can be handled by sweeping from left to right. Sort vertical segments by x. As we reach a vertical segment at x, every horizontal segment whose reduced left endpoint is at most x becomes active. A horizontal segment remains active until its reduced right endpoint becomes smaller than x.
 
-y 1 ​ +d≤y≤y 2 ​ −d,
+The only remaining question is how to ask whether an active horizontal segment has its y-coordinate inside the vertical segment's reduced y-interval. Since each active horizontal contributes one point at its y-coordinate, a Fenwick tree can maintain how many active horizontals exist at every y. A range sum then tells us whether at least one active horizontal lies in the required y interval.
 
-which requires y 2 ​ −y 1 ​ ≥2d.
+The predicate is monotone. If a plus sign of length `d` exists, then a plus sign of every smaller length also exists. We can consequently binary search for the maximum feasible `d`.
 
-So after fixing d, every sufficiently long horizontal segment becomes an active interval in the x-direction, carrying its y-coordinate. A vertical segment becomes a query at its x-coordinate, asking whether some active horizontal y-coordinate lies inside
-
-[y 1 ​ +d, y 2 ​ −d].
-
-This is exactly an offline sweep-line problem. Sort vertical segments by x. As we move from left to right, insert a horizontal segment when x reaches x 1 ​ +d, and remove it after x 2 ​ −d. At a vertical segment's x, the active horizontal segments are precisely those whose trimmed horizontal interval contains that x.
-
-A Fenwick tree over the y-coordinates stores how many active horizontal segments exist at every y. A range sum tells us whether at least one active horizontal segment has a y-coordinate in the vertical segment's trimmed range.
-
-The feasibility condition is monotonic. If a plus sign of size d exists, the same intersection also gives a plus sign of every smaller size. That makes binary search on d possible.
-
-The implementation can make the sweep cheaper than sorting fresh events during every binary-search iteration. The order of horizontal segments by x 1 ​ never changes when we add the same d to every x 1 ​, and the order by x 2 ​ never changes when we subtract the same d. We sort these orders once and reuse them for every feasibility check.
+The brute-force works because every candidate is explicitly examined, but fails because there are too many pairs. The observation that a fixed answer reduces every segment independently lets us turn the two-dimensional intersection problem into a one-dimensional sweep with a Fenwick tree.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(NM) | O(N+M) | Too slow |
-| Optimal | O((N+M)logClogC) | O(N+M+C) | Accepted |
+| Brute Force | `O(NM)` | `O(N + M)` | Too slow |
+| Optimal | `O((N + M) log C log C)` | `O(N + M + C)` | Accepted |
 
-Here C≤10 5 is the maximum coordinate. The first logarithm comes from the Fenwick operations and the second from binary search.
+Here `C <= 10^5` is the coordinate limit. One logarithm comes from the binary search over the answer and the other from Fenwick tree operations.
 
-## Algorithm Walkthrough
+# Algorithm Walkthrough
 
-1. Normalize every horizontal segment so that x 1 ​ ≤x 2 ​, and every vertical segment so that y 1 ​ ≤y 2 ​. Compute the largest possible answer from the half-length of every segment. A plus of size d needs total length at least 2d on both selected segments, so no answer can exceed the maximum half-length.
-2. Sort the vertical segments by their x-coordinate. During a feasibility check, they will be processed from left to right, matching the direction of the sweep.
-3. Sort the horizontal segments once by x 1 ​, and once by x 2 ​. For a fixed candidate d, a horizontal segment starts being usable at x 1 ​ +d and stops being usable after x 2 ​ −d. Adding or subtracting the same d does not change either sorting order, so these orders can be reused across all checks.
-4. To check a candidate d, ignore every horizontal segment with x 2 ​ −x 1 ​ <2d. Such a segment cannot provide both horizontal arms of length d. Likewise, ignore every vertical segment with y 2 ​ −y 1 ​ <2d.
-5. Sweep through the vertical segments in increasing x. Maintain a Fenwick tree indexed by y. For every eligible horizontal segment whose x 1 ​ +d≤x, add one at its y-coordinate. These are exactly the horizontal segments whose left arm can already contain the current intersection.
-6. Remove every eligible horizontal segment satisfying x 2 ​ −d<x. The strict inequality is deliberate. When x=x 2 ​ −d, the right arm has exactly length d, so the horizontal segment must still be active at that coordinate.
-7. For an eligible vertical segment, query the Fenwick tree over
-
-[y 1 ​ +d, y 2 ​ −d].
-
-If the range contains at least one active horizontal segment, the current d is feasible. The corresponding horizontal and vertical segments intersect at a point with all four arm lengths at least d.
-
-1. Binary search the largest feasible d. If the check succeeds, move the lower bound upward. Otherwise move the upper bound downward.
+1. Normalize every segment so that its first endpoint is no greater than its second endpoint. Store the horizontal segments as `(x1, x2, y)` and the vertical segments as `(y1, y2, x)`.
+2. Sort the horizontal segments once by `x1`, sort them once by `x2`, and sort the vertical segments once by `x`. These orders remain valid for every binary-search value because adding or subtracting the same `d` does not change the ordering.
+3. Binary search the answer `d`. For a candidate `d`, a horizontal segment is usable only if `x2 - x1 >= 2d`. Its possible intersection x-coordinates form `[x1 + d, x2 - d]`. A vertical segment is usable only if `y2 - y1 >= 2d`, with possible intersection y-coordinates `[y1 + d, y2 - d]`.
+4. Sweep through usable vertical segments in increasing x order. Maintain a Fenwick tree indexed by y. When the current vertical segment has coordinate x, add every horizontal segment whose `x1 + d <= x`. Such a horizontal segment has enough room on its left side to give an arm of length at least `d`.
+5. Remove every horizontal segment whose `x2 - d < x`. Such a segment can no longer provide a right arm of length `d` at the current x. The strict `<` is essential because equality means the right arm has exactly length `d`, which is valid.
+6. Query the Fenwick tree over `[y1 + d, y2 - d]`. A positive range sum means that some active horizontal segment has its y-coordinate in the valid vertical range. That horizontal and the current vertical segment form a plus sign whose four arms are all at least `d`, so the check succeeds.
+7. If the check succeeds, move the binary-search lower bound upward. Otherwise, move the upper bound downward. The largest successful value is the answer.
 
 ### Why it works
 
-For a fixed d, a horizontal segment is active at exactly those x-coordinates satisfying x 1 ​ +d≤x≤x 2 ​ −d. The sweep inserts it at the first such coordinate and removes it immediately after the last such coordinate. Consequently, at every processed vertical x, the Fenwick tree contains exactly the y-coordinates of horizontal segments that can support a plus of size d at that x.
+For a fixed `d`, a horizontal segment is represented in the sweep exactly while its x-coordinate can be chosen so that both horizontal arms have length at least `d`. Thus an active horizontal segment is equivalent to the condition `x1 + d <= x <= x2 - d`.
 
-The Fenwick query succeeds exactly when one of those horizontal segments has y inside [y 1 ​ +d,y 2 ​ −d]. That condition gives at least d units of vertical room on both sides of the intersection. Together with the horizontal activation condition, all four arms are at least d. Thus the feasibility check is exact.
+At a vertical segment with coordinate x, the Fenwick tree contains exactly the y-coordinates of all horizontal segments satisfying that horizontal condition. Querying `[y1 + d, y2 - d]` additionally enforces both vertical-arm conditions. Hence the query succeeds exactly when there exists an intersection whose four arms are all at least `d`.
 
-Since feasibility for d implies feasibility for every smaller value, binary search returns the largest possible plus size.
+The feasibility predicate is monotone, because reducing `d` only relaxes the required distances. Binary search consequently finds the largest feasible length.
 
-## Python Solution
+# Python Solution
 
 ```
 Python
 ```
 
-The input phase stores each segment after normalizing its endpoints. The maximum possible answer is computed at the same time, which gives binary search a tight upper bound.
+The input phase normalizes endpoints first. This avoids having every later operation handle both possible orientations.
 
-The two sorted copies of the horizontal segments are the key preprocessing optimization. `by_left` controls insertions, while `by_right` controls removals. Their order is valid for every candidate `d`, because adding the same value to all left endpoints and subtracting the same value from all right endpoints preserves their relative order.
+The three sorted arrays are the core of the sweep. Sorting by `x1` lets the algorithm add horizontals in the exact order in which they become eligible. Sorting by `x2` lets it remove them when their right endpoint becomes too close to the current x-coordinate. The vertical array is sorted by x because the sweep itself moves from left to right.
 
-Each call to `check` creates a fresh Fenwick tree. This avoids a subtle cleanup problem that can occur if a successful check exits early while leaving old frequencies in the tree. A fresh tree also keeps the correctness argument simple.
+For a candidate `d`, the condition `x1 + d <= x` determines insertion. The condition `x2 - d < x` determines removal. The second comparison is strict because `x2 - d == x` gives a right arm of exactly `d`, which must remain valid.
 
-The insertion condition uses `x1 + d <= x`. The removal condition uses `x2 - d < x`. These inequalities make the active interval exactly inclusive at both ends. Reversing either boundary would incorrectly reject a plus whose arm has exactly length `d`.
+The Fenwick tree stores counts rather than booleans. Multiple horizontal segments can have the same y-coordinate, so removing one segment must not accidentally remove another. A count handles coincident y-values naturally.
 
-The Fenwick tree uses the actual y-coordinate as its index. Since coordinates are at most 10 5, no coordinate compression is necessary. Python integers also have no overflow issue for the Fenwick counts.
+The range query uses
 
-## Worked Examples
+`prefix(high_y) - prefix(low_y - 1)`,
 
-### Sample 1
+which is the standard inclusive Fenwick range sum. This also handles the case where the valid y interval contains exactly one coordinate.
 
-The input is
+Python integers do not overflow, so all coordinate arithmetic is safe. The largest relevant coordinate is only `10^5`, while the binary-search multiplication `2 * d` is also tiny.
+
+# Worked Examples
+
+## Sample 1
+
+The input contains horizontal segments
 
 ```
 
 ```
 
-Consider d=2. The three horizontal segments have lengths 4,2,6, so the first and third can potentially support this value. The two vertical segments have lengths 4,3, so both are candidates.
+and vertical segments
 
-The sweep behaves as follows.
+```
 
-| Vertical segment | x | Inserted horizontal y values | Removed horizontal y values | Query range | Result |
-| --- | --- | --- | --- | --- | --- |
-| [1,5] | 3 | y=3 from [1,5] | none | [3,3] | found |
-| [6,9] | 2 | not reached in x order | none | [8,7] | not needed |
+```
 
-The first vertical segment at x=3 intersects the horizontal segment from x=1 to x=5, also at y=3. Its four arm lengths are 2,2,2,2, so d=2 is feasible.
+The following trace shows the decisive feasibility checks.
 
-Trying d=3 fails because the first horizontal segment has length only 4, while the third horizontal segment is at y=6 and does not intersect the relevant vertical segment with enough room. Thus the answer is `2`.
+| `d` | Usable horizontal ranges | Usable vertical ranges | Result |
+| --- | --- | --- | --- |
+| `3` | `[1,5]` becomes `[4,2]`, `[2,4]` becomes `[]`, `[6,12]` becomes `[9,9]` | First vertical becomes `[]`, second becomes `[]` | False |
+| `1` | `[1,5]` -> `[2,4]`, `[2,4]` -> `[3,3]`, `[6,12]` -> `[7,11]` | `[1,5]` -> `[2,4]`, `[6,9]` -> `[7,8]` | True |
+| `2` | `[1,5]` -> `[3,3]`, `[2,4]` -> `[4,2]`, `[6,12]` -> `[8,10]` | `[1,5]` -> `[3,3]`, `[6,9]` -> `[8,7]` | True |
 
-### Constructed Example 2
+For `d = 2`, the horizontal segment `[1,5]` can be used only at x-coordinate `3`. The vertical segment `[1,5]` at x-coordinate `3` can be used only at y-coordinate `3`. Their intersection is `(3,3)`, and all four arms have length at least `2`. A larger value is impossible, so the answer is `2`.
+
+## Constructed Example 2
 
 Consider
 
@@ -172,84 +171,65 @@ Consider
 
 ```
 
-The horizontal segment is [1,9] at y=5, and the vertical segment is [3,7] at x=5. Their intersection is (5,5).
+For `d = 2`, the reduced horizontal intervals are `[3,5]` at y=4 and `[5,3]` for the second horizontal, so only the first horizontal remains usable. The reduced vertical intervals are `[4,6]` at x=5 and `[3,4]` at x=3.
 
-| Candidate d | Horizontal trimmed interval | Vertical trimmed interval | Intersection | Feasible |
+| Vertical | x | Active horizontal y-values | Required y-range | Result |
 | --- | --- | --- | --- | --- |
-| 1 | [2,8] | [4,6] | (5,5) | yes |
-| 2 | [3,7] | [5,5] | (5,5) | yes |
-| 3 | [4,6] | [6,4] | empty | no |
+| `[1,6]` at x=3 | 3 | none | `[3,4]` | no |
+| `[2,8]` at x=5 | 5 | `{4}` | `[4,6]` | yes |
 
-The maximum value is `2`. This trace demonstrates why the vertical interval must be trimmed on both ends and why a segment of total length exactly 2d is still valid.
+The second vertical intersects the first horizontal at `(5,4)`. Its four arm lengths are `4`, `2`, `2`, and `4`, so the plus sign has length `2`.
 
-## Complexity Analysis
+This example demonstrates why the Fenwick tree needs to maintain the currently active horizontals rather than simply checking whether the segments intersect somewhere. The required intersection must leave at least `d` units on every side.
+
+# Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((N+M)logClogC) | Each binary-search check performs O(N+M) Fenwick operations, each taking O(logC), and there are O(logC) candidate values. |
-| Space | O(N+M+C) | The segments, two sorted horizontal orders, sorted vertical segments, and one Fenwick tree are stored. |
+| Time | `O((N + M) log C log C)` | Binary search performs `O(log C)` checks, and every check performs `O(N + M)` Fenwick operations, each taking `O(log C)` |
+| Space | `O(N + M + C)` | Three sorted segment collections and one Fenwick tree over the coordinate range |
 
-With C≤10 5, binary search needs at most about 17 iterations. The solution avoids the 10 10 pair enumeration of brute force and uses only linear-size storage, fitting the stated memory bound.
+With `C <= 10^5`, the binary search needs at most about 17 iterations. Each segment enters and leaves the Fenwick structure at most once during a check, while each vertical segment causes a constant number of Fenwick prefix queries. The resulting complexity is logarithmic in the coordinate range on top of a linear scan of the segments, which is suitable for the given limits.
 
-## Test Cases
+# Test Cases
 
-```python
-Pythonimport sysimport io
-
-def solution(data: str) -> str:    it = iter(data.split())    t = int(next(it))    answers = []
-    for _ in range(t):        n = int(next(it))        m = int(next(it))
-        horizontal = []        vertical = []        hi = 0        max_coord = 0
-        for _ in range(n):            x1 = int(next(it))            x2 = int(next(it))            y = int(next(it))            if x1 > x2:                x1, x2 = x2, x1            horizontal.append((x1, x2, y))            hi = max(hi, (x2 - x1) // 2)            max_coord = max(max_coord, x2, y)
-        for _ in range(m):            y1 = int(next(it))            y2 = int(next(it))            x = int(next(it))            if y1 > y2:                y1, y2 = y2, y1            vertical.append((y1, y2, x))            hi = max(hi, (y2 - y1) // 2)
+```
+Python
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | `2` | Official example and ordinary intersection handling |
-| One-point horizontal and vertical segments | `0` | Minimum-size segments and zero answer |
-| `[1,9]` with `[3,7]` | `2` | Exact centered optimum and binary search |
-| `[1,3]` with vertical segment at x=1 | `0` | Intersection at an endpoint |
-| Two identical horizontal segments | `2` | Duplicate y-coordinates and Fenwick frequencies |
-| 10 5 identical long segments | `49999` | Maximum input size and performance |
+| Sample 1 | `2` | Normal intersection and binary search |
+| One horizontal and one vertical touching at an endpoint | `0` | Inclusive boundaries and zero-length arms |
+| `[1,5]` crossing `[1,5]` centrally | `2` | Exact maximum where every arm has length `2` |
+| Reversed endpoints | `2` | Endpoint normalization |
+| Segments with geometric intersections but no positive plus | `0` | Rejecting insufficient arm lengths |
+| `100000` full-length horizontals and verticals | `49999` | Maximum input size and performance |
 
-## Edge Cases
+# Edge Cases
 
-For a zero-length segment, consider
-
-```
-11 11 1 11 1 1
-```
-
-The initial upper bound is zero because both segments have half-length zero. Binary search immediately returns zero. The algorithm never tries to manufacture a positive arm from a segment that cannot contain one.
-
-For an endpoint intersection, consider
+The endpoint-intersection case
 
 ```
-11 11 3 22 4 1
-```
-
-The horizontal segment can support d=1 only at x=2, but the vertical line is at x=1. For d=1, the horizontal trimmed interval is [2,2], so the sweep never activates that horizontal segment when processing x=1. The check fails and the answer remains zero.
-
-For duplicate coordinates, consider
 
 ```
-12 11 5 31 5 31 5 3
-```
 
-For d=2, the horizontal segments are active from x=3 through x=3, and the vertical segment at x=3 queries y=3. The Fenwick tree contains a count of two at that coordinate. If one horizontal segment were removed, the count would become one rather than zero, which is why the implementation stores counts instead of booleans.
+is handled by `d = 0`. The horizontal becomes active when `x1 + 0 <= x`, so it is active at x=`1`. Its right boundary is not removed until `x2 < x`. At the vertical's x-coordinate `1`, the Fenwick query covers y=`2`, so the intersection is found and the binary search keeps `0` as the answer. A strict removal condition is what preserves an endpoint intersection.
 
-For segments whose lengths are exactly 2d, the trimmed interval consists of a single coordinate. Consider
+The insufficient-length case
 
 ```
-11 11 5 31 5 3
-```
-
-For d=2, the horizontal trimmed interval is [3,3] and the vertical trimmed interval is [3,3]. Both segments are active at coordinate 3, so the answer is `2`. The inclusive insertion condition and strict removal condition are what preserve this valid boundary case.
-
-For reversed endpoints, consider
 
 ```
-11 19 1 57 3 5
+
+illustrates the `x2 - x1 >= 2d` condition. For `d = 1`, the horizontal has length `1`, which is less than `2`, so it is never inserted into the Fenwick tree. Although the two segments intersect, no four arms of length `1` can exist. The check fails and the answer remains `0`.
+
+The reversed-endpoint case
+
 ```
 
-Normalization changes the segments to [1,9] and [3,7], giving the same centered plus as the earlier example and an answer of `2`. Without normalization, subtracting endpoints directly could produce negative lengths and an invalid binary-search bound.
+```
+
+is normalized to horizontal `[1,5]` and vertical `[1,5]`. At `d = 2`, both reduced intervals collapse to coordinate `3`, producing the intersection `(3,3)`. The answer is `2`. Without normalization, comparisons such as `x1 + d <= x` would be meaningless for the reversed representation.
+
+Finally, multiple horizontal segments may share the same y-coordinate. The Fenwick tree stores a count at each coordinate rather than a boolean state. If two active segments both lie at y=`7`, inserting them produces count `2`, and removing one produces count `1`. The remaining segment is still represented correctly, so overlapping coordinates do not corrupt the sweep.
