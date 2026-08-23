@@ -1,7 +1,7 @@
 ---
 title: "CF 102202A - Rainbow Beads"
-description: "We have a string of length (N), where every jewel is colored R, B, or V. We may choose one contiguous substring and give it away. The chosen substring must look colorful to three different observers."
-date: "2026-08-18T20:54:06+07:00"
+description: "We have a string of length (N), where every jewel is one of R, B, or V. We may choose one contiguous substring and want its maximum possible length. A chosen substring must look diverse to three different observers."
+date: "2026-08-24T05:07:02+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102202
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "2019 KAIST RUN Spring Contest"
 rating: 0
 weight: 102202
-solve_time_s: 577
-verified: false
+solve_time_s: 3406
+verified: true
 draft: false
 ---
 
@@ -18,97 +18,63 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 9m 37s  
-**Verified:** no  
+**Solve time:** 56m 46s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a string of length (N), where every jewel is colored `R`, `B`, or `V`. We may choose one contiguous substring and give it away. The chosen substring must look colorful to three different observers.
+We have a string of length (N), where every jewel is one of `R`, `B`, or `V`. We may choose one contiguous substring and want its maximum possible length.
 
-A normal observer distinguishes all three colors, so adjacent jewels must have different original characters. A red-colorblind observer sees `R` and `V` as the same color, while a blue-colorblind observer sees `B` and `V` as the same color. The chosen substring must have no equal adjacent colors for any of these observers.
+A chosen substring must look diverse to three different observers. A normal observer distinguishes all three colors, a red-colorblind observer treats `V` as `R`, and a blue-colorblind observer treats `V` as `B`. For every observer, neighboring jewels must have different perceived colors.
 
-The key consequence is stronger than the original condition first suggests. Consider any adjacent pair containing `V`. If the other jewel is `R`, a red-colorblind observer sees two consecutive red jewels. If the other jewel is `B`, a blue-colorblind observer sees two consecutive blue jewels. If the pair is `VV`, everybody sees equal colors. Thus `V` cannot be adjacent to anything inside a valid substring.
+The useful way to combine these three requirements is to examine every possible pair of neighboring original colors. Two equal colors are forbidden for the normal observer. The pair `R,V` is forbidden for the red-colorblind observer, because it becomes `R,R`. The pair `B,V` is forbidden for the blue-colorblind observer, because it becomes `B,B`. Consequently, among all possible distinct pairs, the only pair that survives is `R,B`.
 
-The only adjacent pair that survives all three observers is `RB` or `BR`. Consequently, every valid substring of length at least two must contain only `R` and `B`, and those characters must alternate.
+That gives a much simpler restatement of the problem: a valid substring of length at least two can contain only `R` and `B`, and every neighboring pair must alternate. A `V` can only appear in a valid substring of length one.
 
-For example, `RBRB` is valid, while `RVB` is not. A single jewel such as `V` is always valid because it has no adjacent pair at all.
+The bound (N \le 250,000) rules out quadratic or worse algorithms in the intended solution. A single linear scan performs only a constant amount of work per jewel, which is comfortably within a 1 second limit in Python. An algorithm that examines every pair of positions would already perform about (31) billion pair checks at the maximum input size, so the structure of the valid substring needs to be exploited directly.
 
-The input can contain up to (250,000) jewels. An (O(N^2)) algorithm would examine roughly (N(N+1)/2) substrings, which is about (31.25) billion when (N=250,000). That is far beyond a one-second time limit. We need to inspect the string only a constant number of times, giving an (O(N)) solution.
+There are several small cases where an implementation based only on the original definition can go wrong. For input `1` followed by `V`, the answer is `1`, because a one-jewel substring has no adjacent pair to violate any condition. A careless implementation that looks only for alternating `R` and `B` might incorrectly return zero.
 
-There are several edge cases that can easily cause an incorrect implementation.
+For input `3` with `RVB`, the answer is `1`. Although all three original colors are different, `RV` becomes `RR` for a red-colorblind observer and `VB` becomes `BB` for a blue-colorblind observer. Checking only whether neighboring original characters differ would incorrectly accept the whole string.
 
-Consider
-
-```
-1
-V
-```
-
-The answer is `1`. A solution that only searches for alternating `R` and `B` segments might incorrectly return zero, forgetting that a single jewel is always valid.
-
-Consider
-
-```
-4
-RVBR
-```
-
-The answer is `1`. Although `V` is not equal to either neighboring character, it cannot be adjacent to `R` for the red-colorblind observer or to `B` for the blue-colorblind observer. A solution that checks only adjacent characters in the original string would incorrectly accept parts containing `V`.
-
-Consider
-
-```
-5
-RBRBB
-```
-
-The answer is `4`, from `RBRB`. The final `BB` breaks the alternating pattern, so a careless implementation that keeps the current length after seeing an invalid pair could overcount.
-
-Finally,
-
-```
-5
-RRRRR
-```
-
-has answer `1`. Equal adjacent `R` jewels are immediately invalid, but each individual jewel remains a valid substring.
+For input `4` with `RBRB`, the answer is `4`. Every adjacent pair is either `RB` or `BR`, so all three observers see different colors at every boundary. An implementation that treats the presence of multiple colors too loosely might miss that a fully alternating `R/B` string is valid.
 
 ## Approaches
 
-A direct approach is to enumerate every contiguous substring and check whether it is colorful for all three observers. There are (N(N+1)/2) substrings. If each substring is checked by scanning all of its adjacent pairs, the worst-case work is (O(N^3)), which is clearly impossible.
+A direct brute-force solution can enumerate every contiguous substring and test whether it satisfies all three observers. For a substring, checking every adjacent pair takes time proportional to its length, so the approach is correct because it explicitly verifies the definition before updating the best answer.
 
-We can make that naive idea slightly better by fixing a starting position and extending the substring one jewel at a time. Once an invalid adjacent pair appears, every longer substring beginning at the same position is also invalid, so we do not need to rescan the whole substring. This reduces the work to (O(N^2)), because in the worst case we still inspect every possible ending position for every starting position. For (N=250,000), that is about (31.25) billion extensions, still far too many.
+The problem is the number of substrings. There are (N(N+1)/2) of them, and if each one is checked from scratch, the total number of character inspections is
 
-The brute-force approach works because validity is determined entirely by adjacent pairs. The useful observation is that after combining the requirements of all three observers, almost every pair becomes forbidden. `R` next to `B` is the only valid pair. A `V` can never participate in a valid substring of length greater than one.
+\frac{N(N+1)(N+2)}{6}.
+]
 
-That means we do not need to consider arbitrary substrings at all. We only need to find the longest contiguous section where every character is `R` or `B` and every adjacent pair is different. Such a section is simply an alternating sequence like `RBRBR` or `BRBRB`.
+For (N=250,000), this is approximately (2.6\times10^{15}) operations, far beyond the time limit. Even an improved brute-force implementation that extends each starting position until it encounters an invalid boundary still takes (O(N^2)) in the worst case, because an alternating string allows every extension to continue.
 
-We can scan the string once. While the current character continues an alternating `R`/`B` sequence, increase its length. Otherwise, start a new sequence of length one if the current character is `R` or `B`. For `V`, no longer sequence can pass through it, so the current length becomes one.
+The key observation is that the three colorblindness conditions eliminate every adjacent pair except `R,B` and `B,R`. Once this is recognized, we no longer need to inspect arbitrary substrings. We only need the longest contiguous run in which every adjacent pair consists of different `R` and `B` characters.
 
-Since a single jewel is always valid, the answer is at least one.
+This property can be maintained while scanning from left to right. If the current character is `R` or `B` and differs from the previous character, the current alternating run extends by one. Otherwise, the current run must restart at the current character. A `V` always starts a new run of length one, since no valid substring of length at least two can contain it.
+
+The brute-force works because it tests every possible interval explicitly, but fails because there are too many intervals. The observation that the valid local transitions are exactly `R -> B` and `B -> R` turns the problem into finding one longest alternating run, which can be done in one pass.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | (O(N^3)) | (O(1)) | Too slow |
-| Incremental Brute Force | (O(N^2)) | (O(1)) | Too slow |
-| Optimal Scan | (O(N)) | (O(1)) | Accepted |
+| Brute Force | (O(N^3)) when checking every substring from scratch | (O(1)) | Too slow |
+| Brute Force with early stopping | (O(N^2)) | (O(1)) | Too slow |
+| Optimal scan | (O(N)) | (O(1)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the string and initialize the best valid length to `1`. A one-jewel substring has no adjacent pair, so it is always colorful.
-2. Maintain `cur`, the length of the longest valid substring ending at the current position. Initially `cur = 1`.
-3. For every position after the first, inspect the previous and current characters. If both are `R` or `B` and they are different, the pair is valid for all three observers, so extend the current substring by setting `cur += 1`.
-4. Otherwise, the previous substring cannot be extended through this position. Set `cur = 1`, because the current jewel by itself is always a valid substring.
-5. Update the global answer with `max(ans, cur)` after processing each character.
-
-The reason we can discard the previous substring immediately after an invalid pair is that every longer substring ending at the current position and beginning before the invalid pair would still contain that same forbidden adjacent pair. There is no benefit in keeping any of it.
+1. Read the string and initialize the current valid run length to zero and the maximum answer to zero. A run represents a suffix ending at the current position whose every adjacent pair is valid.
+2. Process the string from left to right. For the first character, start a run of length one. There is no previous character, so there is no boundary to check.
+3. For every later character, check whether both the current character and the previous character belong to `{R, B}` and whether they are different. This is exactly the condition that the new adjacent pair is either `RB` or `BR`.
+4. If that condition holds, increase the current run length by one. The newly added boundary is valid, and all earlier boundaries in the run were already valid.
+5. Otherwise, start a new run of length one at the current character. This covers both a `V` and a repeated color such as `RR` or `BB`. Neither can extend the previous valid substring.
+6. After determining the current run length, update the maximum answer. The longest run encountered during the scan is the longest valid substring.
 
 ### Why it works
 
-For a substring of length at least two to be colorful for all three observers, every adjacent pair must be valid for all three color interpretations. `R-B` and `B-R` are the only such pairs. Every pair containing `V` is invalid for at least one observer, and equal `R` or equal `B` pairs are invalid for the normal observer.
-
-Thus a valid substring of length at least two is exactly an alternating sequence of `R` and `B`. During the scan, `cur` is precisely the longest such sequence ending at the current position. A valid `R/B` pair extends it, while any other pair makes extension impossible and forces the best valid suffix to be the current single jewel. Taking the maximum value of `cur` over all positions consequently gives the longest valid contiguous substring.
+The invariant is that after processing position (i), `current` is exactly the length of the longest valid substring that ends at position (i). If the new boundary is `RB` or `BR`, appending the current character preserves validity, so the previous run extends by one. For every other boundary, no valid substring of length at least two can cross that boundary, so the only valid substring ending at the current position has length one. Taking the maximum of these ending lengths considers every possible valid substring exactly where it ends, so the final maximum is the global optimum.
 
 ## Python Solution
 
@@ -120,87 +86,75 @@ def solve():
     n = int(input())
     s = input().strip()
 
-    ans = 1
-    cur = 1
+    best = 1
+    current = 1
 
     for i in range(1, n):
         if s[i] in "RB" and s[i - 1] in "RB" and s[i] != s[i - 1]:
-            cur += 1
+            current += 1
         else:
-            cur = 1
+            current = 1
 
-        if cur > ans:
-            ans = cur
+        if current > best:
+            best = current
 
-    print(ans)
+    print(best)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The input is read with `readline`, which is more than sufficient for a string of length (250,000). The string itself is stored once.
+The input is read using `sys.stdin.readline`, which is sufficient for a string of length (250,000) and avoids unnecessary input overhead.
 
-`cur` represents the valid suffix ending at the current position. The condition
+`current` stores the length of the valid alternating suffix ending at the current position. The condition
 
 ```
 s[i] in "RB" and s[i - 1] in "RB" and s[i] != s[i - 1]
 ```
 
-checks exactly whether the new adjacent pair is either `RB` or `BR`. Checking membership in `RB` is necessary because `V` cannot appear in a valid substring of length greater than one.
+checks precisely whether the boundary between positions `i - 1` and `i` is allowed. Both characters must be non-`V`, and they must be different. Since the alphabet contains only `R`, `B`, and `V`, this is equivalent to saying that the pair is `RB` or `BR`.
 
-When the condition fails, `cur` becomes `1` rather than `0`. This handles both ordinary breaks such as `BB` and the special case of `V`. The current jewel can always start a new valid substring by itself.
+When the condition fails, `current` becomes `1`, rather than `0`. The current jewel itself is always a valid one-jewel bead, even when it is `V`.
 
-There is no integer overflow issue in Python, and `cur` never exceeds (N). The scan starts at index `1`, so the previous character access is always inside the string.
+The answer is initialized to `1` because (N \ge 1). This also handles the all-`V` case without any special branch. No integer overflow is possible in Python, and the only stored input-sized object is the string itself.
 
 ## Worked Examples
 
 ### Sample 1
 
-The input is:
+The input is `RBBB`. The only valid adjacent transition is between different `R` and `B` characters. After the first `B`, the next `B` breaks the alternating run, and the remaining `B` breaks it again.
 
-```
-4
-RBBB
-```
-
-The important state is the length of the current alternating `R/B` suffix.
-
-| Position | Character | Previous | Pair valid? | `cur` | `ans` |
+| Position | Character | Previous | Valid transition | Current | Best |
 | --- | --- | --- | --- | --- | --- |
-| 0 | R | - | - | 1 | 1 |
-| 1 | B | R | Yes | 2 | 2 |
-| 2 | B | B | No | 1 | 2 |
-| 3 | B | B | No | 1 | 2 |
+| 0 | R | none | start | 1 | 1 |
+| 1 | B | R | yes | 2 | 2 |
+| 2 | B | B | no | 1 | 2 |
+| 3 | B | B | no | 1 | 2 |
 
-The first two jewels form `RB`, which is valid for every observer. The next `B` creates `BB`, so the alternating sequence must restart there. The answer is `2`.
+The substring `RB` has length two and satisfies every observer. No longer substring works because every substring containing two consecutive `B` jewels violates the normal observer's requirement. The answer is `2`.
 
 ### Sample 2
 
-The input is:
+The input is `RBRBB`. The first four characters form an alternating `R/B` sequence. The final `B` is adjacent to another `B`, so it starts a new run.
 
-```
-5
-RBRBB
-```
-
-| Position | Character | Previous | Pair valid? | `cur` | `ans` |
+| Position | Character | Previous | Valid transition | Current | Best |
 | --- | --- | --- | --- | --- | --- |
-| 0 | R | - | - | 1 | 1 |
-| 1 | B | R | Yes | 2 | 2 |
-| 2 | R | B | Yes | 3 | 3 |
-| 3 | B | R | Yes | 4 | 4 |
-| 4 | B | B | No | 1 | 4 |
+| 0 | R | none | start | 1 | 1 |
+| 1 | B | R | yes | 2 | 2 |
+| 2 | R | B | yes | 3 | 3 |
+| 3 | B | R | yes | 4 | 4 |
+| 4 | B | B | no | 1 | 4 |
 
-The prefix `RBRB` is completely alternating, giving length `4`. The final `B` cannot extend it because it creates `BB`. The answer is consequently `4`.
+The substring `RBRB` has length four and every adjacent pair is either `RB` or `BR`. The final `BB` boundary prevents a length-five answer, so the result is `4`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(N)) | Every jewel is processed exactly once after the first one. |
-| Space | (O(N)) | The input string requires (O(N)) storage; the algorithm itself uses (O(1)) additional space. |
+| Time | (O(N)) | Every jewel is processed once with constant work. |
+| Space | (O(N)) | The input string requires (O(N)) memory, while the algorithm itself uses (O(1)) additional space. |
 
-With (N \le 250,000), the algorithm performs only a few constant-time operations per character. This is comfortably within the one-second constraint, while the quadratic approaches would require billions of iterations in the worst case.
+With (N) at most (250,000), the scan performs only a few constant-time operations per character. This is easily compatible with the 1 second time limit, while the memory usage is far below the 1024 MB limit.
 
 ## Test Cases
 
@@ -208,88 +162,104 @@ With (N \le 250,000), the algorithm performs only a few constant-time operations
 import sys
 import io
 
-def solution(inp: str) -> str:
-    old_stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
-
+def solve():
+    input = sys.stdin.readline
     n = int(input())
     s = input().strip()
 
-    ans = 1
-    cur = 1
+    best = 1
+    current = 1
 
     for i in range(1, n):
         if s[i] in "RB" and s[i - 1] in "RB" and s[i] != s[i - 1]:
-            cur += 1
+            current += 1
         else:
-            cur = 1
+            current = 1
 
-        ans = max(ans, cur)
+        best = max(best, current)
 
-    sys.stdin = old_stdin
-    return str(ans)
+    print(best)
+
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    try:
+        solve()
+        return sys.stdout.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
 
 # Provided samples
-assert solution("4\nRBBB\n") == "2", "sample 1"
-assert solution("5\nRBRBB\n") == "4", "sample 2"
+assert run("4\nRBBB\n") == "2", "sample 1"
+assert run("5\nRBRBB\n") == "4", "sample 2"
 
 # Minimum-size input
-assert solution("1\nV\n") == "1", "single V is always valid"
+assert run("1\nV\n") == "1", "single V"
 
 # All equal values
-assert solution("5\nRRRRR\n") == "1", "equal adjacent colors are invalid"
+assert run("5\nRRRRR\n") == "1", "all equal"
 
-# V cannot be part of a multi-character valid substring
-assert solution("5\nRVBRB\n") == "4", "longest valid part is BRBR"
+# V cannot participate in a valid substring of length > 1
+assert run("3\nRVB\n") == "1", "V blocks both neighboring transitions"
 
 # Maximum-size input
-assert solution("250000\n" + "RB" * 125000 + "\n") == "250000", \
-    "entire maximum-length alternating string is valid"
+n = 250000
+s = "".join("R" if i % 2 == 0 else "B" for i in range(n))
+assert run(f"{n}\n{s}\n") == str(n), "maximum alternating string"
+
+# Boundary and off-by-one case
+assert run("6\nBRBBRB\n") == "3", "longest run is BRB"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1\nV\n` | `1` | Minimum size and the fact that a single `V` is valid |
-| `5\nRRRRR\n` | `1` | Repeated equal colors must break the sequence |
-| `5\nRVBRB\n` | `4` | `V` cannot belong to a valid substring of length greater than one |
-| `250000\n` followed by `RB` repeated 125000 times | `250000` | Maximum input size and the full-length boundary case |
+| `1 / V` | 1 | Minimum size and the fact that a single `V` is valid |
+| `5 / RRRRR` | 1 | Repeated colors cannot form a valid adjacent pair |
+| `3 / RVB` | 1 | `V` cannot be adjacent to either `R` or `B` |
+| `250000 / RBRB...` | 250000 | Maximum input size and a run reaching the full string |
+| `6 / BRBBRB` | 3 | Restarting after an invalid boundary and avoiding off-by-one errors |
 
 ## Edge Cases
 
-For the single-jewel case
+For a single jewel, consider the input
 
 ```
 1
 V
 ```
 
-the loop does not execute because there is no adjacent pair. `ans` starts at `1`, so the algorithm prints `1`. This is why initializing the answer to zero would also work only if the implementation separately handled the empty scan, while the chosen initialization naturally matches the problem's guarantee that (N \ge 1).
+There is no adjacent pair at all, so every observer considers the bead valid. The algorithm starts `current` and `best` at `1` and never enters the loop, producing `1`.
 
 For a substring containing `V`, consider
 
 ```
-4
-RVBR
+3
+RVB
 ```
 
-At position `1`, the pair `RV` is invalid, so `cur` becomes `1`. At position `2`, the pair `VB` is also invalid, so `cur` remains `1`. At position `3`, `BR` is valid, so `cur` becomes `2`. The answer is `2`, corresponding to the final substring `BR`. This demonstrates that `V` is not merely a separator between two sequences, but that it cannot participate in a multi-jewel valid substring at all.
+At position one, the pair `RV` is invalid because red-colorblind people perceive it as two red jewels. The algorithm resets the run to `1`. At position two, `VB` is invalid for the analogous blue-colorblind reason, so the run remains `1`. The result is `1`.
 
-For repeated colors,
+For repeated colors, consider
 
 ```
 5
 RRRRR
 ```
 
-every adjacent pair is `RR`. Each pair fails the alternating `R/B` condition, so `cur` repeatedly resets to `1`. The maximum remains `1`, which is correct because any substring of length at least two contains equal adjacent red jewels.
+The first `R` creates a run of length one. Every subsequent `R` equals the previous character, so every transition is invalid and the run repeatedly resets to one. The answer is `1`.
 
-For a boundary where the longest sequence reaches the end,
+For a fully alternating bead, consider
 
 ```
-5
-BRBRB
+6
+RBRBRB
 ```
 
-every pair is valid. `cur` progresses through `1, 2, 3, 4, 5`, and `ans` reaches `5`. There is no special end-of-string handling because the answer is updated while processing the final character.
+Every boundary is either `RB` or `BR`, so `current` increases from `1` through `6`. The maximum becomes `6`, showing that the algorithm does not impose any unnecessary restriction on the length of an alternating `R/B` sequence.
 
-For the maximum-size alternating input, consisting of `250000` characters in the pattern `RBRB...`, every adjacent pair is either `RB` or `BR`. The current length consequently reaches `250000`, and the algorithm returns the entire bead. This confirms that the linear scan handles the largest allowed input without any special-case logic.
+The boundary case `BRBBRB` is useful for catching an off-by-one error. The scan produces run lengths `1, 2, 1, 1, 2, 3`, so the answer is `3`, represented by the final substring `BRB`. A careless implementation that updates the maximum before resetting or compares the wrong pair of indices can incorrectly report `2` or `4`.
