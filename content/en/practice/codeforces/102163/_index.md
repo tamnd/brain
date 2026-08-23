@@ -1,27 +1,27 @@
 ---
 title: "NCD 2019"
-description: "11 problems from NCD 2019 (contest 102163), difficulty -. 6/11 solutions verified against sample I/O."
+description: "11 problems from NCD 2019 (contest 102163), difficulty -. 7/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102163
 contest_type: "Special"
 rating_range: "-"
 n_problems: 11
-n_verified: 6
-total_solve_s: 11656
+n_verified: 7
+total_solve_s: 11179
 contest_year: 2019
-date: "2026-08-21T08:37:11+07:00"
+date: "2026-08-23T10:49:54+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 11 problems | 6/11 verified | Difficulty - | 3h 14m
+Special | 11 problems | 7/11 verified | Difficulty - | 3h 6m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Hasan the lazy judge](https://codeforces.com/problemset/problem/102163/A) |  |  |  | 46m 54s |  |
+| [A](A/) | [Hasan the lazy judge](https://codeforces.com/problemset/problem/102163/A) |  |  |  | 38m 57s | ✓ |
 | [B](B/) | [Let me sleep](https://codeforces.com/problemset/problem/102163/B) |  |  |  | 7m 41s | ✓ |
 | [C](C/) | [Hasan and his lazy students](https://codeforces.com/problemset/problem/102163/C) |  |  |  | 11m 4s |  |
 | [D](D/) | [Football Cup](https://codeforces.com/problemset/problem/102163/D) |  |  |  | 39m 5s | ✓ |
