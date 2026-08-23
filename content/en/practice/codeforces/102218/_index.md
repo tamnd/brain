@@ -8,9 +8,9 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 9
 n_verified: 1
-total_solve_s: 4181
+total_solve_s: 4173
 contest_year: 2019
-date: "2026-08-18T03:38:59+07:00"
+date: "2026-08-18T06:23:18+07:00"
 weight: 102218
 draft: false
 ---
@@ -26,7 +26,7 @@ Special | 9 problems | 1/9 verified | Difficulty - | 1h 9m
 | [D](D/) | [Dynamic Network](https://codeforces.com/problemset/problem/102218/D) |  |  |  | 14m 30s |  |
 | [E](E/) | [Environmental Contingency](https://codeforces.com/problemset/problem/102218/E) |  |  |  | 2m 56s |  |
 | [F](F/) | [Freddy and the Chocolate Factory](https://codeforces.com/problemset/problem/102218/F) |  |  |  | 8m 31s | ✓ |
-| [G](G/) | [Generating Problems](https://codeforces.com/problemset/problem/102218/G) |  |  |  | 7m 54s |  |
+| [G](G/) | [Generating Problems](https://codeforces.com/problemset/problem/102218/G) |  |  |  | 7m 46s |  |
 | [H](H/) | [Heartbreaker Radio Station](https://codeforces.com/problemset/problem/102218/H) |  |  |  | 1m 51s |  |
 | [J](J/) | [Just an easy task](https://codeforces.com/problemset/problem/102218/J) |  |  |  | 7m 20s |  |
 | [K](K/) | [K-th Missing Digit](https://codeforces.com/problemset/problem/102218/K) |  |  |  | 5m 4s |  |
