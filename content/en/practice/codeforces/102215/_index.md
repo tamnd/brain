@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 12
 n_verified: 4
-total_solve_s: 6118
+total_solve_s: 8380
 contest_year: 2019
-date: "2026-08-20T18:11:11+07:00"
+date: "2026-08-20T18:50:53+07:00"
 weight: 102215
 draft: false
 ---
 
 # [2019, XII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102215)
 
-Special | 12 problems | 4/12 verified | Difficulty - | 1h 41m
+Special | 12 problems | 4/12 verified | Difficulty - | 2h 19m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ Special | 12 problems | 4/12 verified | Difficulty - | 1h 41m
 | [G](G/) | [Akinator](https://codeforces.com/problemset/problem/102215/G) |  |  |  | 7m 31s | ✓ |
 | [H](H/) | [Missing Number](https://codeforces.com/problemset/problem/102215/H) |  |  |  | 9m 12s |  |
 | [I](I/) | [Painting a Square](https://codeforces.com/problemset/problem/102215/I) |  |  |  | 10m 10s |  |
-| [J](J/) | [The Power of the Dark Side - 2](https://codeforces.com/problemset/problem/102215/J) |  |  |  | 1m 58s |  |
+| [J](J/) | [The Power of the Dark Side - 2](https://codeforces.com/problemset/problem/102215/J) |  |  |  | 39m 40s |  |
 | [K](K/) | [Deck Sorting](https://codeforces.com/problemset/problem/102215/K) |  |  |  | 2m 27s | ✓ |
 | [L](L/) | [Inscribed Circle](https://codeforces.com/problemset/problem/102215/L) |  |  |  | 8m 45s |  |
 | [M](M/) | [Shlakoblock is live!](https://codeforces.com/problemset/problem/102215/M) |  |  |  | 7m 31s |  |
