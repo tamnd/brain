@@ -1,7 +1,7 @@
 ---
 title: "CF 102191B - Final Problem"
-description: "We have a contest with exactly ten existing problems. Every team has a skill level between 1 and 10, and every problem has a difficulty between 1 and 10. A team can solve a problem exactly when the problem's difficulty is no greater than the team's skill."
-date: "2026-08-18T19:34:17+07:00"
+description: "We have ten existing problems, each with a difficulty from 1 to 10. Every team has a skill level, also from 1 to 10, and a team can solve exactly those problems whose difficulty does not exceed its skill. We may add one new problem with a difficulty from 1 to 10."
+date: "2026-08-23T14:48:08+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102191
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "PSUT Coding Marathon 2019"
 rating: 0
 weight: 102191
-solve_time_s: 180
-verified: false
+solve_time_s: 1475
+verified: true
 draft: false
 ---
 
@@ -18,37 +18,21 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m  
-**Verified:** no  
+**Solve time:** 24m 35s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a contest with exactly ten existing problems. Every team has a skill level between 1 and 10, and every problem has a difficulty between 1 and 10. A team can solve a problem exactly when the problem's difficulty is no greater than the team's skill.
+We have ten existing problems, each with a difficulty from 1 to 10. Every team has a skill level, also from 1 to 10, and a team can solve exactly those problems whose difficulty does not exceed its skill.
 
-We may add one new problem. Its difficulty must also be between 1 and 10. The new problem has to make sure that every team has at least one solvable problem, counting both the original ten problems and the new one. The goal is to make the new problem as difficult as possible while keeping that guarantee.
+We may add one new problem with a difficulty from 1 to 10. The new problem has to be easy enough that every team can solve at least one problem after it is added. The goal is to make this new problem as difficult as possible while still satisfying every team.
 
-The input gives the number of teams, followed by their skill levels, followed by the ten existing problem difficulties. The output is the largest difficulty we can assign to the new problem.
+The first input value, `n`, is the number of teams. The next line contains their skill levels. The final line contains the difficulties of the ten existing problems.
 
-The constraints are unusually small. There are at most 32 teams and only 10 existing problems, so even an exhaustive search over all ten possible difficulties, checking every team against every existing problem, performs at most
+The constraint `n <= 32` is extremely small. Even an approach that checks all ten possible new difficulties against every team performs at most `10 * 32 = 320` team checks. The memory limit of 256 MB is also far beyond what is needed. In fact, the problem has enough structure to reduce the work to a single scan over the teams.
 
-[
-10 \times 32 \times 10 = 3200
-]
-
-basic comparisons. That is tiny for a 1 second limit. A more direct solution can do the work in only (10n) comparisons, and there is no need for sophisticated data structures, sorting, or binary search.
-
-The main edge cases come from teams that are already covered and teams that are not. Consider this input:
-
-```
-1
-1
-2 3 4 5 6 7 8 9 10 10
-```
-
-The only team has skill 1 and cannot solve any existing problem. The new problem must have difficulty at most 1, so the answer is 1. A careless implementation that simply takes the minimum existing difficulty would return 2, even though that problem is also too hard for the team.
-
-The opposite situation is also easy to mishandle:
+The main edge case is when every team can already solve an existing problem. In that situation, the new problem does not need to help anyone, so its difficulty can be the maximum allowed value, 10. For example:
 
 ```
 1
@@ -56,54 +40,58 @@ The opposite situation is also easy to mishandle:
 1 2 3 4 5 6 7 8 9 10
 ```
 
-The team can already solve the problem of difficulty 1, so the new problem does not need to help this team at all. We can make it as difficult as allowed, giving the answer 10. An implementation that always restricts the new problem to the minimum team skill would incorrectly return 5.
+The only team can solve the problem of difficulty 1, so the answer is `10`. A careless implementation that always searches for a team needing help might fail to produce an answer in this case.
 
-There is also a boundary case where an existing problem has exactly the team's skill:
+Another edge case occurs when the weakest team cannot solve any existing problem. For example:
 
 ```
-1
-5
-5 6 7 8 9 10 10 10 10 10
+2
+1 5
+2 3 4 6 7 8 9 10 10 10
 ```
 
-The team can solve difficulty 5, because the condition is difficulty less than or equal to skill. It is already covered, so the answer is 10. Using a strict comparison such as `difficulty < skill` would incorrectly classify the team as uncovered.
+The team with skill 1 needs the new problem to have difficulty at most 1. Hence the answer is `1`. An implementation using a strict inequality such as `difficulty < skill` would incorrectly treat a problem of difficulty 1 as unsolvable by a team with skill 1.
+
+A third case involves several teams with the same skill. For example:
+
+```
+3
+4 4 7
+5 6 8 9 10 10 10 10 10 10
+```
+
+Both teams with skill 4 need the new problem to have difficulty at most 4, so the answer is `4`. The duplicate teams do not change the required difficulty.
 
 ## Approaches
 
-A direct brute-force solution can try every possible new difficulty from 1 through 10. For each candidate, it checks every team. If the team can solve the new problem, that team is covered. Otherwise, the implementation scans the ten existing problems and checks whether at least one is solvable. A candidate is valid only when every team is covered, and the largest valid candidate is the answer.
+A direct brute-force solution can try every possible difficulty from 1 through 10 for the new problem. For each candidate difficulty, scan every team and check whether that team can solve at least one of the ten existing problems or the new one. This is correct because every legal answer is explicitly tested. With `n <= 32`, the worst case is only 10 candidate difficulties times 32 teams times 10 existing problems, or 3200 elementary comparisons if we inspect all existing problems separately. This is comfortably within the limit.
 
-This method is completely correct because there are only ten possible values for the new difficulty, so checking all of them cannot miss the optimum. With (n \leq 32), its worst case is only (10 \times 32 \times 10 = 3200) comparisons. Thus, despite being the brute-force approach, it is already easily fast enough for the actual constraints. There is no input size at which this particular brute-force becomes too slow within the stated limits.
+The brute-force approach works because the difficulty range is tiny, but it performs unnecessary work. We do not actually need to consider every existing problem separately for every team. For a particular team, only the easiest existing problem matters. If the easiest problem has difficulty `m`, then every team with skill at least `m` is already covered, while every team with skill below `m` cannot solve any existing problem.
 
-We can still simplify the reasoning substantially. For one fixed team, only the easiest existing problem matters. Let that minimum existing difficulty be (m). If (m \leq s), where (s) is the team's skill, the team is already covered and places no restriction on the new problem. If (m > s), none of the existing problems can be solved, so the new problem must have difficulty at most (s).
+Suppose a team has skill `s` and the easiest existing problem has difficulty `m`. If `s >= m`, that team is already guaranteed to solve something, so the new problem places no restriction on its difficulty. If `s < m`, the new problem becomes the only possible problem that can cover this team, so its difficulty must satisfy `new_difficulty <= s`.
 
-This means we do not need to test ten candidate difficulties at all. We can inspect each team once, determine whether its minimum existing problem is solvable, and, for every uncovered team, record its skill. The new problem must be solvable by every uncovered team, so its difficulty cannot exceed the smallest skill among them.
+Consequently, among all teams that are not already covered, the new problem must have difficulty at most the smallest skill level. Choosing exactly that smallest skill gives the largest possible valid difficulty. If there are no uncovered teams, the new problem can simply have difficulty 10.
 
-If there are no uncovered teams, the new problem can have the maximum allowed difficulty, 10. Otherwise, the answer is exactly the minimum skill among the uncovered teams.
-
-The brute-force works because the candidate range is tiny, but the observation that every team is constrained only by its easiest existing problem lets us collapse the whole search into one pass over the teams.
+This reduces the entire problem to finding the minimum existing problem difficulty and then finding the weakest team whose skill is below that value.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(10 · n · 10) = O(n) | O(1) | Accepted |
-| Optimal | O(10 · n) = O(n) | O(1) | Accepted |
+| Brute Force | O(10 × n × 10) = O(n) | O(1) | Accepted |
+| Optimal | O(n + 10) = O(n) | O(1) | Accepted |
+
+The asymptotic difference is not significant because all relevant values are tiny, but the optimal solution exposes the actual mathematical structure of the problem and avoids repeatedly checking the same information.
 
 ## Algorithm Walkthrough
 
-1. Read the skill level of every team and the ten existing problem difficulties.
-2. Find the minimum difficulty among the existing problems. Call it `easiest`.
-
-For any team, if `easiest` is greater than its skill, then every existing problem is too difficult for that team. Conversely, if `easiest` is at most its skill, that team can already solve at least one existing problem.
-3. Set the answer initially to 10.
-
-If every team is already covered, there is no restriction on the new problem, so the maximum allowed difficulty, 10, is correct.
-4. For every team whose skill is smaller than `easiest`, update the answer to the smaller of the current answer and that team's skill.
-
-Such a team cannot solve any old problem, so the new problem must have difficulty no greater than its skill. Since the new problem must work for every such team, we need the smallest of their skill levels.
-5. Print the resulting answer.
+1. Read the number of teams, their skill levels, and the ten existing problem difficulties. The existing problems can be summarized by their minimum difficulty because, for deciding whether a team is already covered, solving any problem is enough.
+2. Compute `easiest`, the minimum difficulty among the ten existing problems. A team with skill `s` can already solve a problem exactly when `s >= easiest`.
+3. Initialize the answer to `10`. This represents the case where every team is already covered, so there is no restriction coming from the existing teams.
+4. Scan every team skill `s`. If `s < easiest`, this team cannot solve any existing problem. The new problem must then have difficulty at most `s`. Since we want the maximum possible difficulty, update the answer to the minimum such `s`.
+5. Print the resulting answer. If at least one team was uncovered, the answer is the weakest skill among those uncovered teams. If no team was uncovered, the initial value `10` remains valid.
 
 ### Why it works
 
-The key invariant is that `easiest` is the minimum difficulty among all existing problems. For every team with skill at least `easiest`, that easiest problem is solvable, so the team already has a valid problem and imposes no condition on the new problem. For every team with skill below `easiest`, even the easiest existing problem is too difficult, so the new problem is their only possible solvable problem and its difficulty must be at most their skill. Consequently, the new difficulty can be no larger than the minimum skill among all uncovered teams, and choosing exactly that value satisfies every uncovered team while being as difficult as possible.
+Let `easiest` be the smallest difficulty among the existing problems. For every team with skill at least `easiest`, that team can already solve the easiest problem, so it imposes no condition on the new problem. For every team with skill below `easiest`, the team cannot solve any existing problem, so the new problem must have difficulty no greater than that team's skill. Thus every uncovered team imposes an upper bound on the new difficulty, and all those bounds must hold simultaneously. The tightest bound is their minimum skill. Choosing that value satisfies every uncovered team and is at least as difficult as any other valid choice. If there are no uncovered teams, all teams are already satisfied and the maximum allowed difficulty, 10, is optimal.
 
 ## Python Solution
 
@@ -125,19 +113,18 @@ def solve():
 
     print(answer)
 
-if __name__ == "__main__":
-    solve()
+solve()
 ```
 
-The first two input lines give us the team skills and the existing problem difficulties. Since there are exactly ten problems, `min(difficulties)` immediately gives the only existing-problem information that matters.
+The first three reads correspond directly to the three pieces of input: the number of teams, their skills, and the ten existing problem difficulties.
 
-The answer starts at 10 because 10 is the largest possible new difficulty. We lower it only when we find a team that cannot solve any existing problem.
+`easiest = min(difficulties)` compresses all ten existing problems into the only value relevant to coverage. If a team cannot solve this easiest problem, it cannot solve any of the other problems because all of them are at least as difficult.
 
-The comparison is `skill < easiest`, not `skill <= easiest`. A team whose skill equals the easiest problem's difficulty can solve that problem, so it is already covered.
+The answer starts at 10 because 10 is the largest permitted difficulty. A team whose skill is below `easiest` cannot solve anything from the original set, so its skill becomes an upper bound on the new problem. Taking the minimum over all such skills handles all constraints simultaneously.
 
-No integer overflow is possible because every value is between 1 and 10. The algorithm also does not need sorting or extra arrays beyond the input arrays, keeping the implementation small and avoiding unnecessary work.
+The comparison is `skill < easiest`, not `skill <= easiest`. A team with skill exactly equal to the easiest problem's difficulty can solve that problem, so it is already covered.
 
-The input contains only one test case, so there is no outer test-case loop.
+No special handling is needed for an empty set of uncovered teams. The initial answer of 10 naturally handles that case. Integer overflow is impossible because all values are between 1 and 10.
 
 ## Worked Examples
 
@@ -153,47 +140,43 @@ The input is:
 
 The easiest existing problem has difficulty 4.
 
-| Team skill | Easiest problem | Already covered? | Answer after team |
+| Team skill | Easiest difficulty | Already covered? | Current answer |
 | --- | --- | --- | --- |
 | 3 | 4 | No | 3 |
 | 7 | 4 | Yes | 3 |
 | 5 | 4 | Yes | 3 |
 | 5 | 4 | Yes | 3 |
 
-The team with skill 3 cannot solve any existing problem, so the new problem must have difficulty at most 3. Every other team can already solve difficulty 4, so they do not impose a smaller limit. The maximum valid answer is 3.
+The team with skill 3 cannot solve any existing problem, so the new problem must have difficulty at most 3. All other teams can solve the difficulty-4 problem. Thus the maximum valid answer is `3`.
 
 ### Constructed Example 2
 
-There is no second official sample in the supplied statement, so consider:
+Consider:
 
 ```
-5
-4 6 7 10 8
-5 6 9 10 10 10 10 10 10 10
+3
+5 6 10
+1 4 7 8 9 10 10 10 10 10
 ```
 
-The easiest existing problem has difficulty 5.
+The easiest existing problem has difficulty 1.
 
-| Team skill | Easiest problem | Already covered? | Answer after team |
+| Team skill | Easiest difficulty | Already covered? | Current answer |
 | --- | --- | --- | --- |
-| 4 | 5 | No | 4 |
-| 6 | 5 | Yes | 4 |
-| 7 | 5 | Yes | 4 |
-| 10 | 5 | Yes | 4 |
-| 8 | 5 | Yes | 4 |
+| 5 | 1 | Yes | 10 |
+| 6 | 1 | Yes | 10 |
+| 10 | 1 | Yes | 10 |
 
-Only the team with skill 4 is uncovered. The new problem therefore has to be at most 4, and difficulty 4 works for that team. The answer is 4.
-
-This trace demonstrates why we only care about the easiest existing problem. Once a team cannot solve that problem, it cannot solve any of the other problems because all of them are at least as difficult.
+Every team can already solve the difficulty-1 problem. There is no uncovered team restricting the new problem, so the answer remains 10. This trace demonstrates why the all-covered case must return the maximum allowed difficulty rather than the minimum team skill.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Finding the minimum among ten problems takes O(10), then every team is checked once. |
-| Space | O(n) | The team skills are stored in an array; the problem difficulties use a constant-size array of ten values. |
+| Time | O(n + 10) = O(n) | We find the minimum of the ten difficulties and scan the `n` team skills once. |
+| Space | O(n) | The team skills are stored in a list; the input itself contains only `n` skills and ten difficulties. |
 
-With at most 32 teams, the algorithm performs only a few dozen meaningful operations after reading the input. It is far below the 1 second time limit and uses negligible memory compared with the 256 MB limit.
+With `n <= 32`, the algorithm performs only a few dozen meaningful operations. It is far below the 1 second time limit and uses negligible memory compared with the 256 MB limit.
 
 ## Test Cases
 
@@ -201,12 +184,13 @@ With at most 32 teams, the algorithm performs only a few dozen meaningful operat
 import sys
 import io
 
-def solve():
-    input = sys.stdin.readline
+def solve_data(inp: str) -> str:
+    data = list(map(int, inp.split()))
+    it = iter(data)
 
-    n = int(input())
-    skills = list(map(int, input().split()))
-    difficulties = list(map(int, input().split()))
+    n = next(it)
+    skills = [next(it) for _ in range(n)]
+    difficulties = [next(it) for _ in range(10)]
 
     easiest = min(difficulties)
     answer = 10
@@ -215,22 +199,10 @@ def solve():
         if skill < easiest:
             answer = min(answer, skill)
 
-    print(answer)
+    return str(answer)
 
 def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-    result = sys.stdout.getvalue()
-
-    sys.stdin = old_stdin
-    sys.stdout = old_stdout
-
-    return result
+    return solve_data(inp)
 
 # Provided sample
 assert run(
@@ -238,70 +210,61 @@ assert run(
 3 7 5 5
 4 6 5 7 4 4 9 10 7 9
 """
-) == "3\n", "sample 1"
+) == "3", "sample 1"
 
-# Minimum-size input, the only team cannot solve any existing problem.
+# Minimum-size input, team can already solve the easiest problem.
+assert run(
+    """1
+10
+1 2 3 4 5 6 7 8 9 10
+"""
+) == "10", "minimum size, already covered"
+
+# Minimum skill cannot solve any existing problem.
 assert run(
     """1
 1
 2 3 4 5 6 7 8 9 10 10
 """
-) == "1\n", "minimum size"
+) == "1", "minimum skill boundary"
 
-# Everyone is already covered, so the new problem can have difficulty 10.
+# All teams have the same skill, and all existing problems are too hard.
 assert run(
-    """1
-5
-1 2 3 4 5 6 7 8 9 10
+    """5
+4 4 4 4 4
+5 6 7 8 9 10 10 10 10 10
 """
-) == "10\n", "already covered"
+) == "4", "all equal skills"
 
-# Equality boundary: skill exactly equals the easiest problem.
-assert run(
-    """3
-5 6 10
-5 7 8 9 10 10 10 10 10 10
-"""
-) == "10\n", "equality boundary"
-
-# Maximum number of teams, with several uncovered teams.
+# Maximum-size input, mixed covered and uncovered teams.
 assert run(
     """32
-1 1 1 1 1 1 2 2 2 2 3 3 3 3 4 4
-5 5 5 5 5 5 5 5 5 5
+1 2 3 4 5 6 7 8 9 10 1 2 3 4 5 6
+7 8 9 10 10 10 10 10 10 10
 """
-) == "1\n", "maximum n"
+) == "1", "maximum n"
 
-# All teams have the same skill and all existing problems are too difficult.
+# Boundary case: a team exactly equal to the easiest difficulty is covered.
 assert run(
-    """8
-7 7 7 7 7 7 7 7
-8 8 8 9 9 10 10 10 10 10
+    """3
+3 4 7
+4 5 6 7 8 9 10 10 10 10
 """
-) == "7\n", "all equal skills"
+) == "3", "exact equality boundary"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1 / 2 3 4 5 6 7 8 9 10 10` | `1` | Minimum-size input and lowest possible answer |
-| `1 / 5 / 1 2 3 4 5 6 7 8 9 10` | `10` | Every team is already covered |
-| `3 / 5 6 10 / 5 7 8 9 10 10 10 10 10 10` | `10` | Difficulty equal to skill is solvable |
-| `32 / ... / ten problems all at least 5` | `1` | Maximum team count and very low uncovered skills |
-| `8 / all skills 7 / problems all at least 8` | `7` | All teams uncovered with identical constraints |
+| Sample 1 | `3` | Provided example with one uncovered team |
+| `1 / skill 10 / difficulties 1..10` | `10` | Minimum input and all teams already covered |
+| `1 / skill 1 / difficulties 2..10` | `1` | Lowest possible skill and lowest possible answer |
+| Five teams with skill 4 and all problems at least 5 | `4` | Duplicate and all-equal team skills |
+| 32 teams with skills from 1 through 10 repeated | `1` | Maximum allowed `n` |
+| Skills `3, 4, 7`, easiest problem `4` | `3` | Exact equality must count as solvable |
 
 ## Edge Cases
 
-The first edge case is the smallest possible team with no solvable existing problem:
-
-```
-1
-1
-2 3 4 5 6 7 8 9 10 10
-```
-
-Here `easiest = 2`. The team's skill is 1, so `1 < 2` and the answer becomes `min(10, 1) = 1`. The algorithm prints `1`. This catches implementations that confuse the minimum existing difficulty with the required new difficulty.
-
-The second edge case has a team that is already covered:
+When every team is already covered, the algorithm keeps `answer = 10`. For example:
 
 ```
 1
@@ -309,24 +272,34 @@ The second edge case has a team that is already covered:
 1 2 3 4 5 6 7 8 9 10
 ```
 
-Here `easiest = 1`, and the team's skill 5 is not smaller than 1. The team is skipped because it already solves the difficulty-1 problem. The answer remains 10, which is the maximum possible new difficulty.
+Here `easiest = 1`, and the only skill is 5. Since `5 < 1` is false, the answer is never changed from 10. This is correct because the team already solves the difficulty-1 problem, so the added problem can be as difficult as the allowed maximum.
 
-The equality boundary behaves similarly:
+When the weakest team cannot solve any existing problem, that team's skill directly determines the answer. For:
+
+```
+2
+1 5
+2 3 4 6 7 8 9 10 10 10
+```
+
+we get `easiest = 2`. The team with skill 1 satisfies `1 < 2`, so `answer` becomes 1. The team with skill 5 is already covered. The resulting output is `1`, which is the only possible difficulty that the weakest team can solve.
+
+When a team's skill equals the easiest existing problem, that team is already covered. Consider:
 
 ```
 3
-5 6 10
-5 7 8 9 10 10 10 10 10 10
+3 4 7
+4 5 6 7 8 9 10 10 10 10
 ```
 
-The easiest problem has difficulty 5. The first team has skill exactly 5, so it can solve that problem. The other teams can also solve it. No team is uncovered, and the algorithm keeps the initial answer 10. This confirms that the solvability condition must use `<=`, represented by the uncovered test `skill < easiest`.
+The easiest problem has difficulty 4. The team with skill 3 is uncovered, so the answer becomes 3. The team with skill 4 is not uncovered because `4 < 4` is false, and it can solve the difficulty-4 problem exactly. The team with skill 7 is also covered. The output is `3`.
 
-Finally, consider several teams that cannot solve any existing problem:
+Duplicate team skills require no additional logic. For:
 
 ```
 5
-3 7 2 8 4
+4 4 4 4 4
 5 6 7 8 9 10 10 10 10 10
 ```
 
-The easiest existing problem has difficulty 5. Teams with skills 3, 2, and 4 are uncovered, so the new problem must have difficulty at most 3, at most 2, and at most 4 simultaneously. The tightest restriction is 2, so the algorithm updates the answer as it encounters these teams and finishes with `2`. A new problem of difficulty 2 is solvable by all three uncovered teams, while difficulty 3 would fail for the team with skill 2.
+the easiest existing problem has difficulty 5. Every team satisfies `4 < 5`, so every team needs the new problem to have difficulty at most 4. Taking the minimum of these identical constraints gives 4, which is printed as the answer.
