@@ -1,23 +1,23 @@
 ---
 title: "PSUT Coding Marathon 2019"
-description: "8 problems from PSUT Coding Marathon 2019 (contest 102191), difficulty -. 3/8 solutions verified against sample I/O."
+description: "9 problems from PSUT Coding Marathon 2019 (contest 102191), difficulty -. 3/9 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102191
 contest_type: "Special"
 rating_range: "-"
-n_problems: 8
+n_problems: 9
 n_verified: 3
-total_solve_s: 9038
+total_solve_s: 11271
 contest_year: 2019
-date: "2026-08-23T23:34:40+07:00"
+date: "2026-08-23T00:11:53+07:00"
 weight: 102191
 draft: false
 ---
 
 # [PSUT Coding Marathon 2019](https://codeforces.com/contest/102191)
 
-Special | 8 problems | 3/8 verified | Difficulty - | 2h 30m
+Special | 9 problems | 3/9 verified | Difficulty - | 3h 7m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -28,4 +28,5 @@ Special | 8 problems | 3/8 verified | Difficulty - | 2h 30m
 | [E](E/) | [Snake Moves](https://codeforces.com/problemset/problem/102191/E) |  |  |  | 28m 59s | ✓ |
 | [F](F/) | [Sum then Multiply](https://codeforces.com/problemset/problem/102191/F) |  |  |  | 13m 29s |  |
 | [G](G/) | [Next Number](https://codeforces.com/problemset/problem/102191/G) |  |  |  | 24m 17s |  |
+| [J](J/) | [Graph to Grid](https://codeforces.com/problemset/problem/102191/J) |  |  |  | 37m 13s |  |
 | [K](K/) | [Cactus Portal](https://codeforces.com/problemset/problem/102191/K) |  |  |  | 18m 49s |  |
