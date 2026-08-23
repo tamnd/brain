@@ -1,7 +1,7 @@
 ---
 title: "CF 102191A - Generous Eater"
-description: "We start with n candies and want to give candies to as many distinct friends as possible. Giving one candy to one friend is straightforward, but after every second candy given to friends, we consume one candy ourselves if one remains."
-date: "2026-08-18T02:25:45+07:00"
+description: "We start with n candies and want to give candies to as many distinct friends as possible, one candy per friend. After every second friend receives a candy, we eat one candy ourselves if any candy remains."
+date: "2026-08-23T09:12:46+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102191
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "PSUT Coding Marathon 2019"
 rating: 0
 weight: 102191
-solve_time_s: 226
-verified: false
+solve_time_s: 1443
+verified: true
 draft: false
 ---
 
@@ -18,55 +18,62 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 3m 46s  
-**Verified:** no  
+**Solve time:** 24m 3s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We start with `n` candies and want to give candies to as many distinct friends as possible. Giving one candy to one friend is straightforward, but after every second candy given to friends, we consume one candy ourselves if one remains. The question is how many candies can ultimately reach friends when we choose the order of giving them optimally.
+We start with `n` candies and want to give candies to as many distinct friends as possible, one candy per friend. After every second friend receives a candy, we eat one candy ourselves if any candy remains. The process continues until we can no longer give another candy to a friend.
 
-The input contains a single integer `n`, representing the initial number of candies. The output is the maximum number of friends who can each receive one candy.
+The task is to compute the maximum number of friends who can receive a candy.
 
-The upper bound `n <= 10^9` rules out any approach that performs one or more operations for every candy. A linear simulation would require up to one billion iterations, which is far beyond what a competitive programming time limit can tolerate, especially with the stated effectively zero-second limit. We need to recognize the repeating structure and compute the answer directly in constant time. The memory requirement is trivial because only the single input value and the answer are needed.
+The value of `n` can be as large as `10^9`. That immediately rules out any simulation that performs one operation per candy, because in the worst case it would execute around one billion iterations. Even with a small constant amount of work per iteration, that is far beyond what a sub-second competitive programming solution can afford. We need to derive the answer directly from the structure of the process.
 
-The smallest inputs expose the boundary behavior. For `n = 1`, the correct answer is `1`, because the only candy can be given away and there is no second candy that triggers eating. A formula that always subtracts one candy for every group of three must still handle this case correctly.
+The most subtle cases occur around the moment when there is no candy left to eat. For example, with input `2`, the answer is `2`, not `1`. We give one candy to each of two friends, and then there is nothing left for us to eat, so both friends are served. A careless formula that always subtracts one candy after every pair would incorrectly reject the second friend.
 
-For `n = 2`, the answer is `2`. We can give both candies to two friends, and only then would we need to eat a candy, but none remains. A careless implementation that assumes every pair of gifts always costs an additional candy would incorrectly return `1`.
+Another boundary case is `4`. The correct answer is `3`. We give candies to the first two friends, eat one candy, and have one candy remaining for the third friend. After that, the process stops. A naive calculation of one eaten candy for every two friends might incorrectly expect more than four candies to serve three friends.
 
-Multiples of three are another useful boundary. With `n = 6`, we can give two candies, eat one, then give two more candies and eat the last one. The answer is `4`, not `3`. The eating happens after each pair of gifts, so the final consumed candy does not correspond to an additional friend being lost.
+Input `6` is another useful boundary case. The answer is `4`, not `5`. After serving two friends, one candy is eaten, leaving three. We then serve two more friends, leaving one, and that final candy is eaten. There is nothing left for a fifth friend. This catches formulas that treat every remaining candy as automatically available to a friend.
 
 ## Approaches
 
-A direct simulation can model the process one candy at a time. We keep the number of candies remaining and the number of friends who have received one. Whenever we have enough candies to give another candy away, we give it to a friend. After every second gift, we consume one candy if possible. This simulation is correct because it follows exactly the process described by the problem, and choosing to give a candy whenever possible is optimal since the goal is simply to maximize the number of gifts.
+A direct brute-force solution can simulate the actual process. Keep the number of candies, repeatedly give one candy to a new friend, and after every second friend eat one candy whenever possible. The simulation is correct because it follows exactly the rules of the process. However, it can perform Θ(`n`) iterations. With `n = 10^9`, that means up to one billion iterations, which is much too slow for the time limit.
 
-The problem is the number of iterations. In the worst case, the simulation performs Θ(n) work, which means up to roughly `10^9` iterations. That is too slow.
+The useful observation is that the process has a simple repeating pattern. Consider three candies. They can produce two friends: two candies go to two friends, and the third candy is eaten. Thus, every complete group of three candies effectively contributes two friends. The candies left after those complete groups can all be given to additional friends, because there are fewer than three of them and they cannot force another full eating cycle.
 
-The key observation is that every complete group of three original candies produces exactly two gifts. Two candies are given to friends, and after the second gift one candy is eaten. The same pattern can repeat independently while at least three candies remain. This means we do not need to simulate individual candies. We can count how many complete groups of three exist and handle the final one or two candies separately.
+Let
 
-If `n = 3q + r`, then the `q` complete groups contribute `2q` friends. If `r = 0`, there is nothing left. If `r = 1`, the remaining candy can be given to one more friend. If `r = 2`, both remaining candies can be given away, because the eating rule only applies after the second gift and there is no candy left afterward.
+`n = 3q + r`, where `r` is `0`, `1`, or `2`.
 
-This gives the compact formula
+The `q` complete groups of three candies cause exactly `q` candies to be eaten, while the remaining `r` candies go to friends. Hence the number of friends is
 
-`answer = n - floor(n / 3)`.
+`n - q = n - floor(n / 3)`.
 
-The same result can be understood from the group interpretation. Every three candies lead to two candies reaching friends, so exactly one candy per complete group is effectively lost to eating.
+The same result can be understood from the opposite direction. To serve `k` friends, the process needs the `k` candies given to friends plus one eaten candy after every pair that is followed by another friend. This creates the same ratio of two useful candies for every three candies consumed, with the final incomplete group handled directly by the remainder.
+
+So the entire simulation collapses to one integer division and one subtraction.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | Brute Force | O(n) | O(1) | Too slow |
 | Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of candies `n`. Only this value is needed because the process depends solely on how many candies remain.
-2. Compute `n // 3`, the number of complete groups of three candies. Each such group costs one candy to eating and allows two candies to be given to friends.
-3. Subtract the number of eaten candies from the original number of candies. The resulting value, `n - n // 3`, is the maximum number of candies that can reach friends.
-4. Print the result. No simulation or additional state is required.
+1. Read the number of candies `n`. The only information needed is the total count, because the process does not distinguish between candies or friends.
+
+2. Compute `n // 3`. This is the number of complete groups of three candies. Each such group contains one candy that must be eaten instead of being given to a friend.
+
+3. Subtract that number from `n`. The result, `n - n // 3`, is the number of candies that can ultimately be given to friends.
+
+4. Print the result.
+
+Why does grouping by three work even when the final group has one or two candies? A complete group accounts for one eaten candy and two candies given to friends. Any remainder of one or two candies occurs after all complete eating cycles and can be given directly to friends, so no additional subtraction is needed.
 
 ### Why it works
 
-Consider every complete block of three candies. We can give two of them to two friends, and after the second gift we eat the third. Thus three candies produce exactly two successful gifts. After processing all complete blocks, at most two candies remain. One remaining candy can clearly be given away, and two remaining candies can both be given away because the eating action happens only after the second gift, when there is no candy left to consume. Hence the only candies that fail to reach friends are exactly `floor(n / 3)` candies, one from each complete group of three. The answer is consequently `n - floor(n / 3)`.
+The key invariant is that every complete block of three consumed candies reduces the number available to friends by exactly one. Two candies in such a block are given to friends, while one is eaten. If `n = 3q + r`, there are exactly `q` complete blocks and `r < 3` leftover candies. The complete blocks account for exactly `q` eaten candies, while all `r` leftovers can be given to friends. Thus exactly `q = floor(n / 3)` candies are lost to eating, and the maximum number of friends is `n - floor(n / 3)`.
 
 ## Python Solution
 
@@ -74,122 +81,103 @@ Consider every complete block of three candies. We can give two of them to two f
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    print(n - n // 3)
-
-if __name__ == "__main__":
-    solve()
+n = int(input())
+print(n - n // 3)
 ```
 
-The `solve` function reads the single integer specified by the input format. There is no need for a loop because the problem contains exactly one test case.
+The input is a single integer, so the program reads it directly as `n`. Python integers easily handle `10^9`, although even a 32-bit signed integer would be sufficient here.
 
-The expression `n // 3` counts how many complete groups of three candies can occur. Subtracting this from `n` directly counts the candies that are not consumed. Those remaining candies correspond exactly to the friends who can receive candy.
+The expression `n // 3` performs integer division and gives the number of complete groups of three. Subtracting it from `n` gives the number of candies that reach friends.
 
-Python integers handle values much larger than `10^9`, so integer overflow is not a concern. The integer division is also deliberately floor division. Using ordinary division would produce a floating-point value and would not represent the number of complete groups correctly.
-
-There is no off-by-one adjustment. For example, `n = 2` gives `2 - 0 = 2`, while `n = 3` gives `3 - 1 = 2`. The transition between those cases is exactly where the first self-consumed candy appears.
+There is no loop, so there are no simulation boundaries or off-by-one transitions to manage. In particular, using integer division is what correctly handles values such as `2`, `4`, and `5`: their quotients by three are `0`, `1`, and `1`, respectively.
 
 ## Worked Examples
 
-For Sample 1, `n = 4`.
+### Sample 1
 
-| `n` | `n // 3` | Answer |
-| --- | --- | --- |
+For `n = 4`, integer division gives `4 // 3 = 1`. One candy is lost to eating, leaving three candies that can be given to friends.
+
+| `n` | `n // 3` | Friends `n - n // 3` |
+|---:|---:|---:|
 | 4 | 1 | 3 |
 
-There is one complete group of three candies, producing two gifts and one eaten candy. One candy remains and can be given to another friend, giving three friends in total.
+The corresponding process is to give candies to two friends, eat one candy, then give the remaining candy to a third friend. The output is `3`.
 
-For Sample 2, `n = 5`.
+### Sample 2
 
-| `n` | `n // 3` | Answer |
-| --- | --- | --- |
+For `n = 5`, there is still only one complete group of three, so exactly one candy is lost to eating. The other four candies reach friends.
+
+| `n` | `n // 3` | Friends `n - n // 3` |
+|---:|---:|---:|
 | 5 | 1 | 4 |
 
-The first three candies produce two gifts and one eaten candy. Two candies remain, and both can be given away. The result is four friends. This example demonstrates why the final remainder of two must not trigger an additional subtraction.
+The process can serve four friends: two receive candies, one candy is eaten, and the remaining two candies go to two more friends. The output is `4`.
+
+These examples also show why the remainder matters. After removing one complete group of three from five candies, two candies remain, and both can be given away without creating another eating cycle.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(1) | Only one integer division and a constant number of arithmetic operations are performed. |
-| Space | O(1) | Only the input integer and a few temporary values are stored. |
+|---|---|---|
+| Time | O(1) | The solution performs one integer division and one subtraction. |
+| Space | O(1) | Only the input integer and a constant amount of temporary storage are used. |
 
-The maximum value `n = 10^9` has no effect on the number of operations. The solution performs the same constant amount of work for `n = 1` and `n = 10^9`, so it easily fits within the 256 MB memory limit and avoids the billion-iteration cost of simulation.
+The largest possible input is `10^9`, but the algorithm never iterates over the candies. It performs a fixed number of arithmetic operations, so it comfortably fits the time and memory limits.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys
 import io
 
 def solve():
+    input = sys.stdin.readline
     n = int(input())
     print(n - n // 3)
 
 def run(inp: str) -> str:
-    global input
-
-    old_stdin = sys.stdin
-    old_input = input
-
-    sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
-
-    try:
-        solve()
-        return sys.stdout.getvalue()
-    finally:
-        sys.stdin = old_stdin
-        input = old_input
-
-# The helper above needs to capture stdout, so use a dedicated wrapper.
-def run(inp: str) -> str:
     old_stdin = sys.stdin
     old_stdout = sys.stdout
-    old_input = input
 
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
-    input = sys.stdin.readline
 
-    try:
-        solve()
-        return sys.stdout.getvalue()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
-        input = old_input
+    solve()
+    output = sys.stdout.getvalue()
 
-# Provided samples
+    sys.stdin = old_stdin
+    sys.stdout = old_stdout
+
+    return output
+
+# provided samples
 assert run("4\n") == "3\n", "sample 1"
 assert run("5\n") == "4\n", "sample 2"
 assert run("6\n") == "4\n", "sample 3"
 
-# Custom cases
+# custom cases
 assert run("1\n") == "1\n", "minimum input"
-assert run("2\n") == "2\n", "two candies can both be given away"
-assert run("3\n") == "2\n", "first eating event"
+assert run("2\n") == "2\n", "no candy remains to eat after the second friend"
+assert run("7\n") == "5\n", "two complete groups plus one remainder"
 assert run("1000000000\n") == "666666667\n", "maximum input"
-assert run("8\n") == "6\n", "remainder of two"
 ```
 
 | Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1` | `1` | Minimum input and absence of an eating event |
-| `2` | `2` | The second gift does not lose a candy when none remains |
-| `3` | `2` | First exact multiple of three and first eating event |
-| `8` | `6` | Complete groups combined with a remainder of two |
-| `1000000000` | `666666667` | Maximum constraint and constant-time arithmetic |
+|---|---:|---|
+| `1` | `1` | Minimum-size input and no pair of friends |
+| `2` | `2` | Boundary where the second friend can be served without an extra candy to eat |
+| `7` | `5` | Remainder after two complete groups of three |
+| `1000000000` | `666666667` | Maximum input and constant-time arithmetic |
 
 ## Edge Cases
 
-For `n = 1`, the algorithm computes `1 // 3 = 0`, so the answer is `1 - 0 = 1`. The only candy goes to one friend, and there is no second gift that could cause us to eat anything.
+For `n = 1`, the algorithm computes `1 // 3 = 0`, so the answer is `1`. There is only one candy and it goes directly to one friend. No eating cycle is triggered.
 
-For `n = 2`, the computation is `2 // 3 = 0`, producing `2 - 0 = 2`. Both candies can be distributed. This catches the common mistake of subtracting one candy whenever two friends receive candies, without checking whether a candy remains to be eaten.
+For `n = 2`, the algorithm computes `2 // 3 = 0`, giving the answer `2`. We can serve both friends, and after the second candy there is no candy left to eat. This is the boundary that breaks an implementation that blindly removes one candy after every pair.
 
-For `n = 3`, the computation becomes `3 // 3 = 1`, giving `3 - 1 = 2`. Two candies go to friends, and the third is eaten after the second gift. This is the smallest input where the self-consumption actually occurs.
+For `n = 4`, the algorithm computes `4 // 3 = 1`, giving `4 - 1 = 3`. The actual sequence is two candies given, one eaten, and the final candy given to a third friend. The single complete group of three accounts for the one candy eaten.
 
-For `n = 6`, there are two complete groups of three. The formula gives `6 - 2 = 4`. Operationally, the first two gifts consume one additional candy, and the next two gifts consume the final candy, so four friends receive candies.
+For `n = 6`, the algorithm computes `6 // 3 = 2`, giving `6 - 2 = 4`. The first two friends consume two candies and trigger one eaten candy. The next two friends consume another two candies and trigger the second eaten candy. The remaining candies cannot support a fifth friend, so four is maximal.
 
-For `n = 8`, there are `8 // 3 = 2` complete groups, leaving two candies. The two complete groups provide four gifts, and the final two candies provide two more, for a total of six. The formula gives `8 - 2 = 6`, confirming that the remainder of two is handled without an extra penalty.
+For `n = 10^9`, the algorithm performs exactly the same constant amount of work as for any smaller input. Since `10^9 // 3 = 333333333`, the answer is `1000000000 - 333333333 = 666666667`. This confirms that the solution does not depend on the magnitude of `n` through iteration count.
