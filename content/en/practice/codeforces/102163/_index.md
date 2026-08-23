@@ -1,23 +1,23 @@
 ---
 title: "NCD 2019"
-description: "11 problems from NCD 2019 (contest 102163), difficulty -. 5/11 solutions verified against sample I/O."
+description: "11 problems from NCD 2019 (contest 102163), difficulty -. 6/11 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102163
 contest_type: "Special"
 rating_range: "-"
 n_problems: 11
-n_verified: 5
-total_solve_s: 10723
+n_verified: 6
+total_solve_s: 11656
 contest_year: 2019
-date: "2026-08-21T08:11:24+07:00"
+date: "2026-08-21T08:37:11+07:00"
 weight: 102163
 draft: false
 ---
 
 # [NCD 2019](https://codeforces.com/contest/102163)
 
-Special | 11 problems | 5/11 verified | Difficulty - | 2h 58m
+Special | 11 problems | 6/11 verified | Difficulty - | 3h 14m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -30,5 +30,5 @@ Special | 11 problems | 5/11 verified | Difficulty - | 2h 58m
 | [H](H/) | [Mr. Hamra and his quantum particles](https://codeforces.com/problemset/problem/102163/H) |  |  |  | 9m 59s |  |
 | [J](J/) | [Bashar and daylight saving time](https://codeforces.com/problemset/problem/102163/J) |  |  |  | 1m 28s | ✓ |
 | [K](K/) | [Masaoud LOVES PIZZAS](https://codeforces.com/problemset/problem/102163/K) |  |  |  | 9m 28s |  |
-| [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 10m 13s |  |
+| [L](L/) | [Chemistry Exam](https://codeforces.com/problemset/problem/102163/L) |  |  |  | 25m 46s | ✓ |
 | [M](M/) | [NCD Salary](https://codeforces.com/problemset/problem/102163/M) |  |  |  | 25m 46s |  |
