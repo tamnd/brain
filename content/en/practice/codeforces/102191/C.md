@@ -1,7 +1,7 @@
 ---
 title: "CF 102191C - Seating Arrangement"
-description: "We have a circular permutation of the students. If the input is then ai was sitting next to a(i-1) and a(i+1), with indices wrapping around at the ends."
-date: "2026-08-25T02:54:51+07:00"
+description: "We have a circular seating represented by a permutation a of 1..n. The students a[i] and a[(i+1) mod n] were neighbors in the old arrangement."
+date: "2026-08-25T05:19:11+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102191
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "PSUT Coding Marathon 2019"
 rating: 0
 weight: 102191
-solve_time_s: 3155
+solve_time_s: 1651
 verified: false
 draft: false
 ---
@@ -18,105 +18,52 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 52m 35s  
+**Solve time:** 27m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a circular permutation of the students. If the input is
+We have a circular seating represented by a permutation `a` of `1..n`. The students `a[i]` and `a[(i+1) mod n]` were neighbors in the old arrangement. We need to print another permutation of the same students such that every pair of neighbors in the new circle was non-adjacent in the old circle. The first and last elements of the printed permutation are also neighbors, so the wraparound pair must satisfy the same condition. The original problem has `3 <= n <= 3 * 10^5` and asks for any valid arrangement, or `-1` when none exists. citeturn0search0
 
-```
-a0 a1 ... a(n-1)
-```
+The student IDs themselves do not matter once the old permutation is known. What matters is the position of each student in the old circle. If two old positions let alone factorial. A solution should do a constant amount of work per student, which means an `O(n)` construction is the natural target. Python can comfortably process a few hundred thousand integers in linear time, while trying permutations would be completely infeasible.
 
-then `ai` was sitting next to `a(i-1)` and `a(i+1)`, with indices wrapping around at the ends. We need to produce another permutation of exactly the same students such that every pair of consecutive students in the new circle was non-consecutive in the old circle. The final pair is also checked, so the first and last students of our answer must not have been neighbors before.
+There are two small impossible cases. For `n = 3`, every pair of students is already adjacent in the old circle, so there is no pair that can be adjacent in the new circle. For example, `3 / 1 2 3` has the only possible circular pairs `{1,2}`, `{2,3}`, and `{3,1}`, all forbidden, so the answer is `-1`. For `n = 4`, the old cycle is `1-2-3-4-1`. Its complement contains only the edges `1-3` and `2-4`, which form two disconnected pairs, so a circular arrangement is impossible. Thus `4 / 1 2 3 4` also requires `-1`.
 
-The actual student IDs do not matter for the construction. What matters is their positions in the original circle. If we construct a new order of positions, then replacing every position by the student sitting there gives the required answer.
+A second easy mistake is forgetting the pair formed by the first and last output elements. For `n = 5`, the arrangement `1 3 5 2 4` works: every consecutive pair differs by two positions modulo five, including `4` and `1`. A construction that only checks internal consecutive elements could accidentally accept an invalid final pair.
 
-The bound `n <= 3 * 10^5` rules out any construction that repeatedly tries many permutations or checks a quadratic number of candidate pairs. With a one second limit, the intended solution should process the permutation only a constant number of times, giving `O(n)` time. The memory limit easily permits a few arrays of size `n`.
-
-There are two small values of `n` that need special treatment. For `n = 3`, every pair of students is adjacent in the original circle, so no new neighboring pair is possible. For `n = 4`, the only non-neighbor of each student is the student opposite them, so the graph of allowed pairs consists of two disconnected edges. A circular arrangement needs a connected cycle, so it is impossible. For example, with
-
-```
-4
-1 2 3 4
-```
-
-the only allowed pairs are `(1,3)` and `(2,4)`, which cannot form one circle.
-
-The circular boundary is another common source of mistakes. For
-
-```
-5
-1 2 3 4 5
-```
-
-the arrangement `1 3 5 2 4` works. Its consecutive original positions differ by two, including the final pair `4,1`. A construction that checks only adjacent elements in the output but forgets the first-last pair would accept invalid arrangements.
-
-Even values of `n` require one additional adjustment. For
-
-```
-6
-1 2 3 4 5 6
-```
-
-the natural even-then-odd order is `1 3 5 2 4 6`, but `6` and `1` were adjacent in the original circle. Swapping the final two elements gives `1 3 5 2 6 4`, which is valid.
+Even values of `n` need a separate adjustment. For `n = 6`, simply taking odd positions followed by even positions gives `1 3 5 2 4 6`, but the final pair `6,1` consists of old neighbors. The corrected sequence `1 3 5 2 6 4` avoids that pair as well. This is the reason the even case cannot blindly use the same construction as the odd case.
 
 ## Approaches
 
-A direct brute-force solution could generate permutations and test each one. This is correct because testing a permutation explicitly checks every forbidden adjacency, but there are `n!` permutations, and checking one permutation takes `O(n)` time. The worst case is therefore `O(n * n!)`, which is already hopeless for even `n = 10`, let alone `3 * 10^5`.
+The direct brute-force approach is to generate every permutation of the students and check whether its `n` circular neighbor pairs are all different from the old neighbor pairs. This is correct because every possible new seating is considered, and the first valid one can be returned. The problem is the number of candidates. There are `n!` permutations, and checking one candidate takes `Theta(n)` time, giving `Theta(n * n!)` operations in the worst case. At `n = 3 * 10^5`, even writing down the expression `300000 * 300000!` already describes a number far beyond anything a program could enumerate.
 
-The useful observation is that the original arrangement is itself just a cycle. Each position has only two forbidden neighbors, the positions immediately before and after it. That makes it unnecessary to reason about the actual student IDs or about arbitrary pairs.
+The useful observation is that we do not need to reason about student IDs at all. Consider the old positions as `0, 1, ..., n-1`. Two positions are forbidden to be consecutive in the answer exactly when their circular distance is `1`. We therefore only need a permutation of the positions in which every consecutive pair has a different distance from `1`.
 
-Consider taking every second position first. For odd `n`, the position sequence
+For odd `n`, take all even-indexed positions followed by all odd-indexed positions, using zero-based indexing. In one-based positions this is `1, 3, 5, ..., 2, 4, 6, ...`. Inside each group, consecutive positions differ by two. At the boundary between the groups, the difference is also at least two modulo `n` because `n` is odd. The final pair has the same property.
 
-```
-0, 2, 4, ..., n-1, 1, 3, ..., n-2
-```
+For even `n >= 6`, the same sequence has exactly one problematic transition, namely the wraparound from the final even position back to the first position. Swapping the final two elements fixes it. Equivalently, for `n = 6` we obtain `1 3 5 2 6 4`, and for `n = 8` we obtain `1 3 5 7 2 8 6 4`. Every neighboring pair now has old-position distance at least two.
 
-works directly. Consecutive positions inside each group differ by two, so they were not neighbors originally. The transition from the last even position to the first odd position also has a distance greater than one, and the circular closing pair has the same property.
-
-For even `n`, the same arrangement fails only at the circular boundary. The last position is `n-1`, while the first is `0`, and these two positions were neighbors in the original circle. Swapping the final two positions fixes this boundary while preserving all the other safe adjacencies.
-
-This construction is sufficient for every `n >= 5`. It is exactly the simple linear construction used by accepted solutions for this problem.
+This construction is independent of the values stored in the permutation. We construct the required order of old positions, then output the students occupying those positions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | Brute Force | `O(n * n!)` | `O(n)` | Too slow |
 | Optimal | `O(n)` | `O(n)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. If `n < 5`, print `-1`. For three students every pair is forbidden, while for four students the allowed graph contains only two disconnected pairs, so no circular arrangement exists.
-2. Build a new array by taking positions `0, 2, 4, ...` from the original permutation, followed by positions `1, 3, 5, ...`.
+1. Read the old circular permutation `a`. We will construct an ordering of its indices rather than trying to manipulate the student IDs directly.
 
-Inside each group, consecutive positions differ by exactly two, so no consecutive pair in the constructed answer was adjacent in the original circle.
-3. If `n` is odd, output the constructed array immediately. The first and last positions differ by two in the circular sense, so the closing pair is also safe.
-4. If `n` is even, swap the last two elements of the constructed array before printing it.
+2. If `n < 5`, print `-1`. For `n = 3` every pair is forbidden, while for `n = 4` the only allowed pairs form two disconnected edges, so neither case can form a Hamiltonian cycle.
 
-Without this swap, the final element is at original position `n - 1` and the first element is at original position `0`, which are adjacent in the original circle. The swap replaces that one bad boundary with two differences of at least two, while leaving all earlier safe pairs unchanged.
-5. Print the resulting student IDs. Since we only rearranged positions from the original permutation, every student appears exactly once.
+3. If `n` is odd, collect positions `0, 2, 4, ...` first, followed by positions `1, 3, 5, ...`. In one-based notation this is `1, 3, 5, ..., 2, 4, 6, ...`.
 
-### Why it works
+4. If `n` is even, construct the same sequence and swap its final two positions. The swap removes the only problematic wraparound transition created by the unmodified odd-even ordering.
 
-The key invariant is that every pair created inside either parity group comes from original positions whose circular distance is at least two. For odd `n`, the boundary pair has the same property, so the construction is a valid circular arrangement.
+5. Convert the constructed position order into student IDs by taking `a[position]` for every selected position. Print these IDs in order. Since `a` is a permutation, every student appears exactly once.
 
-For even `n`, the parity construction has exactly one problematic pair, between original positions `n - 1` and `0`. Swapping the final two elements changes the relevant local sequence from
-
-```
-..., n-3, n-1, 1, 0
-```
-
-in position terms to
-
-```
-..., n-3, n-1, 0, 1
-```
-
-or equivalently, after considering the exact parity lists, removes the `n-1` to `0` boundary adjacency. The new neighboring position differences are at least two because `n >= 5`. All pairs before the last two positions remain untouched, so they retain the required property.
-
-Thus every pair of consecutive students in the output was non-consecutive in the original circle.
+Why it works: inside the odd-position group and inside the even-position group, consecutive old positions differ by exactly two, so those students were not neighbors before. For odd `n`, the two boundary transitions also have circular distance at least two. For even `n`, swapping the final two positions changes the two affected transitions so that their circular distances are also at least two. The construction is a permutation of all old positions, so no student is lost or duplicated. Hence every new circular neighbor pair was non-adjacent in the old seating.
 
 ## Python Solution
 
@@ -124,264 +71,190 @@ Thus every pair of consecutive students in the output was non-consecutive in the
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
+def solve(data=None):
+    if data is None:
+        n = int(input())
+        a = list(map(int, input().split()))
+    else:
+        it = iter(data.split())
+        n = int(next(it))
+        a = [int(next(it)) for _ in range(n)]
 
     if n < 5:
-        print(-1)
-        return
+        return "-1\n"
 
-    ans = a[0::2] + a[1::2]
+    order = list(range(0, n, 2)) + list(range(1, n, 2))
 
     if n % 2 == 0:
-        ans[-1], ans[-2] = ans[-2], ans[-1]
+        order[-1], order[-2] = order[-2], order[-1]
 
-    print(*ans)
+    ans = [a[i] for i in order]
+    return " ".join(map(str, ans)) + "\n"
 
 if __name__ == "__main__":
-    solve()
+    sys.stdout.write(solve())
 ```
 
-The first slice, `a[0::2]`, takes all students occupying even-indexed positions in the original circle. The second slice, `a[1::2]`, takes all odd-indexed positions. Concatenating them gives the parity construction directly.
+The first branch handles the two impossible sizes immediately. There is no need to inspect the actual permutation because feasibility for `n = 3` and `n = 4` depends only on the circular structure.
 
-The `n < 5` check must happen before the construction is used as a solution. For `n = 3` and `n = 4`, the parity pattern does not have enough room to avoid every forbidden edge.
+The `order` expression creates all zero-based even positions followed by all zero-based odd positions. Using indices rather than values is the key implementation detail. The input permutation may contain the students in any order, but its positions always have the same adjacency structure.
 
-For even `n`, `ans[-1]` and `ans[-2]` are the final two elements. Swapping them is enough because the only invalid edge in the unmodified parity construction is the circular edge between original positions `n - 1` and `0`. Python's negative indexing makes the boundary operation explicit without any special index arithmetic.
+For even `n`, `order[-1]` and `order[-2]` are the final two elements of the constructed sequence. Swapping these two is exactly the adjustment needed for the even case. Python's negative indexing makes this independent of the actual value of `n`, and the earlier `n < 5` check guarantees that these positions exist.
 
-No integer overflow is possible because the algorithm only stores student IDs and array indices. The input is read once, and the output is produced in one pass.
+Finally, `a[i]` maps each old position back to its student ID. Since `a` is guaranteed to be a permutation, this produces another permutation without requiring a visited array or a set.
+
+No integer arithmetic involving large products is needed, so integer overflow is not an issue. The construction and the final output each touch every student a constant number of times.
 
 ## Worked Examples
 
 ### Sample 1
 
-For the input
+For the input permutation `6 1 3 5 7 8 4 2`, we have `n = 8`, so the even-size construction is used.
 
-```
-8
-6 1 3 5 7 8 4 2
-```
+| Step | Position order | Student output |
+|---|---|---|
+| Start | `0 1 2 3 4 5 6 7` | `6 1 3 5 7 8 4 2` |
+| Odd positions first | `0 2 4 6 1 3 5 7` | `6 3 7 4 1 5 8 2` |
+| Swap final two positions | `0 2 4 6 1 3 7 5` | `6 3 7 4 1 5 2 8` |
 
-the original positions are numbered from `0` through `7`.
-
-| Step | Even-position part | Odd-position part | Current answer |
-| --- | --- | --- | --- |
-| Read input | `6 3 7 4` | `1 5 8 2` | `6 3 7 4 1 5 8 2` |
-| Even `n` | `6 3 7 4` | `1 5 8 2` | swap final two |
-| Final | `6 3 7 4` | `1 5 2 8` | `6 3 7 4 1 5 2 8` |
-
-This differs from the sample output, which is allowed because the problem accepts any valid arrangement. Checking original positions gives `0,2,4,6,1,3,7,5`. Every consecutive difference around the circle is at least two in the circular sense, so the result is valid.
+The resulting output is `6 3 7 4 1 5 2 8`. It differs from the sample output, which is allowed because the problem accepts any valid arrangement. The old-position sequence is `0,2,4,6,1,3,7,5`. Its circular neighbor distances are `2,2,2,3,2,4,2,3`, so none is an old adjacency.
 
 ### Sample 2
 
-For the input
+For `n = 3`, the algorithm stops before constructing an order.
 
-```
-3
-1 3 2
-```
+| Step | `n` | Result |
+|---|---:|---|
+| Read input | `3` | `n < 5` |
+| Feasibility check | `3 < 5` | print `-1` |
 
-the algorithm stops before constructing an answer.
-
-| Step | `n` | Condition | Result |
-| --- | --- | --- | --- |
-| Read input | `3` | `n < 5` | print `-1` |
-
-With three students, every student is adjacent to both other students because the arrangement is circular. There is no legal neighboring pair at all, so a new circular arrangement cannot exist.
+Every pair in a three-person circle is an old neighbor pair, so there is no possible new circular arrangement.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | `O(n)` | The permutation is sliced into two parts and printed once. |
-| Space | `O(n)` | The answer array stores all `n` student IDs. |
+|---|---|---|
+| Time | `O(n)` | Constructing the position order and mapping it to IDs each take linear time. |
+| Space | `O(n)` | The position order and answer contain `n` elements. |
 
-For `n = 3 * 10^5`, the algorithm performs only a constant number of linear passes and stores only a few arrays of integers. This is comfortably within the one second and 256 MB limits.
+With `n <= 3 * 10^5`, the algorithm performs only a constant number of passes over a few hundred thousand integers. This is comfortably within the intended 1 second and 256 MB limits, while any factorial or quadratic construction is ruled out by the input size.
 
 ## Test Cases
 
-The problem guarantees that the input array is a permutation, so an all-equal array is not a valid official test case. It should not be used as a correctness test for the submitted solution. The test harness below instead validates actual permutations and includes a maximum-size case. Since the statement allows any valid answer, the tests check the structural properties rather than comparing the output to one fixed permutation.
+The checker below validates the property rather than relying on a particular valid output. This is the right way to test a constructive problem because multiple outputs can be correct. The sample 1 assertion also checks the exact deterministic output produced by the implementation above.
 
 ```python
-import sys
 import io
 
-def solve_data(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    try:
+def solve(data=None):
+    if data is None:
+        import sys
+        input = sys.stdin.readline
         n = int(input())
         a = list(map(int, input().split()))
+    else:
+        it = iter(data.split())
+        n = int(next(it))
+        a = [int(next(it)) for _ in range(n)]
 
-        if n < 5:
-            print(-1)
-            return sys.stdout.getvalue().strip()
+    if n < 5:
+        return "-1\n"
 
-        ans = a[0::2] + a[1::2]
+    order = list(range(0, n, 2)) + list(range(1, n, 2))
 
-        if n % 2 == 0:
-            ans[-1], ans[-2] = ans[-2], ans[-1]
+    if n % 2 == 0:
+        order[-1], order[-2] = order[-2], order[-1]
 
-        print(*ans)
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin = old_stdin
-        sys.stdout = old_stdout
+    ans = [a[i] for i in order]
+    return " ".join(map(str, ans)) + "\n"
 
-def is_valid(inp: str, out: str) -> bool:
-    data = list(map(int, inp.split()))
-    n = data[0]
-    a = data[1:]
+def run(inp: str) -> str:
+    return solve(inp)
+
+def valid(inp: str, out: str) -> bool:
+    tokens = inp.split()
+    n = int(tokens[0])
+    a = list(map(int, tokens[1:]))
 
     if out.strip() == "-1":
         return n < 5
 
-    ans = list(map(int, out.split()))
+    b = list(map(int, out.split()))
 
-    if len(ans) != n:
-        return False
-
-    if sorted(ans) != sorted(a):
+    if len(b) != n or sorted(b) != sorted(a):
         return False
 
     pos = {x: i for i, x in enumerate(a)}
 
     for i in range(n):
-        x = pos[ans[i]]
-        y = pos[ans[(i + 1) % n]]
-
-        d = abs(x - y)
-        circular_distance = min(d, n - d)
-
-        if circular_distance == 1:
+        x = pos[b[i]]
+        y = pos[b[(i + 1) % n]]
+        d = (x - y) % n
+        if d == 1 or d == n - 1:
             return False
 
     return True
 
-def run(inp: str) -> str:
-    out = solve_data(inp)
-    assert is_valid(inp, out), f"Invalid output:\n{inp}\n{out}"
-    return out
-
-# Provided samples.
-run("""8
+# Provided sample 1.
+sample1 = """8
 6 1 3 5 7 8 4 2
-""")
+"""
+assert run(sample1) == "6 3 7 4 1 5 2 8\n"
+assert valid(sample1, run(sample1))
 
-assert run("""3
+# Provided sample 2.
+sample2 = """3
 1 3 2
-""") == "-1"
+"""
+assert run(sample2) == "-1\n"
+assert valid(sample2, run(sample2))
 
-# Minimum valid size.
-run("""5
+# Minimum possible n.
+case3 = """5
 1 2 3 4 5
-""")
+"""
+assert run(case3) == "1 3 5 2 4\n"
+assert valid(case3, run(case3))
 
-# Smallest even size for which a solution exists.
-run("""6
+# Smallest even n for which a solution exists.
+case4 = """6
 1 2 3 4 5 6
-""")
+"""
+assert run(case4) == "1 3 5 2 6 4\n"
+assert valid(case4, run(case4))
 
-# Boundary-sensitive odd case.
-run("""7
-7 1 6 2 5 3 4
-""")
-
-# Maximum-size case.
+# Largest allowed n.
 n = 300000
-large = list(range(1, n + 1))
-large_input = str(n) + "\n" + " ".join(map(str, large)) + "\n"
-run(large_input)
+a = list(range(1, n + 1))
+case5 = str(n) + "\n" + " ".join(map(str, a)) + "\n"
+out5 = run(case5)
+assert valid(case5, out5)
+
+# Repeated values are not a valid input for this problem.
+# The statement guarantees that the second line is a permutation,
+# so an all-equal test is deliberately excluded rather than pretending
+# that it is a legal test case.
 ```
 
 | Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `3 / 1 3 2` | `-1` | Minimum size and impossibility |
-| `5 / 1 2 3 4 5` | Any valid permutation | Smallest possible solvable case and circular boundary |
-| `6 / 1 2 3 4 5 6` | Any valid permutation | Even-`n` final swap |
-| `7 / 7 1 6 2 5 3 4` | Any valid permutation | Odd construction with arbitrary student IDs |
-| `300000 / 1 2 ... 300000` | Any valid permutation | Maximum size and linear performance |
+|---|---|---|
+| `3 / 1 3 2` | `-1` | Minimum impossible case |
+| `4 / 1 2 3 4` | `-1` | The other impossible case |
+| `5 / 1 2 3 4 5` | `1 3 5 2 4` | Odd construction and circular boundary |
+| `6 / 1 2 3 4 5 6` | `1 3 5 2 6 4` | Even construction and final swap |
+| `300000 / 1 2 ... 300000` | Any valid permutation | Maximum-size performance and boundary handling |
 
-An all-equal input such as
-
-```
-5
-1 1 1 1 1
-```
-
-is deliberately absent from the executable tests. It violates the problem's permutation guarantee, so there is no meaningful expected answer under the problem specification.
+An all-equal input such as `5 / 7 7 7 7 7` cannot be a test case for the stated problem because the input is guaranteed to be a permutation of `1..n`. Treating it as a normal case would test behavior outside the problem's contract rather than an edge case of the algorithm.
 
 ## Edge Cases
 
-For `n = 3`, consider
+For `n = 3`, consider `3 / 1 2 3`. The old circular edges are `{1,2}`, `{2,3}`, and `{3,1}`, which cover every possible pair of students. The algorithm immediately prints `-1`, avoiding any attempt to construct an impossible cycle.
 
-```
-3
-1 3 2
-```
+For `n = 4`, consider `4 / 1 2 3 4`. The only non-old-neighbor pairs are `1-3` and `2-4`. A new circular seating would need four allowed edges while these two allowed edges are disconnected, so no solution exists. The `n < 5` condition correctly prints `-1`.
 
-The algorithm immediately prints `-1`. Every pair of students is an original neighboring pair, so any three-person circle necessarily repeats a forbidden edge.
+For odd `n = 5`, consider `5 / 1 2 3 4 5`. The position order is `0,2,4,1,3`, corresponding to `1 3 5 2 4`. The internal differences are two positions, while the wraparound pair `4,1` also has circular distance two. The construction therefore handles the boundary without any special correction.
 
-For `n = 4`, consider
+For even `n = 6`, the initial odd-even order would be `1 3 5 2 4 6`. Its final pair `6,1` is forbidden because those students were neighbors in the old circle. Swapping the final two positions gives `1 3 5 2 6 4`. The affected transitions become `2-6` and `4-1`, whose circular distances are four and three respectively, so the wraparound violation disappears.
 
-```
-4
-1 2 3 4
-```
-
-The algorithm also prints `-1`. Student `1` can only sit next to `3`, while student `2` can only sit next to `4`. These two allowed edges form disconnected components rather than one four-vertex cycle. A careless parity construction would produce something such as `1 3 4 2`, but `3` and `4` were adjacent originally, so that output is invalid.
-
-For the smallest solvable odd case,
-
-```
-5
-1 2 3 4 5
-```
-
-the construction gives
-
-```
-1 3 5 2 4
-```
-
-The original positions are `0,1,2,3,4`, while the new order uses positions `0,2,4,1,3`. The circular position differences are `2,2,2,2,2`, so every new neighboring pair is safe.
-
-For the smallest solvable even case,
-
-```
-6
-1 2 3 4 5 6
-```
-
-the raw parity construction is
-
-```
-1 3 5 2 4 6
-```
-
-The final pair `6,1` is forbidden because those students occupied positions `5` and `0`, which are adjacent around the original circle. The algorithm swaps the final two elements and obtains
-
-```
-1 3 5 2 6 4
-```
-
-The corresponding original positions are `0,2,4,1,5,3`. Their circular distances are `2,2,3,4,2,3`, so the boundary problem is removed without creating another forbidden pair.
-
-The circular boundary must also be checked for odd `n`. With
-
-```
-7
-1 2 3 4 5 6 7
-```
-
-the construction gives
-
-```
-1 3 5 7 2 4 6
-```
-
-The final pair is `6,1`, corresponding to original positions `5` and `0`. Their circular distance is `2`, not `1`, so the construction closes correctly. This is why odd and even values of `n` behave differently at the boundary.
+The actual student labels can be completely arbitrary. For example, the sample permutation starts with `6` rather than `1`, but the construction still operates only on its positions. This is why no sorting, mapping by student value, or search over IDs is necessary.
+:::
