@@ -1,28 +1,29 @@
 ---
 title: "2019 ICPC Malaysia National"
-description: "9 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/9 solutions verified against sample I/O."
+description: "10 problems from 2019 ICPC Malaysia National (contest 102219), difficulty -. 0/10 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102219
 contest_type: "ICPC/IOI"
 rating_range: "-"
-n_problems: 9
+n_problems: 10
 n_verified: 0
-total_solve_s: 3781
+total_solve_s: 6085
 contest_year: 2019
-date: "2026-08-18T04:14:24+07:00"
+date: "2026-08-18T07:26:33+07:00"
 weight: 102219
 draft: false
 ---
 
 # [2019 ICPC Malaysia National](https://codeforces.com/contest/102219)
 
-ICPC/IOI | 9 problems | 0/9 verified | Difficulty - | 1h 3m
+ICPC/IOI | 10 problems | 0/10 verified | Difficulty - | 1h 41m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Mental Rotation](https://codeforces.com/problemset/problem/102219/A) |  |  |  | 10m 8s |  |
 | [B](B/) | [SpongeBob SquarePants](https://codeforces.com/problemset/problem/102219/B) |  |  |  | 4m 34s |  |
+| [C](C/) | [I Don't Want To Pay For The Late Jar!](https://codeforces.com/problemset/problem/102219/C) |  |  |  | 38m 24s |  |
 | [D](D/) | [Ali The Multi-billionaire](https://codeforces.com/problemset/problem/102219/D) |  |  |  | 1m 26s |  |
 | [E](E/) | [Optimal Slots](https://codeforces.com/problemset/problem/102219/E) |  |  |  | 3m 29s |  |
 | [F](F/) | [Military Class](https://codeforces.com/problemset/problem/102219/F) |  |  |  | 12m 26s |  |
