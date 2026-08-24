@@ -1,27 +1,27 @@
 ---
 title: "2019, XII Samara Regional Intercollegiate Programming Contest"
-description: "12 problems from 2019, XII Samara Regional Intercollegiate Programming Contest (contest 102215), difficulty -. 5/12 solutions verified against sample I/O."
+description: "12 problems from 2019, XII Samara Regional Intercollegiate Programming Contest (contest 102215), difficulty -. 6/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102215
 contest_type: "Special"
 rating_range: "-"
 n_problems: 12
-n_verified: 5
-total_solve_s: 10399
+n_verified: 6
+total_solve_s: 13013
 contest_year: 2019
-date: "2026-08-20T16:52:21+07:00"
+date: "2026-08-25T03:48:05+07:00"
 weight: 102215
 draft: false
 ---
 
 # [2019, XII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102215)
 
-Special | 12 problems | 5/12 verified | Difficulty - | 2h 53m
+Special | 12 problems | 6/12 verified | Difficulty - | 3h 36m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
-| [A](A/) | [Rooms and Passages](https://codeforces.com/problemset/problem/102215/A) |  |  |  | 6m 55s |  |
+| [A](A/) | [Rooms and Passages](https://codeforces.com/problemset/problem/102215/A) |  |  |  | 50m 29s | ✓ |
 | [B](B/) | [Rearrange Columns](https://codeforces.com/problemset/problem/102215/B) |  |  |  | 22m 18s | ✓ |
 | [C](C/) | [Jumps on a Circle](https://codeforces.com/problemset/problem/102215/C) |  |  |  | 13m 19s |  |
 | [D](D/) | [Country Division](https://codeforces.com/problemset/problem/102215/D) |  |  |  | 5m 28s | ✓ |

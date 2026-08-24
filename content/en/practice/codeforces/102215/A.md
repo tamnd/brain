@@ -1,7 +1,7 @@
 ---
 title: "CF 102215A - Rooms and Passages"
-description: "We have a line of (n+1) rooms and (n) passages. Passage (i) connects room (i-1) to room (i), so moving toward the destination always means processing the array from left to right. Each passage is described by an integer (ai). Its absolute value is a pass color."
-date: "2026-08-20T02:40:05+07:00"
+description: "The dungeon is a straight chain of (n+1) rooms, so every passage simply moves us one position to the right. Passage (i) is represented by (ai). Its absolute value is the color of the pass it uses."
+date: "2026-08-25T03:48:03+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102215
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "2019, XII Samara Regional Intercollegiate Programming Contest"
 rating: 0
 weight: 102215
-solve_time_s: 415
-verified: false
+solve_time_s: 3029
+verified: true
 draft: false
 ---
 
@@ -18,111 +18,112 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 6m 55s  
-**Verified:** no  
+**Solve time:** 50m 29s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a line of (n+1) rooms and (n) passages. Passage (i) connects room (i-1) to room (i), so moving toward the destination always means processing the array from left to right. Each passage is described by an integer (a_i). Its absolute value is a pass color. A positive value means the passage checks that color before allowing us through. A negative value means the passage can always be crossed, but after crossing it, that color's pass becomes invalid. The input format and these two passage types are given by the official statement.
+The dungeon is a straight chain of (n+1) rooms, so every passage simply moves us one position to the right. Passage (i) is represented by (a_i). Its absolute value is the color of the pass it uses. A positive value means the passage checks that pass, while a negative value means the passage can always be crossed but permanently invalidates that color.
 
-For every starting room (s), we begin with every pass valid and repeatedly cross passages (s+1,s+2,\ldots) until either a checking passage requires an already invalid pass or we reach room (n). The answer for (s) is the number of passages successfully crossed, which is also the number of rooms entered while moving toward room (n).
+We need an answer for every starting room (s) from (0) through (n-1). The answer is the number of passages we can successfully cross before the first passage that refuses us. Since every successful passage enters one new room, this is also exactly the number of new rooms reached. The input limits (n) to (500000), as stated by the official problem page.
 
-The bound (n\le 500000) rules out anything quadratic. A straightforward simulation for every starting room can examine about
+The key interaction is between a negative occurrence and a later positive occurrence of the same color. If we cross a negative passage (-c), the pass (c) becomes invalid. Any later (+c) then becomes impossible. A negative passage itself never stops us.
 
-[
-n+(n-1)+\cdots+1=\frac{n(n+1)}2
-]
-
-passages in the worst case, which is about (1.25\cdot10^{11}) operations when (n=500000). A two-second limit requires an essentially linear solution, or at most something very close to it. The fact that every pass color is between (1) and (n) also lets us store per-color information in ordinary arrays rather than using expensive general-purpose structures.
-
-There are several boundary cases that can fool a direct implementation. With (n=1) and input `1`, the answer is `1`, because the only passage can be crossed. An implementation that assumes every answer needs a later passage can produce an off-by-one error.
-
-Consider
+For example,
 
 ```
-2
--1 1
+3
+1 -1 1
 ```
 
-The answer is `1 1`. Starting from room (0), passage 1 is crossed and invalidates color 1. Passage 2 then refuses us, so only one passage is crossed. Starting from room (1), we encounter only passage 2 and can cross it. A solution that treats the negative passage as blocking immediately is wrong, because a negative passage never refuses entry.
-
-The opposite ordering is also significant:
+has answer
 
 ```
-2
-1 -1
+2 2 1
 ```
 
-The answer is `2 1`. Starting from room (0), the positive passage is crossed while its pass is still valid, and the later negative passage is also crossed. A solution that looks for any negative occurrence of the same color anywhere in the array could incorrectly reject the first passage. Only a negative occurrence that has already been crossed can invalidate a pass.
+Starting at room (0), we cross (+1), then (-1), and the final (+1) is blocked, so two passages are crossed. Starting at room (1), we cross (-1), invalidate color (1), and immediately get blocked by the final passage, so only one passage is crossed. A careless solution that only checks whether the same color appears somewhere later, without respecting the starting position, can incorrectly apply the first negative passage to starts that occur after it.
 
-Finally, invalidation only matters after the chosen starting room. For
+Another edge case is a negative passage with no later positive occurrence of the same color.
 
 ```
-2
--1 1
+3
+-1 -2 -3
 ```
 
-starting from room (1) gives answer `1`, even though a negative color-1 passage exists to the left. Every starting position begins with all passes valid, so events before the start must have no effect on that query.
+The answer is
+
+```
+3 2 1
+```
+
+Every negative passage can always be crossed, and none of the invalidated passes is ever checked afterward. Treating every negative passage as a possible stopping point would incorrectly produce smaller answers.
+
+Repeated negative passages also matter. Consider
+
+```
+3
+1 -1 -1
+```
+
+The answer is
+
+```
+3 2 1
+```
+
+Starting at room (0), the first passage is positive and succeeds, and both later passages are negative, so all three passages are crossed. A method that assumes every invalidation must eventually cause a failure would incorrectly stop at the second passage.
+
+The brute-force simulation would be easy to implement, but the (n=500000) bound rules it out. With an (O(n^2)) algorithm, the worst case requires roughly (n(n+1)/2), which is about (1.25\times10^{11}) passage checks. That is far beyond what a two-second contest limit permits.
 
 ## Approaches
 
-The brute-force solution follows the process literally. For each starting room, create a state describing which colors are still valid, scan the passages to the right, cross a negative passage and invalidate its color, and stop at the first positive passage whose color has already been invalidated. This is correct because it exactly reproduces the movement rules.
+The direct approach is to start from every room and simulate the walk independently. We maintain which colors are currently valid, move from left to right, invalidate a color whenever we encounter a negative passage, and stop when a positive passage asks for an invalid color. This is correct because it exactly reproduces the rules of the dungeon.
 
-The problem is the repeated scanning. If every query can reach the end, the first query examines (n) passages, the second examines (n-1), and so on. The total is (n(n+1)/2), which reaches roughly (1.25\cdot10^{11}) passage visits for (n=500000). That is far beyond the time limit.
+The problem is that consecutive starting positions repeatedly inspect almost the same suffix. If all passages are positive, for example, the start at room (0) examines all (n) passages, the start at room (1) examines (n-1), and so on. The total work is (n(n+1)/2), giving (O(n^2)) time.
 
-The useful observation comes from reversing the direction of thought. Suppose we are currently considering passage (i) while scanning from right to left. A negative passage of color (c) can eventually cause a failure only if there is a positive passage of color (c) somewhere to its right. Among all such positive passages, only the nearest one matters for that particular negative passage, because it is the first place where the traveler would be stopped after invalidating the pass.
+The useful observation is that the only way a passage can stop us is a positive passage (+c) that has been preceded, since our starting point, by a negative passage (-c). Instead of simulating the current set of valid passes for every start, we can process the array backwards.
 
-While scanning right to left, we can keep `next_pos[c]`, the nearest positive passage of color (c) currently known to the right. When we encounter a negative passage of color (c), `next_pos[c]` tells us the earliest passage where this negative passage could cause a stop. We can then maintain one global boundary, `limit`, equal to the earliest stopping position caused by any negative passage already processed.
+While scanning from right to left, for every color we can remember the nearest positive passage of that color to the right. When we encounter a negative passage (-c), that remembered positive passage is exactly the first future passage that becomes impossible because of this negative passage. Thus this negative passage creates an upper bound on how far a start at or before it can travel.
 
-This is the key compression. Instead of simulating every starting position separately, the suffix to the right of the current passage is summarized by just two kinds of information: the nearest positive passage for each color and the earliest failure position caused by any relevant negative passage. The reverse recurrence used here is also reflected in existing solutions for this problem.
+There can be several such bounds from different colors. We only care about the earliest stopping point, so all of them can be represented by one variable containing the smallest allowed final passage index. A reverse scan lets us update that variable once and reuse it for every earlier starting position.
 
-If passage (i) is positive, it can always be crossed when (i) is the first passage of the query, because no negative passage to its right has been crossed yet. Its answer is simply one more than the answer for passage (i+1).
-
-If passage (i) is negative and its color has no positive passage to the right, crossing it cannot create a future failure, so again its answer is one more than the answer for (i+1). If a positive passage of the same color exists at position (p), then starting at (i) will eventually fail at or before (p). We update the global boundary with (p-1), because the traveler can successfully cross passages only up through (p-1).
+This is the same reverse recurrence behind the standard solution for this problem.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | (O(n^2)) | (O(n)) | Too slow |
-| Optimal reverse scan | (O(n)) | (O(n)) | Accepted |
+| Reverse DP | (O(n)) | (O(n)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Store the passages using one-based indices. Passage (i) corresponds to the query whose starting room is (i-1), so computing the answer for every passage directly gives the required output order.
-2. Create `next_pos[c]`, initially zero, for every pass color. During the right-to-left scan, `next_pos[c]` will contain the closest positive passage of color (c) to the right of the current position.
-3. Create `ans[i]` for every passage and initialize `ans[n+1]` to zero. The fictitious position (n+1) represents having no passages left, so it gives a clean base case.
-4. Maintain `limit = n`. This variable represents the last passage that can still be crossed before some already-seen negative passage causes a failure. If no such failure exists, the value (n) means the traveler can reach the end.
-5. Scan (i=n,n-1,\ldots,1). If (a_i>0), passage (i) itself is safe when starting there, so set
-
+1. Use 1-based indexing for the passages. Define (dp[i]) as the number of passages that can be crossed when starting immediately before passage (i). The required answer for room (s) is then (dp[s+1]).
+2. Scan the passages from (n) down to (1). Maintain `next_pos[c]`, the nearest positive passage of color (c) that has already been seen during the reverse scan. If no such passage exists, its value is zero.
+3. Also maintain `limit`, the smallest passage index that can still be crossed among all restrictions discovered so far. Initially there is no restriction, so set `limit = n + 1`.
+4. When (a_i>0), passage (i) is always crossable when we arrive at it, because every restriction capable of invalidating its pass must be to its left relative to the current scan. After crossing it, the remaining journey is exactly the situation represented by (dp[i+1]). Thus set
 [
-ans[i]=ans[i+1]+1.
+dp[i]=dp[i+1]+1.
 ]
-
-Afterward set `next_pos[a_i] = i`. Because we are scanning from right to left, this assignment records the closest positive occurrence of this color.
-
-1. If (a_i<0), let (c=-a_i). If `next_pos[c]` is zero, there is no positive passage of this color to the right. Crossing the current negative passage cannot cause a future failure, so set
-
+Then store `next_pos[a_i] = i`, because this is now the nearest positive passage of that color to the right of every earlier position.
+5. When (a_i<0), passage (i) itself never blocks us. It invalidates color (-a_i). If there is no positive passage of that color to its right, this invalidation never matters, so again
 [
-ans[i]=ans[i+1]+1.
+dp[i]=dp[i+1]+1.
 ]
-
-If `next_pos[c]=p`, then crossing passage (i) invalidates color (c), and the positive passage at (p) will be the first possible place where that invalid pass is rejected. Update
-
+6. If a positive passage (p=\text{next_pos}[-a_i]) does exist, crossing passage (i) makes passage (p) impossible. Consequently, starting at or before passage (i), we cannot cross beyond passage (p-1). Update
 [
-limit=\min(limit,p-1).
+\text{limit}=\min(\text{limit},p-1).
 ]
-
-The traveler starting at (i) can then cross exactly the passages from (i) through `limit`, giving
-
+The current start can cross passages (i,i+1,\ldots,\text{limit}), so
 [
-ans[i]=limit-i+1.
+dp[i]=\text{limit}-i+1.
 ]
+The `limit` variable is needed because an earlier negative passage may already have imposed an even smaller stopping point.
+7. After processing every passage, output (dp[1],dp[2],\ldots,dp[n]). These correspond directly to starts (0,1,\ldots,n-1).
 
-The reason a single `limit` is enough is that a traveler stops at the earliest failure among all negative passages in the suffix. Taking the minimum over their stopping positions captures precisely that first failure.
+### Why it works
 
-1. Finally, print `ans[1], ans[2], ..., ans[n]`. Answer `ans[i]` corresponds to starting in room (i-1), exactly matching the required starting rooms (0) through (n-1).
-
-Why it works: after processing positions strictly to the right of (i), `next_pos[c]` is the nearest positive passage of color (c) in that suffix. Every negative passage already processed has either no matching positive passage later, or has identified its earliest possible blocking passage. Thus `limit` is the earliest blocking boundary generated by any negative passage in the processed suffix. When we add passage (i), a positive passage is always crossable at the start of its query, while a negative passage either creates no new restriction or introduces its matching positive passage as another candidate for the earliest restriction. The invariant therefore gives exactly the first passage that can stop every query.
+The invariant is that after processing suffix (i,\ldots,n), `next_pos[c]` is the first positive passage of color (c) in that suffix, while `limit` is the earliest passage that is forbidden by some negative passage already processed in the suffix. A positive passage can be crossed when it is the current first passage, so its answer is one plus the answer of the remaining suffix. A negative passage can always be crossed, but if its color has a future positive occurrence, that positive passage becomes forbidden, giving exactly the new bound `p - 1`. Taking the minimum preserves the earliest restriction from every color. Hence every computed (dp[i]) is exactly the maximum number of consecutive passages that can be crossed from that position.
 
 ## Python Solution
 
@@ -134,46 +135,58 @@ def solve():
     n = int(input())
     a = [0] + list(map(int, input().split()))
 
+    # next_pos[c] = nearest positive passage of color c
+    # to the right of the current position.
     next_pos = [0] * (n + 1)
-    ans = [0] * (n + 2)
 
-    limit = n
+    # dp[i] = number of passages that can be crossed
+    # starting immediately before passage i.
+    dp = [0] * (n + 2)
+
+    # No restriction exists initially.
+    limit = n + 1
 
     for i in range(n, 0, -1):
         x = a[i]
 
         if x > 0:
-            ans[i] = ans[i + 1] + 1
+            # A positive passage can always be crossed at this point.
+            dp[i] = dp[i + 1] + 1
+
+            # It becomes the closest positive occurrence of this color
+            # for all positions to its left.
             next_pos[x] = i
+
         else:
             color = -x
             p = next_pos[color]
 
             if p == 0:
-                ans[i] = ans[i + 1] + 1
+                # No future positive passage uses this color,
+                # so invalidating it has no effect.
+                dp[i] = dp[i + 1] + 1
             else:
+                # Passage p will be blocked after crossing i.
                 limit = min(limit, p - 1)
-                ans[i] = limit - i + 1
 
-    print(*ans[1:n + 1])
+                # We can cross from i through limit.
+                dp[i] = limit - i + 1
+
+    print(*dp[1:n + 1])
 
 if __name__ == "__main__":
     solve()
 ```
 
-The input array is made one-based by inserting a dummy zero at index zero. That keeps passage number (i) aligned with the mathematical recurrence and avoids repeatedly translating between passage indices and room indices.
+The input array is stored with a dummy zero at index (0), which lets passage numbers match their mathematical 1-based indices directly. This removes several possible off-by-one conversions.
 
-`next_pos` is indexed by color. Since every color is at most (n), a list of length (n+1) is enough and is faster and more memory-efficient than a dictionary for this problem.
+`next_pos` has one entry for every possible pass color. Because the color is guaranteed to be at most (n), a plain list is faster and simpler than a dictionary.
 
-`ans[n+1]` remains zero, which gives the recurrence for the final passage its natural base case. For example, if the final passage is positive, `ans[n] = ans[n+1] + 1 = 1`.
+The reverse loop computes `dp[i]` before moving farther left. For a positive value, the assignment to `next_pos` must happen after calculating `dp[i]`, because the current positive passage is not a passage to the right of itself. For a negative value, the lookup happens before any update because the relevant positive occurrence must already have been processed.
 
-The order of operations for a positive passage matters. We compute its answer before storing its position in `next_pos`. A positive passage cannot be blocked by a negative passage to its right when the query starts exactly at this passage, so it must not accidentally become part of the information used to determine its own answer.
+The expression `limit - i + 1` counts passages inclusively. If `limit == i`, exactly one passage can be crossed. If `limit == n`, all passages from (i) through (n) can be crossed. The initialization `limit = n + 1` represents the absence of any restriction.
 
-For a negative passage, `next_pos[color]` only contains positive passages strictly to its right, because those are the positions already visited by the reverse scan. That is exactly the set of passages that can become blocking passages after this negative passage is crossed.
-
-The expression `limit - i + 1` counts passages inclusively. If the first blocked passage is (p), then `limit = p - 1`, and the successful passages are (i,i+1,\ldots,p-1). Their count is (p-i), which is the same as `limit-i+1`.
-
-Python integers do not overflow, so the only practical concerns are the linear memory allocations and input speed. The implementation uses `sys.stdin.readline` and a small number of arrays, both suitable for (n=500000).
+Python integers do not overflow for these values. The implementation performs only a constant amount of work per passage, which is the key reason it can handle (n=500000).
 
 ## Worked Examples
 
@@ -184,20 +197,18 @@ For Sample 1,
 1 -1 -1 1 -1 1
 ```
 
-we process the passages from right to left. The table shows the relevant state after processing each passage.
+the reverse scan behaves as follows.
 
-| (i) | (a_i) | `next_pos[|a_i|]` before | `limit` after | `ans[i]` |
-|---:|---:|---:|---:|---:|
-| 6 | 1 | 0 | 6 | 1 |
-| 5 | -1 | 6 | 5 | 1 |
-| 4 | 1 | 6 | 5 | 2 |
-| 3 | -1 | 4 | 3 | 1 |
-| 2 | -1 | 4 | 3 | 2 |
-| 1 | 1 | 4 | 3 | 3 |
+| (i) | (a_i) | `next_pos[abs(a_i)]` before | `limit` before | `dp[i]` | `limit` after |
+| --- | --- | --- | --- | --- | --- |
+| 6 | 1 | 0 | 7 | 1 | 7 |
+| 5 | -1 | 6 | 7 | 1 | 5 |
+| 4 | 1 | 6 | 5 | 2 | 5 |
+| 3 | -1 | 4 | 5 | 1 | 3 |
+| 2 | -1 | 4 | 3 | 2 | 3 |
+| 1 | 1 | 4 | 3 | 3 | 3 |
 
-At passage 6, color 1 has no positive occurrence to its right, so starting there gives one step. After recording passage 6, passage 5 sees it as the nearest positive color-1 passage and establishes a stopping boundary at passage 5. Passage 4 is itself positive and can be crossed, while the negative passage 3 finds the closer positive passage 4 and moves the global boundary to passage 3. The remaining two passages are then handled using that boundary.
-
-The resulting answers are `3 2 1 2 1 1`. For example, starting at room 0 means crossing passages 1, 2, and 3, after which passage 4 checks color 1 that was invalidated by passage 2.
+At passage 5, the negative ( -1 ) makes passage 6, which is (+1), impossible, so `limit` becomes (5). When we later encounter passage 3, another negative ( -1 ) sees passage 4 as the nearest future (+1), producing the tighter bound (3). Passage 2 can then cross passages 2 and 3, giving answer (2). The final answers are (3,2,1,2,1,1), matching the sample.
 
 For Sample 2,
 
@@ -206,69 +217,78 @@ For Sample 2,
 2 -1 -2 -3 1 3 2
 ```
 
-the reverse scan behaves as follows.
+the reverse scan is:
 
-| (i) | (a_i) | Relevant `next_pos` before | `limit` after | `ans[i]` |
+| (i) | (a_i) | Relevant future positive | `limit` after | `dp[i]` |
 | --- | --- | --- | --- | --- |
-| 7 | 2 | `next_pos[2]=0` | 7 | 1 |
-| 6 | 3 | `next_pos[3]=0` | 7 | 2 |
-| 5 | 1 | `next_pos[1]=0` | 7 | 3 |
-| 4 | -3 | `next_pos[3]=6` | 5 | 2 |
-| 3 | -2 | `next_pos[2]=7` | 5 | 3 |
-| 2 | -1 | `next_pos[1]=5` | 4 | 3 |
-| 1 | 2 | `next_pos[2]=7` | 4 | 4 |
+| 7 | 2 | none before processing | 8 | 1 |
+| 6 | 3 | none before processing | 8 | 2 |
+| 5 | 1 | none before processing | 8 | 3 |
+| 4 | -3 | 6 | 5 | 2 |
+| 3 | -2 | 7 | 5 | 3 |
+| 2 | -1 | 5 | 4 | 3 |
+| 1 | 2 | 7 | 4 | 4 |
 
-At passage 4, the negative color-3 passage sees positive color 3 at passage 6, so starting there cannot get past passage 6. That gives `limit = 5`. Passage 3 introduces another possible failure at passage 7, which is later and does not change the limit. Passage 2 introduces a failure at passage 5, which does improve the limit to 4.
-
-The final output is `4 3 3 2 3 2 1`, matching the sample. This trace shows why the boundary must be the minimum over all relevant negative passages rather than simply the blocking position associated with the current passage.
+At passage 4, color (3) is invalidated and passage 6 is the first future (+3), so passage 5 is the furthest possible passage. Passage 3 creates a restriction at passage 7, but the existing limit of (5) is already smaller. Passage 2 invalidates color (1), making passage 5 impossible and tightening the limit to (4). The resulting answers are (4,3,3,2,3,2,1), again matching the sample.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | (O(n)) | Every passage is processed exactly once, with constant-time color and boundary operations. |
-| Space | (O(n)) | The passage array, answer array, and per-color nearest-position array each use linear space. |
+| Time | (O(n)) | Each passage is processed exactly once, with constant-time array operations. |
+| Space | (O(n)) | The input, dynamic-programming array, and per-color nearest-positive array each contain (O(n)) elements. |
 
-With (n\le500000), the algorithm performs only a constant amount of work per passage, so the total number of operations is proportional to the input size. The three main arrays have linear size, comfortably within the 256 MB memory limit for this Python implementation.
+With (n\le500000), an (O(n)) scan performs only a few million primitive operations, while the (O(n^2)) simulation would require around (1.25\times10^{11}) passage checks in the worst case. The linear solution comfortably fits the stated two-second and 256 MB limits.
 
 ## Test Cases
 
 ```python
-import io
 import sys
+import io
 
-def solve_data(data: str) -> str:
-    input = io.StringIO(data).readline
+def solve():
+    input = sys.stdin.readline
 
     n = int(input())
     a = [0] + list(map(int, input().split()))
 
     next_pos = [0] * (n + 1)
-    ans = [0] * (n + 2)
-
-    limit = n
+    dp = [0] * (n + 2)
+    limit = n + 1
 
     for i in range(n, 0, -1):
         x = a[i]
 
         if x > 0:
-            ans[i] = ans[i + 1] + 1
+            dp[i] = dp[i + 1] + 1
             next_pos[x] = i
         else:
             color = -x
             p = next_pos[color]
 
             if p == 0:
-                ans[i] = ans[i + 1] + 1
+                dp[i] = dp[i + 1] + 1
             else:
                 limit = min(limit, p - 1)
-                ans[i] = limit - i + 1
+                dp[i] = limit - i + 1
 
-    return " ".join(map(str, ans[1:n + 1]))
+    print(*dp[1:n + 1])
 
 def run(inp: str) -> str:
-    return solve_data(inp).strip()
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
 
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    try:
+        solve()
+        return sys.stdout.getvalue().strip()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
+
+# Provided samples
 assert run("""6
 1 -1 -1 1 -1 1
 """) == "3 2 1 2 1 1", "sample 1"
@@ -277,76 +297,85 @@ assert run("""7
 2 -1 -2 -3 1 3 2
 """) == "4 3 3 2 3 2 1", "sample 2"
 
+# Minimum size, positive passage.
 assert run("""1
 1
-""") == "1", "minimum-size input"
+""") == "1", "minimum positive"
 
-assert run("""2
--1 1
-""") == "1 1", "negative passage invalidates the following positive passage"
+# Minimum size, negative passage.
+assert run("""1
+-1
+""") == "1", "minimum negative"
 
+# All passages have the same color and are negative.
+# Nothing can block because there is no positive check.
 assert run("""4
-1 -1 -1 1
-""") == "3 2 1 1", "repeated negative occurrences of one color"
+-1 -1 -1 -1
+""") == "4 3 2 1", "all negative same color"
 
+# Boundary case: a negative passage immediately invalidates
+# the color checked by the next passage.
+assert run("""3
+2 -2 2
+""") == "2 1 1", "immediate invalidation"
+
+# A negative color may have no future positive occurrence.
+assert run("""3
+-1 -2 1
+""") == "2 2 1", "unused invalidated color"
+
+# Maximum-size input, all positive and therefore no passage can fail.
 n = 500000
-maximum_case = str(n) + "\n" + " ".join(["1"] * n) + "\n"
+inp = str(n) + "\n" + ("1 " * n).strip() + "\n"
 expected = " ".join(map(str, range(n, 0, -1)))
-assert run(maximum_case) == expected, "maximum-size all-positive input"
-
-print("All tests passed.")
+assert run(inp) == expected, "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1` | `1` | Minimum size and final-passage boundary |
-| `2 / -1 1` | `1 1` | A negative passage invalidates its color only after it is crossed |
-| `4 / 1 -1 -1 1` | `3 2 1 1` | Repeated invalidation of the same color and earliest stopping boundary |
-| `500000 / 1 1 ... 1` | `500000 499999 ... 1` | Maximum input size and linear-time behavior |
+| `1 / 1` | `1` | Minimum size and positive passage handling |
+| `1 / -1` | `1` | Minimum size and a negative passage that cannot block |
+| `4 / -1 -1 -1 -1` | `4 3 2 1` | All values have the same color, with no positive check |
+| `3 / 2 -2 2` | `2 1 1` | Exact boundary where invalidation affects the immediately following passage |
+| `3 / -1 -2 1` | `2 2 1` | A negative color with no future positive occurrence |
+| (n=500000), all `1` | `500000 499999 ... 1` | Maximum input size and linear-time behavior |
 
 ## Edge Cases
 
-For the minimum-size case
+For the immediate invalidation case,
+
+```
+3
+2 -2 2
+```
+
+the reverse scan first sees the final (+2), so `next_pos[2] = 3`. At passage 2, the value is (-2), so crossing it makes passage 3 impossible. The limit becomes (3-1=2), and (dp[2]=1). When passage 1 is processed, it is positive and can be crossed, so (dp[1]=dp[2]+1=2). The output is `2 1 1`. The `p - 1` calculation is what prevents the blocked passage itself from being counted.
+
+For a negative color with no future positive occurrence,
+
+```
+3
+-1 -2 1
+```
+
+the reverse scan sees (+1) at passage 3, but it never sees a positive (+2). Thus passage 2 has no restriction and gives (dp[2]=dp[3]+1=2). Passage 1 does have a future (+1), so it sets the limit to (2), giving (dp[1]=2). The result is `2 2 1`. This demonstrates why only negative passages whose color is checked later need to affect `limit`.
+
+For repeated invalidations,
+
+```
+3
+1 -1 -1
+```
+
+the reverse scan processes both negative passages before reaching the positive one. At passage 2, the future (+1) is at passage 1, which is not to its right, so there is actually no future positive (+1) from passage 2's perspective. The same is true for passage 3. Thus no restriction is created, and the reverse recurrence gives `3 2 1`. This is exactly the behavior of the forward walk: both negative passages can be crossed and there is no later positive check.
+
+For the minimum input,
 
 ```
 1
-1
+-1
 ```
 
-the reverse scan starts with `limit = 1`. Passage 1 is positive, so `ans[1] = ans[2] + 1 = 1`. The position of color 1 is then recorded as 1. The output is `1`, which correctly means that the only available passage can be crossed.
+the only passage is negative, so it is always crossable. The reverse scan finds no future positive passage, computes (dp[1]=dp[2]+1=1), and outputs `1`. The sentinel (dp[n+1]=0) makes this boundary case work without a special branch.
 
-For a negative passage with a later positive passage,
-
-```
-2
--1 1
-```
-
-the scan first sees passage 2, records positive color 1, and gets `ans[2]=1`. At passage 1, `next_pos[1]=2`, so the negative passage invalidates color 1 and sets `limit=1`. The answer becomes `1-1+1=1`. The output is `1 1`. This catches the common mistake of treating a negative passage itself as impassable.
-
-For a positive passage followed by a negative passage,
-
-```
-2
-1 -1
-```
-
-passage 2 is negative and has no positive color-1 passage to its right, so `ans[2]=1`. Passage 1 is positive and is therefore immediately crossable, giving `ans[1]=2`. The output is `2 1`. The negative passage does not retroactively invalidate the earlier positive passage.
-
-For repeated negative occurrences,
-
-```
-4
-1 -1 -1 1
-```
-
-the reverse scan records the positive color-1 passage at position 4. The negative passage at position 3 sets `limit=3`, while the negative passage at position 2 keeps the same boundary because its matching positive passage is still position 4. Thus the answers are `3 2 1 1`. Starting at room 0, the traveler crosses passages 1, 2, and 3, but passage 4 refuses the now-invalid color-1 pass. Starting at room 1 or room 2 gives progressively shorter walks.
-
-For the maximum-size case consisting entirely of positive passages,
-
-```
-500000
-1 1 1 ... 1
-```
-
-there is never a negative passage to invalidate any pass. The reverse recurrence simply gives `ans[i] = ans[i+1] + 1`, producing `500000,499999,\ldots,1`. The scan performs exactly (500000) iterations, demonstrating why the linear solution fits the constraint while the quadratic simulation does not.
+For the maximum-size case, every passage can be set to (+1). No pass is ever invalidated, so starting at room (s) reaches room (n) after crossing exactly (n-s) passages. The algorithm simply applies the positive recurrence (n) times, producing (500000,499999,\ldots,1). This exercises the full input size while keeping the algorithm's work strictly linear.
