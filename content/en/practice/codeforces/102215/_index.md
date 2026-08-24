@@ -1,23 +1,23 @@
 ---
 title: "2019, XII Samara Regional Intercollegiate Programming Contest"
-description: "12 problems from 2019, XII Samara Regional Intercollegiate Programming Contest (contest 102215), difficulty -. 4/12 solutions verified against sample I/O."
+description: "12 problems from 2019, XII Samara Regional Intercollegiate Programming Contest (contest 102215), difficulty -. 5/12 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 contest_id: 102215
 contest_type: "Special"
 rating_range: "-"
 n_problems: 12
-n_verified: 4
-total_solve_s: 8380
+n_verified: 5
+total_solve_s: 10399
 contest_year: 2019
-date: "2026-08-20T18:50:53+07:00"
+date: "2026-08-20T16:52:21+07:00"
 weight: 102215
 draft: false
 ---
 
 # [2019, XII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102215)
 
-Special | 12 problems | 4/12 verified | Difficulty - | 2h 19m
+Special | 12 problems | 5/12 verified | Difficulty - | 2h 53m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Special | 12 problems | 4/12 verified | Difficulty - | 2h 19m
 | [B](B/) | [Rearrange Columns](https://codeforces.com/problemset/problem/102215/B) |  |  |  | 22m 18s | ✓ |
 | [C](C/) | [Jumps on a Circle](https://codeforces.com/problemset/problem/102215/C) |  |  |  | 13m 19s |  |
 | [D](D/) | [Country Division](https://codeforces.com/problemset/problem/102215/D) |  |  |  | 5m 28s | ✓ |
-| [E](E/) | [Third-Party Software - 2](https://codeforces.com/problemset/problem/102215/E) |  |  |  | 6m 24s |  |
+| [E](E/) | [Third-Party Software - 2](https://codeforces.com/problemset/problem/102215/E) |  |  |  | 40m 3s | ✓ |
 | [G](G/) | [Akinator](https://codeforces.com/problemset/problem/102215/G) |  |  |  | 7m 31s | ✓ |
 | [H](H/) | [Missing Number](https://codeforces.com/problemset/problem/102215/H) |  |  |  | 9m 12s |  |
 | [I](I/) | [Painting a Square](https://codeforces.com/problemset/problem/102215/I) |  |  |  | 10m 10s |  |
