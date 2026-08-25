@@ -8,16 +8,16 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 5
-total_solve_s: 17031
+total_solve_s: 18720
 contest_year: 2019
-date: "2026-08-23T08:19:59+07:00"
+date: "2026-08-23T13:54:46+07:00"
 weight: 102191
 draft: false
 ---
 
 # [PSUT Coding Marathon 2019](https://codeforces.com/contest/102191)
 
-Special | 10 problems | 5/10 verified | Difficulty - | 4h 43m
+Special | 10 problems | 5/10 verified | Difficulty - | 5h 12m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Special | 10 problems | 5/10 verified | Difficulty - | 4h 43m
 | [D](D/) | [Picture Day](https://codeforces.com/problemset/problem/102191/D) |  |  |  | 37m 58s |  |
 | [E](E/) | [Snake Moves](https://codeforces.com/problemset/problem/102191/E) |  |  |  | 28m 59s | ✓ |
 | [F](F/) | [Sum then Multiply](https://codeforces.com/problemset/problem/102191/F) |  |  |  | 24m 41s | ✓ |
-| [G](G/) | [Next Number](https://codeforces.com/problemset/problem/102191/G) |  |  |  | 24m 17s |  |
+| [G](G/) | [Next Number](https://codeforces.com/problemset/problem/102191/G) |  |  |  | 52m 26s |  |
 | [I](I/) | [Project Presentation](https://codeforces.com/problemset/problem/102191/I) |  |  |  | 35m 45s | ✓ |
 | [J](J/) | [Graph to Grid](https://codeforces.com/problemset/problem/102191/J) |  |  |  | 37m 13s |  |
 | [K](K/) | [Cactus Portal](https://codeforces.com/problemset/problem/102191/K) |  |  |  | 18m 49s |  |

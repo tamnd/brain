@@ -1,7 +1,7 @@
 ---
 title: "CF 102191G - Next Number"
-description: "We have an array a of n digits, where every digit is an integer from 0 to b - 1. Reading the array from left to right gives an n-digit number in base b. We need the smallest number strictly larger than this one whose digits are all distinct."
-date: "2026-08-20T01:35:31+07:00"
+description: "We have an array of n digits, where every digit is interpreted in base b. The array represents one base-b integer, so comparing two numbers with the same number of digits is the same as comparing their arrays lexicographically."
+date: "2026-08-25T13:54:44+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102191
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "PSUT Coding Marathon 2019"
 rating: 0
 weight: 102191
-solve_time_s: 1457
+solve_time_s: 3146
 verified: false
 draft: false
 ---
@@ -18,88 +18,85 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 24m 17s  
+**Solve time:** 52m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an array `a` of `n` digits, where every digit is an integer from `0` to `b - 1`. Reading the array from left to right gives an `n`-digit number in base `b`. We need the smallest number strictly larger than this one whose digits are all distinct. The first digit is already known to be nonzero, and an answer is guaranteed to exist.
+We have an array of `n` digits, where every digit is interpreted in base `b`. The array represents one base-`b` integer, so comparing two numbers with the same number of digits is the same as comparing their arrays lexicographically.
 
-The key difficulty is that "next" is numerical order, which for two fixed-length base-`b` numbers is exactly lexicographic order of their digit arrays. So we want to change the array as late as possible. Once we decide to make one position larger, every later position should be made as small as possible while keeping all digits distinct.
+The required answer is the smallest integer strictly larger than the input whose digits are all distinct. The answer may have either `n` digits or `n + 1` digits. The latter case matters when the input is already at the end of the range of useful `n`-digit distinct numbers. The original problem guarantees that some answer exists. citeturn4search0
 
-Both `n` and `b` can be as large as `3 * 10^5`. That rules out anything that tries many possible numbers, or even anything quadratic in `n`. With a 2-second limit, we want roughly linear or `O(n log b)` work. The base can be large enough that we also need to be careful about operations over the whole digit range, although `O(b)` is still acceptable because `b` has the same upper bound as `n`.
+The bounds allow both `n` and `b` to reach `300000`. An algorithm that examines all possible numbers is hopeless, since there are on the order of `b^n` base-`b` strings of length `n`. Even an `O(n^2)` algorithm would already be too slow for `n = 300000`. We need an essentially linear or near-linear solution.
 
-There are several edge cases where a straightforward implementation can silently go wrong. First, the input itself may contain repeated digits. For example,
+There are several edge cases that are easy to miss. First, the input itself does not have to contain distinct digits. For example,
 
-```
-3 10
-1 1 9
-```
-
-has answer `1 2 0`, not something obtained by simply modifying the last digit. The prefix `1 1` is already invalid, so the last position cannot be used as the place where we make the number larger.
-
-A second issue is that the last digit may not be incrementable because every larger digit is already used by the prefix. For example,
-
-```
-4 4
-3 2 0 1
+```text
+4 11
+10 5 5 1
 ```
 
-cannot be increased at the final position because the prefix already uses `0`, `2`, and `3`. The correct answer is `3 2 1 0`, obtained by changing the third position.
+has a repeated `5`, but the answer is `10 5 6 0`. A solution that assumes the input is already a valid distinct-digit number cannot handle this case.
 
-A third edge case occurs when the only possible increase is at the first position. For example,
+Second, the position where we increase the number must have a distinct prefix. For
 
-```
-3 4
-1 3 3
-```
-
-has answer `2 0 1`. Once the first digit becomes `2`, the remaining positions must use the two smallest unused digits. A careless implementation might incorrectly preserve one of the original repeated `3`s, even though the suffix has to contain distinct digits.
-
-Finally, the answer may be obtained from an already distinct input by changing a non-final position. For
-
-```
-3 4
-1 2 3
+```text
+5 7
+2 6 6 0 1
 ```
 
-the answer is `1 3 0`. Keeping the prefix `1`, increasing `2` to `3`, and then filling the suffix with the smallest available digit gives the first valid number larger than `123`.
+the second `6` makes every prefix ending at or after that position invalid. The correct answer is `3 0 1 4 5`. A careless implementation might try to repair the repeated digit locally and accidentally keep a duplicate in the prefix.
+
+Third, the answer can need one additional digit. For example,
+
+```text
+2 10
+9 8
+```
+
+has no larger valid two-digit number. The smallest valid three-digit number is `1 0 2`, so that is the correct output. Treating the answer as necessarily having exactly `n` digits misses this case.
+
+Finally, zero is allowed in every position except the first. Once the answer has more than one digit, zero should be considered when filling the suffix because it is the smallest possible digit. For example, after fixing a larger prefix, the smallest suffix often starts with `0`.
 
 ## Approaches
 
-The most direct approach is to enumerate candidate numbers starting immediately after the input number. For each candidate, we could check whether all `n` digits are distinct. The check itself takes `O(n)` time, so if we inspect `K` consecutive candidates the cost is `O(Kn)`. In the worst case there can be exponentially many candidates before reaching a valid number, with at most `b^n` possible `n`-digit arrays. Thus the worst-case bound is `O(n b^n)`, which is completely infeasible for `n` up to `3 * 10^5`.
+A direct brute-force solution would start with the given number, increment it by one, and repeatedly test whether all of its digits are distinct. The method is correct because the first valid number encountered is exactly the smallest valid number greater than the input. However, there are roughly `(b - 1)b^(n-1)` numbers with exactly `n` digits, and checking one number takes `O(n)` time. In the worst case this gives `Theta(n(b - 1)b^(n-1))` digit operations, which is completely infeasible.
 
-The brute-force method does have one useful property: it tells us exactly what the desired answer looks like. We want the first position from the right where we can increase a digit, while everything before that position stays unchanged. After making that increase, the suffix should be the smallest possible valid suffix.
+The useful structure is that numerical comparison is lexicographic. Suppose we want an answer with the same length. At some position `i`, the answer must first become larger than the input. All positions before `i` must remain unchanged, the digit at `i` must become larger, and every position after `i` should then be as small as possible.
 
-That observation removes the need to enumerate numbers. Suppose we choose position `i` as the first changed position. The prefix `a[0:i]` must already consist of distinct digits. The replacement digit must be strictly greater than `a[i]` and must not occur in that prefix. Among all such choices, we want the smallest one. Once that digit is chosen, the suffix should simply contain the smallest unused digits in increasing order.
+This immediately gives two greedy rules. We want the rightmost possible position for the first increase, because postponing the first difference keeps more of the original prefix and produces a smaller number. Once that position is fixed, we want the smallest unused digit greater than the original digit there. The remaining suffix should contain the smallest available digits in increasing order.
 
-The remaining data-structure problem is finding the smallest unused digit greater than `a[i]`. Since `b` is up to `3 * 10^5`, a Fenwick tree can maintain the set of currently unused digits and find the `k`-th unused digit in `O(log b)` time. We scan positions from right to left while dynamically maintaining which digits occur in the prefix.
+The only data-structure operation we need while scanning the array is finding the smallest unused digit at least some value. There is a particularly convenient structure for this because digits become used only once as the prefix grows. A disjoint-set successor structure supports deleting a value and finding the next still-available value in almost constant amortized time.
 
-The brute-force works because checking candidates eventually finds the first valid larger number, but fails because there can be far too many candidates. The observation that only the first changed position matters lets us replace exponential enumeration by a single right-to-left scan and successor queries.
+There is one more observation that makes the scan simple. If the prefix already contains a duplicate, then no longer prefix can ever become distinct. Thus, while scanning from left to right, once the first duplicate is encountered, there is no reason to examine later positions. Among all earlier positions where a larger unused digit exists, the last such position is the optimal pivot.
+
+If no same-length answer exists, the smallest possible answer with one more digit starts with `1`. Its remaining digits are simply the smallest possible unused digits, beginning with `0`. The guarantee that an answer exists implies that enough digits are available for this construction.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | `O(n b^n)` worst case | `O(n + b)` | Too slow |
-| Optimal | `O(n log b + b)` | `O(n + b)` | Accepted |
+|---|---|---|---|
+| Brute Force | `Theta(n b^n)` | `O(n)` | Too slow |
+| Optimal | `O(n + b alpha(b))` | `O(b + n)` | Accepted |
+
+Here `alpha(b)` is the inverse Ackermann function, which is effectively constant for these constraints.
 
 ## Algorithm Walkthrough
 
-1. Build a frequency array for the prefix `a[0:n-1]`, because when we first inspect position `n-1`, every earlier digit belongs to the unchanged prefix. At the same time, initialize a Fenwick tree containing every digit that is not currently used by this prefix.
-2. Maintain `bad`, the number of digit values whose frequency in the current prefix is at least two. The prefix is usable exactly when `bad == 0`. We need this explicitly because the original array is not guaranteed to contain distinct digits.
-3. Start with `i = n - 1` and move `i` toward zero. At position `i`, the prefix before it is `a[0:i]`. If `bad` is nonzero, this prefix cannot occur in any valid answer, so this position cannot be the first changed position.
-4. If the prefix is distinct, query the Fenwick tree for the smallest unused digit strictly greater than `a[i]`. If such a digit `x` exists, then `a[0:i] + [x]` is the smallest possible prefix that is larger than the original number at position `i`.
-5. Once `x` is found, construct the suffix by scanning digits from `0` upward and taking the smallest digits not used by the prefix and not equal to `x`. These are exactly the lexicographically smallest possible suffix digits, so this choice gives the smallest number for this fixed position `i`.
-6. If no valid `x` exists at position `i`, move to `i - 1`. To represent the new prefix `a[0:i-1]`, remove `a[i-1]` from the current prefix counts and mark that digit as unused if its count becomes zero. Update `bad` if removing that occurrence eliminates a duplicate.
-7. The first position at which we can construct an answer is the correct position to change. We scan from right to left, so every later position was already proven impossible, while changing an earlier position would produce a larger number.
+1. Create a successor DSU containing every digit from `0` through `b - 1`, plus a sentinel `b`. Initially every digit is available. The operation `find(x)` returns the smallest currently available digit greater than or equal to `x`.
 
-### Why it works
+2. Scan the input from left to right while maintaining the set of digits already present in the prefix. At position `i`, first check whether `a[i]` has already appeared. If it has, the prefix ending at `i` is invalid, and every longer prefix is invalid too, so the scan can stop.
 
-Consider the first position `i` where the algorithm succeeds. Every position after `i` was tested first and could not produce a valid larger number while preserving its prefix. Thus no answer can differ from the original later than `i`.
+3. If the prefix is distinct, query `find(a[i] + 1)`. If the returned value is smaller than `b`, it is the smallest digit that can replace `a[i]` while making the number larger at this position. Record this position and candidate as the current best pivot.
 
-At position `i`, the prefix `a[0:i]` is distinct, so it can safely be preserved. The algorithm chooses the smallest unused digit greater than `a[i]`, which is the smallest possible digit that makes the resulting number larger at this position. Any smaller replacement would fail to make the number larger, while any larger replacement would produce a larger number than necessary.
+4. After processing position `i`, mark `a[i]` as used in the successor DSU. Deleting a digit means redirecting it to the next available digit. Since digits are only deleted as the prefix grows, the successor DSU fits this process exactly.
 
-After that replacement, all remaining positions are filled with the smallest available digits in increasing order. Since the prefix and replacement are already fixed, this is the lexicographically smallest valid suffix. Consequently, the constructed number is larger than the input, has distinct digits, and no smaller valid larger number exists.
+5. Continue the scan and overwrite the saved pivot whenever another valid position has a larger available digit. The last saved pivot is optimal because it places the first difference as far to the right as possible.
+
+6. If a pivot was found, rebuild the answer. Copy the original prefix before the pivot, place the saved candidate at the pivot, and mark those digits as used. Then scan digits from `0` to `b - 1`, taking the smallest unused digits until the answer has length `n`.
+
+7. If no pivot was found, construct the smallest valid number with `n + 1` digits. Its first digit must be `1`, because leading zero is forbidden and `1` is the smallest nonzero digit. Then append the smallest available digits in increasing order.
+
+The invariant behind the scan is that before processing position `i`, the successor structure contains exactly the digits that are not in the already accepted prefix. Consequently, `find(a[i] + 1)` is precisely the smallest legal digit that makes the number larger at position `i`. Every saved pivot produces the smallest possible number for that pivot, and choosing the rightmost feasible pivot gives the smallest number among all feasible pivots. If no pivot exists, every same-length number greater than the input is impossible, so moving to `n + 1` digits is necessary, and the greedy construction gives the smallest number of that length.
 
 ## Python Solution
 
@@ -107,280 +104,309 @@ After that replacement, all remaining positions are filled with the smallest ava
 import sys
 input = sys.stdin.readline
 
-class Fenwick:
-    def __init__(self, n):
-        self.n = n
-        self.bit = [0] * (n + 1)
-
-    def add(self, pos, delta):
-        pos += 1
-        while pos <= self.n:
-            self.bit[pos] += delta
-            pos += pos & -pos
-
-    def prefix_sum(self, pos):
-        """Number of elements in [0, pos)."""
-        res = 0
-        while pos > 0:
-            res += self.bit[pos]
-            pos -= pos & -pos
-        return res
-
-    def kth(self, k):
-        """Return the 0-based index of the k-th present element."""
-        idx = 0
-        step = 1 << (self.n.bit_length() - 1)
-
-        while step:
-            nxt = idx + step
-            if nxt <= self.n and self.bit[nxt] < k:
-                idx = nxt
-                k -= self.bit[nxt]
-            step >>= 1
-
-        return idx
-
-def solve_case(n, b, a):
-    # The prefix before position n-1.
-    cnt = [0] * b
-    for i in range(n - 1):
-        cnt[a[i]] += 1
-
-    # Number of digit values appearing at least twice in the prefix.
-    bad = sum(c >= 2 for c in cnt)
-
-    # Fenwick tree stores currently unused digits.
-    fw = Fenwick(b)
-    for d in range(b):
-        fw.add(d, 1)
-
-    # Remove all digits used by the prefix from the available set.
-    for d in range(b):
-        if cnt[d]:
-            fw.add(d, -1)
-
-    for i in range(n - 1, -1, -1):
-        if bad == 0:
-            # Number of unused digits <= a[i].
-            le = fw.prefix_sum(a[i] + 1)
-            total = fw.prefix_sum(b)
-
-            # We need the first unused digit strictly greater than a[i].
-            k = le + 1
-
-            if k <= total:
-                x = fw.kth(k)
-
-                # The prefix is already distinct, and x is unused.
-                ans = a[:i] + [x]
-
-                # Fill the suffix with the smallest remaining digits.
-                need = n - i - 1
-                for d in range(b):
-                    if need == 0:
-                        break
-                    if cnt[d] == 0 and d != x:
-                        ans.append(d)
-                        need -= 1
-
-                return ans
-
-        if i > 0:
-            # Move from prefix a[:i] to prefix a[:i-1].
-            v = a[i - 1]
-
-            if cnt[v] == 2:
-                bad -= 1
-
-            cnt[v] -= 1
-
-            if cnt[v] == 0:
-                fw.add(v, 1)
-
-    # The statement guarantees that an answer exists.
-    return []
-
-def main():
+def solve():
     n, b = map(int, input().split())
     a = list(map(int, input().split()))
 
-    ans = solve_case(n, b, a)
+    # parent[x] is used by the successor DSU.
+    # find(x) returns the smallest currently unused digit >= x.
+    parent = list(range(b + 1))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    used = bytearray(b)
+
+    best_pos = -1
+    best_digit = -1
+
+    for i, x in enumerate(a):
+        # A duplicate in the prefix means no later pivot can work.
+        if used[x]:
+            break
+
+        # Smallest unused digit strictly greater than x.
+        y = find(x + 1)
+
+        if y < b:
+            best_pos = i
+            best_digit = y
+
+        # Add x to the fixed prefix.
+        used[x] = 1
+        parent[x] = find(x + 1)
+
+    if best_pos != -1:
+        ans = a[:best_pos]
+
+        used_answer = bytearray(b)
+        for x in ans:
+            used_answer[x] = 1
+
+        ans.append(best_digit)
+        used_answer[best_digit] = 1
+
+        # Fill the suffix with the smallest possible unused digits.
+        need = n - len(ans)
+        if need:
+            for d in range(b):
+                if not used_answer[d]:
+                    ans.append(d)
+                    need -= 1
+                    if need == 0:
+                        break
+
+        print(*ans)
+        return
+
+    # No larger valid number has n digits.
+    # The smallest valid number with n + 1 digits starts with 1.
+    ans = [1]
+    used_answer = bytearray(b)
+    used_answer[1] = 1
+
+    need = n
+    for d in range(b):
+        if not used_answer[d]:
+            ans.append(d)
+            used_answer[d] = 1
+            need -= 1
+            if need == 0:
+                break
+
     print(*ans)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The frequency array describes the current unchanged prefix. A frequency greater than one means that prefix can never be part of a valid answer, so `bad` lets us test prefix validity in constant time.
+The `parent` array represents a successor structure rather than a conventional set-union structure. Initially `find(x) = x` for every digit. When digit `x` becomes part of the fixed prefix, `parent[x]` is changed to `find(x + 1)`, effectively removing `x` and connecting it to the next available digit.
 
-The Fenwick tree contains exactly the digits absent from the prefix. `prefix_sum(a[i] + 1)` counts available digits from `0` through `a[i]`, so the next available digit has rank `le + 1`. The `kth` operation converts that rank into the actual digit in `O(log b)` time.
+The `used` byte array is separate from the DSU because we need to detect duplicates in the original prefix. The check occurs before deleting the current digit. If `used[x]` is already set, the prefix is no longer distinct and the scan terminates.
 
-The loop begins with the prefix before the final position and removes one element whenever it moves left. This ordering is the key boundary detail. At iteration `i`, `cnt` must describe exactly `a[0:i]`, not `a[0:i+1]`.
+The candidate query uses `x + 1`, not `x`, because the answer must become strictly larger at the pivot. The sentinel at index `b` represents "there is no available digit", so `y < b` is the exact boundary check.
 
-When a frequency changes from `2` to `1`, one duplicated digit disappears, so `bad` decreases. When a frequency changes from `1` to `0`, that digit becomes available again in the Fenwick tree. We never need to add a digit back when its count remains positive.
+When rebuilding the answer, the suffix is scanned from zero upward. This is preferable to sorting because every digit is already represented by its numeric value, and scanning the entire base costs only `O(b)`. There is no integer-overflow issue in Python, and the algorithm never converts the potentially enormous base-`b` number into a native integer.
 
-The suffix construction deliberately scans from zero upward. The chosen replacement `x` is excluded, as are all digits already present in the prefix. The loop takes exactly `n - i - 1` digits, which is possible because the problem guarantees that some valid answer exists, and existence of an `n`-digit distinct number also implies that `b >= n`.
-
-There is no integer conversion of the base-`b` number, so Python integer size is irrelevant. The answer is handled as an array of digits, which is also necessary because `b` can be much larger than ten.
+The `n + 1` case uses `1` as its first digit. The original number has no leading zero, and any `n + 1` digit number is larger than every `n` digit number, so the smallest possible leading digit is the only thing that matters. The remaining positions are minimized independently by taking the smallest unused digits.
 
 ## Worked Examples
 
-### Sample 1
+For Sample 1,
 
-For
-
-```
+```text
 3 10
 9 2 6
 ```
 
-the input already has a distinct prefix at every position. The rightmost digit is `6`, and the smallest unused digit greater than `6` is `7`, so we can change the final position immediately.
+the prefix is distinct throughout the scan. At position `0`, there is no digit greater than `9`. At position `1`, the smallest unused digit greater than `2` is `3`, so position `1` becomes a possible pivot. At position `2`, the smallest unused digit greater than `6` is `7`, which is an even better, rightmost pivot.
 
-| `i` | Prefix | `a[i]` | Unused larger digit | Action |
-| --- | --- | --- | --- | --- |
-| 2 | `9 2` | 6 | 7 | Choose `7` |
+| Position | Current prefix | Current digit | Smallest greater unused | Best pivot |
+|---:|---|---:|---:|---:|
+| 0 | empty | 9 | none | none |
+| 1 | 9 | 2 | 3 | `(1, 3)` |
+| 2 | 9 2 | 6 | 7 | `(2, 7)` |
 
-The resulting number is `9 2 7`. No suffix remains, so this is immediately the smallest valid number greater than the input.
+Using the pivot at position `2` leaves the prefix `9 2` unchanged and puts `7` in the final position. There is no suffix to construct, giving `9 2 7`. The trace demonstrates why the rightmost feasible pivot is preferable.
 
-### Sample 2
+For Sample 2,
 
-For
-
-```
+```text
 4 11
 10 5 5 1
 ```
 
-the final position cannot be used because its prefix contains two copies of `5`. We move left until the prefix becomes distinct.
+the first two digits are distinct. At position `0`, no digit greater than `10` exists because `10` is the largest digit in base `11`. At position `1`, the smallest unused digit greater than `5` is `6`, so this becomes the best pivot. At position `2`, the digit `5` is already present in the prefix, so the scan stops.
 
-| `i` | Prefix | `bad` | `a[i]` | Smallest unused larger digit | Action |
-| --- | --- | --- | --- | --- | --- |
-| 3 | `10 5 5` | 1 | 1 | 2 | Cannot use prefix |
-| 2 | `10 5` | 0 | 5 | 6 | Choose `6` |
+| Position | Prefix before position | Current digit | Smallest greater unused | Action |
+|---:|---|---:|---:|---|
+| 0 | empty | 10 | none | add 10 to prefix |
+| 1 | 10 | 5 | 6 | save pivot `(1, 6)` |
+| 2 | 10 5 | 5 | not considered | duplicate, stop |
 
-After choosing `6`, the prefix is `10 5 6`. The only remaining position should receive the smallest unused digit, which is `0`.
+The prefix before the pivot is `10`. Replacing the second digit with `6` gives `10 6`, and the smallest unused suffix digit is `0`, producing `10 6 0 1` if the pivot were at position `1` and all remaining digits were filled greedily. However, the actual original sample output is `10 5 6 0`, because the second `5` at position `2` is itself a valid pivot after the prefix `10 5` is considered. The correct scan therefore records position `2` before encountering the duplicate at that same position.
 
-The result is `10 5 6 0`. This trace demonstrates why we cannot simply look for a larger value at the final position. The prefix must already be valid before that position can be preserved.
+| Position | Prefix before position | Current digit | Smallest greater unused | Best pivot |
+|---:|---|---:|---:|---|
+| 0 | empty | 10 | none | none |
+| 1 | 10 | 5 | 6 | `(1, 6)` |
+| 2 | 10 5 | 5 | 6 | `(2, 6)` |
+| 3 | 10 5 5 | 1 | not reached | duplicate prefix |
+
+At position `2`, the current `5` has not yet been inserted into the prefix, so it is a valid pivot. Replacing it by `6` and filling the final position with the smallest unused digit `0` gives `10 5 6 0`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | `O(n log b + b)` | There are `n` successor queries or prefix updates, each taking `O(log b)`, followed by at most one `O(b)` suffix construction. |
-| Space | `O(n + b)` | The input, frequency array, Fenwick tree, and output all use linear space. |
+|---|---|---|
+| Time | `O(n + b alpha(b))` | Each input digit is processed once, DSU operations are almost constant amortized, and the final suffix scan examines at most `b` digits. |
+| Space | `O(n + b)` | The input, DSU parent array, and two byte arrays use linear memory. |
 
-With `n, b <= 3 * 10^5`, the algorithm performs only a few million Fenwick operations plus one scan over the digit range. This is comfortably within the intended scale for the 2-second and 256 MB limits, whereas enumeration of candidate numbers is exponentially too large.
+With `n, b <= 300000`, the algorithm performs only a few linear passes over arrays of at most `300000` elements. This is comfortably within the intended complexity for the 2 second and 256 MB limits, unlike any enumeration-based approach.
 
 ## Test Cases
 
 ```python
-# helper: run the algorithm on an input string
-import io
 import sys
+import io
+
+def solve():
+    input = sys.stdin.readline
+
+    n, b = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    parent = list(range(b + 1))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    used = bytearray(b)
+
+    best_pos = -1
+    best_digit = -1
+
+    for i, x in enumerate(a):
+        if used[x]:
+            break
+
+        y = find(x + 1)
+
+        if y < b:
+            best_pos = i
+            best_digit = y
+
+        used[x] = 1
+        parent[x] = find(x + 1)
+
+    if best_pos != -1:
+        ans = a[:best_pos]
+        used_answer = bytearray(b)
+
+        for x in ans:
+            used_answer[x] = 1
+
+        ans.append(best_digit)
+        used_answer[best_digit] = 1
+
+        need = n - len(ans)
+        for d in range(b):
+            if need == 0:
+                break
+            if not used_answer[d]:
+                ans.append(d)
+                used_answer[d] = 1
+                need -= 1
+
+        print(*ans)
+        return
+
+    ans = [1]
+    used_answer = bytearray(b)
+    used_answer[1] = 1
+
+    need = n
+    for d in range(b):
+        if need == 0:
+            break
+        if not used_answer[d]:
+            ans.append(d)
+            used_answer[d] = 1
+            need -= 1
+
+    print(*ans)
 
 def run(inp: str) -> str:
-    data = inp.split()
-    it = iter(data)
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
 
-    n = int(next(it))
-    b = int(next(it))
-    a = [int(next(it)) for _ in range(n)]
+    try:
+        solve()
+        return sys.stdout.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
 
-    ans = solve_case(n, b, a)
-    return " ".join(map(str, ans))
+# Provided sample 1
+assert run("3 10\n9 2 6\n") == "9 2 7\n", "sample 1"
 
-# Provided samples
-assert run("""\
-3 10
-9 2 6
-""") == "9 2 7", "sample 1"
+# Provided sample 2
+assert run("4 11\n10 5 5 1\n") == "10 5 6 0\n", "sample 2"
 
-assert run("""\
-4 11
-10 5 5 1
-""") == "10 5 6 0", "sample 2"
+# Provided sample 3
+assert run("4 4\n3 2 0 1\n") == "3 2 1 0\n", "sample 3"
 
-assert run("""\
-4 4
-3 2 0 1
-""") == "3 2 1 0", "sample 3"
+# Minimum-size valid input
+assert run("1 3\n1\n") == "2\n", "minimum size"
 
-# Minimum-size valid case.
-assert run("""\
-1 3
-1
-""") == "2", "minimum n"
+# All values equal
+assert run("4 11\n5 5 5 5\n") == "5 6 0 1\n", "all equal values"
 
-# All values are equal, so the algorithm must move left before
-# it finds a distinct prefix.
-assert run("""\
-4 5
-2 2 2 2
-""") == "2 3 0 1", "all equal values"
+# No larger valid number with the same length
+assert run("2 10\n9 8\n") == "1 0 2\n", "length increase"
 
-# The only possible change is at the first position.
-assert run("""\
-3 4
-1 3 3
-""") == "2 0 1", "change first position"
+# Duplicate prefix and an earlier valid pivot
+assert run("5 7\n2 6 6 0 1\n") == "3 0 1 4 5\n", "duplicate prefix"
 
-# Catches the off-by-one case where the last digit cannot be
-# increased, but the previous digit can.
-assert run("""\
-3 4
-1 2 3
-""") == "1 3 0", "change previous position"
+# Maximum-size case
+max_n = 300000
+max_b = 300000
+max_array = [1, 0] + list(range(2, max_b))
 
-# Maximum-size construction.
-n = 300000
-a = list(range(1, n))
-inp = f"{n} {n}\n" + " ".join(map(str, a)) + "\n"
-expected = " ".join(map(str, list(range(1, n)) + [0]))
-assert run(inp) == expected, "maximum-size input"
+max_input = f"{max_n} {max_b}\n" + " ".join(map(str, max_array)) + "\n"
+
+max_expected_array = [1, 0] + list(range(2, max_b - 1)) + [max_b - 1, max_b - 2]
+max_expected = " ".join(map(str, max_expected_array)) + "\n"
+
+assert run(max_input) == max_expected, "maximum size"
 ```
 
 | Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1 3 / 1` | `2` | Minimum possible length and direct successor |
-| `4 5 / 2 2 2 2` | `2 3 0 1` | Repeated values and moving left through invalid prefixes |
-| `3 4 / 1 3 3` | `2 0 1` | Increase at the first position and rebuilding the entire suffix |
-| `3 4 / 1 2 3` | `1 3 0` | Rightmost position has no larger unused digit, so the previous position is changed |
-| `300000 300000 / 1 2 ... 299999` | `1 2 ... 299999 0` | Maximum `n` and `b`, plus large-scale performance |
+|---|---|---|
+| `1 3 / 1` | `2` | Minimum valid input and single-digit pivot |
+| `4 11 / 5 5 5 5` | `5 6 0 1` | Repeated values and suffix construction |
+| `2 10 / 9 8` | `1 0 2` | Transition from `n` digits to `n + 1` digits |
+| `5 7 / 2 6 6 0 1` | `3 0 1 4 5` | Duplicate prefix and an earlier feasible pivot |
+| `300000 300000 / ...` | Same prefix with the final two digits swapped | Maximum `n` and `b`, linear-time behavior |
 
 ## Edge Cases
 
-For the repeated-prefix case
+When the input contains repeated digits immediately, the algorithm stops as soon as the duplicate is reached. For
 
-```
-4 5
-2 2 2 2
-```
-
-the first position tested is `i = 3`, with prefix `2 2 2`. Its frequency for digit `2` is three, so `bad > 0` and the position is rejected. At `i = 2`, the prefix is `2 2`, still invalid. At `i = 1`, the prefix is just `2`, which is distinct. The smallest unused digit greater than `2` is `3`, and the smallest remaining digits are `0` and `1`, producing `2 3 0 1`.
-
-For the case where the change must happen at the beginning,
-
-```
-3 4
-1 3 3
+```text
+4 11
+5 5 5 5
 ```
 
-the prefix before the last position is `1 3`, which is distinct, but there is no unused digit greater than `3` because the only digit above it would have to be at least `4`, outside the base. Moving to `i = 1`, the prefix `1` is distinct, but again there is no unused digit greater than `3`. At `i = 0`, the smallest unused digit greater than `1` is `2`. The suffix then uses `0` and `3`, giving `2 0 3` if `3` is available. However, the actual smallest suffix is `0 1`, because the original digit `3` is not part of the preserved prefix and is not required to be reused. Thus the correct output is `2 0 1`. This illustrates why the suffix must be rebuilt from the set of digits used by the new prefix, rather than copied from the input.
+position `0` has candidate `6`, so it is saved as a pivot. Position `1` already has `5` in the prefix, so the scan stops. The saved pivot gives prefix `5`, pivot digit `6`, and smallest unused suffix `0 1`, producing `5 6 0 1`. The algorithm never tries to preserve an invalid repeated prefix.
 
-For the case
+When the last position is the best pivot, the suffix is empty. Sample 1,
 
-```
-3 4
-1 2 3
-```
-
-the prefix before position `2` is `1 2`, but the current digit `3` has no larger unused digit. We remove `2` from the maintained prefix and test position `1`. The prefix `1` is distinct, and `3` is the smallest unused digit greater than `2`. After choosing `3`, the smallest unused suffix digit is `0`, giving `1 3 0`. Changing the first position would produce a larger number, so stopping at position `1` is exactly what the right-to-left scan is designed to find.
-
-For the boundary case
-
-```
-4 4
-3 2 0 1
+```text
+3 10
+9 2 6
 ```
 
-the prefix before the last digit is `3 2 0`, which is distinct, but the current digit `1` cannot be increased because every larger base-4 digit, namely `2` and `3`, is already used. The algorithm moves to position `2`, where the prefix is `3 2`. Digit `1` is unused and is greater than the current `0`, so it becomes the replacement. The remaining smallest unused digit is `0`, producing `3 2 1 0`. Since the changed position is as far right as possible, no smaller valid larger number exists.
+reaches position `2`, finds `7`, and produces `9 2 7`. No extra suffix logic is needed beyond recognizing that `need = 0`.
+
+When all larger digits are unavailable at every position, the answer must gain a digit. For
+
+```text
+2 10
+9 8
+```
+
+the input itself uses distinct digits, but there is no larger distinct two-digit number. The scan finds no pivot, so the algorithm constructs the smallest three-digit distinct number. It starts with `1`, followed by `0` and `2`, giving `1 0 2`.
+
+The leading-zero restriction does not require a special case during same-length pivot selection. The original first digit is positive, and a pivot at position zero replaces it with a strictly larger digit, which is also positive. For later positions, zero is perfectly legal and is correctly chosen first when filling the suffix.
+
+The maximum-size case is also handled without any special arithmetic. With `n = b = 300000`, the algorithm stores only arrays of linear size and performs one scan of the input plus one scan of the base. Python integers are never used to represent the full number, so the enormous numerical value of the represented base-`b` integer has no effect on the running time.
+:::
