@@ -1,7 +1,7 @@
 ---
 title: "CF 102219B - SpongeBob SquarePants"
-description: "Each test case describes a four-sided shape with right angles using its width w and height h. Since every such shape is already a rectangle, the only question is whether its two dimensions are equal."
-date: "2026-08-20T03:44:06+07:00"
+description: "Each test case describes one four-sided shape using its width w and height h. Since all angles are already right angles, the only question that separates a square from an ordinary rectangle is whether the two side lengths are equal."
+date: "2026-08-25T19:06:32+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 codeforces_contest: 102219
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "2019 ICPC Malaysia National"
 rating: 0
 weight: 102219
-solve_time_s: 274
-verified: false
+solve_time_s: 3729
+verified: true
 draft: false
 ---
 
@@ -18,44 +18,51 @@ draft: false
 
 **Rating:** -  
 **Tags:** -  
-**Solve time:** 4m 34s  
-**Verified:** no  
+**Solve time:** 1h 2m  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Each test case describes a four-sided shape with right angles using its width `w` and height `h`. Since every such shape is already a rectangle, the only question is whether its two dimensions are equal. A square has the same width and height, while a non-square rectangle has different dimensions.
+Each test case describes one four-sided shape using its width `w` and height `h`. Since all angles are already right angles, the only question that separates a square from an ordinary rectangle is whether the two side lengths are equal.
 
-For every test case, we print `YES` when `w == h`, because the shape can be a square, and `NO` otherwise.
+For a particular shape, the required output is `YES` when `w == h`, because equal width and height make the rectangle a square. When the two values differ, the output is `NO`.
 
-The dimensions are positive integers between `1` and `1,000,000`. Even at the largest possible values, comparing two integers is a constant-time operation, so the numerical size of `w` and `h` does not create any arithmetic difficulty. The only factor that can affect running time is the number of test cases, and the solution should process each test case once. A solution that performs work proportional to the area, such as iterating over all `w * h` unit positions, could require up to `10^12` iterations for one test case and is completely unsuitable for a 1 second limit.
+The dimensions are positive integers between `1` and `1,000,000`. The upper bound is small enough that a single integer comparison is trivial, but it also tells us that there is no reason to perform geometric simulation or enumerate possible side lengths. The number of test cases is processed independently, so the useful target is constant work per case, giving linear time in the number of cases. Even if there are many test cases, an `O(T)` solution only performs one comparison per shape, while an approach that performs up to one million operations for every shape can quickly become too expensive under the one-second limit.
 
-There are a few small cases that can expose careless implementations. The minimum dimensions are `1 1`, which must produce `YES`; an implementation that treats small dimensions specially could accidentally reject it. A nearly equal pair such as `5 6` must produce `NO`, because equality is required exactly, not approximately. The order of the dimensions does not matter geometrically, so `6 5` also produces `NO`, while `1000000 1000000` produces `YES`. Finally, equal dimensions at the maximum boundary are still perfectly valid, so no special overflow or boundary handling is necessary.
+The first edge case is the smallest possible square. For input `1 1`, the correct output is `YES`. A careless implementation that checks whether both dimensions are greater than one would incorrectly reject it, even though a square can have side length one.
+
+Another edge case is a rectangle whose dimensions differ by only one. For input `7 8`, the output is `NO`. Code that accidentally uses a condition such as `abs(w - h) <= 1` would incorrectly accept this shape. Equality must be exact.
+
+The orientation of the dimensions does not change whether the shape is a square. For input `3 10`, the answer is `NO`, and the same is true for `10 3`. A solution that treats width and height differently beyond comparing them can introduce an unnecessary directional dependency.
+
+Finally, the maximum values must work normally. For input `1000000 1000000`, the answer is `YES`. The values fit comfortably in Python integers, so no special numeric handling is required.
 
 ## Approaches
 
-A literal brute-force approach could imagine constructing the rectangle from its unit cells and checking whether its geometry forms a square. For a `w × h` rectangle, that requires examining up to `w * h` positions. At the maximum dimensions, this becomes `1,000,000 × 1,000,000 = 10^12` cell operations for a single test case. The approach is conceptually correct because the complete shape contains exactly `w * h` unit cells, but it solves a geometric question by reconstructing information that is already encoded directly in the two dimensions.
+A brute-force way to solve the problem would be to try every possible side length from `1` through `max(w, h)` and ask whether that candidate can be the common side length of the shape. If the candidate equals both dimensions, the shape is a square. If all candidates are exhausted, it is not.
 
-The key observation is that the definition of a square gives us exactly the condition we need: its width and height must be equal. There is no need to inspect the interior, calculate the area, measure diagonals, or enumerate possible sides. The two input integers contain all relevant information, so one equality comparison completely determines the answer.
+This method is correct because a square with dimensions `w` and `h` has exactly one possible common side length, namely `w = h`. However, it can perform up to `1,000,000` candidate checks for a single test case. Across `T` cases, the worst-case work is `1,000,000T` checks. The problem does not provide a useful reason to spend that much time when the answer is already encoded directly in the two input values.
 
-The brute-force works because examining the entire shape would eventually reveal whether its two dimensions match, but it fails because it performs up to `10^12` unnecessary operations. The observation that squarehood is equivalent to `w == h` reduces the entire test case to one constant-time comparison.
+The key observation is that there is no hidden geometry to reconstruct. A four-sided shape with four right angles is a square precisely when its width and height are identical. The brute-force approach works because it eventually tests equality indirectly, but the observation that equality itself is the complete condition lets us replace up to one million checks with one comparison.
+
+The resulting algorithm reads each pair `(w, h)`, compares the two integers, and prints `YES` if they are equal and `NO` otherwise.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(w × h) per test case | O(1) | Too slow |
-| Optimal | O(1) per test case | O(1) | Accepted |
+| Brute Force | `O(T * max(w, h))`, up to `1,000,000T` checks | `O(1)` | Too slow |
+| Optimal | `O(T)` | `O(1)` | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases `T`, because the same independent decision must be made for every shape.
-2. For each test case, read its width `w` and height `h`. These two values completely describe the distinction we care about.
-3. Compare `w` and `h`. If they are equal, output `YES`, because equal width and height is exactly the defining condition for a square.
-4. If they are different, output `NO`, because a rectangle with unequal width and height cannot be a square.
-5. Continue until all `T` test cases have been processed, producing exactly one answer for each input shape.
+1. Read the number of test cases `T`. Each test case represents one independent shape, so no information needs to be shared between cases.
+2. For every test case, read `w` and `h`. These are the two side lengths that determine whether the rectangle is a square.
+3. Compare `w` and `h`. If `w == h`, both dimensions have the same length, which is exactly the defining condition needed here for the rectangle to be a square.
+4. Print `YES` when the comparison is true and `NO` otherwise. No other geometric calculation is necessary because the input already guarantees that the shape has four right angles.
 
 ### Why it works
 
-The invariant for each processed test case is simple: the output is `YES` exactly when the two dimensions are equal. A square must have equal width and height, so equality is sufficient for the required classification. Conversely, if the dimensions differ, the shape cannot have four equal sides and is not a square. Since every test case is evaluated using this exact condition, the algorithm cannot classify a valid input incorrectly.
+For every processed shape, the algorithm checks the necessary and sufficient condition for being a square. If `w == h`, the rectangle has equal width and height, so it is a square and the algorithm prints `YES`. If `w != h`, its two side lengths are different, so it cannot be a square and the algorithm prints `NO`. Since every test case is decided directly from this exact condition, the algorithm cannot produce an incorrect classification.
 
 ## Python Solution
 
@@ -63,42 +70,52 @@ The invariant for each processed test case is simple: the output is `YES` exactl
 import sys
 input = sys.stdin.readline
 
-t = int(input())
+def solve():
+    t = int(input())
 
-for _ in range(t):
-    w, h = map(int, input().split())
-    print("YES" if w == h else "NO")
+    for _ in range(t):
+        w, h = map(int, input().split())
+
+        if w == h:
+            print("YES")
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The first line reads `T`, which determines how many independent test cases follow. The loop runs exactly `T` times, so every shape receives one answer and no extra input is processed.
+The first line is read as `t`, which controls exactly how many pairs of dimensions are processed. This matches the input format and prevents the program from accidentally reading beyond the test cases.
 
-Inside the loop, `w` and `h` are parsed as integers. The conditional expression directly implements the algorithm: equality produces `YES`, and inequality produces `NO`.
+Inside the loop, `w` and `h` are parsed as integers. The only decision is the equality test `w == h`, directly implementing the defining property of a square from the algorithm walkthrough.
 
-There are no boundary calculations, loops over dimensions, or array indices, so there are no off-by-one issues. Python integers also have arbitrary precision, although that is not needed here because the dimensions are at most `1,000,000`. Using `sys.stdin.readline` provides efficient input handling even when there are many test cases.
+The code does not need a special boundary condition for `1` or `1,000,000`. Both are ordinary integer values, and Python handles them without overflow. There are also no off-by-one issues because the algorithm does not iterate over the dimensions or use ranges. Each test case requires exactly one comparison and one output.
 
 ## Worked Examples
 
 ### Sample 1
 
-The sample contains four independent rectangles.
+The sample contains four independent shapes. The state of the key variables and the resulting comparison is:
 
 | Test case | `w` | `h` | `w == h` | Output |
 | --- | --- | --- | --- | --- |
-| 1 | 9 | 9 | True | `YES` |
-| 2 | 16 | 30 | False | `NO` |
-| 3 | 200 | 33 | False | `NO` |
-| 4 | 547 | 547 | True | `YES` |
+| 1 | 9 | 9 | `True` | `YES` |
+| 2 | 16 | 30 | `False` | `NO` |
+| 3 | 200 | 33 | `False` | `NO` |
+| 4 | 547 | 547 | `True` | `YES` |
 
-For the first and fourth shapes, the dimensions match exactly, so they are accepted as squares. The other two have different dimensions and are rejected. This demonstrates that the algorithm needs no geometric construction, because every decision follows directly from the input pair.
+The first and fourth shapes have equal dimensions, so both are accepted as square pants. The middle two have different dimensions and are rejected. Each decision depends only on the current pair, which confirms that test cases do not require any shared state.
 
-### Constructed Example
+### Additional Example
 
 Consider the input:
 
 ```
-3
+5
 1 1
-5 6
+1 2
+7 8
+1000000 999999
 1000000 1000000
 ```
 
@@ -106,20 +123,22 @@ The execution is:
 
 | Test case | `w` | `h` | `w == h` | Output |
 | --- | --- | --- | --- | --- |
-| 1 | 1 | 1 | True | `YES` |
-| 2 | 5 | 6 | False | `NO` |
-| 3 | 1000000 | 1000000 | True | `YES` |
+| 1 | 1 | 1 | `True` | `YES` |
+| 2 | 1 | 2 | `False` | `NO` |
+| 3 | 7 | 8 | `False` | `NO` |
+| 4 | 1000000 | 999999 | `False` | `NO` |
+| 5 | 1000000 | 1000000 | `True` | `YES` |
 
-This trace covers both boundaries of the allowed dimensions and a pair that differs by exactly one. It confirms that the algorithm tests equality itself rather than relying on a size threshold or a difference greater than some value.
+This trace covers both boundaries of the allowed range and also tests a pair whose dimensions differ by only one. The algorithm never treats near-equality as equality, so `7 8` correctly produces `NO`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(T) | Each of the `T` test cases requires one comparison. |
-| Space | O(1) | Only the current width and height are stored. |
+| Time | `O(T)` | Each of the `T` test cases requires one equality comparison and one output operation. |
+| Space | `O(1)` | Apart from the input values for the current test case, the algorithm stores no data proportional to `T`. |
 
-The maximum dimension of `1,000,000` has no effect on the amount of work performed by the optimal solution. Even if `T` is large, the algorithm performs only a constant amount of work per test case, which easily fits the 1 second time limit and uses negligible memory.
+The dimensions can be as large as one million, but their magnitude has no effect on the running time because the solution does not iterate over them. Even with a large number of test cases, the work grows linearly with `T`, which is the appropriate complexity for an input where every case must be read and classified.
 
 ## Test Cases
 
@@ -130,7 +149,6 @@ import io
 def solve():
     input = sys.stdin.readline
     t = int(input())
-
     for _ in range(t):
         w, h = map(int, input().split())
         print("YES" if w == h else "NO")
@@ -142,14 +160,12 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
-    solve()
-
-    output = sys.stdout.getvalue()
-
-    sys.stdin = old_stdin
-    sys.stdout = old_stdout
-
-    return output
+    try:
+        solve()
+        return sys.stdout.getvalue()
+    finally:
+        sys.stdin = old_stdin
+        sys.stdout = old_stdout
 
 # Provided sample
 assert run("""4
@@ -163,89 +179,67 @@ NO
 YES
 """, "sample 1"
 
-# Minimum-size dimensions
-assert run("""1
+# Minimum-size values
+assert run("""3
 1 1
+1 2
+2 1
 """) == """YES
-""", "minimum dimensions"
+NO
+NO
+""", "minimum-size and orientation cases"
 
-# Maximum-size equal dimensions
-assert run("""1
+# Maximum-size values
+assert run("""3
 1000000 1000000
-""") == """YES
-""", "maximum equal dimensions"
-
-# Maximum-size unequal dimensions
-assert run("""2
 1000000 999999
 999999 1000000
-""") == """NO
+""") == """YES
 NO
-""", "maximum boundary with unequal dimensions"
+NO
+""", "maximum-size cases"
 
-# Difference of exactly one and several equal cases
-assert run("""5
-2 3
-3 2
+# Equality and near-equality
+assert run("""4
 7 7
-42 42
-100 99
+7 8
+8 7
+8 8
+""") == """YES
+NO
+NO
+YES
+""", "exact equality versus one-unit difference"
+
+# Multiple independent cases
+assert run("""5
+3 10
+50 50
+123456 654321
+999999 999999
+42 43
 """) == """NO
-NO
-YES
 YES
 NO
-""", "boundary equality cases")
+YES
+NO
+""", "mixed cases")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1` | `YES` | Minimum allowed dimensions and equality at the lower boundary |
-| `1000000 1000000` | `YES` | Maximum allowed dimensions with equal sides |
-| `1000000 999999`, `999999 1000000` | `NO`, `NO` | Maximum boundary values and independence from dimension order |
-| `2 3`, `3 2`, `7 7`, `42 42`, `100 99` | `NO`, `NO`, `YES`, `YES`, `NO` | Exact equality and off-by-one style mistakes |
+| `1 1`, `1 2`, `2 1` | `YES`, `NO`, `NO` | Minimum dimensions and reversed width and height |
+| `1000000 1000000`, `1000000 999999`, `999999 1000000` | `YES`, `NO`, `NO` | Maximum dimensions and boundary differences |
+| `7 7`, `7 8`, `8 7`, `8 8` | `YES`, `NO`, `NO`, `YES` | Exact equality and one-unit differences |
+| Mixed five-case input | `NO`, `YES`, `NO`, `YES`, `NO` | Independent processing of multiple cases |
+| Sample input | `YES`, `NO`, `NO`, `YES` | Official sample behavior |
 
 ## Edge Cases
 
-The smallest possible shape is `1 × 1`. The input
+The minimum-size square is `1 1`. The algorithm reads `w = 1` and `h = 1`, evaluates `1 == 1` as true, and prints `YES`. There is no requirement for a side length greater than one, so this correctly accepts the smallest possible square.
 
-```
-1
-1 1
-```
+For the near-equal rectangle `7 8`, the algorithm evaluates `7 == 8` as false and prints `NO`. A careless solution based on the difference being small could incorrectly classify this as a square, but a square requires exact equality, not approximate equality.
 
-gives `w = 1` and `h = 1`, so the comparison `w == h` is true and the output is `YES`. A careless implementation that assumes a square must have dimensions larger than one would fail here.
+For reversed dimensions such as `10 3`, the algorithm evaluates `10 == 3` as false and prints `NO`. The same result would occur for `3 10`. Since the square condition is symmetric in width and height, their order has no effect on the classification.
 
-A rectangle whose dimensions differ by only one is still not a square. For
-
-```
-1
-5 6
-```
-
-the algorithm compares `5` and `6`, finds them unequal, and prints `NO`. There is no tolerance involved, so the fact that the dimensions are close does not change the classification.
-
-The two dimensions may appear in either order. For
-
-```
-1
-6 5
-```
-
-the comparison is again false, producing `NO`. The algorithm does not need to normalize the dimensions with `min` and `max`, because equality is unaffected by their order.
-
-Finally, the largest valid dimensions require no special treatment. With
-
-```
-1
-1000000 1000000
-```
-
-both values are equal, so the algorithm immediately prints `YES`. With
-
-```
-1
-1000000 999999
-```
-
-the values differ, so it prints `NO`. Since the solution never multiplies the dimensions or performs any operation proportional to their magnitude, these boundary cases cost exactly the same amount of work as `1 × 1`.
+For the maximum square `1000000 1000000`, the comparison evaluates to true and produces `YES`. For `1000000 999999`, it evaluates to false and produces `NO`. These cases confirm that the upper boundary is handled directly without overflow, iteration limits, or special cases.
