@@ -8,23 +8,23 @@ contest_type: "Special"
 rating_range: "-"
 n_problems: 10
 n_verified: 5
-total_solve_s: 16058
+total_solve_s: 17031
 contest_year: 2019
-date: "2026-08-23T05:19:12+07:00"
+date: "2026-08-23T08:19:59+07:00"
 weight: 102191
 draft: false
 ---
 
 # [PSUT Coding Marathon 2019](https://codeforces.com/contest/102191)
 
-Special | 10 problems | 5/10 verified | Difficulty - | 4h 27m
+Special | 10 problems | 5/10 verified | Difficulty - | 4h 43m
 
 | # | Problem | Rating | Tags | Accepted | Time | ✓ |
 |---|---|---|---|---|---|---|
 | [A](A/) | [Generous Eater](https://codeforces.com/problemset/problem/102191/A) |  |  |  | 24m 3s | ✓ |
 | [B](B/) | [Final Problem](https://codeforces.com/problemset/problem/102191/B) |  |  |  | 24m 35s | ✓ |
 | [C](C/) | [Seating Arrangement](https://codeforces.com/problemset/problem/102191/C) |  |  |  | 27m 31s |  |
-| [D](D/) | [Picture Day](https://codeforces.com/problemset/problem/102191/D) |  |  |  | 21m 45s |  |
+| [D](D/) | [Picture Day](https://codeforces.com/problemset/problem/102191/D) |  |  |  | 37m 58s |  |
 | [E](E/) | [Snake Moves](https://codeforces.com/problemset/problem/102191/E) |  |  |  | 28m 59s | ✓ |
 | [F](F/) | [Sum then Multiply](https://codeforces.com/problemset/problem/102191/F) |  |  |  | 24m 41s | ✓ |
 | [G](G/) | [Next Number](https://codeforces.com/problemset/problem/102191/G) |  |  |  | 24m 17s |  |

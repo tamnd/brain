@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 3173 contests, 23555 problems, 13241 verified."
+description: "Codeforces problem solutions with full editorials. 3173 contests, 23556 problems, 13241 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**3173 contests, 23555 problems, 13241 verified.**
+**3173 contests, 23556 problems, 13241 verified.**
 
 ## Unknown — 846 contests, 7174 problems, 4325 verified
 
@@ -1484,7 +1484,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102482](102482/) | [2018 ACM-ICPC World Finals](https://codeforces.com/contest/102482) | 11 | 8/11 | ICPC/IOI | - |
 | [102483](102483/) | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/contest/102483) | 11 | 10/11 | ICPC/IOI | - |
 
-## 2019 — 207 contests, 1351 problems, 894 verified
+## 2019 — 207 contests, 1352 problems, 894 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1658,7 +1658,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [102203](102203/) | [Четвертая Липецкая командная олимпиада школьников по программированию (8-11 классы)](https://codeforces.com/contest/102203) | 13 | 13/13 | Special | - |
 | [102212](102212/) | [Amazalgo Uni 2019 Practice Contest](https://codeforces.com/contest/102212) | 3 | 0/3 | Special | - |
 | [102215](102215/) | [2019, XII Samara Regional Intercollegiate Programming Contest](https://codeforces.com/contest/102215) | 12 | 6/12 | Special | - |
-| [102218](102218/) | [2019, XI Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/102218) | 9 | 2/9 | Special | - |
+| [102218](102218/) | [2019, XI Annual Programming Contest by ESCOM-IPN](https://codeforces.com/contest/102218) | 10 | 2/10 | Special | - |
 | [102219](102219/) | [2019 ICPC Malaysia National](https://codeforces.com/contest/102219) | 10 | 0/10 | ICPC/IOI | - |
 | [102220](102220/) | [The 13th Chinese Northeast Collegiate Programming Contest](https://codeforces.com/contest/102220) | 10 | 9/10 | Special | - |
 | [102254](102254/) | [IME++ Starters Try-outs 2019](https://codeforces.com/contest/102254) | 5 | 0/5 | Special | - |
